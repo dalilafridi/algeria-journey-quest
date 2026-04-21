@@ -219,7 +219,7 @@ export const eras: Era[] = [
     dateRange: "46 BC – 430 AD",
     emoji: "🏛️",
     summary:
-      "After Rome absorbed Numidia, the region became one of the empire's richest provinces. Wheat, olive oil, and grand cities flourished — and many Algerian-born thinkers helped shape Roman and Christian thought.",
+      "When Rome absorbed Numidia, golden wheat fields and silver olive groves turned the region into the empire's pantry. Marble cities like Timgad and Djemila rose from the plains, and a young man from Thagaste — Augustine — would one day reshape the Western mind.",
     figures: [
       { name: "Saint Augustine", note: "Famous philosopher born in Thagaste." },
       { name: "Juba II", note: "Scholar-king educated in Rome." },
@@ -358,7 +358,7 @@ export const eras: Era[] = [
     dateRange: "7th – 16th century",
     emoji: "🕌",
     summary:
-      "Islam arrived with Arab armies in the 7th century, blending with Berber culture to create powerful dynasties. Cities like Tlemcen became centers of learning, art, and trade across the Mediterranean and Sahara.",
+      "In the 7th century, Arab horsemen crossed the desert carrying a new faith. Islam met Berber spirit, sparked dynasties, and lit up cities like Tlemcen and Béjaïa — where scholars debated, traders bargained, and a young Italian named Fibonacci first met Arabic numerals.",
     figures: [
       { name: "Kahina", note: "Berber warrior queen who resisted the Arab conquest." },
       { name: "Ibn Khaldun", note: "Pioneer historian who lived and wrote in Algeria." },
@@ -490,7 +490,7 @@ export const eras: Era[] = [
     dateRange: "1830 – 1962",
     emoji: "⚓",
     summary:
-      "In 1830, France invaded Algiers, beginning over 130 years of colonization. Algerians faced land seizures and harsh rule, but resistance — like Emir Abdelkader's — never truly stopped.",
+      "On a summer day in 1830, French ships appeared off Algiers — and stayed for 132 years. Lands were taken, voices silenced, and yet resistance burned on, from Emir Abdelkader's desert campaigns to the mountain stand of Lalla Fatma N'Soumer.",
     figures: [
       { name: "Emir Abdelkader", note: "Leader of early resistance, respected even by enemies." },
       { name: "Lalla Fatma N'Soumer", note: "Heroine who led resistance in Kabylia." },
@@ -620,7 +620,7 @@ export const eras: Era[] = [
     dateRange: "1954 – 1962",
     emoji: "🕊️",
     summary:
-      "On November 1, 1954, the FLN launched a revolution that would change history. After eight years of struggle and great sacrifice, Algeria won its independence on July 5, 1962.",
+      "Just after midnight on November 1, 1954, gunfire echoed through the Aurès Mountains — the FLN had risen. Eight years of sacrifice followed, until on July 5, 1962, Algeria stood free at last.",
     figures: [
       { name: "Larbi Ben M'hidi", note: "Heroic leader of the Battle of Algiers." },
       { name: "Djamila Bouhired", note: "Young revolutionary and symbol of resistance." },
