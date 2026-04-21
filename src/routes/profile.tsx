@@ -87,7 +87,7 @@ function ProfilePage() {
                     </div>
                   </div>
                   <div className="text-sm font-bold">
-                    {c ? `${c.bestScore}/3` : "—"}
+                    {c && c.total ? `${c.bestScore}/${c.total}` : "—"}
                   </div>
                 </li>
               );
