@@ -175,6 +175,53 @@ export const ui = {
   difficultyEasy: { en: "Easy", fr: "Facile", ar: "سهل" },
   difficultyMedium: { en: "Medium", fr: "Moyen", ar: "متوسط" },
   difficultyHard: { en: "Hard", fr: "Difficile", ar: "صعب" },
+
+  // Figures section
+  figures: {
+    en: "Figures",
+    fr: "Figures",
+    ar: "أعلام",
+  },
+  figuresTitle: {
+    en: "Great Figures of Algeria",
+    fr: "Grandes figures de l'histoire de l'Algérie",
+    ar: "أعلام التاريخ الجزائري",
+  },
+  figuresSubtitle: {
+    en: "A small museum of the people who shaped Algerian history — explore their stories, why they matter, and one striking fact each.",
+    fr: "Un petit musée de celles et ceux qui ont façonné l'histoire algérienne — découvrez leurs histoires, leur importance et un fait marquant.",
+    ar: "متحف صغير لمن صنعوا تاريخ الجزائر — اكتشف قصصهم وأهميّتهم ومعلومة لافتة عن كلّ منهم.",
+  },
+  searchFigures: { en: "Search a name…", fr: "Rechercher un nom…", ar: "ابحث عن اسم…" },
+  filterAll: { en: "All", fr: "Tous", ar: "الكل" },
+  filterEra: { en: "Era", fr: "Époque", ar: "الحقبة" },
+  filterRegion: { en: "Region", fr: "Région", ar: "المنطقة" },
+  noFigureMatch: {
+    en: "No figure matches your filters.",
+    fr: "Aucune figure ne correspond à vos filtres.",
+    ar: "لا توجد شخصية تطابق بحثك.",
+  },
+  whyTheyMatter: { en: "Why they matter", fr: "Pourquoi cette figure compte", ar: "لماذا هذه الشخصية مهمة" },
+  theirStory: { en: "Their story", fr: "Leur histoire", ar: "قصّتها" },
+  oneFact: { en: "Did you know?", fr: "Le saviez-vous ?", ar: "هل تعلم؟" },
+  relatedEra: { en: "Related era", fr: "Époque liée", ar: "الحقبة المرتبطة" },
+  guessThisFigureCta: { en: "🕵️ Try the Guess the Figure quiz", fr: "🕵️ Essayer le quiz Devine la figure", ar: "🕵️ جرّب اختبار خمن الشخصية" },
+  backToFigures: { en: "← Back to figures", fr: "← Retour aux figures", ar: "← العودة إلى الأعلام" },
+  guessTheFigure: { en: "Guess the Figure", fr: "Devine la figure", ar: "خمّن الشخصية" },
+  guessTheFigureDesc: {
+    en: "Read the clues and pick the right person from Algerian history.",
+    fr: "Lis les indices et choisis la bonne personnalité de l'histoire algérienne.",
+    ar: "اقرأ الأدلّة واختر الشخصية الصحيحة من تاريخ الجزائر.",
+  },
+  startGuessQuiz: { en: "🚀 Start the quiz", fr: "🚀 Lancer le quiz", ar: "🚀 ابدأ الاختبار" },
+  clues: { en: "Clues", fr: "Indices", ar: "الأدلّة" },
+  exploreFigures: { en: "Explore figures", fr: "Explorer les figures", ar: "تصفّح الأعلام" },
+  homeFiguresTitle: { en: "Great Figures", fr: "Grandes figures", ar: "أعلام كبار" },
+  homeFiguresDesc: {
+    en: "Meet the people behind the eras.",
+    fr: "Découvrez les personnalités derrière les époques.",
+    ar: "تعرّف على الشخصيات وراء الحقب.",
+  },
 } satisfies Record<string, Localized<string>>;
 
 export type UiKey = keyof typeof ui;
