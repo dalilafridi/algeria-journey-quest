@@ -12,7 +12,10 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as TimelineRouteImport } from './routes/timeline'
 import { Route as ProfileRouteImport } from './routes/profile'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as FiguresIndexRouteImport } from './routes/figures.index'
 import { Route as QuizEraIdRouteImport } from './routes/quiz.$eraId'
+import { Route as FiguresQuizRouteImport } from './routes/figures.quiz'
+import { Route as FiguresFigureIdRouteImport } from './routes/figures.$figureId'
 import { Route as EraEraIdRouteImport } from './routes/era.$eraId'
 
 const TimelineRoute = TimelineRouteImport.update({
@@ -30,9 +33,24 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const FiguresIndexRoute = FiguresIndexRouteImport.update({
+  id: '/figures/',
+  path: '/figures/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const QuizEraIdRoute = QuizEraIdRouteImport.update({
   id: '/quiz/$eraId',
   path: '/quiz/$eraId',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FiguresQuizRoute = FiguresQuizRouteImport.update({
+  id: '/figures/quiz',
+  path: '/figures/quiz',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FiguresFigureIdRoute = FiguresFigureIdRouteImport.update({
+  id: '/figures/$figureId',
+  path: '/figures/$figureId',
   getParentRoute: () => rootRouteImport,
 } as any)
 const EraEraIdRoute = EraEraIdRouteImport.update({
@@ -46,14 +64,20 @@ export interface FileRoutesByFullPath {
   '/profile': typeof ProfileRoute
   '/timeline': typeof TimelineRoute
   '/era/$eraId': typeof EraEraIdRoute
+  '/figures/$figureId': typeof FiguresFigureIdRoute
+  '/figures/quiz': typeof FiguresQuizRoute
   '/quiz/$eraId': typeof QuizEraIdRoute
+  '/figures/': typeof FiguresIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/profile': typeof ProfileRoute
   '/timeline': typeof TimelineRoute
   '/era/$eraId': typeof EraEraIdRoute
+  '/figures/$figureId': typeof FiguresFigureIdRoute
+  '/figures/quiz': typeof FiguresQuizRoute
   '/quiz/$eraId': typeof QuizEraIdRoute
+  '/figures': typeof FiguresIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -61,20 +85,42 @@ export interface FileRoutesById {
   '/profile': typeof ProfileRoute
   '/timeline': typeof TimelineRoute
   '/era/$eraId': typeof EraEraIdRoute
+  '/figures/$figureId': typeof FiguresFigureIdRoute
+  '/figures/quiz': typeof FiguresQuizRoute
   '/quiz/$eraId': typeof QuizEraIdRoute
+  '/figures/': typeof FiguresIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/profile' | '/timeline' | '/era/$eraId' | '/quiz/$eraId'
+  fullPaths:
+    | '/'
+    | '/profile'
+    | '/timeline'
+    | '/era/$eraId'
+    | '/figures/$figureId'
+    | '/figures/quiz'
+    | '/quiz/$eraId'
+    | '/figures/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/profile' | '/timeline' | '/era/$eraId' | '/quiz/$eraId'
+  to:
+    | '/'
+    | '/profile'
+    | '/timeline'
+    | '/era/$eraId'
+    | '/figures/$figureId'
+    | '/figures/quiz'
+    | '/quiz/$eraId'
+    | '/figures'
   id:
     | '__root__'
     | '/'
     | '/profile'
     | '/timeline'
     | '/era/$eraId'
+    | '/figures/$figureId'
+    | '/figures/quiz'
     | '/quiz/$eraId'
+    | '/figures/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -82,7 +128,10 @@ export interface RootRouteChildren {
   ProfileRoute: typeof ProfileRoute
   TimelineRoute: typeof TimelineRoute
   EraEraIdRoute: typeof EraEraIdRoute
+  FiguresFigureIdRoute: typeof FiguresFigureIdRoute
+  FiguresQuizRoute: typeof FiguresQuizRoute
   QuizEraIdRoute: typeof QuizEraIdRoute
+  FiguresIndexRoute: typeof FiguresIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -108,11 +157,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/figures/': {
+      id: '/figures/'
+      path: '/figures'
+      fullPath: '/figures/'
+      preLoaderRoute: typeof FiguresIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/quiz/$eraId': {
       id: '/quiz/$eraId'
       path: '/quiz/$eraId'
       fullPath: '/quiz/$eraId'
       preLoaderRoute: typeof QuizEraIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/figures/quiz': {
+      id: '/figures/quiz'
+      path: '/figures/quiz'
+      fullPath: '/figures/quiz'
+      preLoaderRoute: typeof FiguresQuizRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/figures/$figureId': {
+      id: '/figures/$figureId'
+      path: '/figures/$figureId'
+      fullPath: '/figures/$figureId'
+      preLoaderRoute: typeof FiguresFigureIdRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/era/$eraId': {
@@ -130,7 +200,10 @@ const rootRouteChildren: RootRouteChildren = {
   ProfileRoute: ProfileRoute,
   TimelineRoute: TimelineRoute,
   EraEraIdRoute: EraEraIdRoute,
+  FiguresFigureIdRoute: FiguresFigureIdRoute,
+  FiguresQuizRoute: FiguresQuizRoute,
   QuizEraIdRoute: QuizEraIdRoute,
+  FiguresIndexRoute: FiguresIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
