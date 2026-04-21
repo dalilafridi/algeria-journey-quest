@@ -1,6 +1,9 @@
 import { Outlet, Link, createRootRoute, HeadContent, Scripts } from "@tanstack/react-router";
+import { useEffect } from "react";
+import { toast } from "sonner";
 
 import appCss from "../styles.css?url";
+import { Toaster as Sonner } from "@/components/ui/sonner";
 
 function NotFoundComponent() {
   return (
@@ -69,5 +72,19 @@ function RootShell({ children }: { children: React.ReactNode }) {
 }
 
 function RootComponent() {
-  return <Outlet />;
+  useEffect(() => {
+    const handleContextMenu = (e: MouseEvent) => {
+      e.preventDefault();
+      toast("Content protected", { duration: 1500 });
+    };
+    document.addEventListener("contextmenu", handleContextMenu);
+    return () => document.removeEventListener("contextmenu", handleContextMenu);
+  }, []);
+
+  return (
+    <>
+      <Outlet />
+      <Sonner />
+    </>
+  );
 }
