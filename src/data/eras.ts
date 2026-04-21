@@ -84,6 +84,7 @@ export const eras: Era[] = [
       "Numidia minted its own coins, often stamped with the king's portrait and an elephant.",
       "Jugurtha was paraded through Rome in chains before dying in a cold prison cell.",
       "Cirta, the Numidian capital, sits on dramatic cliffs — today it is Constantine.",
+      "Numidia's legacy of horsemanship and resistance shaped North African identity for centuries.",
     ],
     badge: "Explorer of Numidia",
     quiz: [
@@ -217,6 +218,35 @@ export const eras: Era[] = [
         answerIndex: 0,
         explanation: "Syphax ruled western Numidia and was captured in 203 BC.",
       },
+      {
+        type: "mcq",
+        question: "Where does the name 'Numidia' come from?",
+        options: [
+          "A Berber word for 'desert'",
+          "A Greek word meaning 'nomads'",
+          "A Latin word for 'horse'",
+          "A Punic word for 'kingdom'",
+        ],
+        answerIndex: 1,
+        explanation: "The Greeks called the region's people 'Nomades' — nomads.",
+      },
+      {
+        type: "truefalse",
+        statement: "Many Numidians fought alongside Rome in major Mediterranean wars.",
+        answer: true,
+        explanation: "Numidian cavalry served as key Roman allies, especially against Carthage.",
+      },
+      {
+        type: "whoami",
+        clues: [
+          "I am a massive royal tomb on the Algerian plains.",
+          "I was built for Numidian kings.",
+          "I still rise above the landscape today.",
+        ],
+        options: ["The Medracen", "The Pyramids of Giza", "Petra", "Leptis Magna"],
+        answerIndex: 0,
+        explanation: "The Medracen is one of North Africa's oldest royal tombs.",
+      },
     ],
   },
   {
@@ -242,6 +272,7 @@ export const eras: Era[] = [
       "Roman Algeria produced so much olive oil that giant amphorae traveled across the Mediterranean.",
       "Tipaza's seaside ruins inspired the Algerian-French writer Albert Camus centuries later.",
       "The Roman city of Lambaesis was home to the legendary Third Augustan Legion.",
+      "Long Roman aqueducts carried fresh water across hills and valleys to growing cities.",
     ],
     badge: "Roman Wanderer",
     quiz: [
@@ -374,6 +405,30 @@ export const eras: Era[] = [
         answerIndex: 1,
         explanation: "The Legio III Augusta guarded Roman North Africa for centuries.",
       },
+      {
+        type: "mcq",
+        question: "Which Roman emperor was born in North Africa?",
+        options: ["Augustus", "Septimius Severus", "Hadrian", "Trajan"],
+        answerIndex: 1,
+        explanation: "Septimius Severus was born in Leptis Magna in Roman North Africa.",
+      },
+      {
+        type: "truefalse",
+        statement: "Roman cities in Algeria often followed a neat grid layout.",
+        answer: true,
+        explanation: "Roman urban planning used straight streets crossing at right angles.",
+      },
+      {
+        type: "whoami",
+        clues: [
+          "I was a Roman emperor born in North Africa.",
+          "I expanded the empire's borders.",
+          "My dynasty ruled Rome in the late 2nd and early 3rd century.",
+        ],
+        options: ["Nero", "Septimius Severus", "Caligula", "Constantine"],
+        answerIndex: 1,
+        explanation: "Septimius Severus founded the Severan dynasty.",
+      },
     ],
   },
   {
@@ -399,6 +454,7 @@ export const eras: Era[] = [
       "The Great Mosque of Tlemcen, built in 1136, still stands almost unchanged today.",
       "Berber and Arab cultures slowly blended, giving Algeria its unique identity.",
       "Béjaïa exported beeswax candles to Europe — the French word 'bougie' comes from its name.",
+      "Caravans crossed the Sahara linking Algerian markets to West African gold and salt routes.",
     ],
     badge: "Scholar of the Maghreb",
     quiz: [
@@ -524,6 +580,35 @@ export const eras: Era[] = [
         answer: true,
         explanation: "It was completed in 1136 and still stands almost unchanged.",
       },
+      {
+        type: "mcq",
+        question: "What role did mosques play in early Islamic Algerian cities?",
+        options: [
+          "Only places of prayer",
+          "Centers of community, learning, and law",
+          "Royal palaces",
+          "Military barracks",
+        ],
+        answerIndex: 1,
+        explanation: "Mosques served as schools, courts, and gathering places for the community.",
+      },
+      {
+        type: "truefalse",
+        statement: "Trans-Saharan trade routes expanded greatly during the Islamic era.",
+        answer: true,
+        explanation: "Caravans linked the Maghreb to West Africa, carrying gold, salt, and ideas.",
+      },
+      {
+        type: "whoami",
+        clues: [
+          "I am a Berber dynasty that ruled from Tlemcen.",
+          "I made my capital a center of art and learning.",
+          "I flourished from the 13th to 15th centuries.",
+        ],
+        options: ["Zayyanids", "Almohads", "Fatimids", "Ottomans"],
+        answerIndex: 0,
+        explanation: "The Zayyanid dynasty turned Tlemcen into a Maghreb jewel.",
+      },
     ],
   },
   {
@@ -549,6 +634,7 @@ export const eras: Era[] = [
       "On May 8, 1945, victory celebrations in Sétif turned into one of Algeria's darkest days.",
       "French settlers were called 'pieds-noirs' — 'black feet' — and many had never seen France.",
       "By 1954, Algeria had three French départements, just like Paris or Marseille.",
+      "Schools under colonial rule taught mostly in French, limiting Arabic and Berber education.",
     ],
     badge: "Keeper of Memory",
     quiz: [
@@ -690,6 +776,30 @@ export const eras: Era[] = [
         answerIndex: 2,
         explanation: "Algeria was divided into three French départements before independence.",
       },
+      {
+        type: "mcq",
+        question: "Under colonial rule, schools in Algeria mainly taught in which language?",
+        options: ["Arabic", "Berber", "French", "English"],
+        answerIndex: 2,
+        explanation: "Colonial education was largely in French, limiting Arabic and Berber learning.",
+      },
+      {
+        type: "truefalse",
+        statement: "Large amounts of farmland were taken from Algerians and given to settlers.",
+        answer: true,
+        explanation: "Land seizures pushed many Algerian families into poverty.",
+      },
+      {
+        type: "whoami",
+        clues: [
+          "I am a moderate Algerian leader who pushed for reform before independence.",
+          "I later became the first president of the provisional government in 1958.",
+          "My name is Ferhat…",
+        ],
+        options: ["Ferhat Abbas", "Messali Hadj", "Ben Bella", "Boumediene"],
+        answerIndex: 0,
+        explanation: "Ferhat Abbas led early political resistance and the GPRA in exile.",
+      },
     ],
   },
   {
@@ -715,6 +825,7 @@ export const eras: Era[] = [
       "The FLN's green-and-white flag with a red crescent and star became the symbol of free Algeria.",
       "Ahmed Ben Bella became Algeria's first president after independence in 1963.",
       "July 5 was chosen for independence — exactly 132 years after French troops landed in 1830.",
+      "The war drew global attention and shaped how the world thought about decolonization.",
     ],
     badge: "Champion of Liberty",
     quiz: [
@@ -855,6 +966,35 @@ export const eras: Era[] = [
         options: ["Hassiba Ben Bouali", "Lalla Fatma N'Soumer", "Zohra Drif", "Kahina"],
         answerIndex: 0,
         explanation: "Hassiba Ben Bouali died in the Casbah in 1957, age just 19.",
+      },
+      {
+        type: "mcq",
+        question: "What do the colors of the Algerian flag include?",
+        options: [
+          "Black and yellow",
+          "Green, white, and a red crescent and star",
+          "Blue, white, and red",
+          "Red and gold only",
+        ],
+        answerIndex: 1,
+        explanation: "Green and white with a red crescent and star became the flag of free Algeria.",
+      },
+      {
+        type: "truefalse",
+        statement: "The War of Independence shaped modern Algerian national identity.",
+        answer: true,
+        explanation: "Its memory remains central to Algerian culture and politics today.",
+      },
+      {
+        type: "whoami",
+        clues: [
+          "I am the political movement that led Algeria's fight for independence.",
+          "My initials are three letters.",
+          "I launched the November 1, 1954 revolution.",
+        ],
+        options: ["MNA", "PPA", "FLN", "OAS"],
+        answerIndex: 2,
+        explanation: "The FLN (Front de Libération Nationale) led the independence struggle.",
       },
     ],
   },
