@@ -3,7 +3,14 @@ import { useMemo, useRef, useState } from "react";
 import { Header } from "@/components/Header";
 import { eras, type QuizQuestion } from "@/data/eras";
 import { getLevelInfo, recordQuiz } from "@/lib/progress";
-import { isAnswerCorrect, pickQuizQuestions, shuffle } from "@/lib/quiz";
+import {
+  describeCorrectAnswer,
+  describeUserAnswer,
+  getPrompt,
+  isAnswerCorrect,
+  pickQuizQuestions,
+  shuffle,
+} from "@/lib/quiz";
 
 export const Route = createFileRoute("/quiz/$eraId")({
   loader: ({ params }) => {
