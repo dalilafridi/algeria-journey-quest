@@ -75,3 +75,63 @@ export function totalProgressPct(): number {
   const done = eras.filter((e) => hasPassed(e.id)).length;
   return Math.round((done / eras.length) * 100);
 }
+
+// ---- Levels ----
+// 10 levels. XP needed to reach level N from 1 grows gently.
+export const MAX_LEVEL = 10;
+const LEVEL_THRESHOLDS: number[] = Array.from({ length: MAX_LEVEL }, (_, i) => i * 100 + i * i * 20);
+// → [0, 120, 280, 480, 720, 1000, 1320, 1680, 2080, 2520]
+
+export const LEVEL_TITLES = [
+  "Curious Wanderer",
+  "Story Seeker",
+  "History Apprentice",
+  "Chronicle Keeper",
+  "Era Explorer",
+  "Sage of the Sands",
+  "Master Storyteller",
+  "Living Archive",
+  "Grand Historian",
+  "Legend of Algeria",
+];
+
+export type LevelInfo = {
+  level: number; // 1..MAX_LEVEL
+  title: string;
+  xpIntoLevel: number;
+  xpForNext: number; // 0 if maxed
+  pct: number; // 0..100 progress within current level
+  isMax: boolean;
+};
+
+export function getLevelInfo(xp: number): LevelInfo {
+  let level = 1;
+  for (let i = 0; i < LEVEL_THRESHOLDS.length; i++) {
+    if (xp >= LEVEL_THRESHOLDS[i]) level = i + 1;
+  }
+  const isMax = level >= MAX_LEVEL;
+  const base = LEVEL_THRESHOLDS[level - 1];
+  const next = isMax ? base : LEVEL_THRESHOLDS[level];
+  const xpIntoLevel = xp - base;
+  const xpForNext = isMax ? 0 : next - xp;
+  const span = isMax ? 1 : next - base;
+  const pct = isMax ? 100 : Math.round((xpIntoLevel / span) * 100);
+  return {
+    level,
+    title: LEVEL_TITLES[level - 1],
+    xpIntoLevel,
+    xpForNext,
+    pct,
+    isMax,
+  };
+}
+
+export function addXp(amount: number): { gained: number; leveledUp: boolean; newLevel: number } {
+  if (amount <= 0) return { gained: 0, leveledUp: false, newLevel: getLevelInfo(getProgress().xp).level };
+  const p = getProgress();
+  const before = getLevelInfo(p.xp).level;
+  p.xp += amount;
+  saveProgress(p);
+  const after = getLevelInfo(p.xp).level;
+  return { gained: amount, leveledUp: after > before, newLevel: after };
+}

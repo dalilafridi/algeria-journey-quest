@@ -1,8 +1,8 @@
 import { createFileRoute, Link, notFound, useNavigate } from "@tanstack/react-router";
-import { useMemo, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 import { Header } from "@/components/Header";
 import { eras, type QuizQuestion } from "@/data/eras";
-import { recordQuiz } from "@/lib/progress";
+import { getLevelInfo, recordQuiz } from "@/lib/progress";
 import { isAnswerCorrect, pickQuizQuestions, shuffle } from "@/lib/quiz";
 
 export const Route = createFileRoute("/quiz/$eraId")({
@@ -23,6 +23,28 @@ export const Route = createFileRoute("/quiz/$eraId")({
   component: QuizPage,
 });
 
+const CORRECT_MESSAGES = [
+  "You're becoming a historian!",
+  "Brilliant! 🎓",
+  "Spot on!",
+  "History flows through you ✨",
+  "Nailed it!",
+];
+const WRONG_MESSAGES = [
+  "Close! Try again.",
+  "Not quite — keep going!",
+  "So close! 💪",
+  "History is tricky, you'll get it next time.",
+];
+
+function pickMessage(list: string[]) {
+  return list[Math.floor(Math.random() * list.length)];
+}
+
+const XP_PER_CORRECT = 10;
+const STREAK_BONUS_AT = 3; // every 3 in a row → +5 bonus
+const STREAK_BONUS = 5;
+
 function QuizPage() {
   const { era } = Route.useLoaderData();
   const navigate = useNavigate();
@@ -39,8 +61,18 @@ function QuizPage() {
   const [answer, setAnswer] = useState<unknown>(null);
   const [locked, setLocked] = useState(false);
   const [score, setScore] = useState(0);
+  const [streak, setStreak] = useState(0);
+  const [bestStreak, setBestStreak] = useState(0);
+  const [sessionXp, setSessionXp] = useState(0);
+  const [lastFeedback, setLastFeedback] = useState<{
+    correct: boolean;
+    message: string;
+    xp: number;
+    bonus: boolean;
+  } | null>(null);
   const [done, setDone] = useState(false);
   const [result, setResult] = useState<{ gained: number; newBadge?: string } | null>(null);
+  const flyKey = useRef(0);
 
   const q = questions[step];
 
@@ -48,7 +80,21 @@ function QuizPage() {
     if (locked) return;
     setAnswer(a);
     setLocked(true);
-    if (isAnswerCorrect(q, a)) setScore((s) => s + 1);
+    const correct = isAnswerCorrect(q, a);
+    if (correct) {
+      const newStreak = streak + 1;
+      const bonus = newStreak > 0 && newStreak % STREAK_BONUS_AT === 0;
+      const earned = XP_PER_CORRECT + (bonus ? STREAK_BONUS : 0);
+      setScore((s) => s + 1);
+      setStreak(newStreak);
+      setBestStreak((b) => Math.max(b, newStreak));
+      setSessionXp((x) => x + earned);
+      flyKey.current += 1;
+      setLastFeedback({ correct: true, message: pickMessage(CORRECT_MESSAGES), xp: earned, bonus });
+    } else {
+      setStreak(0);
+      setLastFeedback({ correct: false, message: pickMessage(WRONG_MESSAGES), xp: 0, bonus: false });
+    }
   }
 
   function next() {
@@ -56,6 +102,7 @@ function QuizPage() {
       setStep(step + 1);
       setAnswer(null);
       setLocked(false);
+      setLastFeedback(null);
     } else {
       const r = recordQuiz(era.id, score, questions.length);
       setResult(r);
@@ -69,32 +116,54 @@ function QuizPage() {
     setAnswer(null);
     setLocked(false);
     setScore(0);
+    setStreak(0);
+    setBestStreak(0);
+    setSessionXp(0);
+    setLastFeedback(null);
     setDone(false);
     setResult(null);
   }
 
   if (done) {
     const ratio = score / questions.length;
+    const pct = Math.round(ratio * 100);
     const perfect = score === questions.length;
     const passed = ratio >= 0.6;
+    const earnedBadge = result?.newBadge ?? (passed ? era.badge : undefined);
+    const level = getLevelInfo(0); // not used here directly; level shown in header
+    void level;
     return (
       <div className="min-h-screen">
         <Header />
         <main className="max-w-xl mx-auto px-4 py-12 text-center">
           <div className="text-7xl animate-pop-in">{perfect ? "🏆" : passed ? "🎉" : "💪"}</div>
           <h1 className="mt-4 text-3xl font-extrabold">
-            {perfect ? "Perfect!" : passed ? "Well done!" : "Keep going!"}
+            {perfect ? "Perfect run!" : passed ? "Well done!" : "Keep going!"}
           </h1>
           <p className="mt-2 text-muted-foreground">
             You scored <span className="font-bold text-foreground">{score}</span> out of{" "}
             {questions.length}
           </p>
+
+          {/* Score % ring */}
+          <div className="mt-6 flex justify-center">
+            <ScoreRing pct={pct} />
+          </div>
+
+          {/* Stats grid */}
+          <div className="mt-6 grid grid-cols-3 gap-3 max-w-md mx-auto">
+            <Stat label="XP earned" value={`+${sessionXp}`} emoji="⭐" />
+            <Stat label="Best streak" value={`${bestStreak}🔥`} />
+            <Stat label="Accuracy" value={`${pct}%`} emoji="🎯" />
+          </div>
+
           {result && result.gained > 0 && (
             <div className="mt-4 inline-block px-4 py-2 rounded-full bg-accent/30 font-bold text-accent-foreground animate-float-up">
-              +{result.gained} XP ⭐
+              +{result.gained} XP saved to profile
             </div>
           )}
-          {result?.newBadge && (
+
+          {earnedBadge && (
             <div
               className="mt-6 mx-auto max-w-sm rounded-2xl p-5 border-2 animate-pop-in"
               style={{
@@ -105,11 +174,12 @@ function QuizPage() {
             >
               <div className="text-4xl">🎖️</div>
               <div className="text-xs uppercase tracking-wider text-muted-foreground mt-2">
-                Badge unlocked
+                {result?.newBadge ? "Badge unlocked" : "Badge earned"}
               </div>
-              <div className="font-bold text-lg">{result.newBadge}</div>
+              <div className="font-bold text-lg">{earnedBadge}</div>
             </div>
           )}
+
           <div className="mt-8 flex flex-col sm:flex-row gap-3 justify-center">
             <button
               onClick={restart}
@@ -143,11 +213,22 @@ function QuizPage() {
         </Link>
 
         <div className="mt-4 mb-6">
-          <div className="flex justify-between text-sm font-semibold mb-2">
+          <div className="flex justify-between items-center text-sm font-semibold mb-2 gap-2">
             <span>
               Question {step + 1} / {questions.length}
             </span>
-            <span className="text-primary">Score: {score}</span>
+            <div className="flex items-center gap-2">
+              {streak >= 2 && (
+                <span
+                  key={streak}
+                  className="px-2 py-0.5 rounded-full bg-accent/30 text-accent-foreground text-xs font-bold animate-streak-pulse"
+                  title="Current streak"
+                >
+                  🔥 {streak} streak
+                </span>
+              )}
+              <span className="text-primary">Score: {score}</span>
+            </div>
           </div>
           <div className="h-2 rounded-full bg-muted overflow-hidden">
             <div
@@ -162,7 +243,7 @@ function QuizPage() {
 
         <div
           key={step}
-          className="rounded-2xl bg-card p-6 border border-border animate-float-up"
+          className="relative rounded-2xl bg-card p-6 border border-border animate-float-up"
           style={{ boxShadow: "var(--shadow-soft)" }}
         >
           <TypeBadge type={q.type} />
@@ -174,8 +255,24 @@ function QuizPage() {
             onChange={setAnswer}
           />
 
-          {locked && (
-            <Feedback q={q} answer={answer} />
+          {/* Floating +XP indicator */}
+          {locked && lastFeedback?.correct && lastFeedback.xp > 0 && (
+            <div
+              key={flyKey.current}
+              className="pointer-events-none absolute right-6 top-6 font-extrabold text-lg animate-xp-fly"
+              style={{ color: "var(--accent-foreground)" }}
+            >
+              +{lastFeedback.xp} XP {lastFeedback.bonus && "🔥"}
+            </div>
+          )}
+
+          {locked && lastFeedback && (
+            <FeedbackBlock
+              q={q}
+              answer={answer}
+              correct={lastFeedback.correct}
+              message={lastFeedback.message}
+            />
           )}
 
           {locked && (
@@ -192,6 +289,97 @@ function QuizPage() {
     </div>
   );
 }
+
+function Stat({ label, value, emoji }: { label: string; value: string; emoji?: string }) {
+  return (
+    <div
+      className="rounded-xl border border-border bg-card px-3 py-3"
+      style={{ boxShadow: "var(--shadow-soft)" }}
+    >
+      <div className="text-lg font-extrabold">
+        {emoji && <span className="mr-1">{emoji}</span>}
+        {value}
+      </div>
+      <div className="text-[11px] uppercase tracking-wider text-muted-foreground mt-0.5">
+        {label}
+      </div>
+    </div>
+  );
+}
+
+function ScoreRing({ pct }: { pct: number }) {
+  const size = 140;
+  const stroke = 12;
+  const r = (size - stroke) / 2;
+  const c = 2 * Math.PI * r;
+  const offset = c - (pct / 100) * c;
+  return (
+    <div className="relative" style={{ width: size, height: size }}>
+      <svg width={size} height={size} className="-rotate-90">
+        <circle cx={size / 2} cy={size / 2} r={r} stroke="var(--muted)" strokeWidth={stroke} fill="none" />
+        <circle
+          cx={size / 2}
+          cy={size / 2}
+          r={r}
+          stroke="url(#ringGrad)"
+          strokeWidth={stroke}
+          fill="none"
+          strokeLinecap="round"
+          strokeDasharray={c}
+          strokeDashoffset={offset}
+          style={{ transition: "stroke-dashoffset 0.8s ease-out" }}
+        />
+        <defs>
+          <linearGradient id="ringGrad" x1="0" x2="1" y1="0" y2="1">
+            <stop offset="0%" stopColor="oklch(0.78 0.14 80)" />
+            <stop offset="100%" stopColor="oklch(0.62 0.16 40)" />
+          </linearGradient>
+        </defs>
+      </svg>
+      <div className="absolute inset-0 flex flex-col items-center justify-center">
+        <div className="text-3xl font-extrabold">{pct}%</div>
+        <div className="text-xs text-muted-foreground">score</div>
+      </div>
+    </div>
+  );
+}
+
+function FeedbackBlock({
+  q,
+  answer,
+  correct,
+  message,
+}: {
+  q: QuizQuestion;
+  answer: unknown;
+  correct: boolean;
+  message: string;
+}) {
+  const explanation = q.type === "truefalse" ? q.explanation : undefined;
+  return (
+    <div
+      className={
+        "mt-5 px-4 py-3 rounded-xl text-sm font-medium animate-pop-in " +
+        (correct
+          ? "bg-success/15 text-foreground border border-success/40"
+          : "bg-destructive/10 text-foreground border border-destructive/30")
+      }
+    >
+      <div className="font-bold mb-0.5">
+        {correct ? "✅ " : "❌ "}
+        {message}
+      </div>
+      {explanation && <div className="text-muted-foreground">{explanation}</div>}
+      {q.type === "order" && !correct && (
+        <div className="text-muted-foreground">
+          Correct order: {q.items.map((it) => it.label).join(" → ")}
+        </div>
+      )}
+      {!correct && answer === null && null}
+    </div>
+  );
+}
+
 
 function TypeBadge({ type }: { type: QuizQuestion["type"] }) {
   const labels: Record<QuizQuestion["type"], { label: string; emoji: string }> = {
@@ -472,29 +660,5 @@ function OrderQuestionView({
         </button>
       )}
     </>
-  );
-}
-
-function Feedback({ q, answer }: { q: QuizQuestion; answer: unknown }) {
-  const correct = isAnswerCorrect(q, answer);
-  const explanation =
-    q.type === "truefalse" ? q.explanation : undefined;
-  return (
-    <div
-      className={
-        "mt-5 px-4 py-3 rounded-xl text-sm font-medium " +
-        (correct
-          ? "bg-success/15 text-foreground border border-success/40"
-          : "bg-destructive/10 text-foreground border border-destructive/30")
-      }
-    >
-      <div className="font-bold mb-0.5">{correct ? "Correct! 🎉" : "Not quite."}</div>
-      {explanation && <div className="text-muted-foreground">{explanation}</div>}
-      {q.type === "order" && !correct && (
-        <div className="text-muted-foreground">
-          Correct order: {q.items.map((it) => it.label).join(" → ")}
-        </div>
-      )}
-    </div>
   );
 }

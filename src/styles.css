@@ -174,8 +174,19 @@
   0% { transform: translateY(0) rotate(0deg); opacity: 1; }
   100% { transform: translateY(-80px) rotate(360deg); opacity: 0; }
 }
+@keyframes xp-fly {
+  0% { transform: translateY(0) scale(0.8); opacity: 0; }
+  20% { transform: translateY(-10px) scale(1.1); opacity: 1; }
+  100% { transform: translateY(-70px) scale(1); opacity: 0; }
+}
+@keyframes streak-pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.15); }
+}
 
 .animate-pop-in { animation: pop-in 0.4s ease-out; }
 .animate-float-up { animation: float-up 0.5s ease-out; }
 .animate-shake { animation: shake 0.4s ease-in-out; }
 .animate-confetti { animation: confetti 1s ease-out forwards; }
+.animate-xp-fly { animation: xp-fly 1.2s ease-out forwards; }
+.animate-streak-pulse { animation: streak-pulse 0.5s ease-in-out; }
