@@ -78,6 +78,12 @@ export const eras: Era[] = [
     facts: [
       "Numidian horsemen were so feared that Rome and Carthage both wanted them as allies.",
       "Massinissa lived to be over 90 and led troops into his last years.",
+      "Numidian riders guided their horses with just a neck rope — no saddles, no bridles.",
+      "The word 'Numidia' comes from a Greek term meaning 'nomads'.",
+      "Royal Numidian tombs, like the Medracen, still rise from the Algerian plains today.",
+      "Numidia minted its own coins, often stamped with the king's portrait and an elephant.",
+      "Jugurtha was paraded through Rome in chains before dying in a cold prison cell.",
+      "Cirta, the Numidian capital, sits on dramatic cliffs — today it is Constantine.",
     ],
     badge: "Explorer of Numidia",
     quiz: [
@@ -231,6 +237,11 @@ export const eras: Era[] = [
     facts: [
       "Timgad was built as a retirement town for Roman soldiers.",
       "North Africa was called the 'breadbasket of Rome'.",
+      "Saint Augustine wrote his 'Confessions' — one of the first autobiographies ever.",
+      "Djemila means 'the beautiful' in Arabic — and its ruins really live up to the name.",
+      "Roman Algeria produced so much olive oil that giant amphorae traveled across the Mediterranean.",
+      "Tipaza's seaside ruins inspired the Algerian-French writer Albert Camus centuries later.",
+      "The Roman city of Lambaesis was home to the legendary Third Augustan Legion.",
     ],
     badge: "Roman Wanderer",
     quiz: [
@@ -350,6 +361,19 @@ export const eras: Era[] = [
         answerIndex: 1,
         explanation: "Saint Augustine served as bishop of Hippo Regius (Annaba).",
       },
+      {
+        type: "truefalse",
+        statement: "The Roman city of Tipaza sits along the Mediterranean coast.",
+        answer: true,
+        explanation: "Tipaza's seaside ruins are a UNESCO World Heritage site.",
+      },
+      {
+        type: "mcq",
+        question: "Which legendary Roman legion was based at Lambaesis in Algeria?",
+        options: ["First Italian", "Third Augustan", "Tenth Equestrian", "Fifth Macedonian"],
+        answerIndex: 1,
+        explanation: "The Legio III Augusta guarded Roman North Africa for centuries.",
+      },
     ],
   },
   {
@@ -370,6 +394,11 @@ export const eras: Era[] = [
     facts: [
       "Ibn Khaldun is considered one of the founders of sociology.",
       "Fibonacci learned Arabic numerals in Béjaïa as a young man.",
+      "Tlemcen was nicknamed 'the pearl of the Maghreb' for its mosques and madrasas.",
+      "Algiers earned the nickname 'El Bahdja' — 'the joyful' — during this long era.",
+      "The Great Mosque of Tlemcen, built in 1136, still stands almost unchanged today.",
+      "Berber and Arab cultures slowly blended, giving Algeria its unique identity.",
+      "Béjaïa exported beeswax candles to Europe — the French word 'bougie' comes from its name.",
     ],
     badge: "Scholar of the Maghreb",
     quiz: [
@@ -482,6 +511,19 @@ export const eras: Era[] = [
         answerIndex: 0,
         explanation: "Ibn Battuta traveled some 75,000 miles in the 14th century.",
       },
+      {
+        type: "mcq",
+        question: "Which Algerian port gave its name to the French word for 'candle'?",
+        options: ["Algiers", "Oran", "Béjaïa", "Annaba"],
+        answerIndex: 2,
+        explanation: "Béjaïa exported beeswax candles to Europe — hence 'bougie'.",
+      },
+      {
+        type: "truefalse",
+        statement: "The Great Mosque of Tlemcen was built in the 12th century.",
+        answer: true,
+        explanation: "It was completed in 1136 and still stands almost unchanged.",
+      },
     ],
   },
   {
@@ -502,6 +544,11 @@ export const eras: Era[] = [
     facts: [
       "Emir Abdelkader is honored with a statue in Damascus and even a town in the USA.",
       "Algeria was treated as part of France itself — not a typical colony.",
+      "Emir Abdelkader once saved thousands of Christians from massacre in Damascus in 1860.",
+      "Lalla Fatma N'Soumer was only in her twenties when she led mountain warriors against the French army.",
+      "On May 8, 1945, victory celebrations in Sétif turned into one of Algeria's darkest days.",
+      "French settlers were called 'pieds-noirs' — 'black feet' — and many had never seen France.",
+      "By 1954, Algeria had three French départements, just like Paris or Marseille.",
     ],
     badge: "Keeper of Memory",
     quiz: [
@@ -612,6 +659,37 @@ export const eras: Era[] = [
         answerIndex: 0,
         explanation: "Messali Hadj founded the PPA and inspired generations.",
       },
+      {
+        type: "mcq",
+        question: "What were the French settlers in Algeria commonly called?",
+        options: ["Colons", "Pieds-noirs", "Harkis", "Zouaves"],
+        answerIndex: 1,
+        explanation: "'Pieds-noirs' (black feet) referred to European settlers in Algeria.",
+      },
+      {
+        type: "truefalse",
+        statement: "Lalla Fatma N'Soumer led her resistance from the Sahara desert.",
+        answer: false,
+        explanation: "She fought in the Djurdjura mountains of Kabylia.",
+      },
+      {
+        type: "whoami",
+        clues: [
+          "I was a French soldier-emperor whose army began the conquest.",
+          "My nephew later expanded French rule deep into Algeria.",
+          "My name is Charles…",
+        ],
+        options: ["Charles X", "Napoleon III", "Louis XVI", "De Gaulle"],
+        answerIndex: 0,
+        explanation: "King Charles X ordered the 1830 invasion of Algiers.",
+      },
+      {
+        type: "mcq",
+        question: "By the 1950s, Algeria was officially organized into how many French départements?",
+        options: ["One", "Two", "Three", "Five"],
+        answerIndex: 2,
+        explanation: "Algeria was divided into three French départements before independence.",
+      },
     ],
   },
   {
@@ -632,6 +710,11 @@ export const eras: Era[] = [
     facts: [
       "The revolution began with coordinated attacks on November 1, 1954 — 'Toussaint Rouge'.",
       "Independence Day is celebrated every July 5th across Algeria.",
+      "The film 'The Battle of Algiers' (1966) is still studied in military academies around the world.",
+      "Women fighters carried messages, weapons, and bombs through the narrow streets of the Casbah.",
+      "The FLN's green-and-white flag with a red crescent and star became the symbol of free Algeria.",
+      "Ahmed Ben Bella became Algeria's first president after independence in 1963.",
+      "July 5 was chosen for independence — exactly 132 years after French troops landed in 1830.",
     ],
     badge: "Champion of Liberty",
     quiz: [
@@ -743,6 +826,35 @@ export const eras: Era[] = [
         options: ["Ahmed Ben Bella", "Houari Boumediene", "Krim Belkacem", "Ferhat Abbas"],
         answerIndex: 0,
         explanation: "Ahmed Ben Bella served as Algeria's first president.",
+      },
+      {
+        type: "mcq",
+        question: "What does 'FLN' stand for?",
+        options: [
+          "Front de Libération Nationale",
+          "Force Libre Nationale",
+          "Fédération Libre de Nationalistes",
+          "Front Libéral du Nord",
+        ],
+        answerIndex: 0,
+        explanation: "The FLN — Front de Libération Nationale — led Algeria to independence.",
+      },
+      {
+        type: "truefalse",
+        statement: "The film 'The Battle of Algiers' is still studied in military schools today.",
+        answer: true,
+        explanation: "Released in 1966, it is famous for its realism and political insight.",
+      },
+      {
+        type: "whoami",
+        clues: [
+          "I was a young woman of the Casbah.",
+          "I died in a bombing during the Battle of Algiers.",
+          "My name is often paired with Djamila Bouhired's.",
+        ],
+        options: ["Hassiba Ben Bouali", "Lalla Fatma N'Soumer", "Zohra Drif", "Kahina"],
+        answerIndex: 0,
+        explanation: "Hassiba Ben Bouali died in the Casbah in 1957, age just 19.",
       },
     ],
   },
