@@ -510,23 +510,27 @@ export const eras: Era[] = [
         question: "When did France invade Algiers?",
         options: ["1789", "1830", "1871", "1900"],
         answerIndex: 1,
+        explanation: "French troops landed near Algiers in June 1830.",
       },
       {
         type: "mcq",
         question: "Who led the great early resistance against the French?",
         options: ["Ben Bella", "Abdelkader", "Boumediene", "Massinissa"],
         answerIndex: 1,
+        explanation: "Emir Abdelkader led a 15-year resistance from 1832.",
       },
       {
         type: "mcq",
         question: "Lalla Fatma N'Soumer led resistance in which region?",
         options: ["Sahara", "Kabylia", "Oran", "Tlemcen"],
         answerIndex: 1,
+        explanation: "She rallied villages in the Djurdjura mountains of Kabylia.",
       },
       {
         type: "truefalse",
         statement: "France treated Algeria as an integral part of France, not a typical colony.",
         answer: true,
+        explanation: "Algeria was officially organized into French départements.",
       },
       {
         type: "truefalse",
@@ -543,6 +547,7 @@ export const eras: Era[] = [
         ],
         options: ["Ben Bella", "Emir Abdelkader", "Boumediene", "Messali Hadj"],
         answerIndex: 1,
+        explanation: "Emir Abdelkader — leader, scholar, and symbol of dignity.",
       },
       {
         type: "whoami",
@@ -553,6 +558,7 @@ export const eras: Era[] = [
         ],
         options: ["Djamila Bouhired", "Lalla Fatma N'Soumer", "Hassiba Ben Bouali", "Kahina"],
         answerIndex: 1,
+        explanation: "Lalla Fatma N'Soumer led resistance in the 1850s.",
       },
       {
         type: "order",
@@ -568,6 +574,7 @@ export const eras: Era[] = [
         question: "Which Algerian city was the first to fall to French forces in 1830?",
         options: ["Oran", "Constantine", "Algiers", "Tlemcen"],
         answerIndex: 2,
+        explanation: "Algiers fell first, opening the path to wider conquest.",
       },
       {
         type: "mcq",
@@ -579,12 +586,14 @@ export const eras: Era[] = [
           "End of WWI",
         ],
         answerIndex: 1,
+        explanation: "Peaceful marches were met with deadly repression.",
       },
       {
         type: "mcq",
         question: "Roughly how long did French colonization of Algeria last?",
         options: ["50 years", "80 years", "Over 130 years", "200 years"],
         answerIndex: 2,
+        explanation: "From 1830 to 1962 — 132 years.",
       },
       {
         type: "truefalse",
@@ -601,6 +610,7 @@ export const eras: Era[] = [
         ],
         options: ["Messali Hadj", "Ferhat Abbas", "Ben Bella", "Boumediene"],
         answerIndex: 0,
+        explanation: "Messali Hadj founded the PPA and inspired generations.",
       },
     ],
   },
