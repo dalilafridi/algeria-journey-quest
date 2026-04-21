@@ -27,12 +27,16 @@ export function saveProgress(p: Progress) {
 }
 
 // Pass percentage threshold to unlock the next era (0–1).
-const PASS_RATIO = 0.6;
+export const PASS_RATIO = 0.6;
+
+// Dev fallback: when true, every chapter is unlocked regardless of progress.
+// Keep `false` for normal progression. Flip to `true` for testing.
+export const UNLOCK_ALL_FOR_DEV = false;
 
 export function recordQuiz(eraId: string, score: number, total: number) {
   const p = getProgress();
   const prev = p.completed[eraId]?.bestScore ?? 0;
-  const prevTotal = p.completed[eraId]?.total ?? total;
+  const prevTotal = p.completed[eraId]?.total ?? 0;
   const prevRatio = prevTotal > 0 ? prev / prevTotal : 0;
   const newRatio = total > 0 ? score / total : 0;
   // Award XP based on improvement in ratio (so variable totals are fair).
@@ -40,10 +44,11 @@ export function recordQuiz(eraId: string, score: number, total: number) {
   const gained = Math.round(ratioGain * total * 50);
   p.xp += gained;
   const isBetter = newRatio > prevRatio;
+  // Always persist the latest attempt so progression unlocks; keep the best score.
   p.completed[eraId] = {
-    score: isBetter ? score : prev,
+    score,
     bestScore: isBetter ? score : prev,
-    total: isBetter ? total : prevTotal,
+    total: isBetter ? total : prevTotal || total,
   };
   let newBadge: string | undefined;
   if (score === total) {
@@ -58,6 +63,7 @@ export function recordQuiz(eraId: string, score: number, total: number) {
 }
 
 export function hasPassed(eraId: string): boolean {
+  if (UNLOCK_ALL_FOR_DEV) return true;
   const p = getProgress();
   const c = p.completed[eraId];
   if (!c || !c.total) return false;
@@ -65,13 +71,17 @@ export function hasPassed(eraId: string): boolean {
 }
 
 export function isUnlocked(eraId: string): boolean {
+  if (UNLOCK_ALL_FOR_DEV) return true;
   const idx = eras.findIndex((e) => e.id === eraId);
   if (idx <= 0) return true;
-  return hasPassed(eras[idx - 1].id);
+  const prev = eras[idx - 1];
+  // Dev-safe fallback: if the previous chapter has no quiz data,
+  // don't block progression — allow this chapter to unlock.
+  if (!prev.quiz || prev.quiz.length === 0) return true;
+  return hasPassed(prev.id);
 }
 
 export function totalProgressPct(): number {
-  const p = getProgress();
   const done = eras.filter((e) => hasPassed(e.id)).length;
   return Math.round((done / eras.length) * 100);
 }

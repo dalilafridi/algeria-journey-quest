@@ -50,6 +50,8 @@ function Timeline() {
           />
           <ul className="space-y-5">
             {eras.map((era, i) => {
+              // Reference `progress` so unlock state recomputes on updates.
+              void progress;
               const unlocked = isUnlocked(era.id);
               const c = progress.completed[era.id];
               const best = c?.bestScore ?? 0;
