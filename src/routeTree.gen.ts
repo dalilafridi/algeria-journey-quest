@@ -9,38 +9,98 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as TimelineRouteImport } from './routes/timeline'
+import { Route as ProfileRouteImport } from './routes/profile'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as QuizEraIdRouteImport } from './routes/quiz.$eraId'
+import { Route as EraEraIdRouteImport } from './routes/era.$eraId'
 
+const TimelineRoute = TimelineRouteImport.update({
+  id: '/timeline',
+  path: '/timeline',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProfileRoute = ProfileRouteImport.update({
+  id: '/profile',
+  path: '/profile',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const QuizEraIdRoute = QuizEraIdRouteImport.update({
+  id: '/quiz/$eraId',
+  path: '/quiz/$eraId',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EraEraIdRoute = EraEraIdRouteImport.update({
+  id: '/era/$eraId',
+  path: '/era/$eraId',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/profile': typeof ProfileRoute
+  '/timeline': typeof TimelineRoute
+  '/era/$eraId': typeof EraEraIdRoute
+  '/quiz/$eraId': typeof QuizEraIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/profile': typeof ProfileRoute
+  '/timeline': typeof TimelineRoute
+  '/era/$eraId': typeof EraEraIdRoute
+  '/quiz/$eraId': typeof QuizEraIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/profile': typeof ProfileRoute
+  '/timeline': typeof TimelineRoute
+  '/era/$eraId': typeof EraEraIdRoute
+  '/quiz/$eraId': typeof QuizEraIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/profile' | '/timeline' | '/era/$eraId' | '/quiz/$eraId'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/profile' | '/timeline' | '/era/$eraId' | '/quiz/$eraId'
+  id:
+    | '__root__'
+    | '/'
+    | '/profile'
+    | '/timeline'
+    | '/era/$eraId'
+    | '/quiz/$eraId'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ProfileRoute: typeof ProfileRoute
+  TimelineRoute: typeof TimelineRoute
+  EraEraIdRoute: typeof EraEraIdRoute
+  QuizEraIdRoute: typeof QuizEraIdRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/timeline': {
+      id: '/timeline'
+      path: '/timeline'
+      fullPath: '/timeline'
+      preLoaderRoute: typeof TimelineRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/profile': {
+      id: '/profile'
+      path: '/profile'
+      fullPath: '/profile'
+      preLoaderRoute: typeof ProfileRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -48,11 +108,29 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/quiz/$eraId': {
+      id: '/quiz/$eraId'
+      path: '/quiz/$eraId'
+      fullPath: '/quiz/$eraId'
+      preLoaderRoute: typeof QuizEraIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/era/$eraId': {
+      id: '/era/$eraId'
+      path: '/era/$eraId'
+      fullPath: '/era/$eraId'
+      preLoaderRoute: typeof EraEraIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ProfileRoute: ProfileRoute,
+  TimelineRoute: TimelineRoute,
+  EraEraIdRoute: EraEraIdRoute,
+  QuizEraIdRoute: QuizEraIdRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
