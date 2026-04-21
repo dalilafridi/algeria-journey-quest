@@ -284,6 +284,45 @@ export const eras: Era[] = [
         options: ["Pompeii", "Timgad", "Leptis Magna", "Carthage"],
         answerIndex: 1,
       },
+      {
+        type: "mcq",
+        question: "Which mountain city is famous for its stunning Roman ruins?",
+        options: ["Djemila", "Algiers", "Tlemcen", "Béjaïa"],
+        answerIndex: 0,
+      },
+      {
+        type: "mcq",
+        question: "What crop made Roman North Africa especially wealthy?",
+        options: ["Rice", "Olive oil and wheat", "Tea", "Cotton"],
+        answerIndex: 1,
+      },
+      {
+        type: "mcq",
+        question: "Saint Augustine was born in which ancient town?",
+        options: ["Thagaste", "Hippo", "Cirta", "Caesarea"],
+        answerIndex: 0,
+      },
+      {
+        type: "truefalse",
+        statement: "Roman rule in Algeria ended when the Vandals invaded in the 5th century.",
+        answer: true,
+      },
+      {
+        type: "truefalse",
+        statement: "Juba II was known mainly as a warrior, not a scholar.",
+        answer: false,
+        explanation: "Juba II was famous as a scholar-king, educated in Rome.",
+      },
+      {
+        type: "whoami",
+        clues: [
+          "I was a bishop in Hippo.",
+          "I wrote the 'City of God'.",
+          "I am a saint of the Christian church.",
+        ],
+        options: ["Tertullian", "Saint Augustine", "Cyprian", "Origen"],
+        answerIndex: 1,
+      },
     ],
   },
   {
