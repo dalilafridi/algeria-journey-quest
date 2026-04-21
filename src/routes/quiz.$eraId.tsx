@@ -383,7 +383,8 @@ function FeedbackBlock({
   correct: boolean;
   message: string;
 }) {
-  const explanation = q.type === "truefalse" ? q.explanation : undefined;
+  // Every question type can carry an `explanation`, so surface it consistently.
+  const explanation = "explanation" in q ? q.explanation : undefined;
   return (
     <div
       className={
@@ -397,13 +398,58 @@ function FeedbackBlock({
         {correct ? "✅ " : "❌ "}
         {message}
       </div>
-      {explanation && <div className="text-muted-foreground">{explanation}</div>}
+      {explanation && <div className="text-muted-foreground">💡 {explanation}</div>}
       {q.type === "order" && !correct && (
         <div className="text-muted-foreground">
           Correct order: {q.items.map((it) => it.label).join(" → ")}
         </div>
       )}
       {!correct && answer === null && null}
+    </div>
+  );
+}
+
+function ReviewCard({
+  index,
+  item,
+}: {
+  index: number;
+  item: { q: QuizQuestion; answer: unknown; correct: boolean };
+}) {
+  const { q, answer, correct } = item;
+  const explanation = "explanation" in q ? q.explanation : undefined;
+  return (
+    <div
+      className={
+        "rounded-xl border p-4 " +
+        (correct ? "border-success/40 bg-success/10" : "border-destructive/40 bg-destructive/10")
+      }
+    >
+      <div className="flex items-center gap-2 mb-2">
+        <span className="text-xs font-bold text-muted-foreground">Q{index + 1}</span>
+        <span className="text-xs font-semibold uppercase tracking-wider px-2 py-0.5 rounded-full bg-muted text-muted-foreground">
+          {q.type}
+        </span>
+        <span className="ml-auto text-sm font-bold">{correct ? "✅ Correct" : "❌ Wrong"}</span>
+      </div>
+      <div className="text-sm font-semibold mb-2">{getPrompt(q)}</div>
+      <div className="text-xs space-y-1">
+        <div>
+          <span className="text-muted-foreground">Your answer: </span>
+          <span className={correct ? "font-semibold" : "font-semibold text-destructive"}>
+            {describeUserAnswer(q, answer)}
+          </span>
+        </div>
+        {!correct && (
+          <div>
+            <span className="text-muted-foreground">Correct answer: </span>
+            <span className="font-semibold text-success">{describeCorrectAnswer(q)}</span>
+          </div>
+        )}
+        {explanation && (
+          <div className="text-muted-foreground pt-1">💡 {explanation}</div>
+        )}
+      </div>
     </div>
   );
 }
