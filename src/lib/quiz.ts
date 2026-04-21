@@ -1,4 +1,5 @@
 import type { Era, QuizQuestion } from "@/data/eras";
+import { t, tu, type Lang } from "@/lib/i18n";
 
 export function shuffle<T>(arr: readonly T[]): T[] {
   const a = arr.slice();
@@ -9,10 +10,15 @@ export function shuffle<T>(arr: readonly T[]): T[] {
   return a;
 }
 
+export type Difficulty = "easy" | "medium" | "hard";
+
+function diffOf(q: QuizQuestion): Difficulty {
+  return q.difficulty ?? "medium";
+}
+
 /**
- * Pick 5–7 questions from a pool, balanced across question types.
- * Tries to include at least one mcq, one truefalse, and one whoami when available.
- * Remaining slots are filled randomly from leftover questions.
+ * Pick 5–7 questions from a pool, balanced across question types AND difficulty
+ * (easy / medium / hard) when the pool is rich enough.
  */
 export function pickQuizQuestions(pool: QuizQuestion[]): QuizQuestion[] {
   const min = 5;
@@ -43,6 +49,23 @@ export function pickQuizQuestions(pool: QuizQuestion[]): QuizQuestion[] {
     }
   }
 
+  // Try to ensure at least one of each difficulty (easy/medium/hard) when available.
+  const remainingByDiff: Record<Difficulty, QuizQuestion[]> = {
+    easy: shuffle(pool.filter((q) => !seen.has(q) && diffOf(q) === "easy")),
+    medium: shuffle(pool.filter((q) => !seen.has(q) && diffOf(q) === "medium")),
+    hard: shuffle(pool.filter((q) => !seen.has(q) && diffOf(q) === "hard")),
+  };
+  const haveDiffs = new Set(picked.map(diffOf));
+  for (const d of ["easy", "medium", "hard"] as const) {
+    if (haveDiffs.has(d)) continue;
+    const q = remainingByDiff[d].shift();
+    if (q && picked.length < target) {
+      picked.push(q);
+      seen.add(q);
+      haveDiffs.add(d);
+    }
+  }
+
   // Fill remaining slots from a shuffled pool of everything else.
   const rest = shuffle(pool.filter((q) => !seen.has(q)));
   for (const q of rest) {
@@ -64,54 +87,66 @@ export function isAnswerCorrect(q: QuizQuestion, answer: unknown): boolean {
       return answer === q.answer;
     case "order": {
       if (!Array.isArray(answer)) return false;
-      const correct = q.items.map((it) => it.label);
+      // Compare by item id (stable across languages).
+      const correct = q.items.map((it) => it.id);
       if (answer.length !== correct.length) return false;
       return answer.every((v, i) => v === correct[i]);
     }
   }
 }
 
-/** Human-readable description of what the correct answer is. */
-export function describeCorrectAnswer(q: QuizQuestion): string {
+/** Localized description of the correct answer. */
+export function describeCorrectAnswer(q: QuizQuestion, lang: Lang): string {
   switch (q.type) {
     case "mcq":
     case "whoami":
     case "image":
-      return q.options[q.answerIndex] ?? "—";
+      return t(q.options[q.answerIndex], lang) ?? "—";
     case "truefalse":
-      return q.answer ? "True" : "False";
+      return q.answer ? tu("trueShort", lang) : tu("falseShort", lang);
     case "order":
-      return q.items.map((it) => it.label).join(" → ");
+      return q.items.map((it) => t(it.label, lang)).join(" → ");
   }
 }
 
-/** Human-readable description of what the user answered. */
-export function describeUserAnswer(q: QuizQuestion, answer: unknown): string {
-  if (answer === null || answer === undefined) return "No answer";
+/** Localized description of the user's answer. */
+export function describeUserAnswer(q: QuizQuestion, answer: unknown, lang: Lang): string {
+  if (answer === null || answer === undefined) return tu("noAnswer", lang);
   switch (q.type) {
     case "mcq":
     case "whoami":
     case "image":
-      return typeof answer === "number" ? (q.options[answer] ?? "—") : "—";
+      return typeof answer === "number" ? (t(q.options[answer], lang) ?? "—") : "—";
     case "truefalse":
-      return answer === true ? "True" : answer === false ? "False" : "—";
+      return answer === true
+        ? tu("trueShort", lang)
+        : answer === false
+          ? tu("falseShort", lang)
+          : "—";
     case "order":
-      return Array.isArray(answer) ? (answer as string[]).join(" → ") : "—";
+      if (!Array.isArray(answer)) return "—";
+      // answer is an array of item ids
+      return (answer as string[])
+        .map((id) => {
+          const it = q.items.find((x) => x.id === id);
+          return it ? t(it.label, lang) : id;
+        })
+        .join(" → ");
   }
 }
 
-/** Get the question prompt text in a uniform way. */
-export function getPrompt(q: QuizQuestion): string {
+/** Get the question prompt text in a uniform way (localized). */
+export function getPrompt(q: QuizQuestion, lang: Lang): string {
   switch (q.type) {
     case "mcq":
     case "image":
-      return q.question;
+      return t(q.question, lang);
     case "truefalse":
-      return q.statement;
+      return t(q.statement, lang);
     case "whoami":
-      return "Who am I? — " + q.clues.join(" / ");
+      return tu("whoAmI", lang) + " — " + q.clues.map((c) => t(c, lang)).join(" / ");
     case "order":
-      return q.prompt;
+      return t(q.prompt, lang);
   }
 }
 
@@ -135,9 +170,11 @@ export function validateEras(eras: readonly Era[]): string[] {
         if (q.answerIndex < 0 || q.answerIndex >= q.options.length) {
           issues.push(`${where}: answerIndex ${q.answerIndex} out of range.`);
         }
-        const unique = new Set(q.options);
-        if (unique.size !== q.options.length) {
-          issues.push(`${where}: duplicate options.`);
+        const seen = new Set<string>();
+        for (const opt of q.options) {
+          const key = typeof opt === "string" ? opt : opt.en;
+          if (seen.has(key)) issues.push(`${where}: duplicate option "${key}".`);
+          seen.add(key);
         }
       }
       if (q.type === "order" && q.items.length < 2) {
