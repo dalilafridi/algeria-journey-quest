@@ -66,7 +66,7 @@ export const eras: Era[] = [
     dateRange: "202 BC – 46 BC",
     emoji: "🏺",
     summary:
-      "Long before modern borders existed, the Berber kingdom of Numidia rose across what is now northern Algeria. Famous for its skilled cavalry and clever kings, Numidia stood as one of North Africa's first great powers.",
+      "Centuries before Algeria had a name, Berber tribes galloped across its plains on swift horses. From this world rose Numidia — a proud kingdom of clever kings and feared cavalry that helped decide the fate of empires.",
     figures: [
       { name: "Massinissa", note: "First king of a united Numidia, ally of Rome." },
       { name: "Jugurtha", note: "Bold king who defied Rome in a long war." },
