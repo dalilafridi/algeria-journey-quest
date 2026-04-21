@@ -56,10 +56,16 @@ function QuizPage() {
   const lang = useLang();
 
   const [seed, setSeed] = useState(0);
+  const [mounted, setMounted] = useState(false);
+  // Defer randomized question selection to the client to avoid SSR/CSR hydration
+  // mismatches caused by Math.random() returning different values on each side.
+  if (typeof window !== "undefined" && !mounted) {
+    // schedule mount on next tick via useEffect below
+  }
   const questions = useMemo(
-    () => pickQuizQuestions(era.quiz),
+    () => (mounted ? pickQuizQuestions(era.quiz) : []),
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [era.id, seed],
+    [era.id, seed, mounted],
   );
 
   const [step, setStep] = useState(0);
