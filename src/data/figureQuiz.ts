@@ -597,4 +597,347 @@ export const figureQuiz: FigureQuizQuestion[] = [
       "هزّ اغتيال معطوب سنة 1998 الجزائر وبقي ذكرى حيّة.",
     ),
   ),
+
+  // ---------- Syphax ----------
+  make("syphax-1", "medium",
+    [
+      L("I was a king of western Numidia.", "J'étais un roi de la Numidie occidentale.", "كنتُ ملكًا لنوميديا الغربية."),
+      L("I was a rival of Massinissa.", "J'étais un rival de Massinissa.", "كنتُ منافسًا لماسينيسا."),
+    ],
+    "Syphax", ["Massinissa", "Jugurtha", "Juba I"],
+    L("Syphax ruled the Masaesyli of western Numidia.", "Syphax régnait sur les Masaesyles de la Numidie occidentale.", "حكم سيفاكس المازيسيل في غرب نوميديا."),
+  ),
+  // ---------- Juba I ----------
+  make("juba1-1", "hard",
+    [
+      L("I sided with Pompey in Rome's civil war.", "Je me suis rangé du côté de Pompée.", "انحزتُ إلى بومبي في الحرب الأهلية."),
+      L("I chose death after defeat at Thapsus.", "J'ai préféré la mort après Thapsus.", "اخترتُ الموت بعد تابسوس."),
+    ],
+    "Juba I", ["Massinissa", "Jugurtha", "Tacfarinas"],
+    L("Juba I was the last great king of independent Numidia.", "Juba Ier fut le dernier grand roi de Numidie indépendante.", "كان يوبا الأول آخر ملوك نوميديا المستقلة الكبار."),
+  ),
+  // ---------- Juba II ----------
+  make("juba2-1", "medium",
+    [
+      L("I grew up in Rome and returned as a learned king.", "J'ai grandi à Rome et suis revenu en roi savant.", "نشأتُ في روما وعدتُ ملكًا عالمًا."),
+      L("I married a daughter of Cleopatra VII.", "J'ai épousé une fille de Cléopâtre VII.", "تزوّجتُ ابنة كليوباترا السابعة."),
+    ],
+    "Juba II", ["Juba I", "Septimius Severus", "Massinissa"],
+    L("Juba II was a scholar-king of Mauretania.", "Juba II fut un roi savant de Maurétanie.", "كان يوبا الثاني ملكًا عالمًا لموريتانيا."),
+  ),
+  // ---------- Tacfarinas ----------
+  make("tacfarinas-1", "hard",
+    [
+      L("I was a former Roman auxiliary turned rebel.", "Ancien auxiliaire romain devenu rebelle.", "كنتُ جنديًا رومانيًا سابقًا، ثم ثائرًا."),
+      L("I led a long guerrilla war around 17–24 AD.", "J'ai mené une longue guérilla vers 17–24 ap. J.-C.", "قُدتُ حرب عصابات طويلة نحو 17–24م."),
+    ],
+    "Tacfarinas", ["Juba I", "Kusayla", "Septimius Severus"],
+    L("Tacfarinas led the Musulamii in a long Berber revolt against Rome.", "Tacfarinas conduisit les Musulames dans une longue révolte berbère contre Rome.", "قاد تاكفاريناس قبيلة الموسولامي في ثورة أمازيغية ضد روما."),
+  ),
+  // ---------- Augustine ----------
+  make("augustine-1", "easy",
+    [
+      L("I was a bishop in Roman North Africa.", "J'étais un évêque en Afrique romaine.", "كنتُ أسقفًا في إفريقيا الرومانية."),
+      L("I was born in Thagaste — today Souk Ahras.", "Je suis né à Thagaste — l'actuelle Souk Ahras.", "وُلدتُ في تاغاست، سوق أهراس اليوم."),
+    ],
+    "Augustine of Hippo", ["Septimius Severus", "Ibn Khaldun", "Sidi Boumediene"],
+    L("Augustine of Hippo was bishop of Hippo (Annaba).", "Augustin d'Hippone fut évêque d'Hippone (Annaba).", "كان أوغسطين أسقفًا لهيبو (عنابة)."),
+  ),
+  // ---------- Septimius Severus ----------
+  make("severus-1", "medium",
+    [
+      L("I was a Roman emperor born in North Africa.", "J'étais un empereur romain né en Afrique du Nord.", "كنتُ إمبراطورًا رومانيًا وُلد في شمال إفريقيا."),
+      L("I greatly expanded the city of Lambaesis.", "J'agrandis considérablement Lambèse.", "وسّعتُ كثيرًا مدينة لامبيز."),
+    ],
+    "Septimius Severus", ["Augustine of Hippo", "Juba II", "Tacfarinas"],
+    L("Septimius Severus, born in Roman Africa, became emperor.", "Septime Sévère, né en Afrique romaine, devint empereur.", "وُلد سيبتيموس سيفيروس في إفريقيا الرومانية وصار إمبراطورًا."),
+  ),
+  // ---------- Kusayla ----------
+  make("kusayla-1", "medium",
+    [
+      L("I was an Amazigh chief who fought the early Arab armies.", "Chef amazigh qui combattit les premières armées arabes.", "كنتُ زعيمًا أمازيغيًا قاتل الجيوش العربية الأولى."),
+      L("I briefly retook Kairouan.", "J'ai brièvement repris Kairouan.", "استعدتُ القيروان لفترة قصيرة."),
+    ],
+    "Kusayla", ["Dihya", "Yaghmurasen Ibn Zyan", "Ibn Khaldun"],
+    L("Kusayla led an early Berber revolt against the Arab conquest.", "Koceila mena l'une des premières révoltes berbères contre la conquête arabe.", "قاد كسيلة من أوّل الثورات الأمازيغية ضد الفتح العربي."),
+  ),
+  // ---------- Ibn Rustam ----------
+  make("rustam-1", "hard",
+    [
+      L("I founded a city around 776 in present-day Tiaret region.", "J'ai fondé une ville vers 776 dans la région de Tiaret.", "أسّستُ مدينة نحو 776م في منطقة تيارت."),
+      L("My capital was nicknamed \"the Iraq of the Maghreb\".", "Ma capitale fut surnommée « l'Irak du Maghreb ».", "لُقّبت عاصمتي بـ«عراق المغرب»."),
+    ],
+    "Abd al-Rahman ibn Rustam", ["Yaghmurasen Ibn Zyan", "Sidi Boumediene", "Kusayla"],
+    L("Ibn Rustam founded the Rustamid imamate at Tahert.", "Ibn Rostom fonda l'imamat rostémide de Tahert.", "أسّس ابن رستم الإمامة الرستمية في تاهرت."),
+  ),
+  // ---------- Yaghmurasen ----------
+  make("yaghmurasen-1", "medium",
+    [
+      L("I founded a dynasty centered on Tlemcen in the 13th century.", "J'ai fondé une dynastie centrée sur Tlemcen au XIIIe siècle.", "أسّستُ دولة محورها تلمسان في القرن الثالث عشر."),
+      L("My family ruled western Algeria for centuries.", "Ma famille régna sur l'ouest algérien pendant des siècles.", "حكمت أسرتي الغرب الجزائري قرونًا."),
+    ],
+    "Yaghmurasen Ibn Zyan", ["Sidi Boumediene", "Abd al-Rahman ibn Rustam", "Khayr ad-Din Barbarossa"],
+    L("Yaghmurasen founded the Zayyanid dynasty of Tlemcen.", "Yaghmoracen fonda la dynastie zayyanide de Tlemcen.", "أسّس يغمراسن الدولة الزيانية في تلمسان."),
+  ),
+  // ---------- Sidi Boumediene ----------
+  make("boumediene-saint-1", "hard",
+    [
+      L("I was a Sufi master who settled near Tlemcen in the 12th century.", "Maître soufi installé près de Tlemcen au XIIe siècle.", "شيخ صوفي استقرّ قرب تلمسان في القرن الثاني عشر."),
+      L("My shrine in El Eubbad has drawn pilgrims for centuries.", "Mon sanctuaire à El Eubbad attire des pèlerins depuis des siècles.", "ضريحي في العباد قبلةٌ للزوّار قرونًا."),
+    ],
+    "Sidi Boumediene", ["Ibn Khaldun", "Abd al-Rahman ibn Rustam", "Yaghmurasen Ibn Zyan"],
+    L("Sidi Boumediene is among the most venerated Maghreb saints, linked to Tlemcen.", "Sidi Boumediene est l'un des saints les plus vénérés du Maghreb, lié à Tlemcen.", "يُعدّ سيدي أبو مدين من أبرز أولياء المغرب، ويرتبط بتلمسان."),
+  ),
+  // ---------- Barbarossa ----------
+  make("barbarossa-1", "easy",
+    [
+      L("I placed Algiers under Ottoman protection in the 16th century.", "Je plaçai Alger sous protection ottomane au XVIe siècle.", "وضعتُ الجزائر تحت الحماية العثمانية في القرن السادس عشر."),
+      L("I became Grand Admiral of the Ottoman fleet.", "Je devins grand amiral de la flotte ottomane.", "صرتُ قبطان البحر الأكبر للأسطول العثماني."),
+    ],
+    "Khayr ad-Din Barbarossa", ["Raïs Hamidou", "Hassan Pacha", "Yaghmurasen Ibn Zyan"],
+    L("Khayr ad-Din Barbarossa founded the Regency of Algiers.", "Khayr al-Din Barberousse fonda la Régence d'Alger.", "أسّس خير الدين بربروس إيالة الجزائر."),
+  ),
+  // ---------- Raïs Hamidou ----------
+  make("hamidou-1", "medium",
+    [
+      L("I was a famous admiral of the Regency of Algiers.", "Célèbre amiral de la Régence d'Alger.", "بحّار شهير لإيالة الجزائر."),
+      L("I died in 1815 in a battle against an American squadron.", "Je mourus en 1815 contre une escadre américaine.", "استُشهدتُ سنة 1815 في معركة ضد سرب أمريكي."),
+    ],
+    "Raïs Hamidou", ["Khayr ad-Din Barbarossa", "Hassan Pacha", "Mostefa Ben Boulaïd"],
+    L("Raïs Hamidou was the most famous admiral of the late Regency.", "Raïs Hamidou fut l'amiral le plus célèbre de la fin de la Régence.", "كان الرايس حميدو أشهر بحّار في نهاية عهد الإيالة."),
+  ),
+  // ---------- Hassan Pacha ----------
+  make("hassan-pacha-1", "hard",
+    [
+      L("I repelled a major Spanish expedition against Algiers in 1775.", "Je repoussai une grande expédition espagnole en 1775.", "صددتُ حملة إسبانية كبرى على الجزائر سنة 1775."),
+      L("I was Dey of Algiers in the late 18th century.", "J'étais dey d'Alger à la fin du XVIIIe siècle.", "كنتُ داي الجزائر في أواخر القرن الثامن عشر."),
+    ],
+    "Hassan Pacha", ["Khayr ad-Din Barbarossa", "Raïs Hamidou", "Ahmed Bey"],
+    L("Hassan Pacha defended Algiers from a major Spanish landing in 1775.", "Hassan Pacha défendit Alger contre un débarquement espagnol en 1775.", "دافع حسن باشا عن الجزائر ضد إنزال إسباني كبير سنة 1775."),
+  ),
+  // ---------- Bouamama ----------
+  make("bouamama-1", "medium",
+    [
+      L("I led a long revolt in the southwest steppes from 1881.", "Longue révolte dans les steppes du sud-ouest dès 1881.", "ثورة طويلة في سهوب الجنوب الغربي منذ 1881."),
+      L("I continued from across the Moroccan border.", "J'ai poursuivi la résistance depuis le Maroc.", "واصلتُ المقاومة من الجانب المغربي."),
+    ],
+    "Cheikh Bouamama", ["Cheikh El Mokrani", "Emir Abdelkader", "Lalla Fatma N'Soumer"],
+    L("Cheikh Bouamama led a desert resistance against French expansion.", "Cheikh Bouamama mena une résistance du désert contre l'expansion française.", "قاد الشيخ بوعمامة مقاومة صحراوية ضد التوسّع الفرنسي."),
+  ),
+  // ---------- Aheddad ----------
+  make("aheddad-1", "hard",
+    [
+      L("I led the Rahmaniya brotherhood in Kabylie.", "Je dirigeai la confrérie Rahmaniya en Kabylie.", "قُدتُ الطريقة الرحمانية في القبائل."),
+      L("I joined the 1871 revolt at over 80 years old.", "Je rejoignis la révolte de 1871 à plus de 80 ans.", "التحقتُ بثورة 1871 وأنا فوق الثمانين."),
+    ],
+    "Cheikh Aheddad", ["Cheikh El Mokrani", "Emir Abdelkader", "Sidi Boumediene"],
+    L("Cheikh Aheddad of the Rahmaniya backed the 1871 uprising.", "Cheikh Aheddad de la Rahmaniya soutint le soulèvement de 1871.", "دعم الشيخ الحدّاد من الطريقة الرحمانية انتفاضة 1871."),
+  ),
+  // ---------- Ben Boulaid ----------
+  make("benboulaid-1", "easy",
+    [
+      L("I was one of the six historic chiefs of November 1954.", "L'un des six chefs historiques de novembre 1954.", "أحد القادة الستة التاريخيين لنوفمبر 1954."),
+      L("I led the revolution in the Aurès.", "Je dirigeais la révolution dans les Aurès.", "قُدتُ الثورة في الأوراس."),
+    ],
+    "Mostefa Ben Boulaïd", ["Larbi Ben M'hidi", "Krim Belkacem", "Didouche Mourad"],
+    L("Ben Boulaïd launched the war in the Aurès.", "Ben Boulaïd lança la guerre dans les Aurès.", "أطلق بن بولعيد الثورة في الأوراس."),
+  ),
+  // ---------- Didouche ----------
+  make("didouche-1", "medium",
+    [
+      L("I organized the North Constantine zone in 1954.", "J'organisai la zone Nord-Constantinois en 1954.", "نظّمتُ منطقة الشمال القسنطيني سنة 1954."),
+      L("I was the first historic chief to fall, in early 1955.", "Premier chef historique tombé au combat, début 1955.", "أوّل القادة التاريخيين سقوطًا، مطلع 1955."),
+    ],
+    "Didouche Mourad", ["Larbi Ben M'hidi", "Mostefa Ben Boulaïd", "Zighoud Youcef"],
+    L("Didouche Mourad fell early in the war.", "Didouche Mourad tomba au début de la guerre.", "سقط ديدوش مراد مبكرًا في الحرب."),
+  ),
+  // ---------- Bitat ----------
+  make("bitat-1", "hard",
+    [
+      L("I was one of the six historic chiefs of 1954.", "L'un des six chefs historiques de 1954.", "أحد القادة الستة التاريخيين لسنة 1954."),
+      L("I spent most of the war in French prisons.", "J'ai passé l'essentiel de la guerre en prison.", "أمضيتُ معظم الحرب في السجون الفرنسية."),
+    ],
+    "Rabah Bitat", ["Larbi Ben M'hidi", "Krim Belkacem", "Mostefa Ben Boulaïd"],
+    L("Rabah Bitat helped organize Algiers in 1954 before being arrested.", "Rabah Bitat organisa Alger en 1954 avant d'être arrêté.", "نظّم رابح بيطاط منطقة الجزائر سنة 1954 قبل أن يُعتقل."),
+  ),
+  // ---------- Boudiaf ----------
+  make("boudiaf-1", "medium",
+    [
+      L("I was a historic chief of November 1954.", "Chef historique de novembre 1954.", "من القادة التاريخيين لنوفمبر 1954."),
+      L("I returned from exile in 1992 to head the High Council of State.", "Je revins d'exil en 1992 à la tête du HCE.", "عدتُ من المنفى سنة 1992 لرئاسة المجلس الأعلى للدولة."),
+    ],
+    "Mohamed Boudiaf", ["Ahmed Ben Bella", "Hocine Aït Ahmed", "Houari Boumédiène"],
+    L("Boudiaf returned in 1992 and was assassinated months later.", "Boudiaf revint en 1992 et fut assassiné quelques mois plus tard.", "عاد بوضياف سنة 1992 واغتيل بعد أشهر."),
+  ),
+  // ---------- Ben Bella ----------
+  make("benbella-1", "easy",
+    [
+      L("I was the first president of independent Algeria, in 1963.", "Premier président de l'Algérie indépendante, 1963.", "أوّل رئيس للجزائر المستقلة سنة 1963."),
+      L("I was a founding figure of the FLN.", "Figure fondatrice du FLN.", "من مؤسسي جبهة التحرير."),
+    ],
+    "Ahmed Ben Bella", ["Houari Boumédiène", "Mohamed Boudiaf", "Hocine Aït Ahmed"],
+    L("Ahmed Ben Bella was independent Algeria's first president.", "Ahmed Ben Bella fut le premier président de l'Algérie indépendante.", "كان أحمد بن بلة أوّل رئيس للجزائر المستقلة."),
+  ),
+  // ---------- Boumediene ----------
+  make("boumediene-1", "easy",
+    [
+      L("I led Algeria from 1965 to 1978.", "Je dirigeai l'Algérie de 1965 à 1978.", "حكمتُ الجزائر من 1965 إلى 1978."),
+      L("Under my rule Algeria nationalized its hydrocarbons in 1971.", "Sous mon règne, l'Algérie nationalisa ses hydrocarbures en 1971.", "في عهدي أُمّمت المحروقات سنة 1971."),
+    ],
+    "Houari Boumédiène", ["Ahmed Ben Bella", "Mohamed Boudiaf", "Hocine Aït Ahmed"],
+    L("Boumédiène took power in 1965 and led major state-building.", "Boumédiène prit le pouvoir en 1965.", "تولى بومدين السلطة سنة 1965 وقاد بناء الدولة."),
+  ),
+  // ---------- Messali Hadj ----------
+  make("messali-1", "medium",
+    [
+      L("I am called a pioneer of modern Algerian nationalism.", "Pionnier du nationalisme algérien moderne.", "رائد الحركة الوطنية الجزائرية الحديثة."),
+      L("I founded successive parties from the late 1920s.", "Je fondai des partis dès la fin des années 1920.", "أسّستُ أحزابًا منذ أواخر العشرينات."),
+    ],
+    "Messali Hadj", ["Ferhat Abbas", "Ahmed Ben Bella", "Hocine Aït Ahmed"],
+    L("Messali Hadj was a pioneer of independence politics before the FLN.", "Messali Hadj fut un pionnier avant le FLN.", "كان مصالي الحاج رائدًا للسياسة الاستقلالية قبل جبهة التحرير."),
+  ),
+  // ---------- Aït Ahmed ----------
+  make("ait-ahmed-1", "medium",
+    [
+      L("I was a historic chief of November 1954 from Kabylie.", "Chef historique de novembre 1954, de Kabylie.", "من قادة نوفمبر 1954 من القبائل."),
+      L("After independence, I founded the FFS opposition party.", "Après l'indépendance, je fondai le FFS.", "بعد الاستقلال أسّستُ جبهة القوى الاشتراكية."),
+    ],
+    "Hocine Aït Ahmed", ["Krim Belkacem", "Ahmed Ben Bella", "Mohamed Boudiaf"],
+    L("Aït Ahmed founded the FFS and remained a long-standing democratic voice.", "Aït Ahmed fonda le FFS, voix démocratique de longue date.", "أسّس آيت أحمد جبهة القوى الاشتراكية وبقي صوتًا ديمقراطيًا."),
+  ),
+  // ---------- Zighoud ----------
+  make("zighoud-1", "medium",
+    [
+      L("I succeeded Didouche Mourad in the North Constantine zone.", "Je succédai à Didouche Mourad.", "خَلَفتُ ديدوش مراد في الشمال القسنطيني."),
+      L("I organized the August 20, 1955 offensive.", "J'organisai l'offensive du 20 août 1955.", "نظّمتُ هجوم 20 أوت 1955."),
+    ],
+    "Zighoud Youcef", ["Didouche Mourad", "Larbi Ben M'hidi", "Mostefa Ben Boulaïd"],
+    L("The August 20, 1955 offensive was a turning point of the revolution.", "L'offensive du 20 août 1955 fut un tournant.", "كان هجوم 20 أوت 1955 منعطفًا في الثورة."),
+  ),
+  // ---------- Hassiba ----------
+  make("hassiba-1", "medium",
+    [
+      L("I was a young militant of the Battle of Algiers.", "Jeune militante de la Bataille d'Alger.", "مناضلة شابة في معركة الجزائر."),
+      L("I died in 1957 in the explosion of a Casbah safehouse.", "Je mourus en 1957 dans une planque à la Casbah.", "استُشهدتُ سنة 1957 في تفجير مخبأ بالقصبة."),
+    ],
+    "Hassiba Ben Bouali", ["Djamila Bouhired", "Djamila Boupacha", "Lalla Fatma N'Soumer"],
+    L("Hassiba Ben Bouali died alongside Ali La Pointe in 1957.", "Hassiba Ben Bouali mourut avec Ali La Pointe en 1957.", "استُشهدت حسيبة بن بوعلي مع علي لابوانت سنة 1957."),
+  ),
+  // ---------- Ali La Pointe ----------
+  make("ali-pointe-1", "easy",
+    [
+      L("I led urban operations of the FLN in the Casbah.", "Je dirigeai les opérations urbaines du FLN à la Casbah.", "قُدتُ عمليات حضرية لجبهة التحرير في القصبة."),
+      L("I died when paratroopers blew up my safehouse.", "Je mourus quand les paras firent sauter ma planque.", "استُشهدتُ حين فجّر المظليون مخبئي."),
+    ],
+    "Ali La Pointe", ["Larbi Ben M'hidi", "Hassiba Ben Bouali", "Djamila Bouhired"],
+    L("Ali La Pointe was an iconic figure of the urban Battle of Algiers.", "Ali La Pointe fut emblématique de la Bataille d'Alger urbaine.", "كان علي لابوانت رمزًا في معركة الجزائر الحضرية."),
+  ),
+  // ---------- Djamila Bouhired ----------
+  make("bouhired-1", "easy",
+    [
+      L("I was sentenced to death during the Battle of Algiers.", "Condamnée à mort pendant la Bataille d'Alger.", "حُكم عليّ بالإعدام خلال معركة الجزائر."),
+      L("International protests helped commute my sentence.", "Des protestations internationales firent commuer ma peine.", "ساعدت الاحتجاجات الدولية في تخفيف حكمي."),
+    ],
+    "Djamila Bouhired", ["Hassiba Ben Bouali", "Djamila Boupacha", "Assia Djebar"],
+    L("Djamila Bouhired became a global symbol of Algerian women in the revolution.", "Djamila Bouhired devint un symbole mondial.", "صارت جميلة بوحيرد رمزًا عالميًا."),
+  ),
+  // ---------- Boupacha ----------
+  make("boupacha-1", "hard",
+    [
+      L("I publicly denounced torture I suffered after my 1960 arrest.", "Je dénonçai les tortures subies après 1960.", "فضحتُ علنًا التعذيب بعد اعتقالي سنة 1960."),
+      L("Picasso drew my portrait in support of my case.", "Picasso dessina mon portrait pour soutenir mon affaire.", "رسم بيكاسو صورتي دعمًا لقضيتي."),
+    ],
+    "Djamila Boupacha", ["Djamila Bouhired", "Hassiba Ben Bouali", "Assia Djebar"],
+    L("Boupacha's case helped expose torture during the war.", "L'affaire Boupacha exposa la torture pendant la guerre.", "ساعدت قضية بوباشا في كشف التعذيب."),
+  ),
+  // ---------- Fanon ----------
+  make("fanon-1", "medium",
+    [
+      L("I was a Martinican-born psychiatrist who joined the Algerian revolution.", "Psychiatre né en Martinique ayant rejoint la révolution algérienne.", "طبيب نفسي وُلد في المارتينيك والتحق بالثورة الجزائرية."),
+      L("I wrote \"The Wretched of the Earth\".", "J'ai écrit « Les Damnés de la terre ».", "ألّفتُ كتاب «معذّبو الأرض»."),
+    ],
+    "Frantz Fanon", ["Ferhat Abbas", "Mouloud Feraoun", "Kateb Yacine"],
+    L("Fanon worked at Blida hospital and wrote major works on decolonization.", "Fanon exerça à Blida et écrivit sur la décolonisation.", "عمل فانون في مستشفى البليدة وكتب في التحرّر من الاستعمار."),
+  ),
+  // ---------- Kateb Yacine ----------
+  make("kateb-1", "medium",
+    [
+      L("I wrote the landmark novel \"Nedjma\".", "J'ai écrit le roman « Nedjma ».", "كتبتُ رواية «نجمة»."),
+      L("I called French \"a spoil of war\".", "J'ai appelé le français « un butin de guerre ».", "وصفتُ الفرنسية بأنها «غنيمة حرب»."),
+    ],
+    "Kateb Yacine", ["Mohammed Dib", "Mouloud Mammeri", "Mouloud Feraoun"],
+    L("Kateb Yacine is a founding voice of modern Algerian literature.", "Kateb Yacine, voix fondatrice de la littérature algérienne.", "كاتب ياسين صوتٌ مؤسس للأدب الجزائري الحديث."),
+  ),
+  // ---------- Mammeri ----------
+  make("mammeri-1", "hard",
+    [
+      L("I devoted my life to Berber language and oral poetry.", "Vie consacrée à la langue et à la poésie orale berbères.", "نذرتُ حياتي للأمازيغية والشعر الشفوي."),
+      L("The cancellation of one of my lectures sparked the 1980 Berber Spring.", "L'annulation d'une de mes conférences déclencha le Printemps berbère de 1980.", "أشعل منع محاضرتي ربيع الأمازيغ سنة 1980."),
+    ],
+    "Mouloud Mammeri", ["Mouloud Feraoun", "Kateb Yacine", "Mohammed Dib"],
+    L("Mammeri's research is foundational for the recognition of Tamazight.", "Les travaux de Mammeri sont fondateurs pour le tamazight.", "أبحاث معمري أساسٌ للاعتراف بالأمازيغية."),
+  ),
+  // ---------- Dib ----------
+  make("dib-1", "medium",
+    [
+      L("I was born in Tlemcen and wrote an Algeria trilogy.", "Né à Tlemcen, auteur d'une trilogie sur l'Algérie.", "وُلدتُ في تلمسان وكتبتُ ثلاثية عن الجزائر."),
+      L("My first novel appeared in 1952, before the war.", "Premier roman paru en 1952, avant la guerre.", "صدرت روايتي الأولى سنة 1952 قبل الحرب."),
+    ],
+    "Mohammed Dib", ["Kateb Yacine", "Mouloud Feraoun", "Malek Haddad"],
+    L("Mohammed Dib is a founding novelist of Algerian literature in French.", "Mohammed Dib, romancier fondateur en français.", "محمد ديب من مؤسسي الرواية الجزائرية بالفرنسية."),
+  ),
+  // ---------- Haddad ----------
+  make("haddad-1", "hard",
+    [
+      L("I called the French language my \"exile\".", "J'ai appelé le français mon « exil ».", "وصفتُ الفرنسية بأنها «منفاي»."),
+      L("After independence I chose silence in French.", "Après l'indépendance, je choisis le silence.", "آثرتُ الصمت بالفرنسية بعد الاستقلال."),
+    ],
+    "Malek Haddad", ["Mohammed Dib", "Kateb Yacine", "Mouloud Feraoun"],
+    L("Malek Haddad expressed the linguistic dilemma of his generation.", "Malek Haddad exprima le dilemme linguistique de sa génération.", "عبّر مالك حداد عن المعضلة اللغوية لجيله."),
+  ),
+  // ---------- El Hasnaoui ----------
+  make("hasnaoui-1", "hard",
+    [
+      L("I was a Kabyle singer who lived much of my life in France.", "Chanteur kabyle ayant vécu en France.", "مغنٍّ قبائلي عاش معظم حياته في فرنسا."),
+      L("My songs centered on exile, love and longing.", "Chansons d'exil, d'amour et de nostalgie.", "أغانيّ عن الغربة والحب والحنين."),
+    ],
+    "Cheikh El Hasnaoui", ["Idir", "Lounès Matoub", "El Hadj M'Hamed El Anka"],
+    L("El Hasnaoui shaped a poetic Kabyle song of emigration.", "El Hasnaoui façonna une chanson kabyle de l'émigration.", "أرسى الشيخ الحسناوي أغنية قبائلية عن الهجرة."),
+  ),
+  // ---------- El Anka ----------
+  make("anka-1", "easy",
+    [
+      L("I am considered the founding father of modern chaâbi.", "Père fondateur du chaâbi moderne.", "الأب المؤسس للشعبي الحديث."),
+      L("I performed for decades in the cafés of the Casbah of Algiers.", "Décennies de chant à la Casbah d'Alger.", "غنّيتُ عقودًا في مقاهي قصبة الجزائر."),
+    ],
+    "El Hadj M'Hamed El Anka", ["Cheikh El Hasnaoui", "Idir", "Cheb Khaled"],
+    L("El Anka is the master of Algerian chaâbi music.", "El Anka est le maître du chaâbi algérien.", "الحاج العنقا شيخ الشعبي الجزائري."),
+  ),
+  // ---------- Warda ----------
+  make("warda-1", "easy",
+    [
+      L("I was a great female voice of Arabic song with Algerian roots.", "Grande voix féminine de la chanson arabe d'origine algérienne.", "من كبريات أصوات الأغنية العربية النسائية، من أصول جزائرية."),
+      L("I sang patriotic songs broadcast during the war of independence.", "Chants patriotiques pendant la guerre.", "أناشيد وطنية بُثّت خلال الحرب."),
+    ],
+    "Warda al-Jazairia", ["Cheb Khaled", "Idir", "Assia Djebar"],
+    L("Warda al-Jazairia is a great Algerian voice of Arabic song.", "Warda El Djazaïria, grande voix algérienne de la chanson arabe.", "وردة الجزائرية من كبريات أصوات الأغنية العربية."),
+  ),
+  // ---------- Khaled ----------
+  make("khaled-1", "easy",
+    [
+      L("I am a famous singer from Oran.", "Célèbre chanteur d'Oran.", "مغنٍّ شهير من وهران."),
+      L("I helped take raï music to a global audience.", "J'ai porté le raï à un public mondial.", "أوصلتُ الراي إلى جمهور عالمي."),
+    ],
+    "Cheb Khaled", ["Idir", "El Hadj M'Hamed El Anka", "Warda al-Jazairia"],
+    L("Cheb Khaled is the most internationally famous voice of Algerian raï.", "Cheb Khaled est la voix la plus célèbre du raï algérien.", "الشاب خالد هو الصوت الدولي الأشهر للراي."),
+  ),
+  // ---------- Tassadit Yacine ----------
+  make("tassadit-1", "hard",
+    [
+      L("I am an anthropologist focused on Berber language and oral poetry.", "Anthropologue spécialisée en langue berbère et poésie orale.", "أنثروبولوجية متخصّصة في الأمازيغية والشعر الشفوي."),
+      L("My work continues the path opened by Mouloud Mammeri.", "Mon travail prolonge celui de Mouloud Mammeri.", "يمتدّ عملي على درب مولود معمري."),
+    ],
+    "Tassadit Yacine", ["Assia Djebar", "Mouloud Mammeri", "Mouloud Feraoun"],
+    L("Tassadit Yacine is a leading scholar of Berber and women's studies.", "Tassadit Yacine, chercheuse majeure des études berbères.", "تاسعديت ياسين باحثة بارزة في الدراسات الأمازيغية."),
+  ),
 ];
