@@ -143,6 +143,58 @@ export const eras: Era[] = [
         options: ["Algiers", "Constantine (Cirta)", "Oran", "Tlemcen"],
         answerIndex: 1,
       },
+      {
+        type: "mcq",
+        question: "Numidia was located in what modern country?",
+        options: ["Egypt", "Algeria", "Morocco", "Tunisia"],
+        answerIndex: 1,
+      },
+      {
+        type: "mcq",
+        question: "What made Numidian cavalry famous?",
+        options: ["Heavy armor", "Speed and mobility", "Use of elephants", "Naval tactics"],
+        answerIndex: 1,
+      },
+      {
+        type: "mcq",
+        question: "Who did Massinissa ally with during the Punic Wars?",
+        options: ["Carthage", "Rome", "Greece", "Egypt"],
+        answerIndex: 1,
+      },
+      {
+        type: "mcq",
+        question: "What war is Jugurtha known for?",
+        options: ["Punic War", "Jugurthine War", "Gallic War", "Peloponnesian War"],
+        answerIndex: 1,
+      },
+      {
+        type: "mcq",
+        question: "Who defeated Jugurtha?",
+        options: ["Hannibal", "Marius", "Caesar", "Alexander"],
+        answerIndex: 1,
+      },
+      {
+        type: "truefalse",
+        statement: "Numidia was known for its strong navy.",
+        answer: false,
+        explanation: "Numidia was famous for its cavalry, not its navy.",
+      },
+      {
+        type: "truefalse",
+        statement: "Numidia was once divided into two kingdoms.",
+        answer: true,
+        explanation: "It was split between eastern and western kingdoms before Massinissa united it.",
+      },
+      {
+        type: "whoami",
+        clues: [
+          "I was a Numidian king.",
+          "I united the Berber tribes.",
+          "I supported Rome against Carthage.",
+        ],
+        options: ["Jugurtha", "Massinissa", "Hamilcar", "Scipio"],
+        answerIndex: 1,
+      },
     ],
   },
   {
