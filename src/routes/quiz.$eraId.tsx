@@ -196,6 +196,12 @@ function QuizPage() {
 
           <div className="mt-8 flex flex-col sm:flex-row gap-3 justify-center">
             <button
+              onClick={() => setReviewing((r) => !r)}
+              className="px-6 py-3 rounded-xl bg-card border border-border font-semibold hover:bg-muted"
+            >
+              {reviewing ? "Hide review" : "📖 Review answers"}
+            </button>
+            <button
               onClick={restart}
               className="px-6 py-3 rounded-xl bg-card border border-border font-semibold hover:bg-muted"
             >
@@ -209,6 +215,14 @@ function QuizPage() {
               Continue journey →
             </button>
           </div>
+
+          {reviewing && (
+            <div className="mt-8 text-left space-y-3">
+              {history.map((h, i) => (
+                <ReviewCard key={i} index={i} item={h} />
+              ))}
+            </div>
+          )}
         </main>
       </div>
     );
