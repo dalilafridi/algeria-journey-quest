@@ -38,6 +38,12 @@ export function Header() {
             {tu("timeline", current)}
           </Link>
           <Link
+            to="/figures"
+            className="text-sm font-medium text-muted-foreground hover:text-foreground transition"
+          >
+            {tu("figures", current)}
+          </Link>
+          <Link
             to="/profile"
             className="text-sm font-medium text-muted-foreground hover:text-foreground transition"
           >

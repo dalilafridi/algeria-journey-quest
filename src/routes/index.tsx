@@ -69,6 +69,33 @@ function Home() {
         ))}
       </section>
 
+      <section className="max-w-3xl mx-auto px-4 pb-4 grid sm:grid-cols-2 gap-4">
+        <Link
+          to="/figures"
+          className="rounded-2xl bg-card p-5 border border-border hover:border-primary/40 transition group"
+          style={{ boxShadow: "var(--shadow-soft)" }}
+        >
+          <div className="text-3xl mb-2">👤</div>
+          <h3 className="font-bold">{tu("homeFiguresTitle", lang)}</h3>
+          <p className="text-sm text-muted-foreground">{tu("homeFiguresDesc", lang)}</p>
+          <div className="mt-3 text-sm font-semibold text-primary group-hover:underline">
+            {tu("exploreFigures", lang)} →
+          </div>
+        </Link>
+        <Link
+          to="/figures/quiz"
+          className="rounded-2xl bg-card p-5 border border-border hover:border-primary/40 transition group"
+          style={{ boxShadow: "var(--shadow-soft)" }}
+        >
+          <div className="text-3xl mb-2">🕵️</div>
+          <h3 className="font-bold">{tu("guessTheFigure", lang)}</h3>
+          <p className="text-sm text-muted-foreground">{tu("guessTheFigureDesc", lang)}</p>
+          <div className="mt-3 text-sm font-semibold text-primary group-hover:underline">
+            {tu("startGuessQuiz", lang)} →
+          </div>
+        </Link>
+      </section>
+
       <section className="max-w-3xl mx-auto px-4 pb-16">
         <div
           className="rounded-2xl p-6 border border-accent/40"
