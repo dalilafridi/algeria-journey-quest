@@ -146,6 +146,20 @@ function QuizPage() {
     setReviewing(false);
   }
 
+  // Render a stable placeholder during SSR / before client mount, so that
+  // randomized question selection (Math.random) doesn't cause hydration mismatch.
+  if (!mounted || !q) {
+    return (
+      <div className="min-h-screen">
+        <Header />
+        <main className="max-w-xl mx-auto px-4 py-8">
+          <div className="h-2 rounded-full bg-muted overflow-hidden mt-12" />
+          <div className="mt-6 rounded-2xl bg-card p-6 border border-border h-64 animate-pulse" />
+        </main>
+      </div>
+    );
+  }
+
   if (done) {
     const ratio = score / questions.length;
     const pct = Math.round(ratio * 100);
