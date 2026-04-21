@@ -525,6 +525,45 @@ export const eras: Era[] = [
           { label: "Sétif and Guelma massacres", hint: "May 1945" },
         ],
       },
+      {
+        type: "mcq",
+        question: "Which Algerian city was the first to fall to French forces in 1830?",
+        options: ["Oran", "Constantine", "Algiers", "Tlemcen"],
+        answerIndex: 2,
+      },
+      {
+        type: "mcq",
+        question: "What tragic event occurred on May 8, 1945 in Algeria?",
+        options: [
+          "Independence Day",
+          "Sétif and Guelma massacres",
+          "Battle of Algiers",
+          "End of WWI",
+        ],
+        answerIndex: 1,
+      },
+      {
+        type: "mcq",
+        question: "Roughly how long did French colonization of Algeria last?",
+        options: ["50 years", "80 years", "Over 130 years", "200 years"],
+        answerIndex: 2,
+      },
+      {
+        type: "truefalse",
+        statement: "Emir Abdelkader eventually surrendered and lived the rest of his life in exile.",
+        answer: true,
+        explanation: "He spent his final years in Damascus, where he is still honored.",
+      },
+      {
+        type: "whoami",
+        clues: [
+          "I founded an early Algerian nationalist movement.",
+          "I am known as the 'father of Algerian nationalism'.",
+          "My name is Messali…",
+        ],
+        options: ["Messali Hadj", "Ferhat Abbas", "Ben Bella", "Boumediene"],
+        answerIndex: 0,
+      },
     ],
   },
   {
