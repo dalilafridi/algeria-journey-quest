@@ -53,9 +53,11 @@ export function recordQuiz(eraId: string, score: number, total: number) {
   let newBadge: string | undefined;
   if (score === total) {
     const era = eras.find((e) => e.id === eraId);
-    if (era && !p.badges.includes(era.badge)) {
-      p.badges.push(era.badge);
-      newBadge = era.badge;
+    // Persist the badge as its English key so it stays stable across language switches.
+    const badgeKey = era ? (typeof era.badge === "string" ? era.badge : era.badge.en) : undefined;
+    if (badgeKey && !p.badges.includes(badgeKey)) {
+      p.badges.push(badgeKey);
+      newBadge = badgeKey;
     }
   }
   saveProgress(p);

@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { Header } from "@/components/Header";
 import { eras } from "@/data/eras";
 import { getProgress, hasPassed, isUnlocked, type Progress } from "@/lib/progress";
+import { t, tu, useLang } from "@/lib/i18n";
 
 export const Route = createFileRoute("/timeline")({
   head: () => ({
@@ -24,6 +25,7 @@ export const Route = createFileRoute("/timeline")({
 
 function Timeline() {
   const [progress, setProgress] = useState<Progress>({ xp: 0, completed: {}, badges: [] });
+  const lang = useLang();
 
   useEffect(() => {
     const update = () => setProgress(getProgress());
@@ -37,10 +39,8 @@ function Timeline() {
       <Header />
       <main className="max-w-3xl mx-auto px-4 py-10">
         <div className="text-center mb-10 animate-float-up">
-          <h1 className="text-3xl sm:text-4xl font-extrabold">The Journey</h1>
-          <p className="mt-2 text-muted-foreground">
-            Tap an era to explore. Complete its quiz to unlock the next!
-          </p>
+          <h1 className="text-3xl sm:text-4xl font-extrabold">{tu("journeyTitle", lang)}</h1>
+          <p className="mt-2 text-muted-foreground">{tu("journeyDesc", lang)}</p>
         </div>
 
         <div className="relative">
@@ -50,7 +50,6 @@ function Timeline() {
           />
           <ul className="space-y-5">
             {eras.map((era, i) => {
-              // Reference `progress` so unlock state recomputes on updates.
               void progress;
               const unlocked = isUnlocked(era.id);
               const c = progress.completed[era.id];
@@ -78,9 +77,9 @@ function Timeline() {
                       <div className="flex items-center justify-between gap-3">
                         <div>
                           <div className="text-xs font-semibold text-primary uppercase tracking-wider">
-                            Chapter {i + 1}
+                            {tu("chapter", lang)} {i + 1}
                           </div>
-                          <h2 className="text-xl font-bold mt-0.5">{era.title}</h2>
+                          <h2 className="text-xl font-bold mt-0.5">{t(era.title, lang)}</h2>
                           <div className="text-sm text-muted-foreground">{era.dateRange}</div>
                         </div>
                         {done && total > 0 && (
@@ -90,21 +89,19 @@ function Timeline() {
                         )}
                       </div>
                       <p className="mt-3 text-sm text-foreground/80 line-clamp-2">
-                        {era.summary}
+                        {t(era.summary, lang)}
                       </p>
                     </Link>
                   ) : (
-                    <div
-                      className="block rounded-2xl bg-muted/50 p-5 border border-border opacity-70"
-                    >
+                    <div className="block rounded-2xl bg-muted/50 p-5 border border-border opacity-70">
                       <div className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">
-                        Chapter {i + 1} — Locked
+                        {tu("chapter", lang)} {i + 1} — {tu("locked", lang)}
                       </div>
                       <h2 className="text-xl font-bold mt-0.5 text-muted-foreground">
-                        {era.title}
+                        {t(era.title, lang)}
                       </h2>
                       <p className="text-sm text-muted-foreground mt-2">
-                        Finish the previous quiz to unlock.
+                        {tu("finishPrev", lang)}
                       </p>
                     </div>
                   )}

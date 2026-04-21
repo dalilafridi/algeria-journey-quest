@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { Header } from "@/components/Header";
 import { eras } from "@/data/eras";
 import { getProgress, totalProgressPct, type Progress } from "@/lib/progress";
+import { t, tu, useLang } from "@/lib/i18n";
 
 export const Route = createFileRoute("/profile")({
   head: () => ({
@@ -17,6 +18,7 @@ export const Route = createFileRoute("/profile")({
 function ProfilePage() {
   const [progress, setProgress] = useState<Progress>({ xp: 0, completed: {}, badges: [] });
   const [pct, setPct] = useState(0);
+  const lang = useLang();
 
   useEffect(() => {
     const update = () => {
@@ -28,27 +30,33 @@ function ProfilePage() {
     return () => window.removeEventListener("progress-updated", update);
   }, []);
 
+  // Map English badge keys back to localized labels.
+  const badgeLabel = (key: string): string => {
+    const era = eras.find((e) => (typeof e.badge === "string" ? e.badge : e.badge.en) === key);
+    return era ? t(era.badge, lang) : key;
+  };
+
   return (
     <div className="min-h-screen">
       <Header />
       <main className="max-w-3xl mx-auto px-4 py-8">
-        <h1 className="text-3xl font-extrabold">Your Journey</h1>
-        <p className="text-muted-foreground mt-1">Track your progress through Algerian history.</p>
+        <h1 className="text-3xl font-extrabold">{tu("yourJourney", lang)}</h1>
+        <p className="text-muted-foreground mt-1">{tu("trackProgress", lang)}</p>
 
         <div className="grid sm:grid-cols-3 gap-4 mt-6">
-          <Stat icon="⭐" label="Total XP" value={progress.xp} />
-          <Stat icon="🎖️" label="Badges" value={progress.badges.length} />
-          <Stat icon="📚" label="Completion" value={`${pct}%`} />
+          <Stat icon="⭐" label={tu("totalXp", lang)} value={progress.xp} />
+          <Stat icon="🎖️" label={tu("badges", lang)} value={progress.badges.length} />
+          <Stat icon="📚" label={tu("completion", lang)} value={`${pct}%`} />
         </div>
 
         <section className="mt-8">
-          <h2 className="font-bold text-lg mb-3">Badges</h2>
+          <h2 className="font-bold text-lg mb-3">{tu("badges", lang)}</h2>
           {progress.badges.length === 0 ? (
             <div
               className="rounded-2xl bg-card p-6 text-center border border-border text-muted-foreground"
               style={{ boxShadow: "var(--shadow-soft)" }}
             >
-              No badges yet — complete a quiz with a perfect score to earn one! 🏆
+              {tu("noBadges", lang)}
             </div>
           ) : (
             <div className="grid sm:grid-cols-2 gap-3">
@@ -62,7 +70,7 @@ function ProfilePage() {
                   }}
                 >
                   <div className="text-3xl">🎖️</div>
-                  <div className="font-bold">{b}</div>
+                  <div className="font-bold">{badgeLabel(b)}</div>
                 </div>
               ))}
             </div>
@@ -70,7 +78,7 @@ function ProfilePage() {
         </section>
 
         <section className="mt-8">
-          <h2 className="font-bold text-lg mb-3">Era progress</h2>
+          <h2 className="font-bold text-lg mb-3">{tu("eraProgress", lang)}</h2>
           <ul className="space-y-2">
             {eras.map((e) => {
               const c = progress.completed[e.id];
@@ -82,7 +90,7 @@ function ProfilePage() {
                   <div className="flex items-center gap-3">
                     <span className="text-2xl">{e.emoji}</span>
                     <div>
-                      <div className="font-semibold">{e.title}</div>
+                      <div className="font-semibold">{t(e.title, lang)}</div>
                       <div className="text-xs text-muted-foreground">{e.dateRange}</div>
                     </div>
                   </div>
@@ -100,7 +108,7 @@ function ProfilePage() {
           className="mt-8 block w-full text-center px-6 py-4 rounded-2xl text-lg font-bold text-primary-foreground"
           style={{ background: "var(--gradient-warm)", boxShadow: "var(--shadow-glow)" }}
         >
-          Continue your journey →
+          {tu("continueJourney", lang)}
         </Link>
       </main>
     </div>

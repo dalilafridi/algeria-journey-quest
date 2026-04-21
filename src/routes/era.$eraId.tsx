@@ -1,6 +1,7 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { Header } from "@/components/Header";
 import { eras } from "@/data/eras";
+import { t, tu, useLang } from "@/lib/i18n";
 
 export const Route = createFileRoute("/era/$eraId")({
   loader: ({ params }) => {
@@ -8,17 +9,19 @@ export const Route = createFileRoute("/era/$eraId")({
     if (!era) throw notFound();
     return { era };
   },
-  head: ({ loaderData }) =>
-    loaderData
-      ? {
-          meta: [
-            { title: `${loaderData.era.title} — Algeria Through Time` },
-            { name: "description", content: loaderData.era.summary },
-            { property: "og:title", content: loaderData.era.title },
-            { property: "og:description", content: loaderData.era.summary },
-          ],
-        }
-      : {},
+  head: ({ loaderData }) => {
+    if (!loaderData) return {};
+    const titleEn = t(loaderData.era.title, "en");
+    const summaryEn = t(loaderData.era.summary, "en");
+    return {
+      meta: [
+        { title: `${titleEn} — Algeria Through Time` },
+        { name: "description", content: summaryEn },
+        { property: "og:title", content: titleEn },
+        { property: "og:description", content: summaryEn },
+      ],
+    };
+  },
   notFoundComponent: () => (
     <div className="min-h-screen flex items-center justify-center">
       <div className="text-center">
@@ -34,6 +37,7 @@ export const Route = createFileRoute("/era/$eraId")({
 
 function EraPage() {
   const { era } = Route.useLoaderData();
+  const lang = useLang();
 
   return (
     <div className="min-h-screen">
@@ -43,33 +47,35 @@ function EraPage() {
           to="/timeline"
           className="text-sm text-muted-foreground hover:text-foreground"
         >
-          ← Back to timeline
+          {tu("backToTimeline", lang)}
         </Link>
 
         <header className="mt-4 animate-float-up">
           <div className="text-6xl">{era.emoji}</div>
           <div className="text-sm font-semibold text-primary mt-2">{era.dateRange}</div>
-          <h1 className="text-4xl font-extrabold tracking-tight">{era.title}</h1>
-          <p className="mt-4 text-lg text-foreground/85 leading-relaxed">{era.summary}</p>
+          <h1 className="text-4xl font-extrabold tracking-tight">{t(era.title, lang)}</h1>
+          <p className="mt-4 text-lg text-foreground/85 leading-relaxed">
+            {t(era.summary, lang)}
+          </p>
         </header>
 
         <section className="mt-8 grid sm:grid-cols-2 gap-4">
-          <Card title="Key Figures" icon="👤">
+          <Card title={tu("keyFigures", lang)} icon="👤">
             <ul className="space-y-3">
-              {era.figures.map((f) => (
-                <li key={f.name}>
-                  <div className="font-semibold">{f.name}</div>
-                  <div className="text-sm text-muted-foreground">{f.note}</div>
+              {era.figures.map((f, i) => (
+                <li key={i}>
+                  <div className="font-semibold">{t(f.name, lang)}</div>
+                  <div className="text-sm text-muted-foreground">{t(f.note, lang)}</div>
                 </li>
               ))}
             </ul>
           </Card>
-          <Card title="Key Places" icon="📍">
+          <Card title={tu("keyPlaces", lang)} icon="📍">
             <ul className="space-y-3">
-              {era.places.map((p) => (
-                <li key={p.name}>
-                  <div className="font-semibold">{p.name}</div>
-                  <div className="text-sm text-muted-foreground">{p.note}</div>
+              {era.places.map((p, i) => (
+                <li key={i}>
+                  <div className="font-semibold">{t(p.name, lang)}</div>
+                  <div className="text-sm text-muted-foreground">{t(p.note, lang)}</div>
                 </li>
               ))}
             </ul>
@@ -77,12 +83,12 @@ function EraPage() {
         </section>
 
         <section className="mt-6">
-          <Card title="Did you know?" icon="💡" accent>
+          <Card title={tu("didYouKnow", lang)} icon="💡" accent>
             <ul className="space-y-2">
               {era.facts.map((f, i) => (
                 <li key={i} className="flex gap-2">
                   <span>✨</span>
-                  <span>{f}</span>
+                  <span>{t(f, lang)}</span>
                 </li>
               ))}
             </ul>
@@ -95,7 +101,7 @@ function EraPage() {
           className="mt-8 block w-full text-center px-6 py-4 rounded-2xl text-lg font-bold text-primary-foreground transition-transform hover:scale-[1.02] active:scale-95"
           style={{ background: "var(--gradient-warm)", boxShadow: "var(--shadow-glow)" }}
         >
-          🎯 Take the Quiz
+          {tu("takeQuiz", lang)}
         </Link>
       </main>
     </div>
