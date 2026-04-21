@@ -222,6 +222,26 @@ export const ui = {
     fr: "Découvrez les personnalités derrière les époques.",
     ar: "تعرّف على الشخصيات وراء الحقب.",
   },
+  journeySubtitle: {
+    en: "Tap an era to explore and unlock the next.",
+    fr: "Touchez une époque pour explorer et débloquer la suivante.",
+    ar: "اضغط على حقبة لاستكشافها وفتح التالية.",
+  },
+  filterAllEras: { en: "All Eras", fr: "Toutes les époques", ar: "كل الحقب" },
+  filterAncient: { en: "Ancient", fr: "Antique", ar: "العصور القديمة" },
+  filterIslamic: { en: "Islamic", fr: "Islamique", ar: "إسلامية" },
+  filterColonial: { en: "Colonial", fr: "Coloniale", ar: "الاستعمار" },
+  filterModern: { en: "Modern", fr: "Moderne", ar: "حديثة" },
+  statusUnlocked: { en: "Unlocked", fr: "Débloqué", ar: "مفتوح" },
+  statusNew: { en: "New", fr: "Nouveau", ar: "جديد" },
+  continueBtn: { en: "Continue", fr: "Continuer", ar: "متابعة" },
+  startBtn: { en: "Start", fr: "Commencer", ar: "ابدأ" },
+  lockedBtn: { en: "Locked", fr: "Verrouillé", ar: "مغلق" },
+  funFactsDiscovered: { en: "Fun facts discovered", fr: "Faits découverts", ar: "حقائق مكتشفة" },
+  yourProgress: { en: "Your progress", fr: "Votre progression", ar: "تقدّمك" },
+  erasCompleted: { en: "Eras completed", fr: "Époques terminées", ar: "حقب مكتملة" },
+  quizzesCompleted: { en: "Quizzes completed", fr: "Quiz terminés", ar: "اختبارات مكتملة" },
+  factsCount: { en: "Fun facts", fr: "Faits marquants", ar: "حقائق ممتعة" },
 } satisfies Record<string, Localized<string>>;
 
 export type UiKey = keyof typeof ui;
