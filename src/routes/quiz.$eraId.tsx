@@ -59,9 +59,6 @@ function QuizPage() {
   const [mounted, setMounted] = useState(false);
   // Defer randomized question selection to the client to avoid SSR/CSR hydration
   // mismatches caused by Math.random() returning different values on each side.
-  if (typeof window !== "undefined" && !mounted) {
-    // schedule mount on next tick via useEffect below
-  }
   const questions = useMemo(
     () => (mounted ? pickQuizQuestions(era.quiz) : []),
     // eslint-disable-next-line react-hooks/exhaustive-deps
