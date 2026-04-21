@@ -411,6 +411,39 @@ export const eras: Era[] = [
         options: ["Fez", "Tlemcen", "Kairouan", "Cordoba"],
         answerIndex: 1,
       },
+      {
+        type: "mcq",
+        question: "In which century did Arab armies first reach the Maghreb?",
+        options: ["5th century", "7th century", "10th century", "13th century"],
+        answerIndex: 1,
+      },
+      {
+        type: "mcq",
+        question: "Which famous European mathematician learned Arabic numerals in Béjaïa?",
+        options: ["Newton", "Fibonacci", "Euclid", "Descartes"],
+        answerIndex: 1,
+      },
+      {
+        type: "truefalse",
+        statement: "Berber and Arab cultures blended over centuries to shape Algerian identity.",
+        answer: true,
+      },
+      {
+        type: "truefalse",
+        statement: "The Zayyanid dynasty had its capital in Algiers.",
+        answer: false,
+        explanation: "Tlemcen was the capital of the Zayyanid dynasty.",
+      },
+      {
+        type: "whoami",
+        clues: [
+          "I am a great medieval traveler from the Maghreb world.",
+          "My name often appears alongside Marco Polo.",
+          "I journeyed across Africa, Asia, and Europe.",
+        ],
+        options: ["Ibn Battuta", "Ibn Khaldun", "Al-Idrisi", "Averroes"],
+        answerIndex: 0,
+      },
     ],
   },
   {
