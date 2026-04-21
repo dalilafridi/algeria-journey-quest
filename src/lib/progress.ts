@@ -63,6 +63,7 @@ export function recordQuiz(eraId: string, score: number, total: number) {
 }
 
 export function hasPassed(eraId: string): boolean {
+  if (UNLOCK_ALL_FOR_DEV) return true;
   const p = getProgress();
   const c = p.completed[eraId];
   if (!c || !c.total) return false;
@@ -70,13 +71,17 @@ export function hasPassed(eraId: string): boolean {
 }
 
 export function isUnlocked(eraId: string): boolean {
+  if (UNLOCK_ALL_FOR_DEV) return true;
   const idx = eras.findIndex((e) => e.id === eraId);
   if (idx <= 0) return true;
-  return hasPassed(eras[idx - 1].id);
+  const prev = eras[idx - 1];
+  // Dev-safe fallback: if the previous chapter has no quiz data,
+  // don't block progression — allow this chapter to unlock.
+  if (!prev.quiz || prev.quiz.length === 0) return true;
+  return hasPassed(prev.id);
 }
 
 export function totalProgressPct(): number {
-  const p = getProgress();
   const done = eras.filter((e) => hasPassed(e.id)).length;
   return Math.round((done / eras.length) * 100);
 }
