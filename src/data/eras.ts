@@ -361,6 +361,19 @@ export const eras: Era[] = [
         answerIndex: 1,
         explanation: "Saint Augustine served as bishop of Hippo Regius (Annaba).",
       },
+      {
+        type: "truefalse",
+        statement: "The Roman city of Tipaza sits along the Mediterranean coast.",
+        answer: true,
+        explanation: "Tipaza's seaside ruins are a UNESCO World Heritage site.",
+      },
+      {
+        type: "mcq",
+        question: "Which legendary Roman legion was based at Lambaesis in Algeria?",
+        options: ["First Italian", "Third Augustan", "Tenth Equestrian", "Fifth Macedonian"],
+        answerIndex: 1,
+        explanation: "The Legio III Augusta guarded Roman North Africa for centuries.",
+      },
     ],
   },
   {
