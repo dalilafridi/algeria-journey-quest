@@ -4,9 +4,13 @@ import type { Localized, LocalizedString } from "@/lib/i18n";
 
 export type FigureCategory =
   | "ancient"
+  | "roman"
+  | "early-islamic"
+  | "ottoman"
   | "early-resistance"
   | "colonial-resistance"
   | "war-of-independence"
+  | "post-independence"
   | "intellectuals-culture";
 
 export type FigureRegion =
@@ -14,7 +18,10 @@ export type FigureRegion =
   | "kabylie"
   | "aures"
   | "constantine"
+  | "algiers"
+  | "oran-west"
   | "mascara-west"
+  | "sahara"
   | "national"
   | "maghreb-intellectual";
 
