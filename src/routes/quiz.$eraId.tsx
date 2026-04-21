@@ -92,6 +92,7 @@ function QuizPage() {
     setAnswer(a);
     setLocked(true);
     const correct = isAnswerCorrect(q, a);
+    setHistory((h) => [...h, { q, answer: a, correct }]);
     if (correct) {
       const newStreak = streak + 1;
       const bonus = newStreak > 0 && newStreak % STREAK_BONUS_AT === 0;
