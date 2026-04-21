@@ -662,27 +662,3 @@ function OrderQuestionView({
     </>
   );
 }
-
-function Feedback({ q, answer }: { q: QuizQuestion; answer: unknown }) {
-  const correct = isAnswerCorrect(q, answer);
-  const explanation =
-    q.type === "truefalse" ? q.explanation : undefined;
-  return (
-    <div
-      className={
-        "mt-5 px-4 py-3 rounded-xl text-sm font-medium " +
-        (correct
-          ? "bg-success/15 text-foreground border border-success/40"
-          : "bg-destructive/10 text-foreground border border-destructive/30")
-      }
-    >
-      <div className="font-bold mb-0.5">{correct ? "Correct! 🎉" : "Not quite."}</div>
-      {explanation && <div className="text-muted-foreground">{explanation}</div>}
-      {q.type === "order" && !correct && (
-        <div className="text-muted-foreground">
-          Correct order: {q.items.map((it) => it.label).join(" → ")}
-        </div>
-      )}
-    </div>
-  );
-}
