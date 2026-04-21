@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Header } from "@/components/Header";
 import { dailyFacts } from "@/data/eras";
+import { t, tu, useLang } from "@/lib/i18n";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -22,6 +23,7 @@ export const Route = createFileRoute("/")({
 });
 
 function Home() {
+  const lang = useLang();
   const fact = dailyFacts[new Date().getDate() % dailyFacts.length];
 
   return (
@@ -34,33 +36,26 @@ function Home() {
         <div className="max-w-3xl mx-auto text-center animate-float-up">
           <div className="text-6xl sm:text-7xl mb-4">🏺🕌🕊️</div>
           <h1 className="text-4xl sm:text-6xl font-extrabold tracking-tight text-foreground">
-            Algeria
-            <span
-              className="block bg-clip-text text-transparent"
-              style={{ backgroundImage: "var(--gradient-warm)" }}
-            >
-              Through Time
-            </span>
+            {tu("appName", lang)}
           </h1>
           <p className="mt-5 text-lg sm:text-xl text-muted-foreground max-w-xl mx-auto">
-            From the Numidian kings to the heroes of independence — a fun, story-driven
-            journey through 2,000+ years of history.
+            {tu("heroSubtitle", lang)}
           </p>
           <Link
             to="/timeline"
             className="inline-block mt-8 px-8 py-4 rounded-2xl text-lg font-bold text-primary-foreground transition-transform hover:scale-105 active:scale-95"
             style={{ background: "var(--gradient-warm)", boxShadow: "var(--shadow-glow)" }}
           >
-            🚀 Start Your Journey
+            {tu("startJourney", lang)}
           </Link>
         </div>
       </main>
 
       <section className="max-w-3xl mx-auto px-4 py-12 grid sm:grid-cols-3 gap-4">
         {[
-          { icon: "📜", title: "5 Eras", desc: "From Numidia to today" },
-          { icon: "🎯", title: "Fun Quizzes", desc: "Test what you learn" },
-          { icon: "🏆", title: "Earn Badges", desc: "Become a history hero" },
+          { icon: "📜", title: tu("fiveEras", lang), desc: tu("fiveErasDesc", lang) },
+          { icon: "🎯", title: tu("funQuizzes", lang), desc: tu("funQuizzesDesc", lang) },
+          { icon: "🏆", title: tu("earnBadges", lang), desc: tu("earnBadgesDesc", lang) },
         ].map((f) => (
           <div
             key={f.title}
@@ -87,9 +82,9 @@ function Home() {
             <div className="text-3xl">💡</div>
             <div>
               <div className="text-xs font-bold uppercase tracking-wider text-accent-foreground/80">
-                Did you know?
+                {tu("didYouKnow", lang)}
               </div>
-              <p className="mt-1 text-foreground font-medium">{fact}</p>
+              <p className="mt-1 text-foreground font-medium">{t(fact, lang)}</p>
             </div>
           </div>
         </div>
