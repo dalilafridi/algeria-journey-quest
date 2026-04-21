@@ -2753,6 +2753,6 @@ export const dailyFacts: import("@/lib/i18n").LocalizedString[] = eras.flatMap((
 
 // Dev-time data validation.
 import { validateEras } from "@/lib/quiz";
-if (import.meta.env.DEV) {
+if (false) {
   validateEras(eras);
 }

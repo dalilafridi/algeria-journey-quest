@@ -1,5 +1,5 @@
 import { createFileRoute, Link, notFound, useNavigate } from "@tanstack/react-router";
-import { useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { Header } from "@/components/Header";
 import { eras, type QuizQuestion } from "@/data/eras";
 import { getLevelInfo, recordQuiz } from "@/lib/progress";
@@ -56,10 +56,13 @@ function QuizPage() {
   const lang = useLang();
 
   const [seed, setSeed] = useState(0);
+  const [mounted, setMounted] = useState(false);
+  // Defer randomized question selection to the client to avoid SSR/CSR hydration
+  // mismatches caused by Math.random() returning different values on each side.
   const questions = useMemo(
-    () => pickQuizQuestions(era.quiz),
+    () => (mounted ? pickQuizQuestions(era.quiz) : []),
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [era.id, seed],
+    [era.id, seed, mounted],
   );
 
   const [step, setStep] = useState(0);
@@ -82,6 +85,10 @@ function QuizPage() {
   );
   const [reviewing, setReviewing] = useState(false);
   const flyKey = useRef(0);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const q = questions[step];
 
@@ -134,6 +141,20 @@ function QuizPage() {
     setResult(null);
     setHistory([]);
     setReviewing(false);
+  }
+
+  // Render a stable placeholder during SSR / before client mount, so that
+  // randomized question selection (Math.random) doesn't cause hydration mismatch.
+  if (!mounted || !q) {
+    return (
+      <div className="min-h-screen">
+        <Header />
+        <main className="max-w-xl mx-auto px-4 py-8">
+          <div className="h-2 rounded-full bg-muted overflow-hidden mt-12" />
+          <div className="mt-6 rounded-2xl bg-card p-6 border border-border h-64 animate-pulse" />
+        </main>
+      </div>
+    );
   }
 
   if (done) {
