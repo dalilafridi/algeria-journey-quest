@@ -646,6 +646,45 @@ export const eras: Era[] = [
           { label: "Independence Day", hint: "July 5, 1962" },
         ],
       },
+      {
+        type: "mcq",
+        question: "Which political movement led the Algerian War of Independence?",
+        options: ["FLN", "OAS", "MNA", "PPA"],
+        answerIndex: 0,
+      },
+      {
+        type: "mcq",
+        question: "The famous urban battle of 1956–57 took place in which city?",
+        options: ["Oran", "Algiers", "Constantine", "Annaba"],
+        answerIndex: 1,
+      },
+      {
+        type: "mcq",
+        question: "What treaty officially ended the war in March 1962?",
+        options: ["Treaty of Paris", "Évian Accords", "Treaty of Algiers", "Versailles Treaty"],
+        answerIndex: 1,
+      },
+      {
+        type: "truefalse",
+        statement: "The Algerian War of Independence lasted roughly eight years.",
+        answer: true,
+      },
+      {
+        type: "truefalse",
+        statement: "Algeria became independent peacefully, without armed struggle.",
+        answer: false,
+        explanation: "Independence came after eight years of difficult armed struggle.",
+      },
+      {
+        type: "whoami",
+        clues: [
+          "I became Algeria's first president after independence.",
+          "I was a key FLN leader.",
+          "My name is Ahmed…",
+        ],
+        options: ["Ahmed Ben Bella", "Houari Boumediene", "Krim Belkacem", "Ferhat Abbas"],
+        answerIndex: 0,
+      },
     ],
   },
 ];
