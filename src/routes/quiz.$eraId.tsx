@@ -89,6 +89,10 @@ function QuizPage() {
   const [reviewing, setReviewing] = useState(false);
   const flyKey = useRef(0);
 
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
   const q = questions[step];
 
   function commit(a: unknown) {
