@@ -749,3 +749,10 @@ export const eras: Era[] = [
 ];
 
 export const dailyFacts = eras.flatMap((e) => e.facts);
+
+// Dev-time data validation. Logs warnings to the console if any era has fewer
+// than 10 questions or any options/answerIndex pair is invalid.
+import { validateEras } from "@/lib/quiz";
+if (import.meta.env.DEV) {
+  validateEras(eras);
+}
