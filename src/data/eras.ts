@@ -162,10 +162,10 @@ export const eras: Era[] = [
       },
       {
         type: "mcq",
-        question: "What made Numidian cavalry famous?",
-        options: ["Heavy armor", "Speed and mobility", "Use of elephants", "Naval tactics"],
+        question: "Numidian horsemen typically rode…",
+        options: ["With heavy armor and lances", "Without saddles or bridles", "On war elephants", "In chariots"],
         answerIndex: 1,
-        explanation: "They rode light and fast, raiding before enemies could react.",
+        explanation: "They guided horses with their voice and a neck rope — light and fast.",
       },
       {
         type: "mcq",
@@ -203,13 +203,13 @@ export const eras: Era[] = [
       {
         type: "whoami",
         clues: [
-          "I was a Numidian king.",
-          "I united the Berber tribes.",
-          "I supported Rome against Carthage.",
+          "I was a rival Numidian king before unification.",
+          "I sided with Carthage against Rome.",
+          "I was captured at the Battle of Cirta.",
         ],
-        options: ["Jugurtha", "Massinissa", "Hamilcar", "Scipio"],
-        answerIndex: 1,
-        explanation: "Massinissa — Numidia's great unifier and Roman ally.",
+        options: ["Syphax", "Hannibal", "Juba I", "Bocchus"],
+        answerIndex: 0,
+        explanation: "Syphax ruled western Numidia and was captured in 203 BC.",
       },
     ],
   },
