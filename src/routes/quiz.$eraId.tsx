@@ -134,6 +134,8 @@ function QuizPage() {
     setLastFeedback(null);
     setDone(false);
     setResult(null);
+    setHistory([]);
+    setReviewing(false);
   }
 
   if (done) {
