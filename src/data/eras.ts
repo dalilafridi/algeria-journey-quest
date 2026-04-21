@@ -78,6 +78,12 @@ export const eras: Era[] = [
     facts: [
       "Numidian horsemen were so feared that Rome and Carthage both wanted them as allies.",
       "Massinissa lived to be over 90 and led troops into his last years.",
+      "Numidian riders guided their horses with just a neck rope — no saddles, no bridles.",
+      "The word 'Numidia' comes from a Greek term meaning 'nomads'.",
+      "Royal Numidian tombs, like the Medracen, still rise from the Algerian plains today.",
+      "Numidia minted its own coins, often stamped with the king's portrait and an elephant.",
+      "Jugurtha was paraded through Rome in chains before dying in a cold prison cell.",
+      "Cirta, the Numidian capital, sits on dramatic cliffs — today it is Constantine.",
     ],
     badge: "Explorer of Numidia",
     quiz: [
@@ -231,6 +237,11 @@ export const eras: Era[] = [
     facts: [
       "Timgad was built as a retirement town for Roman soldiers.",
       "North Africa was called the 'breadbasket of Rome'.",
+      "Saint Augustine wrote his 'Confessions' — one of the first autobiographies ever.",
+      "Djemila means 'the beautiful' in Arabic — and its ruins really live up to the name.",
+      "Roman Algeria produced so much olive oil that giant amphorae traveled across the Mediterranean.",
+      "Tipaza's seaside ruins inspired the Algerian-French writer Albert Camus centuries later.",
+      "The Roman city of Lambaesis was home to the legendary Third Augustan Legion.",
     ],
     badge: "Roman Wanderer",
     quiz: [
@@ -370,6 +381,11 @@ export const eras: Era[] = [
     facts: [
       "Ibn Khaldun is considered one of the founders of sociology.",
       "Fibonacci learned Arabic numerals in Béjaïa as a young man.",
+      "Tlemcen was nicknamed 'the pearl of the Maghreb' for its mosques and madrasas.",
+      "Algiers earned the nickname 'El Bahdja' — 'the joyful' — during this long era.",
+      "The Great Mosque of Tlemcen, built in 1136, still stands almost unchanged today.",
+      "Berber and Arab cultures slowly blended, giving Algeria its unique identity.",
+      "Béjaïa exported beeswax candles to Europe — the French word 'bougie' comes from its name.",
     ],
     badge: "Scholar of the Maghreb",
     quiz: [
@@ -502,6 +518,11 @@ export const eras: Era[] = [
     facts: [
       "Emir Abdelkader is honored with a statue in Damascus and even a town in the USA.",
       "Algeria was treated as part of France itself — not a typical colony.",
+      "Emir Abdelkader once saved thousands of Christians from massacre in Damascus in 1860.",
+      "Lalla Fatma N'Soumer was only in her twenties when she led mountain warriors against the French army.",
+      "On May 8, 1945, victory celebrations in Sétif turned into one of Algeria's darkest days.",
+      "French settlers were called 'pieds-noirs' — 'black feet' — and many had never seen France.",
+      "By 1954, Algeria had three French départements, just like Paris or Marseille.",
     ],
     badge: "Keeper of Memory",
     quiz: [
@@ -632,6 +653,11 @@ export const eras: Era[] = [
     facts: [
       "The revolution began with coordinated attacks on November 1, 1954 — 'Toussaint Rouge'.",
       "Independence Day is celebrated every July 5th across Algeria.",
+      "The film 'The Battle of Algiers' (1966) is still studied in military academies around the world.",
+      "Women fighters carried messages, weapons, and bombs through the narrow streets of the Casbah.",
+      "The FLN's green-and-white flag with a red crescent and star became the symbol of free Algeria.",
+      "Ahmed Ben Bella became Algeria's first president after independence in 1963.",
+      "July 5 was chosen for independence — exactly 132 years after French troops landed in 1830.",
     ],
     badge: "Champion of Liberty",
     quiz: [
