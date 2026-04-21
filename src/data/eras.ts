@@ -3,6 +3,7 @@ export type MCQQuestion = {
   question: string;
   options: string[];
   answerIndex: number;
+  explanation?: string;
 };
 
 export type TrueFalseQuestion = {
@@ -17,6 +18,7 @@ export type WhoAmIQuestion = {
   clues: string[]; // shown one by one or all at once
   options: string[];
   answerIndex: number;
+  explanation?: string;
 };
 
 export type OrderQuestion = {
@@ -24,6 +26,7 @@ export type OrderQuestion = {
   prompt: string;
   // Items in CORRECT chronological order. The quiz will shuffle them.
   items: { label: string; hint?: string }[];
+  explanation?: string;
 };
 
 export type ImageQuestion = {
@@ -33,6 +36,7 @@ export type ImageQuestion = {
   imageEmoji?: string; // fallback visual
   options: string[];
   answerIndex: number;
+  explanation?: string;
 };
 
 export type QuizQuestion =
