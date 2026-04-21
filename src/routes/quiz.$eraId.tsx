@@ -11,6 +11,7 @@ import {
   pickQuizQuestions,
   shuffle,
 } from "@/lib/quiz";
+import { t, tArr, tu, useLang, type Lang } from "@/lib/i18n";
 
 export const Route = createFileRoute("/quiz/$eraId")({
   loader: ({ params }) => {
@@ -22,8 +23,11 @@ export const Route = createFileRoute("/quiz/$eraId")({
     loaderData
       ? {
           meta: [
-            { title: `Quiz: ${loaderData.era.title} — Algeria Through Time` },
-            { name: "description", content: `Test your knowledge of ${loaderData.era.title}.` },
+            { title: `Quiz: ${t(loaderData.era.title, "en")} — Algeria Through Time` },
+            {
+              name: "description",
+              content: `Test your knowledge of ${t(loaderData.era.title, "en")}.`,
+            },
           ],
         }
       : {},
@@ -34,29 +38,23 @@ const CORRECT_MESSAGES = [
   "You're becoming a historian!",
   "Brilliant! 🎓",
   "Spot on!",
-  "History flows through you ✨",
   "Nailed it!",
 ];
-const WRONG_MESSAGES = [
-  "Close! Try again.",
-  "Not quite — keep going!",
-  "So close! 💪",
-  "History is tricky, you'll get it next time.",
-];
+const WRONG_MESSAGES = ["Close! Try again.", "Not quite — keep going!", "So close! 💪"];
 
 function pickMessage(list: string[]) {
   return list[Math.floor(Math.random() * list.length)];
 }
 
 const XP_PER_CORRECT = 10;
-const STREAK_BONUS_AT = 3; // every 3 in a row → +5 bonus
+const STREAK_BONUS_AT = 3;
 const STREAK_BONUS = 5;
 
 function QuizPage() {
   const { era } = Route.useLoaderData();
   const navigate = useNavigate();
+  const lang = useLang();
 
-  // Pick a fresh random subset (5–7) per attempt.
   const [seed, setSeed] = useState(0);
   const questions = useMemo(
     () => pickQuizQuestions(era.quiz),
@@ -143,8 +141,8 @@ function QuizPage() {
     const pct = Math.round(ratio * 100);
     const perfect = score === questions.length;
     const passed = ratio >= 0.6;
-    const earnedBadge = result?.newBadge ?? (passed ? era.badge : undefined);
-    const level = getLevelInfo(0); // not used here directly; level shown in header
+    const earnedBadge = result?.newBadge ?? (passed ? t(era.badge, lang) : undefined);
+    const level = getLevelInfo(0);
     void level;
     return (
       <div className="min-h-screen">
@@ -152,28 +150,27 @@ function QuizPage() {
         <main className="max-w-xl mx-auto px-4 py-12 text-center">
           <div className="text-7xl animate-pop-in">{perfect ? "🏆" : passed ? "🎉" : "💪"}</div>
           <h1 className="mt-4 text-3xl font-extrabold">
-            {perfect ? "Perfect run!" : passed ? "Well done!" : "Keep going!"}
+            {perfect ? tu("perfectRun", lang) : passed ? tu("wellDone", lang) : tu("keepGoing", lang)}
           </h1>
           <p className="mt-2 text-muted-foreground">
-            You scored <span className="font-bold text-foreground">{score}</span> out of{" "}
+            {tu("youScored", lang)}{" "}
+            <span className="font-bold text-foreground">{score}</span> {tu("outOf", lang)}{" "}
             {questions.length}
           </p>
 
-          {/* Score % ring */}
           <div className="mt-6 flex justify-center">
             <ScoreRing pct={pct} />
           </div>
 
-          {/* Stats grid */}
           <div className="mt-6 grid grid-cols-3 gap-3 max-w-md mx-auto">
-            <Stat label="XP earned" value={`+${sessionXp}`} emoji="⭐" />
-            <Stat label="Best streak" value={`${bestStreak}🔥`} />
-            <Stat label="Accuracy" value={`${pct}%`} emoji="🎯" />
+            <Stat label={tu("xpEarned", lang)} value={`+${sessionXp}`} emoji="⭐" />
+            <Stat label={tu("bestStreak", lang)} value={`${bestStreak}🔥`} />
+            <Stat label={tu("accuracy", lang)} value={`${pct}%`} emoji="🎯" />
           </div>
 
           {result && result.gained > 0 && (
             <div className="mt-4 inline-block px-4 py-2 rounded-full bg-accent/30 font-bold text-accent-foreground animate-float-up">
-              +{result.gained} XP saved to profile
+              +{result.gained} {tu("xpSaved", lang)}
             </div>
           )}
 
@@ -188,9 +185,9 @@ function QuizPage() {
             >
               <div className="text-4xl">🎖️</div>
               <div className="text-xs uppercase tracking-wider text-muted-foreground mt-2">
-                {result?.newBadge ? "Badge unlocked" : "Badge earned"}
+                {result?.newBadge ? tu("badgeUnlocked", lang) : tu("badgeEarned", lang)}
               </div>
-              <div className="font-bold text-lg">{earnedBadge}</div>
+              <div className="font-bold text-lg">{t(era.badge, lang)}</div>
             </div>
           )}
 
@@ -199,27 +196,27 @@ function QuizPage() {
               onClick={() => setReviewing((r) => !r)}
               className="px-6 py-3 rounded-xl bg-card border border-border font-semibold hover:bg-muted"
             >
-              {reviewing ? "Hide review" : "📖 Review answers"}
+              {reviewing ? tu("hideReview", lang) : tu("reviewAnswers", lang)}
             </button>
             <button
               onClick={restart}
               className="px-6 py-3 rounded-xl bg-card border border-border font-semibold hover:bg-muted"
             >
-              🔁 New questions
+              {tu("newQuestions", lang)}
             </button>
             <button
               onClick={() => navigate({ to: "/timeline" })}
               className="px-6 py-3 rounded-xl text-primary-foreground font-semibold"
               style={{ background: "var(--gradient-warm)" }}
             >
-              Continue journey →
+              {tu("continueJourney", lang)}
             </button>
           </div>
 
           {reviewing && (
             <div className="mt-8 text-left space-y-3">
               {history.map((h, i) => (
-                <ReviewCard key={i} index={i} item={h} />
+                <ReviewCard key={i} index={i} item={h} lang={lang} />
               ))}
             </div>
           )}
@@ -237,25 +234,26 @@ function QuizPage() {
           params={{ eraId: era.id }}
           className="text-sm text-muted-foreground hover:text-foreground"
         >
-          ← Back to {era.title}
+          {tu("backTo", lang)} {t(era.title, lang)}
         </Link>
 
         <div className="mt-4 mb-6">
           <div className="flex justify-between items-center text-sm font-semibold mb-2 gap-2">
             <span>
-              Question {step + 1} / {questions.length}
+              {tu("question", lang)} {step + 1} / {questions.length}
             </span>
             <div className="flex items-center gap-2">
               {streak >= 2 && (
                 <span
                   key={streak}
                   className="px-2 py-0.5 rounded-full bg-accent/30 text-accent-foreground text-xs font-bold animate-streak-pulse"
-                  title="Current streak"
                 >
-                  🔥 {streak} streak
+                  🔥 {streak} {tu("streak", lang)}
                 </span>
               )}
-              <span className="text-primary">Score: {score}</span>
+              <span className="text-primary">
+                {tu("score", lang)}: {score}
+              </span>
             </div>
           </div>
           <div className="h-2 rounded-full bg-muted overflow-hidden">
@@ -274,16 +272,16 @@ function QuizPage() {
           className="relative rounded-2xl bg-card p-6 border border-border animate-float-up"
           style={{ boxShadow: "var(--shadow-soft)" }}
         >
-          <TypeBadge type={q.type} />
+          <TypeBadge type={q.type} lang={lang} />
           <QuestionView
             q={q}
             answer={answer}
             locked={locked}
             onAnswer={commit}
             onChange={setAnswer}
+            lang={lang}
           />
 
-          {/* Floating +XP indicator */}
           {locked && lastFeedback?.correct && lastFeedback.xp > 0 && (
             <div
               key={flyKey.current}
@@ -297,9 +295,9 @@ function QuizPage() {
           {locked && lastFeedback && (
             <FeedbackBlock
               q={q}
-              answer={answer}
               correct={lastFeedback.correct}
               message={lastFeedback.message}
+              lang={lang}
             />
           )}
 
@@ -309,7 +307,7 @@ function QuizPage() {
               className="mt-6 w-full px-6 py-3 rounded-xl text-primary-foreground font-bold animate-float-up"
               style={{ background: "var(--gradient-warm)" }}
             >
-              {step + 1 < questions.length ? "Next question →" : "See results 🎉"}
+              {step + 1 < questions.length ? tu("next", lang) : tu("seeResults", lang)}
             </button>
           )}
         </div>
@@ -374,16 +372,15 @@ function ScoreRing({ pct }: { pct: number }) {
 
 function FeedbackBlock({
   q,
-  answer,
   correct,
   message,
+  lang,
 }: {
   q: QuizQuestion;
-  answer: unknown;
   correct: boolean;
   message: string;
+  lang: Lang;
 }) {
-  // Every question type can carry an `explanation`, so surface it consistently.
   const explanation = "explanation" in q ? q.explanation : undefined;
   return (
     <div
@@ -398,13 +395,12 @@ function FeedbackBlock({
         {correct ? "✅ " : "❌ "}
         {message}
       </div>
-      {explanation && <div className="text-muted-foreground">💡 {explanation}</div>}
+      {explanation && <div className="text-muted-foreground">💡 {t(explanation, lang)}</div>}
       {q.type === "order" && !correct && (
         <div className="text-muted-foreground">
-          Correct order: {q.items.map((it) => it.label).join(" → ")}
+          {tu("correctOrder", lang)} {q.items.map((it) => t(it.label, lang)).join(" → ")}
         </div>
       )}
-      {!correct && answer === null && null}
     </div>
   );
 }
@@ -412,9 +408,11 @@ function FeedbackBlock({
 function ReviewCard({
   index,
   item,
+  lang,
 }: {
   index: number;
   item: { q: QuizQuestion; answer: unknown; correct: boolean };
+  lang: Lang;
 }) {
   const { q, answer, correct } = item;
   const explanation = "explanation" in q ? q.explanation : undefined;
@@ -430,38 +428,39 @@ function ReviewCard({
         <span className="text-xs font-semibold uppercase tracking-wider px-2 py-0.5 rounded-full bg-muted text-muted-foreground">
           {q.type}
         </span>
-        <span className="ml-auto text-sm font-bold">{correct ? "✅ Correct" : "❌ Wrong"}</span>
+        <span className="ml-auto text-sm font-bold">
+          {correct ? `✅ ${tu("correct", lang)}` : `❌ ${tu("wrong", lang)}`}
+        </span>
       </div>
-      <div className="text-sm font-semibold mb-2">{getPrompt(q)}</div>
+      <div className="text-sm font-semibold mb-2">{getPrompt(q, lang)}</div>
       <div className="text-xs space-y-1">
         <div>
-          <span className="text-muted-foreground">Your answer: </span>
+          <span className="text-muted-foreground">{tu("yourAnswer", lang)} </span>
           <span className={correct ? "font-semibold" : "font-semibold text-destructive"}>
-            {describeUserAnswer(q, answer)}
+            {describeUserAnswer(q, answer, lang)}
           </span>
         </div>
         {!correct && (
           <div>
-            <span className="text-muted-foreground">Correct answer: </span>
-            <span className="font-semibold text-success">{describeCorrectAnswer(q)}</span>
+            <span className="text-muted-foreground">{tu("correctAnswer", lang)} </span>
+            <span className="font-semibold text-success">{describeCorrectAnswer(q, lang)}</span>
           </div>
         )}
         {explanation && (
-          <div className="text-muted-foreground pt-1">💡 {explanation}</div>
+          <div className="text-muted-foreground pt-1">💡 {t(explanation, lang)}</div>
         )}
       </div>
     </div>
   );
 }
 
-
-function TypeBadge({ type }: { type: QuizQuestion["type"] }) {
+function TypeBadge({ type, lang }: { type: QuizQuestion["type"]; lang: Lang }) {
   const labels: Record<QuizQuestion["type"], { label: string; emoji: string }> = {
-    mcq: { label: "Multiple choice", emoji: "🔘" },
-    truefalse: { label: "True or False", emoji: "⚖️" },
-    whoami: { label: "Who am I?", emoji: "🕵️" },
-    order: { label: "Timeline order", emoji: "🗓️" },
-    image: { label: "Picture round", emoji: "🖼️" },
+    mcq: { label: tu("typeMcq", lang), emoji: "🔘" },
+    truefalse: { label: tu("typeTf", lang), emoji: "⚖️" },
+    whoami: { label: tu("typeWho", lang), emoji: "🕵️" },
+    order: { label: tu("typeOrder", lang), emoji: "🗓️" },
+    image: { label: tu("typeImage", lang), emoji: "🖼️" },
   };
   const { label, emoji } = labels[type];
   return (
@@ -478,19 +477,21 @@ function QuestionView({
   locked,
   onAnswer,
   onChange,
+  lang,
 }: {
   q: QuizQuestion;
   answer: unknown;
   locked: boolean;
   onAnswer: (a: unknown) => void;
   onChange: (a: unknown) => void;
+  lang: Lang;
 }) {
   switch (q.type) {
     case "mcq":
       return (
         <ChoiceList
-          prompt={q.question}
-          options={q.options}
+          prompt={t(q.question, lang)}
+          options={tArr(q.options, lang)}
           correctIndex={q.answerIndex}
           picked={answer as number | null}
           locked={locked}
@@ -507,8 +508,8 @@ function QuestionView({
             {q.imageEmoji ?? "🖼️"}
           </div>
           <ChoiceList
-            prompt={q.question}
-            options={q.options}
+            prompt={t(q.question, lang)}
+            options={tArr(q.options, lang)}
             correctIndex={q.answerIndex}
             picked={answer as number | null}
             locked={locked}
@@ -519,20 +520,17 @@ function QuestionView({
     case "whoami":
       return (
         <>
-          <h2 className="text-xl font-bold mb-3">Who am I?</h2>
+          <h2 className="text-xl font-bold mb-3">{tu("whoAmI", lang)}</h2>
           <ul className="space-y-2 mb-5">
             {q.clues.map((c, i) => (
-              <li
-                key={i}
-                className="flex gap-2 px-3 py-2 rounded-lg bg-muted/50 text-sm"
-              >
+              <li key={i} className="flex gap-2 px-3 py-2 rounded-lg bg-muted/50 text-sm">
                 <span className="font-bold text-primary">#{i + 1}</span>
-                <span>{c}</span>
+                <span>{t(c, lang)}</span>
               </li>
             ))}
           </ul>
           <ChoiceList
-            options={q.options}
+            options={tArr(q.options, lang)}
             correctIndex={q.answerIndex}
             picked={answer as number | null}
             locked={locked}
@@ -543,7 +541,7 @@ function QuestionView({
     case "truefalse":
       return (
         <>
-          <h2 className="text-xl font-bold mb-5">{q.statement}</h2>
+          <h2 className="text-xl font-bold mb-5">{t(q.statement, lang)}</h2>
           <div className="grid grid-cols-2 gap-3">
             {[true, false].map((val) => {
               const isPicked = answer === val;
@@ -566,7 +564,7 @@ function QuestionView({
                   disabled={locked}
                   className={cls}
                 >
-                  {val ? "✅ True" : "❌ False"}
+                  {val ? tu("trueLabel", lang) : tu("falseLabel", lang)}
                 </button>
               );
             })}
@@ -581,6 +579,7 @@ function QuestionView({
           locked={locked}
           onChange={onChange}
           onSubmit={() => onAnswer(answer)}
+          lang={lang}
         />
       );
   }
@@ -640,22 +639,24 @@ function OrderQuestionView({
   locked,
   onChange,
   onSubmit,
+  lang,
 }: {
   q: Extract<QuizQuestion, { type: "order" }>;
   answer: string[] | null;
   locked: boolean;
   onChange: (a: string[]) => void;
   onSubmit: () => void;
+  lang: Lang;
 }) {
-  // Initialise the working order with a stable shuffle the first time.
+  // Working order is by item id (stable across languages).
   const initial = useMemo(
-    () => shuffle(q.items.map((it) => it.label)),
+    () => shuffle(q.items.map((it) => it.id)),
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [q],
   );
   const order = answer ?? initial;
-  const correct = q.items.map((it) => it.label);
-  const hints = new Map(q.items.map((it) => [it.label, it.hint]));
+  const correct = q.items.map((it) => it.id);
+  const itemMap = new Map(q.items.map((it) => [it.id, it]));
 
   function move(idx: number, dir: -1 | 1) {
     if (locked) return;
@@ -668,17 +669,16 @@ function OrderQuestionView({
 
   return (
     <>
-      <h2 className="text-xl font-bold mb-2">{q.prompt}</h2>
-      <p className="text-sm text-muted-foreground mb-4">
-        Use the arrows to put events from earliest to latest.
-      </p>
+      <h2 className="text-xl font-bold mb-2">{t(q.prompt, lang)}</h2>
+      <p className="text-sm text-muted-foreground mb-4">{tu("orderPrompt", lang)}</p>
       <ol className="space-y-2 mb-4">
-        {order.map((label, i) => {
-          const correctHere = locked && correct[i] === label;
-          const wrongHere = locked && correct[i] !== label;
+        {order.map((id, i) => {
+          const it = itemMap.get(id);
+          const correctHere = locked && correct[i] === id;
+          const wrongHere = locked && correct[i] !== id;
           return (
             <li
-              key={label}
+              key={id}
               className={
                 "flex items-center gap-2 px-3 py-2 rounded-xl border-2 " +
                 (correctHere
@@ -690,9 +690,9 @@ function OrderQuestionView({
             >
               <span className="text-xs font-bold text-muted-foreground w-5">{i + 1}.</span>
               <div className="flex-1">
-                <div className="font-medium text-sm">{label}</div>
-                {locked && hints.get(label) && (
-                  <div className="text-xs text-muted-foreground">{hints.get(label)}</div>
+                <div className="font-medium text-sm">{it ? t(it.label, lang) : id}</div>
+                {locked && it?.hint && (
+                  <div className="text-xs text-muted-foreground">{t(it.hint, lang)}</div>
                 )}
               </div>
               {!locked && (
@@ -725,12 +725,11 @@ function OrderQuestionView({
         <button
           onClick={() => {
             onChange(order);
-            // small hack: ensure answer state is set before commit
             setTimeout(onSubmit, 0);
           }}
           className="w-full px-4 py-2.5 rounded-xl bg-primary text-primary-foreground font-semibold hover:opacity-90"
         >
-          Lock in order
+          {tu("lockOrder", lang)}
         </button>
       )}
     </>
