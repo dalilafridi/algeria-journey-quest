@@ -3,7 +3,14 @@ import { useMemo, useRef, useState } from "react";
 import { Header } from "@/components/Header";
 import { eras, type QuizQuestion } from "@/data/eras";
 import { getLevelInfo, recordQuiz } from "@/lib/progress";
-import { isAnswerCorrect, pickQuizQuestions, shuffle } from "@/lib/quiz";
+import {
+  describeCorrectAnswer,
+  describeUserAnswer,
+  getPrompt,
+  isAnswerCorrect,
+  pickQuizQuestions,
+  shuffle,
+} from "@/lib/quiz";
 
 export const Route = createFileRoute("/quiz/$eraId")({
   loader: ({ params }) => {
@@ -72,6 +79,10 @@ function QuizPage() {
   } | null>(null);
   const [done, setDone] = useState(false);
   const [result, setResult] = useState<{ gained: number; newBadge?: string } | null>(null);
+  const [history, setHistory] = useState<{ q: QuizQuestion; answer: unknown; correct: boolean }[]>(
+    [],
+  );
+  const [reviewing, setReviewing] = useState(false);
   const flyKey = useRef(0);
 
   const q = questions[step];
@@ -81,6 +92,7 @@ function QuizPage() {
     setAnswer(a);
     setLocked(true);
     const correct = isAnswerCorrect(q, a);
+    setHistory((h) => [...h, { q, answer: a, correct }]);
     if (correct) {
       const newStreak = streak + 1;
       const bonus = newStreak > 0 && newStreak % STREAK_BONUS_AT === 0;
@@ -122,6 +134,8 @@ function QuizPage() {
     setLastFeedback(null);
     setDone(false);
     setResult(null);
+    setHistory([]);
+    setReviewing(false);
   }
 
   if (done) {
@@ -182,6 +196,12 @@ function QuizPage() {
 
           <div className="mt-8 flex flex-col sm:flex-row gap-3 justify-center">
             <button
+              onClick={() => setReviewing((r) => !r)}
+              className="px-6 py-3 rounded-xl bg-card border border-border font-semibold hover:bg-muted"
+            >
+              {reviewing ? "Hide review" : "📖 Review answers"}
+            </button>
+            <button
               onClick={restart}
               className="px-6 py-3 rounded-xl bg-card border border-border font-semibold hover:bg-muted"
             >
@@ -195,6 +215,14 @@ function QuizPage() {
               Continue journey →
             </button>
           </div>
+
+          {reviewing && (
+            <div className="mt-8 text-left space-y-3">
+              {history.map((h, i) => (
+                <ReviewCard key={i} index={i} item={h} />
+              ))}
+            </div>
+          )}
         </main>
       </div>
     );
@@ -355,7 +383,8 @@ function FeedbackBlock({
   correct: boolean;
   message: string;
 }) {
-  const explanation = q.type === "truefalse" ? q.explanation : undefined;
+  // Every question type can carry an `explanation`, so surface it consistently.
+  const explanation = "explanation" in q ? q.explanation : undefined;
   return (
     <div
       className={
@@ -369,13 +398,58 @@ function FeedbackBlock({
         {correct ? "✅ " : "❌ "}
         {message}
       </div>
-      {explanation && <div className="text-muted-foreground">{explanation}</div>}
+      {explanation && <div className="text-muted-foreground">💡 {explanation}</div>}
       {q.type === "order" && !correct && (
         <div className="text-muted-foreground">
           Correct order: {q.items.map((it) => it.label).join(" → ")}
         </div>
       )}
       {!correct && answer === null && null}
+    </div>
+  );
+}
+
+function ReviewCard({
+  index,
+  item,
+}: {
+  index: number;
+  item: { q: QuizQuestion; answer: unknown; correct: boolean };
+}) {
+  const { q, answer, correct } = item;
+  const explanation = "explanation" in q ? q.explanation : undefined;
+  return (
+    <div
+      className={
+        "rounded-xl border p-4 " +
+        (correct ? "border-success/40 bg-success/10" : "border-destructive/40 bg-destructive/10")
+      }
+    >
+      <div className="flex items-center gap-2 mb-2">
+        <span className="text-xs font-bold text-muted-foreground">Q{index + 1}</span>
+        <span className="text-xs font-semibold uppercase tracking-wider px-2 py-0.5 rounded-full bg-muted text-muted-foreground">
+          {q.type}
+        </span>
+        <span className="ml-auto text-sm font-bold">{correct ? "✅ Correct" : "❌ Wrong"}</span>
+      </div>
+      <div className="text-sm font-semibold mb-2">{getPrompt(q)}</div>
+      <div className="text-xs space-y-1">
+        <div>
+          <span className="text-muted-foreground">Your answer: </span>
+          <span className={correct ? "font-semibold" : "font-semibold text-destructive"}>
+            {describeUserAnswer(q, answer)}
+          </span>
+        </div>
+        {!correct && (
+          <div>
+            <span className="text-muted-foreground">Correct answer: </span>
+            <span className="font-semibold text-success">{describeCorrectAnswer(q)}</span>
+          </div>
+        )}
+        {explanation && (
+          <div className="text-muted-foreground pt-1">💡 {explanation}</div>
+        )}
+      </div>
     </div>
   );
 }

@@ -3,6 +3,7 @@ export type MCQQuestion = {
   question: string;
   options: string[];
   answerIndex: number;
+  explanation?: string;
 };
 
 export type TrueFalseQuestion = {
@@ -17,6 +18,7 @@ export type WhoAmIQuestion = {
   clues: string[]; // shown one by one or all at once
   options: string[];
   answerIndex: number;
+  explanation?: string;
 };
 
 export type OrderQuestion = {
@@ -24,6 +26,7 @@ export type OrderQuestion = {
   prompt: string;
   // Items in CORRECT chronological order. The quiz will shuffle them.
   items: { label: string; hint?: string }[];
+  explanation?: string;
 };
 
 export type ImageQuestion = {
@@ -33,6 +36,7 @@ export type ImageQuestion = {
   imageEmoji?: string; // fallback visual
   options: string[];
   answerIndex: number;
+  explanation?: string;
 };
 
 export type QuizQuestion =
@@ -82,18 +86,21 @@ export const eras: Era[] = [
         question: "Who was the first king to unite Numidia?",
         options: ["Jugurtha", "Massinissa", "Hannibal", "Juba II"],
         answerIndex: 1,
+        explanation: "Massinissa unified the Numidian tribes around 202 BC.",
       },
       {
         type: "mcq",
         question: "What was the capital of Numidia?",
         options: ["Carthage", "Hippo", "Cirta", "Timgad"],
         answerIndex: 2,
+        explanation: "Cirta — today's Constantine — was the royal capital.",
       },
       {
         type: "mcq",
         question: "Numidia was especially famous for its…",
         options: ["Navy", "Cavalry", "Pyramids", "Silk trade"],
         answerIndex: 1,
+        explanation: "Numidian horsemen were prized by both Rome and Carthage.",
       },
       {
         type: "truefalse",
@@ -116,6 +123,7 @@ export const eras: Era[] = [
         ],
         options: ["Jugurtha", "Hannibal", "Massinissa", "Juba II"],
         answerIndex: 2,
+        explanation: "Massinissa reigned over 50 years and lived past 90.",
       },
       {
         type: "whoami",
@@ -126,6 +134,7 @@ export const eras: Era[] = [
         ],
         options: ["Massinissa", "Jugurtha", "Syphax", "Juba I"],
         answerIndex: 1,
+        explanation: "The Jugurthine War (112–106 BC) is named after King Jugurtha.",
       },
       {
         type: "order",
@@ -142,36 +151,42 @@ export const eras: Era[] = [
         imageEmoji: "🏛️",
         options: ["Algiers", "Constantine (Cirta)", "Oran", "Tlemcen"],
         answerIndex: 1,
+        explanation: "Ancient Cirta is modern Constantine, perched on dramatic cliffs.",
       },
       {
         type: "mcq",
         question: "Numidia was located in what modern country?",
         options: ["Egypt", "Algeria", "Morocco", "Tunisia"],
         answerIndex: 1,
+        explanation: "Most of ancient Numidia sits within today's Algeria.",
       },
       {
         type: "mcq",
         question: "What made Numidian cavalry famous?",
         options: ["Heavy armor", "Speed and mobility", "Use of elephants", "Naval tactics"],
         answerIndex: 1,
+        explanation: "They rode light and fast, raiding before enemies could react.",
       },
       {
         type: "mcq",
         question: "Who did Massinissa ally with during the Punic Wars?",
         options: ["Carthage", "Rome", "Greece", "Egypt"],
         answerIndex: 1,
+        explanation: "He switched to Rome and helped defeat Carthage at Zama.",
       },
       {
         type: "mcq",
         question: "What war is Jugurtha known for?",
         options: ["Punic War", "Jugurthine War", "Gallic War", "Peloponnesian War"],
         answerIndex: 1,
+        explanation: "The Jugurthine War shook the Roman Republic itself.",
       },
       {
         type: "mcq",
         question: "Who defeated Jugurtha?",
         options: ["Hannibal", "Marius", "Caesar", "Alexander"],
         answerIndex: 1,
+        explanation: "The Roman general Gaius Marius captured Jugurtha in 105 BC.",
       },
       {
         type: "truefalse",
@@ -194,6 +209,7 @@ export const eras: Era[] = [
         ],
         options: ["Jugurtha", "Massinissa", "Hamilcar", "Scipio"],
         answerIndex: 1,
+        explanation: "Massinissa — Numidia's great unifier and Roman ally.",
       },
     ],
   },
@@ -223,18 +239,21 @@ export const eras: Era[] = [
         question: "Which famous philosopher was born in Roman Algeria?",
         options: ["Plato", "Saint Augustine", "Cicero", "Seneca"],
         answerIndex: 1,
+        explanation: "Saint Augustine was born in Thagaste (modern Souk Ahras).",
       },
       {
         type: "mcq",
         question: "Why was North Africa vital to Rome?",
         options: ["Gold mines", "Wheat supply", "Spices", "Warships"],
         answerIndex: 1,
+        explanation: "Its wheat fields fed the city of Rome itself.",
       },
       {
         type: "mcq",
         question: "Timgad was originally built for…",
         options: ["Traders", "Retired soldiers", "Priests", "Sailors"],
         answerIndex: 1,
+        explanation: "Emperor Trajan founded it as a colony for army veterans.",
       },
       {
         type: "truefalse",
@@ -257,6 +276,7 @@ export const eras: Era[] = [
         ],
         options: ["Cicero", "Saint Augustine", "Tertullian", "Juba II"],
         answerIndex: 1,
+        explanation: "Saint Augustine of Hippo — one of history's most read authors.",
       },
       {
         type: "whoami",
@@ -267,6 +287,7 @@ export const eras: Era[] = [
         ],
         options: ["Massinissa", "Jugurtha", "Juba II", "Hannibal"],
         answerIndex: 2,
+        explanation: "Juba II ruled Mauretania and authored many books.",
       },
       {
         type: "order",
@@ -283,29 +304,34 @@ export const eras: Era[] = [
         imageEmoji: "🏛️",
         options: ["Pompeii", "Timgad", "Leptis Magna", "Carthage"],
         answerIndex: 1,
+        explanation: "Timgad's grid streets are still visible in the desert today.",
       },
       {
         type: "mcq",
         question: "Which mountain city is famous for its stunning Roman ruins?",
         options: ["Djemila", "Algiers", "Tlemcen", "Béjaïa"],
         answerIndex: 0,
+        explanation: "Djemila ('the beautiful') is a UNESCO World Heritage site.",
       },
       {
         type: "mcq",
         question: "What crop made Roman North Africa especially wealthy?",
         options: ["Rice", "Olive oil and wheat", "Tea", "Cotton"],
         answerIndex: 1,
+        explanation: "Vast olive groves and wheat fields enriched the province.",
       },
       {
         type: "mcq",
         question: "Saint Augustine was born in which ancient town?",
         options: ["Thagaste", "Hippo", "Cirta", "Caesarea"],
         answerIndex: 0,
+        explanation: "Thagaste is today's Souk Ahras in northeast Algeria.",
       },
       {
         type: "truefalse",
         statement: "Roman rule in Algeria ended when the Vandals invaded in the 5th century.",
         answer: true,
+        explanation: "The Vandals crossed from Spain and took the region by 439 AD.",
       },
       {
         type: "truefalse",
@@ -322,6 +348,7 @@ export const eras: Era[] = [
         ],
         options: ["Tertullian", "Saint Augustine", "Cyprian", "Origen"],
         answerIndex: 1,
+        explanation: "Saint Augustine served as bishop of Hippo Regius (Annaba).",
       },
     ],
   },
@@ -351,23 +378,27 @@ export const eras: Era[] = [
         question: "Which queen led Berber resistance to the Arab conquest?",
         options: ["Cleopatra", "Kahina", "Zenobia", "Dihya II"],
         answerIndex: 1,
+        explanation: "Kahina (Dihya) led fierce Berber resistance in the Aurès.",
       },
       {
         type: "mcq",
         question: "Ibn Khaldun is known as a pioneer of…",
         options: ["Astronomy", "Sociology", "Medicine", "Poetry"],
         answerIndex: 1,
+        explanation: "His 'Muqaddimah' laid the foundations of social science.",
       },
       {
         type: "mcq",
         question: "Which city helped spread Arabic numerals to Europe?",
         options: ["Algiers", "Béjaïa", "Oran", "Annaba"],
         answerIndex: 1,
+        explanation: "Béjaïa's bustling port is where Fibonacci learned them.",
       },
       {
         type: "truefalse",
         statement: "Tlemcen was a renowned center of learning under the Zayyanid dynasty.",
         answer: true,
+        explanation: "Its madrasas attracted scholars from across the Muslim world.",
       },
       {
         type: "truefalse",
@@ -384,6 +415,7 @@ export const eras: Era[] = [
         ],
         options: ["Kahina (Dihya)", "Cleopatra", "Zenobia", "Tin Hinan"],
         answerIndex: 0,
+        explanation: "Kahina (Dihya) — heroine of Berber resistance.",
       },
       {
         type: "whoami",
@@ -394,6 +426,7 @@ export const eras: Era[] = [
         ],
         options: ["Al-Khwarizmi", "Ibn Khaldun", "Averroes", "Ibn Battuta"],
         answerIndex: 1,
+        explanation: "Ibn Khaldun's 'Muqaddimah' is a landmark of historical thought.",
       },
       {
         type: "order",
@@ -410,23 +443,27 @@ export const eras: Era[] = [
         imageEmoji: "🕌",
         options: ["Fez", "Tlemcen", "Kairouan", "Cordoba"],
         answerIndex: 1,
+        explanation: "Tlemcen — a center of art, scholarship, and trade.",
       },
       {
         type: "mcq",
         question: "In which century did Arab armies first reach the Maghreb?",
         options: ["5th century", "7th century", "10th century", "13th century"],
         answerIndex: 1,
+        explanation: "The conquest began in the mid-7th century AD.",
       },
       {
         type: "mcq",
         question: "Which famous European mathematician learned Arabic numerals in Béjaïa?",
         options: ["Newton", "Fibonacci", "Euclid", "Descartes"],
         answerIndex: 1,
+        explanation: "Fibonacci's stay in Béjaïa changed European math forever.",
       },
       {
         type: "truefalse",
         statement: "Berber and Arab cultures blended over centuries to shape Algerian identity.",
         answer: true,
+        explanation: "Centuries of exchange shaped today's Algerian culture.",
       },
       {
         type: "truefalse",
@@ -443,6 +480,7 @@ export const eras: Era[] = [
         ],
         options: ["Ibn Battuta", "Ibn Khaldun", "Al-Idrisi", "Averroes"],
         answerIndex: 0,
+        explanation: "Ibn Battuta traveled some 75,000 miles in the 14th century.",
       },
     ],
   },
@@ -472,23 +510,27 @@ export const eras: Era[] = [
         question: "When did France invade Algiers?",
         options: ["1789", "1830", "1871", "1900"],
         answerIndex: 1,
+        explanation: "French troops landed near Algiers in June 1830.",
       },
       {
         type: "mcq",
         question: "Who led the great early resistance against the French?",
         options: ["Ben Bella", "Abdelkader", "Boumediene", "Massinissa"],
         answerIndex: 1,
+        explanation: "Emir Abdelkader led a 15-year resistance from 1832.",
       },
       {
         type: "mcq",
         question: "Lalla Fatma N'Soumer led resistance in which region?",
         options: ["Sahara", "Kabylia", "Oran", "Tlemcen"],
         answerIndex: 1,
+        explanation: "She rallied villages in the Djurdjura mountains of Kabylia.",
       },
       {
         type: "truefalse",
         statement: "France treated Algeria as an integral part of France, not a typical colony.",
         answer: true,
+        explanation: "Algeria was officially organized into French départements.",
       },
       {
         type: "truefalse",
@@ -505,6 +547,7 @@ export const eras: Era[] = [
         ],
         options: ["Ben Bella", "Emir Abdelkader", "Boumediene", "Messali Hadj"],
         answerIndex: 1,
+        explanation: "Emir Abdelkader — leader, scholar, and symbol of dignity.",
       },
       {
         type: "whoami",
@@ -515,6 +558,7 @@ export const eras: Era[] = [
         ],
         options: ["Djamila Bouhired", "Lalla Fatma N'Soumer", "Hassiba Ben Bouali", "Kahina"],
         answerIndex: 1,
+        explanation: "Lalla Fatma N'Soumer led resistance in the 1850s.",
       },
       {
         type: "order",
@@ -530,6 +574,7 @@ export const eras: Era[] = [
         question: "Which Algerian city was the first to fall to French forces in 1830?",
         options: ["Oran", "Constantine", "Algiers", "Tlemcen"],
         answerIndex: 2,
+        explanation: "Algiers fell first, opening the path to wider conquest.",
       },
       {
         type: "mcq",
@@ -541,12 +586,14 @@ export const eras: Era[] = [
           "End of WWI",
         ],
         answerIndex: 1,
+        explanation: "Peaceful marches were met with deadly repression.",
       },
       {
         type: "mcq",
         question: "Roughly how long did French colonization of Algeria last?",
         options: ["50 years", "80 years", "Over 130 years", "200 years"],
         answerIndex: 2,
+        explanation: "From 1830 to 1962 — 132 years.",
       },
       {
         type: "truefalse",
@@ -563,6 +610,7 @@ export const eras: Era[] = [
         ],
         options: ["Messali Hadj", "Ferhat Abbas", "Ben Bella", "Boumediene"],
         answerIndex: 0,
+        explanation: "Messali Hadj founded the PPA and inspired generations.",
       },
     ],
   },
@@ -592,23 +640,27 @@ export const eras: Era[] = [
         question: "When did the Algerian revolution begin?",
         options: ["July 5, 1962", "November 1, 1954", "March 19, 1962", "May 8, 1945"],
         answerIndex: 1,
+        explanation: "The FLN launched 'Toussaint Rouge' on November 1, 1954.",
       },
       {
         type: "mcq",
         question: "Where were the first shots of the revolution fired?",
         options: ["Algiers", "Oran", "Aurès Mountains", "Sahara"],
         answerIndex: 2,
+        explanation: "The Aurès region launched the armed struggle.",
       },
       {
         type: "mcq",
         question: "When did Algeria gain independence?",
         options: ["1954", "1958", "1962", "1965"],
         answerIndex: 2,
+        explanation: "Algeria became independent on July 5, 1962.",
       },
       {
         type: "truefalse",
         statement: "Algeria celebrates its Independence Day on July 5th.",
         answer: true,
+        explanation: "July 5, 1962 marked the official independence.",
       },
       {
         type: "truefalse",
@@ -625,6 +677,7 @@ export const eras: Era[] = [
         ],
         options: ["Ahmed Ben Bella", "Larbi Ben M'hidi", "Houari Boumediene", "Krim Belkacem"],
         answerIndex: 1,
+        explanation: "Larbi Ben M'hidi — a hero of the Battle of Algiers.",
       },
       {
         type: "whoami",
@@ -635,6 +688,7 @@ export const eras: Era[] = [
         ],
         options: ["Hassiba Ben Bouali", "Djamila Bouhired", "Lalla Fatma N'Soumer", "Zohra Drif"],
         answerIndex: 1,
+        explanation: "Djamila Bouhired's trial drew worldwide attention.",
       },
       {
         type: "order",
@@ -651,23 +705,27 @@ export const eras: Era[] = [
         question: "Which political movement led the Algerian War of Independence?",
         options: ["FLN", "OAS", "MNA", "PPA"],
         answerIndex: 0,
+        explanation: "The Front de Libération Nationale (FLN) led the struggle.",
       },
       {
         type: "mcq",
         question: "The famous urban battle of 1956–57 took place in which city?",
         options: ["Oran", "Algiers", "Constantine", "Annaba"],
         answerIndex: 1,
+        explanation: "The Battle of Algiers played out in the streets of the Casbah.",
       },
       {
         type: "mcq",
         question: "What treaty officially ended the war in March 1962?",
         options: ["Treaty of Paris", "Évian Accords", "Treaty of Algiers", "Versailles Treaty"],
         answerIndex: 1,
+        explanation: "The Évian Accords paved the way for independence.",
       },
       {
         type: "truefalse",
         statement: "The Algerian War of Independence lasted roughly eight years.",
         answer: true,
+        explanation: "From November 1954 to July 1962 — about 7.5 years.",
       },
       {
         type: "truefalse",
@@ -684,9 +742,17 @@ export const eras: Era[] = [
         ],
         options: ["Ahmed Ben Bella", "Houari Boumediene", "Krim Belkacem", "Ferhat Abbas"],
         answerIndex: 0,
+        explanation: "Ahmed Ben Bella served as Algeria's first president.",
       },
     ],
   },
 ];
 
 export const dailyFacts = eras.flatMap((e) => e.facts);
+
+// Dev-time data validation. Logs warnings to the console if any era has fewer
+// than 10 questions or any options/answerIndex pair is invalid.
+import { validateEras } from "@/lib/quiz";
+if (import.meta.env.DEV) {
+  validateEras(eras);
+}
