@@ -79,6 +79,10 @@ function QuizPage() {
   } | null>(null);
   const [done, setDone] = useState(false);
   const [result, setResult] = useState<{ gained: number; newBadge?: string } | null>(null);
+  const [history, setHistory] = useState<{ q: QuizQuestion; answer: unknown; correct: boolean }[]>(
+    [],
+  );
+  const [reviewing, setReviewing] = useState(false);
   const flyKey = useRef(0);
 
   const q = questions[step];
