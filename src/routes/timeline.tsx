@@ -2,7 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { Header } from "@/components/Header";
 import { eras } from "@/data/eras";
-import { getProgress, isUnlocked, type Progress } from "@/lib/progress";
+import { getProgress, hasPassed, isUnlocked, type Progress } from "@/lib/progress";
 
 export const Route = createFileRoute("/timeline")({
   head: () => ({
@@ -51,8 +51,10 @@ function Timeline() {
           <ul className="space-y-5">
             {eras.map((era, i) => {
               const unlocked = isUnlocked(era.id);
-              const best = progress.completed[era.id]?.bestScore ?? 0;
-              const done = best >= 2;
+              const c = progress.completed[era.id];
+              const best = c?.bestScore ?? 0;
+              const total = c?.total ?? 0;
+              const done = hasPassed(era.id);
               return (
                 <li key={era.id} className="relative pl-16">
                   <div
@@ -79,9 +81,9 @@ function Timeline() {
                           <h2 className="text-xl font-bold mt-0.5">{era.title}</h2>
                           <div className="text-sm text-muted-foreground">{era.dateRange}</div>
                         </div>
-                        {done && (
+                        {done && total > 0 && (
                           <div className="text-xs font-bold px-2.5 py-1 rounded-full bg-secondary text-secondary-foreground">
-                            ✓ {best}/3
+                            ✓ {best}/{total}
                           </div>
                         )}
                       </div>
