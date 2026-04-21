@@ -52,6 +52,21 @@ export const FIGURE_CATEGORIES: { id: FigureCategory; label: LocalizedString; em
     emoji: "🏺",
   },
   {
+    id: "roman",
+    label: L("Roman / Late Antiquity", "Romaine / Antiquité tardive", "الرومان / العصور القديمة المتأخرة"),
+    emoji: "🏛️",
+  },
+  {
+    id: "early-islamic",
+    label: L("Early Islamic / Medieval", "Premier Islam / Médiéval", "الإسلام المبكر / العصور الوسطى"),
+    emoji: "🕌",
+  },
+  {
+    id: "ottoman",
+    label: L("Ottoman period", "Période ottomane", "العهد العثماني"),
+    emoji: "⚓",
+  },
+  {
     id: "early-resistance",
     label: L("Early resistance", "Résistance ancienne", "المقاومة المبكرة"),
     emoji: "🛡️",
@@ -67,6 +82,11 @@ export const FIGURE_CATEGORIES: { id: FigureCategory; label: LocalizedString; em
     emoji: "🕊️",
   },
   {
+    id: "post-independence",
+    label: L("Post-Independence", "Après l'indépendance", "ما بعد الاستقلال"),
+    emoji: "🇩🇿",
+  },
+  {
     id: "intellectuals-culture",
     label: L("Intellectuals & Culture", "Intellectuels & Culture", "المفكرون والثقافة"),
     emoji: "📚",
@@ -78,7 +98,10 @@ export const FIGURE_REGIONS: { id: FigureRegion; label: LocalizedString }[] = [
   { id: "kabylie", label: L("Kabylie", "Kabylie", "القبائل") },
   { id: "aures", label: L("Aurès", "Aurès", "الأوراس") },
   { id: "constantine", label: L("Constantine", "Constantine", "قسنطينة") },
+  { id: "algiers", label: L("Algiers", "Alger", "الجزائر العاصمة") },
+  { id: "oran-west", label: L("Oran / West", "Oran / Ouest", "وهران / الغرب") },
   { id: "mascara-west", label: L("Mascara / West", "Mascara / Ouest", "معسكر / الغرب") },
+  { id: "sahara", label: L("Sahara", "Sahara", "الصحراء") },
   { id: "national", label: L("National / Algeria-wide", "National / Algérie", "وطني / عموم الجزائر") },
   {
     id: "maghreb-intellectual",
