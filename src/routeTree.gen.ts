@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as TimelineRouteImport } from './routes/timeline'
 import { Route as ProfileRouteImport } from './routes/profile'
+import { Route as MomentsRouteImport } from './routes/moments'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as FiguresIndexRouteImport } from './routes/figures.index'
 import { Route as QuizEraIdRouteImport } from './routes/quiz.$eraId'
@@ -26,6 +27,11 @@ const TimelineRoute = TimelineRouteImport.update({
 const ProfileRoute = ProfileRouteImport.update({
   id: '/profile',
   path: '/profile',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MomentsRoute = MomentsRouteImport.update({
+  id: '/moments',
+  path: '/moments',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -61,6 +67,7 @@ const EraEraIdRoute = EraEraIdRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/moments': typeof MomentsRoute
   '/profile': typeof ProfileRoute
   '/timeline': typeof TimelineRoute
   '/era/$eraId': typeof EraEraIdRoute
@@ -71,6 +78,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/moments': typeof MomentsRoute
   '/profile': typeof ProfileRoute
   '/timeline': typeof TimelineRoute
   '/era/$eraId': typeof EraEraIdRoute
@@ -82,6 +90,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/moments': typeof MomentsRoute
   '/profile': typeof ProfileRoute
   '/timeline': typeof TimelineRoute
   '/era/$eraId': typeof EraEraIdRoute
@@ -94,6 +103,7 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/moments'
     | '/profile'
     | '/timeline'
     | '/era/$eraId'
@@ -104,6 +114,7 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/moments'
     | '/profile'
     | '/timeline'
     | '/era/$eraId'
@@ -114,6 +125,7 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/moments'
     | '/profile'
     | '/timeline'
     | '/era/$eraId'
@@ -125,6 +137,7 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  MomentsRoute: typeof MomentsRoute
   ProfileRoute: typeof ProfileRoute
   TimelineRoute: typeof TimelineRoute
   EraEraIdRoute: typeof EraEraIdRoute
@@ -148,6 +161,13 @@ declare module '@tanstack/react-router' {
       path: '/profile'
       fullPath: '/profile'
       preLoaderRoute: typeof ProfileRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/moments': {
+      id: '/moments'
+      path: '/moments'
+      fullPath: '/moments'
+      preLoaderRoute: typeof MomentsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -197,6 +217,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  MomentsRoute: MomentsRoute,
   ProfileRoute: ProfileRoute,
   TimelineRoute: TimelineRoute,
   EraEraIdRoute: EraEraIdRoute,

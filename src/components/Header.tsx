@@ -50,6 +50,12 @@ export function Header() {
             {tu("figures", current)}
           </Link>
           <Link
+            to="/moments"
+            className="text-sm font-medium text-muted-foreground hover:text-foreground transition"
+          >
+            {current === "fr" ? "Moments" : current === "ar" ? "لحظات" : "Moments"}
+          </Link>
+          <Link
             to="/profile"
             className="text-sm font-medium text-muted-foreground hover:text-foreground transition"
           >
