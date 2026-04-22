@@ -43,19 +43,19 @@ function EraPage() {
   return (
     <div className="min-h-screen">
       <Header />
-      <main className="max-w-3xl mx-auto px-4 py-8">
+      <main className="max-w-3xl mx-auto px-4 py-6 sm:py-8 safe-pb">
         <Link
           to="/timeline"
-          className="text-sm text-muted-foreground hover:text-foreground"
+          className="text-sm text-muted-foreground hover:text-foreground inline-block py-1"
         >
           {tu("backToTimeline", lang)}
         </Link>
 
-        <header className="mt-4 animate-float-up">
-          <div className="text-6xl">{era.emoji}</div>
-          <div className="text-sm font-semibold text-primary mt-2">{era.dateRange}</div>
-          <h1 className="text-4xl font-extrabold tracking-tight">{t(era.title, lang)}</h1>
-          <p className="mt-4 text-lg text-foreground/85 leading-relaxed">
+        <header className="mt-3 sm:mt-4 animate-float-up">
+          <div className="text-5xl sm:text-6xl">{era.emoji}</div>
+          <div className="text-xs sm:text-sm font-semibold text-primary mt-2">{era.dateRange}</div>
+          <h1 className="text-2xl sm:text-4xl font-extrabold tracking-tight leading-tight">{t(era.title, lang)}</h1>
+          <p className="mt-3 sm:mt-4 text-base sm:text-lg text-foreground/85 leading-relaxed">
             {t(era.summary, lang)}
           </p>
         </header>
@@ -99,7 +99,7 @@ function EraPage() {
         <Link
           to="/quiz/$eraId"
           params={{ eraId: era.id }}
-          className="mt-8 block w-full text-center px-6 py-4 rounded-2xl text-lg font-bold text-primary-foreground transition-transform hover:scale-[1.02] active:scale-95"
+          className="mt-8 block w-full text-center px-6 py-4 rounded-2xl text-base sm:text-lg font-bold text-primary-foreground transition-transform hover:scale-[1.02] active:scale-95 min-h-[52px]"
           style={{ background: "var(--gradient-warm)", boxShadow: "var(--shadow-glow)" }}
         >
           {tu("takeQuiz", lang)}
