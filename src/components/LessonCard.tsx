@@ -26,7 +26,7 @@ export function LessonCard({ lesson }: { lesson: Lesson }) {
 
   return (
     <article
-      className="rounded-2xl bg-card border border-border p-5 sm:p-6"
+      className="rounded-2xl bg-card border border-border p-5 sm:p-6 transition-all duration-200 hover:border-primary/40 hover:-translate-y-0.5"
       style={{ boxShadow: "var(--shadow-soft)" }}
     >
       <div className="flex items-center gap-2 mb-2">
