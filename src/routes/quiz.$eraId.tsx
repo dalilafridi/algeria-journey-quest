@@ -629,7 +629,7 @@ function ChoiceList({
           const isCorrect = i === correctIndex;
           const isPicked = picked === i;
           let cls =
-            "w-full text-left px-4 py-3 rounded-xl border-2 font-medium transition-all ";
+            "w-full text-left px-4 py-3.5 sm:py-3 rounded-xl border-2 font-medium transition-all min-h-[52px] active:scale-[0.99] ";
           if (!locked) {
             cls += "border-border bg-background hover:border-primary hover:bg-muted";
           } else if (isCorrect) {
