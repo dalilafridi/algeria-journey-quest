@@ -1070,141 +1070,204 @@ function MomentsPage() {
       <HeroSection lang={lang} />
 
       <main className="max-w-4xl mx-auto px-4 pb-20">
+        {/* Daily card — retention */}
+        <MuseumReveal className="mt-2 sm:mt-4">
+          <DailyCard facts={dailyFacts3} questions={dailyQs} lang={lang} />
+        </MuseumReveal>
+
         {/* Shared interactive timeline */}
-        <section className="mt-2 sm:mt-4">
+        <MuseumReveal className="mt-6">
           <TimelineSection nodes={sharedTimeline} lang={lang} />
-        </section>
+        </MuseumReveal>
+
+        {/* Map mode */}
+        <MuseumReveal className="mt-6">
+          <MapSection regions={regions} lang={lang} />
+        </MuseumReveal>
 
         <SectionDivider />
 
         {/* ---------- TAFSUT IMAZIGHEN ---------- */}
         <section aria-labelledby="tafsut-title" className="space-y-5">
-          <div className="text-center">
-            <Eyebrow>1980 · Tafsut Imazighen</Eyebrow>
-            <h2
-              id="tafsut-title"
-              className="mt-3 text-2xl sm:text-3xl font-extrabold tracking-tight"
-            >
-              {tr(TAFSUT.title, lang)}
-            </h2>
-          </div>
+          <MuseumReveal>
+            <div className="text-center">
+              <Eyebrow>1980 · Tafsut Imazighen</Eyebrow>
+              <h2
+                id="tafsut-title"
+                className="mt-3 text-2xl sm:text-3xl font-extrabold tracking-tight"
+              >
+                {tr(TAFSUT.title, lang)}
+              </h2>
+            </div>
+          </MuseumReveal>
 
-          <StoryBlock
-            icon="📖"
-            title={UI.storyMode}
-            body={TAFSUT.story}
+          <GuideBubble
+            text={L(
+              "Prenons un instant pour comprendre ce qui s'est passé en 1980…",
+              "Let's take a moment to understand what happened in 1980…",
+              "لنأخذ لحظة لفهم ما حدث في 1980…",
+            )}
             lang={lang}
           />
 
-          <MuseumCard>
-            <div className="flex items-center gap-3 mb-4">
-              <span className="text-2xl" aria-hidden>
-                🪶
-              </span>
-              <h3 className="text-lg sm:text-xl font-bold">{tr(UI.whatHappened, lang)}</h3>
-            </div>
-            <FactsGrid items={TAFSUT.facts} lang={lang} />
-          </MuseumCard>
+          <MuseumReveal>
+            <StoryBlock icon="📖" title={UI.storyMode} body={TAFSUT.story} lang={lang} />
+          </MuseumReveal>
 
-          <MuseumCard>
-            <div className="flex items-center gap-3 mb-4">
-              <span className="text-2xl" aria-hidden>
-                🌅
-              </span>
-              <h3 className="text-lg sm:text-xl font-bold">{tr(UI.aftermath, lang)}</h3>
-            </div>
-            <ol className="relative border-s-2 border-secondary/30 ms-2 ps-5 space-y-4">
-              {TAFSUT.timeline.map((n) => (
-                <li key={n.year} className="relative">
-                  <span className="absolute -start-[27px] top-1 w-3 h-3 rounded-full bg-secondary" />
-                  <div className="text-sm font-bold text-secondary">{n.year}</div>
-                  <div className="text-foreground/85">{tr(n.label, lang)}</div>
-                </li>
-              ))}
-            </ol>
-          </MuseumCard>
+          <MuseumReveal>
+            <MuseumCard>
+              <div className="flex items-center gap-3 mb-4">
+                <span className="text-2xl" aria-hidden>
+                  🪶
+                </span>
+                <h3 className="text-lg sm:text-xl font-bold">{tr(UI.whatHappened, lang)}</h3>
+              </div>
+              <FactsGrid items={TAFSUT.facts} lang={lang} />
+            </MuseumCard>
+          </MuseumReveal>
 
-          <LessonCard text={TAFSUT.lesson} accent="var(--secondary)" lang={lang} />
+          <MuseumReveal>
+            <MuseumCard>
+              <div className="flex items-center gap-3 mb-4">
+                <span className="text-2xl" aria-hidden>
+                  🌅
+                </span>
+                <h3 className="text-lg sm:text-xl font-bold">{tr(UI.aftermath, lang)}</h3>
+              </div>
+              <ol className="relative border-s-2 border-secondary/30 ms-2 ps-5 space-y-4">
+                {TAFSUT.timeline.map((n) => (
+                  <li key={n.year} className="relative">
+                    <span className="absolute -start-[27px] top-1 w-3 h-3 rounded-full bg-secondary" />
+                    <div className="text-sm font-bold text-secondary">{n.year}</div>
+                    <div className="text-foreground/85">{tr(n.label, lang)}</div>
+                  </li>
+                ))}
+              </ol>
+            </MuseumCard>
+          </MuseumReveal>
 
-          <ChoiceGame scenario={TAFSUT.game} lang={lang} />
+          <MuseumReveal>
+            <LessonCard text={TAFSUT.lesson} accent="var(--secondary)" lang={lang} />
+          </MuseumReveal>
 
-          <QuizSection
-            title={UI.quizTitle}
-            questions={TAFSUT.quiz}
-            lang={lang}
-            onPerfect={() => {
-              grant("courage");
-              grant("knowledge");
-            }}
-          />
+          <MuseumReveal>
+            <DecisionGame scenarios={TAFSUT.decisions} lang={lang} />
+          </MuseumReveal>
+
+          <MuseumReveal>
+            <ReflectionCard points={TAFSUT.connect} accent="var(--secondary)" lang={lang} />
+          </MuseumReveal>
+
+          <MuseumReveal>
+            <QuizSection
+              title={UI.quizTitle}
+              questions={TAFSUT.quiz}
+              lang={lang}
+              onPerfect={() => {
+                grant("courage");
+                grant("knowledge");
+              }}
+            />
+          </MuseumReveal>
         </section>
 
         <SectionDivider />
 
         {/* ---------- BLACK DECADE ---------- */}
         <section aria-labelledby="decade-title" className="space-y-5">
-          <div className="text-center">
-            <Eyebrow>1990s · {tr(L("Mémoire", "Memory", "ذاكرة"), lang)}</Eyebrow>
-            <h2
-              id="decade-title"
-              className="mt-3 text-2xl sm:text-3xl font-extrabold tracking-tight"
-            >
-              {tr(DECADE.title, lang)}
-            </h2>
-          </div>
-
-          <StoryBlock icon="📖" title={UI.storyMode} body={DECADE.story} lang={lang} />
-
-          <MuseumCard>
-            <div className="flex items-center gap-3 mb-4">
-              <span className="text-2xl" aria-hidden>
-                🕯️
-              </span>
-              <h3 className="text-lg sm:text-xl font-bold">{tr(UI.whatHappened, lang)}</h3>
+          <MuseumReveal>
+            <div className="text-center">
+              <Eyebrow>1990s · {tr(L("Mémoire", "Memory", "ذاكرة"), lang)}</Eyebrow>
+              <h2
+                id="decade-title"
+                className="mt-3 text-2xl sm:text-3xl font-extrabold tracking-tight"
+              >
+                {tr(DECADE.title, lang)}
+              </h2>
             </div>
-            <FactsGrid items={DECADE.facts} lang={lang} />
-          </MuseumCard>
+          </MuseumReveal>
 
-          <MuseumCard>
-            <div className="flex items-center gap-3 mb-4">
-              <span className="text-2xl" aria-hidden>
-                🕊️
-              </span>
-              <h3 className="text-lg sm:text-xl font-bold">{tr(UI.aftermath, lang)}</h3>
-            </div>
-            <p className="text-foreground/85 leading-relaxed">
-              {tr(
-                L(
-                  "Après ces années difficiles, l'Algérie a cherché à guérir : se souvenir avec respect, écouter les familles touchées, et protéger la paix pour que cela ne se reproduise pas. Apprendre cette histoire, avec douceur, fait partie de cette guérison.",
-                  "After these hard years, Algeria sought to heal: to remember with respect, to listen to the families affected, and to protect peace so it never happens again. Learning this history, gently, is part of that healing.",
-                  "بعد تلك السنوات الصعبة، سعت الجزائر إلى التعافي: التذكّر باحترام، والإنصات للعائلات المتأثرة، وحماية السلام كي لا يتكرّر ما حدث. تعلّم هذا التاريخ بلطف جزء من هذا التعافي.",
-                ),
-                lang,
-              )}
-            </p>
-          </MuseumCard>
-
-          <LessonCard text={DECADE.lesson} accent="oklch(0.6 0.12 25)" lang={lang} />
-
-          <ChoiceGame scenario={DECADE.game} lang={lang} />
-
-          <QuizSection
-            title={UI.quizTitle}
-            questions={DECADE.quiz}
+          <GuideBubble
+            text={L(
+              "Cette page parle d'une période sensible. Nous l'abordons avec douceur et respect.",
+              "This section covers a sensitive time. We approach it with care and respect.",
+              "هذه الفقرة تتحدّث عن فترة حسّاسة. نقاربها برفق واحترام.",
+            )}
             lang={lang}
-            onPerfect={() => {
-              grant("peace");
-              grant("knowledge");
-            }}
           />
+
+          <MuseumReveal>
+            <StoryBlock icon="📖" title={UI.storyMode} body={DECADE.story} lang={lang} />
+          </MuseumReveal>
+
+          <MuseumReveal>
+            <MuseumCard>
+              <div className="flex items-center gap-3 mb-4">
+                <span className="text-2xl" aria-hidden>
+                  🕯️
+                </span>
+                <h3 className="text-lg sm:text-xl font-bold">{tr(UI.whatHappened, lang)}</h3>
+              </div>
+              <FactsGrid items={DECADE.facts} lang={lang} />
+            </MuseumCard>
+          </MuseumReveal>
+
+          <MuseumReveal>
+            <WeRememberCard text={DECADE.remember} lang={lang} />
+          </MuseumReveal>
+
+          <MuseumReveal>
+            <MuseumCard>
+              <div className="flex items-center gap-3 mb-4">
+                <span className="text-2xl" aria-hidden>
+                  🕊️
+                </span>
+                <h3 className="text-lg sm:text-xl font-bold">{tr(UI.aftermath, lang)}</h3>
+              </div>
+              <p className="text-foreground/85 leading-relaxed">
+                {tr(
+                  L(
+                    "Après ces années difficiles, l'Algérie a cherché à guérir : se souvenir avec respect, écouter les familles touchées, et protéger la paix pour que cela ne se reproduise pas. Apprendre cette histoire, avec douceur, fait partie de cette guérison.",
+                    "After these hard years, Algeria sought to heal: to remember with respect, to listen to the families affected, and to protect peace so it never happens again. Learning this history, gently, is part of that healing.",
+                    "بعد تلك السنوات الصعبة، سعت الجزائر إلى التعافي: التذكّر باحترام، والإنصات للعائلات المتأثرة، وحماية السلام كي لا يتكرّر ما حدث. تعلّم هذا التاريخ بلطف جزء من هذا التعافي.",
+                  ),
+                  lang,
+                )}
+              </p>
+            </MuseumCard>
+          </MuseumReveal>
+
+          <MuseumReveal>
+            <LessonCard text={DECADE.lesson} accent="oklch(0.6 0.12 25)" lang={lang} />
+          </MuseumReveal>
+
+          <MuseumReveal>
+            <DecisionGame scenarios={DECADE.decisions} lang={lang} />
+          </MuseumReveal>
+
+          <MuseumReveal>
+            <ReflectionCard points={DECADE.connect} accent="oklch(0.6 0.12 25)" lang={lang} />
+          </MuseumReveal>
+
+          <MuseumReveal>
+            <QuizSection
+              title={UI.quizTitle}
+              questions={DECADE.quiz}
+              lang={lang}
+              onPerfect={() => {
+                grant("peace");
+                grant("knowledge");
+              }}
+            />
+          </MuseumReveal>
         </section>
 
         <SectionDivider />
 
         {/* Badges */}
-        <section>
+        <MuseumReveal>
           <BadgeDisplay badges={badges} earned={earned} lang={lang} />
-        </section>
+        </MuseumReveal>
 
         <div className="text-center mt-10">
           <AmazighSymbol size={36} glow={false} className="opacity-60 mx-auto" />
