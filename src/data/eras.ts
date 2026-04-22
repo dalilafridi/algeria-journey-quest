@@ -449,9 +449,39 @@ export const eras: Era[] = [
         ),
       },
       {
-        type: "whoami">
+        type: "whoami",
+        difficulty: "hard",
+        clues: [
+          L(
+            "I came from a Libu (Amazigh) family that gained power in Egypt.",
+            "Je venais d'une famille libou (amazighe) qui prit le pouvoir en Égypte.",
+            "كنت من عائلة ليبية (أمازيغية) وصلت إلى الحكم في مصر.",
+          ),
+          L(
+            "I founded the 22nd Dynasty around 945 BCE.",
+            "J'ai fondé la 22e dynastie vers 945 av. J.-C.",
+            "أسستُ الأسرة الثانية والعشرين نحو 945 ق.م.",
+          ),
+        ],
+        options: [
+          L("Sheshonq I", "Sheshonq Ier", "شيشنق الأول"),
+          L("Ramses II", "Ramsès II", "رمسيس الثاني"),
+          L("Akhenaten", "Akhenaton", "إخناتون"),
+          L("Thutmose III", "Thoutmôsis III", "تحتمس الثالث"),
+        ],
+        answerIndex: 0,
+        explanation: L(
+          "All clues describe Sheshonq I, the Amazigh-origin founder of the 22nd Dynasty.",
+          "Tous les indices décrivent Sheshonq Ier, fondateur amazigh de la 22e dynastie.",
+          "كل الأدلة تصف شيشنق الأول، مؤسس الأسرة الثانية والعشرين ذي الأصل الأمازيغي.",
+        ),
+      },
+    ],
+  },
 
-
+  // ============================================================
+  // 1) NUMIDIA
+  // ============================================================
   {
     id: "numidia",
     title: L("Numidia", "Numidie", "نوميديا"),
