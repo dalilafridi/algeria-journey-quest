@@ -112,3 +112,54 @@ export function categoryTotals(cat: WordCategoryId) {
 }
 
 export { WORD_CATEGORIES };
+
+// ---------- Word of the Day ----------
+
+/** Tiny XP reward (kept smaller than reveal/quiz). */
+export const WOTD_XP = 1;
+
+function todayKey(d = new Date()): string {
+  return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
+}
+
+/** Stable day-of-year index so the pick is deterministic per day. */
+function dayOfYear(d = new Date()): number {
+  const start = Date.UTC(d.getUTCFullYear(), 0, 0);
+  const now = Date.UTC(d.getUTCFullYear(), d.getUTCMonth(), d.getUTCDate());
+  return Math.floor((now - start) / 86_400_000);
+}
+
+/** Returns the deterministic Word of the Day. */
+export function getWordOfTheDay() {
+  const idx = dayOfYear() % words.length;
+  return words[idx];
+}
+
+/** Whether today's Word-of-the-Day XP has already been claimed. */
+export function isWotdClaimedToday(): boolean {
+  return read().wotdClaimedOn === todayKey();
+}
+
+/** Claim today's WoTD XP (idempotent per day). Also marks revealed. */
+export function claimWotd(wordId: string): { gained: number; alreadyClaimed: boolean; streak: number } {
+  const p = read();
+  const today = todayKey();
+  if (p.wotdClaimedOn === today) {
+    return { gained: 0, alreadyClaimed: true, streak: p.wotdStreak ?? 0 };
+  }
+  // Mark revealed so the main reveal counter / category badge stay in sync.
+  if (!p.revealed.includes(wordId)) {
+    p.revealed.push(wordId);
+    p.xp += REVEAL_XP;
+  }
+  p.xp += WOTD_XP;
+  p.wotdClaimedOn = today;
+  p.wotdStreak = (p.wotdStreak ?? 0) + 1;
+  write(p);
+  return { gained: WOTD_XP, alreadyClaimed: false, streak: p.wotdStreak };
+}
+
+export function getWotdStreak(): number {
+  return read().wotdStreak ?? 0;
+}
+
