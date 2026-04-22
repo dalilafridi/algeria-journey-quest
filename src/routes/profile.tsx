@@ -24,7 +24,17 @@ export const Route = createFileRoute("/profile")({
 function ProfilePage() {
   const [progress, setProgress] = useState<Progress>({ xp: 0, completed: {}, badges: [] });
   const [pct, setPct] = useState(0);
+  const [resetMode, setResetMode] = useState<null | "scores" | "all">(null);
+  const [resetMsg, setResetMsg] = useState<string | null>(null);
   const lang = useLang();
+
+  function doReset() {
+    if (resetMode === "scores") resetQuizScoresOnly();
+    if (resetMode === "all") resetAllQuizProgress();
+    setResetMode(null);
+    setResetMsg(tu("resetDone", lang));
+    setTimeout(() => setResetMsg(null), 2400);
+  }
 
   useEffect(() => {
     const update = () => {
@@ -109,6 +119,35 @@ function ProfilePage() {
           </ul>
         </section>
 
+        <section className="mt-10">
+          <h2 className="font-bold text-lg mb-3">{tu("resetQuizzes", lang)}</h2>
+          <div
+            className="rounded-2xl border border-border bg-card p-5 flex flex-col sm:flex-row gap-3"
+            style={{ boxShadow: "var(--shadow-soft)" }}
+          >
+            <button
+              onClick={() => setResetMode("scores")}
+              className="flex-1 px-4 py-3 rounded-xl bg-muted hover:bg-muted/70 font-semibold text-sm transition border border-border text-start"
+            >
+              🧹 {tu("resetScoresOnly", lang)}
+            </button>
+            <button
+              onClick={() => setResetMode("all")}
+              className="flex-1 px-4 py-3 rounded-xl font-semibold text-sm transition border text-start"
+              style={{
+                borderColor: "color-mix(in oklab, var(--destructive) 50%, transparent)",
+                background: "color-mix(in oklab, var(--destructive) 12%, var(--card))",
+                color: "var(--destructive)",
+              }}
+            >
+              ⚠️ {tu("resetAllProgress", lang)}
+            </button>
+          </div>
+          {resetMsg && (
+            <div className="mt-3 text-sm text-success font-semibold">✅ {resetMsg}</div>
+          )}
+        </section>
+
         <Link
           to="/timeline"
           className="mt-8 block w-full text-center px-6 py-4 rounded-2xl text-lg font-bold text-primary-foreground"
@@ -117,6 +156,45 @@ function ProfilePage() {
           {tu("continueJourney", lang)}
         </Link>
       </main>
+
+      {resetMode && (
+        <div
+          className="fixed inset-0 z-50 flex items-end sm:items-center justify-center bg-foreground/40 backdrop-blur-sm p-4"
+          onClick={() => setResetMode(null)}
+        >
+          <div
+            className="w-full max-w-sm rounded-2xl bg-card border border-border p-5 animate-float-up"
+            style={{ boxShadow: "var(--shadow-soft)" }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="text-2xl mb-2">{resetMode === "all" ? "⚠️" : "🧹"}</div>
+            <h3 className="font-bold text-lg">{tu("resetConfirm", lang)}</h3>
+            <p className="mt-2 text-sm text-muted-foreground">
+              {resetMode === "all" ? tu("resetWarnAll", lang) : tu("resetWarnScores", lang)}
+            </p>
+            <div className="mt-5 flex gap-2 justify-end">
+              <button
+                onClick={() => setResetMode(null)}
+                className="px-4 py-2 rounded-xl border border-border bg-card font-semibold text-sm hover:bg-muted"
+              >
+                {tu("cancel", lang)}
+              </button>
+              <button
+                onClick={doReset}
+                className="px-4 py-2 rounded-xl font-semibold text-sm text-primary-foreground"
+                style={{
+                  background:
+                    resetMode === "all"
+                      ? "var(--destructive)"
+                      : "var(--gradient-warm)",
+                }}
+              >
+                {tu("confirm", lang)}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
