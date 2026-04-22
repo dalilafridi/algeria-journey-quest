@@ -83,6 +83,19 @@ export function isUnlocked(eraId: string): boolean {
   return hasPassed(prev.id);
 }
 
+/** Reset only the recorded scores, keep XP and badges. */
+export function resetQuizScoresOnly() {
+  const p = getProgress();
+  p.completed = {};
+  saveProgress(p);
+}
+
+/** Reset all quiz progress: scores, badges, and XP earned. */
+export function resetAllQuizProgress() {
+  const p: Progress = { xp: 0, completed: {}, badges: [] };
+  saveProgress(p);
+}
+
 export function totalProgressPct(): number {
   const done = eras.filter((e) => hasPassed(e.id)).length;
   return Math.round((done / eras.length) * 100);
