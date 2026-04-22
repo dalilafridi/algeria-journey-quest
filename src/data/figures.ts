@@ -331,6 +331,74 @@ export const figures: Figure[] = [
       "Il défendait deux principes célèbres : la primauté du politique sur le militaire, et de l'intérieur sur l'extérieur.",
       "تمسّك بمبدأين شهيرين: أولوية السياسي على العسكري، وأولوية الداخل على الخارج.",
     ),
+    extended: {
+      storyMode: [
+        L(
+          "In a small village of Kabylie, a young boy named Ramdane loved books more than anything. He believed words and ideas could change the world — even more than weapons.",
+          "Dans un petit village de Kabylie, un jeune garçon nommé Ramdane aimait les livres plus que tout. Il croyait que les mots et les idées pouvaient changer le monde, plus encore que les armes.",
+          "في قرية صغيرة بمنطقة القبائل، كان فتى صغير اسمه رمضان يحبّ الكتب أكثر من أي شيء، ويؤمن بأن الكلمات والأفكار قادرة على تغيير العالم أكثر من السلاح.",
+        ),
+        L(
+          "When Algeria rose up in 1954, Abane stepped into the shadows to organize. He gathered fighters and thinkers from every region and asked them a simple question: 'What kind of country do we want to build after the war?'",
+          "Quand l'Algérie se souleva en 1954, Abane entra dans la clandestinité pour organiser. Il rassembla combattants et penseurs de toutes les régions et leur posa une question simple : « Quel pays voulons-nous bâtir après la guerre ? »",
+          "حين انتفضت الجزائر سنة 1954، انخرط عبان في العمل السرّي لتنظيم الصفوف. جمع المقاتلين والمفكّرين من كل المناطق وطرح عليهم سؤالاً بسيطًا: «أيّ بلدٍ نريد أن نبنيه بعد الحرب؟»",
+        ),
+        L(
+          "On 20 August 1956, deep in the Soummam valley, he helped lead a secret congress that gave the revolution a brain, a structure and a clear vision. From that day on, the war was not only about fighting — it was about building a nation.",
+          "Le 20 août 1956, au cœur de la vallée de la Soummam, il contribua à conduire un congrès secret qui donna à la révolution un cerveau, une structure et une vision claire. Dès ce jour, la guerre ne fut plus seulement un combat : elle devint la construction d'une nation.",
+          "في 20 أوت 1956، وفي عمق وادي الصومام، ساهم في قيادة مؤتمرٍ سرّي منح الثورة عقلاً وبنيةً ورؤيةً واضحة. منذ ذلك اليوم، لم تعد الحرب مجرّد قتال، بل صارت بناء أمّة.",
+        ),
+      ],
+      whatHappened: [
+        L(
+          "Born in 1920 in Azouza (Kabylie); brilliant student, joined the nationalist movement in the 1940s.",
+          "Né en 1920 à Azouza (Kabylie) ; étudiant brillant, il rejoint le mouvement nationaliste dans les années 1940.",
+          "وُلد سنة 1920 في قرية أزوزة بمنطقة القبائل؛ طالبٌ متميّز التحق بالحركة الوطنية في أربعينيات القرن العشرين.",
+        ),
+        L(
+          "Imprisoned by France for years; released in 1955, he immediately reorganized the FLN inside the country.",
+          "Emprisonné par la France pendant des années ; libéré en 1955, il réorganise aussitôt le FLN à l'intérieur du pays.",
+          "اعتقلته فرنسا سنوات طويلة؛ وبعد إطلاق سراحه سنة 1955 أعاد فورًا تنظيم جبهة التحرير في الداخل.",
+        ),
+        L(
+          "Soummam Congress (20 August 1956): united the Wilayas, created national institutions (CNRA, CCE), and adopted a written political platform.",
+          "Congrès de la Soummam (20 août 1956) : il unifie les Wilayas, crée des institutions nationales (CNRA, CCE) et adopte une plateforme politique écrite.",
+          "مؤتمر الصومام (20 أوت 1956): وحّد الولايات وأنشأ مؤسسات وطنية (المجلس الوطني للثورة ولجنة التنسيق والتنفيذ) واعتمد ميثاقًا سياسيًا مكتوبًا.",
+        ),
+        L(
+          "Two founding principles: priority of the political over the military, and of the interior (Algeria) over the exterior (delegations abroad).",
+          "Deux principes fondateurs : primauté du politique sur le militaire, et de l'intérieur (Algérie) sur l'extérieur (délégations à l'étranger).",
+          "مبدآن مؤسِّسان: أولوية السياسي على العسكري، وأولوية الداخل (الجزائر) على الخارج (الوفود في المهجر).",
+        ),
+        L(
+          "He died in December 1957, at only 37, in tragic and disputed circumstances inside the revolution.",
+          "Il meurt en décembre 1957, à seulement 37 ans, dans des circonstances tragiques et disputées au sein de la révolution.",
+          "تُوفّي في ديسمبر 1957 وعمره 37 سنة فقط، في ظروف مأساوية ومتنازع عليها داخل الثورة.",
+        ),
+      ],
+      aftermath: [
+        L(
+          "The Soummam platform he shaped became the political backbone of the war and inspired the future Algerian state.",
+          "La plateforme de la Soummam qu'il a façonnée devint la colonne vertébrale politique de la guerre et inspira le futur État algérien.",
+          "صار ميثاق الصومام الذي صاغه العمودَ الفقري السياسي للحرب وألهم الدولة الجزائرية الفتية.",
+        ),
+        L(
+          "His insistence on collective leadership and on civilian primacy still shapes debates about Algerian governance today.",
+          "Son exigence d'une direction collective et de la primauté du civil nourrit encore les débats sur la gouvernance algérienne aujourd'hui.",
+          "لا يزال إصراره على القيادة الجماعية وأولوية المدني حاضرًا في النقاشات حول الحكم في الجزائر إلى اليوم.",
+        ),
+        L(
+          "Streets, schools and an airport in Béjaïa carry his name; historians often call him 'the architect of the Algerian revolution.'",
+          "Des rues, des écoles et l'aéroport de Béjaïa portent son nom ; les historiens le surnomment souvent « l'architecte de la révolution algérienne ».",
+          "شوارع ومدارس ومطار بجاية تحمل اسمه؛ ويصفه المؤرخون غالبًا بـ«مهندس الثورة الجزائرية».",
+        ),
+      ],
+      keyLesson: L(
+        "A revolution needs more than courage — it needs a clear vision and the discipline to organize it.",
+        "Une révolution a besoin de plus que du courage : elle a besoin d'une vision claire et de la discipline pour l'organiser.",
+        "الثورة لا تحتاج إلى الشجاعة وحدها، بل تحتاج إلى رؤيةٍ واضحة وإلى الانضباط لتنظيمها.",
+      ),
+    },
   },
   {
     id: "krim-belkacem",
