@@ -4,6 +4,7 @@ import { toast } from "sonner";
 
 import appCss from "../styles.css?url";
 import { Toaster as Sonner } from "@/components/ui/sonner";
+import { SplashScreen } from "@/components/brand/SplashScreen";
 
 function NotFoundComponent() {
   return (
@@ -83,6 +84,7 @@ function RootComponent() {
 
   return (
     <>
+      <SplashScreen />
       <Outlet />
       <Sonner />
     </>

@@ -2,6 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { getLevelInfo, getProgress, totalProgressPct, type LevelInfo } from "@/lib/progress";
 import { LANGS, getLang, setLang, tu, useLang, type Lang } from "@/lib/i18n";
+import { AmazighSymbol } from "@/components/brand/AmazighSymbol";
 
 export function Header() {
   const [xp, setXp] = useState(0);
@@ -27,7 +28,15 @@ export function Header() {
     <header className="sticky top-0 z-30 backdrop-blur-md bg-background/80 border-b border-border">
       <div className="max-w-5xl mx-auto px-4 py-3 flex items-center justify-between gap-4">
         <Link to="/" className="flex items-center gap-2 font-bold text-lg">
-          <span className="text-2xl">🇩🇿</span>
+          <span
+            className="inline-flex items-center justify-center w-8 h-8 rounded-full"
+            style={{
+              background: "oklch(0.18 0.03 55)",
+              boxShadow: "0 0 12px oklch(0.85 0.16 80 / 0.45)",
+            }}
+          >
+            <AmazighSymbol size={22} glow={false} />
+          </span>
           <span className="hidden sm:inline">{tu("appName", current)}</span>
         </Link>
         <div className="flex items-center gap-2 sm:gap-3">

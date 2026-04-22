@@ -94,6 +94,32 @@
   --gradient-hero: linear-gradient(160deg, oklch(0.95 0.04 85), oklch(0.85 0.08 70));
   --shadow-soft: 0 4px 20px -4px oklch(0.45 0.1 50 / 0.18);
   --shadow-glow: 0 8px 32px -8px oklch(0.62 0.16 40 / 0.35);
+
+  /* === Algeria Through Time — Brand tokens (cinematic gold-on-dark) === */
+  --brand-gold: oklch(0.82 0.14 78);
+  --brand-gold-bright: oklch(0.9 0.16 88);
+  --brand-gold-deep: oklch(0.62 0.13 60);
+  --brand-bronze: oklch(0.55 0.11 55);
+  --brand-silver: oklch(0.85 0.01 90);
+  --brand-night: oklch(0.16 0.02 50);
+  --brand-night-2: oklch(0.22 0.03 55);
+  --brand-ember: oklch(0.55 0.18 35);
+  --brand-flag-green: oklch(0.5 0.13 150);
+  --brand-flag-red: oklch(0.6 0.22 25);
+  --gradient-brand-night: radial-gradient(
+      ellipse at 50% 0%,
+      oklch(0.28 0.05 60 / 0.9),
+      oklch(0.12 0.02 50) 70%
+    ),
+    linear-gradient(180deg, oklch(0.16 0.03 55), oklch(0.1 0.02 45));
+  --gradient-brand-gold: linear-gradient(
+    135deg,
+    var(--brand-gold-bright),
+    var(--brand-gold) 50%,
+    var(--brand-gold-deep)
+  );
+  --shadow-gold-glow: 0 0 40px -8px oklch(0.85 0.16 80 / 0.55),
+    0 0 12px -2px oklch(0.9 0.16 85 / 0.6);
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
@@ -183,6 +209,36 @@
   0%, 100% { transform: scale(1); }
   50% { transform: scale(1.15); }
 }
+@keyframes gold-pulse {
+  0%, 100% {
+    filter: drop-shadow(0 0 6px oklch(0.9 0.16 85 / 0.55))
+      drop-shadow(0 0 18px oklch(0.82 0.14 78 / 0.35));
+  }
+  50% {
+    filter: drop-shadow(0 0 14px oklch(0.95 0.18 88 / 0.85))
+      drop-shadow(0 0 32px oklch(0.85 0.16 80 / 0.55));
+  }
+}
+@keyframes slow-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+@keyframes splash-fade {
+  0% { opacity: 0; transform: scale(0.96); }
+  20% { opacity: 1; transform: scale(1); }
+  85% { opacity: 1; transform: scale(1); }
+  100% { opacity: 0; transform: scale(1.02); visibility: hidden; }
+}
+@keyframes badge-unlock {
+  0% { transform: scale(0.4) rotate(-25deg); opacity: 0; filter: brightness(2); }
+  60% { transform: scale(1.15) rotate(8deg); opacity: 1; }
+  100% { transform: scale(1) rotate(0deg); opacity: 1; filter: brightness(1); }
+}
+@keyframes ember-rise {
+  0% { transform: translateY(0) scale(1); opacity: 0; }
+  20% { opacity: 0.9; }
+  100% { transform: translateY(-60px) scale(0.4); opacity: 0; }
+}
 
 .animate-pop-in { animation: pop-in 0.4s ease-out; }
 .animate-float-up { animation: float-up 0.5s ease-out; }
@@ -190,3 +246,8 @@
 .animate-confetti { animation: confetti 1s ease-out forwards; }
 .animate-xp-fly { animation: xp-fly 1.2s ease-out forwards; }
 .animate-streak-pulse { animation: streak-pulse 0.5s ease-in-out; }
+.animate-gold-pulse { animation: gold-pulse 2.4s ease-in-out infinite; }
+.animate-slow-spin { animation: slow-spin 28s linear infinite; }
+.animate-splash-fade { animation: splash-fade 2.4s ease-in-out forwards; }
+.animate-badge-unlock { animation: badge-unlock 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) both; }
+.animate-ember-rise { animation: ember-rise 1.6s ease-out forwards; }
