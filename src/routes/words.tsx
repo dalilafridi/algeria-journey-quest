@@ -5,7 +5,10 @@ import { WORD_CATEGORIES, words, type WordCategoryId } from "@/data/words";
 import { quizForWord, type WordsQuizItem } from "@/data/wordsQuiz";
 import {
   categoryTotals,
+  claimWotd,
+  getWordOfTheDay,
   getWordsProgress,
+  isWotdClaimedToday,
   markQuizCorrect,
   markRevealed,
   wordsTotals,
