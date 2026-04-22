@@ -66,16 +66,16 @@ export function Header() {
             className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl object-cover shrink-0"
             style={{ boxShadow: "0 0 12px oklch(0.85 0.16 80 / 0.45)" }}
           />
-          <span className="hidden sm:inline truncate">{tu("appName", current)}</span>
+          <span className="hidden xl:inline truncate">{tu("appName", current)}</span>
         </Link>
 
         {/* Desktop nav */}
-        <nav className="hidden md:flex items-center gap-3">
+        <nav className="hidden lg:flex items-center gap-4 xl:gap-5 flex-1 justify-center">
           {navLinks.map((l) => (
             <Link
               key={l.to}
               to={l.to}
-              className="text-sm font-medium text-muted-foreground hover:text-foreground transition"
+              className="text-sm font-medium text-muted-foreground hover:text-foreground transition whitespace-nowrap"
             >
               {l.label}
             </Link>
