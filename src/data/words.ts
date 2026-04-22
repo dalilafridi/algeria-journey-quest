@@ -99,26 +99,30 @@ export const words: WordItem[] = [
     ),
   },
 
-  // ---------- Classical World ----------
   {
-    id: "iliad-opening",
-    category: "classical-world",
+    id: "iliyadha-aljazair",
+    category: "national-voice",
     emoji: "📜",
+    figureId: "moufdi-zakaria",
     quote: L(
-      "Sing, O Muse, of the wrath of Achilles…",
-      "Chante, ô Muse, la colère d'Achille…",
-      "أنشدي يا ربّةَ الشعرِ غضبَ آخيل…",
+      "Algeria, O land of glory — your history is an epic written in light.",
+      "Algérie, ô terre de gloire — ton histoire est une épopée écrite de lumière.",
+      "الجزائرُ يا أرضَ المجدِ — تاريخُكِ ملحمةٌ كُتبت بالنور.",
     ),
-    author: L("Homer — The Iliad", "Homère — L'Iliade", "هوميروس — الإلياذة"),
+    author: L(
+      "Moufdi Zakaria — Iliyadha al-Jaza'ir (The Algerian Iliad)",
+      "Moufdi Zakaria — Iliyadha al-Jaza'ir (L'Iliade algérienne)",
+      "مفدي زكريا — إلياذة الجزائر",
+    ),
     context: L(
-      "The opening line of the great Greek epic — model for Moufdi Zakaria's own 'Algerian Iliad'.",
-      "Le vers d'ouverture de la grande épopée grecque — modèle de « L'Iliade algérienne » de Moufdi Zakaria.",
-      "البيت الافتتاحي للملحمة اليونانية الكبرى — نموذج «إلياذة الجزائر» لمفدي زكريا.",
+      "An epic poem of more than 1,000 verses, recited by Moufdi Zakaria in 1972 to celebrate ten years of independence.",
+      "Un poème épique de plus de 1 000 vers, récité par Moufdi Zakaria en 1972 pour célébrer les dix ans de l'indépendance.",
+      "قصيدة ملحمية من أكثر من ألف بيت، ألقاها مفدي زكريا سنة 1972 احتفاءً بعشرية الاستقلال.",
     ),
     meaning: L(
-      "Epic poetry turns memory into song — what Homer did for Greece, Zakaria did for Algeria.",
-      "La poésie épique transforme la mémoire en chant — ce qu'Homère fit pour la Grèce, Zakaria le fit pour l'Algérie.",
-      "الشعر الملحمي يحوّل الذاكرة إلى نشيد — ما فعله هوميروس لليونان فعله زكريا للجزائر.",
+      "Iliyadha al-Jaza'ir is an epic poem by Moufdi Zakaria of more than 1,000 verses celebrating Algeria's history, identity, and unity.",
+      "« Iliyadha al-Jaza'ir » (L'Iliade algérienne) est un poème épique de Moufdi Zakaria de plus de 1 000 vers, célébrant l'histoire, l'identité et l'unité de l'Algérie.",
+      "«إلياذة الجزائر» قصيدة ملحمية لمفدي زكريا تتكوّن من أكثر من ألف بيت، تحتفي بتاريخ الجزائر وهويتها ووحدتها.",
     ),
   },
   {
