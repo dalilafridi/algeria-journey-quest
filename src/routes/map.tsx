@@ -71,15 +71,10 @@ function MapPage() {
                   key={r.id}
                   onClick={() => setSelectedId(r.id)}
                   style={{ cursor: "pointer" }}
+                  className="transition-opacity"
                 >
-                  <circle
-                    cx={r.cx}
-                    cy={r.cy}
-                    r={isSel ? 3.2 : 2.2}
-                    fill={isSel ? "var(--primary)" : "var(--accent)"}
-                    stroke="var(--background)"
-                    strokeWidth="0.8"
-                  />
+                  {/* Larger invisible hit area for easier taps */}
+                  <circle cx={r.cx} cy={r.cy} r={6} fill="transparent" />
                   {isSel && (
                     <circle
                       cx={r.cx}
@@ -91,21 +86,22 @@ function MapPage() {
                       opacity={0.6}
                     />
                   )}
-                  <text
-                    x={r.cx}
-                    y={r.cy - 4}
-                    textAnchor="middle"
-                    fontSize="3.2"
-                    fontWeight="700"
-                    fill="var(--foreground)"
-                    style={{ pointerEvents: "none" }}
-                  >
-                    {t(r.name, lang)}
-                  </text>
+                  <circle
+                    cx={r.cx}
+                    cy={r.cy}
+                    r={isSel ? 3.2 : 2.2}
+                    fill={isSel ? "var(--primary)" : "var(--accent)"}
+                    stroke="var(--background)"
+                    strokeWidth="0.8"
+                    style={{ transition: "all 200ms ease" }}
+                  />
                 </g>
               );
             })}
           </svg>
+          <p className="mt-2 text-[11px] text-muted-foreground text-center">
+            {COPY.pickRegion[lang]}
+          </p>
 
           {/* Tappable chip list (mobile-friendly fallback) */}
           <div className="mt-3 flex flex-wrap gap-2">
@@ -114,10 +110,10 @@ function MapPage() {
                 key={r.id}
                 onClick={() => setSelectedId(r.id)}
                 className={
-                  "text-xs font-semibold px-3 py-1.5 rounded-full border transition " +
+                  "text-xs font-semibold px-3 py-1.5 rounded-full border transition-all duration-200 active:scale-95 " +
                   (r.id === selectedId
-                    ? "bg-primary text-primary-foreground border-primary"
-                    : "bg-card border-border text-muted-foreground hover:border-primary/40")
+                    ? "bg-primary text-primary-foreground border-primary shadow-sm"
+                    : "bg-card border-border text-muted-foreground hover:border-primary/40 hover:text-foreground")
                 }
               >
                 {t(r.name, lang)}
@@ -128,7 +124,8 @@ function MapPage() {
 
         {selected ? (
           <article
-            className="mt-6 rounded-2xl border border-border bg-card p-5"
+            key={selected.id}
+            className="mt-6 rounded-2xl border border-border bg-card p-5 animate-float-up"
             style={{ boxShadow: "var(--shadow-soft)" }}
           >
             <h2 className="text-xl font-bold">{t(selected.name, lang)}</h2>

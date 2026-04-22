@@ -41,12 +41,12 @@ export const lessons: Lesson[] = [
       {
         simple: L(
           "He led a famous campaign into the lands of Israel and Judah.",
-          "Il mena une célèbre campagne dans les pays d'Israël et de Juda.",
-          "قاد حملة شهيرة في أرض إسرائيل ويهوذا."
+          "Il mena une célèbre campagne vers les royaumes d'Israël et de Juda.",
+          "قاد حملة شهيرة نحو مملكتَي إسرائيل ويهوذا."
         ),
         deeper: L(
-          "His campaign in the Levant is recorded both on the walls of the Karnak temple and in the Hebrew Bible (where he is called Shishak).",
-          "Sa campagne au Levant est gravée sur les murs du temple de Karnak et mentionnée dans la Bible hébraïque (où il est appelé Shishak).",
+          "His campaign in the Levant is recorded both on the walls of Karnak temple and in the Hebrew Bible (where he is called Shishak).",
+          "Sa campagne au Levant est gravée sur les murs du temple de Karnak et mentionnée dans la Bible hébraïque (où il est appelé Shishaq).",
           "حملته في بلاد الشام مدوّنة على جدران معبد الكرنك ومذكورة في التوراة باسم شيشاق."
         ),
       },
@@ -128,13 +128,13 @@ export const lessons: Lesson[] = [
       {
         simple: L(
           "Abane Ramdane organized the Algerian revolution like a careful architect.",
-          "Abane Ramdane organisa la révolution algérienne comme un architecte attentif.",
+          "Abane Ramdane a organisé la révolution algérienne comme un architecte méthodique.",
           "نظّم عبان رمضان الثورة الجزائرية كمهندسٍ دقيق."
         ),
         deeper: L(
-          "He believed the revolution needed clear politics, not only fighters — and he insisted on civilian leadership over the military.",
-          "Il pensait que la révolution avait besoin d'une politique claire, pas seulement de combattants, et tenait à la primauté du civil sur le militaire.",
-          "كان يؤمن بأن الثورة تحتاج إلى سياسة واضحة لا إلى مقاتلين فقط، وأصرّ على أولوية القيادة المدنية على العسكرية."
+          "He believed the revolution needed clear politics, not only fighters — and insisted on civilian leadership over the military.",
+          "Pour lui, la révolution avait besoin d'une vision politique claire, pas seulement de combattants — et le pouvoir civil devait primer sur le militaire.",
+          "كان يؤمن بأن الثورة تحتاج إلى رؤية سياسية واضحة لا إلى مقاتلين فقط، وأصرّ على أولوية القيادة المدنية على العسكرية."
         ),
       },
       {

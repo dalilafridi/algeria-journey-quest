@@ -271,14 +271,14 @@ export const ui = {
   oneMinuteLesson: { en: "1-Minute Lesson", fr: "Leçon en 1 minute", ar: "درس في دقيقة" },
   mapExplorer: { en: "Map Explorer", fr: "Explorateur de carte", ar: "مستكشف الخريطة" },
   mapExplorerDesc: {
-    en: "Discover history by region.",
-    fr: "Découvrez l'histoire par région.",
-    ar: "اكتشف التاريخ حسب المنطقة.",
+    en: "Explore history by region.",
+    fr: "Explorez l'histoire région par région.",
+    ar: "استكشف التاريخ منطقةً منطقة.",
   },
   lessonsHomeDesc: {
-    en: "Quick lessons on key moments.",
-    fr: "Leçons rapides sur les moments clés.",
-    ar: "دروس سريعة عن لحظات مهمّة.",
+    en: "Short lessons on key moments.",
+    fr: "Leçons brèves sur les moments clés.",
+    ar: "دروس قصيرة عن لحظات مفتاحية.",
   },
   resetQuizzes: { en: "Reset Quizzes", fr: "Réinitialiser les quiz", ar: "إعادة ضبط الاختبارات" },
   resetScoresOnly: {
@@ -292,23 +292,23 @@ export const ui = {
     ar: "إعادة ضبط كل التقدّم",
   },
   resetConfirm: {
-    en: "Are you sure you want to reset your quiz progress?",
-    fr: "Êtes-vous sûr de vouloir réinitialiser votre progression ?",
-    ar: "هل أنت متأكد من إعادة ضبط تقدّم الاختبارات؟",
+    en: "Ready for a fresh start?",
+    fr: "Envie d'un nouveau départ ?",
+    ar: "هل تريد بداية جديدة؟",
   },
   resetWarnAll: {
-    en: "This will clear scores, badges, and XP. App content stays.",
-    fr: "Cela effacera scores, badges et XP. Le contenu de l'app reste.",
-    ar: "سيتم مسح النتائج والأوسمة ونقاط الخبرة. يبقى محتوى التطبيق.",
+    en: "Your scores, badges and XP will be cleared. Lessons and stories stay the same.",
+    fr: "Vos scores, badges et XP seront effacés. Les leçons et récits restent intacts.",
+    ar: "ستُمسح نتائجك وأوسمتك ونقاط الخبرة. تبقى الدروس والقصص كما هي.",
   },
   resetWarnScores: {
-    en: "This will clear scores only. Badges and XP stay.",
-    fr: "Cela effacera seulement les scores. Badges et XP restent.",
-    ar: "سيتم مسح النتائج فقط. تبقى الأوسمة ونقاط الخبرة.",
+    en: "Only your quiz scores will be cleared. You keep your badges and XP.",
+    fr: "Seuls vos scores de quiz seront effacés. Vous gardez vos badges et XP.",
+    ar: "ستُمسح نتائج الاختبارات فقط. تحتفظ بأوسمتك ونقاط خبرتك.",
   },
   cancel: { en: "Cancel", fr: "Annuler", ar: "إلغاء" },
-  confirm: { en: "Confirm", fr: "Confirmer", ar: "تأكيد" },
-  resetDone: { en: "Quiz progress reset.", fr: "Progression réinitialisée.", ar: "تمت إعادة الضبط." },
+  confirm: { en: "Yes, reset", fr: "Oui, réinitialiser", ar: "نعم، أعد الضبط" },
+  resetDone: { en: "All set — fresh start!", fr: "C'est fait — nouveau départ !", ar: "تمّ — بداية جديدة!" },
 } satisfies Record<string, Localized<string>>;
 
 export type UiKey = keyof typeof ui;
