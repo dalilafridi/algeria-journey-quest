@@ -83,7 +83,7 @@ export function LessonCard({ lesson }: { lesson: Lesson }) {
             <Link
               to="/figures/$figureId"
               params={{ figureId: lesson.figureId }}
-              className="text-xs font-semibold px-3 py-1.5 rounded-full bg-card border border-border hover:border-primary/40 transition"
+              className="text-xs font-semibold px-3 py-1.5 rounded-full bg-card border border-border hover:border-primary/40 hover:bg-muted/60 transition-colors duration-200"
             >
               👤 {LBL.figure[lang]}
             </Link>
@@ -92,7 +92,7 @@ export function LessonCard({ lesson }: { lesson: Lesson }) {
             <Link
               to="/era/$eraId"
               params={{ eraId: lesson.era }}
-              className="text-xs font-semibold px-3 py-1.5 rounded-full bg-card border border-border hover:border-primary/40 transition"
+              className="text-xs font-semibold px-3 py-1.5 rounded-full bg-card border border-border hover:border-primary/40 hover:bg-muted/60 transition-colors duration-200"
             >
               📜 {LBL.era[lang]}
             </Link>
