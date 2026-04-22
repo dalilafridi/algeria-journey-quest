@@ -523,39 +523,103 @@ const TAFSUT = {
     "Sometimes small voices create big change.",
     "أحيانًا، أصوات صغيرة تُحدِث تغييرات كبيرة.",
   ),
-  game: {
-    prompt: L(
-      "Tu es étudiant·e en 1980. Ta langue maternelle n'est pas reconnue à l'école. Que choisis-tu ?",
-      "You are a student in 1980. Your mother tongue is not recognised at school. What do you choose?",
-      "أنت طالب·ة سنة 1980. لغتك الأم غير معترف بها في المدرسة. ماذا تختار؟",
+  decisions: [
+    {
+      prompt: L(
+        "Tu es étudiant·e en 1980. Ta langue maternelle n'est pas reconnue à l'école. Que choisis-tu ?",
+        "You are a student in 1980. Your mother tongue is not recognised at school. What do you choose?",
+        "أنت طالب·ة سنة 1980. لغتك الأم غير معترف بها في المدرسة. ماذا تختار؟",
+      ),
+      choices: [
+        {
+          label: L("Parler calmement avec d'autres élèves", "Speak calmly with other students", "أتحدّث بهدوء مع زملائي"),
+          feedback: L(
+            "Bravo. Partager ses idées avec respect aide les autres à comprendre, et c'est souvent comme ça que tout commence.",
+            "Well done. Sharing ideas with respect helps others understand — that's often how change begins.",
+            "أحسنت. مشاركة الأفكار باحترام تساعد الآخرين على الفهم، وهكذا يبدأ التغيير غالبًا.",
+          ),
+        },
+        {
+          label: L("Écrire un poème dans ta langue", "Write a poem in your language", "أكتب قصيدة بلغتي"),
+          feedback: L(
+            "Belle idée. Les mots et la poésie gardent une langue vivante, même quand le monde semble fermé.",
+            "A beautiful idea. Words and poetry keep a language alive, even when the world feels closed.",
+            "فكرة جميلة. الكلمات والشعر يُبقيان اللغة حيّة حتى حين يبدو العالم مغلقًا.",
+          ),
+        },
+        {
+          label: L("Rester silencieux·se pour éviter les ennuis", "Stay silent to avoid trouble", "أصمت لتجنّب المشاكل"),
+          feedback: L(
+            "C'est compréhensible : la peur est humaine. Mais avec le temps, parler — gentiment — peut aider à se sentir plus libre.",
+            "That's understandable — fear is human. But with time, speaking up gently can help you feel freer.",
+            "هذا مفهوم؛ الخوف شعور إنساني. لكن مع الوقت، الكلام بلطف قد يجعلك تشعر بحرية أكبر.",
+          ),
+        },
+      ],
+    },
+    {
+      prompt: L(
+        "Un·e camarade se moque d'un mot en tamazight. Que fais-tu ?",
+        "A classmate makes fun of a word in Tamazight. What do you do?",
+        "زميل يسخر من كلمة بالأمازيغية. ماذا تفعل؟",
+      ),
+      choices: [
+        {
+          label: L("Lui expliquer ce que ce mot veut dire", "Explain what the word means", "أشرح له معنى الكلمة"),
+          feedback: L(
+            "Très bien. Expliquer avec calme transforme la moquerie en curiosité.",
+            "Lovely. Explaining calmly turns mockery into curiosity.",
+            "رائع. الشرح بهدوء يحوّل السخرية إلى فضول.",
+          ),
+        },
+        {
+          label: L("Lui apprendre un mot kabyle drôle", "Teach them a fun Kabyle word", "أعلّمه كلمة قبائلية ممتعة"),
+          feedback: L(
+            "Joli choix. Partager une langue par le jeu rapproche les enfants.",
+            "Nice choice. Sharing a language through play brings children closer.",
+            "اختيار جميل. تعلّم اللغة باللعب يقرّب الأطفال.",
+          ),
+        },
+      ],
+    },
+    {
+      prompt: L(
+        "Tu écris une rédaction libre. Sur quoi parles-tu ?",
+        "You write a free essay. What do you write about?",
+        "تكتب موضوعًا حرًا. عن ماذا تكتب؟",
+      ),
+      choices: [
+        {
+          label: L("Une histoire racontée par ta grand-mère", "A story told by your grandmother", "قصة روتها لك جدّتك"),
+          feedback: L(
+            "Magnifique. Les histoires de famille sont la mémoire vivante d'un peuple.",
+            "Beautiful. Family stories are the living memory of a people.",
+            "رائع. حكايات العائلة هي ذاكرة الشعب الحيّة.",
+          ),
+        },
+        {
+          label: L("La poésie d'un village", "The poetry of a village", "شعر قرية صغيرة"),
+          feedback: L(
+            "Belle idée. Chaque village garde des trésors de mots à protéger.",
+            "Lovely. Every village holds treasures of words to protect.",
+            "فكرة جميلة. كل قرية تحوي كنوزًا من الكلمات.",
+          ),
+        },
+      ],
+    },
+  ] as DecisionScenario[],
+  connect: [
+    L(
+      "Aujourd'hui, le tamazight est une langue officielle, enseignée dans plusieurs écoles algériennes.",
+      "Today, Tamazight is an official language, taught in many Algerian schools.",
+      "اليوم، الأمازيغية لغة رسمية وتُدرَّس في العديد من المدارس الجزائرية.",
     ),
-    choices: [
-      {
-        label: L("Parler calmement avec d'autres élèves", "Speak calmly with other students", "أتحدّث بهدوء مع زملائي"),
-        feedback: L(
-          "Bravo. Partager ses idées avec respect aide les autres à comprendre, et c'est souvent comme ça que tout commence.",
-          "Well done. Sharing ideas with respect helps others understand — that's often how change begins.",
-          "أحسنت. مشاركة الأفكار باحترام تساعد الآخرين على الفهم، وهكذا يبدأ التغيير غالبًا.",
-        ),
-      },
-      {
-        label: L("Écrire un poème dans ta langue", "Write a poem in your language", "أكتب قصيدة بلغتي"),
-        feedback: L(
-          "Belle idée. Les mots et la poésie gardent une langue vivante, même quand le monde semble fermé.",
-          "A beautiful idea. Words and poetry keep a language alive, even when the world feels closed.",
-          "فكرة جميلة. الكلمات والشعر يُبقيان اللغة حيّة حتى حين يبدو العالم مغلقًا.",
-        ),
-      },
-      {
-        label: L("Rester silencieux·se pour éviter les ennuis", "Stay silent to avoid trouble", "أصمت لتجنّب المشاكل"),
-        feedback: L(
-          "C'est compréhensible : la peur est humaine. Mais avec le temps, parler — gentiment — peut aider à se sentir plus libre.",
-          "That's understandable — fear is human. But with time, speaking up gently can help you feel freer.",
-          "هذا مفهوم؛ الخوف شعور إنساني. لكن مع الوقت، الكلام بلطف قد يجعلك تشعر بحرية أكبر.",
-        ),
-      },
-    ],
-  },
+    L(
+      "Yennayer, le Nouvel An amazigh, est désormais un jour férié national.",
+      "Yennayer, the Amazigh New Year, is now a national public holiday.",
+      "يَنّاير، رأس السنة الأمازيغية، أصبح عطلة وطنية.",
+    ),
+  ],
   quiz: [
     {
       q: L(
