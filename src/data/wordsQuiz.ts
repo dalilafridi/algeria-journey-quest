@@ -59,25 +59,65 @@ export const wordsQuiz: WordsQuizItem[] = [
     ),
   },
 
-  // ---------- Classical World ----------
+  // ---------- Algerian Iliad ----------
   {
-    wordId: "iliad-opening",
-    kind: "who-am-i",
+    wordId: "iliyadha-aljazair",
+    kind: "who-said",
     question: L(
-      "I sang of Achilles' anger and Troy's fall — who am I?",
-      "J'ai chanté la colère d'Achille et la chute de Troie — qui suis-je ?",
-      "أنشدتُ غضبَ آخيل وسقوطَ طروادة — من أكون؟",
+      "Who wrote Iliyadha al-Jaza'ir (The Algerian Iliad)?",
+      "Qui a écrit « Iliyadha al-Jaza'ir » (L'Iliade algérienne) ?",
+      "من كتب «إلياذة الجزائر»؟",
     ),
     options: [
-      L("Homer", "Homère", "هوميروس"),
-      L("Virgil", "Virgile", "فرجيل"),
-      L("Sallust", "Salluste", "سالوست"),
+      L("Moufdi Zakaria", "Moufdi Zakaria", "مفدي زكريا"),
+      L("Kateb Yacine", "Kateb Yacine", "كاتب ياسين"),
+      L("Mouloud Mammeri", "Mouloud Mammeri", "مولود معمري"),
+      L("Mohamed Dib", "Mohamed Dib", "محمد ديب"),
     ],
     correctIndex: 0,
     explanation: L(
-      "Homer — the Greek poet of the Iliad and the Odyssey, model for Moufdi Zakaria's own 'Algerian Iliad'.",
-      "Homère — le poète grec de l'Iliade et de l'Odyssée, modèle de « L'Iliade algérienne » de Moufdi Zakaria.",
-      "هوميروس — شاعر الإغريق صاحب الإلياذة والأوديسة، نموذج «إلياذة الجزائر» لمفدي زكريا.",
+      "Moufdi Zakaria — author of both Kassaman and Iliyadha al-Jaza'ir, an epic of more than 1,000 verses.",
+      "Moufdi Zakaria — auteur de Kassaman et de « Iliyadha al-Jaza'ir », une épopée de plus de 1 000 vers.",
+      "مفدي زكريا — صاحب «قَسَمًا» و«إلياذة الجزائر» المؤلَّفة من أكثر من ألف بيت.",
+    ),
+  },
+  {
+    wordId: "iliyadha-aljazair",
+    kind: "true-false",
+    question: L(
+      "The Algerian Iliad is a poem celebrating Algeria's history, identity, and unity.",
+      "L'Iliade algérienne est un poème célébrant l'histoire, l'identité et l'unité de l'Algérie.",
+      "«إلياذة الجزائر» قصيدة تحتفي بتاريخ الجزائر وهويتها ووحدتها.",
+    ),
+    options: [
+      L("True", "Vrai", "صحيح"),
+      L("False", "Faux", "خطأ"),
+    ],
+    correctIndex: 0,
+    explanation: L(
+      "True — more than 1,000 verses recited in 1972 to celebrate ten years of independence.",
+      "Vrai — plus de 1 000 vers récités en 1972 pour célébrer dix ans d'indépendance.",
+      "صحيح — أكثر من ألف بيت أُلقيت سنة 1972 احتفاءً بعشرية الاستقلال.",
+    ),
+  },
+  {
+    wordId: "iliyadha-aljazair",
+    kind: "who-am-i",
+    question: L(
+      "I wrote Kassaman and The Algerian Iliad — who am I?",
+      "J'ai écrit Kassaman et L'Iliade algérienne — qui suis-je ?",
+      "كتبتُ «قَسَمًا» و«إلياذة الجزائر» — من أكون؟",
+    ),
+    options: [
+      L("Moufdi Zakaria", "Moufdi Zakaria", "مفدي زكريا"),
+      L("Frantz Fanon", "Frantz Fanon", "فرانز فانون"),
+      L("Mouloud Mammeri", "Mouloud Mammeri", "مولود معمري"),
+    ],
+    correctIndex: 0,
+    explanation: L(
+      "Moufdi Zakaria — poet of the Algerian nation, from the anthem to the great epic.",
+      "Moufdi Zakaria — poète de la nation algérienne, de l'hymne à la grande épopée.",
+      "مفدي زكريا — شاعر الأمّة الجزائرية، من النشيد إلى الملحمة الكبرى.",
     ),
   },
   {
