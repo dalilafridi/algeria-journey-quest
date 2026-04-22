@@ -5,11 +5,11 @@ import { Header } from "@/components/Header";
 import { eras } from "@/data/eras";
 import { getProgress, hasPassed, isUnlocked, type Progress } from "@/lib/progress";
 import { t, tu, useLang, type Lang } from "@/lib/i18n";
-import numidiaImg from "@/assets/era-numidia.jpg";
-import romanImg from "@/assets/era-roman.jpg";
-import islamicImg from "@/assets/era-islamic.jpg";
-import frenchImg from "@/assets/era-french.jpg";
-import independenceImg from "@/assets/era-independence.jpg";
+import numidiaImg from "@/assets/era-numidia.png";
+import romanImg from "@/assets/era-roman.png";
+import islamicImg from "@/assets/era-islamic.png";
+import frenchImg from "@/assets/era-french.png";
+import independenceImg from "@/assets/era-independence.png";
 
 export const Route = createFileRoute("/timeline")({
   head: () => ({
