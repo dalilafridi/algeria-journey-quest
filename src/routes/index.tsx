@@ -158,7 +158,7 @@ function Home() {
               <Link
                 key={tile.title}
                 to={tile.to}
-                className="group rounded-2xl bg-card border border-border p-4 lg:p-4 flex flex-col justify-between hover:border-primary/40 hover:-translate-y-0.5 transition relative overflow-hidden"
+                className="group rounded-2xl bg-card border border-border p-3 lg:p-3 flex flex-col justify-between hover:border-primary/40 hover:-translate-y-0.5 transition relative overflow-hidden"
                 style={{ boxShadow: "var(--shadow-soft)" }}
               >
                 <div
@@ -193,7 +193,7 @@ function Home() {
           {/* Full-width Moments card */}
           <Link
             to="/moments"
-            className="rounded-2xl px-4 py-3 sm:px-5 sm:py-4 border border-secondary/40 hover:border-secondary transition group relative overflow-hidden flex items-center gap-3"
+            className="rounded-2xl px-4 py-2.5 sm:px-5 sm:py-3 border border-secondary/40 hover:border-secondary transition group relative overflow-hidden flex items-center gap-3"
             style={{
               background:
                 "linear-gradient(135deg, color-mix(in oklab, var(--secondary) 18%, var(--card)), var(--card))",
@@ -225,7 +225,7 @@ function Home() {
 
           {/* Compact Did You Know bar */}
           <div
-            className="rounded-2xl px-4 py-2.5 border border-accent/40 flex items-center gap-3"
+            className="rounded-2xl px-4 py-2 border border-accent/40 flex items-center gap-3"
             style={{
               backgroundColor:
                 "color-mix(in oklab, var(--accent) 18%, var(--card))",
