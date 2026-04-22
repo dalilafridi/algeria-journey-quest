@@ -178,7 +178,7 @@ export const figures: Figure[] = [
       "وقع في الأسر بالخيانة لا بالهزيمة، وبقي رمزًا خالدًا لمقاومة الهيمنة الأجنبية في شمال إفريقيا.",
     ),
     fact: L(
-      "When marched in chains through Rome, he is said to have cried out: \"Rome is for sale.\"",
+      'When marched in chains through Rome, he is said to have cried out: "Rome is for sale."',
       "Conduit enchaîné dans Rome, il aurait lancé : « Rome est à vendre. »",
       "حين سيق مكبّلًا في شوارع روما، يُروى أنه صاح: «روما للبيع».",
     ),
@@ -203,7 +203,7 @@ export const figures: Figure[] = [
       "تبقى واحدة من أبرز الشخصيات الأمازيغية، ورمزًا قويًا لقيادة المرأة في الذاكرة التاريخية الجزائرية.",
     ),
     fact: L(
-      "Her nickname \"al-Kahina\" means \"the soothsayer\" — given by chroniclers impressed by her foresight in battle.",
+      'Her nickname "al-Kahina" means "the soothsayer" — given by chroniclers impressed by her foresight in battle.',
       "Son surnom « al-Kahina » signifie « la devineresse », donné par des chroniqueurs frappés par sa clairvoyance au combat.",
       "لقّبها المؤرخون بـ«الكاهنة»، أي العرّافة، إعجابًا ببصيرتها في ميادين القتال.",
     ),
@@ -453,7 +453,7 @@ export const figures: Figure[] = [
       "يجسّد النزاهة والتضحية والقوة الأخلاقية للثورة الجزائرية.",
     ),
     fact: L(
-      "Asked about \"bombs in baskets\", he is famously remembered to have answered: give us your planes, we will give you our baskets.",
+      'Asked about "bombs in baskets", he is famously remembered to have answered: give us your planes, we will give you our baskets.',
       "Interrogé sur les « bombes dans des paniers », on lui prête cette réponse célèbre : donnez-nous vos avions, nous vous donnerons nos paniers.",
       "حين سُئل عن «القنابل في السلال»، يُنسب إليه الردّ الشهير: أعطونا طائراتكم، نمنحكم سلالنا.",
     ),
@@ -492,7 +492,11 @@ export const figures: Figure[] = [
     category: "war-of-independence",
     region: "national",
     relatedEraId: "war-of-independence",
-    era: L("National movement (1930s–1962)", "Mouvement national (années 1930–1962)", "الحركة الوطنية (الثلاثينيات–1962)"),
+    era: L(
+      "National movement (1930s–1962)",
+      "Mouvement national (années 1930–1962)",
+      "الحركة الوطنية (الثلاثينيات–1962)",
+    ),
     regionLabel: L("National / Algeria-wide", "National / Algérie", "وطني / عموم الجزائر"),
     story: L(
       "A pharmacist trained in French universities, Ferhat Abbas began as a believer in equal rights within the colonial system. After years of broken promises, he turned to full independence, joined the FLN, and became a respected political face of the revolution abroad.",
@@ -505,7 +509,7 @@ export const figures: Figure[] = [
       "شغل منصب أوّل رئيس للحكومة المؤقتة للجمهورية الجزائرية، فأعطى الثورة صوتًا سياسيًا دوليًا.",
     ),
     fact: L(
-      "His 1943 \"Manifesto of the Algerian People\" became one of the founding texts of modern Algerian nationalism.",
+      'His 1943 "Manifesto of the Algerian People" became one of the founding texts of modern Algerian nationalism.',
       "Son « Manifeste du peuple algérien » de 1943 reste l'un des textes fondateurs du nationalisme algérien moderne.",
       "أصبح «بيان الشعب الجزائري» الذي أصدره عام 1943 من النصوص المؤسِّسة للحركة الوطنية الجزائرية الحديثة.",
     ),
@@ -567,7 +571,11 @@ export const figures: Figure[] = [
     emoji: "🎬",
     category: "intellectuals-culture",
     region: "national",
-    era: L("20th–21st century (1936–2015)", "XXe–XXIe siècle (1936–2015)", "القرنان العشرون والحادي والعشرون (1936–2015)"),
+    era: L(
+      "20th–21st century (1936–2015)",
+      "XXe–XXIe siècle (1936–2015)",
+      "القرنان العشرون والحادي والعشرون (1936–2015)",
+    ),
     regionLabel: L("National / Algeria-wide", "National / Algérie", "وطني / عموم الجزائر"),
     story: L(
       "Brilliant student, novelist, filmmaker and historian, Assia Djebar wrote Algeria from the inside — its silences, its women, its memory. She crossed languages and forms, from novels to documentary films, always returning to the voices that history had pushed aside.",
@@ -592,7 +600,11 @@ export const figures: Figure[] = [
     emoji: "🎶",
     category: "intellectuals-culture",
     region: "kabylie",
-    era: L("20th–21st century (1949–2020)", "XXe–XXIe siècle (1949–2020)", "القرنان العشرون والحادي والعشرون (1949–2020)"),
+    era: L(
+      "20th–21st century (1949–2020)",
+      "XXe–XXIe siècle (1949–2020)",
+      "القرنان العشرون والحادي والعشرون (1949–2020)",
+    ),
     regionLabel: L("Kabylie", "Kabylie", "القبائل"),
     story: L(
       "Born in a Kabyle village and trained as a geologist, Idir stepped into a radio studio almost by accident — and stayed in the world's ear. With a soft voice, an acoustic guitar, and lullabies that came straight from his grandmother, he carried Kabyle culture to audiences far beyond Algeria.",
@@ -605,7 +617,7 @@ export const figures: Figure[] = [
       "يُعدّ سفيرًا كبيرًا للموسيقى القبائلية والأمازيغية، وأسهم في تعريف العالم بالتراث الشعبي لشمال إفريقيا.",
     ),
     fact: L(
-      "His song \"A Vava Inouva\" was translated into more than a dozen languages and broadcast across continents.",
+      'His song "A Vava Inouva" was translated into more than a dozen languages and broadcast across continents.',
       "Sa chanson « A Vava Inouva » fut traduite en plus d'une dizaine de langues et diffusée sur tous les continents.",
       "تُرجمت أغنيته «أ ڤاڤا إينوڤا» إلى أكثر من عشر لغات وأُذيعت في القارات كافة.",
     ),
@@ -645,7 +657,11 @@ export const figures: Figure[] = [
     category: "ancient",
     region: "oran-west",
     relatedEraId: "numidia",
-    era: L("Ancient Numidia (c. 215–203 BC)", "Numidie antique (vers 215–203 av. J.-C.)", "نوميديا القديمة (نحو 215–203 ق.م)"),
+    era: L(
+      "Ancient Numidia (c. 215–203 BC)",
+      "Numidie antique (vers 215–203 av. J.-C.)",
+      "نوميديا القديمة (نحو 215–203 ق.م)",
+    ),
     regionLabel: L("Oran / West", "Oran / Ouest", "وهران / الغرب"),
     story: L(
       "King of the Masaesyli in western Numidia, Syphax balanced for a time between Rome and Carthage, marrying into Carthaginian nobility before being defeated and captured by Massinissa's allies.",
@@ -699,7 +715,11 @@ export const figures: Figure[] = [
     category: "roman",
     region: "oran-west",
     relatedEraId: "roman-algeria",
-    era: L("Roman client king (c. 25 BC – 23 AD)", "Roi client de Rome (vers 25 av. J.-C. – 23 ap. J.-C.)", "ملك تابع لروما (نحو 25 ق.م – 23 م)"),
+    era: L(
+      "Roman client king (c. 25 BC – 23 AD)",
+      "Roi client de Rome (vers 25 av. J.-C. – 23 ap. J.-C.)",
+      "ملك تابع لروما (نحو 25 ق.م – 23 م)",
+    ),
     regionLabel: L("Oran / West", "Oran / Ouest", "وهران / الغرب"),
     story: L(
       "Captured as a child after his father's defeat, Juba II grew up in Rome and returned to North Africa as a learned king of Mauretania. He wrote on geography, botany and history, ruling from a refined coastal court.",
@@ -798,16 +818,16 @@ export const figures: Figure[] = [
 
   // ===================== EARLY ISLAMIC / MEDIEVAL =====================
   {
-    id: "kusayla",
-    name: "Kusayla",
-    displayName: L("Kusayla", "Koceila", "كسيلة"),
+    id: "Koceila",
+    name: "Koceila",
+    displayName: L("Koceila", "Koceila", "كسيلة"),
     emoji: "🛡️",
     category: "early-islamic",
     region: "national",
     era: L("Late 7th century (d. 688)", "Fin du VIIe siècle (m. 688)", "أواخر القرن السابع (ت. 688)"),
     regionLabel: L("National / Algeria-wide", "National / Algérie", "وطني / عموم الجزائر"),
     story: L(
-      "An Amazigh chief who first allied with the early Arab armies, Kusayla later turned against them, briefly retook the city of Kairouan, and rallied Berber tribes from across the central Maghreb.",
+      "An Amazigh chief who first allied with the early Arab armies, Koceila later turned against them, briefly retook the city of Kairouan, and rallied Berber tribes from across the central Maghreb.",
       "Chef amazigh d'abord allié aux premières armées arabes, Koceila se retourna ensuite contre elles, reprit brièvement Kairouan et rassembla des tribus berbères de tout le Maghreb central.",
       "زعيم أمازيغي تحالف أولًا مع الجيوش العربية الأولى، ثم انقلب عليها واستعاد القيروان لفترة قصيرة، ووحّد قبائل أمازيغية من عموم المغرب الأوسط.",
     ),
@@ -829,7 +849,11 @@ export const figures: Figure[] = [
     emoji: "🕌",
     category: "early-islamic",
     region: "oran-west",
-    era: L("8th century (founded Tahert c. 776)", "VIIIe siècle (Tahert fondée vers 776)", "القرن الثامن (تأسيس تاهرت نحو 776)"),
+    era: L(
+      "8th century (founded Tahert c. 776)",
+      "VIIIe siècle (Tahert fondée vers 776)",
+      "القرن الثامن (تأسيس تاهرت نحو 776)",
+    ),
     regionLabel: L("Oran / West", "Oran / Ouest", "وهران / الغرب"),
     story: L(
       "Founder of the Rustamid imamate at Tahert, in today's Tiaret region, Ibn Rustam led a community of Ibadi scholars and traders that turned a remote hill town into a renowned center of learning.",
@@ -842,7 +866,7 @@ export const figures: Figure[] = [
       "تُعدّ دولته من أقدم الكيانات الإسلامية المنظّمة في المغرب الأوسط، ومحطّة بارزة في التاريخ الإسلامي الأمازيغي بالجزائر.",
     ),
     fact: L(
-      "Tahert was nicknamed \"the Iraq of the Maghreb\" for its diversity of scholars and traders.",
+      'Tahert was nicknamed "the Iraq of the Maghreb" for its diversity of scholars and traders.',
       "Tahert fut surnommée « l'Irak du Maghreb » pour la diversité de ses savants et marchands.",
       "لُقّبت تاهرت بـ«عراق المغرب» لتنوّع علمائها وتجّارها.",
     ),
@@ -931,7 +955,11 @@ export const figures: Figure[] = [
     emoji: "⛵",
     category: "ottoman",
     region: "algiers",
-    era: L("Late 18th – early 19th century (d. 1815)", "Fin XVIIIe – début XIXe siècle (m. 1815)", "أواخر القرن 18 – بداية القرن 19 (ت. 1815)"),
+    era: L(
+      "Late 18th – early 19th century (d. 1815)",
+      "Fin XVIIIe – début XIXe siècle (m. 1815)",
+      "أواخر القرن 18 – بداية القرن 19 (ت. 1815)",
+    ),
     regionLabel: L("Algiers", "Alger", "الجزائر العاصمة"),
     story: L(
       "Born in Algiers, Raïs Hamidou rose to become the most famous Algerian admiral of his time, raiding hostile shipping and defending the Regency's interests across the western Mediterranean.",
@@ -1296,7 +1324,7 @@ export const figures: Figure[] = [
     era: L("Battle of Algiers (1956–1957)", "Bataille d'Alger (1956–1957)", "معركة الجزائر (1956–1957)"),
     regionLabel: L("Algiers", "Alger", "الجزائر العاصمة"),
     story: L(
-      "From the working-class streets of Algiers, Ali Ammar — \"Ali La Pointe\" — rose to lead urban operations of the FLN in the Casbah, becoming one of the iconic faces of the Battle of Algiers.",
+      'From the working-class streets of Algiers, Ali Ammar — "Ali La Pointe" — rose to lead urban operations of the FLN in the Casbah, becoming one of the iconic faces of the Battle of Algiers.',
       "Issu des quartiers populaires d'Alger, Ali Ammar — « Ali La Pointe » — s'imposa à la tête des opérations urbaines du FLN dans la Casbah, devenant l'un des visages emblématiques de la Bataille d'Alger.",
       "من الأحياء الشعبية في الجزائر العاصمة، صعد علي عمار «علي لابوانت» ليقود العمليات الحضرية لجبهة التحرير في القصبة، وصار من أبرز وجوه معركة الجزائر.",
     ),
@@ -1345,7 +1373,11 @@ export const figures: Figure[] = [
     category: "war-of-independence",
     region: "algiers",
     relatedEraId: "war-of-independence",
-    era: L("War of Independence (late 1950s)", "Guerre d'indépendance (fin des années 1950)", "ثورة التحرير (أواخر الخمسينات)"),
+    era: L(
+      "War of Independence (late 1950s)",
+      "Guerre d'indépendance (fin des années 1950)",
+      "ثورة التحرير (أواخر الخمسينات)",
+    ),
     regionLabel: L("Algiers", "Alger", "الجزائر العاصمة"),
     story: L(
       "A young Algerian militant arrested in 1960, Djamila Boupacha publicly denounced the torture she suffered, with the help of her lawyer Gisèle Halimi and writer Simone de Beauvoir.",
@@ -1384,7 +1416,7 @@ export const figures: Figure[] = [
       "صار من أكثر منظّري التحرر من الاستعمار حضورًا في القرن العشرين.",
     ),
     fact: L(
-      "His book \"The Wretched of the Earth\" was written while he was already gravely ill.",
+      'His book "The Wretched of the Earth" was written while he was already gravely ill.',
       "Son livre « Les Damnés de la terre » fut écrit alors qu'il était déjà gravement malade.",
       "ألّف كتابه «معذّبو الأرض» وهو يصارع المرض الشديد.",
     ),
@@ -1401,7 +1433,7 @@ export const figures: Figure[] = [
     era: L("1929–1989", "1929–1989", "1929–1989"),
     regionLabel: L("Constantine", "Constantine", "قسنطينة"),
     story: L(
-      "Poet, novelist and playwright, Kateb Yacine wrote of Algeria's land and pain in a fierce, lyrical voice. His novel \"Nedjma\" became a landmark of modern Algerian literature.",
+      'Poet, novelist and playwright, Kateb Yacine wrote of Algeria\'s land and pain in a fierce, lyrical voice. His novel "Nedjma" became a landmark of modern Algerian literature.',
       "Poète, romancier et dramaturge, Kateb Yacine chanta la terre et les douleurs de l'Algérie d'une voix âpre et lyrique. Son roman « Nedjma » devint un jalon de la littérature algérienne moderne.",
       "شاعر وروائي ومسرحي، كتب كاتب ياسين عن أرض الجزائر وآلامها بصوت حادّ وشعريّ. صارت روايته «نجمة» علامةً في الأدب الجزائري الحديث.",
     ),
@@ -1411,7 +1443,7 @@ export const figures: Figure[] = [
       "صاغ هويةً أدبيةً للجزائر المستقلة، وناصر مسرحًا شعبيًا بالعربية والأمازيغية.",
     ),
     fact: L(
-      "He famously called the French language \"a spoil of war\" for Algerian writers.",
+      'He famously called the French language "a spoil of war" for Algerian writers.',
       "Il qualifia célèbrement le français de « butin de guerre » pour les écrivains algériens.",
       "وصف الفرنسية بأنها «غنيمة حرب» لكتّاب الجزائر، في عبارة صارت شهيرة.",
     ),
@@ -1436,7 +1468,7 @@ export const figures: Figure[] = [
       "يُعدّ عمله أساسيًا في الاعتراف الحديث باللغة الأمازيغية والهوية الأمازيغية في الجزائر.",
     ),
     fact: L(
-      "The cancellation of one of his lectures in 1980 helped trigger the \"Berber Spring\" in Kabylie.",
+      'The cancellation of one of his lectures in 1980 helped trigger the "Berber Spring" in Kabylie.',
       "L'annulation d'une de ses conférences en 1980 contribua à déclencher le « Printemps berbère » en Kabylie.",
       "أسهم منع إحدى محاضراته سنة 1980 في اندلاع «الربيع الأمازيغي» في القبائل.",
     ),
@@ -1451,7 +1483,7 @@ export const figures: Figure[] = [
     era: L("1920–2003", "1920–2003", "1920–2003"),
     regionLabel: L("Oran / West", "Oran / Ouest", "وهران / الغرب"),
     story: L(
-      "Born in Tlemcen, Mohammed Dib drew the rural and urban Algeria of the colonial period in his \"Algeria\" trilogy and continued to publish poetry and novels for decades.",
+      'Born in Tlemcen, Mohammed Dib drew the rural and urban Algeria of the colonial period in his "Algeria" trilogy and continued to publish poetry and novels for decades.',
       "Né à Tlemcen, Mohammed Dib peignit l'Algérie rurale et urbaine de l'époque coloniale dans sa trilogie « Algérie » et continua de publier poèmes et romans pendant des décennies.",
       "وُلد محمد ديب في تلمسان، ورسم في ثلاثيته «الجزائر» الجزائر الريفية والحضرية في الحقبة الاستعمارية، وواصل نشر الشعر والرواية عقودًا.",
     ),
@@ -1461,7 +1493,7 @@ export const figures: Figure[] = [
       "هو من الروائيين المؤسسين للأدب الجزائري الحديث باللغة الفرنسية.",
     ),
     fact: L(
-      "His first novel, \"La Grande Maison\", appeared in 1952, before the war of independence.",
+      'His first novel, "La Grande Maison", appeared in 1952, before the war of independence.',
       "Son premier roman, « La Grande Maison », parut en 1952, avant la guerre d'indépendance.",
       "صدرت روايته الأولى «الدار الكبيرة» سنة 1952، قبل اندلاع ثورة التحرير.",
     ),
@@ -1476,7 +1508,7 @@ export const figures: Figure[] = [
     era: L("1927–1978", "1927–1978", "1927–1978"),
     regionLabel: L("Constantine", "Constantine", "قسنطينة"),
     story: L(
-      "Poet and novelist from Constantine, Malek Haddad wrote in French of his attachment to a country he could not yet fully address in Arabic, calling French his \"exile\".",
+      'Poet and novelist from Constantine, Malek Haddad wrote in French of his attachment to a country he could not yet fully address in Arabic, calling French his "exile".',
       "Poète et romancier de Constantine, Malek Haddad écrivit en français son attachement à un pays qu'il ne pouvait encore dire pleinement en arabe, appelant le français son « exil ».",
       "شاعر وروائي من قسنطينة، كتب مالك حداد بالفرنسية عن تعلّقه ببلده، واصفًا الفرنسية بأنها «منفاه» حين لم يكن يستطيع الكتابة بالعربية بعد.",
     ),
@@ -1586,7 +1618,7 @@ export const figures: Figure[] = [
       "هو الصوت الدولي الأشهر للراي الجزائري وسفير ثقافي لمدينته.",
     ),
     fact: L(
-      "His song \"Aïcha\" became a hit across Europe in the late 1990s.",
+      'His song "Aïcha" became a hit across Europe in the late 1990s.',
       "Sa chanson « Aïcha » devint un tube en Europe à la fin des années 1990.",
       "صارت أغنيته «عائشة» نجاحًا أوروبيًا في أواخر التسعينات.",
     ),
@@ -1674,7 +1706,11 @@ export const figures: Figure[] = [
     emoji: "⚔️",
     category: "roman",
     region: "kabylie",
-    era: L("Late Roman Africa (4th c. AD)", "Afrique romaine tardive (IVe s.)", "إفريقيا الرومانية المتأخرة (القرن الرابع م)"),
+    era: L(
+      "Late Roman Africa (4th c. AD)",
+      "Afrique romaine tardive (IVe s.)",
+      "إفريقيا الرومانية المتأخرة (القرن الرابع م)",
+    ),
     regionLabel: L("Kabylie", "Kabylie", "القبائل"),
     story: L(
       "A Berber prince from the mountains of what is today Kabylie, Firmus rose against corrupt Roman officials and proclaimed himself emperor. For years his fighters used the rough terrain to wear down imperial armies, until a long campaign by general Theodosius forced his end.",
@@ -1712,7 +1748,7 @@ export const figures: Figure[] = [
       "افتتح نزوله سنة 711 قرونًا من الحضور الإسلامي في شبه الجزيرة الإيبيرية.",
     ),
     fact: L(
-      "Gibraltar takes its name from Jabal Tariq — \"Tariq's mountain.\"",
+      'Gibraltar takes its name from Jabal Tariq — "Tariq\'s mountain."',
       "Gibraltar tire son nom de Jabal Tariq — « la montagne de Tariq ».",
       "أخذ جبل طارق اسمه من «جبل طارق».",
     ),
@@ -1887,7 +1923,7 @@ export const figures: Figure[] = [
       "حوّل الجزائر إلى قوّة بحرية إقليمية وفتح الباب أمام الحماية العثمانية.",
     ),
     fact: L(
-      "He lost an arm in battle and was nicknamed \"Silver-Arm\" for the prosthetic he wore.",
+      'He lost an arm in battle and was nicknamed "Silver-Arm" for the prosthetic he wore.',
       "Il perdit un bras au combat et fut surnommé « Bras-d'Argent » pour la prothèse qu'il portait.",
       "فقد ذراعه في المعركة، فلُقّب بـ«ذي الذراع الفضية» نسبة إلى طرفه الصناعي.",
     ),
@@ -1952,7 +1988,7 @@ export const figures: Figure[] = [
     era: L("Mid-19th century (1851–1854)", "Milieu du XIXe siècle (1851–1854)", "منتصف القرن التاسع عشر (1851–1854)"),
     regionLabel: L("Kabylie", "Kabylie", "القبائل"),
     story: L(
-      "A wandering shaykh nicknamed \"the man on the mule,\" Bou Baghla rode from village to village in Kabylie urging resistance to the French advance. Charismatic and tireless, he gathered fighters from many tribes and led raids that troubled colonial columns for several years.",
+      'A wandering shaykh nicknamed "the man on the mule," Bou Baghla rode from village to village in Kabylie urging resistance to the French advance. Charismatic and tireless, he gathered fighters from many tribes and led raids that troubled colonial columns for several years.',
       "Cheikh itinérant surnommé « l'homme à la mule », Bou Baghla parcourait les villages de Kabylie pour appeler à la résistance contre l'avancée française. Charismatique et infatigable, il rassembla des combattants de nombreuses tribus et mena des raids qui inquiétèrent les colonnes coloniales plusieurs années durant.",
       "شيخ متجوّل لُقّب بـ«صاحب البغلة»، كان يطوف قرى القبائل داعيًا إلى مقاومة الزحف الفرنسي. كاريزمي ولا يكلّ، جمع مقاتلين من قبائل عدّة وشنّ غارات أرّقت الأرتال الاستعمارية سنوات.",
     ),
