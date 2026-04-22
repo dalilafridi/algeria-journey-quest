@@ -5,7 +5,7 @@ const L = (en: string, fr: string, ar: string): Localized<string> => ({ en, fr, 
 export type MapRegion = {
   id: string;
   name: LocalizedString;
-  // Position on a 100x120 viewBox (rough silhouette of Algeria)
+  // Position as % of the map image container (0–100)
   cx: number;
   cy: number;
   description: LocalizedString;
@@ -18,8 +18,8 @@ export const mapRegions: MapRegion[] = [
   {
     id: "algiers",
     name: L("Algiers", "Alger", "الجزائر العاصمة"),
-    cx: 48,
-    cy: 18,
+    cx: 47,
+    cy: 12,
     description: L(
       "Capital and historic Mediterranean port — the seat of the Regency and a stage for modern Algerian history.",
       "Capitale et port méditerranéen historique — siège de la Régence et scène de l'histoire moderne de l'Algérie.",
@@ -34,8 +34,8 @@ export const mapRegions: MapRegion[] = [
   {
     id: "kabylie",
     name: L("Kabylie", "Kabylie", "القبائل"),
-    cx: 56,
-    cy: 22,
+    cx: 55,
+    cy: 14,
     description: L(
       "A mountainous region rich in Berber language, music, and resistance.",
       "Une région montagneuse riche en langue, musique et résistance berbères.",
@@ -50,8 +50,8 @@ export const mapRegions: MapRegion[] = [
   {
     id: "constantine",
     name: L("Constantine", "Constantine", "قسنطينة"),
-    cx: 70,
-    cy: 24,
+    cx: 65,
+    cy: 16,
     description: L(
       "The ancient city of Cirta — capital of Numidia and stronghold of Ahmed Bey.",
       "L'antique cité de Cirta — capitale de la Numidie et bastion d'Ahmed Bey.",
@@ -66,8 +66,8 @@ export const mapRegions: MapRegion[] = [
   {
     id: "aures",
     name: L("Aurès", "Aurès", "الأوراس"),
-    cx: 65,
-    cy: 38,
+    cx: 63,
+    cy: 24,
     description: L(
       "Mountains of legendary resistance — from Dihya to the first shots of November 1954.",
       "Montagnes d'une résistance légendaire — de Dihya aux premiers coups de novembre 1954.",
@@ -82,8 +82,8 @@ export const mapRegions: MapRegion[] = [
   {
     id: "oran-west",
     name: L("Western Algeria", "Algérie de l'Ouest", "الغرب الجزائري"),
-    cx: 26,
-    cy: 30,
+    cx: 30,
+    cy: 18,
     description: L(
       "Land of Emir Abdelkader — birthplace of the modern Algerian state idea.",
       "Terre de l'Émir Abdelkader — berceau de l'idée moderne d'État algérien.",
@@ -97,8 +97,8 @@ export const mapRegions: MapRegion[] = [
   {
     id: "sahara",
     name: L("Sahara", "Sahara", "الصحراء"),
-    cx: 52,
-    cy: 80,
+    cx: 50,
+    cy: 62,
     description: L(
       "Vast southern desert — home to Tuareg culture, oases, and ancient trade routes.",
       "Vaste désert du sud — terre de la culture touarègue, des oasis et des routes caravanières.",

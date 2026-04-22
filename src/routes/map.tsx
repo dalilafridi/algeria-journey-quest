@@ -4,6 +4,7 @@ import { Header } from "@/components/Header";
 import { mapRegions, type MapRegion } from "@/data/mapRegions";
 import { getFigure } from "@/data/figures";
 import { t, useLang } from "@/lib/i18n";
+import algeriaOutline from "@/assets/algeria-outline.png";
 
 export const Route = createFileRoute("/map")({
   head: () => ({
@@ -43,68 +44,76 @@ function MapPage() {
           className="mt-6 rounded-2xl border border-border bg-card p-3 sm:p-5"
           style={{ boxShadow: "var(--shadow-soft)" }}
         >
-          <svg
-            viewBox="0 0 100 120"
-            className="w-full h-auto"
-            role="img"
-            aria-label="Simplified map of Algeria"
+          <div
+            className="relative w-full mx-auto"
+            style={{
+              maxWidth: "520px",
+              aspectRatio: "1300 / 1230",
+              background:
+                "linear-gradient(160deg, color-mix(in oklab, var(--secondary) 14%, var(--card)), color-mix(in oklab, var(--accent) 8%, var(--card)))",
+              borderRadius: "1rem",
+            }}
           >
-            {/* Simplified Algeria silhouette */}
-            <path
-              d="M14 18 L30 12 L52 8 L74 12 L88 16 L92 28 L86 44 L88 64 L80 92 L70 110 L40 112 L18 96 L8 70 L6 44 Z"
-              fill="color-mix(in oklab, var(--secondary) 18%, var(--card))"
-              stroke="color-mix(in oklab, var(--secondary) 60%, transparent)"
-              strokeWidth="0.6"
+            <img
+              src={algeriaOutline}
+              alt="Outline map of Algeria"
+              className="absolute inset-0 w-full h-full object-contain pointer-events-none select-none"
+              style={{
+                filter:
+                  "brightness(0) saturate(100%) invert(38%) sepia(18%) saturate(620%) hue-rotate(70deg) brightness(92%) contrast(88%) opacity(0.75)",
+              }}
+              draggable={false}
             />
-            {/* Mediterranean hint */}
-            <path
-              d="M14 18 L30 12 L52 8 L74 12 L88 16"
-              fill="none"
-              stroke="color-mix(in oklab, var(--primary) 60%, transparent)"
-              strokeWidth="0.8"
-              strokeDasharray="1.5 1.2"
-            />
+
             {mapRegions.map((r) => {
               const isSel = r.id === selectedId;
               return (
-                <g
+                <button
                   key={r.id}
                   onClick={() => setSelectedId(r.id)}
-                  style={{ cursor: "pointer" }}
-                  className="transition-opacity"
+                  aria-label={t(r.name, lang)}
+                  className="absolute -translate-x-1/2 -translate-y-1/2 group"
+                  style={{ left: `${r.cx}%`, top: `${r.cy}%` }}
                 >
-                  {/* Larger invisible hit area for easier taps */}
-                  <circle cx={r.cx} cy={r.cy} r={6} fill="transparent" />
-                  {isSel && (
-                    <circle
-                      cx={r.cx}
-                      cy={r.cy}
-                      r={5.5}
-                      fill="none"
-                      stroke="var(--primary)"
-                      strokeWidth="0.5"
-                      opacity={0.6}
+                  <span className="relative flex items-center justify-center">
+                    {isSel && (
+                      <span
+                        className="absolute inline-flex h-6 w-6 rounded-full opacity-60 animate-ping"
+                        style={{ background: "var(--primary)" }}
+                      />
+                    )}
+                    <span
+                      className="relative inline-block rounded-full transition-all duration-200 group-hover:scale-110"
+                      style={{
+                        width: isSel ? 16 : 12,
+                        height: isSel ? 16 : 12,
+                        background: isSel ? "var(--primary)" : "var(--accent)",
+                        border: "2px solid var(--background)",
+                        boxShadow: "0 1px 4px rgba(0,0,0,0.25)",
+                      }}
                     />
-                  )}
-                  <circle
-                    cx={r.cx}
-                    cy={r.cy}
-                    r={isSel ? 3.2 : 2.2}
-                    fill={isSel ? "var(--primary)" : "var(--accent)"}
-                    stroke="var(--background)"
-                    strokeWidth="0.8"
-                    style={{ transition: "all 200ms ease" }}
-                  />
-                </g>
+                  </span>
+                  <span
+                    className={
+                      "absolute left-1/2 -translate-x-1/2 mt-1 whitespace-nowrap text-[10px] sm:text-xs font-semibold px-1.5 py-0.5 rounded-md transition-opacity " +
+                      (isSel
+                        ? "opacity-100 bg-primary text-primary-foreground"
+                        : "opacity-80 bg-card/80 text-foreground border border-border")
+                    }
+                    style={{ top: "100%" }}
+                  >
+                    {t(r.name, lang)}
+                  </span>
+                </button>
               );
             })}
-          </svg>
-          <p className="mt-2 text-[11px] text-muted-foreground text-center">
+          </div>
+          <p className="mt-3 text-[11px] text-muted-foreground text-center">
             {COPY.pickRegion[lang]}
           </p>
 
           {/* Tappable chip list (mobile-friendly fallback) */}
-          <div className="mt-3 flex flex-wrap gap-2">
+          <div className="mt-3 flex flex-wrap gap-2 justify-center">
             {mapRegions.map((r) => (
               <button
                 key={r.id}
