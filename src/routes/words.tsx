@@ -5,7 +5,10 @@ import { WORD_CATEGORIES, words, type WordCategoryId } from "@/data/words";
 import { quizForWord, type WordsQuizItem } from "@/data/wordsQuiz";
 import {
   categoryTotals,
+  claimWotd,
+  getWordOfTheDay,
   getWordsProgress,
+  isWotdClaimedToday,
   markQuizCorrect,
   markRevealed,
   wordsTotals,
@@ -48,6 +51,10 @@ const COPY = {
   catComplete: { en: "Category complete", fr: "Catégorie complète", ar: "اكتملت الفئة" },
   badgeEarned: { en: "Badge earned!", fr: "Badge obtenu !", ar: "حصلت على شارة!" },
   plusXp: { en: "+%n XP", fr: "+%n XP", ar: "+%n نقطة" },
+  wotdLabel: { en: "Word of the Day", fr: "Parole du jour", ar: "كلمة اليوم" },
+  wotdReveal: { en: "Reveal today's word", fr: "Révéler la parole du jour", ar: "اكشف كلمة اليوم" },
+  wotdClaimed: { en: "Read today ✓", fr: "Lue aujourd'hui ✓", ar: "قُرئت اليوم ✓" },
+  wotdStreak: { en: "%n-day streak", fr: "Série de %n jours", ar: "متتالية %n يومًا" },
 } as const;
 
 function WordsPage() {
@@ -98,6 +105,14 @@ function WordsPage() {
       <main className="max-w-3xl mx-auto px-4 py-8 safe-pb">
         <h1 className="text-2xl sm:text-3xl font-extrabold">{COPY.title[lang]}</h1>
         <p className="text-muted-foreground mt-1 text-sm sm:text-base leading-relaxed">{COPY.intro[lang]}</p>
+
+        {/* Word of the Day */}
+        <WordOfTheDayWidget
+          lang={lang}
+          onClaim={(gained) => {
+            if (gained > 0) setToast(COPY.plusXp[lang].replace("%n", String(gained)));
+          }}
+        />
 
         {/* Words progress strip */}
         <div className="mt-5 rounded-2xl border border-border bg-card p-3 sm:p-4">
@@ -228,6 +243,119 @@ function WordsPage() {
         </div>
       )}
     </div>
+  );
+}
+
+function WordOfTheDayWidget({
+  lang,
+  onClaim,
+}: {
+  lang: Lang;
+  onClaim: (gained: number) => void;
+}) {
+  const word = getWordOfTheDay();
+  const [open, setOpen] = useState(false);
+  const [claimed, setClaimed] = useState(false);
+
+  // Hydrate "claimed today" from storage on mount (avoid SSR localStorage access).
+  useEffect(() => {
+    setClaimed(isWotdClaimedToday());
+  }, []);
+
+  const handleReveal = () => {
+    if (open) {
+      setOpen(false);
+      return;
+    }
+    setOpen(true);
+    if (!claimed) {
+      const r = claimWotd(word.id);
+      if (!r.alreadyClaimed) {
+        setClaimed(true);
+        onClaim(r.gained);
+      }
+    }
+  };
+
+  const cat = WORD_CATEGORIES.find((c) => c.id === word.category);
+
+  return (
+    <section
+      className="mt-5 rounded-2xl p-4 sm:p-5 border border-accent/40"
+      style={{
+        backgroundColor: "color-mix(in oklab, var(--accent) 18%, var(--card))",
+        boxShadow: "var(--shadow-soft)",
+      }}
+      aria-label={COPY.wotdLabel[lang]}
+    >
+      <div className="flex items-start gap-3">
+        <div className="text-2xl sm:text-3xl shrink-0" aria-hidden>
+          {word.emoji ?? "❝"}
+        </div>
+        <div className="min-w-0 flex-1">
+          <div className="flex items-center justify-between gap-2 flex-wrap">
+            <div className="text-[11px] font-bold uppercase tracking-wider text-accent-foreground/80">
+              {COPY.wotdLabel[lang]}
+              {cat && (
+                <span className="ml-2 font-semibold normal-case tracking-normal text-muted-foreground">
+                  · {cat.emoji} {t(cat.label, lang)}
+                </span>
+              )}
+            </div>
+            {claimed && (
+              <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-secondary/20 border border-secondary/40 text-secondary">
+                {COPY.wotdClaimed[lang]}
+              </span>
+            )}
+          </div>
+
+          {!open ? (
+            <>
+              <blockquote className="mt-1.5 text-sm sm:text-base font-semibold italic leading-snug text-foreground line-clamp-2">
+                « {t(word.quote, lang)} »
+              </blockquote>
+              <button
+                type="button"
+                onClick={handleReveal}
+                className="mt-2.5 inline-flex items-center gap-1 text-xs font-bold px-3 py-1.5 rounded-full bg-primary text-primary-foreground hover:opacity-90 transition"
+              >
+                {COPY.wotdReveal[lang]}
+              </button>
+            </>
+          ) : (
+            <div className="animate-float-up">
+              <blockquote className="mt-1.5 text-sm sm:text-base font-semibold italic leading-snug text-foreground">
+                « {t(word.quote, lang)} »
+              </blockquote>
+              <div className="mt-1 text-[11px] font-semibold uppercase tracking-wider text-primary">
+                {t(word.author, lang)}
+              </div>
+              <div className="mt-3 space-y-2 text-sm leading-relaxed">
+                <div>
+                  <span className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground">
+                    {COPY.context[lang]} ·{" "}
+                  </span>
+                  {t(word.context, lang)}
+                </div>
+                <div>
+                  <span className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground">
+                    {COPY.meaning[lang]} ·{" "}
+                  </span>
+                  {t(word.meaning, lang)}
+                </div>
+              </div>
+              <button
+                type="button"
+                onClick={() => setOpen(false)}
+                className="mt-3 text-[11px] font-semibold text-muted-foreground hover:text-foreground transition"
+              >
+                ▲
+              </button>
+            </div>
+          )}
+        </div>
+      </div>
+    </section>
   );
 }
 
