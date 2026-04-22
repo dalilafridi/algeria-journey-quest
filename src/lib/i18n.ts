@@ -242,6 +242,28 @@ export const ui = {
   erasCompleted: { en: "Eras completed", fr: "Époques terminées", ar: "حقب مكتملة" },
   quizzesCompleted: { en: "Quizzes completed", fr: "Quiz terminés", ar: "اختبارات مكتملة" },
   factsCount: { en: "Fun facts", fr: "Faits marquants", ar: "حقائق ممتعة" },
+
+  // Brand / splash / loading
+  splashTagline: {
+    en: "From ancient kingdoms to modern heroes",
+    fr: "Des royaumes anciens aux héros modernes",
+    ar: "من الممالك القديمة إلى أبطال العصر الحديث",
+  },
+  loadingJourney: {
+    en: "Loading your journey…",
+    fr: "Chargement de votre voyage…",
+    ar: "جارٍ تحميل رحلتك…",
+  },
+  loadingEraNumidian: { en: "Numidian Kingdoms", fr: "Royaumes numides", ar: "الممالك النوميدية" },
+  loadingEraRoman: { en: "Roman Era", fr: "Époque romaine", ar: "العصر الروماني" },
+  loadingEraIslamic: { en: "Islamic Era", fr: "Époque islامية", ar: "العصر الإسلامي" },
+  loadingEraOttoman: { en: "Ottoman Era", fr: "Époque ottomane", ar: "العصر العثماني" },
+  loadingEraFrench: { en: "French Colonial Era", fr: "Colonisation française", ar: "الاستعمار الفرنسي" },
+  loadingEraIndependence: {
+    en: "Independence & Modern",
+    fr: "Indépendance & Moderne",
+    ar: "الاستقلال والعصر الحديث",
+  },
 } satisfies Record<string, Localized<string>>;
 
 export type UiKey = keyof typeof ui;
