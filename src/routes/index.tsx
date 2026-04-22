@@ -79,67 +79,81 @@ function Home() {
     },
   ];
 
+  const heroTitle =
+    lang === "fr"
+      ? "L'Algérie à travers le temps"
+      : lang === "ar"
+        ? "الجزائر عبر الزمن"
+        : "Algeria Through Time";
+  const heroSubtitle =
+    lang === "fr"
+      ? "Un voyage ludique à travers 2 000 ans d'histoire — des rois numides à l'indépendance."
+      : lang === "ar"
+        ? "رحلة ممتعة عبر أكثر من 2000 سنة من التاريخ — من ملوك نوميديا إلى الاستقلال."
+        : "A playful journey through 2,000+ years of history — from Numidian kings to independence.";
+
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="h-screen flex flex-col overflow-hidden">
       <Header />
-      <main className="flex-1 px-4 py-4 sm:py-6 lg:py-4 lg:overflow-hidden">
-        <div className="max-w-6xl mx-auto h-full flex flex-col gap-4 lg:gap-3">
-          {/* Hero — compact */}
+      <main className="flex-1 px-3 sm:px-4 py-3 lg:py-3 lg:overflow-hidden overflow-y-auto">
+        <div className="max-w-6xl mx-auto h-full flex flex-col gap-3 lg:gap-3">
+          {/* Hero — horizontal split: image LEFT (60%), content RIGHT (40%) */}
           <section
-            className="rounded-2xl px-4 py-4 sm:px-6 sm:py-5 flex items-center gap-4 sm:gap-6 animate-float-up"
+            className="rounded-2xl overflow-hidden animate-float-up grid grid-cols-1 lg:grid-cols-5 gap-0 lg:flex-[1.4] lg:min-h-0"
             style={{
               background: "var(--gradient-hero)",
               boxShadow: "var(--shadow-soft)",
             }}
           >
-            <img
-              src={brandCover}
-              alt="Algeria Through Time"
-              className="w-20 h-20 sm:w-24 sm:h-24 lg:w-28 lg:h-28 rounded-2xl object-cover shrink-0"
-              style={{ boxShadow: "var(--shadow-gold-glow)" }}
-            />
-            <div className="flex-1 min-w-0">
-              <h1 className="text-lg sm:text-2xl lg:text-2xl font-extrabold leading-tight">
-                {lang === "fr"
-                  ? "L'Algérie à travers le temps"
-                  : lang === "ar"
-                    ? "الجزائر عبر الزمن"
-                    : "Algeria Through Time"}
-              </h1>
-              <p className="text-xs sm:text-sm text-muted-foreground mt-1 line-clamp-2">
-                {lang === "fr"
-                  ? "Un voyage ludique à travers 2 000 ans d'histoire."
-                  : lang === "ar"
-                    ? "رحلة ممتعة عبر أكثر من 2000 سنة من التاريخ."
-                    : "A playful journey through 2,000+ years of history."}
-              </p>
+            {/* LEFT — dominant image (60% on desktop) */}
+            <div className="lg:col-span-3 relative h-48 sm:h-64 lg:h-full p-3 lg:p-4">
+              <img
+                src={brandCover}
+                alt="Algeria Through Time"
+                className="w-full h-full rounded-xl object-cover"
+                style={{ boxShadow: "var(--shadow-gold-glow)" }}
+              />
             </div>
-            <Link
-              to="/timeline"
-              className="hidden sm:inline-flex shrink-0 px-5 py-3 rounded-xl text-sm font-bold text-primary-foreground transition-transform hover:scale-105 active:scale-95"
-              style={{
-                background: "var(--gradient-warm)",
-                boxShadow: "var(--shadow-glow)",
-              }}
-            >
-              {tu("startJourney", lang)}
-            </Link>
+
+            {/* RIGHT — title, subtitle, CTA, badges (40% on desktop) */}
+            <div className="lg:col-span-2 flex flex-col justify-center gap-3 px-4 pb-4 lg:px-5 lg:py-5">
+              <div>
+                <h1 className="text-xl sm:text-3xl lg:text-3xl xl:text-4xl font-extrabold leading-tight">
+                  {heroTitle}
+                </h1>
+                <p className="text-xs sm:text-sm text-muted-foreground mt-2 line-clamp-3">
+                  {heroSubtitle}
+                </p>
+              </div>
+
+              <Link
+                to="/timeline"
+                className="inline-flex items-center justify-center px-5 py-3 rounded-xl text-sm font-bold text-primary-foreground transition-transform hover:scale-[1.02] active:scale-95 self-start"
+                style={{
+                  background: "var(--gradient-warm)",
+                  boxShadow: "var(--shadow-glow)",
+                }}
+              >
+                {tu("startJourney", lang)} →
+              </Link>
+
+              {/* Info badges */}
+              <div className="flex flex-wrap gap-1.5 pt-1">
+                <span className="px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-primary/10 text-primary border border-primary/20">
+                  {lang === "fr" ? "🌐 3 langues" : lang === "ar" ? "🌐 3 لغات" : "🌐 3 Languages"}
+                </span>
+                <span className="px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-secondary/10 text-secondary border border-secondary/20">
+                  {lang === "fr" ? "🏆 Niveaux & XP" : lang === "ar" ? "🏆 مستويات و XP" : "🏆 Levels & XP"}
+                </span>
+                <span className="px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-accent/20 text-accent-foreground border border-accent/30">
+                  {lang === "fr" ? "📜 5 ères" : lang === "ar" ? "📜 5 عصور" : "📜 5 Eras"}
+                </span>
+              </div>
+            </div>
           </section>
 
-          {/* Mobile-only Start CTA */}
-          <Link
-            to="/timeline"
-            className="sm:hidden px-5 py-3 rounded-xl text-sm font-bold text-primary-foreground text-center transition-transform active:scale-95"
-            style={{
-              background: "var(--gradient-warm)",
-              boxShadow: "var(--shadow-glow)",
-            }}
-          >
-            {tu("startJourney", lang)}
-          </Link>
-
           {/* 2x2 grid of main actions */}
-          <section className="grid grid-cols-2 gap-3 lg:gap-3 lg:flex-1 lg:min-h-0">
+          <section className="grid grid-cols-2 gap-2.5 lg:gap-2.5 lg:flex-1 lg:min-h-0">
             {tiles.map((tile) => (
               <Link
                 key={tile.title}
