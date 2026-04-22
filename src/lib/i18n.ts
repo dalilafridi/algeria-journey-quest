@@ -99,6 +99,7 @@ export const ui = {
   didYouKnow: { en: "Did you know?", fr: "Le saviez-vous ?", ar: "هل تعلم؟" },
   keyFigures: { en: "Key Figures", fr: "Personnages clés", ar: "شخصيات بارزة" },
   keyPlaces: { en: "Key Places", fr: "Lieux clés", ar: "أماكن مهمة" },
+  mapOfKeyPlaces: { en: "Map of Key Places", fr: "Carte des lieux clés", ar: "خريطة الأماكن البارزة" },
   takeQuiz: { en: "🎯 Take the Quiz", fr: "🎯 Faire le quiz", ar: "🎯 ابدأ الاختبار" },
   backToTimeline: { en: "← Back to timeline", fr: "← Retour à la chronologie", ar: "← العودة للمسار" },
   backTo: { en: "← Back to", fr: "← Retour à", ar: "← العودة إلى" },
