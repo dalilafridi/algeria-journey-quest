@@ -71,13 +71,89 @@ function FigureDetail() {
             <p className="leading-relaxed">{t(f.story, lang)}</p>
           </Section>
 
+          {f.extended?.storyMode && f.extended.storyMode.length > 0 && (
+            <Section
+              title={lang === "fr" ? "Mode récit" : lang === "ar" ? "وضع السرد" : "Story mode"}
+              emoji="✨"
+            >
+              <div className="space-y-3">
+                {f.extended.storyMode.map((p, i) => (
+                  <p key={i} className="leading-relaxed text-foreground/90">
+                    {t(p, lang)}
+                  </p>
+                ))}
+              </div>
+            </Section>
+          )}
+
           <Section title={tu("whyTheyMatter", lang)} emoji="⭐">
             <p className="leading-relaxed">{t(f.importance, lang)}</p>
           </Section>
 
+          {f.extended?.whatHappened && f.extended.whatHappened.length > 0 && (
+            <Section
+              title={
+                lang === "fr"
+                  ? "Ce qui s'est passé"
+                  : lang === "ar"
+                    ? "ما الذي حدث"
+                    : "What happened"
+              }
+              emoji="📜"
+            >
+              <ul className="space-y-2">
+                {f.extended.whatHappened.map((p, i) => (
+                  <li key={i} className="flex gap-2 leading-relaxed">
+                    <span className="text-primary mt-0.5">•</span>
+                    <span>{t(p, lang)}</span>
+                  </li>
+                ))}
+              </ul>
+            </Section>
+          )}
+
+          {f.extended?.aftermath && f.extended.aftermath.length > 0 && (
+            <Section
+              title={
+                lang === "fr" ? "Héritage" : lang === "ar" ? "الإرث والآثار" : "Aftermath"
+              }
+              emoji="🌿"
+            >
+              <div className="space-y-3">
+                {f.extended.aftermath.map((p, i) => (
+                  <p key={i} className="leading-relaxed text-foreground/90">
+                    {t(p, lang)}
+                  </p>
+                ))}
+              </div>
+            </Section>
+          )}
+
           <Section title={tu("oneFact", lang)} emoji="💡">
             <p className="leading-relaxed font-medium">{t(f.fact, lang)}</p>
           </Section>
+
+          {f.extended?.keyLesson && (
+            <div
+              className="mt-6 rounded-2xl border p-5"
+              style={{
+                background:
+                  "linear-gradient(135deg, color-mix(in oklab, var(--secondary) 14%, var(--card)), var(--card))",
+                borderColor: "color-mix(in oklab, var(--secondary) 35%, var(--border))",
+              }}
+            >
+              <div className="text-xs uppercase tracking-wider text-secondary font-bold mb-1.5">
+                {lang === "fr"
+                  ? "Leçon clé"
+                  : lang === "ar"
+                    ? "الدرس الجوهري"
+                    : "Key lesson"}
+              </div>
+              <p className="leading-relaxed font-semibold text-foreground">
+                « {t(f.extended.keyLesson, lang)} »
+              </p>
+            </div>
+          )}
 
           {era && (
             <div className="mt-6 pt-6 border-t border-border">
