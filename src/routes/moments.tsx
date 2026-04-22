@@ -703,39 +703,108 @@ const DECADE = {
     "Peace is something we must protect.",
     "السلام أمانة علينا أن نحميها.",
   ),
-  game: {
-    prompt: L(
-      "Tu es enfant pendant ces années. Un·e ami·e à l'école est triste et a peur. Que fais-tu ?",
-      "You are a child during these years. A friend at school is sad and afraid. What do you do?",
-      "أنت طفل·ة في تلك السنوات. صديق·ة لك في المدرسة حزين وخائف. ماذا تفعل؟",
+  decisions: [
+    {
+      prompt: L(
+        "Tu es enfant pendant ces années. Un·e ami·e à l'école est triste et a peur. Que fais-tu ?",
+        "You are a child during these years. A friend at school is sad and afraid. What do you do?",
+        "أنت طفل·ة في تلك السنوات. صديق·ة لك في المدرسة حزين وخائف. ماذا تفعل؟",
+      ),
+      choices: [
+        {
+          label: L("L'écouter sans juger", "Listen without judging", "أستمع إليه دون حكم"),
+          feedback: L(
+            "Très bien. Écouter avec gentillesse est l'un des plus grands cadeaux qu'on peut offrir.",
+            "Wonderful. Listening with kindness is one of the greatest gifts we can give.",
+            "رائع. الإنصات بلطف من أعظم الهدايا التي نستطيع تقديمها.",
+          ),
+        },
+        {
+          label: L("En parler à un adulte de confiance", "Tell a trusted adult", "أُخبر شخصًا بالغًا أثق به"),
+          feedback: L(
+            "C'est sage. Quand quelque chose pèse trop lourd, demander de l'aide est une vraie force.",
+            "Wise choice. When something feels too heavy, asking for help is real strength.",
+            "خيار حكيم. حين يصبح الشيء ثقيلًا، طلب المساعدة قوّة حقيقية.",
+          ),
+        },
+        {
+          label: L("Lui dessiner quelque chose de joli", "Draw something kind for them", "أرسم له شيئًا جميلًا"),
+          feedback: L(
+            "Magnifique. Les petits gestes de douceur aident à reconstruire la confiance et la paix.",
+            "Beautiful. Small gentle gestures help rebuild trust and peace.",
+            "جميل. اللفتات اللطيفة الصغيرة تُعيد بناء الثقة والسلام.",
+          ),
+        },
+      ],
+    },
+    {
+      prompt: L(
+        "Un voisin a perdu un proche. Comment montrer ton soutien ?",
+        "A neighbour has lost a loved one. How do you show support?",
+        "جار فقد عزيزًا عليه. كيف تُظهر دعمك؟",
+      ),
+      choices: [
+        {
+          label: L("Lui apporter un petit plat avec ta famille", "Bring a small dish with your family", "أُحضر معه طبقًا صغيرًا مع عائلتي"),
+          feedback: L(
+            "Geste précieux. Partager un repas, c'est dire « tu n'es pas seul ».",
+            "A precious gesture. Sharing a meal says “you are not alone.”",
+            "لفتة ثمينة. مشاركة الطعام تقول «لست وحدك».",
+          ),
+        },
+        {
+          label: L("Lui écrire un petit mot gentil", "Write them a kind note", "أكتب له كلمة لطيفة"),
+          feedback: L(
+            "Les mots doux laissent des traces qui durent longtemps.",
+            "Kind words leave traces that last a long time.",
+            "الكلمات اللطيفة تترك أثرًا يدوم طويلًا.",
+          ),
+        },
+      ],
+    },
+    {
+      prompt: L(
+        "À l'école, un débat tourne mal. Que choisis-tu ?",
+        "At school, a debate gets heated. What do you choose?",
+        "في المدرسة، يحتدم نقاش. ماذا تختار؟",
+      ),
+      choices: [
+        {
+          label: L("Demander à chacun de parler à son tour", "Ask everyone to speak in turn", "أطلب أن يتحدّث كلٌّ بدوره"),
+          feedback: L(
+            "Très bien. Donner la parole à chacun, c'est déjà construire la paix.",
+            "Wonderful. Giving each person a turn is already building peace.",
+            "رائع. إعطاء الجميع الكلمة هو بداية بناء السلام.",
+          ),
+        },
+        {
+          label: L("Proposer une pause et un verre d'eau", "Suggest a break and a glass of water", "أقترح استراحة وكأس ماء"),
+          feedback: L(
+            "Sage. Le calme aide à mieux se comprendre.",
+            "Wise. Calm helps us understand each other better.",
+            "حكيم. الهدوء يُساعد على الفهم.",
+          ),
+        },
+      ],
+    },
+  ] as DecisionScenario[],
+  connect: [
+    L(
+      "Aujourd'hui, l'Algérie cultive la paix civile et la mémoire des familles touchées.",
+      "Today, Algeria nurtures civil peace and the memory of the families affected.",
+      "اليوم، تحرص الجزائر على السلم المدني وذاكرة العائلات المتأثرة.",
     ),
-    choices: [
-      {
-        label: L("L'écouter sans juger", "Listen without judging", "أستمع إليه دون حكم"),
-        feedback: L(
-          "Très bien. Écouter avec gentillesse est l'un des plus grands cadeaux qu'on peut offrir.",
-          "Wonderful. Listening with kindness is one of the greatest gifts we can give.",
-          "رائع. الإنصات بلطف من أعظم الهدايا التي نستطيع تقديمها.",
-        ),
-      },
-      {
-        label: L("En parler à un adulte de confiance", "Tell a trusted adult", "أُخبر شخصًا بالغًا أثق به"),
-        feedback: L(
-          "C'est sage. Quand quelque chose pèse trop lourd, demander de l'aide est une vraie force.",
-          "Wise choice. When something feels too heavy, asking for help is real strength.",
-          "خيار حكيم. حين يصبح الشيء ثقيلًا، طلب المساعدة قوّة حقيقية.",
-        ),
-      },
-      {
-        label: L("Lui dessiner quelque chose de joli", "Draw something kind for them", "أرسم له شيئًا جميلًا"),
-        feedback: L(
-          "Magnifique. Les petits gestes de douceur aident à reconstruire la confiance et la paix.",
-          "Beautiful. Small gentle gestures help rebuild trust and peace.",
-          "جميل. اللفتات اللطيفة الصغيرة تُعيد بناء الثقة والسلام.",
-        ),
-      },
-    ],
-  },
+    L(
+      "Cette histoire nous rappelle qu'écouter et respecter les autres protège la société.",
+      "This history reminds us that listening to and respecting others protects society.",
+      "هذا التاريخ يُذكّرنا بأن الإصغاء والاحترام يحميان المجتمع.",
+    ),
+  ],
+  remember: L(
+    "Beaucoup de familles ont été touchées. Se souvenir, avec douceur, aide à protéger la paix d'aujourd'hui et de demain.",
+    "Many families were affected. Remembering, gently, helps protect the peace of today and tomorrow.",
+    "تأثّرت عائلات كثيرة. التذكّر بلطف يساعد على حماية سلام اليوم والغد.",
+  ),
   quiz: [
     {
       q: L(
