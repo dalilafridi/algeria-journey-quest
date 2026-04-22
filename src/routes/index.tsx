@@ -43,12 +43,6 @@ function Home() {
               style={{ boxShadow: "var(--shadow-gold-glow)" }}
             />
           </div>
-          <h1 className="text-4xl sm:text-6xl font-extrabold tracking-tight text-foreground">
-            {tu("appName", lang)}
-          </h1>
-          <p className="mt-5 text-lg sm:text-xl text-muted-foreground max-w-xl mx-auto">
-            {tu("heroSubtitle", lang)}
-          </p>
           <Link
             to="/timeline"
             className="inline-block mt-8 px-8 py-4 rounded-2xl text-lg font-bold text-primary-foreground transition-transform hover:scale-105 active:scale-95"
