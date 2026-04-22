@@ -1257,4 +1257,81 @@ export const figureQuiz: FigureQuizQuestion[] = [
       "وُلد آيت منقلات فعلًا في إغيل بوعمّاس، قرية صغيرة بمنطقة القبائل.",
     ),
   ),
+  // ---------- Moufdi Zakaria ----------
+  make(
+    "moufdi-zakaria-1",
+    "easy",
+    [
+      L("I am a poet from the M'zab valley.", "Je suis un poète de la vallée du M'zab.", "أنا شاعر من وادي ميزاب."),
+      L("I wrote the words of Algeria's national anthem.", "J'ai écrit les paroles de l'hymne national algérien.", "كتبتُ كلمات النشيد الوطني الجزائري."),
+      L("My most famous poem begins with the word 'Kassaman'.", "Mon poème le plus célèbre commence par le mot « Kassaman ».", "أشهر قصائدي تبدأ بكلمة «قسماً»."),
+    ],
+    "Moufdi Zakaria",
+    ["Kateb Yacine", "Mohamed Dib", "Mouloud Feraoun"],
+    L(
+      "Moufdi Zakaria wrote 'Kassaman', adopted as Algeria's national anthem.",
+      "Moufdi Zakaria a écrit « Kassaman », adopté comme hymne national algérien.",
+      "كتب مفدي زكريا «قسماً» الذي اعتُمد نشيدًا وطنيًا للجزائر.",
+    ),
+  ),
+  make(
+    "moufdi-zakaria-2",
+    "medium",
+    [
+      L("I wrote the lyrics of 'Kassaman' in 1955.", "J'ai écrit les paroles de « Kassaman » en 1955.", "كتبتُ كلمات «قسماً» سنة 1955."),
+      L("I was a prisoner of the French colonial authorities at the time.", "À l'époque, j'étais prisonnier des autorités coloniales françaises.", "كنتُ آنذاك سجينًا لدى سلطات الاحتلال الفرنسي."),
+    ],
+    "Moufdi Zakaria",
+    ["Larbi Ben M'hidi", "Krim Belkacem", "Frantz Fanon"],
+    L(
+      "Zakaria wrote 'Kassaman' in 1955 while held in Barberousse prison in Algiers.",
+      "Zakaria a écrit « Kassaman » en 1955 alors qu'il était détenu à la prison de Barberousse, à Alger.",
+      "كتب زكريا «قسماً» سنة 1955 وهو معتقل في سجن بربروس بالجزائر العاصمة.",
+    ),
+  ),
+  make(
+    "moufdi-zakaria-3",
+    "medium",
+    [
+      L("True or false: my poem 'Kassaman' was set to music by Egyptian composer Mohamed Fawzi.", "Vrai ou faux : mon poème « Kassaman » a été mis en musique par le compositeur égyptien Mohamed Fawzi.", "صح أم خطأ: لحّن قصيدتي «قسماً» الموسيقار المصري محمد فوزي."),
+      L("Answer: TRUE.", "Réponse : VRAI.", "الجواب: صحيح."),
+    ],
+    "Moufdi Zakaria",
+    ["Kateb Yacine", "Idir", "Warda Al-Jazairia"],
+    L(
+      "The melody of 'Kassaman' was indeed composed by Mohamed Fawzi, an Egyptian musician.",
+      "La mélodie de « Kassaman » a bien été composée par Mohamed Fawzi, un musicien égyptien.",
+      "لحن «قسماً» وضعه فعلًا الموسيقار المصري محمد فوزي.",
+    ),
+  ),
+  make(
+    "moufdi-zakaria-4",
+    "hard",
+    [
+      L("I am called the 'Poet of the Nation'.", "On m'appelle le « poète de la nation ».", "يلقّبونني بـ«شاعر الأمة»."),
+      L("Tradition says I wrote my most famous poem on a prison wall — with my own blood.", "La tradition raconte que j'ai écrit mon poème le plus célèbre sur le mur d'une prison — avec mon propre sang.", "تقول الرواية إنني كتبتُ أشهر قصائدي على جدار زنزانة بدمي."),
+    ],
+    "Moufdi Zakaria",
+    ["Mohamed Belkheir", "Mostefa Ben Boulaïd", "Abdelhamid Ben Badis"],
+    L(
+      "Zakaria, the 'Poet of the Nation', is said to have written 'Kassaman' on his cell wall in his own blood.",
+      "Zakaria, le « poète de la nation », aurait écrit « Kassaman » sur le mur de sa cellule avec son propre sang.",
+      "يُقال إن زكريا، «شاعر الأمة»، كتب «قسماً» بدمه على جدار زنزانته.",
+    ),
+  ),
+  make(
+    "moufdi-zakaria-5",
+    "hard",
+    [
+      L("I was born in 1908 in Beni Isguen, in the M'zab valley.", "Je suis né en 1908 à Beni Isguen, dans la vallée du M'zab.", "وُلدتُ سنة 1908 في بني يزقن بوادي ميزاب."),
+      L("Beyond the anthem, I wrote epic poems celebrating Algeria's struggle and unity.", "Au-delà de l'hymne, j'ai écrit des poèmes épiques célébrant la lutte et l'unité de l'Algérie.", "إلى جانب النشيد، كتبتُ قصائد ملحمية تمجّد كفاح الجزائر ووحدتها."),
+    ],
+    "Moufdi Zakaria",
+    ["Kateb Yacine", "Mohamed Dib", "Lounis Aït Menguellet"],
+    L(
+      "Born in 1908 in Beni Isguen (M'zab), Zakaria's epic poetry made him a symbol of national identity and unity.",
+      "Né en 1908 à Beni Isguen (M'zab), la poésie épique de Zakaria a fait de lui un symbole de l'identité nationale et de l'unité.",
+      "وُلد سنة 1908 في بني يزقن (ميزاب)، وجعلت قصائده الملحمية منه رمزًا للهوية الوطنية والوحدة.",
+    ),
+  ),
 ];
