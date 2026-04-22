@@ -4,31 +4,35 @@ import { Header } from "@/components/Header";
 import { mapRegions, type MapRegion } from "@/data/mapRegions";
 import { getFigure } from "@/data/figures";
 import { t, useLang } from "@/lib/i18n";
-import algeriaOutline from "@/assets/algeria-outline.png";
 
 export const Route = createFileRoute("/map")({
   head: () => ({
     meta: [
-      { title: "Map Explorer — Algeria Through Time" },
-      { name: "description", content: "Explore Algerian history by region: Kabylie, Aurès, Algiers, Constantine, the West and the Sahara." },
+      { title: "Region Explorer — Algeria Through Time" },
+      {
+        name: "description",
+        content:
+          "Explore Algeria region by region: Kabylie, Aurès, Algiers, Constantine, the West and the Sahara — facts, figures and stories.",
+      },
     ],
   }),
-  component: MapPage,
+  component: RegionExplorerPage,
 });
 
 const COPY = {
-  title: { en: "Map Explorer", fr: "Explorateur de carte", ar: "مستكشف الخريطة" },
+  title: { en: "Region Explorer", fr: "Explorateur des régions", ar: "مستكشف المناطق" },
   subtitle: {
-    en: "Tap a region to discover its stories, figures and events.",
-    fr: "Touchez une région pour découvrir ses récits, figures et événements.",
-    ar: "اضغط على منطقة لاكتشاف قصصها وشخصياتها وأحداثها.",
+    en: "Tap a region to discover its story, key facts and great figures.",
+    fr: "Touchez une région pour découvrir son histoire, ses faits clés et ses grandes figures.",
+    ar: "اضغط على منطقة لاكتشاف قصتها وأهم حقائقها وكبار شخصياتها.",
   },
-  pickRegion: { en: "Pick a region on the map", fr: "Choisissez une région sur la carte", ar: "اختر منطقة على الخريطة" },
-  relatedFigures: { en: "Related figures", fr: "Figures liées", ar: "شخصيات مرتبطة" },
-  relatedEvents: { en: "Related events", fr: "Événements liés", ar: "أحداث مرتبطة" },
+  pickRegion: { en: "Choose a region to begin", fr: "Choisissez une région pour commencer", ar: "اختر منطقة للبدء" },
+  keyFacts: { en: "Key facts", fr: "Faits clés", ar: "حقائق أساسية" },
+  greatFigures: { en: "Great figures", fr: "Grandes figures", ar: "شخصيات بارزة" },
+  focus: { en: "Focus", fr: "Thème", ar: "المحور" },
 } as const;
 
-function MapPage() {
+function RegionExplorerPage() {
   const lang = useLang();
   const [selectedId, setSelectedId] = useState<string>(mapRegions[0].id);
   const selected: MapRegion | undefined = mapRegions.find((r) => r.id === selectedId);
@@ -40,112 +44,83 @@ function MapPage() {
         <h1 className="text-2xl sm:text-3xl font-extrabold">{COPY.title[lang]}</h1>
         <p className="text-muted-foreground mt-1 text-sm sm:text-base">{COPY.subtitle[lang]}</p>
 
-        <div
-          className="mt-6 rounded-2xl border border-border bg-card p-3 sm:p-5"
-          style={{ boxShadow: "var(--shadow-soft)" }}
-        >
-          <div
-            className="relative w-full mx-auto"
-            style={{
-              maxWidth: "520px",
-              aspectRatio: "1300 / 1230",
-              background:
-                "linear-gradient(160deg, color-mix(in oklab, var(--secondary) 14%, var(--card)), color-mix(in oklab, var(--accent) 8%, var(--card)))",
-              borderRadius: "1rem",
-            }}
-          >
-            <img
-              src={algeriaOutline}
-              alt="Outline map of Algeria"
-              className="absolute inset-0 w-full h-full object-contain pointer-events-none select-none"
-              style={{
-                filter:
-                  "brightness(0) saturate(100%) invert(38%) sepia(18%) saturate(620%) hue-rotate(70deg) brightness(92%) contrast(88%) opacity(0.75)",
-              }}
-              draggable={false}
-            />
-
-            {mapRegions.map((r) => {
-              const isSel = r.id === selectedId;
-              return (
-                <button
-                  key={r.id}
-                  onClick={() => setSelectedId(r.id)}
-                  aria-label={t(r.name, lang)}
-                  className="absolute -translate-x-1/2 -translate-y-1/2 group"
-                  style={{ left: `${r.cx}%`, top: `${r.cy}%` }}
-                >
-                  <span className="relative flex items-center justify-center">
-                    {isSel && (
-                      <span
-                        className="absolute inline-flex h-6 w-6 rounded-full opacity-60 animate-ping"
-                        style={{ background: "var(--primary)" }}
-                      />
-                    )}
-                    <span
-                      className="relative inline-block rounded-full transition-all duration-200 group-hover:scale-110"
-                      style={{
-                        width: isSel ? 16 : 12,
-                        height: isSel ? 16 : 12,
-                        background: isSel ? "var(--primary)" : "var(--accent)",
-                        border: "2px solid var(--background)",
-                        boxShadow: "0 1px 4px rgba(0,0,0,0.25)",
-                      }}
-                    />
-                  </span>
-                  <span
-                    className={
-                      "absolute left-1/2 -translate-x-1/2 mt-1 whitespace-nowrap text-[10px] sm:text-xs font-semibold px-1.5 py-0.5 rounded-md transition-opacity " +
-                      (isSel
-                        ? "opacity-100 bg-primary text-primary-foreground"
-                        : "opacity-80 bg-card/80 text-foreground border border-border")
-                    }
-                    style={{ top: "100%" }}
-                  >
-                    {t(r.name, lang)}
-                  </span>
-                </button>
-              );
-            })}
-          </div>
-          <p className="mt-3 text-[11px] text-muted-foreground text-center">
-            {COPY.pickRegion[lang]}
-          </p>
-
-          {/* Tappable chip list (mobile-friendly fallback) */}
-          <div className="mt-3 flex flex-wrap gap-2 justify-center">
-            {mapRegions.map((r) => (
+        {/* Region cards grid */}
+        <section className="mt-6 grid grid-cols-2 sm:grid-cols-3 gap-3">
+          {mapRegions.map((r) => {
+            const isSel = r.id === selectedId;
+            return (
               <button
                 key={r.id}
                 onClick={() => setSelectedId(r.id)}
                 className={
-                  "text-xs font-semibold px-3 py-1.5 rounded-full border transition-all duration-200 active:scale-95 " +
-                  (r.id === selectedId
-                    ? "bg-primary text-primary-foreground border-primary shadow-sm"
-                    : "bg-card border-border text-muted-foreground hover:border-primary/40 hover:text-foreground")
+                  "text-left rounded-2xl border p-3 sm:p-4 transition-all duration-200 active:scale-[0.98] hover:-translate-y-0.5 " +
+                  (isSel
+                    ? "border-primary bg-primary/5 shadow-sm"
+                    : "border-border bg-card hover:border-primary/40")
                 }
+                style={isSel ? { boxShadow: "var(--shadow-soft)" } : undefined}
+                aria-pressed={isSel}
               >
-                {t(r.name, lang)}
+                <div className="flex items-center gap-2">
+                  <span className="text-2xl leading-none" aria-hidden>
+                    {r.emoji}
+                  </span>
+                  <span className="font-bold text-sm sm:text-base">{t(r.name, lang)}</span>
+                </div>
+                <p className="mt-1.5 text-[11px] sm:text-xs text-muted-foreground leading-snug line-clamp-2">
+                  {t(r.focus, lang)}
+                </p>
               </button>
-            ))}
-          </div>
-        </div>
+            );
+          })}
+        </section>
 
+        {/* Selected region detail */}
         {selected ? (
           <article
             key={selected.id}
             className="mt-6 rounded-2xl border border-border bg-card p-5 animate-float-up"
             style={{ boxShadow: "var(--shadow-soft)" }}
           >
-            <h2 className="text-xl font-bold">{t(selected.name, lang)}</h2>
-            <p className="text-sm text-muted-foreground mt-2 leading-relaxed">
-              {t(selected.description, lang)}
+            <header className="flex items-start gap-3">
+              <span className="text-3xl leading-none" aria-hidden>
+                {selected.emoji}
+              </span>
+              <div className="min-w-0">
+                <h2 className="text-xl font-bold">{t(selected.name, lang)}</h2>
+                <div className="mt-0.5 text-[11px] font-semibold uppercase tracking-wider text-primary">
+                  {COPY.focus[lang]} · {t(selected.focus, lang)}
+                </div>
+              </div>
+            </header>
+
+            <p className="text-sm text-muted-foreground mt-3 leading-relaxed">
+              {t(selected.summary, lang)}
             </p>
 
+            {/* Key facts */}
+            <section className="mt-5">
+              <div className="text-xs font-bold uppercase tracking-wider text-muted-foreground mb-2">
+                {COPY.keyFacts[lang]}
+              </div>
+              <ul className="space-y-1.5">
+                {selected.facts.map((f, i) => (
+                  <li
+                    key={i}
+                    className="text-sm rounded-xl bg-muted/60 px-3 py-2 leading-relaxed flex gap-2"
+                  >
+                    <span className="text-primary font-bold shrink-0">•</span>
+                    <span>{t(f, lang)}</span>
+                  </li>
+                ))}
+              </ul>
+            </section>
+
+            {/* Figures */}
             {selected.figureIds.length > 0 && (
-              <section className="mt-4">
+              <section className="mt-5">
                 <div className="text-xs font-bold uppercase tracking-wider text-muted-foreground mb-2">
-                  {COPY.relatedFigures[lang]}
+                  {COPY.greatFigures[lang]}
                 </div>
                 <div className="flex flex-wrap gap-2">
                   {selected.figureIds.map((fid) => {
@@ -156,28 +131,16 @@ function MapPage() {
                         key={fid}
                         to="/figures/$figureId"
                         params={{ figureId: fid }}
-                        className="text-sm font-semibold px-3 py-1.5 rounded-full bg-muted hover:bg-card border border-border transition"
+                        className="text-sm font-semibold px-3 py-1.5 rounded-full bg-muted hover:bg-card border border-border hover:border-primary/40 transition"
                       >
-                        👤 {t(f.name, lang)}
+                        <span className="mr-1" aria-hidden>
+                          {f.emoji}
+                        </span>
+                        {t(f.displayName, lang)}
                       </Link>
                     );
                   })}
                 </div>
-              </section>
-            )}
-
-            {selected.events.length > 0 && (
-              <section className="mt-4">
-                <div className="text-xs font-bold uppercase tracking-wider text-muted-foreground mb-2">
-                  {COPY.relatedEvents[lang]}
-                </div>
-                <ul className="space-y-1.5">
-                  {selected.events.map((ev, i) => (
-                    <li key={i} className="text-sm rounded-xl bg-muted/60 px-3 py-2">
-                      📍 {t(ev, lang)}
-                    </li>
-                  ))}
-                </ul>
               </section>
             )}
           </article>
