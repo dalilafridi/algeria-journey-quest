@@ -2,6 +2,7 @@ import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { Header } from "@/components/Header";
 import { eras } from "@/data/eras";
 import { getFigure, figures } from "@/data/figures";
+import { figureExtras } from "@/data/figureExtras";
 import { t, tu, useLang } from "@/lib/i18n";
 import { StoryFlow, type StoryScene } from "@/components/story/StoryFlow";
 
@@ -38,6 +39,16 @@ function FigureDetail() {
   const { figure: f } = Route.useLoaderData();
   const lang = useLang();
   const era = f.relatedEraId ? eras.find((e) => e.id === f.relatedEraId) : undefined;
+  const extras = figureExtras[f.id];
+
+  const didYouKnowLabel =
+    lang === "fr" ? "Le saviez-vous ?" : lang === "ar" ? "هل تعلم؟" : "Did you know?";
+  const keyWorksLabel =
+    lang === "fr"
+      ? "Œuvres et lieux clés"
+      : lang === "ar"
+        ? "أعمال وأماكن بارزة"
+        : "Key works & places";
 
   return (
     <div className="min-h-screen">
@@ -144,6 +155,48 @@ function FigureDetail() {
           <Section title={tu("oneFact", lang)} emoji="💡">
             <p className="leading-relaxed font-medium">{t(f.fact, lang)}</p>
           </Section>
+
+          {extras?.didYouKnow && (
+            <div
+              className="mt-6 rounded-2xl border p-5"
+              style={{
+                background:
+                  "linear-gradient(135deg, color-mix(in oklab, var(--accent) 18%, var(--card)), var(--card))",
+                borderColor: "color-mix(in oklab, var(--accent) 40%, var(--border))",
+              }}
+            >
+              <div className="text-xs uppercase tracking-wider text-accent-foreground/80 font-bold mb-1.5 flex items-center gap-1.5">
+                <span>💭</span>
+                <span>{didYouKnowLabel}</span>
+              </div>
+              <p className="leading-relaxed text-foreground/90">{t(extras.didYouKnow, lang)}</p>
+            </div>
+          )}
+
+          {extras?.keyPlacesAndWorks && extras.keyPlacesAndWorks.length > 0 && (
+            <Section title={keyWorksLabel} emoji="🗺️">
+              <ul className="space-y-2">
+                {extras.keyPlacesAndWorks.map((item, i) => (
+                  <li
+                    key={i}
+                    className="rounded-xl border border-border bg-muted/40 px-3 py-2.5 flex gap-3 items-start"
+                  >
+                    <span className="text-xl leading-none mt-0.5" aria-hidden>
+                      {item.emoji}
+                    </span>
+                    <div className="min-w-0">
+                      <div className="font-semibold text-sm">{t(item.label, lang)}</div>
+                      {item.note && (
+                        <div className="text-xs text-muted-foreground leading-relaxed mt-0.5">
+                          {t(item.note, lang)}
+                        </div>
+                      )}
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </Section>
+          )}
 
           {f.extended?.keyLesson && (
             <div
