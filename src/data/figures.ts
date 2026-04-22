@@ -25,6 +25,17 @@ export type FigureRegion =
   | "national"
   | "maghreb-intellectual";
 
+export type FigureExtended = {
+  /** Narrative story mode (children-friendly, emotional, educational). */
+  storyMode?: LocalizedString[];
+  /** Structured factual bullets ("What happened"). */
+  whatHappened?: LocalizedString[];
+  /** Long-term impact / aftermath paragraph or bullets. */
+  aftermath?: LocalizedString[];
+  /** A short featured key-lesson sentence. */
+  keyLesson?: LocalizedString;
+};
+
 export type Figure = {
   id: string;
   name: string; // canonical English name (used as quiz answer + badge keys)
@@ -37,6 +48,8 @@ export type Figure = {
   story: LocalizedString;
   importance: LocalizedString;
   fact: LocalizedString;
+  /** Optional museum-style deep content. */
+  extended?: FigureExtended;
   // Optional link back into the eras section.
   relatedEraId?: string;
 };
