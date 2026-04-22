@@ -16,9 +16,13 @@ export type WordsProgress = {
   xp: number;
   /** Category badge keys earned (e.g. "national-voice"). */
   badges: string[];
+  /** Last YYYY-MM-DD on which the Word-of-the-Day XP was claimed. */
+  wotdClaimedOn?: string;
+  /** Total number of distinct days the user has read the Word of the Day. */
+  wotdStreak?: number;
 };
 
-const empty: WordsProgress = { revealed: [], quizCorrect: [], xp: 0, badges: [] };
+const empty: WordsProgress = { revealed: [], quizCorrect: [], xp: 0, badges: [], wotdStreak: 0 };
 
 function read(): WordsProgress {
   if (typeof window === "undefined") return { ...empty };
