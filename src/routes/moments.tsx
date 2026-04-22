@@ -3,6 +3,18 @@ import { useMemo, useState } from "react";
 import { Header } from "@/components/Header";
 import { AmazighSymbol } from "@/components/brand/AmazighSymbol";
 import { useLang, type Lang, type Localized } from "@/lib/i18n";
+import {
+  GuideBubble,
+  MuseumReveal,
+  DecisionGame,
+  MapSection,
+  ReflectionCard,
+  WeRememberCard,
+  DailyCard,
+  type DecisionScenario,
+  type MapRegion,
+  type DailyQuestion,
+} from "@/components/moments/Immersive";
 
 // ============================================================
 // Route
