@@ -1,10 +1,11 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useMemo, useState } from "react";
-import { Crown, BookOpen, Moon, Shield, Swords, Flag, Lock, Sparkles, Lightbulb } from "lucide-react";
+import { Crown, BookOpen, Moon, Shield, Swords, Flag, Lock, Sparkles, Lightbulb, Sun } from "lucide-react";
 import { Header } from "@/components/Header";
 import { eras } from "@/data/eras";
 import { getProgress, hasPassed, isUnlocked, type Progress } from "@/lib/progress";
 import { t, tu, useLang, type Lang } from "@/lib/i18n";
+import earlyImg from "@/assets/era-earlynorthafrica.jpg";
 import numidiaImg from "@/assets/era-numidia.png";
 import romanImg from "@/assets/era-roman.png";
 import islamicImg from "@/assets/era-islamic.png";
