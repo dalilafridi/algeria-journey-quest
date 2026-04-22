@@ -1,6 +1,6 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { Header } from "@/components/Header";
-import { EraMap } from "@/components/EraMap";
+
 import { eras } from "@/data/eras";
 import { t, tu, useLang } from "@/lib/i18n";
 
@@ -82,14 +82,6 @@ function EraPage() {
             </ul>
           </Card>
         </section>
-
-        {era.places.length > 0 && (
-          <section className="mt-6">
-            <Card title={tu("mapOfKeyPlaces", lang)} icon="🗺️">
-              <EraMap places={era.places} lang={lang} />
-            </Card>
-          </section>
-        )}
 
         <section className="mt-6">
           <Card title={tu("didYouKnow", lang)} icon="💡" accent>
