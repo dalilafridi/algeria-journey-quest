@@ -309,6 +309,96 @@ export const figureQuiz: FigureQuizQuestion[] = [
       "يمثّل هذان المبدآن جوهر ميثاق الصومام الذي صاغه عبان.",
     ),
   ),
+  make(
+    "abane-3",
+    "medium",
+    [
+      L("I was born in Azouza, a small village in Kabylie.", "Je suis né à Azouza, un petit village de Kabylie.", "وُلدتُ في قرية أزوزة الصغيرة بمنطقة القبائل."),
+      L("Historians often call me 'the architect of the revolution'.", "Les historiens m'appellent souvent « l'architecte de la révolution ».", "يلقّبني المؤرخون في الغالب بـ«مهندس الثورة»."),
+    ],
+    "Abane Ramdane",
+    ["Krim Belkacem", "Larbi Ben M'hidi", "Colonel Amirouche"],
+    L(
+      "Abane Ramdane is widely remembered as the architect of the Algerian revolution's political structure.",
+      "Abane Ramdane est largement reconnu comme l'architecte de la structure politique de la révolution algérienne.",
+      "يُعدّ عبان رمضان على نطاق واسع مهندس البنية السياسية للثورة الجزائرية.",
+    ),
+  ),
+  make(
+    "abane-4",
+    "medium",
+    [
+      L("After years in French prisons, I was freed in 1955.", "Après des années dans les prisons françaises, j'ai été libéré en 1955.", "بعد سنوات في السجون الفرنسية، أُطلق سراحي سنة 1955."),
+      L("I immediately reorganized the FLN inside Algeria.", "J'ai aussitôt réorganisé le FLN à l'intérieur de l'Algérie.", "أعدتُ فورًا تنظيم جبهة التحرير في الداخل الجزائري."),
+    ],
+    "Abane Ramdane",
+    ["Ferhat Abbas", "Krim Belkacem", "Larbi Ben M'hidi"],
+    L(
+      "Abane was released in 1955 and quickly became the political organizer of the FLN inside the country.",
+      "Abane fut libéré en 1955 et devint vite l'organisateur politique du FLN à l'intérieur du pays.",
+      "أُفرج عن عبان سنة 1955 فأصبح سريعًا المنظّم السياسي للجبهة في الداخل.",
+    ),
+  ),
+  make(
+    "abane-5",
+    "hard",
+    [
+      L("On 20 August 1956, I helped lead a secret congress in a Kabyle valley.", "Le 20 août 1956, j'ai aidé à diriger un congrès secret dans une vallée kabyle.", "في 20 أوت 1956 ساهمتُ في قيادة مؤتمر سرّي في وادٍ بالقبائل."),
+      L("It gave the revolution written rules and national institutions.", "Il dota la révolution de règles écrites et d'institutions nationales.", "منح الثورةَ قواعد مكتوبة ومؤسسات وطنية."),
+    ],
+    "Abane Ramdane",
+    ["Krim Belkacem", "Ferhat Abbas", "Larbi Ben M'hidi"],
+    L(
+      "Abane was the principal architect of the Soummam Congress (20 August 1956).",
+      "Abane fut le principal architecte du Congrès de la Soummam (20 août 1956).",
+      "كان عبان المهندس الرئيسي لمؤتمر الصومام (20 أوت 1956).",
+    ),
+  ),
+  make(
+    "abane-6",
+    "hard",
+    [
+      L("At Soummam, two national bodies were created to lead the revolution.", "À la Soummam, deux organes nationaux furent créés pour diriger la révolution.", "في الصومام أُنشئت هيئتان وطنيتان لقيادة الثورة."),
+      L("Their initials are CNRA and CCE.", "Leurs sigles sont CNRA et CCE.", "اختصارهما: المجلس الوطني للثورة ولجنة التنسيق والتنفيذ."),
+    ],
+    "Abane Ramdane",
+    ["Ferhat Abbas", "Krim Belkacem", "Larbi Ben M'hidi"],
+    L(
+      "The Soummam Congress shaped by Abane created the CNRA (national council) and the CCE (executive coordination).",
+      "Le Congrès de la Soummam, façonné par Abane, créa le CNRA (conseil national) et le CCE (coordination exécutive).",
+      "أنشأ مؤتمر الصومام الذي صاغه عبان المجلسَ الوطني للثورة (CNRA) ولجنةَ التنسيق والتنفيذ (CCE).",
+    ),
+  ),
+  make(
+    "abane-7",
+    "medium",
+    [
+      L("I believed words and ideas mattered as much as weapons.", "Je croyais que les mots et les idées comptaient autant que les armes.", "كنتُ أؤمن بأن الكلمات والأفكار لا تقلّ أهمية عن السلاح."),
+      L("I died in December 1957, only 37 years old.", "Je suis mort en décembre 1957, à seulement 37 ans.", "تُوفّيتُ في ديسمبر 1957 وعمري 37 سنة فقط."),
+    ],
+    "Abane Ramdane",
+    ["Larbi Ben M'hidi", "Colonel Amirouche", "Krim Belkacem"],
+    L(
+      "Abane died in late 1957 in tragic and disputed circumstances inside the revolution.",
+      "Abane mourut fin 1957 dans des circonstances tragiques et disputées au sein de la révolution.",
+      "تُوفّي عبان أواخر 1957 في ظروف مأساوية ومتنازع عليها داخل الثورة.",
+    ),
+  ),
+  make(
+    "abane-8",
+    "hard",
+    [
+      L("My vision shaped the future Algerian state long after my death.", "Ma vision façonna le futur État algérien bien après ma mort.", "صاغت رؤيتي الدولة الجزائرية المستقبلية لفترة طويلة بعد وفاتي."),
+      L("An airport in Béjaïa carries my name today.", "Un aéroport à Béjaïa porte aujourd'hui mon nom.", "يحمل اسمي اليوم مطارٌ في بجاية."),
+    ],
+    "Abane Ramdane",
+    ["Krim Belkacem", "Ferhat Abbas", "Colonel Amirouche"],
+    L(
+      "Béjaïa's airport is named after Abane Ramdane in honor of his role as architect of the revolution.",
+      "L'aéroport de Béjaïa porte le nom d'Abane Ramdane en hommage à son rôle d'architecte de la révolution.",
+      "سُمّي مطار بجاية باسم عبان رمضان تخليدًا لدوره مهندسًا للثورة.",
+    ),
+  ),
 
   // ---------- Krim Belkacem ----------
   make(
