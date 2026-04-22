@@ -265,6 +265,50 @@ export const ui = {
     fr: "Indépendance & Moderne",
     ar: "الاستقلال والعصر الحديث",
   },
+
+  // Lessons / Map / Reset
+  lessons: { en: "Lessons", fr: "Leçons", ar: "دروس" },
+  oneMinuteLesson: { en: "1-Minute Lesson", fr: "Leçon en 1 minute", ar: "درس في دقيقة" },
+  mapExplorer: { en: "Map Explorer", fr: "Explorateur de carte", ar: "مستكشف الخريطة" },
+  mapExplorerDesc: {
+    en: "Discover history by region.",
+    fr: "Découvrez l'histoire par région.",
+    ar: "اكتشف التاريخ حسب المنطقة.",
+  },
+  lessonsHomeDesc: {
+    en: "Quick lessons on key moments.",
+    fr: "Leçons rapides sur les moments clés.",
+    ar: "دروس سريعة عن لحظات مهمّة.",
+  },
+  resetQuizzes: { en: "Reset Quizzes", fr: "Réinitialiser les quiz", ar: "إعادة ضبط الاختبارات" },
+  resetScoresOnly: {
+    en: "Reset quiz scores only",
+    fr: "Réinitialiser uniquement les scores",
+    ar: "إعادة ضبط النتائج فقط",
+  },
+  resetAllProgress: {
+    en: "Reset all quiz progress",
+    fr: "Réinitialiser tout le progrès",
+    ar: "إعادة ضبط كل التقدّم",
+  },
+  resetConfirm: {
+    en: "Are you sure you want to reset your quiz progress?",
+    fr: "Êtes-vous sûr de vouloir réinitialiser votre progression ?",
+    ar: "هل أنت متأكد من إعادة ضبط تقدّم الاختبارات؟",
+  },
+  resetWarnAll: {
+    en: "This will clear scores, badges, and XP. App content stays.",
+    fr: "Cela effacera scores, badges et XP. Le contenu de l'app reste.",
+    ar: "سيتم مسح النتائج والأوسمة ونقاط الخبرة. يبقى محتوى التطبيق.",
+  },
+  resetWarnScores: {
+    en: "This will clear scores only. Badges and XP stay.",
+    fr: "Cela effacera seulement les scores. Badges et XP restent.",
+    ar: "سيتم مسح النتائج فقط. تبقى الأوسمة ونقاط الخبرة.",
+  },
+  cancel: { en: "Cancel", fr: "Annuler", ar: "إلغاء" },
+  confirm: { en: "Confirm", fr: "Confirmer", ar: "تأكيد" },
+  resetDone: { en: "Quiz progress reset.", fr: "Progression réinitialisée.", ar: "تمت إعادة الضبط." },
 } satisfies Record<string, Localized<string>>;
 
 export type UiKey = keyof typeof ui;
