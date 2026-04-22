@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { Header } from "@/components/Header";
 import { dailyFacts } from "@/data/eras";
 import { t, tu, useLang } from "@/lib/i18n";
+import { AmazighSymbol } from "@/components/brand/AmazighSymbol";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -34,7 +35,18 @@ function Home() {
         style={{ background: "var(--gradient-hero)" }}
       >
         <div className="max-w-3xl mx-auto text-center animate-float-up">
-          <div className="text-6xl sm:text-7xl mb-4">🏺🕌🕊️</div>
+          <div className="flex justify-center mb-4">
+            <div
+              className="rounded-full p-5"
+              style={{
+                background:
+                  "radial-gradient(circle, oklch(0.22 0.04 55) 0%, oklch(0.14 0.02 50) 75%)",
+                boxShadow: "var(--shadow-gold-glow)",
+              }}
+            >
+              <AmazighSymbol size={80} />
+            </div>
+          </div>
           <h1 className="text-4xl sm:text-6xl font-extrabold tracking-tight text-foreground">
             {tu("appName", lang)}
           </h1>
