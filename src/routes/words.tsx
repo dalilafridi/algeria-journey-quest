@@ -3,6 +3,8 @@ import { useEffect, useState } from "react";
 import { Header } from "@/components/Header";
 import { WORD_CATEGORIES, words, type WordCategoryId } from "@/data/words";
 import { quizForWord, type WordsQuizItem } from "@/data/wordsQuiz";
+import { ListenCard } from "@/components/ListenCard";
+import { LISTEN } from "@/data/listen";
 import {
   categoryTotals,
   claimWotd,
@@ -473,6 +475,10 @@ function WordCard({
                 </Link>
               )}
             </div>
+
+            {item.id === "kassaman-excerpt" && (
+              <ListenCard item={LISTEN.kassaman} lang={lang} />
+            )}
 
             {quiz && (
               <InlineQuiz
