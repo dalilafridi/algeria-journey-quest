@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { AmazighSymbol } from "@/components/brand/AmazighSymbol";
 import type { Lang, Localized } from "@/lib/i18n";
+import algeriaMap from "@/assets/algeria-map.png";
 
 // ---------- Shared multilingual helpers ----------
 export type L3 = Localized<string>;
