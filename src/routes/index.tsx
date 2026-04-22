@@ -98,6 +98,59 @@ function Home() {
         </Link>
       </section>
 
+      <section className="max-w-3xl mx-auto px-4 pb-4">
+        <Link
+          to="/moments"
+          className="block rounded-2xl p-5 sm:p-6 border border-secondary/40 hover:border-secondary transition group relative overflow-hidden"
+          style={{
+            background:
+              "linear-gradient(135deg, color-mix(in oklab, var(--secondary) 18%, var(--card)), var(--card))",
+            boxShadow: "var(--shadow-soft)",
+          }}
+        >
+          <div
+            className="absolute -right-6 -top-6 text-7xl opacity-10 select-none pointer-events-none"
+            aria-hidden
+          >
+            ⵣ
+          </div>
+          <div className="flex items-start gap-3 relative">
+            <div className="text-3xl">🕊️</div>
+            <div className="min-w-0">
+              <div className="text-[11px] font-bold uppercase tracking-wider text-secondary mb-1">
+                {lang === "fr"
+                  ? "Mémoire & identité"
+                  : lang === "ar"
+                    ? "ذاكرة وهوية"
+                    : "Memory & identity"}
+              </div>
+              <h3 className="font-bold text-lg">
+                {lang === "fr"
+                  ? "Moments qui ont façonné l'Algérie"
+                  : lang === "ar"
+                    ? "لحظات صنعت الجزائر"
+                    : "Moments That Shaped Algeria"}
+              </h3>
+              <p className="text-sm text-muted-foreground mt-1">
+                {lang === "fr"
+                  ? "Tafsut Imazighen (1980) et la Décennie Noire (1990s), racontés avec douceur."
+                  : lang === "ar"
+                    ? "تافسوت إمازيغن (1980) والعشرية السوداء (التسعينيات)، بأسلوب لطيف."
+                    : "Tafsut Imazighen (1980) and the Black Decade (1990s), told with care."}
+              </p>
+              <div className="mt-3 text-sm font-semibold text-secondary group-hover:underline">
+                {lang === "fr"
+                  ? "Découvrir"
+                  : lang === "ar"
+                    ? "اكتشف"
+                    : "Discover"}{" "}
+                →
+              </div>
+            </div>
+          </div>
+        </Link>
+      </section>
+
       <section className="max-w-3xl mx-auto px-4 pb-16">
         <div
           className="rounded-2xl p-6 border border-accent/40"
