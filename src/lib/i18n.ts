@@ -256,7 +256,7 @@ export const ui = {
   },
   loadingEraNumidian: { en: "Numidian Kingdoms", fr: "Royaumes numides", ar: "الممالك النوميدية" },
   loadingEraRoman: { en: "Roman Era", fr: "Époque romaine", ar: "العصر الروماني" },
-  loadingEraIslamic: { en: "Islamic Era", fr: "Époque islامية", ar: "العصر الإسلامي" },
+  loadingEraIslamic: { en: "Islamic Era", fr: "Époque islamique", ar: "العصر الإسلامي" },
   loadingEraOttoman: { en: "Ottoman Era", fr: "Époque ottomane", ar: "العصر العثماني" },
   loadingEraFrench: { en: "French Colonial Era", fr: "Colonisation française", ar: "الاستعمار الفرنسي" },
   loadingEraIndependence: {
