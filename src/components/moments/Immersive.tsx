@@ -211,7 +211,18 @@ const UI_MAP = {
     "Pick a region to begin.",
     "اختر منطقة للبدء.",
   ),
+  calibrate: L("Mode calibrage", "Calibration mode", "وضع المعايرة"),
+  calibrateHint: L(
+    "Glisse les épingles puis copie les coordonnées.",
+    "Drag pins, then copy the coordinates.",
+    "اسحب الدبابيس ثم انسخ الإحداثيات.",
+  ),
+  copy: L("Copier les coordonnées", "Copy coordinates", "نسخ الإحداثيات"),
+  copied: L("Copié !", "Copied!", "تم النسخ!"),
+  reset: L("Réinitialiser", "Reset", "إعادة"),
 };
+
+type Coords = { cx: number; cy: number };
 
 export function MapSection({
   regions,
@@ -221,39 +232,119 @@ export function MapSection({
   lang: Lang;
 }) {
   const [active, setActive] = useState<string | null>(null);
-  const region = useMemo(
-    () => regions.find((r) => r.id === active) ?? null,
-    [active, regions],
+  const [calibrate, setCalibrate] = useState(false);
+  const [overrides, setOverrides] = useState<Record<string, Coords>>({});
+  const [copied, setCopied] = useState(false);
+  const [dragging, setDragging] = useState<string | null>(null);
+  const mapRef = useRef<HTMLDivElement>(null);
+
+  const effective = useMemo(
+    () =>
+      regions.map((r) => ({
+        ...r,
+        cx: overrides[r.id]?.cx ?? r.cx,
+        cy: overrides[r.id]?.cy ?? r.cy,
+      })),
+    [regions, overrides],
   );
+
+  const region = useMemo(
+    () => effective.find((r) => r.id === active) ?? null,
+    [active, effective],
+  );
+
+  const updateFromEvent = (id: string, clientX: number, clientY: number) => {
+    const el = mapRef.current;
+    if (!el) return;
+    const rect = el.getBoundingClientRect();
+    const cx = Math.max(0, Math.min(100, ((clientX - rect.left) / rect.width) * 100));
+    const cy = Math.max(0, Math.min(100, ((clientY - rect.top) / rect.height) * 100));
+    setOverrides((o) => ({ ...o, [id]: { cx: +cx.toFixed(2), cy: +cy.toFixed(2) } }));
+  };
+
+  useEffect(() => {
+    if (!dragging) return;
+    const onMove = (e: PointerEvent) => updateFromEvent(dragging, e.clientX, e.clientY);
+    const onUp = () => setDragging(null);
+    window.addEventListener("pointermove", onMove);
+    window.addEventListener("pointerup", onUp);
+    return () => {
+      window.removeEventListener("pointermove", onMove);
+      window.removeEventListener("pointerup", onUp);
+    };
+  }, [dragging]);
+
+  const copyCoords = async () => {
+    const lines = effective
+      .map(
+        (r) =>
+          `${r.id.padEnd(12)} cx: ${r.cx.toString().padStart(5)}, cy: ${r.cy.toString().padStart(5)},`,
+      )
+      .join("\n");
+    try {
+      await navigator.clipboard.writeText(lines);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 1500);
+    } catch {
+      /* ignore */
+    }
+  };
 
   return (
     <div className="rounded-2xl border border-border bg-card/95 shadow-sm p-6 sm:p-7">
-      <div className="flex items-center gap-3 mb-2">
+      <div className="flex flex-wrap items-center gap-3 mb-2">
         <span className="text-2xl" aria-hidden>
           🗺️
         </span>
-        <h3 className="text-lg sm:text-xl font-bold">{tr(UI_MAP.title, lang)}</h3>
+        <h3 className="text-lg sm:text-xl font-bold flex-1">{tr(UI_MAP.title, lang)}</h3>
+        <label className="flex items-center gap-2 text-xs text-muted-foreground cursor-pointer select-none">
+          <input
+            type="checkbox"
+            checked={calibrate}
+            onChange={(e) => setCalibrate(e.target.checked)}
+            className="accent-secondary"
+          />
+          {tr(UI_MAP.calibrate, lang)}
+        </label>
       </div>
-      <p className="text-xs text-muted-foreground mb-4">{tr(UI_MAP.hint, lang)}</p>
+      <p className="text-xs text-muted-foreground mb-4">
+        {calibrate ? tr(UI_MAP.calibrateHint, lang) : tr(UI_MAP.hint, lang)}
+      </p>
 
       <div className="grid md:grid-cols-2 gap-5 items-start">
-        <div className="relative aspect-[4/3.3] rounded-xl border border-border bg-card overflow-hidden">
+        <div
+          ref={mapRef}
+          className={`relative aspect-[4/3.3] rounded-xl border border-border bg-card overflow-hidden ${
+            calibrate ? "ring-2 ring-secondary/50" : ""
+          }`}
+        >
           <img
             src={algeriaMap}
             alt="Map of Algeria"
             className="absolute inset-0 w-full h-full object-cover select-none pointer-events-none"
             draggable={false}
           />
-          {regions.map((r) => {
+          {effective.map((r) => {
             const isActive = r.id === active;
             return (
               <button
                 key={r.id}
                 type="button"
-                onClick={() => setActive(r.id)}
+                onPointerDown={(e) => {
+                  if (calibrate) {
+                    e.preventDefault();
+                    setDragging(r.id);
+                    setActive(r.id);
+                  }
+                }}
+                onClick={() => {
+                  if (!calibrate) setActive(r.id);
+                }}
                 aria-label={tr(r.name, lang)}
-                className="absolute -translate-x-1/2 -translate-y-1/2 group"
-                style={{ left: `${r.cx}%`, top: `${r.cy}%` }}
+                className={`absolute -translate-x-1/2 -translate-y-1/2 group ${
+                  calibrate ? "cursor-grab active:cursor-grabbing" : "cursor-pointer"
+                }`}
+                style={{ left: `${r.cx}%`, top: `${r.cy}%`, touchAction: "none" }}
               >
                 <span
                   className={`block rounded-full ring-2 ring-white shadow-md transition-all ${
@@ -268,6 +359,11 @@ export function MapSection({
                   }`}
                 >
                   {tr(r.name, lang)}
+                  {calibrate && (
+                    <span className="ml-1 text-muted-foreground font-normal">
+                      {r.cx},{r.cy}
+                    </span>
+                  )}
                 </span>
               </button>
             );
@@ -275,7 +371,31 @@ export function MapSection({
         </div>
 
         <div className="min-h-[12rem]">
-          {region ? (
+          {calibrate ? (
+            <div className="space-y-3">
+              <pre className="text-[11px] leading-relaxed bg-muted/40 border border-border rounded-lg p-3 overflow-auto max-h-64">
+                {effective
+                  .map((r) => `${r.id.padEnd(12)} cx: ${r.cx}, cy: ${r.cy},`)
+                  .join("\n")}
+              </pre>
+              <div className="flex gap-2">
+                <button
+                  type="button"
+                  onClick={copyCoords}
+                  className="text-xs font-semibold px-3 py-1.5 rounded-lg bg-secondary text-secondary-foreground hover:opacity-90 transition"
+                >
+                  {copied ? tr(UI_MAP.copied, lang) : tr(UI_MAP.copy, lang)}
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setOverrides({})}
+                  className="text-xs font-semibold px-3 py-1.5 rounded-lg border border-border hover:bg-muted/50 transition"
+                >
+                  {tr(UI_MAP.reset, lang)}
+                </button>
+              </div>
+            </div>
+          ) : region ? (
             <div className="animate-fade-in">
               <div className="flex items-center gap-2 mb-2">
                 <AmazighSymbol size={18} glow={false} />

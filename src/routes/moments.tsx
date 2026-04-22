@@ -927,8 +927,8 @@ function MomentsPage() {
       {
         id: "kabylie",
         name: L("Kabylie", "Kabylie", "القبائل"),
-        cx: 54,
-        cy: 13,
+        cx: 53,
+        cy: 14,
         r: 3,
         description: L(
           "Région montagneuse au nord, cœur du mouvement amazigh et terre de poètes.",
@@ -947,8 +947,8 @@ function MomentsPage() {
       {
         id: "alger",
         name: L("Alger", "Algiers", "الجزائر"),
-        cx: 46,
-        cy: 12,
+        cx: 47,
+        cy: 13,
         r: 3,
         description: L(
           "La capitale, lieu de décisions politiques majeures et de rassemblements historiques.",
@@ -966,7 +966,7 @@ function MomentsPage() {
       {
         id: "aures",
         name: L("Aurès", "Aurès", "الأوراس"),
-        cx: 62,
+        cx: 61,
         cy: 19,
         r: 3,
         description: L(
@@ -982,7 +982,7 @@ function MomentsPage() {
       {
         id: "constantine",
         name: L("Constantine", "Constantine", "قسنطينة"),
-        cx: 63,
+        cx: 62,
         cy: 14,
         r: 3,
         description: L(
