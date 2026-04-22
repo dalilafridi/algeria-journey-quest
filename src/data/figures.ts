@@ -2096,6 +2096,35 @@ export const figures: Figure[] = [
       "تُدرَس ألبوماته كأنها نصوص أدبية، وتُقرأ كثير من أغانيه كقصائد طويلة عن المجتمع الجزائري والحرية ومعنى الوطن.",
     ),
   },
+  {
+    id: "moufdi-zakaria",
+    name: "Moufdi Zakaria",
+    displayName: L("Moufdi Zakaria", "Moufdi Zakaria", "مفدي زكريا"),
+    emoji: "🖋️",
+    category: "cultural-identity",
+    region: "sahara",
+    era: L(
+      "Poet of the Nation (1908–1977)",
+      "Poète de la Nation (1908–1977)",
+      "شاعر الأمة (1908–1977)",
+    ),
+    regionLabel: L("National Identity", "Identité nationale", "الهوية الوطنية"),
+    story: L(
+      "Born in Beni Isguen in the M'zab valley, Moufdi Zakaria devoted his life to the Algerian cause through poetry. Imprisoned several times by the French colonial authorities, he wrote the words of 'Kassaman' — Algeria's national anthem — in 1955, while held in Barberousse prison in Algiers. According to tradition, he wrote it on the wall of his cell with his own blood.",
+      "Né à Beni Isguen dans la vallée du M'zab, Moufdi Zakaria a consacré sa vie à la cause algérienne par la poésie. Emprisonné à plusieurs reprises par l'autorité coloniale française, il a écrit en 1955 les paroles de « Kassaman » — l'hymne national algérien — alors qu'il était détenu à la prison de Barberousse, à Alger. La tradition rapporte qu'il l'aurait écrit avec son propre sang sur le mur de sa cellule.",
+      "وُلد في بني يزقن بوادي ميزاب، وكرّس مفدي زكريا حياته للقضية الجزائرية عبر الشعر. اعتُقل عدّة مرات من قِبل السلطة الاستعمارية الفرنسية، وكتب سنة 1955 كلمات نشيد «قسماً» — النشيد الوطني الجزائري — وهو معتقل في سجن بربروس بالجزائر العاصمة. وتقول الرواية إنه كتبه بدمه على جدار زنزانته.",
+    ),
+    importance: L(
+      "He is the poet of the nation: through 'Kassaman' and his epic poems, he gave Algeria a shared voice of resistance, dignity and unity.",
+      "Il est le poète de la nation : par « Kassaman » et ses poèmes épiques, il a donné à l'Algérie une voix commune de résistance, de dignité et d'unité.",
+      "هو شاعر الأمة: من خلال «قسماً» وقصائده الملحمية، أعطى الجزائر صوتًا جماعيًا للمقاومة والكرامة والوحدة.",
+    ),
+    fact: L(
+      "His poem 'Kassaman' was set to music by Egyptian composer Mohamed Fawzi and adopted as Algeria's national anthem at independence in 1962.",
+      "Son poème « Kassaman » a été mis en musique par le compositeur égyptien Mohamed Fawzi et adopté comme hymne national algérien à l'indépendance, en 1962.",
+      "لحّن قصيدته «قسماً» الموسيقار المصري محمد فوزي، وتم اعتمادها نشيدًا وطنيًا للجزائر عند الاستقلال سنة 1962.",
+    ),
+  },
 ];
 
 // ---------- Lookups ----------
