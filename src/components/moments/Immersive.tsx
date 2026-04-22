@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { AmazighSymbol } from "@/components/brand/AmazighSymbol";
 import type { Lang, Localized } from "@/lib/i18n";
+import algeriaMap from "@/assets/algeria-map.png";
 
 // ---------- Shared multilingual helpers ----------
 export type L3 = Localized<string>;
@@ -236,63 +237,41 @@ export function MapSection({
       <p className="text-xs text-muted-foreground mb-4">{tr(UI_MAP.hint, lang)}</p>
 
       <div className="grid md:grid-cols-2 gap-5 items-start">
-        <div className="relative aspect-[4/5] rounded-xl border border-border bg-gradient-to-br from-secondary/5 to-primary/5 overflow-hidden">
-          <svg
-            viewBox="0 0 100 100"
-            className="absolute inset-0 w-full h-full"
-            role="img"
-            aria-label="Algeria map"
-          >
-            {/* Stylised Algeria silhouette */}
-            <path
-              d="M22 12 L60 8 L78 14 L82 26 L74 38 L82 52 L70 70 L62 88 L46 92 L34 84 L26 70 L18 56 L14 40 L18 24 Z"
-              fill="color-mix(in oklab, var(--secondary) 12%, var(--card))"
-              stroke="color-mix(in oklab, var(--secondary) 35%, transparent)"
-              strokeWidth="0.6"
-            />
-            {/* Coastline accent */}
-            <path
-              d="M22 12 L60 8 L78 14"
-              fill="none"
-              stroke="color-mix(in oklab, var(--primary) 50%, transparent)"
-              strokeWidth="0.8"
-              strokeLinecap="round"
-            />
-
-            {regions.map((r) => {
-              const isActive = r.id === active;
-              return (
-                <g key={r.id}>
-                  <circle
-                    cx={r.cx}
-                    cy={r.cy}
-                    r={isActive ? r.r + 1.5 : r.r}
-                    fill={
-                      isActive
-                        ? "var(--secondary)"
-                        : "color-mix(in oklab, var(--secondary) 60%, transparent)"
-                    }
-                    stroke="white"
-                    strokeWidth="0.8"
-                    className="cursor-pointer transition-all"
-                    onClick={() => setActive(r.id)}
-                  />
-                  <text
-                    x={r.cx}
-                    y={r.cy - r.r - 1.5}
-                    textAnchor="middle"
-                    fontSize="3.2"
-                    fontWeight={isActive ? 700 : 500}
-                    fill="var(--foreground)"
-                    className="cursor-pointer select-none"
-                    onClick={() => setActive(r.id)}
-                  >
-                    {tr(r.name, lang)}
-                  </text>
-                </g>
-              );
-            })}
-          </svg>
+        <div className="relative aspect-[4/3.3] rounded-xl border border-border bg-card overflow-hidden">
+          <img
+            src={algeriaMap}
+            alt="Map of Algeria"
+            className="absolute inset-0 w-full h-full object-cover select-none pointer-events-none"
+            draggable={false}
+          />
+          {regions.map((r) => {
+            const isActive = r.id === active;
+            return (
+              <button
+                key={r.id}
+                type="button"
+                onClick={() => setActive(r.id)}
+                aria-label={tr(r.name, lang)}
+                className="absolute -translate-x-1/2 -translate-y-1/2 group"
+                style={{ left: `${r.cx}%`, top: `${r.cy}%` }}
+              >
+                <span
+                  className={`block rounded-full ring-2 ring-white shadow-md transition-all ${
+                    isActive
+                      ? "bg-secondary w-4 h-4 scale-110"
+                      : "bg-secondary/80 w-3 h-3 group-hover:scale-125"
+                  }`}
+                />
+                <span
+                  className={`absolute left-1/2 -translate-x-1/2 mt-1 whitespace-nowrap text-[10px] sm:text-xs font-semibold px-1.5 py-0.5 rounded bg-card/90 border border-border shadow-sm ${
+                    isActive ? "text-foreground" : "text-foreground/80"
+                  }`}
+                >
+                  {tr(r.name, lang)}
+                </span>
+              </button>
+            );
+          })}
         </div>
 
         <div className="min-h-[12rem]">
