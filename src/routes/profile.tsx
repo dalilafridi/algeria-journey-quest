@@ -2,7 +2,13 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { Header } from "@/components/Header";
 import { eras } from "@/data/eras";
-import { getProgress, totalProgressPct, type Progress } from "@/lib/progress";
+import {
+  getProgress,
+  totalProgressPct,
+  resetQuizScoresOnly,
+  resetAllQuizProgress,
+  type Progress,
+} from "@/lib/progress";
 import { t, tu, useLang } from "@/lib/i18n";
 
 export const Route = createFileRoute("/profile")({

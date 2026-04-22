@@ -39,6 +39,8 @@ export function Header() {
   const navLinks = [
     { to: "/timeline" as const, label: tu("timeline", current) },
     { to: "/figures" as const, label: tu("figures", current) },
+    { to: "/lessons" as const, label: tu("lessons", current) },
+    { to: "/map" as const, label: tu("mapExplorer", current) },
     {
       to: "/moments" as const,
       label: current === "fr" ? "Moments" : current === "ar" ? "لحظات" : "Moments",
