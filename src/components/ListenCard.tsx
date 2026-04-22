@@ -92,18 +92,28 @@ export function ListenCard({ item, lang }: Props) {
       </div>
 
       {revealed && item.youtubeId && (
-        <div className="mt-4 rounded-xl overflow-hidden border border-border bg-black/5">
-          <div className="relative w-full" style={{ aspectRatio: "16 / 9" }}>
-            <iframe
-              src={`https://www.youtube-nocookie.com/embed/${item.youtubeId}?autoplay=1&rel=0&modestbranding=1&playsinline=1`}
-              title={t(item.title, lang)}
-              loading="lazy"
-              allow="accelerometer; autoplay; encrypted-media; picture-in-picture"
-              allowFullScreen
-              referrerPolicy="strict-origin-when-cross-origin"
-              className="absolute inset-0 w-full h-full"
-            />
+        <div className="mt-4 space-y-2">
+          <div className="rounded-xl overflow-hidden border border-border bg-black/5">
+            <div className="relative w-full" style={{ aspectRatio: "16 / 9" }}>
+              <iframe
+                src={`https://www.youtube.com/embed/${item.youtubeId}?autoplay=1&rel=0&modestbranding=1&playsinline=1`}
+                title={t(item.title, lang)}
+                loading="lazy"
+                allow="accelerometer; autoplay; encrypted-media; picture-in-picture; fullscreen"
+                allowFullScreen
+                referrerPolicy="strict-origin-when-cross-origin"
+                className="absolute inset-0 w-full h-full"
+              />
+            </div>
           </div>
+          <a
+            href={`https://www.youtube.com/watch?v=${item.youtubeId}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block text-[11px] text-muted-foreground hover:text-foreground underline underline-offset-2"
+          >
+            {lang === "fr" ? "Ouvrir sur YouTube" : lang === "ar" ? "افتح على يوتيوب" : "Open on YouTube"}
+          </a>
         </div>
       )}
 
