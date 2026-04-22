@@ -884,19 +884,31 @@ function MomentsPage() {
         id: "courage",
         emoji: "🌿",
         name: L("Courage", "Courage", "شجاعة"),
-        hint: L("Compléter le quiz Tafsut", "Finish the Tafsut quiz", "أكمل اختبار تافسوت"),
+        hint: L(
+          "Apprendre l'histoire de Tafsut Imazighen et oser parler avec respect.",
+          "Learn about Tafsut Imazighen and dare to speak with respect.",
+          "تعلّم تافسوت إمازيغن والجرأة على الكلام باحترام.",
+        ),
       },
       {
         id: "peace",
         emoji: "🕊️",
         name: L("Paix", "Peace", "سلام"),
-        hint: L("Compléter le quiz de la Décennie", "Finish the Decade quiz", "أكمل اختبار العشرية"),
+        hint: L(
+          "Comprendre la Décennie Noire et choisir la douceur autour de soi.",
+          "Understand the Black Decade and choose kindness around you.",
+          "فهم العشرية السوداء واختيار اللطف حولك.",
+        ),
       },
       {
         id: "knowledge",
         emoji: "🧠",
         name: L("Savoir", "Knowledge", "معرفة"),
-        hint: L("Réussir parfaitement un quiz", "Score perfectly on a quiz", "نتيجة كاملة في اختبار"),
+        hint: L(
+          "Réussir un quiz parfaitement et garder la curiosité vivante.",
+          "Score perfectly on a quiz and keep curiosity alive.",
+          "نتيجة كاملة في اختبار، والحفاظ على الفضول حيًّا.",
+        ),
       },
     ],
     [],
@@ -907,6 +919,146 @@ function MomentsPage() {
       ...TAFSUT.timeline,
       ...DECADE.timeline,
     ].sort((a, b) => parseInt(a.year) - parseInt(b.year)),
+    [],
+  );
+
+  const regions: MapRegion[] = useMemo(
+    () => [
+      {
+        id: "kabylie",
+        name: L("Kabylie", "Kabylie", "القبائل"),
+        cx: 56,
+        cy: 22,
+        r: 3,
+        description: L(
+          "Région montagneuse au nord, cœur du mouvement amazigh et terre de poètes.",
+          "A mountainous northern region, heart of the Amazigh movement and a land of poets.",
+          "منطقة جبلية في الشمال، قلب الحراك الأمازيغي وأرض الشعراء.",
+        ),
+        events: [
+          L("Tafsut Imazighen (1980)", "Tafsut Imazighen (1980)", "تافسوت إمازيغن (1980)"),
+          L("Printemps noir (2001)", "Black Spring (2001)", "الربيع الأسود (2001)"),
+        ],
+        figures: [
+          L("Mouloud Mammeri", "Mouloud Mammeri", "مولود معمري"),
+          L("Lounès Matoub", "Lounès Matoub", "لونيس معطوب"),
+        ],
+      },
+      {
+        id: "alger",
+        name: L("Alger", "Algiers", "الجزائر"),
+        cx: 50,
+        cy: 18,
+        r: 3,
+        description: L(
+          "La capitale, lieu de décisions politiques majeures et de rassemblements historiques.",
+          "The capital, where major political decisions and historic gatherings take place.",
+          "العاصمة، مركز القرارات السياسية الكبرى والتجمعات التاريخية.",
+        ),
+        events: [
+          L("Élections interrompues (1991)", "Elections interrupted (1991)", "إيقاف الانتخابات (1991)"),
+          L("Concorde civile (1999)", "Civil concord (1999)", "الوئام المدني (1999)"),
+        ],
+        figures: [
+          L("Mouloud Mammeri", "Mouloud Mammeri", "مولود معمري"),
+        ],
+      },
+      {
+        id: "aures",
+        name: L("Aurès", "Aurès", "الأوراس"),
+        cx: 60,
+        cy: 32,
+        r: 3,
+        description: L(
+          "Massif montagneux au sud-est, terre de résistance et de traditions amazighes chaouies.",
+          "A southeastern mountain range, a land of resistance and Chaoui Amazigh traditions.",
+          "سلسلة جبلية في الجنوب الشرقي، أرض المقاومة والتقاليد الشاوية الأمازيغية.",
+        ),
+        events: [
+          L("Foyer historique du patrimoine chaoui", "Historic heart of the Chaoui heritage", "موطن تاريخي للتراث الشاوي"),
+        ],
+        figures: [L("Mostefa Ben Boulaïd", "Mostefa Ben Boulaïd", "مصطفى بن بولعيد")],
+      },
+      {
+        id: "constantine",
+        name: L("Constantine", "Constantine", "قسنطينة"),
+        cx: 64,
+        cy: 22,
+        r: 3,
+        description: L(
+          "Ville des ponts et du savoir, importante pour l'éducation et la culture algérienne.",
+          "City of bridges and learning, central to Algerian education and culture.",
+          "مدينة الجسور والعلم، ذات أهمية في التعليم والثقافة الجزائرية.",
+        ),
+        events: [
+          L("Centre culturel et universitaire majeur", "A major cultural and university hub", "مركز ثقافي وجامعي كبير"),
+        ],
+        figures: [L("Malek Bennabi", "Malek Bennabi", "مالك بن نبي")],
+      },
+    ],
+    [],
+  );
+
+  const dailyFacts3: L3[] = useMemo(
+    () => [
+      L(
+        "Yennayer, le Nouvel An amazigh, est célébré chaque 12 janvier en Algérie.",
+        "Yennayer, the Amazigh New Year, is celebrated every 12 January in Algeria.",
+        "يَنّاير، رأس السنة الأمازيغية، يُحتفل به كل 12 جانفي في الجزائر.",
+      ),
+      L(
+        "L'alphabet tifinagh est l'un des plus anciens systèmes d'écriture d'Afrique du Nord.",
+        "The Tifinagh alphabet is one of the oldest writing systems in North Africa.",
+        "الأبجدية التيفيناغ من أقدم أنظمة الكتابة في شمال إفريقيا.",
+      ),
+      L(
+        "La Concorde civile de 1999 a marqué un grand pas vers la paix en Algérie.",
+        "The 1999 Civil Concord marked a major step toward peace in Algeria.",
+        "ميثاق الوئام المدني سنة 1999 كان خطوة كبيرة نحو السلام.",
+      ),
+      L(
+        "Mouloud Mammeri a recueilli des poèmes kabyles pour les protéger de l'oubli.",
+        "Mouloud Mammeri collected Kabyle poems to save them from being forgotten.",
+        "جمع مولود معمري قصائد قبائلية لحمايتها من النسيان.",
+      ),
+    ],
+    [],
+  );
+
+  const dailyQs: DailyQuestion[] = useMemo(
+    () => [
+      {
+        q: L(
+          "Quelle langue est devenue officielle en Algérie en 2016 ?",
+          "Which language became official in Algeria in 2016?",
+          "ما هي اللغة التي أصبحت رسمية في الجزائر عام 2016؟",
+        ),
+        options: [L("Tamazight", "Tamazight", "الأمازيغية"), L("Latin", "Latin", "اللاتينية"), L("Italien", "Italian", "الإيطالية")],
+        answerIndex: 0,
+      },
+      {
+        q: L(
+          "En quelle décennie l'Algérie a-t-elle vécu la « Décennie Noire » ?",
+          "In which decade did Algeria experience the “Black Decade”?",
+          "في أي عقد عاشت الجزائر «العشرية السوداء»؟",
+        ),
+        options: [L("Années 1970", "1970s", "السبعينيات"), L("Années 1990", "1990s", "التسعينيات"), L("Années 2010", "2010s", "العشرية الثانية من الألفية")],
+        answerIndex: 1,
+      },
+      {
+        q: L(
+          "Que demandait le mouvement Tafsut Imazighen ?",
+          "What did the Tafsut Imazighen movement ask for?",
+          "ماذا طالب به حراك تافسوت إمازيغن؟",
+        ),
+        options: [
+          L("La reconnaissance de la culture amazighe", "Recognition of the Amazigh culture", "الاعتراف بالثقافة الأمازيغية"),
+          L("Une nouvelle monnaie", "A new currency", "عملة جديدة"),
+          L("Un nouveau drapeau", "A new flag", "علم جديد"),
+        ],
+        answerIndex: 0,
+      },
+    ],
     [],
   );
 
