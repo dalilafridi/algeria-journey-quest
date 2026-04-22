@@ -98,24 +98,26 @@ function Timeline() {
           <p className="mt-2 text-muted-foreground">{tu("journeySubtitle", lang)}</p>
         </div>
 
-        {/* Filter chips */}
-        <div className="flex flex-wrap justify-center gap-2 mb-8">
-          {FILTERS.map((f) => {
-            const active = filter === f.key;
-            return (
-              <button
-                key={f.key}
-                onClick={() => setFilter(f.key)}
-                className={`px-3.5 py-1.5 rounded-full text-sm font-medium border transition-all ${
-                  active
-                    ? "bg-primary text-primary-foreground border-primary shadow-sm"
-                    : "bg-card text-foreground/80 border-border hover:bg-muted"
-                }`}
-              >
-                {tu(f.labelKey, lang)}
-              </button>
-            );
-          })}
+        {/* Filter chips — horizontally scrollable on mobile to avoid wrapping */}
+        <div className="-mx-4 px-4 mb-8 overflow-x-auto no-scrollbar">
+          <div className="flex sm:flex-wrap sm:justify-center gap-2 w-max sm:w-auto mx-auto">
+            {FILTERS.map((f) => {
+              const active = filter === f.key;
+              return (
+                <button
+                  key={f.key}
+                  onClick={() => setFilter(f.key)}
+                  className={`shrink-0 px-3.5 py-2 rounded-full text-sm font-medium border transition-all min-h-[36px] ${
+                    active
+                      ? "bg-primary text-primary-foreground border-primary shadow-sm"
+                      : "bg-card text-foreground/80 border-border hover:bg-muted"
+                  }`}
+                >
+                  {tu(f.labelKey, lang)}
+                </button>
+              );
+            })}
+          </div>
         </div>
 
         {/* Timeline */}
