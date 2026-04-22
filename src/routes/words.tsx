@@ -51,6 +51,10 @@ const COPY = {
   catComplete: { en: "Category complete", fr: "Catégorie complète", ar: "اكتملت الفئة" },
   badgeEarned: { en: "Badge earned!", fr: "Badge obtenu !", ar: "حصلت على شارة!" },
   plusXp: { en: "+%n XP", fr: "+%n XP", ar: "+%n نقطة" },
+  wotdLabel: { en: "Word of the Day", fr: "Parole du jour", ar: "كلمة اليوم" },
+  wotdReveal: { en: "Reveal today's word", fr: "Révéler la parole du jour", ar: "اكشف كلمة اليوم" },
+  wotdClaimed: { en: "Read today ✓", fr: "Lue aujourd'hui ✓", ar: "قُرئت اليوم ✓" },
+  wotdStreak: { en: "%n-day streak", fr: "Série de %n jours", ar: "متتالية %n يومًا" },
 } as const;
 
 function WordsPage() {
