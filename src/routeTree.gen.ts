@@ -9,6 +9,7 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as WordsRouteImport } from './routes/words'
 import { Route as TimelineRouteImport } from './routes/timeline'
 import { Route as ProfileRouteImport } from './routes/profile'
 import { Route as MomentsRouteImport } from './routes/moments'
@@ -21,6 +22,11 @@ import { Route as FiguresQuizRouteImport } from './routes/figures.quiz'
 import { Route as FiguresFigureIdRouteImport } from './routes/figures.$figureId'
 import { Route as EraEraIdRouteImport } from './routes/era.$eraId'
 
+const WordsRoute = WordsRouteImport.update({
+  id: '/words',
+  path: '/words',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const TimelineRoute = TimelineRouteImport.update({
   id: '/timeline',
   path: '/timeline',
@@ -84,6 +90,7 @@ export interface FileRoutesByFullPath {
   '/moments': typeof MomentsRoute
   '/profile': typeof ProfileRoute
   '/timeline': typeof TimelineRoute
+  '/words': typeof WordsRoute
   '/era/$eraId': typeof EraEraIdRoute
   '/figures/$figureId': typeof FiguresFigureIdRoute
   '/figures/quiz': typeof FiguresQuizRoute
@@ -97,6 +104,7 @@ export interface FileRoutesByTo {
   '/moments': typeof MomentsRoute
   '/profile': typeof ProfileRoute
   '/timeline': typeof TimelineRoute
+  '/words': typeof WordsRoute
   '/era/$eraId': typeof EraEraIdRoute
   '/figures/$figureId': typeof FiguresFigureIdRoute
   '/figures/quiz': typeof FiguresQuizRoute
@@ -111,6 +119,7 @@ export interface FileRoutesById {
   '/moments': typeof MomentsRoute
   '/profile': typeof ProfileRoute
   '/timeline': typeof TimelineRoute
+  '/words': typeof WordsRoute
   '/era/$eraId': typeof EraEraIdRoute
   '/figures/$figureId': typeof FiguresFigureIdRoute
   '/figures/quiz': typeof FiguresQuizRoute
@@ -126,6 +135,7 @@ export interface FileRouteTypes {
     | '/moments'
     | '/profile'
     | '/timeline'
+    | '/words'
     | '/era/$eraId'
     | '/figures/$figureId'
     | '/figures/quiz'
@@ -139,6 +149,7 @@ export interface FileRouteTypes {
     | '/moments'
     | '/profile'
     | '/timeline'
+    | '/words'
     | '/era/$eraId'
     | '/figures/$figureId'
     | '/figures/quiz'
@@ -152,6 +163,7 @@ export interface FileRouteTypes {
     | '/moments'
     | '/profile'
     | '/timeline'
+    | '/words'
     | '/era/$eraId'
     | '/figures/$figureId'
     | '/figures/quiz'
@@ -166,6 +178,7 @@ export interface RootRouteChildren {
   MomentsRoute: typeof MomentsRoute
   ProfileRoute: typeof ProfileRoute
   TimelineRoute: typeof TimelineRoute
+  WordsRoute: typeof WordsRoute
   EraEraIdRoute: typeof EraEraIdRoute
   FiguresFigureIdRoute: typeof FiguresFigureIdRoute
   FiguresQuizRoute: typeof FiguresQuizRoute
@@ -175,6 +188,13 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/words': {
+      id: '/words'
+      path: '/words'
+      fullPath: '/words'
+      preLoaderRoute: typeof WordsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/timeline': {
       id: '/timeline'
       path: '/timeline'
@@ -262,6 +282,7 @@ const rootRouteChildren: RootRouteChildren = {
   MomentsRoute: MomentsRoute,
   ProfileRoute: ProfileRoute,
   TimelineRoute: TimelineRoute,
+  WordsRoute: WordsRoute,
   EraEraIdRoute: EraEraIdRoute,
   FiguresFigureIdRoute: FiguresFigureIdRoute,
   FiguresQuizRoute: FiguresQuizRoute,

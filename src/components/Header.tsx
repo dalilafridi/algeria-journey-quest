@@ -42,6 +42,10 @@ export function Header() {
     { to: "/lessons" as const, label: tu("lessons", current) },
     { to: "/map" as const, label: tu("mapExplorer", current) },
     {
+      to: "/words" as const,
+      label: current === "fr" ? "Paroles" : current === "ar" ? "كلمات" : "Words",
+    },
+    {
       to: "/moments" as const,
       label: current === "fr" ? "Moments" : current === "ar" ? "لحظات" : "Moments",
     },
