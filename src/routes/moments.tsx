@@ -3,6 +3,18 @@ import { useMemo, useState } from "react";
 import { Header } from "@/components/Header";
 import { AmazighSymbol } from "@/components/brand/AmazighSymbol";
 import { useLang, type Lang, type Localized } from "@/lib/i18n";
+import {
+  GuideBubble,
+  MuseumReveal,
+  DecisionGame,
+  MapSection,
+  ReflectionCard,
+  WeRememberCard,
+  DailyCard,
+  type DecisionScenario,
+  type MapRegion,
+  type DailyQuestion,
+} from "@/components/moments/Immersive";
 
 // ============================================================
 // Route
@@ -511,39 +523,103 @@ const TAFSUT = {
     "Sometimes small voices create big change.",
     "أحيانًا، أصوات صغيرة تُحدِث تغييرات كبيرة.",
   ),
-  game: {
-    prompt: L(
-      "Tu es étudiant·e en 1980. Ta langue maternelle n'est pas reconnue à l'école. Que choisis-tu ?",
-      "You are a student in 1980. Your mother tongue is not recognised at school. What do you choose?",
-      "أنت طالب·ة سنة 1980. لغتك الأم غير معترف بها في المدرسة. ماذا تختار؟",
+  decisions: [
+    {
+      prompt: L(
+        "Tu es étudiant·e en 1980. Ta langue maternelle n'est pas reconnue à l'école. Que choisis-tu ?",
+        "You are a student in 1980. Your mother tongue is not recognised at school. What do you choose?",
+        "أنت طالب·ة سنة 1980. لغتك الأم غير معترف بها في المدرسة. ماذا تختار؟",
+      ),
+      choices: [
+        {
+          label: L("Parler calmement avec d'autres élèves", "Speak calmly with other students", "أتحدّث بهدوء مع زملائي"),
+          feedback: L(
+            "Bravo. Partager ses idées avec respect aide les autres à comprendre, et c'est souvent comme ça que tout commence.",
+            "Well done. Sharing ideas with respect helps others understand — that's often how change begins.",
+            "أحسنت. مشاركة الأفكار باحترام تساعد الآخرين على الفهم، وهكذا يبدأ التغيير غالبًا.",
+          ),
+        },
+        {
+          label: L("Écrire un poème dans ta langue", "Write a poem in your language", "أكتب قصيدة بلغتي"),
+          feedback: L(
+            "Belle idée. Les mots et la poésie gardent une langue vivante, même quand le monde semble fermé.",
+            "A beautiful idea. Words and poetry keep a language alive, even when the world feels closed.",
+            "فكرة جميلة. الكلمات والشعر يُبقيان اللغة حيّة حتى حين يبدو العالم مغلقًا.",
+          ),
+        },
+        {
+          label: L("Rester silencieux·se pour éviter les ennuis", "Stay silent to avoid trouble", "أصمت لتجنّب المشاكل"),
+          feedback: L(
+            "C'est compréhensible : la peur est humaine. Mais avec le temps, parler — gentiment — peut aider à se sentir plus libre.",
+            "That's understandable — fear is human. But with time, speaking up gently can help you feel freer.",
+            "هذا مفهوم؛ الخوف شعور إنساني. لكن مع الوقت، الكلام بلطف قد يجعلك تشعر بحرية أكبر.",
+          ),
+        },
+      ],
+    },
+    {
+      prompt: L(
+        "Un·e camarade se moque d'un mot en tamazight. Que fais-tu ?",
+        "A classmate makes fun of a word in Tamazight. What do you do?",
+        "زميل يسخر من كلمة بالأمازيغية. ماذا تفعل؟",
+      ),
+      choices: [
+        {
+          label: L("Lui expliquer ce que ce mot veut dire", "Explain what the word means", "أشرح له معنى الكلمة"),
+          feedback: L(
+            "Très bien. Expliquer avec calme transforme la moquerie en curiosité.",
+            "Lovely. Explaining calmly turns mockery into curiosity.",
+            "رائع. الشرح بهدوء يحوّل السخرية إلى فضول.",
+          ),
+        },
+        {
+          label: L("Lui apprendre un mot kabyle drôle", "Teach them a fun Kabyle word", "أعلّمه كلمة قبائلية ممتعة"),
+          feedback: L(
+            "Joli choix. Partager une langue par le jeu rapproche les enfants.",
+            "Nice choice. Sharing a language through play brings children closer.",
+            "اختيار جميل. تعلّم اللغة باللعب يقرّب الأطفال.",
+          ),
+        },
+      ],
+    },
+    {
+      prompt: L(
+        "Tu écris une rédaction libre. Sur quoi parles-tu ?",
+        "You write a free essay. What do you write about?",
+        "تكتب موضوعًا حرًا. عن ماذا تكتب؟",
+      ),
+      choices: [
+        {
+          label: L("Une histoire racontée par ta grand-mère", "A story told by your grandmother", "قصة روتها لك جدّتك"),
+          feedback: L(
+            "Magnifique. Les histoires de famille sont la mémoire vivante d'un peuple.",
+            "Beautiful. Family stories are the living memory of a people.",
+            "رائع. حكايات العائلة هي ذاكرة الشعب الحيّة.",
+          ),
+        },
+        {
+          label: L("La poésie d'un village", "The poetry of a village", "شعر قرية صغيرة"),
+          feedback: L(
+            "Belle idée. Chaque village garde des trésors de mots à protéger.",
+            "Lovely. Every village holds treasures of words to protect.",
+            "فكرة جميلة. كل قرية تحوي كنوزًا من الكلمات.",
+          ),
+        },
+      ],
+    },
+  ] as DecisionScenario[],
+  connect: [
+    L(
+      "Aujourd'hui, le tamazight est une langue officielle, enseignée dans plusieurs écoles algériennes.",
+      "Today, Tamazight is an official language, taught in many Algerian schools.",
+      "اليوم، الأمازيغية لغة رسمية وتُدرَّس في العديد من المدارس الجزائرية.",
     ),
-    choices: [
-      {
-        label: L("Parler calmement avec d'autres élèves", "Speak calmly with other students", "أتحدّث بهدوء مع زملائي"),
-        feedback: L(
-          "Bravo. Partager ses idées avec respect aide les autres à comprendre, et c'est souvent comme ça que tout commence.",
-          "Well done. Sharing ideas with respect helps others understand — that's often how change begins.",
-          "أحسنت. مشاركة الأفكار باحترام تساعد الآخرين على الفهم، وهكذا يبدأ التغيير غالبًا.",
-        ),
-      },
-      {
-        label: L("Écrire un poème dans ta langue", "Write a poem in your language", "أكتب قصيدة بلغتي"),
-        feedback: L(
-          "Belle idée. Les mots et la poésie gardent une langue vivante, même quand le monde semble fermé.",
-          "A beautiful idea. Words and poetry keep a language alive, even when the world feels closed.",
-          "فكرة جميلة. الكلمات والشعر يُبقيان اللغة حيّة حتى حين يبدو العالم مغلقًا.",
-        ),
-      },
-      {
-        label: L("Rester silencieux·se pour éviter les ennuis", "Stay silent to avoid trouble", "أصمت لتجنّب المشاكل"),
-        feedback: L(
-          "C'est compréhensible : la peur est humaine. Mais avec le temps, parler — gentiment — peut aider à se sentir plus libre.",
-          "That's understandable — fear is human. But with time, speaking up gently can help you feel freer.",
-          "هذا مفهوم؛ الخوف شعور إنساني. لكن مع الوقت، الكلام بلطف قد يجعلك تشعر بحرية أكبر.",
-        ),
-      },
-    ],
-  },
+    L(
+      "Yennayer, le Nouvel An amazigh, est désormais un jour férié national.",
+      "Yennayer, the Amazigh New Year, is now a national public holiday.",
+      "يَنّاير، رأس السنة الأمازيغية، أصبح عطلة وطنية.",
+    ),
+  ],
   quiz: [
     {
       q: L(
@@ -627,39 +703,108 @@ const DECADE = {
     "Peace is something we must protect.",
     "السلام أمانة علينا أن نحميها.",
   ),
-  game: {
-    prompt: L(
-      "Tu es enfant pendant ces années. Un·e ami·e à l'école est triste et a peur. Que fais-tu ?",
-      "You are a child during these years. A friend at school is sad and afraid. What do you do?",
-      "أنت طفل·ة في تلك السنوات. صديق·ة لك في المدرسة حزين وخائف. ماذا تفعل؟",
+  decisions: [
+    {
+      prompt: L(
+        "Tu es enfant pendant ces années. Un·e ami·e à l'école est triste et a peur. Que fais-tu ?",
+        "You are a child during these years. A friend at school is sad and afraid. What do you do?",
+        "أنت طفل·ة في تلك السنوات. صديق·ة لك في المدرسة حزين وخائف. ماذا تفعل؟",
+      ),
+      choices: [
+        {
+          label: L("L'écouter sans juger", "Listen without judging", "أستمع إليه دون حكم"),
+          feedback: L(
+            "Très bien. Écouter avec gentillesse est l'un des plus grands cadeaux qu'on peut offrir.",
+            "Wonderful. Listening with kindness is one of the greatest gifts we can give.",
+            "رائع. الإنصات بلطف من أعظم الهدايا التي نستطيع تقديمها.",
+          ),
+        },
+        {
+          label: L("En parler à un adulte de confiance", "Tell a trusted adult", "أُخبر شخصًا بالغًا أثق به"),
+          feedback: L(
+            "C'est sage. Quand quelque chose pèse trop lourd, demander de l'aide est une vraie force.",
+            "Wise choice. When something feels too heavy, asking for help is real strength.",
+            "خيار حكيم. حين يصبح الشيء ثقيلًا، طلب المساعدة قوّة حقيقية.",
+          ),
+        },
+        {
+          label: L("Lui dessiner quelque chose de joli", "Draw something kind for them", "أرسم له شيئًا جميلًا"),
+          feedback: L(
+            "Magnifique. Les petits gestes de douceur aident à reconstruire la confiance et la paix.",
+            "Beautiful. Small gentle gestures help rebuild trust and peace.",
+            "جميل. اللفتات اللطيفة الصغيرة تُعيد بناء الثقة والسلام.",
+          ),
+        },
+      ],
+    },
+    {
+      prompt: L(
+        "Un voisin a perdu un proche. Comment montrer ton soutien ?",
+        "A neighbour has lost a loved one. How do you show support?",
+        "جار فقد عزيزًا عليه. كيف تُظهر دعمك؟",
+      ),
+      choices: [
+        {
+          label: L("Lui apporter un petit plat avec ta famille", "Bring a small dish with your family", "أُحضر معه طبقًا صغيرًا مع عائلتي"),
+          feedback: L(
+            "Geste précieux. Partager un repas, c'est dire « tu n'es pas seul ».",
+            "A precious gesture. Sharing a meal says “you are not alone.”",
+            "لفتة ثمينة. مشاركة الطعام تقول «لست وحدك».",
+          ),
+        },
+        {
+          label: L("Lui écrire un petit mot gentil", "Write them a kind note", "أكتب له كلمة لطيفة"),
+          feedback: L(
+            "Les mots doux laissent des traces qui durent longtemps.",
+            "Kind words leave traces that last a long time.",
+            "الكلمات اللطيفة تترك أثرًا يدوم طويلًا.",
+          ),
+        },
+      ],
+    },
+    {
+      prompt: L(
+        "À l'école, un débat tourne mal. Que choisis-tu ?",
+        "At school, a debate gets heated. What do you choose?",
+        "في المدرسة، يحتدم نقاش. ماذا تختار؟",
+      ),
+      choices: [
+        {
+          label: L("Demander à chacun de parler à son tour", "Ask everyone to speak in turn", "أطلب أن يتحدّث كلٌّ بدوره"),
+          feedback: L(
+            "Très bien. Donner la parole à chacun, c'est déjà construire la paix.",
+            "Wonderful. Giving each person a turn is already building peace.",
+            "رائع. إعطاء الجميع الكلمة هو بداية بناء السلام.",
+          ),
+        },
+        {
+          label: L("Proposer une pause et un verre d'eau", "Suggest a break and a glass of water", "أقترح استراحة وكأس ماء"),
+          feedback: L(
+            "Sage. Le calme aide à mieux se comprendre.",
+            "Wise. Calm helps us understand each other better.",
+            "حكيم. الهدوء يُساعد على الفهم.",
+          ),
+        },
+      ],
+    },
+  ] as DecisionScenario[],
+  connect: [
+    L(
+      "Aujourd'hui, l'Algérie cultive la paix civile et la mémoire des familles touchées.",
+      "Today, Algeria nurtures civil peace and the memory of the families affected.",
+      "اليوم، تحرص الجزائر على السلم المدني وذاكرة العائلات المتأثرة.",
     ),
-    choices: [
-      {
-        label: L("L'écouter sans juger", "Listen without judging", "أستمع إليه دون حكم"),
-        feedback: L(
-          "Très bien. Écouter avec gentillesse est l'un des plus grands cadeaux qu'on peut offrir.",
-          "Wonderful. Listening with kindness is one of the greatest gifts we can give.",
-          "رائع. الإنصات بلطف من أعظم الهدايا التي نستطيع تقديمها.",
-        ),
-      },
-      {
-        label: L("En parler à un adulte de confiance", "Tell a trusted adult", "أُخبر شخصًا بالغًا أثق به"),
-        feedback: L(
-          "C'est sage. Quand quelque chose pèse trop lourd, demander de l'aide est une vraie force.",
-          "Wise choice. When something feels too heavy, asking for help is real strength.",
-          "خيار حكيم. حين يصبح الشيء ثقيلًا، طلب المساعدة قوّة حقيقية.",
-        ),
-      },
-      {
-        label: L("Lui dessiner quelque chose de joli", "Draw something kind for them", "أرسم له شيئًا جميلًا"),
-        feedback: L(
-          "Magnifique. Les petits gestes de douceur aident à reconstruire la confiance et la paix.",
-          "Beautiful. Small gentle gestures help rebuild trust and peace.",
-          "جميل. اللفتات اللطيفة الصغيرة تُعيد بناء الثقة والسلام.",
-        ),
-      },
-    ],
-  },
+    L(
+      "Cette histoire nous rappelle qu'écouter et respecter les autres protège la société.",
+      "This history reminds us that listening to and respecting others protects society.",
+      "هذا التاريخ يُذكّرنا بأن الإصغاء والاحترام يحميان المجتمع.",
+    ),
+  ],
+  remember: L(
+    "Beaucoup de familles ont été touchées. Se souvenir, avec douceur, aide à protéger la paix d'aujourd'hui et de demain.",
+    "Many families were affected. Remembering, gently, helps protect the peace of today and tomorrow.",
+    "تأثّرت عائلات كثيرة. التذكّر بلطف يساعد على حماية سلام اليوم والغد.",
+  ),
   quiz: [
     {
       q: L(
@@ -739,19 +884,31 @@ function MomentsPage() {
         id: "courage",
         emoji: "🌿",
         name: L("Courage", "Courage", "شجاعة"),
-        hint: L("Compléter le quiz Tafsut", "Finish the Tafsut quiz", "أكمل اختبار تافسوت"),
+        hint: L(
+          "Apprendre l'histoire de Tafsut Imazighen et oser parler avec respect.",
+          "Learn about Tafsut Imazighen and dare to speak with respect.",
+          "تعلّم تافسوت إمازيغن والجرأة على الكلام باحترام.",
+        ),
       },
       {
         id: "peace",
         emoji: "🕊️",
         name: L("Paix", "Peace", "سلام"),
-        hint: L("Compléter le quiz de la Décennie", "Finish the Decade quiz", "أكمل اختبار العشرية"),
+        hint: L(
+          "Comprendre la Décennie Noire et choisir la douceur autour de soi.",
+          "Understand the Black Decade and choose kindness around you.",
+          "فهم العشرية السوداء واختيار اللطف حولك.",
+        ),
       },
       {
         id: "knowledge",
         emoji: "🧠",
         name: L("Savoir", "Knowledge", "معرفة"),
-        hint: L("Réussir parfaitement un quiz", "Score perfectly on a quiz", "نتيجة كاملة في اختبار"),
+        hint: L(
+          "Réussir un quiz parfaitement et garder la curiosité vivante.",
+          "Score perfectly on a quiz and keep curiosity alive.",
+          "نتيجة كاملة في اختبار، والحفاظ على الفضول حيًّا.",
+        ),
       },
     ],
     [],
@@ -765,6 +922,146 @@ function MomentsPage() {
     [],
   );
 
+  const regions: MapRegion[] = useMemo(
+    () => [
+      {
+        id: "kabylie",
+        name: L("Kabylie", "Kabylie", "القبائل"),
+        cx: 56,
+        cy: 22,
+        r: 3,
+        description: L(
+          "Région montagneuse au nord, cœur du mouvement amazigh et terre de poètes.",
+          "A mountainous northern region, heart of the Amazigh movement and a land of poets.",
+          "منطقة جبلية في الشمال، قلب الحراك الأمازيغي وأرض الشعراء.",
+        ),
+        events: [
+          L("Tafsut Imazighen (1980)", "Tafsut Imazighen (1980)", "تافسوت إمازيغن (1980)"),
+          L("Printemps noir (2001)", "Black Spring (2001)", "الربيع الأسود (2001)"),
+        ],
+        figures: [
+          L("Mouloud Mammeri", "Mouloud Mammeri", "مولود معمري"),
+          L("Lounès Matoub", "Lounès Matoub", "لونيس معطوب"),
+        ],
+      },
+      {
+        id: "alger",
+        name: L("Alger", "Algiers", "الجزائر"),
+        cx: 50,
+        cy: 18,
+        r: 3,
+        description: L(
+          "La capitale, lieu de décisions politiques majeures et de rassemblements historiques.",
+          "The capital, where major political decisions and historic gatherings take place.",
+          "العاصمة، مركز القرارات السياسية الكبرى والتجمعات التاريخية.",
+        ),
+        events: [
+          L("Élections interrompues (1991)", "Elections interrupted (1991)", "إيقاف الانتخابات (1991)"),
+          L("Concorde civile (1999)", "Civil concord (1999)", "الوئام المدني (1999)"),
+        ],
+        figures: [
+          L("Mouloud Mammeri", "Mouloud Mammeri", "مولود معمري"),
+        ],
+      },
+      {
+        id: "aures",
+        name: L("Aurès", "Aurès", "الأوراس"),
+        cx: 60,
+        cy: 32,
+        r: 3,
+        description: L(
+          "Massif montagneux au sud-est, terre de résistance et de traditions amazighes chaouies.",
+          "A southeastern mountain range, a land of resistance and Chaoui Amazigh traditions.",
+          "سلسلة جبلية في الجنوب الشرقي، أرض المقاومة والتقاليد الشاوية الأمازيغية.",
+        ),
+        events: [
+          L("Foyer historique du patrimoine chaoui", "Historic heart of the Chaoui heritage", "موطن تاريخي للتراث الشاوي"),
+        ],
+        figures: [L("Mostefa Ben Boulaïd", "Mostefa Ben Boulaïd", "مصطفى بن بولعيد")],
+      },
+      {
+        id: "constantine",
+        name: L("Constantine", "Constantine", "قسنطينة"),
+        cx: 64,
+        cy: 22,
+        r: 3,
+        description: L(
+          "Ville des ponts et du savoir, importante pour l'éducation et la culture algérienne.",
+          "City of bridges and learning, central to Algerian education and culture.",
+          "مدينة الجسور والعلم، ذات أهمية في التعليم والثقافة الجزائرية.",
+        ),
+        events: [
+          L("Centre culturel et universitaire majeur", "A major cultural and university hub", "مركز ثقافي وجامعي كبير"),
+        ],
+        figures: [L("Malek Bennabi", "Malek Bennabi", "مالك بن نبي")],
+      },
+    ],
+    [],
+  );
+
+  const dailyFacts3: L3[] = useMemo(
+    () => [
+      L(
+        "Yennayer, le Nouvel An amazigh, est célébré chaque 12 janvier en Algérie.",
+        "Yennayer, the Amazigh New Year, is celebrated every 12 January in Algeria.",
+        "يَنّاير، رأس السنة الأمازيغية، يُحتفل به كل 12 جانفي في الجزائر.",
+      ),
+      L(
+        "L'alphabet tifinagh est l'un des plus anciens systèmes d'écriture d'Afrique du Nord.",
+        "The Tifinagh alphabet is one of the oldest writing systems in North Africa.",
+        "الأبجدية التيفيناغ من أقدم أنظمة الكتابة في شمال إفريقيا.",
+      ),
+      L(
+        "La Concorde civile de 1999 a marqué un grand pas vers la paix en Algérie.",
+        "The 1999 Civil Concord marked a major step toward peace in Algeria.",
+        "ميثاق الوئام المدني سنة 1999 كان خطوة كبيرة نحو السلام.",
+      ),
+      L(
+        "Mouloud Mammeri a recueilli des poèmes kabyles pour les protéger de l'oubli.",
+        "Mouloud Mammeri collected Kabyle poems to save them from being forgotten.",
+        "جمع مولود معمري قصائد قبائلية لحمايتها من النسيان.",
+      ),
+    ],
+    [],
+  );
+
+  const dailyQs: DailyQuestion[] = useMemo(
+    () => [
+      {
+        q: L(
+          "Quelle langue est devenue officielle en Algérie en 2016 ?",
+          "Which language became official in Algeria in 2016?",
+          "ما هي اللغة التي أصبحت رسمية في الجزائر عام 2016؟",
+        ),
+        options: [L("Tamazight", "Tamazight", "الأمازيغية"), L("Latin", "Latin", "اللاتينية"), L("Italien", "Italian", "الإيطالية")],
+        answerIndex: 0,
+      },
+      {
+        q: L(
+          "En quelle décennie l'Algérie a-t-elle vécu la « Décennie Noire » ?",
+          "In which decade did Algeria experience the “Black Decade”?",
+          "في أي عقد عاشت الجزائر «العشرية السوداء»؟",
+        ),
+        options: [L("Années 1970", "1970s", "السبعينيات"), L("Années 1990", "1990s", "التسعينيات"), L("Années 2010", "2010s", "العشرية الثانية من الألفية")],
+        answerIndex: 1,
+      },
+      {
+        q: L(
+          "Que demandait le mouvement Tafsut Imazighen ?",
+          "What did the Tafsut Imazighen movement ask for?",
+          "ماذا طالب به حراك تافسوت إمازيغن؟",
+        ),
+        options: [
+          L("La reconnaissance de la culture amazighe", "Recognition of the Amazigh culture", "الاعتراف بالثقافة الأمازيغية"),
+          L("Une nouvelle monnaie", "A new currency", "عملة جديدة"),
+          L("Un nouveau drapeau", "A new flag", "علم جديد"),
+        ],
+        answerIndex: 0,
+      },
+    ],
+    [],
+  );
+
   const isAr = lang === "ar";
 
   return (
@@ -773,141 +1070,204 @@ function MomentsPage() {
       <HeroSection lang={lang} />
 
       <main className="max-w-4xl mx-auto px-4 pb-20">
+        {/* Daily card — retention */}
+        <MuseumReveal className="mt-2 sm:mt-4">
+          <DailyCard facts={dailyFacts3} questions={dailyQs} lang={lang} />
+        </MuseumReveal>
+
         {/* Shared interactive timeline */}
-        <section className="mt-2 sm:mt-4">
+        <MuseumReveal className="mt-6">
           <TimelineSection nodes={sharedTimeline} lang={lang} />
-        </section>
+        </MuseumReveal>
+
+        {/* Map mode */}
+        <MuseumReveal className="mt-6">
+          <MapSection regions={regions} lang={lang} />
+        </MuseumReveal>
 
         <SectionDivider />
 
         {/* ---------- TAFSUT IMAZIGHEN ---------- */}
         <section aria-labelledby="tafsut-title" className="space-y-5">
-          <div className="text-center">
-            <Eyebrow>1980 · Tafsut Imazighen</Eyebrow>
-            <h2
-              id="tafsut-title"
-              className="mt-3 text-2xl sm:text-3xl font-extrabold tracking-tight"
-            >
-              {tr(TAFSUT.title, lang)}
-            </h2>
-          </div>
+          <MuseumReveal>
+            <div className="text-center">
+              <Eyebrow>1980 · Tafsut Imazighen</Eyebrow>
+              <h2
+                id="tafsut-title"
+                className="mt-3 text-2xl sm:text-3xl font-extrabold tracking-tight"
+              >
+                {tr(TAFSUT.title, lang)}
+              </h2>
+            </div>
+          </MuseumReveal>
 
-          <StoryBlock
-            icon="📖"
-            title={UI.storyMode}
-            body={TAFSUT.story}
+          <GuideBubble
+            text={L(
+              "Prenons un instant pour comprendre ce qui s'est passé en 1980…",
+              "Let's take a moment to understand what happened in 1980…",
+              "لنأخذ لحظة لفهم ما حدث في 1980…",
+            )}
             lang={lang}
           />
 
-          <MuseumCard>
-            <div className="flex items-center gap-3 mb-4">
-              <span className="text-2xl" aria-hidden>
-                🪶
-              </span>
-              <h3 className="text-lg sm:text-xl font-bold">{tr(UI.whatHappened, lang)}</h3>
-            </div>
-            <FactsGrid items={TAFSUT.facts} lang={lang} />
-          </MuseumCard>
+          <MuseumReveal>
+            <StoryBlock icon="📖" title={UI.storyMode} body={TAFSUT.story} lang={lang} />
+          </MuseumReveal>
 
-          <MuseumCard>
-            <div className="flex items-center gap-3 mb-4">
-              <span className="text-2xl" aria-hidden>
-                🌅
-              </span>
-              <h3 className="text-lg sm:text-xl font-bold">{tr(UI.aftermath, lang)}</h3>
-            </div>
-            <ol className="relative border-s-2 border-secondary/30 ms-2 ps-5 space-y-4">
-              {TAFSUT.timeline.map((n) => (
-                <li key={n.year} className="relative">
-                  <span className="absolute -start-[27px] top-1 w-3 h-3 rounded-full bg-secondary" />
-                  <div className="text-sm font-bold text-secondary">{n.year}</div>
-                  <div className="text-foreground/85">{tr(n.label, lang)}</div>
-                </li>
-              ))}
-            </ol>
-          </MuseumCard>
+          <MuseumReveal>
+            <MuseumCard>
+              <div className="flex items-center gap-3 mb-4">
+                <span className="text-2xl" aria-hidden>
+                  🪶
+                </span>
+                <h3 className="text-lg sm:text-xl font-bold">{tr(UI.whatHappened, lang)}</h3>
+              </div>
+              <FactsGrid items={TAFSUT.facts} lang={lang} />
+            </MuseumCard>
+          </MuseumReveal>
 
-          <LessonCard text={TAFSUT.lesson} accent="var(--secondary)" lang={lang} />
+          <MuseumReveal>
+            <MuseumCard>
+              <div className="flex items-center gap-3 mb-4">
+                <span className="text-2xl" aria-hidden>
+                  🌅
+                </span>
+                <h3 className="text-lg sm:text-xl font-bold">{tr(UI.aftermath, lang)}</h3>
+              </div>
+              <ol className="relative border-s-2 border-secondary/30 ms-2 ps-5 space-y-4">
+                {TAFSUT.timeline.map((n) => (
+                  <li key={n.year} className="relative">
+                    <span className="absolute -start-[27px] top-1 w-3 h-3 rounded-full bg-secondary" />
+                    <div className="text-sm font-bold text-secondary">{n.year}</div>
+                    <div className="text-foreground/85">{tr(n.label, lang)}</div>
+                  </li>
+                ))}
+              </ol>
+            </MuseumCard>
+          </MuseumReveal>
 
-          <ChoiceGame scenario={TAFSUT.game} lang={lang} />
+          <MuseumReveal>
+            <LessonCard text={TAFSUT.lesson} accent="var(--secondary)" lang={lang} />
+          </MuseumReveal>
 
-          <QuizSection
-            title={UI.quizTitle}
-            questions={TAFSUT.quiz}
-            lang={lang}
-            onPerfect={() => {
-              grant("courage");
-              grant("knowledge");
-            }}
-          />
+          <MuseumReveal>
+            <DecisionGame scenarios={TAFSUT.decisions} lang={lang} />
+          </MuseumReveal>
+
+          <MuseumReveal>
+            <ReflectionCard points={TAFSUT.connect} accent="var(--secondary)" lang={lang} />
+          </MuseumReveal>
+
+          <MuseumReveal>
+            <QuizSection
+              title={UI.quizTitle}
+              questions={TAFSUT.quiz}
+              lang={lang}
+              onPerfect={() => {
+                grant("courage");
+                grant("knowledge");
+              }}
+            />
+          </MuseumReveal>
         </section>
 
         <SectionDivider />
 
         {/* ---------- BLACK DECADE ---------- */}
         <section aria-labelledby="decade-title" className="space-y-5">
-          <div className="text-center">
-            <Eyebrow>1990s · {tr(L("Mémoire", "Memory", "ذاكرة"), lang)}</Eyebrow>
-            <h2
-              id="decade-title"
-              className="mt-3 text-2xl sm:text-3xl font-extrabold tracking-tight"
-            >
-              {tr(DECADE.title, lang)}
-            </h2>
-          </div>
-
-          <StoryBlock icon="📖" title={UI.storyMode} body={DECADE.story} lang={lang} />
-
-          <MuseumCard>
-            <div className="flex items-center gap-3 mb-4">
-              <span className="text-2xl" aria-hidden>
-                🕯️
-              </span>
-              <h3 className="text-lg sm:text-xl font-bold">{tr(UI.whatHappened, lang)}</h3>
+          <MuseumReveal>
+            <div className="text-center">
+              <Eyebrow>1990s · {tr(L("Mémoire", "Memory", "ذاكرة"), lang)}</Eyebrow>
+              <h2
+                id="decade-title"
+                className="mt-3 text-2xl sm:text-3xl font-extrabold tracking-tight"
+              >
+                {tr(DECADE.title, lang)}
+              </h2>
             </div>
-            <FactsGrid items={DECADE.facts} lang={lang} />
-          </MuseumCard>
+          </MuseumReveal>
 
-          <MuseumCard>
-            <div className="flex items-center gap-3 mb-4">
-              <span className="text-2xl" aria-hidden>
-                🕊️
-              </span>
-              <h3 className="text-lg sm:text-xl font-bold">{tr(UI.aftermath, lang)}</h3>
-            </div>
-            <p className="text-foreground/85 leading-relaxed">
-              {tr(
-                L(
-                  "Après ces années difficiles, l'Algérie a cherché à guérir : se souvenir avec respect, écouter les familles touchées, et protéger la paix pour que cela ne se reproduise pas. Apprendre cette histoire, avec douceur, fait partie de cette guérison.",
-                  "After these hard years, Algeria sought to heal: to remember with respect, to listen to the families affected, and to protect peace so it never happens again. Learning this history, gently, is part of that healing.",
-                  "بعد تلك السنوات الصعبة، سعت الجزائر إلى التعافي: التذكّر باحترام، والإنصات للعائلات المتأثرة، وحماية السلام كي لا يتكرّر ما حدث. تعلّم هذا التاريخ بلطف جزء من هذا التعافي.",
-                ),
-                lang,
-              )}
-            </p>
-          </MuseumCard>
-
-          <LessonCard text={DECADE.lesson} accent="oklch(0.6 0.12 25)" lang={lang} />
-
-          <ChoiceGame scenario={DECADE.game} lang={lang} />
-
-          <QuizSection
-            title={UI.quizTitle}
-            questions={DECADE.quiz}
+          <GuideBubble
+            text={L(
+              "Cette page parle d'une période sensible. Nous l'abordons avec douceur et respect.",
+              "This section covers a sensitive time. We approach it with care and respect.",
+              "هذه الفقرة تتحدّث عن فترة حسّاسة. نقاربها برفق واحترام.",
+            )}
             lang={lang}
-            onPerfect={() => {
-              grant("peace");
-              grant("knowledge");
-            }}
           />
+
+          <MuseumReveal>
+            <StoryBlock icon="📖" title={UI.storyMode} body={DECADE.story} lang={lang} />
+          </MuseumReveal>
+
+          <MuseumReveal>
+            <MuseumCard>
+              <div className="flex items-center gap-3 mb-4">
+                <span className="text-2xl" aria-hidden>
+                  🕯️
+                </span>
+                <h3 className="text-lg sm:text-xl font-bold">{tr(UI.whatHappened, lang)}</h3>
+              </div>
+              <FactsGrid items={DECADE.facts} lang={lang} />
+            </MuseumCard>
+          </MuseumReveal>
+
+          <MuseumReveal>
+            <WeRememberCard text={DECADE.remember} lang={lang} />
+          </MuseumReveal>
+
+          <MuseumReveal>
+            <MuseumCard>
+              <div className="flex items-center gap-3 mb-4">
+                <span className="text-2xl" aria-hidden>
+                  🕊️
+                </span>
+                <h3 className="text-lg sm:text-xl font-bold">{tr(UI.aftermath, lang)}</h3>
+              </div>
+              <p className="text-foreground/85 leading-relaxed">
+                {tr(
+                  L(
+                    "Après ces années difficiles, l'Algérie a cherché à guérir : se souvenir avec respect, écouter les familles touchées, et protéger la paix pour que cela ne se reproduise pas. Apprendre cette histoire, avec douceur, fait partie de cette guérison.",
+                    "After these hard years, Algeria sought to heal: to remember with respect, to listen to the families affected, and to protect peace so it never happens again. Learning this history, gently, is part of that healing.",
+                    "بعد تلك السنوات الصعبة، سعت الجزائر إلى التعافي: التذكّر باحترام، والإنصات للعائلات المتأثرة، وحماية السلام كي لا يتكرّر ما حدث. تعلّم هذا التاريخ بلطف جزء من هذا التعافي.",
+                  ),
+                  lang,
+                )}
+              </p>
+            </MuseumCard>
+          </MuseumReveal>
+
+          <MuseumReveal>
+            <LessonCard text={DECADE.lesson} accent="oklch(0.6 0.12 25)" lang={lang} />
+          </MuseumReveal>
+
+          <MuseumReveal>
+            <DecisionGame scenarios={DECADE.decisions} lang={lang} />
+          </MuseumReveal>
+
+          <MuseumReveal>
+            <ReflectionCard points={DECADE.connect} accent="oklch(0.6 0.12 25)" lang={lang} />
+          </MuseumReveal>
+
+          <MuseumReveal>
+            <QuizSection
+              title={UI.quizTitle}
+              questions={DECADE.quiz}
+              lang={lang}
+              onPerfect={() => {
+                grant("peace");
+                grant("knowledge");
+              }}
+            />
+          </MuseumReveal>
         </section>
 
         <SectionDivider />
 
         {/* Badges */}
-        <section>
+        <MuseumReveal>
           <BadgeDisplay badges={badges} earned={earned} lang={lang} />
-        </section>
+        </MuseumReveal>
 
         <div className="text-center mt-10">
           <AmazighSymbol size={36} glow={false} className="opacity-60 mx-auto" />
