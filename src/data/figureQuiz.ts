@@ -1179,4 +1179,82 @@ export const figureQuiz: FigureQuizQuestion[] = [
     "Benyoucef Benkhedda", ["Ferhat Abbas", "Krim Belkacem", "Mohamed Boudiaf"],
     L("Benyoucef Benkhedda led the GPRA at the time of the Évian Accords.", "Benyoucef Benkhedda dirigeait le GPRA lors des accords d'Évian.", "ترأس بن يوسف بن خدّة الحكومة المؤقتة وقت اتفاقيات إيفيان."),
   ),
+
+  // ---------- Lounis Aït Menguellet ----------
+  make(
+    "ait-menguellet-1",
+    "easy",
+    [
+      L("I am a famous Kabyle poet and singer.", "Je suis un célèbre poète et chanteur kabyle.", "أنا شاعر ومغنٍّ قبائلي شهير."),
+      L("I sing in the Berber language about identity, freedom and memory.", "Je chante en langue berbère l'identité, la liberté et la mémoire.", "أغنّي بالأمازيغية عن الهوية والحرية والذاكرة."),
+      L("I was born in 1950 in a village in Kabylie.", "Je suis né en 1950 dans un village de Kabylie.", "وُلدتُ سنة 1950 في قرية بمنطقة القبائل."),
+    ],
+    "Lounis Ait Menguellet",
+    ["Idir", "Matoub Lounès", "Mouloud Feraoun"],
+    L(
+      "Lounis Aït Menguellet is one of the most celebrated Kabyle poet-singers, born in 1950.",
+      "Lounis Aït Menguellet est l'un des plus grands poètes-chanteurs kabyles, né en 1950.",
+      "لونيس آيت منقلات من أبرز الشعراء والمغنّين القبائليين، من مواليد 1950.",
+    ),
+  ),
+  make(
+    "ait-menguellet-2",
+    "medium",
+    [
+      L("True or false: my songs are often read as long poems on Algerian society.", "Vrai ou faux : mes chansons sont souvent lues comme de longs poèmes sur la société algérienne.", "صح أم خطأ: تُقرأ أغانيّ في الغالب كقصائد طويلة عن المجتمع الجزائري."),
+      L("Answer: TRUE — many albums are studied like literature.", "Réponse : VRAI — de nombreux albums sont étudiés comme de la littérature.", "الجواب: صحيح — تُدرَس كثير من ألبوماتي كأنها أدب."),
+    ],
+    "Lounis Ait Menguellet",
+    ["Idir", "Matoub Lounès", "Assia Djebar"],
+    L(
+      "Aït Menguellet's songs are widely studied as poetic and philosophical texts.",
+      "Les chansons d'Aït Menguellet sont largement étudiées comme des textes poétiques et philosophiques.",
+      "تُدرَس أغاني آيت منقلات على نطاق واسع بوصفها نصوصًا شعرية وفلسفية.",
+    ),
+  ),
+  make(
+    "ait-menguellet-3",
+    "medium",
+    [
+      L("Who am I? I turned the Kabyle language into a vehicle for collective reflection.", "Qui suis-je ? J'ai fait de la langue kabyle un vecteur de réflexion collective.", "من أنا؟ حوّلتُ اللغة القبائلية إلى أداة للتأمّل الجماعي."),
+      L("My instrument is a simple acoustic guitar.", "Mon instrument est une simple guitare acoustique.", "آلتي قيثارة صوتية بسيطة."),
+    ],
+    "Lounis Ait Menguellet",
+    ["Idir", "Matoub Lounès", "Cheikh El Hasnaoui"],
+    L(
+      "Aït Menguellet is known for his acoustic guitar and reflective Kabyle lyrics.",
+      "Aït Menguellet est connu pour sa guitare acoustique et ses textes kabyles réflexifs.",
+      "يُعرف آيت منقلات بقيثارته الصوتية ونصوصه القبائلية التأمّلية.",
+    ),
+  ),
+  make(
+    "ait-menguellet-4",
+    "hard",
+    [
+      L("I am called the voice of Amazigh memory and identity.", "On m'appelle la voix de la mémoire et de l'identité amazighes.", "يلقّبونني بصوت الذاكرة والهوية الأمازيغية."),
+      L("Unlike louder protest singers, my resistance is quiet, philosophical and patient.", "Contrairement à des chanteurs plus militants, ma résistance est silencieuse, philosophique et patiente.", "بخلاف مغنّين أكثر صخبًا، مقاومتي هادئة فلسفية صبورة."),
+    ],
+    "Lounis Ait Menguellet",
+    ["Matoub Lounès", "Idir", "Krim Belkacem"],
+    L(
+      "Aït Menguellet embodies a quiet, philosophical form of cultural resistance, distinct from Matoub's militant tone.",
+      "Aït Menguellet incarne une résistance culturelle silencieuse et philosophique, distincte du ton militant de Matoub.",
+      "يجسّد آيت منقلات مقاومة ثقافية هادئة وفلسفية، تختلف عن النبرة الاحتجاجية لمعطوب.",
+    ),
+  ),
+  make(
+    "ait-menguellet-5",
+    "hard",
+    [
+      L("True or false: I was born in the village of Ighil Bouammas in Kabylie.", "Vrai ou faux : je suis né au village d'Ighil Bouammas en Kabylie.", "صح أم خطأ: وُلدتُ في قرية إغيل بوعمّاس بمنطقة القبائل."),
+      L("Answer: TRUE.", "Réponse : VRAI.", "الجواب: صحيح."),
+    ],
+    "Lounis Ait Menguellet",
+    ["Idir", "Mouloud Feraoun", "Matoub Lounès"],
+    L(
+      "Aït Menguellet was indeed born in Ighil Bouammas, a small village in Kabylie.",
+      "Aït Menguellet est bien né à Ighil Bouammas, un petit village de Kabylie.",
+      "وُلد آيت منقلات فعلًا في إغيل بوعمّاس، قرية صغيرة بمنطقة القبائل.",
+    ),
+  ),
 ];
