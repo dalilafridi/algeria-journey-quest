@@ -137,6 +137,6 @@ export const mapRegions: MapRegion[] = [
       L("Oases like Ghardaïa, Timimoun and Djanet shelter unique architecture and life.", "Des oasis comme Ghardaïa, Timimoun et Djanet abritent une architecture et une vie uniques.", "واحات مثل غرداية وتيميمون وجانت تحتضن عمارة وحياة فريدة."),
       L("The desert holds major reserves of oil, gas and solar potential.", "Le désert recèle d'importantes réserves de pétrole, de gaz et un grand potentiel solaire.", "تحتوي الصحراء على احتياطات مهمة من النفط والغاز وطاقة شمسية كبيرة."),
     ],
-    figureIds: [],
+    figureIds: ["moufdi-zakaria"],
   },
 ];

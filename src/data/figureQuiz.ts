@@ -1334,4 +1334,139 @@ export const figureQuiz: FigureQuizQuestion[] = [
       "وُلد سنة 1908 في بني يزقن (ميزاب)، وجعلت قصائده الملحمية منه رمزًا للهوية الوطنية والوحدة.",
     ),
   ),
+
+  // ---------- Quote-based: "Who said this?" ----------
+  make(
+    "quote-kassaman",
+    "easy",
+    [
+      L(
+        "Who wrote: \"We swear by the lightning that destroys, by the streams of generous blood being shed…\"?",
+        "Qui a écrit : « Nous jurons par la foudre destructrice, par les flots de sang généreux versé… » ?",
+        "من كتب: «قَسَمًا بالنازلاتِ الماحقاتْ، والدماءِ الزاكياتِ الطاهراتْ…»؟",
+      ),
+      L(
+        "These are the opening words of Algeria's national anthem.",
+        "Ce sont les premiers mots de l'hymne national algérien.",
+        "هذه هي الكلمات الافتتاحية للنشيد الوطني الجزائري.",
+      ),
+    ],
+    "Moufdi Zakaria",
+    ["Kateb Yacine", "Mouloud Mammeri", "Frantz Fanon"],
+    L(
+      "These are the opening lines of 'Kassaman', written by Moufdi Zakaria in 1956.",
+      "Ce sont les premiers vers de « Kassaman », écrits par Moufdi Zakaria en 1956.",
+      "هي مطلع «قسماً» التي كتبها مفدي زكريا سنة 1956.",
+    ),
+  ),
+  make(
+    "quote-rome-for-sale",
+    "medium",
+    [
+      L(
+        "Who is said to have cried: \"Rome is a city for sale\"?",
+        "Qui aurait lancé : « Rome est une ville à vendre » ?",
+        "من قال: «روما مدينةٌ للبيع»؟",
+      ),
+      L(
+        "He was a Numidian king brought in chains to the city he denounced.",
+        "C'était un roi numide conduit enchaîné dans la ville qu'il dénonçait.",
+        "كان ملكًا نوميديًا سيق مكبّلًا إلى المدينة التي ندّد بها.",
+      ),
+    ],
+    "Jugurtha",
+    ["Massinissa", "Tacfarinas", "Juba I"],
+    L(
+      "Sallust attributes the famous line to Jugurtha after he bribed Roman senators.",
+      "Salluste attribue cette phrase célèbre à Jugurtha après qu'il eut corrompu des sénateurs romains.",
+      "ينسب سالوست هذه العبارة الشهيرة إلى يوغرطة بعد رشوته أعضاء مجلس الشيوخ.",
+    ),
+  ),
+  make(
+    "quote-mammeri-language",
+    "medium",
+    [
+      L(
+        "Who wrote: \"A people who lose their language lose half of themselves\"?",
+        "Qui a écrit : « Un peuple qui perd sa langue perd la moitié de lui-même » ?",
+        "من قال: «شعبٌ يفقد لغته يفقد نصفَ نفسه»؟",
+      ),
+      L(
+        "An anthropologist and novelist who spent his life saving Tamazight oral memory.",
+        "Un anthropologue et romancier qui consacra sa vie à sauver la mémoire orale tamazighte.",
+        "عالِم أنثروبولوجيا وروائي كرّس حياته لإنقاذ الذاكرة الشفهية الأمازيغية.",
+      ),
+    ],
+    "Mouloud Mammeri",
+    ["Mohamed Dib", "Kateb Yacine", "Assia Djebar"],
+    L(
+      "Mouloud Mammeri made the defense of language one of the central themes of his work.",
+      "Mouloud Mammeri a fait de la défense de la langue l'un des thèmes centraux de son œuvre.",
+      "جعل مولود معمري الدفاع عن اللغة من أبرز موضوعات أعماله.",
+    ),
+  ),
+  make(
+    "quote-matoub-standing",
+    "easy",
+    [
+      L(
+        "Who said: \"I would rather die standing than live on my knees\"?",
+        "Qui a dit : « Je préfère mourir debout que vivre à genoux » ?",
+        "من قال: «أن أموتَ واقفًا خيرٌ من أن أعيش راكعًا»؟",
+      ),
+      L(
+        "A Kabyle singer who paid with his life for defending Amazigh identity.",
+        "Un chanteur kabyle qui paya de sa vie la défense de l'identité amazighe.",
+        "مغنٍّ قبائلي دفع حياته ثمنًا للدفاع عن الهوية الأمازيغية.",
+      ),
+    ],
+    "Matoub Lounes",
+    ["Idir", "Lounis Aït Menguellet", "Cheikh El Hasnaoui"],
+    L(
+      "Lounès Matoub embodied this defiance until his assassination in 1998.",
+      "Lounès Matoub a incarné cette défiance jusqu'à son assassinat en 1998.",
+      "جسّد لونيس معطوب هذا التحدّي حتى اغتياله سنة 1998.",
+    ),
+  ),
+  make(
+    "quote-idir-avava",
+    "medium",
+    [
+      L(
+        "Who sang \"A Vava Inouva\" — the lullaby that took Tamazight around the world in 1976?",
+        "Qui a chanté « A Vava Inouva » — la berceuse qui fit voyager le tamazight dans le monde en 1976 ?",
+        "من غنّى «أ فافا إينوفا» — التهويدة التي حملت الأمازيغية إلى العالم سنة 1976؟",
+      ),
+    ],
+    "Idir",
+    ["Matoub Lounes", "Lounis Aït Menguellet", "Warda Al-Jazairia"],
+    L(
+      "Idir's 'A Vava Inouva' was the first Algerian song in Tamazight to gain global success.",
+      "« A Vava Inouva » d'Idir fut la première chanson algérienne en tamazight à connaître un succès mondial.",
+      "كانت «أ فافا إينوفا» لإيدير أوّل أغنية جزائرية بالأمازيغية تحقّق نجاحًا عالميًا.",
+    ),
+  ),
+  make(
+    "quote-fanon-generation",
+    "hard",
+    [
+      L(
+        "Who wrote: \"Each generation must, out of relative obscurity, discover its mission, fulfill it, or betray it\"?",
+        "Qui a écrit : « Chaque génération doit, dans une relative opacité, découvrir sa mission, l'accomplir ou la trahir » ?",
+        "من قال: «على كلّ جيلٍ أن يكتشف، في غموضٍ نسبيّ، رسالتَه، فإمّا أن يحقّقها أو يخونها»؟",
+      ),
+      L(
+        "From a famous book written in Algeria during the war of independence.",
+        "Tiré d'un livre célèbre écrit en Algérie pendant la guerre d'indépendance.",
+        "من كتاب شهير كُتب في الجزائر إبّان حرب التحرير.",
+      ),
+    ],
+    "Frantz Fanon",
+    ["Mouloud Mammeri", "Kateb Yacine", "Ferhat Abbas"],
+    L(
+      "From Frantz Fanon's 'The Wretched of the Earth' (1961).",
+      "Extrait des « Damnés de la Terre » de Frantz Fanon (1961).",
+      "من كتاب «معذّبو الأرض» لفرانز فانون (1961).",
+    ),
+  ),
 ];
