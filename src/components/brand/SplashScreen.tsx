@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
-import { AmazighSymbol } from "./AmazighSymbol";
-import { tu, useLang } from "@/lib/i18n";
+import splashImg from "@/assets/splash.png";
 
 const SPLASH_KEY = "atte-splash-shown-v1";
 
@@ -9,7 +8,6 @@ const SPLASH_KEY = "atte-splash-shown-v1";
  * Shows once per browser session, then fades out and unmounts.
  */
 export function SplashScreen() {
-  const lang = useLang();
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
@@ -32,34 +30,12 @@ export function SplashScreen() {
       style={{ background: "var(--gradient-brand-night)" }}
       aria-hidden
     >
-      {/* Soft golden vignette */}
-      <div
-        className="absolute inset-0"
-        style={{
-          background:
-            "radial-gradient(ellipse at center, oklch(0.85 0.16 80 / 0.18), transparent 60%)",
-        }}
+      <img
+        src={splashImg}
+        alt=""
+        className="max-h-full max-w-full h-auto w-auto object-contain"
+        style={{ filter: "drop-shadow(0 12px 40px oklch(0.85 0.16 80 / 0.35))" }}
       />
-      <div className="relative flex flex-col items-center text-center px-6">
-        <AmazighSymbol size={140} />
-        <h1
-          className="mt-6 text-3xl sm:text-5xl font-extrabold tracking-tight"
-          style={{
-            backgroundImage: "var(--gradient-brand-gold)",
-            WebkitBackgroundClip: "text",
-            backgroundClip: "text",
-            color: "transparent",
-          }}
-        >
-          {tu("appName", lang)}
-        </h1>
-        <p
-          className="mt-3 text-sm sm:text-base"
-          style={{ color: "oklch(0.85 0.04 80)" }}
-        >
-          {tu("splashTagline", lang)}
-        </p>
-      </div>
     </div>
   );
 }
