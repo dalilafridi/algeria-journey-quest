@@ -11,7 +11,8 @@ export type FigureCategory =
   | "colonial-resistance"
   | "war-of-independence"
   | "post-independence"
-  | "intellectuals-culture";
+  | "intellectuals-culture"
+  | "cultural-identity";
 
 export type FigureRegion =
   | "numidia"
@@ -103,6 +104,11 @@ export const FIGURE_CATEGORIES: { id: FigureCategory; label: LocalizedString; em
     id: "intellectuals-culture",
     label: L("Intellectuals & Culture", "Intellectuels & Culture", "المفكرون والثقافة"),
     emoji: "📚",
+  },
+  {
+    id: "cultural-identity",
+    label: L("Cultural Identity & Memory", "Culture & Mémoire", "الثقافة والذاكرة"),
+    emoji: "🎶",
   },
 ];
 
@@ -2059,6 +2065,35 @@ export const figures: Figure[] = [
       "He stepped aside in 1962 amid the political crisis that followed independence.",
       "Il se retira en 1962 dans la crise politique qui suivit l'indépendance.",
       "تنحّى سنة 1962 في خضمّ الأزمة السياسية التي أعقبت الاستقلال.",
+    ),
+  },
+  {
+    id: "ait-menguellet",
+    name: "Lounis Ait Menguellet",
+    displayName: L("Lounis Aït Menguellet", "Lounis Aït Menguellet", "لونيس آيت منقلات"),
+    emoji: "🎶",
+    category: "cultural-identity",
+    region: "kabylie",
+    era: L(
+      "Voice of Memory and Identity (born 1950)",
+      "Voix de la mémoire et de l'identité (né en 1950)",
+      "صوت الذاكرة والهوية (من مواليد 1950)",
+    ),
+    regionLabel: L("Cultural Identity", "Identité culturelle", "الهوية الثقافية"),
+    story: L(
+      "Born in the village of Ighil Bouammas in Kabylie, Lounis Aït Menguellet began singing as a young man with a simple guitar and a deep love for the Berber language. Over decades, his songs grew from tender love poems into long, philosophical reflections on freedom, exile, identity, and the struggles of his people.",
+      "Né au village d'Ighil Bouammas en Kabylie, Lounis Aït Menguellet commença à chanter très jeune, une simple guitare à la main et un amour profond pour la langue berbère. Au fil des décennies, ses chansons sont passées de tendres poèmes d'amour à de longues méditations philosophiques sur la liberté, l'exil, l'identité et les luttes de son peuple.",
+      "وُلد في قرية إغيل بوعمّاس بمنطقة القبائل، وبدأ لونيس آيت منقلات الغناء شابًا بقيثارة بسيطة وحبّ عميق للّغة الأمازيغية. وعلى مرّ العقود، تحوّلت أغانيه من قصائد حبّ رقيقة إلى تأمّلات فلسفية طويلة في الحرية والمنفى والهوية ومعاناة شعبه.",
+    ),
+    importance: L(
+      "He is considered the voice of Amazigh memory and identity — a poet-singer who turned the Kabyle language into a vehicle for collective reflection, dignity, and quiet resistance.",
+      "Il est considéré comme la voix de la mémoire et de l'identité amazighes — un poète-chanteur qui a fait de la langue kabyle un vecteur de réflexion collective, de dignité et de résistance silencieuse.",
+      "يُعدّ صوت الذاكرة والهوية الأمازيغية، شاعرًا ومغنّيًا حوّل اللغة القبائلية إلى أداة للتأمّل الجماعي والكرامة والمقاومة الهادئة.",
+    ),
+    fact: L(
+      "His albums are studied like literature: many of his songs are read as long poems about Algerian society, freedom, and the meaning of home.",
+      "Ses albums sont étudiés comme de la littérature : nombre de ses chansons sont lues comme de longs poèmes sur la société algérienne, la liberté et le sens du foyer.",
+      "تُدرَس ألبوماته كأنها نصوص أدبية، وتُقرأ كثير من أغانيه كقصائد طويلة عن المجتمع الجزائري والحرية ومعنى الوطن.",
     ),
   },
 ];
