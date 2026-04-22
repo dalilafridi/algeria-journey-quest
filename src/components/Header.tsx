@@ -54,7 +54,7 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-30 backdrop-blur-md bg-background/80 border-b border-border">
-      <div className="max-w-5xl mx-auto px-3 sm:px-4 py-2.5 sm:py-3 flex items-center justify-between gap-2 sm:gap-4">
+      <div className="max-w-6xl mx-auto px-3 sm:px-4 py-2.5 sm:py-3 flex items-center justify-between gap-2 lg:gap-5">
         <Link
           to="/"
           className="flex items-center gap-2 font-bold text-base sm:text-lg min-w-0"
