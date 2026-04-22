@@ -31,7 +31,7 @@ export function Header() {
           <img
             src={brandIcon}
             alt=""
-            className="w-9 h-9 rounded-full object-cover"
+            className="w-9 h-9 rounded-xl object-cover"
             style={{ boxShadow: "0 0 12px oklch(0.85 0.16 80 / 0.45)" }}
           />
           <span className="hidden sm:inline">{tu("appName", current)}</span>
