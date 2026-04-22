@@ -16,7 +16,7 @@ export const LISTEN: Record<string, ListenItem> = {
       "L'hymne national algérien, écrit pendant la guerre d'indépendance.",
       "النشيد الوطني الجزائري، كُتب خلال حرب التحرير.",
     ),
-    // Official-style high-quality rendition of Kassaman.
-    youtubeId: "_DDb91p2D2c",
+    // High-quality, embeddable rendition of Kassaman.
+    youtubeId: "VDA0c8Lr-7g",
   },
 };
