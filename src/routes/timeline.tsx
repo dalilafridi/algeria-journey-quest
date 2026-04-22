@@ -37,6 +37,7 @@ const ERA_META: Record<
   string,
   { image: string; icon: typeof Crown; category: Exclude<Category, "all"> }
 > = {
+  earlynorthafrica: { image: earlyImg, icon: Sun, category: "ancient" },
   numidia: { image: numidiaImg, icon: Crown, category: "ancient" },
   roman: { image: romanImg, icon: BookOpen, category: "ancient" },
   islamic: { image: islamicImg, icon: Moon, category: "islamic" },
