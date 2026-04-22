@@ -106,6 +106,14 @@ function WordsPage() {
         <h1 className="text-2xl sm:text-3xl font-extrabold">{COPY.title[lang]}</h1>
         <p className="text-muted-foreground mt-1 text-sm sm:text-base leading-relaxed">{COPY.intro[lang]}</p>
 
+        {/* Word of the Day */}
+        <WordOfTheDayWidget
+          lang={lang}
+          onClaim={(gained) => {
+            if (gained > 0) setToast(COPY.plusXp[lang].replace("%n", String(gained)));
+          }}
+        />
+
         {/* Words progress strip */}
         <div className="mt-5 rounded-2xl border border-border bg-card p-3 sm:p-4">
           <div className="flex items-center justify-between gap-3 text-xs sm:text-sm">
