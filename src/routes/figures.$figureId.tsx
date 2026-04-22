@@ -3,6 +3,7 @@ import { Header } from "@/components/Header";
 import { eras } from "@/data/eras";
 import { getFigure, figures } from "@/data/figures";
 import { t, tu, useLang } from "@/lib/i18n";
+import { StoryFlow, type StoryScene } from "@/components/story/StoryFlow";
 
 export const Route = createFileRoute("/figures/$figureId")({
   loader: ({ params }) => {
@@ -72,18 +73,29 @@ function FigureDetail() {
           </Section>
 
           {f.extended?.storyMode && f.extended.storyMode.length > 0 && (
-            <Section
-              title={lang === "fr" ? "Mode récit" : lang === "ar" ? "وضع السرد" : "Story mode"}
-              emoji="✨"
-            >
-              <div className="space-y-3">
-                {f.extended.storyMode.map((p, i) => (
-                  <p key={i} className="leading-relaxed text-foreground/90">
-                    {t(p, lang)}
-                  </p>
-                ))}
-              </div>
-            </Section>
+            <div className="mt-6">
+              <StoryFlow
+                scenes={f.extended.storyMode.map<StoryScene>((p, i) => ({
+                  icon: i === 0 ? "✨" : undefined,
+                  body: p,
+                }))}
+                accent="var(--secondary)"
+                title={
+                  lang === "fr"
+                    ? "Mode récit"
+                    : lang === "ar"
+                      ? "وضع السرد"
+                      : "Story mode"
+                }
+                defaultGuide={
+                  lang === "fr"
+                    ? "Suis le récit, pas à pas…"
+                    : lang === "ar"
+                      ? "تابع الحكاية، خطوةً بخطوة…"
+                      : "Follow the story, step by step…"
+                }
+              />
+            </div>
           )}
 
           <Section title={tu("whyTheyMatter", lang)} emoji="⭐">
