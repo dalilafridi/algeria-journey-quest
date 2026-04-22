@@ -1113,7 +1113,11 @@ function MomentsPage() {
           />
 
           <MuseumReveal>
-            <StoryBlock icon="📖" title={UI.storyMode} body={TAFSUT.story} lang={lang} />
+            <StoryFlow
+              scenes={TAFSUT_SCENES}
+              accent={TAFSUT.tagColor}
+              title={UI.storyMode}
+            />
           </MuseumReveal>
 
           <MuseumReveal>
@@ -1199,7 +1203,11 @@ function MomentsPage() {
           />
 
           <MuseumReveal>
-            <StoryBlock icon="📖" title={UI.storyMode} body={DECADE.story} lang={lang} />
+            <StoryFlow
+              scenes={DECADE_SCENES}
+              accent={DECADE.tagColor}
+              title={UI.storyMode}
+            />
           </MuseumReveal>
 
           <MuseumReveal>
