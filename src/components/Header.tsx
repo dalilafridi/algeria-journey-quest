@@ -153,7 +153,7 @@ export function Header() {
 
       {/* Mobile menu panel */}
       {menuOpen && (
-        <div className="md:hidden border-t border-border bg-background/95 backdrop-blur-md animate-float-up">
+        <div className="lg:hidden border-t border-border bg-background/95 backdrop-blur-md animate-float-up">
           <nav className="max-w-5xl mx-auto px-3 py-2 flex flex-col">
             {navLinks.map((l) => (
               <Link
