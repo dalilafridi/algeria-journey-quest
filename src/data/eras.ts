@@ -75,6 +75,411 @@ const L = (en: string, fr: string, ar: string): Localized<string> => ({ en, fr, 
 
 export const eras: Era[] = [
   // ============================================================
+  // 0) EARLY NORTH AFRICA
+  // ============================================================
+  {
+    id: "earlynorthafrica",
+    title: L("Early North Africa", "Afrique du Nord ancienne", "شمال إفريقيا القديم"),
+    dateRange: "c. 1000 BC – 200 BC",
+    emoji: "🐎",
+    summary: L(
+      "Before Numidia and modern borders, North Africa was already part of powerful civilizations. Leaders of Amazigh origin rose to prominence, including Sheshonq I, who ruled Egypt as a pharaoh and showed the deep roots of North African influence in the ancient world.",
+      "Bien avant la Numidie et les frontières modernes, l'Afrique du Nord faisait déjà partie de grandes civilisations. Des dirigeants d'origine amazighe ont marqué l'histoire, comme Sheshonq Ier, qui a régné sur l'Égypte en tant que pharaon, témoignant de l'influence ancienne de l'Afrique du Nord dans le monde antique.",
+      "قبل قيام نوميديا وقبل الحدود الحديثة، كانت شمال إفريقيا جزءًا من حضارات عظيمة. برز قادة من أصول أمازيغية مثل شيشنق الأول الذي حكم مصر كفرعون، وهو ما يكشف عمق تأثير شمال إفريقيا في العالم القديم.",
+    ),
+    figures: [
+      {
+        name: L("Sheshonq I", "Sheshonq Ier", "شيشنق الأول"),
+        note: L(
+          "Pharaoh of Amazigh origin, founder of Egypt's 22nd Dynasty.",
+          "Pharaon d'origine amazighe, fondateur de la 22e dynastie égyptienne.",
+          "فرعون من أصل أمازيغي ومؤسس الأسرة الثانية والعشرين في مصر.",
+        ),
+      },
+      {
+        name: L("Libu Chiefs", "Chefs Libou", "زعماء الليبو"),
+        note: L(
+          "Amazigh leaders who settled in Egypt's Delta and rose to power.",
+          "Chefs amazighs installés dans le delta égyptien, montés au pouvoir.",
+          "زعماء أمازيغ استقروا في دلتا مصر ووصلوا إلى الحكم.",
+        ),
+      },
+    ],
+    places: [
+      {
+        name: L("Bubastis", "Bubastis", "بوباستيس"),
+        note: L(
+          "Egyptian city, capital of the 22nd Dynasty.",
+          "Ville égyptienne, capitale de la 22e dynastie.",
+          "مدينة مصرية، عاصمة الأسرة الثانية والعشرين.",
+        ),
+      },
+      {
+        name: L("Tlemcen", "Tlemcen", "تلمسان"),
+        note: L(
+          "Ancient Amazigh region in western North Africa.",
+          "Région amazighe ancienne de l'ouest de l'Afrique du Nord.",
+          "منطقة أمازيغية قديمة في غرب شمال إفريقيا.",
+        ),
+      },
+      {
+        name: L("Cirta", "Cirta", "سيرتا"),
+        note: L(
+          "Major Amazigh stronghold, later capital of Numidia.",
+          "Important bastion amazigh, future capitale de la Numidie.",
+          "حصن أمازيغي بارز، أصبح لاحقًا عاصمة نوميديا.",
+        ),
+      },
+    ],
+    facts: [
+      L(
+        "Sheshonq I was a pharaoh of Amazigh (Libu) origin.",
+        "Sheshonq Ier était un pharaon d'origine amazighe (Libou).",
+        "كان شيشنق الأول فرعونًا من أصل أمازيغي (ليبي).",
+      ),
+      L(
+        "He founded Egypt's 22nd Dynasty.",
+        "Il fonda la 22e dynastie d'Égypte.",
+        "أسّس الأسرة الثانية والعشرين في مصر.",
+      ),
+      L(
+        "He ruled around 945 BCE.",
+        "Il régna vers 945 av. J.-C.",
+        "حكم نحو سنة 945 ق.م.",
+      ),
+      L(
+        "He is known as Shishak in the Bible.",
+        "Il est connu sous le nom de Shishaq dans la Bible.",
+        "يُعرف باسم شيشاك في الكتاب المقدس.",
+      ),
+      L(
+        "His rise shows early North African influence reaching beyond Algeria.",
+        "Son ascension montre l'influence ancienne de l'Afrique du Nord au-delà de l'Algérie.",
+        "يعكس صعوده تأثير شمال إفريقيا القديم خارج حدود الجزائر.",
+      ),
+      L(
+        "Amazigh tribes were known across the ancient Mediterranean and the Sahara.",
+        "Les tribus amazighes étaient connues à travers la Méditerranée antique et le Sahara.",
+        "كانت القبائل الأمازيغية معروفة في البحر المتوسط القديم والصحراء.",
+      ),
+    ],
+    badge: L("Voice of the Ancients", "Voix des Anciens", "صوت القدماء"),
+    quiz: [
+      {
+        type: "mcq",
+        difficulty: "easy",
+        question: L(
+          "What was Sheshonq I's origin?",
+          "Quelle était l'origine de Sheshonq Ier ?",
+          "ما هو أصل شيشنق الأول؟",
+        ),
+        options: [
+          L("Amazigh (Berber)", "Amazigh (Berbère)", "أمازيغي (بربري)"),
+          L("Greek", "Grec", "يوناني"),
+          L("Persian", "Perse", "فارسي"),
+          L("Roman", "Romain", "روماني"),
+        ],
+        answerIndex: 0,
+        explanation: L(
+          "Sheshonq I was of Amazigh (Libu) origin.",
+          "Sheshonq Ier était d'origine amazighe (Libou).",
+          "كان شيشنق الأول من أصل أمازيغي (ليبي).",
+        ),
+      },
+      {
+        type: "mcq",
+        difficulty: "easy",
+        question: L(
+          "Which Egyptian dynasty did Sheshonq I found?",
+          "Quelle dynastie égyptienne Sheshonq Ier a-t-il fondée ?",
+          "أي أسرة مصرية أسّسها شيشنق الأول؟",
+        ),
+        options: [
+          L("22nd Dynasty", "22e dynastie", "الأسرة الثانية والعشرون"),
+          L("18th Dynasty", "18e dynastie", "الأسرة الثامنة عشرة"),
+          L("4th Dynasty", "4e dynastie", "الأسرة الرابعة"),
+          L("30th Dynasty", "30e dynastie", "الأسرة الثلاثون"),
+        ],
+        answerIndex: 0,
+        explanation: L(
+          "He founded the 22nd Dynasty of Egypt.",
+          "Il fonda la 22e dynastie d'Égypte.",
+          "أسّس الأسرة الثانية والعشرين في مصر.",
+        ),
+      },
+      {
+        type: "mcq",
+        difficulty: "easy",
+        question: L(
+          "Around what year did Sheshonq I rule?",
+          "Vers quelle année Sheshonq Ier a-t-il régné ?",
+          "حوالي أي سنة حكم شيشنق الأول؟",
+        ),
+        options: [
+          L("945 BCE", "945 av. J.-C.", "945 ق.م"),
+          L("332 BCE", "332 av. J.-C.", "332 ق.م"),
+          L("1500 BCE", "1500 av. J.-C.", "1500 ق.م"),
+          L("100 CE", "100 ap. J.-C.", "100 م"),
+        ],
+        answerIndex: 0,
+        explanation: L(
+          "Sheshonq I ruled Egypt around 945 BCE.",
+          "Sheshonq Ier régna sur l'Égypte vers 945 av. J.-C.",
+          "حكم شيشنق الأول مصر نحو سنة 945 ق.م.",
+        ),
+      },
+      {
+        type: "mcq",
+        difficulty: "medium",
+        question: L(
+          "By what name is Sheshonq I known in the Bible?",
+          "Sous quel nom Sheshonq Ier est-il connu dans la Bible ?",
+          "بأي اسم يُعرف شيشنق الأول في الكتاب المقدس؟",
+        ),
+        options: [
+          L("Shishak", "Shishaq", "شيشاك"),
+          L("Cyrus", "Cyrus", "قورش"),
+          L("Nebuchadnezzar", "Nabuchodonosor", "نبوخذ نصر"),
+          L("Ramses", "Ramsès", "رمسيس"),
+        ],
+        answerIndex: 0,
+        explanation: L(
+          "He appears as Shishak in biblical accounts.",
+          "Il apparaît sous le nom de Shishaq dans les récits bibliques.",
+          "يَرِدُ باسم شيشاك في الروايات التوراتية.",
+        ),
+      },
+      {
+        type: "truefalse",
+        difficulty: "easy",
+        statement: L(
+          "Sheshonq I ruled Egypt as a pharaoh.",
+          "Sheshonq Ier a régné sur l'Égypte en tant que pharaon.",
+          "حكم شيشنق الأول مصر بصفته فرعونًا.",
+        ),
+        answer: true,
+        explanation: L(
+          "He became pharaoh of Egypt and founded a new dynasty.",
+          "Il devint pharaon d'Égypte et fonda une nouvelle dynastie.",
+          "أصبح فرعونًا لمصر وأسّس أسرة جديدة.",
+        ),
+      },
+      {
+        type: "truefalse",
+        difficulty: "easy",
+        statement: L(
+          "Sheshonq I had no connection with Amazigh peoples.",
+          "Sheshonq Ier n'avait aucun lien avec les peuples amazighs.",
+          "لم تكن لشيشنق الأول أي صلة بالشعوب الأمازيغية.",
+        ),
+        answer: false,
+        explanation: L(
+          "He came from the Libu, an Amazigh group settled in Egypt.",
+          "Il venait des Libous, un groupe amazigh établi en Égypte.",
+          "كان من الليبو، وهم مجموعة أمازيغية استقرت في مصر.",
+        ),
+      },
+      {
+        type: "truefalse",
+        difficulty: "medium",
+        statement: L(
+          "The 22nd Dynasty is sometimes called the Libyan or Amazigh dynasty.",
+          "La 22e dynastie est parfois appelée dynastie libyenne ou amazighe.",
+          "تُعرف الأسرة الثانية والعشرون أحيانًا بالأسرة الليبية أو الأمازيغية.",
+        ),
+        answer: true,
+        explanation: L(
+          "Historians often call it the Libyan dynasty due to its Amazigh origins.",
+          "Les historiens l'appellent souvent dynastie libyenne en raison de ses origines amazighes.",
+          "كثيرًا ما يسميها المؤرخون الأسرة الليبية بسبب أصولها الأمازيغية.",
+        ),
+      },
+      {
+        type: "truefalse",
+        difficulty: "medium",
+        statement: L(
+          "North African influence in antiquity was limited only to modern Algeria.",
+          "L'influence nord-africaine dans l'Antiquité se limitait à l'Algérie moderne.",
+          "كان تأثير شمال إفريقيا في العصور القديمة محصورًا في الجزائر الحديثة فقط.",
+        ),
+        answer: false,
+        explanation: L(
+          "It reached Egypt and the wider Mediterranean — Sheshonq I is one example.",
+          "Elle s'étendait à l'Égypte et à toute la Méditerranée — Sheshonq Ier en est un exemple.",
+          "امتدّ إلى مصر وعموم المتوسط، وشيشنق الأول مثال على ذلك.",
+        ),
+      },
+      {
+        type: "whoami",
+        difficulty: "easy",
+        clues: [
+          L(
+            "I was a pharaoh of Egypt with Amazigh roots.",
+            "J'étais un pharaon d'Égypte aux racines amazighes.",
+            "كنت فرعونًا لمصر من أصول أمازيغية.",
+          ),
+        ],
+        options: [
+          L("Sheshonq I", "Sheshonq Ier", "شيشنق الأول"),
+          L("Tutankhamun", "Toutânkhamon", "توت عنخ آمون"),
+          L("Cleopatra", "Cléopâtre", "كليوباترا"),
+          L("Hannibal", "Hannibal", "هانيبعل"),
+        ],
+        answerIndex: 0,
+        explanation: L(
+          "Sheshonq I was the Amazigh-origin pharaoh who founded the 22nd Dynasty.",
+          "Sheshonq Ier fut le pharaon d'origine amazighe fondateur de la 22e dynastie.",
+          "شيشنق الأول هو الفرعون الأمازيغي الأصل ومؤسس الأسرة الثانية والعشرين.",
+        ),
+      },
+      {
+        type: "whoami",
+        difficulty: "medium",
+        clues: [
+          L(
+            "I founded a long-lasting dynasty in Egypt around 945 BCE.",
+            "J'ai fondé une dynastie durable en Égypte vers 945 av. J.-C.",
+            "أسستُ أسرة طويلة الأمد في مصر نحو 945 ق.م.",
+          ),
+          L(
+            "The Bible remembers me as Shishak.",
+            "La Bible se souvient de moi sous le nom de Shishaq.",
+            "يذكرني الكتاب المقدس باسم شيشاك.",
+          ),
+        ],
+        options: [
+          L("Sheshonq I", "Sheshonq Ier", "شيشنق الأول"),
+          L("Massinissa", "Massinissa", "ماسينيسا"),
+          L("Jugurtha", "Jugurtha", "يوغرطة"),
+          L("Ptolemy", "Ptolémée", "بطليموس"),
+        ],
+        answerIndex: 0,
+        explanation: L(
+          "Both clues point to Sheshonq I — Shishak in biblical accounts.",
+          "Les deux indices désignent Sheshonq Ier — Shishaq dans la Bible.",
+          "كلا الدليلَين يشيران إلى شيشنق الأول — شيشاك في الكتاب المقدس.",
+        ),
+      },
+      {
+        type: "mcq",
+        difficulty: "medium",
+        question: L(
+          "Sheshonq I came from which group settled in Egypt?",
+          "Sheshonq Ier venait de quel groupe installé en Égypte ?",
+          "من أي مجموعة استقرت في مصر جاء شيشنق الأول؟",
+        ),
+        options: [
+          L("The Libu (Amazigh)", "Les Libous (Amazighs)", "الليبو (الأمازيغ)"),
+          L("The Hyksos", "Les Hyksôs", "الهكسوس"),
+          L("The Sea Peoples", "Les Peuples de la mer", "شعوب البحر"),
+          L("The Nubians", "Les Nubiens", "النوبيون"),
+        ],
+        answerIndex: 0,
+        explanation: L(
+          "The Libu were an Amazigh group whose chiefs rose to power in Egypt.",
+          "Les Libous étaient un groupe amazigh dont les chefs accédèrent au pouvoir en Égypte.",
+          "الليبو مجموعة أمازيغية وصل زعماؤها إلى الحكم في مصر.",
+        ),
+      },
+      {
+        type: "mcq",
+        difficulty: "medium",
+        question: L(
+          "Why is Sheshonq I important to Algerian / North African history?",
+          "Pourquoi Sheshonq Ier est-il important pour l'histoire algérienne et nord-africaine ?",
+          "لماذا يُعدّ شيشنق الأول مهمًا في تاريخ الجزائر وشمال إفريقيا؟",
+        ),
+        options: [
+          L(
+            "He shows early Amazigh influence reaching the heart of the ancient world.",
+            "Il montre l'influence amazighe précoce au cœur du monde antique.",
+            "يُظهر تأثير الأمازيغ المبكر في قلب العالم القديم.",
+          ),
+          L("He invented writing.", "Il a inventé l'écriture.", "اخترع الكتابة."),
+          L("He built the pyramids.", "Il a construit les pyramides.", "بنى الأهرامات."),
+          L("He ruled Carthage.", "Il a gouverné Carthage.", "حكم قرطاج."),
+        ],
+        answerIndex: 0,
+        explanation: L(
+          "His reign proves North African leaders shaped events far beyond their homeland.",
+          "Son règne prouve que des dirigeants nord-africains ont façonné l'histoire bien au-delà de leur région.",
+          "يثبت حكمه أن قادة شمال إفريقيا أسهموا في صنع التاريخ خارج بلادهم.",
+        ),
+      },
+      {
+        type: "mcq",
+        difficulty: "hard",
+        question: L(
+          "Sheshonq I is known for a famous military campaign into which region?",
+          "Sheshonq Ier est connu pour une campagne militaire célèbre dans quelle région ?",
+          "اشتهر شيشنق الأول بحملة عسكرية في أي منطقة؟",
+        ),
+        options: [
+          L("The Levant (Canaan)", "Le Levant (Canaan)", "بلاد الشام (كنعان)"),
+          L("Italy", "L'Italie", "إيطاليا"),
+          L("Spain", "L'Espagne", "إسبانيا"),
+          L("India", "L'Inde", "الهند"),
+        ],
+        answerIndex: 0,
+        explanation: L(
+          "He led a campaign into the Levant, recorded on the walls of Karnak.",
+          "Il mena une campagne au Levant, gravée sur les murs de Karnak.",
+          "قاد حملة إلى بلاد الشام، نُقشت أخبارها على جدران الكرنك.",
+        ),
+      },
+      {
+        type: "mcq",
+        difficulty: "hard",
+        question: L(
+          "Which Egyptian temple records Sheshonq I's military exploits?",
+          "Quel temple égyptien conserve le récit des exploits militaires de Sheshonq Ier ?",
+          "أي معبد مصري يحفظ ذكر إنجازات شيشنق الأول العسكرية؟",
+        ),
+        options: [
+          L("Karnak", "Karnak", "الكرنك"),
+          L("Abu Simbel", "Abou Simbel", "أبو سمبل"),
+          L("Philae", "Philae", "فيلة"),
+          L("Edfu", "Edfou", "إدفو"),
+        ],
+        answerIndex: 0,
+        explanation: L(
+          "His campaign list is engraved at the temple of Karnak.",
+          "La liste de ses campagnes est gravée au temple de Karnak.",
+          "قائمة حملاته منقوشة في معبد الكرنك.",
+        ),
+      },
+      {
+        type: "whoami",
+        difficulty: "hard",
+        clues: [
+          L(
+            "I came from a Libu (Amazigh) family that gained power in Egypt.",
+            "Je venais d'une famille libou (amazighe) qui prit le pouvoir en Égypte.",
+            "كنت من عائلة ليبية (أمازيغية) وصلت إلى الحكم في مصر.",
+          ),
+          L(
+            "I founded the 22nd Dynasty around 945 BCE.",
+            "J'ai fondé la 22e dynastie vers 945 av. J.-C.",
+            "أسستُ الأسرة الثانية والعشرين نحو 945 ق.م.",
+          ),
+        ],
+        options: [
+          L("Sheshonq I", "Sheshonq Ier", "شيشنق الأول"),
+          L("Ramses II", "Ramsès II", "رمسيس الثاني"),
+          L("Akhenaten", "Akhenaton", "إخناتون"),
+          L("Thutmose III", "Thoutmôsis III", "تحتمس الثالث"),
+        ],
+        answerIndex: 0,
+        explanation: L(
+          "All clues describe Sheshonq I, the Amazigh-origin founder of the 22nd Dynasty.",
+          "Tous les indices décrivent Sheshonq Ier, fondateur amazigh de la 22e dynastie.",
+          "كل الأدلة تصف شيشنق الأول، مؤسس الأسرة الثانية والعشرين ذي الأصل الأمازيغي.",
+        ),
+      },
+    ],
+  },
+
+  // ============================================================
   // 1) NUMIDIA
   // ============================================================
   {
