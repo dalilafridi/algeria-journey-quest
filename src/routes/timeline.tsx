@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useMemo, useState } from "react";
-import { Crown, BookOpen, Moon, Swords, Flag, Lock, Sparkles, Lightbulb } from "lucide-react";
+import { Crown, BookOpen, Moon, Shield, Swords, Flag, Lock, Sparkles, Lightbulb } from "lucide-react";
 import { Header } from "@/components/Header";
 import { eras } from "@/data/eras";
 import { getProgress, hasPassed, isUnlocked, type Progress } from "@/lib/progress";
@@ -8,6 +8,7 @@ import { t, tu, useLang, type Lang } from "@/lib/i18n";
 import numidiaImg from "@/assets/era-numidia.png";
 import romanImg from "@/assets/era-roman.png";
 import islamicImg from "@/assets/era-islamic.png";
+import ottomanImg from "@/assets/era-ottoman.jpg";
 import frenchImg from "@/assets/era-french.png";
 import independenceImg from "@/assets/era-independence.png";
 
@@ -38,6 +39,7 @@ const ERA_META: Record<
   numidia: { image: numidiaImg, icon: Crown, category: "ancient" },
   roman: { image: romanImg, icon: BookOpen, category: "ancient" },
   islamic: { image: islamicImg, icon: Moon, category: "islamic" },
+  ottoman: { image: ottomanImg, icon: Shield, category: "islamic" },
   french: { image: frenchImg, icon: Swords, category: "colonial" },
   independence: { image: independenceImg, icon: Flag, category: "modern" },
 };

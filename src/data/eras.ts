@@ -1711,7 +1711,363 @@ export const eras: Era[] = [
   },
 
   // ============================================================
-  // 4) FRENCH COLONIZATION
+  // 4) OTTOMAN ALGERIA
+  // ============================================================
+  {
+    id: "ottoman",
+    title: L("Ottoman Algeria", "Algérie ottomane", "الجزائر العثمانية"),
+    dateRange: "1516 – 1830",
+    emoji: "🛡️",
+    summary: L(
+      "Ottoman Algeria was a powerful regency centered in Algiers. From the 16th century to 1830, it played an important role in Mediterranean politics, trade, and warfare. Local rulers, military elites, and Ottoman influence shaped the region long before French colonization began.",
+      "L'Algérie ottomane était une régence puissante centrée sur Alger. Du XVIe siècle à 1830, elle a joué un rôle important dans la politique, le commerce et les conflits en Méditerranée. Des dirigeants locaux, des élites militaires et l'influence ottomane ont façonné la région bien avant la colonisation française.",
+      "كانت الجزائر العثمانية إيالة قوية مركزها مدينة الجزائر. ومن القرن السادس عشر إلى سنة 1830، لعبت دورًا مهمًا في السياسة والتجارة والصراعات في البحر الأبيض المتوسط. وقد ساهم الحكام المحليون والنخب العسكرية والتأثير العثماني في تشكيل المنطقة قبل بداية الاستعمار الفرنسي بوقت طويل.",
+    ),
+    figures: [
+      {
+        name: L("Aruj Barbarossa", "Arudj Barberousse", "عروج بربروس"),
+        note: L(
+          "Helped establish Ottoman power in Algeria.",
+          "A contribué à instaurer la puissance ottomane en Algérie.",
+          "ساهم في ترسيخ النفوذ العثماني في الجزائر.",
+        ),
+      },
+      {
+        name: L("Hayreddin Barbarossa", "Khayreddine Barberousse", "خير الدين بربروس"),
+        note: L(
+          "Famed Ottoman admiral linked to Algiers.",
+          "Célèbre amiral ottoman lié à Alger.",
+          "أمير بحر عثماني شهير ارتبط اسمه بالجزائر.",
+        ),
+      },
+      {
+        name: L("Salah Rais", "Salah Raïs", "صالح رايس"),
+        note: L(
+          "Bey of Algiers and bold military leader.",
+          "Bey d'Alger et chef militaire audacieux.",
+          "بايلربك الجزائر وقائد عسكري جريء.",
+        ),
+      },
+      {
+        name: L("Baba Ali Chaouch", "Baba Ali Chaouch", "بابا علي شاوش"),
+        note: L(
+          "Dey who strengthened Algiers' autonomy.",
+          "Dey qui renforça l'autonomie d'Alger.",
+          "داي عزّز استقلال الجزائر داخل الإيالة.",
+        ),
+      },
+      {
+        name: L("Ahmed Bey of Constantine", "Ahmed Bey de Constantine", "أحمد باي قسنطينة"),
+        note: L(
+          "Last great defender against French expansion in the east.",
+          "Dernier grand défenseur face à l'expansion française à l'est.",
+          "آخر كبار المدافعين عن الشرق في وجه التوسع الفرنسي.",
+        ),
+      },
+    ],
+    places: [
+      {
+        name: L("Algiers", "Alger", "مدينة الجزائر"),
+        note: L(
+          "Capital and political heart of the regency.",
+          "Capitale et cœur politique de la régence.",
+          "العاصمة وقلب الإيالة السياسي.",
+        ),
+      },
+      {
+        name: L("Constantine", "Constantine", "قسنطينة"),
+        note: L(
+          "Eastern stronghold ruled by powerful beys.",
+          "Bastion oriental dirigé par de puissants beys.",
+          "حصن شرقي حكمه باياتٌ أقوياء.",
+        ),
+      },
+    ],
+    facts: [
+      L(
+        "Ottoman rule in Algeria began in the early 16th century.",
+        "La présence ottomane en Algérie commence au début du XVIe siècle.",
+        "بدأ الحكم العثماني في الجزائر في أوائل القرن السادس عشر.",
+      ),
+      L(
+        "Algiers became one of the most important cities in the Mediterranean.",
+        "Alger devient l'une des villes les plus importantes de la Méditerranée.",
+        "أصبحت مدينة الجزائر من أهم مدن البحر الأبيض المتوسط.",
+      ),
+      L(
+        "The Barbarossa brothers helped establish Ottoman power in Algeria.",
+        "Les frères Barberousse ont contribué à établir la puissance ottomane en Algérie.",
+        "ساهم الأخوان بربروس في ترسيخ النفوذ العثماني في الجزائر.",
+      ),
+      L(
+        "Algeria was governed as a regency linked to the Ottoman Empire.",
+        "L'Algérie était gouvernée comme une régence liée à l'Empire ottoman.",
+        "كانت الجزائر تُحكم كإيالة مرتبطة بالدولة العثمانية.",
+      ),
+      L(
+        "Corsair activity made Algiers famous across Europe and the Mediterranean.",
+        "L'activité corsaire a rendu Alger célèbre à travers l'Europe et la Méditerranée.",
+        "جعل النشاط البحري مدينة الجزائر مشهورة في أوروبا والبحر المتوسط.",
+      ),
+      L(
+        "Ahmed Bey of Constantine became one of the last major defenders against French expansion.",
+        "Ahmed Bey de Constantine fut l'un des derniers grands défenseurs face à l'expansion française.",
+        "كان أحمد باي قسنطينة من آخر كبار المدافعين في وجه التوسع الفرنسي.",
+      ),
+    ],
+    badge: L("Guardian of Ottoman Algiers", "Gardien de l'Alger ottomane", "حارس الجزائر العثمانية"),
+    quiz: [
+      {
+        type: "mcq",
+        difficulty: "easy",
+        question: L(
+          "When did Ottoman rule begin in Algeria?",
+          "Quand le règne ottoman a-t-il commencé en Algérie ?",
+          "متى بدأ الحكم العثماني في الجزائر؟",
+        ),
+        options: [
+          L("1516", "1516", "1516"),
+          L("1830", "1830", "1830"),
+          L("1453", "1453", "1453"),
+          L("1700", "1700", "1700"),
+        ],
+        answerIndex: 0,
+        explanation: L(
+          "Ottoman influence in Algeria began in the early 16th century.",
+          "L'influence ottomane en Algérie a commencé au début du XVIe siècle.",
+          "بدأ النفوذ العثماني في الجزائر في أوائل القرن السادس عشر.",
+        ),
+      },
+      {
+        type: "truefalse",
+        difficulty: "easy",
+        statement: L(
+          "Algiers became an important Mediterranean center during the Ottoman period.",
+          "Alger devint un centre méditerranéen important pendant la période ottomane.",
+          "أصبحت مدينة الجزائر مركزًا متوسطيًا مهمًا في العهد العثماني.",
+        ),
+        answer: true,
+        explanation: L(
+          "Algiers became a major political and maritime center during Ottoman rule.",
+          "Alger devint un grand centre politique et maritime sous la domination ottomane.",
+          "أصبحت الجزائر مركزًا سياسيًا وبحريًا كبيرًا في عهد العثمانيين.",
+        ),
+      },
+      {
+        type: "whoami",
+        difficulty: "easy",
+        clues: [
+          L(
+            "I was one of the Barbarossa brothers linked to Ottoman power in Algeria.",
+            "J'étais l'un des frères Barberousse liés à la puissance ottomane en Algérie.",
+            "كنت أحد الأخوين بربروس المرتبطَين بالنفوذ العثماني في الجزائر.",
+          ),
+        ],
+        options: [
+          L("Aruj Barbarossa", "Arudj Barberousse", "عروج بربروس"),
+          L("Jugurtha", "Jugurtha", "يوغرطة"),
+          L("Emir Abdelkader", "Émir Abdelkader", "الأمير عبد القادر"),
+          L("Ibn Khaldun", "Ibn Khaldoun", "ابن خلدون"),
+        ],
+        answerIndex: 0,
+        explanation: L(
+          "Aruj Barbarossa helped establish Ottoman power in Algeria.",
+          "Arudj Barberousse a contribué à instaurer la puissance ottomane en Algérie.",
+          "ساهم عروج بربروس في ترسيخ النفوذ العثماني في الجزائر.",
+        ),
+      },
+      {
+        type: "mcq",
+        difficulty: "easy",
+        question: L(
+          "What year did Ottoman Algeria end?",
+          "En quelle année l'Algérie ottomane prit-elle fin ?",
+          "في أي سنة انتهت الجزائر العثمانية؟",
+        ),
+        options: [
+          L("1516", "1516", "1516"),
+          L("1700", "1700", "1700"),
+          L("1830", "1830", "1830"),
+          L("1954", "1954", "1954"),
+        ],
+        answerIndex: 2,
+        explanation: L(
+          "Ottoman rule ended when France invaded Algeria in 1830.",
+          "Le règne ottoman prit fin avec l'invasion française de l'Algérie en 1830.",
+          "انتهى الحكم العثماني مع الغزو الفرنسي للجزائر سنة 1830.",
+        ),
+      },
+      {
+        type: "mcq",
+        difficulty: "easy",
+        question: L(
+          "What city was the center of Ottoman Algeria?",
+          "Quelle ville était le centre de l'Algérie ottomane ?",
+          "ما المدينة التي كانت مركز الجزائر العثمانية؟",
+        ),
+        options: [
+          L("Oran", "Oran", "وهران"),
+          L("Constantine", "Constantine", "قسنطينة"),
+          L("Algiers", "Alger", "مدينة الجزائر"),
+          L("Tlemcen", "Tlemcen", "تلمسان"),
+        ],
+        answerIndex: 2,
+        explanation: L(
+          "Algiers was the capital and political center of Ottoman Algeria.",
+          "Alger était la capitale et le centre politique de l'Algérie ottomane.",
+          "كانت مدينة الجزائر العاصمة والمركز السياسي للجزائر العثمانية.",
+        ),
+      },
+      {
+        type: "truefalse",
+        difficulty: "medium",
+        statement: L(
+          "Ottoman Algeria was completely isolated from Mediterranean trade.",
+          "L'Algérie ottomane était totalement isolée du commerce méditerranéen.",
+          "كانت الجزائر العثمانية معزولة تمامًا عن التجارة المتوسطية.",
+        ),
+        answer: false,
+        explanation: L(
+          "Ottoman Algeria was deeply connected to Mediterranean trade and conflict.",
+          "L'Algérie ottomane était profondément liée au commerce et aux conflits méditerranéens.",
+          "كانت الجزائر العثمانية مرتبطة بعمق بتجارة وصراعات البحر الأبيض المتوسط.",
+        ),
+      },
+      {
+        type: "whoami",
+        difficulty: "medium",
+        clues: [
+          L(
+            "I was a later defender of eastern Algeria against French conquest.",
+            "Je fus un défenseur tardif de l'est de l'Algérie face à la conquête française.",
+            "كنت من المدافعين المتأخرين عن شرق الجزائر في وجه الغزو الفرنسي.",
+          ),
+        ],
+        options: [
+          L("Ahmed Bey of Constantine", "Ahmed Bey de Constantine", "أحمد باي قسنطينة"),
+          L("Massinissa", "Massinissa", "ماسينيسا"),
+          L("Ben Bella", "Ben Bella", "بن بلة"),
+          L("Didouche Mourad", "Didouche Mourad", "ديدوش مراد"),
+        ],
+        answerIndex: 0,
+        explanation: L(
+          "Ahmed Bey resisted French expansion in Constantine after 1830.",
+          "Ahmed Bey résista à l'expansion française à Constantine après 1830.",
+          "قاوم أحمد باي التوسع الفرنسي في قسنطينة بعد 1830.",
+        ),
+      },
+      {
+        type: "mcq",
+        difficulty: "medium",
+        question: L(
+          "What was Ottoman Algeria often called politically?",
+          "Comment l'Algérie ottomane était-elle souvent désignée politiquement ?",
+          "بماذا كانت الجزائر العثمانية تُوصف سياسيًا في الغالب؟",
+        ),
+        options: [
+          L("A republic", "Une république", "جمهورية"),
+          L("A regency", "Une régence", "إيالة"),
+          L("A kingdom", "Un royaume", "مملكة"),
+          L("A colony", "Une colonie", "مستعمرة"),
+        ],
+        answerIndex: 1,
+        explanation: L(
+          "Ottoman Algeria was governed as a regency linked to the Ottoman Empire.",
+          "L'Algérie ottomane était gouvernée comme une régence liée à l'Empire ottoman.",
+          "كانت الجزائر تُحكم كإيالة مرتبطة بالدولة العثمانية.",
+        ),
+      },
+      {
+        type: "truefalse",
+        difficulty: "easy",
+        statement: L(
+          "The Barbarossa brothers played a role in the rise of Ottoman Algeria.",
+          "Les frères Barberousse ont joué un rôle dans l'essor de l'Algérie ottomane.",
+          "لعب الأخوان بربروس دورًا في صعود الجزائر العثمانية.",
+        ),
+        answer: true,
+        explanation: L(
+          "The Barbarossa brothers were central to establishing Ottoman authority in Algiers.",
+          "Les frères Barberousse furent centraux dans l'instauration de l'autorité ottomane à Alger.",
+          "كان الأخوان بربروس محوريَّين في ترسيخ السلطة العثمانية في الجزائر.",
+        ),
+      },
+      {
+        type: "whoami",
+        difficulty: "medium",
+        clues: [
+          L(
+            "I became known across the Mediterranean through naval and military power.",
+            "Je suis devenu célèbre en Méditerranée par la puissance navale et militaire.",
+            "اشتهرت في البحر الأبيض المتوسط بالقوة البحرية والعسكرية.",
+          ),
+        ],
+        options: [
+          L("Hayreddin Barbarossa", "Khayreddine Barberousse", "خير الدين بربروس"),
+          L("Saint Augustine", "Saint Augustin", "القديس أوغسطين"),
+          L("Ferhat Abbas", "Ferhat Abbas", "فرحات عباس"),
+          L("Mouloud Feraoun", "Mouloud Feraoun", "مولود فرعون"),
+        ],
+        answerIndex: 0,
+        explanation: L(
+          "Hayreddin Barbarossa became one of the most famous Ottoman naval leaders.",
+          "Khayreddine Barberousse devint l'un des plus célèbres chefs navals ottomans.",
+          "أصبح خير الدين بربروس من أشهر القادة البحريين العثمانيين.",
+        ),
+      },
+      {
+        type: "mcq",
+        difficulty: "medium",
+        question: L(
+          "Why is the Ottoman era important in Algerian history?",
+          "Pourquoi l'ère ottomane est-elle importante dans l'histoire algérienne ?",
+          "لماذا تُعدّ الحقبة العثمانية مهمة في تاريخ الجزائر؟",
+        ),
+        options: [
+          L(
+            "It was a period with no government",
+            "C'était une période sans gouvernement",
+            "كانت فترة بلا حكومة",
+          ),
+          L(
+            "It linked Algeria to Mediterranean politics and trade",
+            "Elle a lié l'Algérie à la politique et au commerce méditerranéens",
+            "ربطت الجزائر بسياسة وتجارة البحر الأبيض المتوسط",
+          ),
+          L("It ended Roman rule", "Elle a mis fin au règne romain", "أنهت الحكم الروماني"),
+          L(
+            "It began the War of Independence",
+            "Elle a commencé la guerre d'indépendance",
+            "بدأت حرب الاستقلال",
+          ),
+        ],
+        answerIndex: 1,
+        explanation: L(
+          "The Ottoman era helps explain Algeria's political and strategic importance before colonization.",
+          "L'ère ottomane explique l'importance politique et stratégique de l'Algérie avant la colonisation.",
+          "تُساعد الحقبة العثمانية في فهم أهمية الجزائر السياسية والاستراتيجية قبل الاستعمار.",
+        ),
+      },
+      {
+        type: "truefalse",
+        difficulty: "medium",
+        statement: L(
+          "French colonization began after an existing political order was already in place in Algeria.",
+          "La colonisation française a commencé alors qu'un ordre politique existait déjà en Algérie.",
+          "بدأ الاستعمار الفرنسي بينما كان هناك نظام سياسي قائم بالفعل في الجزائر.",
+        ),
+        answer: true,
+        explanation: L(
+          "France invaded an Algeria that already had institutions, rulers, and a political structure.",
+          "La France envahit une Algérie qui possédait déjà des institutions, des dirigeants et une structure politique.",
+          "غزت فرنسا الجزائر وكانت لها مؤسسات وحكام وبنية سياسية قائمة.",
+        ),
+      },
+    ],
+  },
+
+  // ============================================================
+  // 5) FRENCH COLONIZATION
   // ============================================================
   {
     id: "french",
