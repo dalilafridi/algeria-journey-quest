@@ -1,23 +1,27 @@
-import { Link } from "@tanstack/react-router";
-import { useEffect, useState } from "react";
-import { getLevelInfo, getProgress, totalProgressPct, type LevelInfo } from "@/lib/progress";
-import { LANGS, getLang, setLang, tu, useLang, type Lang } from "@/lib/i18n";
+import { Link, useNavigate } from "@tanstack/react-router";
+import { useEffect, useRef, useState } from "react";
+import { getProgress, resetAllQuizProgress } from "@/lib/progress";
+import { LANGS, getLang, setLang, useLang, type Lang } from "@/lib/i18n";
 import brandIcon from "@/assets/brand-icon.png";
+
+const LANG_LABEL: Record<Lang, string> = {
+  fr: "Français",
+  en: "English",
+  ar: "العربية",
+};
 
 export function Header() {
   const [xp, setXp] = useState(0);
-  const [pct, setPct] = useState(0);
-  const [level, setLevel] = useState<LevelInfo>(() => getLevelInfo(0));
   const [menuOpen, setMenuOpen] = useState(false);
+  const [langOpen, setLangOpen] = useState(false);
+  const [profileOpen, setProfileOpen] = useState(false);
   const lang = useLang();
+  const navigate = useNavigate();
+  const langRef = useRef<HTMLDivElement>(null);
+  const profileRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const update = () => {
-      const p = getProgress();
-      setXp(p.xp);
-      setPct(totalProgressPct());
-      setLevel(getLevelInfo(p.xp));
-    };
+    const update = () => setXp(getProgress().xp);
     update();
     window.addEventListener("progress-updated", update);
     return () => window.removeEventListener("progress-updated", update);
@@ -34,27 +38,56 @@ export function Header() {
     }
   }, [menuOpen]);
 
+  // Close popovers on outside click
+  useEffect(() => {
+    const onClick = (e: MouseEvent) => {
+      if (langRef.current && !langRef.current.contains(e.target as Node)) setLangOpen(false);
+      if (profileRef.current && !profileRef.current.contains(e.target as Node)) setProfileOpen(false);
+    };
+    document.addEventListener("mousedown", onClick);
+    return () => document.removeEventListener("mousedown", onClick);
+  }, []);
+
   const current: Lang = lang ?? getLang();
 
+  const T = {
+    journey: { fr: "Parcours", en: "Journey", ar: "الرحلة" }[current],
+    figures: { fr: "Figures", en: "Figures", ar: "الشخصيات" }[current],
+    regions: { fr: "Régions", en: "Regions", ar: "المناطق" }[current],
+    words: { fr: "Paroles", en: "Words", ar: "كلمات" }[current],
+    moments: { fr: "Moments", en: "Moments", ar: "لحظات" }[current],
+    appName: { fr: "Odyssée DZ", en: "DZ Odyssey", ar: "أوديسة الجزائر" }[current],
+    myProgress: { fr: "Ma progression", en: "My Progress", ar: "تقدّمي" }[current],
+    settings: { fr: "Paramètres", en: "Settings", ar: "الإعدادات" }[current],
+    resetQuizzes: { fr: "Réinitialiser les quiz", en: "Reset Quizzes", ar: "إعادة ضبط الاختبارات" }[current],
+    confirmReset: {
+      fr: "Réinitialiser tout le progrès des quiz ?",
+      en: "Reset all quiz progress?",
+      ar: "إعادة ضبط كل تقدّم الاختبارات؟",
+    }[current],
+  };
+
   const navLinks = [
-    { to: "/timeline" as const, label: tu("timeline", current) },
-    { to: "/figures" as const, label: tu("figures", current) },
-    { to: "/lessons" as const, label: tu("lessons", current) },
-    { to: "/map" as const, label: tu("mapExplorer", current) },
-    {
-      to: "/words" as const,
-      label: current === "fr" ? "Paroles" : current === "ar" ? "كلمات" : "Words",
-    },
-    {
-      to: "/moments" as const,
-      label: current === "fr" ? "Moments" : current === "ar" ? "لحظات" : "Moments",
-    },
-    { to: "/profile" as const, label: tu("profile", current) },
+    { to: "/timeline" as const, label: T.journey },
+    { to: "/figures" as const, label: T.figures },
+    { to: "/map" as const, label: T.regions },
+    { to: "/words" as const, label: T.words },
+    { to: "/moments" as const, label: T.moments },
   ];
+
+  const handleReset = () => {
+    if (typeof window !== "undefined" && window.confirm(T.confirmReset)) {
+      resetAllQuizProgress();
+    }
+    setProfileOpen(false);
+  };
+
+  const linkClass =
+    "text-sm font-medium text-muted-foreground hover:text-foreground transition-colors whitespace-nowrap relative py-1";
 
   return (
     <header className="sticky top-0 z-30 backdrop-blur-md bg-background/80 border-b border-border">
-      <div className="max-w-6xl mx-auto px-3 sm:px-4 py-2.5 sm:py-3 flex items-center justify-between gap-2 lg:gap-5">
+      <div className="max-w-6xl mx-auto px-3 sm:px-5 py-2.5 sm:py-3 flex items-center justify-between gap-3 lg:gap-6">
         <Link
           to="/"
           className="flex items-center gap-2 font-bold text-base sm:text-lg min-w-0"
@@ -66,65 +99,119 @@ export function Header() {
             className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl object-cover shrink-0"
             style={{ boxShadow: "0 0 12px oklch(0.85 0.16 80 / 0.45)" }}
           />
-          <span className="hidden xl:inline truncate">{tu("appName", current)}</span>
+          <span className="hidden xl:inline truncate">{T.appName}</span>
         </Link>
 
         {/* Desktop nav */}
-        <nav className="hidden lg:flex items-center gap-4 xl:gap-5 flex-1 justify-center">
+        <nav className="hidden lg:flex items-center gap-6 flex-1 justify-center">
           {navLinks.map((l) => (
             <Link
               key={l.to}
               to={l.to}
-              className="text-sm font-medium text-muted-foreground hover:text-foreground transition whitespace-nowrap"
+              className={linkClass}
+              activeProps={{ className: linkClass + " text-foreground" }}
             >
               {l.label}
             </Link>
           ))}
         </nav>
 
-        <div className="flex items-center gap-1.5 sm:gap-3">
-          {/* Language switcher — compact on mobile */}
-          <div className="flex items-center rounded-full border border-border bg-card overflow-hidden text-[11px] sm:text-xs font-bold">
-            {LANGS.map((l) => (
-              <button
-                key={l.code}
-                onClick={() => setLang(l.code)}
-                className={
-                  "px-1.5 sm:px-2 py-1 min-h-[28px] transition " +
-                  (current === l.code
-                    ? "bg-primary text-primary-foreground"
-                    : "text-muted-foreground hover:text-foreground")
-                }
-                aria-label={`Switch to ${l.label}`}
-              >
-                {l.label}
-              </button>
-            ))}
-          </div>
-
-          {/* Level pill — desktop only */}
-          <div
-            className="hidden lg:flex items-center gap-2 px-3 py-1.5 rounded-full bg-secondary/20 border border-secondary/40"
-            title={level.title}
-          >
-            <span className="text-xs font-bold text-secondary">
-              {tu("level", current)} {level.level}
-            </span>
-            <div className="w-16 h-1.5 rounded-full bg-muted overflow-hidden">
-              <div
-                className="h-full transition-all duration-500"
-                style={{ width: `${level.pct}%`, background: "var(--gradient-warm)" }}
-              />
+        <div className="flex items-center gap-2 sm:gap-3">
+          {/* XP — subtle, only when meaningful */}
+          {xp > 0 && (
+            <div className="hidden sm:flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-accent/20 border border-accent/40">
+              <span className="text-sm">⭐</span>
+              <span className="text-xs font-semibold text-accent-foreground tabular-nums">
+                {xp} XP
+              </span>
             </div>
+          )}
+
+          {/* Language dropdown */}
+          <div className="relative" ref={langRef}>
+            <button
+              type="button"
+              onClick={() => {
+                setLangOpen((v) => !v);
+                setProfileOpen(false);
+              }}
+              className="inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-full border border-border bg-card text-sm font-medium text-foreground hover:bg-muted transition-colors"
+              aria-label="Select language"
+              aria-expanded={langOpen}
+            >
+              <span aria-hidden>🌐</span>
+              <span className="hidden sm:inline">{LANG_LABEL[current]}</span>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="opacity-60">
+                <polyline points="6 9 12 15 18 9" />
+              </svg>
+            </button>
+            {langOpen && (
+              <div className="absolute right-0 mt-2 min-w-[160px] rounded-xl border border-border bg-popover shadow-lg overflow-hidden animate-float-up">
+                {LANGS.map((l) => (
+                  <button
+                    key={l.code}
+                    onClick={() => {
+                      setLang(l.code);
+                      setLangOpen(false);
+                    }}
+                    className={
+                      "w-full text-left px-3 py-2 text-sm hover:bg-muted transition-colors " +
+                      (current === l.code ? "text-foreground font-semibold" : "text-muted-foreground")
+                    }
+                  >
+                    {LANG_LABEL[l.code]}
+                  </button>
+                ))}
+              </div>
+            )}
           </div>
 
-          {/* XP pill — compact on mobile */}
-          <div className="flex items-center gap-1 sm:gap-2 px-2 sm:px-3 py-1 sm:py-1.5 rounded-full bg-accent/30 border border-accent/50">
-            <span className="text-sm sm:text-base">⭐</span>
-            <span className="text-xs sm:text-sm font-bold text-accent-foreground tabular-nums">
-              {xp}
-              <span className="hidden xs:inline"> {tu("xp", current)}</span>
-            </span>
+          {/* Profile dropdown — desktop */}
+          <div className="relative hidden lg:block" ref={profileRef}>
+            <button
+              type="button"
+              onClick={() => {
+                setProfileOpen((v) => !v);
+                setLangOpen(false);
+              }}
+              className="inline-flex items-center justify-center w-9 h-9 rounded-full border border-border bg-card text-foreground hover:bg-muted transition-colors"
+              aria-label="Profile menu"
+              aria-expanded={profileOpen}
+            >
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                <circle cx="12" cy="7" r="4" />
+              </svg>
+            </button>
+            {profileOpen && (
+              <div className="absolute right-0 mt-2 min-w-[200px] rounded-xl border border-border bg-popover shadow-lg overflow-hidden animate-float-up">
+                <button
+                  onClick={() => {
+                    setProfileOpen(false);
+                    navigate({ to: "/profile" });
+                  }}
+                  className="w-full text-left px-3 py-2 text-sm text-foreground hover:bg-muted transition-colors"
+                >
+                  {T.myProgress}
+                </button>
+                <button
+                  onClick={() => {
+                    setProfileOpen(false);
+                    navigate({ to: "/profile" });
+                  }}
+                  className="w-full text-left px-3 py-2 text-sm text-foreground hover:bg-muted transition-colors"
+                >
+                  {T.settings}
+                </button>
+                <div className="h-px bg-border" />
+                <button
+                  onClick={handleReset}
+                  className="w-full text-left px-3 py-2 text-sm text-destructive hover:bg-muted transition-colors"
+                >
+                  {T.resetQuizzes}
+                </button>
+              </div>
+            )}
           </div>
 
           {/* Mobile menu button */}
@@ -165,30 +252,28 @@ export function Header() {
                 {l.label}
               </Link>
             ))}
-            <div
-              className="mt-1 mx-3 my-2 flex items-center gap-2 px-3 py-2 rounded-xl bg-secondary/20 border border-secondary/40"
-              title={level.title}
+            <div className="h-px bg-border my-1 mx-3" />
+            <Link
+              to="/profile"
+              onClick={() => setMenuOpen(false)}
+              className="px-3 py-3 rounded-xl text-base font-medium text-foreground hover:bg-muted active:bg-muted transition flex items-center gap-2"
             >
-              <span className="text-xs font-bold text-secondary">
-                {tu("level", current)} {level.level}
-              </span>
-              <div className="flex-1 h-1.5 rounded-full bg-muted overflow-hidden">
-                <div
-                  className="h-full transition-all duration-500"
-                  style={{ width: `${level.pct}%`, background: "var(--gradient-warm)" }}
-                />
-              </div>
-            </div>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                <circle cx="12" cy="7" r="4" />
+              </svg>
+              {T.myProgress}
+            </Link>
+            <button
+              onClick={() => {
+                setMenuOpen(false);
+                handleReset();
+              }}
+              className="text-left px-3 py-3 rounded-xl text-base font-medium text-destructive hover:bg-muted transition"
+            >
+              {T.resetQuizzes}
+            </button>
           </nav>
-        </div>
-      )}
-
-      {pct > 0 && (
-        <div className="h-1 bg-muted">
-          <div
-            className="h-full transition-all duration-500"
-            style={{ width: `${pct}%`, background: "var(--gradient-warm)" }}
-          />
         </div>
       )}
     </header>
