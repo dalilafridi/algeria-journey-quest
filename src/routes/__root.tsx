@@ -47,8 +47,16 @@ export const Route = createRootRoute({
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: "Algeria Through Time" },
       { name: "twitter:description", content: "Algeria Through Time – A journey through Algerian history" },
-      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/3b623ed1-1f9c-426d-8427-90f0fa77ed1b/id-preview-f7737c2e--4ec5c163-c082-44f1-a21c-176429962830.lovable.app-1776796791852.png" },
-      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/3b623ed1-1f9c-426d-8427-90f0fa77ed1b/id-preview-f7737c2e--4ec5c163-c082-44f1-a21c-176429962830.lovable.app-1776796791852.png" },
+      {
+        property: "og:image",
+        content:
+          "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/3b623ed1-1f9c-426d-8427-90f0fa77ed1b/id-preview-f7737c2e--4ec5c163-c082-44f1-a21c-176429962830.lovable.app-1776796791852.png",
+      },
+      {
+        name: "twitter:image",
+        content:
+          "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/3b623ed1-1f9c-426d-8427-90f0fa77ed1b/id-preview-f7737c2e--4ec5c163-c082-44f1-a21c-176429962830.lovable.app-1776796791852.png",
+      },
     ],
     links: [
       {
@@ -80,7 +88,7 @@ function RootComponent() {
   useEffect(() => {
     const handleContextMenu = (e: MouseEvent) => {
       e.preventDefault();
-      toast("Content protected", { duration: 1500 });
+      toast("This contente is protected. Please contact us for permission to reuse. ", { duration: 1500 });
     };
     document.addEventListener("contextmenu", handleContextMenu);
     return () => document.removeEventListener("contextmenu", handleContextMenu);
