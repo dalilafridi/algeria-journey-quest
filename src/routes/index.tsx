@@ -61,12 +61,12 @@ function Home() {
         ].map((f) => (
           <div
             key={f.title}
-            className="rounded-2xl bg-card p-5 text-center border border-border"
+            className="card-hover rounded-2xl bg-card p-5 text-center border border-border"
             style={{ boxShadow: "var(--shadow-soft)" }}
           >
             <div className="text-3xl mb-2">{f.icon}</div>
             <h3 className="font-bold">{f.title}</h3>
-            <p className="text-sm text-muted-foreground">{f.desc}</p>
+            <p className="text-sm text-muted-foreground mt-1 leading-relaxed">{f.desc}</p>
           </div>
         ))}
       </section>
