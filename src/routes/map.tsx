@@ -48,7 +48,10 @@ function RegionExplorerPage() {
     saveJourneyPlace({
       section: "regions",
       label: { fr: `Régions · ${t(selected.name, "fr")}`, en: `Regions · ${t(selected.name, "en")}`, ar: `المناطق · ${t(selected.name, "ar")}` },
-      description: selected.focus,
+      description:
+        typeof selected.focus === "string"
+          ? { fr: selected.focus, en: selected.focus, ar: selected.focus }
+          : selected.focus,
       href: `/map#region-${selected.id}`,
     });
   }, [selected]);
