@@ -16,6 +16,7 @@ import {
   wordsTotals,
 } from "@/lib/wordsProgress";
 import { t, useLang, type Lang } from "@/lib/i18n";
+import { saveJourneyPlace } from "@/lib/continuity";
 
 export const Route = createFileRoute("/words")({
   head: () => ({
@@ -81,6 +82,24 @@ function WordsPage() {
     const id = window.setTimeout(() => setToast(null), 1800);
     return () => window.clearTimeout(id);
   }, [toast]);
+
+  useEffect(() => {
+    const id = window.location.hash.replace("#word-", "");
+    if (id && words.some((w) => w.id === id)) setOpenId(id);
+  }, []);
+
+  useEffect(() => {
+    const cat = WORD_CATEGORIES.find((c) => c.id === activeCat);
+    const openWord = words.find((w) => w.id === openId);
+    saveJourneyPlace({
+      section: "words",
+      label: openWord
+        ? { fr: `Paroles · ${t(openWord.author, "fr")}`, en: `Words · ${t(openWord.author, "en")}`, ar: `كلمات · ${t(openWord.author, "ar")}` }
+        : { fr: "Paroles", en: "Words", ar: "كلمات" },
+      description: openWord ? openWord.quote : cat?.label,
+      href: openWord ? `/words#word-${openWord.id}` : "/words",
+    });
+  }, [activeCat, openId]);
 
   const totals = wordsTotals();
   const progress = getWordsProgress();
@@ -411,6 +430,7 @@ function WordCard({
   return (
     <li>
       <div
+        id={`word-${item.id}`}
         className={
           "rounded-2xl border bg-card transition-all duration-200 " +
           (open ? "border-primary/60" : "border-border hover:border-primary/40")
