@@ -17,6 +17,6 @@ export const LISTEN: Record<string, ListenItem> = {
       "النشيد الوطني الجزائري، كُتب خلال حرب التحرير.",
     ),
     // High-quality, embeddable rendition of Kassaman.
-    youtubeId: "VDA0c8Lr-7g",
+    youtubeId: "63AgK0YcFDA",
   },
 };

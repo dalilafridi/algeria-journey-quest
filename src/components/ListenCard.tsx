@@ -96,12 +96,11 @@ export function ListenCard({ item, lang }: Props) {
           <div className="rounded-xl overflow-hidden border border-border bg-black/5">
             <div className="relative w-full" style={{ aspectRatio: "16 / 9" }}>
               <iframe
-                src={`https://www.youtube.com/embed/${item.youtubeId}?autoplay=1&rel=0&modestbranding=1&playsinline=1`}
+                src={`https://www.youtube.com/embed/${item.youtubeId}`}
                 title={t(item.title, lang)}
                 loading="lazy"
-                allow="accelerometer; autoplay; encrypted-media; picture-in-picture; fullscreen"
+                allow="accelerometer; encrypted-media; picture-in-picture; fullscreen"
                 allowFullScreen
-                referrerPolicy="strict-origin-when-cross-origin"
                 className="absolute inset-0 w-full h-full"
               />
             </div>
