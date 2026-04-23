@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useMemo, useState } from "react";
 import { Header } from "@/components/Header";
-import { cinemaThemeLabels, featuredFilms } from "@/data/cinema";
+import { cinemaQuiz, cinemaThemeLabels, featuredFilms } from "@/data/cinema";
 import { figures, FIGURE_CATEGORIES, FIGURE_REGIONS, type FigureCategory, type FigureRegion } from "@/data/figures";
 import { t, tu, useLang } from "@/lib/i18n";
 import { saveJourneyPlace } from "@/lib/continuity";
@@ -21,6 +21,7 @@ function FiguresIndex() {
   const [query, setQuery] = useState("");
   const [cat, setCat] = useState<FigureCategory | "all">("all");
   const [reg, setReg] = useState<FigureRegion | "all">("all");
+  const [cinemaAnswers, setCinemaAnswers] = useState<Record<string, number>>({});
 
   useEffect(() => {
     saveJourneyPlace({
@@ -157,6 +158,48 @@ function FiguresIndex() {
                 </div>
               </article>
             ))}
+          </div>
+
+          <div className="mt-8 rounded-2xl bg-card border border-border p-5" style={{ boxShadow: "var(--shadow-soft)" }}>
+            <h3 className="text-lg font-bold">
+              {lang === "fr" ? "Mini-quiz cinéma" : lang === "ar" ? "اختبار سينمائي قصير" : "Cinema mini quiz"}
+            </h3>
+            <div className="mt-4 grid gap-4">
+              {cinemaQuiz.map((q) => {
+                const selected = cinemaAnswers[q.id];
+                const locked = selected !== undefined;
+                return (
+                  <div key={q.id} className="rounded-xl bg-muted/40 border border-border p-4">
+                    <div className="font-semibold text-sm">{t(q.prompt, lang)}</div>
+                    <div className="mt-3 grid gap-2">
+                      {q.options.map((option, index) => {
+                        const correct = locked && index === q.answerIndex;
+                        const wrong = locked && selected === index && index !== q.answerIndex;
+                        return (
+                          <button
+                            key={index}
+                            type="button"
+                            disabled={locked}
+                            onClick={() => setCinemaAnswers((prev) => ({ ...prev, [q.id]: index }))}
+                            className={
+                              "text-start px-3 py-2 rounded-lg border text-sm font-semibold transition " +
+                              (correct
+                                ? "bg-success/20 border-success/60"
+                                : wrong
+                                  ? "bg-destructive/15 border-destructive/50"
+                                  : "bg-card border-border hover:border-primary/40")
+                            }
+                          >
+                            {t(option, lang)}
+                          </button>
+                        );
+                      })}
+                    </div>
+                    {locked && <p className="mt-3 text-xs text-muted-foreground leading-relaxed">💡 {t(q.explanation, lang)}</p>}
+                  </div>
+                );
+              })}
+            </div>
           </div>
         </section>
       </main>
