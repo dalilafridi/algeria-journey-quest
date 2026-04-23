@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { t, useLang, type LocalizedString } from "@/lib/i18n";
+import { saveJourneyPlace } from "@/lib/continuity";
 
 /**
  * One cinematic scene inside a StoryFlow.
@@ -21,6 +22,8 @@ export type StoryFlowProps = {
   accent?: string;
   /** Optional global title shown above the scene (e.g. topic name). */
   title?: LocalizedString;
+  /** Optional readable name for Continue where you left off. */
+  continuityTitle?: LocalizedString;
   /** Optional default narrator voice if a scene does not provide its own. */
   defaultGuide?: LocalizedString;
 };
@@ -39,7 +42,7 @@ const LBL = {
  * Pacing: one scene at a time, soft fade-in, narrator voice, tiny progress dots.
  * Lightweight: pure CSS transitions, no media. Works in EN / FR / AR (RTL-safe).
  */
-export function StoryFlow({ scenes, accent = "var(--secondary)", title, defaultGuide }: StoryFlowProps) {
+export function StoryFlow({ scenes, accent = "var(--secondary)", title, continuityTitle, defaultGuide }: StoryFlowProps) {
   const lang = useLang();
   const isAr = lang === "ar";
   const [step, setStep] = useState(0);
@@ -50,6 +53,22 @@ export function StoryFlow({ scenes, accent = "var(--secondary)", title, defaultG
   useEffect(() => {
     setTick((n) => n + 1);
   }, [step]);
+
+  useEffect(() => {
+    const label = continuityTitle ?? title;
+    if (!label || typeof window === "undefined") return;
+    const sceneText = {
+      fr: `Scène ${step + 1}`,
+      en: `Scene ${step + 1}`,
+      ar: `المشهد ${step + 1}`,
+    };
+    saveJourneyPlace({
+      section: "story",
+      label: typeof label === "string" ? { fr: label, en: label, ar: label } : label,
+      description: sceneText,
+      href: `${window.location.pathname}#story-${slugify(t(label, "en"))}-scene-${step + 1}`,
+    });
+  }, [continuityTitle, step, title]);
 
   if (total === 0) return null;
 
@@ -110,14 +129,15 @@ export function StoryFlow({ scenes, accent = "var(--secondary)", title, defaultG
           </h3>
         )}
 
-        <p
-          className={
-            "leading-relaxed text-foreground/90 whitespace-pre-line " +
-            (scene.title ? "mt-2 text-base sm:text-[17px]" : "text-base sm:text-[17px]")
-          }
-        >
-          {t(scene.body, lang)}
-        </p>
+        <div className={(scene.title ? "mt-3 " : "") + "space-y-3 max-w-prose text-base sm:text-[17px] leading-relaxed text-foreground/90"}>
+          {t(scene.body, lang)
+            .split(/\n+/)
+            .filter(Boolean)
+            .slice(0, 3)
+            .map((paragraph, i) => (
+              <p key={i}>{paragraph}</p>
+            ))}
+        </div>
       </div>
 
       {/* Footer: dots + nav */}
