@@ -28,7 +28,7 @@ export function ContinueJourneyCard() {
     };
   }, []);
 
-  if (!place || dismissed || pathname === place.href) return null;
+  if (!place || dismissed || place.href.split("#")[0] === pathname) return null;
 
   return (
     <aside className="continue-card px-4 pt-3 sm:pt-4 animate-fade-in" aria-label={COPY.title[lang]}>
