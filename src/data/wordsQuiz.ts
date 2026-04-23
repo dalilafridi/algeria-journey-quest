@@ -243,6 +243,106 @@ export const wordsQuiz: WordsQuizItem[] = [
       "خطأ — رفض عبادة الأشخاص ودعا إلى اتباع الأفكار بدل الأفراد.",
     ),
   },
+  {
+    wordId: "bennabi-ideas",
+    kind: "who-said",
+    question: L(
+      "Who said: \"A society does not decline because it lacks means, but because it lacks ideas\"?",
+      "Qui a dit : « Une société ne décline pas parce qu'elle manque de moyens, mais parce qu'elle manque d'idées » ?",
+      "من قال: «لا ينحطّ المجتمع لأنه يفتقر إلى الوسائل، بل لأنه يفتقر إلى الأفكار»؟",
+    ),
+    options: [
+      L("Malek Bennabi", "Malek Bennabi", "مالك بن نبي"),
+      L("Frantz Fanon", "Frantz Fanon", "فرانز فانون"),
+      L("Abdelhamid Ben Badis", "Abdelhamid Ben Badis", "عبد الحميد بن باديس"),
+      L("Ferhat Abbas", "Ferhat Abbas", "فرحات عباس"),
+    ],
+    correctIndex: 0,
+    explanation: L(
+      "Malek Bennabi — a central thesis of his work on civilization and renewal.",
+      "Malek Bennabi — thèse centrale de son œuvre sur la civilisation et le renouveau.",
+      "مالك بن نبي — أطروحة محورية في فكره عن الحضارة والنهضة.",
+    ),
+  },
+  {
+    wordId: "bennabi-ideas",
+    kind: "true-false",
+    question: L(
+      "Malek Bennabi believed renewal begins with ideas, not just resources.",
+      "Malek Bennabi pensait que le renouveau commence par les idées, et non seulement par les moyens.",
+      "كان مالك بن نبي يرى أن النهضة تبدأ بالأفكار لا بالوسائل وحدها.",
+    ),
+    options: [
+      L("True", "Vrai", "صحيح"),
+      L("False", "Faux", "خطأ"),
+    ],
+    correctIndex: 0,
+    explanation: L(
+      "True — for Bennabi, ideas, ethics and culture are the inner conditions of any civilizational renewal.",
+      "Vrai — pour Bennabi, idées, éthique et culture sont les conditions intérieures de tout renouveau civilisationnel.",
+      "صحيح — يرى بن نبي أن الأفكار والأخلاق والثقافة هي الشروط الداخلية لأيّ نهضة حضارية.",
+    ),
+  },
+  {
+    wordId: "ben-badis-identity",
+    kind: "who-said",
+    question: L(
+      "Who said: \"Islam is my religion, Arabic my language, Algeria my homeland\"?",
+      "Qui a dit : « L'islam est ma religion, l'arabe ma langue, l'Algérie ma patrie » ?",
+      "من قال: «الإسلامُ ديني، والعربيّةُ لغتي، والجزائرُ وطني»؟",
+    ),
+    options: [
+      L("Abdelhamid Ben Badis", "Abdelhamid Ben Badis", "عبد الحميد بن باديس"),
+      L("Messali Hadj", "Messali Hadj", "مصالي الحاج"),
+      L("Ferhat Abbas", "Ferhat Abbas", "فرحات عباس"),
+      L("Malek Bennabi", "Malek Bennabi", "مالك بن نبي"),
+    ],
+    correctIndex: 0,
+    explanation: L(
+      "Abdelhamid Ben Badis — a founding formula of the Association of Algerian Muslim Ulama (1931).",
+      "Abdelhamid Ben Badis — formule fondatrice de l'Association des oulémas musulmans algériens (1931).",
+      "عبد الحميد بن باديس — صيغة تأسيسية لجمعية العلماء المسلمين الجزائريين (1931).",
+    ),
+  },
+  {
+    wordId: "ben-badis-identity",
+    kind: "who-am-i",
+    question: L(
+      "I founded the Association of Algerian Muslim Ulama in 1931 — who am I?",
+      "J'ai fondé l'Association des oulémas musulmans algériens en 1931 — qui suis-je ?",
+      "أسّستُ جمعية العلماء المسلمين الجزائريين سنة 1931 — من أكون؟",
+    ),
+    options: [
+      L("Abdelhamid Ben Badis", "Abdelhamid Ben Badis", "عبد الحميد بن باديس"),
+      L("Malek Bennabi", "Malek Bennabi", "مالك بن نبي"),
+      L("Mouloud Mammeri", "Mouloud Mammeri", "مولود معمري"),
+    ],
+    correctIndex: 0,
+    explanation: L(
+      "Ben Badis — leader of the Algerian reformist movement and shaper of a shared cultural identity.",
+      "Ben Badis — chef du mouvement réformiste algérien et artisan d'une identité culturelle partagée.",
+      "ابن باديس — زعيم الحركة الإصلاحية الجزائرية وصانع هوية ثقافية مشتركة.",
+    ),
+  },
+  {
+    wordId: "mammeri-transmission",
+    kind: "true-false",
+    question: L(
+      "For Mouloud Mammeri, identity survives only through transmission.",
+      "Pour Mouloud Mammeri, l'identité ne survit que par la transmission.",
+      "يرى مولود معمري أن الهوية لا تبقى إلا بالنقل.",
+    ),
+    options: [
+      L("True", "Vrai", "صحيح"),
+      L("False", "Faux", "خطأ"),
+    ],
+    correctIndex: 0,
+    explanation: L(
+      "True — \"What is not transmitted is lost\" guided his life's work collecting Tamazight poetry and oral knowledge.",
+      "Vrai — « Ce qui n'est pas transmis est perdu » a guidé toute son œuvre de collecte de la poésie et du savoir oral tamazights.",
+      "صحيح — «ما لا يُنقَل يُفقَد» قاد عمله في جمع الشعر والمعارف الشفهية الأمازيغية.",
+    ),
+  },
 
   // ---------- Cultural Expression ----------
   {
