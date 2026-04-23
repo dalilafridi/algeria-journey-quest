@@ -195,30 +195,18 @@ export const INDEPENDENCE_WAR_SCENES: StoryScene[] = [
       "هذا الجزء يحتاج إلى رفق…",
     ),
     body: L(
-      "La guerre est longue et difficile. Des familles sont séparées, des villages vivent dans l’incertitude, et beaucoup portent l’espoir malgré la peur.
-
-Le courage ne signifie pas ne jamais avoir peur. Il signifie continuer à croire en la liberté.",
-      "The war was long and difficult. Families were separated, villages lived with uncertainty, and many carried hope even when afraid.
-
-Courage does not mean never feeling fear. It means continuing to believe in freedom.",
-      "كانت الحرب طويلة وصعبة. تفرّقت عائلات، وعاشت قرى في القلق، وحمل كثيرون الأمل رغم الخوف.
-
-الشجاعة لا تعني ألا نخاف أبدًا. بل تعني أن نستمر في الإيمان بالحرية.",
+      "La guerre est longue et difficile. Des familles sont séparées, des villages vivent dans l’incertitude, et beaucoup portent l’espoir malgré la peur.\n\nLe courage ne signifie pas ne jamais avoir peur. Il signifie continuer à croire en la liberté.",
+      "The war was long and difficult. Families were separated, villages lived with uncertainty, and many carried hope even when afraid.\n\nCourage does not mean never feeling fear. It means continuing to believe in freedom.",
+      "كانت الحرب طويلة وصعبة. تفرّقت عائلات، وعاشت قرى في القلق، وحمل كثيرون الأمل رغم الخوف.\n\nالشجاعة لا تعني ألا نخاف أبدًا. بل تعني أن نستمر في الإيمان بالحرية.",
     ),
   },
   {
     icon: "🇩🇿",
     title: L("L’indépendance", "Independence", "الاستقلال"),
     body: L(
-      "En 1962, l’Algérie devient indépendante. Après de longues années d’épreuves, le pays connaît un immense soulagement et une grande fierté.
-
-Une nouvelle page commence : construire, apprendre, transmettre.",
-      "In 1962, Algeria became independent. After long years of hardship, the country felt deep relief and great pride.
-
-A new page began: to build, to learn, to pass on.",
-      "في سنة 1962، أصبحت الجزائر مستقلة. بعد سنوات طويلة من المحن، شعر البلد براحة كبيرة وفخر عميق.
-
-بدأت صفحة جديدة: البناء، التعلّم، ونقل الذاكرة.",
+      "En 1962, l’Algérie devient indépendante. Après de longues années d’épreuves, le pays connaît un immense soulagement et une grande fierté.\n\nUne nouvelle page commence : construire, apprendre, transmettre.",
+      "In 1962, Algeria became independent. After long years of hardship, the country felt deep relief and great pride.\n\nA new page began: to build, to learn, to pass on.",
+      "في سنة 1962، أصبحت الجزائر مستقلة. بعد سنوات طويلة من المحن، شعر البلد براحة كبيرة وفخر عميق.\n\nبدأت صفحة جديدة: البناء، التعلّم، ونقل الذاكرة.",
     ),
   },
   {
@@ -230,15 +218,9 @@ A new page began: to build, to learn, to pass on.",
       "واليوم، ماذا نحمل معنا؟",
     ),
     body: L(
-      "Aujourd’hui, cette histoire continue de définir l’identité du pays. Elle rappelle la valeur de la liberté, de la dignité et de la solidarité.
-
-Se souvenir avec respect, c’est aussi apprendre à construire un avenir plus juste.",
-      "Today, this history continues to shape the nation’s identity. It reminds us of the value of freedom, dignity, and solidarity.
-
-Remembering with respect also teaches us how to build a fairer future.",
-      "اليوم، لا تزال هذه المرحلة تشكل هوية البلاد. وتذكّرنا بقيمة الحرية والكرامة والتضامن.
-
-أن نتذكّر باحترام يعني أيضًا أن نتعلّم بناء مستقبل أكثر عدلًا.",
+      "Aujourd’hui, cette histoire continue de définir l’identité du pays. Elle rappelle la valeur de la liberté, de la dignité et de la solidarité.\n\nSe souvenir avec respect, c’est aussi apprendre à construire un avenir plus juste.",
+      "Today, this history continues to shape the nation’s identity. It reminds us of the value of freedom, dignity, and solidarity.\n\nRemembering with respect also teaches us how to build a fairer future.",
+      "اليوم، لا تزال هذه المرحلة تشكل هوية البلاد. وتذكّرنا بقيمة الحرية والكرامة والتضامن.\n\nأن نتذكّر باحترام يعني أيضًا أن نتعلّم بناء مستقبل أكثر عدلًا.",
     ),
   },
 ];
