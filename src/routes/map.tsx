@@ -1,9 +1,10 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Header } from "@/components/Header";
 import { mapRegions, type MapRegion } from "@/data/mapRegions";
 import { getFigure } from "@/data/figures";
 import { t, useLang } from "@/lib/i18n";
+import { saveJourneyPlace } from "@/lib/continuity";
 
 export const Route = createFileRoute("/map")({
   head: () => ({
@@ -36,6 +37,21 @@ function RegionExplorerPage() {
   const lang = useLang();
   const [selectedId, setSelectedId] = useState<string>(mapRegions[0].id);
   const selected: MapRegion | undefined = mapRegions.find((r) => r.id === selectedId);
+
+  useEffect(() => {
+    const id = window.location.hash.replace("#region-", "");
+    if (id && mapRegions.some((r) => r.id === id)) setSelectedId(id);
+  }, []);
+
+  useEffect(() => {
+    if (!selected) return;
+    saveJourneyPlace({
+      section: "regions",
+      label: { fr: `Régions · ${t(selected.name, "fr")}`, en: `Regions · ${t(selected.name, "en")}`, ar: `المناطق · ${t(selected.name, "ar")}` },
+      description: selected.focus,
+      href: `/map#region-${selected.id}`,
+    });
+  }, [selected]);
 
   return (
     <div className="min-h-screen">
@@ -79,6 +95,7 @@ function RegionExplorerPage() {
         {selected ? (
           <article
             key={selected.id}
+            id={`region-${selected.id}`}
             className="mt-6 rounded-2xl border border-border bg-card p-5 animate-float-up"
             style={{ boxShadow: "var(--shadow-soft)" }}
           >
