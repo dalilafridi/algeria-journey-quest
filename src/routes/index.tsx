@@ -74,7 +74,7 @@ function Home() {
       <section className="max-w-3xl mx-auto px-4 pb-4 grid sm:grid-cols-2 gap-4">
         <Link
           to="/figures"
-          className="rounded-2xl bg-card p-5 border border-border hover:border-primary/40 transition group"
+          className="card-hover rounded-2xl bg-card p-5 border border-border hover:border-primary/40 transition-colors group"
           style={{ boxShadow: "var(--shadow-soft)" }}
         >
           <div className="text-3xl mb-2">👤</div>
@@ -86,7 +86,7 @@ function Home() {
         </Link>
         <Link
           to="/figures/quiz"
-          className="rounded-2xl bg-card p-5 border border-border hover:border-primary/40 transition group"
+          className="card-hover rounded-2xl bg-card p-5 border border-border hover:border-primary/40 transition-colors group"
           style={{ boxShadow: "var(--shadow-soft)" }}
         >
           <div className="text-3xl mb-2">🕵️</div>
@@ -98,7 +98,7 @@ function Home() {
         </Link>
         <Link
           to="/lessons"
-          className="rounded-2xl bg-card p-5 border border-border hover:border-primary/40 transition group"
+          className="card-hover rounded-2xl bg-card p-5 border border-border hover:border-primary/40 transition-colors group"
           style={{ boxShadow: "var(--shadow-soft)" }}
         >
           <div className="text-3xl mb-2">⏱️</div>
@@ -110,7 +110,7 @@ function Home() {
         </Link>
         <Link
           to="/map"
-          className="rounded-2xl bg-card p-5 border border-border hover:border-primary/40 transition group"
+          className="card-hover rounded-2xl bg-card p-5 border border-border hover:border-primary/40 transition-colors group"
           style={{ boxShadow: "var(--shadow-soft)" }}
         >
           <div className="text-3xl mb-2">🗺️</div>
