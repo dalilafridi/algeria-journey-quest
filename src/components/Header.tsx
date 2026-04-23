@@ -100,7 +100,7 @@ export function Header() {
             <img src={brandIcon} alt="" className="w-6 h-6 rounded-full object-cover" />
           </span>
           <span className="flex min-w-0 items-baseline gap-1.5">
-            <span className="hidden sm:inline truncate text-sm font-semibold tracking-wide text-foreground lg:text-base">
+            <span className="inline max-w-[145px] truncate text-sm font-semibold tracking-wide text-foreground sm:max-w-none lg:text-base">
               {T.appName}
             </span>
             <span className="hidden md:inline text-sm text-accent-foreground" aria-hidden>
