@@ -237,6 +237,72 @@ export const words: WordItem[] = [
       "دعوة لتجاوز الأشخاص والتركيز على المبادئ لبناء رؤية جماعية.",
     ),
   },
+  {
+    id: "mammeri-transmission",
+    category: "thinkers-writers",
+    emoji: "🪶",
+    figureId: "mammeri",
+    quote: L(
+      "What is not transmitted is lost.",
+      "Ce qui n'est pas transmis est perdu.",
+      "ما لا يُنقَل يُفقَد.",
+    ),
+    author: L("Mouloud Mammeri", "Mouloud Mammeri", "مولود معمري"),
+    context: L(
+      "A guiding principle of Mammeri's work as an anthropologist gathering Tamazight poems and oral knowledge before they vanished.",
+      "Un principe qui guida son travail d'anthropologue, recueillant poèmes et savoirs oraux tamazights avant qu'ils ne disparaissent.",
+      "مبدأ قاد عمله الأنثروبولوجي في جمع الأشعار والمعارف الشفهية الأمازيغية قبل اندثارها.",
+    ),
+    meaning: L(
+      "Identity survives only through transmission — language, story, gesture, song.",
+      "L'identité ne survit que par la transmission — langue, récit, geste, chant.",
+      "لا تنجو الهوية إلا بالنقل — لغةً وحكايةً وإشارةً ونشيدًا.",
+    ),
+  },
+  {
+    id: "bennabi-ideas",
+    category: "thinkers-writers",
+    emoji: "🧭",
+    figureId: "malek-bennabi",
+    quote: L(
+      "A society does not decline because it lacks means, but because it lacks ideas.",
+      "Une société ne décline pas parce qu'elle manque de moyens, mais parce qu'elle manque d'idées.",
+      "لا ينحطّ المجتمع لأنه يفتقر إلى الوسائل، بل لأنه يفتقر إلى الأفكار.",
+    ),
+    author: L("Malek Bennabi", "Malek Bennabi", "مالك بن نبي"),
+    context: L(
+      "A central thesis of Bennabi's work on civilization, renewal, and the inner conditions of historical change.",
+      "Thèse centrale de l'œuvre de Bennabi sur la civilisation, le renouveau et les conditions intérieures du changement historique.",
+      "أطروحة محورية في فكر بن نبي حول الحضارة والنهضة والشروط الداخلية للتحوّل التاريخي.",
+    ),
+    meaning: L(
+      "Renewal begins in the mind. Without ideas, no resources are enough.",
+      "Le renouveau commence dans l'esprit. Sans idées, aucune ressource ne suffit.",
+      "تبدأ النهضة في العقل. وحين تغيب الأفكار، لا تكفي أيّ موارد.",
+    ),
+  },
+  {
+    id: "ben-badis-identity",
+    category: "thinkers-writers",
+    emoji: "📗",
+    figureId: "ben-badis",
+    quote: L(
+      "Islam is my religion, Arabic my language, Algeria my homeland.",
+      "L'islam est ma religion, l'arabe ma langue, l'Algérie ma patrie.",
+      "الإسلامُ ديني، والعربيّةُ لغتي، والجزائرُ وطني.",
+    ),
+    author: L("Abdelhamid Ben Badis", "Abdelhamid Ben Badis", "عبد الحميد بن باديس"),
+    context: L(
+      "A founding formula of the Association of Algerian Muslim Ulama, repeated in schools and journals across colonial Algeria.",
+      "Formule fondatrice de l'Association des oulémas musulmans algériens, reprise dans les écoles et revues de l'Algérie coloniale.",
+      "صيغة تأسيسية لجمعية العلماء المسلمين الجزائريين، رُدّدت في مدارسها ومجلاتها عبر الجزائر المستعمرَة.",
+    ),
+    meaning: L(
+      "A simple, three-line definition of identity that many Algerians still know by heart.",
+      "Une définition de l'identité en trois lignes que beaucoup d'Algériens connaissent encore par cœur.",
+      "تعريفٌ مختصر للهوية في ثلاثة أسطر، لا يزال كثير من الجزائريين يحفظونه عن ظهر قلب.",
+    ),
+  },
 
   // ---------- Cultural Expression ----------
   {

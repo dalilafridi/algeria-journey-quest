@@ -15,6 +15,7 @@ import { Route as ProfileRouteImport } from './routes/profile'
 import { Route as MomentsRouteImport } from './routes/moments'
 import { Route as MapRouteImport } from './routes/map'
 import { Route as LessonsRouteImport } from './routes/lessons'
+import { Route as IdeasRouteImport } from './routes/ideas'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as FiguresIndexRouteImport } from './routes/figures.index'
 import { Route as QuizEraIdRouteImport } from './routes/quiz.$eraId'
@@ -52,6 +53,11 @@ const LessonsRoute = LessonsRouteImport.update({
   path: '/lessons',
   getParentRoute: () => rootRouteImport,
 } as any)
+const IdeasRoute = IdeasRouteImport.update({
+  id: '/ideas',
+  path: '/ideas',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -85,6 +91,7 @@ const EraEraIdRoute = EraEraIdRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/ideas': typeof IdeasRoute
   '/lessons': typeof LessonsRoute
   '/map': typeof MapRoute
   '/moments': typeof MomentsRoute
@@ -99,6 +106,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/ideas': typeof IdeasRoute
   '/lessons': typeof LessonsRoute
   '/map': typeof MapRoute
   '/moments': typeof MomentsRoute
@@ -114,6 +122,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/ideas': typeof IdeasRoute
   '/lessons': typeof LessonsRoute
   '/map': typeof MapRoute
   '/moments': typeof MomentsRoute
@@ -130,6 +139,7 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/ideas'
     | '/lessons'
     | '/map'
     | '/moments'
@@ -144,6 +154,7 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/ideas'
     | '/lessons'
     | '/map'
     | '/moments'
@@ -158,6 +169,7 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/ideas'
     | '/lessons'
     | '/map'
     | '/moments'
@@ -173,6 +185,7 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  IdeasRoute: typeof IdeasRoute
   LessonsRoute: typeof LessonsRoute
   MapRoute: typeof MapRoute
   MomentsRoute: typeof MomentsRoute
@@ -230,6 +243,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LessonsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/ideas': {
+      id: '/ideas'
+      path: '/ideas'
+      fullPath: '/ideas'
+      preLoaderRoute: typeof IdeasRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -277,6 +297,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  IdeasRoute: IdeasRoute,
   LessonsRoute: LessonsRoute,
   MapRoute: MapRoute,
   MomentsRoute: MomentsRoute,
