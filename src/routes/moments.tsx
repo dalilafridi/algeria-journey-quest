@@ -1275,6 +1275,71 @@ function MomentsPage() {
 
         <SectionDivider />
 
+        {/* ---------- EDUCATION & IDENTITY ---------- */}
+        <section aria-labelledby="education-title" className="space-y-5">
+          <MuseumReveal>
+            <div className="text-center">
+              <Eyebrow>{tr(L("Idées · Transmission", "Ideas · Transmission", "أفكار · نقل"), lang)}</Eyebrow>
+              <h2
+                id="education-title"
+                className="mt-3 text-2xl sm:text-3xl font-extrabold tracking-tight"
+              >
+                {tr(L("Éducation & Identité", "Education & Identity", "التعليم والهوية"), lang)}
+              </h2>
+              <p className="mt-3 text-sm sm:text-base text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+                {tr(
+                  L(
+                    "Comment l'identité algérienne s'est préservée et renforcée à travers l'éducation, la langue et la transmission.",
+                    "How Algerian identity was preserved and strengthened through education, language, and cultural transmission.",
+                    "كيف صانت اللغةُ والتعليمُ ونقلُ الثقافة الهويةَ الجزائرية وقوّتها.",
+                  ),
+                  lang,
+                )}
+              </p>
+            </div>
+          </MuseumReveal>
+
+          <GuideBubble
+            text={L(
+              "Ce récit n'est pas une histoire de guerre — c'est une histoire d'idées, d'apprentissage et d'identité.",
+              "This is not a war story — it is a story of ideas, learning, and identity.",
+              "هذه ليست قصة حرب — بل قصة أفكار وتعلّم وهوية.",
+            )}
+            lang={lang}
+          />
+
+          <MuseumReveal>
+            <StoryFlow
+              scenes={EDUCATION_SCENES}
+              accent="var(--primary)"
+              title={UI.storyMode}
+            />
+          </MuseumReveal>
+
+          <MuseumReveal>
+            <div className="flex justify-center">
+              <Link
+                to="/figures/$figureId"
+                params={{ figureId: "ben-badis" }}
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-primary text-primary-foreground text-sm font-semibold shadow-sm hover:opacity-90 transition"
+              >
+                <span aria-hidden>👤</span>
+                {tr(
+                  L(
+                    "Découvrir le profil de Ben Badis",
+                    "Discover Ben Badis's profile",
+                    "اكتشف صفحة بن باديس",
+                  ),
+                  lang,
+                )}
+                <span aria-hidden>{lang === "ar" ? "←" : "→"}</span>
+              </Link>
+            </div>
+          </MuseumReveal>
+        </section>
+
+        <SectionDivider />
+
         {/* Badges */}
         <MuseumReveal>
           <BadgeDisplay badges={badges} earned={earned} lang={lang} />
