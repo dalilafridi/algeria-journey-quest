@@ -1,6 +1,6 @@
 import { Link, useNavigate } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
-import { getProgress, resetAllQuizProgress } from "@/lib/progress";
+import { resetAllQuizProgress } from "@/lib/progress";
 import { LANGS, getLang, setLang, useLang, type Lang } from "@/lib/i18n";
 import { OPEN_CREATOR_ABOUT_EVENT } from "@/components/WelcomeJourney";
 import brandIcon from "@/assets/brand-icon.png";
@@ -48,7 +48,6 @@ export function Header() {
     figures: { fr: "Figures", en: "Figures", ar: "الشخصيات" }[current],
     regions: { fr: "Régions", en: "Regions", ar: "المناطق" }[current],
     words: { fr: "Paroles", en: "Words", ar: "كلمات" }[current],
-    ideas: { fr: "Idées", en: "Ideas", ar: "أفكار" }[current],
     moments: { fr: "Moments", en: "Moments", ar: "لحظات" }[current],
     appName: { fr: "Algeria Through Time", en: "Algeria Through Time", ar: "Algeria Through Time" }[current],
     myProgress: { fr: "Ma progression", en: "My Progress", ar: "تقدّمي" }[current],
