@@ -55,6 +55,7 @@ export function Header() {
     figures: { fr: "Figures", en: "Figures", ar: "الشخصيات" }[current],
     regions: { fr: "Régions", en: "Regions", ar: "المناطق" }[current],
     words: { fr: "Paroles", en: "Words", ar: "كلمات" }[current],
+    ideas: { fr: "Idées", en: "Ideas", ar: "أفكار" }[current],
     moments: { fr: "Moments", en: "Moments", ar: "لحظات" }[current],
     appName: { fr: "Odyssée DZ", en: "DZ Odyssey", ar: "أوديسة الجزائر" }[current],
     myProgress: { fr: "Ma progression", en: "My Progress", ar: "تقدّمي" }[current],
@@ -72,6 +73,7 @@ export function Header() {
     { to: "/figures" as const, label: T.figures },
     { to: "/map" as const, label: T.regions },
     { to: "/words" as const, label: T.words },
+    { to: "/ideas" as const, label: T.ideas },
     { to: "/moments" as const, label: T.moments },
   ];
 
