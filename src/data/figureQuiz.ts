@@ -1469,4 +1469,52 @@ export const figureQuiz: FigureQuizQuestion[] = [
       "من كتاب «معذّبو الأرض» لفرانز فانون (1961).",
     ),
   ),
+
+  // ---------- Amar Imache ----------
+  make(
+    "imache-1",
+    "easy",
+    [
+      L(
+        "I was an early Algerian nationalist and labor activist from Kabylie.",
+        "J'étais un militant nationaliste et syndical algérien, originaire de Kabylie.",
+        "كنتُ من أوائل المناضلين الوطنيين والنقابيين الجزائريين، من منطقة القبائل.",
+      ),
+      L(
+        "I took part in the Étoile nord-africaine.",
+        "J'ai participé à l'Étoile nord-africaine.",
+        "شاركتُ في نجم شمال أفريقيا.",
+      ),
+    ],
+    "Amar Imache",
+    ["Messali Hadj", "Ferhat Abbas", "Ahmed Ben Bella"],
+    L(
+      "Amar Imache was a nationalist thinker and activist of the early national movement.",
+      "Amar Imache était un penseur et militant nationaliste du début du mouvement national.",
+      "كان عمار إيماش مفكّرًا ومناضلًا وطنيًا في بدايات الحركة الوطنية.",
+    ),
+  ),
+  make(
+    "imache-2",
+    "medium",
+    [
+      L(
+        "I rejected the cult of the leader.",
+        "Je rejetais le culte du chef.",
+        "رفضتُ عبادة الزعيم.",
+      ),
+      L(
+        "I called for a plural and democratic Algeria.",
+        "J'appelais à une Algérie plurielle et démocratique.",
+        "دعوتُ إلى جزائر تعددية وديمقراطية.",
+      ),
+    ],
+    "Amar Imache",
+    ["Messali Hadj", "Ahmed Ben Bella", "Ferhat Abbas"],
+    L(
+      "Imache advocated a plural Algeria built on social justice, democracy, and cultural diversity.",
+      "Imache défendait une Algérie plurielle, fondée sur la justice sociale, la démocratie et la diversité culturelle.",
+      "دافع إيماش عن جزائر تعددية تقوم على العدالة الاجتماعية والديمقراطية والتنوع الثقافي.",
+    ),
+  ),
 ];

@@ -215,6 +215,28 @@ export const words: WordItem[] = [
       "الحريّةُ لا تُورَث — تتجدّد قرارًا بقرار، في كلّ جيلٍ من جديد.",
     ),
   },
+  {
+    id: "imache-ideas",
+    category: "thinkers-writers",
+    emoji: "🧠",
+    figureId: "amar-imache",
+    quote: L(
+      "We must not follow men, but ideas.",
+      "Il ne faut pas suivre les hommes, mais les idées.",
+      "لا يجب أن نتبع الأشخاص، بل الأفكار.",
+    ),
+    author: L("Amar Imache", "Amar Imache", "عمار إيماش"),
+    context: L(
+      "A reflection by Amar Imache on politics and the importance of ideas in shaping a nation.",
+      "Une réflexion d'Amar Imache sur la politique et le rôle des idées dans la construction d'une nation.",
+      "تعبير عن رؤية عمار إيماش لدور الأفكار في بناء الأمة.",
+    ),
+    meaning: L(
+      "A call to move beyond individuals and build a collective vision based on principles.",
+      "Un appel à dépasser les figures individuelles pour construire une vision collective fondée sur des principes.",
+      "دعوة لتجاوز الأشخاص والتركيز على المبادئ لبناء رؤية جماعية.",
+    ),
+  },
 
   // ---------- Cultural Expression ----------
   {
