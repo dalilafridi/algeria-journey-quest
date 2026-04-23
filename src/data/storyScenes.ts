@@ -62,6 +62,83 @@ export const TAFSUT_SCENES: StoryScene[] = [
   },
 ];
 
+export const EDUCATION_SCENES: StoryScene[] = [
+  {
+    icon: "🌫️",
+    title: L("Une identité sous pression", "Identity under pressure", "هويةٌ تحت الضغط"),
+    guide: L(
+      "Cette lutte n'était pas toujours visible…",
+      "This struggle was not always visible…",
+      "لم يكن هذا النضال مرئيًا دائمًا…",
+    ),
+    body: L(
+      "Pendant la colonisation, la langue et la culture algériennes sont peu à peu mises de côté. À l'école, dans l'administration, on parle surtout français.",
+      "During colonization, Algerian language and culture were slowly pushed aside. In schools and offices, French dominated everyday life.",
+      "خلال فترة الاستعمار، تمّ تهميش اللغة والثقافة الجزائرية تدريجيًا. في المدارس والإدارات، كانت الفرنسية هي السائدة.",
+    ),
+  },
+  {
+    icon: "📚",
+    title: L("Le savoir comme résistance", "Knowledge as resistance", "العلم وسيلةً للمقاومة"),
+    guide: L(
+      "Quand on ne peut pas crier, on apprend…",
+      "When you cannot shout, you learn…",
+      "حين لا يمكنك الصراخ، تتعلّم…",
+    ),
+    body: L(
+      "Face à cette situation, certains choisissent le savoir comme moyen de résistance. Apprendre à lire, à écrire, à transmettre — devient un acte de courage tranquille.",
+      "In response, some chose knowledge as a form of resistance. Learning to read, to write, to pass on — became a quiet act of courage.",
+      "في مواجهة ذلك، اختار البعض العلم وسيلةً للمقاومة. تعلُّم القراءة والكتابة ونقل المعرفة — أصبح فعل شجاعة هادئًا.",
+    ),
+  },
+  {
+    icon: "🕌",
+    title: L("Le mouvement des Ouléma", "The Ulema movement", "حركة العلماء"),
+    body: L(
+      "En 1931, l'Association des Oulémas musulmans algériens est fondée. Son but est simple et fort : enseigner l'arabe, transmettre la culture, et raviver le sentiment d'appartenance.\n\nDes écoles libres ouvrent partout dans le pays.",
+      "In 1931, the Association of Algerian Muslim Ulema was founded. Its goal was simple and strong: teach Arabic, share culture, and rekindle a sense of belonging.\n\nFree schools opened across the country.",
+      "في سنة 1931، تأسّست جمعية العلماء المسلمين الجزائريين. كان هدفها بسيطًا وقويًّا: تعليم العربية، نقل الثقافة، وإحياء الشعور بالانتماء.\n\nوفُتحت مدارس حرّة في كلّ ربوع البلاد.",
+    ),
+  },
+  {
+    icon: "👤",
+    title: L("Abdelhamid Ben Badis", "Abdelhamid Ben Badis", "عبد الحميد بن باديس"),
+    guide: L(
+      "Derrière chaque mouvement… il y a des personnes.",
+      "Behind every movement… there are people.",
+      "خلف كلّ حركة… هناك أشخاص.",
+    ),
+    body: L(
+      "Au cœur de ce mouvement, un homme : Abdelhamid Ben Badis. Enseignant, réformateur, il consacre sa vie à l'éducation et à l'éveil des consciences.\n\nDécouvre son parcours dans son profil dédié.",
+      "At the heart of this movement, one man: Abdelhamid Ben Badis. A teacher and reformer, he devoted his life to education and awakening minds.\n\nExplore his journey in his dedicated profile.",
+      "في قلب هذه الحركة، رجلٌ واحد: عبد الحميد بن باديس. معلّم ومصلح، كرّس حياته للتعليم وإيقاظ الوعي.\n\nاكتشف مساره في صفحته المخصّصة.",
+    ),
+  },
+  {
+    icon: "✨",
+    title: L("Un message qui dure", "A message that lasts", "رسالةٌ تبقى"),
+    body: L(
+      "De ce mouvement nous reste une devise simple, devenue célèbre :\n\n« الإسلام ديننا، الجزائر وطننا، العربية لغتنا »\n\n« L'Islam est notre religion, l'Algérie est notre patrie, l'arabe est notre langue. »\n\nTrois mots pour dire : foi, terre, parole.",
+      "From this movement, one simple motto remains, now famous:\n\n“الإسلام ديننا، الجزائر وطننا، العربية لغتنا”\n\n“Islam is our religion, Algeria is our homeland, Arabic is our language.”\n\nThree words to say: faith, land, voice.",
+      "بقيت من هذه الحركة عبارة بسيطة، صارت شهيرة:\n\n«الإسلام ديننا، الجزائر وطننا، العربية لغتنا»\n\nثلاث كلمات تقول: إيمان، أرض، لسان.",
+    ),
+  },
+  {
+    icon: "🌱",
+    title: L("Aujourd'hui", "Today", "اليوم"),
+    guide: L(
+      "Et toi, comment transmets-tu ce que tu aimes ?",
+      "And you, how do you pass on what you love?",
+      "وأنت، كيف تنقل ما تحبّ؟",
+    ),
+    body: L(
+      "Aujourd'hui, cet héritage continue d'influencer l'éducation et l'identité algériennes. Apprendre, lire, parler sa langue — c'est encore une manière douce de dire qui l'on est.",
+      "Today, this legacy still shapes Algerian education and identity. Learning, reading, speaking your language — is still a gentle way of saying who you are.",
+      "اليوم، لا يزال هذا الإرث يؤثّر في التعليم والهوية في الجزائر. أن تتعلّم، أن تقرأ، أن تتحدّث لغتك — يبقى طريقةً لطيفة لتقول من أنت.",
+    ),
+  },
+];
+
 export const DECADE_SCENES: StoryScene[] = [
   {
     icon: "🌫️",
