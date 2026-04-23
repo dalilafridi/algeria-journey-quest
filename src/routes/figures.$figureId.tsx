@@ -1,10 +1,12 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
+import { useEffect } from "react";
 import { Header } from "@/components/Header";
 import { eras } from "@/data/eras";
 import { getFigure, figures } from "@/data/figures";
 import { figureExtras } from "@/data/figureExtras";
 import { t, tu, useLang } from "@/lib/i18n";
 import { StoryFlow, type StoryScene } from "@/components/story/StoryFlow";
+import { saveJourneyPlace } from "@/lib/continuity";
 
 export const Route = createFileRoute("/figures/$figureId")({
   loader: ({ params }) => {
@@ -40,6 +42,15 @@ function FigureDetail() {
   const lang = useLang();
   const era = f.relatedEraId ? eras.find((e) => e.id === f.relatedEraId) : undefined;
   const extras = figureExtras[f.id];
+
+  useEffect(() => {
+    saveJourneyPlace({
+      section: "figures",
+      label: { fr: `Figure · ${t(f.displayName, "fr")}`, en: `Figure · ${t(f.displayName, "en")}`, ar: `شخصية · ${t(f.displayName, "ar")}` },
+      description: f.era,
+      href: `/figures/${f.id}`,
+    });
+  }, [f]);
 
   const didYouKnowLabel =
     lang === "fr" ? "Le saviez-vous ?" : lang === "ar" ? "هل تعلم؟" : "Did you know?";
