@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { Header } from "@/components/Header";
+import { RegionIcon } from "@/components/RegionIcon";
 import { mapRegions, type MapRegion } from "@/data/mapRegions";
 import { getFigure } from "@/data/figures";
 import { t, useLang } from "@/lib/i18n";
@@ -64,7 +65,7 @@ function RegionExplorerPage() {
         <p className="text-muted-foreground mt-1 text-sm sm:text-base">{COPY.subtitle[lang]}</p>
 
         {/* Region cards grid */}
-        <section className="mt-6 grid grid-cols-2 sm:grid-cols-3 gap-3">
+        <section className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
           {mapRegions.map((r) => {
             const isSel = r.id === selectedId;
             return (
@@ -72,7 +73,7 @@ function RegionExplorerPage() {
                 key={r.id}
                 onClick={() => setSelectedId(r.id)}
                 className={
-                  "text-left rounded-2xl border p-3 sm:p-4 transition-all duration-200 active:scale-[0.98] hover:-translate-y-0.5 " +
+                  "group text-left rounded-2xl border px-4 py-4 sm:px-5 sm:py-5 transition-all duration-200 active:scale-[0.98] hover:-translate-y-0.5 " +
                   (isSel
                     ? "border-primary bg-primary/5 shadow-sm"
                     : "border-border bg-card hover:border-primary/40")
@@ -80,15 +81,18 @@ function RegionExplorerPage() {
                 style={isSel ? { boxShadow: "var(--shadow-soft)" } : undefined}
                 aria-pressed={isSel}
               >
-                <div className="flex items-center gap-2">
-                  <span className="text-2xl leading-none" aria-hidden>
-                    {r.emoji}
-                  </span>
-                  <span className="font-bold text-sm sm:text-base">{t(r.name, lang)}</span>
+                <div className="flex items-center gap-4">
+                  <RegionIcon
+                    regionId={r.id}
+                    className="h-16 w-20 shrink-0 transition-transform duration-200 group-hover:scale-[1.03] sm:h-[4.75rem] sm:w-24"
+                  />
+                  <div className="min-w-0">
+                    <span className="font-bold text-base sm:text-lg leading-tight">{t(r.name, lang)}</span>
+                    <p className="mt-1.5 text-xs sm:text-sm text-muted-foreground leading-snug line-clamp-2">
+                      {t(r.focus, lang)}
+                    </p>
+                  </div>
                 </div>
-                <p className="mt-1.5 text-[11px] sm:text-xs text-muted-foreground leading-snug line-clamp-2">
-                  {t(r.focus, lang)}
-                </p>
               </button>
             );
           })}
@@ -103,9 +107,7 @@ function RegionExplorerPage() {
             style={{ boxShadow: "var(--shadow-soft)" }}
           >
             <header className="flex items-start gap-3">
-              <span className="text-3xl leading-none" aria-hidden>
-                {selected.emoji}
-              </span>
+              <RegionIcon regionId={selected.id} className="h-16 w-20 shrink-0" />
               <div className="min-w-0">
                 <h2 className="text-xl font-bold">{t(selected.name, lang)}</h2>
                 <div className="mt-0.5 text-[11px] font-semibold uppercase tracking-wider text-primary">
