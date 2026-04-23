@@ -98,6 +98,7 @@ function FigureDetail() {
                       ? "وضع السرد"
                       : "Story mode"
                 }
+                continuityTitle={f.displayName}
                 defaultGuide={
                   lang === "fr"
                     ? "Suis le récit, pas à pas…"
