@@ -37,6 +37,9 @@ const COPY = {
   quotes: { en: "Supporting voices", fr: "Voix associées", ar: "أصوات مرافقة" },
   readMore: { en: "Read more →", fr: "En savoir plus →", ar: "اقرأ المزيد ←" },
   inWords: { en: "Open in Words", fr: "Ouvrir dans Paroles", ar: "افتح في كلمات" },
+  founder: { en: "Founder", fr: "Fondateur", ar: "المؤسِّس" },
+  alsoAssociated: { en: "Also associated", fr: "Également associés", ar: "مرتبطون أيضًا" },
+  openProfile: { en: "Open profile →", fr: "Voir le profil →", ar: "فتح الصفحة ←" },
 } as const;
 
 function IdeasPage() {
@@ -101,6 +104,75 @@ function IdeaCard({ idea, lang }: { idea: IdeaTopic; lang: Lang }) {
 
         {open && (
           <div className="px-4 sm:px-5 pb-5 pt-0 space-y-4 animate-float-up">
+            {idea.founder && (() => {
+              const founderFigure = figures.find((f) => f.id === idea.founder!.figureId);
+              if (!founderFigure) return null;
+              return (
+                <div className="pt-4 border-t border-border">
+                  <div className="text-[11px] font-bold uppercase tracking-wider text-muted-foreground mb-2">
+                    {COPY.founder[lang]}
+                  </div>
+                  <Link
+                    to="/figures/$figureId"
+                    params={{ figureId: founderFigure.id }}
+                    className="block rounded-xl border border-primary/40 bg-primary/5 hover:bg-primary/10 hover:border-primary/60 transition p-3"
+                  >
+                    <div className="flex items-start gap-3">
+                      <span className="text-2xl leading-none shrink-0" aria-hidden>
+                        {founderFigure.emoji}
+                      </span>
+                      <div className="min-w-0 flex-1">
+                        <div className="text-sm font-bold leading-snug">
+                          {t(founderFigure.displayName, lang)}
+                        </div>
+                        <div className="mt-0.5 text-[11px] font-semibold uppercase tracking-wider text-primary">
+                          {t(idea.founder!.role, lang)}
+                        </div>
+                        <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
+                          {t(idea.founder!.description, lang)}
+                        </p>
+                        <div className="mt-1.5 text-[11px] font-semibold text-primary">
+                          {COPY.openProfile[lang]}
+                        </div>
+                      </div>
+                    </div>
+                  </Link>
+                </div>
+              );
+            })()}
+
+            {idea.miniFigures && idea.miniFigures.length > 0 && (
+              <div className={idea.founder ? "" : "pt-4 border-t border-border"}>
+                <div className="text-[11px] font-bold uppercase tracking-wider text-muted-foreground mb-2">
+                  {COPY.alsoAssociated[lang]}
+                </div>
+                <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                  {idea.miniFigures.map((m) => (
+                    <li
+                      key={m.id}
+                      className="rounded-xl border border-border bg-background/40 p-3"
+                    >
+                      <div className="flex items-start gap-2">
+                        {m.emoji && (
+                          <span className="text-lg leading-none shrink-0" aria-hidden>
+                            {m.emoji}
+                          </span>
+                        )}
+                        <div className="min-w-0">
+                          <div className="text-sm font-semibold leading-snug">
+                            {t(m.name, lang)}
+                          </div>
+                          <div className="mt-0.5 text-[11px] text-muted-foreground leading-snug">
+                            {t(m.role, lang)}
+                          </div>
+                        </div>
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+
             {linkedFigures.length > 0 && (
               <div className="pt-4 border-t border-border">
                 <div className="text-[11px] font-bold uppercase tracking-wider text-muted-foreground mb-2">

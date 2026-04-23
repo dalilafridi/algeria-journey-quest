@@ -2,6 +2,20 @@ import type { Localized, LocalizedString } from "@/lib/i18n";
 
 const L = (en: string, fr: string, ar: string): Localized<string> => ({ en, fr, ar });
 
+export type IdeaFounder = {
+  /** Figure ID (from src/data/figures.ts) — clicking opens the figure profile. */
+  figureId: string;
+  role: LocalizedString;
+  description: LocalizedString;
+};
+
+export type IdeaMiniFigure = {
+  id: string;
+  emoji?: string;
+  name: LocalizedString;
+  role: LocalizedString;
+};
+
 export type IdeaTopic = {
   id: string;
   emoji: string;
@@ -12,6 +26,10 @@ export type IdeaTopic = {
   figureIds: string[];
   /** Word IDs (from src/data/words.ts) acting as supporting quotes. */
   wordIds: string[];
+  /** Optional highlighted founder card linking to an existing figure profile. */
+  founder?: IdeaFounder;
+  /** Optional simple mini-cards for associated figures without full profiles. */
+  miniFigures?: IdeaMiniFigure[];
 };
 
 export const IDEAS: IdeaTopic[] = [
@@ -94,6 +112,57 @@ export const IDEAS: IdeaTopic[] = [
     ),
     figureIds: ["frantz-fanon"],
     wordIds: ["fanon-each-generation"],
+  },
+  {
+    id: "ulama-reform",
+    emoji: "🕌",
+    title: L(
+      "Association of Algerian Muslim Ulama",
+      "Association des oulémas musulmans algériens",
+      "جمعية العلماء المسلمين الجزائريين",
+    ),
+    summary: L(
+      "Founded in 1931, a reformist movement that revived Arabic, Islamic learning and a sense of shared Algerian identity through schools, journals and study circles.",
+      "Fondée en 1931, un mouvement réformiste qui fit revivre la langue arabe, le savoir islamique et un sentiment d'identité algérienne partagée à travers écoles, revues et cercles d'étude.",
+      "تأسّست عام 1931، حركةٌ إصلاحية أحْيَت العربية والعلوم الإسلامية والشعور بهوية جزائرية مشتركة عبر المدارس والمجلات وحلقات الدرس.",
+    ),
+    figureIds: [],
+    wordIds: ["ben-badis-identity"],
+    founder: {
+      figureId: "ben-badis",
+      role: L(
+        "Founder · Reformist scholar",
+        "Fondateur · Savant réformiste",
+        "المؤسِّس · عالِم إصلاحي",
+      ),
+      description: L(
+        "Founder of the Association and key figure in Algerian reform and education.",
+        "Fondateur de l'Association et figure clé de la réforme et de l'éducation en Algérie.",
+        "مؤسِّس الجمعية وأحد أبرز رموز الإصلاح والتعليم في الجزائر.",
+      ),
+    },
+    miniFigures: [
+      {
+        id: "bachir-ibrahimi",
+        emoji: "📚",
+        name: L("Bachir El Ibrahimi", "Bachir El Ibrahimi", "البشير الإبراهيمي"),
+        role: L(
+          "Successor · Scholar & writer",
+          "Successeur · Savant et écrivain",
+          "الخَلَف · عالم وكاتب",
+        ),
+      },
+      {
+        id: "larbi-tebessi",
+        emoji: "🕯️",
+        name: L("Larbi Tebessi", "Larbi Tebessi", "العربي التبسي"),
+        role: L(
+          "Reformist scholar · Martyr",
+          "Savant réformiste · Martyr",
+          "عالم إصلاحي · شهيد",
+        ),
+      },
+    ],
   },
 ];
 
