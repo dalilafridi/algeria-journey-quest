@@ -12,7 +12,8 @@ export type FigureCategory =
   | "war-of-independence"
   | "post-independence"
   | "intellectuals-culture"
-  | "cultural-identity";
+  | "cultural-identity"
+  | "cinema-film";
 
 export type FigureRegion =
   | "numidia"
@@ -109,6 +110,11 @@ export const FIGURE_CATEGORIES: { id: FigureCategory; label: LocalizedString; em
     id: "cultural-identity",
     label: L("Cultural Identity & Memory", "Culture & Mémoire", "الثقافة والذاكرة"),
     emoji: "🎶",
+  },
+  {
+    id: "cinema-film",
+    label: L("Cinema & Film", "Cinéma & Film", "السينما والفن"),
+    emoji: "🎬",
   },
 ];
 
@@ -2203,6 +2209,196 @@ export const figures: Figure[] = [
       "Son livre « Les Conditions de la renaissance algérienne » (1948) reste un texte majeur de la pensée algérienne et arabe modernes.",
       "لا يزال كتابه «شروط النهضة» (1948) من النصوص الأساسية في الفكر الجزائري والعربي الحديث.",
     ),
+  },
+
+  {
+    id: "merzak-allouache",
+    name: "Merzak Allouache",
+    displayName: L("Merzak Allouache", "Merzak Allouache", "مرزاق علواش"),
+    emoji: "🎬",
+    category: "cinema-film",
+    region: "algiers",
+    era: L("Film director & urban storyteller", "Cinéaste et conteur urbain", "مخرج سينمائي وراوٍ حضري"),
+    regionLabel: L("Algiers / National", "Alger / National", "الجزائر العاصمة / وطني"),
+    story: L(
+      "Merzak Allouache films Algeria through everyday streets, cafés, families and young voices. His work often listens closely to ordinary people as they search for dignity, humor and direction in changing times.",
+      "Merzak Allouache filme l'Algérie à travers les rues, les cafés, les familles et les voix de la jeunesse. Son œuvre écoute les gens ordinaires qui cherchent dignité, humour et repères dans des périodes de changement.",
+      "يصوّر مرزاق علواش الجزائر عبر الشوارع والمقاهي والعائلات وأصوات الشباب. تصغي أعماله إلى الناس العاديين وهم يبحثون عن الكرامة والضحك والاتجاه في زمن متحوّل.",
+    ),
+    importance: L(
+      "He helped define modern Algerian cinema after independence, especially through portraits of youth, identity and social transformation.",
+      "Il a contribué à définir le cinéma algérien moderne après l'indépendance, notamment par ses portraits de la jeunesse, de l'identité et des mutations sociales.",
+      "ساهم في تشكيل ملامح السينما الجزائرية الحديثة بعد الاستقلال، خصوصًا عبر تصوير الشباب والهوية والتحولات الاجتماعية.",
+    ),
+    fact: L("Known for: Omar Gatlato; Bab El-Oued City.", "Connu pour : Omar Gatlato ; Bab El-Oued City.", "من أشهر أعماله: عمر قتلاتو؛ باب الواد سيتي."),
+  },
+  {
+    id: "mohammed-lakhdar-hamina",
+    name: "Mohammed Lakhdar-Hamina",
+    displayName: L("Mohammed Lakhdar-Hamina", "Mohammed Lakhdar-Hamina", "محمد الأخضر حمينة"),
+    emoji: "🎥",
+    category: "cinema-film",
+    region: "national",
+    era: L("Film director of memory and independence", "Cinéaste de la mémoire et de l'indépendance", "مخرج سينمائي للذاكرة والاستقلال"),
+    regionLabel: L("National / Algeria-wide", "National / Algérie", "وطني / عموم الجزائر"),
+    story: L(
+      "Mohammed Lakhdar-Hamina brought Algerian historical memory to the world screen with grand, carefully composed images. His films connect personal lives with the wider movement of a people seeking freedom and dignity.",
+      "Mohammed Lakhdar-Hamina a porté la mémoire historique algérienne sur l'écran mondial avec des images amples et soigneusement composées. Ses films relient les vies personnelles au mouvement plus vaste d'un peuple en quête de liberté et de dignité.",
+      "حمل محمد الأخضر حمينة الذاكرة التاريخية الجزائرية إلى الشاشة العالمية بصور واسعة ومحكمة. تربط أفلامه بين المصائر الفردية وحركة شعب يبحث عن الحرية والكرامة.",
+    ),
+    importance: L(
+      "His Palme d'Or for Chronicle of the Years of Fire made Algerian cinema visible internationally and affirmed film as a vessel of national memory.",
+      "Sa Palme d'or pour Chronique des années de braise a rendu le cinéma algérien visible dans le monde et affirmé le film comme support de mémoire nationale.",
+      "جعلت سعفته الذهبية عن وقائع سنين الجمر السينما الجزائرية حاضرة عالميًا، وأكدت الفيلم كوعاء للذاكرة الوطنية.",
+    ),
+    fact: L("Known for: Chronicle of the Years of Fire.", "Connu pour : Chronique des années de braise.", "من أشهر أعماله: وقائع سنين الجمر."),
+  },
+  {
+    id: "rachid-bouchareb",
+    name: "Rachid Bouchareb",
+    displayName: L("Rachid Bouchareb", "Rachid Bouchareb", "رشيد بوشارب"),
+    emoji: "🎞️",
+    category: "cinema-film",
+    region: "national",
+    era: L("Film director of diaspora and memory", "Cinéaste de la diaspora et de la mémoire", "مخرج سينمائي للمهجر والذاكرة"),
+    regionLabel: L("Algeria / Diaspora", "Algérie / Diaspora", "الجزائر / المهجر"),
+    story: L(
+      "Rachid Bouchareb explores the lives of Algerians and North Africans across borders. His cinema often asks how memory, migration and belonging shape families over generations.",
+      "Rachid Bouchareb explore les vies des Algériens et des Nord-Africains au-delà des frontières. Son cinéma interroge souvent la manière dont mémoire, migration et appartenance façonnent les familles sur plusieurs générations.",
+      "يستكشف رشيد بوشارب حياة الجزائريين والمغاربيين عبر الحدود. تسأل سينماه كيف تشكّل الذاكرة والهجرة والانتماء العائلات عبر الأجيال.",
+    ),
+    importance: L(
+      "He opened conversations about colonial history, diaspora identity and the place of Algerian stories in international cinema.",
+      "Il a ouvert des conversations sur l'histoire coloniale, l'identité diasporique et la place des récits algériens dans le cinéma international.",
+      "فتح نقاشات حول التاريخ الاستعماري وهوية المهجر ومكانة الحكايات الجزائرية في السينما العالمية.",
+    ),
+    fact: L("Known for: Outside the Law; Days of Glory.", "Connu pour : Hors-la-loi ; Indigènes.", "من أشهر أعماله: خارجون عن القانون؛ أهالي."),
+  },
+  {
+    id: "lyes-salem",
+    name: "Lyes Salem",
+    displayName: L("Lyes Salem", "Lyes Salem", "لياس سالم"),
+    emoji: "🎭",
+    category: "cinema-film",
+    region: "national",
+    era: L("Actor-director and storyteller", "Acteur-réalisateur et conteur", "ممثل ومخرج وراوٍ"),
+    regionLabel: L("National / Algeria-wide", "National / Algérie", "وطني / عموم الجزائر"),
+    story: L(
+      "Lyes Salem uses warmth, irony and close observation to tell stories about family, pride and social pressure. His films often find gentle humor inside complicated choices.",
+      "Lyes Salem utilise la chaleur, l'ironie et l'observation fine pour raconter la famille, la fierté et les pressions sociales. Ses films trouvent souvent un humour délicat au cœur de choix complexes.",
+      "يستخدم لياس سالم الدفء والسخرية والملاحظة الدقيقة لسرد حكايات العائلة والكبرياء والضغط الاجتماعي. غالبًا ما تجد أفلامه روحًا مرحة وسط اختيارات معقّدة.",
+    ),
+    importance: L(
+      "His work adds an intimate, contemporary voice to Algerian cinema, showing how identity is lived in homes and communities.",
+      "Son œuvre ajoute une voix intime et contemporaine au cinéma algérien, montrant comment l'identité se vit dans les foyers et les communautés.",
+      "تضيف أعماله صوتًا حميمًا ومعاصرًا للسينما الجزائرية، وتبيّن كيف تُعاش الهوية داخل البيوت والمجتمعات.",
+    ),
+    fact: L("Known for: Masquerades; The Man from Oran.", "Connu pour : Mascarades ; L'Oranais.", "من أشهر أعماله: مسخرة؛ الوهراني."),
+  },
+  {
+    id: "karim-moussaoui",
+    name: "Karim Moussaoui",
+    displayName: L("Karim Moussaoui", "Karim Moussaoui", "كريم موساوي"),
+    emoji: "📽️",
+    category: "cinema-film",
+    region: "national",
+    era: L("Contemporary film director", "Cinéaste contemporain", "مخرج سينمائي معاصر"),
+    regionLabel: L("National / Algeria-wide", "National / Algérie", "وطني / عموم الجزائر"),
+    story: L(
+      "Karim Moussaoui creates quiet, layered stories where personal choices reveal a whole society. His cinema moves with patience, letting landscapes, silence and memory speak.",
+      "Karim Moussaoui crée des récits calmes et nuancés où les choix personnels révèlent toute une société. Son cinéma avance avec patience, laissant parler les paysages, le silence et la mémoire.",
+      "يصنع كريم موساوي حكايات هادئة ومتعددة الطبقات تكشف فيها الاختيارات الشخصية ملامح مجتمع كامل. تتحرك سينماه بصبر، تاركةً للمكان والصمت والذاكرة أن تتكلم.",
+    ),
+    importance: L(
+      "He represents a contemporary generation attentive to emotional complexity, social change and the echoes of the past.",
+      "Il représente une génération contemporaine attentive à la complexité émotionnelle, aux mutations sociales et aux échos du passé.",
+      "يمثل جيلًا معاصرًا ينتبه إلى التعقيد العاطفي والتحولات الاجتماعية وأصداء الماضي.",
+    ),
+    fact: L("Known for: Until the Birds Return.", "Connu pour : En attendant les hirondelles.", "من أشهر أعماله: في انتظار السنونو."),
+  },
+  {
+    id: "yamina-bachir-chouikh",
+    name: "Yamina Bachir-Chouikh",
+    displayName: L("Yamina Bachir-Chouikh", "Yamina Bachir-Chouikh", "يمينة بشير شويخ"),
+    emoji: "🎬",
+    category: "cinema-film",
+    region: "algiers",
+    era: L("Film director and editor", "Réalisatrice et monteuse", "مخرجة ومونتيرة"),
+    regionLabel: L("Algiers / National", "Alger / National", "الجزائر العاصمة / وطني"),
+    story: L(
+      "Yamina Bachir-Chouikh brings a strong, compassionate gaze to stories of courage and civic life. Her cinema gives space to women facing fear, duty and the need to keep society humane.",
+      "Yamina Bachir-Chouikh porte un regard fort et humain sur le courage et la vie civique. Son cinéma donne toute leur place aux femmes face à la peur, au devoir et à la nécessité de préserver l'humain.",
+      "تحمل يمينة بشير شويخ نظرة قوية وإنسانية إلى حكايات الشجاعة والحياة المدنية. تمنح سينماها مساحة للنساء أمام الخوف والواجب والحاجة إلى حفظ إنسانية المجتمع.",
+    ),
+    importance: L(
+      "Her film Rachida became an important, accessible reflection on resilience, education and women's presence in difficult times.",
+      "Son film Rachida est devenu une réflexion importante et accessible sur la résilience, l'éducation et la présence des femmes dans les temps difficiles.",
+      "أصبح فيلمها رشيدة تأملًا مهمًا وقريبًا في الصمود والتعليم وحضور المرأة في الأزمنة الصعبة.",
+    ),
+    fact: L("Known for: Rachida.", "Connue pour : Rachida.", "من أشهر أعمالها: رشيدة."),
+  },
+  {
+    id: "djamila-sahraoui",
+    name: "Djamila Sahraoui",
+    displayName: L("Djamila Sahraoui", "Djamila Sahraoui", "جميلة صحراوي"),
+    emoji: "🎥",
+    category: "cinema-film",
+    region: "national",
+    era: L("Film director of women and society", "Cinéaste des femmes et de la société", "مخرجة سينمائية للمرأة والمجتمع"),
+    regionLabel: L("National / Algeria-wide", "National / Algérie", "وطني / عموم الجزائر"),
+    story: L(
+      "Djamila Sahraoui tells intimate stories about women, care and moral courage. Her films often look at how people protect one another when society feels fragile.",
+      "Djamila Sahraoui raconte des histoires intimes sur les femmes, le soin et le courage moral. Ses films observent souvent comment les personnes se protègent lorsque la société paraît fragile.",
+      "تروي جميلة صحراوي حكايات حميمة عن النساء والرعاية والشجاعة الأخلاقية. تنظر أفلامها إلى كيف يحمي الناس بعضهم عندما يبدو المجتمع هشًا.",
+    ),
+    importance: L(
+      "She strengthened the place of women's perspectives in Algerian cinema and linked social questions to deeply human stories.",
+      "Elle a renforcé la place des regards féminins dans le cinéma algérien et relié les questions sociales à des récits profondément humains.",
+      "عزّزت مكانة النظرات النسائية في السينما الجزائرية وربطت الأسئلة الاجتماعية بحكايات إنسانية عميقة.",
+    ),
+    fact: L("Known for: Barakat!; Yema.", "Connue pour : Barakat! ; Yema.", "من أشهر أعمالها: بركات!؛ يما."),
+  },
+  {
+    id: "habiba-djahnine",
+    name: "Habiba Djahnine",
+    displayName: L("Habiba Djahnine", "Habiba Djahnine", "حبيبة جحنين"),
+    emoji: "📹",
+    category: "cinema-film",
+    region: "kabylie",
+    era: L("Documentary filmmaker and cultural organizer", "Documentariste et passeuse culturelle", "مخرجة وثائقية وفاعلة ثقافية"),
+    regionLabel: L("Kabylie / National", "Kabylie / National", "القبائل / وطني"),
+    story: L(
+      "Habiba Djahnine works with documentary, memory and transmission. Her films and cultural projects create spaces where testimony, grief and hope can be shared with care.",
+      "Habiba Djahnine travaille le documentaire, la mémoire et la transmission. Ses films et projets culturels ouvrent des espaces où témoignage, douleur et espoir peuvent être partagés avec délicatesse.",
+      "تعمل حبيبة جحنين في الوثائقي والذاكرة ونقل التجارب. تفتح أفلامها ومشاريعها الثقافية فضاءات للشهادة والألم والأمل بحسّ عميق من العناية.",
+    ),
+    importance: L(
+      "She connects cinema with civic memory and has helped nurture new documentary voices in Algeria.",
+      "Elle relie le cinéma à la mémoire citoyenne et a contribué à faire émerger de nouvelles voix documentaires en Algérie.",
+      "تربط السينما بالذاكرة المدنية، وساهمت في رعاية أصوات وثائقية جديدة في الجزائر.",
+    ),
+    fact: L("Known for: Letter to My Sister.", "Connue pour : Lettre à ma sœur.", "من أشهر أعمالها: رسالة إلى أختي."),
+  },
+  {
+    id: "narimane-mari",
+    name: "Narimane Mari",
+    displayName: L("Narimane Mari", "Narimane Mari", "نريمان ماري"),
+    emoji: "🎞️",
+    category: "cinema-film",
+    region: "algiers",
+    era: L("Experimental film director", "Cinéaste expérimentale", "مخرجة سينمائية تجريبية"),
+    regionLabel: L("Algiers / Mediterranean", "Alger / Méditerranée", "الجزائر العاصمة / المتوسط"),
+    story: L(
+      "Narimane Mari approaches Algerian memory with poetic freedom and playful invention. Her films can feel like dreams, using children, landscapes and fragments of history to ask new questions.",
+      "Narimane Mari aborde la mémoire algérienne avec liberté poétique et invention ludique. Ses films peuvent ressembler à des rêves, mêlant enfants, paysages et fragments d'histoire pour poser de nouvelles questions.",
+      "تقترب نريمان ماري من الذاكرة الجزائرية بحرية شعرية وابتكار مرح. تبدو أفلامها أحيانًا كالأحلام، تجمع الأطفال والمناظر وشذرات التاريخ لطرح أسئلة جديدة.",
+    ),
+    importance: L(
+      "She expands what Algerian cinema can look and feel like, bringing experimentation into conversations about identity and memory.",
+      "Elle élargit les formes possibles du cinéma algérien, en faisant entrer l'expérimentation dans les questions d'identité et de mémoire.",
+      "توسّع شكل وإحساس السينما الجزائرية، وتُدخل التجريب في أسئلة الهوية والذاكرة.",
+    ),
+    fact: L("Known for: Bloody Beans.", "Connue pour : Loubia Hamra.", "من أشهر أعمالها: لوبيا حمراء."),
   },
 ];
 
