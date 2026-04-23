@@ -1162,9 +1162,9 @@ export const figures: Figure[] = [
     displayName: L("Houari Boumédiène", "Houari Boumédiène", "هواري بومدين"),
     emoji: "🛢️",
     category: "post-independence",
-    region: "oran-west",
+    region: "constantine",
     era: L("1932–1978", "1932–1978", "1932–1978"),
-    regionLabel: L("Oran / West", "Oran / Ouest", "وهران / الغرب"),
+    regionLabel: L("Constantine / East", "Constantine / Est", "قسنطينة / الشرق"),
     story: L(
       "Born in the Guelma region and chief of the Armée de libération nationale's general staff during the war, Houari Boumédiène took power in 1965 and led Algeria through industrialization and an assertive foreign policy.",
       "Né dans la région de Guelma et chef d'état-major de l'Armée de libération nationale durant la guerre, Houari Boumédiène prit le pouvoir en 1965 et conduisit l'Algérie sur la voie de l'industrialisation et d'une politique étrangère affirmée.",
