@@ -52,6 +52,7 @@ export function StoryFlow({ scenes, accent = "var(--secondary)", title, continui
   const lang = useLang();
   const isAr = lang === "ar";
   const [step, setStep] = useState(0);
+  const [hasInteracted, setHasInteracted] = useState(false);
   const [tick, setTick] = useState(0); // forces re-mount on scene change for the fade-in
   const total = scenes.length;
   const scene = scenes[Math.min(step, total - 1)];
@@ -62,7 +63,7 @@ export function StoryFlow({ scenes, accent = "var(--secondary)", title, continui
 
   useEffect(() => {
     const label = continuityTitle ?? title;
-    if (!label || typeof window === "undefined") return;
+    if (!label || !hasInteracted || typeof window === "undefined") return;
     const storySlug = slugify(t(label, "en"));
     const match = window.location.hash.match(new RegExp(`^#story-${storySlug}-scene-(\\d+)$`));
     if (match) {
@@ -86,11 +87,14 @@ export function StoryFlow({ scenes, accent = "var(--secondary)", title, continui
       description: sceneText,
       href: `${window.location.pathname}#story-${storySlug}-scene-${step + 1}`,
     });
-  }, [continuityTitle, step, title]);
+  }, [continuityTitle, hasInteracted, step, title]);
 
   if (total === 0) return null;
 
-  const goto = (i: number) => setStep(Math.max(0, Math.min(total - 1, i)));
+  const goto = (i: number) => {
+    setHasInteracted(true);
+    setStep(Math.max(0, Math.min(total - 1, i)));
+  };
   const isLast = step === total - 1;
 
   return (
