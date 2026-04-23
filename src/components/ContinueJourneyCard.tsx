@@ -1,4 +1,4 @@
-import { Link, useRouterState } from "@tanstack/react-router";
+import { useRouterState } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { dismissContinueCard, getJourneyPlace, isContinueDismissed, journeyContinuityEvent, type JourneyPlace } from "@/lib/continuity";
 import { t, useLang } from "@/lib/i18n";
@@ -35,7 +35,7 @@ export function ContinueJourneyCard() {
       <div className="mx-auto max-w-3xl rounded-2xl border border-border bg-card/95 p-3 sm:p-4 shadow-sm">
         <div className="flex items-start gap-3">
           <span className="mt-0.5 text-xl" aria-hidden>✨</span>
-          <Link to={place.href} className="min-w-0 flex-1 group">
+          <a href={place.href} className="min-w-0 flex-1 group">
             <div className="text-xs font-bold uppercase tracking-wider text-primary">{COPY.title[lang]}</div>
             <div className="mt-1 text-sm sm:text-base font-semibold leading-snug text-foreground group-hover:text-primary transition-colors">
               {t(place.label, lang)}
@@ -45,7 +45,7 @@ export function ContinueJourneyCard() {
                 {t(place.description, lang)}
               </p>
             )}
-          </Link>
+          </a>
           <button
             type="button"
             onClick={() => {
