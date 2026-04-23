@@ -16,7 +16,8 @@ import {
   type DailyQuestion,
 } from "@/components/moments/Immersive";
 import { StoryFlow } from "@/components/story/StoryFlow";
-import { TAFSUT_SCENES, DECADE_SCENES } from "@/data/storyScenes";
+import { TAFSUT_SCENES, DECADE_SCENES, EDUCATION_SCENES } from "@/data/storyScenes";
+import { Link } from "@tanstack/react-router";
 
 // ============================================================
 // Route
