@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useMemo, useState } from "react";
 import { Header } from "@/components/Header";
+import { cinemaQuiz, cinemaThemeLabels, featuredFilms } from "@/data/cinema";
 import { figures, FIGURE_CATEGORIES, FIGURE_REGIONS, type FigureCategory, type FigureRegion } from "@/data/figures";
 import { t, tu, useLang } from "@/lib/i18n";
 import { saveJourneyPlace } from "@/lib/continuity";
@@ -20,6 +21,7 @@ function FiguresIndex() {
   const [query, setQuery] = useState("");
   const [cat, setCat] = useState<FigureCategory | "all">("all");
   const [reg, setReg] = useState<FigureRegion | "all">("all");
+  const [cinemaAnswers, setCinemaAnswers] = useState<Record<string, number>>({});
 
   useEffect(() => {
     saveJourneyPlace({
@@ -114,6 +116,92 @@ function FiguresIndex() {
         {list.length === 0 && (
           <div className="mt-8 text-center text-muted-foreground">{tu("noFigureMatch", lang)}</div>
         )}
+
+        <section className="mt-12 border-t border-border pt-8">
+          <div className="max-w-2xl">
+            <div className="text-xs uppercase tracking-wider text-muted-foreground font-semibold">
+              {lang === "fr" ? "Cinéma & Film" : lang === "ar" ? "السينما والفن" : "Cinema & Film"}
+            </div>
+            <h2 className="mt-2 text-2xl sm:text-3xl font-extrabold tracking-tight">
+              {lang === "fr" ? "Films emblématiques" : lang === "ar" ? "أفلام بارزة" : "Featured Films"}
+            </h2>
+            <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
+              {lang === "fr"
+                ? "Le cinéma raconte l'identité algérienne à travers la mémoire, la jeunesse, les femmes, la société et la résistance."
+                : lang === "ar"
+                  ? "تروي السينما الهوية الجزائرية عبر الذاكرة والشباب والنساء والمجتمع والمقاومة."
+                  : "Cinema tells Algerian identity through memory, youth, women, society and resistance."}
+            </p>
+          </div>
+
+          <div className="mt-5 flex flex-wrap gap-2">
+            {Object.entries(cinemaThemeLabels).map(([key, label]) => (
+              <span key={key} className="px-3 py-1 rounded-full bg-muted text-muted-foreground text-xs font-semibold">
+                {t(label, lang)}
+              </span>
+            ))}
+          </div>
+
+          <div className="mt-6 grid sm:grid-cols-2 gap-4">
+            {featuredFilms.map((film) => (
+              <article key={film.id} className="card-hover rounded-2xl bg-card border border-border p-5 transition hover:border-primary/40" style={{ boxShadow: "var(--shadow-soft)" }}>
+                <div className="flex items-start justify-between gap-3">
+                  <h3 className="font-bold text-lg leading-tight">{t(film.title, lang)}</h3>
+                  <span className="shrink-0 text-xs font-bold px-2 py-1 rounded-full bg-muted text-muted-foreground">{film.year}</span>
+                </div>
+                <p className="mt-3 text-sm text-muted-foreground leading-relaxed">{t(film.description, lang)}</p>
+                <div className="mt-4 flex flex-wrap gap-2 text-xs">
+                  <span className="px-2.5 py-1 rounded-full bg-accent/20 text-accent-foreground font-semibold">
+                    {t(cinemaThemeLabels[film.theme], lang)}
+                  </span>
+                  {film.director && <span className="px-2.5 py-1 rounded-full bg-muted text-muted-foreground font-semibold">{t(film.director, lang)}</span>}
+                </div>
+              </article>
+            ))}
+          </div>
+
+          <div className="mt-8 rounded-2xl bg-card border border-border p-5" style={{ boxShadow: "var(--shadow-soft)" }}>
+            <h3 className="text-lg font-bold">
+              {lang === "fr" ? "Mini-quiz cinéma" : lang === "ar" ? "اختبار سينمائي قصير" : "Cinema mini quiz"}
+            </h3>
+            <div className="mt-4 grid gap-4">
+              {cinemaQuiz.map((q) => {
+                const selected = cinemaAnswers[q.id];
+                const locked = selected !== undefined;
+                return (
+                  <div key={q.id} className="rounded-xl bg-muted/40 border border-border p-4">
+                    <div className="font-semibold text-sm">{t(q.prompt, lang)}</div>
+                    <div className="mt-3 grid gap-2">
+                      {q.options.map((option, index) => {
+                        const correct = locked && index === q.answerIndex;
+                        const wrong = locked && selected === index && index !== q.answerIndex;
+                        return (
+                          <button
+                            key={index}
+                            type="button"
+                            disabled={locked}
+                            onClick={() => setCinemaAnswers((prev) => ({ ...prev, [q.id]: index }))}
+                            className={
+                              "text-start px-3 py-2 rounded-lg border text-sm font-semibold transition " +
+                              (correct
+                                ? "bg-success/20 border-success/60"
+                                : wrong
+                                  ? "bg-destructive/15 border-destructive/50"
+                                  : "bg-card border-border hover:border-primary/40")
+                            }
+                          >
+                            {t(option, lang)}
+                          </button>
+                        );
+                      })}
+                    </div>
+                    {locked && <p className="mt-3 text-xs text-muted-foreground leading-relaxed">💡 {t(q.explanation, lang)}</p>}
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </section>
       </main>
     </div>
   );
