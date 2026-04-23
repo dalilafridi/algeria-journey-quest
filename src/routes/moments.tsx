@@ -28,13 +28,13 @@ export const Route = createFileRoute("/moments")({
       {
         name: "description",
         content:
-          "A gentle, museum-style page for children: Tafsut Imazighen (1980) and the Black Decade (1990s). Identity, courage, memory, and peace.",
+          "A gentle, museum-style page for children: identity, courage, memory, freedom, and peace in Algerian history.",
       },
       { property: "og:title", content: "Moments That Shaped Algeria" },
       {
         property: "og:description",
         content:
-          "Two pivotal chapters of modern Algerian history, told with care for young learners.",
+          "Pivotal chapters of modern Algerian history, told with care for young learners.",
       },
     ],
   }),
@@ -59,9 +59,9 @@ const UI = {
       "لحظات صنعت الجزائر",
     ),
     subtitle: L(
-      "Identité, courage, mémoire et paix — deux chapitres essentiels de l'histoire algérienne, racontés avec douceur.",
-      "Identity, courage, memory, and peace — two essential chapters of Algerian history, told with care.",
-      "الهوية، الشجاعة، الذاكرة والسلام — فصلان أساسيان من تاريخ الجزائر، يُرويان برفق.",
+      "Identité, courage, mémoire, liberté et paix — des chapitres essentiels de l'histoire algérienne, racontés avec douceur.",
+      "Identity, courage, memory, freedom, and peace — essential chapters of Algerian history, told with care.",
+      "الهوية، الشجاعة، الذاكرة، الحرية والسلام — فصول أساسية من تاريخ الجزائر، تُروى برفق.",
     ),
     badge: L("Salle d'exposition", "Exhibition Hall", "قاعة العرض"),
   },
