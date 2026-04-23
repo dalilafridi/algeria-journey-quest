@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { t, useLang, type LocalizedString } from "@/lib/i18n";
+import { saveJourneyPlace } from "@/lib/continuity";
 
 /**
  * One cinematic scene inside a StoryFlow.
@@ -21,6 +22,8 @@ export type StoryFlowProps = {
   accent?: string;
   /** Optional global title shown above the scene (e.g. topic name). */
   title?: LocalizedString;
+  /** Optional readable name for Continue where you left off. */
+  continuityTitle?: LocalizedString;
   /** Optional default narrator voice if a scene does not provide its own. */
   defaultGuide?: LocalizedString;
 };
@@ -33,16 +36,23 @@ const LBL = {
   story: { en: "Story", fr: "Récit", ar: "حكاية" },
 } as const;
 
+const slugify = (value: string) =>
+  value
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/(^-|-$)/g, "") || "story";
+
 /**
  * StoryFlow — cinematic, guided storytelling component.
  *
  * Pacing: one scene at a time, soft fade-in, narrator voice, tiny progress dots.
  * Lightweight: pure CSS transitions, no media. Works in EN / FR / AR (RTL-safe).
  */
-export function StoryFlow({ scenes, accent = "var(--secondary)", title, defaultGuide }: StoryFlowProps) {
+export function StoryFlow({ scenes, accent = "var(--secondary)", title, continuityTitle, defaultGuide }: StoryFlowProps) {
   const lang = useLang();
   const isAr = lang === "ar";
   const [step, setStep] = useState(0);
+  const [hasInteracted, setHasInteracted] = useState(false);
   const [tick, setTick] = useState(0); // forces re-mount on scene change for the fade-in
   const total = scenes.length;
   const scene = scenes[Math.min(step, total - 1)];
@@ -51,14 +61,46 @@ export function StoryFlow({ scenes, accent = "var(--secondary)", title, defaultG
     setTick((n) => n + 1);
   }, [step]);
 
+  useEffect(() => {
+    const label = continuityTitle ?? title;
+    if (!label || !hasInteracted || typeof window === "undefined") return;
+    const storySlug = slugify(t(label, "en"));
+    const match = window.location.hash.match(new RegExp(`^#story-${storySlug}-scene-(\\d+)$`));
+    if (match) {
+      const nextStep = Number(match[1]) - 1;
+      if (Number.isFinite(nextStep)) setStep(Math.max(0, Math.min(total - 1, nextStep)));
+    }
+  }, [continuityTitle, title, total]);
+
+  useEffect(() => {
+    const label = continuityTitle ?? title;
+    if (!label || typeof window === "undefined") return;
+    const storySlug = slugify(t(label, "en"));
+    const sceneText = {
+      fr: `Scène ${step + 1}`,
+      en: `Scene ${step + 1}`,
+      ar: `المشهد ${step + 1}`,
+    };
+    saveJourneyPlace({
+      section: "story",
+      label: typeof label === "string" ? { fr: label, en: label, ar: label } : label,
+      description: sceneText,
+      href: `${window.location.pathname}#story-${storySlug}-scene-${step + 1}`,
+    });
+  }, [continuityTitle, hasInteracted, step, title]);
+
   if (total === 0) return null;
 
-  const goto = (i: number) => setStep(Math.max(0, Math.min(total - 1, i)));
+  const goto = (i: number) => {
+    setHasInteracted(true);
+    setStep(Math.max(0, Math.min(total - 1, i)));
+  };
   const isLast = step === total - 1;
 
   return (
     <section
       className="relative rounded-2xl border overflow-hidden"
+      id={`story-${slugify(t(continuityTitle ?? title ?? LBL.story, "en"))}-scene-${step + 1}`}
       style={{
         background:
           "linear-gradient(160deg, color-mix(in oklab, " +
@@ -110,14 +152,15 @@ export function StoryFlow({ scenes, accent = "var(--secondary)", title, defaultG
           </h3>
         )}
 
-        <p
-          className={
-            "leading-relaxed text-foreground/90 whitespace-pre-line " +
-            (scene.title ? "mt-2 text-base sm:text-[17px]" : "text-base sm:text-[17px]")
-          }
-        >
-          {t(scene.body, lang)}
-        </p>
+        <div className={(scene.title ? "mt-3 " : "") + "space-y-3 max-w-prose text-base sm:text-[17px] leading-relaxed text-foreground/90"}>
+          {t(scene.body, lang)
+            .split(/\n+/)
+            .filter(Boolean)
+            .slice(0, 3)
+            .map((paragraph, i) => (
+              <p key={i}>{paragraph}</p>
+            ))}
+        </div>
       </div>
 
       {/* Footer: dots + nav */}
