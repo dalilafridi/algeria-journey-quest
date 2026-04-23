@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
 import { Header } from "@/components/Header";
 import { AmazighSymbol } from "@/components/brand/AmazighSymbol";
@@ -16,8 +16,7 @@ import {
   type DailyQuestion,
 } from "@/components/moments/Immersive";
 import { StoryFlow } from "@/components/story/StoryFlow";
-import { TAFSUT_SCENES, DECADE_SCENES, EDUCATION_SCENES } from "@/data/storyScenes";
-import { Link } from "@tanstack/react-router";
+import { TAFSUT_SCENES, DECADE_SCENES, EDUCATION_SCENES, INDEPENDENCE_WAR_SCENES } from "@/data/storyScenes";
 
 // ============================================================
 // Route
