@@ -1127,6 +1127,7 @@ function MomentsPage() {
               scenes={INDEPENDENCE_WAR_SCENES}
               accent="var(--primary)"
               title={L("Guerre d’indépendance", "War of Independence", "ثورة التحرير")}
+              continuityTitle={L("Guerre d’indépendance", "War of Independence", "ثورة التحرير")}
             />
           </MuseumReveal>
 
@@ -1182,6 +1183,7 @@ function MomentsPage() {
               scenes={TAFSUT_SCENES}
               accent={TAFSUT.tagColor}
               title={UI.storyMode}
+              continuityTitle={TAFSUT.title}
             />
           </MuseumReveal>
 
@@ -1272,6 +1274,7 @@ function MomentsPage() {
               scenes={DECADE_SCENES}
               accent={DECADE.tagColor}
               title={UI.storyMode}
+              continuityTitle={DECADE.title}
             />
           </MuseumReveal>
 
@@ -1377,6 +1380,7 @@ function MomentsPage() {
               scenes={EDUCATION_SCENES}
               accent="var(--primary)"
               title={UI.storyMode}
+              continuityTitle={L("Éducation & Identité", "Education & Identity", "التعليم والهوية")}
             />
           </MuseumReveal>
 
