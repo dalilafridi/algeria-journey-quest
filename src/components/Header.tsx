@@ -12,7 +12,6 @@ const LANG_LABEL: Record<Lang, string> = {
 };
 
 export function Header() {
-  const [xp, setXp] = useState(0);
   const [menuOpen, setMenuOpen] = useState(false);
   const [langOpen, setLangOpen] = useState(false);
   const [profileOpen, setProfileOpen] = useState(false);
@@ -20,13 +19,6 @@ export function Header() {
   const navigate = useNavigate();
   const langRef = useRef<HTMLDivElement>(null);
   const profileRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const update = () => setXp(getProgress().xp);
-    update();
-    window.addEventListener("progress-updated", update);
-    return () => window.removeEventListener("progress-updated", update);
-  }, []);
 
   // Lock body scroll when mobile menu is open
   useEffect(() => {
@@ -58,7 +50,7 @@ export function Header() {
     words: { fr: "Paroles", en: "Words", ar: "كلمات" }[current],
     ideas: { fr: "Idées", en: "Ideas", ar: "أفكار" }[current],
     moments: { fr: "Moments", en: "Moments", ar: "لحظات" }[current],
-    appName: { fr: "Odyssée DZ", en: "DZ Odyssey", ar: "أوديسة الجزائر" }[current],
+    appName: { fr: "Algeria Through Time", en: "Algeria Through Time", ar: "Algeria Through Time" }[current],
     myProgress: { fr: "Ma progression", en: "My Progress", ar: "تقدّمي" }[current],
     settings: { fr: "Paramètres", en: "Settings", ar: "الإعدادات" }[current],
     about: { fr: "À propos", en: "About", ar: "حول" }[current],
@@ -75,7 +67,6 @@ export function Header() {
     { to: "/figures" as const, label: T.figures },
     { to: "/map" as const, label: T.regions },
     { to: "/words" as const, label: T.words },
-    { to: "/ideas" as const, label: T.ideas },
     { to: "/moments" as const, label: T.moments },
   ];
 
@@ -93,23 +84,30 @@ export function Header() {
   };
 
   const linkClass =
-    "text-sm font-medium text-muted-foreground hover:text-foreground transition-colors whitespace-nowrap relative py-1";
+    "text-sm font-medium text-muted-foreground hover:text-foreground transition-all whitespace-nowrap rounded-full px-3 py-2";
+  const activeLinkClass =
+    linkClass + " text-foreground bg-muted shadow-[inset_0_0_0_1px_var(--border)]";
 
   return (
-    <header className="sticky top-0 z-30 backdrop-blur-md bg-background/80 border-b border-border">
-      <div className="max-w-6xl mx-auto px-3 sm:px-5 py-2.5 sm:py-3 flex items-center justify-between gap-3 lg:gap-6">
+    <header className="sticky top-0 z-30 border-b border-border bg-background/90 backdrop-blur-md">
+      <div className="max-w-6xl mx-auto px-3 sm:px-5 py-3 flex items-center justify-between gap-3 lg:gap-6">
         <Link
           to="/"
-          className="flex items-center gap-2 font-bold text-base sm:text-lg min-w-0"
+          className="flex items-center gap-2.5 min-w-0 group"
           onClick={() => setMenuOpen(false)}
+          aria-label={T.appName}
         >
-          <img
-            src={brandIcon}
-            alt=""
-            className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl object-cover shrink-0"
-            style={{ boxShadow: "0 0 12px oklch(0.85 0.16 80 / 0.45)" }}
-          />
-          <span className="hidden xl:inline truncate">{T.appName}</span>
+          <span className="relative inline-flex w-9 h-9 items-center justify-center rounded-full border border-border bg-card shadow-sm transition-transform group-hover:scale-[1.02]">
+            <img src={brandIcon} alt="" className="w-6 h-6 rounded-full object-cover" />
+          </span>
+          <span className="flex min-w-0 items-baseline gap-1.5">
+            <span className="hidden sm:inline truncate text-sm font-semibold tracking-wide text-foreground lg:text-base">
+              {T.appName}
+            </span>
+            <span className="hidden md:inline text-sm text-accent-foreground" aria-hidden>
+              ⵣ
+            </span>
+          </span>
         </Link>
 
         {/* Desktop nav */}
@@ -119,7 +117,7 @@ export function Header() {
               key={l.to}
               to={l.to}
               className={linkClass}
-              activeProps={{ className: linkClass + " text-foreground" }}
+              activeProps={{ className: activeLinkClass }}
             >
               {l.label}
             </Link>
@@ -127,16 +125,6 @@ export function Header() {
         </nav>
 
         <div className="flex items-center gap-2 sm:gap-3">
-          {/* XP — subtle, only when meaningful */}
-          {xp > 0 && (
-            <div className="hidden sm:flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-accent/20 border border-accent/40">
-              <span className="text-sm">⭐</span>
-              <span className="text-xs font-semibold text-accent-foreground tabular-nums">
-                {xp} XP
-              </span>
-            </div>
-          )}
-
           {/* Language dropdown */}
           <div className="relative" ref={langRef}>
             <button
@@ -156,7 +144,7 @@ export function Header() {
               </svg>
             </button>
             {langOpen && (
-              <div className="absolute right-0 mt-2 min-w-[160px] rounded-xl border border-border bg-popover shadow-lg overflow-hidden animate-float-up">
+              <div className="absolute right-0 mt-2 min-w-[170px] rounded-xl border border-border bg-popover shadow-lg overflow-hidden animate-float-up">
                 {LANGS.map((l) => (
                   <button
                     key={l.code}
@@ -165,7 +153,9 @@ export function Header() {
                       setLangOpen(false);
                     }}
                     className={
-                      "w-full text-left px-3 py-2 text-sm hover:bg-muted transition-colors " +
+                      "w-full px-3 py-2.5 text-sm hover:bg-muted transition-colors " +
+                      (l.code === "ar" ? "text-right" : "text-left") +
+                      " " +
                       (current === l.code ? "text-foreground font-semibold" : "text-muted-foreground")
                     }
                   >
@@ -175,6 +165,15 @@ export function Header() {
               </div>
             )}
           </div>
+
+          <button
+            type="button"
+            onClick={openAbout}
+            className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-border bg-card text-sm font-medium text-foreground hover:bg-muted transition-colors"
+          >
+            <span aria-hidden>ℹ️</span>
+            {T.about}
+          </button>
 
           {/* Profile dropdown — desktop */}
           <div className="relative hidden lg:block" ref={profileRef}>
