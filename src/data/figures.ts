@@ -2154,6 +2154,56 @@ export const figures: Figure[] = [
       "اشتُهر بقوله إن على الناس أن يتبعوا الأفكار لا الأشخاص — رفضًا هادئًا لعبادة الفرد في السياسة الجزائرية المبكرة.",
     ),
   },
+  {
+    id: "ben-badis",
+    name: "Abdelhamid Ben Badis",
+    displayName: L("Abdelhamid Ben Badis", "Abdelhamid Ben Badis", "عبد الحميد بن باديس"),
+    emoji: "📗",
+    category: "intellectuals-culture",
+    region: "constantine",
+    era: L("1889–1940", "1889–1940", "1889–1940"),
+    regionLabel: L("Constantine / East", "Constantine / Est", "قسنطينة / الشرق"),
+    story: L(
+      "Born in Constantine into a learned family, Abdelhamid Ben Badis became the leading reformist scholar of colonial Algeria. He founded the Association of Algerian Muslim Ulama in 1931 and built schools, journals, and study circles across the country to revive Arabic, Islam, and a sense of shared Algerian belonging.",
+      "Né à Constantine dans une famille de lettrés, Abdelhamid Ben Badis devint la grande figure du réformisme musulman dans l'Algérie coloniale. Il fonda en 1931 l'Association des oulémas musulmans algériens et créa écoles, revues et cercles d'étude à travers le pays pour faire revivre la langue arabe, l'islam et un sentiment d'appartenance algérienne partagé.",
+      "وُلد عبد الحميد بن باديس بقسنطينة في أسرة علم، وغدا أبرز رواد الإصلاح الإسلامي في الجزائر المستعمرَة. أسّس جمعية العلماء المسلمين الجزائريين سنة 1931، وأنشأ المدارس والمجلات وحلقات الدرس في كل أرجاء البلاد لإحياء اللغة العربية والإسلام والشعور بالانتماء الجزائري المشترك.",
+    ),
+    importance: L(
+      "He gave colonial Algeria a clear cultural and religious identity — \"Islam is my religion, Arabic my language, Algeria my homeland\" — and shaped generations of teachers and nationalists.",
+      "Il donna à l'Algérie coloniale une identité culturelle et religieuse claire — « l'islam est ma religion, l'arabe ma langue, l'Algérie ma patrie » — et forma des générations d'enseignants et de nationalistes.",
+      "أعطى الجزائر المستعمرَة هويةً ثقافية ودينية واضحة — «الإسلام ديني، والعربية لغتي، والجزائر وطني» — وكوّن أجيالًا من المعلمين والمناضلين.",
+    ),
+    fact: L(
+      "His famous verse \"The Algerian people are Muslim, and to Arabism they belong\" became a rallying cry for the national movement.",
+      "Son fameux vers « Le peuple algérien est musulman, et à l'arabité il appartient » devint un cri de ralliement du mouvement national.",
+      "صار بيته الشهير «شعب الجزائر مسلمٌ وإلى العروبة يُنتسبُ» شعارًا للحركة الوطنية.",
+    ),
+  },
+  {
+    id: "malek-bennabi",
+    name: "Malek Bennabi",
+    displayName: L("Malek Bennabi", "Malek Bennabi", "مالك بن نبي"),
+    emoji: "🧭",
+    category: "intellectuals-culture",
+    region: "constantine",
+    era: L("1905–1973", "1905–1973", "1905–1973"),
+    regionLabel: L("Constantine / East", "Constantine / Est", "قسنطينة / الشرق"),
+    story: L(
+      "Born in Constantine and trained as an engineer in Paris, Malek Bennabi spent his life trying to understand why some societies decline and others rise. He coined the idea of \"colonisability\" — the inner conditions that make a society vulnerable to domination — and called for a civilizational renewal grounded in ideas, ethics, and culture.",
+      "Né à Constantine et formé ingénieur à Paris, Malek Bennabi passa sa vie à comprendre pourquoi certaines sociétés déclinent et d'autres s'élèvent. Il forgea le concept de « colonisabilité » — les conditions intérieures qui rendent une société vulnérable à la domination — et appela à un renouveau civilisationnel fondé sur les idées, l'éthique et la culture.",
+      "وُلد مالك بن نبي بقسنطينة وتكوّن مهندسًا في باريس، وقضى حياته يبحث في أسباب نهوض المجتمعات وسقوطها. صاغ مفهوم «القابلية للاستعمار» — الشروط الداخلية التي تجعل المجتمع عرضةً للهيمنة — ودعا إلى نهضة حضارية تقوم على الأفكار والأخلاق والثقافة.",
+    ),
+    importance: L(
+      "He is one of the most original Algerian and Muslim thinkers of the 20th century, widely read across the Arab world for his analysis of culture, civilization, and renewal.",
+      "Il est l'un des penseurs algériens et musulmans les plus originaux du XXe siècle, largement lu dans le monde arabe pour son analyse de la culture, de la civilisation et du renouveau.",
+      "يُعدّ من أكثر المفكرين الجزائريين والمسلمين أصالةً في القرن العشرين، وتُقرأ كتبه على نطاق واسع في العالم العربي لتحليلها الثقافة والحضارة وشروط النهضة.",
+    ),
+    fact: L(
+      "His book \"The Conditions of the Algerian Renaissance\" (1948) remains a key text of modern Algerian and Arab thought.",
+      "Son livre « Les Conditions de la renaissance algérienne » (1948) reste un texte majeur de la pensée algérienne et arabe modernes.",
+      "لا يزال كتابه «شروط النهضة» (1948) من النصوص الأساسية في الفكر الجزائري والعربي الحديث.",
+    ),
+  },
 ];
 
 // ---------- Lookups ----------
