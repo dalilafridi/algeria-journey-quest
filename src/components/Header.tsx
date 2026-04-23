@@ -2,6 +2,7 @@ import { Link, useNavigate } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import { getProgress, resetAllQuizProgress } from "@/lib/progress";
 import { LANGS, getLang, setLang, useLang, type Lang } from "@/lib/i18n";
+import { OPEN_CREATOR_ABOUT_EVENT } from "@/components/WelcomeJourney";
 import brandIcon from "@/assets/brand-icon.png";
 
 const LANG_LABEL: Record<Lang, string> = {
@@ -60,6 +61,7 @@ export function Header() {
     appName: { fr: "Odyssée DZ", en: "DZ Odyssey", ar: "أوديسة الجزائر" }[current],
     myProgress: { fr: "Ma progression", en: "My Progress", ar: "تقدّمي" }[current],
     settings: { fr: "Paramètres", en: "Settings", ar: "الإعدادات" }[current],
+    about: { fr: "À propos", en: "About", ar: "حول" }[current],
     resetQuizzes: { fr: "Réinitialiser les quiz", en: "Reset Quizzes", ar: "إعادة ضبط الاختبارات" }[current],
     confirmReset: {
       fr: "Réinitialiser tout le progrès des quiz ?",
@@ -82,6 +84,12 @@ export function Header() {
       resetAllQuizProgress();
     }
     setProfileOpen(false);
+  };
+
+  const openAbout = () => {
+    window.dispatchEvent(new Event(OPEN_CREATOR_ABOUT_EVENT));
+    setProfileOpen(false);
+    setMenuOpen(false);
   };
 
   const linkClass =
@@ -207,6 +215,13 @@ export function Header() {
                 </button>
                 <div className="h-px bg-border" />
                 <button
+                  onClick={openAbout}
+                  className="w-full text-left px-3 py-2 text-sm text-foreground hover:bg-muted transition-colors flex items-center gap-2"
+                >
+                  <span aria-hidden>ℹ️</span>
+                  {T.about}
+                </button>
+                <button
                   onClick={handleReset}
                   className="w-full text-left px-3 py-2 text-sm text-destructive hover:bg-muted transition-colors"
                 >
@@ -266,6 +281,13 @@ export function Header() {
               </svg>
               {T.myProgress}
             </Link>
+            <button
+              onClick={openAbout}
+              className="text-left px-3 py-3 rounded-xl text-base font-medium text-foreground hover:bg-muted transition flex items-center gap-2"
+            >
+              <span aria-hidden>ℹ️</span>
+              {T.about}
+            </button>
             <button
               onClick={() => {
                 setMenuOpen(false);
