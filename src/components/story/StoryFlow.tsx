@@ -36,6 +36,12 @@ const LBL = {
   story: { en: "Story", fr: "Récit", ar: "حكاية" },
 } as const;
 
+const slugify = (value: string) =>
+  value
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/(^-|-$)/g, "") || "story";
+
 /**
  * StoryFlow — cinematic, guided storytelling component.
  *
