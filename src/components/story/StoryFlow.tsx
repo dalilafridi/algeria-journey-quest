@@ -63,6 +63,18 @@ export function StoryFlow({ scenes, accent = "var(--secondary)", title, continui
   useEffect(() => {
     const label = continuityTitle ?? title;
     if (!label || typeof window === "undefined") return;
+    const storySlug = slugify(t(label, "en"));
+    const match = window.location.hash.match(new RegExp(`^#story-${storySlug}-scene-(\\d+)$`));
+    if (match) {
+      const nextStep = Number(match[1]) - 1;
+      if (Number.isFinite(nextStep)) setStep(Math.max(0, Math.min(total - 1, nextStep)));
+    }
+  }, [continuityTitle, title, total]);
+
+  useEffect(() => {
+    const label = continuityTitle ?? title;
+    if (!label || typeof window === "undefined") return;
+    const storySlug = slugify(t(label, "en"));
     const sceneText = {
       fr: `Scène ${step + 1}`,
       en: `Scene ${step + 1}`,
@@ -72,7 +84,7 @@ export function StoryFlow({ scenes, accent = "var(--secondary)", title, continui
       section: "story",
       label: typeof label === "string" ? { fr: label, en: label, ar: label } : label,
       description: sceneText,
-      href: `${window.location.pathname}#story-${slugify(t(label, "en"))}-scene-${step + 1}`,
+      href: `${window.location.pathname}#story-${storySlug}-scene-${step + 1}`,
     });
   }, [continuityTitle, step, title]);
 
@@ -84,6 +96,7 @@ export function StoryFlow({ scenes, accent = "var(--secondary)", title, continui
   return (
     <section
       className="relative rounded-2xl border overflow-hidden"
+      id={`story-${slugify(t(continuityTitle ?? title ?? LBL.story, "en"))}-scene-${step + 1}`}
       style={{
         background:
           "linear-gradient(160deg, color-mix(in oklab, " +
