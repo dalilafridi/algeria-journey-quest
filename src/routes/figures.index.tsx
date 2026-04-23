@@ -1,8 +1,9 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Header } from "@/components/Header";
 import { figures, FIGURE_CATEGORIES, FIGURE_REGIONS, type FigureCategory, type FigureRegion } from "@/data/figures";
 import { t, tu, useLang } from "@/lib/i18n";
+import { saveJourneyPlace } from "@/lib/continuity";
 
 export const Route = createFileRoute("/figures/")({
   head: () => ({
@@ -19,6 +20,15 @@ function FiguresIndex() {
   const [query, setQuery] = useState("");
   const [cat, setCat] = useState<FigureCategory | "all">("all");
   const [reg, setReg] = useState<FigureRegion | "all">("all");
+
+  useEffect(() => {
+    saveJourneyPlace({
+      section: "figures",
+      label: { fr: "Figures", en: "Figures", ar: "الشخصيات" },
+      description: { fr: "Explorer les grandes figures", en: "Explore great figures", ar: "استكشف الشخصيات البارزة" },
+      href: "/figures",
+    });
+  }, []);
 
   const list = useMemo(() => {
     const q = query.trim().toLowerCase();
@@ -81,7 +91,7 @@ function FiguresIndex() {
               key={f.id}
               to="/figures/$figureId"
               params={{ figureId: f.id }}
-              className="rounded-2xl bg-card border border-border p-5 hover:border-primary/50 transition group"
+              className="card-hover rounded-2xl bg-card border border-border p-5 hover:border-primary/50 transition group"
               style={{ boxShadow: "var(--shadow-soft)" }}
             >
               <div className="flex items-start gap-3">
