@@ -2,6 +2,20 @@ import type { Localized, LocalizedString } from "@/lib/i18n";
 
 const L = (en: string, fr: string, ar: string): Localized<string> => ({ en, fr, ar });
 
+export type IdeaFounder = {
+  /** Figure ID (from src/data/figures.ts) — clicking opens the figure profile. */
+  figureId: string;
+  role: LocalizedString;
+  description: LocalizedString;
+};
+
+export type IdeaMiniFigure = {
+  id: string;
+  emoji?: string;
+  name: LocalizedString;
+  role: LocalizedString;
+};
+
 export type IdeaTopic = {
   id: string;
   emoji: string;
@@ -12,6 +26,10 @@ export type IdeaTopic = {
   figureIds: string[];
   /** Word IDs (from src/data/words.ts) acting as supporting quotes. */
   wordIds: string[];
+  /** Optional highlighted founder card linking to an existing figure profile. */
+  founder?: IdeaFounder;
+  /** Optional simple mini-cards for associated figures without full profiles. */
+  miniFigures?: IdeaMiniFigure[];
 };
 
 export const IDEAS: IdeaTopic[] = [
