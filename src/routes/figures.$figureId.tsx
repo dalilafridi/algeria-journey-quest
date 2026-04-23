@@ -47,7 +47,7 @@ function FigureDetail() {
     saveJourneyPlace({
       section: "figures",
       label: { fr: `Figure · ${t(f.displayName, "fr")}`, en: `Figure · ${t(f.displayName, "en")}`, ar: `شخصية · ${t(f.displayName, "ar")}` },
-      description: f.era,
+      description: typeof f.era === "string" ? { fr: f.era, en: f.era, ar: f.era } : f.era,
       href: `/figures/${f.id}`,
     });
   }, [f]);
