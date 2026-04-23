@@ -96,7 +96,11 @@ function WordsPage() {
       label: openWord
         ? { fr: `Paroles · ${t(openWord.author, "fr")}`, en: `Words · ${t(openWord.author, "en")}`, ar: `كلمات · ${t(openWord.author, "ar")}` }
         : { fr: "Paroles", en: "Words", ar: "كلمات" },
-      description: openWord ? openWord.quote : cat?.label,
+      description: openWord
+        ? typeof openWord.quote === "string"
+          ? { fr: openWord.quote, en: openWord.quote, ar: openWord.quote }
+          : openWord.quote
+        : cat?.label,
       href: openWord ? `/words#word-${openWord.id}` : "/words",
     });
   }, [activeCat, openId]);
