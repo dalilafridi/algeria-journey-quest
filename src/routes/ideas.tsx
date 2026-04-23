@@ -37,6 +37,9 @@ const COPY = {
   quotes: { en: "Supporting voices", fr: "Voix associées", ar: "أصوات مرافقة" },
   readMore: { en: "Read more →", fr: "En savoir plus →", ar: "اقرأ المزيد ←" },
   inWords: { en: "Open in Words", fr: "Ouvrir dans Paroles", ar: "افتح في كلمات" },
+  founder: { en: "Founder", fr: "Fondateur", ar: "المؤسِّس" },
+  alsoAssociated: { en: "Also associated", fr: "Également associés", ar: "مرتبطون أيضًا" },
+  openProfile: { en: "Open profile →", fr: "Voir le profil →", ar: "فتح الصفحة ←" },
 } as const;
 
 function IdeasPage() {
