@@ -139,6 +139,92 @@ export const EDUCATION_SCENES: StoryScene[] = [
   },
 ];
 
+export const INDEPENDENCE_WAR_SCENES: StoryScene[] = [
+  {
+    icon: "🌙",
+    title: L("Un pays sous contrôle", "A country under control", "بلدٌ تحت السيطرة"),
+    guide: L(
+      "Commençons avec calme et respect…",
+      "Let’s begin with calm and respect…",
+      "لنبدأ بهدوء واحترام…",
+    ),
+    body: L(
+      "L’Algérie est sous domination coloniale depuis plus d’un siècle. Beaucoup d’Algériens vivent avec peu de droits et peu de pouvoir sur leur propre avenir.",
+      "Algeria had been under colonial rule for over a century. Many Algerians lived with few rights and little power over their own future.",
+      "كانت الجزائر تحت الاستعمار لأكثر من قرن. عاش كثير من الجزائريين بحقوق محدودة وبقدرة قليلة على تقرير مستقبلهم.",
+    ),
+  },
+  {
+    icon: "🕯️",
+    title: L("Le désir de liberté", "The desire for freedom", "الرغبة في الحرية"),
+    body: L(
+      "Peu à peu, la conscience grandit. Des femmes et des hommes parlent d’égalité, d’identité et du droit de vivre libres sur leur terre.\n\nDans les villes, les villages et les montagnes, une même idée avance : l’Algérie doit choisir son destin.",
+      "Little by little, awareness grew. Women and men spoke of equality, identity, and the right to live freely on their land.\n\nIn cities, villages, and mountains, one idea moved forward: Algeria should choose its own destiny.",
+      "شيئًا فشيئًا، نما الوعي. تحدّث رجال ونساء عن المساواة والهوية والحق في العيش بحرية على أرضهم.\n\nفي المدن والقرى والجبال، تقدّمت فكرة واحدة: يجب أن تختار الجزائر مصيرها بنفسها.",
+    ),
+  },
+  {
+    icon: "⭐",
+    title: L("1er novembre 1954", "November 1, 1954", "أول نوفمبر 1954"),
+    guide: L(
+      "Une date devient un repère…",
+      "One date became a turning point…",
+      "صار تاريخٌ واحد علامة فارقة…",
+    ),
+    body: L(
+      "Dans la nuit du 1er novembre 1954, des actions coordonnées marquent le début de la Révolution. La résistance devient organisée et porte un message clair : indépendance.",
+      "On the night of November 1, 1954, coordinated actions marked the beginning of the Revolution. Resistance became organized and carried a clear message: independence.",
+      "في ليلة أول نوفمبر 1954، شكّلت عمليات منسّقة بداية الثورة. أصبحت المقاومة منظّمة وحملت رسالة واضحة: الاستقلال.",
+    ),
+  },
+  {
+    icon: "🤝",
+    title: L("Un peuple uni", "A people united", "شعبٌ متّحد"),
+    body: L(
+      "Le FLN rassemble des Algériens de régions et de milieux différents. Des noms comme Ben M’hidi, Ben Boulaïd et Abane Ramdane rappellent cette diversité d’engagement.\n\nLa force du mouvement vient aussi de cette unité : chacun apporte ce qu’il peut.",
+      "The FLN brought together Algerians from different regions and backgrounds. Names like Ben M’hidi, Ben Boulaïd, and Abane Ramdane remind us of this shared commitment.\n\nThe movement’s strength also came from unity: each person gave what they could.",
+      "جمع جبهة التحرير الوطني جزائريين من مناطق وخلفيات مختلفة. وتذكّرنا أسماء مثل بن مهيدي وبن بولعيد وعبان رمضان بهذا الالتزام المشترك.\n\nجاءت قوة الحركة أيضًا من الوحدة: كلّ شخص قدّم ما استطاع.",
+    ),
+  },
+  {
+    icon: "🕊️",
+    title: L("Sacrifice et courage", "Sacrifice and courage", "تضحية وشجاعة"),
+    guide: L(
+      "Cette partie demande de la douceur…",
+      "This part asks for gentleness…",
+      "هذا الجزء يحتاج إلى رفق…",
+    ),
+    body: L(
+      "La guerre est longue et difficile. Des familles sont séparées, des villages vivent dans l’incertitude, et beaucoup portent l’espoir malgré la peur.\n\nLe courage ne signifie pas ne jamais avoir peur. Il signifie continuer à croire en la liberté.",
+      "The war was long and difficult. Families were separated, villages lived with uncertainty, and many carried hope even when afraid.\n\nCourage does not mean never feeling fear. It means continuing to believe in freedom.",
+      "كانت الحرب طويلة وصعبة. تفرّقت عائلات، وعاشت قرى في القلق، وحمل كثيرون الأمل رغم الخوف.\n\nالشجاعة لا تعني ألا نخاف أبدًا. بل تعني أن نستمر في الإيمان بالحرية.",
+    ),
+  },
+  {
+    icon: "🇩🇿",
+    title: L("L’indépendance", "Independence", "الاستقلال"),
+    body: L(
+      "En 1962, l’Algérie devient indépendante. Après de longues années d’épreuves, le pays connaît un immense soulagement et une grande fierté.\n\nUne nouvelle page commence : construire, apprendre, transmettre.",
+      "In 1962, Algeria became independent. After long years of hardship, the country felt deep relief and great pride.\n\nA new page began: to build, to learn, to pass on.",
+      "في سنة 1962، أصبحت الجزائر مستقلة. بعد سنوات طويلة من المحن، شعر البلد براحة كبيرة وفخر عميق.\n\nبدأت صفحة جديدة: البناء، التعلّم، ونقل الذاكرة.",
+    ),
+  },
+  {
+    icon: "🌱",
+    title: L("Une mémoire vivante", "A memory that lives on", "ذاكرةٌ حيّة"),
+    guide: L(
+      "Et aujourd’hui, que gardons-nous ?",
+      "And today, what do we carry forward?",
+      "واليوم، ماذا نحمل معنا؟",
+    ),
+    body: L(
+      "Aujourd’hui, cette histoire continue de définir l’identité du pays. Elle rappelle la valeur de la liberté, de la dignité et de la solidarité.\n\nSe souvenir avec respect, c’est aussi apprendre à construire un avenir plus juste.",
+      "Today, this history continues to shape the nation’s identity. It reminds us of the value of freedom, dignity, and solidarity.\n\nRemembering with respect also teaches us how to build a fairer future.",
+      "اليوم، لا تزال هذه المرحلة تشكل هوية البلاد. وتذكّرنا بقيمة الحرية والكرامة والتضامن.\n\nأن نتذكّر باحترام يعني أيضًا أن نتعلّم بناء مستقبل أكثر عدلًا.",
+    ),
+  },
+];
+
 export const DECADE_SCENES: StoryScene[] = [
   {
     icon: "🌫️",

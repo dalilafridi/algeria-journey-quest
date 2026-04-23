@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
 import { Header } from "@/components/Header";
 import { AmazighSymbol } from "@/components/brand/AmazighSymbol";
@@ -16,8 +16,7 @@ import {
   type DailyQuestion,
 } from "@/components/moments/Immersive";
 import { StoryFlow } from "@/components/story/StoryFlow";
-import { TAFSUT_SCENES, DECADE_SCENES, EDUCATION_SCENES } from "@/data/storyScenes";
-import { Link } from "@tanstack/react-router";
+import { TAFSUT_SCENES, DECADE_SCENES, EDUCATION_SCENES, INDEPENDENCE_WAR_SCENES } from "@/data/storyScenes";
 
 // ============================================================
 // Route
@@ -29,13 +28,13 @@ export const Route = createFileRoute("/moments")({
       {
         name: "description",
         content:
-          "A gentle, museum-style page for children: Tafsut Imazighen (1980) and the Black Decade (1990s). Identity, courage, memory, and peace.",
+          "A gentle, museum-style page for children: identity, courage, memory, freedom, and peace in Algerian history.",
       },
       { property: "og:title", content: "Moments That Shaped Algeria" },
       {
         property: "og:description",
         content:
-          "Two pivotal chapters of modern Algerian history, told with care for young learners.",
+          "Pivotal chapters of modern Algerian history, told with care for young learners.",
       },
     ],
   }),
@@ -60,9 +59,9 @@ const UI = {
       "لحظات صنعت الجزائر",
     ),
     subtitle: L(
-      "Identité, courage, mémoire et paix — deux chapitres essentiels de l'histoire algérienne, racontés avec douceur.",
-      "Identity, courage, memory, and peace — two essential chapters of Algerian history, told with care.",
-      "الهوية، الشجاعة، الذاكرة والسلام — فصلان أساسيان من تاريخ الجزائر، يُرويان برفق.",
+      "Identité, courage, mémoire, liberté et paix — des chapitres essentiels de l'histoire algérienne, racontés avec douceur.",
+      "Identity, courage, memory, freedom, and peace — essential chapters of Algerian history, told with care.",
+      "الهوية، الشجاعة، الذاكرة، الحرية والسلام — فصول أساسية من تاريخ الجزائر، تُروى برفق.",
     ),
     badge: L("Salle d'exposition", "Exhibition Hall", "قاعة العرض"),
   },
@@ -1087,6 +1086,71 @@ function MomentsPage() {
         <MuseumReveal className="mt-6">
           <MapSection regions={regions} lang={lang} />
         </MuseumReveal>
+
+        <SectionDivider />
+
+        {/* ---------- WAR OF INDEPENDENCE ---------- */}
+        <section aria-labelledby="independence-war-title" className="space-y-5">
+          <MuseumReveal>
+            <div className="text-center">
+              <Eyebrow>1954–1962 · {tr(L("Liberté", "Freedom", "حرية"), lang)}</Eyebrow>
+              <h2
+                id="independence-war-title"
+                className="mt-3 text-2xl sm:text-3xl font-extrabold tracking-tight"
+              >
+                {tr(L("Guerre d’indépendance", "War of Independence", "ثورة التحرير"), lang)}
+              </h2>
+              <p className="mt-3 text-sm sm:text-base text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+                {tr(
+                  L(
+                    "Un récit calme et respectueux sur le chemin de l’Algérie vers la liberté.",
+                    "A calm and respectful story about Algeria’s path toward freedom.",
+                    "قصة هادئة ومحترمة عن طريق الجزائر نحو الحرية.",
+                  ),
+                  lang,
+                )}
+              </p>
+            </div>
+          </MuseumReveal>
+
+          <GuideBubble
+            text={L(
+              "Ce récit parle d’un sujet sérieux. Il met l’accent sur le courage, la dignité et la mémoire.",
+              "This story covers a serious subject. It focuses on courage, dignity, and memory.",
+              "تتناول هذه القصة موضوعًا جادًا. وتركّز على الشجاعة والكرامة والذاكرة.",
+            )}
+            lang={lang}
+          />
+
+          <MuseumReveal>
+            <StoryFlow
+              scenes={INDEPENDENCE_WAR_SCENES}
+              accent="var(--primary)"
+              title={L("Guerre d’indépendance", "War of Independence", "ثورة التحرير")}
+            />
+          </MuseumReveal>
+
+          <MuseumReveal>
+            <div className="flex flex-wrap justify-center gap-2.5">
+              {[
+                { id: "ben-mhidi", label: "Ben M’hidi" },
+                { id: "mostefa-ben-boulaid", label: "Ben Boulaïd" },
+                { id: "abane-ramdane", label: "Abane Ramdane" },
+              ].map((figure) => (
+                <Link
+                  key={figure.id}
+                  to="/figures/$figureId"
+                  params={{ figureId: figure.id }}
+                  className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-border bg-card/80 text-sm font-semibold text-foreground/85 hover:text-foreground hover:border-primary/40 transition"
+                >
+                  <span aria-hidden>👤</span>
+                  {figure.label}
+                  <span aria-hidden>{lang === "ar" ? "←" : "→"}</span>
+                </Link>
+              ))}
+            </div>
+          </MuseumReveal>
+        </section>
 
         <SectionDivider />
 
