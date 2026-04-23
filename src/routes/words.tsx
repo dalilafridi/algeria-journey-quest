@@ -100,7 +100,11 @@ function WordsPage() {
         ? typeof openWord.quote === "string"
           ? { fr: openWord.quote, en: openWord.quote, ar: openWord.quote }
           : openWord.quote
-        : cat?.label,
+        : cat
+          ? typeof cat.label === "string"
+            ? { fr: cat.label, en: cat.label, ar: cat.label }
+            : cat.label
+          : undefined,
       href: openWord ? `/words#word-${openWord.id}` : "/words",
     });
   }, [activeCat, openId]);
