@@ -158,15 +158,9 @@ export const INDEPENDENCE_WAR_SCENES: StoryScene[] = [
     icon: "🕯️",
     title: L("Le désir de liberté", "The desire for freedom", "الرغبة في الحرية"),
     body: L(
-      "Peu à peu, la conscience grandit. Des femmes et des hommes parlent d’égalité, d’identité et du droit de vivre libres sur leur terre.
-
-Dans les villes, les villages et les montagnes, une même idée avance : l’Algérie doit choisir son destin.",
-      "Little by little, awareness grew. Women and men spoke of equality, identity, and the right to live freely on their land.
-
-In cities, villages, and mountains, one idea moved forward: Algeria should choose its own destiny.",
-      "شيئًا فشيئًا، نما الوعي. تحدّث رجال ونساء عن المساواة والهوية والحق في العيش بحرية على أرضهم.
-
-في المدن والقرى والجبال، تقدّمت فكرة واحدة: يجب أن تختار الجزائر مصيرها بنفسها.",
+      "Peu à peu, la conscience grandit. Des femmes et des hommes parlent d’égalité, d’identité et du droit de vivre libres sur leur terre.\n\nDans les villes, les villages et les montagnes, une même idée avance : l’Algérie doit choisir son destin.",
+      "Little by little, awareness grew. Women and men spoke of equality, identity, and the right to live freely on their land.\n\nIn cities, villages, and mountains, one idea moved forward: Algeria should choose its own destiny.",
+      "شيئًا فشيئًا، نما الوعي. تحدّث رجال ونساء عن المساواة والهوية والحق في العيش بحرية على أرضهم.\n\nفي المدن والقرى والجبال، تقدّمت فكرة واحدة: يجب أن تختار الجزائر مصيرها بنفسها.",
     ),
   },
   {
@@ -187,15 +181,9 @@ In cities, villages, and mountains, one idea moved forward: Algeria should choos
     icon: "🤝",
     title: L("Un peuple uni", "A people united", "شعبٌ متّحد"),
     body: L(
-      "Le FLN rassemble des Algériens de régions et de milieux différents. Des noms comme Ben M’hidi, Ben Boulaïd et Abane Ramdane rappellent cette diversité d’engagement.
-
-La force du mouvement vient aussi de cette unité : chacun apporte ce qu’il peut.",
-      "The FLN brought together Algerians from different regions and backgrounds. Names like Ben M’hidi, Ben Boulaïd, and Abane Ramdane remind us of this shared commitment.
-
-The movement’s strength also came from unity: each person gave what they could.",
-      "جمع جبهة التحرير الوطني جزائريين من مناطق وخلفيات مختلفة. وتذكّرنا أسماء مثل بن مهيدي وبن بولعيد وعبان رمضان بهذا الالتزام المشترك.
-
-جاءت قوة الحركة أيضًا من الوحدة: كلّ شخص قدّم ما استطاع.",
+      "Le FLN rassemble des Algériens de régions et de milieux différents. Des noms comme Ben M’hidi, Ben Boulaïd et Abane Ramdane rappellent cette diversité d’engagement.\n\nLa force du mouvement vient aussi de cette unité : chacun apporte ce qu’il peut.",
+      "The FLN brought together Algerians from different regions and backgrounds. Names like Ben M’hidi, Ben Boulaïd, and Abane Ramdane remind us of this shared commitment.\n\nThe movement’s strength also came from unity: each person gave what they could.",
+      "جمع جبهة التحرير الوطني جزائريين من مناطق وخلفيات مختلفة. وتذكّرنا أسماء مثل بن مهيدي وبن بولعيد وعبان رمضان بهذا الالتزام المشترك.\n\nجاءت قوة الحركة أيضًا من الوحدة: كلّ شخص قدّم ما استطاع.",
     ),
   },
   {
