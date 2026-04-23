@@ -183,6 +183,66 @@ export const wordsQuiz: WordsQuizItem[] = [
       "فرانز فانون في «معذّبو الأرض» — كُتب في الجزائر إبّان حرب التحرير.",
     ),
   },
+  {
+    wordId: "imache-ideas",
+    kind: "who-said",
+    question: L(
+      "Who said: \"We must not follow men, but ideas\"?",
+      "Qui a dit : « Il ne faut pas suivre les hommes, mais les idées » ?",
+      "من قال: «لا يجب أن نتبع الأشخاص، بل الأفكار»؟",
+    ),
+    options: [
+      L("Amar Imache", "Amar Imache", "عمار إيماش"),
+      L("Messali Hadj", "Messali Hadj", "مصالي الحاج"),
+      L("Ferhat Abbas", "Ferhat Abbas", "فرحات عباس"),
+      L("Frantz Fanon", "Frantz Fanon", "فرانز فانون"),
+    ],
+    correctIndex: 0,
+    explanation: L(
+      "Amar Imache — early nationalist who rejected personality cults and championed a plural, democratic Algeria.",
+      "Amar Imache — militant nationaliste qui rejetait le culte du chef et défendait une Algérie plurielle et démocratique.",
+      "عمار إيماش — مناضل وطني مبكر رفض عبادة الأشخاص ودعا إلى جزائر تعددية وديمقراطية.",
+    ),
+  },
+  {
+    wordId: "imache-ideas",
+    kind: "who-am-i",
+    question: L(
+      "\"I believed people should follow ideas, not individuals.\" — who am I?",
+      "« Je pensais qu'il fallait suivre les idées, et non les individus. » — qui suis-je ?",
+      "«آمنتُ بأن على الناس اتباع الأفكار لا الأشخاص» — من أكون؟",
+    ),
+    options: [
+      L("Amar Imache", "Amar Imache", "عمار إيماش"),
+      L("Messali Hadj", "Messali Hadj", "مصالي الحاج"),
+      L("Ahmed Ben Bella", "Ahmed Ben Bella", "أحمد بن بلة"),
+    ],
+    correctIndex: 0,
+    explanation: L(
+      "Amar Imache — a Kabyle nationalist who advocated for a plural, idea-driven Algeria within the Étoile nord-africaine.",
+      "Amar Imache — nationaliste kabyle qui défendait une Algérie plurielle, fondée sur les idées, au sein de l'Étoile nord-africaine.",
+      "عمار إيماش — مناضل قبائلي دافع عن جزائر تعددية قائمة على الأفكار ضمن نجم شمال أفريقيا.",
+    ),
+  },
+  {
+    wordId: "imache-ideas",
+    kind: "true-false",
+    question: L(
+      "Amar Imache supported personality cults.",
+      "Amar Imache soutenait le culte de la personnalité.",
+      "كان عمار إيماش يؤيّد عبادة الأشخاص.",
+    ),
+    options: [
+      L("True", "Vrai", "صحيح"),
+      L("False", "Faux", "خطأ"),
+    ],
+    correctIndex: 1,
+    explanation: L(
+      "False — he rejected personality cults and urged people to follow ideas rather than individuals.",
+      "Faux — il rejetait le culte du chef et appelait à suivre les idées plutôt que les individus.",
+      "خطأ — رفض عبادة الأشخاص ودعا إلى اتباع الأفكار بدل الأفراد.",
+    ),
+  },
 
   // ---------- Cultural Expression ----------
   {

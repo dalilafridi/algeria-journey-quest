@@ -2125,6 +2125,35 @@ export const figures: Figure[] = [
       "لحّن قصيدته «قسماً» الموسيقار المصري محمد فوزي، وتم اعتمادها نشيدًا وطنيًا للجزائر عند الاستقلال سنة 1962.",
     ),
   },
+  {
+    id: "amar-imache",
+    name: "Amar Imache",
+    displayName: L("Amar Imache", "Amar Imache", "عمار إيماش"),
+    emoji: "🧠",
+    category: "intellectuals-culture",
+    region: "kabylie",
+    era: L(
+      "Architect of a Plural Algeria (early 20th century)",
+      "Architecte d'une Algérie plurielle (début du XXe siècle)",
+      "مهندس الجزائر التعددية (بدايات القرن العشرين)",
+    ),
+    regionLabel: L("Kabylie / East", "Kabylie / Est", "القبائل / الشرق"),
+    story: L(
+      "Amar Imache was an early Algerian nationalist and labor activist from Kabylie, active in political and social movements in the early 20th century. Involved in the Étoile nord-africaine, he promoted a vision of an independent Algeria built on social justice, democracy, and cultural diversity. He rejected personality cults and encouraged people to follow ideas rather than individuals, advocating for a plural Algeria.",
+      "Amar Imache est un militant nationaliste algérien originaire de Kabylie, actif dès les premières décennies du XXe siècle. Engagé dans les mouvements politiques et syndicaux, il participe à l'Étoile nord-africaine et défend une vision d'une Algérie indépendante, sociale et démocratique. Il rejette le culte du chef et appelle à suivre des idées plutôt que des individus, mettant en avant une Algérie plurielle fondée sur la diversité culturelle.",
+      "كان عمار إيماش من أوائل المناضلين الوطنيين الجزائريين، وُلد في منطقة القبائل ونشط في الحركات السياسية والنقابية في بدايات القرن العشرين. شارك في نجم شمال أفريقيا ودافع عن رؤية لجزائر مستقلة تقوم على العدالة الاجتماعية والديمقراطية والتنوع الثقافي. رفض عبادة الأشخاص ودعا إلى اتباع الأفكار بدل الأفراد، مؤكدًا على فكرة الجزائر التعددية.",
+    ),
+    importance: L(
+      "A forgotten but essential figure for understanding the foundations of Algerian political thought and the early debates of the national movement.",
+      "Une figure oubliée mais essentielle pour comprendre les fondements de la pensée politique algérienne et les débats du mouvement national.",
+      "شخصية منسية لكنها أساسية لفهم أسس الفكر السياسي الجزائري ونقاشات الحركة الوطنية الأولى.",
+    ),
+    fact: L(
+      "He famously argued that people should follow ideas rather than individuals — a quiet rejection of personality cults in early Algerian politics.",
+      "Il affirmait qu'il fallait suivre les idées plutôt que les hommes — un refus discret du culte du chef dans la politique algérienne naissante.",
+      "اشتُهر بقوله إن على الناس أن يتبعوا الأفكار لا الأشخاص — رفضًا هادئًا لعبادة الفرد في السياسة الجزائرية المبكرة.",
+    ),
+  },
 ];
 
 // ---------- Lookups ----------
