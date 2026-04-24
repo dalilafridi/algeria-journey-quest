@@ -59,6 +59,12 @@ function FiguresIndex() {
           >
             {tu("guessThisFigureCta", lang)}
           </Link>
+          <div className="mt-3 text-sm text-muted-foreground">
+            {lang === "fr" ? "Relié aux" : lang === "ar" ? "مرتبط بـ" : "Related to"}{" "}
+            <Link to="/map" className="font-semibold text-primary hover:underline">
+              {lang === "fr" ? "régions" : lang === "ar" ? "المناطق" : "regions"}
+            </Link>
+          </div>
         </div>
 
         {/* Filters */}
@@ -132,6 +138,9 @@ function FiguresIndex() {
                   ? "تروي السينما الهوية الجزائرية عبر الذاكرة والشباب والنساء والمجتمع والمقاومة."
                   : "Cinema tells Algerian identity through memory, youth, women, society and resistance."}
             </p>
+            <Link to="/moments" className="mt-3 inline-block text-sm font-semibold text-primary hover:underline">
+              {lang === "fr" ? "Related · Explorer les récits" : lang === "ar" ? "مرتبط · استكشف القصص" : "Related · Explore stories"} →
+            </Link>
           </div>
 
           <div className="mt-5 flex flex-wrap gap-2">
