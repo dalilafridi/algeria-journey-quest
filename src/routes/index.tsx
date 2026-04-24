@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useState } from "react";
+import { ContinueJourneyCard } from "@/components/ContinueJourneyCard";
 import { Header } from "@/components/Header";
 import { dailyFacts } from "@/data/eras";
 import { t, tu, useLang } from "@/lib/i18n";
@@ -27,7 +27,6 @@ export const Route = createFileRoute("/")({
 function Home() {
   const lang = useLang();
   const fact = dailyFacts[new Date().getDate() % dailyFacts.length];
-  const [showPaths, setShowPaths] = useState(false);
 
   const copy = {
     title: {
@@ -42,241 +41,209 @@ function Home() {
     },
     regions: { en: "Discover the Regions", fr: "Découvrir les régions", ar: "اكتشف المناطق" },
     culture: { en: "Explore Culture", fr: "Explorer la culture", ar: "استكشف الثقافة" },
-    choosePath: { en: "Choose your path", fr: "Choisissez votre parcours", ar: "اختر مسارك" },
-    paths: [
+    explore: { en: "Explore", fr: "Explorer", ar: "استكشف" },
+    featuredStory: { en: "Featured Story", fr: "Récit à découvrir", ar: "قصة مختارة" },
+    featuredTitle: {
+      en: "A journey through memory, identity and independence",
+      fr: "Un voyage entre mémoire, identité et indépendance",
+      ar: "رحلة عبر الذاكرة والهوية والاستقلال",
+    },
+    featuredDesc: {
+      en: "Begin with the main historical path, then branch into regions, figures and culture at your own pace.",
+      fr: "Commencez par le parcours historique principal, puis explorez les régions, les figures et la culture à votre rythme.",
+      ar: "ابدأ بالمسار التاريخي الرئيسي، ثم انتقل إلى المناطق والشخصيات والثقافة حسب وتيرتك.",
+    },
+    regionsPreview: { en: "Regions Preview", fr: "Aperçu des régions", ar: "لمحة عن المناطق" },
+    culturePreview: { en: "Culture Preview", fr: "Aperçu culturel", ar: "لمحة ثقافية" },
+    footer: {
+      en: "Algeria Through Time — a calm cultural journey through land, memory and language.",
+      fr: "Algeria Through Time — un voyage culturel paisible entre terres, mémoire et langue.",
+      ar: "Algeria Through Time — رحلة ثقافية هادئة عبر الأرض والذاكرة واللغة.",
+    },
+    entries: [
       {
         icon: "📜",
-        title: { en: "History Journey", fr: "Voyage historique", ar: "رحلة التاريخ" },
-        desc: { en: "Follow the main story from education and identity to independence.", fr: "Suivez le récit principal, de l’éducation et l’identité à l’indépendance.", ar: "اتبع الحكاية الأساسية من التعليم والهوية إلى الاستقلال." },
+        title: { en: "History", fr: "Histoire", ar: "التاريخ" },
+        desc: { en: "Follow Algeria’s story through eras, moments and independence.", fr: "Suivez l’histoire de l’Algérie à travers les époques, les moments et l’indépendance.", ar: "اتبع حكاية الجزائر عبر العصور واللحظات والاستقلال." },
         to: "/timeline" as const,
       },
       {
-        icon: "🎬",
-        title: { en: "Cultural Journey", fr: "Voyage culturel", ar: "رحلة ثقافية" },
-        desc: { en: "Enter through words, cinema, music and identity.", fr: "Entrez par les paroles, le cinéma, la musique et l’identité.", ar: "ادخل عبر الكلمات والسينما والموسيقى والهوية." },
-        to: "/words" as const,
-      },
-      {
         icon: "🏔️",
-        title: { en: "Explore Algeria", fr: "Explorer l’Algérie", ar: "استكشف الجزائر" },
-        desc: { en: "Travel region by region through places, figures and living memory.", fr: "Voyagez région par région à travers les lieux, les figures et la mémoire vivante.", ar: "سافر منطقةً بمنطقة عبر الأماكن والشخصيات والذاكرة الحية." },
+        title: { en: "Regions", fr: "Régions", ar: "المناطق" },
+        desc: { en: "Travel across places, landscapes and local memory.", fr: "Parcourez les lieux, les paysages et les mémoires locales.", ar: "تنقّل بين الأماكن والمناظر والذاكرة المحلية." },
         to: "/map" as const,
       },
+      {
+        icon: "🎬",
+        title: { en: "Culture", fr: "Culture", ar: "الثقافة" },
+        desc: { en: "Enter through words, cinema, ideas and living identity.", fr: "Entrez par les mots, le cinéma, les idées et l’identité vivante.", ar: "ادخل عبر الكلمات والسينما والأفكار والهوية الحية." },
+        to: "/words" as const,
+      },
+    ],
+    regionLinks: [
+      { icon: "🗺️", title: { en: "Region Explorer", fr: "Explorateur des régions", ar: "مستكشف المناطق" }, to: "/map" as const },
+      { icon: "👤", title: { en: "Great Figures", fr: "Grandes figures", ar: "شخصيات بارزة" }, to: "/figures" as const },
+      { icon: "🕊️", title: { en: "Shaping Moments", fr: "Moments fondateurs", ar: "لحظات مؤسسة" }, to: "/moments" as const },
+    ],
+    cultureLinks: [
+      { icon: "💬", title: { en: "Words & Ideas", fr: "Mots & idées", ar: "كلمات وأفكار" }, to: "/words" as const },
+      { icon: "🎬", title: { en: "Cinema & Film", fr: "Cinéma & film", ar: "السينما والفيلم" }, to: "/figures" as const },
+      { icon: "⏱️", title: { en: "One-Minute Lessons", fr: "Leçons d’une minute", ar: "دروس دقيقة واحدة" }, to: "/lessons" as const },
     ],
   };
 
   return (
     <div className="min-h-screen">
       <Header />
-      <main
-        className="px-4 py-10 sm:py-16"
-        style={{ background: "var(--gradient-hero)" }}
-      >
-        <div className="max-w-4xl mx-auto text-center animate-float-up">
-          <div className="flex justify-center mb-6">
-            <img
-              src={brandCover}
-              alt="Algeria Through Time"
-              className="w-56 sm:w-72 h-auto rounded-3xl"
-              style={{ boxShadow: "var(--shadow-gold-glow)" }}
-            />
+      <main style={{ background: "var(--gradient-hero)" }}>
+        <section className="px-4 pt-10 pb-8 sm:pt-16 sm:pb-10">
+          <div className="mx-auto max-w-5xl text-center animate-float-up">
+            <div className="flex justify-center mb-6">
+              <img
+                src={brandCover}
+                alt="Algeria Through Time"
+                className="w-44 sm:w-60 h-auto rounded-3xl"
+                style={{ boxShadow: "var(--shadow-gold-glow)" }}
+              />
+            </div>
+            <h1 className="mx-auto max-w-3xl text-3xl sm:text-5xl font-extrabold tracking-tight text-foreground">
+              {copy.title[lang]}
+            </h1>
+            <p className="mx-auto mt-4 max-w-2xl text-base sm:text-lg text-foreground/80 leading-relaxed">
+              {copy.subtitle[lang]}
+            </p>
+            <div className="mx-auto mt-8 flex max-w-md flex-col gap-3 sm:flex-row sm:justify-center">
+              <Link
+                to="/timeline"
+                className="rounded-2xl px-6 py-4 text-base font-bold text-primary-foreground transition-transform hover:scale-[1.02] active:scale-95"
+                style={{ background: "var(--gradient-warm)", boxShadow: "var(--shadow-glow)" }}
+              >
+                {tu("startJourney", lang)}
+              </Link>
+              <Link
+                to="/map"
+                className="rounded-2xl border border-border bg-card/85 px-6 py-4 text-base font-bold text-foreground transition-colors hover:border-primary/40"
+                style={{ boxShadow: "var(--shadow-soft)" }}
+              >
+                {copy.explore[lang]}
+              </Link>
+            </div>
           </div>
-          <h1 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-foreground">
-            {copy.title[lang]}
-          </h1>
-          <p className="mx-auto mt-4 text-base sm:text-lg text-foreground/80 leading-relaxed">
-            {copy.subtitle[lang]}
-          </p>
-          <div className="mt-8 grid gap-3 sm:grid-cols-3">
-            <button
-              type="button"
-              onClick={() => setShowPaths((v) => !v)}
-              className="px-5 py-4 rounded-2xl text-base font-bold text-primary-foreground transition-transform hover:scale-[1.02] active:scale-95"
-              style={{ background: "var(--gradient-warm)", boxShadow: "var(--shadow-glow)" }}
-            >
-              {tu("startJourney", lang)}
-            </button>
-            <Link
-              to="/map"
-              className="px-5 py-4 rounded-2xl text-base font-bold bg-card text-foreground border border-border hover:border-primary/40 transition-colors"
-              style={{ boxShadow: "var(--shadow-soft)" }}
-            >
-              {copy.regions[lang]}
-            </Link>
-            <Link
-              to="/words"
-              className="px-5 py-4 rounded-2xl text-base font-bold bg-card/80 text-foreground border border-border hover:border-secondary/50 transition-colors"
-            >
-              {copy.culture[lang]}
-            </Link>
+        </section>
+
+        <ContinueJourneyCard />
+
+        <section className="mx-auto max-w-5xl px-4 py-8 sm:py-10">
+          <div className="grid gap-4 sm:grid-cols-3">
+            {copy.entries.map((entry) => (
+              <Link
+                key={entry.to}
+                to={entry.to}
+                className="card-hover rounded-2xl border border-border bg-card/90 p-5 text-center transition-colors hover:border-primary/40"
+                style={{ boxShadow: "var(--shadow-soft)" }}
+              >
+                <div className="text-3xl" aria-hidden>{entry.icon}</div>
+                <h2 className="mt-3 text-lg font-bold">{t(entry.title, lang)}</h2>
+                <p className="mx-auto mt-2 text-sm leading-relaxed text-muted-foreground">{t(entry.desc, lang)}</p>
+              </Link>
+            ))}
           </div>
+        </section>
 
-          {showPaths && (
-            <section className="mt-6 text-left animate-float-up" aria-label={copy.choosePath[lang]}>
-              <div className="text-center text-xs font-bold uppercase tracking-wider text-muted-foreground mb-3">
-                {copy.choosePath[lang]}
-              </div>
-              <div className="grid gap-3 sm:grid-cols-3">
-                {copy.paths.map((path) => (
-                  <Link
-                    key={path.to}
-                    to={path.to}
-                    className="rounded-2xl border border-border bg-card/90 p-4 hover:border-primary/40 transition card-hover"
-                    style={{ boxShadow: "var(--shadow-soft)" }}
-                  >
-                    <div className="text-2xl" aria-hidden>{path.icon}</div>
-                    <h2 className="mt-2 font-bold text-base">{t(path.title, lang)}</h2>
-                    <p className="mt-1 text-sm text-muted-foreground leading-relaxed">{t(path.desc, lang)}</p>
-                  </Link>
-                ))}
-              </div>
-            </section>
-          )}
-        </div>
-      </main>
-
-      <section className="max-w-3xl mx-auto px-4 py-12 grid sm:grid-cols-3 gap-4">
-        {[
-          { icon: "📜", title: tu("fiveEras", lang), desc: tu("fiveErasDesc", lang) },
-          { icon: "🎯", title: tu("funQuizzes", lang), desc: tu("funQuizzesDesc", lang) },
-          { icon: "🏆", title: tu("earnBadges", lang), desc: tu("earnBadgesDesc", lang) },
-        ].map((f) => (
-          <div
-            key={f.title}
-            className="card-hover rounded-2xl bg-card p-5 text-center border border-border"
+        <section className="mx-auto max-w-5xl px-4 pb-8 sm:pb-10">
+          <Link
+            to="/timeline"
+            className="group block overflow-hidden rounded-3xl border border-secondary/40 bg-card/90 p-6 transition-colors hover:border-secondary sm:p-8"
             style={{ boxShadow: "var(--shadow-soft)" }}
           >
-            <div className="text-3xl mb-2">{f.icon}</div>
-            <h3 className="font-bold">{f.title}</h3>
-            <p className="text-sm text-muted-foreground mt-1 leading-relaxed">{f.desc}</p>
+            <div className="grid gap-5 sm:grid-cols-[1fr_auto] sm:items-center">
+              <div>
+                <div className="text-xs font-bold uppercase tracking-wider text-secondary">
+                  {copy.featuredStory[lang]}
+                </div>
+                <h2 className="mt-2 max-w-2xl text-2xl font-extrabold sm:text-3xl">
+                  {copy.featuredTitle[lang]}
+                </h2>
+                <p className="mt-3 text-sm leading-relaxed text-muted-foreground sm:text-base">
+                  {copy.featuredDesc[lang]}
+                </p>
+              </div>
+              <div className="flex h-20 w-20 items-center justify-center rounded-3xl bg-muted text-4xl transition-transform group-hover:scale-105" aria-hidden>
+                🕊️
+              </div>
+            </div>
           </div>
-        ))}
-      </section>
+          </Link>
+        </section>
 
-      <section className="max-w-3xl mx-auto px-4 pb-4 grid sm:grid-cols-2 gap-4">
-        <Link
-          to="/figures"
-          className="card-hover rounded-2xl bg-card p-5 border border-border hover:border-primary/40 transition-colors group"
-          style={{ boxShadow: "var(--shadow-soft)" }}
-        >
-          <div className="text-3xl mb-2">👤</div>
-          <h3 className="font-bold">{tu("homeFiguresTitle", lang)}</h3>
-          <p className="text-sm text-muted-foreground">{tu("homeFiguresDesc", lang)}</p>
-          <div className="mt-3 text-sm font-semibold text-primary group-hover:underline">
-            {tu("exploreFigures", lang)} →
+        <section className="mx-auto grid max-w-5xl gap-4 px-4 pb-8 sm:grid-cols-2 sm:pb-10">
+          <div className="rounded-3xl border border-border bg-card/85 p-5 sm:p-6" style={{ boxShadow: "var(--shadow-soft)" }}>
+            <div className="mb-4 flex items-center justify-between gap-3">
+              <h2 className="text-xl font-extrabold">{copy.regionsPreview[lang]}</h2>
+              <Link to="/map" className="text-sm font-bold text-primary hover:underline">
+                {copy.regions[lang]} →
+              </Link>
+            </div>
+            <div className="grid gap-3">
+              {copy.regionLinks.map((item) => (
+                <Link
+                  key={item.to}
+                  to={item.to}
+                  className="flex items-center gap-3 rounded-2xl border border-border bg-background/45 p-3 transition-colors hover:border-primary/40"
+                >
+                  <span className="text-2xl" aria-hidden>{item.icon}</span>
+                  <span className="font-semibold">{t(item.title, lang)}</span>
+                </Link>
+              ))}
+            </div>
           </div>
-        </Link>
-        <Link
-          to="/figures/quiz"
-          className="card-hover rounded-2xl bg-card p-5 border border-border hover:border-primary/40 transition-colors group"
-          style={{ boxShadow: "var(--shadow-soft)" }}
-        >
-          <div className="text-3xl mb-2">🕵️</div>
-          <h3 className="font-bold">{tu("guessTheFigure", lang)}</h3>
-          <p className="text-sm text-muted-foreground">{tu("guessTheFigureDesc", lang)}</p>
-          <div className="mt-3 text-sm font-semibold text-primary group-hover:underline">
-            {tu("startGuessQuiz", lang)} →
-          </div>
-        </Link>
-        <Link
-          to="/lessons"
-          className="card-hover rounded-2xl bg-card p-5 border border-border hover:border-primary/40 transition-colors group"
-          style={{ boxShadow: "var(--shadow-soft)" }}
-        >
-          <div className="text-3xl mb-2">⏱️</div>
-          <h3 className="font-bold">{tu("oneMinuteLesson", lang)}</h3>
-          <p className="text-sm text-muted-foreground">{tu("lessonsHomeDesc", lang)}</p>
-          <div className="mt-3 text-sm font-semibold text-primary group-hover:underline">
-            {tu("lessons", lang)} →
-          </div>
-        </Link>
-        <Link
-          to="/map"
-          className="card-hover rounded-2xl bg-card p-5 border border-border hover:border-primary/40 transition-colors group"
-          style={{ boxShadow: "var(--shadow-soft)" }}
-        >
-          <div className="text-3xl mb-2">🗺️</div>
-          <h3 className="font-bold">{tu("mapExplorer", lang)}</h3>
-          <p className="text-sm text-muted-foreground">{tu("mapExplorerDesc", lang)}</p>
-          <div className="mt-3 text-sm font-semibold text-primary group-hover:underline">
-            {tu("mapExplorer", lang)} →
-          </div>
-        </Link>
-      </section>
 
-      <section className="max-w-3xl mx-auto px-4 pb-4">
-        <Link
-          to="/moments"
-          className="block rounded-2xl p-5 sm:p-6 border border-secondary/40 hover:border-secondary transition group relative overflow-hidden"
-          style={{
-            background:
-              "linear-gradient(135deg, color-mix(in oklab, var(--secondary) 18%, var(--card)), var(--card))",
-            boxShadow: "var(--shadow-soft)",
-          }}
-        >
+          <div className="rounded-3xl border border-border bg-card/85 p-5 sm:p-6" style={{ boxShadow: "var(--shadow-soft)" }}>
+            <div className="mb-4 flex items-center justify-between gap-3">
+              <h2 className="text-xl font-extrabold">{copy.culturePreview[lang]}</h2>
+              <Link to="/words" className="text-sm font-bold text-primary hover:underline">
+                {copy.culture[lang]} →
+              </Link>
+            </div>
+            <div className="grid gap-3">
+              {copy.cultureLinks.map((item) => (
+                <Link
+                  key={`${item.to}-${t(item.title, lang)}`}
+                  to={item.to}
+                  className="flex items-center gap-3 rounded-2xl border border-border bg-background/45 p-3 transition-colors hover:border-primary/40"
+                >
+                  <span className="text-2xl" aria-hidden>{item.icon}</span>
+                  <span className="font-semibold">{t(item.title, lang)}</span>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="mx-auto max-w-5xl px-4 pb-12 sm:pb-16">
           <div
-            className="absolute -right-6 -top-6 text-7xl opacity-10 select-none pointer-events-none"
-            aria-hidden
+            className="rounded-3xl border border-accent/40 p-5 sm:p-6"
+            style={{
+              backgroundColor: "color-mix(in oklab, var(--accent) 18%, var(--card))",
+              boxShadow: "var(--shadow-soft)",
+            }}
           >
-            ⵣ
-          </div>
-          <div className="flex items-start gap-3 relative">
-            <div className="text-3xl">🕊️</div>
-            <div className="min-w-0">
-              <div className="text-[11px] font-bold uppercase tracking-wider text-secondary mb-1">
-                {lang === "fr"
-                  ? "Mémoire & identité"
-                  : lang === "ar"
-                    ? "ذاكرة وهوية"
-                    : "Memory & identity"}
-              </div>
-              <h3 className="font-bold text-lg">
-                {lang === "fr"
-                  ? "Moments qui ont façonné l'Algérie"
-                  : lang === "ar"
-                    ? "لحظات صنعت الجزائر"
-                    : "Moments That Shaped Algeria"}
-              </h3>
-              <p className="text-sm text-muted-foreground mt-1">
-                {lang === "fr"
-                  ? "Tafsut Imazighen (1980) et la Décennie Noire (1990s), racontés avec douceur."
-                  : lang === "ar"
-                    ? "تافسوت إمازيغن (1980) والعشرية السوداء (التسعينيات)، بأسلوب لطيف."
-                    : "Tafsut Imazighen (1980) and the Black Decade (1990s), told with care."}
-              </p>
-              <div className="mt-3 text-sm font-semibold text-secondary group-hover:underline">
-                {lang === "fr"
-                  ? "Découvrir"
-                  : lang === "ar"
-                    ? "اكتشف"
-                    : "Discover"}{" "}
-                →
+            <div className="flex items-start gap-3">
+              <div className="text-3xl" aria-hidden>💡</div>
+              <div>
+                <div className="text-xs font-bold uppercase tracking-wider text-accent-foreground/80">
+                  {tu("didYouKnow", lang)}
+                </div>
+                <p className="mt-1 text-foreground font-medium">{t(fact, lang)}</p>
               </div>
             </div>
           </div>
-        </Link>
-      </section>
+        </section>
+      </main>
 
-      <section className="max-w-3xl mx-auto px-4 pb-16">
-        <div
-          className="rounded-2xl p-6 border border-accent/40"
-          style={{
-            background: "linear-gradient(135deg, var(--accent) / 0.15, transparent)",
-            backgroundColor: "color-mix(in oklab, var(--accent) 18%, var(--card))",
-            boxShadow: "var(--shadow-soft)",
-          }}
-        >
-          <div className="flex items-start gap-3">
-            <div className="text-3xl">💡</div>
-            <div>
-              <div className="text-xs font-bold uppercase tracking-wider text-accent-foreground/80">
-                {tu("didYouKnow", lang)}
-              </div>
-              <p className="mt-1 text-foreground font-medium">{t(fact, lang)}</p>
-            </div>
-          </div>
-        </div>
-      </section>
+      <footer className="border-t border-border bg-card/70 px-4 py-8 text-center">
+        <p className="mx-auto max-w-2xl text-sm text-muted-foreground">{copy.footer[lang]}</p>
+      </footer>
     </div>
   );
 }
