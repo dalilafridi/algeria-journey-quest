@@ -12,6 +12,7 @@ import islamicImg from "@/assets/era-islamic.png";
 import ottomanImg from "@/assets/era-ottoman.jpg";
 import frenchImg from "@/assets/era-french.png";
 import independenceImg from "@/assets/era-independence.png";
+import { saveJourneyPlace } from "@/lib/continuity";
 
 export const Route = createFileRoute("/timeline")({
   head: () => ({
@@ -66,6 +67,15 @@ function Timeline() {
     return () => window.removeEventListener("progress-updated", update);
   }, []);
 
+  useEffect(() => {
+    saveJourneyPlace({
+      section: "story",
+      label: { fr: "Parcours · Histoire", en: "Journey · History", ar: "الرحلة · التاريخ" },
+      description: { fr: "Le récit principal de l’Algérie", en: "The main learning path through Algeria", ar: "المسار التعليمي الأساسي عبر الجزائر" },
+      href: "/timeline",
+    });
+  }, []);
+
   const filtered = useMemo(
     () => eras.filter((e) => filter === "all" || ERA_META[e.id]?.category === filter),
     [filter],
@@ -96,6 +106,15 @@ function Timeline() {
         <div className="text-center mb-6 animate-float-up">
           <h1 className="text-3xl sm:text-4xl font-extrabold">{tu("journeyTitle", lang)}</h1>
           <p className="mt-2 text-muted-foreground">{tu("journeySubtitle", lang)}</p>
+          <div className="mt-4 inline-flex flex-wrap items-center justify-center gap-2 rounded-full border border-border bg-card/70 px-3 py-2 text-xs font-semibold text-muted-foreground">
+            <Link to="/moments" hash="education-title" className="hover:text-primary transition">
+              {lang === "fr" ? "Éducation & Identité" : lang === "ar" ? "التعليم والهوية" : "Education & Identity"}
+            </Link>
+            <span aria-hidden>→</span>
+            <Link to="/moments" hash="independence-war-title" className="hover:text-primary transition">
+              {lang === "fr" ? "Guerre d’indépendance" : lang === "ar" ? "ثورة التحرير" : "War of Independence"}
+            </Link>
+          </div>
         </div>
 
         {/* Filter chips — horizontally scrollable on mobile to avoid wrapping */}
