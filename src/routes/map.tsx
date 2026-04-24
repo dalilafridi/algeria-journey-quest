@@ -32,6 +32,9 @@ const COPY = {
   keyFacts: { en: "Key facts", fr: "Faits clés", ar: "حقائق أساسية" },
   greatFigures: { en: "Great figures", fr: "Grandes figures", ar: "شخصيات بارزة" },
   focus: { en: "Focus", fr: "Thème", ar: "المحور" },
+  keyFigure: { en: "Key figure", fr: "Figure clé", ar: "شخصية بارزة" },
+  keyFact: { en: "Key fact", fr: "Fait clé", ar: "حقيقة بارزة" },
+  relatedFigures: { en: "Related figures", fr: "Figures liées", ar: "شخصيات مرتبطة" },
 } as const;
 
 function RegionExplorerPage() {
@@ -68,6 +71,7 @@ function RegionExplorerPage() {
         <section className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
           {mapRegions.map((r) => {
             const isSel = r.id === selectedId;
+            const keyFigure = getFigure(r.figureIds[0]);
             return (
               <button
                 key={r.id}
@@ -81,7 +85,7 @@ function RegionExplorerPage() {
                 style={isSel ? { boxShadow: "var(--shadow-soft)" } : undefined}
                 aria-pressed={isSel}
               >
-                <div className="flex items-center gap-4">
+                <div className="flex items-start gap-4">
                   <RegionIcon
                     regionId={r.id}
                     className="h-16 w-20 shrink-0 transition-transform duration-200 group-hover:scale-[1.03] sm:h-[4.75rem] sm:w-24"
@@ -89,8 +93,20 @@ function RegionExplorerPage() {
                   <div className="min-w-0">
                     <span className="font-bold text-base sm:text-lg leading-tight">{t(r.name, lang)}</span>
                     <p className="mt-1.5 text-xs sm:text-sm text-muted-foreground leading-snug line-clamp-2">
-                      {t(r.focus, lang)}
+                      {t(r.summary, lang)}
                     </p>
+                    <div className="mt-3 grid gap-1.5 text-[11px] leading-snug text-muted-foreground">
+                      {keyFigure && (
+                        <span>
+                          <span className="font-bold text-foreground/80">{COPY.keyFigure[lang]}:</span>{" "}
+                          {t(keyFigure.displayName, lang)}
+                        </span>
+                      )}
+                      <span className="line-clamp-2">
+                        <span className="font-bold text-foreground/80">{COPY.keyFact[lang]}:</span>{" "}
+                        {t(r.facts[0], lang)}
+                      </span>
+                    </div>
                   </div>
                 </div>
               </button>
@@ -144,6 +160,9 @@ function RegionExplorerPage() {
                 <div className="text-xs font-bold uppercase tracking-wider text-muted-foreground mb-2">
                   {COPY.greatFigures[lang]}
                 </div>
+                <Link to="/figures" className="mb-3 inline-block text-xs font-semibold text-primary hover:underline">
+                  {COPY.relatedFigures[lang]} →
+                </Link>
                 <div className="flex flex-wrap gap-2">
                   {selected.figureIds.map((fid) => {
                     const f = getFigure(fid);
