@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { useState } from "react";
 import { Header } from "@/components/Header";
 import { dailyFacts } from "@/data/eras";
 import { t, tu, useLang } from "@/lib/i18n";
@@ -26,15 +27,52 @@ export const Route = createFileRoute("/")({
 function Home() {
   const lang = useLang();
   const fact = dailyFacts[new Date().getDate() % dailyFacts.length];
+  const [showPaths, setShowPaths] = useState(false);
+
+  const copy = {
+    title: {
+      en: "Explore Algeria Through Time",
+      fr: "Explorez l’Algérie à travers le temps",
+      ar: "اكتشف الجزائر عبر الزمن",
+    },
+    subtitle: {
+      en: "A calm passage through memory, land, language and the people who carried them forward.",
+      fr: "Un passage calme à travers la mémoire, les terres, la langue et celles et ceux qui les ont portées.",
+      ar: "عبور هادئ عبر الذاكرة والأرض واللغة ومن حملوها إلى الأمام.",
+    },
+    regions: { en: "Discover the Regions", fr: "Découvrir les régions", ar: "اكتشف المناطق" },
+    culture: { en: "Explore Culture", fr: "Explorer la culture", ar: "استكشف الثقافة" },
+    choosePath: { en: "Choose your path", fr: "Choisissez votre parcours", ar: "اختر مسارك" },
+    paths: [
+      {
+        icon: "📜",
+        title: { en: "History Journey", fr: "Voyage historique", ar: "رحلة التاريخ" },
+        desc: { en: "Follow the main story from education and identity to independence.", fr: "Suivez le récit principal, de l’éducation et l’identité à l’indépendance.", ar: "اتبع الحكاية الأساسية من التعليم والهوية إلى الاستقلال." },
+        to: "/timeline" as const,
+      },
+      {
+        icon: "🎬",
+        title: { en: "Cultural Journey", fr: "Voyage culturel", ar: "رحلة ثقافية" },
+        desc: { en: "Enter through words, cinema, music and identity.", fr: "Entrez par les paroles, le cinéma, la musique et l’identité.", ar: "ادخل عبر الكلمات والسينما والموسيقى والهوية." },
+        to: "/words" as const,
+      },
+      {
+        icon: "🏔️",
+        title: { en: "Explore Algeria", fr: "Explorer l’Algérie", ar: "استكشف الجزائر" },
+        desc: { en: "Travel region by region through places, figures and living memory.", fr: "Voyagez région par région à travers les lieux, les figures et la mémoire vivante.", ar: "سافر منطقةً بمنطقة عبر الأماكن والشخصيات والذاكرة الحية." },
+        to: "/map" as const,
+      },
+    ],
+  };
 
   return (
     <div className="min-h-screen">
       <Header />
       <main
-        className="px-4 py-12 sm:py-20"
+        className="px-4 py-10 sm:py-16"
         style={{ background: "var(--gradient-hero)" }}
       >
-        <div className="max-w-3xl mx-auto text-center animate-float-up">
+        <div className="max-w-4xl mx-auto text-center animate-float-up">
           <div className="flex justify-center mb-6">
             <img
               src={brandCover}
@@ -43,13 +81,57 @@ function Home() {
               style={{ boxShadow: "var(--shadow-gold-glow)" }}
             />
           </div>
-          <Link
-            to="/timeline"
-            className="inline-block mt-8 px-8 py-4 rounded-2xl text-lg font-bold text-primary-foreground transition-transform hover:scale-105 active:scale-95"
-            style={{ background: "var(--gradient-warm)", boxShadow: "var(--shadow-glow)" }}
-          >
-            {tu("startJourney", lang)}
-          </Link>
+          <h1 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-foreground">
+            {copy.title[lang]}
+          </h1>
+          <p className="mx-auto mt-4 text-base sm:text-lg text-foreground/80 leading-relaxed">
+            {copy.subtitle[lang]}
+          </p>
+          <div className="mt-8 grid gap-3 sm:grid-cols-3">
+            <button
+              type="button"
+              onClick={() => setShowPaths((v) => !v)}
+              className="px-5 py-4 rounded-2xl text-base font-bold text-primary-foreground transition-transform hover:scale-[1.02] active:scale-95"
+              style={{ background: "var(--gradient-warm)", boxShadow: "var(--shadow-glow)" }}
+            >
+              {tu("startJourney", lang)}
+            </button>
+            <Link
+              to="/map"
+              className="px-5 py-4 rounded-2xl text-base font-bold bg-card text-foreground border border-border hover:border-primary/40 transition-colors"
+              style={{ boxShadow: "var(--shadow-soft)" }}
+            >
+              {copy.regions[lang]}
+            </Link>
+            <Link
+              to="/words"
+              className="px-5 py-4 rounded-2xl text-base font-bold bg-card/80 text-foreground border border-border hover:border-secondary/50 transition-colors"
+            >
+              {copy.culture[lang]}
+            </Link>
+          </div>
+
+          {showPaths && (
+            <section className="mt-6 text-left animate-float-up" aria-label={copy.choosePath[lang]}>
+              <div className="text-center text-xs font-bold uppercase tracking-wider text-muted-foreground mb-3">
+                {copy.choosePath[lang]}
+              </div>
+              <div className="grid gap-3 sm:grid-cols-3">
+                {copy.paths.map((path) => (
+                  <Link
+                    key={path.to}
+                    to={path.to}
+                    className="rounded-2xl border border-border bg-card/90 p-4 hover:border-primary/40 transition card-hover"
+                    style={{ boxShadow: "var(--shadow-soft)" }}
+                  >
+                    <div className="text-2xl" aria-hidden>{path.icon}</div>
+                    <h2 className="mt-2 font-bold text-base">{t(path.title, lang)}</h2>
+                    <p className="mt-1 text-sm text-muted-foreground leading-relaxed">{t(path.desc, lang)}</p>
+                  </Link>
+                ))}
+              </div>
+            </section>
+          )}
         </div>
       </main>
 

@@ -58,6 +58,7 @@ const COPY = {
   wotdReveal: { en: "Reveal today's word", fr: "Révéler la parole du jour", ar: "اكشف كلمة اليوم" },
   wotdClaimed: { en: "Read today ✓", fr: "Lue aujourd'hui ✓", ar: "قُرئت اليوم ✓" },
   wotdStreak: { en: "%n-day streak", fr: "Série de %n jours", ar: "متتالية %n يومًا" },
+  relatedIdeas: { en: "Related · Debates & Ideas", fr: "Related · Débats & idées", ar: "مرتبط · نقاشات وأفكار" },
 } as const;
 
 function WordsPage() {
@@ -134,6 +135,9 @@ function WordsPage() {
       <main className="max-w-3xl mx-auto px-4 py-8 safe-pb">
         <h1 className="text-2xl sm:text-3xl font-extrabold">{COPY.title[lang]}</h1>
         <p className="text-muted-foreground mt-1 text-sm sm:text-base leading-relaxed">{COPY.intro[lang]}</p>
+        <Link to="/ideas" className="mt-3 inline-block text-sm font-semibold text-primary hover:underline">
+          {COPY.relatedIdeas[lang]} →
+        </Link>
 
         {/* Word of the Day */}
         <WordOfTheDayWidget

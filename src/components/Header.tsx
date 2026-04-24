@@ -45,6 +45,7 @@ export function Header() {
 
   const T = {
     journey: { fr: "Parcours", en: "Journey", ar: "الرحلة" }[current],
+    culture: { fr: "Culture", en: "Culture", ar: "الثقافة" }[current],
     figures: { fr: "Figures", en: "Figures", ar: "الشخصيات" }[current],
     regions: { fr: "Régions", en: "Regions", ar: "المناطق" }[current],
     words: { fr: "Paroles", en: "Words", ar: "كلمات" }[current],
@@ -63,8 +64,12 @@ export function Header() {
 
   const navLinks = [
     { to: "/timeline" as const, label: T.journey },
-    { to: "/figures" as const, label: T.figures },
     { to: "/map" as const, label: T.regions },
+    { to: "/words" as const, label: T.culture },
+  ];
+
+  const secondaryLinks = [
+    { to: "/figures" as const, label: T.figures },
     { to: "/words" as const, label: T.words },
     { to: "/moments" as const, label: T.moments },
   ];
@@ -110,12 +115,23 @@ export function Header() {
         </Link>
 
         {/* Desktop nav */}
-        <nav className="hidden lg:flex items-center gap-6 flex-1 justify-center">
+        <nav className="hidden lg:flex items-center gap-2 flex-1 justify-center">
           {navLinks.map((l) => (
             <Link
               key={l.to}
               to={l.to}
               className={linkClass}
+              activeProps={{ className: activeLinkClass }}
+            >
+              {l.label}
+            </Link>
+          ))}
+          <span className="mx-1 h-5 w-px bg-border" aria-hidden />
+          {secondaryLinks.map((l) => (
+            <Link
+              key={l.to}
+              to={l.to}
+              className={linkClass + " opacity-80"}
               activeProps={{ className: activeLinkClass }}
             >
               {l.label}
@@ -263,6 +279,17 @@ export function Header() {
                 to={l.to}
                 onClick={() => setMenuOpen(false)}
                 className="px-3 py-3 rounded-xl text-base font-medium text-foreground hover:bg-muted active:bg-muted transition"
+              >
+                {l.label}
+              </Link>
+            ))}
+            <div className="h-px bg-border my-1 mx-3" />
+            {secondaryLinks.map((l) => (
+              <Link
+                key={l.to}
+                to={l.to}
+                onClick={() => setMenuOpen(false)}
+                className="px-3 py-2.5 rounded-xl text-sm font-medium text-muted-foreground hover:bg-muted hover:text-foreground active:bg-muted transition"
               >
                 {l.label}
               </Link>
