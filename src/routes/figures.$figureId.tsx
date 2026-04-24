@@ -4,6 +4,7 @@ import { Header } from "@/components/Header";
 import { eras } from "@/data/eras";
 import { getFigure, figures } from "@/data/figures";
 import { figureExtras } from "@/data/figureExtras";
+import { mapRegions } from "@/data/mapRegions";
 import { t, tu, useLang } from "@/lib/i18n";
 import { StoryFlow, type StoryScene } from "@/components/story/StoryFlow";
 import { saveJourneyPlace } from "@/lib/continuity";
@@ -42,6 +43,7 @@ function FigureDetail() {
   const lang = useLang();
   const era = f.relatedEraId ? eras.find((e) => e.id === f.relatedEraId) : undefined;
   const extras = figureExtras[f.id];
+  const relatedRegion = mapRegions.find((r) => r.id === f.region || (f.region === "mascara-west" && r.id === "oran-west"));
 
   useEffect(() => {
     saveJourneyPlace({
@@ -244,6 +246,15 @@ function FigureDetail() {
               >
                 <span className="text-xl">{era.emoji}</span>
                 <span className="font-semibold">{t(era.title, lang)}</span>
+              </Link>
+            </div>
+          )}
+
+          {relatedRegion && (
+            <div className="mt-4 text-sm text-muted-foreground">
+              {lang === "fr" ? "Related" : lang === "ar" ? "مرتبط" : "Related"}{" · "}
+              <Link to="/map" hash={`region-${relatedRegion.id}`} className="font-semibold text-primary hover:underline">
+                {t(relatedRegion.name, lang)}
               </Link>
             </div>
           )}
