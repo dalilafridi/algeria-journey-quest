@@ -172,7 +172,6 @@ function Home() {
                 🕊️
               </div>
             </div>
-          </div>
           </Link>
         </section>
 
