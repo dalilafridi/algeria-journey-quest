@@ -59,6 +59,16 @@ const COPY = {
   wotdClaimed: { en: "Read today ✓", fr: "Lue aujourd'hui ✓", ar: "قُرئت اليوم ✓" },
   wotdStreak: { en: "%n-day streak", fr: "Série de %n jours", ar: "متتالية %n يومًا" },
   relatedIdeas: { en: "Related · Debates & Ideas", fr: "Related · Débats & idées", ar: "مرتبط · نقاشات وأفكار" },
+  cuisineLink: {
+    en: "Discover the Cuisine of Algeria",
+    fr: "Découvrir la cuisine d'Algérie",
+    ar: "اكتشف مطبخ الجزائر",
+  },
+  cuisineLinkSub: {
+    en: "Where memory, culture, and taste come together",
+    fr: "Là où mémoire, culture et goût se rencontrent",
+    ar: "حيث تلتقي الذاكرة والثقافة والنكهة",
+  },
 } as const;
 
 function WordsPage() {
@@ -137,6 +147,37 @@ function WordsPage() {
         <p className="text-muted-foreground mt-1 text-sm sm:text-base leading-relaxed">{COPY.intro[lang]}</p>
         <Link to="/ideas" className="mt-3 inline-block text-sm font-semibold text-primary hover:underline">
           {COPY.relatedIdeas[lang]} →
+        </Link>
+
+        {/* Cuisine entry — extension of Culture */}
+        <Link
+          to="/cuisine"
+          className="mt-4 group block rounded-2xl border border-border bg-card overflow-hidden transition-all hover:-translate-y-0.5 hover:shadow-md"
+          style={{
+            background:
+              "linear-gradient(120deg, color-mix(in oklab, var(--secondary) 14%, var(--card)) 0%, var(--card) 70%)",
+          }}
+        >
+          <div className="flex items-center gap-3 p-3.5 sm:p-4">
+            <div
+              className="shrink-0 w-12 h-12 rounded-2xl flex items-center justify-center text-2xl"
+              style={{ background: "color-mix(in oklab, var(--secondary) 22%, var(--card))" }}
+              aria-hidden
+            >
+              🍲
+            </div>
+            <div className="min-w-0 flex-1">
+              <div className="text-[10px] font-bold uppercase tracking-wider text-secondary">
+                {COPY.cuisineLink[lang]}
+              </div>
+              <div className="text-sm text-muted-foreground italic leading-snug">
+                {COPY.cuisineLinkSub[lang]}
+              </div>
+            </div>
+            <span className="text-muted-foreground group-hover:text-foreground transition-colors" aria-hidden>
+              →
+            </span>
+          </div>
         </Link>
 
         {/* Word of the Day */}
