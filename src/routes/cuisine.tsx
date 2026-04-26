@@ -2,7 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { Header } from "@/components/Header";
 import { StoryFlow } from "@/components/story/StoryFlow";
-import { cuisineCopy, cuisineRegions, cuisineStory, type CuisineRegionId } from "@/data/cuisine";
+import { cuisineCopy, cuisineRegions, cuisineStory, cuisineSweets, type CuisineRegionId } from "@/data/cuisine";
 import { t, useLang } from "@/lib/i18n";
 import { saveJourneyPlace } from "@/lib/continuity";
 import cuisineHero from "@/assets/cuisine-hero.jpg";
@@ -32,6 +32,14 @@ function CuisinePage() {
   const lang = useLang();
   const [activeRegion, setActiveRegion] = useState<CuisineRegionId | null>(null);
   const [openDish, setOpenDish] = useState<string | null>(null);
+  const [openSweet, setOpenSweet] = useState<string | null>(null);
+  const [scrollY, setScrollY] = useState(0);
+
+  useEffect(() => {
+    const onScroll = () => setScrollY(window.scrollY);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   useEffect(() => {
     saveJourneyPlace({
@@ -62,7 +70,11 @@ function CuisinePage() {
           <img
             src={cuisineHero}
             alt=""
-            className="absolute inset-0 w-full h-full object-cover"
+            className="absolute inset-0 w-full h-[115%] object-cover will-change-transform"
+            style={{
+              transform: `translate3d(0, ${Math.min(scrollY * 0.25, 140)}px, 0) scale(1.05)`,
+              filter: "brightness(0.88) contrast(0.98)",
+            }}
             width={1920}
             height={1080}
           />
@@ -70,7 +82,7 @@ function CuisinePage() {
             className="absolute inset-0"
             style={{
               background:
-                "linear-gradient(to bottom, color-mix(in oklab, black 55%, transparent) 0%, color-mix(in oklab, black 30%, transparent) 45%, color-mix(in oklab, black 75%, transparent) 100%)",
+                "linear-gradient(to bottom, color-mix(in oklab, black 55%, transparent) 0%, color-mix(in oklab, black 35%, transparent) 50%, color-mix(in oklab, black 78%, transparent) 100%)",
             }}
             aria-hidden
           />
@@ -246,6 +258,64 @@ function CuisinePage() {
               </div>
             </div>
           )}
+        </section>
+
+        {/* SWEET TRADITIONS */}
+        <section>
+          <header className="mb-4">
+            <h2 className="text-xl sm:text-2xl font-extrabold tracking-tight">
+              {t(cuisineCopy.sweetsTitle, lang)}
+            </h2>
+            <p className="text-sm text-muted-foreground mt-1">
+              {t(cuisineCopy.sweetsHint, lang)}
+            </p>
+          </header>
+
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+            {cuisineSweets.map((s) => {
+              const isOpen = openSweet === s.id;
+              return (
+                <button
+                  key={s.id}
+                  type="button"
+                  onClick={() => setOpenSweet(isOpen ? null : s.id)}
+                  className="group text-left rounded-2xl border border-border bg-card overflow-hidden transition-all hover:-translate-y-0.5 hover:shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                  aria-expanded={isOpen}
+                >
+                  <div
+                    className="relative h-24 sm:h-28 flex items-center justify-center overflow-hidden"
+                    style={{
+                      background:
+                        "linear-gradient(135deg, color-mix(in oklab, " +
+                        s.hue +
+                        " 28%, var(--card)) 0%, color-mix(in oklab, " +
+                        s.hue +
+                        " 12%, var(--card)) 100%)",
+                    }}
+                    aria-hidden
+                  >
+                    <span className="text-4xl sm:text-5xl transition-transform duration-300 group-hover:scale-110">
+                      {s.emoji}
+                    </span>
+                  </div>
+                  <div className="p-3.5">
+                    <div className="font-bold text-sm sm:text-base text-foreground">
+                      {t(s.name, lang)}
+                    </div>
+                    <p className="text-[12px] sm:text-[13px] text-muted-foreground leading-relaxed mt-1">
+                      {t(s.description, lang)}
+                    </p>
+                    {isOpen && s.whenEaten && (
+                      <div className="mt-2 inline-flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-wider text-secondary animate-fade-in">
+                        <span aria-hidden>🕰️</span>
+                        {t(cuisineCopy.whenEaten, lang)} · {t(s.whenEaten, lang)}
+                      </div>
+                    )}
+                  </div>
+                </button>
+              );
+            })}
+          </div>
         </section>
       </main>
     </div>

@@ -41,31 +41,43 @@ export const cuisineRegions: CuisineRegion[] = [
     ),
     dishes: [
       {
-        id: "berkoukes",
-        name: L("Berkoukes", "Berkoukes", "البركوكش"),
+        id: "couscous-kabyle",
+        name: L("Kabyle Couscous", "Couscous Kabyle", "كسكس قبائلي"),
         description: L(
-          "Hand-rolled pearl pasta in a fragrant broth of vegetables and herbs.",
-          "Pâtes perlées roulées à la main, dans un bouillon parfumé de légumes et d'herbes.",
-          "حبّات معكرونة تُلفّ باليد في مرق دافئ بالخضار والأعشاب.",
+          "Hand-rolled semolina steamed over a broth of garden vegetables, fava beans and herbs — often without meat.",
+          "Semoule roulée à la main, vapeur sur un bouillon de légumes du jardin, fèves et herbes — souvent sans viande.",
+          "سميد يُلفّ باليد ويُبخَّر فوق مرق من خضار البستان والفول والأعشاب — غالبًا بلا لحم.",
         ),
-        whenEaten: L("Cold winter evenings", "Soirs d'hiver", "ليالي الشتاء الباردة"),
+        whenEaten: L("Friday and family feasts", "Vendredi et fêtes de famille", "الجمعة وأعياد العائلة"),
         note: L(
-          "In many homes, berkoukes is rolled by hand — a quiet ritual passed between generations.",
-          "Dans de nombreuses maisons, le berkoukes est roulé à la main — un rituel transmis entre générations.",
-          "في كثير من البيوت، تُلفّ حبّات البركوكش باليد — طقس هادئ يتوارثه الجيل عن الجيل.",
+          "In Kabylie, couscous is the language of welcome. The grain is rolled by hand for hours — a gesture of love that can't be rushed.",
+          "En Kabylie, le couscous est la langue de l'accueil. Le grain est roulé à la main pendant des heures — un geste d'amour qui ne se presse pas.",
+          "في بلاد القبائل، الكسكس لغة الترحيب. تُلفّ الحبّة باليد ساعات طويلة — لفتة حبّ لا تُستعجل.",
         ),
-        emoji: "🍲",
+        emoji: "🍚",
+        hue: "var(--primary)",
+      },
+      {
+        id: "aghroum",
+        name: L("Aghroum", "Aghroum", "أغروم"),
+        description: L(
+          "A round Kabyle bread baked on a clay griddle, eaten warm with olive oil and honey.",
+          "Un pain kabyle rond cuit sur une plaque d'argile, mangé chaud avec huile d'olive et miel.",
+          "خبز قبائلي مستدير يُخبَز على صاج من الطين، يُؤكل دافئًا بزيت الزيتون والعسل.",
+        ),
+        whenEaten: L("Morning fields and shepherd meals", "Matin aux champs et repas des bergers", "صباح الحقول وموائد الرعاة"),
+        emoji: "🫓",
         hue: "var(--secondary)",
       },
       {
-        id: "tikourbabine",
-        name: L("Tikourbabine", "Tikourbabine", "تيكوربابين"),
+        id: "tikerbabine",
+        name: L("Tikerbabine", "Tikerbabine", "تيكربابين"),
         description: L(
-          "Semolina dumplings simmered with chickpeas and warm spices.",
-          "Boulettes de semoule mijotées avec pois chiches et épices douces.",
-          "كريات السميد تُطهى مع الحمص والتوابل الدافئة.",
+          "Semolina dumplings simmered with chickpeas, dried meat and warm Kabyle spices.",
+          "Boulettes de semoule mijotées avec pois chiches, viande séchée et épices kabyles.",
+          "كريات السميد تُطهى مع الحمص واللحم المجفّف وتوابل قبائليّة دافئة.",
         ),
-        whenEaten: L("Family gatherings", "Repas en famille", "جمعات العائلة"),
+        whenEaten: L("Cold mountain evenings", "Soirs froids de montagne", "ليالي الجبل الباردة"),
         emoji: "🥣",
         hue: "var(--accent)",
       },
@@ -99,16 +111,28 @@ export const cuisineRegions: CuisineRegion[] = [
         hue: "var(--primary)",
       },
       {
-        id: "mhadjeb",
-        name: L("Mhadjeb", "M'hadjeb", "المحاجب"),
+        id: "berkoukes",
+        name: L("Berkoukes", "Berkoukes", "البركوكش"),
         description: L(
-          "Thin folded crêpes filled with a slow-cooked tomato, onion and pepper confit.",
-          "Crêpes pliées et farcies d'un confit de tomate, oignon et poivron longuement mijoté.",
-          "رقائق مطوية محشوّة بصلصة الطماطم والبصل والفلفل المطبوخة على مهل.",
+          "Hand-rolled pearl pasta in a fragrant broth of vegetables and herbs.",
+          "Pâtes perlées roulées à la main, dans un bouillon parfumé de légumes et d'herbes.",
+          "حبّات معكرونة تُلفّ باليد في مرق دافئ بالخضار والأعشاب.",
         ),
-        whenEaten: L("Street corners and Ramadan", "Au coin de la rue et en Ramadan", "زوايا الشارع وليالي رمضان"),
-        emoji: "🫓",
+        whenEaten: L("Cold winter evenings", "Soirs d'hiver", "ليالي الشتاء الباردة"),
+        emoji: "🍲",
         hue: "var(--secondary)",
+      },
+      {
+        id: "doubara",
+        name: L("Doubara", "Doubara", "الدوبارة"),
+        description: L(
+          "A hearty Biskra stew of chickpeas and fava beans, generously spiced and served piping hot.",
+          "Un ragoût généreux de Biskra aux pois chiches et fèves, relevé d'épices et servi brûlant.",
+          "طبق بسكري دافئ من الحمص والفول، متبّل بكرم ويُقدَّم ساخنًا.",
+        ),
+        whenEaten: L("Winter mornings in Biskra", "Matins d'hiver à Biskra", "صباحات الشتاء في بسكرة"),
+        emoji: "🥘",
+        hue: "var(--accent)",
       },
     ],
   },
@@ -140,6 +164,18 @@ export const cuisineRegions: CuisineRegion[] = [
         hue: "var(--accent)",
       },
       {
+        id: "bourek",
+        name: L("Bourek", "Bourek", "البوراك"),
+        description: L(
+          "Crisp golden rolls of thin pastry filled with meat, onion and a whisper of cinnamon.",
+          "Croustillants rouleaux dorés de pâte fine, farcis de viande, oignon et soupçon de cannelle.",
+          "لفائف عجين رقيقة ذهبيّة مقرمشة، محشوّة باللحم والبصل ولمسة من القرفة.",
+        ),
+        whenEaten: L("First bite of every Ramadan iftar", "Première bouchée de chaque iftar de Ramadan", "أوّل لقمة في إفطار رمضان"),
+        emoji: "🥟",
+        hue: "var(--primary)",
+      },
+      {
         id: "dolma",
         name: L("Dolma", "Dolma", "الدولمة"),
         description: L(
@@ -147,8 +183,9 @@ export const cuisineRegions: CuisineRegion[] = [
           "Légumes — courgette, poivron, oignon — délicatement farcis de viande épicée et de riz.",
           "خضار محشوّة بلحم متبّل وأرز: كوسى وفلفل وبصل.",
         ),
+        whenEaten: L("Sunday family lunch", "Déjeuner du dimanche en famille", "غداء الأحد العائلي"),
         emoji: "🫑",
-        hue: "var(--primary)",
+        hue: "var(--secondary)",
       },
     ],
   },
@@ -163,28 +200,40 @@ export const cuisineRegions: CuisineRegion[] = [
     ),
     dishes: [
       {
-        id: "tajine-zitoune",
-        name: L("Tajine Zitoune", "Tajine Zitoune", "طاجين الزيتون"),
+        id: "zviti",
+        name: L("Zviti", "Zviti", "الزفيتي"),
         description: L(
-          "Chicken slow-braised with green olives, mushrooms and a touch of lemon.",
-          "Poulet mijoté aux olives vertes, champignons et un trait de citron.",
-          "دجاج يُطهى ببطء مع الزيتون الأخضر والفطر ولمسة من الليمون.",
+          "A fiery Constantinois purée of grilled peppers and tomatoes, eaten with bread and olive oil.",
+          "Une purée constantinoise relevée de poivrons grillés et tomates, mangée avec pain et huile d'olive.",
+          "هريس قسنطيني حارّ من الفلفل المشوي والطماطم، يُؤكل بالخبز وزيت الزيتون.",
         ),
-        whenEaten: L("Wedding tables", "Tables de mariage", "موائد الأعراس"),
-        emoji: "🫒",
-        hue: "var(--secondary)",
+        whenEaten: L("Summer evenings", "Soirs d'été", "أمسيات الصيف"),
+        emoji: "🌶️",
+        hue: "var(--primary)",
       },
       {
-        id: "djari",
-        name: L("Chorba Djari", "Chorba Djari", "شربة الجاري"),
+        id: "trida",
+        name: L("Trida", "Trida", "التريدة"),
         description: L(
-          "A clear, fragrant soup of fine vermicelli, chickpeas and tender meat.",
-          "Une soupe claire et parfumée aux vermicelles fins, pois chiches et viande tendre.",
-          "حساء صافٍ وعطري بالشعيرية الناعمة والحمص واللحم اللين.",
+          "Tiny squares of handmade pasta steamed and dressed with a chicken and chickpea sauce.",
+          "Minuscules carrés de pâte faits main, vapeur et nappés d'une sauce au poulet et pois chiches.",
+          "مربّعات صغيرة من العجين تُحضَّر باليد وتُبخَّر مع صلصة الدجاج والحمص.",
         ),
-        whenEaten: L("Every night of Ramadan", "Chaque soir de Ramadan", "كل مساء في رمضان"),
-        emoji: "🥘",
+        whenEaten: L("Mawlid and feast days", "Mawlid et jours de fête", "المولد وأيام الأعياد"),
+        emoji: "🍝",
         hue: "var(--accent)",
+      },
+      {
+        id: "dolma-constantine",
+        name: L("Constantine Dolma", "Dolma de Constantine", "دولمة قسنطينة"),
+        description: L(
+          "An Andalusian-style dolma, gently sweet, with prunes, cinnamon and tender meat.",
+          "Une dolma à l'andalouse, légèrement sucrée, aux pruneaux, cannelle et viande fondante.",
+          "دولمة على الطراز الأندلسي، حلوة قليلًا، بالبرقوق والقرفة واللحم الطريّ.",
+        ),
+        whenEaten: L("Ramadan and weddings", "Ramadan et mariages", "رمضان والأعراس"),
+        emoji: "🍯",
+        hue: "var(--secondary)",
       },
     ],
   },
@@ -199,31 +248,43 @@ export const cuisineRegions: CuisineRegion[] = [
     ),
     dishes: [
       {
-        id: "couscous-tlemcen",
-        name: L("Tlemcen Couscous", "Couscous de Tlemcen", "كسكس تلمسان"),
+        id: "mhajeb",
+        name: L("Mhajeb", "M'hajeb", "المحاجب"),
         description: L(
-          "Fine semolina steamed and crowned with seven vegetables and tender lamb.",
-          "Semoule fine vapeur, couronnée de sept légumes et d'agneau fondant.",
-          "سميد ناعم مبخّر يُتوَّج بسبع خضروات ولحم ضأن طريّ.",
+          "Thin folded crêpes filled with a slow-cooked tomato, onion and pepper confit.",
+          "Crêpes pliées et farcies d'un confit de tomate, oignon et poivron longuement mijoté.",
+          "رقائق مطوية محشوّة بصلصة الطماطم والبصل والفلفل المطبوخة على مهل.",
         ),
-        whenEaten: L("Friday lunch", "Vendredi midi", "ظهر الجمعة"),
-        note: L(
-          "Couscous is older than borders. UNESCO recognised it as shared heritage of Algeria, Morocco, Tunisia and Mauritania in 2020.",
-          "Le couscous est plus ancien que les frontières. L'UNESCO l'a reconnu en 2020 comme patrimoine partagé d'Algérie, du Maroc, de Tunisie et de Mauritanie.",
-          "الكسكس أقدم من الحدود. اعترفت اليونسكو عام 2020 بأنّه إرث مشترك بين الجزائر والمغرب وتونس وموريتانيا.",
+        whenEaten: L("Street corners and Ramadan nights", "Au coin de la rue et nuits de Ramadan", "زوايا الشارع وليالي رمضان"),
+        emoji: "🫓",
+        hue: "var(--secondary)",
+      },
+      {
+        id: "harira",
+        name: L("Harira", "Harira", "الحريرة"),
+        description: L(
+          "A velvety tomato soup with lentils, chickpeas and tender meat — fragrant with coriander.",
+          "Une soupe veloutée à la tomate, lentilles, pois chiches et viande tendre — parfumée à la coriandre.",
+          "حساء طماطم ناعم بالعدس والحمص واللحم الطريّ — معطَّر بالكزبرة.",
         ),
-        emoji: "🍚",
+        whenEaten: L("Iftar tables in the west", "Tables d'iftar à l'ouest", "موائد الإفطار في الغرب"),
+        emoji: "🥣",
         hue: "var(--primary)",
       },
       {
-        id: "karantita",
-        name: L("Karantita", "Karantita", "القرنطيطة"),
+        id: "karantika",
+        name: L("Karantika", "Karantika", "القرنطيطة"),
         description: L(
           "A golden, oven-baked chickpea flan, sliced warm and dusted with cumin.",
           "Un flan doré de pois chiches, cuit au four, tranché chaud et saupoudré de cumin.",
           "فطيرة من دقيق الحمص تُخبَز في الفرن، تُقطَّع ساخنة وتُرشّ بالكمّون.",
         ),
         whenEaten: L("Street snack in Oran", "Goûter de rue à Oran", "وجبة شارع في وهران"),
+        note: L(
+          "In Oran, karantika is sold from old metal trays at street corners — a humble snack that became a symbol of the city.",
+          "À Oran, la karantika se vend sur de vieux plateaux de métal aux coins des rues — un en-cas humble devenu symbole de la ville.",
+          "في وهران، تُباع القرنطيطة على صواني معدنيّة قديمة في زوايا الشارع — وجبة بسيطة صارت رمزًا للمدينة.",
+        ),
         emoji: "🥧",
         hue: "var(--accent)",
       },
@@ -257,6 +318,18 @@ export const cuisineRegions: CuisineRegion[] = [
         hue: "var(--primary)",
       },
       {
+        id: "mechoui",
+        name: L("Mechoui", "Méchoui", "المشوي"),
+        description: L(
+          "A whole lamb slow-roasted over open embers until the skin is crisp and the meat falls apart.",
+          "Un agneau entier rôti lentement sur la braise, peau croustillante et chair fondante.",
+          "خروف كامل يُشوى ببطء على الجمر حتى تصبح القشرة مقرمشة واللحم يتفكّك.",
+        ),
+        whenEaten: L("Great desert celebrations", "Grandes fêtes du désert", "أعياد الصحراء الكبرى"),
+        emoji: "🍖",
+        hue: "var(--accent)",
+      },
+      {
         id: "dattes",
         name: L("Deglet Nour Dates", "Dattes Deglet Nour", "تمر دڤلة نور"),
         description: L(
@@ -266,9 +339,93 @@ export const cuisineRegions: CuisineRegion[] = [
         ),
         whenEaten: L("To break the fast", "Pour rompre le jeûne", "لكسر الصيام"),
         emoji: "🌴",
-        hue: "var(--accent)",
+        hue: "var(--secondary)",
       },
     ],
+  },
+];
+
+export type CuisineSweet = {
+  id: string;
+  name: LocalizedString;
+  description: LocalizedString;
+  whenEaten?: LocalizedString;
+  emoji: string;
+  hue: string;
+};
+
+export const cuisineSweets: CuisineSweet[] = [
+  {
+    id: "makroud",
+    name: L("Makroud", "Makroud", "المقروط"),
+    description: L(
+      "Diamond-shaped semolina cakes filled with date paste, fried gold and dipped in honey.",
+      "Losanges de semoule fourrés à la pâte de dattes, frits dorés et trempés au miel.",
+      "معينات من السميد محشوّة بمعجون التمر، تُقلى ذهبيّة وتُغمَس في العسل.",
+    ),
+    whenEaten: L("Ramadan and Eid", "Ramadan et Aïd", "رمضان والأعياد"),
+    emoji: "🍯",
+    hue: "var(--secondary)",
+  },
+  {
+    id: "baklawa",
+    name: L("Algerian Baklawa", "Baklawa algérienne", "البقلاوة الجزائريّة"),
+    description: L(
+      "Layers of fine pastry, crushed almonds and orange-blossom syrup — cut into perfect diamonds.",
+      "Feuilles de pâte fine, amandes pilées et sirop à la fleur d'oranger — découpées en losanges parfaits.",
+      "طبقات من العجين الرقيق واللوز المطحون وقطر ماء الزهر — تُقطَّع معينات منتظمة.",
+    ),
+    whenEaten: L("Weddings and Eid tables", "Mariages et tables de l'Aïd", "الأعراس وموائد العيد"),
+    emoji: "🍰",
+    hue: "var(--primary)",
+  },
+  {
+    id: "kalb-el-louz",
+    name: L("Kalb el Louz", "Kalb el Louz", "قلب اللوز"),
+    description: L(
+      "“Heart of almond” — a tender semolina cake soaked in fragrant orange-blossom syrup.",
+      "« Cœur d'amande » — un gâteau de semoule fondant, imbibé de sirop à la fleur d'oranger.",
+      "«قلب اللوز» — كعكة سميد طريّة مشبَعة بقطر ماء الزهر العطر.",
+    ),
+    whenEaten: L("Ramadan nights", "Nuits de Ramadan", "ليالي رمضان"),
+    emoji: "💛",
+    hue: "var(--accent)",
+  },
+  {
+    id: "zlabia",
+    name: L("Zlabia", "Zlabia", "الزلابية"),
+    description: L(
+      "Bright spirals of fried batter dipped in saffron-honey syrup — the colour of Ramadan evenings.",
+      "Spirales dorées de pâte frite trempées dans un sirop miel-safran — la couleur des soirs de Ramadan.",
+      "حلزونات ذهبيّة من العجين المقلي تُغمَس في قطر العسل والزعفران — لون أمسيات رمضان.",
+    ),
+    whenEaten: L("Right after iftar", "Juste après l'iftar", "بعد الإفطار مباشرة"),
+    emoji: "🌀",
+    hue: "var(--primary)",
+  },
+  {
+    id: "ghribia",
+    name: L("Ghribia", "Ghribia", "الغريبة"),
+    description: L(
+      "Melt-in-the-mouth shortbread of butter and roasted chickpea flour, crowned with an almond.",
+      "Sablés fondants au beurre et farine de pois chiches grillés, couronnés d'une amande.",
+      "بسكويت يذوب في الفم من الزبدة ودقيق الحمص المحمّص، تتوّجه حبّة لوز.",
+    ),
+    whenEaten: L("Eid mornings with coffee", "Matins de l'Aïd avec le café", "صباحات العيد مع القهوة"),
+    emoji: "🥮",
+    hue: "var(--secondary)",
+  },
+  {
+    id: "tcharek",
+    name: L("Tcharek", "Tcharek", "تشاراك"),
+    description: L(
+      "Crescent-moon pastries filled with almond paste and dusted with snowy icing sugar.",
+      "Pâtisseries en croissant de lune, fourrées de pâte d'amande et saupoudrées de sucre glace.",
+      "حلوى على شكل هلال محشوّة بمعجون اللوز ومرشوشة بالسكّر الناعم.",
+    ),
+    whenEaten: L("Eid el-Fitr", "Aïd el-Fitr", "عيد الفطر"),
+    emoji: "🌙",
+    hue: "var(--accent)",
   },
 ];
 
@@ -356,4 +513,10 @@ export const cuisineCopy = {
   culturalNote: L("Cultural note", "Note culturelle", "ملاحظة ثقافية"),
   back: L("← Back to Culture", "← Retour à la culture", "← العودة إلى الثقافة"),
   tapToOpen: L("Tap a dish for a cultural note", "Touchez un plat pour une note culturelle", "اضغط على طبق لقراءة ملاحظة ثقافيّة"),
+  sweetsTitle: L("Sweet Traditions", "Douceurs traditionnelles", "الحلويات التقليدية"),
+  sweetsHint: L(
+    "Pastries that crown weddings, Eid mornings and Ramadan nights.",
+    "Des douceurs qui couronnent mariages, matins d'Aïd et nuits de Ramadan.",
+    "حلويّات تُتوّج الأعراس وصباحات العيد وليالي رمضان.",
+  ),
 };
