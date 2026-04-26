@@ -2,7 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { Header } from "@/components/Header";
 import { StoryFlow } from "@/components/story/StoryFlow";
-import { cuisineCopy, cuisineRegions, cuisineStory, type CuisineRegionId } from "@/data/cuisine";
+import { cuisineCopy, cuisineRegions, cuisineStory, cuisineSweets, type CuisineRegionId } from "@/data/cuisine";
 import { t, useLang } from "@/lib/i18n";
 import { saveJourneyPlace } from "@/lib/continuity";
 import cuisineHero from "@/assets/cuisine-hero.jpg";
@@ -32,6 +32,14 @@ function CuisinePage() {
   const lang = useLang();
   const [activeRegion, setActiveRegion] = useState<CuisineRegionId | null>(null);
   const [openDish, setOpenDish] = useState<string | null>(null);
+  const [openSweet, setOpenSweet] = useState<string | null>(null);
+  const [scrollY, setScrollY] = useState(0);
+
+  useEffect(() => {
+    const onScroll = () => setScrollY(window.scrollY);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   useEffect(() => {
     saveJourneyPlace({
