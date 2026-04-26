@@ -2,13 +2,7 @@ import type { LocalizedString } from "@/lib/i18n";
 
 const L = (en: string, fr: string, ar: string): LocalizedString => ({ en, fr, ar });
 
-export type CuisineRegionId =
-  | "kabylie"
-  | "aures"
-  | "algiers"
-  | "constantine"
-  | "western"
-  | "sahara";
+export type CuisineRegionId = "kabylie" | "aures" | "algiers" | "constantine" | "western" | "central" | "sahara";
 
 export type CuisineDish = {
   id: string;
@@ -65,7 +59,11 @@ export const cuisineRegions: CuisineRegion[] = [
           "Un pain kabyle rond cuit sur une plaque d'argile, mangé chaud avec huile d'olive et miel.",
           "خبز قبائلي مستدير يُخبَز على صاج من الطين، يُؤكل دافئًا بزيت الزيتون والعسل.",
         ),
-        whenEaten: L("Morning fields and shepherd meals", "Matin aux champs et repas des bergers", "صباح الحقول وموائد الرعاة"),
+        whenEaten: L(
+          "Morning fields and shepherd meals",
+          "Matin aux champs et repas des bergers",
+          "صباح الحقول وموائد الرعاة",
+        ),
         emoji: "🫓",
         hue: "var(--secondary)",
       },
@@ -171,7 +169,11 @@ export const cuisineRegions: CuisineRegion[] = [
           "Croustillants rouleaux dorés de pâte fine, farcis de viande, oignon et soupçon de cannelle.",
           "لفائف عجين رقيقة ذهبيّة مقرمشة، محشوّة باللحم والبصل ولمسة من القرفة.",
         ),
-        whenEaten: L("First bite of every Ramadan iftar", "Première bouchée de chaque iftar de Ramadan", "أوّل لقمة في إفطار رمضان"),
+        whenEaten: L(
+          "First bite of every Ramadan iftar",
+          "Première bouchée de chaque iftar de Ramadan",
+          "أوّل لقمة في إفطار رمضان",
+        ),
         emoji: "🥟",
         hue: "var(--primary)",
       },
@@ -194,32 +196,25 @@ export const cuisineRegions: CuisineRegion[] = [
     name: L("Constantine", "Constantine", "قسنطينة"),
     icon: "🌉",
     tagline: L(
-      "City of bridges, of Andalusian refinement and patient sweets.",
-      "Ville des ponts, du raffinement andalou et des douceurs patientes.",
-      "مدينة الجسور والذوق الأندلسي والحلويات التي تُصنع على مهل.",
+      "City of bridges, Andalusian refinement and generous feast tables.",
+      "Ville des ponts, du raffinement andalou et des grandes tables généreuses.",
+      "مدينة الجسور والذوق الأندلسي والموائد الكريمة.",
     ),
     dishes: [
-      {
-        id: "zviti",
-        name: L("Zviti", "Zviti", "الزفيتي"),
-        description: L(
-          "A fiery Constantinois purée of grilled peppers and tomatoes, eaten with bread and olive oil.",
-          "Une purée constantinoise relevée de poivrons grillés et tomates, mangée avec pain et huile d'olive.",
-          "هريس قسنطيني حارّ من الفلفل المشوي والطماطم، يُؤكل بالخبز وزيت الزيتون.",
-        ),
-        whenEaten: L("Summer evenings", "Soirs d'été", "أمسيات الصيف"),
-        emoji: "🌶️",
-        hue: "var(--primary)",
-      },
       {
         id: "trida",
         name: L("Trida", "Trida", "التريدة"),
         description: L(
           "Tiny squares of handmade pasta steamed and dressed with a chicken and chickpea sauce.",
-          "Minuscules carrés de pâte faits main, vapeur et nappés d'une sauce au poulet et pois chiches.",
+          "Minuscules carrés de pâte faits main, cuits à la vapeur et nappés d'une sauce au poulet et pois chiches.",
           "مربّعات صغيرة من العجين تُحضَّر باليد وتُبخَّر مع صلصة الدجاج والحمص.",
         ),
         whenEaten: L("Mawlid and feast days", "Mawlid et jours de fête", "المولد وأيام الأعياد"),
+        note: L(
+          "Trida is one of Constantine's graceful celebration dishes: delicate, patient, and made for gathering.",
+          "La trida fait partie des plats de fête raffinés de Constantine : délicate, patiente, et pensée pour rassembler.",
+          "التريدة من أطباق قسنطينة الرفيعة في المناسبات: دقيقة، صبورة، ومصنوعة للّمة.",
+        ),
         emoji: "🍝",
         hue: "var(--accent)",
       },
@@ -227,13 +222,29 @@ export const cuisineRegions: CuisineRegion[] = [
         id: "dolma-constantine",
         name: L("Constantine Dolma", "Dolma de Constantine", "دولمة قسنطينة"),
         description: L(
-          "An Andalusian-style dolma, gently sweet, with prunes, cinnamon and tender meat.",
-          "Une dolma à l'andalouse, légèrement sucrée, aux pruneaux, cannelle et viande fondante.",
-          "دولمة على الطراز الأندلسي، حلوة قليلًا، بالبرقوق والقرفة واللحم الطريّ.",
+          "An Andalusian-influenced dolma, gently sweet, with prunes, cinnamon and tender meat.",
+          "Une dolma d'influence andalouse, légèrement sucrée, aux pruneaux, cannelle et viande fondante.",
+          "دولمة بتأثير أندلسي، حلوة قليلًا، بالبرقوق والقرفة واللحم الطريّ.",
         ),
         whenEaten: L("Ramadan and weddings", "Ramadan et mariages", "رمضان والأعراس"),
         emoji: "🍯",
         hue: "var(--secondary)",
+      },
+      {
+        id: "chorba-frik",
+        name: L("Chorba Frik", "Chorba frik", "شربة فريك"),
+        description: L(
+          "A fragrant cracked-wheat soup with herbs and tender meat, beloved across eastern Algeria.",
+          "Une soupe parfumée au blé vert concassé, aux herbes et à la viande tendre, très aimée dans l'Est algérien.",
+          "شربة عطرة بالفريك والأعشاب واللحم الطريّ، محبوبة في الشرق الجزائري.",
+        ),
+        whenEaten: L(
+          "Ramadan iftar and family evenings",
+          "Iftar de Ramadan et soirées familiales",
+          "إفطار رمضان وسهرات العائلة",
+        ),
+        emoji: "🥣",
+        hue: "var(--primary)",
       },
     ],
   },
@@ -255,7 +266,11 @@ export const cuisineRegions: CuisineRegion[] = [
           "Crêpes pliées et farcies d'un confit de tomate, oignon et poivron longuement mijoté.",
           "رقائق مطوية محشوّة بصلصة الطماطم والبصل والفلفل المطبوخة على مهل.",
         ),
-        whenEaten: L("Street corners and Ramadan nights", "Au coin de la rue et nuits de Ramadan", "زوايا الشارع وليالي رمضان"),
+        whenEaten: L(
+          "Street corners and Ramadan nights",
+          "Au coin de la rue et nuits de Ramadan",
+          "زوايا الشارع وليالي رمضان",
+        ),
         emoji: "🫓",
         hue: "var(--secondary)",
       },
@@ -287,6 +302,67 @@ export const cuisineRegions: CuisineRegion[] = [
         ),
         emoji: "🥧",
         hue: "var(--accent)",
+      },
+    ],
+  },
+  {
+    id: "central",
+    name: L("Central Algeria / Hodna", "Centre algérien / Hodna", "وسط الجزائر / الحضنة"),
+    icon: "🏺",
+    tagline: L(
+      "Market towns, steppe flavours and the generous table of Bousaâda.",
+      "Villes de marché, saveurs des steppes et table généreuse de Bousaâda.",
+      "مدن الأسواق ونكهات السهوب ومائدة بوسعادة الكريمة.",
+    ),
+    dishes: [
+      {
+        id: "zviti",
+        name: L("Zviti", "Zviti", "الزفيتي"),
+        description: L(
+          "A fiery Bousaâda specialty of crushed bread, grilled peppers, tomato and olive oil.",
+          "Une spécialité relevée de Bousaâda à base de pain écrasé, poivrons grillés, tomate et huile d'olive.",
+          "طبق حارّ من بوسعادة يُحضَّر من الخبز المهروس والفلفل المشوي والطماطم وزيت الزيتون.",
+        ),
+        whenEaten: L("Shared hot and fresh", "Partagé chaud et frais", "يُؤكل ساخنًا وطازجًا"),
+        note: L(
+          "Zviti belongs to Bousaâda and the Hodna/M'sila area — not Constantine. Its strength is in its simplicity and heat.",
+          "Le zviti appartient à Bousaâda et à la région du Hodna/M'sila — pas à Constantine. Sa force vient de sa simplicité et de son piquant.",
+          "الزفيتي من بوسعادة ومنطقة الحضنة/المسيلة — وليس من قسنطينة. قوّته في بساطته وحرارته.",
+        ),
+        emoji: "🌶️",
+        hue: "var(--primary)",
+      },
+      {
+        id: "chakhchoukha-bousaadia",
+        name: L("Bousaâda Chakhchoukha", "Chakhchoukha de Bousaâda", "شخشوخة بوسعادة"),
+        description: L(
+          "Torn flatbread softened with a rich sauce, carrying the taste of steppe gatherings.",
+          "Galette émiettée attendrie par une sauce généreuse, avec le goût des réunions des steppes.",
+          "رقاق مفتّت يُطرّى بمرق غنيّ، يحمل طعم لَمّات السهوب.",
+        ),
+        whenEaten: L(
+          "Family gatherings and celebrations",
+          "Réunions familiales et fêtes",
+          "اللمّات العائلية والمناسبات",
+        ),
+        emoji: "🍛",
+        hue: "var(--accent)",
+      },
+      {
+        id: "mardoud",
+        name: L("Mardoud", "Mardoud", "المردود"),
+        description: L(
+          "Small hand-rolled grains simmered in a hearty sauce, a comforting dish of the high plateaus.",
+          "Petites graines roulées à la main mijotées dans une sauce nourrissante, un plat réconfortant des hauts plateaux.",
+          "حبوب صغيرة تُلفّ باليد وتُطهى في مرق دافئ، طبق مريح من الهضاب العليا.",
+        ),
+        whenEaten: L(
+          "Cold days and family tables",
+          "Jours froids et tables familiales",
+          "الأيام الباردة وموائد العائلة",
+        ),
+        emoji: "🍲",
+        hue: "var(--secondary)",
       },
     ],
   },
@@ -512,7 +588,11 @@ export const cuisineCopy = {
   whenEaten: L("When eaten", "Quand on le mange", "متى يُؤكل"),
   culturalNote: L("Cultural note", "Note culturelle", "ملاحظة ثقافية"),
   back: L("← Back to Culture", "← Retour à la culture", "← العودة إلى الثقافة"),
-  tapToOpen: L("Tap a dish for a cultural note", "Touchez un plat pour une note culturelle", "اضغط على طبق لقراءة ملاحظة ثقافيّة"),
+  tapToOpen: L(
+    "Tap a dish for a cultural note",
+    "Touchez un plat pour une note culturelle",
+    "اضغط على طبق لقراءة ملاحظة ثقافيّة",
+  ),
   sweetsTitle: L("Sweet Traditions", "Douceurs traditionnelles", "الحلويات التقليدية"),
   sweetsHint: L(
     "Pastries that crown weddings, Eid mornings and Ramadan nights.",
