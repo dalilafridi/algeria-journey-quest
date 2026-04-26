@@ -70,7 +70,11 @@ function CuisinePage() {
           <img
             src={cuisineHero}
             alt=""
-            className="absolute inset-0 w-full h-full object-cover"
+            className="absolute inset-0 w-full h-[115%] object-cover will-change-transform"
+            style={{
+              transform: `translate3d(0, ${Math.min(scrollY * 0.25, 140)}px, 0) scale(1.05)`,
+              filter: "brightness(0.88) contrast(0.98)",
+            }}
             width={1920}
             height={1080}
           />
@@ -78,7 +82,7 @@ function CuisinePage() {
             className="absolute inset-0"
             style={{
               background:
-                "linear-gradient(to bottom, color-mix(in oklab, black 55%, transparent) 0%, color-mix(in oklab, black 30%, transparent) 45%, color-mix(in oklab, black 75%, transparent) 100%)",
+                "linear-gradient(to bottom, color-mix(in oklab, black 55%, transparent) 0%, color-mix(in oklab, black 35%, transparent) 50%, color-mix(in oklab, black 78%, transparent) 100%)",
             }}
             aria-hidden
           />
