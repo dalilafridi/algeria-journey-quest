@@ -133,8 +133,15 @@ function RegionExplorerPage() {
           <article
             key={selected.id}
             id={`region-${selected.id}`}
-            className="mt-6 rounded-2xl border border-border bg-card p-5 animate-float-up"
-            style={{ boxShadow: "var(--shadow-soft)" }}
+            className={
+              "mt-6 rounded-2xl border bg-card p-5 animate-float-up scroll-mt-24 transition-all duration-700 " +
+              (highlight ? "border-primary/60" : "border-border")
+            }
+            style={{
+              boxShadow: highlight
+                ? "0 0 0 4px color-mix(in oklab, var(--primary) 18%, transparent), var(--shadow-soft)"
+                : "var(--shadow-soft)",
+            }}
           >
             <header className="flex items-start gap-3">
               <RegionIcon regionId={selected.id} className="h-16 w-20 shrink-0" />
