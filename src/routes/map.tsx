@@ -40,12 +40,26 @@ const COPY = {
 function RegionExplorerPage() {
   const lang = useLang();
   const [selectedId, setSelectedId] = useState<string>(mapRegions[0].id);
+  const [highlight, setHighlight] = useState(false);
   const selected: MapRegion | undefined = mapRegions.find((r) => r.id === selectedId);
 
   useEffect(() => {
     const id = window.location.hash.replace("#region-", "");
     if (id && mapRegions.some((r) => r.id === id)) setSelectedId(id);
   }, []);
+
+  const handleSelect = (id: string) => {
+    setSelectedId(id);
+    if (typeof window === "undefined") return;
+    window.requestAnimationFrame(() => {
+      const el = document.getElementById(`region-${id}`);
+      if (!el) return;
+      el.scrollIntoView({ behavior: "smooth", block: "start" });
+      setHighlight(false);
+      window.requestAnimationFrame(() => setHighlight(true));
+      window.setTimeout(() => setHighlight(false), 1400);
+    });
+  };
 
   useEffect(() => {
     if (!selected) return;
@@ -75,7 +89,7 @@ function RegionExplorerPage() {
             return (
               <button
                 key={r.id}
-                onClick={() => setSelectedId(r.id)}
+                onClick={() => handleSelect(r.id)}
                 className={
                   "group text-left rounded-2xl border px-4 py-4 sm:px-5 sm:py-5 transition-all duration-200 active:scale-[0.98] hover:-translate-y-0.5 " +
                   (isSel
@@ -119,8 +133,15 @@ function RegionExplorerPage() {
           <article
             key={selected.id}
             id={`region-${selected.id}`}
-            className="mt-6 rounded-2xl border border-border bg-card p-5 animate-float-up"
-            style={{ boxShadow: "var(--shadow-soft)" }}
+            className={
+              "mt-6 rounded-2xl border bg-card p-5 animate-float-up scroll-mt-24 transition-all duration-700 " +
+              (highlight ? "border-primary/60" : "border-border")
+            }
+            style={{
+              boxShadow: highlight
+                ? "0 0 0 4px color-mix(in oklab, var(--primary) 18%, transparent), var(--shadow-soft)"
+                : "var(--shadow-soft)",
+            }}
           >
             <header className="flex items-start gap-3">
               <RegionIcon regionId={selected.id} className="h-16 w-20 shrink-0" />
