@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import splashImg from "@/assets/splash.png";
+import splashImg from "@/assets/loading-wheel.png";
 
 const SPLASH_KEY = "atte-splash-shown-v1";
 
