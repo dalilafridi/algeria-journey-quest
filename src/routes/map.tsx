@@ -89,7 +89,7 @@ function RegionExplorerPage() {
             return (
               <button
                 key={r.id}
-                onClick={() => setSelectedId(r.id)}
+                onClick={() => handleSelect(r.id)}
                 className={
                   "group text-left rounded-2xl border px-4 py-4 sm:px-5 sm:py-5 transition-all duration-200 active:scale-[0.98] hover:-translate-y-0.5 " +
                   (isSel
