@@ -275,25 +275,21 @@ function CuisinePage() {
                   key={s.id}
                   type="button"
                   onClick={() => setOpenSweet(isOpen ? null : s.id)}
-                  className="group text-left rounded-2xl border border-border bg-card overflow-hidden transition-all hover:-translate-y-0.5 hover:shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                  className="group text-left rounded-2xl border border-border bg-card overflow-hidden transition-all duration-200 ease-out hover:-translate-y-1 hover:shadow-lg hover:border-secondary/40 focus:outline-none focus-visible:ring-2 focus-visible:ring-ring"
                   aria-expanded={isOpen}
                 >
                   <div
-                    className="relative h-24 sm:h-28 flex items-center justify-center overflow-hidden"
+                    className="relative w-full h-[140px] overflow-hidden rounded-t-2xl"
                     style={{
                       background:
                         "linear-gradient(135deg, color-mix(in oklab, " +
                         s.hue +
-                        " 28%, var(--card)) 0%, color-mix(in oklab, " +
+                        " 22%, #f5ead8) 0%, color-mix(in oklab, " +
                         s.hue +
-                        " 12%, var(--card)) 100%)",
+                        " 8%, #ece0c9) 100%)",
                     }}
                     aria-hidden
-                  >
-                    <span className="text-4xl sm:text-5xl transition-transform duration-300 group-hover:scale-110">
-                      {s.emoji}
-                    </span>
-                  </div>
+                  />
                   <div className="p-3.5">
                     <div className="font-bold text-sm sm:text-base text-foreground">
                       {t(s.name, lang)}
