@@ -40,12 +40,26 @@ const COPY = {
 function RegionExplorerPage() {
   const lang = useLang();
   const [selectedId, setSelectedId] = useState<string>(mapRegions[0].id);
+  const [highlight, setHighlight] = useState(false);
   const selected: MapRegion | undefined = mapRegions.find((r) => r.id === selectedId);
 
   useEffect(() => {
     const id = window.location.hash.replace("#region-", "");
     if (id && mapRegions.some((r) => r.id === id)) setSelectedId(id);
   }, []);
+
+  const handleSelect = (id: string) => {
+    setSelectedId(id);
+    if (typeof window === "undefined") return;
+    window.requestAnimationFrame(() => {
+      const el = document.getElementById(`region-${id}`);
+      if (!el) return;
+      el.scrollIntoView({ behavior: "smooth", block: "start" });
+      setHighlight(false);
+      window.requestAnimationFrame(() => setHighlight(true));
+      window.setTimeout(() => setHighlight(false), 1400);
+    });
+  };
 
   useEffect(() => {
     if (!selected) return;
