@@ -52,6 +52,20 @@ function CuisinePage() {
     });
   }, []);
 
+  // Listen to Surprise-me cuisine event
+  useEffect(() => {
+    const onPick = (e: Event) => {
+      const id = (e as CustomEvent).detail as CuisineRegionId;
+      if (!id) return;
+      setActiveRegion(id);
+      window.requestAnimationFrame(() => {
+        document.getElementById("cuisine-dishes")?.scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+    };
+    window.addEventListener("cuisine:open-region", onPick as EventListener);
+    return () => window.removeEventListener("cuisine:open-region", onPick as EventListener);
+  }, []);
+
   const region = activeRegion
     ? cuisineRegions.find((r) => r.id === activeRegion) ?? null
     : null;
