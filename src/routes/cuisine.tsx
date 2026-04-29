@@ -253,6 +253,14 @@ function CuisinePage() {
                             {t(cuisineCopy.whenEaten, lang)} · {t(d.whenEaten, lang)}
                           </div>
                         )}
+                        {isOpen && memory && (
+                          <div className="mt-3 px-3 py-2.5 rounded-xl border border-dashed border-secondary/40 bg-secondary/5 text-[12.5px] italic leading-relaxed text-foreground/80 animate-cinematic-in">
+                            <div className="not-italic text-[10px] font-bold uppercase tracking-wider text-secondary mb-1">
+                              {t(cinematicCopy.memoryLabel, lang)}
+                            </div>
+                            “{t(memory, lang)}”
+                          </div>
+                        )}
                         {isOpen && d.note && (
                           <div
                             className="mt-3 rounded-xl p-3 text-[13px] italic leading-relaxed animate-fade-in"
