@@ -1,5 +1,5 @@
-import { Link, useNavigate } from "@tanstack/react-router";
-import { useEffect, useRef, useState } from "react";
+import { Link, useNavigate, useRouterState } from "@tanstack/react-router";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { resetAllQuizProgress } from "@/lib/progress";
 import { LANGS, getLang, setLang, useLang, type Lang } from "@/lib/i18n";
 import { OPEN_CREATOR_ABOUT_EVENT } from "@/components/WelcomeJourney";
