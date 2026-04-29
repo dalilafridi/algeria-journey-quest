@@ -16,8 +16,14 @@ type Step = {
 const STEPS: Step[] = [
   {
     id: "history",
-    label: { fr: "Histoire", en: "History", ar: "التاريخ" },
-    match: (p) => p.startsWith("/timeline") || p.startsWith("/era") || p === "/",
+    label: { fr: "Parcours", en: "Journey", ar: "الرحلة" },
+    // Journey owns: home, timeline, eras, lessons, and Moments That Shaped Algeria
+    match: (p) =>
+      p === "/" ||
+      p.startsWith("/timeline") ||
+      p.startsWith("/era") ||
+      p.startsWith("/moments") ||
+      p.startsWith("/lessons"),
     to: "/timeline",
   },
   {
@@ -29,7 +35,8 @@ const STEPS: Step[] = [
   {
     id: "culture",
     label: { fr: "Culture", en: "Culture", ar: "الثقافة" },
-    match: (p) => p.startsWith("/words") || p.startsWith("/figures"),
+    // Culture owns words, ideas and figures (excluding cinema deep-link)
+    match: (p) => p.startsWith("/words") || p.startsWith("/ideas") || p.startsWith("/figures"),
     to: "/words",
   },
   {
@@ -41,8 +48,12 @@ const STEPS: Step[] = [
   {
     id: "cinema",
     label: { fr: "Cinéma", en: "Cinema", ar: "السينما" },
-    match: (p) => p.startsWith("/moments") || p.includes("cinema"),
-    to: "/moments",
+    // Cinema lives inside the figures route via hash anchor
+    match: (p) =>
+      typeof window !== "undefined" &&
+      p.startsWith("/figures") &&
+      window.location.hash.includes("cinema"),
+    to: "/figures",
   },
 ];
 
