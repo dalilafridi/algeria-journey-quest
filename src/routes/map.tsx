@@ -143,6 +143,22 @@ function RegionExplorerPage() {
           })}
         </section>
 
+        {/* Cinematic intro line */}
+        {selected && intro && (
+          <figure
+            key={`intro-${selected.id}-${introKey}`}
+            className="mt-6 rounded-2xl border border-border/70 bg-gradient-to-br from-muted/40 to-card px-5 py-6 sm:py-7 text-center animate-cinematic-in"
+            style={{ boxShadow: "var(--shadow-soft)" }}
+          >
+            <div className="text-[10px] uppercase tracking-[0.25em] font-bold text-primary/80 mb-2">
+              {t(cinematicCopy.cinematicLabel, lang)}
+            </div>
+            <blockquote className="text-base sm:text-lg italic font-semibold text-foreground/90 leading-relaxed max-w-xl mx-auto">
+              “{t(intro, lang)}”
+            </blockquote>
+          </figure>
+        )}
+
         {/* Selected region detail */}
         {selected ? (
           <article
