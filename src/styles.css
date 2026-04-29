@@ -250,7 +250,7 @@
 
 /* iOS safe-area helpers */
 .safe-pb {
-  padding-bottom: max(1rem, env(safe-area-inset-bottom));
+  padding-bottom: max(5.5rem, calc(env(safe-area-inset-bottom) + 5rem));
 }
 
 @keyframes pop-in {
