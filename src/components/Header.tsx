@@ -50,6 +50,8 @@ export function Header() {
     regions: { fr: "Régions", en: "Regions", ar: "المناطق" }[current],
     words: { fr: "Paroles", en: "Words", ar: "كلمات" }[current],
     moments: { fr: "Moments", en: "Moments", ar: "لحظات" }[current],
+    cuisine: { fr: "Cuisine", en: "Cuisine", ar: "المطبخ" }[current],
+    cinema: { fr: "Cinéma", en: "Cinema", ar: "السينما" }[current],
     appName: { fr: "Algeria Through Time", en: "Algeria Through Time", ar: "Algeria Through Time" }[current],
     myProgress: { fr: "Ma progression", en: "My Progress", ar: "تقدّمي" }[current],
     settings: { fr: "Paramètres", en: "Settings", ar: "الإعدادات" }[current],
@@ -62,16 +64,17 @@ export function Header() {
     }[current],
   };
 
+  // Primary: structural pillars of the journey
   const navLinks = [
     { to: "/timeline" as const, label: T.journey },
     { to: "/map" as const, label: T.regions },
     { to: "/words" as const, label: T.culture },
   ];
 
+  // Secondary: thematic experiences under the cultural umbrella
   const secondaryLinks = [
-    { to: "/figures" as const, label: T.figures },
-    { to: "/words" as const, label: T.words },
-    { to: "/moments" as const, label: T.moments },
+    { to: "/cuisine" as const, label: T.cuisine },
+    { to: "/figures" as const, label: T.cinema },
   ];
 
   const handleReset = () => {
