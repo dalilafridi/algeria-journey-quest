@@ -17,6 +17,7 @@ export function Header() {
   const [profileOpen, setProfileOpen] = useState(false);
   const lang = useLang();
   const navigate = useNavigate();
+  const path = useRouterState({ select: (s) => s.location.pathname });
   const langRef = useRef<HTMLDivElement>(null);
   const profileRef = useRef<HTMLDivElement>(null);
 
