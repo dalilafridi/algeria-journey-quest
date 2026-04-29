@@ -7,6 +7,7 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { SplashScreen } from "@/components/brand/SplashScreen";
 import { WelcomeJourney } from "@/components/WelcomeJourney";
 import { ContinueJourneyCard } from "@/components/ContinueJourneyCard";
+import { JourneyHud } from "@/components/JourneyHud";
 
 function NotFoundComponent() {
   return (
@@ -102,6 +103,7 @@ function RootComponent() {
       <ContinueJourneyCard />
       <Outlet />
       <WelcomeJourney />
+      <JourneyHud />
       <Sonner />
     </>
   );

@@ -4,6 +4,8 @@ import { Header } from "@/components/Header";
 import { RegionIcon } from "@/components/RegionIcon";
 import { mapRegions, type MapRegion } from "@/data/mapRegions";
 import { getFigure } from "@/data/figures";
+import { regionIntros, cinematicCopy } from "@/data/cinematic";
+import { discover } from "@/lib/discoveries";
 import { t, useLang } from "@/lib/i18n";
 import { saveJourneyPlace } from "@/lib/continuity";
 
@@ -41,15 +43,26 @@ function RegionExplorerPage() {
   const lang = useLang();
   const [selectedId, setSelectedId] = useState<string>(mapRegions[0].id);
   const [highlight, setHighlight] = useState(false);
+  const [introKey, setIntroKey] = useState(0);
   const selected: MapRegion | undefined = mapRegions.find((r) => r.id === selectedId);
 
   useEffect(() => {
     const id = window.location.hash.replace("#region-", "");
-    if (id && mapRegions.some((r) => r.id === id)) setSelectedId(id);
+    if (id && mapRegions.some((r) => r.id === id)) {
+      setSelectedId(id);
+      // trigger intro on hash deep-link
+      window.requestAnimationFrame(() => {
+        const el = document.getElementById(`region-${id}`);
+        el?.scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+    }
   }, []);
 
   const handleSelect = (id: string) => {
     setSelectedId(id);
+    setIntroKey((k) => k + 1);
+    const r = mapRegions.find((x) => x.id === id);
+    if (r) discover("region", id, r.name, lang);
     if (typeof window === "undefined") return;
     window.requestAnimationFrame(() => {
       const el = document.getElementById(`region-${id}`);
@@ -73,6 +86,8 @@ function RegionExplorerPage() {
       href: `/map#region-${selected.id}`,
     });
   }, [selected]);
+
+  const intro = selected ? regionIntros[selected.id] : undefined;
 
   return (
     <div className="min-h-screen">
@@ -127,6 +142,22 @@ function RegionExplorerPage() {
             );
           })}
         </section>
+
+        {/* Cinematic intro line */}
+        {selected && intro && (
+          <figure
+            key={`intro-${selected.id}-${introKey}`}
+            className="mt-6 rounded-2xl border border-border/70 bg-gradient-to-br from-muted/40 to-card px-5 py-6 sm:py-7 text-center animate-cinematic-in"
+            style={{ boxShadow: "var(--shadow-soft)" }}
+          >
+            <div className="text-[10px] uppercase tracking-[0.25em] font-bold text-primary/80 mb-2">
+              {t(cinematicCopy.cinematicLabel, lang)}
+            </div>
+            <blockquote className="text-base sm:text-lg italic font-semibold text-foreground/90 leading-relaxed max-w-xl mx-auto">
+              “{t(intro, lang)}”
+            </blockquote>
+          </figure>
+        )}
 
         {/* Selected region detail */}
         {selected ? (

@@ -3,6 +3,8 @@ import { useEffect, useState } from "react";
 import { Header } from "@/components/Header";
 import { StoryFlow } from "@/components/story/StoryFlow";
 import { cuisineCopy, cuisineRegions, cuisineStory, cuisineSweets, type CuisineRegionId } from "@/data/cuisine";
+import { dishMemoryLines, cinematicCopy } from "@/data/cinematic";
+import { discover } from "@/lib/discoveries";
 import { t, useLang } from "@/lib/i18n";
 import { saveJourneyPlace } from "@/lib/continuity";
 import cuisineHero from "@/assets/cuisine-hero.jpg";
@@ -48,6 +50,20 @@ function CuisinePage() {
       description: cuisineCopy.subtitle as { en: string; fr: string; ar: string },
       href: "/cuisine",
     });
+  }, []);
+
+  // Listen to Surprise-me cuisine event
+  useEffect(() => {
+    const onPick = (e: Event) => {
+      const id = (e as CustomEvent).detail as CuisineRegionId;
+      if (!id) return;
+      setActiveRegion(id);
+      window.requestAnimationFrame(() => {
+        document.getElementById("cuisine-dishes")?.scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+    };
+    window.addEventListener("cuisine:open-region", onPick as EventListener);
+    return () => window.removeEventListener("cuisine:open-region", onPick as EventListener);
   }, []);
 
   const region = activeRegion
@@ -201,11 +217,16 @@ function CuisinePage() {
               <div className="grid sm:grid-cols-2 gap-3">
                 {region.dishes.map((d) => {
                   const isOpen = openDish === d.id;
+                  const memory = dishMemoryLines[d.id];
                   return (
                     <button
                       key={d.id}
                       type="button"
-                      onClick={() => setOpenDish(isOpen ? null : d.id)}
+                      onClick={() => {
+                        const next = isOpen ? null : d.id;
+                        setOpenDish(next);
+                        if (next) discover("dish", d.id, d.name, lang);
+                      }}
                       className="group text-left rounded-2xl border border-border bg-card overflow-hidden transition-all duration-200 ease-out hover:-translate-y-1 hover:shadow-lg hover:border-secondary/40 focus:outline-none focus-visible:ring-2 focus-visible:ring-ring"
                       aria-expanded={isOpen}
                     >
@@ -230,6 +251,14 @@ function CuisinePage() {
                           <div className="mt-2.5 inline-flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-wider text-secondary">
                             <span aria-hidden>🕰️</span>
                             {t(cuisineCopy.whenEaten, lang)} · {t(d.whenEaten, lang)}
+                          </div>
+                        )}
+                        {isOpen && memory && (
+                          <div className="mt-3 px-3 py-2.5 rounded-xl border border-dashed border-secondary/40 bg-secondary/5 text-[12.5px] italic leading-relaxed text-foreground/80 animate-cinematic-in">
+                            <div className="not-italic text-[10px] font-bold uppercase tracking-wider text-secondary mb-1">
+                              {t(cinematicCopy.memoryLabel, lang)}
+                            </div>
+                            “{t(memory, lang)}”
                           </div>
                         )}
                         {isOpen && d.note && (
