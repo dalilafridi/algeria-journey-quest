@@ -217,11 +217,16 @@ function CuisinePage() {
               <div className="grid sm:grid-cols-2 gap-3">
                 {region.dishes.map((d) => {
                   const isOpen = openDish === d.id;
+                  const memory = dishMemoryLines[d.id];
                   return (
                     <button
                       key={d.id}
                       type="button"
-                      onClick={() => setOpenDish(isOpen ? null : d.id)}
+                      onClick={() => {
+                        const next = isOpen ? null : d.id;
+                        setOpenDish(next);
+                        if (next) discover("dish", d.id, d.name, lang);
+                      }}
                       className="group text-left rounded-2xl border border-border bg-card overflow-hidden transition-all duration-200 ease-out hover:-translate-y-1 hover:shadow-lg hover:border-secondary/40 focus:outline-none focus-visible:ring-2 focus-visible:ring-ring"
                       aria-expanded={isOpen}
                     >
