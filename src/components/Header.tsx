@@ -65,17 +65,27 @@ export function Header() {
     }[current],
   };
 
+  // Section matchers — define which URL prefixes belong to each tab.
+  // Journey owns historical content: timeline, eras, moments, and home.
+  // Culture owns words/ideas/figures (excluding the Cinema secondary tab).
+  const isJourney = path === "/" || path.startsWith("/timeline") || path.startsWith("/era") || path.startsWith("/moments") || path.startsWith("/lessons");
+  const isRegions = path.startsWith("/map");
+  const isCulture = path.startsWith("/words") || path.startsWith("/ideas") || (path.startsWith("/figures") && !path.includes("cinema"));
+  const isCuisine = path.startsWith("/cuisine");
+  // Cinema lives inside the figures route (cinema section). Use hash to deep-link.
+  const isCinema = path.startsWith("/figures") && (path.includes("cinema") || (typeof window !== "undefined" && window.location.hash.includes("cinema")));
+
   // Primary: structural pillars of the journey
   const navLinks = [
-    { to: "/timeline" as const, label: T.journey },
-    { to: "/map" as const, label: T.regions },
-    { to: "/words" as const, label: T.culture },
+    { to: "/timeline" as const, label: T.journey, active: isJourney },
+    { to: "/map" as const, label: T.regions, active: isRegions },
+    { to: "/words" as const, label: T.culture, active: isCulture && !isCinema },
   ];
 
   // Secondary: thematic experiences under the cultural umbrella
   const secondaryLinks = [
-    { to: "/cuisine" as const, label: T.cuisine },
-    { to: "/figures" as const, label: T.cinema },
+    { to: "/cuisine" as const, label: T.cuisine, active: isCuisine },
+    { to: "/figures" as const, label: T.cinema, active: isCinema },
   ];
 
   const handleReset = () => {
