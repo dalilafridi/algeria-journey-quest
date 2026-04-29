@@ -4,6 +4,8 @@ import { Header } from "@/components/Header";
 import { RegionIcon } from "@/components/RegionIcon";
 import { mapRegions, type MapRegion } from "@/data/mapRegions";
 import { getFigure } from "@/data/figures";
+import { regionIntros, cinematicCopy } from "@/data/cinematic";
+import { discover } from "@/lib/discoveries";
 import { t, useLang } from "@/lib/i18n";
 import { saveJourneyPlace } from "@/lib/continuity";
 
