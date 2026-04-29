@@ -43,15 +43,26 @@ function RegionExplorerPage() {
   const lang = useLang();
   const [selectedId, setSelectedId] = useState<string>(mapRegions[0].id);
   const [highlight, setHighlight] = useState(false);
+  const [introKey, setIntroKey] = useState(0);
   const selected: MapRegion | undefined = mapRegions.find((r) => r.id === selectedId);
 
   useEffect(() => {
     const id = window.location.hash.replace("#region-", "");
-    if (id && mapRegions.some((r) => r.id === id)) setSelectedId(id);
+    if (id && mapRegions.some((r) => r.id === id)) {
+      setSelectedId(id);
+      // trigger intro on hash deep-link
+      window.requestAnimationFrame(() => {
+        const el = document.getElementById(`region-${id}`);
+        el?.scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+    }
   }, []);
 
   const handleSelect = (id: string) => {
     setSelectedId(id);
+    setIntroKey((k) => k + 1);
+    const r = mapRegions.find((x) => x.id === id);
+    if (r) discover("region", id, r.name, lang);
     if (typeof window === "undefined") return;
     window.requestAnimationFrame(() => {
       const el = document.getElementById(`region-${id}`);
@@ -75,6 +86,8 @@ function RegionExplorerPage() {
       href: `/map#region-${selected.id}`,
     });
   }, [selected]);
+
+  const intro = selected ? regionIntros[selected.id] : undefined;
 
   return (
     <div className="min-h-screen">
