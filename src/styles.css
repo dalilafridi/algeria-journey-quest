@@ -314,6 +314,36 @@
   0% { opacity: 0; transform: translateY(6px); }
   100% { opacity: 1; transform: translateY(0); }
 }
+@keyframes cinematic-in {
+  0% { opacity: 0; transform: translateY(10px); filter: blur(2px); }
+  100% { opacity: 1; transform: translateY(0); filter: blur(0); }
+}
+.animate-cinematic-in { animation: cinematic-in 0.9s ease-out both; }
+
+/* Immersion mode — softens UI noise globally without breaking layout. */
+html.immersion-on body {
+  background:
+    radial-gradient(ellipse at 50% 0%, color-mix(in oklab, var(--primary) 6%, transparent), transparent 55%),
+    var(--background);
+  transition: background 600ms ease;
+}
+html.immersion-on * {
+  transition-duration: 450ms;
+}
+html.immersion-on .border,
+html.immersion-on [class*="border-"] {
+  border-color: color-mix(in oklab, var(--border) 55%, transparent) !important;
+}
+html.immersion-on .shadow,
+html.immersion-on .shadow-sm,
+html.immersion-on .shadow-md,
+html.immersion-on .shadow-lg,
+html.immersion-on .shadow-xl {
+  box-shadow: 0 8px 30px -18px color-mix(in oklab, var(--foreground) 30%, transparent) !important;
+}
+html.immersion-on main {
+  letter-spacing: 0.005em;
+}
 
 /* Subtle, premium card hover — calm lift + warmer border */
 .card-hover {
