@@ -131,13 +131,13 @@ export function Header() {
         </Link>
 
         {/* Desktop nav */}
-        <nav className="hidden lg:flex items-center gap-2 flex-1 justify-center">
+        <nav className="hidden lg:flex items-center gap-2 flex-1 justify-center" aria-label="Primary">
           {navLinks.map((l) => (
             <Link
-              key={l.to}
+              key={`p-${l.to}-${l.label}`}
               to={l.to}
-              className={linkClass}
-              activeProps={{ className: activeLinkClass }}
+              className={l.active ? activeLinkClass : primaryClass}
+              aria-current={l.active ? "page" : undefined}
             >
               {l.label}
             </Link>
@@ -145,10 +145,10 @@ export function Header() {
           <span className="mx-1 h-5 w-px bg-border" aria-hidden />
           {secondaryLinks.map((l) => (
             <Link
-              key={l.to}
+              key={`s-${l.to}-${l.label}`}
               to={l.to}
-              className={linkClass + " opacity-80"}
-              activeProps={{ className: activeLinkClass }}
+              className={l.active ? activeLinkClass : secondaryClass}
+              aria-current={l.active ? "page" : undefined}
             >
               {l.label}
             </Link>
