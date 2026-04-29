@@ -3,6 +3,8 @@ import { useEffect, useState } from "react";
 import { Header } from "@/components/Header";
 import { StoryFlow } from "@/components/story/StoryFlow";
 import { cuisineCopy, cuisineRegions, cuisineStory, cuisineSweets, type CuisineRegionId } from "@/data/cuisine";
+import { dishMemoryLines, cinematicCopy } from "@/data/cinematic";
+import { discover } from "@/lib/discoveries";
 import { t, useLang } from "@/lib/i18n";
 import { saveJourneyPlace } from "@/lib/continuity";
 import cuisineHero from "@/assets/cuisine-hero.jpg";
