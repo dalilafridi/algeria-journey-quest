@@ -63,7 +63,7 @@ const UI = {
       "Identity, courage, memory, freedom, and peace — essential chapters of Algerian history, told with care.",
       "الهوية، الشجاعة، الذاكرة، الحرية والسلام — فصول أساسية من تاريخ الجزائر، تُروى برفق.",
     ),
-    badge: L("Salle d'exposition", "Exhibition Hall", "قاعة العرض"),
+    badge: L("Voyage à travers le temps", "Journey Through Time", "رحلة عبر الزمن"),
   },
   storyMode: L("Mode récit", "Story mode", "وضع القصة"),
   whatHappened: L("Ce qui s'est passé", "What happened", "ما الذي حدث"),
