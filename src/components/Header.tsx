@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "@tanstack/react-router";
+import { Link, useNavigate, useRouterState } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import { resetAllQuizProgress } from "@/lib/progress";
 import { LANGS, getLang, setLang, useLang, type Lang } from "@/lib/i18n";
@@ -17,6 +17,7 @@ export function Header() {
   const [profileOpen, setProfileOpen] = useState(false);
   const lang = useLang();
   const navigate = useNavigate();
+  const path = useRouterState({ select: (s) => s.location.pathname });
   const langRef = useRef<HTMLDivElement>(null);
   const profileRef = useRef<HTMLDivElement>(null);
 
@@ -50,6 +51,8 @@ export function Header() {
     regions: { fr: "Régions", en: "Regions", ar: "المناطق" }[current],
     words: { fr: "Paroles", en: "Words", ar: "كلمات" }[current],
     moments: { fr: "Moments", en: "Moments", ar: "لحظات" }[current],
+    cuisine: { fr: "Cuisine", en: "Cuisine", ar: "المطبخ" }[current],
+    cinema: { fr: "Cinéma", en: "Cinema", ar: "السينما" }[current],
     appName: { fr: "Algeria Through Time", en: "Algeria Through Time", ar: "Algeria Through Time" }[current],
     myProgress: { fr: "Ma progression", en: "My Progress", ar: "تقدّمي" }[current],
     settings: { fr: "Paramètres", en: "Settings", ar: "الإعدادات" }[current],
@@ -62,16 +65,27 @@ export function Header() {
     }[current],
   };
 
+  // Section matchers — define which URL prefixes belong to each tab.
+  // Journey owns historical content: timeline, eras, moments, and home.
+  // Culture owns words/ideas/figures (excluding the Cinema secondary tab).
+  const isJourney = path === "/" || path.startsWith("/timeline") || path.startsWith("/era") || path.startsWith("/moments") || path.startsWith("/lessons");
+  const isRegions = path.startsWith("/map");
+  const isCulture = path.startsWith("/words") || path.startsWith("/ideas") || (path.startsWith("/figures") && !path.includes("cinema"));
+  const isCuisine = path.startsWith("/cuisine");
+  // Cinema lives inside the figures route (cinema section). Use hash to deep-link.
+  const isCinema = path.startsWith("/figures") && (path.includes("cinema") || (typeof window !== "undefined" && window.location.hash.includes("cinema")));
+
+  // Primary: structural pillars of the journey
   const navLinks = [
-    { to: "/timeline" as const, label: T.journey },
-    { to: "/map" as const, label: T.regions },
-    { to: "/words" as const, label: T.culture },
+    { to: "/timeline" as const, label: T.journey, active: isJourney },
+    { to: "/map" as const, label: T.regions, active: isRegions },
+    { to: "/words" as const, label: T.culture, active: isCulture && !isCinema },
   ];
 
+  // Secondary: thematic experiences under the cultural umbrella
   const secondaryLinks = [
-    { to: "/figures" as const, label: T.figures },
-    { to: "/words" as const, label: T.words },
-    { to: "/moments" as const, label: T.moments },
+    { to: "/cuisine" as const, label: T.cuisine, active: isCuisine },
+    { to: "/figures" as const, label: T.cinema, active: isCinema },
   ];
 
   const handleReset = () => {
@@ -89,8 +103,10 @@ export function Header() {
 
   const linkClass =
     "text-sm font-medium text-muted-foreground hover:text-foreground transition-all whitespace-nowrap rounded-full px-3 py-2";
+  const primaryClass = linkClass + " font-semibold text-foreground/85";
+  const secondaryClass = linkClass + " text-xs opacity-75";
   const activeLinkClass =
-    linkClass + " text-foreground bg-muted shadow-[inset_0_0_0_1px_var(--border)]";
+    "text-sm font-semibold text-foreground bg-muted shadow-[inset_0_0_0_1px_var(--border)] transition-all whitespace-nowrap rounded-full px-3 py-2";
 
   return (
     <header className="sticky top-0 z-30 border-b border-border bg-background/90 backdrop-blur-md">
@@ -115,13 +131,13 @@ export function Header() {
         </Link>
 
         {/* Desktop nav */}
-        <nav className="hidden lg:flex items-center gap-2 flex-1 justify-center">
+        <nav className="hidden lg:flex items-center gap-2 flex-1 justify-center" aria-label="Primary">
           {navLinks.map((l) => (
             <Link
-              key={l.to}
+              key={`p-${l.to}-${l.label}`}
               to={l.to}
-              className={linkClass}
-              activeProps={{ className: activeLinkClass }}
+              className={l.active ? activeLinkClass : primaryClass}
+              aria-current={l.active ? "page" : undefined}
             >
               {l.label}
             </Link>
@@ -129,10 +145,10 @@ export function Header() {
           <span className="mx-1 h-5 w-px bg-border" aria-hidden />
           {secondaryLinks.map((l) => (
             <Link
-              key={l.to}
+              key={`s-${l.to}-${l.label}`}
               to={l.to}
-              className={linkClass + " opacity-80"}
-              activeProps={{ className: activeLinkClass }}
+              className={l.active ? activeLinkClass : secondaryClass}
+              aria-current={l.active ? "page" : undefined}
             >
               {l.label}
             </Link>
@@ -275,10 +291,16 @@ export function Header() {
           <nav className="max-w-5xl mx-auto px-3 py-2 flex flex-col">
             {navLinks.map((l) => (
               <Link
-                key={l.to}
+                key={`mp-${l.to}-${l.label}`}
                 to={l.to}
                 onClick={() => setMenuOpen(false)}
-                className="px-3 py-3 rounded-xl text-base font-medium text-foreground hover:bg-muted active:bg-muted transition"
+                aria-current={l.active ? "page" : undefined}
+                className={
+                  "px-3 py-3 rounded-xl text-base font-semibold transition " +
+                  (l.active
+                    ? "text-foreground bg-muted"
+                    : "text-foreground hover:bg-muted active:bg-muted")
+                }
               >
                 {l.label}
               </Link>
@@ -286,10 +308,16 @@ export function Header() {
             <div className="h-px bg-border my-1 mx-3" />
             {secondaryLinks.map((l) => (
               <Link
-                key={l.to}
+                key={`ms-${l.to}-${l.label}`}
                 to={l.to}
                 onClick={() => setMenuOpen(false)}
-                className="px-3 py-2.5 rounded-xl text-sm font-medium text-muted-foreground hover:bg-muted hover:text-foreground active:bg-muted transition"
+                aria-current={l.active ? "page" : undefined}
+                className={
+                  "px-3 py-2.5 rounded-xl text-sm font-medium transition " +
+                  (l.active
+                    ? "text-foreground bg-muted"
+                    : "text-muted-foreground hover:bg-muted hover:text-foreground active:bg-muted")
+                }
               >
                 {l.label}
               </Link>
