@@ -103,8 +103,10 @@ export function Header() {
 
   const linkClass =
     "text-sm font-medium text-muted-foreground hover:text-foreground transition-all whitespace-nowrap rounded-full px-3 py-2";
+  const primaryClass = linkClass + " font-semibold text-foreground/85";
+  const secondaryClass = linkClass + " text-xs opacity-75";
   const activeLinkClass =
-    linkClass + " text-foreground bg-muted shadow-[inset_0_0_0_1px_var(--border)]";
+    "text-sm font-semibold text-foreground bg-muted shadow-[inset_0_0_0_1px_var(--border)] transition-all whitespace-nowrap rounded-full px-3 py-2";
 
   return (
     <header className="sticky top-0 z-30 border-b border-border bg-background/90 backdrop-blur-md">
