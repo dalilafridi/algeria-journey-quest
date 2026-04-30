@@ -294,23 +294,6 @@ export function Header() {
               </Link>
             ))}
             <div className="h-px bg-border my-1 mx-3" />
-            {secondaryLinks.map((l) => (
-              <Link
-                key={`ms-${l.to}-${l.label}`}
-                to={l.to}
-                onClick={() => setMenuOpen(false)}
-                aria-current={l.active ? "page" : undefined}
-                className={
-                  "px-3 py-2.5 rounded-xl text-sm font-medium transition " +
-                  (l.active
-                    ? "text-foreground bg-muted"
-                    : "text-muted-foreground hover:bg-muted hover:text-foreground active:bg-muted")
-                }
-              >
-                {l.label}
-              </Link>
-            ))}
-            <div className="h-px bg-border my-1 mx-3" />
             <Link
               to="/profile"
               onClick={() => setMenuOpen(false)}
