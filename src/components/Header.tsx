@@ -141,17 +141,6 @@ export function Header() {
               {l.label}
             </Link>
           ))}
-          <span className="mx-1 h-5 w-px bg-border" aria-hidden />
-          {secondaryLinks.map((l) => (
-            <Link
-              key={`s-${l.to}-${l.label}`}
-              to={l.to}
-              className={l.active ? activeLinkClass : secondaryClass}
-              aria-current={l.active ? "page" : undefined}
-            >
-              {l.label}
-            </Link>
-          ))}
         </nav>
 
         <div className="flex items-center gap-2 sm:gap-3">
