@@ -21,7 +21,7 @@ function FiguresIndex() {
   const [query, setQuery] = useState("");
   const [cat, setCat] = useState<FigureCategory | "all">("all");
   const [reg, setReg] = useState<FigureRegion | "all">("all");
-  const [cinemaAnswers, setCinemaAnswers] = useState<Record<string, number>>({});
+  
 
   useEffect(() => {
     saveJourneyPlace({
