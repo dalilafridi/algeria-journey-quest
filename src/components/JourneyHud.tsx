@@ -7,7 +7,7 @@ import { figures } from "@/data/figures";
 import { cuisineRegions } from "@/data/cuisine";
 
 type Step = {
-  id: "history" | "regions" | "culture" | "cuisine" | "cinema";
+  id: "history" | "regions" | "culture" | "cuisine";
   label: Record<Lang, string>;
   match: (path: string) => boolean;
   to: string;
