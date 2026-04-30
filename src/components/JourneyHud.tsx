@@ -45,16 +45,6 @@ const STEPS: Step[] = [
     match: (p) => p.startsWith("/cuisine"),
     to: "/cuisine",
   },
-  {
-    id: "cinema",
-    label: { fr: "Cinéma", en: "Cinema", ar: "السينما" },
-    // Cinema lives inside the figures route via hash anchor
-    match: (p) =>
-      typeof window !== "undefined" &&
-      p.startsWith("/figures") &&
-      window.location.hash.includes("cinema"),
-    to: "/figures",
-  },
 ];
 
 const COPY = {
