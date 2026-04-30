@@ -86,12 +86,6 @@ export function Header() {
     { to: "/words" as const, label: T.culture, active: isCulture },
   ];
 
-  // Secondary: thematic experiences under the cultural umbrella
-  const secondaryLinks = [
-    { to: "/cuisine" as const, label: T.cuisine, active: isCuisine },
-    { to: "/stargazing" as const, label: T.stargazing, active: isStargazing },
-    { to: "/figures" as const, label: T.cinema, active: isCinema },
-  ];
 
   const handleReset = () => {
     if (typeof window !== "undefined" && window.confirm(T.confirmReset)) {
