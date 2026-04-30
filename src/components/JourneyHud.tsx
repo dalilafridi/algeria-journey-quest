@@ -134,7 +134,7 @@ export function JourneyHud() {
                     >
                       {s.label[lang]}
                     </span>
-                    {i < STEPS.length - 1 && (
+                    {i < visibleSteps.length - 1 && (
                       <span className="hidden sm:inline text-muted-foreground/30 text-[10px]">·</span>
                     )}
                   </button>
