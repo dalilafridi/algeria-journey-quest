@@ -25,7 +25,7 @@ function CinemaPage() {
 
   useEffect(() => {
     saveJourneyPlace({
-      section: "cinema",
+      section: "figures",
       label: { fr: "Cinéma", en: "Cinema", ar: "السينما" },
       description: {
         fr: "Films emblématiques d'Algérie",
