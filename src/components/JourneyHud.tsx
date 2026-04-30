@@ -70,6 +70,12 @@ export function JourneyHud() {
     [path],
   );
 
+  // Show only broad journey categories. "cuisine" appears only when active.
+  const visibleSteps = useMemo(
+    () => STEPS.filter((s) => s.id !== "cuisine" || activeId === "cuisine"),
+    [activeId],
+  );
+
   const surprise = () => {
     const choice = Math.floor(Math.random() * 4);
     if (choice === 0) {
