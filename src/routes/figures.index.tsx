@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useMemo, useState } from "react";
 import { Header } from "@/components/Header";
-import { cinemaQuiz, cinemaThemeLabels, featuredFilms } from "@/data/cinema";
+
 import { figures, FIGURE_CATEGORIES, FIGURE_REGIONS, type FigureCategory, type FigureRegion } from "@/data/figures";
 import { t, tu, useLang } from "@/lib/i18n";
 import { saveJourneyPlace } from "@/lib/continuity";
