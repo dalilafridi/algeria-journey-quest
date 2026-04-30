@@ -7,7 +7,7 @@ import { figures } from "@/data/figures";
 import { cuisineRegions } from "@/data/cuisine";
 
 type Step = {
-  id: "history" | "regions" | "culture" | "cuisine" | "cinema";
+  id: "history" | "regions" | "culture" | "cuisine";
   label: Record<Lang, string>;
   match: (path: string) => boolean;
   to: string;
@@ -45,16 +45,6 @@ const STEPS: Step[] = [
     match: (p) => p.startsWith("/cuisine"),
     to: "/cuisine",
   },
-  {
-    id: "cinema",
-    label: { fr: "Cinéma", en: "Cinema", ar: "السينما" },
-    // Cinema lives inside the figures route via hash anchor
-    match: (p) =>
-      typeof window !== "undefined" &&
-      p.startsWith("/figures") &&
-      window.location.hash.includes("cinema"),
-    to: "/figures",
-  },
 ];
 
 const COPY = {
@@ -78,6 +68,12 @@ export function JourneyHud() {
   const activeId = useMemo(
     () => STEPS.find((s) => s.match(path))?.id ?? null,
     [path],
+  );
+
+  // Show only broad journey categories. "cuisine" appears only when active.
+  const visibleSteps = useMemo(
+    () => STEPS.filter((s) => s.id !== "cuisine" || activeId === "cuisine"),
+    [activeId],
   );
 
   const surprise = () => {
@@ -110,7 +106,7 @@ export function JourneyHud() {
         >
           <div className="flex items-center gap-2 px-3 py-2">
             <div className="flex items-center gap-1.5 flex-1 min-w-0 overflow-hidden">
-              {STEPS.map((s, i) => {
+              {visibleSteps.map((s, i) => {
                 const isActive = s.id === activeId;
                 return (
                   <button
@@ -138,7 +134,7 @@ export function JourneyHud() {
                     >
                       {s.label[lang]}
                     </span>
-                    {i < STEPS.length - 1 && (
+                    {i < visibleSteps.length - 1 && (
                       <span className="hidden sm:inline text-muted-foreground/30 text-[10px]">·</span>
                     )}
                   </button>

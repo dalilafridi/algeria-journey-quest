@@ -18,6 +18,7 @@ import { Route as MapRouteImport } from './routes/map'
 import { Route as LessonsRouteImport } from './routes/lessons'
 import { Route as IdeasRouteImport } from './routes/ideas'
 import { Route as CuisineRouteImport } from './routes/cuisine'
+import { Route as CinemaRouteImport } from './routes/cinema'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as FiguresIndexRouteImport } from './routes/figures.index'
 import { Route as QuizEraIdRouteImport } from './routes/quiz.$eraId'
@@ -70,6 +71,11 @@ const CuisineRoute = CuisineRouteImport.update({
   path: '/cuisine',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CinemaRoute = CinemaRouteImport.update({
+  id: '/cinema',
+  path: '/cinema',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -103,6 +109,7 @@ const EraEraIdRoute = EraEraIdRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/cinema': typeof CinemaRoute
   '/cuisine': typeof CuisineRoute
   '/ideas': typeof IdeasRoute
   '/lessons': typeof LessonsRoute
@@ -120,6 +127,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/cinema': typeof CinemaRoute
   '/cuisine': typeof CuisineRoute
   '/ideas': typeof IdeasRoute
   '/lessons': typeof LessonsRoute
@@ -138,6 +146,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/cinema': typeof CinemaRoute
   '/cuisine': typeof CuisineRoute
   '/ideas': typeof IdeasRoute
   '/lessons': typeof LessonsRoute
@@ -157,6 +166,7 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/cinema'
     | '/cuisine'
     | '/ideas'
     | '/lessons'
@@ -174,6 +184,7 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/cinema'
     | '/cuisine'
     | '/ideas'
     | '/lessons'
@@ -191,6 +202,7 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/cinema'
     | '/cuisine'
     | '/ideas'
     | '/lessons'
@@ -209,6 +221,7 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  CinemaRoute: typeof CinemaRoute
   CuisineRoute: typeof CuisineRoute
   IdeasRoute: typeof IdeasRoute
   LessonsRoute: typeof LessonsRoute
@@ -290,6 +303,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CuisineRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/cinema': {
+      id: '/cinema'
+      path: '/cinema'
+      fullPath: '/cinema'
+      preLoaderRoute: typeof CinemaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -337,6 +357,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  CinemaRoute: CinemaRoute,
   CuisineRoute: CuisineRoute,
   IdeasRoute: IdeasRoute,
   LessonsRoute: LessonsRoute,

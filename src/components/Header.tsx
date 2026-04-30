@@ -68,28 +68,24 @@ export function Header() {
 
   // Section matchers — define which URL prefixes belong to each tab.
   // Journey owns historical content: timeline, eras, moments, and home.
-  // Culture owns words/ideas/figures (excluding the Cinema secondary tab).
+  // Culture owns words/ideas/figures and its sub-experiences (cuisine, stargazing, cinema).
   const isJourney = path === "/" || path.startsWith("/timeline") || path.startsWith("/era") || path.startsWith("/moments") || path.startsWith("/lessons");
   const isRegions = path.startsWith("/map");
-  const isCulture = path.startsWith("/words") || path.startsWith("/ideas") || (path.startsWith("/figures") && !path.includes("cinema"));
-  const isCuisine = path.startsWith("/cuisine");
-  const isStargazing = path.startsWith("/stargazing");
-  // Cinema lives inside the figures route (cinema section). Use hash to deep-link.
-  const isCinema = path.startsWith("/figures") && (path.includes("cinema") || (typeof window !== "undefined" && window.location.hash.includes("cinema")));
+  const isCulture =
+    path.startsWith("/words") ||
+    path.startsWith("/ideas") ||
+    path.startsWith("/figures") ||
+    path.startsWith("/cuisine") ||
+    path.startsWith("/stargazing") ||
+    path.startsWith("/cinema");
 
-  // Primary: structural pillars of the journey
+  // Primary: only the three structural pillars
   const navLinks = [
     { to: "/timeline" as const, label: T.journey, active: isJourney },
     { to: "/map" as const, label: T.regions, active: isRegions },
-    { to: "/words" as const, label: T.culture, active: isCulture && !isCinema },
+    { to: "/words" as const, label: T.culture, active: isCulture },
   ];
 
-  // Secondary: thematic experiences under the cultural umbrella
-  const secondaryLinks = [
-    { to: "/cuisine" as const, label: T.cuisine, active: isCuisine },
-    { to: "/stargazing" as const, label: T.stargazing, active: isStargazing },
-    { to: "/figures" as const, label: T.cinema, active: isCinema },
-  ];
 
   const handleReset = () => {
     if (typeof window !== "undefined" && window.confirm(T.confirmReset)) {
@@ -140,17 +136,6 @@ export function Header() {
               key={`p-${l.to}-${l.label}`}
               to={l.to}
               className={l.active ? activeLinkClass : primaryClass}
-              aria-current={l.active ? "page" : undefined}
-            >
-              {l.label}
-            </Link>
-          ))}
-          <span className="mx-1 h-5 w-px bg-border" aria-hidden />
-          {secondaryLinks.map((l) => (
-            <Link
-              key={`s-${l.to}-${l.label}`}
-              to={l.to}
-              className={l.active ? activeLinkClass : secondaryClass}
               aria-current={l.active ? "page" : undefined}
             >
               {l.label}
@@ -303,23 +288,6 @@ export function Header() {
                   (l.active
                     ? "text-foreground bg-muted"
                     : "text-foreground hover:bg-muted active:bg-muted")
-                }
-              >
-                {l.label}
-              </Link>
-            ))}
-            <div className="h-px bg-border my-1 mx-3" />
-            {secondaryLinks.map((l) => (
-              <Link
-                key={`ms-${l.to}-${l.label}`}
-                to={l.to}
-                onClick={() => setMenuOpen(false)}
-                aria-current={l.active ? "page" : undefined}
-                className={
-                  "px-3 py-2.5 rounded-xl text-sm font-medium transition " +
-                  (l.active
-                    ? "text-foreground bg-muted"
-                    : "text-muted-foreground hover:bg-muted hover:text-foreground active:bg-muted")
                 }
               >
                 {l.label}

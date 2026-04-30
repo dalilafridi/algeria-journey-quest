@@ -149,36 +149,80 @@ function WordsPage() {
           {COPY.relatedIdeas[lang]} →
         </Link>
 
-        {/* Cuisine entry — extension of Culture */}
-        <Link
-          to="/cuisine"
-          className="mt-4 group block rounded-2xl border border-border bg-card overflow-hidden transition-all hover:-translate-y-0.5 hover:shadow-md"
-          style={{
-            background:
-              "linear-gradient(120deg, color-mix(in oklab, var(--secondary) 14%, var(--card)) 0%, var(--card) 70%)",
-          }}
-        >
-          <div className="flex items-center gap-3 p-3.5 sm:p-4">
-            <div
-              className="shrink-0 w-12 h-12 rounded-2xl flex items-center justify-center text-2xl"
-              style={{ background: "color-mix(in oklab, var(--secondary) 22%, var(--card))" }}
-              aria-hidden
-            >
-              🍲
-            </div>
-            <div className="min-w-0 flex-1">
-              <div className="text-[10px] font-bold uppercase tracking-wider text-secondary">
-                {COPY.cuisineLink[lang]}
-              </div>
-              <div className="text-sm text-muted-foreground italic leading-snug">
-                {COPY.cuisineLinkSub[lang]}
-              </div>
-            </div>
-            <span className="text-muted-foreground group-hover:text-foreground transition-colors" aria-hidden>
-              →
-            </span>
+        {/* Culture sub-sections — extensions of Culture */}
+        <div className="mt-5">
+          <div className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground mb-2">
+            {lang === "fr" ? "Explorer la culture" : lang === "ar" ? "استكشاف الثقافة" : "Explore Culture"}
           </div>
-        </Link>
+          <div className="grid grid-cols-2 gap-2.5">
+            {[
+              {
+                to: "/cuisine" as const,
+                emoji: "🍲",
+                title: { fr: "Cuisine", en: "Cuisine", ar: "المطبخ" },
+                sub: {
+                  fr: "Mémoire & saveurs",
+                  en: "Memory & flavors",
+                  ar: "ذاكرة ونكهات",
+                },
+              },
+              {
+                to: "/stargazing" as const,
+                emoji: "✦",
+                title: { fr: "Astronomie Amazighe", en: "Amazigh Stargazing", ar: "علم الفلك الأمازيغي" },
+                sub: {
+                  fr: "Étoiles & saisons",
+                  en: "Stars & seasons",
+                  ar: "نجوم وفصول",
+                },
+              },
+              {
+                to: "/cinema" as const,
+                emoji: "🎬",
+                title: { fr: "Cinéma & Film", en: "Cinema & Film", ar: "السينما والفن" },
+                sub: {
+                  fr: "Films emblématiques",
+                  en: "Featured films",
+                  ar: "أفلام بارزة",
+                },
+              },
+              {
+                to: "/ideas" as const,
+                emoji: "💭",
+                title: { fr: "Débats & Idées", en: "Debates & Ideas", ar: "نقاشات وأفكار" },
+                sub: {
+                  fr: "Pensée & société",
+                  en: "Thought & society",
+                  ar: "فكر ومجتمع",
+                },
+              },
+            ].map((s) => (
+              <Link
+                key={s.to}
+                to={s.to}
+                className="group rounded-2xl border border-border bg-card p-3 transition-all hover:-translate-y-0.5 hover:shadow-md hover:border-primary/40"
+              >
+                <div className="flex items-start gap-2.5">
+                  <div
+                    className="shrink-0 w-9 h-9 rounded-xl flex items-center justify-center text-lg"
+                    style={{ background: "color-mix(in oklab, var(--accent) 18%, var(--card))" }}
+                    aria-hidden
+                  >
+                    {s.emoji}
+                  </div>
+                  <div className="min-w-0 flex-1">
+                    <div className="text-sm font-bold leading-tight group-hover:text-primary transition-colors">
+                      {s.title[lang]}
+                    </div>
+                    <div className="text-[11px] text-muted-foreground mt-0.5 leading-snug">
+                      {s.sub[lang]}
+                    </div>
+                  </div>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
 
         {/* Word of the Day */}
         <WordOfTheDayWidget
