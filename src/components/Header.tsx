@@ -53,6 +53,7 @@ export function Header() {
     moments: { fr: "Moments", en: "Moments", ar: "لحظات" }[current],
     cuisine: { fr: "Cuisine", en: "Cuisine", ar: "المطبخ" }[current],
     cinema: { fr: "Cinéma", en: "Cinema", ar: "السينما" }[current],
+    stargazing: { fr: "Astronomie Amazighe", en: "Amazigh Stargazing", ar: "علم الفلك الأمازيغي" }[current],
     appName: { fr: "Algeria Through Time", en: "Algeria Through Time", ar: "Algeria Through Time" }[current],
     myProgress: { fr: "Ma progression", en: "My Progress", ar: "تقدّمي" }[current],
     settings: { fr: "Paramètres", en: "Settings", ar: "الإعدادات" }[current],
@@ -72,6 +73,7 @@ export function Header() {
   const isRegions = path.startsWith("/map");
   const isCulture = path.startsWith("/words") || path.startsWith("/ideas") || (path.startsWith("/figures") && !path.includes("cinema"));
   const isCuisine = path.startsWith("/cuisine");
+  const isStargazing = path.startsWith("/stargazing");
   // Cinema lives inside the figures route (cinema section). Use hash to deep-link.
   const isCinema = path.startsWith("/figures") && (path.includes("cinema") || (typeof window !== "undefined" && window.location.hash.includes("cinema")));
 
@@ -85,6 +87,7 @@ export function Header() {
   // Secondary: thematic experiences under the cultural umbrella
   const secondaryLinks = [
     { to: "/cuisine" as const, label: T.cuisine, active: isCuisine },
+    { to: "/stargazing" as const, label: T.stargazing, active: isStargazing },
     { to: "/figures" as const, label: T.cinema, active: isCinema },
   ];
 
