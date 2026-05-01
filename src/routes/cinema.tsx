@@ -2,9 +2,25 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { Header } from "@/components/Header";
 import { cinemaQuiz, cinemaThemeLabels, featuredFilms } from "@/data/cinema";
+import { figures } from "@/data/figures";
 import { t, useLang } from "@/lib/i18n";
 import { saveJourneyPlace } from "@/lib/continuity";
 import { JourneyNext } from "@/components/JourneyNext";
+
+/** Map a film to a director figure profile when one exists in figures.ts. */
+const FILM_DIRECTOR_FIGURE: Record<string, string> = {
+  "omar-gatlato": "merzak-allouache",
+  "bab-el-oued-city": "merzak-allouache",
+  "chronicle-years-fire": "mohammed-lakhdar-hamina",
+  "outside-the-law": "rachid-bouchareb",
+};
+
+/** Map a film to a related region (for the "place" link). */
+const FILM_REGION: Record<string, string> = {
+  "battle-of-algiers": "algiers",
+  "omar-gatlato": "algiers",
+  "bab-el-oued-city": "algiers",
+};
 
 export const Route = createFileRoute("/cinema")({
   head: () => ({
