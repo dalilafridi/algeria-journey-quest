@@ -64,12 +64,12 @@
 }
 
 :root {
-  --radius: 1rem;
-  /* Warm sand-based palette */
-  --background: oklch(0.97 0.025 80);
-  --foreground: oklch(0.28 0.04 40);
-  --card: oklch(0.99 0.015 85);
-  --card-foreground: oklch(0.28 0.04 40);
+  --radius: 1.1rem;
+  /* Warm sand-based palette — softened for calmer contrast */
+  --background: oklch(0.975 0.018 82);
+  --foreground: oklch(0.3 0.035 42);
+  --card: oklch(0.992 0.012 86);
+  --card-foreground: oklch(0.3 0.035 42);
   --popover: oklch(0.99 0.015 85);
   --popover-foreground: oklch(0.28 0.04 40);
   /* Terracotta primary */
