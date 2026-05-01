@@ -354,11 +354,43 @@ html.immersion-on main {
 
 /* Subtle, premium card hover — calm lift + warmer border */
 .card-hover {
-  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease, background-color 0.25s ease;
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.35s ease, border-color 0.35s ease, background-color 0.35s ease;
+  will-change: transform;
 }
 .card-hover:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 12px 32px -18px oklch(0.45 0.1 50 / 0.32);
+  transform: translateY(-3px);
+  box-shadow: 0 2px 4px oklch(0.4 0.08 50 / 0.04),
+    0 18px 40px -20px oklch(0.45 0.1 50 / 0.32);
+  border-color: color-mix(in oklab, var(--primary) 28%, var(--border));
+}
+@media (prefers-reduced-motion: reduce) {
+  .card-hover { transition: none; }
+  .card-hover:hover { transform: none; }
+}
+
+/* Auto-apply soft elevation + unified radius to common card shells.
+   Components without an explicit shadow inherit a calm, premium base. */
+.rounded-2xl,
+.rounded-xl {
+  border-radius: calc(var(--radius) + 0.25rem);
+}
+[class*="bg-card"]:not([class*="shadow"]) {
+  box-shadow: var(--shadow-soft);
+}
+
+/* Section fade-in — gentle entrance for top-level page sections. */
+@keyframes section-fade {
+  0% { opacity: 0; transform: translateY(8px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+main > section,
+main > article,
+main > div > section {
+  animation: section-fade 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+@media (prefers-reduced-motion: reduce) {
+  main > section, main > article, main > div > section { animation: none; }
 }
 
 .continue-card {
