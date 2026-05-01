@@ -182,6 +182,7 @@ export function DidYouKnowCard({ fact: override }: Props) {
 
   const era = useMemo(() => findEraForFact(fact), [fact]);
   const figure = useMemo(() => findFigureForFact(fact), [fact]);
+  const region = useMemo(() => findRegionForFact(fact), [fact]);
   const remaining = useRemainingQuizzes();
 
   const onToggle = () => setOpen((v) => !v);
