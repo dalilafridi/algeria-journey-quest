@@ -3,6 +3,7 @@ import { Link } from "@tanstack/react-router";
 import { t, tu, useLang, type LocalizedString, type Lang } from "@/lib/i18n";
 import { eras, dailyFacts } from "@/data/eras";
 import { figures } from "@/data/figures";
+import { curatedFactByText } from "@/data/didYouKnow";
 import { getProgress, hasPassed } from "@/lib/progress";
 
 type Props = {
