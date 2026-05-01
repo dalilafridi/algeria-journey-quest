@@ -223,11 +223,41 @@ function RegionExplorerPage() {
                 <div className="text-xs font-bold uppercase tracking-wider text-muted-foreground mb-2">
                   {COPY.greatFigures[lang]}
                 </div>
+
+                {/* Highlighted key figures (first 1–2) */}
+                <div className="grid sm:grid-cols-2 gap-3 mb-3">
+                  {selected.figureIds.slice(0, 2).map((fid) => {
+                    const f = getFigure(fid);
+                    if (!f) return null;
+                    return (
+                      <Link
+                        key={fid}
+                        to="/figures/$figureId"
+                        params={{ figureId: fid }}
+                        className="rounded-xl border border-border bg-muted/40 hover:bg-card hover:border-primary/40 p-3 transition group"
+                      >
+                        <div className="flex items-start gap-2">
+                          <span className="text-2xl shrink-0" aria-hidden>{f.emoji}</span>
+                          <div className="min-w-0">
+                            <div className="font-bold text-sm leading-tight group-hover:text-primary transition">
+                              {t(f.displayName, lang)}
+                            </div>
+                            <div className="text-[11px] text-muted-foreground mt-0.5">{t(f.era, lang)}</div>
+                            <p className="text-xs text-foreground/80 mt-1.5 line-clamp-2 leading-snug">
+                              {t(f.fact, lang)}
+                            </p>
+                          </div>
+                        </div>
+                      </Link>
+                    );
+                  })}
+                </div>
+
                 <Link to="/figures" className="mb-3 inline-block text-xs font-semibold text-primary hover:underline">
                   {COPY.relatedFigures[lang]} →
                 </Link>
                 <div className="flex flex-wrap gap-2">
-                  {selected.figureIds.map((fid) => {
+                  {selected.figureIds.slice(2).map((fid) => {
                     const f = getFigure(fid);
                     if (!f) return null;
                     return (
