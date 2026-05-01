@@ -371,6 +371,112 @@ export const words: WordItem[] = [
       "همسةٌ من البيت تُذكّر العالم بأنّ الأمازيغية حيّة وجميلة.",
     ),
   },
+
+  // ---------- Idea Cards: Voices Across Generations ----------
+  {
+    id: "idea-oral-memory",
+    category: "cultural-expression",
+    emoji: "🪔",
+    figureId: "fadhma-amrouche",
+    quote: L(
+      "Oral memory — what is spoken can outlive what is written.",
+      "Mémoire orale — ce qui se dit peut survivre à ce qui s'écrit.",
+      "الذاكرة الشفوية — ما يُقال قد يبقى أطول مما يُكتب.",
+    ),
+    author: L(
+      "Inspired by Fadhma Aït Mansour Amrouche",
+      "Inspiré par Fadhma Aït Mansour Amrouche",
+      "مستوحى من فاضمة آيت منصور عمروش",
+    ),
+    context: L(
+      "Kabyle tradition kept history alive through tales, lullabies, and proverbs passed from mother to child.",
+      "La tradition kabyle a maintenu l'histoire vivante à travers contes, berceuses et proverbes transmis de mère en enfant.",
+      "حافظت التقاليد القبائلية على التاريخ عبر الحكايات والتهويدات والأمثال المنقولة من الأم إلى الطفل.",
+    ),
+    meaning: L(
+      "Memory is not only in books — it lives in voices.",
+      "La mémoire n'est pas que dans les livres — elle vit dans les voix.",
+      "الذاكرة ليست في الكتب وحدها — إنّها تعيش في الأصوات.",
+    ),
+  },
+  {
+    id: "idea-exile-identity",
+    category: "cultural-expression",
+    emoji: "🛤️",
+    figureId: "rachid-taha",
+    quote: L(
+      "Exile and identity — to leave a country, and carry it with you.",
+      "Exil et identité — quitter un pays, et le porter avec soi.",
+      "الغربة والهوية — أن تترك وطنًا، وتحمله معك.",
+    ),
+    author: L(
+      "Inspired by Rachid Taha",
+      "Inspiré par Rachid Taha",
+      "مستوحى من رشيد طه",
+    ),
+    context: L(
+      "Generations of Algerians abroad have carried language, music, and memory wherever they have gone.",
+      "Des générations d'Algériens à l'étranger ont emporté avec elles langue, musique et mémoire.",
+      "حملت أجيال من الجزائريين في المهجر اللغة والموسيقى والذاكرة أينما حلّوا.",
+    ),
+    meaning: L(
+      "Diaspora is not absence — it is another way of being present.",
+      "La diaspora n'est pas une absence — c'est une autre manière d'être présent.",
+      "المهجر ليس غيابًا — بل طريقة أخرى للحضور.",
+    ),
+  },
+  {
+    id: "idea-women-heritage",
+    category: "cultural-expression",
+    emoji: "👵",
+    figureId: "fadhma-amrouche",
+    quote: L(
+      "Women as keepers of heritage — the first language is a mother's voice.",
+      "Les femmes, gardiennes du patrimoine — la première langue est la voix d'une mère.",
+      "النساء حارسات التراث — اللغة الأولى هي صوت الأم.",
+    ),
+    author: L(
+      "Inspired by Fadhma, Taos and Jean Amrouche",
+      "Inspiré par Fadhma, Taos et Jean Amrouche",
+      "مستوحى من فاضمة وطاوس وجان عمروش",
+    ),
+    context: L(
+      "In many Algerian families, women have transmitted language, faith, and stories across generations.",
+      "Dans de nombreuses familles algériennes, les femmes ont transmis la langue, la foi et les récits à travers les générations.",
+      "في كثير من العائلات الجزائرية، نقلت النساء اللغة والإيمان والحكايات عبر الأجيال.",
+    ),
+    meaning: L(
+      "Heritage often passes through hands that rock cradles and tell stories.",
+      "Le patrimoine passe souvent par des mains qui bercent et racontent.",
+      "كثيرًا ما يُورَث التراث عبر أيادٍ تُهدهد وترْوي.",
+    ),
+  },
+  {
+    id: "idea-music-resistance",
+    category: "cultural-expression",
+    emoji: "🎸",
+    figureId: "taos-amrouche",
+    quote: L(
+      "Music as cultural resistance — a song can carry what speeches cannot.",
+      "La musique comme résistance culturelle — un chant porte ce que les discours ne peuvent pas dire.",
+      "الموسيقى كمقاومة ثقافية — تحمل الأغنية ما تعجز الخطب عن قوله.",
+    ),
+    author: L(
+      "Inspired by Taos Amrouche and Rachid Taha",
+      "Inspiré par Taos Amrouche et Rachid Taha",
+      "مستوحى من طاوس عمروش ورشيد طه",
+    ),
+    context: L(
+      "From Kabyle chants to raï and rock, Algerian music has long been a way to defend identity and dignity.",
+      "Des chants kabyles au raï et au rock, la musique algérienne a longtemps été une manière de défendre l'identité et la dignité.",
+      "من الأناشيد القبائلية إلى الراي والروك، ظلّت الموسيقى الجزائرية وسيلة للدفاع عن الهوية والكرامة.",
+    ),
+    meaning: L(
+      "When voices are silenced, melodies still speak.",
+      "Quand les voix sont réduites au silence, les mélodies parlent encore.",
+      "حين تُسكَت الأصوات، تظلّ الألحان تتكلّم.",
+    ),
+  },
 ];
 
 export const wordsByCategory = (cat: WordCategoryId) => words.filter((w) => w.category === cat);

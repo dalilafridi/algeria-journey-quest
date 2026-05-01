@@ -2400,6 +2400,157 @@ export const figures: Figure[] = [
     ),
     fact: L("Known for: Bloody Beans.", "Connue pour : Loubia Hamra.", "من أشهر أعمالها: لوبيا حمراء."),
   },
+
+  // ---------- Voices Across Generations — Culture & Memory ----------
+  {
+    id: "rachid-taha",
+    name: "Rachid Taha",
+    displayName: L("Rachid Taha", "Rachid Taha", "رشيد طه"),
+    emoji: "🎤",
+    category: "cultural-identity",
+    region: "kabylie",
+    era: L(
+      "Rebel Voice of Algerian Music",
+      "Voix rebelle de la musique algérienne",
+      "صوت متمرد في الموسيقى الجزائرية",
+    ),
+    regionLabel: L("Kabylie / Diaspora", "Kabylie / Diaspora", "القبائل / المهجر"),
+    story: L(
+      "Rachid Taha carried Algerian music across borders by blending raï, rock, punk, and popular sounds. His voice spoke of exile, identity, and freedom.",
+      "Rachid Taha a porté la musique algérienne au-delà des frontières en mélangeant raï, rock, punk et sons populaires. Sa voix parlait d'exil, d'identité et de liberté.",
+      "نقل رشيد طه الموسيقى الجزائرية إلى آفاق عالمية من خلال مزج الراي والروك والبانك والأغاني الشعبية. عبّرت موسيقاه عن الغربة والهوية والحرية.",
+    ),
+    importance: L(
+      "An important voice of Algerian diaspora culture, he turned music into a space for memory, resistance, and dialogue between worlds.",
+      "Voix majeure de la culture diasporique algérienne, il a fait de la musique un espace de mémoire, de résistance et de dialogue entre les mondes.",
+      "صوت بارز في ثقافة المهجر الجزائري، حوّل الموسيقى إلى فضاء للذاكرة والمقاومة والحوار بين العوالم.",
+    ),
+    fact: L(
+      "Known for Ya Rayah and Rock el Casbah — songs that made Algerian voices resonate worldwide.",
+      "Connu pour Ya Rayah et Rock el Casbah — des chansons qui ont fait résonner la voix algérienne dans le monde entier.",
+      "اشتهر بـ«يا رايح» و«روك القصبة» — أغانٍ جعلت الصوت الجزائري يتردّد في العالم.",
+    ),
+  },
+  {
+    id: "taos-amrouche",
+    name: "Taos Amrouche",
+    displayName: L("Taos Amrouche", "Taos Amrouche", "طاوس عمروش"),
+    emoji: "🎶",
+    category: "cultural-identity",
+    region: "kabylie",
+    era: L(
+      "Voice of Kabyle Oral Memory",
+      "Voix de la mémoire orale kabyle",
+      "صوت الذاكرة الشفوية القبائلية",
+    ),
+    regionLabel: L("Kabylie", "Kabylie", "القبائل"),
+    story: L(
+      "Taos Amrouche devoted her life to carrying Kabyle oral memory. Through songs, stories, and writing, she preserved an essential part of Amazigh identity.",
+      "Taos Amrouche a consacré sa vie à transmettre la mémoire orale kabyle. Par ses chants, ses récits et ses écrits, elle a préservé une part essentielle de l'identité amazighe.",
+      "كرّست طاوس عمروش حياتها لنقل الذاكرة الشفوية القبائلية. من خلال الغناء والحكايات والكتابة، حافظت على جزء مهم من الهوية الأمازيغية.",
+    ),
+    importance: L(
+      "Writer, singer, and cultural transmitter — she connected literature, music, and memory across generations.",
+      "Écrivaine, chanteuse et passeuse de culture, elle a relié littérature, musique et mémoire à travers les générations.",
+      "كاتبة ومغنّية وناقلة للثقافة، ربطت بين الأدب والموسيقى والذاكرة عبر الأجيال.",
+    ),
+    fact: L(
+      "Daughter of Fadhma Aït Mansour Amrouche and sister of Jean Amrouche — part of a family of memory keepers.",
+      "Fille de Fadhma Aït Mansour Amrouche et sœur de Jean Amrouche — issue d'une famille de passeurs de mémoire.",
+      "ابنة فاضمة آيت منصور عمروش وشقيقة جان عمروش — من عائلة حفظة الذاكرة.",
+    ),
+  },
+  {
+    id: "jean-amrouche",
+    name: "Jean Amrouche",
+    displayName: L("Jean Amrouche", "Jean Amrouche", "جان عمروش"),
+    emoji: "📻",
+    category: "cultural-identity",
+    region: "kabylie",
+    era: L(
+      "Writer, Broadcaster, and Voice of Algerian Consciousness",
+      "Écrivain, homme de radio et voix de la conscience algérienne",
+      "كاتب وإذاعي وصوت من أصوات الوعي الجزائري",
+    ),
+    regionLabel: L("Kabylie", "Kabylie", "القبائل"),
+    story: L(
+      "Jean Amrouche was a writer, poet, and broadcaster. During the War of Independence, he helped make Algerian voices heard and supported the national cause in intellectual circles.",
+      "Jean Amrouche fut écrivain, poète et homme de radio. Pendant la guerre d'indépendance, il contribua à faire entendre la voix algérienne et à porter la cause nationale dans les milieux intellectuels.",
+      "كان جان عمروش كاتبًا وشاعرًا وإذاعيًا. خلال حرب التحرير، ساهم في إيصال الصوت الجزائري والدفاع عن القضية الوطنية في الأوساط الفكرية.",
+    ),
+    importance: L(
+      "He bridged French-language literature and Algerian identity, bringing Algerian voices to wider audiences as an intellectual and cultural figure connected to the national cause.",
+      "Il a relié la littérature de langue française et l'identité algérienne, portant la voix algérienne à de plus larges publics comme figure intellectuelle et culturelle liée à la cause nationale.",
+      "جسّر بين الأدب الفرنكوفوني والهوية الجزائرية، وأوصل الصوت الجزائري إلى جمهور أوسع بوصفه شخصية فكرية وثقافية مرتبطة بالقضية الوطنية.",
+    ),
+    fact: L(
+      "Son of Fadhma Aït Mansour and brother of Taos Amrouche — a family where memory passed from voice to page.",
+      "Fils de Fadhma Aït Mansour et frère de Taos Amrouche — une famille où la mémoire passait de la voix à la page.",
+      "ابن فاضمة آيت منصور وشقيق طاوس عمروش — عائلة انتقلت فيها الذاكرة من الصوت إلى الصفحة.",
+    ),
+  },
+  {
+    id: "fadhma-amrouche",
+    name: "Fadhma Aït Mansour Amrouche",
+    displayName: L(
+      "Fadhma Aït Mansour Amrouche",
+      "Fadhma Aït Mansour Amrouche",
+      "فاضمة آيت منصور عمروش",
+    ),
+    emoji: "🪔",
+    category: "cultural-identity",
+    region: "kabylie",
+    era: L("Mother of Memory", "Mère de la mémoire", "أم الذاكرة"),
+    regionLabel: L("Kabylie", "Kabylie", "القبائل"),
+    story: L(
+      "Fadhma Aït Mansour Amrouche represents memory carried by women. Her life and stories shaped the work of her children and preserved a deep part of Kabyle culture.",
+      "Fadhma Aït Mansour Amrouche représente la mémoire transmise par les femmes. Son parcours et ses récits ont nourri l'œuvre de ses enfants et préservé une part profonde de la culture kabyle.",
+      "تمثل فاضمة آيت منصور عمروش الذاكرة التي تنقلها النساء. أثّرت حياتها وحكاياتها في أعمال أبنائها وحافظت على جزء عميق من الثقافة القبائلية.",
+    ),
+    importance: L(
+      "A Kabyle writer and keeper of oral tradition, she stands as a symbol of women as carriers of family, language, and cultural memory.",
+      "Écrivaine kabyle et gardienne de la tradition orale, elle incarne le rôle des femmes comme porteuses de la famille, de la langue et de la mémoire culturelle.",
+      "كاتبة قبائلية وحارسة للتقاليد الشفوية، ترمز إلى دور المرأة في حمل الأسرة واللغة والذاكرة الثقافية.",
+    ),
+    fact: L(
+      "Mother of Taos and Jean Amrouche — her memories nourished a whole literary and musical legacy.",
+      "Mère de Taos et Jean Amrouche — ses souvenirs ont nourri tout un héritage littéraire et musical.",
+      "أمّ طاوس وجان عمروش — غذّت ذكرياتها إرثًا أدبيًا وموسيقيًا كاملاً.",
+    ),
+  },
+  {
+    id: "amrouche-family-thread",
+    name: "Family of Memory",
+    displayName: L(
+      "The Amrouche Family — A Family of Memory",
+      "La famille Amrouche — Une famille de la mémoire",
+      "عائلة عمروش — عائلة الذاكرة",
+    ),
+    emoji: "🕯️",
+    category: "cultural-identity",
+    region: "kabylie",
+    era: L(
+      "Voices Across Generations",
+      "Voix à travers les générations",
+      "أصوات عبر الأجيال",
+    ),
+    regionLabel: L("Kabylie", "Kabylie", "القبائل"),
+    story: L(
+      "Fadhma, Taos, and Jean Amrouche show how memory can pass from mother to children, from oral tradition to literature and music.",
+      "Fadhma, Taos et Jean Amrouche montrent comment la mémoire peut passer d'une mère à ses enfants, de la tradition orale à la littérature et à la musique.",
+      "تُظهر فاضمة وطاوس وجان عمروش كيف تنتقل الذاكرة من الأم إلى الأبناء، ومن الحكاية الشفوية إلى الأدب والموسيقى.",
+    ),
+    importance: L(
+      "Together they trace a thread of transmission — from a mother's voice in a Kabyle village to books, songs, and broadcasts heard far beyond Algeria.",
+      "Ensemble, ils dessinent un fil de transmission — de la voix d'une mère dans un village kabyle aux livres, chansons et émissions entendus bien au-delà de l'Algérie.",
+      "معًا يرسمون خيط النقل — من صوت أم في قرية قبائلية إلى كتب وأغانٍ وبرامج تُسمع بعيدًا عن الجزائر.",
+    ),
+    fact: L(
+      "One family, three voices — oral tradition, literature, and music, all carried from a single hearth.",
+      "Une famille, trois voix — tradition orale, littérature et musique, portées depuis un même foyer.",
+      "عائلة واحدة، ثلاثة أصوات — تقليد شفوي وأدب وموسيقى، كلّها من موقدٍ واحد.",
+    ),
+  },
 ];
 
 // ---------- Lookups ----------
