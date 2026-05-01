@@ -96,31 +96,55 @@ function CinemaPage() {
           </div>
 
           <div className="mt-6 grid sm:grid-cols-2 gap-4">
-            {featuredFilms.map((film) => (
-              <article
-                key={film.id}
-                className="card-hover rounded-2xl bg-card border border-border p-5 transition hover:border-primary/40"
-                style={{ boxShadow: "var(--shadow-soft)" }}
-              >
-                <div className="flex items-start justify-between gap-3">
-                  <h3 className="font-bold text-lg leading-tight">{t(film.title, lang)}</h3>
-                  <span className="shrink-0 text-xs font-bold px-2 py-1 rounded-full bg-muted text-muted-foreground">
-                    {film.year}
-                  </span>
-                </div>
-                <p className="mt-3 text-sm text-muted-foreground leading-relaxed">{t(film.description, lang)}</p>
-                <div className="mt-4 flex flex-wrap gap-2 text-xs">
-                  <span className="px-2.5 py-1 rounded-full bg-accent/20 text-accent-foreground font-semibold">
-                    {t(cinemaThemeLabels[film.theme], lang)}
-                  </span>
-                  {film.director && (
-                    <span className="px-2.5 py-1 rounded-full bg-muted text-muted-foreground font-semibold">
-                      {t(film.director, lang)}
+            {featuredFilms.map((film) => {
+              const directorId = FILM_DIRECTOR_FIGURE[film.id];
+              const director = directorId ? figures.find((f) => f.id === directorId) : undefined;
+              const regionId = FILM_REGION[film.id];
+              return (
+                <article
+                  key={film.id}
+                  className="card-hover rounded-2xl bg-card border border-border p-5 transition hover:border-primary/40"
+                  style={{ boxShadow: "var(--shadow-soft)" }}
+                >
+                  <div className="flex items-start justify-between gap-3">
+                    <h3 className="font-bold text-lg leading-tight">{t(film.title, lang)}</h3>
+                    <span className="shrink-0 text-xs font-bold px-2 py-1 rounded-full bg-muted text-muted-foreground">
+                      {film.year}
                     </span>
-                  )}
-                </div>
-              </article>
-            ))}
+                  </div>
+                  <p className="mt-3 text-sm text-muted-foreground leading-relaxed">{t(film.description, lang)}</p>
+                  <div className="mt-4 flex flex-wrap gap-2 text-xs">
+                    <span className="px-2.5 py-1 rounded-full bg-accent/20 text-accent-foreground font-semibold">
+                      {t(cinemaThemeLabels[film.theme], lang)}
+                    </span>
+                    {film.director && (
+                      director ? (
+                        <Link
+                          to="/figures/$figureId"
+                          params={{ figureId: director.id }}
+                          className="px-2.5 py-1 rounded-full bg-secondary/15 text-secondary font-semibold hover:bg-secondary/25 transition"
+                        >
+                          🎬 {t(film.director, lang)}
+                        </Link>
+                      ) : (
+                        <span className="px-2.5 py-1 rounded-full bg-muted text-muted-foreground font-semibold">
+                          {t(film.director, lang)}
+                        </span>
+                      )
+                    )}
+                    {regionId && (
+                      <Link
+                        to="/map"
+                        hash={`region-${regionId}`}
+                        className="px-2.5 py-1 rounded-full bg-primary/10 text-primary font-semibold hover:bg-primary/20 transition"
+                      >
+                        📍 {regionId === "algiers" ? (lang === "fr" ? "Alger" : lang === "ar" ? "الجزائر العاصمة" : "Algiers") : regionId}
+                      </Link>
+                    )}
+                  </div>
+                </article>
+              );
+            })}
           </div>
 
           <div className="mt-8 rounded-2xl bg-card border border-border p-5" style={{ boxShadow: "var(--shadow-soft)" }}>
