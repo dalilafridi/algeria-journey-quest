@@ -410,6 +410,20 @@ main > div > section {
 .animate-ember-rise { animation: ember-rise 1.6s ease-out forwards; }
 .animate-fade-in { animation: fade-in 0.45s ease-out both; }
 
+/* Soft highlight pulse — used to briefly mark a scrolled-to target. */
+@keyframes soft-highlight {
+  0% { box-shadow: 0 0 0 0 color-mix(in oklab, var(--accent) 0%, transparent); }
+  30% { box-shadow: 0 0 0 6px color-mix(in oklab, var(--accent) 45%, transparent); }
+  100% { box-shadow: 0 0 0 0 color-mix(in oklab, var(--accent) 0%, transparent); }
+}
+.highlight-target {
+  animation: soft-highlight 1.8s ease-out 1;
+  border-radius: 1.25rem;
+}
+@media (prefers-reduced-motion: reduce) {
+  .highlight-target { animation: none; }
+}
+
 /* Premium image hover — slow, subtle zoom. Wrap <img> in a parent with
    class="img-zoom" and overflow-hidden; the image will gently scale in. */
 .img-zoom { overflow: hidden; }
