@@ -61,17 +61,20 @@ function RegionExplorerPage() {
   const handleSelect = (id: string) => {
     setSelectedId(id);
     setIntroKey((k) => k + 1);
+    setIntroPhase(true);
     const r = mapRegions.find((x) => x.id === id);
     if (r) discover("region", id, r.name, lang);
     if (typeof window === "undefined") return;
     window.requestAnimationFrame(() => {
-      const el = document.getElementById(`region-${id}`);
-      if (!el) return;
-      el.scrollIntoView({ behavior: "smooth", block: "start" });
+      const el = document.getElementById(`region-intro-${id}`) ?? document.getElementById(`region-${id}`);
+      if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+    window.setTimeout(() => {
+      setIntroPhase(false);
       setHighlight(false);
       window.requestAnimationFrame(() => setHighlight(true));
       window.setTimeout(() => setHighlight(false), 1400);
-    });
+    }, 1200);
   };
 
   useEffect(() => {
