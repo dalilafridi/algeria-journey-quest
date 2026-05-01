@@ -232,7 +232,7 @@ function WordsPage() {
                 "group rounded-2xl border border-border bg-card p-3.5 transition-all hover:-translate-y-0.5 hover:border-primary/40";
               const style = { boxShadow: "var(--shadow-soft)" } as const;
               return s.external ? (
-                <Link key={s.to} to={s.to} className={className} style={style}>
+                <Link key={s.to} to={s.to as "/cuisine" | "/cinema" | "/stargazing"} className={className} style={style}>
                   {inner}
                 </Link>
               ) : (
