@@ -3,8 +3,22 @@ import { useEffect, useMemo, useState } from "react";
 import { Header } from "@/components/Header";
 
 import { figures, FIGURE_CATEGORIES, FIGURE_REGIONS, type FigureCategory, type FigureRegion } from "@/data/figures";
+import { eras } from "@/data/eras";
+import { mapRegions } from "@/data/mapRegions";
 import { t, tu, useLang } from "@/lib/i18n";
 import { saveJourneyPlace } from "@/lib/continuity";
+
+/** Map a figure region id to a real region page id, when one exists. */
+const FIGURE_REGION_TO_MAP: Partial<Record<string, string>> = {
+  kabylie: "kabylie",
+  aures: "aures",
+  algiers: "algiers",
+  constantine: "constantine",
+  "oran-west": "oran-west",
+  "mascara-west": "oran-west",
+  sahara: "sahara",
+  numidia: "constantine",
+};
 
 export const Route = createFileRoute("/figures/")({
   head: () => ({
