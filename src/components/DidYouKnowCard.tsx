@@ -309,6 +309,16 @@ export function DidYouKnowCard({ fact: override }: Props) {
                       {t(COPY.viewFigure, lang)} →
                     </Link>
                   )}
+                  {region && (
+                    <Link
+                      to="/map"
+                      hash={`region-${region.id}`}
+                      onClick={(e) => e.stopPropagation()}
+                      className="inline-flex items-center gap-1 text-sm font-bold text-accent-foreground hover:underline"
+                    >
+                      {t(COPY.viewRegion, lang)} →
+                    </Link>
+                  )}
                 </div>
 
                 <div className="pt-1 text-[11px] text-muted-foreground/90 italic">
