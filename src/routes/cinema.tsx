@@ -4,6 +4,7 @@ import { Header } from "@/components/Header";
 import { cinemaQuiz, cinemaThemeLabels, featuredFilms } from "@/data/cinema";
 import { t, useLang } from "@/lib/i18n";
 import { saveJourneyPlace } from "@/lib/continuity";
+import { JourneyNext } from "@/components/JourneyNext";
 
 export const Route = createFileRoute("/cinema")({
   head: () => ({
@@ -150,6 +151,7 @@ function CinemaPage() {
             </div>
           </div>
         </section>
+        <JourneyNext current="cinema" />
       </main>
     </div>
   );

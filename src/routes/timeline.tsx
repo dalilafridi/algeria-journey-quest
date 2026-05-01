@@ -13,6 +13,7 @@ import ottomanImg from "@/assets/era-ottoman.jpg";
 import frenchImg from "@/assets/era-french.png";
 import independenceImg from "@/assets/era-independence.png";
 import { saveJourneyPlace } from "@/lib/continuity";
+import { JourneyNext } from "@/components/JourneyNext";
 
 export const Route = createFileRoute("/timeline")({
   head: () => ({
@@ -194,6 +195,7 @@ function Timeline() {
             </dl>
           </div>
         </div>
+        <JourneyNext current="history" />
       </main>
     </div>
   );
