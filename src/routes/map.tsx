@@ -44,6 +44,7 @@ function RegionExplorerPage() {
   const [selectedId, setSelectedId] = useState<string>(mapRegions[0].id);
   const [highlight, setHighlight] = useState(false);
   const [introKey, setIntroKey] = useState(0);
+  const [introPhase, setIntroPhase] = useState(false);
   const selected: MapRegion | undefined = mapRegions.find((r) => r.id === selectedId);
 
   useEffect(() => {
@@ -61,17 +62,20 @@ function RegionExplorerPage() {
   const handleSelect = (id: string) => {
     setSelectedId(id);
     setIntroKey((k) => k + 1);
+    setIntroPhase(true);
     const r = mapRegions.find((x) => x.id === id);
     if (r) discover("region", id, r.name, lang);
     if (typeof window === "undefined") return;
     window.requestAnimationFrame(() => {
-      const el = document.getElementById(`region-${id}`);
-      if (!el) return;
-      el.scrollIntoView({ behavior: "smooth", block: "start" });
+      const el = document.getElementById(`region-intro-${id}`) ?? document.getElementById(`region-${id}`);
+      if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+    window.setTimeout(() => {
+      setIntroPhase(false);
       setHighlight(false);
       window.requestAnimationFrame(() => setHighlight(true));
       window.setTimeout(() => setHighlight(false), 1400);
-    });
+    }, 1200);
   };
 
   useEffect(() => {
@@ -147,7 +151,11 @@ function RegionExplorerPage() {
         {selected && intro && (
           <figure
             key={`intro-${selected.id}-${introKey}`}
-            className="mt-6 rounded-2xl border border-border/70 bg-gradient-to-br from-muted/40 to-card px-5 py-6 sm:py-7 text-center animate-cinematic-in"
+            id={`region-intro-${selected.id}`}
+            className={
+              "mt-6 rounded-2xl border border-border/70 bg-gradient-to-br from-muted/40 to-card px-5 py-6 sm:py-7 text-center scroll-mt-24 transition-opacity duration-500 animate-cinematic-in " +
+              (introPhase ? "opacity-100" : "opacity-90")
+            }
             style={{ boxShadow: "var(--shadow-soft)" }}
           >
             <div className="text-[10px] uppercase tracking-[0.25em] font-bold text-primary/80 mb-2">
@@ -165,9 +173,11 @@ function RegionExplorerPage() {
             key={selected.id}
             id={`region-${selected.id}`}
             className={
-              "mt-6 rounded-2xl border bg-card p-5 animate-float-up scroll-mt-24 transition-all duration-700 " +
+              "mt-6 rounded-2xl border bg-card p-5 scroll-mt-24 transition-all duration-700 " +
+              (introPhase ? "opacity-0 translate-y-2 pointer-events-none " : "opacity-100 translate-y-0 animate-float-up ") +
               (highlight ? "border-primary/60" : "border-border")
             }
+            aria-hidden={introPhase}
             style={{
               boxShadow: highlight
                 ? "0 0 0 4px color-mix(in oklab, var(--primary) 18%, transparent), var(--shadow-soft)"
