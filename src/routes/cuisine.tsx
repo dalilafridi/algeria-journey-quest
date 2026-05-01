@@ -210,9 +210,20 @@ function CuisinePage() {
                   <span className="mr-2" aria-hidden>{region.icon}</span>
                   {t(region.name, lang)}
                 </h2>
-                <span className="text-[11px] text-muted-foreground">
-                  {t(cuisineCopy.tapToOpen, lang)}
-                </span>
+                <div className="flex items-center gap-3">
+                  {(region.id === "kabylie" || region.id === "aures" || region.id === "algiers" || region.id === "constantine" || region.id === "sahara") && (
+                    <Link
+                      to="/map"
+                      hash={`region-${region.id}`}
+                      className="text-[11px] font-semibold text-primary hover:underline"
+                    >
+                      {lang === "fr" ? "Voir la région" : lang === "ar" ? "عرض المنطقة" : "Visit region"} →
+                    </Link>
+                  )}
+                  <span className="text-[11px] text-muted-foreground">
+                    {t(cuisineCopy.tapToOpen, lang)}
+                  </span>
+                </div>
               </header>
 
               <div className="grid sm:grid-cols-2 gap-4">
