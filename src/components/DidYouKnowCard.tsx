@@ -3,6 +3,7 @@ import { Link } from "@tanstack/react-router";
 import { t, tu, useLang, type LocalizedString, type Lang } from "@/lib/i18n";
 import { eras, dailyFacts } from "@/data/eras";
 import { figures } from "@/data/figures";
+import { mapRegions } from "@/data/mapRegions";
 import { curatedFactByText } from "@/data/didYouKnow";
 import { getProgress, hasPassed } from "@/lib/progress";
 
@@ -18,6 +19,7 @@ const COPY = {
   whyMatters: L("Why it matters", "Pourquoi c'est important", "لماذا يهمّ"),
   exploreEra: L("Explore this era", "Explorer cette époque", "استكشف هذه الحقبة"),
   viewFigure: L("View this figure", "Voir cette figure", "عرض هذه الشخصية"),
+  viewRegion: L("Visit this region", "Voir cette région", "زيارة هذه المنطقة"),
   close: L("Close", "Fermer", "إغلاق"),
   defaultWhy: L(
     "Small details like this stitch together the larger story of Algeria — its land, its people, and the memory passed between generations.",
