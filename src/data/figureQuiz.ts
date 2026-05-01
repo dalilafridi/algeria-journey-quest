@@ -1517,4 +1517,206 @@ export const figureQuiz: FigureQuizQuestion[] = [
       "دافع إيماش عن جزائر تعددية تقوم على العدالة الاجتماعية والديمقراطية والتنوع الثقافي.",
     ),
   ),
+
+  // ---------- Rachid Taha ----------
+  make(
+    "rachid-taha-1",
+    "easy",
+    [
+      L(
+        "I am an Algerian singer who blended raï, rock, and punk.",
+        "Je suis un chanteur algérien qui a mélangé raï, rock et punk.",
+        "أنا مغنٍّ جزائري مزجتُ بين الراي والروك والبانك.",
+      ),
+      L(
+        "My songs explored exile, identity, and freedom.",
+        "Mes chansons exploraient l'exil, l'identité et la liberté.",
+        "تناولت أغانيّ الغربة والهوية والحرية.",
+      ),
+      L(
+        "I am known for Ya Rayah and Rock el Casbah.",
+        "Je suis connu pour Ya Rayah et Rock el Casbah.",
+        "اشتهرتُ بأغنيتَي «يا رايح» و«روك القصبة».",
+      ),
+    ],
+    "Rachid Taha",
+    ["Idir", "Matoub", "Ait Menguellet"],
+    L(
+      "Rachid Taha is celebrated as a rebel voice of Algerian music and a key figure of the diaspora.",
+      "Rachid Taha est célébré comme une voix rebelle de la musique algérienne et une figure clé de la diaspora.",
+      "يُحتفى برشيد طه بوصفه صوتًا متمرّدًا في الموسيقى الجزائرية ورمزًا للمهجر.",
+    ),
+  ),
+  make(
+    "rachid-taha-2",
+    "medium",
+    [
+      L(
+        "I am often associated with Algerian diaspora culture.",
+        "On m'associe souvent à la culture de la diaspora algérienne.",
+        "غالبًا ما أُربط بثقافة المهجر الجزائري.",
+      ),
+      L(
+        "Through music, I gave voice to immigrants and exiles.",
+        "Par la musique, j'ai donné une voix aux immigrés et aux exilés.",
+        "من خلال الموسيقى، منحتُ المهاجرين والمنفيين صوتًا.",
+      ),
+    ],
+    "Rachid Taha",
+    ["Idir", "Khaled", "Matoub"],
+    L(
+      "Rachid Taha often explored themes of exile, identity, and freedom.",
+      "Rachid Taha a souvent exploré les thèmes de l'exil, de l'identité et de la liberté.",
+      "تناول رشيد طه في الغالب موضوعات الغربة والهوية والحرية.",
+    ),
+  ),
+
+  // ---------- Taos Amrouche ----------
+  make(
+    "taos-amrouche-1",
+    "easy",
+    [
+      L(
+        "I am a Kabyle writer and singer.",
+        "Je suis une écrivaine et chanteuse kabyle.",
+        "أنا كاتبة ومغنّية قبائلية.",
+      ),
+      L(
+        "I devoted my life to preserving Kabyle oral memory.",
+        "J'ai consacré ma vie à préserver la mémoire orale kabyle.",
+        "كرّستُ حياتي للحفاظ على الذاكرة الشفوية القبائلية.",
+      ),
+      L(
+        "I am the daughter of Fadhma Aït Mansour and sister of Jean Amrouche.",
+        "Je suis la fille de Fadhma Aït Mansour et la sœur de Jean Amrouche.",
+        "أنا ابنة فاضمة آيت منصور وشقيقة جان عمروش.",
+      ),
+    ],
+    "Taos Amrouche",
+    ["Fadhma Aït Mansour Amrouche", "Assia Djebar", "Lalla Fatma N'Soumer"],
+    L(
+      "Taos Amrouche helped preserve Kabyle oral memory and songs.",
+      "Taos Amrouche a contribué à préserver la mémoire orale et les chants kabyles.",
+      "ساهمت طاوس عمروش في الحفاظ على الذاكرة الشفوية والأغاني القبائلية.",
+    ),
+  ),
+  make(
+    "taos-amrouche-2",
+    "medium",
+    [
+      L(
+        "Through songs, stories and writing, I carried an essential part of Amazigh identity.",
+        "Par mes chants, mes récits et mes écrits, j'ai porté une part essentielle de l'identité amazighe.",
+        "من خلال الغناء والحكايات والكتابة، حملتُ جزءًا مهمًا من الهوية الأمازيغية.",
+      ),
+      L(
+        "I connected literature, music, and memory.",
+        "J'ai relié littérature, musique et mémoire.",
+        "ربطتُ بين الأدب والموسيقى والذاكرة.",
+      ),
+    ],
+    "Taos Amrouche",
+    ["Fadhma Aït Mansour Amrouche", "Jean Amrouche", "Assia Djebar"],
+    L(
+      "Taos Amrouche is remembered as a transmitter of Kabyle culture across art forms.",
+      "Taos Amrouche est reconnue comme une passeuse de la culture kabyle à travers plusieurs arts.",
+      "تُذكر طاوس عمروش بوصفها ناقلة للثقافة القبائلية عبر فنون متعددة.",
+    ),
+  ),
+
+  // ---------- Jean Amrouche ----------
+  make(
+    "jean-amrouche-1",
+    "easy",
+    [
+      L(
+        "I was an Algerian Kabyle writer, poet, and broadcaster.",
+        "J'étais un écrivain, poète et homme de radio kabyle algérien.",
+        "كنتُ كاتبًا وشاعرًا وإذاعيًا جزائريًا قبائليًا.",
+      ),
+      L(
+        "I helped bring Algerian voices to wider audiences.",
+        "J'ai contribué à porter la voix algérienne vers un plus large public.",
+        "أسهمتُ في إيصال الصوت الجزائري إلى جمهور أوسع.",
+      ),
+    ],
+    "Jean Amrouche",
+    ["Rachid Taha", "Mouloud Feraoun", "Mouloud Mammeri"],
+    L(
+      "During the War of Independence, Jean Amrouche was mainly an intellectual and cultural voice connected to the Algerian cause.",
+      "Pendant la guerre d'indépendance, Jean Amrouche fut surtout une voix intellectuelle et culturelle liée à la cause algérienne.",
+      "خلال حرب التحرير، كان جان عمروش أساسًا صوتًا فكريًا وثقافيًا مرتبطًا بالقضية الجزائرية.",
+    ),
+  ),
+  make(
+    "jean-amrouche-2",
+    "medium",
+    [
+      L(
+        "I connected French-language literature with Algerian identity.",
+        "J'ai relié la littérature de langue française à l'identité algérienne.",
+        "ربطتُ الأدب الفرنكوفوني بالهوية الجزائرية.",
+      ),
+      L(
+        "I am the son of Fadhma Aït Mansour and brother of Taos Amrouche.",
+        "Je suis le fils de Fadhma Aït Mansour et le frère de Taos Amrouche.",
+        "أنا ابن فاضمة آيت منصور وشقيق طاوس عمروش.",
+      ),
+    ],
+    "Jean Amrouche",
+    ["Taos Amrouche", "Fadhma Aït Mansour Amrouche", "Mouloud Feraoun"],
+    L(
+      "Jean Amrouche came from a family that carried Kabyle memory across generations.",
+      "Jean Amrouche venait d'une famille qui a porté la mémoire kabyle à travers les générations.",
+      "ينتمي جان عمروش إلى عائلة حملت الذاكرة القبائلية عبر الأجيال.",
+    ),
+  ),
+
+  // ---------- Fadhma Aït Mansour Amrouche ----------
+  make(
+    "fadhma-amrouche-1",
+    "easy",
+    [
+      L(
+        "I am a Kabyle writer and keeper of oral tradition.",
+        "Je suis une écrivaine kabyle et gardienne de la tradition orale.",
+        "أنا كاتبة قبائلية وحارسة للتقاليد الشفوية.",
+      ),
+      L(
+        "I am the mother of Taos and Jean Amrouche.",
+        "Je suis la mère de Taos et Jean Amrouche.",
+        "أنا أمّ طاوس وجان عمروش.",
+      ),
+    ],
+    "Fadhma Aït Mansour Amrouche",
+    ["Taos Amrouche", "Assia Djebar", "Lalla Fatma N'Soumer"],
+    L(
+      "Fadhma Aït Mansour preserved and transmitted Kabyle memory across generations.",
+      "Fadhma Aït Mansour a préservé et transmis la mémoire kabyle à travers les générations.",
+      "حافظت فاضمة آيت منصور على الذاكرة القبائلية ونقلتها عبر الأجيال.",
+    ),
+  ),
+  make(
+    "fadhma-amrouche-2",
+    "medium",
+    [
+      L(
+        "I am often called 'Mother of Memory'.",
+        "On m'appelle souvent « Mère de la mémoire ».",
+        "غالبًا ما يُطلق عليّ «أمّ الذاكرة».",
+      ),
+      L(
+        "My life and stories nourished the work of my children.",
+        "Ma vie et mes récits ont nourri l'œuvre de mes enfants.",
+        "غذّت حياتي وحكاياتي أعمال أبنائي.",
+      ),
+    ],
+    "Fadhma Aït Mansour Amrouche",
+    ["Taos Amrouche", "Jean Amrouche", "Assia Djebar"],
+    L(
+      "Fadhma is a symbol of women as carriers of family, language, and cultural memory.",
+      "Fadhma est un symbole des femmes comme porteuses de la famille, de la langue et de la mémoire culturelle.",
+      "تجسّد فاضمة دور المرأة في حمل الأسرة واللغة والذاكرة الثقافية.",
+    ),
+  ),
 ];
