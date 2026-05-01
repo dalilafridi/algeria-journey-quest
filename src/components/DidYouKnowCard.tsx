@@ -13,7 +13,7 @@ type Props = {
 const L = (en: string, fr: string, ar: string) => ({ en, fr, ar });
 
 const COPY = {
-  tapToExpand: L("Tap to discover", "Touchez pour découvrir", "اضغط للاكتشاف"),
+  tapToExpand: L("Daily Discovery — tap to explore the story behind it", "Découverte du jour — touchez pour explorer son histoire", "اكتشاف اليوم — اضغط لاستكشاف القصة وراءه"),
   era: L("Era", "Époque", "الحقبة"),
   whyMatters: L("Why it matters", "Pourquoi c'est important", "لماذا يهمّ"),
   exploreEra: L("Explore this era", "Explorer cette époque", "استكشف هذه الحقبة"),
