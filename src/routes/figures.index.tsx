@@ -108,29 +108,85 @@ function FiguresIndex() {
 
         {/* Grid */}
         <div className="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {list.map((f) => (
-            <Link
-              key={f.id}
-              to="/figures/$figureId"
-              params={{ figureId: f.id }}
-              className="card-hover rounded-2xl bg-card border border-border p-5 hover:border-primary/50 transition group"
-              style={{ boxShadow: "var(--shadow-soft)" }}
-            >
-              <div className="flex items-start gap-3">
-                <div className="text-3xl">{f.emoji}</div>
-                <div className="flex-1 min-w-0">
-                  <div className="font-bold text-lg leading-tight group-hover:text-primary transition">
-                    {t(f.displayName, lang)}
+          {list.map((f) => {
+            const era = f.relatedEraId ? eras.find((e) => e.id === f.relatedEraId) : undefined;
+            const regionMapId = FIGURE_REGION_TO_MAP[f.region];
+            const region = regionMapId ? mapRegions.find((r) => r.id === regionMapId) : undefined;
+            const related = figures
+              .filter((x) => x.id !== f.id && (x.region === f.region || x.category === f.category))
+              .slice(0, 2);
+            return (
+              <div
+                key={f.id}
+                className="card-hover rounded-2xl bg-card border border-border p-5 hover:border-primary/50 transition group flex flex-col"
+                style={{ boxShadow: "var(--shadow-soft)" }}
+              >
+                <Link
+                  to="/figures/$figureId"
+                  params={{ figureId: f.id }}
+                  className="block"
+                >
+                  <div className="flex items-start gap-3">
+                    <div className="text-3xl">{f.emoji}</div>
+                    <div className="flex-1 min-w-0">
+                      <div className="font-bold text-lg leading-tight group-hover:text-primary transition">
+                        {t(f.displayName, lang)}
+                      </div>
+                      <div className="text-xs text-muted-foreground mt-0.5">{t(f.era, lang)}</div>
+                    </div>
                   </div>
-                  <div className="text-xs text-muted-foreground mt-0.5">{t(f.era, lang)}</div>
+                  <p className="mt-3 text-sm text-muted-foreground line-clamp-3">{t(f.fact, lang)}</p>
+                </Link>
+
+                {/* Connections */}
+                <div className="mt-3 flex flex-wrap gap-1.5 text-[11px] font-semibold">
+                  {region ? (
+                    <Link
+                      to="/map"
+                      hash={`region-${region.id}`}
+                      className="px-2 py-0.5 rounded-full bg-muted text-muted-foreground hover:bg-primary/10 hover:text-primary transition"
+                    >
+                      📍 {t(region.name, lang)}
+                    </Link>
+                  ) : (
+                    <span className="px-2 py-0.5 rounded-full bg-muted text-muted-foreground">
+                      {t(f.regionLabel, lang)}
+                    </span>
+                  )}
+                  {era && (
+                    <Link
+                      to="/era/$eraId"
+                      params={{ eraId: era.id }}
+                      className="px-2 py-0.5 rounded-full bg-accent/15 text-accent-foreground hover:bg-accent/30 transition"
+                    >
+                      {era.emoji} {t(era.title, lang)}
+                    </Link>
+                  )}
                 </div>
+
+                {related.length > 0 && (
+                  <div className="mt-3 pt-3 border-t border-border/60">
+                    <div className="text-[10px] uppercase tracking-wider font-bold text-muted-foreground mb-1.5">
+                      {lang === "fr" ? "Figures liées" : lang === "ar" ? "شخصيات مرتبطة" : "Related figures"}
+                    </div>
+                    <div className="flex flex-wrap gap-1.5">
+                      {related.map((r) => (
+                        <Link
+                          key={r.id}
+                          to="/figures/$figureId"
+                          params={{ figureId: r.id }}
+                          className="text-[11px] px-2 py-0.5 rounded-full border border-border hover:border-primary/50 hover:text-primary transition"
+                        >
+                          <span className="mr-0.5">{r.emoji}</span>
+                          {t(r.displayName, lang)}
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                )}
               </div>
-              <p className="mt-3 text-sm text-muted-foreground line-clamp-3">{t(f.fact, lang)}</p>
-              <div className="mt-3 inline-flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-wider px-2 py-0.5 rounded-full bg-muted text-muted-foreground">
-                {t(f.regionLabel, lang)}
-              </div>
-            </Link>
-          ))}
+            );
+          })}
         </div>
 
         {list.length === 0 && (
