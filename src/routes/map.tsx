@@ -44,6 +44,7 @@ function RegionExplorerPage() {
   const [selectedId, setSelectedId] = useState<string>(mapRegions[0].id);
   const [highlight, setHighlight] = useState(false);
   const [introKey, setIntroKey] = useState(0);
+  const [introPhase, setIntroPhase] = useState(false);
   const selected: MapRegion | undefined = mapRegions.find((r) => r.id === selectedId);
 
   useEffect(() => {
