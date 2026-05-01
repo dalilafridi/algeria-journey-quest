@@ -73,9 +73,9 @@ export function DidYouKnowCard({ fact }: Props) {
                     </div>
                     <div className="mt-0.5 text-sm font-semibold text-foreground">
                       {t(era.title, lang)}
-                      {era.period ? (
+                      {era.dateRange ? (
                         <span className="ml-2 text-muted-foreground font-normal">
-                          · {t(era.period, lang)}
+                          · {era.dateRange}
                         </span>
                       ) : null}
                     </div>
