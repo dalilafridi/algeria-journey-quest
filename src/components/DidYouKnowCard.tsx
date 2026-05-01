@@ -3,6 +3,7 @@ import { Link } from "@tanstack/react-router";
 import { t, tu, useLang, type LocalizedString, type Lang } from "@/lib/i18n";
 import { eras, dailyFacts } from "@/data/eras";
 import { figures } from "@/data/figures";
+import { curatedFactByText } from "@/data/didYouKnow";
 import { getProgress, hasPassed } from "@/lib/progress";
 
 type Props = {
@@ -75,8 +76,15 @@ function useDailyFact(override?: LocalizedString): LocalizedString {
   }, [override]);
 }
 
-/** Robust era match: id reference, then text overlap of fact with era summary/title/facts. */
+/** Robust era match: curated metadata first, then id reference, then text overlap. */
 function findEraForFact(fact: LocalizedString) {
+  // 0) Curated metadata — explicit linkage wins.
+  const curated = typeof fact === "object" ? curatedFactByText.get(fact as never) : undefined;
+  if (curated?.relatedType === "era" && curated.relatedId) {
+    const byId = eras.find((e) => e.id === curated.relatedId);
+    if (byId) return byId;
+  }
+
   // 1) Reference equality (cheap)
   const direct = eras.find((e) => e.facts.some((f) => f === fact));
   if (direct) return direct;
@@ -102,8 +110,15 @@ function findEraForFact(fact: LocalizedString) {
   return best && best.score > 0 ? best.era : undefined;
 }
 
-/** Detect a mentioned figure (by canonical English name). */
+/** Detect a mentioned figure: prefer curated metadata, then match by canonical name. */
 function findFigureForFact(fact: LocalizedString) {
+  // Curated metadata first.
+  const curated = typeof fact === "object" ? curatedFactByText.get(fact as never) : undefined;
+  if (curated?.relatedType === "figure" && curated.relatedId) {
+    const byId = figures.find((f) => f.id === curated.relatedId);
+    if (byId) return byId;
+  }
+
   const factText = norm(flatStr(fact));
   if (!factText.trim()) return undefined;
   for (const f of figures) {

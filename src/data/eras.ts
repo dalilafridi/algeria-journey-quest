@@ -3509,8 +3509,12 @@ export const eras: Era[] = [
   },
 ];
 
-// Daily facts: read English value (Header / Home reads via t() now).
-export const dailyFacts: import("@/lib/i18n").LocalizedString[] = eras.flatMap((e) => e.facts);
+// Daily facts: curated cultural facts first (with rich metadata), then era-derived facts.
+import { curatedFactTexts } from "@/data/didYouKnow";
+export const dailyFacts: import("@/lib/i18n").LocalizedString[] = [
+  ...curatedFactTexts,
+  ...eras.flatMap((e) => e.facts),
+];
 
 // Dev-time data validation.
 import { validateEras } from "@/lib/quiz";
