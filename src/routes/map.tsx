@@ -173,9 +173,11 @@ function RegionExplorerPage() {
             key={selected.id}
             id={`region-${selected.id}`}
             className={
-              "mt-6 rounded-2xl border bg-card p-5 animate-float-up scroll-mt-24 transition-all duration-700 " +
+              "mt-6 rounded-2xl border bg-card p-5 scroll-mt-24 transition-all duration-700 " +
+              (introPhase ? "opacity-0 translate-y-2 pointer-events-none " : "opacity-100 translate-y-0 animate-float-up ") +
               (highlight ? "border-primary/60" : "border-border")
             }
+            aria-hidden={introPhase}
             style={{
               boxShadow: highlight
                 ? "0 0 0 4px color-mix(in oklab, var(--primary) 18%, transparent), var(--shadow-soft)"
