@@ -314,7 +314,7 @@ function WordsPage() {
         </div>
 
         {/* Grouped sections (when "all"), or flat list when filtered */}
-        <div className="mt-6 space-y-8">
+        <div id="words-list" className="mt-6 space-y-8 scroll-mt-24">
           {activeCat === "all" ? (
             WORD_CATEGORIES.map((c) => {
               const items = visible.filter((w) => w.category === c.id);
