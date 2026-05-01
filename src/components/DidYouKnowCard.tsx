@@ -216,7 +216,12 @@ export function DidYouKnowCard({ fact: override }: Props) {
               {open ? t(COPY.close, lang) : t(COPY.tapToExpand, lang)}
             </span>
           </div>
-          <p className="mt-1 text-foreground font-medium leading-relaxed">{t(fact, lang)}</p>
+          <p
+            key={t(fact, lang)}
+            className="mt-1 text-foreground font-medium leading-relaxed animate-fade-in"
+          >
+            {t(fact, lang)}
+          </p>
 
           <div
             className="grid transition-all duration-500 ease-out"
