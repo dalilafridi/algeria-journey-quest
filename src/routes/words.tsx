@@ -150,62 +150,69 @@ function WordsPage() {
           {COPY.relatedIdeas[lang]} →
         </Link>
 
-        {/* Culture sub-sections — extensions of Culture */}
-        <div className="mt-5">
-          <div className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground mb-2">
+        {/* Culture themes — guided exploration */}
+        <div className="mt-6">
+          <div className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground mb-1">
             {lang === "fr" ? "Explorer la culture" : lang === "ar" ? "استكشاف الثقافة" : "Explore Culture"}
           </div>
-          <div className="grid grid-cols-2 gap-2.5">
+          <p className="text-xs sm:text-[13px] text-muted-foreground italic leading-relaxed mb-3">
+            {lang === "fr"
+              ? "Quatre fenêtres sur l'âme algérienne — à parcourir à votre rythme."
+              : lang === "ar"
+                ? "أربع نوافذ على الروح الجزائرية — استكشفها على مهلك."
+                : "Four windows into the Algerian soul — explore at your own pace."}
+          </p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
             {[
               {
-                to: "/cuisine" as const,
-                emoji: "🍲",
-                title: { fr: "Cuisine", en: "Cuisine", ar: "المطبخ" },
+                to: "#words-list" as const,
+                external: false,
+                emoji: "❝",
+                title: { fr: "Paroles", en: "Words", ar: "كلمات" },
                 sub: {
-                  fr: "Mémoire & saveurs",
-                  en: "Memory & flavors",
-                  ar: "ذاكرة ونكهات",
+                  fr: "Vers, chants et serments qui ont façonné une nation.",
+                  en: "Verses, songs and oaths that shaped a nation.",
+                  ar: "أبيات وأناشيد وعهود صنعت أمّة.",
                 },
               },
               {
-                to: "/stargazing" as const,
-                emoji: "✦",
-                title: { fr: "Astronomie Amazighe", en: "Amazigh Stargazing", ar: "علم الفلك الأمازيغي" },
+                to: "/cuisine" as const,
+                external: true,
+                emoji: "🍲",
+                title: { fr: "Cuisine", en: "Cuisine", ar: "المطبخ" },
                 sub: {
-                  fr: "Étoiles & saisons",
-                  en: "Stars & seasons",
-                  ar: "نجوم وفصول",
+                  fr: "Là où la mémoire se transmet par les saveurs.",
+                  en: "Where memory is passed down through flavor.",
+                  ar: "حيث تنتقل الذاكرة عبر النكهات.",
                 },
               },
               {
                 to: "/cinema" as const,
+                external: true,
                 emoji: "🎬",
                 title: { fr: "Cinéma & Film", en: "Cinema & Film", ar: "السينما والفن" },
                 sub: {
-                  fr: "Films emblématiques",
-                  en: "Featured films",
-                  ar: "أفلام بارزة",
+                  fr: "Des récits qui projettent l'identité sur grand écran.",
+                  en: "Stories that project identity onto the screen.",
+                  ar: "حكايات تعرض الهويّة على الشاشة الكبيرة.",
                 },
               },
               {
-                to: "/ideas" as const,
-                emoji: "💭",
-                title: { fr: "Débats & Idées", en: "Debates & Ideas", ar: "نقاشات وأفكار" },
+                to: "/stargazing" as const,
+                external: true,
+                emoji: "✦",
+                title: { fr: "Astronomie Amazighe", en: "Amazigh Stargazing", ar: "علم الفلك الأمازيغي" },
                 sub: {
-                  fr: "Pensée & société",
-                  en: "Thought & society",
-                  ar: "فكر ومجتمع",
+                  fr: "Quand les étoiles guidaient les saisons et les pas.",
+                  en: "When the stars guided seasons and footsteps.",
+                  ar: "حين كانت النجوم تهدي الفصول والخطى.",
                 },
               },
-            ].map((s) => (
-              <Link
-                key={s.to}
-                to={s.to}
-                className="group rounded-2xl border border-border bg-card p-3 transition-all hover:-translate-y-0.5 hover:shadow-md hover:border-primary/40"
-              >
-                <div className="flex items-start gap-2.5">
+            ].map((s) => {
+              const inner = (
+                <div className="flex items-start gap-3">
                   <div
-                    className="shrink-0 w-9 h-9 rounded-xl flex items-center justify-center text-lg"
+                    className="shrink-0 w-10 h-10 rounded-xl flex items-center justify-center text-lg"
                     style={{ background: "color-mix(in oklab, var(--accent) 18%, var(--card))" }}
                     aria-hidden
                   >
@@ -215,13 +222,25 @@ function WordsPage() {
                     <div className="text-sm font-bold leading-tight group-hover:text-primary transition-colors">
                       {s.title[lang]}
                     </div>
-                    <div className="text-[11px] text-muted-foreground mt-0.5 leading-snug">
+                    <div className="text-[12px] text-muted-foreground mt-1 leading-snug italic">
                       {s.sub[lang]}
                     </div>
                   </div>
                 </div>
-              </Link>
-            ))}
+              );
+              const className =
+                "group rounded-2xl border border-border bg-card p-3.5 transition-all hover:-translate-y-0.5 hover:border-primary/40";
+              const style = { boxShadow: "var(--shadow-soft)" } as const;
+              return s.external ? (
+                <Link key={s.to} to={s.to as "/cuisine" | "/cinema" | "/stargazing"} className={className} style={style}>
+                  {inner}
+                </Link>
+              ) : (
+                <a key={s.to} href={s.to} className={className} style={style}>
+                  {inner}
+                </a>
+              );
+            })}
           </div>
         </div>
 
@@ -295,7 +314,7 @@ function WordsPage() {
         </div>
 
         {/* Grouped sections (when "all"), or flat list when filtered */}
-        <div className="mt-6 space-y-8">
+        <div id="words-list" className="mt-6 space-y-8 scroll-mt-24">
           {activeCat === "all" ? (
             WORD_CATEGORIES.map((c) => {
               const items = visible.filter((w) => w.category === c.id);
