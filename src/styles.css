@@ -198,19 +198,25 @@
     color: var(--color-foreground);
     font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
     overflow-x: hidden;
-    line-height: 1.65;
+    line-height: 1.7;
+    font-feature-settings: "ss01", "cv11", "kern";
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
     padding-bottom: max(4.5rem, calc(env(safe-area-inset-bottom) + 4rem));
   }
 
-  h1,
-  h2,
-  h3 {
-    letter-spacing: 0.015em;
-    line-height: 1.15;
+  h1, h2, h3, h4 {
+    letter-spacing: -0.011em;
+    line-height: 1.18;
+    font-weight: 700;
+    color: color-mix(in oklab, var(--foreground) 96%, var(--primary));
   }
+  h1 { letter-spacing: -0.018em; }
 
   p {
     max-width: 68ch;
+    color: color-mix(in oklab, var(--foreground) 88%, transparent);
   }
 
   /* Prevent iOS auto-zoom on focus by ensuring inputs are >=16px */
