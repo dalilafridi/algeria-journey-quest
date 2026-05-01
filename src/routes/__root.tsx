@@ -5,6 +5,7 @@ import { toast } from "sonner";
 import appCss from "../styles.css?url";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { SplashScreen } from "@/components/brand/SplashScreen";
+import { SignatureIntro } from "@/components/brand/SignatureIntro";
 import { WelcomeJourney } from "@/components/WelcomeJourney";
 import { ContinueJourneyCard } from "@/components/ContinueJourneyCard";
 import { JourneyHud } from "@/components/JourneyHud";
@@ -100,6 +101,7 @@ function RootComponent() {
   return (
     <>
       <SplashScreen />
+      <SignatureIntro />
       <ContinueJourneyCard />
       <Outlet />
       <WelcomeJourney />
