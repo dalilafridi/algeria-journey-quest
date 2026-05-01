@@ -133,6 +133,22 @@ function findFigureForFact(fact: LocalizedString) {
   return undefined;
 }
 
+/** Detect a region linked from curated metadata, or by name overlap. */
+function findRegionForFact(fact: LocalizedString) {
+  const curated = typeof fact === "object" ? curatedFactByText.get(fact as never) : undefined;
+  if (curated?.relatedType === "region" && curated.relatedId) {
+    const byId = mapRegions.find((r) => r.id === curated.relatedId);
+    if (byId) return byId;
+  }
+  const factText = norm(flatStr(fact));
+  if (!factText.trim()) return undefined;
+  for (const r of mapRegions) {
+    const n = norm(flatStr(r.name));
+    if (n && factText.includes(n)) return r;
+  }
+  return undefined;
+}
+
 /** Quizzes remaining until the next locked era is reached. */
 function useRemainingQuizzes(): number | "all" {
   const [n, setN] = useState<number | "all">(() => computeRemaining());
