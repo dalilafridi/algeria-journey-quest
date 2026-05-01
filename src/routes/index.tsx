@@ -221,23 +221,7 @@ function Home() {
         </section>
 
         <section className="mx-auto max-w-5xl px-4 pb-12 sm:pb-16">
-          <div
-            className="rounded-3xl border border-accent/40 p-5 sm:p-6"
-            style={{
-              backgroundColor: "color-mix(in oklab, var(--accent) 18%, var(--card))",
-              boxShadow: "var(--shadow-soft)",
-            }}
-          >
-            <div className="flex items-start gap-3">
-              <div className="text-3xl" aria-hidden>💡</div>
-              <div>
-                <div className="text-xs font-bold uppercase tracking-wider text-accent-foreground/80">
-                  {tu("didYouKnow", lang)}
-                </div>
-                <p className="mt-1 text-foreground font-medium">{t(fact, lang)}</p>
-              </div>
-            </div>
-          </div>
+          <DidYouKnowCard fact={fact} />
         </section>
       </main>
 
