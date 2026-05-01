@@ -64,12 +64,12 @@
 }
 
 :root {
-  --radius: 1rem;
-  /* Warm sand-based palette */
-  --background: oklch(0.97 0.025 80);
-  --foreground: oklch(0.28 0.04 40);
-  --card: oklch(0.99 0.015 85);
-  --card-foreground: oklch(0.28 0.04 40);
+  --radius: 1.1rem;
+  /* Warm sand-based palette — softened for calmer contrast */
+  --background: oklch(0.975 0.018 82);
+  --foreground: oklch(0.3 0.035 42);
+  --card: oklch(0.992 0.012 86);
+  --card-foreground: oklch(0.3 0.035 42);
   --popover: oklch(0.99 0.015 85);
   --popover-foreground: oklch(0.28 0.04 40);
   /* Terracotta primary */
@@ -85,8 +85,8 @@
   --accent-foreground: oklch(0.25 0.05 40);
   --destructive: oklch(0.58 0.22 25);
   --destructive-foreground: oklch(0.98 0.01 80);
-  --border: oklch(0.88 0.04 75);
-  --input: oklch(0.92 0.03 80);
+  --border: oklch(0.9 0.03 78 / 0.85);
+  --input: oklch(0.93 0.025 80);
   --ring: oklch(0.62 0.16 40);
   --success: oklch(0.65 0.15 145);
   --success-foreground: oklch(0.98 0.01 80);
@@ -95,8 +95,8 @@
   --intro-background: #faf9f6;
   --intro-texture: radial-gradient(circle at 50% 0%, oklch(0.82 0.08 75 / 0.18), transparent 38%),
     linear-gradient(180deg, oklch(0.99 0.01 85), oklch(0.96 0.02 80));
-  --shadow-soft: 0 4px 20px -4px oklch(0.45 0.1 50 / 0.18);
-  --shadow-glow: 0 8px 32px -8px oklch(0.62 0.16 40 / 0.35);
+  --shadow-soft: 0 1px 2px oklch(0.4 0.08 50 / 0.04), 0 6px 24px -8px oklch(0.45 0.1 50 / 0.16);
+  --shadow-glow: 0 10px 36px -10px oklch(0.62 0.16 40 / 0.32);
 
   /* === Algeria Through Time — Brand tokens (cinematic gold-on-dark) === */
   --brand-gold: oklch(0.82 0.14 78);
@@ -198,19 +198,25 @@
     color: var(--color-foreground);
     font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
     overflow-x: hidden;
-    line-height: 1.65;
+    line-height: 1.7;
+    font-feature-settings: "ss01", "cv11", "kern";
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
     padding-bottom: max(4.5rem, calc(env(safe-area-inset-bottom) + 4rem));
   }
 
-  h1,
-  h2,
-  h3 {
-    letter-spacing: 0.015em;
-    line-height: 1.15;
+  h1, h2, h3, h4 {
+    letter-spacing: -0.011em;
+    line-height: 1.18;
+    font-weight: 700;
+    color: color-mix(in oklab, var(--foreground) 96%, var(--primary));
   }
+  h1 { letter-spacing: -0.018em; }
 
   p {
     max-width: 68ch;
+    color: color-mix(in oklab, var(--foreground) 88%, transparent);
   }
 
   /* Prevent iOS auto-zoom on focus by ensuring inputs are >=16px */
@@ -348,11 +354,43 @@ html.immersion-on main {
 
 /* Subtle, premium card hover — calm lift + warmer border */
 .card-hover {
-  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease, background-color 0.25s ease;
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.35s ease, border-color 0.35s ease, background-color 0.35s ease;
+  will-change: transform;
 }
 .card-hover:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 12px 32px -18px oklch(0.45 0.1 50 / 0.32);
+  transform: translateY(-3px);
+  box-shadow: 0 2px 4px oklch(0.4 0.08 50 / 0.04),
+    0 18px 40px -20px oklch(0.45 0.1 50 / 0.32);
+  border-color: color-mix(in oklab, var(--primary) 28%, var(--border));
+}
+@media (prefers-reduced-motion: reduce) {
+  .card-hover { transition: none; }
+  .card-hover:hover { transform: none; }
+}
+
+/* Auto-apply soft elevation + unified radius to common card shells.
+   Components without an explicit shadow inherit a calm, premium base. */
+.rounded-2xl,
+.rounded-xl {
+  border-radius: calc(var(--radius) + 0.25rem);
+}
+[class*="bg-card"]:not([class*="shadow"]) {
+  box-shadow: var(--shadow-soft);
+}
+
+/* Section fade-in — gentle entrance for top-level page sections. */
+@keyframes section-fade {
+  0% { opacity: 0; transform: translateY(8px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+main > section,
+main > article,
+main > div > section {
+  animation: section-fade 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+@media (prefers-reduced-motion: reduce) {
+  main > section, main > article, main > div > section { animation: none; }
 }
 
 .continue-card {
