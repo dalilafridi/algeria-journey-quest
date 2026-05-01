@@ -316,7 +316,7 @@ function CuisinePage() {
             </p>
           </header>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
             {cuisineSweets.map((s) => {
               const isOpen = openSweet === s.id;
               return (
@@ -324,30 +324,41 @@ function CuisinePage() {
                   key={s.id}
                   type="button"
                   onClick={() => setOpenSweet(isOpen ? null : s.id)}
-                  className="group text-left rounded-2xl border border-border bg-card overflow-hidden transition-all duration-200 ease-out hover:-translate-y-1 hover:shadow-lg hover:border-secondary/40 focus:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                  className="group text-left rounded-2xl border border-border bg-card overflow-hidden transition-all duration-300 ease-out hover:-translate-y-1 hover:border-secondary/50 focus:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                  style={{ boxShadow: "var(--shadow-soft)" }}
                   aria-expanded={isOpen}
                 >
                   <div
-                    className="relative w-full h-[140px] overflow-hidden rounded-t-2xl"
+                    className="relative w-full h-[130px] overflow-hidden rounded-t-2xl"
                     style={{
                       background:
                         "linear-gradient(135deg, color-mix(in oklab, " +
                         s.hue +
-                        " 22%, #f5ead8) 0%, color-mix(in oklab, " +
+                        " 26%, #f5ead8) 0%, color-mix(in oklab, " +
                         s.hue +
-                        " 8%, #ece0c9) 100%)",
+                        " 6%, #ece0c9) 100%)",
                     }}
                     aria-hidden
-                  />
-                  <div className="p-3.5">
-                    <div className="font-bold text-sm sm:text-base text-foreground">
+                  >
+                    <div
+                      className="absolute inset-0 opacity-[0.18]"
+                      style={{
+                        backgroundImage:
+                          "radial-gradient(circle at 35% 40%, color-mix(in oklab, " +
+                          s.hue +
+                          " 50%, transparent) 0%, transparent 55%), radial-gradient(circle at 75% 70%, color-mix(in oklab, var(--secondary) 40%, transparent) 0%, transparent 50%)",
+                      }}
+                    />
+                  </div>
+                  <div className="p-4">
+                    <div className="font-bold text-sm sm:text-base text-foreground leading-tight">
                       {t(s.name, lang)}
                     </div>
-                    <p className="text-[12px] sm:text-[13px] text-muted-foreground leading-relaxed mt-1">
+                    <p className="text-[12.5px] sm:text-[13px] text-muted-foreground leading-relaxed mt-1.5">
                       {t(s.description, lang)}
                     </p>
                     {isOpen && s.whenEaten && (
-                      <div className="mt-2 inline-flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-wider text-secondary animate-fade-in">
+                      <div className="mt-2.5 inline-flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-wider text-secondary animate-fade-in">
                         <span aria-hidden>🕰️</span>
                         {t(cuisineCopy.whenEaten, lang)} · {t(s.whenEaten, lang)}
                       </div>
