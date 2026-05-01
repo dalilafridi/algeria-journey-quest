@@ -85,8 +85,8 @@
   --accent-foreground: oklch(0.25 0.05 40);
   --destructive: oklch(0.58 0.22 25);
   --destructive-foreground: oklch(0.98 0.01 80);
-  --border: oklch(0.88 0.04 75);
-  --input: oklch(0.92 0.03 80);
+  --border: oklch(0.9 0.03 78 / 0.85);
+  --input: oklch(0.93 0.025 80);
   --ring: oklch(0.62 0.16 40);
   --success: oklch(0.65 0.15 145);
   --success-foreground: oklch(0.98 0.01 80);
@@ -95,8 +95,8 @@
   --intro-background: #faf9f6;
   --intro-texture: radial-gradient(circle at 50% 0%, oklch(0.82 0.08 75 / 0.18), transparent 38%),
     linear-gradient(180deg, oklch(0.99 0.01 85), oklch(0.96 0.02 80));
-  --shadow-soft: 0 4px 20px -4px oklch(0.45 0.1 50 / 0.18);
-  --shadow-glow: 0 8px 32px -8px oklch(0.62 0.16 40 / 0.35);
+  --shadow-soft: 0 1px 2px oklch(0.4 0.08 50 / 0.04), 0 6px 24px -8px oklch(0.45 0.1 50 / 0.16);
+  --shadow-glow: 0 10px 36px -10px oklch(0.62 0.16 40 / 0.32);
 
   /* === Algeria Through Time — Brand tokens (cinematic gold-on-dark) === */
   --brand-gold: oklch(0.82 0.14 78);
