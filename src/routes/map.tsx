@@ -8,6 +8,7 @@ import { regionIntros, cinematicCopy } from "@/data/cinematic";
 import { discover } from "@/lib/discoveries";
 import { t, useLang } from "@/lib/i18n";
 import { saveJourneyPlace } from "@/lib/continuity";
+import { JourneyNext } from "@/components/JourneyNext";
 
 export const Route = createFileRoute("/map")({
   head: () => ({
@@ -250,6 +251,7 @@ function RegionExplorerPage() {
         ) : (
           <p className="mt-6 text-muted-foreground">{COPY.pickRegion[lang]}</p>
         )}
+        <JourneyNext current="regions" />
       </main>
     </div>
   );

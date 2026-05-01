@@ -5,6 +5,7 @@ import { WORD_CATEGORIES, words, type WordCategoryId } from "@/data/words";
 import { quizForWord, type WordsQuizItem } from "@/data/wordsQuiz";
 import { ListenCard } from "@/components/ListenCard";
 import { LISTEN } from "@/data/listen";
+import { JourneyNext } from "@/components/JourneyNext";
 import {
   categoryTotals,
   claimWotd,
@@ -349,6 +350,7 @@ function WordsPage() {
             </ul>
           )}
         </div>
+        <JourneyNext current="culture" />
       </main>
 
       {/* XP toast */}

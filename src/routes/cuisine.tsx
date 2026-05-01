@@ -7,6 +7,7 @@ import { dishMemoryLines, cinematicCopy } from "@/data/cinematic";
 import { discover } from "@/lib/discoveries";
 import { t, useLang } from "@/lib/i18n";
 import { saveJourneyPlace } from "@/lib/continuity";
+import { JourneyNext } from "@/components/JourneyNext";
 import cuisineHero from "@/assets/cuisine-hero.jpg";
 
 export const Route = createFileRoute("/cuisine")({
@@ -338,6 +339,7 @@ function CuisinePage() {
             })}
           </div>
         </section>
+        <JourneyNext current="cuisine" />
       </main>
     </div>
   );
