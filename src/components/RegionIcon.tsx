@@ -42,24 +42,22 @@ function renderRegionIcon(regionId: string) {
 
 function KabylieIcon() {
   return (
-    <svg viewBox="0 0 140 110" className="region-icon">
-      <g fill="none" stroke={stroke} strokeLinecap="round" strokeLinejoin="round">
-        <path d="M16 72 L44 26 L64 72 Z" fill={cream} strokeWidth="3" />
-        <path d="M48 72 L78 31 L118 72 Z" fill={cream} strokeWidth="3" />
+    <g fill="none" stroke={stroke} strokeLinecap="round" strokeLinejoin="round">
+      <path d="M16 72 L44 26 L64 72 Z" fill={cream} strokeWidth="3" />
+      <path d="M48 72 L78 31 L118 72 Z" fill={cream} strokeWidth="3" />
 
-        <path d="M44 27 L52 48 L59 42" stroke={oliveDeep} strokeWidth="4" />
-        <path d="M78 32 L88 53 L96 47" stroke={oliveDeep} strokeWidth="4" />
+      <path d="M44 27 L52 48 L59 42" stroke={oliveDeep} strokeWidth="4" />
+      <path d="M78 32 L88 53 L96 47" stroke={oliveDeep} strokeWidth="4" />
 
-        <path d="M20 72 L36 56 L47 62 L60 47" stroke={olive} strokeWidth="6" />
-        <path d="M58 72 L76 55 L88 62 L105 50" stroke={oliveDeep} strokeWidth="6" />
+      <path d="M20 72 L36 56 L47 62 L60 47" stroke={olive} strokeWidth="6" />
+      <path d="M58 72 L76 55 L88 62 L105 50" stroke={oliveDeep} strokeWidth="6" />
 
-        <path d="M28 82 l9-18 9 18z" fill={oliveDeep} stroke="none" />
-        <path d="M48 83 l10-20 10 20z" fill={olive} stroke="none" />
-        <path d="M82 83 l10-19 10 19z" fill={oliveDeep} stroke="none" />
+      <path d="M28 82 l9-18 9 18z" fill={oliveDeep} stroke="none" />
+      <path d="M48 83 l10-20 10 20z" fill={olive} stroke="none" />
+      <path d="M82 83 l10-19 10 19z" fill={oliveDeep} stroke="none" />
 
-        <path d="M22 88 H112" stroke={sandDeep} strokeWidth="2" opacity="0.45" />
-      </g>
-    </svg>
+      <path d="M22 88 H112" stroke={sandDeep} strokeWidth="2" opacity="0.45" />
+    </g>
   );
 }
 
