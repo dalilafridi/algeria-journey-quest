@@ -13,20 +13,6 @@ const clayDeep = "var(--region-icon-clay-deep)";
 const stone = "var(--region-icon-stone)";
 const shade = "var(--region-icon-shade)";
 
-const stroke = "#4a3329";
-
-const cream = "#f6efe3";
-const stone = "#d8c6ad";
-
-const olive = "#6f8455";
-const oliveDeep = "#4f6a3f";
-
-const sand = "#d9b279";
-const sandDeep = "#b98245";
-
-const clay = "#c96f3f";
-const clayDeep = "#9f4f2e";
-
 export function RegionIcon({ regionId, className = "" }: RegionIconProps) {
   return (
     <svg viewBox="0 0 120 88" className={className} role="img" aria-hidden="true" focusable="false">
@@ -57,20 +43,15 @@ function renderRegionIcon(regionId: string) {
 function KabylieIcon() {
   return (
     <g fill="none" stroke={stroke} strokeLinecap="round" strokeLinejoin="round">
-      <path d="M16 72 L44 26 L64 72 Z" fill={cream} strokeWidth="3" />
-      <path d="M48 72 L78 31 L118 72 Z" fill={cream} strokeWidth="3" />
-
-      <path d="M44 27 L52 48 L59 42" stroke={oliveDeep} strokeWidth="4" />
-      <path d="M78 32 L88 53 L96 47" stroke={oliveDeep} strokeWidth="4" />
-
-      <path d="M20 72 L36 56 L47 62 L60 47" stroke={olive} strokeWidth="6" />
-      <path d="M58 72 L76 55 L88 62 L105 50" stroke={oliveDeep} strokeWidth="6" />
-
-      <path d="M28 82 l9-18 9 18z" fill={oliveDeep} stroke="none" />
-      <path d="M48 83 l10-20 10 20z" fill={olive} stroke="none" />
-      <path d="M82 83 l10-19 10 19z" fill={oliveDeep} stroke="none" />
-
-      <path d="M22 88 H112" stroke={sandDeep} strokeWidth="2" opacity="0.45" />
+      <path d="M12 66 L36 25 L51 53 L65 31 L103 66 Z" fill={shade} stroke="none" />
+      <path d="M14 65 L36 19 L54 64" strokeWidth="3.4" />
+      <path d="M35 20 L43 39 L49 33" strokeWidth="3" />
+      <path d="M47 58 L66 30 L104 66" strokeWidth="3.2" />
+      <path d="M66 31 L75 50 L82 45" strokeWidth="2.7" />
+      <path d="M17 65 L31 51 L40 56 L51 42" stroke={olive} strokeWidth="5.4" />
+      <path d="M56 66 L70 52 L78 58 L91 48" stroke={oliveDeep} strokeWidth="5" />
+      <path d="M23 75 h70" stroke={sandDeep} strokeWidth="2" opacity="0.45" />
+      <path d="M29 72 l7-14 7 14zM46 73 l8-17 8 17zM75 73 l7-15 7 15z" fill={oliveDeep} stroke="none" />
     </g>
   );
 }
