@@ -13,6 +13,20 @@ const clayDeep = "var(--region-icon-clay-deep)";
 const stone = "var(--region-icon-stone)";
 const shade = "var(--region-icon-shade)";
 
+const stroke = "#4a3329";
+
+const cream = "#f6efe3";
+const stone = "#d8c6ad";
+
+const olive = "#6f8455";
+const oliveDeep = "#4f6a3f";
+
+const sand = "#d9b279";
+const sandDeep = "#b98245";
+
+const clay = "#c96f3f";
+const clayDeep = "#9f4f2e";
+
 export function RegionIcon({ regionId, className = "" }: RegionIconProps) {
   return (
     <svg viewBox="0 0 120 88" className={className} role="img" aria-hidden="true" focusable="false">
