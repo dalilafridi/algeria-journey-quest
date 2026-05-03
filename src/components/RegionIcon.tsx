@@ -3,20 +3,41 @@ type RegionIconProps = {
   className?: string;
 };
 
-const stroke = "var(--region-icon-ink)";
-const sand = "var(--region-icon-sand)";
+// Unified museum-style palette
+const ink = "var(--region-icon-ink)";          // deep brown outline
+const sand = "var(--region-icon-sand)";         // warm sand
 const sandDeep = "var(--region-icon-sand-deep)";
-const olive = "var(--region-icon-olive)";
+const olive = "var(--region-icon-olive)";       // muted olive
 const oliveDeep = "var(--region-icon-olive-deep)";
-const clay = "var(--region-icon-clay)";
+const clay = "var(--region-icon-clay)";         // soft terracotta
 const clayDeep = "var(--region-icon-clay-deep)";
-const stone = "var(--region-icon-stone)";
+const parchment = "var(--region-icon-stone)";   // parchment highlight
 const shade = "var(--region-icon-shade)";
+
+// Consistent stroke weights across the whole set
+const STROKE_MAIN = 2.6;
+const STROKE_ACCENT = 1.8;
 
 export function RegionIcon({ regionId, className = "" }: RegionIconProps) {
   return (
-    <svg viewBox="0 0 120 88" className={className} role="img" aria-hidden="true" focusable="false">
-      {renderRegionIcon(regionId)}
+    <svg
+      viewBox="0 0 120 88"
+      className={className}
+      role="img"
+      aria-hidden="true"
+      focusable="false"
+    >
+      <g
+        fill="none"
+        stroke={ink}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth={STROKE_MAIN}
+      >
+        {renderRegionIcon(regionId)}
+        {/* Shared baseline for visual alignment across all icons */}
+        <path d="M14 78 H106" stroke={sandDeep} strokeWidth={STROKE_ACCENT} opacity="0.35" />
+      </g>
     </svg>
   );
 }
@@ -40,96 +61,145 @@ function renderRegionIcon(regionId: string) {
   }
 }
 
+/* Kabylie — Djurdjura ridges with a calm cedar */
 function KabylieIcon() {
   return (
-    <g fill="none" stroke={stroke} strokeLinecap="round" strokeLinejoin="round">
-      <path d="M12 66 L36 25 L51 53 L65 31 L103 66 Z" fill={shade} stroke="none" />
-      <path d="M14 65 L36 19 L54 64" strokeWidth="3.4" />
-      <path d="M35 20 L43 39 L49 33" strokeWidth="3" />
-      <path d="M47 58 L66 30 L104 66" strokeWidth="3.2" />
-      <path d="M66 31 L75 50 L82 45" strokeWidth="2.7" />
-      <path d="M17 65 L31 51 L40 56 L51 42" stroke={olive} strokeWidth="5.4" />
-      <path d="M56 66 L70 52 L78 58 L91 48" stroke={oliveDeep} strokeWidth="5" />
-      <path d="M23 75 h70" stroke={sandDeep} strokeWidth="2" opacity="0.45" />
-      <path d="M29 72 l7-14 7 14zM46 73 l8-17 8 17zM75 73 l7-15 7 15z" fill={oliveDeep} stroke="none" />
-    </g>
+    <>
+      {/* Soft mountain shade */}
+      <path d="M16 70 L40 32 L56 56 L72 38 L102 70 Z" fill={shade} stroke="none" />
+      {/* Main ridge */}
+      <path d="M16 70 L40 30 L56 54 L72 36 L102 70" />
+      {/* Secondary ridge highlights */}
+      <path d="M40 30 L48 46 M72 36 L80 50" stroke={ink} strokeWidth={STROKE_ACCENT} />
+      {/* Olive slope */}
+      <path d="M22 70 L36 58 L50 64" stroke={olive} strokeWidth={STROKE_MAIN} />
+      <path d="M58 70 L70 60 L84 66" stroke={oliveDeep} strokeWidth={STROKE_MAIN} />
+      {/* Two cedars (calm, not busy) */}
+      <path d="M44 70 L50 56 L56 70 Z" fill={oliveDeep} stroke="none" />
+      <path d="M76 70 L82 58 L88 70 Z" fill={oliveDeep} stroke="none" />
+    </>
   );
 }
 
+/* Aurès — Timgad Roman arch with two flanking columns */
 function AuresIcon() {
   return (
-    <g fill="none" stroke={stroke} strokeLinecap="round" strokeLinejoin="round">
-      <path d="M28 68 h62" stroke={sandDeep} strokeWidth="3" />
-      <path d="M35 28 h48 l-4 7 H39z" fill={sandDeep} strokeWidth="2.4" />
-      <path d="M39 35 v31M79 35 v31" stroke={clayDeep} strokeWidth="4" />
-      <path d="M49 66 V49c0-9 6-15 11-15s11 6 11 15v17" fill="var(--card)" strokeWidth="3.2" />
-      <path d="M25 66 V44M21 44h11M89 66V43M85 43h10" stroke={clay} strokeWidth="3.2" />
-      <path d="M35 24 h50M40 20 h40" stroke={sandDeep} strokeWidth="3" />
-      <path d="M23 75 c14-4 26-3 38-1M70 75 c9-3 18-3 28-1" stroke={clay} strokeWidth="2" opacity="0.7" />
-      <path d="M17 79 h14M41 80 h9M83 80 h15" stroke={sandDeep} strokeWidth="2" opacity="0.45" />
-    </g>
+    <>
+      {/* Sand ground shade */}
+      <path d="M14 70 H106 V74 H14 Z" fill={shade} stroke="none" />
+      {/* Left column */}
+      <path d="M28 70 V36 M24 36 H34 M24 70 H34" stroke={ink} strokeWidth={STROKE_MAIN} fill={parchment} />
+      <path d="M28 36 V70" stroke={clay} strokeWidth={STROKE_ACCENT} />
+      {/* Right column */}
+      <path d="M92 70 V36 M86 36 H96 M86 70 H96" stroke={ink} strokeWidth={STROKE_MAIN} fill={parchment} />
+      <path d="M92 36 V70" stroke={clay} strokeWidth={STROKE_ACCENT} />
+      {/* Central arch */}
+      <path
+        d="M44 70 V44 C44 32 56 24 60 24 C64 24 76 32 76 44 V70 Z"
+        fill={parchment}
+      />
+      <path d="M48 70 V46 C48 36 56 30 60 30 C64 30 72 36 72 46 V70" fill={shade} stroke={ink} strokeWidth={STROKE_ACCENT} />
+      {/* Capitals */}
+      <path d="M40 44 H80" stroke={clayDeep} strokeWidth={STROKE_ACCENT} />
+      {/* Subtle horizon */}
+      <path d="M16 70 H44 M76 70 H104" stroke={sandDeep} strokeWidth={STROKE_ACCENT} opacity="0.55" />
+    </>
   );
 }
 
+/* Algiers — Casbah skyline with a single readable dome */
 function AlgiersIcon() {
   return (
-    <g fill="none" stroke={stroke} strokeLinecap="round" strokeLinejoin="round">
-      <path d="M18 69 h84 v8 H18z" fill={shade} stroke="none" />
-      <path d="M22 69 V45 h18 v24M40 69V34h24v35M64 69V44h18v25M82 69V51h16v18" fill={sand} strokeWidth="2.8" />
-      <path d="M42 34 c2-12 19-12 21 0" fill="var(--card)" strokeWidth="2.6" />
-      <path d="M48 34 c1-19 15-19 18 0" fill={stone} strokeWidth="2.4" />
-      <path d="M55 14 v-6M51 18 h8" stroke={clayDeep} strokeWidth="2" />
-      <path d="M25 45 c1-11 13-11 14 0M84 51 c1-10 12-10 13 0" fill="var(--card)" strokeWidth="2.3" />
-      <path d="M29 69 V58c0-5 8-5 8 0v11M52 69V57c0-6 9-6 9 0v12" fill={clayDeep} strokeWidth="2.1" />
-      <path d="M47 44h3M57 44h3M69 55h3M76 55h3M28 54h3M91 59h3" stroke={stroke} strokeWidth="2.2" />
-      <path d="M20 77 c15 4 62 4 82 0" stroke={sandDeep} strokeWidth="2" opacity="0.5" />
-    </g>
+    <>
+      <path d="M16 70 H104 V74 H16 Z" fill={shade} stroke="none" />
+      {/* Stepped white houses */}
+      <path d="M22 70 V52 H34 V70 Z" fill={parchment} />
+      <path d="M34 70 V44 H46 V70 Z" fill={parchment} />
+      <path d="M70 70 V46 H82 V70 Z" fill={parchment} />
+      <path d="M82 70 V52 H96 V70 Z" fill={parchment} />
+      {/* Central mosque + dome (focal point) */}
+      <path d="M48 70 V40 H66 V70 Z" fill={sand} />
+      <path d="M48 40 C48 28 66 28 66 40" fill={parchment} />
+      <path d="M57 28 V22" stroke={ink} strokeWidth={STROKE_ACCENT} />
+      <circle cx="57" cy="20" r="1.6" fill={ink} stroke="none" />
+      {/* Outline pass */}
+      <path d="M22 70 V52 H34 V44 H46 V40 C48 28 66 28 66 40 V46 H70 V46 H82 V52 H96 V70" />
+      {/* Small windows */}
+      <path d="M28 60 H30 M40 56 H42 M55 52 H59 M76 56 H78 M88 60 H90" stroke={ink} strokeWidth={STROKE_ACCENT} />
+    </>
   );
 }
 
+/* Constantine — bold suspension bridge over a gorge */
 function ConstantineIcon() {
   return (
-    <g fill="none" stroke={stroke} strokeLinecap="round" strokeLinejoin="round">
-      <path d="M14 70 l13-20 11 20M84 70 l10-24 12 24" fill={shade} stroke="none" />
-      <path d="M21 49 h78" stroke={stroke} strokeWidth="3" />
-      <path d="M25 49 c14 24 46 24 67 0" stroke={clayDeep} strokeWidth="3" />
-      <path d="M31 49 v-16M91 49 v-16" stroke={stroke} strokeWidth="3.4" />
-      <path d="M26 33 h10M86 33 h10" stroke={stroke} strokeWidth="2.6" />
-      <path d="M37 49 l-9 20M84 49 l12 20" stroke={stone} strokeWidth="3.4" />
-      <path d="M22 56 h75" stroke={sandDeep} strokeWidth="2" opacity="0.55" />
-      <path d="M47 29 c5-5 12-5 17 0M68 25 c4-3 9-3 13 0" stroke={sandDeep} strokeWidth="2" opacity="0.55" />
-      <path d="M18 76 h88" stroke={sandDeep} strokeWidth="2" opacity="0.45" />
-    </g>
+    <>
+      {/* Cliffs */}
+      <path d="M14 70 V52 H30 V70 Z" fill={shade} stroke="none" />
+      <path d="M90 70 V52 H106 V70 Z" fill={shade} stroke="none" />
+      <path d="M14 70 V52 H30 M90 52 H106 V70" />
+      {/* Two pylons */}
+      <path d="M34 52 V28 M86 52 V28" strokeWidth={STROKE_MAIN} />
+      <path d="M30 28 H38 M82 28 H90" strokeWidth={STROKE_ACCENT} />
+      {/* Bridge deck */}
+      <path d="M22 52 H98" strokeWidth={STROKE_MAIN} />
+      <path d="M22 56 H98" stroke={clayDeep} strokeWidth={STROKE_ACCENT} />
+      {/* Suspension cables */}
+      <path d="M34 28 C50 50 70 50 86 28" strokeWidth={STROKE_ACCENT} />
+      <path d="M40 46 V52 M50 44 V52 M60 43 V52 M70 44 V52 M80 46 V52" stroke={ink} strokeWidth="1.2" />
+    </>
   );
 }
 
+/* Western Algeria — Tlemcen / Zianid arch with minaret */
 function WesternAlgeriaIcon() {
   return (
-    <g fill="none" stroke={stroke} strokeLinecap="round" strokeLinejoin="round">
-      <path d="M20 70 h82" stroke={sandDeep} strokeWidth="2.8" />
-      <path d="M25 70 V32 h22 v38" fill={sandDeep} strokeWidth="2.7" />
-      <path d="M31 32 c2-12 12-12 15 0" fill={olive} strokeWidth="2.4" />
-      <path d="M56 70 V35 h38 v35" fill={sand} strokeWidth="2.8" />
-      <path d="M63 70 V55c0-8 8-14 13-14s13 6 13 14v15" fill="var(--card)" strokeWidth="2.8" />
-      <path d="M60 39 h30M64 47 l5-5 5 5 5-5 5 5" stroke={oliveDeep} strokeWidth="2.4" />
-      <path d="M31 43h11M31 52h11M31 61h11" stroke={oliveDeep} strokeWidth="2.3" />
-      <path d="M19 70 c2-8 9-9 14-6M46 70 c2-7 9-8 13-5" stroke={clay} strokeWidth="2.2" />
-      <path d="M77 53 c3 3 5 7 5 17" stroke={clayDeep} strokeWidth="2" opacity="0.6" />
-    </g>
+    <>
+      <path d="M14 70 H106 V74 H14 Z" fill={shade} stroke="none" />
+      {/* Minaret on the left */}
+      <path d="M28 70 V30 H40 V70 Z" fill={parchment} />
+      <path d="M28 30 H40 L34 22 Z" fill={clay} />
+      <path d="M34 22 V16" stroke={ink} strokeWidth={STROKE_ACCENT} />
+      <circle cx="34" cy="14" r="1.6" fill={ink} stroke="none" />
+      {/* Minaret outline + windows */}
+      <path d="M28 70 V30 H40 V70" />
+      <path d="M30 40 H38 M30 50 H38 M30 60 H38" stroke={oliveDeep} strokeWidth={STROKE_ACCENT} />
+      {/* Andalusian horseshoe arch */}
+      <path d="M52 70 V46 C52 30 88 30 88 46 V70 Z" fill={sand} />
+      <path
+        d="M58 70 V50 C58 38 82 38 82 50 V70"
+        fill={parchment}
+        stroke={ink}
+        strokeWidth={STROKE_ACCENT}
+      />
+      {/* Arch outline */}
+      <path d="M52 70 V46 C52 30 88 30 88 46 V70" />
+      {/* Geometric accent above arch */}
+      <path d="M62 42 L70 36 L78 42" stroke={oliveDeep} strokeWidth={STROKE_ACCENT} fill="none" />
+    </>
   );
 }
 
+/* Sahara — Tassili rock formations + calm dunes */
 function SaharaIcon() {
   return (
-    <g fill="none" stroke={stroke} strokeLinecap="round" strokeLinejoin="round">
-      <path d="M15 73 c20-9 43-10 91 0" stroke={sandDeep} strokeWidth="3" />
-      <path d="M34 67 c4-25 6-39 17-43 11 4 13 20 17 43" fill={clay} stroke={clayDeep} strokeWidth="3" />
-      <path d="M68 67 c3-21 7-32 17-35 10 4 13 20 17 35" fill={clay} stroke={clayDeep} strokeWidth="3" />
-      <path d="M46 40 c4 4 8 4 12 0M80 48 c4 3 8 3 12 0" stroke={clayDeep} strokeWidth="2" opacity="0.75" />
-      <path d="M48 58 c4-5 10-5 14 0M76 60 c5-5 11-5 15 0" stroke={shade} strokeWidth="2.3" />
-      <path d="M22 69 c4-12 12-12 17 0M31 57 v13M23 61 c6-3 11-3 16 0" stroke={oliveDeep} strokeWidth="2.4" />
-      <path d="M52 52 l-3 9M55 52 l2 9M85 54 l-3 9M88 54 l3 9" stroke={sand} strokeWidth="2" />
-      <path d="M30 79 h57M94 79 h11" stroke={sandDeep} strokeWidth="2" opacity="0.45" />
-    </g>
+    <>
+      {/* Far dunes (calm) */}
+      <path d="M14 70 C30 60 46 64 60 60 C76 56 92 64 106 60 V70 Z" fill={shade} stroke="none" />
+      <path d="M14 70 C30 60 46 64 60 60 C76 56 92 64 106 60" stroke={sandDeep} strokeWidth={STROKE_ACCENT} />
+      {/* Tall Tassili rock arch / mesa */}
+      <path
+        d="M40 70 V40 C40 32 46 28 52 28 C58 28 64 32 64 40 V70 Z"
+        fill={clay}
+      />
+      <path d="M40 70 V40 C40 32 46 28 52 28 C58 28 64 32 64 40 V70" stroke={ink} />
+      {/* Smaller rock */}
+      <path d="M76 70 V48 C76 42 80 38 84 38 C88 38 92 42 92 48 V70 Z" fill={clayDeep} />
+      <path d="M76 70 V48 C76 42 80 38 84 38 C88 38 92 42 92 48 V70" stroke={ink} />
+      {/* Rock striations (kept minimal) */}
+      <path d="M44 50 H60 M80 56 H88" stroke={parchment} strokeWidth={STROKE_ACCENT} />
+      {/* Sun */}
+      <circle cx="22" cy="32" r="5" fill={sand} stroke={ink} strokeWidth={STROKE_ACCENT} />
+    </>
   );
 }
