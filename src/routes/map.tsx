@@ -145,7 +145,7 @@ function RegionExplorerPage() {
         </nav>
 
         {/* Region cards grid */}
-        <section className="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        <section className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
           {mapRegions.map((r) => {
             const isSel = r.id === selectedId;
             const keyFigure = getFigure(r.figureIds[0]);
@@ -154,7 +154,7 @@ function RegionExplorerPage() {
                 key={r.id}
                 onClick={() => handleSelect(r.id)}
                 className={
-                  "group h-full text-left rounded-2xl border p-5 sm:p-6 transition-all duration-200 ease-out active:scale-[0.99] hover:-translate-y-0.5 hover:shadow-md " +
+                  "group text-left rounded-2xl border px-4 py-4 sm:px-5 sm:py-5 transition-all duration-200 active:scale-[0.98] hover:-translate-y-0.5 " +
                   (isSel
                     ? "border-primary bg-primary/5 shadow-sm"
                     : "border-border bg-card hover:border-primary/40")
@@ -162,21 +162,19 @@ function RegionExplorerPage() {
                 style={isSel ? { boxShadow: "var(--shadow-soft)" } : undefined}
                 aria-pressed={isSel}
               >
-                <div className="flex h-full items-center gap-5">
-                  <div className="flex h-20 w-24 shrink-0 items-center justify-center">
-                    <RegionIcon
-                      regionId={r.id}
-                      className="h-full w-full transition-transform duration-200 ease-out group-hover:scale-[1.02]"
-                    />
-                  </div>
-                  <div className="flex min-w-0 flex-1 flex-col">
+                <div className="flex items-start gap-4">
+                  <RegionIcon
+                    regionId={r.id}
+                    className="h-16 w-20 shrink-0 transition-transform duration-200 group-hover:scale-[1.02] sm:h-[4.75rem] sm:w-24"
+                  />
+                  <div className="min-w-0">
                     <span className="font-bold text-base sm:text-lg leading-tight">{t(r.name, lang)}</span>
                     <p className="mt-1.5 text-xs sm:text-sm text-muted-foreground leading-snug line-clamp-2">
                       {t(r.summary, lang)}
                     </p>
                     <div className="mt-3 grid gap-1.5 text-[11px] leading-snug text-muted-foreground">
                       {keyFigure && (
-                        <span className="line-clamp-1">
+                        <span>
                           <span className="font-bold text-foreground/80">{COPY.keyFigure[lang]}:</span>{" "}
                           {t(keyFigure.displayName, lang)}
                         </span>
