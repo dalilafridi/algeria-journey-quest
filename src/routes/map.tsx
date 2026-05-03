@@ -326,6 +326,18 @@ function RegionExplorerPage() {
         )}
         <JourneyNext current="regions" />
       </main>
+      <button
+        type="button"
+        onClick={scrollToTop}
+        aria-label={t(COPY.backToRegions, lang)}
+        className={
+          "fixed bottom-6 right-6 z-30 inline-flex items-center gap-1.5 rounded-full border border-border bg-background/90 backdrop-blur-md px-4 py-2 text-xs font-semibold text-foreground shadow-md transition-all duration-300 hover:border-primary/40 hover:text-primary " +
+          (showBackToTop ? "opacity-100 translate-y-0 pointer-events-auto" : "opacity-0 translate-y-2 pointer-events-none")
+        }
+      >
+        <span aria-hidden>↑</span>
+        {t(COPY.backToRegions, lang)}
+      </button>
     </div>
   );
 }
