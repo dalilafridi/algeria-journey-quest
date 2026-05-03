@@ -38,6 +38,7 @@ const COPY = {
   keyFigure: { en: "Key figure", fr: "Figure clé", ar: "شخصية بارزة" },
   keyFact: { en: "Key fact", fr: "Fait clé", ar: "حقيقة بارزة" },
   relatedFigures: { en: "Related figures", fr: "Figures liées", ar: "شخصيات مرتبطة" },
+  backToRegions: { en: "Back to Regions", fr: "Retour aux régions", ar: "العودة إلى المناطق" },
 } as const;
 
 function RegionExplorerPage() {
