@@ -165,7 +165,7 @@ function RegionExplorerPage() {
                 <div className="flex items-start gap-4">
                   <RegionIcon
                     regionId={r.id}
-                    className="h-16 w-20 shrink-0 transition-transform duration-200 group-hover:scale-[1.03] sm:h-[4.75rem] sm:w-24"
+                    className="h-16 w-20 shrink-0 transition-transform duration-200 group-hover:scale-[1.02] sm:h-[4.75rem] sm:w-24"
                   />
                   <div className="min-w-0">
                     <span className="font-bold text-base sm:text-lg leading-tight">{t(r.name, lang)}</span>
