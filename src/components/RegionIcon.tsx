@@ -123,7 +123,8 @@ function AlgiersIcon() {
       <path d="M57 28 V22" stroke={ink} strokeWidth={STROKE_ACCENT} />
       <circle cx="57" cy="20" r="1.6" fill={ink} stroke="none" />
       {/* Outline pass */}
-      <path d="M22 70 V52 H34 V44 H46 V40 C48 28 66 28 66 40 V46 H70 V46 H82 V52 H96 V70" />
+      <path d="M22 70 V52 H34 V44 H46 V40 M48 40 H66 V46 H70 V46 H82 V52 H96 V70" />
+      <path d="M48 40 C48 28 66 28 66 40" fill="none" />
       {/* Small windows */}
       <path d="M28 60 H30 M40 56 H42 M55 52 H59 M76 56 H78 M88 60 H90" stroke={ink} strokeWidth={STROKE_ACCENT} />
     </>
