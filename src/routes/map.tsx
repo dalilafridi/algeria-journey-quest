@@ -47,7 +47,21 @@ function RegionExplorerPage() {
   const [highlight, setHighlight] = useState(false);
   const [introKey, setIntroKey] = useState(0);
   const [introPhase, setIntroPhase] = useState(false);
+  const [showBackToTop, setShowBackToTop] = useState(false);
   const selected: MapRegion | undefined = mapRegions.find((r) => r.id === selectedId);
+
+  useEffect(() => {
+    const onScroll = () => setShowBackToTop(window.scrollY > 480);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  const scrollToTop = () => {
+    const el = document.getElementById("region-explorer-top");
+    if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+    else window.scrollTo({ top: 0, behavior: "smooth" });
+  };
 
   useEffect(() => {
     const id = window.location.hash.replace("#region-", "");
