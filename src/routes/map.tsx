@@ -113,8 +113,36 @@ function RegionExplorerPage() {
     <div className="min-h-screen">
       <Header />
       <main className="max-w-3xl mx-auto px-4 py-8 safe-pb">
+        <div id="region-explorer-top" />
         <h1 className="text-2xl sm:text-3xl font-extrabold">{COPY.title[lang]}</h1>
         <p className="text-muted-foreground mt-1 text-sm sm:text-base">{COPY.subtitle[lang]}</p>
+
+        {/* Sticky region selector */}
+        <nav
+          aria-label={t(COPY.title, lang)}
+          className="sticky top-14 z-20 -mx-4 mt-4 border-y border-border/60 bg-background/85 backdrop-blur-md px-4 py-2"
+        >
+          <div className="flex gap-2 overflow-x-auto no-scrollbar">
+            {mapRegions.map((r) => {
+              const isSel = r.id === selectedId;
+              return (
+                <button
+                  key={r.id}
+                  onClick={() => handleSelect(r.id)}
+                  aria-current={isSel ? "true" : undefined}
+                  className={
+                    "shrink-0 text-xs sm:text-sm font-semibold px-3 py-1.5 rounded-full border transition " +
+                    (isSel
+                      ? "border-primary bg-primary text-primary-foreground"
+                      : "border-border bg-card text-foreground/80 hover:border-primary/40 hover:text-foreground")
+                  }
+                >
+                  {t(r.name, lang)}
+                </button>
+              );
+            })}
+          </div>
+        </nav>
 
         {/* Region cards grid */}
         <section className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
