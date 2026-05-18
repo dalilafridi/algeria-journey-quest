@@ -4,10 +4,21 @@ import { Header } from "@/components/Header";
 import { eras } from "@/data/eras";
 import { getFigure, figures } from "@/data/figures";
 import { figureExtras } from "@/data/figureExtras";
+import { figureMeta, FIGURE_THEMES, cultureKindEmoji, type FigureCultureLinkKind } from "@/data/figureMeta";
 import { mapRegions } from "@/data/mapRegions";
 import { t, tu, useLang, type LocalizedString } from "@/lib/i18n";
 import { StoryFlow, type StoryScene } from "@/components/story/StoryFlow";
 import { saveJourneyPlace } from "@/lib/continuity";
+
+const CULTURE_KIND_TO: Record<FigureCultureLinkKind, "/cuisine" | "/cinema" | "/words" | "/ideas" | "/moments" | "/timeline" | "/lessons"> = {
+  cuisine: "/cuisine",
+  cinema: "/cinema",
+  words: "/words",
+  ideas: "/ideas",
+  moments: "/moments",
+  timeline: "/timeline",
+  lessons: "/lessons",
+};
 
 export const Route = createFileRoute("/figures/$figureId")({
   loader: ({ params }) => {
