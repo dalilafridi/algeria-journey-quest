@@ -5,7 +5,7 @@ import { eras } from "@/data/eras";
 import { getFigure, figures } from "@/data/figures";
 import { figureExtras } from "@/data/figureExtras";
 import { mapRegions } from "@/data/mapRegions";
-import { t, tu, useLang } from "@/lib/i18n";
+import { t, tu, useLang, type LocalizedString } from "@/lib/i18n";
 import { StoryFlow, type StoryScene } from "@/components/story/StoryFlow";
 import { saveJourneyPlace } from "@/lib/continuity";
 
