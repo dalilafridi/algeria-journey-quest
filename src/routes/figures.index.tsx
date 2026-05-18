@@ -3,6 +3,7 @@ import { useEffect, useMemo, useState } from "react";
 import { Header } from "@/components/Header";
 
 import { figures, FIGURE_CATEGORIES, FIGURE_REGIONS, type FigureCategory, type FigureRegion } from "@/data/figures";
+import { figureMeta, FIGURE_THEMES } from "@/data/figureMeta";
 import { eras } from "@/data/eras";
 import { mapRegions } from "@/data/mapRegions";
 import { t, tu, useLang } from "@/lib/i18n";
