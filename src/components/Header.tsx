@@ -71,18 +71,19 @@ export function Header() {
   // Culture owns words/ideas/figures and its sub-experiences (cuisine, stargazing, cinema).
   const isJourney = path === "/" || path.startsWith("/timeline") || path.startsWith("/era") || path.startsWith("/moments") || path.startsWith("/lessons");
   const isRegions = path.startsWith("/map");
+  const isFigures = path.startsWith("/figures");
   const isCulture =
     path.startsWith("/words") ||
     path.startsWith("/ideas") ||
-    path.startsWith("/figures") ||
     path.startsWith("/cuisine") ||
     path.startsWith("/stargazing") ||
     path.startsWith("/cinema");
 
-  // Primary: only the three structural pillars
+  // Primary structural pillars
   const navLinks = [
     { to: "/timeline" as const, label: T.journey, active: isJourney },
     { to: "/map" as const, label: T.regions, active: isRegions },
+    { to: "/figures" as const, label: T.figures, active: isFigures },
     { to: "/words" as const, label: T.culture, active: isCulture },
   ];
 
