@@ -157,7 +157,7 @@ function FigureDetail() {
               emoji="🌿"
             >
               <div className="space-y-3">
-                {f.extended.aftermath.map((p, i) => (
+                {f.extended.aftermath.map((p: LocalizedString, i: number) => (
                   <p key={i} className="leading-relaxed text-foreground/90">
                     {t(p, lang)}
                   </p>
