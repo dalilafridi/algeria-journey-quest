@@ -346,6 +346,95 @@ function FigureDetail() {
               .filter((x) => x.id !== f.id)
               .slice(0, 8)
               .map((x) => (
+        {/* Connected voices (curated) */}
+        {relatedFigures.length > 0 && (
+          <div className="mt-8">
+            <div className="text-xs uppercase tracking-wider text-muted-foreground font-semibold mb-3 flex items-center gap-1.5">
+              <span>🕸️</span>
+              <span>{connectedLabel}</span>
+            </div>
+            <div className="grid sm:grid-cols-2 gap-2.5">
+              {relatedFigures.map((r) => {
+                const shared =
+                  r.region === f.region
+                    ? t(r.regionLabel, lang)
+                    : r.category === f.category
+                      ? t(r.era, lang)
+                      : t(r.era, lang);
+                return (
+                  <Link
+                    key={r.id}
+                    to="/figures/$figureId"
+                    params={{ figureId: r.id }}
+                    className="rounded-xl border border-border bg-card px-3 py-2.5 hover:border-primary/50 transition flex items-start gap-2.5 group"
+                  >
+                    <span className="text-2xl leading-none mt-0.5">{r.emoji}</span>
+                    <span className="min-w-0">
+                      <span className="block font-semibold text-sm group-hover:text-primary transition truncate">
+                        {t(r.displayName, lang)}
+                      </span>
+                      <span className="block text-[11px] text-muted-foreground truncate">{shared}</span>
+                    </span>
+                  </Link>
+                );
+              })}
+            </div>
+          </div>
+        )}
+
+        {/* Cultural threads */}
+        {meta?.cultureLinks && meta.cultureLinks.length > 0 && (
+          <div className="mt-8">
+            <div className="text-xs uppercase tracking-wider text-muted-foreground font-semibold mb-3 flex items-center gap-1.5">
+              <span>🧵</span>
+              <span>{culturalThreadsLabel}</span>
+            </div>
+            <div className="flex flex-wrap gap-2">
+              {meta.cultureLinks.map((c, i) => (
+                <Link
+                  key={i}
+                  to={CULTURE_KIND_TO[c.kind]}
+                  className="px-3 py-1.5 rounded-full bg-card border border-border text-sm hover:border-primary/50 hover:text-primary transition"
+                >
+                  <span className="mr-1">{cultureKindEmoji(c.kind)}</span>
+                  {t(c.label, lang)}
+                </Link>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* Audio archive placeholder */}
+        {meta?.audioArchive && (
+          <div
+            className="mt-8 rounded-2xl border border-dashed p-4 flex items-start gap-3"
+            style={{
+              borderColor: "color-mix(in oklab, var(--secondary) 35%, var(--border))",
+              background: "color-mix(in oklab, var(--secondary) 5%, var(--card))",
+            }}
+          >
+            <span className="text-2xl leading-none">🎙️</span>
+            <div className="min-w-0">
+              <div className="text-xs uppercase tracking-wider text-secondary font-bold">
+                {listenLabel}
+              </div>
+              <div className="text-sm text-muted-foreground mt-0.5">
+                {meta.audioArchive.hint ? t(meta.audioArchive.hint, lang) : audioComingLabel}
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Explore other figures */}
+        <div className="mt-8">
+          <div className="text-xs uppercase tracking-wider text-muted-foreground font-semibold mb-3">
+            {tu("exploreFigures", lang)}
+          </div>
+          <div className="flex gap-2 flex-wrap">
+            {figures
+              .filter((x) => x.id !== f.id && !relatedFigures.some((r) => r.id === x.id))
+              .slice(0, 8)
+              .map((x) => (
                 <Link
                   key={x.id}
                   to="/figures/$figureId"
