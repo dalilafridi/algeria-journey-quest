@@ -3,6 +3,7 @@ import { useEffect, useMemo, useState } from "react";
 import { Header } from "@/components/Header";
 
 import { figures, FIGURE_CATEGORIES, FIGURE_REGIONS, type FigureCategory, type FigureRegion } from "@/data/figures";
+import { figureMeta, FIGURE_THEMES } from "@/data/figureMeta";
 import { eras } from "@/data/eras";
 import { mapRegions } from "@/data/mapRegions";
 import { t, tu, useLang } from "@/lib/i18n";
@@ -112,9 +113,16 @@ function FiguresIndex() {
             const era = f.relatedEraId ? eras.find((e) => e.id === f.relatedEraId) : undefined;
             const regionMapId = FIGURE_REGION_TO_MAP[f.region];
             const region = regionMapId ? mapRegions.find((r) => r.id === regionMapId) : undefined;
-            const related = figures
-              .filter((x) => x.id !== f.id && (x.region === f.region || x.category === f.category))
-              .slice(0, 2);
+            const fm = figureMeta[f.id];
+            const curated = fm?.relatedFigureIds
+              ?.map((id) => figures.find((x) => x.id === id))
+              .filter((x): x is NonNullable<typeof x> => Boolean(x));
+            const related =
+              curated && curated.length > 0
+                ? curated.slice(0, 2)
+                : figures
+                    .filter((x) => x.id !== f.id && (x.region === f.region || x.category === f.category))
+                    .slice(0, 2);
             return (
               <div
                 key={f.id}
@@ -135,8 +143,34 @@ function FiguresIndex() {
                       <div className="text-xs text-muted-foreground mt-0.5">{t(f.era, lang)}</div>
                     </div>
                   </div>
-                  <p className="mt-3 text-sm text-muted-foreground line-clamp-3">{t(f.fact, lang)}</p>
+                  {fm?.cinematicLine ? (
+                    <p
+                      className="mt-3 text-sm italic text-foreground/75 line-clamp-2"
+                      style={{ fontFamily: "Georgia, 'Times New Roman', serif" }}
+                    >
+                      {t(fm.cinematicLine, lang)}
+                    </p>
+                  ) : (
+                    <p className="mt-3 text-sm text-muted-foreground line-clamp-3">{t(f.fact, lang)}</p>
+                  )}
                 </Link>
+
+                {fm?.themes && fm.themes.length > 0 && (
+                  <div className="mt-2.5 flex flex-wrap gap-1">
+                    {fm.themes.slice(0, 3).map((th) => {
+                      const def = FIGURE_THEMES[th];
+                      return (
+                        <span
+                          key={th}
+                          className="px-1.5 py-0.5 rounded-full text-[10px] font-semibold border border-border/60 bg-muted/30 text-muted-foreground"
+                        >
+                          <span className="mr-0.5">{def.emoji}</span>
+                          {t(def.label, lang)}
+                        </span>
+                      );
+                    })}
+                  </div>
+                )}
 
                 {/* Connections */}
                 <div className="mt-3 flex flex-wrap gap-1.5 text-[11px] font-semibold">

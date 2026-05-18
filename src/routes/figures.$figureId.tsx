@@ -4,10 +4,21 @@ import { Header } from "@/components/Header";
 import { eras } from "@/data/eras";
 import { getFigure, figures } from "@/data/figures";
 import { figureExtras } from "@/data/figureExtras";
+import { figureMeta, FIGURE_THEMES, cultureKindEmoji, type FigureCultureLinkKind } from "@/data/figureMeta";
 import { mapRegions } from "@/data/mapRegions";
 import { t, tu, useLang, type LocalizedString } from "@/lib/i18n";
 import { StoryFlow, type StoryScene } from "@/components/story/StoryFlow";
 import { saveJourneyPlace } from "@/lib/continuity";
+
+const CULTURE_KIND_TO: Record<FigureCultureLinkKind, "/cuisine" | "/cinema" | "/words" | "/ideas" | "/moments" | "/timeline" | "/lessons"> = {
+  cuisine: "/cuisine",
+  cinema: "/cinema",
+  words: "/words",
+  ideas: "/ideas",
+  moments: "/moments",
+  timeline: "/timeline",
+  lessons: "/lessons",
+};
 
 export const Route = createFileRoute("/figures/$figureId")({
   loader: ({ params }) => {
@@ -45,6 +56,11 @@ function FigureDetail() {
   const extras = figureExtras[f.id];
   const relatedRegion = mapRegions.find((r) => r.id === f.region || (f.region === "mascara-west" && r.id === "oran-west"));
 
+  const meta = figureMeta[f.id];
+  const relatedFigures = (meta?.relatedFigureIds ?? [])
+    .map((id) => figures.find((x) => x.id === id))
+    .filter((x): x is NonNullable<typeof x> => Boolean(x));
+
   useEffect(() => {
     saveJourneyPlace({
       section: "figures",
@@ -62,6 +78,16 @@ function FigureDetail() {
       : lang === "ar"
         ? "أعمال وأماكن بارزة"
         : "Key works & places";
+  const whyTodayLabel =
+    lang === "fr" ? "Pourquoi cela compte aujourd'hui" : lang === "ar" ? "لماذا يهمّ هذا اليوم" : "Why they matter today";
+  const connectedLabel =
+    lang === "fr" ? "Voix reliées" : lang === "ar" ? "أصوات مرتبطة" : "Connected voices";
+  const culturalThreadsLabel =
+    lang === "fr" ? "Fils culturels" : lang === "ar" ? "خيوط ثقافية" : "Cultural threads";
+  const listenLabel =
+    lang === "fr" ? "Écouter sa voix" : lang === "ar" ? "استمع إلى صوته" : "Listen to their voice";
+  const audioComingLabel =
+    lang === "fr" ? "Archive sonore à venir" : lang === "ar" ? "أرشيف صوتي قادم" : "Future audio archive";
 
   return (
     <div className="min-h-screen">
@@ -89,8 +115,33 @@ function FigureDetail() {
                   {t(f.regionLabel, lang)}
                 </span>
               </div>
+              {meta?.themes && meta.themes.length > 0 && (
+                <div className="mt-2 flex flex-wrap gap-1.5">
+                  {meta.themes.map((th) => {
+                    const def = FIGURE_THEMES[th];
+                    return (
+                      <span
+                        key={th}
+                        className="px-2 py-0.5 rounded-full text-[11px] font-semibold border border-border/70 bg-muted/40 text-muted-foreground"
+                      >
+                        <span className="mr-0.5">{def.emoji}</span>
+                        {t(def.label, lang)}
+                      </span>
+                    );
+                  })}
+                </div>
+              )}
             </div>
           </div>
+
+          {meta?.cinematicLine && (
+            <p
+              className="mt-5 italic text-foreground/80 leading-relaxed border-l-2 pl-3"
+              style={{ borderColor: "color-mix(in oklab, var(--secondary) 55%, var(--border))", fontFamily: "Georgia, 'Times New Roman', serif" }}
+            >
+              {t(meta.cinematicLine, lang)}
+            </p>
+          )}
 
           <Section title={tu("theirStory", lang)} emoji="📖">
             <p className="leading-relaxed">{t(f.story, lang)}</p>
@@ -126,6 +177,23 @@ function FigureDetail() {
           <Section title={tu("whyTheyMatter", lang)} emoji="⭐">
             <p className="leading-relaxed">{t(f.importance, lang)}</p>
           </Section>
+
+          {meta?.modernRelevance && (
+            <div
+              className="mt-6 rounded-2xl border p-5"
+              style={{
+                background:
+                  "linear-gradient(135deg, color-mix(in oklab, var(--primary) 10%, var(--card)), var(--card))",
+                borderColor: "color-mix(in oklab, var(--primary) 35%, var(--border))",
+              }}
+            >
+              <div className="text-xs uppercase tracking-wider text-primary font-bold mb-1.5 flex items-center gap-1.5">
+                <span>✨</span>
+                <span>{whyTodayLabel}</span>
+              </div>
+              <p className="leading-relaxed text-foreground/90">{t(meta.modernRelevance, lang)}</p>
+            </div>
+          )}
 
           {f.extended?.whatHappened && f.extended.whatHappened.length > 0 && (
             <Section
@@ -268,14 +336,93 @@ function FigureDetail() {
           </Link>
         </div>
 
-        {/* Other figures */}
+        {/* Connected voices (curated) */}
+        {relatedFigures.length > 0 && (
+          <div className="mt-8">
+            <div className="text-xs uppercase tracking-wider text-muted-foreground font-semibold mb-3 flex items-center gap-1.5">
+              <span>🕸️</span>
+              <span>{connectedLabel}</span>
+            </div>
+            <div className="grid sm:grid-cols-2 gap-2.5">
+              {relatedFigures.map((r) => {
+                const shared =
+                  r.region === f.region
+                    ? t(r.regionLabel, lang)
+                    : r.category === f.category
+                      ? t(r.era, lang)
+                      : t(r.era, lang);
+                return (
+                  <Link
+                    key={r.id}
+                    to="/figures/$figureId"
+                    params={{ figureId: r.id }}
+                    className="rounded-xl border border-border bg-card px-3 py-2.5 hover:border-primary/50 transition flex items-start gap-2.5 group"
+                  >
+                    <span className="text-2xl leading-none mt-0.5">{r.emoji}</span>
+                    <span className="min-w-0">
+                      <span className="block font-semibold text-sm group-hover:text-primary transition truncate">
+                        {t(r.displayName, lang)}
+                      </span>
+                      <span className="block text-[11px] text-muted-foreground truncate">{shared}</span>
+                    </span>
+                  </Link>
+                );
+              })}
+            </div>
+          </div>
+        )}
+
+        {/* Cultural threads */}
+        {meta?.cultureLinks && meta.cultureLinks.length > 0 && (
+          <div className="mt-8">
+            <div className="text-xs uppercase tracking-wider text-muted-foreground font-semibold mb-3 flex items-center gap-1.5">
+              <span>🧵</span>
+              <span>{culturalThreadsLabel}</span>
+            </div>
+            <div className="flex flex-wrap gap-2">
+              {meta.cultureLinks.map((c, i) => (
+                <Link
+                  key={i}
+                  to={CULTURE_KIND_TO[c.kind]}
+                  className="px-3 py-1.5 rounded-full bg-card border border-border text-sm hover:border-primary/50 hover:text-primary transition"
+                >
+                  <span className="mr-1">{cultureKindEmoji(c.kind)}</span>
+                  {t(c.label, lang)}
+                </Link>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* Audio archive placeholder */}
+        {meta?.audioArchive && (
+          <div
+            className="mt-8 rounded-2xl border border-dashed p-4 flex items-start gap-3"
+            style={{
+              borderColor: "color-mix(in oklab, var(--secondary) 35%, var(--border))",
+              background: "color-mix(in oklab, var(--secondary) 5%, var(--card))",
+            }}
+          >
+            <span className="text-2xl leading-none">🎙️</span>
+            <div className="min-w-0">
+              <div className="text-xs uppercase tracking-wider text-secondary font-bold">
+                {listenLabel}
+              </div>
+              <div className="text-sm text-muted-foreground mt-0.5">
+                {meta.audioArchive.hint ? t(meta.audioArchive.hint, lang) : audioComingLabel}
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Explore other figures */}
         <div className="mt-8">
           <div className="text-xs uppercase tracking-wider text-muted-foreground font-semibold mb-3">
             {tu("exploreFigures", lang)}
           </div>
           <div className="flex gap-2 flex-wrap">
             {figures
-              .filter((x) => x.id !== f.id)
+              .filter((x) => x.id !== f.id && !relatedFigures.some((r) => r.id === x.id))
               .slice(0, 8)
               .map((x) => (
                 <Link
