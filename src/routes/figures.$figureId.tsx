@@ -56,6 +56,11 @@ function FigureDetail() {
   const extras = figureExtras[f.id];
   const relatedRegion = mapRegions.find((r) => r.id === f.region || (f.region === "mascara-west" && r.id === "oran-west"));
 
+  const meta = figureMeta[f.id];
+  const relatedFigures = (meta?.relatedFigureIds ?? [])
+    .map((id) => figures.find((x) => x.id === id))
+    .filter((x): x is NonNullable<typeof x> => Boolean(x));
+
   useEffect(() => {
     saveJourneyPlace({
       section: "figures",
@@ -73,6 +78,16 @@ function FigureDetail() {
       : lang === "ar"
         ? "أعمال وأماكن بارزة"
         : "Key works & places";
+  const whyTodayLabel =
+    lang === "fr" ? "Pourquoi cela compte aujourd'hui" : lang === "ar" ? "لماذا يهمّ هذا اليوم" : "Why they matter today";
+  const connectedLabel =
+    lang === "fr" ? "Voix reliées" : lang === "ar" ? "أصوات مرتبطة" : "Connected voices";
+  const culturalThreadsLabel =
+    lang === "fr" ? "Fils culturels" : lang === "ar" ? "خيوط ثقافية" : "Cultural threads";
+  const listenLabel =
+    lang === "fr" ? "Écouter sa voix" : lang === "ar" ? "استمع إلى صوته" : "Listen to their voice";
+  const audioComingLabel =
+    lang === "fr" ? "Archive sonore à venir" : lang === "ar" ? "أرشيف صوتي قادم" : "Future audio archive";
 
   return (
     <div className="min-h-screen">
