@@ -2,7 +2,7 @@ import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { Header } from "@/components/Header";
 
 import { eras } from "@/data/eras";
-import { t, tu, useLang } from "@/lib/i18n";
+import { t, tu, useLang, type LocalizedString } from "@/lib/i18n";
 
 export const Route = createFileRoute("/era/$eraId")({
   loader: ({ params }) => {
