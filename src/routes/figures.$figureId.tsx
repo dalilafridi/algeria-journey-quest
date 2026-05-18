@@ -336,16 +336,6 @@ function FigureDetail() {
           </Link>
         </div>
 
-        {/* Other figures */}
-        <div className="mt-8">
-          <div className="text-xs uppercase tracking-wider text-muted-foreground font-semibold mb-3">
-            {tu("exploreFigures", lang)}
-          </div>
-          <div className="flex gap-2 flex-wrap">
-            {figures
-              .filter((x) => x.id !== f.id)
-              .slice(0, 8)
-              .map((x) => (
         {/* Connected voices (curated) */}
         {relatedFigures.length > 0 && (
           <div className="mt-8">
