@@ -86,7 +86,7 @@ function EraPage() {
         <section className="mt-6">
           <Card title={tu("didYouKnow", lang)} icon="💡" accent>
             <ul className="space-y-2">
-              {era.facts.map((f, i) => (
+              {era.facts.map((f: LocalizedString, i: number) => (
                 <li key={i} className="flex gap-2">
                   <span>✨</span>
                   <span>{t(f, lang)}</span>
