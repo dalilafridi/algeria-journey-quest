@@ -115,8 +115,33 @@ function FigureDetail() {
                   {t(f.regionLabel, lang)}
                 </span>
               </div>
+              {meta?.themes && meta.themes.length > 0 && (
+                <div className="mt-2 flex flex-wrap gap-1.5">
+                  {meta.themes.map((th) => {
+                    const def = FIGURE_THEMES[th];
+                    return (
+                      <span
+                        key={th}
+                        className="px-2 py-0.5 rounded-full text-[11px] font-semibold border border-border/70 bg-muted/40 text-muted-foreground"
+                      >
+                        <span className="mr-0.5">{def.emoji}</span>
+                        {t(def.label, lang)}
+                      </span>
+                    );
+                  })}
+                </div>
+              )}
             </div>
           </div>
+
+          {meta?.cinematicLine && (
+            <p
+              className="mt-5 italic text-foreground/80 leading-relaxed border-l-2 pl-3"
+              style={{ borderColor: "color-mix(in oklab, var(--secondary) 55%, var(--border))", fontFamily: "Georgia, 'Times New Roman', serif" }}
+            >
+              {t(meta.cinematicLine, lang)}
+            </p>
+          )}
 
           <Section title={tu("theirStory", lang)} emoji="📖">
             <p className="leading-relaxed">{t(f.story, lang)}</p>
