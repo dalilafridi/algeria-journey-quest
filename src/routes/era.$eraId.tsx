@@ -2,7 +2,7 @@ import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { Header } from "@/components/Header";
 
 import { eras } from "@/data/eras";
-import { t, tu, useLang } from "@/lib/i18n";
+import { t, tu, useLang, type LocalizedString } from "@/lib/i18n";
 
 export const Route = createFileRoute("/era/$eraId")({
   loader: ({ params }) => {
@@ -63,7 +63,7 @@ function EraPage() {
         <section className="mt-8 grid sm:grid-cols-2 gap-4">
           <Card title={tu("keyFigures", lang)} icon="👤">
             <ul className="space-y-3">
-              {era.figures.map((f, i) => (
+              {era.figures.map((f: { name: LocalizedString; note: LocalizedString }, i: number) => (
                 <li key={i}>
                   <div className="font-semibold">{t(f.name, lang)}</div>
                   <div className="text-sm text-muted-foreground">{t(f.note, lang)}</div>
@@ -73,7 +73,7 @@ function EraPage() {
           </Card>
           <Card title={tu("keyPlaces", lang)} icon="📍">
             <ul className="space-y-3">
-              {era.places.map((p, i) => (
+              {era.places.map((p: { name: LocalizedString; note: LocalizedString }, i: number) => (
                 <li key={i}>
                   <div className="font-semibold">{t(p.name, lang)}</div>
                   <div className="text-sm text-muted-foreground">{t(p.note, lang)}</div>
@@ -86,7 +86,7 @@ function EraPage() {
         <section className="mt-6">
           <Card title={tu("didYouKnow", lang)} icon="💡" accent>
             <ul className="space-y-2">
-              {era.facts.map((f, i) => (
+              {era.facts.map((f: LocalizedString, i: number) => (
                 <li key={i} className="flex gap-2">
                   <span>✨</span>
                   <span>{t(f, lang)}</span>

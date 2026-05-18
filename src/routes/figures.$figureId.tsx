@@ -5,7 +5,7 @@ import { eras } from "@/data/eras";
 import { getFigure, figures } from "@/data/figures";
 import { figureExtras } from "@/data/figureExtras";
 import { mapRegions } from "@/data/mapRegions";
-import { t, tu, useLang } from "@/lib/i18n";
+import { t, tu, useLang, type LocalizedString } from "@/lib/i18n";
 import { StoryFlow, type StoryScene } from "@/components/story/StoryFlow";
 import { saveJourneyPlace } from "@/lib/continuity";
 
@@ -99,7 +99,7 @@ function FigureDetail() {
           {f.extended?.storyMode && f.extended.storyMode.length > 0 && (
             <div className="mt-6">
               <StoryFlow
-                scenes={f.extended.storyMode.map<StoryScene>((p, i) => ({
+                scenes={(f.extended.storyMode as LocalizedString[]).map((p: LocalizedString, i: number): StoryScene => ({
                   icon: i === 0 ? "✨" : undefined,
                   body: p,
                 }))}
@@ -139,7 +139,7 @@ function FigureDetail() {
               emoji="📜"
             >
               <ul className="space-y-2">
-                {f.extended.whatHappened.map((p, i) => (
+                {f.extended.whatHappened.map((p: LocalizedString, i: number) => (
                   <li key={i} className="flex gap-2 leading-relaxed">
                     <span className="text-primary mt-0.5">•</span>
                     <span>{t(p, lang)}</span>
@@ -157,7 +157,7 @@ function FigureDetail() {
               emoji="🌿"
             >
               <div className="space-y-3">
-                {f.extended.aftermath.map((p, i) => (
+                {f.extended.aftermath.map((p: LocalizedString, i: number) => (
                   <p key={i} className="leading-relaxed text-foreground/90">
                     {t(p, lang)}
                   </p>
