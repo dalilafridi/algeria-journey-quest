@@ -99,7 +99,7 @@ function FigureDetail() {
           {f.extended?.storyMode && f.extended.storyMode.length > 0 && (
             <div className="mt-6">
               <StoryFlow
-                scenes={f.extended.storyMode.map<StoryScene>((p, i) => ({
+                scenes={(f.extended.storyMode as LocalizedString[]).map((p: LocalizedString, i: number): StoryScene => ({
                   icon: i === 0 ? "✨" : undefined,
                   body: p,
                 }))}
