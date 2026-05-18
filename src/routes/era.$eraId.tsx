@@ -63,7 +63,7 @@ function EraPage() {
         <section className="mt-8 grid sm:grid-cols-2 gap-4">
           <Card title={tu("keyFigures", lang)} icon="👤">
             <ul className="space-y-3">
-              {era.figures.map((f, i) => (
+              {era.figures.map((f: { name: LocalizedString; note: LocalizedString }, i: number) => (
                 <li key={i}>
                   <div className="font-semibold">{t(f.name, lang)}</div>
                   <div className="text-sm text-muted-foreground">{t(f.note, lang)}</div>
