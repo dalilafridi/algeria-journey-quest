@@ -73,7 +73,7 @@ function EraPage() {
           </Card>
           <Card title={tu("keyPlaces", lang)} icon="📍">
             <ul className="space-y-3">
-              {era.places.map((p, i) => (
+              {era.places.map((p: { name: LocalizedString; note: LocalizedString }, i: number) => (
                 <li key={i}>
                   <div className="font-semibold">{t(p.name, lang)}</div>
                   <div className="text-sm text-muted-foreground">{t(p.note, lang)}</div>
