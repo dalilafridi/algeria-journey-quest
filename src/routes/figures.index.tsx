@@ -143,8 +143,34 @@ function FiguresIndex() {
                       <div className="text-xs text-muted-foreground mt-0.5">{t(f.era, lang)}</div>
                     </div>
                   </div>
-                  <p className="mt-3 text-sm text-muted-foreground line-clamp-3">{t(f.fact, lang)}</p>
+                  {fm?.cinematicLine ? (
+                    <p
+                      className="mt-3 text-sm italic text-foreground/75 line-clamp-2"
+                      style={{ fontFamily: "Georgia, 'Times New Roman', serif" }}
+                    >
+                      {t(fm.cinematicLine, lang)}
+                    </p>
+                  ) : (
+                    <p className="mt-3 text-sm text-muted-foreground line-clamp-3">{t(f.fact, lang)}</p>
+                  )}
                 </Link>
+
+                {fm?.themes && fm.themes.length > 0 && (
+                  <div className="mt-2.5 flex flex-wrap gap-1">
+                    {fm.themes.slice(0, 3).map((th) => {
+                      const def = FIGURE_THEMES[th];
+                      return (
+                        <span
+                          key={th}
+                          className="px-1.5 py-0.5 rounded-full text-[10px] font-semibold border border-border/60 bg-muted/30 text-muted-foreground"
+                        >
+                          <span className="mr-0.5">{def.emoji}</span>
+                          {t(def.label, lang)}
+                        </span>
+                      );
+                    })}
+                  </div>
+                )}
 
                 {/* Connections */}
                 <div className="mt-3 flex flex-wrap gap-1.5 text-[11px] font-semibold">
