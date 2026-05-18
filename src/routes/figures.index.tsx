@@ -113,9 +113,16 @@ function FiguresIndex() {
             const era = f.relatedEraId ? eras.find((e) => e.id === f.relatedEraId) : undefined;
             const regionMapId = FIGURE_REGION_TO_MAP[f.region];
             const region = regionMapId ? mapRegions.find((r) => r.id === regionMapId) : undefined;
-            const related = figures
-              .filter((x) => x.id !== f.id && (x.region === f.region || x.category === f.category))
-              .slice(0, 2);
+            const fm = figureMeta[f.id];
+            const curated = fm?.relatedFigureIds
+              ?.map((id) => figures.find((x) => x.id === id))
+              .filter((x): x is NonNullable<typeof x> => Boolean(x));
+            const related =
+              curated && curated.length > 0
+                ? curated.slice(0, 2)
+                : figures
+                    .filter((x) => x.id !== f.id && (x.region === f.region || x.category === f.category))
+                    .slice(0, 2);
             return (
               <div
                 key={f.id}
