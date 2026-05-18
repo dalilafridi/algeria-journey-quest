@@ -139,7 +139,7 @@ function FigureDetail() {
               emoji="📜"
             >
               <ul className="space-y-2">
-                {f.extended.whatHappened.map((p, i) => (
+                {f.extended.whatHappened.map((p: LocalizedString, i: number) => (
                   <li key={i} className="flex gap-2 leading-relaxed">
                     <span className="text-primary mt-0.5">•</span>
                     <span>{t(p, lang)}</span>
