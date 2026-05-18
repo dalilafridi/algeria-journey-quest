@@ -178,6 +178,23 @@ function FigureDetail() {
             <p className="leading-relaxed">{t(f.importance, lang)}</p>
           </Section>
 
+          {meta?.modernRelevance && (
+            <div
+              className="mt-6 rounded-2xl border p-5"
+              style={{
+                background:
+                  "linear-gradient(135deg, color-mix(in oklab, var(--primary) 10%, var(--card)), var(--card))",
+                borderColor: "color-mix(in oklab, var(--primary) 35%, var(--border))",
+              }}
+            >
+              <div className="text-xs uppercase tracking-wider text-primary font-bold mb-1.5 flex items-center gap-1.5">
+                <span>✨</span>
+                <span>{whyTodayLabel}</span>
+              </div>
+              <p className="leading-relaxed text-foreground/90">{t(meta.modernRelevance, lang)}</p>
+            </div>
+          )}
+
           {f.extended?.whatHappened && f.extended.whatHappened.length > 0 && (
             <Section
               title={
