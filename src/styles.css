@@ -863,3 +863,203 @@ main > div > section[data-reveal] {
     --dur-slow: 540ms;
   }
 }
+
+/* ============================================================
+   Phase 10 — Accessibility + Multilingual Excellence
+   Skip-link, refined focus, RTL/Arabic typography polish,
+   reading width caps, contrast, tap targets, reduced motion.
+   ============================================================ */
+
+/* Skip-to-content link (visible only on keyboard focus) */
+.skip-link {
+  position: fixed;
+  top: 0.5rem;
+  left: 50%;
+  transform: translate(-50%, -120%);
+  z-index: 100;
+  background: var(--card);
+  color: var(--foreground);
+  border: 1px solid color-mix(in oklab, var(--primary) 50%, var(--border));
+  padding: 0.55rem 1rem;
+  border-radius: 999px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  box-shadow: var(--shadow-soft);
+  transition: transform var(--dur-quick) var(--ease-soft);
+}
+.skip-link:focus,
+.skip-link:focus-visible {
+  transform: translate(-50%, 0);
+  outline: 2px solid color-mix(in oklab, var(--primary) 70%, transparent);
+  outline-offset: 3px;
+}
+
+/* Screen-reader-only utility (also exposed as Tailwind .sr-only by default,
+   redeclared here for safety in case of purge). */
+.visually-hidden,
+.sr-only {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+/* === Arabic / RTL typography polish === */
+html[lang="ar"] body,
+[lang="ar"] {
+  font-family:
+    "Noto Naskh Arabic", "Amiri", "Scheherazade New",
+    ui-sans-serif, system-ui, "Segoe UI", sans-serif;
+  font-feature-settings: "kern", "calt", "liga";
+  line-height: 1.85;
+  letter-spacing: 0;
+}
+html[lang="ar"] h1,
+html[lang="ar"] h2,
+html[lang="ar"] h3,
+html[lang="ar"] h4,
+[lang="ar"] h1, [lang="ar"] h2, [lang="ar"] h3, [lang="ar"] h4 {
+  font-family:
+    "Amiri", "Noto Naskh Arabic", "Scheherazade New",
+    Georgia, "Iowan Old Style", serif;
+  letter-spacing: 0;
+  line-height: 1.35;
+  font-weight: 700;
+}
+html[lang="ar"] p,
+[lang="ar"] p {
+  line-height: 1.95;
+  text-wrap: pretty;
+  word-spacing: 0.04em;
+}
+html[lang="ar"] .museum-pullquote,
+[lang="ar"] .museum-pullquote {
+  font-style: normal;
+  line-height: 1.85;
+  font-size: clamp(1.1rem, 0.95rem + 0.6vw, 1.3rem);
+}
+html[lang="ar"] .museum-eyebrow,
+[lang="ar"] .museum-eyebrow {
+  letter-spacing: 0;
+  font-weight: 700;
+}
+
+/* RTL layout corrections — flip arrow glyphs in localized back/next labels */
+html[dir="rtl"] .arrow-flip {
+  display: inline-block;
+  transform: scaleX(-1);
+}
+
+/* Mirror box-shadow insets that assume LTR card rims */
+html[dir="rtl"] .museum-pullquote {
+  border-inline-start: 2px solid color-mix(in oklab, var(--accent) 60%, var(--border));
+}
+
+/* Keep numbers, dates, and Latin tokens left-to-right inside Arabic flow */
+html[lang="ar"] time,
+html[lang="ar"] .ltr,
+[lang="ar"] time,
+[lang="ar"] .ltr {
+  unicode-bidi: isolate;
+  direction: ltr;
+}
+
+/* === French — longer label breathing room === */
+html[lang="fr"] .museum-eyebrow {
+  letter-spacing: 0.14em;
+}
+html[lang="fr"] button,
+html[lang="fr"] [role="button"] {
+  hyphens: auto;
+}
+
+/* === Reading width caps for immersive prose === */
+.prose-reading {
+  max-width: 68ch;
+  margin-inline: auto;
+  line-height: 1.78;
+  font-size: 1.04rem;
+}
+html[lang="ar"] .prose-reading {
+  max-width: 60ch;
+  line-height: 1.95;
+}
+
+/* === Touch targets — guarantee 44x44 for primary interactive chrome === */
+@media (max-width: 640px) {
+  header.sticky button,
+  header.sticky a[role="button"],
+  nav a {
+    min-height: 44px;
+  }
+  .museum-card-hover,
+  .card-hover {
+    -webkit-tap-highlight-color: color-mix(in oklab, var(--accent) 18%, transparent);
+  }
+}
+
+/* === Contrast lift on muted text — readable without losing softness === */
+:root {
+  /* nudge muted-foreground a touch darker for AA on parchment */
+  --muted-foreground: oklch(0.38 0.04 50);
+}
+html.immersion-on {
+  --muted-foreground: oklch(0.36 0.045 50);
+}
+
+/* === Focus polish — visible on every interactive surface === */
+:where(a, button, [role="button"], summary, [tabindex]):focus-visible {
+  outline: 2px solid color-mix(in oklab, var(--primary) 70%, transparent);
+  outline-offset: 3px;
+  border-radius: 0.6rem;
+}
+
+/* When skip-link or other landmarks programmatically receive focus,
+   don't render a heavy ring around the whole page region. */
+#main:focus,
+#main:focus-visible {
+  outline: none;
+}
+
+/* === Image accessibility — never render zero-alt decorative images larger
+   than their meaningful counterparts on small screens === */
+img[alt=""] { user-select: none; }
+
+/* === Reduced motion — make absolutely sure nothing surprises === */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  body::before { display: none; }
+  html.immersion-on body { background: var(--background); }
+}
+
+/* === Caret + selection in Arabic flow === */
+html[lang="ar"] ::selection {
+  background: color-mix(in oklab, var(--accent) 50%, transparent);
+}
+
+/* === Quote cards — calmer rhythm across all languages === */
+blockquote,
+.museum-quote {
+  max-width: 60ch;
+  margin-inline: auto;
+  font-family: Georgia, "Iowan Old Style", "Times New Roman", serif;
+  font-style: italic;
+  line-height: 1.7;
+  color: color-mix(in oklab, var(--foreground) 90%, transparent);
+}
+html[lang="ar"] blockquote,
+html[lang="ar"] .museum-quote {
+  font-style: normal;
+  font-family: "Amiri", "Noto Naskh Arabic", serif;
+  line-height: 1.95;
+}
