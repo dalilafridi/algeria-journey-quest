@@ -395,59 +395,61 @@ function AtlasPage() {
                     role="button"
                     aria-label={t(r.name, lang)}
                   >
-                    {/* Glow halo */}
+                    {/* Glow halo — quieter, smaller */}
                     {(isFocus || isActive) && (
                       <circle
                         cx={p.x}
                         cy={p.y}
-                        r={radius * 1.9}
+                        r={radius * 1.6}
                         fill="url(#atlas-region-glow)"
-                        opacity={isActive ? 0.95 : 0.55}
+                        opacity={isActive ? 0.7 : 0.35}
                       >
                         {isFocus && (
                           <animate
                             attributeName="opacity"
-                            values={isActive ? "0.9;1;0.9" : "0.35;0.6;0.35"}
-                            dur="3.6s"
+                            values={isActive ? "0.6;0.8;0.6" : "0.22;0.4;0.22"}
+                            dur="4.2s"
                             repeatCount="indefinite"
                           />
                         )}
                       </circle>
                     )}
-                    {/* Pin */}
+                    {/* Pin — small, integrated */}
                     <circle
                       cx={p.x}
                       cy={p.y}
-                      r={radius}
-                      fill={isActive ? "var(--primary)" : "var(--card)"}
+                      r={radius * 0.55}
+                      fill={isActive ? "var(--primary)" : "color-mix(in oklab, var(--card) 92%, var(--accent))"}
                       stroke={isActive ? "var(--accent)" : "color-mix(in oklab, var(--primary) 55%, var(--border))"}
-                      strokeWidth={isActive ? "0.9" : "0.6"}
+                      strokeWidth={isActive ? "0.5" : "0.32"}
                       style={{ transition: "all .35s ease" }}
                     />
                     {/* Hit area for touch */}
                     <circle
                       cx={p.x}
                       cy={p.y}
-                      r={radius * 2.2}
+                      r={Math.max(radius * 2.4, 4)}
                       fill="transparent"
                     />
                     {/* Label */}
                     <text
                       x={p.x}
-                      y={p.y + radius + 3.2}
+                      y={p.y + radius * 0.55 + 2.6}
                       textAnchor="middle"
-                      fontSize="2.6"
-                      fontWeight={isActive ? 800 : 600}
+                      fontSize="2.1"
+                      fontWeight={isActive ? 700 : 600}
+                      letterSpacing="0.1"
                       fill={
                         isActive
                           ? "var(--primary)"
-                          : "color-mix(in oklab, var(--foreground) 80%, transparent)"
+                          : "color-mix(in oklab, var(--foreground) 72%, transparent)"
                       }
                       style={{ pointerEvents: "none", transition: "fill .3s ease" }}
                     >
                       {t(r.name, lang)}
                     </text>
                   </g>
+
                 );
               })}
             </svg>
