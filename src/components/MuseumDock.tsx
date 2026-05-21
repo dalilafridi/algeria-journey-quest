@@ -91,6 +91,23 @@ export function MuseumDock() {
             onLabel={T.on}
             offLabel={T.off}
           />
+          <div className="h-px bg-border/70 mx-3" />
+          <Link
+            to="/showcase"
+            onClick={() => setOpen(false)}
+            className="w-full flex items-start gap-3 px-3.5 py-3 text-left hover:bg-muted/60 transition"
+          >
+            <span className="text-xl leading-none mt-0.5" aria-hidden>✶</span>
+            <span className="flex-1 min-w-0">
+              <span className="block text-sm font-semibold text-foreground leading-tight">
+                {T.showcase}
+              </span>
+              <span className="block text-xs text-muted-foreground mt-0.5 leading-snug">
+                {T.showcaseHint}
+              </span>
+            </span>
+            <span className="shrink-0 mt-1 text-muted-foreground" aria-hidden>›</span>
+          </Link>
         </div>
       )}
 
