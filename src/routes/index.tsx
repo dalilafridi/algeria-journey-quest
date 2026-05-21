@@ -4,7 +4,7 @@ import { DidYouKnowCard } from "@/components/DidYouKnowCard";
 import { Header } from "@/components/Header";
 import { dailyFacts, eras } from "@/data/eras";
 import { t, tu, useLang } from "@/lib/i18n";
-import brandCover from "@/assets/brand-cover.png";
+
 
 export const Route = createFileRoute("/")({
   head: () => ({
