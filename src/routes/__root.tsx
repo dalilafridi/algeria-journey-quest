@@ -12,6 +12,7 @@ import { JourneyHud } from "@/components/JourneyHud";
 import { BackToTop } from "@/components/BackToTop";
 import { MuseumDock } from "@/components/MuseumDock";
 import { MotionReveal } from "@/components/MotionReveal";
+import { SkipLink, LangSync } from "@/components/A11y";
 
 function NotFoundComponent() {
   return (
@@ -103,10 +104,14 @@ function RootComponent() {
 
   return (
     <>
+      <SkipLink />
+      <LangSync />
       <SplashScreen />
       <SignatureIntro />
       <ContinueJourneyCard />
-      <Outlet />
+      <main id="main" tabIndex={-1}>
+        <Outlet />
+      </main>
       <WelcomeJourney />
       <JourneyHud />
       <BackToTop />
