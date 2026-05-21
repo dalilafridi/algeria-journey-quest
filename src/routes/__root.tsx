@@ -9,6 +9,7 @@ import { SignatureIntro } from "@/components/brand/SignatureIntro";
 import { WelcomeJourney } from "@/components/WelcomeJourney";
 import { ContinueJourneyCard } from "@/components/ContinueJourneyCard";
 import { JourneyHud } from "@/components/JourneyHud";
+import { BackToTop } from "@/components/BackToTop";
 
 function NotFoundComponent() {
   return (
@@ -106,6 +107,7 @@ function RootComponent() {
       <Outlet />
       <WelcomeJourney />
       <JourneyHud />
+      <BackToTop />
       <Sonner />
     </>
   );

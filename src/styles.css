@@ -65,38 +65,44 @@
 
 :root {
   --radius: 1.1rem;
-  /* Warm sand-based palette — softened for calmer contrast */
-  --background: oklch(0.975 0.018 82);
-  --foreground: oklch(0.3 0.035 42);
+  /* Parchment-based palette — deeper charcoal ink, warmer paper */
+  --background: oklch(0.972 0.02 84);
+  --foreground: oklch(0.24 0.035 45);
   --card: oklch(0.992 0.012 86);
-  --card-foreground: oklch(0.3 0.035 42);
+  --card-foreground: oklch(0.24 0.035 45);
   --popover: oklch(0.99 0.015 85);
-  --popover-foreground: oklch(0.28 0.04 40);
-  /* Terracotta primary */
-  --primary: oklch(0.62 0.16 40);
+  --popover-foreground: oklch(0.22 0.04 42);
+  /* Terracotta primary — slightly richer */
+  --primary: oklch(0.6 0.165 38);
   --primary-foreground: oklch(0.98 0.01 80);
   /* Olive green secondary */
-  --secondary: oklch(0.6 0.09 130);
+  --secondary: oklch(0.56 0.085 128);
   --secondary-foreground: oklch(0.98 0.01 80);
   --muted: oklch(0.93 0.03 80);
-  --muted-foreground: oklch(0.45 0.04 50);
-  /* Gold accent */
+  --muted-foreground: oklch(0.42 0.04 50);
+  /* Soft gold accent */
   --accent: oklch(0.78 0.14 80);
-  --accent-foreground: oklch(0.25 0.05 40);
+  --accent-foreground: oklch(0.22 0.05 40);
   --destructive: oklch(0.58 0.22 25);
   --destructive-foreground: oklch(0.98 0.01 80);
-  --border: oklch(0.9 0.03 78 / 0.85);
+  --border: oklch(0.88 0.03 76 / 0.9);
   --input: oklch(0.93 0.025 80);
-  --ring: oklch(0.62 0.16 40);
-  --success: oklch(0.65 0.15 145);
+  --ring: oklch(0.6 0.165 38);
+  --success: oklch(0.62 0.13 142);
   --success-foreground: oklch(0.98 0.01 80);
-  --gradient-warm: linear-gradient(135deg, oklch(0.78 0.14 80), oklch(0.62 0.16 40));
-  --gradient-hero: linear-gradient(160deg, oklch(0.95 0.04 85), oklch(0.85 0.08 70));
+  --gradient-warm: linear-gradient(135deg, oklch(0.78 0.14 80), oklch(0.6 0.165 38));
+  --gradient-hero: linear-gradient(160deg, oklch(0.96 0.04 85), oklch(0.84 0.08 68));
+  --gradient-parchment: linear-gradient(180deg, oklch(0.985 0.018 86), oklch(0.95 0.03 78));
   --intro-background: #faf9f6;
   --intro-texture: radial-gradient(circle at 50% 0%, oklch(0.82 0.08 75 / 0.18), transparent 38%),
     linear-gradient(180deg, oklch(0.99 0.01 85), oklch(0.96 0.02 80));
-  --shadow-soft: 0 1px 2px oklch(0.4 0.08 50 / 0.04), 0 6px 24px -8px oklch(0.45 0.1 50 / 0.16);
-  --shadow-glow: 0 10px 36px -10px oklch(0.62 0.16 40 / 0.32);
+  --shadow-soft: 0 1px 2px oklch(0.4 0.08 50 / 0.05), 0 8px 28px -10px oklch(0.45 0.1 50 / 0.18);
+  --shadow-glow: 0 10px 36px -10px oklch(0.6 0.165 38 / 0.34);
+  /* Parchment + mosaic textures — subtle, layerable */
+  --texture-parchment: radial-gradient(ellipse at 20% 10%, oklch(0.95 0.05 80 / 0.35), transparent 55%),
+    radial-gradient(ellipse at 80% 90%, oklch(0.88 0.06 60 / 0.28), transparent 60%),
+    repeating-linear-gradient(115deg, oklch(0.6 0.04 60 / 0.018) 0 2px, transparent 2px 6px);
+  --texture-mosaic: repeating-conic-gradient(from 0deg at 50% 50%, oklch(0.6 0.04 60 / 0.025) 0deg 30deg, transparent 30deg 60deg);
 
   /* === Algeria Through Time — Brand tokens (cinematic gold-on-dark) === */
   --brand-gold: oklch(0.82 0.14 78);
@@ -439,4 +445,19 @@ main > div > section {
 @media (prefers-reduced-motion: reduce) {
   .img-zoom > img, .img-zoom > picture > img { transition: none; }
   .img-zoom:hover > img, .img-zoom:hover > picture > img { transform: none; }
+}
+
+/* Parchment texture overlay — apply to any container for museum feel. */
+.bg-parchment {
+  background-image: var(--texture-parchment);
+  background-color: var(--background);
+}
+.bg-parchment-card {
+  background-image: var(--texture-parchment);
+  background-color: var(--card);
+}
+/* Subtle mosaic accent — pair with a base color underneath. */
+.bg-mosaic-soft {
+  background-image: var(--texture-mosaic);
+  background-size: 64px 64px;
 }
