@@ -2,8 +2,14 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useMemo, useState } from "react";
 import { Header } from "@/components/Header";
 
-import { figures, FIGURE_CATEGORIES, FIGURE_REGIONS, type FigureCategory, type FigureRegion } from "@/data/figures";
-import { figureMeta, FIGURE_THEMES } from "@/data/figureMeta";
+import {
+  figures,
+  FIGURE_CATEGORIES,
+  FIGURE_REGIONS,
+  type FigureCategory,
+  type FigureRegion,
+} from "@/data/figures";
+import { figureMeta, FIGURE_THEMES, type FigureTheme } from "@/data/figureMeta";
 import { eras } from "@/data/eras";
 import { mapRegions } from "@/data/mapRegions";
 import { t, tu, useLang } from "@/lib/i18n";
@@ -21,11 +27,20 @@ const FIGURE_REGION_TO_MAP: Partial<Record<string, string>> = {
   numidia: "constantine",
 };
 
+/** Chronological weight, derived from category order. */
+const CATEGORY_ORDER: FigureCategory[] = FIGURE_CATEGORIES.map((c) => c.id);
+
+type SortKey = "featured" | "chronological" | "alphabetical";
+
 export const Route = createFileRoute("/figures/")({
   head: () => ({
     meta: [
       { title: "Great Figures of Algeria — Algeria Through Time" },
-      { name: "description", content: "Bios of the people who shaped Algerian history, from Massinissa to Matoub." },
+      {
+        name: "description",
+        content:
+          "A curated gallery of the people who shaped Algeria — from Massinissa and Dihya to Assia Djebar and Matoub Lounès.",
+      },
     ],
   }),
   component: FiguresIndex,
@@ -36,67 +51,202 @@ function FiguresIndex() {
   const [query, setQuery] = useState("");
   const [cat, setCat] = useState<FigureCategory | "all">("all");
   const [reg, setReg] = useState<FigureRegion | "all">("all");
-  
+  const [theme, setTheme] = useState<FigureTheme | "all">("all");
+  const [sort, setSort] = useState<SortKey>("featured");
 
   useEffect(() => {
     saveJourneyPlace({
       section: "figures",
       label: { fr: "Figures", en: "Figures", ar: "الشخصيات" },
-      description: { fr: "Explorer les grandes figures", en: "Explore great figures", ar: "استكشف الشخصيات البارزة" },
+      description: {
+        fr: "Explorer les grandes figures",
+        en: "Explore great figures",
+        ar: "استكشف الشخصيات البارزة",
+      },
       href: "/figures",
     });
   }, []);
 
+  /** Only show theme chips that actually appear in curated meta. */
+  const availableThemes = useMemo(() => {
+    const set = new Set<FigureTheme>();
+    Object.values(figureMeta).forEach((m) => m?.themes?.forEach((th) => set.add(th)));
+    return Array.from(set);
+  }, []);
+
   const list = useMemo(() => {
     const q = query.trim().toLowerCase();
-    return figures.filter((f) => {
+    const filtered = figures.filter((f) => {
       if (cat !== "all" && f.category !== cat) return false;
       if (reg !== "all" && f.region !== reg) return false;
+      if (theme !== "all") {
+        const themes = figureMeta[f.id]?.themes;
+        if (!themes || !themes.includes(theme)) return false;
+      }
       if (!q) return true;
-      const names = [f.name, t(f.displayName, "en"), t(f.displayName, "fr"), t(f.displayName, "ar")];
+      const names = [
+        f.name,
+        t(f.displayName, "en"),
+        t(f.displayName, "fr"),
+        t(f.displayName, "ar"),
+      ];
       return names.some((n) => n.toLowerCase().includes(q));
     });
-  }, [query, cat, reg]);
+
+    const sorted = [...filtered];
+    if (sort === "alphabetical") {
+      sorted.sort((a, b) => t(a.displayName, lang).localeCompare(t(b.displayName, lang)));
+    } else if (sort === "chronological") {
+      sorted.sort((a, b) => {
+        const ai = CATEGORY_ORDER.indexOf(a.category);
+        const bi = CATEGORY_ORDER.indexOf(b.category);
+        if (ai !== bi) return ai - bi;
+        return t(a.displayName, lang).localeCompare(t(b.displayName, lang));
+      });
+    } else {
+      // featured: curated meta first, then chronological
+      sorted.sort((a, b) => {
+        const af = figureMeta[a.id] ? 0 : 1;
+        const bf = figureMeta[b.id] ? 0 : 1;
+        if (af !== bf) return af - bf;
+        const ai = CATEGORY_ORDER.indexOf(a.category);
+        const bi = CATEGORY_ORDER.indexOf(b.category);
+        return ai - bi;
+      });
+    }
+    return sorted;
+  }, [query, cat, reg, theme, sort, lang]);
+
+  const resetFilters = () => {
+    setQuery("");
+    setCat("all");
+    setReg("all");
+    setTheme("all");
+    setSort("featured");
+  };
+
+  const hasActiveFilters = query || cat !== "all" || reg !== "all" || theme !== "all";
+
+  const introCopy =
+    lang === "fr"
+      ? "Une galerie curatée des voix, mains et esprits qui ont façonné l'Algérie — de l'Antiquité numide aux artistes contemporains."
+      : lang === "ar"
+        ? "معرض منتقى للأصوات والعقول التي صاغت الجزائر — من نوميديا القديمة إلى الفنانين المعاصرين."
+        : "A curated gallery of voices, hands and minds that shaped Algeria — from ancient Numidia to contemporary artists.";
+
+  const resultsLabel =
+    lang === "fr" ? "figures" : lang === "ar" ? "شخصية" : "figures";
+  const sortLabel = lang === "fr" ? "Trier" : lang === "ar" ? "ترتيب" : "Sort";
+  const themeLabel =
+    lang === "fr" ? "Thème" : lang === "ar" ? "الموضوع" : "Theme";
+  const resetLabel =
+    lang === "fr" ? "Réinitialiser" : lang === "ar" ? "إعادة ضبط" : "Reset";
 
   return (
     <div className="min-h-screen">
       <Header />
-      <main className="max-w-5xl mx-auto px-4 py-8">
-        <div className="text-center max-w-2xl mx-auto">
-          <div className="text-5xl mb-3">🏛️</div>
-          <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight">{tu("figuresTitle", lang)}</h1>
-          <p className="mt-3 text-muted-foreground">{tu("figuresSubtitle", lang)}</p>
 
-          <Link
-            to="/figures/quiz"
-            className="inline-block mt-5 px-5 py-2.5 rounded-xl text-primary-foreground font-semibold transition-transform hover:scale-105"
-            style={{ background: "var(--gradient-warm)", boxShadow: "var(--shadow-glow)" }}
+      {/* Cinematic Hero */}
+      <section
+        className="relative overflow-hidden border-b border-border"
+        style={{
+          background:
+            "linear-gradient(135deg, color-mix(in oklab, var(--primary) 18%, var(--background)), var(--background) 55%, color-mix(in oklab, var(--accent) 14%, var(--background)))",
+        }}
+      >
+        <div
+          aria-hidden
+          className="absolute inset-0 pointer-events-none opacity-[0.06] text-[14rem] sm:text-[20rem] font-black tracking-tighter leading-none flex items-center justify-center select-none"
+          style={{ color: "var(--accent)" }}
+        >
+          ⵣ
+        </div>
+        <div className="relative max-w-5xl mx-auto px-4 py-14 sm:py-20 text-center animate-cinematic-in">
+          <div
+            className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-[11px] uppercase tracking-[0.18em] font-bold border"
+            style={{
+              borderColor: "color-mix(in oklab, var(--accent) 45%, var(--border))",
+              background: "color-mix(in oklab, var(--accent) 10%, var(--card))",
+              color: "var(--accent-foreground)",
+            }}
           >
-            {tu("guessThisFigureCta", lang)}
-          </Link>
-          <div className="mt-3 text-sm text-muted-foreground">
-            {lang === "fr" ? "Relié aux" : lang === "ar" ? "مرتبط بـ" : "Related to"}{" "}
-            <Link to="/map" className="font-semibold text-primary hover:underline">
-              {lang === "fr" ? "régions" : lang === "ar" ? "المناطق" : "regions"}
+            <span>ⵣ</span>
+            <span>
+              {lang === "fr"
+                ? "Galerie des grandes figures"
+                : lang === "ar"
+                  ? "معرض الشخصيات الكبرى"
+                  : "Gallery of great figures"}
+            </span>
+          </div>
+          <h1
+            className="mt-5 text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.05]"
+            style={{ fontFamily: "Georgia, 'Times New Roman', serif" }}
+          >
+            {tu("figuresTitle", lang)}
+          </h1>
+          <p className="mt-4 max-w-2xl mx-auto text-base sm:text-lg text-muted-foreground leading-relaxed">
+            {introCopy}
+          </p>
+          <div className="mt-6 flex items-center justify-center gap-3 flex-wrap text-sm text-muted-foreground">
+            <span className="inline-flex items-center gap-1.5">
+              <span className="text-foreground font-bold">{figures.length}</span>
+              <span>{resultsLabel}</span>
+            </span>
+            <span aria-hidden>·</span>
+            <Link to="/figures/quiz" className="font-semibold text-primary hover:underline">
+              {tu("guessThisFigureCta", lang)}
             </Link>
           </div>
         </div>
+      </section>
 
-        {/* Filters */}
-        <div className="mt-8 grid gap-3">
-          <input
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
-            placeholder={tu("searchFigures", lang)}
-            className="w-full rounded-xl bg-card border border-border px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-primary/40"
-          />
+      <main className="max-w-6xl mx-auto px-4 py-8">
+        {/* Sticky filter bar */}
+        <div className="sticky top-[60px] z-20 -mx-4 px-4 py-3 mb-6 backdrop-blur-md bg-background/85 border-b border-border/70">
+          <div className="flex gap-2 items-center">
+            <div className="relative flex-1">
+              <span className="absolute start-3 top-1/2 -translate-y-1/2 text-muted-foreground text-sm pointer-events-none">
+                🔍
+              </span>
+              <input
+                value={query}
+                onChange={(e) => setQuery(e.target.value)}
+                placeholder={tu("searchFigures", lang)}
+                className="w-full rounded-xl bg-card border border-border ps-9 pe-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-primary/40 focus:border-primary/40"
+              />
+            </div>
+            <select
+              value={sort}
+              onChange={(e) => setSort(e.target.value as SortKey)}
+              className="rounded-xl bg-card border border-border px-3 py-2.5 text-sm font-semibold focus:outline-none focus:ring-2 focus:ring-primary/40"
+              aria-label={sortLabel}
+            >
+              <option value="featured">
+                {lang === "fr" ? "★ En vedette" : lang === "ar" ? "★ المختارة" : "★ Featured"}
+              </option>
+              <option value="chronological">
+                {lang === "fr" ? "Chronologique" : lang === "ar" ? "زمني" : "Chronological"}
+              </option>
+              <option value="alphabetical">
+                {lang === "fr" ? "Alphabétique" : lang === "ar" ? "أبجدي" : "Alphabetical"}
+              </option>
+            </select>
+          </div>
+        </div>
 
+        {/* Filter chips */}
+        <div className="grid gap-3 mb-6">
           <FilterRow
             label={tu("filterEra", lang)}
             allLabel={tu("filterAll", lang)}
             value={cat}
             onChange={(v) => setCat(v as FigureCategory | "all")}
-            options={FIGURE_CATEGORIES.map((c) => ({ id: c.id, label: t(c.label, lang), emoji: c.emoji }))}
+            options={FIGURE_CATEGORIES.map((c) => ({
+              id: c.id,
+              label: t(c.label, lang),
+              emoji: c.emoji,
+            }))}
           />
           <FilterRow
             label={tu("filterRegion", lang)}
@@ -105,128 +255,166 @@ function FiguresIndex() {
             onChange={(v) => setReg(v as FigureRegion | "all")}
             options={FIGURE_REGIONS.map((r) => ({ id: r.id, label: t(r.label, lang) }))}
           />
+          {availableThemes.length > 0 && (
+            <FilterRow
+              label={themeLabel}
+              allLabel={tu("filterAll", lang)}
+              value={theme}
+              onChange={(v) => setTheme(v as FigureTheme | "all")}
+              options={availableThemes.map((th) => ({
+                id: th,
+                label: t(FIGURE_THEMES[th].label, lang),
+                emoji: FIGURE_THEMES[th].emoji,
+              }))}
+            />
+          )}
+          {hasActiveFilters && (
+            <div className="flex items-center justify-between text-xs text-muted-foreground">
+              <span>
+                <span className="text-foreground font-bold">{list.length}</span> {resultsLabel}
+              </span>
+              <button
+                onClick={resetFilters}
+                className="font-semibold text-primary hover:underline"
+              >
+                {resetLabel}
+              </button>
+            </div>
+          )}
         </div>
 
         {/* Grid */}
-        <div className="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {list.map((f) => {
             const era = f.relatedEraId ? eras.find((e) => e.id === f.relatedEraId) : undefined;
             const regionMapId = FIGURE_REGION_TO_MAP[f.region];
-            const region = regionMapId ? mapRegions.find((r) => r.id === regionMapId) : undefined;
+            const region = regionMapId
+              ? mapRegions.find((r) => r.id === regionMapId)
+              : undefined;
             const fm = figureMeta[f.id];
-            const curated = fm?.relatedFigureIds
-              ?.map((id) => figures.find((x) => x.id === id))
-              .filter((x): x is NonNullable<typeof x> => Boolean(x));
-            const related =
-              curated && curated.length > 0
-                ? curated.slice(0, 2)
-                : figures
-                    .filter((x) => x.id !== f.id && (x.region === f.region || x.category === f.category))
-                    .slice(0, 2);
+            const isFeatured = Boolean(fm);
             return (
-              <div
+              <Link
                 key={f.id}
-                className="card-hover rounded-2xl bg-card border border-border p-5 hover:border-primary/50 transition group flex flex-col"
+                to="/figures/$figureId"
+                params={{ figureId: f.id }}
+                className="group relative rounded-2xl bg-card border border-border p-5 transition-all duration-300 hover:-translate-y-0.5 hover:border-primary/50 flex flex-col overflow-hidden"
                 style={{ boxShadow: "var(--shadow-soft)" }}
               >
-                <Link
-                  to="/figures/$figureId"
-                  params={{ figureId: f.id }}
-                  className="block"
-                >
-                  <div className="flex items-start gap-3">
-                    <div className="text-3xl">{f.emoji}</div>
-                    <div className="flex-1 min-w-0">
-                      <div className="font-bold text-lg leading-tight group-hover:text-primary transition">
-                        {t(f.displayName, lang)}
-                      </div>
-                      <div className="text-xs text-muted-foreground mt-0.5">{t(f.era, lang)}</div>
-                    </div>
-                  </div>
-                  {fm?.cinematicLine ? (
-                    <p
-                      className="mt-3 text-sm italic text-foreground/75 line-clamp-2"
-                      style={{ fontFamily: "Georgia, 'Times New Roman', serif" }}
-                    >
-                      {t(fm.cinematicLine, lang)}
-                    </p>
-                  ) : (
-                    <p className="mt-3 text-sm text-muted-foreground line-clamp-3">{t(f.fact, lang)}</p>
-                  )}
-                </Link>
-
-                {fm?.themes && fm.themes.length > 0 && (
-                  <div className="mt-2.5 flex flex-wrap gap-1">
-                    {fm.themes.slice(0, 3).map((th) => {
-                      const def = FIGURE_THEMES[th];
-                      return (
-                        <span
-                          key={th}
-                          className="px-1.5 py-0.5 rounded-full text-[10px] font-semibold border border-border/60 bg-muted/30 text-muted-foreground"
-                        >
-                          <span className="mr-0.5">{def.emoji}</span>
-                          {t(def.label, lang)}
-                        </span>
-                      );
-                    })}
-                  </div>
+                {/* Top accent ribbon */}
+                <div
+                  aria-hidden
+                  className="absolute inset-x-0 top-0 h-1 opacity-70 group-hover:opacity-100 transition"
+                  style={{ background: "var(--gradient-warm)" }}
+                />
+                {isFeatured && (
+                  <span
+                    className="absolute top-3 end-3 text-[10px] font-bold px-2 py-0.5 rounded-full border"
+                    style={{
+                      borderColor: "color-mix(in oklab, var(--accent) 50%, var(--border))",
+                      background: "color-mix(in oklab, var(--accent) 18%, var(--card))",
+                      color: "var(--accent-foreground)",
+                    }}
+                  >
+                    ★
+                  </span>
                 )}
 
-                {/* Connections */}
-                <div className="mt-3 flex flex-wrap gap-1.5 text-[11px] font-semibold">
-                  {region ? (
-                    <Link
-                      to="/map"
-                      hash={`region-${region.id}`}
-                      className="px-2 py-0.5 rounded-full bg-muted text-muted-foreground hover:bg-primary/10 hover:text-primary transition"
+                {/* Portrait treatment */}
+                <div
+                  className="relative h-28 -mx-5 -mt-5 mb-4 flex items-center justify-center overflow-hidden"
+                  style={{
+                    background:
+                      "linear-gradient(135deg, color-mix(in oklab, var(--primary) 14%, var(--card)), color-mix(in oklab, var(--accent) 10%, var(--card)))",
+                  }}
+                >
+                  <div
+                    aria-hidden
+                    className="absolute inset-0 opacity-[0.05] text-[7rem] flex items-center justify-center select-none"
+                    style={{ color: "var(--foreground)" }}
+                  >
+                    ⵣ
+                  </div>
+                  <div className="relative text-5xl transition-transform duration-300 group-hover:scale-110">
+                    {f.emoji}
+                  </div>
+                </div>
+
+                <div className="flex-1 min-w-0">
+                  <div
+                    className="font-bold text-lg leading-tight group-hover:text-primary transition"
+                    style={{ fontFamily: "Georgia, 'Times New Roman', serif" }}
+                  >
+                    {t(f.displayName, lang)}
+                  </div>
+                  <div className="text-xs text-muted-foreground mt-1 font-medium uppercase tracking-wider">
+                    {t(f.era, lang)}
+                  </div>
+
+                  {fm?.cinematicLine ? (
+                    <p
+                      className="mt-3 text-sm italic text-foreground/80 line-clamp-2 leading-relaxed"
+                      style={{ fontFamily: "Georgia, 'Times New Roman', serif" }}
                     >
+                      “{t(fm.cinematicLine, lang)}”
+                    </p>
+                  ) : (
+                    <p className="mt-3 text-sm text-muted-foreground line-clamp-3 leading-relaxed">
+                      {t(f.fact, lang)}
+                    </p>
+                  )}
+
+                  {fm?.themes && fm.themes.length > 0 && (
+                    <div className="mt-3 flex flex-wrap gap-1">
+                      {fm.themes.slice(0, 3).map((th) => {
+                        const def = FIGURE_THEMES[th];
+                        return (
+                          <span
+                            key={th}
+                            className="px-1.5 py-0.5 rounded-full text-[10px] font-semibold border border-border/60 bg-muted/40 text-muted-foreground"
+                          >
+                            <span className="mr-0.5">{def.emoji}</span>
+                            {t(def.label, lang)}
+                          </span>
+                        );
+                      })}
+                    </div>
+                  )}
+                </div>
+
+                <div className="mt-4 pt-3 border-t border-border/60 flex flex-wrap gap-1.5 text-[11px] font-semibold">
+                  {region ? (
+                    <span className="px-2 py-0.5 rounded-full bg-muted text-muted-foreground">
                       📍 {t(region.name, lang)}
-                    </Link>
+                    </span>
                   ) : (
                     <span className="px-2 py-0.5 rounded-full bg-muted text-muted-foreground">
                       {t(f.regionLabel, lang)}
                     </span>
                   )}
                   {era && (
-                    <Link
-                      to="/era/$eraId"
-                      params={{ eraId: era.id }}
-                      className="px-2 py-0.5 rounded-full bg-accent/15 text-accent-foreground hover:bg-accent/30 transition"
-                    >
+                    <span className="px-2 py-0.5 rounded-full bg-accent/15 text-accent-foreground">
                       {era.emoji} {t(era.title, lang)}
-                    </Link>
+                    </span>
                   )}
                 </div>
-
-                {related.length > 0 && (
-                  <div className="mt-3 pt-3 border-t border-border/60">
-                    <div className="text-[10px] uppercase tracking-wider font-bold text-muted-foreground mb-1.5">
-                      {lang === "fr" ? "Figures liées" : lang === "ar" ? "شخصيات مرتبطة" : "Related figures"}
-                    </div>
-                    <div className="flex flex-wrap gap-1.5">
-                      {related.map((r) => (
-                        <Link
-                          key={r.id}
-                          to="/figures/$figureId"
-                          params={{ figureId: r.id }}
-                          className="text-[11px] px-2 py-0.5 rounded-full border border-border hover:border-primary/50 hover:text-primary transition"
-                        >
-                          <span className="mr-0.5">{r.emoji}</span>
-                          {t(r.displayName, lang)}
-                        </Link>
-                      ))}
-                    </div>
-                  </div>
-                )}
-              </div>
+              </Link>
             );
           })}
         </div>
 
         {list.length === 0 && (
-          <div className="mt-8 text-center text-muted-foreground">{tu("noFigureMatch", lang)}</div>
+          <div className="mt-12 text-center">
+            <div className="text-4xl mb-3">🕯️</div>
+            <div className="text-muted-foreground">{tu("noFigureMatch", lang)}</div>
+            <button
+              onClick={resetFilters}
+              className="mt-4 text-sm font-semibold text-primary hover:underline"
+            >
+              {resetLabel}
+            </button>
+          </div>
         )}
-
       </main>
     </div>
   );
@@ -248,25 +436,29 @@ function FilterRow({
   const items = [{ id: "all", label: allLabel }, ...options];
   return (
     <div className="flex items-center gap-2 flex-wrap">
-      <span className="text-xs uppercase tracking-wider text-muted-foreground font-semibold">{label}:</span>
-      {items.map((o) => {
-        const active = value === o.id;
-        return (
-          <button
-            key={o.id}
-            onClick={() => onChange(o.id)}
-            className={
-              "px-3 py-1 rounded-full text-xs font-semibold border transition " +
-              (active
-                ? "bg-primary text-primary-foreground border-primary"
-                : "bg-card text-muted-foreground border-border hover:text-foreground")
-            }
-          >
-            {o.emoji ? `${o.emoji} ` : ""}
-            {o.label}
-          </button>
-        );
-      })}
+      <span className="text-[10px] uppercase tracking-[0.18em] text-muted-foreground font-bold min-w-[58px]">
+        {label}
+      </span>
+      <div className="flex gap-1.5 flex-wrap">
+        {items.map((o) => {
+          const active = value === o.id;
+          return (
+            <button
+              key={o.id}
+              onClick={() => onChange(o.id)}
+              className={
+                "px-3 py-1 rounded-full text-xs font-semibold border transition " +
+                (active
+                  ? "bg-primary text-primary-foreground border-primary shadow-sm"
+                  : "bg-card text-muted-foreground border-border hover:text-foreground hover:border-primary/40")
+              }
+            >
+              {o.emoji ? `${o.emoji} ` : ""}
+              {o.label}
+            </button>
+          );
+        })}
+      </div>
     </div>
   );
 }
