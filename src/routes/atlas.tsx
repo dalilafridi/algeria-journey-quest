@@ -15,44 +15,40 @@ import { saveJourneyPlace } from "@/lib/continuity";
  *  wall-map feeling (soft coast, wide Sahara, narrow north).
  * ---------------------------------------------------------------- */
 const ALGERIA_PATH = [
-  "M 11 22",
-  // Mediterranean coast — gentle curves W → E
-  "Q 14 17 22 18",
-  "Q 34 14 46 16",
-  "Q 58 14 68 18",
-  "Q 74 19 78 20",
-  // Tunisia notch (small inward dip then jut east)
-  "Q 80 22 79 25",
-  "L 82 28",
-  // East border (Libya) — slightly bowed
-  "Q 85 36 84 46",
-  "Q 86 54 85 60",
-  // SE corner angling toward Niger
-  "Q 83 70 76 78",
-  "Q 70 85 62 88",
-  // South border (Niger / Mali) — gently jagged via soft curves
-  "Q 50 93 38 91",
-  "Q 28 90 22 84",
-  // SW (Mauritania / W. Sahara) curving up
-  "Q 14 76 13 66",
-  "Q 11 56 12 48",
-  // West border (Morocco) — wavy
-  "Q 9 40 11 32",
-  "Q 9 26 11 22",
+  // NW corner, just inland from the Moroccan border
+  "M 14 22",
+  // Mediterranean coastline — long, almost horizontal with quiet swells
+  "C 22 19, 34 18, 44 18",
+  "S 62 19, 72 21",
+  // Small Tunisia inset, then a short jut east
+  "Q 76 22 76 25",
+  "L 80 27",
+  // East border (Libya) — single calm line, very slight bow
+  "C 83 38, 83 50, 81 60",
+  // SE shoulder turning toward the Sahel
+  "C 78 70, 72 76, 66 80",
+  // Southern tip tapering toward Mali (asymmetric, slightly west of center)
+  "C 56 88, 46 90, 38 86",
+  // SW edge climbing back up through the Sahara
+  "C 28 80, 22 72, 18 62",
+  // West border (Morocco) — gentle inward sway
+  "C 14 52, 11 42, 12 32",
+  "C 12 27, 13 24, 14 22",
   "Z",
 ].join(" ");
 
-/** Coastline-only path (top edge) used as a glowing accent + label arc. */
-const ALGERIA_COAST = "M 11 22 Q 14 17 22 18 Q 34 14 46 16 Q 58 14 68 18 Q 74 19 78 20";
+/** Coastline-only path (top edge) — for label arc + soft glow accent. */
+const ALGERIA_COAST =
+  "M 14 22 C 22 19, 34 18, 44 18 S 62 19, 72 21 Q 76 22 76 25";
 
-/** Region map pins in the 100x100 viewBox — aligned to the new silhouette. */
+/** Region map pins — smaller, integrated into the terrain. */
 const REGION_POINTS: Record<string, { x: number; y: number; size: number }> = {
-  "oran-west":   { x: 20, y: 24, size: 5.2 },
-  algiers:       { x: 44, y: 21, size: 4.8 },
-  kabylie:       { x: 55, y: 22, size: 4.6 },
-  constantine:   { x: 66, y: 23, size: 4.8 },
-  aures:         { x: 63, y: 33, size: 5.0 },
-  sahara:        { x: 48, y: 62, size: 8.0 },
+  "oran-west":   { x: 22, y: 26, size: 3.4 },
+  algiers:       { x: 43, y: 22, size: 3.2 },
+  kabylie:       { x: 54, y: 23, size: 3.1 },
+  constantine:   { x: 65, y: 24, size: 3.2 },
+  aures:         { x: 62, y: 33, size: 3.3 },
+  sahara:        { x: 48, y: 58, size: 5.0 },
 };
 
 /** Which regions glow most strongly per era. */
