@@ -133,7 +133,7 @@ function Home() {
   const factText = t(todayFact, "en").toLowerCase();
   const matchedEra =
     eras.find((e) => e.facts?.some((f) => f === todayFact)) ??
-    eras.find((e) => factText.includes(e.title.en.toLowerCase().split(" ")[0]));
+    eras.find((e) => factText.includes(t(e.title, "en").toLowerCase().split(" ")[0]));
 
   return (
     <div className="min-h-screen">
