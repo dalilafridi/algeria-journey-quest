@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ContinueJourneyCard } from "@/components/ContinueJourneyCard";
+
 import { DidYouKnowCard } from "@/components/DidYouKnowCard";
 import { Header } from "@/components/Header";
 import { dailyFacts, eras } from "@/data/eras";
@@ -211,7 +211,7 @@ function Home() {
           </div>
         </section>
 
-        <ContinueJourneyCard />
+
 
         {/* ========= TODAY IN ALGERIAN MEMORY ========= */}
         <section className="mx-auto max-w-5xl px-4 pt-10 sm:pt-12">
