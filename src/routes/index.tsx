@@ -139,59 +139,70 @@ function Home() {
     <div className="min-h-screen">
       <Header />
       <main>
-        {/* ========= HERO — Cinematic entrance ========= */}
-        <section className="cinematic-stage relative overflow-hidden">
-          <div className="ambient-grain" aria-hidden />
-          <div className="cinematic-horizon" aria-hidden />
+        {/* ========= HERO — Cinematic environmental entrance ========= */}
+        <section className="hero-environment" aria-label={copy.title[lang]}>
+          <div className="hero-env-atlas" aria-hidden />
+          <div className="hero-env-glow" aria-hidden />
+          <div className="hero-env-casbah" aria-hidden />
+          <div className="hero-env-seal" aria-hidden>ⵣ</div>
+          <div className="hero-env-layer hero-env-mountains" aria-hidden />
+          <div className="hero-env-path" aria-hidden />
+          <div className="hero-env-layer hero-env-dunes" aria-hidden />
+          <div className="hero-env-layer hero-env-ruins" aria-hidden />
+          <div className="hero-env-grain" aria-hidden />
+          <div className="hero-env-vignette" aria-hidden />
 
-          <div className="mx-auto max-w-5xl px-4 pt-16 pb-20 sm:pt-24 sm:pb-28 text-center animate-cinematic-in">
-            <div className="cinematic-chip">
-              <span className="seal" aria-hidden>ⵣ</span>
-              {copy.eyebrow[lang]}
+          <div className="hero-env-frame animate-cinematic-in">
+            <div>
+              <div className="hero-env-eyebrow">
+                <span className="seal" aria-hidden>ⵣ</span>
+                {copy.eyebrow[lang]}
+              </div>
+
+              <h1 className="hero-env-title">
+                {lang === "en" && <>Algeria,<br /><em>through time</em></>}
+                {lang === "fr" && <>L’Algérie,<br /><em>à travers le temps</em></>}
+                {lang === "ar" && <>الجزائر،<br /><em>عبر الزمن</em></>}
+              </h1>
+
+              <div className="hero-env-rule" aria-hidden />
+
+              <p className="hero-env-lede">{copy.subtitle[lang]}</p>
+
+              <div className="hero-env-actions">
+                <Link to="/timeline" className="cta-exhibition">
+                  <span>{tu("startJourney", lang)}</span>
+                  <span className="arrow" aria-hidden>→</span>
+                </Link>
+                <Link
+                  to="/era/$eraId"
+                  params={{ eraId: "earlynorthafrica" }}
+                  className="cta-exhibition-quiet"
+                >
+                  {copy.startWith[lang]}
+                </Link>
+              </div>
             </div>
 
-            <div className="mt-8 flex justify-center">
-              <img
-                src={brandCover}
-                alt="Algeria Through Time"
-                className="w-40 sm:w-52 h-auto rounded-3xl"
-                width={400}
-                height={400}
-                fetchPriority="high"
-                decoding="async"
-                data-hero-image
-                style={{
-                  boxShadow:
-                    "0 0 0 1px oklch(0.82 0.14 78 / 0.35), 0 0 60px -10px oklch(0.85 0.16 80 / 0.45), 0 30px 80px -30px oklch(0.06 0.01 40 / 0.7)",
-                }}
-              />
-            </div>
-
-            <h1
-              className="mx-auto mt-8 max-w-3xl text-4xl sm:text-6xl font-extrabold tracking-tight"
-              style={{ letterSpacing: "-0.025em", lineHeight: 1.08 }}
-            >
-              {copy.title[lang]}
-            </h1>
-
-            <div className="gold-rule mt-6" aria-hidden />
-
-            <p className="mx-auto mt-6 max-w-2xl text-base sm:text-lg leading-relaxed">
-              {copy.subtitle[lang]}
-            </p>
-
-            <div className="mx-auto mt-10 flex max-w-xl flex-col gap-3 sm:flex-row sm:justify-center">
-              <Link to="/timeline" className="cta-museum">
-                {tu("startJourney", lang)}
-              </Link>
-              <Link
-                to="/era/$eraId"
-                params={{ eraId: "earlynorthafrica" }}
-                className="cta-museum-ghost"
-              >
-                {copy.startWith[lang]} →
-              </Link>
-            </div>
+            <aside className="hero-env-placard" aria-hidden>
+              <div className="placard-label">
+                {lang === "fr" ? "Salle d’entrée" : lang === "ar" ? "قاعة المدخل" : "Entrance Hall"}
+              </div>
+              <p className="placard-quote">
+                {lang === "fr"
+                  ? "« Deux mille ans de mémoire — terres, langues, et celles et ceux qui les ont portées. »"
+                  : lang === "ar"
+                  ? "«ألفا عام من الذاكرة — أرضٌ ولغاتٌ، ومن حملوها.»"
+                  : "“Two thousand years of memory — lands, languages, and the people who carried them.”"}
+              </p>
+              <div className="placard-attr">
+                {lang === "fr"
+                  ? "Exposition permanente · Numidie → Indépendance"
+                  : lang === "ar"
+                  ? "معرض دائم · من نوميديا إلى الاستقلال"
+                  : "Permanent Exhibition · Numidia → Independence"}
+              </div>
+            </aside>
           </div>
         </section>
 
