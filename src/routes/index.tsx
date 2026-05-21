@@ -2,23 +2,23 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ContinueJourneyCard } from "@/components/ContinueJourneyCard";
 import { DidYouKnowCard } from "@/components/DidYouKnowCard";
 import { Header } from "@/components/Header";
-import { dailyFacts } from "@/data/eras";
+import { dailyFacts, eras } from "@/data/eras";
 import { t, tu, useLang } from "@/lib/i18n";
 import brandCover from "@/assets/brand-cover.png";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Algeria Through Time — A Fun History Journey" },
+      { title: "Algeria Through Time — A Cinematic Journey Through Algerian History" },
       {
         name: "description",
         content:
-          "Explore the rich history of Algeria from Numidia to independence. Learn through stories, quizzes, and badges.",
+          "A calm, museum-style passage through Algeria — its eras, regions, figures and culture, from Numidia to independence.",
       },
       { property: "og:title", content: "Algeria Through Time" },
       {
         property: "og:description",
-        content: "A playful journey through 2,000+ years of Algerian history.",
+        content: "A cinematic journey through 2,000+ years of Algerian memory.",
       },
     ],
   }),
@@ -27,35 +27,61 @@ export const Route = createFileRoute("/")({
 
 function Home() {
   const lang = useLang();
-  const fact = dailyFacts[new Date().getDate() % dailyFacts.length];
+  // Deterministic daily pick — same all day, rotates next day.
+  const todayKey = new Date().toISOString().slice(0, 10);
+  const seed = Number(todayKey.replace(/-/g, "")) || Date.now();
+  const todayFact = dailyFacts[seed % dailyFacts.length];
+  const homepageFact = dailyFacts[(seed + 7) % dailyFacts.length];
 
   const copy = {
+    eyebrow: {
+      en: "A digital museum of Algerian memory",
+      fr: "Un musée numérique de la mémoire algérienne",
+      ar: "متحف رقمي للذاكرة الجزائرية",
+    },
     title: {
-      en: "Explore Algeria Through Time",
-      fr: "Explorez l’Algérie à travers le temps",
-      ar: "اكتشف الجزائر عبر الزمن",
+      en: "Algeria, through time",
+      fr: "L’Algérie, à travers le temps",
+      ar: "الجزائر، عبر الزمن",
     },
     subtitle: {
       en: "A calm passage through memory, land, language and the people who carried them forward.",
       fr: "Un passage calme à travers la mémoire, les terres, la langue et celles et ceux qui les ont portées.",
       ar: "عبور هادئ عبر الذاكرة والأرض واللغة ومن حملوها إلى الأمام.",
     },
-    regions: { en: "Discover the Regions", fr: "Découvrir les régions", ar: "اكتشف المناطق" },
-    culture: { en: "Explore Culture", fr: "Explorer la culture", ar: "استكشف الثقافة" },
+    startWith: {
+      en: "Start with Early North Africa",
+      fr: "Commencer par l’Afrique du Nord ancienne",
+      ar: "ابدأ بشمال إفريقيا القديم",
+    },
     explore: { en: "Explore Freely", fr: "Explorer librement", ar: "استكشف بحرية" },
-    featuredStory: { en: "Featured Story", fr: "Récit à découvrir", ar: "قصة مختارة" },
-    featuredTitle: {
-      en: "Education & Identity — how a nation learned to name itself",
-      fr: "Éducation & identité — comment une nation a appris à se nommer",
-      ar: "التعليم والهوية — كيف تعلّمت أمّة أن تسمّي نفسها",
+    todayLabel: {
+      en: "Today in Algerian memory",
+      fr: "Aujourd’hui dans la mémoire algérienne",
+      ar: "اليوم في الذاكرة الجزائرية",
     },
-    featuredDesc: {
-      en: "From colonial schoolrooms to the War of Independence, follow the slow, stubborn shaping of an Algerian self — in language, memory and freedom.",
-      fr: "Des salles de classe coloniales à la Guerre d'indépendance, suivez la lente et tenace formation d'un soi algérien — dans la langue, la mémoire et la liberté.",
-      ar: "من فصول المدرسة الاستعمارية إلى حرب الاستقلال، تابع التشكّل البطيء والعنيد للذات الجزائرية — في اللغة والذاكرة والحرية.",
+    todayHint: {
+      en: "A new moment surfaces each day.",
+      fr: "Un nouveau moment remonte chaque jour.",
+      ar: "تطفو لحظة جديدة كلّ يوم.",
     },
-    regionsPreview: { en: "Regions Preview", fr: "Aperçu des régions", ar: "لمحة عن المناطق" },
-    culturePreview: { en: "Culture Preview", fr: "Aperçu culturel", ar: "لمحة ثقافية" },
+    exploreJourney: {
+      en: "Explore the journey",
+      fr: "Explorer le parcours",
+      ar: "استكشف الرحلة",
+    },
+    regions: { en: "Discover the regions", fr: "Découvrir les régions", ar: "اكتشف المناطق" },
+    regionsTitle: { en: "Six regions, one country", fr: "Six régions, un pays", ar: "ستّ مناطق، بلد واحد" },
+    beginTitle: {
+      en: "Begin the journey",
+      fr: "Commencer le voyage",
+      ar: "ابدأ الرحلة",
+    },
+    beginDesc: {
+      en: "Two thousand years of Algerian memory, told slowly and carefully — chapter by chapter.",
+      fr: "Deux mille ans de mémoire algérienne, racontés lentement et avec soin — chapitre après chapitre.",
+      ar: "ألفا عام من الذاكرة الجزائرية، تُروى بهدوء وعناية — فصلًا تلو الآخر.",
+    },
     footer: {
       en: "Algeria Through Time — a calm cultural journey through land, memory and language.",
       fr: "Algeria Through Time — un voyage culturel paisible entre terres, mémoire et langue.",
@@ -64,11 +90,11 @@ function Home() {
     entries: [
       {
         icon: "📜",
-        title: { en: "History", fr: "Histoire", ar: "التاريخ" },
+        title: { en: "Journey", fr: "Parcours", ar: "الرحلة" },
         desc: {
-          en: "Follow Algeria’s story from ancient kingdoms to independence.",
-          fr: "Suivez l’histoire de l’Algérie, des royaumes antiques à l’indépendance.",
-          ar: "اتبع حكاية الجزائر من الممالك القديمة إلى الاستقلال.",
+          en: "Follow Algeria’s chapters, from ancient kingdoms to independence.",
+          fr: "Suivez les chapitres de l’Algérie, des royaumes antiques à l’indépendance.",
+          ar: "اتبع فصول الجزائر من الممالك القديمة إلى الاستقلال.",
         },
         to: "/timeline" as const,
       },
@@ -76,7 +102,7 @@ function Home() {
         icon: "🏔️",
         title: { en: "Regions", fr: "Régions", ar: "المناطق" },
         desc: {
-          en: "Discover landscapes, cities, and the memories they carry.",
+          en: "Discover the landscapes, cities and memories they carry.",
           fr: "Découvrez les paysages, les villes et les mémoires qu’ils portent.",
           ar: "اكتشف المناظر والمدن والذكريات التي تحملها.",
         },
@@ -86,7 +112,7 @@ function Home() {
         icon: "🎬",
         title: { en: "Culture", fr: "Culture", ar: "الثقافة" },
         desc: {
-          en: "Enter through words, cinema, cuisine, ideas, and identity.",
+          en: "Enter through words, cinema, cuisine, ideas and identity.",
           fr: "Entrez par les mots, le cinéma, la cuisine, les idées et l’identité.",
           ar: "ادخل عبر الكلمات والسينما والمطبخ والأفكار والهوية.",
         },
@@ -94,54 +120,97 @@ function Home() {
       },
     ],
     regionLinks: [
-      { icon: "🌿", title: { en: "Kabylie", fr: "Kabylie", ar: "القبائل" }, to: "/map" as const },
-      { icon: "⛰️", title: { en: "Aurès", fr: "Aurès", ar: "الأوراس" }, to: "/map" as const },
-      { icon: "🏛️", title: { en: "Algiers", fr: "Alger", ar: "الجزائر العاصمة" }, to: "/map" as const },
-      { icon: "🌉", title: { en: "Constantine", fr: "Constantine", ar: "قسنطينة" }, to: "/map" as const },
-      { icon: "🏜️", title: { en: "Sahara", fr: "Sahara", ar: "الصحراء" }, to: "/map" as const },
-      { icon: "🌊", title: { en: "Western Algeria", fr: "Algérie de l’Ouest", ar: "الغرب الجزائري" }, to: "/map" as const },
-    ],
-    cultureLinks: [
-      { icon: "💬", title: { en: "Words & Ideas", fr: "Mots & idées", ar: "كلمات وأفكار" }, to: "/words" as const },
-      { icon: "🍲", title: { en: "Cuisine of Algeria", fr: "Cuisine d’Algérie", ar: "المطبخ الجزائري" }, to: "/cuisine" as const },
-      { icon: "🎬", title: { en: "Cinema & Film", fr: "Cinéma & film", ar: "السينما والفيلم" }, to: "/cinema" as const },
+      { icon: "🌿", title: { en: "Kabylie", fr: "Kabylie", ar: "القبائل" } },
+      { icon: "⛰️", title: { en: "Aurès", fr: "Aurès", ar: "الأوراس" } },
+      { icon: "🏛️", title: { en: "Algiers", fr: "Alger", ar: "الجزائر العاصمة" } },
+      { icon: "🌉", title: { en: "Constantine", fr: "Constantine", ar: "قسنطينة" } },
+      { icon: "🏜️", title: { en: "Sahara", fr: "Sahara", ar: "الصحراء" } },
+      { icon: "🌊", title: { en: "Western Algeria", fr: "Algérie de l’Ouest", ar: "الغرب الجزائري" } },
     ],
   };
+
+  // Pair "today's moment" with its likely era for context
+  const factText = (() => {
+    if (typeof todayFact === "string") return todayFact;
+    return `${todayFact.en} ${todayFact.fr}`.toLowerCase();
+  })();
+  const matchedEra =
+    eras.find((e) =>
+      e.facts?.some((f) => f === todayFact || (typeof f === "object" && (f as { en: string }).en === (todayFact as { en: string }).en)),
+    ) ??
+    eras.find((e) => factText.includes(e.title.en.toLowerCase().split(" ")[0]));
 
   return (
     <div className="min-h-screen">
       <Header />
-      <main style={{ background: "var(--gradient-hero)" }}>
-        <section className="px-4 pt-10 pb-8 sm:pt-16 sm:pb-10">
-          <div className="mx-auto max-w-5xl text-center animate-float-up">
-            <div className="flex justify-center mb-6">
+      <main>
+        {/* ========= HERO ========= */}
+        <section className="relative overflow-hidden">
+          {/* Layered cinematic background */}
+          <div
+            className="absolute inset-0 -z-10"
+            style={{ background: "var(--gradient-hero)" }}
+            aria-hidden
+          />
+          <div className="absolute inset-0 -z-10 bg-parchment opacity-90" aria-hidden />
+          <div
+            className="absolute inset-x-0 top-0 h-[480px] -z-10 opacity-40"
+            style={{
+              background:
+                "radial-gradient(ellipse at 50% 0%, color-mix(in oklab, var(--accent) 35%, transparent), transparent 60%)",
+            }}
+            aria-hidden
+          />
+          {/* Subtle ⵣ watermark */}
+          <div
+            className="absolute right-[-3rem] bottom-[-4rem] -z-10 text-[18rem] sm:text-[24rem] font-serif select-none pointer-events-none leading-none"
+            style={{ color: "color-mix(in oklab, var(--accent) 28%, transparent)" }}
+            aria-hidden
+          >
+            ⵣ
+          </div>
+
+          <div className="mx-auto max-w-5xl px-4 pt-12 pb-12 sm:pt-20 sm:pb-16 text-center animate-cinematic-in">
+            <div className="inline-flex items-center gap-2 rounded-full border border-border bg-card/70 backdrop-blur px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-muted-foreground">
+              <span aria-hidden className="text-accent-foreground">ⵣ</span>
+              {copy.eyebrow[lang]}
+            </div>
+
+            <div className="mt-6 flex justify-center">
               <img
                 src={brandCover}
                 alt="Algeria Through Time"
-                className="w-44 sm:w-60 h-auto rounded-3xl"
+                className="w-40 sm:w-52 h-auto rounded-3xl"
                 style={{ boxShadow: "var(--shadow-gold-glow)" }}
               />
             </div>
-            <h1 className="mx-auto max-w-3xl text-3xl sm:text-5xl font-extrabold tracking-tight text-foreground">
+
+            <h1
+              className="mx-auto mt-7 max-w-3xl text-4xl sm:text-6xl font-extrabold tracking-tight text-foreground"
+              style={{ letterSpacing: "-0.025em", lineHeight: 1.08 }}
+            >
               {copy.title[lang]}
             </h1>
-            <p className="mx-auto mt-4 max-w-2xl text-base sm:text-lg text-foreground/80 leading-relaxed">
+
+            <p className="mx-auto mt-5 max-w-2xl text-base sm:text-lg text-foreground/75 leading-relaxed">
               {copy.subtitle[lang]}
             </p>
-            <div className="mx-auto mt-8 flex max-w-md flex-col gap-3 sm:flex-row sm:justify-center">
+
+            <div className="mx-auto mt-9 flex max-w-xl flex-col gap-3 sm:flex-row sm:justify-center">
               <Link
                 to="/timeline"
-                className="rounded-2xl px-6 py-4 text-base font-bold text-primary-foreground transition-transform hover:scale-[1.02] active:scale-95"
+                className="rounded-2xl px-7 py-4 text-base font-bold text-primary-foreground transition-transform hover:scale-[1.02] active:scale-95"
                 style={{ background: "var(--gradient-warm)", boxShadow: "var(--shadow-glow)" }}
               >
                 {tu("startJourney", lang)}
               </Link>
               <Link
-                to="/map"
-                className="rounded-2xl border border-border bg-card/85 px-6 py-4 text-base font-bold text-foreground transition-colors hover:border-primary/40"
+                to="/era/$eraId"
+                params={{ eraId: "earlynorthafrica" }}
+                className="rounded-2xl border border-border bg-card/85 px-6 py-4 text-base font-semibold text-foreground transition-colors hover:border-primary/40"
                 style={{ boxShadow: "var(--shadow-soft)" }}
               >
-                {copy.explore[lang]}
+                {copy.startWith[lang]} →
               </Link>
             </div>
           </div>
@@ -149,94 +218,131 @@ function Home() {
 
         <ContinueJourneyCard />
 
-        <section className="mx-auto max-w-5xl px-4 py-8 sm:py-10">
+        {/* ========= TODAY IN ALGERIAN MEMORY ========= */}
+        <section className="mx-auto max-w-5xl px-4 pt-10 sm:pt-12">
+          <div
+            className="relative overflow-hidden rounded-3xl border border-accent/30 p-6 sm:p-8 bg-parchment-card animate-fade-in"
+            style={{ boxShadow: "var(--shadow-soft)" }}
+          >
+            <div className="absolute inset-y-0 start-0 w-1.5 bg-gradient-to-b from-accent via-primary/70 to-accent/40" aria-hidden />
+            <div className="flex items-start gap-4">
+              <div className="hidden sm:flex items-center justify-center shrink-0 w-12 h-12 rounded-full bg-accent/20 text-2xl" aria-hidden>
+                🕯️
+              </div>
+              <div className="min-w-0">
+                <div className="text-[11px] font-bold uppercase tracking-[0.18em] text-accent-foreground/80">
+                  {copy.todayLabel[lang]}
+                </div>
+                <p
+                  className="mt-2 text-lg sm:text-xl leading-relaxed text-foreground/90"
+                  style={{ fontFamily: "Georgia, 'Times New Roman', serif" }}
+                >
+                  “{t(todayFact, lang)}”
+                </p>
+                {matchedEra && (
+                  <div className="mt-3 text-xs text-muted-foreground">
+                    — {t(matchedEra.title, lang)} · {matchedEra.dateRange}
+                  </div>
+                )}
+                <div className="mt-1 text-[11px] italic text-muted-foreground/80">
+                  {copy.todayHint[lang]}
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ========= EXPLORE — three pillars ========= */}
+        <section className="mx-auto max-w-5xl px-4 py-10 sm:py-14">
+          <div className="text-center mb-6 sm:mb-8">
+            <h2 className="text-2xl sm:text-3xl font-extrabold">{copy.exploreJourney[lang]}</h2>
+          </div>
           <div className="grid gap-4 sm:grid-cols-3">
             {copy.entries.map((entry) => (
               <Link
                 key={entry.to}
                 to={entry.to}
-                className="card-hover rounded-2xl border border-border bg-card/90 p-5 text-center transition-colors hover:border-primary/40"
+                className="card-hover group relative overflow-hidden rounded-2xl border border-border bg-card/90 p-6 text-center transition-colors hover:border-primary/40"
                 style={{ boxShadow: "var(--shadow-soft)" }}
               >
-                <div className="text-3xl" aria-hidden>{entry.icon}</div>
-                <h2 className="mt-3 text-lg font-bold">{t(entry.title, lang)}</h2>
+                <div
+                  className="absolute inset-x-0 top-0 h-1 opacity-70"
+                  style={{ background: "var(--gradient-warm)" }}
+                  aria-hidden
+                />
+                <div className="text-4xl mt-2 transition-transform group-hover:scale-105" aria-hidden>
+                  {entry.icon}
+                </div>
+                <h3 className="mt-4 text-lg font-bold tracking-tight">{t(entry.title, lang)}</h3>
                 <p className="mx-auto mt-2 text-sm leading-relaxed text-muted-foreground">{t(entry.desc, lang)}</p>
+                <div className="mt-4 text-xs font-semibold text-primary opacity-70 group-hover:opacity-100 transition-opacity">
+                  →
+                </div>
               </Link>
             ))}
           </div>
         </section>
 
-        <section className="mx-auto max-w-5xl px-4 pb-8 sm:pb-10">
-          <Link
-            to="/timeline"
-            className="group block overflow-hidden rounded-3xl border border-secondary/40 bg-card/90 p-6 transition-colors hover:border-secondary sm:p-8"
-            style={{ boxShadow: "var(--shadow-soft)" }}
-          >
-            <div className="grid gap-5 sm:grid-cols-[1fr_auto] sm:items-center">
-              <div>
-                <div className="text-xs font-bold uppercase tracking-wider text-secondary">
-                  {copy.featuredStory[lang]}
-                </div>
-                <h2 className="mt-2 max-w-2xl text-2xl font-extrabold sm:text-3xl">
-                  {copy.featuredTitle[lang]}
-                </h2>
-                <p className="mt-3 text-sm leading-relaxed text-muted-foreground sm:text-base">
-                  {copy.featuredDesc[lang]}
-                </p>
-              </div>
-              <div className="flex h-20 w-20 items-center justify-center rounded-3xl bg-muted text-4xl transition-transform group-hover:scale-105" aria-hidden>
-                🕊️
-              </div>
-            </div>
-          </Link>
-        </section>
-
-        <section className="mx-auto grid max-w-5xl gap-4 px-4 pb-8 sm:grid-cols-2 sm:pb-10">
-          <div className="rounded-3xl border border-border bg-card/85 p-5 sm:p-6" style={{ boxShadow: "var(--shadow-soft)" }}>
-            <div className="mb-4 flex items-center justify-between gap-3">
-              <h2 className="text-xl font-extrabold">{copy.regionsPreview[lang]}</h2>
-              <Link to="/map" className="text-sm font-bold text-primary hover:underline">
-                {copy.regions[lang]} →
-              </Link>
-            </div>
-            <div className="grid gap-3">
+        {/* ========= REGION PREVIEW STRIP ========= */}
+        <section className="mx-auto max-w-5xl px-4 pb-10 sm:pb-14">
+          <div className="flex items-end justify-between mb-4">
+            <h2 className="text-xl sm:text-2xl font-extrabold">{copy.regionsTitle[lang]}</h2>
+            <Link to="/map" className="text-sm font-semibold text-primary hover:underline">
+              {copy.regions[lang]} →
+            </Link>
+          </div>
+          <div className="-mx-4 px-4 overflow-x-auto no-scrollbar">
+            <div className="flex gap-3 w-max sm:grid sm:grid-cols-3 lg:grid-cols-6 sm:w-auto sm:gap-3">
               {copy.regionLinks.map((item) => (
                 <Link
-                  key={item.to}
-                  to={item.to}
-                  className="flex items-center gap-3 rounded-2xl border border-border bg-background/45 p-3 transition-colors hover:border-primary/40"
+                  key={item.title.en}
+                  to="/map"
+                  className="card-hover shrink-0 w-32 sm:w-auto rounded-2xl border border-border bg-card/85 p-4 text-center transition-colors hover:border-accent/60"
+                  style={{ boxShadow: "var(--shadow-soft)" }}
                 >
-                  <span className="text-2xl" aria-hidden>{item.icon}</span>
-                  <span className="font-semibold">{t(item.title, lang)}</span>
-                </Link>
-              ))}
-            </div>
-          </div>
-
-          <div className="rounded-3xl border border-border bg-card/85 p-5 sm:p-6" style={{ boxShadow: "var(--shadow-soft)" }}>
-            <div className="mb-4 flex items-center justify-between gap-3">
-              <h2 className="text-xl font-extrabold">{copy.culturePreview[lang]}</h2>
-              <Link to="/words" className="text-sm font-bold text-primary hover:underline">
-                {copy.culture[lang]} →
-              </Link>
-            </div>
-            <div className="grid gap-3">
-              {copy.cultureLinks.map((item) => (
-                <Link
-                  key={`${item.to}-${t(item.title, lang)}`}
-                  to={item.to}
-                  className="flex items-center gap-3 rounded-2xl border border-border bg-background/45 p-3 transition-colors hover:border-primary/40"
-                >
-                  <span className="text-2xl" aria-hidden>{item.icon}</span>
-                  <span className="font-semibold">{t(item.title, lang)}</span>
+                  <div className="text-3xl" aria-hidden>{item.icon}</div>
+                  <div className="mt-2 text-sm font-semibold leading-tight">{t(item.title, lang)}</div>
                 </Link>
               ))}
             </div>
           </div>
         </section>
 
-        <section className="mx-auto max-w-5xl px-4 pb-12 sm:pb-16">
-          <DidYouKnowCard fact={fact} />
+        {/* ========= DID YOU KNOW ========= */}
+        <section className="mx-auto max-w-5xl px-4 pb-10 sm:pb-14">
+          <DidYouKnowCard fact={homepageFact} />
+        </section>
+
+        {/* ========= FINAL CTA ========= */}
+        <section className="relative overflow-hidden">
+          <div
+            className="absolute inset-0 -z-10"
+            style={{
+              background:
+                "linear-gradient(180deg, var(--background), color-mix(in oklab, var(--accent) 14%, var(--background)))",
+            }}
+            aria-hidden
+          />
+          <div className="absolute inset-0 -z-10 bg-mosaic-soft opacity-60" aria-hidden />
+          <div className="mx-auto max-w-3xl px-4 py-14 sm:py-20 text-center animate-fade-in">
+            <div className="text-3xl mb-4" aria-hidden>ⵣ</div>
+            <h2
+              className="text-3xl sm:text-4xl font-extrabold tracking-tight"
+              style={{ letterSpacing: "-0.02em" }}
+            >
+              {copy.beginTitle[lang]}
+            </h2>
+            <p className="mx-auto mt-4 max-w-xl text-base text-muted-foreground leading-relaxed">
+              {copy.beginDesc[lang]}
+            </p>
+            <Link
+              to="/timeline"
+              className="inline-block mt-8 rounded-2xl px-8 py-4 text-base font-bold text-primary-foreground transition-transform hover:scale-[1.02] active:scale-95"
+              style={{ background: "var(--gradient-warm)", boxShadow: "var(--shadow-glow)" }}
+            >
+              {tu("startJourney", lang)}
+            </Link>
+          </div>
         </section>
       </main>
 
