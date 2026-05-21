@@ -17,6 +17,7 @@ import { Route as MomentsRouteImport } from './routes/moments'
 import { Route as MapRouteImport } from './routes/map'
 import { Route as LessonsRouteImport } from './routes/lessons'
 import { Route as IdeasRouteImport } from './routes/ideas'
+import { Route as CultureRouteImport } from './routes/culture'
 import { Route as CuisineRouteImport } from './routes/cuisine'
 import { Route as CinemaRouteImport } from './routes/cinema'
 import { Route as AtlasRouteImport } from './routes/atlas'
@@ -65,6 +66,11 @@ const LessonsRoute = LessonsRouteImport.update({
 const IdeasRoute = IdeasRouteImport.update({
   id: '/ideas',
   path: '/ideas',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CultureRoute = CultureRouteImport.update({
+  id: '/culture',
+  path: '/culture',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CuisineRoute = CuisineRouteImport.update({
@@ -118,6 +124,7 @@ export interface FileRoutesByFullPath {
   '/atlas': typeof AtlasRoute
   '/cinema': typeof CinemaRoute
   '/cuisine': typeof CuisineRoute
+  '/culture': typeof CultureRoute
   '/ideas': typeof IdeasRoute
   '/lessons': typeof LessonsRoute
   '/map': typeof MapRoute
@@ -137,6 +144,7 @@ export interface FileRoutesByTo {
   '/atlas': typeof AtlasRoute
   '/cinema': typeof CinemaRoute
   '/cuisine': typeof CuisineRoute
+  '/culture': typeof CultureRoute
   '/ideas': typeof IdeasRoute
   '/lessons': typeof LessonsRoute
   '/map': typeof MapRoute
@@ -157,6 +165,7 @@ export interface FileRoutesById {
   '/atlas': typeof AtlasRoute
   '/cinema': typeof CinemaRoute
   '/cuisine': typeof CuisineRoute
+  '/culture': typeof CultureRoute
   '/ideas': typeof IdeasRoute
   '/lessons': typeof LessonsRoute
   '/map': typeof MapRoute
@@ -178,6 +187,7 @@ export interface FileRouteTypes {
     | '/atlas'
     | '/cinema'
     | '/cuisine'
+    | '/culture'
     | '/ideas'
     | '/lessons'
     | '/map'
@@ -197,6 +207,7 @@ export interface FileRouteTypes {
     | '/atlas'
     | '/cinema'
     | '/cuisine'
+    | '/culture'
     | '/ideas'
     | '/lessons'
     | '/map'
@@ -216,6 +227,7 @@ export interface FileRouteTypes {
     | '/atlas'
     | '/cinema'
     | '/cuisine'
+    | '/culture'
     | '/ideas'
     | '/lessons'
     | '/map'
@@ -236,6 +248,7 @@ export interface RootRouteChildren {
   AtlasRoute: typeof AtlasRoute
   CinemaRoute: typeof CinemaRoute
   CuisineRoute: typeof CuisineRoute
+  CultureRoute: typeof CultureRoute
   IdeasRoute: typeof IdeasRoute
   LessonsRoute: typeof LessonsRoute
   MapRoute: typeof MapRoute
@@ -309,6 +322,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IdeasRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/culture': {
+      id: '/culture'
+      path: '/culture'
+      fullPath: '/culture'
+      preLoaderRoute: typeof CultureRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/cuisine': {
       id: '/cuisine'
       path: '/cuisine'
@@ -380,6 +400,7 @@ const rootRouteChildren: RootRouteChildren = {
   AtlasRoute: AtlasRoute,
   CinemaRoute: CinemaRoute,
   CuisineRoute: CuisineRoute,
+  CultureRoute: CultureRoute,
   IdeasRoute: IdeasRoute,
   LessonsRoute: LessonsRoute,
   MapRoute: MapRoute,
