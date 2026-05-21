@@ -1063,3 +1063,46 @@ html[lang="ar"] .museum-quote {
   font-family: "Amiri", "Noto Naskh Arabic", serif;
   line-height: 1.95;
 }
+
+/* ============================================================
+   Phase 11 — Showcase / Exhibition Mode
+   Calms global chrome when html.showcase-on is active so the
+   curated journey route owns the stage.
+   ============================================================ */
+
+html.showcase-on body {
+  background: var(--background);
+}
+html.showcase-on body::before {
+  opacity: 0;
+}
+
+/* Hide ambient floating chrome while in showcase */
+html.showcase-on header.sticky,
+html.showcase-on .fixed[aria-label="Back to top"],
+html.showcase-on [data-museum-dock],
+html.showcase-on [data-journey-hud],
+html.showcase-on [data-continue-card] {
+  display: none !important;
+}
+
+/* Pad-bottom safety: showcase owns the viewport */
+html.showcase-on body {
+  padding-bottom: 0;
+}
+
+/* Slightly more cinematic typographic rhythm inside the showcase stage */
+.showcase-stage .museum-section-title {
+  letter-spacing: -0.02em;
+}
+.showcase-stage .prose-reading {
+  text-wrap: pretty;
+}
+
+/* Reduce motion respect — fade in only, no translate */
+@media (prefers-reduced-motion: reduce) {
+  .showcase-card.animate-cinematic-in {
+    animation: none !important;
+    opacity: 1;
+  }
+}

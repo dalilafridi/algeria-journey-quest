@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as WordsRouteImport } from './routes/words'
 import { Route as TimelineRouteImport } from './routes/timeline'
 import { Route as StargazingRouteImport } from './routes/stargazing'
+import { Route as ShowcaseRouteImport } from './routes/showcase'
 import { Route as ProfileRouteImport } from './routes/profile'
 import { Route as MomentsRouteImport } from './routes/moments'
 import { Route as MapRouteImport } from './routes/map'
@@ -41,6 +42,11 @@ const TimelineRoute = TimelineRouteImport.update({
 const StargazingRoute = StargazingRouteImport.update({
   id: '/stargazing',
   path: '/stargazing',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ShowcaseRoute = ShowcaseRouteImport.update({
+  id: '/showcase',
+  path: '/showcase',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ProfileRoute = ProfileRouteImport.update({
@@ -130,6 +136,7 @@ export interface FileRoutesByFullPath {
   '/map': typeof MapRoute
   '/moments': typeof MomentsRoute
   '/profile': typeof ProfileRoute
+  '/showcase': typeof ShowcaseRoute
   '/stargazing': typeof StargazingRoute
   '/timeline': typeof TimelineRoute
   '/words': typeof WordsRoute
@@ -150,6 +157,7 @@ export interface FileRoutesByTo {
   '/map': typeof MapRoute
   '/moments': typeof MomentsRoute
   '/profile': typeof ProfileRoute
+  '/showcase': typeof ShowcaseRoute
   '/stargazing': typeof StargazingRoute
   '/timeline': typeof TimelineRoute
   '/words': typeof WordsRoute
@@ -171,6 +179,7 @@ export interface FileRoutesById {
   '/map': typeof MapRoute
   '/moments': typeof MomentsRoute
   '/profile': typeof ProfileRoute
+  '/showcase': typeof ShowcaseRoute
   '/stargazing': typeof StargazingRoute
   '/timeline': typeof TimelineRoute
   '/words': typeof WordsRoute
@@ -193,6 +202,7 @@ export interface FileRouteTypes {
     | '/map'
     | '/moments'
     | '/profile'
+    | '/showcase'
     | '/stargazing'
     | '/timeline'
     | '/words'
@@ -213,6 +223,7 @@ export interface FileRouteTypes {
     | '/map'
     | '/moments'
     | '/profile'
+    | '/showcase'
     | '/stargazing'
     | '/timeline'
     | '/words'
@@ -233,6 +244,7 @@ export interface FileRouteTypes {
     | '/map'
     | '/moments'
     | '/profile'
+    | '/showcase'
     | '/stargazing'
     | '/timeline'
     | '/words'
@@ -254,6 +266,7 @@ export interface RootRouteChildren {
   MapRoute: typeof MapRoute
   MomentsRoute: typeof MomentsRoute
   ProfileRoute: typeof ProfileRoute
+  ShowcaseRoute: typeof ShowcaseRoute
   StargazingRoute: typeof StargazingRoute
   TimelineRoute: typeof TimelineRoute
   WordsRoute: typeof WordsRoute
@@ -285,6 +298,13 @@ declare module '@tanstack/react-router' {
       path: '/stargazing'
       fullPath: '/stargazing'
       preLoaderRoute: typeof StargazingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/showcase': {
+      id: '/showcase'
+      path: '/showcase'
+      fullPath: '/showcase'
+      preLoaderRoute: typeof ShowcaseRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/profile': {
@@ -406,6 +426,7 @@ const rootRouteChildren: RootRouteChildren = {
   MapRoute: MapRoute,
   MomentsRoute: MomentsRoute,
   ProfileRoute: ProfileRoute,
+  ShowcaseRoute: ShowcaseRoute,
   StargazingRoute: StargazingRoute,
   TimelineRoute: TimelineRoute,
   WordsRoute: WordsRoute,
