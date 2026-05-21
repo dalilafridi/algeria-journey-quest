@@ -139,39 +139,18 @@ function Home() {
     <div className="min-h-screen">
       <Header />
       <main>
-        {/* ========= HERO ========= */}
-        <section className="relative overflow-hidden">
-          {/* Layered cinematic background */}
-          <div
-            className="absolute inset-0 -z-10"
-            style={{ background: "var(--gradient-hero)" }}
-            aria-hidden
-          />
-          <div className="absolute inset-0 -z-10 bg-parchment opacity-90" aria-hidden />
-          <div
-            className="absolute inset-x-0 top-0 h-[480px] -z-10 opacity-40"
-            style={{
-              background:
-                "radial-gradient(ellipse at 50% 0%, color-mix(in oklab, var(--accent) 35%, transparent), transparent 60%)",
-            }}
-            aria-hidden
-          />
-          {/* Subtle ⵣ watermark */}
-          <div
-            className="absolute right-[-3rem] bottom-[-4rem] -z-10 text-[18rem] sm:text-[24rem] font-serif select-none pointer-events-none leading-none"
-            style={{ color: "color-mix(in oklab, var(--accent) 28%, transparent)" }}
-            aria-hidden
-          >
-            ⵣ
-          </div>
+        {/* ========= HERO — Cinematic entrance ========= */}
+        <section className="cinematic-stage relative overflow-hidden">
+          <div className="ambient-grain" aria-hidden />
+          <div className="cinematic-horizon" aria-hidden />
 
-          <div className="mx-auto max-w-5xl px-4 pt-12 pb-12 sm:pt-20 sm:pb-16 text-center animate-cinematic-in">
-            <div className="inline-flex items-center gap-2 rounded-full border border-border bg-card/70 backdrop-blur px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-muted-foreground">
-              <span aria-hidden className="text-accent-foreground">ⵣ</span>
+          <div className="mx-auto max-w-5xl px-4 pt-16 pb-20 sm:pt-24 sm:pb-28 text-center animate-cinematic-in">
+            <div className="cinematic-chip">
+              <span className="seal" aria-hidden>ⵣ</span>
               {copy.eyebrow[lang]}
             </div>
 
-            <div className="mt-6 flex justify-center">
+            <div className="mt-8 flex justify-center">
               <img
                 src={brandCover}
                 alt="Algeria Through Time"
@@ -181,34 +160,34 @@ function Home() {
                 fetchPriority="high"
                 decoding="async"
                 data-hero-image
-                style={{ boxShadow: "var(--shadow-gold-glow)" }}
+                style={{
+                  boxShadow:
+                    "0 0 0 1px oklch(0.82 0.14 78 / 0.35), 0 0 60px -10px oklch(0.85 0.16 80 / 0.45), 0 30px 80px -30px oklch(0.06 0.01 40 / 0.7)",
+                }}
               />
             </div>
 
             <h1
-              className="mx-auto mt-7 max-w-3xl text-4xl sm:text-6xl font-extrabold tracking-tight text-foreground"
+              className="mx-auto mt-8 max-w-3xl text-4xl sm:text-6xl font-extrabold tracking-tight"
               style={{ letterSpacing: "-0.025em", lineHeight: 1.08 }}
             >
               {copy.title[lang]}
             </h1>
 
-            <p className="mx-auto mt-5 max-w-2xl text-base sm:text-lg text-foreground/75 leading-relaxed">
+            <div className="gold-rule mt-6" aria-hidden />
+
+            <p className="mx-auto mt-6 max-w-2xl text-base sm:text-lg leading-relaxed">
               {copy.subtitle[lang]}
             </p>
 
-            <div className="mx-auto mt-9 flex max-w-xl flex-col gap-3 sm:flex-row sm:justify-center">
-              <Link
-                to="/timeline"
-                className="rounded-2xl px-7 py-4 text-base font-bold text-primary-foreground transition-transform hover:scale-[1.02] active:scale-95"
-                style={{ background: "var(--gradient-warm)", boxShadow: "var(--shadow-glow)" }}
-              >
+            <div className="mx-auto mt-10 flex max-w-xl flex-col gap-3 sm:flex-row sm:justify-center">
+              <Link to="/timeline" className="cta-museum">
                 {tu("startJourney", lang)}
               </Link>
               <Link
                 to="/era/$eraId"
                 params={{ eraId: "earlynorthafrica" }}
-                className="rounded-2xl border border-border bg-card/85 px-6 py-4 text-base font-semibold text-foreground transition-colors hover:border-primary/40"
-                style={{ boxShadow: "var(--shadow-soft)" }}
+                className="cta-museum-ghost"
               >
                 {copy.startWith[lang]} →
               </Link>
