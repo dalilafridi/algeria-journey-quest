@@ -1539,10 +1539,10 @@ html.showcase-on body { padding-bottom: 0; }
 }
 @media (min-width: 900px) {
   .hero-env-frame {
-    grid-template-columns: minmax(0, 0.5fr) minmax(0, 0.5fr);
-    gap: clamp(2rem, 6vw, 5rem);
+    grid-template-columns: minmax(0, 0.62fr);
   }
 }
+
 
 .hero-env-eyebrow {
   display: inline-flex;
