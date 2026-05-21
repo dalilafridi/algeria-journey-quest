@@ -88,6 +88,9 @@ function CuisinePage() {
             src={cuisineHero}
             alt=""
             className="absolute inset-0 w-full h-[115%] object-cover will-change-transform"
+            fetchPriority="high"
+            decoding="async"
+            data-hero-image
             style={{
               transform: `translate3d(0, ${Math.min(scrollY * 0.25, 140)}px, 0) scale(1.05)`,
               filter: "brightness(0.88) contrast(0.98)",

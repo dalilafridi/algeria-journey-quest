@@ -1106,3 +1106,95 @@ html.showcase-on body {
     opacity: 1;
   }
 }
+
+/* ============================================================
+   Phase 12 — Production perf polish
+   Cheap rendering wins: content-visibility on long sections,
+   GPU-friendly hover dim, calmer reveal will-change, mobile
+   blur reduction. Nothing visual changes; everything renders
+   less.
+   ============================================================ */
+
+/* Skip painting/layout for off-screen sections in long pages.
+   Reserved height avoids CLS while scrolling fast. */
+@supports (content-visibility: auto) {
+  main > section,
+  main > article {
+    content-visibility: auto;
+    contain-intrinsic-size: 1px 800px;
+  }
+  /* Heroes and the showcase stage must paint immediately. */
+  main > section.museum-hero,
+  .showcase-stage,
+  .showcase-stage > * {
+    content-visibility: visible;
+    contain-intrinsic-size: auto;
+  }
+}
+
+/* Hover-dim in Museum Mode was applied to EVERY card on every paint.
+   Restrict to coarse hover-capable devices and use opacity (composited)
+   instead of `filter` (rasterized). */
+@media (hover: hover) and (pointer: fine) {
+  html.immersion-on main [class*="bg-card"]:not(:hover):not(:focus-within) {
+    filter: none;
+    opacity: 0.96;
+    transition: opacity 500ms var(--ease-soft);
+  }
+}
+@media (hover: none), (pointer: coarse) {
+  html.immersion-on main [class*="bg-card"]:not(:hover):not(:focus-within) {
+    filter: none !important;
+    opacity: 1 !important;
+  }
+}
+
+/* Reveal items only need will-change while animating. CSS hint to keep
+   layers lean — JS in MotionReveal clears the inline style after end. */
+[data-reveal]:not([data-revealed="true"]) {
+  will-change: opacity, transform;
+}
+[data-reveal][data-revealed="true"] {
+  will-change: auto;
+}
+
+/* Soften expensive backdrop-blur on small/touch devices where it costs
+   the most and helps the least visually. */
+@media (max-width: 640px) {
+  .backdrop-blur-md,
+  .backdrop-blur-lg {
+    backdrop-filter: blur(6px) saturate(1.02);
+    -webkit-backdrop-filter: blur(6px) saturate(1.02);
+  }
+}
+
+/* Drop the global a/button/role=button transition list on touch — replace
+   with a single cheap color transition. */
+@media (hover: none) {
+  a, button, [role="button"] {
+    transition: color 0.2s ease, background-color 0.2s ease;
+  }
+}
+
+/* Long image-rendering hint for parallax + cover heros */
+.img-zoom > img,
+.img-zoom > picture > img,
+[data-hero-image] {
+  image-rendering: auto;
+  transform: translateZ(0);
+}
+
+/* Avoid the body::before vignette repainting during scroll */
+body::before {
+  transform: translateZ(0);
+  contain: layout paint;
+}
+
+/* When Showcase Mode is active, suspend the global vignette and section
+   reveals everywhere else to keep the stage GPU-clean. */
+html.showcase-on [data-reveal] {
+  transition: none !important;
+  opacity: 1 !important;
+  transform: none !important;
+  will-change: auto !important;
+}

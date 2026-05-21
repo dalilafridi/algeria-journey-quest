@@ -71,12 +71,10 @@ export const Route = createRootRoute({
         rel: "stylesheet",
         href: appCss,
       },
+      // Preconnect for the optional Arabic webfonts (only loaded by LangSync
+      // when the user picks Arabic — keeps non-AR users from paying for it).
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
-      {
-        rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Noto+Naskh+Arabic:wght@400;500;700&display=swap",
-      },
     ],
   }),
   shellComponent: RootShell,

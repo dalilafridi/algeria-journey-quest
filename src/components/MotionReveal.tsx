@@ -1,16 +1,14 @@
 import { useEffect } from "react";
 
 /**
- * MotionReveal — Phase 9
+ * MotionReveal — Phase 9 (+ Phase 12 perf)
  *
- * Mounts a single, app-wide IntersectionObserver that toggles a
- * `data-revealed` attribute on any element marked with `[data-reveal]`.
- * Pairs with the CSS in styles.css (Phase 9 block) to produce a calm,
- * cinematic fade/slide-in as content scrolls into view.
+ * One IntersectionObserver toggles `data-revealed="true"` on `[data-reveal]`
+ * elements. After the transition finishes we clear inline `will-change` to
+ * release the GPU layer. New routes are picked up via a throttled
+ * MutationObserver so we don't re-scan on every minor DOM change.
  *
- * Cheap: one observer, observes lazily via MutationObserver so new
- * routes are picked up without re-mounting. Fully respects
- * prefers-reduced-motion (CSS short-circuits the animation).
+ * Honours prefers-reduced-motion (CSS short-circuits the animation).
  */
 export function MotionReveal() {
   useEffect(() => {
@@ -20,6 +18,14 @@ export function MotionReveal() {
     const reduced =
       window.matchMedia &&
       window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    const onTransitionEnd = (e: TransitionEvent) => {
+      const target = e.target as HTMLElement | null;
+      if (!target) return;
+      if (target.getAttribute("data-revealed") === "true") {
+        target.style.willChange = "";
+      }
+    };
 
     const observer = new IntersectionObserver(
       (entries) => {
@@ -43,17 +49,27 @@ export function MotionReveal() {
           n.setAttribute("data-revealed", "true");
           return;
         }
-        // Stagger siblings slightly for cinematic rhythm.
         if (!n.style.getPropertyValue("--reveal-delay")) {
           n.style.setProperty("--reveal-delay", `${Math.min(i * 40, 320)}ms`);
         }
+        n.addEventListener("transitionend", onTransitionEnd, { once: true });
         observer.observe(n);
       });
     };
 
     scan();
 
-    const mo = new MutationObserver(() => scan());
+    // Throttled MutationObserver — coalesce bursts of DOM changes into one scan.
+    let scheduled = false;
+    const schedule = () => {
+      if (scheduled) return;
+      scheduled = true;
+      requestAnimationFrame(() => {
+        scheduled = false;
+        scan();
+      });
+    };
+    const mo = new MutationObserver(schedule);
     mo.observe(document.body, { childList: true, subtree: true });
 
     return () => {
