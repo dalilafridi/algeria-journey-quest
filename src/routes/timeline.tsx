@@ -99,15 +99,40 @@ function Timeline() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [progress.xp]);
 
+  const progressPct = eras.length > 0 ? (completedEras / eras.length) * 100 : 0;
+
   return (
     <div className="min-h-screen">
       <Header />
       <main className="max-w-3xl mx-auto px-4 py-8 sm:py-10">
         {/* Top section */}
-        <div className="text-center mb-6 animate-float-up">
-          <h1 className="text-3xl sm:text-4xl font-extrabold">{tu("journeyTitle", lang)}</h1>
-          <p className="mt-2 text-muted-foreground">{tu("journeySubtitle", lang)}</p>
-          <div className="mt-4 inline-flex flex-wrap items-center justify-center gap-2 rounded-full border border-border bg-card/70 px-3 py-2 text-xs font-semibold text-muted-foreground">
+        <div className="text-center mb-6 animate-cinematic-in">
+          <div className="inline-flex items-center gap-2 rounded-full border border-border bg-card/70 backdrop-blur px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-muted-foreground">
+            <span aria-hidden className="text-accent-foreground">ⵣ</span>
+            {lang === "fr" ? "Le parcours" : lang === "ar" ? "المسار" : "The journey"}
+          </div>
+          <h1 className="mt-4 text-3xl sm:text-4xl font-extrabold tracking-tight" style={{ letterSpacing: "-0.02em" }}>
+            {tu("journeyTitle", lang)}
+          </h1>
+          <p className="mt-2 text-muted-foreground max-w-xl mx-auto">{tu("journeySubtitle", lang)}</p>
+
+          {/* Progress ribbon */}
+          <div className="mt-6 mx-auto max-w-md">
+            <div className="flex items-center justify-between text-[11px] font-semibold uppercase tracking-wider text-muted-foreground mb-1.5">
+              <span>{tu("yourProgress", lang)}</span>
+              <span className="text-foreground">
+                {completedEras}/{eras.length}
+              </span>
+            </div>
+            <div className="h-2 rounded-full bg-muted overflow-hidden">
+              <div
+                className="h-full rounded-full transition-all duration-700"
+                style={{ width: `${progressPct}%`, background: "var(--gradient-warm)" }}
+              />
+            </div>
+          </div>
+
+          <div className="mt-5 inline-flex flex-wrap items-center justify-center gap-2 rounded-full border border-border bg-card/70 px-3 py-2 text-xs font-semibold text-muted-foreground">
             <Link to="/moments" hash="education-title" className="hover:text-primary transition">
               {lang === "fr" ? "Éducation & Identité" : lang === "ar" ? "التعليم والهوية" : "Education & Identity"}
             </Link>
