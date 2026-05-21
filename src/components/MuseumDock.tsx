@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "@tanstack/react-router";
 import { useImmersion } from "@/lib/immersion";
 import { useAmbience, bindAmbienceVisibility } from "@/lib/ambience";
 import { useLang } from "@/lib/i18n";
@@ -49,6 +50,14 @@ export function MuseumDock() {
       lang === "fr" ? "Atmosphère" : lang === "ar" ? "الأجواء" : "Atmosphere",
     on: lang === "fr" ? "Activé" : lang === "ar" ? "مفعّل" : "On",
     off: lang === "fr" ? "Désactivé" : lang === "ar" ? "متوقف" : "Off",
+    showcase:
+      lang === "fr" ? "Visite guidée" : lang === "ar" ? "جولة مُرشَدة" : "Guided journey",
+    showcaseHint:
+      lang === "fr"
+        ? "Une promenade cinématique à travers l'Algérie"
+        : lang === "ar"
+          ? "نزهة سينمائية عبر الجزائر"
+          : "A cinematic walk through Algeria",
   };
 
   return (
