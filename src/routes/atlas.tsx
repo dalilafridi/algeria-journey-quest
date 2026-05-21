@@ -9,21 +9,50 @@ import { t, useLang, type LocalizedString } from "@/lib/i18n";
 import { saveJourneyPlace } from "@/lib/continuity";
 
 /** ----------------------------------------------------------------
- *  Stylized parchment polygon of Algeria. Coordinates in a 100x100
- *  viewBox — intentionally simplified, not GIS-accurate, to feel
- *  like a hand-drawn museum wall map.
+ *  Hand-illustrated Algeria silhouette in a 100x100 viewBox.
+ *  Not GIS-accurate — drawn with organic Bezier curves so the country
+ *  reads as instantly recognizable while keeping a parchment / museum
+ *  wall-map feeling (soft coast, wide Sahara, narrow north).
  * ---------------------------------------------------------------- */
-const ALGERIA_PATH =
-  "M 16 12 L 36 9 L 56 10 L 78 13 L 84 22 L 88 34 L 84 48 L 78 64 L 70 80 L 56 92 L 42 88 L 28 76 L 18 60 L 10 42 L 11 26 Z";
+const ALGERIA_PATH = [
+  "M 11 22",
+  // Mediterranean coast — gentle curves W → E
+  "Q 14 17 22 18",
+  "Q 34 14 46 16",
+  "Q 58 14 68 18",
+  "Q 74 19 78 20",
+  // Tunisia notch (small inward dip then jut east)
+  "Q 80 22 79 25",
+  "L 82 28",
+  // East border (Libya) — slightly bowed
+  "Q 85 36 84 46",
+  "Q 86 54 85 60",
+  // SE corner angling toward Niger
+  "Q 83 70 76 78",
+  "Q 70 85 62 88",
+  // South border (Niger / Mali) — gently jagged via soft curves
+  "Q 50 93 38 91",
+  "Q 28 90 22 84",
+  // SW (Mauritania / W. Sahara) curving up
+  "Q 14 76 13 66",
+  "Q 11 56 12 48",
+  // West border (Morocco) — wavy
+  "Q 9 40 11 32",
+  "Q 9 26 11 22",
+  "Z",
+].join(" ");
 
-/** Region map pins in the 100x100 viewBox. Stylized, not geographic. */
+/** Coastline-only path (top edge) used as a glowing accent + label arc. */
+const ALGERIA_COAST = "M 11 22 Q 14 17 22 18 Q 34 14 46 16 Q 58 14 68 18 Q 74 19 78 20";
+
+/** Region map pins in the 100x100 viewBox — aligned to the new silhouette. */
 const REGION_POINTS: Record<string, { x: number; y: number; size: number }> = {
-  "oran-west":   { x: 24, y: 22, size: 5.6 },
-  algiers:       { x: 48, y: 16, size: 5.2 },
-  kabylie:       { x: 58, y: 19, size: 5.0 },
-  constantine:   { x: 70, y: 19, size: 5.0 },
-  aures:         { x: 68, y: 30, size: 5.2 },
-  sahara:        { x: 50, y: 62, size: 8.2 },
+  "oran-west":   { x: 20, y: 24, size: 5.2 },
+  algiers:       { x: 44, y: 21, size: 4.8 },
+  kabylie:       { x: 55, y: 22, size: 4.6 },
+  constantine:   { x: 66, y: 23, size: 4.8 },
+  aures:         { x: 63, y: 33, size: 5.0 },
+  sahara:        { x: 48, y: 62, size: 8.0 },
 };
 
 /** Which regions glow most strongly per era. */
