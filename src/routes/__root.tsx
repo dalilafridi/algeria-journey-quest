@@ -109,9 +109,9 @@ function RootComponent() {
       <SplashScreen />
       <SignatureIntro />
       <ContinueJourneyCard />
-      <main id="main" tabIndex={-1}>
+      <div id="main" tabIndex={-1}>
         <Outlet />
-      </main>
+      </div>
       <WelcomeJourney />
       <JourneyHud />
       <BackToTop />
