@@ -438,7 +438,7 @@ function RegionPanel({
   const culturalPillars: { emoji: string; label: LocalizedString }[] = [];
   if (extras?.culturePillars) {
     extras.culturePillars.slice(0, 4).forEach((p) =>
-      culturalPillars.push({ emoji: p.emoji, label: p.title })
+      culturalPillars.push({ emoji: p.emoji, label: p.label })
     );
   }
 
