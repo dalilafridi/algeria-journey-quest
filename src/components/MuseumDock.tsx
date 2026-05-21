@@ -53,6 +53,7 @@ export function MuseumDock() {
 
   return (
     <div
+      data-museum-dock
       className="fixed z-40 bottom-[calc(env(safe-area-inset-bottom)+1rem)] right-3 sm:right-5 print:hidden"
       aria-label={T.open}
     >
