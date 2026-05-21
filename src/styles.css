@@ -446,3 +446,18 @@ main > div > section {
   .img-zoom > img, .img-zoom > picture > img { transition: none; }
   .img-zoom:hover > img, .img-zoom:hover > picture > img { transform: none; }
 }
+
+/* Parchment texture overlay — apply to any container for museum feel. */
+.bg-parchment {
+  background-image: var(--texture-parchment);
+  background-color: var(--background);
+}
+.bg-parchment-card {
+  background-image: var(--texture-parchment);
+  background-color: var(--card);
+}
+/* Subtle mosaic accent — pair with a base color underneath. */
+.bg-mosaic-soft {
+  background-image: var(--texture-mosaic);
+  background-size: 64px 64px;
+}
