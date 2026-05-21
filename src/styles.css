@@ -1447,158 +1447,99 @@ html.showcase-on body { padding-bottom: 0; }
    No centered poster — environment carries the weight.
    ============================================================ */
 
+/* ============================================================
+   HERO — Photographic environmental entrance
+   Uses the uploaded golden-hour Algeria image as the centerpiece.
+   Overlays are deliberately minimal: vignette + parchment veil
+   + a soft left-side readability gradient.
+   ============================================================ */
 .hero-environment {
   position: relative;
   isolation: isolate;
   overflow: hidden;
-  min-height: clamp(560px, 86vh, 880px);
-  color: oklch(0.96 0.02 84);
-  background:
-    radial-gradient(ellipse 90% 60% at 70% 8%, oklch(0.55 0.14 60 / 0.55), transparent 60%),
-    radial-gradient(ellipse 70% 50% at 20% 30%, oklch(0.35 0.10 45 / 0.45), transparent 65%),
-    radial-gradient(ellipse 120% 80% at 50% 110%, oklch(0.08 0.02 40 / 0.95), transparent 70%),
-    linear-gradient(180deg,
-      oklch(0.18 0.04 55) 0%,
-      oklch(0.14 0.035 50) 35%,
-      oklch(0.1 0.025 45) 70%,
-      oklch(0.07 0.02 42) 100%);
+  min-height: clamp(520px, 82vh, 860px);
+  color: oklch(0.97 0.02 84);
+  background-color: oklch(0.12 0.025 50);
 }
 
-/* Atmospheric glow — Mediterranean dawn breaking */
-.hero-env-glow {
+.hero-env-photo {
   position: absolute;
   inset: 0;
   z-index: 0;
-  pointer-events: none;
-  background:
-    radial-gradient(ellipse 50% 30% at 72% 18%, oklch(0.88 0.16 75 / 0.32), transparent 70%),
-    radial-gradient(ellipse 40% 25% at 75% 22%, oklch(0.95 0.14 85 / 0.18), transparent 80%);
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 35%;
+  /* gentle warm grade, no heavy processing */
+  filter: saturate(1.02) contrast(1.02);
 }
 
-/* Faint film grain veil */
-.hero-env-grain {
+/* Soft readability gradient — strongest on the left where the
+   typography sits, fading to fully transparent over the landscape. */
+.hero-env-readability {
   position: absolute;
   inset: 0;
   z-index: 1;
   pointer-events: none;
-  opacity: 0.35;
-  background-image:
-    repeating-linear-gradient(115deg, oklch(1 0 0 / 0.014) 0 2px, transparent 2px 6px),
-    radial-gradient(ellipse at 50% 50%, transparent 30%, oklch(0.05 0.01 40 / 0.55) 100%);
-  mix-blend-mode: overlay;
+  background:
+    linear-gradient(90deg,
+      oklch(0.12 0.03 45 / 0.72) 0%,
+      oklch(0.14 0.03 50 / 0.45) 28%,
+      oklch(0.18 0.03 55 / 0.18) 55%,
+      transparent 78%);
+}
+@media (max-width: 899px) {
+  .hero-env-readability {
+    background:
+      linear-gradient(180deg,
+        oklch(0.12 0.03 45 / 0.25) 0%,
+        oklch(0.12 0.03 45 / 0.55) 45%,
+        oklch(0.08 0.02 42 / 0.82) 100%);
+  }
 }
 
-/* Subtle parchment-map texture layer (atlas hint) */
-.hero-env-atlas {
+/* Subtle parchment veil for museum warmth */
+.hero-env-parchment {
   position: absolute;
   inset: 0;
-  z-index: 0;
-  pointer-events: none;
-  opacity: 0.08;
-  background-image:
-    repeating-linear-gradient(0deg, oklch(0.85 0.12 75) 0 1px, transparent 1px 80px),
-    repeating-linear-gradient(90deg, oklch(0.85 0.12 75) 0 1px, transparent 1px 80px);
-  mask-image: radial-gradient(ellipse 60% 60% at 30% 50%, black, transparent 80%);
-}
-
-/* Large faint ⵣ — embedded background geometry, not a watermark */
-.hero-env-seal {
-  position: absolute;
-  left: -4%;
-  bottom: -6%;
-  z-index: 0;
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: clamp(20rem, 38vw, 38rem);
-  line-height: 0.9;
-  font-weight: 400;
-  color: oklch(0.82 0.14 78 / 0.045);
-  text-shadow: 0 0 80px oklch(0.85 0.16 80 / 0.1);
-  pointer-events: none;
-  user-select: none;
-  letter-spacing: -0.05em;
-}
-
-/* Layered environmental silhouettes — back, mid, front */
-.hero-env-layer {
-  position: absolute;
-  left: 0;
-  right: 0;
-  pointer-events: none;
-  background-repeat: no-repeat;
-  background-position: bottom center;
-  background-size: 100% auto;
-}
-.hero-env-mountains {
-  bottom: 0;
-  height: 55%;
-  z-index: 0;
-  opacity: 0.55;
-  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1600 500' preserveAspectRatio='none'><path fill='%231a1208' d='M0,500 L0,320 L120,260 L240,310 L360,210 L500,290 L640,180 L780,250 L920,160 L1060,240 L1200,200 L1340,280 L1480,220 L1600,300 L1600,500 Z'/></svg>");
-}
-.hero-env-dunes {
-  bottom: 0;
-  height: 40%;
-  z-index: 1;
-  opacity: 0.7;
-  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1600 400' preserveAspectRatio='none'><path fill='%2310090400' fill-opacity='0.85' d='M0,400 L0,260 Q200,180 400,240 T800,220 T1200,250 T1600,200 L1600,400 Z'/></svg>");
-}
-.hero-env-ruins {
-  bottom: 0;
-  height: 28%;
   z-index: 2;
-  opacity: 0.85;
-  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1600 220' preserveAspectRatio='none'><g fill='%23000' fill-opacity='0.78'><path d='M0,220 L0,160 L80,160 L80,90 L92,90 L92,160 L130,160 L130,110 L142,110 L142,160 L180,160 L180,80 L210,80 L210,160 L260,160 L260,140 L290,140 L290,160 L340,160 L340,100 L355,100 L355,160 L420,160 L420,130 L440,130 L440,160 L520,160 L520,110 L540,110 L540,160 L600,160 L600,170 L1600,170 L1600,220 Z'/><rect x='720' y='70' width='18' height='100'/><rect x='760' y='90' width='14' height='80'/><rect x='790' y='60' width='22' height='110'/><rect x='830' y='100' width='12' height='70'/><rect x='870' y='80' width='16' height='90'/><path d='M940,170 L940,100 L955,100 L955,120 L985,120 L985,100 L1000,100 L1000,170 Z'/><rect x='1040' y='90' width='14' height='80'/><rect x='1080' y='110' width='10' height='60'/><path d='M1140,170 L1140,80 L1160,80 L1160,170 Z M1180,170 L1180,95 L1196,95 L1196,170 Z'/><rect x='1240' y='100' width='14' height='70'/><rect x='1290' y='85' width='18' height='85'/><rect x='1340' y='110' width='10' height='60'/><rect x='1390' y='95' width='14' height='75'/><rect x='1450' y='105' width='12' height='65'/></g></svg>");
-}
-
-/* Casbah architecture cluster — top-right corner accent */
-.hero-env-casbah {
-  position: absolute;
-  top: 8%;
-  right: 0;
-  width: clamp(280px, 32vw, 520px);
-  height: clamp(220px, 28vw, 420px);
-  z-index: 0;
+  pointer-events: none;
   opacity: 0.18;
-  pointer-events: none;
-  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 320'><g fill='%23f0d78c' stroke='%23f0d78c' stroke-width='0.5'><rect x='40' y='180' width='60' height='130'/><rect x='100' y='150' width='50' height='160'/><rect x='150' y='170' width='70' height='140'/><rect x='220' y='130' width='55' height='180'/><rect x='275' y='160' width='65' height='150'/><rect x='340' y='190' width='40' height='120'/><rect x='80' y='120' width='35' height='40'/><rect x='180' y='100' width='30' height='40'/><rect x='240' y='90' width='25' height='40'/><circle cx='205' cy='90' r='10'/><rect x='200' y='75' width='10' height='20'/><rect x='55' y='200' width='8' height='12' fill='%23000'/><rect x='75' y='200' width='8' height='12' fill='%23000'/><rect x='115' y='170' width='8' height='12' fill='%23000'/><rect x='135' y='170' width='8' height='12' fill='%23000'/><rect x='165' y='190' width='8' height='12' fill='%23000'/><rect x='195' y='190' width='8' height='12' fill='%23000'/><rect x='235' y='150' width='8' height='12' fill='%23000'/><rect x='255' y='150' width='8' height='12' fill='%23000'/></g></svg>");
-  background-repeat: no-repeat;
-  background-position: bottom right;
-  background-size: contain;
-  mask-image: linear-gradient(225deg, black, transparent 85%);
+  mix-blend-mode: soft-light;
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 50%,
+      oklch(0.92 0.08 78 / 0.6), transparent 75%);
 }
 
-/* Ancient pathway — soft diagonal light beam */
-.hero-env-path {
+/* Vignette — only at the corners */
+.hero-env-vignette {
   position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: 60%;
-  z-index: 1;
+  inset: 0;
+  z-index: 3;
   pointer-events: none;
-  background: linear-gradient(190deg,
-    transparent 40%,
-    oklch(0.88 0.14 80 / 0.06) 60%,
-    oklch(0.88 0.14 80 / 0.1) 75%,
-    transparent 100%);
-  mix-blend-mode: screen;
+  background:
+    radial-gradient(ellipse 110% 90% at 50% 45%,
+      transparent 55%,
+      oklch(0.05 0.015 40 / 0.55) 100%);
 }
 
-/* Foreground content frame — asymmetric, editorial */
+/* Foreground content frame — editorial, left-weighted */
 .hero-env-frame {
   position: relative;
   z-index: 5;
-  max-width: 1400px;
+  max-width: 1320px;
   margin: 0 auto;
-  padding: clamp(4rem, 10vh, 8rem) clamp(1.5rem, 6vw, 6rem) clamp(8rem, 18vh, 14rem);
+  padding: clamp(3.5rem, 9vh, 7rem) clamp(1.5rem, 6vw, 5.5rem)
+           clamp(4rem, 10vh, 7rem);
   display: grid;
   grid-template-columns: minmax(0, 1fr);
-  gap: 2rem;
+  gap: 2.5rem;
+  min-height: inherit;
+  align-items: end;
 }
 @media (min-width: 900px) {
   .hero-env-frame {
-    grid-template-columns: minmax(0, 0.62fr) minmax(0, 0.38fr);
-    align-items: end;
+    grid-template-columns: minmax(0, 0.5fr) minmax(0, 0.5fr);
     gap: clamp(2rem, 6vw, 5rem);
   }
 }
@@ -1611,87 +1552,89 @@ html.showcase-on body { padding-bottom: 0; }
   font-weight: 600;
   letter-spacing: 0.32em;
   text-transform: uppercase;
-  color: oklch(0.88 0.1 82 / 0.85);
+  color: oklch(0.92 0.09 82 / 0.92);
 }
 .hero-env-eyebrow::before {
   content: "";
   display: inline-block;
   width: 38px;
   height: 1px;
-  background: linear-gradient(90deg, transparent, oklch(0.85 0.16 80 / 0.9));
+  background: linear-gradient(90deg, transparent, oklch(0.88 0.14 80 / 0.9));
 }
 .hero-env-eyebrow .seal {
-  color: oklch(0.92 0.16 85);
+  color: oklch(0.94 0.16 85);
   font-size: 14px;
-  filter: drop-shadow(0 0 8px oklch(0.9 0.16 85 / 0.6));
+  filter: drop-shadow(0 0 8px oklch(0.9 0.16 85 / 0.55));
 }
 
 .hero-env-title {
-  margin-top: 1.5rem;
+  margin-top: 1.25rem;
   font-family: Georgia, "Times New Roman", serif;
   font-weight: 400;
-  font-size: clamp(2.6rem, 1.6rem + 5.2vw, 6.2rem);
-  line-height: 0.98;
-  letter-spacing: -0.025em;
-  color: oklch(0.97 0.03 85);
-  text-shadow: 0 2px 40px oklch(0.05 0.01 40 / 0.7);
+  font-size: clamp(2.4rem, 1.5rem + 4.6vw, 5.6rem);
+  line-height: 1;
+  letter-spacing: -0.022em;
+  color: oklch(0.98 0.025 85);
+  text-shadow: 0 2px 30px oklch(0.05 0.01 40 / 0.7);
 }
 .hero-env-title em {
   font-style: italic;
-  color: oklch(0.92 0.13 82);
+  color: oklch(0.94 0.12 82);
   font-weight: 400;
 }
 
 .hero-env-rule {
-  margin-top: 1.75rem;
+  margin-top: 1.5rem;
   height: 1px;
-  width: 120px;
-  background: linear-gradient(90deg, oklch(0.85 0.16 80 / 0.9), transparent);
+  width: 110px;
+  background: linear-gradient(90deg, oklch(0.88 0.14 80 / 0.85), transparent);
 }
 
 .hero-env-lede {
-  margin-top: 1.5rem;
-  max-width: 36ch;
-  font-size: clamp(1rem, 0.95rem + 0.3vw, 1.18rem);
+  margin-top: 1.25rem;
+  max-width: 38ch;
+  font-size: clamp(1rem, 0.95rem + 0.25vw, 1.15rem);
   line-height: 1.65;
-  color: oklch(0.9 0.025 82 / 0.88);
+  color: oklch(0.94 0.025 82 / 0.92);
+  text-shadow: 0 1px 18px oklch(0.05 0.01 40 / 0.6);
 }
 
 .hero-env-actions {
-  margin-top: 2.25rem;
+  margin-top: 2rem;
   display: flex;
   flex-wrap: wrap;
   gap: 0.9rem 1.5rem;
   align-items: center;
 }
 
-/* Exhibition-style CTA — softer, integrated, no startup glow */
+/* Exhibition CTA — softer brass, subtle glow */
 .cta-exhibition {
   display: inline-flex;
   align-items: center;
   gap: 0.75rem;
-  padding: 0.95rem 1.6rem 0.95rem 1.75rem;
+  padding: 0.85rem 1.5rem 0.85rem 1.65rem;
   border-radius: 2px;
   font-family: Georgia, "Times New Roman", serif;
   font-size: 0.95rem;
   font-weight: 500;
   letter-spacing: 0.06em;
-  color: oklch(0.18 0.03 50);
-  background: linear-gradient(180deg, oklch(0.92 0.14 82), oklch(0.78 0.13 72));
-  border: 1px solid oklch(0.55 0.12 55 / 0.6);
+  color: oklch(0.2 0.03 50);
+  background: linear-gradient(180deg, oklch(0.9 0.12 82), oklch(0.76 0.12 70));
+  border: 1px solid oklch(0.55 0.1 55 / 0.55);
   box-shadow:
-    inset 0 1px 0 oklch(1 0 0 / 0.35),
-    0 1px 0 oklch(0.4 0.08 50 / 0.4),
-    0 12px 28px -16px oklch(0.05 0.01 40 / 0.7);
-  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.4s ease, background 0.4s ease;
+    inset 0 1px 0 oklch(1 0 0 / 0.32),
+    0 1px 0 oklch(0.4 0.06 50 / 0.4),
+    0 10px 24px -14px oklch(0.05 0.01 40 / 0.7);
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+              box-shadow 0.4s ease, background 0.4s ease;
 }
 .cta-exhibition:hover {
   transform: translateY(-1px);
-  background: linear-gradient(180deg, oklch(0.94 0.15 84), oklch(0.82 0.14 74));
+  background: linear-gradient(180deg, oklch(0.93 0.13 84), oklch(0.8 0.13 72));
   box-shadow:
-    inset 0 1px 0 oklch(1 0 0 / 0.45),
-    0 0 28px -8px oklch(0.88 0.16 82 / 0.5),
-    0 16px 34px -16px oklch(0.05 0.01 40 / 0.75);
+    inset 0 1px 0 oklch(1 0 0 / 0.4),
+    0 0 22px -6px oklch(0.88 0.16 82 / 0.45),
+    0 14px 30px -14px oklch(0.05 0.01 40 / 0.75);
 }
 .cta-exhibition .arrow { transition: transform 0.4s ease; }
 .cta-exhibition:hover .arrow { transform: translateX(4px); }
@@ -1705,25 +1648,29 @@ html.showcase-on body { padding-bottom: 0; }
   font-size: 0.95rem;
   font-style: italic;
   letter-spacing: 0.04em;
-  color: oklch(0.9 0.08 82 / 0.85);
-  border-bottom: 1px solid oklch(0.82 0.14 78 / 0.4);
+  color: oklch(0.93 0.07 82 / 0.9);
+  border-bottom: 1px solid oklch(0.82 0.14 78 / 0.45);
   transition: color 0.3s ease, border-color 0.3s ease;
 }
 .cta-exhibition-quiet:hover {
-  color: oklch(0.95 0.14 84);
-  border-color: oklch(0.85 0.16 80 / 0.85);
+  color: oklch(0.96 0.13 84);
+  border-color: oklch(0.88 0.16 80 / 0.9);
 }
 
-/* Side column — exhibition placard (asymmetric, integrated, not centered) */
+/* Side column — exhibition placard, integrated at bottom-right */
 .hero-env-placard {
   position: relative;
   align-self: end;
-  padding: 1.5rem 1.75rem;
-  border-left: 1px solid oklch(0.82 0.14 78 / 0.35);
-  color: oklch(0.9 0.04 82 / 0.85);
-  font-family: Georgia, "Times New Roman", serif;
-  max-width: 32ch;
   justify-self: end;
+  padding: 1.25rem 1.5rem;
+  border-left: 1px solid oklch(0.85 0.12 78 / 0.4);
+  background: linear-gradient(180deg,
+    oklch(0.1 0.02 45 / 0.32),
+    oklch(0.1 0.02 45 / 0.12));
+  backdrop-filter: blur(2px);
+  color: oklch(0.93 0.04 82 / 0.92);
+  font-family: Georgia, "Times New Roman", serif;
+  max-width: 30ch;
 }
 .hero-env-placard .placard-label {
   font-family: ui-sans-serif, system-ui, sans-serif;
@@ -1731,46 +1678,24 @@ html.showcase-on body { padding-bottom: 0; }
   font-weight: 700;
   letter-spacing: 0.3em;
   text-transform: uppercase;
-  color: oklch(0.85 0.12 80 / 0.85);
+  color: oklch(0.88 0.12 80 / 0.9);
 }
 .hero-env-placard .placard-quote {
-  margin-top: 0.75rem;
-  font-size: 1.05rem;
+  margin-top: 0.7rem;
+  font-size: 1rem;
   line-height: 1.55;
   font-style: italic;
-  color: oklch(0.94 0.04 84);
+  color: oklch(0.96 0.04 84);
 }
 .hero-env-placard .placard-attr {
-  margin-top: 0.85rem;
+  margin-top: 0.8rem;
   font-family: ui-sans-serif, system-ui, sans-serif;
-  font-size: 11px;
+  font-size: 10.5px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: oklch(0.82 0.05 80 / 0.7);
+  color: oklch(0.84 0.05 80 / 0.75);
+}
+@media (max-width: 899px) {
+  .hero-env-placard { display: none; }
 }
 
-/* Vignette mask to deepen edges */
-.hero-env-vignette {
-  position: absolute;
-  inset: 0;
-  z-index: 3;
-  pointer-events: none;
-  background:
-    radial-gradient(ellipse 100% 80% at 50% 40%, transparent 50%, oklch(0.04 0.01 40 / 0.7) 100%);
-}
-
-/* Slow drift on environment layers — barely perceptible */
-@keyframes hero-drift-slow {
-  0%, 100% { transform: translate3d(0, 0, 0); }
-  50%      { transform: translate3d(-8px, 0, 0); }
-}
-@keyframes hero-drift-slower {
-  0%, 100% { transform: translate3d(0, 0, 0); }
-  50%      { transform: translate3d(6px, -2px, 0); }
-}
-.hero-env-mountains { animation: hero-drift-slower 32s ease-in-out infinite; }
-.hero-env-dunes     { animation: hero-drift-slow 26s ease-in-out infinite; }
-@media (prefers-reduced-motion: reduce) {
-  .hero-env-mountains,
-  .hero-env-dunes { animation: none; }
-}
