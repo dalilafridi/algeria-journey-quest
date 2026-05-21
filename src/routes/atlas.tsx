@@ -245,110 +245,99 @@ function AtlasPage() {
                   <stop offset="0%" stopColor="color-mix(in oklab, var(--primary) 10%, transparent)" stopOpacity="0" />
                   <stop offset="100%" stopColor="color-mix(in oklab, var(--accent) 18%, transparent)" stopOpacity="0.45" />
                 </linearGradient>
-                <pattern id="atlas-dots" width="2.6" height="2.6" patternUnits="userSpaceOnUse">
-                  <circle cx="1.3" cy="1.3" r="0.22" fill="color-mix(in oklab, var(--primary) 35%, transparent)" />
-                </pattern>
-                <pattern id="atlas-dunes" width="6" height="3" patternUnits="userSpaceOnUse">
-                  <path d="M0 2 Q 1.5 0.4 3 2 T 6 2" fill="none" stroke="color-mix(in oklab, var(--accent) 45%, transparent)" strokeWidth="0.18" />
+                <pattern id="atlas-dots" width="3.6" height="3.6" patternUnits="userSpaceOnUse">
+                  <circle cx="1.8" cy="1.8" r="0.16" fill="color-mix(in oklab, var(--primary) 30%, transparent)" />
                 </pattern>
                 <clipPath id="atlas-clip">
                   <path d={ALGERIA_PATH} />
                 </clipPath>
                 <filter id="atlas-soft" x="-10%" y="-10%" width="120%" height="120%">
-                  <feGaussianBlur stdDeviation="0.35" />
+                  <feGaussianBlur stdDeviation="0.4" />
                 </filter>
                 <path id="atlas-coast-arc" d={ALGERIA_COAST} />
               </defs>
 
-              {/* Mediterranean shading band above the coast */}
+              {/* Mediterranean shading above the coast */}
               <rect x="0" y="0" width="100" height="20" fill="url(#atlas-sea)" />
-              {/* Subtle Mediterranean wave hints */}
-              <g opacity="0.35" stroke="color-mix(in oklab, var(--accent) 55%, transparent)" strokeWidth="0.18" fill="none" strokeLinecap="round">
-                <path d="M 14 11 Q 20 9 26 11 T 38 11 T 50 11 T 62 11 T 74 11" />
-                <path d="M 18 14 Q 24 12.5 30 14 T 42 14 T 54 14 T 66 14" opacity="0.7" />
-              </g>
-
-              {/* Compass rose */}
-              <g transform="translate(90,10)" opacity="0.6">
-                <circle r="3.4" fill="none" stroke="var(--accent)" strokeWidth="0.22" />
-                <circle r="2.2" fill="none" stroke="var(--accent)" strokeWidth="0.14" opacity="0.6" />
-                <path d="M 0 -3.2 L 0.55 0 L 0 3.2 L -0.55 0 Z" fill="var(--accent)" />
-                <path d="M -3.2 0 L 0 0.4 L 3.2 0 L 0 -0.4 Z" fill="color-mix(in oklab, var(--accent) 50%, var(--muted-foreground))" opacity="0.7" />
-                <text x="0" y="-4" textAnchor="middle" fontSize="2" fill="var(--muted-foreground)" fontWeight="700">N</text>
-              </g>
-
-              {/* Soft outer shadow / parchment halo behind the land */}
+              {/* A single, very quiet sea swell */}
               <path
-                d={ALGERIA_PATH}
-                fill="color-mix(in oklab, var(--primary) 20%, transparent)"
+                d="M 14 12 Q 28 10 44 12 T 76 12"
+                fill="none"
+                stroke="color-mix(in oklab, var(--accent) 50%, transparent)"
+                strokeWidth="0.15"
                 opacity="0.35"
-                filter="url(#atlas-soft)"
-                transform="translate(0.6,0.9)"
               />
 
-              {/* Algeria silhouette — base land */}
+              {/* Compass rose */}
+              <g transform="translate(91,11)" opacity="0.55">
+                <circle r="3.2" fill="none" stroke="var(--accent)" strokeWidth="0.18" />
+                <circle r="1.9" fill="none" stroke="var(--accent)" strokeWidth="0.1" opacity="0.55" />
+                <path d="M 0 -3 L 0.45 0 L 0 3 L -0.45 0 Z" fill="var(--accent)" />
+                <text x="0" y="-3.7" textAnchor="middle" fontSize="1.8" fill="var(--muted-foreground)" fontWeight="700">N</text>
+              </g>
+
+              {/* Soft parchment shadow behind the land */}
+              <path
+                d={ALGERIA_PATH}
+                fill="color-mix(in oklab, var(--primary) 18%, transparent)"
+                opacity="0.3"
+                filter="url(#atlas-soft)"
+                transform="translate(0.5,0.8)"
+              />
+
+              {/* Base land */}
               <path
                 d={ALGERIA_PATH}
                 fill="url(#atlas-land)"
-                stroke="color-mix(in oklab, var(--primary) 45%, var(--border))"
-                strokeWidth="0.45"
+                stroke="color-mix(in oklab, var(--primary) 38%, var(--border))"
+                strokeWidth="0.35"
                 strokeLinejoin="round"
               />
-              {/* Topographic dot texture */}
-              <path d={ALGERIA_PATH} fill="url(#atlas-dots)" opacity="0.4" />
+              {/* Quiet topographic texture */}
+              <path d={ALGERIA_PATH} fill="url(#atlas-dots)" opacity="0.28" />
 
-              {/* Interior layered hints — clipped to land */}
+              {/* Interior cartographic hints — clipped to land */}
               <g clipPath="url(#atlas-clip)">
                 {/* Sahara wash (south) */}
-                <rect x="0" y="40" width="100" height="60" fill="url(#atlas-sahara)" />
-                {/* Sahara dune curves */}
-                <rect x="0" y="50" width="100" height="42" fill="url(#atlas-dunes)" opacity="0.55" />
+                <rect x="0" y="42" width="100" height="56" fill="url(#atlas-sahara)" />
 
-                {/* Tell Atlas mountains (north band) — soft caret strokes */}
-                <g
+                {/* Tell Atlas — a single restrained ridge line, not repeated peaks */}
+                <path
+                  d="M 18 29 Q 26 26.6 34 28.4 T 50 28.6 T 68 28.8"
                   fill="none"
-                  stroke="color-mix(in oklab, var(--primary) 55%, transparent)"
-                  strokeWidth="0.32"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  opacity="0.75"
-                >
-                  <path d="M 16 28 l 1.6 -1.6 l 1.6 1.6 M 20 28.4 l 1.6 -1.8 l 1.6 1.8" />
-                  <path d="M 26 27.5 l 1.8 -2 l 1.8 2 l 1.6 -1.6 l 1.6 1.6" />
-                  <path d="M 36 28 l 1.8 -2 l 1.8 2 l 1.6 -1.6 l 1.6 1.6" />
-                  <path d="M 48 28.5 l 1.8 -2 l 1.8 2 l 1.6 -1.6 l 1.6 1.6" />
-                  <path d="M 60 28 l 1.8 -2.2 l 1.8 2.2 l 1.6 -1.8 l 1.6 1.8" />
-                </g>
-
-                {/* Saharan Atlas (mid band, lighter) */}
-                <g
-                  fill="none"
-                  stroke="color-mix(in oklab, var(--accent) 55%, transparent)"
-                  strokeWidth="0.26"
+                  stroke="color-mix(in oklab, var(--primary) 45%, transparent)"
+                  strokeWidth="0.28"
                   strokeLinecap="round"
                   opacity="0.55"
-                >
-                  <path d="M 22 40 l 1.4 -1.3 l 1.4 1.3 M 28 40.5 l 1.4 -1.4 l 1.4 1.4 M 36 40 l 1.4 -1.3 l 1.4 1.3 M 50 41 l 1.4 -1.3 l 1.4 1.3 M 64 40.5 l 1.4 -1.3 l 1.4 1.3" />
-                </g>
-
-                {/* Hoggar massif hint (deep south) */}
+                />
+                {/* Saharan Atlas — a softer parallel ridge */}
+                <path
+                  d="M 22 40 Q 32 38 44 39.2 T 66 40"
+                  fill="none"
+                  stroke="color-mix(in oklab, var(--accent) 55%, transparent)"
+                  strokeWidth="0.22"
+                  strokeLinecap="round"
+                  opacity="0.4"
+                />
+                {/* Hoggar massif — one tiny contour cluster, deep south */}
                 <g
                   fill="none"
-                  stroke="color-mix(in oklab, var(--primary) 50%, transparent)"
-                  strokeWidth="0.3"
-                  opacity="0.65"
+                  stroke="color-mix(in oklab, var(--primary) 45%, transparent)"
+                  strokeWidth="0.22"
+                  opacity="0.5"
                 >
-                  <path d="M 52 78 l 2 -2.4 l 2 2.4 l 1.8 -2 l 1.8 2" />
+                  <path d="M 50 74 q 4 -2.5 8 0" />
+                  <path d="M 51 76 q 3.5 -1.8 7 0" />
                 </g>
 
                 {/* Coastal inner shading */}
                 <path
                   d={ALGERIA_COAST}
                   fill="none"
-                  stroke="color-mix(in oklab, var(--accent) 60%, transparent)"
-                  strokeWidth="1.6"
+                  stroke="color-mix(in oklab, var(--accent) 55%, transparent)"
+                  strokeWidth="1.4"
                   strokeLinecap="round"
-                  opacity="0.35"
+                  opacity="0.28"
                   filter="url(#atlas-soft)"
                 />
               </g>
@@ -357,47 +346,35 @@ function AtlasPage() {
               <path
                 d={ALGERIA_COAST}
                 fill="none"
-                stroke="color-mix(in oklab, var(--accent) 75%, transparent)"
-                strokeWidth="0.55"
+                stroke="color-mix(in oklab, var(--accent) 72%, transparent)"
+                strokeWidth="0.4"
                 strokeLinecap="round"
               />
 
               {/* Mediterranean label, curved along the coast */}
               <text
-                fontSize="2.1"
-                fill="color-mix(in oklab, var(--accent) 75%, var(--muted-foreground))"
+                fontSize="1.9"
+                fill="color-mix(in oklab, var(--accent) 70%, var(--muted-foreground))"
                 fontStyle="italic"
-                letterSpacing="0.5"
+                letterSpacing="0.45"
               >
                 <textPath href="#atlas-coast-arc" startOffset="32%" textAnchor="middle">
-                  ⌒  M E D I T E R R A N E A N   S E A  ⌒
+                  M E D I T E R R A N E A N   S E A
                 </textPath>
               </text>
               <text
                 x="50" y="97"
                 textAnchor="middle"
-                fontSize="2"
-                fill="color-mix(in oklab, var(--primary) 60%, var(--muted-foreground))"
+                fontSize="1.8"
+                fill="color-mix(in oklab, var(--primary) 55%, var(--muted-foreground))"
                 fontStyle="italic"
-                letterSpacing="0.6"
-                opacity="0.75"
+                letterSpacing="0.55"
+                opacity="0.65"
               >
                 S A H A R A  ·  T A S S I L I  ·  H O G G A R
               </text>
 
-              {/* Faint caravan trade arcs — symbolic, timeless */}
-              <g
-                fill="none"
-                stroke="color-mix(in oklab, var(--accent) 55%, transparent)"
-                strokeWidth="0.22"
-                strokeDasharray="0.8 1.2"
-                opacity="0.45"
-                strokeLinecap="round"
-              >
-                <path d="M 44 21 Q 40 42 48 62" />
-                <path d="M 66 23 Q 60 45 52 64" />
-                <path d="M 48 62 Q 60 72 66 80" />
-              </g>
+
 
               {/* Region pins */}
               {mapRegions.map((r) => {
