@@ -57,9 +57,11 @@ function FigureDetail() {
   const relatedRegion = mapRegions.find((r) => r.id === f.region || (f.region === "mascara-west" && r.id === "oran-west"));
 
   const meta = figureMeta[f.id];
-  const relatedFigures = (meta?.relatedFigureIds ?? [])
+  const relatedFigures = Array.from(new Set(meta?.relatedFigureIds ?? []))
+    .filter((id) => id !== f.id)
     .map((id) => figures.find((x) => x.id === id))
-    .filter((x): x is NonNullable<typeof x> => Boolean(x));
+    .filter((x): x is NonNullable<typeof x> => Boolean(x))
+    .filter((x, i, arr) => arr.findIndex((y) => y.id === x.id) === i);
 
   useEffect(() => {
     saveJourneyPlace({
