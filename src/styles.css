@@ -607,3 +607,125 @@ a, button, [role="button"] {
   html { scroll-behavior: auto; }
 }
 
+
+/* ============================================================
+   Phase 7 — Museum Mode (deeper) + Ambient atmosphere overlays
+   ============================================================ */
+
+/* Subtle, always-on cinematic vignette — barely perceptible warmth at edges.
+   Sits below interactive content. Disabled if user prefers reduced motion. */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background:
+    radial-gradient(ellipse at 50% 0%, color-mix(in oklab, var(--accent) 6%, transparent), transparent 55%),
+    radial-gradient(ellipse at 50% 100%, color-mix(in oklab, var(--primary) 5%, transparent), transparent 60%);
+  opacity: 0.85;
+  transition: opacity 700ms ease, background 700ms ease;
+}
+
+/* Museum Mode — deepens vignette, calms chrome, focuses typography.
+   Layers on top of the existing .immersion-on styles. */
+html.immersion-on body::before {
+  background:
+    radial-gradient(ellipse at 50% 0%, color-mix(in oklab, var(--accent) 12%, transparent), transparent 55%),
+    radial-gradient(ellipse at 50% 100%, color-mix(in oklab, var(--primary) 10%, transparent), transparent 55%),
+    radial-gradient(ellipse at 50% 50%, transparent 55%, color-mix(in oklab, var(--foreground) 14%, transparent) 100%);
+  opacity: 1;
+}
+
+/* Calm the sticky header chrome in Museum Mode */
+html.immersion-on header.sticky {
+  background-color: color-mix(in oklab, var(--background) 70%, transparent) !important;
+  border-bottom-color: color-mix(in oklab, var(--border) 40%, transparent) !important;
+  backdrop-filter: blur(14px) saturate(1.05);
+}
+
+/* Reduce visual weight of secondary chrome and badges */
+html.immersion-on .museum-eyebrow,
+html.immersion-on [class*="uppercase"][class*="tracking-"] {
+  opacity: 0.78;
+}
+
+/* Soften muted backgrounds slightly */
+html.immersion-on [class*="bg-muted"] {
+  background-color: color-mix(in oklab, var(--muted) 55%, transparent) !important;
+}
+
+/* Focused reading typography in Museum Mode */
+html.immersion-on main p {
+  color: color-mix(in oklab, var(--foreground) 92%, transparent);
+  font-size: 1.04em;
+  line-height: 1.78;
+}
+html.immersion-on main h1,
+html.immersion-on main h2 {
+  letter-spacing: -0.022em;
+}
+
+/* Dim non-hovered cards subtly so the one you're reading stands forward */
+@media (hover: hover) {
+  html.immersion-on main [class*="bg-card"]:not(:hover):not(:focus-within) {
+    filter: saturate(0.94) brightness(0.985);
+    transition: filter 500ms ease;
+  }
+}
+
+/* Quiet down BackToTop / floating chrome in Museum Mode */
+html.immersion-on .fixed [aria-label="Back to top"],
+html.immersion-on .fixed[aria-label] {
+  opacity: 0.85;
+}
+
+/* Cinematic section reveals — slightly slower, softer */
+html.immersion-on main > section,
+html.immersion-on main > article,
+html.immersion-on main > div > section {
+  animation-duration: 0.85s;
+}
+
+/* Soft pull-quote / museum note treatment available globally */
+.museum-note {
+  position: relative;
+  padding: 1.25rem 1.4rem;
+  border-radius: calc(var(--radius) + 0.25rem);
+  background:
+    linear-gradient(180deg, color-mix(in oklab, var(--accent) 6%, var(--card)), var(--card));
+  border: 1px solid color-mix(in oklab, var(--accent) 22%, var(--border));
+  box-shadow: var(--shadow-soft);
+}
+.museum-note::before {
+  content: "ⵣ";
+  position: absolute;
+  top: -0.6rem;
+  left: 1rem;
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: var(--accent-foreground);
+  background: var(--card);
+  padding: 0 0.4rem;
+  border-radius: 999px;
+  border: 1px solid color-mix(in oklab, var(--accent) 30%, var(--border));
+}
+
+/* Gentle parallax-feeling float for hero watermarks */
+@keyframes drift {
+  0%, 100% { transform: translateY(0) translateX(0); }
+  50% { transform: translateY(-6px) translateX(2px); }
+}
+.museum-drift {
+  animation: drift 14s ease-in-out infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .museum-drift { animation: none; }
+  body::before { transition: none; }
+}
+
+/* When Museum Mode is on, slightly dim the global vignette on small screens
+   to keep battery / OLED friendly */
+@media (max-width: 640px) {
+  html.immersion-on body::before { opacity: 0.85; }
+}

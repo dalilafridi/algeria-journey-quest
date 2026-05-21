@@ -10,6 +10,7 @@ import { WelcomeJourney } from "@/components/WelcomeJourney";
 import { ContinueJourneyCard } from "@/components/ContinueJourneyCard";
 import { JourneyHud } from "@/components/JourneyHud";
 import { BackToTop } from "@/components/BackToTop";
+import { MuseumDock } from "@/components/MuseumDock";
 
 function NotFoundComponent() {
   return (
@@ -108,6 +109,7 @@ function RootComponent() {
       <WelcomeJourney />
       <JourneyHud />
       <BackToTop />
+      <MuseumDock />
       <Sonner />
     </>
   );
