@@ -729,3 +729,137 @@ html.immersion-on main > div > section {
 @media (max-width: 640px) {
   html.immersion-on body::before { opacity: 0.85; }
 }
+
+/* ============================================================
+   Phase 9 — Motion + Microinteraction master pass
+   Unified easing, scroll reveals, refined hovers, focus polish.
+   Everything below honors prefers-reduced-motion.
+   ============================================================ */
+
+:root {
+  /* One easing language across the app — calm, museum-grade. */
+  --ease-museum: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-soft: cubic-bezier(0.4, 0, 0.2, 1);
+  --dur-quick: 220ms;
+  --dur-soft: 420ms;
+  --dur-slow: 720ms;
+}
+
+/* --- Scroll reveal (driven by MotionReveal IntersectionObserver) --- */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(14px);
+  transition:
+    opacity var(--dur-slow) var(--ease-museum),
+    transform var(--dur-slow) var(--ease-museum),
+    filter var(--dur-slow) var(--ease-museum);
+  transition-delay: var(--reveal-delay, 0ms);
+  will-change: opacity, transform;
+}
+[data-reveal="fade"] { transform: none; }
+[data-reveal="rise"] { transform: translateY(22px); }
+[data-reveal="soft"] { transform: translateY(8px); filter: blur(2px); }
+[data-reveal][data-revealed="true"] {
+  opacity: 1;
+  transform: none;
+  filter: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+    transition: none !important;
+  }
+}
+
+/* --- Refined card microinteractions --- */
+.museum-card,
+.card-hover {
+  transition:
+    transform var(--dur-soft) var(--ease-museum),
+    box-shadow var(--dur-soft) var(--ease-museum),
+    border-color var(--dur-soft) var(--ease-museum),
+    background-color var(--dur-soft) var(--ease-museum);
+}
+@media (hover: hover) {
+  .museum-card-hover:hover,
+  .card-hover:hover {
+    box-shadow:
+      0 1px 2px oklch(0.4 0.08 50 / 0.05),
+      0 24px 56px -24px oklch(0.45 0.1 50 / 0.36),
+      0 0 0 1px color-mix(in oklab, var(--accent) 18%, transparent) inset;
+  }
+}
+
+/* Tactile press for buttons & button-like elements */
+@media (hover: hover) {
+  button:not(:disabled):active,
+  [role="button"]:not([aria-disabled="true"]):active,
+  a[href]:active {
+    transform: translateY(0.5px) scale(0.992);
+  }
+}
+
+/* Refined link underline (opt-in via .museum-link) */
+.museum-link {
+  position: relative;
+  display: inline;
+  background-image: linear-gradient(
+    currentColor, currentColor
+  );
+  background-size: 0% 1px;
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  transition: background-size var(--dur-soft) var(--ease-museum);
+}
+.museum-link:hover,
+.museum-link:focus-visible {
+  background-size: 100% 1px;
+}
+
+/* Slightly richer image-zoom — pair with .img-zoom */
+.img-zoom > img,
+.img-zoom > picture > img {
+  transition: transform 1400ms var(--ease-museum), filter 800ms var(--ease-museum);
+}
+.img-zoom:hover > img,
+.img-zoom:hover > picture > img {
+  transform: scale(1.045);
+  filter: saturate(1.04);
+}
+
+/* Smoother Museum Mode entrance — fade chrome rather than snap */
+html, html.immersion-on, html.immersion-on body {
+  transition: background-color var(--dur-slow) var(--ease-museum);
+}
+html.immersion-on header.sticky {
+  transition:
+    background-color var(--dur-slow) var(--ease-museum),
+    border-color var(--dur-slow) var(--ease-museum),
+    backdrop-filter var(--dur-slow) var(--ease-museum);
+}
+
+/* Calmer section reveal rhythm — overrides the older keyframe defaults
+   when reveal attribute is present so we don't double-animate. */
+main > section[data-reveal],
+main > article[data-reveal],
+main > div > section[data-reveal] {
+  animation: none;
+}
+
+/* Focus ring polish — soft warm glow instead of a hard outline */
+:where(a, button, [role="button"], input, select, textarea):focus-visible {
+  outline: 2px solid color-mix(in oklab, var(--primary) 65%, transparent);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 4px color-mix(in oklab, var(--accent) 22%, transparent);
+  transition: box-shadow var(--dur-quick) var(--ease-soft);
+}
+
+/* Mobile: trim motion duration so interactions stay snappy on touch */
+@media (max-width: 640px) {
+  :root {
+    --dur-soft: 320ms;
+    --dur-slow: 540ms;
+  }
+}
