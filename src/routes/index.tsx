@@ -130,14 +130,9 @@ function Home() {
   };
 
   // Pair "today's moment" with its likely era for context
-  const factText = (() => {
-    if (typeof todayFact === "string") return todayFact;
-    return `${todayFact.en} ${todayFact.fr}`.toLowerCase();
-  })();
+  const factText = t(todayFact, "en").toLowerCase();
   const matchedEra =
-    eras.find((e) =>
-      e.facts?.some((f) => f === todayFact || (typeof f === "object" && (f as { en: string }).en === (todayFact as { en: string }).en)),
-    ) ??
+    eras.find((e) => e.facts?.some((f) => f === todayFact)) ??
     eras.find((e) => factText.includes(e.title.en.toLowerCase().split(" ")[0]));
 
   return (
