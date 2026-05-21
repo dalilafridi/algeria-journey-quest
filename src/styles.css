@@ -197,6 +197,8 @@
     -webkit-text-size-adjust: 100%;
     text-size-adjust: 100%;
     -webkit-tap-highlight-color: transparent;
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
   }
 
   body {
@@ -212,18 +214,31 @@
     padding-bottom: max(4.5rem, calc(env(safe-area-inset-bottom) + 4rem));
   }
 
+  /* Museum-style serif headings — applied app-wide for cohesion. */
   h1, h2, h3, h4 {
-    letter-spacing: -0.011em;
+    font-family: Georgia, "Iowan Old Style", "Apple Garamond", "Times New Roman", serif;
+    letter-spacing: -0.012em;
     line-height: 1.18;
     font-weight: 700;
     color: color-mix(in oklab, var(--foreground) 96%, var(--primary));
+    text-wrap: balance;
   }
-  h1 { letter-spacing: -0.018em; }
+  h1 { letter-spacing: -0.02em; line-height: 1.08; }
+  h2 { letter-spacing: -0.015em; line-height: 1.14; }
 
   p {
     max-width: 68ch;
     color: color-mix(in oklab, var(--foreground) 88%, transparent);
+    text-wrap: pretty;
   }
+
+  /* Standardized focus ring — applied to all interactive elements. */
+  :where(a, button, [role="button"], input, select, textarea):focus-visible {
+    outline: 2px solid color-mix(in oklab, var(--primary) 70%, transparent);
+    outline-offset: 2px;
+    border-radius: 0.5rem;
+  }
+
 
   /* Prevent iOS auto-zoom on focus by ensuring inputs are >=16px */
   input,
