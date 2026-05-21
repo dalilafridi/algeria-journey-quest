@@ -73,6 +73,7 @@ export function Header() {
   const isRegions = path.startsWith("/map");
   const isFigures = path.startsWith("/figures");
   const isCulture =
+    path.startsWith("/culture") ||
     path.startsWith("/words") ||
     path.startsWith("/ideas") ||
     path.startsWith("/cuisine") ||
@@ -85,7 +86,7 @@ export function Header() {
     { to: "/atlas" as const, label: T.atlas, active: isAtlas },
     { to: "/map" as const, label: T.regions, active: isRegions },
     { to: "/figures" as const, label: T.figures, active: isFigures },
-    { to: "/words" as const, label: T.culture, active: isCulture },
+    { to: "/culture" as const, label: T.culture, active: isCulture },
   ];
 
 
