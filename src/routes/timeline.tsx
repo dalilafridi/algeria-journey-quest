@@ -257,9 +257,15 @@ function ChapterRow({
   const factsTotal = era.facts?.length ?? 0;
   const factsFound = done ? factsTotal : 0;
 
+  const lockedMsg = {
+    fr: "Bientôt accessible — terminez l’époque précédente",
+    en: "Coming soon — complete the previous era",
+    ar: "قريبًا — أكمل الحقبة السابقة",
+  }[lang];
+
   return (
     <li
-      className="relative ps-16 pb-6 animate-float-up"
+      className="relative ps-16 pb-7 animate-float-up"
       style={{ animationDelay: `${delay}ms`, animationFillMode: "both" }}
     >
       {/* Milestone icon */}
@@ -269,19 +275,46 @@ function ChapterRow({
         }`}
         style={{
           insetInlineStart: 0,
-          background: unlocked ? "var(--gradient-warm)" : "var(--muted)",
+          background: done
+            ? "var(--gradient-warm)"
+            : unlocked
+              ? "var(--gradient-warm)"
+              : "color-mix(in oklab, var(--muted) 90%, var(--accent))",
           boxShadow: unlocked ? "var(--shadow-glow)" : "none",
         }}
       >
-        {unlocked ? <Icon className="w-5 h-5" /> : <Lock className="w-4 h-4" />}
+        {done ? (
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round">
+            <polyline points="20 6 9 17 4 12" />
+          </svg>
+        ) : unlocked ? (
+          <Icon className="w-5 h-5" />
+        ) : (
+          <Lock className="w-4 h-4" />
+        )}
       </div>
 
       <article
-        className={`rounded-2xl bg-card border border-border overflow-hidden transition-all ${
-          unlocked ? "hover:scale-[1.01]" : "opacity-75"
+        className={`relative rounded-2xl bg-card border overflow-hidden transition-all card-hover ${
+          done ? "border-accent/60" : unlocked ? "border-border" : "border-border/70"
         }`}
-        style={{ boxShadow: "var(--shadow-soft)" }}
+        style={{
+          boxShadow: done
+            ? "var(--shadow-glow), var(--shadow-soft)"
+            : "var(--shadow-soft)",
+        }}
       >
+        {/* Museum seal for completed eras */}
+        {done && (
+          <div
+            className="absolute top-3 end-3 z-10 inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider border border-accent/50 bg-accent/15 text-accent-foreground backdrop-blur"
+            aria-hidden
+          >
+            <span>ⵣ</span>
+            {lang === "fr" ? "Chapitre achevé" : lang === "ar" ? "فصل مكتمل" : "Chapter complete"}
+          </div>
+        )}
+
         <div className="flex flex-col sm:flex-row">
           {/* Image */}
           <div className="relative sm:w-[40%] aspect-[16/10] sm:aspect-auto overflow-hidden">
@@ -291,13 +324,22 @@ function ChapterRow({
               loading="lazy"
               width={768}
               height={768}
-              className={`w-full h-full object-cover transition-all ${
-                unlocked ? "" : "grayscale-[60%] opacity-80"
+              className={`w-full h-full object-cover transition-all duration-700 ${
+                unlocked ? "" : "grayscale-[40%]"
               }`}
             />
+            {/* Cinematic bottom gradient */}
+            <div
+              className="absolute inset-0 pointer-events-none"
+              style={{
+                background:
+                  "linear-gradient(180deg, transparent 55%, color-mix(in oklab, var(--foreground) 35%, transparent))",
+              }}
+              aria-hidden
+            />
             {!unlocked && (
-              <div className="absolute inset-0 bg-background/20 flex items-center justify-center">
-                <span className="px-2.5 py-1 rounded-full bg-background/85 backdrop-blur text-[11px] font-bold text-muted-foreground inline-flex items-center gap-1">
+              <div className="absolute inset-0 flex items-end p-3">
+                <span className="px-2.5 py-1 rounded-full bg-card/90 backdrop-blur text-[11px] font-semibold text-muted-foreground inline-flex items-center gap-1 border border-border">
                   <Lock className="w-3 h-3" /> {tu("locked", lang)}
                 </span>
               </div>
@@ -308,36 +350,63 @@ function ChapterRow({
           <div className="flex-1 p-4 sm:p-5 flex flex-col gap-3">
             <div className="flex items-start justify-between gap-3">
               <div className="min-w-0">
-                <div className="text-[11px] font-semibold text-primary uppercase tracking-wider">
+                <div className="text-[11px] font-semibold text-primary uppercase tracking-[0.16em]">
                   {tu("chapter", lang)} {index + 1}
                 </div>
-                <h2 className="text-lg sm:text-xl font-bold mt-0.5 leading-tight">
+                <h2 className="text-lg sm:text-xl font-bold mt-1 leading-tight">
                   {t(era.title, lang)}
                 </h2>
                 <div className="text-xs text-muted-foreground mt-0.5">{era.dateRange}</div>
               </div>
-              <span
-                className={`shrink-0 text-[11px] font-bold px-2.5 py-1 rounded-full ${
-                  done
-                    ? "bg-secondary text-secondary-foreground"
-                    : unlocked
-                      ? "bg-accent text-accent-foreground"
-                      : "bg-muted text-muted-foreground"
-                }`}
-              >
-                {done ? `${best}/${total}` : unlocked ? tu("statusNew", lang) : tu("locked", lang)}
-              </span>
+              {done ? (
+                <span className="shrink-0 text-[11px] font-bold px-2.5 py-1 rounded-full bg-secondary text-secondary-foreground">
+                  {best}/{total}
+                </span>
+              ) : unlocked ? (
+                <span className="shrink-0 text-[11px] font-bold px-2.5 py-1 rounded-full bg-accent/30 text-accent-foreground border border-accent/40">
+                  {tu("statusNew", lang)}
+                </span>
+              ) : null}
             </div>
 
             <p className="text-sm text-foreground/80 line-clamp-2">{t(era.summary, lang)}</p>
 
-            <div className="mt-auto flex items-end justify-between gap-3 pt-1">
-              <div className="text-[11px] text-muted-foreground">
-                <span className="font-semibold text-foreground/80">
-                  {factsFound}/{factsTotal}
-                </span>{" "}
-                {tu("funFactsDiscovered", lang)}
+            {/* Progress + facts mini-bar (only when unlocked) */}
+            {unlocked && (
+              <div className="space-y-1.5">
+                <div className="flex items-center justify-between text-[11px] text-muted-foreground">
+                  <span>
+                    <span className="font-semibold text-foreground/80">
+                      {factsFound}/{factsTotal}
+                    </span>{" "}
+                    {tu("funFactsDiscovered", lang)}
+                  </span>
+                  {total > 0 && (
+                    <span className="font-semibold text-foreground/70">
+                      {best}/{total}
+                    </span>
+                  )}
+                </div>
+                <div className="h-1 rounded-full bg-muted overflow-hidden">
+                  <div
+                    className="h-full transition-all duration-700"
+                    style={{
+                      width: `${factsTotal > 0 ? (factsFound / factsTotal) * 100 : 0}%`,
+                      background: "var(--gradient-warm)",
+                    }}
+                  />
+                </div>
               </div>
+            )}
+
+            <div className="mt-auto flex items-end justify-between gap-3 pt-1">
+              {!unlocked ? (
+                <div className="text-[11px] italic text-muted-foreground/90 leading-snug">
+                  {lockedMsg}
+                </div>
+              ) : (
+                <div />
+              )}
               {unlocked ? (
                 <Link
                   to="/era/$eraId"
@@ -348,7 +417,7 @@ function ChapterRow({
                   {done ? tu("continueBtn", lang) : tu("startBtn", lang)} →
                 </Link>
               ) : (
-                <span className="shrink-0 inline-flex items-center gap-1 px-3.5 py-1.5 rounded-full text-sm font-semibold bg-muted text-muted-foreground cursor-not-allowed">
+                <span className="shrink-0 inline-flex items-center gap-1 px-3.5 py-1.5 rounded-full text-sm font-semibold border border-border text-muted-foreground">
                   <Lock className="w-3.5 h-3.5" /> {tu("lockedBtn", lang)}
                 </span>
               )}
