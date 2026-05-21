@@ -188,27 +188,9 @@ function Home() {
               </div>
             </div>
 
-            <aside className="hero-env-placard" aria-hidden>
-              <div className="placard-label">
-                {lang === "fr" ? "Salle d’entrée" : lang === "ar" ? "قاعة المدخل" : "Entrance Hall"}
-              </div>
-              <p className="placard-quote">
-                {lang === "fr"
-                  ? "« Deux mille ans de mémoire — terres, langues, et celles et ceux qui les ont portées. »"
-                  : lang === "ar"
-                  ? "«ألفا عام من الذاكرة — أرضٌ ولغاتٌ، ومن حملوها.»"
-                  : "“Two thousand years of memory — lands, languages, and the people who carried them.”"}
-              </p>
-              <div className="placard-attr">
-                {lang === "fr"
-                  ? "Exposition permanente · Numidie → Indépendance"
-                  : lang === "ar"
-                  ? "معرض دائم · من نوميديا إلى الاستقلال"
-                  : "Permanent Exhibition · Numidia → Independence"}
-              </div>
-            </aside>
           </div>
         </section>
+
 
 
 
