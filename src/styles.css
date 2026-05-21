@@ -1198,3 +1198,61 @@ html.showcase-on [data-reveal] {
   transform: none !important;
   will-change: auto !important;
 }
+
+/* ============================================================
+   FINAL PHASE — Art Direction + Launch-Ready Cleanup
+   Last-mile polish. Tightens rhythm, eliminates overflow,
+   unifies card / button / image treatments. No new patterns —
+   only enforces what already exists.
+   ============================================================ */
+
+/* Hard guard against horizontal scroll from any oversized child */
+html, body { max-width: 100%; }
+main, main > * { min-width: 0; }
+img, svg, video, canvas, iframe { max-width: 100%; height: auto; }
+img[width][height] { height: auto; } /* keep intrinsic ratio */
+
+/* Unified vertical rhythm between page sections */
+main > section + section,
+main > article + section,
+main > section + article {
+  margin-top: clamp(2.5rem, 4vw, 4.5rem);
+}
+
+/* Calmer, consistent card surface — applies only where utility opts in */
+.museum-card {
+  background: var(--card);
+  border: 1px solid color-mix(in oklab, var(--border) 90%, transparent);
+  border-radius: var(--radius);
+  box-shadow:
+    0 1px 2px oklch(0.4 0.08 50 / 0.04),
+    0 12px 32px -18px oklch(0.45 0.1 50 / 0.18);
+}
+
+/* Typography scale guards — prevent oversized headings on small screens */
+h1 { font-size: clamp(1.9rem, 1.4rem + 2.4vw, 3.4rem); }
+h2 { font-size: clamp(1.5rem, 1.2rem + 1.6vw, 2.4rem); }
+h3 { font-size: clamp(1.2rem, 1.05rem + 0.9vw, 1.6rem); }
+
+/* Long Arabic / French words shouldn't break layout */
+h1, h2, h3, h4, p, li, a, button { overflow-wrap: anywhere; }
+
+/* Remove decorative pseudo-elements from screen-reader output */
+.museum-note::before,
+.museum-eyebrow::before { speak: never; }
+
+/* Final image treatment: subtle warm tone unifies stock variations */
+[data-museum-photo] img,
+.museum-photo img {
+  filter: saturate(0.96) contrast(1.02);
+}
+
+/* Avoid double padding-bottom when ContinueJourneyCard is hidden by route */
+html.showcase-on body { padding-bottom: 0; }
+
+/* Calm any stray pulsing/floating decorations in showcase + reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  .museum-drift, .animate-cinematic-in, .animate-fade-in {
+    animation: none !important;
+  }
+}
