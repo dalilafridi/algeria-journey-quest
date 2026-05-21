@@ -283,7 +283,7 @@ function EraPage() {
               </p>
               {era.facts.length > 1 && (
                 <div className="mt-3 flex gap-1.5">
-                  {era.facts.map((_, i) => (
+                  {era.facts.map((_: LocalizedString, i: number) => (
                     <span
                       key={i}
                       className={
