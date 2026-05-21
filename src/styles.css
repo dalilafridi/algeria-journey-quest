@@ -197,6 +197,8 @@
     -webkit-text-size-adjust: 100%;
     text-size-adjust: 100%;
     -webkit-tap-highlight-color: transparent;
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
   }
 
   body {
@@ -212,18 +214,31 @@
     padding-bottom: max(4.5rem, calc(env(safe-area-inset-bottom) + 4rem));
   }
 
+  /* Museum-style serif headings — applied app-wide for cohesion. */
   h1, h2, h3, h4 {
-    letter-spacing: -0.011em;
+    font-family: Georgia, "Iowan Old Style", "Apple Garamond", "Times New Roman", serif;
+    letter-spacing: -0.012em;
     line-height: 1.18;
     font-weight: 700;
     color: color-mix(in oklab, var(--foreground) 96%, var(--primary));
+    text-wrap: balance;
   }
-  h1 { letter-spacing: -0.018em; }
+  h1 { letter-spacing: -0.02em; line-height: 1.08; }
+  h2 { letter-spacing: -0.015em; line-height: 1.14; }
 
   p {
     max-width: 68ch;
     color: color-mix(in oklab, var(--foreground) 88%, transparent);
+    text-wrap: pretty;
   }
+
+  /* Standardized focus ring — applied to all interactive elements. */
+  :where(a, button, [role="button"], input, select, textarea):focus-visible {
+    outline: 2px solid color-mix(in oklab, var(--primary) 70%, transparent);
+    outline-offset: 2px;
+    border-radius: 0.5rem;
+  }
+
 
   /* Prevent iOS auto-zoom on focus by ensuring inputs are >=16px */
   input,
@@ -461,3 +476,134 @@ main > div > section {
   background-image: var(--texture-mosaic);
   background-size: 64px 64px;
 }
+
+/* ============================================================
+   Phase 5 — Premium refinement layer
+   Unifies typography rhythm, card surfaces, eyebrows, pullquotes,
+   hero treatments, and motion across the entire app.
+   ============================================================ */
+
+/* Eyebrow label — the consistent small uppercase tag used above section titles. */
+.museum-eyebrow {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted-foreground);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+/* Unified section title rhythm. */
+.museum-section-title {
+  font-family: Georgia, "Iowan Old Style", "Times New Roman", serif;
+  font-size: clamp(1.4rem, 1.05rem + 1.2vw, 1.875rem);
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  line-height: 1.15;
+  color: color-mix(in oklab, var(--foreground) 96%, var(--primary));
+}
+
+/* Curator-style pull quote — italic serif with a warm rule. */
+.museum-pullquote {
+  font-family: Georgia, "Iowan Old Style", "Times New Roman", serif;
+  font-style: italic;
+  font-size: clamp(1.05rem, 0.95rem + 0.5vw, 1.25rem);
+  line-height: 1.55;
+  color: color-mix(in oklab, var(--foreground) 88%, transparent);
+  border-inline-start: 2px solid color-mix(in oklab, var(--accent) 60%, var(--border));
+  padding-inline-start: 1rem;
+}
+
+/* Coherent card surface — calm border, soft elevation, unified radius. */
+.museum-card {
+  background-color: var(--card);
+  border: 1px solid color-mix(in oklab, var(--border) 90%, transparent);
+  border-radius: calc(var(--radius) + 0.35rem);
+  box-shadow: var(--shadow-soft);
+  padding: 1.25rem;
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.4s ease, border-color 0.4s ease;
+}
+@media (min-width: 640px) {
+  .museum-card { padding: 1.75rem; }
+}
+.museum-card-hover:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 2px 4px oklch(0.4 0.08 50 / 0.05),
+    0 22px 48px -22px oklch(0.45 0.1 50 / 0.32);
+  border-color: color-mix(in oklab, var(--primary) 30%, var(--border));
+}
+@media (prefers-reduced-motion: reduce) {
+  .museum-card { transition: none; }
+  .museum-card-hover:hover { transform: none; }
+}
+
+/* Standard hero band — parchment + accent watermark. Use on any landing band. */
+.museum-hero {
+  position: relative;
+  overflow: hidden;
+  border-bottom: 1px solid var(--border);
+  background:
+    radial-gradient(ellipse at 50% 0%, color-mix(in oklab, var(--accent) 10%, transparent), transparent 55%),
+    linear-gradient(135deg,
+      color-mix(in oklab, var(--primary) 16%, var(--background)),
+      var(--background) 55%,
+      color-mix(in oklab, var(--accent) 12%, var(--background)));
+}
+
+/* Standardize generic divs that opt into the museum surface system.
+   Any plain rounded card without bespoke shadow/border picks up the unified look. */
+[class*="bg-card"]:not([class*="border-"]) {
+  border: 1px solid color-mix(in oklab, var(--border) 90%, transparent);
+}
+
+/* Vertical rhythm helpers — consistent section spacing across pages. */
+.museum-stack > * + * { margin-top: 1.5rem; }
+.museum-stack-lg > * + * { margin-top: 2.5rem; }
+@media (min-width: 768px) {
+  .museum-stack > * + * { margin-top: 2rem; }
+  .museum-stack-lg > * + * { margin-top: 3.5rem; }
+}
+
+/* Mobile spacing & typography polish — softer line-height + tighter h1 wraps. */
+@media (max-width: 640px) {
+  main {
+    padding-top: 0.25rem;
+  }
+  h1 {
+    font-size: clamp(1.65rem, 1.2rem + 3.5vw, 2.25rem);
+    line-height: 1.1;
+  }
+  h2 {
+    font-size: clamp(1.25rem, 1rem + 2vw, 1.5rem);
+  }
+  p { line-height: 1.65; }
+  /* Tame oversize hero paddings on small screens. */
+  section.museum-hero { padding-block: 2.5rem !important; }
+}
+
+/* Calm down all transitions globally — premium, never twitchy. */
+a, button, [role="button"] {
+  transition: color 0.25s ease, background-color 0.25s ease,
+    border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
+}
+
+/* Selection — warm parchment ink instead of harsh blue. */
+::selection {
+  background: color-mix(in oklab, var(--accent) 55%, transparent);
+  color: var(--foreground);
+}
+
+/* Honor reduced motion across all custom animations introduced in Phase 5. */
+@media (prefers-reduced-motion: reduce) {
+  .animate-cinematic-in,
+  .animate-fade-in,
+  .animate-float-up,
+  .animate-pop-in {
+    animation: none !important;
+  }
+  html { scroll-behavior: auto; }
+}
+
