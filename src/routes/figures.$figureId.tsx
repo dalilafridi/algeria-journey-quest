@@ -92,56 +92,89 @@ function FigureDetail() {
   return (
     <div className="min-h-screen">
       <Header />
-      <main className="max-w-2xl mx-auto px-4 py-8">
-        <Link to="/figures" className="text-sm text-muted-foreground hover:text-foreground">
-          {tu("backToFigures", lang)}
-        </Link>
 
+      {/* Cinematic banner header */}
+      <section
+        className="relative overflow-hidden border-b border-border"
+        style={{
+          background:
+            "linear-gradient(135deg, color-mix(in oklab, var(--primary) 22%, var(--background)), var(--background) 60%, color-mix(in oklab, var(--accent) 18%, var(--background)))",
+        }}
+      >
         <div
-          className="mt-4 rounded-2xl bg-card border border-border p-6 sm:p-8 animate-float-up"
-          style={{ boxShadow: "var(--shadow-soft)" }}
+          aria-hidden
+          className="absolute inset-0 pointer-events-none opacity-[0.05] text-[18rem] sm:text-[26rem] font-black leading-none flex items-center justify-center select-none"
+          style={{ color: "var(--accent)" }}
         >
-          <div className="flex items-start gap-4">
-            <div className="text-5xl">{f.emoji}</div>
+          ⵣ
+        </div>
+        <div className="relative max-w-3xl mx-auto px-4 py-10 sm:py-14 animate-cinematic-in">
+          <Link
+            to="/figures"
+            className="text-xs uppercase tracking-[0.18em] font-semibold text-muted-foreground hover:text-foreground"
+          >
+            ← {tu("backToFigures", lang)}
+          </Link>
+          <div className="mt-5 flex items-start gap-5">
+            <div
+              className="shrink-0 w-20 h-20 sm:w-24 sm:h-24 rounded-2xl border flex items-center justify-center text-5xl sm:text-6xl"
+              style={{
+                background: "color-mix(in oklab, var(--card) 80%, var(--accent) 12%)",
+                borderColor: "color-mix(in oklab, var(--accent) 40%, var(--border))",
+                boxShadow: "var(--shadow-glow)",
+              }}
+            >
+              {f.emoji}
+            </div>
             <div className="flex-1 min-w-0">
-              <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight">
+              <h1
+                className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight leading-[1.05]"
+                style={{ fontFamily: "Georgia, 'Times New Roman', serif" }}
+              >
                 {t(f.displayName, lang)}
               </h1>
-              <div className="mt-1 flex flex-wrap gap-2 text-xs">
+              <div className="mt-2 flex flex-wrap gap-1.5 text-xs">
                 <span className="px-2 py-0.5 rounded-full bg-muted text-muted-foreground font-semibold">
                   {t(f.era, lang)}
                 </span>
                 <span className="px-2 py-0.5 rounded-full bg-accent/20 text-accent-foreground font-semibold">
-                  {t(f.regionLabel, lang)}
+                  📍 {t(f.regionLabel, lang)}
                 </span>
+                {meta?.themes?.slice(0, 4).map((th) => {
+                  const def = FIGURE_THEMES[th];
+                  return (
+                    <span
+                      key={th}
+                      className="px-2 py-0.5 rounded-full text-[11px] font-semibold border border-border/70 bg-card/70 text-muted-foreground"
+                    >
+                      <span className="mr-0.5">{def.emoji}</span>
+                      {t(def.label, lang)}
+                    </span>
+                  );
+                })}
               </div>
-              {meta?.themes && meta.themes.length > 0 && (
-                <div className="mt-2 flex flex-wrap gap-1.5">
-                  {meta.themes.map((th) => {
-                    const def = FIGURE_THEMES[th];
-                    return (
-                      <span
-                        key={th}
-                        className="px-2 py-0.5 rounded-full text-[11px] font-semibold border border-border/70 bg-muted/40 text-muted-foreground"
-                      >
-                        <span className="mr-0.5">{def.emoji}</span>
-                        {t(def.label, lang)}
-                      </span>
-                    );
-                  })}
-                </div>
-              )}
             </div>
           </div>
 
           {meta?.cinematicLine && (
             <p
-              className="mt-5 italic text-foreground/80 leading-relaxed border-l-2 pl-3"
-              style={{ borderColor: "color-mix(in oklab, var(--secondary) 55%, var(--border))", fontFamily: "Georgia, 'Times New Roman', serif" }}
+              className="mt-6 text-lg sm:text-xl italic text-foreground/85 leading-relaxed border-l-2 ps-4"
+              style={{
+                borderColor: "color-mix(in oklab, var(--accent) 60%, var(--border))",
+                fontFamily: "Georgia, 'Times New Roman', serif",
+              }}
             >
-              {t(meta.cinematicLine, lang)}
+              “{t(meta.cinematicLine, lang)}”
             </p>
           )}
+        </div>
+      </section>
+
+      <main className="max-w-2xl mx-auto px-4 py-8">
+        <div
+          className="rounded-2xl bg-card border border-border p-6 sm:p-8 animate-float-up"
+          style={{ boxShadow: "var(--shadow-soft)" }}
+        >
 
           <Section title={tu("theirStory", lang)} emoji="📖">
             <p className="leading-relaxed">{t(f.story, lang)}</p>
