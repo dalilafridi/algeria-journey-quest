@@ -194,6 +194,9 @@ function Home() {
 
 
 
+        {/* ========= INLINE CONTINUATION (subtle, below hero) ========= */}
+        <ContinueJourneyInline />
+
 
         {/* ========= TODAY IN ALGERIAN MEMORY ========= */}
         <section className="mx-auto max-w-5xl px-4 pt-10 sm:pt-12">
