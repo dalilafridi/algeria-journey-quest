@@ -107,6 +107,7 @@ function RootComponent() {
       <Outlet />
       <WelcomeJourney />
       <JourneyHud />
+      <BackToTop />
       <Sonner />
     </>
   );
