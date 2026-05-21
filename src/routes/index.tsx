@@ -176,6 +176,11 @@ function Home() {
                 src={brandCover}
                 alt="Algeria Through Time"
                 className="w-40 sm:w-52 h-auto rounded-3xl"
+                width={400}
+                height={400}
+                fetchPriority="high"
+                decoding="async"
+                data-hero-image
                 style={{ boxShadow: "var(--shadow-gold-glow)" }}
               />
             </div>

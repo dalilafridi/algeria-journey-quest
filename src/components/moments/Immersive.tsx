@@ -321,6 +321,8 @@ export function MapSection({
           <img
             src={algeriaMap}
             alt="Map of Algeria"
+            loading="lazy"
+            decoding="async"
             className="absolute inset-0 w-full h-full object-cover select-none pointer-events-none"
             draggable={false}
           />
