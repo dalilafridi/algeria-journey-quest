@@ -170,12 +170,14 @@ export function Header() {
                 {LANGS.map((l) => (
                   <button
                     key={l.code}
+                    lang={l.code}
                     onClick={() => {
                       setLang(l.code);
                       setLangOpen(false);
                     }}
+                    aria-current={current === l.code ? "true" : undefined}
                     className={
-                      "w-full px-3 py-2.5 text-sm hover:bg-muted transition-colors " +
+                      "w-full px-3 py-2.5 text-sm hover:bg-muted transition-colors min-h-11 " +
                       (l.code === "ar" ? "text-right" : "text-left") +
                       " " +
                       (current === l.code ? "text-foreground font-semibold" : "text-muted-foreground")
