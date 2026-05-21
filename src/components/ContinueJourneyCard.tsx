@@ -28,7 +28,8 @@ export function ContinueJourneyCard() {
     };
   }, []);
 
-  if (!place || dismissed || place.href.split("#")[0] === pathname) return null;
+  // On the homepage we render an inline, subtler version below the hero instead.
+  if (!place || dismissed || pathname === "/" || place.href.split("#")[0] === pathname) return null;
 
   return (
     <aside data-continue-card className="continue-card px-4 pt-3 sm:pt-4 animate-fade-in" aria-label={COPY.title[lang]}>
