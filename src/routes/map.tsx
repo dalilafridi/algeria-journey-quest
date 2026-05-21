@@ -62,6 +62,21 @@ function RegionExplorerPage() {
   const [introPhase, setIntroPhase] = useState(false);
   const [showBackToTop, setShowBackToTop] = useState(false);
   const selected: MapRegion | undefined = mapRegions.find((r) => r.id === selectedId);
+  const extras = selected ? getRegionExtras(selected.id) : undefined;
+  const connectedEras = useMemo(
+    () =>
+      (extras?.eraIds ?? [])
+        .map((eid) => eras.find((e) => e.id === eid))
+        .filter(Boolean) as typeof eras,
+    [extras],
+  );
+  const nearbyRegions = useMemo(
+    () =>
+      (extras?.nearbyRegionIds ?? [])
+        .map((rid) => mapRegions.find((r) => r.id === rid))
+        .filter(Boolean) as typeof mapRegions,
+    [extras],
+  );
 
   useEffect(() => {
     const onScroll = () => setShowBackToTop(window.scrollY > 480);
