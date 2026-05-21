@@ -31,7 +31,7 @@ export function ContinueJourneyCard() {
   if (!place || dismissed || place.href.split("#")[0] === pathname) return null;
 
   return (
-    <aside className="continue-card px-4 pt-3 sm:pt-4 animate-fade-in" aria-label={COPY.title[lang]}>
+    <aside data-continue-card className="continue-card px-4 pt-3 sm:pt-4 animate-fade-in" aria-label={COPY.title[lang]}>
       <div className="mx-auto max-w-3xl rounded-2xl border border-border bg-card/95 p-3 sm:p-4 shadow-sm">
         <div className="flex items-start gap-3">
           <span className="mt-0.5 text-xl" aria-hidden>✨</span>

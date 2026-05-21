@@ -97,6 +97,7 @@ export function JourneyHud() {
 
   return (
     <div
+      data-journey-hud
       className="fixed bottom-0 inset-x-0 z-40 pointer-events-none"
       style={{ paddingBottom: "max(0.5rem, env(safe-area-inset-bottom))" }}
     >
