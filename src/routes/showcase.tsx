@@ -340,7 +340,7 @@ function ShowcasePage() {
           {stop.exploreTo && stop.exploreLabel && (
             <div className="mt-10">
               <Link
-                to={stop.exploreTo}
+                to={stop.exploreTo as never}
                 onClick={() => setShowcase(false)}
                 className="inline-flex items-center gap-2 rounded-full border border-accent/40 bg-card/70 backdrop-blur-md px-5 py-2.5 text-sm font-semibold text-foreground hover:bg-card transition shadow-[var(--shadow-soft)]"
               >
