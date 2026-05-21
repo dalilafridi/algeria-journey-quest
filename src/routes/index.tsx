@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ContinueJourneyCard } from "@/components/ContinueJourneyCard";
+
 import { DidYouKnowCard } from "@/components/DidYouKnowCard";
 import { Header } from "@/components/Header";
 import { dailyFacts, eras } from "@/data/eras";
