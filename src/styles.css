@@ -1187,7 +1187,7 @@ html.showcase-on body {
 /* Avoid the body::before vignette repainting during scroll */
 body::before {
   transform: translateZ(0);
-  contain: strict;
+  contain: layout paint;
 }
 
 /* When Showcase Mode is active, suspend the global vignette and section
