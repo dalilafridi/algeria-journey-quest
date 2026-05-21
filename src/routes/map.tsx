@@ -41,6 +41,17 @@ const COPY = {
   keyFact: { en: "Key fact", fr: "Fait clé", ar: "حقيقة بارزة" },
   relatedFigures: { en: "Related figures", fr: "Figures liées", ar: "شخصيات مرتبطة" },
   backToRegions: { en: "Back to Regions", fr: "Retour aux régions", ar: "العودة إلى المناطق" },
+  identity: { en: "Region identity", fr: "Identité de la région", ar: "هويّة المنطقة" },
+  geography: { en: "Geography", fr: "Géographie", ar: "الجغرافيا" },
+  historical: { en: "Historical significance", fr: "Importance historique", ar: "الأهمية التاريخية" },
+  cultural: { en: "Cultural importance", fr: "Importance culturelle", ar: "الأهمية الثقافية" },
+  historicalConnections: { en: "Historical connections", fr: "Connexions historiques", ar: "صلاتٌ تاريخية" },
+  culturalIdentity: { en: "Cultural identity", fr: "Identité culturelle", ar: "الهوية الثقافية" },
+  museumNotes: { en: "Museum notes", fr: "Notes du musée", ar: "ملاحظات المتحف" },
+  exploreNearby: { en: "Explore nearby", fr: "Explorer à proximité", ar: "اكتشف المجاور" },
+  reflection: { en: "A regional reflection", fr: "Une réflexion régionale", ar: "تأمّلٌ من المنطقة" },
+  curator: { en: "Curator", fr: "Conservateur", ar: "أمين المتحف" },
+  exploreEra: { en: "Explore era", fr: "Découvrir l'époque", ar: "اكتشف الحقبة" },
 } as const;
 
 function RegionExplorerPage() {
