@@ -4,6 +4,8 @@ import { DidYouKnowCard } from "@/components/DidYouKnowCard";
 import { Header } from "@/components/Header";
 import { dailyFacts, eras } from "@/data/eras";
 import { t, tu, useLang } from "@/lib/i18n";
+import heroBg from "@/assets/hero-bg.png";
+
 
 
 export const Route = createFileRoute("/")({
@@ -141,16 +143,18 @@ function Home() {
       <main>
         {/* ========= HERO — Cinematic environmental entrance ========= */}
         <section className="hero-environment" aria-label={copy.title[lang]}>
-          <div className="hero-env-atlas" aria-hidden />
-          <div className="hero-env-glow" aria-hidden />
-          <div className="hero-env-casbah" aria-hidden />
-          <div className="hero-env-seal" aria-hidden>ⵣ</div>
-          <div className="hero-env-layer hero-env-mountains" aria-hidden />
-          <div className="hero-env-path" aria-hidden />
-          <div className="hero-env-layer hero-env-dunes" aria-hidden />
-          <div className="hero-env-layer hero-env-ruins" aria-hidden />
-          <div className="hero-env-grain" aria-hidden />
+          <img
+            src={heroBg}
+            alt=""
+            className="hero-env-photo"
+            loading="eager"
+            decoding="async"
+            aria-hidden
+          />
+          <div className="hero-env-readability" aria-hidden />
+          <div className="hero-env-parchment" aria-hidden />
           <div className="hero-env-vignette" aria-hidden />
+
 
           <div className="hero-env-frame animate-cinematic-in">
             <div>
