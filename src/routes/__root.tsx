@@ -11,6 +11,7 @@ import { ContinueJourneyCard } from "@/components/ContinueJourneyCard";
 import { JourneyHud } from "@/components/JourneyHud";
 import { BackToTop } from "@/components/BackToTop";
 import { MuseumDock } from "@/components/MuseumDock";
+import { MotionReveal } from "@/components/MotionReveal";
 
 function NotFoundComponent() {
   return (
@@ -110,6 +111,7 @@ function RootComponent() {
       <JourneyHud />
       <BackToTop />
       <MuseumDock />
+      <MotionReveal />
       <Sonner />
     </>
   );
