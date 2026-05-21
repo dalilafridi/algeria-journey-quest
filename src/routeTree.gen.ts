@@ -19,6 +19,7 @@ import { Route as LessonsRouteImport } from './routes/lessons'
 import { Route as IdeasRouteImport } from './routes/ideas'
 import { Route as CuisineRouteImport } from './routes/cuisine'
 import { Route as CinemaRouteImport } from './routes/cinema'
+import { Route as AtlasRouteImport } from './routes/atlas'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as FiguresIndexRouteImport } from './routes/figures.index'
 import { Route as QuizEraIdRouteImport } from './routes/quiz.$eraId'
@@ -76,6 +77,11 @@ const CinemaRoute = CinemaRouteImport.update({
   path: '/cinema',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AtlasRoute = AtlasRouteImport.update({
+  id: '/atlas',
+  path: '/atlas',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -109,6 +115,7 @@ const EraEraIdRoute = EraEraIdRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/atlas': typeof AtlasRoute
   '/cinema': typeof CinemaRoute
   '/cuisine': typeof CuisineRoute
   '/ideas': typeof IdeasRoute
@@ -127,6 +134,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/atlas': typeof AtlasRoute
   '/cinema': typeof CinemaRoute
   '/cuisine': typeof CuisineRoute
   '/ideas': typeof IdeasRoute
@@ -146,6 +154,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/atlas': typeof AtlasRoute
   '/cinema': typeof CinemaRoute
   '/cuisine': typeof CuisineRoute
   '/ideas': typeof IdeasRoute
@@ -166,6 +175,7 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/atlas'
     | '/cinema'
     | '/cuisine'
     | '/ideas'
@@ -184,6 +194,7 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/atlas'
     | '/cinema'
     | '/cuisine'
     | '/ideas'
@@ -202,6 +213,7 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/atlas'
     | '/cinema'
     | '/cuisine'
     | '/ideas'
@@ -221,6 +233,7 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AtlasRoute: typeof AtlasRoute
   CinemaRoute: typeof CinemaRoute
   CuisineRoute: typeof CuisineRoute
   IdeasRoute: typeof IdeasRoute
@@ -310,6 +323,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CinemaRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/atlas': {
+      id: '/atlas'
+      path: '/atlas'
+      fullPath: '/atlas'
+      preLoaderRoute: typeof AtlasRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -357,6 +377,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AtlasRoute: AtlasRoute,
   CinemaRoute: CinemaRoute,
   CuisineRoute: CuisineRoute,
   IdeasRoute: IdeasRoute,

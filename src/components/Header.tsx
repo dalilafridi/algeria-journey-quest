@@ -49,6 +49,7 @@ export function Header() {
     culture: { fr: "Culture", en: "Culture", ar: "الثقافة" }[current],
     figures: { fr: "Figures", en: "Figures", ar: "الشخصيات" }[current],
     regions: { fr: "Régions", en: "Regions", ar: "المناطق" }[current],
+    atlas: { fr: "Atlas", en: "Atlas", ar: "الأطلس" }[current],
     words: { fr: "Paroles", en: "Words", ar: "كلمات" }[current],
     moments: { fr: "Moments", en: "Moments", ar: "لحظات" }[current],
     cuisine: { fr: "Cuisine", en: "Cuisine", ar: "المطبخ" }[current],
@@ -67,9 +68,8 @@ export function Header() {
   };
 
   // Section matchers — define which URL prefixes belong to each tab.
-  // Journey owns historical content: timeline, eras, moments, and home.
-  // Culture owns words/ideas/figures and its sub-experiences (cuisine, stargazing, cinema).
   const isJourney = path === "/" || path.startsWith("/timeline") || path.startsWith("/era") || path.startsWith("/moments") || path.startsWith("/lessons");
+  const isAtlas = path.startsWith("/atlas");
   const isRegions = path.startsWith("/map");
   const isFigures = path.startsWith("/figures");
   const isCulture =
@@ -82,6 +82,7 @@ export function Header() {
   // Primary structural pillars
   const navLinks = [
     { to: "/timeline" as const, label: T.journey, active: isJourney },
+    { to: "/atlas" as const, label: T.atlas, active: isAtlas },
     { to: "/map" as const, label: T.regions, active: isRegions },
     { to: "/figures" as const, label: T.figures, active: isFigures },
     { to: "/words" as const, label: T.culture, active: isCulture },
