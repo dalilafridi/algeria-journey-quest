@@ -1,10 +1,12 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Header } from "@/components/Header";
 import { RegionIcon } from "@/components/RegionIcon";
 import { mapRegions, type MapRegion } from "@/data/mapRegions";
 import { getFigure } from "@/data/figures";
 import { regionIntros, cinematicCopy } from "@/data/cinematic";
+import { getRegionExtras } from "@/data/regionExtras";
+import { eras } from "@/data/eras";
 import { discover } from "@/lib/discoveries";
 import { t, useLang } from "@/lib/i18n";
 import { saveJourneyPlace } from "@/lib/continuity";
@@ -39,6 +41,17 @@ const COPY = {
   keyFact: { en: "Key fact", fr: "Fait clé", ar: "حقيقة بارزة" },
   relatedFigures: { en: "Related figures", fr: "Figures liées", ar: "شخصيات مرتبطة" },
   backToRegions: { en: "Back to Regions", fr: "Retour aux régions", ar: "العودة إلى المناطق" },
+  identity: { en: "Region identity", fr: "Identité de la région", ar: "هويّة المنطقة" },
+  geography: { en: "Geography", fr: "Géographie", ar: "الجغرافيا" },
+  historical: { en: "Historical significance", fr: "Importance historique", ar: "الأهمية التاريخية" },
+  cultural: { en: "Cultural importance", fr: "Importance culturelle", ar: "الأهمية الثقافية" },
+  historicalConnections: { en: "Historical connections", fr: "Connexions historiques", ar: "صلاتٌ تاريخية" },
+  culturalIdentity: { en: "Cultural identity", fr: "Identité culturelle", ar: "الهوية الثقافية" },
+  museumNotes: { en: "Museum notes", fr: "Notes du musée", ar: "ملاحظات المتحف" },
+  exploreNearby: { en: "Explore nearby", fr: "Explorer à proximité", ar: "اكتشف المجاور" },
+  reflection: { en: "A regional reflection", fr: "Une réflexion régionale", ar: "تأمّلٌ من المنطقة" },
+  curator: { en: "Curator", fr: "Conservateur", ar: "أمين المتحف" },
+  exploreEra: { en: "Explore era", fr: "Découvrir l'époque", ar: "اكتشف الحقبة" },
 } as const;
 
 function RegionExplorerPage() {
@@ -49,6 +62,21 @@ function RegionExplorerPage() {
   const [introPhase, setIntroPhase] = useState(false);
   const [showBackToTop, setShowBackToTop] = useState(false);
   const selected: MapRegion | undefined = mapRegions.find((r) => r.id === selectedId);
+  const extras = selected ? getRegionExtras(selected.id) : undefined;
+  const connectedEras = useMemo(
+    () =>
+      (extras?.eraIds ?? [])
+        .map((eid) => eras.find((e) => e.id === eid))
+        .filter(Boolean) as typeof eras,
+    [extras],
+  );
+  const nearbyRegions = useMemo(
+    () =>
+      (extras?.nearbyRegionIds ?? [])
+        .map((rid) => mapRegions.find((r) => r.id === rid))
+        .filter(Boolean) as typeof mapRegions,
+    [extras],
+  );
 
   useEffect(() => {
     const onScroll = () => setShowBackToTop(window.scrollY > 480);
@@ -319,6 +347,166 @@ function RegionExplorerPage() {
                   })}
                 </div>
               </section>
+            )}
+
+            {/* ===== Region identity (geography / historical / cultural) ===== */}
+            {extras && (
+              <section className="mt-6">
+                <div className="text-xs font-bold uppercase tracking-wider text-muted-foreground mb-2">
+                  {COPY.identity[lang]}
+                </div>
+                <div className="grid sm:grid-cols-3 gap-3">
+                  {[
+                    { label: COPY.geography[lang], body: extras.geography, emoji: "🗺️" },
+                    { label: COPY.historical[lang], body: extras.historicalSignificance, emoji: "🏛️" },
+                    { label: COPY.cultural[lang], body: extras.culturalImportance, emoji: "🎶" },
+                  ].map((b, i) => (
+                    <div
+                      key={i}
+                      className="rounded-2xl border border-border/70 bg-card/95 p-3.5"
+                      style={{ boxShadow: "var(--shadow-soft)" }}
+                    >
+                      <div className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.2em] text-primary/80">
+                        <span aria-hidden>{b.emoji}</span>
+                        {b.label}
+                      </div>
+                      <p className="mt-1.5 text-sm text-foreground/85 leading-relaxed">
+                        {t(b.body, lang)}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </section>
+            )}
+
+            {/* ===== Historical connections (linked eras) ===== */}
+            {connectedEras.length > 0 && (
+              <section className="mt-6">
+                <div className="text-xs font-bold uppercase tracking-wider text-muted-foreground mb-2">
+                  {COPY.historicalConnections[lang]}
+                </div>
+                <div className="flex flex-wrap gap-2">
+                  {connectedEras.map((e) => (
+                    <Link
+                      key={e.id}
+                      to="/era/$eraId"
+                      params={{ eraId: e.id }}
+                      className="group inline-flex items-center gap-2 rounded-full border border-border bg-card hover:bg-muted/40 hover:border-primary/40 px-3.5 py-1.5 text-sm font-semibold transition"
+                    >
+                      <span aria-hidden>{e.emoji}</span>
+                      <span>{t(e.title, lang)}</span>
+                      <span className="text-[10px] text-muted-foreground">{e.dateRange}</span>
+                      <span className="text-primary text-xs rtl:rotate-180 opacity-0 group-hover:opacity-100 transition-opacity">
+                        →
+                      </span>
+                    </Link>
+                  ))}
+                </div>
+              </section>
+            )}
+
+            {/* ===== Cultural identity pillars ===== */}
+            {extras?.culturePillars?.length ? (
+              <section className="mt-6">
+                <div className="text-xs font-bold uppercase tracking-wider text-muted-foreground mb-2">
+                  {COPY.culturalIdentity[lang]}
+                </div>
+                <div className="grid sm:grid-cols-2 gap-3">
+                  {extras.culturePillars.map((p, i) => (
+                    <div
+                      key={i}
+                      className="rounded-2xl border border-border/70 bg-card/95 p-3.5"
+                      style={{ boxShadow: "var(--shadow-soft)" }}
+                    >
+                      <div className="flex items-center gap-2">
+                        <span aria-hidden className="text-lg">
+                          {p.emoji}
+                        </span>
+                        <h4 className="font-bold text-sm">{t(p.label, lang)}</h4>
+                      </div>
+                      <p className="mt-1.5 text-sm text-foreground/80 leading-snug">
+                        {t(p.body, lang)}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </section>
+            ) : null}
+
+            {/* ===== Museum notes ===== */}
+            {extras?.museumNotes?.length ? (
+              <section className="mt-6">
+                <div className="text-xs font-bold uppercase tracking-wider text-muted-foreground mb-2">
+                  {COPY.museumNotes[lang]}
+                </div>
+                <div className="space-y-3">
+                  {extras.museumNotes.map((n, i) => (
+                    <article
+                      key={i}
+                      className="rounded-2xl border border-border/70 bg-mosaic-soft p-4"
+                      style={{
+                        backgroundColor: "color-mix(in oklab, var(--accent) 10%, var(--card))",
+                        boxShadow: "var(--shadow-soft)",
+                      }}
+                    >
+                      <div className="text-[10px] font-bold uppercase tracking-[0.22em] text-primary/80">
+                        {COPY.curator[lang]}
+                      </div>
+                      <h4 className="mt-1 font-bold text-sm">{t(n.title, lang)}</h4>
+                      <p className="mt-1.5 text-sm text-foreground/85 leading-relaxed">
+                        {t(n.body, lang)}
+                      </p>
+                    </article>
+                  ))}
+                </div>
+              </section>
+            ) : null}
+
+            {/* ===== Explore nearby ===== */}
+            {nearbyRegions.length > 0 && (
+              <section className="mt-6">
+                <div className="text-xs font-bold uppercase tracking-wider text-muted-foreground mb-2">
+                  {COPY.exploreNearby[lang]}
+                </div>
+                <div className="flex flex-wrap gap-2">
+                  {nearbyRegions.map((r) => (
+                    <button
+                      key={r.id}
+                      type="button"
+                      onClick={() => handleSelect(r.id)}
+                      className="inline-flex items-center gap-2 rounded-full border border-border bg-card hover:bg-muted/40 hover:border-primary/40 px-3.5 py-1.5 text-sm font-semibold transition"
+                    >
+                      <span aria-hidden>{r.emoji}</span>
+                      <span>{t(r.name, lang)}</span>
+                      <span className="text-primary text-xs rtl:rotate-180">→</span>
+                    </button>
+                  ))}
+                </div>
+              </section>
+            )}
+
+            {/* ===== Regional reflection ===== */}
+            {extras?.reflection && (
+              <figure
+                className="mt-7 relative overflow-hidden rounded-3xl border border-primary/30 px-5 py-7 text-center"
+                style={{
+                  background:
+                    "linear-gradient(135deg, color-mix(in oklab, var(--primary) 12%, var(--card)), color-mix(in oklab, var(--accent) 12%, var(--card)))",
+                  boxShadow: "var(--shadow-glow, var(--shadow-soft))",
+                }}
+              >
+                <div className="text-[10px] font-bold uppercase tracking-[0.24em] text-primary mb-1.5">
+                  {COPY.reflection[lang]}
+                </div>
+                <blockquote className="text-base sm:text-xl italic font-semibold text-foreground leading-snug max-w-xl mx-auto">
+                  “{t(extras.reflection.quote, lang)}”
+                </blockquote>
+                {extras.reflection.attribution && (
+                  <figcaption className="mt-2 text-xs text-muted-foreground">
+                    — {t(extras.reflection.attribution, lang)}
+                  </figcaption>
+                )}
+              </figure>
             )}
           </article>
         ) : (
