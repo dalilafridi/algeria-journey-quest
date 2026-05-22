@@ -399,28 +399,29 @@ function ChapterRow({
               </div>
             )}
 
-            <div className="mt-auto flex items-end justify-between gap-3 pt-1">
+            <div className="mt-auto flex flex-wrap items-center justify-between gap-2 pt-1">
               {!unlocked ? (
-                <div className="text-[11px] italic text-muted-foreground/90 leading-snug">
+                <div className="text-[11px] italic text-muted-foreground/90 leading-snug basis-full sm:basis-auto">
                   {lockedMsg}
                 </div>
-              ) : (
-                <div />
-              )}
-              {unlocked ? (
-                <Link
-                  to="/era/$eraId"
-                  params={{ eraId: era.id }}
-                  className="shrink-0 inline-flex items-center gap-1 px-3.5 py-1.5 rounded-full text-sm font-semibold bg-primary text-primary-foreground hover:opacity-90 transition-opacity"
-                  style={{ boxShadow: "var(--shadow-glow)" }}
-                >
-                  {done ? tu("continueBtn", lang) : tu("startBtn", lang)} →
-                </Link>
-              ) : (
-                <span className="shrink-0 inline-flex items-center gap-1 px-3.5 py-1.5 rounded-full text-sm font-semibold border border-border text-muted-foreground">
-                  <Lock className="w-3.5 h-3.5" /> {tu("lockedBtn", lang)}
-                </span>
-              )}
+              ) : null}
+              <div className="flex items-center gap-2 ms-auto">
+                <EraPreview era={era} image={meta?.image} lang={lang} />
+                {unlocked ? (
+                  <Link
+                    to="/era/$eraId"
+                    params={{ eraId: era.id }}
+                    className="shrink-0 inline-flex items-center gap-1 px-3.5 py-1.5 rounded-full text-sm font-semibold bg-primary text-primary-foreground hover:opacity-90 transition-opacity min-h-[36px]"
+                    style={{ boxShadow: "var(--shadow-glow)" }}
+                  >
+                    {done ? tu("continueBtn", lang) : tu("startBtn", lang)} →
+                  </Link>
+                ) : (
+                  <span className="shrink-0 inline-flex items-center gap-1 px-3.5 py-1.5 rounded-full text-sm font-semibold border border-border text-muted-foreground min-h-[36px]">
+                    <Lock className="w-3.5 h-3.5" /> {tu("lockedBtn", lang)}
+                  </span>
+                )}
+              </div>
             </div>
           </div>
         </div>
