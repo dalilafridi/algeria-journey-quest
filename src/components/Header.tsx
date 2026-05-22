@@ -3,7 +3,9 @@ import { useEffect, useRef, useState } from "react";
 import { resetAllQuizProgress } from "@/lib/progress";
 import { LANGS, getLang, setLang, useLang, type Lang } from "@/lib/i18n";
 import { OPEN_CREATOR_ABOUT_EVENT } from "@/components/WelcomeJourney";
+import { openMuseumSearch } from "@/components/SearchOverlay";
 import brandIcon from "@/assets/brand-icon.png";
+
 
 const LANG_LABEL: Record<Lang, string> = {
   fr: "Français",
