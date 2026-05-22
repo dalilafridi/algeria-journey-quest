@@ -3,7 +3,9 @@ import { useEffect, useRef, useState } from "react";
 import { resetAllQuizProgress } from "@/lib/progress";
 import { LANGS, getLang, setLang, useLang, type Lang } from "@/lib/i18n";
 import { OPEN_CREATOR_ABOUT_EVENT } from "@/components/WelcomeJourney";
+import { openMuseumSearch } from "@/components/SearchOverlay";
 import brandIcon from "@/assets/brand-icon.png";
+
 
 const LANG_LABEL: Record<Lang, string> = {
   fr: "Français",
@@ -60,6 +62,7 @@ export function Header() {
     settings: { fr: "Paramètres", en: "Settings", ar: "الإعدادات" }[current],
     about: { fr: "À propos", en: "About", ar: "حول" }[current],
     resetQuizzes: { fr: "Réinitialiser les quiz", en: "Reset Quizzes", ar: "إعادة ضبط الاختبارات" }[current],
+    search: { fr: "Rechercher", en: "Search", ar: "بحث" }[current],
     confirmReset: {
       fr: "Réinitialiser tout le progrès des quiz ?",
       en: "Reset all quiz progress?",
@@ -147,8 +150,23 @@ export function Header() {
         </nav>
 
         <div className="flex items-center gap-2 sm:gap-3">
+          {/* Search trigger — opens museum overlay */}
+          <button
+            type="button"
+            onClick={openMuseumSearch}
+            aria-label={T.search}
+            title={T.search + " (⌘K)"}
+            className="inline-flex items-center justify-center w-10 h-10 rounded-full border border-border bg-card text-foreground hover:bg-muted transition-colors"
+          >
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <circle cx="11" cy="11" r="7" />
+              <line x1="21" y1="21" x2="16.65" y2="16.65" />
+            </svg>
+          </button>
+
           {/* Language dropdown */}
           <div className="relative" ref={langRef}>
+
             <button
               type="button"
               onClick={() => {
