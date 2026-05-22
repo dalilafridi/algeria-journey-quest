@@ -12,7 +12,9 @@ import { JourneyHud } from "@/components/JourneyHud";
 import { BackToTop } from "@/components/BackToTop";
 import { MuseumDock } from "@/components/MuseumDock";
 import { MotionReveal } from "@/components/MotionReveal";
+import { SearchOverlay } from "@/components/SearchOverlay";
 import { SkipLink, LangSync } from "@/components/A11y";
+
 
 function NotFoundComponent() {
   return (
