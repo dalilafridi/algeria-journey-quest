@@ -119,14 +119,26 @@ function FigureDetail() {
           </Link>
           <div className="mt-5 flex items-start gap-5">
             <div
-              className="shrink-0 w-20 h-20 sm:w-24 sm:h-24 rounded-2xl border flex items-center justify-center text-5xl sm:text-6xl"
+              className="relative shrink-0 w-20 h-20 sm:w-24 sm:h-24 rounded-full flex items-center justify-center"
               style={{
-                background: "color-mix(in oklab, var(--card) 80%, var(--accent) 12%)",
-                borderColor: "color-mix(in oklab, var(--accent) 40%, var(--border))",
-                boxShadow: "var(--shadow-glow)",
+                background:
+                  "radial-gradient(circle at 35% 30%, color-mix(in oklab, var(--brand-gold-bright) 55%, var(--card)) 0%, color-mix(in oklab, var(--brand-gold) 30%, var(--card)) 45%, color-mix(in oklab, var(--brand-gold-deep) 32%, var(--card)) 100%)",
+                boxShadow:
+                  "0 0 0 1px color-mix(in oklab, var(--brand-gold) 60%, transparent), inset 0 -10px 22px color-mix(in oklab, var(--foreground) 22%, transparent), var(--shadow-gold-glow)",
               }}
             >
-              {f.emoji}
+              <div
+                aria-hidden
+                className="absolute inset-1.5 rounded-full border"
+                style={{ borderColor: "color-mix(in oklab, var(--background) 60%, transparent)" }}
+              />
+              <span
+                aria-hidden
+                className="relative text-5xl sm:text-6xl drop-shadow-[0_2px_6px_rgba(0,0,0,0.25)]"
+                style={{ filter: "saturate(0.9)" }}
+              >
+                {f.emoji}
+              </span>
             </div>
             <div className="flex-1 min-w-0">
               <h1
