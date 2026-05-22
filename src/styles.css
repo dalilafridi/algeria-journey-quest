@@ -1091,6 +1091,21 @@ html.showcase-on body {
   padding-bottom: 0;
 }
 
+/* Global bottom safe area so the fixed JourneyHud + MuseumDock
+   never cover the last piece of content on any page.
+   ~64px hud + ~16px breathing + safe-area inset. */
+#main {
+  padding-bottom: calc(env(safe-area-inset-bottom) + 5.5rem);
+}
+@media (min-width: 640px) {
+  #main {
+    padding-bottom: calc(env(safe-area-inset-bottom) + 4.5rem);
+  }
+}
+html.showcase-on #main {
+  padding-bottom: 0;
+}
+
 /* Slightly more cinematic typographic rhythm inside the showcase stage */
 .showcase-stage .museum-section-title {
   letter-spacing: -0.02em;
