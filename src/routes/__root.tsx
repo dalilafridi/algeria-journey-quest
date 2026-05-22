@@ -122,8 +122,10 @@ function RootComponent() {
       <JourneyHud />
       <BackToTop />
       <MuseumDock />
+      <SearchOverlay />
       <MotionReveal />
       <Sonner />
+
     </>
   );
 }
