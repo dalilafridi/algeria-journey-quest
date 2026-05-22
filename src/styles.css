@@ -1457,9 +1457,12 @@ html.showcase-on body { padding-bottom: 0; }
   position: relative;
   isolation: isolate;
   overflow: hidden;
-  min-height: clamp(520px, 82vh, 860px);
+  min-height: clamp(440px, 72vh, 860px);
   color: oklch(0.97 0.02 84);
   background-color: oklch(0.12 0.025 50);
+}
+@media (min-width: 900px) {
+  .hero-environment { min-height: clamp(560px, 84vh, 880px); }
 }
 
 .hero-env-photo {
@@ -1529,8 +1532,8 @@ html.showcase-on body { padding-bottom: 0; }
   z-index: 5;
   max-width: 1320px;
   margin: 0 auto;
-  padding: clamp(3.5rem, 9vh, 7rem) clamp(1.5rem, 6vw, 5.5rem)
-           clamp(4rem, 10vh, 7rem);
+  padding: clamp(2.25rem, 6vh, 7rem) clamp(1.25rem, 6vw, 5.5rem)
+           clamp(2.5rem, 7vh, 7rem);
   display: grid;
   grid-template-columns: minmax(0, 1fr);
   gap: 2.5rem;
@@ -1643,7 +1646,8 @@ html.showcase-on body { padding-bottom: 0; }
   display: inline-flex;
   align-items: center;
   gap: 0.6rem;
-  padding: 0.5rem 0.25rem;
+  min-height: 44px;
+  padding: 0.65rem 0.25rem;
   font-family: Georgia, "Times New Roman", serif;
   font-size: 0.95rem;
   font-style: italic;
