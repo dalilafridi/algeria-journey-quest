@@ -14,6 +14,7 @@ import frenchImg from "@/assets/era-french.png";
 import independenceImg from "@/assets/era-independence.png";
 import { saveJourneyPlace } from "@/lib/continuity";
 import { JourneyNext } from "@/components/JourneyNext";
+import { EraPreview } from "@/components/EraPreview";
 
 export const Route = createFileRoute("/timeline")({
   head: () => ({
