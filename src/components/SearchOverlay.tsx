@@ -148,9 +148,10 @@ export function SearchOverlay() {
     pushRecent(query.trim() || t(item.title, lang));
     setOpen(false);
     setQuery("");
-    // Use href with router navigate. Hash href? router navigate accepts string.
-    navigate({ to: item.href as never });
+    const [path, hash] = item.href.split("#");
+    navigate({ to: path as never, hash: hash || undefined });
   };
+
 
   const onInputKey = (e: React.KeyboardEvent<HTMLInputElement>) => {
     const list = results.length ? results : (discoveries as SearchItem[]);
