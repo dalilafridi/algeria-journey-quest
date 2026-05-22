@@ -62,6 +62,7 @@ export function Header() {
     settings: { fr: "Paramètres", en: "Settings", ar: "الإعدادات" }[current],
     about: { fr: "À propos", en: "About", ar: "حول" }[current],
     resetQuizzes: { fr: "Réinitialiser les quiz", en: "Reset Quizzes", ar: "إعادة ضبط الاختبارات" }[current],
+    search: { fr: "Rechercher", en: "Search", ar: "بحث" }[current],
     confirmReset: {
       fr: "Réinitialiser tout le progrès des quiz ?",
       en: "Reset all quiz progress?",
