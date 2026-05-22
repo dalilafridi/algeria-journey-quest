@@ -283,9 +283,9 @@ function FiguresIndex() {
           )}
         </div>
 
-        {/* Grid */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {list.map((f) => {
+        {/* Portrait gallery */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
+          {list.map((f, i) => {
             const era = f.relatedEraId ? eras.find((e) => e.id === f.relatedEraId) : undefined;
             const regionMapId = FIGURE_REGION_TO_MAP[f.region];
             const region = regionMapId
@@ -293,107 +293,178 @@ function FiguresIndex() {
               : undefined;
             const fm = figureMeta[f.id];
             const isFeatured = Boolean(fm);
+            const primaryTheme = fm?.themes?.[0];
+            const themeDef = primaryTheme ? FIGURE_THEMES[primaryTheme] : null;
+            const exhibitNo = String(i + 1).padStart(3, "0");
             return (
               <Link
                 key={f.id}
                 to="/figures/$figureId"
                 params={{ figureId: f.id }}
-                className="group relative rounded-2xl bg-card border border-border p-5 transition-all duration-300 hover:-translate-y-0.5 hover:border-primary/50 flex flex-col overflow-hidden"
+                aria-label={t(f.displayName, lang)}
+                className="figure-exhibit group relative flex flex-col overflow-hidden rounded-[1.25rem] border border-border/70 bg-card transition-all duration-500 hover:-translate-y-1 focus-visible:-translate-y-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40"
                 style={{ boxShadow: "var(--shadow-soft)" }}
               >
-                {/* Top accent ribbon */}
+                {/* Portrait stage */}
                 <div
-                  aria-hidden
-                  className="absolute inset-x-0 top-0 h-1 opacity-70 group-hover:opacity-100 transition"
-                  style={{ background: "var(--gradient-warm)" }}
-                />
-                {isFeatured && (
-                  <span
-                    className="absolute top-3 end-3 text-[10px] font-bold px-2 py-0.5 rounded-full border"
-                    style={{
-                      borderColor: "color-mix(in oklab, var(--accent) 50%, var(--border))",
-                      background: "color-mix(in oklab, var(--accent) 18%, var(--card))",
-                      color: "var(--accent-foreground)",
-                    }}
-                  >
-                    ★
-                  </span>
-                )}
-
-                {/* Portrait treatment */}
-                <div
-                  className="relative h-28 -mx-5 -mt-5 mb-4 flex items-center justify-center overflow-hidden"
+                  className="relative h-44 sm:h-48 overflow-hidden bg-parchment-card"
                   style={{
                     background:
-                      "linear-gradient(135deg, color-mix(in oklab, var(--primary) 14%, var(--card)), color-mix(in oklab, var(--accent) 10%, var(--card)))",
+                      "linear-gradient(180deg, color-mix(in oklab, var(--accent) 14%, var(--card)) 0%, color-mix(in oklab, var(--primary) 8%, var(--card)) 100%)",
                   }}
                 >
+                  {/* Inner gold frame */}
                   <div
                     aria-hidden
-                    className="absolute inset-0 opacity-[0.05] text-[7rem] flex items-center justify-center select-none"
+                    className="pointer-events-none absolute inset-2 rounded-[0.85rem] border"
+                    style={{
+                      borderColor: "color-mix(in oklab, var(--brand-gold) 38%, transparent)",
+                      boxShadow:
+                        "inset 0 0 0 1px color-mix(in oklab, var(--brand-gold-bright) 18%, transparent)",
+                    }}
+                  />
+                  {/* Vignette */}
+                  <div
+                    aria-hidden
+                    className="pointer-events-none absolute inset-0"
+                    style={{
+                      background:
+                        "radial-gradient(ellipse at 50% 35%, transparent 40%, color-mix(in oklab, var(--foreground) 22%, transparent) 100%)",
+                    }}
+                  />
+                  {/* ⵣ watermark */}
+                  <div
+                    aria-hidden
+                    className="pointer-events-none absolute inset-0 flex items-center justify-center text-[8rem] leading-none font-black select-none opacity-[0.05]"
                     style={{ color: "var(--foreground)" }}
                   >
                     ⵣ
                   </div>
-                  <div className="relative text-5xl transition-transform duration-300 group-hover:scale-110">
-                    {f.emoji}
+                  {/* Silhouette medallion */}
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div
+                      className="relative flex items-center justify-center w-24 h-24 sm:w-28 sm:h-28 rounded-full transition-transform duration-700 group-hover:scale-[1.06]"
+                      style={{
+                        background:
+                          "radial-gradient(circle at 35% 30%, color-mix(in oklab, var(--brand-gold-bright) 55%, var(--card)) 0%, color-mix(in oklab, var(--brand-gold) 30%, var(--card)) 45%, color-mix(in oklab, var(--brand-gold-deep) 28%, var(--card)) 100%)",
+                        boxShadow:
+                          "0 0 0 1px color-mix(in oklab, var(--brand-gold) 55%, transparent), inset 0 -8px 18px color-mix(in oklab, var(--foreground) 22%, transparent), 0 12px 26px -12px color-mix(in oklab, var(--foreground) 50%, transparent)",
+                      }}
+                    >
+                      <div
+                        aria-hidden
+                        className="absolute inset-1 rounded-full border"
+                        style={{
+                          borderColor: "color-mix(in oklab, var(--background) 55%, transparent)",
+                        }}
+                      />
+                      <span
+                        aria-hidden
+                        className="relative text-4xl sm:text-[2.75rem] drop-shadow-[0_2px_6px_rgba(0,0,0,0.25)]"
+                        style={{ filter: "saturate(0.85)" }}
+                      >
+                        {f.emoji}
+                      </span>
+                    </div>
                   </div>
+                  {/* Soft warm light sweep on hover */}
+                  <div
+                    aria-hidden
+                    className="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700"
+                    style={{
+                      background:
+                        "linear-gradient(120deg, transparent 30%, color-mix(in oklab, var(--brand-gold-bright) 22%, transparent) 50%, transparent 70%)",
+                    }}
+                  />
+                  {/* Exhibit number */}
+                  <span
+                    className="absolute top-3 start-3 text-[10px] font-semibold uppercase tracking-[0.22em]"
+                    style={{ color: "color-mix(in oklab, var(--brand-gold-deep) 85%, var(--foreground))" }}
+                  >
+                    N° {exhibitNo}
+                  </span>
+                  {/* Featured star */}
+                  {isFeatured && (
+                    <span
+                      className="absolute top-3 end-3 inline-flex items-center justify-center w-6 h-6 rounded-full text-[10px] font-bold"
+                      style={{
+                        background: "var(--gradient-brand-gold)",
+                        color: "color-mix(in oklab, var(--foreground) 80%, transparent)",
+                        boxShadow: "0 4px 10px -4px color-mix(in oklab, var(--brand-gold) 60%, transparent)",
+                      }}
+                      title="Featured"
+                    >
+                      ★
+                    </span>
+                  )}
                 </div>
 
-                <div className="flex-1 min-w-0">
+                {/* Museum plaque */}
+                <div className="relative px-5 pt-4 pb-5 flex-1 flex flex-col bg-parchment-card">
+                  {/* Gilded divider */}
                   <div
-                    className="font-bold text-lg leading-tight group-hover:text-primary transition"
-                    style={{ fontFamily: "Georgia, 'Times New Roman', serif" }}
+                    aria-hidden
+                    className="absolute inset-x-5 top-0 h-px"
+                    style={{
+                      background:
+                        "linear-gradient(90deg, transparent, color-mix(in oklab, var(--brand-gold) 70%, transparent), transparent)",
+                    }}
+                  />
+                  <div
+                    className="text-[10px] uppercase tracking-[0.22em] font-bold"
+                    style={{ color: "color-mix(in oklab, var(--brand-gold-deep) 80%, var(--muted-foreground))" }}
                   >
-                    {t(f.displayName, lang)}
-                  </div>
-                  <div className="text-xs text-muted-foreground mt-1 font-medium uppercase tracking-wider">
                     {t(f.era, lang)}
                   </div>
+                  <h3
+                    className="mt-1.5 text-[1.2rem] sm:text-[1.3rem] leading-tight font-bold group-hover:text-primary transition-colors"
+                    style={{ fontFamily: "Georgia, 'Times New Roman', serif", letterSpacing: "-0.005em" }}
+                  >
+                    {t(f.displayName, lang)}
+                  </h3>
 
                   {fm?.cinematicLine ? (
                     <p
-                      className="mt-3 text-sm italic text-foreground/80 line-clamp-2 leading-relaxed"
+                      className="mt-2.5 text-[13px] italic text-foreground/75 line-clamp-2 leading-relaxed"
                       style={{ fontFamily: "Georgia, 'Times New Roman', serif" }}
                     >
                       “{t(fm.cinematicLine, lang)}”
                     </p>
                   ) : (
-                    <p className="mt-3 text-sm text-muted-foreground line-clamp-3 leading-relaxed">
+                    <p className="mt-2.5 text-[13px] text-muted-foreground line-clamp-2 leading-relaxed">
                       {t(f.fact, lang)}
                     </p>
                   )}
 
-                  {fm?.themes && fm.themes.length > 0 && (
-                    <div className="mt-3 flex flex-wrap gap-1">
-                      {fm.themes.slice(0, 3).map((th) => {
-                        const def = FIGURE_THEMES[th];
-                        return (
-                          <span
-                            key={th}
-                            className="px-1.5 py-0.5 rounded-full text-[10px] font-semibold border border-border/60 bg-muted/40 text-muted-foreground"
-                          >
-                            <span className="mr-0.5">{def.emoji}</span>
-                            {t(def.label, lang)}
-                          </span>
-                        );
-                      })}
-                    </div>
-                  )}
-                </div>
-
-                <div className="mt-4 pt-3 border-t border-border/60 flex flex-wrap gap-1.5 text-[11px] font-semibold">
-                  {region ? (
-                    <span className="px-2 py-0.5 rounded-full bg-muted text-muted-foreground">
-                      📍 {t(region.name, lang)}
+                  <div className="mt-auto pt-4 flex items-center justify-between gap-2 text-[11px]">
+                    <span className="inline-flex items-center gap-1 text-muted-foreground">
+                      <span aria-hidden>◈</span>
+                      <span className="font-medium">
+                        {region ? t(region.name, lang) : t(f.regionLabel, lang)}
+                      </span>
                     </span>
-                  ) : (
-                    <span className="px-2 py-0.5 rounded-full bg-muted text-muted-foreground">
-                      {t(f.regionLabel, lang)}
-                    </span>
-                  )}
+                    {themeDef && (
+                      <span
+                        className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full font-semibold border"
+                        style={{
+                          borderColor: "color-mix(in oklab, var(--brand-gold) 35%, var(--border))",
+                          background: "color-mix(in oklab, var(--brand-gold) 10%, var(--card))",
+                          color: "color-mix(in oklab, var(--brand-gold-deep) 80%, var(--foreground))",
+                        }}
+                      >
+                        <span aria-hidden>{themeDef.emoji}</span>
+                        {t(themeDef.label, lang)}
+                      </span>
+                    )}
+                  </div>
+                  {/* Hover lift glow */}
+                  <div
+                    aria-hidden
+                    className="pointer-events-none absolute -inset-px rounded-[1.25rem] opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                    style={{ boxShadow: "var(--shadow-gold-glow)" }}
+                  />
                   {era && (
-                    <span className="px-2 py-0.5 rounded-full bg-accent/15 text-accent-foreground">
+                    <span className="sr-only">
                       {era.emoji} {t(era.title, lang)}
                     </span>
                   )}
