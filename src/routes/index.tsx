@@ -294,7 +294,6 @@ function Home() {
           </div>
         </section>
 
-        </section>
 
         {/* ========= DID YOU KNOW ========= */}
         <section className="mx-auto max-w-5xl px-4 pb-10 sm:pb-14">
