@@ -132,6 +132,7 @@ function Home() {
       { regionId: "sahara", title: { en: "Sahara", fr: "Sahara", ar: "الصحراء" } },
       { regionId: "oran-west", title: { en: "Western Algeria", fr: "Algérie de l’Ouest", ar: "الغرب الجزائري" } },
     ],
+  };
 
 
   // Pair "today's moment" with its likely era for context
