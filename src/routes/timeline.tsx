@@ -250,7 +250,6 @@ function ChapterRow({
   lang: Lang;
 }) {
   const meta = ERA_META[era.id];
-  void meta;
 
   const unlocked = isUnlocked(era.id);
   const progress = getProgress();
