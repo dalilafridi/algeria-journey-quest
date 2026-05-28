@@ -444,7 +444,6 @@ main > div > section {
 @media (prefers-reduced-motion: reduce) {
   .highlight-target { animation: none; }
 }
-
 /* Premium image hover — slow, subtle zoom. Wrap <img> in a parent with
    class="img-zoom" and overflow-hidden; the image will gently scale in. */
 .img-zoom { overflow: hidden; }
@@ -460,6 +459,34 @@ main > div > section {
 @media (prefers-reduced-motion: reduce) {
   .img-zoom > img, .img-zoom > picture > img { transition: none; }
   .img-zoom:hover > img, .img-zoom:hover > picture > img { transform: none; }
+}
+
+/* ============================================================
+   Unified museum icon interaction — engraved depth + warm glow
+   Apply to any icon wrapper (not the <svg> itself).
+   No scaling, no flashy effects. Purely filter-based depth.
+   ============================================================ */
+.icon-glow {
+  transition: filter 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+  filter:
+    drop-shadow(0 1.5px 1.5px color-mix(in oklab, var(--foreground) 18%, transparent))
+    drop-shadow(0 0 0.5px color-mix(in oklab, var(--foreground) 8%, transparent));
+}
+.icon-glow:hover,
+.group:hover .icon-glow {
+  filter:
+    drop-shadow(0 0 5px color-mix(in oklab, var(--brand-gold) 45%, transparent))
+    drop-shadow(0 0 12px color-mix(in oklab, var(--brand-gold-bright) 28%, transparent))
+    drop-shadow(0 1.5px 1.5px color-mix(in oklab, var(--foreground) 14%, transparent));
+}
+.icon-glow:active,
+.group:active .icon-glow {
+  filter:
+    drop-shadow(0 0 3px color-mix(in oklab, var(--brand-gold-deep) 35%, transparent))
+    drop-shadow(0 1px 1px color-mix(in oklab, var(--foreground) 22%, transparent));
+}
+@media (prefers-reduced-motion: reduce) {
+  .icon-glow { transition: none; }
 }
 
 /* Parchment texture overlay — apply to any container for museum feel. */
