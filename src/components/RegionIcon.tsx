@@ -62,89 +62,104 @@ function renderRegionGlyph(regionId: string) {
   }
 }
 
-/* Kabylie — Amazigh diamond with olive-branch geometry */
+/* Kabylie — Amazigh yaz seal framed by mountain diamond */
 function KabylieGlyph() {
   return (
     <>
-      {/* Central diamond (Amazigh motif) */}
-      <path d="M48 30 L62 48 L48 66 L34 48 Z" />
-      <path d="M48 38 L56 48 L48 58 L40 48 Z" strokeWidth={STROKE_FINE} opacity="0.7" />
-      {/* Olive branch arcs */}
-      <path d="M26 64 Q34 58 40 60" strokeWidth={STROKE_FINE} />
-      <path d="M70 32 Q62 38 56 36" strokeWidth={STROKE_FINE} />
-      {/* Leaves */}
-      <circle cx="30" cy="62" r="1.3" fill={ink} stroke="none" />
-      <circle cx="66" cy="34" r="1.3" fill={ink} stroke="none" />
+      {/* Outer Kabyle diamond (mountain + tattoo motif) */}
+      <path d="M48 28 L64 48 L48 68 L32 48 Z" />
+      {/* Yaz ⵣ glyph inside (Amazigh identity) */}
+      <path d="M40 42 L48 42 L48 54 L56 54" strokeWidth={STROKE_FINE} />
+      <path d="M40 54 L48 54 M48 42 L56 42" strokeWidth={STROKE_FINE} opacity="0.85" />
+      {/* Tattoo dots at cardinal points */}
+      <circle cx="48" cy="30" r="1.2" fill={ink} stroke="none" />
+      <circle cx="48" cy="66" r="1.2" fill={ink} stroke="none" />
+      <circle cx="34" cy="48" r="1.2" fill={ink} stroke="none" />
+      <circle cx="62" cy="48" r="1.2" fill={ink} stroke="none" />
     </>
   );
 }
 
-/* Aurès — engraved mountain contour */
+/* Aurès — three carved peaks of the Aurès range with Chaoui tattoo notch */
 function AuresGlyph() {
   return (
     <>
-      <path d="M24 62 L38 42 L48 54 L58 38 L72 62" />
-      <path d="M30 62 L40 50 L46 56" strokeWidth={STROKE_FINE} opacity="0.65" />
-      <path d="M54 56 L60 48 L66 56" strokeWidth={STROKE_FINE} opacity="0.65" />
-      {/* Carved baseline */}
-      <path d="M24 68 H72" strokeWidth={STROKE_FINE} opacity="0.55" />
+      {/* Three asymmetric peaks (Aurès massif silhouette) */}
+      <path d="M24 64 L34 44 L42 56 L50 36 L60 54 L68 46 L74 64" />
+      {/* Inner ridge shading */}
+      <path d="M34 64 L40 54 M50 50 L56 60" strokeWidth={STROKE_FINE} opacity="0.6" />
+      {/* Carved valley baseline */}
+      <path d="M24 68 H74" strokeWidth={STROKE_FINE} opacity="0.55" />
+      {/* Chaoui tattoo mark below tallest peak */}
+      <path d="M48 70 L50 72 L48 74 L46 72 Z" strokeWidth={STROKE_FINE} opacity="0.7" />
     </>
   );
 }
 
-/* Algiers — Casbah arch seal */
+/* Algiers — horseshoe Casbah arch crowned by Mediterranean crescent */
 function AlgiersGlyph() {
   return (
     <>
+      {/* Crescent above the arch (Ottoman / Mediterranean) */}
+      <path d="M44 28 A6 6 0 1 0 52 28 A5 5 0 1 1 44 28 Z" strokeWidth={STROKE_FINE} />
       {/* Horseshoe arch */}
-      <path d="M34 66 V46 C34 32 62 32 62 46 V66" />
-      <path d="M40 66 V48 C40 38 56 38 56 48 V66" strokeWidth={STROKE_FINE} opacity="0.7" />
-      {/* Keystone notch */}
-      <path d="M48 32 V38" strokeWidth={STROKE_FINE} />
-      {/* Foundation line */}
-      <path d="M28 68 H68" strokeWidth={STROKE_FINE} opacity="0.55" />
+      <path d="M34 66 V46 C34 34 62 34 62 46 V66" />
+      {/* Inner arch line */}
+      <path d="M40 66 V48 C40 40 56 40 56 48 V66" strokeWidth={STROKE_FINE} opacity="0.7" />
+      {/* Tiled foundation steps */}
+      <path d="M30 68 H66 M34 72 H62" strokeWidth={STROKE_FINE} opacity="0.55" />
     </>
   );
 }
 
-/* Constantine — engraved bridge line over gorge */
+/* Constantine — suspension bridge over Rhumel gorge cliffs */
 function ConstantineGlyph() {
   return (
     <>
+      {/* Cliff walls on either side */}
+      <path d="M22 70 V52 L28 52 V46" strokeWidth={STROKE_FINE} opacity="0.7" />
+      <path d="M74 70 V52 L68 52 V46" strokeWidth={STROKE_FINE} opacity="0.7" />
       {/* Pylons */}
-      <path d="M32 64 V36 M64 64 V36" />
-      {/* Suspension curve */}
-      <path d="M32 36 Q48 60 64 36" />
+      <path d="M34 56 V34 M62 56 V34" />
+      {/* Suspension cable */}
+      <path d="M34 34 Q48 56 62 34" />
       {/* Deck */}
-      <path d="M24 50 H72" />
-      {/* Gorge */}
-      <path d="M28 64 L32 64 M64 64 L68 64" strokeWidth={STROKE_FINE} opacity="0.55" />
-      <path d="M40 54 V50 M48 54 V50 M56 54 V50" strokeWidth={STROKE_FINE} opacity="0.55" />
+      <path d="M28 50 H68" />
+      {/* River trace at bottom */}
+      <path d="M30 66 Q42 70 48 66 Q54 62 66 66" strokeWidth={STROKE_FINE} opacity="0.55" />
     </>
   );
 }
 
-/* Western Algeria — Andalusian tile motif */
+/* Western Algeria — Tlemcen sebka lattice with central khatam star */
 function WesternGlyph() {
   return (
     <>
-      {/* Eight-point star (interlocking squares) */}
-      <path d="M48 26 L60 38 L72 38 L60 50 L72 62 L60 62 L48 74 L36 62 L24 62 L36 50 L24 38 L36 38 Z" strokeWidth={STROKE_FINE} />
+      {/* Sebka interlace frame (Almohad-Andalusian) */}
+      <path d="M30 36 H66 V60 H30 Z" strokeWidth={STROKE_FINE} opacity="0.55" />
+      <path d="M30 48 H66 M48 36 V60" strokeWidth={STROKE_FINE} opacity="0.4" />
+      {/* Eight-point khatam star (overlapping squares) */}
       <path d="M48 32 L58 42 L58 54 L48 64 L38 54 L38 42 Z" />
-      <circle cx="48" cy="48" r="2" fill={ink} stroke="none" />
+      <path d="M40 36 L56 60 M56 36 L40 60" strokeWidth={STROKE_FINE} opacity="0.7" />
+      <circle cx="48" cy="48" r="1.8" fill={ink} stroke="none" />
     </>
   );
 }
 
-/* Sahara — dune wave geometry with sun */
+/* Sahara — dune horizon with palm and date-stone sun */
 function SaharaGlyph() {
   return (
     <>
-      {/* Sun */}
-      <circle cx="48" cy="34" r="5" />
-      {/* Dunes */}
-      <path d="M22 60 Q34 52 46 58 Q58 64 70 56" />
-      <path d="M22 68 Q36 60 50 64 Q62 67 74 62" strokeWidth={STROKE_FINE} opacity="0.7" />
+      {/* Low sun on the horizon */}
+      <circle cx="34" cy="38" r="4.5" />
+      <path d="M28 38 H22 M40 38 H46 M34 32 V28 M34 44 V48" strokeWidth={STROKE_FINE} opacity="0.55" />
+      {/* Palm silhouette */}
+      <path d="M62 60 V44" />
+      <path d="M62 44 Q55 38 50 40 M62 44 Q69 38 74 40 M62 44 Q58 36 60 32 M62 44 Q66 36 64 32" strokeWidth={STROKE_FINE} opacity="0.8" />
+      {/* Dune wave */}
+      <path d="M22 64 Q34 58 46 62 Q58 66 70 60" />
+      <path d="M22 70 Q38 64 52 68 Q62 70 74 66" strokeWidth={STROKE_FINE} opacity="0.6" />
     </>
   );
 }
+
