@@ -1,7 +1,7 @@
 /**
- * Museum-style pillar icons for the three home journey gateways.
- * Engraved line marks rendered on a muted gold / parchment palette,
- * consistent in stroke weight and proportions with RegionIcon.
+ * Museum-style pillar glyphs for the three home journey gateways.
+ * Engraved monochrome marks inside a seal — bronze ink on parchment,
+ * no gradients, no illustration. Treat as carved medallion symbols.
  */
 
 type PillarKind = "journey" | "regions" | "culture";
@@ -12,12 +12,11 @@ type Props = {
 };
 
 const ink = "var(--region-icon-ink)";
-const sand = "var(--region-icon-sand)";
 const sandDeep = "var(--region-icon-sand-deep)";
-const clay = "var(--region-icon-clay)";
 const shade = "var(--region-icon-shade)";
-const STROKE = 2.4;
-const STROKE_ACCENT = 1.6;
+
+const STROKE = 1.6;
+const STROKE_FINE = 1;
 
 export function PillarIcon({ kind, className = "" }: Props) {
   return (
@@ -28,6 +27,11 @@ export function PillarIcon({ kind, className = "" }: Props) {
       aria-hidden="true"
       focusable="false"
     >
+      {/* Seal frame — shared across all pillar glyphs */}
+      <g fill="none" stroke={ink} strokeLinecap="round" strokeLinejoin="round">
+        <circle cx="48" cy="48" r="34" fill={shade} strokeWidth={STROKE} />
+        <circle cx="48" cy="48" r="30" stroke={sandDeep} strokeWidth={STROKE_FINE} opacity="0.7" />
+      </g>
       <g
         fill="none"
         stroke={ink}
@@ -43,58 +47,51 @@ export function PillarIcon({ kind, className = "" }: Props) {
   );
 }
 
-/* Journey — engraved compass rose inside a soft seal */
+/* Journey — engraved compass rose, atlas mark */
 function JourneyMark() {
   return (
     <>
-      <circle cx="48" cy="48" r="32" fill={shade} stroke={ink} />
-      <circle cx="48" cy="48" r="26" fill="none" stroke={sandDeep} strokeWidth={STROKE_ACCENT} />
-      {/* Cardinal ticks */}
-      <path d="M48 18 V26 M48 70 V78 M18 48 H26 M70 48 H78" />
-      {/* Compass needle */}
-      <path d="M48 28 L54 48 L48 68 L42 48 Z" fill={clay} stroke={ink} />
-      <path d="M48 28 L54 48 L42 48 Z" fill={sand} stroke={ink} />
-      <circle cx="48" cy="48" r="2.4" fill={ink} stroke="none" />
+      {/* Cardinal axes */}
+      <path d="M48 22 V74 M22 48 H74" strokeWidth={STROKE_FINE} opacity="0.55" />
+      {/* Diagonal ticks */}
+      <path d="M32 32 L36 36 M64 32 L60 36 M32 64 L36 60 M64 64 L60 60" strokeWidth={STROKE_FINE} opacity="0.55" />
+      {/* North-pointing diamond needle */}
+      <path d="M48 26 L54 48 L48 70 L42 48 Z" />
+      <path d="M48 26 L54 48 L42 48 Z" fill={ink} fillOpacity="0.12" stroke="none" />
+      {/* Hub */}
+      <circle cx="48" cy="48" r="1.8" fill={ink} stroke="none" />
     </>
   );
 }
 
-/* Regions — layered mountain contour, atlas-inspired */
+/* Regions — concentric contour, cartographic seal */
 function RegionsMark() {
   return (
     <>
-      <circle cx="48" cy="48" r="32" fill={shade} stroke={ink} />
-      {/* Distant ridge */}
-      <path
-        d="M20 60 L34 44 L44 54 L58 38 L72 56 L78 50"
-        stroke={sandDeep}
-        strokeWidth={STROKE_ACCENT}
-      />
-      {/* Foreground ridge */}
-      <path d="M22 68 L34 50 L46 62 L58 44 L70 60 L76 54" stroke={ink} />
-      {/* Peak highlights */}
-      <path d="M34 50 L40 58 M58 44 L64 52" stroke={ink} strokeWidth={STROKE_ACCENT} />
-      {/* Base line */}
-      <path d="M20 72 H76" stroke={sandDeep} strokeWidth={STROKE_ACCENT} opacity="0.6" />
+      {/* Topographic contours */}
+      <path d="M30 56 Q40 44 50 48 Q60 52 66 42" strokeWidth={STROKE_FINE} opacity="0.7" />
+      <path d="M28 64 Q40 52 52 56 Q64 60 70 50" />
+      <path d="M32 48 Q42 38 52 40 Q60 42 64 36" strokeWidth={STROKE_FINE} opacity="0.55" />
+      {/* Site marker — small carved diamond */}
+      <path d="M52 44 L56 48 L52 52 L48 48 Z" fill={ink} fillOpacity="0.18" />
     </>
   );
 }
 
-/* Culture — calligraphic seal with Amazigh-inspired geometry */
+/* Culture — woven Amazigh yaz inside an oral-tradition seal */
 function CultureMark() {
   return (
     <>
-      <circle cx="48" cy="48" r="32" fill={shade} stroke={ink} />
-      <circle cx="48" cy="48" r="26" fill="none" stroke={sandDeep} strokeWidth={STROKE_ACCENT} />
-      {/* Stylized yaz (ⵣ) carved inside */}
-      <path d="M32 64 Q48 78 64 64" stroke={ink} />
-      <path d="M48 30 V64" stroke={ink} />
-      <path d="M34 36 L48 44" stroke={ink} />
-      <path d="M62 36 L48 44" stroke={ink} />
-      {/* Inner accent dots */}
-      <circle cx="48" cy="30" r="1.8" fill={clay} stroke="none" />
-      <circle cx="34" cy="36" r="1.4" fill={clay} stroke="none" />
-      <circle cx="62" cy="36" r="1.4" fill={clay} stroke="none" />
+      {/* Stylised yaz ⵣ */}
+      <path d="M48 28 V62" />
+      <path d="M34 34 L48 42 L62 34" />
+      <path d="M34 66 Q48 78 62 66" />
+      {/* Carved anchor dots */}
+      <circle cx="48" cy="28" r="1.6" fill={ink} stroke="none" />
+      <circle cx="34" cy="34" r="1.3" fill={ink} stroke="none" />
+      <circle cx="62" cy="34" r="1.3" fill={ink} stroke="none" />
+      {/* Geometric weave accents */}
+      <path d="M30 50 H38 M58 50 H66" strokeWidth={STROKE_FINE} opacity="0.6" />
     </>
   );
 }
