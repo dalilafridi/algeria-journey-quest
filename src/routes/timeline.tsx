@@ -15,6 +15,8 @@ import independenceImg from "@/assets/era-independence.png";
 import { saveJourneyPlace } from "@/lib/continuity";
 import { JourneyNext } from "@/components/JourneyNext";
 import { EraPreview } from "@/components/EraPreview";
+import { EraBadge, type EraBadgeKind } from "@/components/brand/EraBadge";
+
 
 export const Route = createFileRoute("/timeline")({
   head: () => ({
