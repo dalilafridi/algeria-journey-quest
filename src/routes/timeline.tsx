@@ -271,31 +271,20 @@ function ChapterRow({
       className="relative ps-16 pb-7 animate-float-up"
       style={{ animationDelay: `${delay}ms`, animationFillMode: "both" }}
     >
-      {/* Milestone icon */}
+      {/* Era medallion milestone */}
       <div
-        className={`absolute top-4 w-11 h-11 rounded-full flex items-center justify-center border-4 border-background transition-all ${
-          unlocked ? "text-primary-foreground" : "text-muted-foreground"
-        }`}
-        style={{
-          insetInlineStart: 0,
-          background: done
-            ? "var(--gradient-warm)"
-            : unlocked
-              ? "var(--gradient-warm)"
-              : "color-mix(in oklab, var(--muted) 90%, var(--accent))",
-          boxShadow: unlocked ? "var(--shadow-glow)" : "none",
-        }}
+        className="absolute top-3"
+        style={{ insetInlineStart: -6 }}
       >
-        {done ? (
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round">
-            <polyline points="20 6 9 17 4 12" />
-          </svg>
-        ) : unlocked ? (
-          <Icon className="w-5 h-5" />
-        ) : (
-          <Lock className="w-4 h-4" />
-        )}
+        <EraBadge
+          kind={era.id as EraBadgeKind}
+          unlocked={unlocked}
+          size={56}
+          animate={done}
+          label={t(era.title, lang)}
+        />
       </div>
+
 
       <article
         className={`relative rounded-2xl bg-card border overflow-hidden transition-all card-hover ${
