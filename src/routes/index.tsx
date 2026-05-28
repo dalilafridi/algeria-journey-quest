@@ -280,9 +280,6 @@ function Home() {
                 <Link
                   key={item.regionId}
                   to="/map"
-                <Link
-                  key={item.regionId}
-                  to="/map"
                   hash={`region-${item.regionId}`}
                   className="card-hover group shrink-0 w-32 sm:w-auto rounded-2xl border border-border bg-card/85 p-4 text-center transition-colors hover:border-accent/60"
                   style={{ boxShadow: "var(--shadow-soft)" }}

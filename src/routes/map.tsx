@@ -190,6 +190,7 @@ function RegionExplorerPage() {
                 style={isSel ? { boxShadow: "var(--shadow-soft)" } : undefined}
                 aria-pressed={isSel}
               >
+                <div className="flex items-start gap-4">
                   <RegionIcon
                     regionId={r.id}
                     className="h-16 w-20 shrink-0 icon-glow sm:h-[4.75rem] sm:w-24"
