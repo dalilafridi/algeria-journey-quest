@@ -250,7 +250,8 @@ function ChapterRow({
   lang: Lang;
 }) {
   const meta = ERA_META[era.id];
-  const Icon = meta?.icon ?? BookOpen;
+  void meta;
+
   const unlocked = isUnlocked(era.id);
   const progress = getProgress();
   const c = progress.completed[era.id];
