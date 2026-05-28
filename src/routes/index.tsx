@@ -3,6 +3,8 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ContinueJourneyInline } from "@/components/ContinueJourneyInline";
 import { DidYouKnowCard } from "@/components/DidYouKnowCard";
 import { Header } from "@/components/Header";
+import { PillarIcon } from "@/components/brand/PillarIcon";
+import { RegionIcon } from "@/components/RegionIcon";
 import { dailyFacts, eras } from "@/data/eras";
 import { t, tu, useLang } from "@/lib/i18n";
 import heroBg from "@/assets/hero-bg.png";
@@ -92,7 +94,7 @@ function Home() {
     },
     entries: [
       {
-        icon: "📜",
+        kind: "journey" as const,
         title: { en: "Journey", fr: "Parcours", ar: "الرحلة" },
         desc: {
           en: "Follow Algeria’s chapters, from ancient kingdoms to independence.",
@@ -102,7 +104,7 @@ function Home() {
         to: "/timeline" as const,
       },
       {
-        icon: "🏔️",
+        kind: "regions" as const,
         title: { en: "Regions", fr: "Régions", ar: "المناطق" },
         desc: {
           en: "Discover the landscapes, cities and memories they carry.",
@@ -112,7 +114,7 @@ function Home() {
         to: "/map" as const,
       },
       {
-        icon: "🎬",
+        kind: "culture" as const,
         title: { en: "Culture", fr: "Culture", ar: "الثقافة" },
         desc: {
           en: "Enter through words, cinema, cuisine, ideas and identity.",
@@ -123,14 +125,14 @@ function Home() {
       },
     ],
     regionLinks: [
-      { icon: "🌿", title: { en: "Kabylie", fr: "Kabylie", ar: "القبائل" } },
-      { icon: "⛰️", title: { en: "Aurès", fr: "Aurès", ar: "الأوراس" } },
-      { icon: "🏛️", title: { en: "Algiers", fr: "Alger", ar: "الجزائر العاصمة" } },
-      { icon: "🌉", title: { en: "Constantine", fr: "Constantine", ar: "قسنطينة" } },
-      { icon: "🏜️", title: { en: "Sahara", fr: "Sahara", ar: "الصحراء" } },
-      { icon: "🌊", title: { en: "Western Algeria", fr: "Algérie de l’Ouest", ar: "الغرب الجزائري" } },
+      { regionId: "kabylie", title: { en: "Kabylie", fr: "Kabylie", ar: "القبائل" } },
+      { regionId: "aures", title: { en: "Aurès", fr: "Aurès", ar: "الأوراس" } },
+      { regionId: "algiers", title: { en: "Algiers", fr: "Alger", ar: "الجزائر العاصمة" } },
+      { regionId: "constantine", title: { en: "Constantine", fr: "Constantine", ar: "قسنطينة" } },
+      { regionId: "sahara", title: { en: "Sahara", fr: "Sahara", ar: "الصحراء" } },
+      { regionId: "oran-west", title: { en: "Western Algeria", fr: "Algérie de l’Ouest", ar: "الغرب الجزائري" } },
     ],
-  };
+
 
   // Pair "today's moment" with its likely era for context
   const factText = t(todayFact, "en").toLowerCase();
@@ -250,8 +252,8 @@ function Home() {
                   style={{ background: "var(--gradient-warm)" }}
                   aria-hidden
                 />
-                <div className="text-4xl mt-2 transition-transform group-hover:scale-105" aria-hidden>
-                  {entry.icon}
+                <div className="mx-auto mt-2 w-20 h-20 flex items-center justify-center transition-transform duration-500 group-hover:scale-[1.03]">
+                  <PillarIcon kind={entry.kind} className="w-full h-full drop-shadow-sm" />
                 </div>
                 <h3 className="mt-4 text-lg font-bold tracking-tight">{t(entry.title, lang)}</h3>
                 <p className="mx-auto mt-2 text-sm leading-relaxed text-muted-foreground">{t(entry.desc, lang)}</p>
@@ -275,17 +277,22 @@ function Home() {
             <div className="flex gap-3 w-max sm:grid sm:grid-cols-3 lg:grid-cols-6 sm:w-auto sm:gap-3">
               {copy.regionLinks.map((item) => (
                 <Link
-                  key={item.title.en}
+                  key={item.regionId}
                   to="/map"
+                  hash={`region-${item.regionId}`}
                   className="card-hover shrink-0 w-32 sm:w-auto rounded-2xl border border-border bg-card/85 p-4 text-center transition-colors hover:border-accent/60"
                   style={{ boxShadow: "var(--shadow-soft)" }}
                 >
-                  <div className="text-3xl" aria-hidden>{item.icon}</div>
+                  <div className="mx-auto w-16 h-12 flex items-center justify-center transition-transform duration-500 group-hover:scale-[1.02]">
+                    <RegionIcon regionId={item.regionId} className="w-full h-full" />
+                  </div>
                   <div className="mt-2 text-sm font-semibold leading-tight">{t(item.title, lang)}</div>
                 </Link>
               ))}
             </div>
           </div>
+        </section>
+
         </section>
 
         {/* ========= DID YOU KNOW ========= */}
