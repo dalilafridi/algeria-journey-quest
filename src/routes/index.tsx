@@ -253,8 +253,8 @@ function Home() {
                   style={{ background: "var(--gradient-warm)" }}
                   aria-hidden
                 />
-                <div className="mx-auto mt-2 w-20 h-20 flex items-center justify-center transition-transform duration-500 group-hover:scale-[1.03]">
-                  <PillarIcon kind={entry.kind} className="w-full h-full drop-shadow-sm" />
+                <div className="mx-auto mt-2 w-20 h-20 flex items-center justify-center icon-glow">
+                  <PillarIcon kind={entry.kind} className="w-full h-full" />
                 </div>
                 <h3 className="mt-4 text-lg font-bold tracking-tight">{t(entry.title, lang)}</h3>
                 <p className="mx-auto mt-2 text-sm leading-relaxed text-muted-foreground">{t(entry.desc, lang)}</p>
@@ -280,11 +280,14 @@ function Home() {
                 <Link
                   key={item.regionId}
                   to="/map"
+                <Link
+                  key={item.regionId}
+                  to="/map"
                   hash={`region-${item.regionId}`}
-                  className="card-hover shrink-0 w-32 sm:w-auto rounded-2xl border border-border bg-card/85 p-4 text-center transition-colors hover:border-accent/60"
+                  className="card-hover group shrink-0 w-32 sm:w-auto rounded-2xl border border-border bg-card/85 p-4 text-center transition-colors hover:border-accent/60"
                   style={{ boxShadow: "var(--shadow-soft)" }}
                 >
-                  <div className="mx-auto w-16 h-12 flex items-center justify-center transition-transform duration-500 group-hover:scale-[1.02]">
+                  <div className="mx-auto w-16 h-12 flex items-center justify-center icon-glow">
                     <RegionIcon regionId={item.regionId} className="w-full h-full" />
                   </div>
                   <div className="mt-2 text-sm font-semibold leading-tight">{t(item.title, lang)}</div>
