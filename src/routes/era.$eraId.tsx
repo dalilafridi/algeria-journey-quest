@@ -395,6 +395,46 @@ function EraPage() {
             </Link>
           </section>
         )}
+
+        {/* ===== Journey complete — fallback so the last era isn't a dead end ===== */}
+        {!nextEra && (
+          <section className="mt-8 animate-fade-in">
+            <Link
+              to="/figures"
+              className="group block rounded-2xl border border-border bg-card/85 hover:bg-card hover:-translate-y-0.5 transition-all p-4 sm:p-5"
+              style={{ boxShadow: "var(--shadow-soft)" }}
+            >
+              <div className="flex items-center justify-between gap-4">
+                <div className="min-w-0">
+                  <div className="text-[11px] font-bold uppercase tracking-[0.18em] text-primary">
+                    {lang === "fr"
+                      ? "Le parcours est terminé"
+                      : lang === "ar"
+                        ? "اكتملت الرحلة"
+                        : "You've reached the present"}
+                  </div>
+                  <div className="mt-1 text-base sm:text-lg font-extrabold truncate">
+                    <span className="me-2" aria-hidden>ⵣ</span>
+                    {lang === "fr"
+                      ? "Rencontrez les figures qui ont façonné l'Algérie"
+                      : lang === "ar"
+                        ? "تعرّف على من صاغوا تاريخ الجزائر"
+                        : "Meet the people who shaped Algeria"}
+                  </div>
+                  <div className="text-xs text-muted-foreground mt-0.5">
+                    {lang === "fr" ? "Panthéon des légendes" : lang === "ar" ? "قاعة العظماء" : "Hall of Legends"}
+                  </div>
+                </div>
+                <span
+                  aria-hidden
+                  className="shrink-0 inline-flex items-center gap-1 text-sm font-semibold text-primary group-hover:translate-x-0.5 transition-transform rtl:group-hover:-translate-x-0.5"
+                >
+                  <span className="rtl:rotate-180">→</span>
+                </span>
+              </div>
+            </Link>
+          </section>
+        )}
       </main>
     </div>
   );
