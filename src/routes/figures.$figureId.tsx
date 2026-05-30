@@ -131,20 +131,16 @@ function FigureDetail() {
           <div className="mt-6 flex flex-col sm:flex-row items-center sm:items-start gap-6 sm:gap-8 text-center sm:text-start">
             {/* Large portrait medallion */}
             <div className="relative shrink-0">
-              <div
-                className="relative w-32 h-32 sm:w-40 sm:h-40 rounded-full flex items-center justify-center"
-                style={{
-                  background:
-                    "radial-gradient(circle at 35% 30%, color-mix(in oklab, var(--brand-gold-bright) 55%, var(--card)) 0%, color-mix(in oklab, var(--brand-gold) 30%, var(--card)) 45%, color-mix(in oklab, var(--brand-gold-deep) 32%, var(--card)) 100%)",
-                  boxShadow:
-                    "0 0 0 1px color-mix(in oklab, var(--brand-gold) 60%, transparent), inset 0 -10px 22px color-mix(in oklab, var(--foreground) 22%, transparent), var(--shadow-gold-glow)",
-                }}
+              <MedallionFrame
+                size={160}
+                tone="gold"
+                glow
+                animate="reveal"
+                inset={0.2}
+                label={t(f.displayName, lang)}
+                className="w-32 h-32 sm:w-40 sm:h-40"
+                seal={<EraBadge kind={legendEra.badge} size={48} label={t(legendEra.label, lang)} />}
               >
-                <div
-                  aria-hidden
-                  className="absolute inset-1.5 rounded-full border"
-                  style={{ borderColor: "color-mix(in oklab, var(--background) 60%, transparent)" }}
-                />
                 <span
                   aria-hidden
                   className="relative text-6xl sm:text-7xl drop-shadow-[0_2px_8px_rgba(0,0,0,0.3)]"
@@ -152,11 +148,7 @@ function FigureDetail() {
                 >
                   {f.emoji}
                 </span>
-                {/* Era medallion seal */}
-                <div className="absolute -bottom-2 -end-2">
-                  <EraBadge kind={legendEra.badge} size={48} label={t(legendEra.label, lang)} />
-                </div>
-              </div>
+              </MedallionFrame>
             </div>
 
             <div className="flex-1 min-w-0">
