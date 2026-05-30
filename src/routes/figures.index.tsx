@@ -1,18 +1,18 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useEffect, useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Header } from "@/components/Header";
 
 import { figures, type Figure } from "@/data/figures";
-import { figureMeta, FIGURE_THEMES } from "@/data/figureMeta";
-import { eras } from "@/data/eras";
+import { figureMeta } from "@/data/figureMeta";
 import { mapRegions } from "@/data/mapRegions";
-import { LEGEND_ERAS, eraOfCategory, badgeKindOf } from "@/lib/figureEras";
+import { eraOfCategory, badgeKindOf, LEGEND_ERAS } from "@/lib/figureEras";
+import { collectionOf, currentExhibitionId } from "@/lib/figureCollections";
 import {
-  COLLECTIONS,
-  collectionOf,
-  currentExhibitionId,
-  type CollectionDef,
-} from "@/lib/figureCollections";
+  DISCOVERY_ROWS,
+  ERA_ROWS,
+  resolveRow,
+  type DiscoveryRow,
+} from "@/lib/figureDiscovery";
 import { EraBadge } from "@/components/brand/EraBadge";
 import { t, tu, useLang, type Lang } from "@/lib/i18n";
 import { saveJourneyPlace } from "@/lib/continuity";
@@ -32,17 +32,17 @@ const FIGURE_REGION_TO_MAP: Partial<Record<string, string>> = {
 export const Route = createFileRoute("/figures/")({
   head: () => ({
     meta: [
-      { title: "Hall of Legends — The People Who Shaped Algeria" },
+      { title: "Hall of Legends — Discover the People Who Shaped Algeria" },
       {
         name: "description",
         content:
-          "Walk the Hall of Legends — a museum wing dedicated to the people who shaped Algeria, presented in curated galleries of leaders, warriors, revolutionaries, scholars, faith-keepers, poets and modern voices.",
+          "Browse the Hall of Legends like a living museum — a featured exhibition, curated collections and era-by-era galleries of the women and men who shaped Algeria. Arrive for one story, leave having discovered ten.",
       },
-      { property: "og:title", content: "Hall of Legends — The People Who Shaped Algeria" },
+      { property: "og:title", content: "Hall of Legends — Discover the People Who Shaped Algeria" },
       {
         property: "og:description",
         content:
-          "A cinematic museum wing of Algeria's most influential historical figures, curated into themed galleries.",
+          "A cinematic, browse-first museum of Algeria's most influential historical figures — curated collections and era galleries.",
       },
     ],
   }),
@@ -65,358 +65,344 @@ function FiguresIndex() {
     });
   }, []);
 
-  /** The rotating headline legend — the "Current Exhibition". */
-  const spotlight = useMemo(() => {
+  /** The rotating headline legend — the featured exhibition billboard. */
+  const featured = useMemo(() => {
     const id = currentExhibitionId();
     return figures.find((f) => f.id === id) ?? figures[0];
   }, []);
 
-  /** Each curated gallery, with its members resolved to figures. */
-  const galleries = useMemo(
-    () =>
-      COLLECTIONS.map((col) => ({
-        col,
-        items: col.members
-          .map((id) => figures.find((f) => f.id === id))
-          .filter((f): f is Figure => Boolean(f)),
-      })).filter((g) => g.items.length > 0),
+  const themedRows = useMemo(
+    () => DISCOVERY_ROWS.map((row) => ({ row, items: resolveRow(row) })).filter((r) => r.items.length > 0),
+    [],
+  );
+  const eraRows = useMemo(
+    () => ERA_ROWS.map((row) => ({ row, items: resolveRow(row) })).filter((r) => r.items.length > 0),
     [],
   );
 
-  const figureWord = lang === "fr" ? "figures" : lang === "ar" ? "شخصية" : "figures";
-  const galleryWord = lang === "fr" ? "galeries" : lang === "ar" ? "قاعة" : "galleries";
-  const planVisitLabel =
-    lang === "fr" ? "Plan de la visite" : lang === "ar" ? "خريطة الزيارة" : "Plan your visit";
+  const collectionsLabel =
+    lang === "fr" ? "Collections" : lang === "ar" ? "مجموعات" : "Collections";
+  const collectionsIntro =
+    lang === "fr"
+      ? "Avancez de salle en salle. Chaque rangée est une collection conservée — faites défiler pour découvrir."
+      : lang === "ar"
+        ? "تنقّل من قاعة إلى قاعة. كل صف مجموعة مختارة — مرّر لتكتشف."
+        : "Walk room to room. Each row is a curated collection — scroll sideways to discover.";
+  const erasLabel =
+    lang === "fr" ? "Explorer par ère" : lang === "ar" ? "استكشف حسب الحقبة" : "Explore by era";
+  const erasIntro =
+    lang === "fr"
+      ? "Traversez l'histoire âge par âge, de la Numidie antique à l'Algérie d'aujourd'hui."
+      : lang === "ar"
+        ? "اعبر التاريخ عصرًا بعد عصر، من نوميديا القديمة إلى جزائر اليوم."
+        : "Move through history age by age, from ancient Numidia to Algeria today.";
 
   return (
     <div className="min-h-screen">
       <Header />
 
-      {/* ============ ENTRANCE — walking into the hall ============ */}
-      <section className="relative museum-hero">
-        <div
-          aria-hidden
-          className="absolute inset-0 pointer-events-none opacity-[0.06] text-[14rem] sm:text-[20rem] font-black tracking-tighter leading-none flex items-center justify-center select-none"
-          style={{ color: "var(--accent)" }}
+      {/* ============ FEATURED EXHIBITION BILLBOARD ============ */}
+      {featured && <FeaturedBillboard figure={featured} lang={lang} />}
+
+      <main className="max-w-6xl mx-auto px-4 py-8 sm:py-10">
+        {/* ---- Quick jump strip (browse, not filter) ---- */}
+        <nav
+          aria-label={collectionsLabel}
+          className="-mx-4 px-4 mb-8 flex gap-2 overflow-x-auto no-scrollbar snap-x"
         >
-          ⵣ
-        </div>
-        <div className="relative max-w-5xl mx-auto px-4 py-14 sm:py-20 text-center animate-cinematic-in">
-          <div
-            className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-[11px] uppercase tracking-[0.18em] font-bold border"
-            style={{
-              borderColor: "color-mix(in oklab, var(--accent) 45%, var(--border))",
-              background: "color-mix(in oklab, var(--accent) 10%, var(--card))",
-              color: "var(--accent-foreground)",
-            }}
-          >
-            <span aria-hidden>ⵣ</span>
-            <span>
-              {lang === "fr"
-                ? "Une aile du musée vivant"
-                : lang === "ar"
-                  ? "جناح من المتحف الحي"
-                  : "A wing of the living museum"}
-            </span>
-          </div>
-          <h1
-            className="mt-5 text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.05]"
-            style={{ fontFamily: "Georgia, 'Times New Roman', serif" }}
-          >
-            {lang === "fr" ? "Le Panthéon des Légendes" : lang === "ar" ? "قاعة العظماء" : "The Hall of Legends"}
-          </h1>
-          <p className="mt-4 max-w-2xl mx-auto text-base sm:text-lg text-muted-foreground leading-relaxed">
-            {lang === "fr"
-              ? "Avancez de galerie en galerie à la rencontre des femmes et des hommes qui ont façonné l'Algérie — non pas une liste de noms, mais une collection vivante d'histoires."
-              : lang === "ar"
-                ? "تنقّل من قاعة إلى قاعة لتلتقي النساء والرجال الذين صاغوا الجزائر — ليست قائمة أسماء، بل مجموعة حيّة من الحكايات."
-                : "Move from gallery to gallery to meet the women and men who shaped Algeria — not a list of names, but a living collection of stories."}
-          </p>
-          <div className="mt-6 flex items-center justify-center gap-3 flex-wrap text-sm text-muted-foreground">
-            <span className="inline-flex items-center gap-1.5">
-              <span className="text-foreground font-bold">{figures.length}</span>
-              <span>{figureWord}</span>
-            </span>
-            <span aria-hidden>·</span>
-            <span className="inline-flex items-center gap-1.5">
-              <span className="text-foreground font-bold">{galleries.length}</span>
-              <span>{galleryWord}</span>
-            </span>
-            <span aria-hidden>·</span>
-            <Link to="/figures/quiz" className="font-semibold text-primary hover:underline">
-              {tu("guessThisFigureCta", lang)}
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      <main className="max-w-6xl mx-auto px-4 py-8">
-        {/* ============ CURRENT EXHIBITION ============ */}
-        {spotlight && <CurrentExhibition figure={spotlight} lang={lang} />}
-
-        {/* ============ GALLERY MAP — plan your visit ============ */}
-        <nav aria-label={planVisitLabel} className="mt-12 mb-10">
-          <div className="text-[10px] uppercase tracking-[0.22em] font-bold text-muted-foreground mb-3">
-            {planVisitLabel}
-          </div>
-          <div className="flex gap-2 flex-wrap">
-            {galleries.map(({ col, items }) => (
-              <a
-                key={col.id}
-                href={`#gallery-${col.id}`}
-                className="group inline-flex items-center gap-2 rounded-full border px-3.5 py-1.5 text-sm font-semibold transition-colors"
-                style={{
-                  borderColor: "color-mix(in oklab, var(--brand-gold) 30%, var(--border))",
-                  background: "var(--card)",
-                }}
-              >
-                <span aria-hidden style={{ color: col.accent }}>
-                  {col.emblem}
-                </span>
-                <span className="group-hover:text-primary transition-colors">{t(col.label, lang)}</span>
-                <span className="text-[11px] text-muted-foreground">{items.length}</span>
-              </a>
-            ))}
-          </div>
+          {themedRows.map(({ row, items }) => (
+            <a
+              key={row.id}
+              href={`#row-${row.id}`}
+              className="snap-start shrink-0 group inline-flex items-center gap-2 rounded-full border px-3.5 py-1.5 text-sm font-semibold transition-colors"
+              style={{
+                borderColor: "color-mix(in oklab, var(--brand-gold) 30%, var(--border))",
+                background: "var(--card)",
+              }}
+            >
+              <span aria-hidden style={{ color: row.accent }}>
+                {row.emblem}
+              </span>
+              <span className="group-hover:text-primary transition-colors whitespace-nowrap">
+                {t(row.label, lang)}
+              </span>
+              <span className="text-[11px] text-muted-foreground">{items.length}</span>
+            </a>
+          ))}
         </nav>
 
-        {/* ============ GALLERIES ============ */}
-        <div className="space-y-16">
-          {galleries.map(({ col, items }) => (
-            <GallerySection key={col.id} col={col} items={items} lang={lang} />
+        {/* ============ THEMATIC COLLECTIONS ============ */}
+        <RowGroupHeader title={collectionsLabel} intro={collectionsIntro} />
+        <div className="space-y-10 sm:space-y-12">
+          {themedRows.map(({ row, items }) => (
+            <DiscoverySection key={row.id} row={row} items={items} lang={lang} />
           ))}
         </div>
+
+        {/* ============ ERA GALLERIES ============ */}
+        <div className="mt-16">
+          <RowGroupHeader title={erasLabel} intro={erasIntro} />
+          <div className="space-y-10 sm:space-y-12">
+            {eraRows.map(({ row, items }) => (
+              <DiscoverySection key={row.id} row={row} items={items} lang={lang} />
+            ))}
+          </div>
+        </div>
+
+        {/* ============ SEARCH & REFINE (secondary) ============ */}
+        <RefineCollection lang={lang} />
       </main>
     </div>
   );
 }
 
-/* ---------------- Current Exhibition (rotating headline) ---------------- */
+/* ---------------- Featured exhibition billboard ---------------- */
 
-function CurrentExhibition({ figure: f, lang }: { figure: Figure; lang: Lang }) {
+function FeaturedBillboard({ figure: f, lang }: { figure: Figure; lang: Lang }) {
   const fm = figureMeta[f.id];
   const era = LEGEND_ERAS.find((e) => e.id === eraOfCategory(f.category))!;
   const col = collectionOf(f.id);
   const exploreLabel =
-    lang === "fr" ? "Entrer dans son histoire" : lang === "ar" ? "ادخل قصته" : "Enter their story";
+    lang === "fr" ? "Explorer son histoire" : lang === "ar" ? "اكتشف قصته" : "Explore their story";
   const nowShowingLabel =
-    lang === "fr" ? "Exposition du moment" : lang === "ar" ? "معرض هذه اللحظة" : "Current exhibition";
+    lang === "fr" ? "Exposition à l'affiche" : lang === "ar" ? "المعرض المعروض الآن" : "Now showing";
 
   return (
-    <Link
-      to="/figures/$figureId"
-      params={{ figureId: f.id }}
-      className="group relative block overflow-hidden rounded-[1.75rem] border transition-all duration-500 hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40"
-      style={{
-        borderColor: "color-mix(in oklab, var(--brand-gold) 32%, var(--border))",
-        background:
-          "linear-gradient(135deg, color-mix(in oklab, var(--accent) 18%, var(--card)) 0%, var(--card) 55%, color-mix(in oklab, var(--primary) 12%, var(--card)) 100%)",
-        boxShadow: "var(--shadow-soft)",
-      }}
-    >
+    <section className="relative museum-hero">
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 opacity-[0.05] text-[18rem] font-black leading-none flex items-center justify-center select-none"
-        style={{ color: "var(--foreground)" }}
+        className="absolute inset-0 pointer-events-none opacity-[0.05] text-[16rem] sm:text-[24rem] font-black leading-none flex items-center justify-center select-none"
+        style={{ color: "var(--accent)" }}
       >
         ⵣ
       </div>
-      {/* Now-showing ribbon */}
-      <div
-        className="relative z-10 flex items-center gap-2 px-6 sm:px-8 pt-5 text-[10px] font-bold uppercase tracking-[0.24em]"
-        style={{ color: "color-mix(in oklab, var(--brand-gold-deep) 88%, var(--foreground))" }}
-      >
-        <span aria-hidden className="inline-block w-6 h-px" style={{ background: "var(--brand-gold)" }} />
-        ★ {nowShowingLabel}
+
+      <div className="relative max-w-6xl mx-auto px-4 pt-8 pb-2 sm:pt-10">
+        <div className="flex items-center justify-between gap-3 flex-wrap">
+          <div className="inline-flex items-center gap-1.5 text-[11px] uppercase tracking-[0.18em] font-bold text-muted-foreground">
+            <span aria-hidden>ⵣ</span>
+            {lang === "fr" ? "Le Panthéon des Légendes" : lang === "ar" ? "قاعة العظماء" : "The Hall of Legends"}
+          </div>
+          <Link to="/figures/quiz" className="text-sm font-semibold text-primary hover:underline">
+            {tu("guessThisFigureCta", lang)}
+          </Link>
+        </div>
       </div>
 
-      <div className="relative grid md:grid-cols-[auto_1fr] gap-6 sm:gap-9 p-6 sm:p-8 pt-4 items-center">
-        {/* Portrait medallion */}
-        <div className="flex justify-center md:block">
+      <div className="relative max-w-6xl mx-auto px-4 pb-10 sm:pb-12">
+        <Link
+          to="/figures/$figureId"
+          params={{ figureId: f.id }}
+          className="group relative block overflow-hidden rounded-[1.75rem] border transition-all duration-500 hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 animate-cinematic-in"
+          style={{
+            borderColor: "color-mix(in oklab, var(--brand-gold) 32%, var(--border))",
+            background:
+              "linear-gradient(135deg, color-mix(in oklab, var(--accent) 20%, var(--card)) 0%, var(--card) 55%, color-mix(in oklab, var(--primary) 12%, var(--card)) 100%)",
+            boxShadow: "var(--shadow-soft)",
+          }}
+        >
           <div
-            className="relative flex items-center justify-center w-40 h-40 sm:w-48 sm:h-48 rounded-full transition-transform duration-700 group-hover:scale-[1.03]"
-            style={{
-              background:
-                "radial-gradient(circle at 35% 30%, color-mix(in oklab, var(--brand-gold-bright) 55%, var(--card)) 0%, color-mix(in oklab, var(--brand-gold) 30%, var(--card)) 45%, color-mix(in oklab, var(--brand-gold-deep) 28%, var(--card)) 100%)",
-              boxShadow:
-                "0 0 0 1px color-mix(in oklab, var(--brand-gold) 55%, transparent), inset 0 -10px 22px color-mix(in oklab, var(--foreground) 22%, transparent), var(--shadow-gold-glow)",
-            }}
+            aria-hidden
+            className="pointer-events-none absolute inset-0 opacity-[0.05] text-[18rem] font-black leading-none flex items-center justify-center select-none"
+            style={{ color: "var(--foreground)" }}
           >
-            <div
-              aria-hidden
-              className="absolute inset-2 rounded-full border"
-              style={{ borderColor: "color-mix(in oklab, var(--background) 55%, transparent)" }}
-            />
-            <span
-              aria-hidden
-              className="relative text-7xl sm:text-[5rem] drop-shadow-[0_2px_8px_rgba(0,0,0,0.3)]"
-              style={{ filter: "saturate(0.9)" }}
-            >
-              {f.emoji}
-            </span>
-            <div className="absolute -bottom-2 -end-2">
-              <EraBadge kind={era.badge} size={46} label={t(era.label, lang)} />
+            ⵣ
+          </div>
+
+          <div
+            className="relative z-10 flex items-center gap-2 px-6 sm:px-9 pt-6 text-[10px] font-bold uppercase tracking-[0.24em]"
+            style={{ color: "color-mix(in oklab, var(--brand-gold-deep) 88%, var(--foreground))" }}
+          >
+            <span aria-hidden className="inline-block w-6 h-px" style={{ background: "var(--brand-gold)" }} />
+            ★ {nowShowingLabel}
+          </div>
+
+          <div className="relative grid md:grid-cols-[auto_1fr] gap-6 sm:gap-10 p-6 sm:p-9 pt-4 items-center">
+            {/* Large portrait medallion */}
+            <div className="flex justify-center md:block">
+              <div
+                className="relative flex items-center justify-center w-44 h-44 sm:w-56 sm:h-56 rounded-full transition-transform duration-700 group-hover:scale-[1.03]"
+                style={{
+                  background:
+                    "radial-gradient(circle at 35% 30%, color-mix(in oklab, var(--brand-gold-bright) 55%, var(--card)) 0%, color-mix(in oklab, var(--brand-gold) 30%, var(--card)) 45%, color-mix(in oklab, var(--brand-gold-deep) 28%, var(--card)) 100%)",
+                  boxShadow:
+                    "0 0 0 1px color-mix(in oklab, var(--brand-gold) 55%, transparent), inset 0 -10px 22px color-mix(in oklab, var(--foreground) 22%, transparent), var(--shadow-gold-glow)",
+                }}
+              >
+                <div
+                  aria-hidden
+                  className="absolute inset-2 rounded-full border"
+                  style={{ borderColor: "color-mix(in oklab, var(--background) 55%, transparent)" }}
+                />
+                <span
+                  aria-hidden
+                  className="relative text-7xl sm:text-8xl drop-shadow-[0_2px_8px_rgba(0,0,0,0.3)]"
+                  style={{ filter: "saturate(0.9)" }}
+                >
+                  {f.emoji}
+                </span>
+                <div className="absolute -bottom-2 -end-2">
+                  <EraBadge kind={era.badge} size={52} label={t(era.label, lang)} />
+                </div>
+              </div>
+            </div>
+
+            {/* Plaque */}
+            <div className="text-center md:text-start">
+              <div className="flex flex-wrap gap-1.5 justify-center md:justify-start text-xs">
+                <span
+                  className="px-2.5 py-0.5 rounded-full font-semibold border inline-flex items-center gap-1"
+                  style={{
+                    borderColor: "color-mix(in oklab, var(--brand-gold) 40%, var(--border))",
+                    background: "color-mix(in oklab, var(--brand-gold) 10%, var(--card))",
+                    color: "color-mix(in oklab, var(--brand-gold-deep) 85%, var(--foreground))",
+                  }}
+                >
+                  <span aria-hidden style={{ color: col.accent }}>{col.emblem}</span>
+                  {t(col.label, lang)}
+                </span>
+                <span className="px-2.5 py-0.5 rounded-full bg-muted text-muted-foreground font-semibold">
+                  {t(f.era, lang)}
+                </span>
+              </div>
+              <h1
+                className="mt-3 text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-[1.04] group-hover:text-primary transition-colors"
+                style={{ fontFamily: "Georgia, 'Times New Roman', serif" }}
+              >
+                {t(f.displayName, lang)}
+              </h1>
+              {fm?.cinematicLine ? (
+                <p
+                  className="mt-5 text-lg sm:text-xl lg:text-2xl italic text-foreground/85 leading-relaxed max-w-2xl mx-auto md:mx-0"
+                  style={{ fontFamily: "Georgia, 'Times New Roman', serif" }}
+                >
+                  “{t(fm.cinematicLine, lang)}”
+                </p>
+              ) : (
+                <p className="mt-5 text-base text-muted-foreground leading-relaxed max-w-2xl mx-auto md:mx-0 line-clamp-3">
+                  {t(f.importance, lang)}
+                </p>
+              )}
+              <span
+                className="mt-6 inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-primary-foreground font-semibold text-sm"
+                style={{ background: "var(--gradient-warm)" }}
+              >
+                {exploreLabel}
+                <span aria-hidden className="transition-transform group-hover:translate-x-1">
+                  →
+                </span>
+              </span>
             </div>
           </div>
-        </div>
-
-        {/* Plaque */}
-        <div className="text-center md:text-start">
-          <h2
-            className="text-3xl sm:text-4xl lg:text-5xl font-extrabold leading-tight group-hover:text-primary transition-colors"
-            style={{ fontFamily: "Georgia, 'Times New Roman', serif" }}
-          >
-            {t(f.displayName, lang)}
-          </h2>
-          <div className="mt-3 flex flex-wrap gap-1.5 justify-center md:justify-start text-xs">
-            <span
-              className="px-2.5 py-0.5 rounded-full font-semibold border inline-flex items-center gap-1"
-              style={{
-                borderColor: "color-mix(in oklab, var(--brand-gold) 40%, var(--border))",
-                background: "color-mix(in oklab, var(--brand-gold) 10%, var(--card))",
-                color: "color-mix(in oklab, var(--brand-gold-deep) 85%, var(--foreground))",
-              }}
-            >
-              <span aria-hidden style={{ color: col.accent }}>{col.emblem}</span>
-              {t(col.label, lang)}
-            </span>
-            <span className="px-2.5 py-0.5 rounded-full bg-muted text-muted-foreground font-semibold">
-              {t(f.era, lang)}
-            </span>
-          </div>
-          {fm?.cinematicLine ? (
-            <p
-              className="mt-5 text-lg sm:text-xl lg:text-2xl italic text-foreground/85 leading-relaxed max-w-2xl mx-auto md:mx-0"
-              style={{ fontFamily: "Georgia, 'Times New Roman', serif" }}
-            >
-              “{t(fm.cinematicLine, lang)}”
-            </p>
-          ) : (
-            <p className="mt-5 text-base text-muted-foreground leading-relaxed max-w-2xl mx-auto md:mx-0 line-clamp-3">
-              {t(f.importance, lang)}
-            </p>
-          )}
-          {fm?.modernRelevance && (
-            <p className="mt-3 text-sm text-muted-foreground leading-relaxed max-w-2xl mx-auto md:mx-0 line-clamp-2">
-              {t(fm.modernRelevance, lang)}
-            </p>
-          )}
-          <span
-            className="mt-6 inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-primary-foreground font-semibold text-sm"
-            style={{ background: "var(--gradient-warm)" }}
-          >
-            {exploreLabel}
-            <span aria-hidden className="transition-transform group-hover:translate-x-1">
-              →
-            </span>
-          </span>
-        </div>
+        </Link>
       </div>
-    </Link>
+    </section>
   );
 }
 
-/* ---------------- A single gallery (room) ---------------- */
+/* ---------------- Row group header ---------------- */
 
-function GallerySection({
-  col,
+function RowGroupHeader({ title, intro }: { title: string; intro: string }) {
+  return (
+    <div className="mb-7">
+      <div className="flex items-center gap-3">
+        <h2
+          className="text-2xl sm:text-[1.7rem] font-bold leading-tight"
+          style={{ fontFamily: "Georgia, 'Times New Roman', serif" }}
+        >
+          {title}
+        </h2>
+        <span
+          aria-hidden
+          className="flex-1 h-px"
+          style={{
+            background:
+              "linear-gradient(90deg, color-mix(in oklab, var(--brand-gold) 55%, transparent), transparent)",
+          }}
+        />
+      </div>
+      <p className="mt-1.5 text-sm text-muted-foreground leading-relaxed max-w-2xl">{intro}</p>
+    </div>
+  );
+}
+
+/* ---------------- A single horizontally-scrolling row ---------------- */
+
+function DiscoverySection({
+  row,
   items,
   lang,
 }: {
-  col: CollectionDef;
+  row: DiscoveryRow;
   items: Figure[];
   lang: Lang;
 }) {
   const figureWord = lang === "fr" ? "figures" : lang === "ar" ? "شخصية" : "figures";
   return (
-    <section id={`gallery-${col.id}`} aria-label={t(col.label, lang)} className="scroll-mt-24">
-      {/* Gallery wall text */}
-      <div
-        className="relative overflow-hidden rounded-[1.25rem] border p-5 sm:p-6 mb-7"
-        style={{
-          borderColor: "color-mix(in oklab, var(--brand-gold) 22%, var(--border))",
-          background:
-            "linear-gradient(135deg, color-mix(in oklab, var(--accent) 8%, var(--card)), var(--card))",
-        }}
-      >
-        <span
-          aria-hidden
-          className="absolute inset-y-0 start-0 w-1"
-          style={{ background: `color-mix(in oklab, ${col.accent} 75%, transparent)` }}
-        />
-        <div className="flex items-center gap-4">
-          <div className="relative shrink-0">
-            <EraBadge kind={col.badge} size={58} label={t(col.label, lang)} />
-            <span
-              aria-hidden
-              className="absolute -bottom-1.5 -end-1.5 flex items-center justify-center w-6 h-6 rounded-full text-xs font-bold"
-              style={{
-                background: "var(--card)",
-                border: "1px solid color-mix(in oklab, var(--brand-gold) 45%, var(--border))",
-                color: col.accent,
-              }}
+    <section id={`row-${row.id}`} aria-label={t(row.label, lang)} className="scroll-mt-24">
+      {/* Row plaque */}
+      <div className="flex items-center gap-3.5 mb-4">
+        <div className="relative shrink-0">
+          <EraBadge kind={row.badge} size={48} label={t(row.label, lang)} />
+          <span
+            aria-hidden
+            className="absolute -bottom-1 -end-1 flex items-center justify-center w-5 h-5 rounded-full text-[11px] font-bold"
+            style={{
+              background: "var(--card)",
+              border: "1px solid color-mix(in oklab, var(--brand-gold) 45%, var(--border))",
+              color: row.accent,
+            }}
+          >
+            {row.emblem}
+          </span>
+        </div>
+        <div className="min-w-0 flex-1">
+          <div className="flex items-baseline gap-2 flex-wrap">
+            <h3
+              className="text-xl sm:text-2xl font-bold leading-tight"
+              style={{ fontFamily: "Georgia, 'Times New Roman', serif" }}
             >
-              {col.emblem}
+              {t(row.label, lang)}
+            </h3>
+            <span className="text-xs text-muted-foreground font-semibold">
+              {items.length} {figureWord}
             </span>
           </div>
-          <div className="min-w-0 flex-1">
-            <div className="flex items-baseline gap-2 flex-wrap">
-              <h2
-                className="text-2xl sm:text-[1.8rem] font-bold leading-tight"
-                style={{ fontFamily: "Georgia, 'Times New Roman', serif" }}
-              >
-                {t(col.label, lang)}
-              </h2>
-              <span className="text-xs text-muted-foreground font-semibold">
-                {items.length} {figureWord}
-              </span>
-            </div>
-            <p className="text-sm font-semibold text-foreground/80 mt-0.5">{t(col.tagline, lang)}</p>
-          </div>
+          <p className="text-sm text-muted-foreground leading-snug">{t(row.tagline, lang)}</p>
         </div>
-        <p className="mt-3 text-sm text-muted-foreground leading-relaxed max-w-3xl">
-          {t(col.intro, lang)}
-        </p>
       </div>
 
-      {/* Exhibits */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
-        {items.map((f, i) => (
-          <FigureCard key={f.id} figure={f} lang={lang} index={i} accent={col.accent} />
+      {/* Horizontal scroll track */}
+      <div className="-mx-4 px-4 flex gap-3.5 sm:gap-4 overflow-x-auto no-scrollbar snap-x snap-mandatory pb-2">
+        {items.map((f) => (
+          <PortraitCard key={f.id} figure={f} lang={lang} accent={row.accent} />
         ))}
       </div>
     </section>
   );
 }
 
-/* ---------------- Artifact figure card ---------------- */
+/* ---------------- Compact exhibition portrait card ---------------- */
 
-function FigureCard({
+function PortraitCard({
   figure: f,
   lang,
-  index,
   accent,
 }: {
   figure: Figure;
   lang: Lang;
-  index: number;
   accent: string;
 }) {
-  const era = eras.find((e) => e.id === f.relatedEraId);
   const regionMapId = FIGURE_REGION_TO_MAP[f.region];
   const region = regionMapId ? mapRegions.find((r) => r.id === regionMapId) : undefined;
-  const fm = figureMeta[f.id];
-  const primaryTheme = fm?.themes?.[0];
-  const themeDef = primaryTheme ? FIGURE_THEMES[primaryTheme] : null;
   const badgeKind = badgeKindOf(f.category);
-  const exhibitNo = String(index + 1).padStart(2, "0");
 
   return (
     <Link
       to="/figures/$figureId"
       params={{ figureId: f.id }}
       aria-label={t(f.displayName, lang)}
-      className="figure-exhibit group relative flex flex-col overflow-hidden rounded-[1.25rem] border border-border/70 bg-card transition-all duration-500 hover:-translate-y-1 focus-visible:-translate-y-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40"
+      className="figure-exhibit group relative flex flex-col snap-start shrink-0 w-[10.5rem] sm:w-[11.5rem] overflow-hidden rounded-[1.1rem] border border-border/70 bg-card transition-all duration-500 hover:-translate-y-1 focus-visible:-translate-y-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40"
       style={{ boxShadow: "var(--shadow-soft)" }}
     >
       {/* Portrait stage */}
@@ -429,7 +415,7 @@ function FigureCard({
       >
         <div
           aria-hidden
-          className="pointer-events-none absolute inset-2 rounded-[0.85rem] border"
+          className="pointer-events-none absolute inset-2 rounded-[0.75rem] border"
           style={{
             borderColor: "color-mix(in oklab, var(--brand-gold) 38%, transparent)",
             boxShadow: "inset 0 0 0 1px color-mix(in oklab, var(--brand-gold-bright) 18%, transparent)",
@@ -443,14 +429,6 @@ function FigureCard({
               "radial-gradient(ellipse at 50% 35%, transparent 40%, color-mix(in oklab, var(--foreground) 22%, transparent) 100%)",
           }}
         />
-        <div
-          aria-hidden
-          className="pointer-events-none absolute inset-0 flex items-center justify-center text-[8rem] leading-none font-black select-none opacity-[0.05]"
-          style={{ color: "var(--foreground)" }}
-        >
-          ⵣ
-        </div>
-        {/* Silhouette medallion */}
         <div className="absolute inset-0 flex items-center justify-center">
           <div
             className="relative flex items-center justify-center w-24 h-24 sm:w-28 sm:h-28 rounded-full transition-transform duration-700 group-hover:scale-[1.06]"
@@ -475,7 +453,6 @@ function FigureCard({
             </span>
           </div>
         </div>
-        {/* Warm light sweep on hover */}
         <div
           aria-hidden
           className="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700"
@@ -484,84 +461,184 @@ function FigureCard({
               "linear-gradient(120deg, transparent 30%, color-mix(in oklab, var(--brand-gold-bright) 22%, transparent) 50%, transparent 70%)",
           }}
         />
-        {/* Exhibit number */}
-        <span
-          className="absolute top-3 start-3 text-[10px] font-semibold uppercase tracking-[0.22em]"
-          style={{ color: "color-mix(in oklab, var(--brand-gold-deep) 85%, var(--foreground))" }}
-        >
-          N° {exhibitNo}
-        </span>
         {/* Era medallion marker */}
         <div className="absolute top-2.5 end-2.5">
-          <EraBadge kind={badgeKind} size={30} />
+          <EraBadge kind={badgeKind} size={28} />
         </div>
       </div>
 
       {/* Museum plaque */}
-      <div className="relative px-5 pt-4 pb-5 flex-1 flex flex-col bg-parchment-card">
+      <div className="relative px-3.5 pt-3 pb-4 flex-1 flex flex-col bg-parchment-card">
         <span
           aria-hidden
-          className="absolute inset-x-5 top-0 h-px"
+          className="absolute inset-x-3.5 top-0 h-px"
           style={{ background: `linear-gradient(90deg, transparent, color-mix(in oklab, ${accent} 70%, transparent), transparent)` }}
         />
         <div
-          className="text-[10px] uppercase tracking-[0.22em] font-bold"
+          className="text-[9px] uppercase tracking-[0.18em] font-bold"
           style={{ color: "color-mix(in oklab, var(--brand-gold-deep) 80%, var(--muted-foreground))" }}
         >
           {t(f.era, lang)}
         </div>
-        <h3
-          className="mt-1.5 text-[1.2rem] sm:text-[1.3rem] leading-tight font-bold group-hover:text-primary transition-colors"
+        <h4
+          className="mt-1 text-[1.05rem] leading-tight font-bold group-hover:text-primary transition-colors line-clamp-2"
           style={{ fontFamily: "Georgia, 'Times New Roman', serif", letterSpacing: "-0.005em" }}
         >
           {t(f.displayName, lang)}
-        </h3>
-
-        {fm?.cinematicLine ? (
-          <p
-            className="mt-2.5 text-[13px] italic text-foreground/75 line-clamp-2 leading-relaxed"
-            style={{ fontFamily: "Georgia, 'Times New Roman', serif" }}
-          >
-            “{t(fm.cinematicLine, lang)}”
-          </p>
-        ) : (
-          <p className="mt-2.5 text-[13px] text-muted-foreground line-clamp-2 leading-relaxed">
-            {t(f.fact, lang)}
-          </p>
-        )}
-
-        <div className="mt-auto pt-4 flex items-center justify-between gap-2 text-[11px]">
-          <span className="inline-flex items-center gap-1 text-muted-foreground">
-            <span aria-hidden>◈</span>
-            <span className="font-medium">
-              {region ? t(region.name, lang) : t(f.regionLabel, lang)}
-            </span>
+        </h4>
+        <div className="mt-auto pt-2.5 inline-flex items-center gap-1 text-[10.5px] text-muted-foreground">
+          <span aria-hidden>◈</span>
+          <span className="font-medium truncate">
+            {region ? t(region.name, lang) : t(f.regionLabel, lang)}
           </span>
-          {themeDef && (
-            <span
-              className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full font-semibold border"
-              style={{
-                borderColor: "color-mix(in oklab, var(--brand-gold) 35%, var(--border))",
-                background: "color-mix(in oklab, var(--brand-gold) 10%, var(--card))",
-                color: "color-mix(in oklab, var(--brand-gold-deep) 80%, var(--foreground))",
-              }}
-            >
-              <span aria-hidden>{themeDef.emoji}</span>
-              {t(themeDef.label, lang)}
-            </span>
-          )}
         </div>
-        <div
-          aria-hidden
-          className="pointer-events-none absolute -inset-px rounded-[1.25rem] opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-          style={{ boxShadow: "var(--shadow-gold-glow)" }}
-        />
-        {era && (
-          <span className="sr-only">
-            {era.emoji} {t(era.title, lang)}
-          </span>
-        )}
       </div>
     </Link>
+  );
+}
+
+/* ---------------- Search & refine (secondary) ---------------- */
+
+function RefineCollection({ lang }: { lang: Lang }) {
+  const [query, setQuery] = useState("");
+  const [eraFilter, setEraFilter] = useState<string | null>(null);
+
+  const heading =
+    lang === "fr" ? "Affiner la collection" : lang === "ar" ? "تنقيح المجموعة" : "Refine the collection";
+  const intro =
+    lang === "fr"
+      ? "Vous cherchez quelqu'un de précis ? Recherchez par nom ou filtrez par ère."
+      : lang === "ar"
+        ? "تبحث عن شخص بعينه؟ ابحث بالاسم أو صفِّ حسب الحقبة."
+        : "Looking for someone specific? Search by name or filter by era.";
+  const placeholder =
+    lang === "fr" ? "Rechercher une figure…" : lang === "ar" ? "ابحث عن شخصية…" : "Search a legend…";
+  const allLabel = lang === "fr" ? "Toutes les ères" : lang === "ar" ? "كل الحقب" : "All eras";
+  const noResults =
+    lang === "fr" ? "Aucune figure trouvée." : lang === "ar" ? "لا توجد نتائج." : "No legends found.";
+
+  const normalized = query.trim().toLowerCase();
+  const active = normalized.length > 0 || eraFilter !== null;
+
+  const results = useMemo(() => {
+    if (!active) return [];
+    return figures.filter((f) => {
+      if (eraFilter && eraOfCategory(f.category) !== eraFilter) return false;
+      if (normalized) {
+        const hay = [
+          t(f.displayName, lang),
+          f.name,
+          t(f.era, lang),
+          t(f.regionLabel, lang),
+        ]
+          .join(" ")
+          .toLowerCase();
+        if (!hay.includes(normalized)) return false;
+      }
+      return true;
+    });
+  }, [active, eraFilter, normalized, lang]);
+
+  return (
+    <section className="mt-16 scroll-mt-24" id="refine">
+      <div
+        className="rounded-[1.25rem] border p-5 sm:p-6"
+        style={{
+          borderColor: "color-mix(in oklab, var(--brand-gold) 22%, var(--border))",
+          background:
+            "linear-gradient(135deg, color-mix(in oklab, var(--accent) 7%, var(--card)), var(--card))",
+        }}
+      >
+        <div className="text-[10px] uppercase tracking-[0.22em] font-bold text-muted-foreground mb-1.5">
+          {lang === "fr" ? "Explorer plus" : lang === "ar" ? "استكشف المزيد" : "Explore more"}
+        </div>
+        <h2
+          className="text-2xl font-bold leading-tight"
+          style={{ fontFamily: "Georgia, 'Times New Roman', serif" }}
+        >
+          {heading}
+        </h2>
+        <p className="mt-1 text-sm text-muted-foreground max-w-2xl">{intro}</p>
+
+        {/* Search */}
+        <div className="mt-4">
+          <label className="relative block">
+            <span aria-hidden className="absolute start-3 top-1/2 -translate-y-1/2 text-muted-foreground">
+              ⌕
+            </span>
+            <input
+              type="search"
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              placeholder={placeholder}
+              className="w-full rounded-xl border bg-card ps-9 pe-4 py-2.5 text-sm outline-none focus-visible:ring-2 focus-visible:ring-primary/40"
+              style={{ borderColor: "color-mix(in oklab, var(--brand-gold) 28%, var(--border))" }}
+            />
+          </label>
+        </div>
+
+        {/* Era filter chips */}
+        <div className="mt-3 flex gap-2 flex-wrap">
+          <FilterChip active={eraFilter === null} onClick={() => setEraFilter(null)}>
+            {allLabel}
+          </FilterChip>
+          {LEGEND_ERAS.map((e) => (
+            <FilterChip
+              key={e.id}
+              active={eraFilter === e.id}
+              onClick={() => setEraFilter(eraFilter === e.id ? null : e.id)}
+            >
+              {t(e.label, lang)}
+            </FilterChip>
+          ))}
+        </div>
+
+        {/* Results */}
+        {active && (
+          <div className="mt-6">
+            <div className="text-xs text-muted-foreground font-semibold mb-3">
+              {results.length}{" "}
+              {lang === "fr" ? "résultat(s)" : lang === "ar" ? "نتيجة" : "result(s)"}
+            </div>
+            {results.length === 0 ? (
+              <p className="text-sm text-muted-foreground">{noResults}</p>
+            ) : (
+              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3.5 sm:gap-4">
+                {results.map((f) => (
+                  <PortraitCard key={f.id} figure={f} lang={lang} accent="var(--brand-gold)" />
+                ))}
+              </div>
+            )}
+          </div>
+        )}
+      </div>
+    </section>
+  );
+}
+
+function FilterChip({
+  active,
+  onClick,
+  children,
+}: {
+  active: boolean;
+  onClick: () => void;
+  children: React.ReactNode;
+}) {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      className="rounded-full border px-3.5 py-1.5 text-sm font-semibold transition-colors"
+      style={{
+        borderColor: active
+          ? "color-mix(in oklab, var(--brand-gold) 55%, var(--border))"
+          : "var(--border)",
+        background: active ? "color-mix(in oklab, var(--brand-gold) 14%, var(--card))" : "var(--card)",
+        color: active ? "color-mix(in oklab, var(--brand-gold-deep) 88%, var(--foreground))" : "var(--foreground)",
+      }}
+    >
+      {children}
+    </button>
   );
 }
