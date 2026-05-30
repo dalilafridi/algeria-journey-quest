@@ -114,17 +114,9 @@ function FiguresIndex() {
           }}
         >
           <div className="flex items-center gap-3 min-w-0 flex-1">
-            <span
-              aria-hidden
-              className="flex items-center justify-center w-11 h-11 rounded-full shrink-0 text-xl"
-              style={{
-                background:
-                  "radial-gradient(circle at 35% 30%, color-mix(in oklab, var(--brand-gold-bright) 55%, var(--card)) 0%, color-mix(in oklab, var(--brand-gold) 30%, var(--card)) 45%, color-mix(in oklab, var(--brand-gold-deep) 28%, var(--card)) 100%)",
-                boxShadow: "0 0 0 1px color-mix(in oklab, var(--brand-gold) 50%, transparent)",
-              }}
-            >
-              ❖
-            </span>
+            <MedallionFrame size={44} tone="gold" inset={0.24} className="shrink-0">
+              <span aria-hidden className="text-lg leading-none" style={{ color: "color-mix(in oklab, var(--brand-gold-deep) 55%, #2a1c0c)" }}>❖</span>
+            </MedallionFrame>
             <div className="min-w-0">
               <div className="font-bold leading-tight" style={{ fontFamily: "Georgia, 'Times New Roman', serif" }}>
                 {lang === "fr"
