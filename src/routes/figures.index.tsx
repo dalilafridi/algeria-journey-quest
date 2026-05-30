@@ -15,6 +15,7 @@ import {
 } from "@/lib/figureDiscovery";
 import { EraBadge } from "@/components/brand/EraBadge";
 import { FigureExhibitCard } from "@/components/figures/FigureExhibitCard";
+import { GuidedTour } from "@/components/figures/GuidedTour";
 import { t, tu, useLang, type Lang } from "@/lib/i18n";
 import { saveJourneyPlace } from "@/lib/continuity";
 
