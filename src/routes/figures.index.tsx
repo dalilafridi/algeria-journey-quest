@@ -592,7 +592,7 @@ function RefineCollection({ lang }: { lang: Lang }) {
               {lang === "fr" ? "résultat(s)" : lang === "ar" ? "نتيجة" : "result(s)"}
             </div>
             {results.length === 0 ? (
-              <p className="text-sm text-muted-foreground">{noResults}</p>
+              <MuseumEmptyState glyph="⌕" tone="patina" size="72" title={noResults} body={noResultsBody} />
             ) : (
               <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3.5 sm:gap-4">
                 {results.map((f) => (
