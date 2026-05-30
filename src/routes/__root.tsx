@@ -86,9 +86,17 @@ export const Route = createRootRoute({
 
 function RootShell({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en" dir="ltr">
       <head>
         <HeadContent />
+        {/* Set lang/dir from the saved preference before first paint to avoid
+            a flash of LTR for Arabic (RTL) visitors on hard navigations. */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html:
+              "(function(){try{var l=localStorage.getItem('algeria-history-lang-v1');if(l==='ar'){document.documentElement.lang='ar';document.documentElement.dir='rtl';}else if(l==='fr'){document.documentElement.lang='fr';}}catch(e){}})();",
+          }}
+        />
       </head>
       <body>
         {children}
