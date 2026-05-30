@@ -12,6 +12,7 @@ import type { Figure } from "@/data/figures";
 import { mapRegions } from "@/data/mapRegions";
 import { badgeKindOf } from "@/lib/figureEras";
 import { EraBadge } from "@/components/brand/EraBadge";
+import { MedallionFrame } from "@/components/brand/MedallionFrame";
 import { t, type Lang } from "@/lib/i18n";
 
 /** Map a figure region id to a real region page id, when one exists. */
@@ -77,28 +78,15 @@ export function FigureExhibitCard({
           }}
         />
         <div className="absolute inset-0 flex items-center justify-center">
-          <div
-            className="relative flex items-center justify-center w-24 h-24 sm:w-28 sm:h-28 rounded-full transition-transform duration-700 group-hover:scale-[1.06]"
-            style={{
-              background:
-                "radial-gradient(circle at 35% 30%, color-mix(in oklab, var(--brand-gold-bright) 55%, var(--card)) 0%, color-mix(in oklab, var(--brand-gold) 30%, var(--card)) 45%, color-mix(in oklab, var(--brand-gold-deep) 28%, var(--card)) 100%)",
-              boxShadow:
-                "0 0 0 1px color-mix(in oklab, var(--brand-gold) 55%, transparent), inset 0 -8px 18px color-mix(in oklab, var(--foreground) 22%, transparent), 0 12px 26px -12px color-mix(in oklab, var(--foreground) 50%, transparent)",
-            }}
-          >
-            <div
-              aria-hidden
-              className="absolute inset-1 rounded-full border"
-              style={{ borderColor: "color-mix(in oklab, var(--background) 55%, transparent)" }}
-            />
+          <MedallionFrame size={108} tone="gold" interactive inset={0.18}>
             <span
               aria-hidden
-              className="relative text-4xl sm:text-[2.75rem] drop-shadow-[0_2px_6px_rgba(0,0,0,0.25)]"
+              className="relative text-4xl sm:text-[2.6rem] drop-shadow-[0_2px_6px_rgba(0,0,0,0.25)]"
               style={{ filter: "saturate(0.85)" }}
             >
               {f.emoji}
             </span>
-          </div>
+          </MedallionFrame>
         </div>
         <div
           aria-hidden
