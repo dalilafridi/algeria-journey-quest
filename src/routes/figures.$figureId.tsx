@@ -7,6 +7,7 @@ import { figureExtras } from "@/data/figureExtras";
 import { figureMeta, FIGURE_THEMES, cultureKindEmoji, type FigureCultureLinkKind } from "@/data/figureMeta";
 import { mapRegions } from "@/data/mapRegions";
 import { LEGEND_ERAS, eraOfCategory } from "@/lib/figureEras";
+import { collectionOf } from "@/lib/figureCollections";
 import { EraBadge } from "@/components/brand/EraBadge";
 import { t, tu, useLang, type LocalizedString } from "@/lib/i18n";
 import { StoryFlow, type StoryScene } from "@/components/story/StoryFlow";
