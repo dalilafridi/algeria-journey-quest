@@ -338,7 +338,7 @@ function RegionExplorerPage() {
                         params={{ figureId: fid }}
                         className="text-sm font-semibold px-3 py-1.5 rounded-full bg-muted hover:bg-card border border-border hover:border-primary/40 transition"
                       >
-                        <span className="mr-1" aria-hidden>
+                        <span className="me-1" aria-hidden>
                           {f.emoji}
                         </span>
                         {t(f.displayName, lang)}

@@ -344,7 +344,7 @@ function Stat({ label, value, emoji }: { label: string; value: string; emoji?: s
       style={{ boxShadow: "var(--shadow-soft)" }}
     >
       <div className="text-lg font-extrabold">
-        {emoji && <span className="mr-1">{emoji}</span>}
+        {emoji && <span className="me-1">{emoji}</span>}
         {value}
       </div>
       <div className="text-[11px] uppercase tracking-wider text-muted-foreground mt-0.5">

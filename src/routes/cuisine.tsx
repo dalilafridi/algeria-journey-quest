@@ -210,7 +210,7 @@ function CuisinePage() {
             <div className="animate-fade-in">
               <header className="mb-4 flex items-baseline justify-between gap-3">
                 <h2 className="text-lg sm:text-xl font-extrabold tracking-tight">
-                  <span className="mr-2" aria-hidden>{region.icon}</span>
+                  <span className="me-2" aria-hidden>{region.icon}</span>
                   {t(region.name, lang)}
                 </h2>
                 <div className="flex items-center gap-3">
