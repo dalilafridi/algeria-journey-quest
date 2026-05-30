@@ -501,6 +501,12 @@ function RefineCollection({ lang }: { lang: Lang }) {
   const allLabel = lang === "fr" ? "Toutes les ères" : lang === "ar" ? "كل الحقب" : "All eras";
   const noResults =
     lang === "fr" ? "Aucune figure trouvée." : lang === "ar" ? "لا توجد نتائج." : "No legends found.";
+  const noResultsBody =
+    lang === "fr"
+      ? "Cette salle est encore vide. Essayez un autre nom ou changez d'ère."
+      : lang === "ar"
+        ? "هذه القاعة فارغة بعد. جرّب اسمًا آخر أو غيّر الحقبة."
+        : "This room is empty for now. Try another name or switch eras.";
 
   const normalized = query.trim().toLowerCase();
   const active = normalized.length > 0 || eraFilter !== null;
