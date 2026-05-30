@@ -284,7 +284,7 @@ function Home() {
                   className="card-hover group shrink-0 w-32 sm:w-auto rounded-2xl border border-border bg-card/85 p-4 text-center transition-colors hover:border-accent/60"
                   style={{ boxShadow: "var(--shadow-soft)" }}
                 >
-                  <div className="mx-auto w-16 h-12 flex items-center justify-center icon-glow">
+                  <div className="mx-auto w-16 h-16 flex items-center justify-center icon-glow">
                     <RegionIcon regionId={item.regionId} className="w-full h-full" />
                   </div>
                   <div className="mt-2 text-sm font-semibold leading-tight">{t(item.title, lang)}</div>
