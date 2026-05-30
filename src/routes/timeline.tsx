@@ -16,6 +16,7 @@ import { saveJourneyPlace } from "@/lib/continuity";
 import { JourneyNext } from "@/components/JourneyNext";
 import { EraPreview } from "@/components/EraPreview";
 import { EraBadge, type EraBadgeKind } from "@/components/brand/EraBadge";
+import { AchievementMedallion } from "@/components/brand/AchievementMedallion";
 
 
 export const Route = createFileRoute("/timeline")({
