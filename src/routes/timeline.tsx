@@ -431,7 +431,8 @@ function ChapterRow({
                     className="shrink-0 inline-flex items-center gap-1 px-3.5 py-1.5 rounded-full text-sm font-semibold bg-primary text-primary-foreground hover:opacity-90 transition-opacity min-h-[36px]"
                     style={{ boxShadow: "var(--shadow-glow)" }}
                   >
-                    {done ? tu("continueBtn", lang) : tu("startBtn", lang)} →
+                    {done ? tu("continueBtn", lang) : tu("startBtn", lang)}{" "}
+                    <span aria-hidden className="inline-block rtl:rotate-180">→</span>
                   </Link>
                 ) : (
                   <span className="shrink-0 inline-flex items-center gap-1 px-3.5 py-1.5 rounded-full text-sm font-semibold border border-border text-muted-foreground min-h-[36px]">
