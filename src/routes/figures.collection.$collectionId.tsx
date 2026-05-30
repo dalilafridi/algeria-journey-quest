@@ -2,7 +2,16 @@ import { createFileRoute, Link, useParams } from "@tanstack/react-router";
 import { useEffect, useMemo, useState } from "react";
 import { Header } from "@/components/Header";
 
-import { findRowBySlug, resolveRow } from "@/lib/figureDiscovery";
+import {
+  findRowBySlug,
+  resolveRow,
+  rowDeep,
+  relatedRows,
+  slugOfRow,
+  DISCOVERY_ROWS,
+  ALL_ROWS,
+} from "@/lib/figureDiscovery";
+import { MuseumEmptyState } from "@/components/figures/MuseumEmptyState";
 import { LEGEND_ERAS, eraOfCategory } from "@/lib/figureEras";
 import { EraBadge } from "@/components/brand/EraBadge";
 import { CollectionEmblem } from "@/components/figures/CollectionEmblem";
