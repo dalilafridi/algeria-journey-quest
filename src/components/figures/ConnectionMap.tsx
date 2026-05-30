@@ -25,7 +25,7 @@ import {
   slugOfRow,
   type DiscoveryRow,
 } from "@/lib/figureDiscovery";
-import { EraBadge } from "@/components/brand/EraBadge";
+import { EraBadge, type EraBadgeKind } from "@/components/brand/EraBadge";
 import { t, type Lang } from "@/lib/i18n";
 
 type NodeType = "figure" | "era" | "region" | "theme";
