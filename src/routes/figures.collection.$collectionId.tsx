@@ -62,7 +62,7 @@ function CollectionPage() {
 
   const regionMarkers = useMemo(() => {
     const seen = new Set<string>();
-    const out: { id: string; name: ReturnType<typeof t> extends never ? never : import("@/lib/i18n").LocalizedString }[] = [];
+    const out: { id: string; name: LocalizedString }[] = [];
     for (const f of items) {
       const mapId = FIGURE_REGION_TO_MAP[f.region];
       const region = mapId ? mapRegions.find((r) => r.id === mapId) : undefined;
