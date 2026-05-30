@@ -137,17 +137,9 @@ export function GuidedTour({
           {isWelcome ? (
             <div className="text-center max-w-xl mx-auto">
               <div className="flex justify-center mb-5">
-                <div
-                  className="flex items-center justify-center w-20 h-20 rounded-full"
-                  style={{
-                    background:
-                      "radial-gradient(circle at 35% 30%, color-mix(in oklab, var(--brand-gold-bright) 55%, var(--card)) 0%, color-mix(in oklab, var(--brand-gold) 30%, var(--card)) 45%, color-mix(in oklab, var(--brand-gold-deep) 28%, var(--card)) 100%)",
-                    boxShadow:
-                      "0 0 0 1px color-mix(in oklab, var(--brand-gold) 55%, transparent), var(--shadow-gold-glow)",
-                  }}
-                >
-                  <span aria-hidden className="text-4xl">ⵣ</span>
-                </div>
+                <MedallionFrame size={80} tone="gold" glow animate="reveal" inset={0.24}>
+                  <AmazighSymbol size={40} glow={false} />
+                </MedallionFrame>
               </div>
               <h2
                 id="guided-tour-title"
@@ -179,20 +171,16 @@ export function GuidedTour({
 
                 {/* Plaque header: medallion + identity */}
                 <div className="mt-5 flex items-center gap-4">
-                  <div
-                    className="relative flex items-center justify-center w-24 h-24 sm:w-28 sm:h-28 rounded-full shrink-0"
-                    style={{
-                      background:
-                        "radial-gradient(circle at 35% 30%, color-mix(in oklab, var(--brand-gold-bright) 55%, var(--card)) 0%, color-mix(in oklab, var(--brand-gold) 30%, var(--card)) 45%, color-mix(in oklab, var(--brand-gold-deep) 28%, var(--card)) 100%)",
-                      boxShadow:
-                        "0 0 0 1px color-mix(in oklab, var(--brand-gold) 55%, transparent), var(--shadow-gold-glow)",
-                    }}
+                  <MedallionFrame
+                    size={112}
+                    tone="gold"
+                    glow
+                    inset={0.2}
+                    className="w-24 h-24 sm:w-28 sm:h-28 shrink-0"
+                    seal={<EraBadge kind={era.badge} size={40} />}
                   >
                     <span aria-hidden className="text-5xl sm:text-6xl">{figure.emoji}</span>
-                    <div className="absolute -bottom-1 -end-1">
-                      <EraBadge kind={era.badge} size={40} />
-                    </div>
-                  </div>
+                  </MedallionFrame>
                   <div className="min-w-0">
                     <h3
                       className="text-2xl sm:text-3xl font-extrabold leading-tight"
