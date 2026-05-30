@@ -521,8 +521,26 @@ function FigureDetail() {
         )}
       </section>
 
+      {/* ============ COLLECT & SHARE — exhibit plaque ============ */}
+      <section className="max-w-5xl mx-auto px-4 pb-14">
+        <div className="flex items-center gap-3 mb-5">
+          <h2 className="text-2xl font-bold" style={{ fontFamily: "Georgia, 'Times New Roman', serif" }}>
+            {lang === "fr" ? "Collectionner & partager" : lang === "ar" ? "اجمع وشارك" : "Collect & share"}
+          </h2>
+          <div
+            aria-hidden
+            className="flex-1 h-px"
+            style={{ background: "linear-gradient(90deg, color-mix(in oklab, var(--brand-gold) 60%, transparent), transparent)" }}
+          />
+        </div>
+        <div className="rounded-2xl border bg-card p-5 sm:p-6" style={{ borderColor: "var(--border)", boxShadow: "var(--shadow-soft)" }}>
+          <SharePlaque figure={f} lang={lang} />
+        </div>
+      </section>
+
 
       {/* Explore other legends */}
+
       <section className="max-w-5xl mx-auto px-4 pb-16">
         <div className="text-xs uppercase tracking-wider text-muted-foreground font-semibold mb-3">
           {tu("exploreFigures", lang)}
