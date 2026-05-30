@@ -176,6 +176,12 @@ export function SharePlaque({ figure: f, lang }: { figure: Figure; lang: Lang })
         region: t(f.regionLabel, lang),
         quote: f.extended?.keyLesson ? t(f.extended.keyLesson, lang) : undefined,
         emblem: collection.emblem,
+        tagline:
+          lang === "fr"
+            ? "UN MUSÉE DE L'HISTOIRE ALGÉRIENNE"
+            : lang === "ar"
+              ? "متحف التاريخ الجزائري"
+              : "A MUSEUM OF ALGERIAN HISTORY",
       }),
     [f, lang, eraDef, categoryDef, collection],
   );
