@@ -358,9 +358,9 @@ function FigureDetail() {
           >
             <div className="flex items-center gap-2 mb-4">
               <EraBadge kind={legendEra.badge} size={34} />
-              <h2 className="text-sm font-bold uppercase tracking-[0.16em] text-foreground">
+              <div className="text-sm font-bold uppercase tracking-[0.16em] text-foreground">
                 {atAGlanceLabel}
-              </h2>
+              </div>
             </div>
             <dl className="space-y-3 text-sm">
               {categoryDef && <GlanceRow label={roleLabel} value={t(categoryDef.label, lang)} />}
