@@ -84,6 +84,8 @@ function CollectionPage() {
     lang === "fr" ? "Salle d'exposition" : lang === "ar" ? "قاعة العرض" : "Exhibit room";
   const erasLabel = lang === "fr" ? "Ères" : lang === "ar" ? "الحقب" : "Eras";
   const regionsLabel = lang === "fr" ? "Régions" : lang === "ar" ? "المناطق" : "Regions";
+  const tourLabel =
+    lang === "fr" ? "Faire la visite guidée" : lang === "ar" ? "ابدأ الجولة المُرشدة" : "Walk the Hall of Legends";
 
   return (
     <div className="min-h-screen">
