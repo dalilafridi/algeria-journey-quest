@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { applyDir, getLang, useLang } from "@/lib/i18n";
+import { applyDir, getLang, tu, useLang } from "@/lib/i18n";
 
 /**
  * Phase 10 / 12 — Accessibility + perf helpers.
