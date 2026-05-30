@@ -161,7 +161,7 @@ function FiguresIndex() {
       <Header />
 
       {/* Cinematic Hero — entering the hall */}
-      <section className="relative overflow-hidden hero-band border-b border-border">
+      <section className="relative museum-hero">
         <div
           aria-hidden
           className="absolute inset-0 pointer-events-none opacity-[0.06] text-[14rem] sm:text-[20rem] font-black tracking-tighter leading-none flex items-center justify-center select-none"
