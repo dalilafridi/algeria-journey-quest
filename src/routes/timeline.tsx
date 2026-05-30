@@ -156,7 +156,7 @@ function Timeline() {
                 <button
                   key={f.key}
                   onClick={() => setFilter(f.key)}
-                  className={`shrink-0 px-3.5 py-2 rounded-full text-sm font-medium border transition-all min-h-[36px] ${
+                  className={`shrink-0 px-3.5 py-2 rounded-full text-sm font-medium border transition-all min-h-[44px] ${
                     active
                       ? "bg-primary text-primary-foreground border-primary shadow-sm"
                       : "bg-card text-foreground/80 border-border hover:bg-muted"
