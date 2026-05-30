@@ -1,15 +1,11 @@
 import { useEffect, useState } from "react";
-import { MedallionFrame } from "@/components/brand/MedallionFrame";
-import { AmazighSymbol } from "@/components/brand/AmazighSymbol";
+import splashImg from "@/assets/loading-wheel.png";
 
 const SPLASH_KEY = "atte-splash-shown-v1";
 
 /**
- * Cinematic full-screen splash — the museum's opening artifact.
- *
- * Shows once per browser session: a master Amazigh medallion reveals from the
- * night palette with a soft bronze glow, then the whole screen fades out and
- * unmounts. Fast, elegant, minimal — no spinners, no flashy effects.
+ * Cinematic full-screen splash.
+ * Shows once per browser session, then fades out and unmounts.
  */
 export function SplashScreen() {
   const [visible, setVisible] = useState(false);
@@ -22,7 +18,7 @@ export function SplashScreen() {
       /* noop */
     }
     setVisible(true);
-    const t = setTimeout(() => setVisible(false), 2200);
+    const t = setTimeout(() => setVisible(false), 2400);
     return () => clearTimeout(t);
   }, []);
 
@@ -30,21 +26,16 @@ export function SplashScreen() {
 
   return (
     <div
-      className="fixed inset-0 z-[100] flex flex-col items-center justify-center gap-6 animate-splash-fade pointer-events-none"
+      className="fixed inset-0 z-[100] flex items-center justify-center animate-splash-fade pointer-events-none"
       style={{ background: "var(--gradient-brand-night)" }}
       aria-hidden
     >
-      <div className="animate-gold-pulse">
-        <MedallionFrame size={172} tone="ink" glow animate="reveal" inset={0.26}>
-          <AmazighSymbol size={88} glow={false} />
-        </MedallionFrame>
-      </div>
-      <div
-        className="text-[11px] font-bold uppercase tracking-[0.42em]"
-        style={{ color: "oklch(0.86 0.1 82)" }}
-      >
-        DZ Odyssey
-      </div>
+      <img
+        src={splashImg}
+        alt=""
+        className="max-h-full max-w-full h-auto w-auto object-contain"
+        style={{ filter: "drop-shadow(0 12px 40px oklch(0.85 0.16 80 / 0.35))" }}
+      />
     </div>
   );
 }
