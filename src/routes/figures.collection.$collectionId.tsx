@@ -44,8 +44,8 @@ function CollectionPage() {
     if (!row) return;
     saveJourneyPlace({
       section: "figures",
-      label: row.label,
-      description: row.tagline,
+      label: { en: t(row.label, "en"), fr: t(row.label, "fr"), ar: t(row.label, "ar") },
+      description: { en: t(row.tagline, "en"), fr: t(row.tagline, "fr"), ar: t(row.tagline, "ar") },
       href: `/figures/collection/${collectionId}`,
     });
   }, [row, collectionId]);
