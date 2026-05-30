@@ -28,6 +28,7 @@ import { Route as QuizEraIdRouteImport } from './routes/quiz.$eraId'
 import { Route as FiguresQuizRouteImport } from './routes/figures.quiz'
 import { Route as FiguresFigureIdRouteImport } from './routes/figures.$figureId'
 import { Route as EraEraIdRouteImport } from './routes/era.$eraId'
+import { Route as FiguresCollectionCollectionIdRouteImport } from './routes/figures.collection.$collectionId'
 
 const WordsRoute = WordsRouteImport.update({
   id: '/words',
@@ -124,6 +125,12 @@ const EraEraIdRoute = EraEraIdRouteImport.update({
   path: '/era/$eraId',
   getParentRoute: () => rootRouteImport,
 } as any)
+const FiguresCollectionCollectionIdRoute =
+  FiguresCollectionCollectionIdRouteImport.update({
+    id: '/figures/collection/$collectionId',
+    path: '/figures/collection/$collectionId',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -145,6 +152,7 @@ export interface FileRoutesByFullPath {
   '/figures/quiz': typeof FiguresQuizRoute
   '/quiz/$eraId': typeof QuizEraIdRoute
   '/figures/': typeof FiguresIndexRoute
+  '/figures/collection/$collectionId': typeof FiguresCollectionCollectionIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -166,6 +174,7 @@ export interface FileRoutesByTo {
   '/figures/quiz': typeof FiguresQuizRoute
   '/quiz/$eraId': typeof QuizEraIdRoute
   '/figures': typeof FiguresIndexRoute
+  '/figures/collection/$collectionId': typeof FiguresCollectionCollectionIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -188,6 +197,7 @@ export interface FileRoutesById {
   '/figures/quiz': typeof FiguresQuizRoute
   '/quiz/$eraId': typeof QuizEraIdRoute
   '/figures/': typeof FiguresIndexRoute
+  '/figures/collection/$collectionId': typeof FiguresCollectionCollectionIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -211,6 +221,7 @@ export interface FileRouteTypes {
     | '/figures/quiz'
     | '/quiz/$eraId'
     | '/figures/'
+    | '/figures/collection/$collectionId'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -232,6 +243,7 @@ export interface FileRouteTypes {
     | '/figures/quiz'
     | '/quiz/$eraId'
     | '/figures'
+    | '/figures/collection/$collectionId'
   id:
     | '__root__'
     | '/'
@@ -253,6 +265,7 @@ export interface FileRouteTypes {
     | '/figures/quiz'
     | '/quiz/$eraId'
     | '/figures/'
+    | '/figures/collection/$collectionId'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -275,6 +288,7 @@ export interface RootRouteChildren {
   FiguresQuizRoute: typeof FiguresQuizRoute
   QuizEraIdRoute: typeof QuizEraIdRoute
   FiguresIndexRoute: typeof FiguresIndexRoute
+  FiguresCollectionCollectionIdRoute: typeof FiguresCollectionCollectionIdRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -412,6 +426,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof EraEraIdRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/figures/collection/$collectionId': {
+      id: '/figures/collection/$collectionId'
+      path: '/figures/collection/$collectionId'
+      fullPath: '/figures/collection/$collectionId'
+      preLoaderRoute: typeof FiguresCollectionCollectionIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -435,6 +456,7 @@ const rootRouteChildren: RootRouteChildren = {
   FiguresQuizRoute: FiguresQuizRoute,
   QuizEraIdRoute: QuizEraIdRoute,
   FiguresIndexRoute: FiguresIndexRoute,
+  FiguresCollectionCollectionIdRoute: FiguresCollectionCollectionIdRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
