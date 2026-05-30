@@ -155,7 +155,7 @@ function FiguresIndex() {
             <a
               key={row.id}
               href={`#row-${row.id}`}
-              className="snap-start shrink-0 group inline-flex items-center gap-2 rounded-full border px-3.5 py-1.5 text-sm font-semibold transition-colors"
+              className="snap-start shrink-0 group inline-flex items-center gap-2 rounded-full border px-3.5 py-2.5 min-h-[44px] text-sm font-semibold transition-colors"
               style={{
                 borderColor: "color-mix(in oklab, var(--brand-gold) 30%, var(--border))",
                 background: "var(--card)",
