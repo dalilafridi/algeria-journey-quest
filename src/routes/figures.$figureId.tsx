@@ -83,7 +83,10 @@ function FigureDetail() {
   const significanceLabel =
     lang === "fr" ? "Importance historique" : lang === "ar" ? "الأهمية التاريخية" : "Historical significance";
   const contributionsLabel =
-    lang === "fr" ? "Contributions clés" : lang === "ar" ? "أبرز الإسهامات" : "Key contributions";
+    lang === "fr" ? "Grandes réalisations" : lang === "ar" ? "أبرز الإنجازات" : "Major achievements";
+  const contextLabel =
+    lang === "fr" ? "Contexte historique" : lang === "ar" ? "السياق التاريخي" : "Historical context";
+  const galleryRowLabel = lang === "fr" ? "Galerie" : lang === "ar" ? "القاعة" : "Gallery";
   const legacyLabel = lang === "fr" ? "Héritage durable" : lang === "ar" ? "الإرث الباقي" : "Lasting legacy";
   const connectionsLabel = lang === "fr" ? "Connexions" : lang === "ar" ? "روابط" : "Connections";
   const quoteLabel = lang === "fr" ? "Citation mémorable" : lang === "ar" ? "قول مأثور" : "Memorable quote";
