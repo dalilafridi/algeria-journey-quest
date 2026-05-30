@@ -173,6 +173,19 @@ function FigureDetail() {
               </h1>
               {/* Role / title + lifespan */}
               <div className="mt-3 flex flex-wrap gap-1.5 justify-center sm:justify-start text-xs">
+                <Link
+                  to="/figures"
+                  hash={`gallery-${collection.id}`}
+                  className="px-2.5 py-0.5 rounded-full font-semibold border inline-flex items-center gap-1 hover:border-primary/50 transition-colors"
+                  style={{
+                    borderColor: "color-mix(in oklab, var(--brand-gold) 40%, var(--border))",
+                    background: "color-mix(in oklab, var(--brand-gold) 8%, var(--card))",
+                    color: "color-mix(in oklab, var(--brand-gold-deep) 85%, var(--foreground))",
+                  }}
+                >
+                  <span aria-hidden style={{ color: collection.accent }}>{collection.emblem}</span>
+                  {t(collection.label, lang)}
+                </Link>
                 {categoryDef && (
                   <span className="px-2.5 py-0.5 rounded-full bg-muted text-muted-foreground font-semibold">
                     {categoryDef.emoji} {t(categoryDef.label, lang)}
