@@ -42,6 +42,7 @@ export const Route = createFileRoute("/figures/")({
 
 function FiguresIndex() {
   const lang = useLang();
+  const [tourOpen, setTourOpen] = useState(false);
 
   useEffect(() => {
     saveJourneyPlace({
