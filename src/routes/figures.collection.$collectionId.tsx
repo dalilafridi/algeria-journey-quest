@@ -5,6 +5,7 @@ import { Header } from "@/components/Header";
 import { findRowBySlug, resolveRow } from "@/lib/figureDiscovery";
 import { LEGEND_ERAS, eraOfCategory } from "@/lib/figureEras";
 import { EraBadge } from "@/components/brand/EraBadge";
+import { CollectionEmblem } from "@/components/figures/CollectionEmblem";
 import { GuidedTour } from "@/components/figures/GuidedTour";
 import {
   FigureExhibitCard,
