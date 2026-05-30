@@ -204,7 +204,15 @@ function FiguresIndex() {
 
 /* ---------------- Featured exhibition billboard ---------------- */
 
-function FeaturedBillboard({ figure: f, lang }: { figure: Figure; lang: Lang }) {
+function FeaturedBillboard({
+  figure: f,
+  lang,
+  onStartTour,
+}: {
+  figure: Figure;
+  lang: Lang;
+  onStartTour: () => void;
+}) {
   const fm = figureMeta[f.id];
   const era = LEGEND_ERAS.find((e) => e.id === eraOfCategory(f.category))!;
   const col = collectionOf(f.id);
@@ -212,6 +220,8 @@ function FeaturedBillboard({ figure: f, lang }: { figure: Figure; lang: Lang }) 
     lang === "fr" ? "Explorer son histoire" : lang === "ar" ? "اكتشف قصته" : "Explore their story";
   const nowShowingLabel =
     lang === "fr" ? "Exposition à l'affiche" : lang === "ar" ? "المعرض المعروض الآن" : "Now showing";
+  const tourLabel =
+    lang === "fr" ? "Visite guidée" : lang === "ar" ? "جولة مُرشدة" : "Guided tour";
 
   return (
     <section className="relative museum-hero">
