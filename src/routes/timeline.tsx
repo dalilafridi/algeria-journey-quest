@@ -140,7 +140,7 @@ function Timeline() {
             <Link to="/moments" hash="education-title" className="hover:text-primary transition">
               {lang === "fr" ? "Éducation & Identité" : lang === "ar" ? "التعليم والهوية" : "Education & Identity"}
             </Link>
-            <span aria-hidden>→</span>
+            <span aria-hidden className="inline-block rtl:rotate-180">→</span>
             <Link to="/moments" hash="independence-war-title" className="hover:text-primary transition">
               {lang === "fr" ? "Guerre d’indépendance" : lang === "ar" ? "ثورة التحرير" : "War of Independence"}
             </Link>
