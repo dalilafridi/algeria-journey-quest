@@ -50,10 +50,6 @@ function CollectionPage() {
     });
   }, [row, collectionId]);
 
-  if (!row) {
-    return <CollectionNotFound lang={lang} />;
-  }
-
   /* Era + region context markers derived from the members. */
   const eraMarkers = useMemo(() => {
     const ids = new Set(items.map((f) => eraOfCategory(f.category)));
@@ -73,6 +69,11 @@ function CollectionPage() {
     }
     return out;
   }, [items]);
+
+  if (!row) {
+    return <CollectionNotFound lang={lang} />;
+  }
+
 
   const backLabel =
     lang === "fr" ? "Retour au Panthéon" : lang === "ar" ? "العودة إلى قاعة العظماء" : "Back to the Hall of Legends";
