@@ -518,7 +518,7 @@ function RefineCollection({ lang }: { lang: Lang }) {
             ) : (
               <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3.5 sm:gap-4">
                 {results.map((f) => (
-                  <PortraitCard key={f.id} figure={f} lang={lang} accent="var(--brand-gold)" />
+                  <FigureExhibitCard key={f.id} figure={f} lang={lang} accent="var(--brand-gold)" fluid />
                 ))}
               </div>
             )}
