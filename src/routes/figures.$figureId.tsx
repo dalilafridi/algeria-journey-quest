@@ -59,6 +59,7 @@ function FigureDetail() {
   const extras = figureExtras[f.id];
   const relatedRegion = mapRegions.find((r) => r.id === f.region || (f.region === "mascara-west" && r.id === "oran-west"));
   const legendEra = LEGEND_ERAS.find((e) => e.id === eraOfCategory(f.category))!;
+  const collection = collectionOf(f.id);
   const categoryDef = FIGURE_CATEGORIES.find((c) => c.id === f.category);
 
   const meta = figureMeta[f.id];
