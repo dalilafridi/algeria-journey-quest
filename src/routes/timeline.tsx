@@ -16,6 +16,7 @@ import { saveJourneyPlace } from "@/lib/continuity";
 import { JourneyNext } from "@/components/JourneyNext";
 import { EraPreview } from "@/components/EraPreview";
 import { EraBadge, type EraBadgeKind } from "@/components/brand/EraBadge";
+import { AchievementMedallion } from "@/components/brand/AchievementMedallion";
 
 
 export const Route = createFileRoute("/timeline")({
@@ -223,6 +224,30 @@ function Timeline() {
             </dl>
           </div>
         </div>
+
+        {completedEras >= eras.length && eras.length > 0 && (
+          <div className="mt-6 flex justify-center animate-fade-in">
+            <AchievementMedallion
+              kind="exhibition-finished"
+              variant="reveal"
+              title={
+                lang === "fr"
+                  ? "Exposition achevée"
+                  : lang === "ar"
+                    ? "اكتملت الزيارة"
+                    : "Exhibition finished"
+              }
+              subtitle={
+                lang === "fr"
+                  ? "Vous avez parcouru toutes les époques de l'Algérie."
+                  : lang === "ar"
+                    ? "لقد عبرت كل حقب الجزائر."
+                    : "You have walked every era of Algeria."
+              }
+            />
+          </div>
+        )}
+
         <JourneyNext current="history" />
       </main>
     </div>

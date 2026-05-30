@@ -14,6 +14,8 @@ import {
   type DiscoveryRow,
 } from "@/lib/figureDiscovery";
 import { EraBadge } from "@/components/brand/EraBadge";
+import { MedallionFrame } from "@/components/brand/MedallionFrame";
+import { MedallionDivider } from "@/components/brand/MedallionDivider";
 import { FigureExhibitCard } from "@/components/figures/FigureExhibitCard";
 import { GuidedTour } from "@/components/figures/GuidedTour";
 import { t, tu, useLang, type Lang } from "@/lib/i18n";
@@ -112,17 +114,9 @@ function FiguresIndex() {
           }}
         >
           <div className="flex items-center gap-3 min-w-0 flex-1">
-            <span
-              aria-hidden
-              className="flex items-center justify-center w-11 h-11 rounded-full shrink-0 text-xl"
-              style={{
-                background:
-                  "radial-gradient(circle at 35% 30%, color-mix(in oklab, var(--brand-gold-bright) 55%, var(--card)) 0%, color-mix(in oklab, var(--brand-gold) 30%, var(--card)) 45%, color-mix(in oklab, var(--brand-gold-deep) 28%, var(--card)) 100%)",
-                boxShadow: "0 0 0 1px color-mix(in oklab, var(--brand-gold) 50%, transparent)",
-              }}
-            >
-              ❖
-            </span>
+            <MedallionFrame size={44} tone="gold" inset={0.24} className="shrink-0">
+              <span aria-hidden className="text-lg leading-none" style={{ color: "color-mix(in oklab, var(--brand-gold-deep) 55%, #2a1c0c)" }}>❖</span>
+            </MedallionFrame>
             <div className="min-w-0">
               <div className="font-bold leading-tight" style={{ fontFamily: "Georgia, 'Times New Roman', serif" }}>
                 {lang === "fr"
@@ -185,8 +179,10 @@ function FiguresIndex() {
           ))}
         </div>
 
+        <MedallionDivider className="my-12 sm:my-14" />
+
         {/* ============ ERA GALLERIES ============ */}
-        <div className="mt-16">
+        <div className="mt-2">
           <RowGroupHeader title={erasLabel} intro={erasIntro} />
           <div className="space-y-10 sm:space-y-12">
             {eraRows.map(({ row, items }) => (
@@ -194,6 +190,8 @@ function FiguresIndex() {
             ))}
           </div>
         </div>
+
+        <MedallionDivider className="my-12 sm:my-14" />
 
         {/* ============ SEARCH & REFINE (secondary) ============ */}
         <RefineCollection lang={lang} />
@@ -291,20 +289,16 @@ function FeaturedBillboard({
           <div className="relative grid md:grid-cols-[auto_1fr] gap-6 sm:gap-10 p-6 sm:p-9 pt-4 items-center">
             {/* Large portrait medallion */}
             <div className="flex justify-center md:block">
-              <div
-                className="relative flex items-center justify-center w-44 h-44 sm:w-56 sm:h-56 rounded-full transition-transform duration-700 group-hover:scale-[1.03]"
-                style={{
-                  background:
-                    "radial-gradient(circle at 35% 30%, color-mix(in oklab, var(--brand-gold-bright) 55%, var(--card)) 0%, color-mix(in oklab, var(--brand-gold) 30%, var(--card)) 45%, color-mix(in oklab, var(--brand-gold-deep) 28%, var(--card)) 100%)",
-                  boxShadow:
-                    "0 0 0 1px color-mix(in oklab, var(--brand-gold) 55%, transparent), inset 0 -10px 22px color-mix(in oklab, var(--foreground) 22%, transparent), var(--shadow-gold-glow)",
-                }}
+              <MedallionFrame
+                size={224}
+                tone="gold"
+                glow
+                interactive
+                inset={0.18}
+                className="w-44 h-44 sm:w-56 sm:h-56"
+                label={t(f.displayName, lang)}
+                seal={<EraBadge kind={era.badge} size={52} label={t(era.label, lang)} />}
               >
-                <div
-                  aria-hidden
-                  className="absolute inset-2 rounded-full border"
-                  style={{ borderColor: "color-mix(in oklab, var(--background) 55%, transparent)" }}
-                />
                 <span
                   aria-hidden
                   className="relative text-7xl sm:text-8xl drop-shadow-[0_2px_8px_rgba(0,0,0,0.3)]"
@@ -312,10 +306,7 @@ function FeaturedBillboard({
                 >
                   {f.emoji}
                 </span>
-                <div className="absolute -bottom-2 -end-2">
-                  <EraBadge kind={era.badge} size={52} label={t(era.label, lang)} />
-                </div>
-              </div>
+              </MedallionFrame>
             </div>
 
             {/* Plaque */}

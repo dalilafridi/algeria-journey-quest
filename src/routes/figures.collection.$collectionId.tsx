@@ -5,6 +5,7 @@ import { Header } from "@/components/Header";
 import { findRowBySlug, resolveRow } from "@/lib/figureDiscovery";
 import { LEGEND_ERAS, eraOfCategory } from "@/lib/figureEras";
 import { EraBadge } from "@/components/brand/EraBadge";
+import { CollectionEmblem } from "@/components/figures/CollectionEmblem";
 import { GuidedTour } from "@/components/figures/GuidedTour";
 import {
   FigureExhibitCard,
@@ -114,17 +115,16 @@ function CollectionPage() {
 
           <div className="mt-6 flex items-start gap-4 sm:gap-5">
             <div className="relative shrink-0">
-              <EraBadge kind={row.badge} size={64} label={t(row.label, lang)} />
-              <span
-                aria-hidden
-                className="absolute -bottom-1.5 -end-1.5 flex items-center justify-center w-6 h-6 rounded-full text-sm font-bold"
-                style={{
-                  background: "var(--card)",
-                  border: "1px solid color-mix(in oklab, var(--brand-gold) 45%, var(--border))",
-                  color: row.accent,
-                }}
-              >
-                {row.emblem}
+              <CollectionEmblem
+                emblem={row.emblem}
+                accent={row.accent}
+                size={72}
+                glow
+                animate="reveal"
+                label={t(row.label, lang)}
+              />
+              <span className="absolute -bottom-1.5 -end-1.5">
+                <EraBadge kind={row.badge} size={30} label={t(row.label, lang)} />
               </span>
             </div>
             <div className="min-w-0">
