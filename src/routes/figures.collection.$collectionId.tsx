@@ -222,13 +222,119 @@ function CollectionPage() {
         />
       </section>
 
+      {/* ===== Collection overview + significance ===== */}
+      {(deep || notable.length > 0) && (
+        <section className="max-w-6xl mx-auto px-4 pt-8 sm:pt-10">
+          <div className="grid gap-5 lg:grid-cols-[1fr_300px] items-start">
+            <div className="space-y-5">
+              {deep && (
+                <div className="rounded-2xl border bg-card p-5 sm:p-6" style={{ borderColor: "var(--border)", boxShadow: "var(--shadow-soft)" }}>
+                  <div className="text-xs uppercase tracking-wider text-muted-foreground font-bold mb-2">{overviewLabel}</div>
+                  <p className="leading-relaxed text-foreground/90">{t(deep.intro, lang)}</p>
+                </div>
+              )}
+              {deep && (
+                <div
+                  className="relative rounded-2xl border p-5 sm:p-6 overflow-hidden"
+                  style={{
+                    borderColor: "color-mix(in oklab, var(--brand-gold) 35%, var(--border))",
+                    background: "linear-gradient(135deg, color-mix(in oklab, var(--brand-gold) 8%, var(--card)), var(--card))",
+                  }}
+                >
+                  <div className="text-xs uppercase tracking-wider font-bold mb-2" style={{ color: "color-mix(in oklab, var(--brand-gold-deep) 85%, var(--foreground))" }}>
+                    {significanceLabel}
+                  </div>
+                  <p className="leading-relaxed text-foreground/90">{t(deep.significance, lang)}</p>
+                </div>
+              )}
+            </div>
+
+            {notable.length > 0 && (
+              <aside className="rounded-2xl border bg-parchment-card p-5" style={{ borderColor: "var(--border)", boxShadow: "var(--shadow-soft)" }}>
+                <div className="text-xs uppercase tracking-wider text-muted-foreground font-bold mb-3">{notableLabel}</div>
+                <ul className="space-y-2">
+                  {notable.map((f) => (
+                    <li key={f.id}>
+                      <Link
+                        to="/figures/$figureId"
+                        params={{ figureId: f.id }}
+                        className="flex items-center gap-2.5 rounded-xl px-2.5 py-2 hover:bg-muted/60 transition"
+                      >
+                        <span className="text-xl leading-none" aria-hidden>{f.emoji}</span>
+                        <span className="min-w-0">
+                          <span className="block font-semibold text-sm truncate">{t(f.displayName, lang)}</span>
+                          <span className="block text-[11px] text-muted-foreground truncate">{t(f.era, lang)}</span>
+                        </span>
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </aside>
+            )}
+          </div>
+        </section>
+      )}
+
       {/* ===== Figures grid ===== */}
       <main className="max-w-6xl mx-auto px-4 py-8 sm:py-10">
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3.5 sm:gap-4">
-          {items.map((f) => (
-            <FigureExhibitCard key={f.id} figure={f} lang={lang} accent={row.accent} fluid />
-          ))}
-        </div>
+        {items.length === 0 ? (
+          <MuseumEmptyState
+            glyph={row.emblem}
+            title={emptyTitle}
+            body={emptyBody}
+            action={
+              <Link
+                to="/figures"
+                className="inline-flex items-center gap-2 rounded-xl px-5 py-2.5 text-sm font-semibold text-primary-foreground"
+                style={{ background: "var(--gradient-warm)" }}
+              >
+                <span aria-hidden>←</span>
+                {backLabel}
+              </Link>
+            }
+          />
+        ) : (
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3.5 sm:gap-4">
+            {items.map((f) => (
+              <FigureExhibitCard key={f.id} figure={f} lang={lang} accent={row.accent} fluid />
+            ))}
+          </div>
+        )}
+
+        {/* ===== Related collections — continuous discovery ===== */}
+        {related.length > 0 && (
+          <section className="mt-14">
+            <div className="text-[10px] uppercase tracking-[0.22em] font-bold text-muted-foreground mb-1.5">
+              {continueLabel}
+            </div>
+            <div className="flex items-center gap-3 mb-5">
+              <h2 className="text-2xl font-bold" style={{ fontFamily: "Georgia, 'Times New Roman', serif" }}>
+                {relatedLabel}
+              </h2>
+              <span aria-hidden className="flex-1 h-px" style={{ background: "linear-gradient(90deg, color-mix(in oklab, var(--brand-gold) 55%, transparent), transparent)" }} />
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+              {related.map((r) => (
+                <Link
+                  key={r.id}
+                  to="/figures/collection/$collectionId"
+                  params={{ collectionId: slugOfRow(r) }}
+                  className="group flex items-center gap-3.5 rounded-2xl border bg-card p-4 transition hover:-translate-y-0.5 hover:border-primary/40"
+                  style={{ borderColor: "var(--border)", boxShadow: "var(--shadow-soft)" }}
+                >
+                  <CollectionEmblem emblem={r.emblem} accent={r.accent} size={48} interactive />
+                  <span className="min-w-0">
+                    <span className="block font-bold leading-tight group-hover:text-primary transition-colors" style={{ fontFamily: "Georgia, 'Times New Roman', serif" }}>
+                      {t(r.label, lang)}
+                    </span>
+                    <span className="block text-xs text-muted-foreground truncate">{t(r.tagline, lang)}</span>
+                  </span>
+                  <span aria-hidden className="ms-auto text-muted-foreground group-hover:text-primary transition-colors">→</span>
+                </Link>
+              ))}
+            </div>
+          </section>
+        )}
 
         <div className="mt-12 text-center">
           <Link
@@ -243,6 +349,7 @@ function CollectionPage() {
       </main>
     </div>
   );
+
 }
 
 /* ---------------- Context markers ---------------- */
