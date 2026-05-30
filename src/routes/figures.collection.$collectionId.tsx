@@ -82,9 +82,17 @@ function CollectionPage() {
     return out;
   }, [items]);
 
+  const deep = row ? rowDeep(row) : undefined;
+  const related = useMemo(
+    () => (row ? relatedRows(row, DISCOVERY_ROWS, 4) : []),
+    [row],
+  );
+  const notable = useMemo(() => items.slice(0, 4), [items]);
+
   if (!row) {
     return <CollectionNotFound lang={lang} />;
   }
+
 
 
   const backLabel =
