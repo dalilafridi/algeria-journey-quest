@@ -592,7 +592,7 @@ function RegionPanel({
                 params={{ eraId: e.id }}
                 className="px-2.5 py-1 rounded-full text-xs font-semibold bg-accent/15 text-accent-foreground border border-border hover:border-primary/40 hover:bg-accent/25 transition"
               >
-                <span className="mr-1">{e.emoji}</span>
+                <span className="me-1">{e.emoji}</span>
                 {t(e.title, lang)}
               </Link>
             ))}
