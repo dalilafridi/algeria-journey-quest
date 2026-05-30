@@ -7,6 +7,7 @@ import { figureExtras } from "@/data/figureExtras";
 import { figureMeta, FIGURE_THEMES, cultureKindEmoji, type FigureCultureLinkKind } from "@/data/figureMeta";
 import { mapRegions } from "@/data/mapRegions";
 import { LEGEND_ERAS, eraOfCategory } from "@/lib/figureEras";
+import { collectionOf } from "@/lib/figureCollections";
 import { EraBadge } from "@/components/brand/EraBadge";
 import { t, tu, useLang, type LocalizedString } from "@/lib/i18n";
 import { StoryFlow, type StoryScene } from "@/components/story/StoryFlow";
@@ -58,6 +59,7 @@ function FigureDetail() {
   const extras = figureExtras[f.id];
   const relatedRegion = mapRegions.find((r) => r.id === f.region || (f.region === "mascara-west" && r.id === "oran-west"));
   const legendEra = LEGEND_ERAS.find((e) => e.id === eraOfCategory(f.category))!;
+  const collection = collectionOf(f.id);
   const categoryDef = FIGURE_CATEGORIES.find((c) => c.id === f.category);
 
   const meta = figureMeta[f.id];
@@ -81,7 +83,10 @@ function FigureDetail() {
   const significanceLabel =
     lang === "fr" ? "Importance historique" : lang === "ar" ? "الأهمية التاريخية" : "Historical significance";
   const contributionsLabel =
-    lang === "fr" ? "Contributions clés" : lang === "ar" ? "أبرز الإسهامات" : "Key contributions";
+    lang === "fr" ? "Grandes réalisations" : lang === "ar" ? "أبرز الإنجازات" : "Major achievements";
+  const contextLabel =
+    lang === "fr" ? "Contexte historique" : lang === "ar" ? "السياق التاريخي" : "Historical context";
+  const galleryRowLabel = lang === "fr" ? "Galerie" : lang === "ar" ? "القاعة" : "Gallery";
   const legacyLabel = lang === "fr" ? "Héritage durable" : lang === "ar" ? "الإرث الباقي" : "Lasting legacy";
   const connectionsLabel = lang === "fr" ? "Connexions" : lang === "ar" ? "روابط" : "Connections";
   const quoteLabel = lang === "fr" ? "Citation mémorable" : lang === "ar" ? "قول مأثور" : "Memorable quote";
@@ -168,6 +173,19 @@ function FigureDetail() {
               </h1>
               {/* Role / title + lifespan */}
               <div className="mt-3 flex flex-wrap gap-1.5 justify-center sm:justify-start text-xs">
+                <Link
+                  to="/figures"
+                  hash={`gallery-${collection.id}`}
+                  className="px-2.5 py-0.5 rounded-full font-semibold border inline-flex items-center gap-1 hover:border-primary/50 transition-colors"
+                  style={{
+                    borderColor: "color-mix(in oklab, var(--brand-gold) 40%, var(--border))",
+                    background: "color-mix(in oklab, var(--brand-gold) 8%, var(--card))",
+                    color: "color-mix(in oklab, var(--brand-gold-deep) 85%, var(--foreground))",
+                  }}
+                >
+                  <span aria-hidden style={{ color: collection.accent }}>{collection.emblem}</span>
+                  {t(collection.label, lang)}
+                </Link>
                 {categoryDef && (
                   <span className="px-2.5 py-0.5 rounded-full bg-muted text-muted-foreground font-semibold">
                     {categoryDef.emoji} {t(categoryDef.label, lang)}
@@ -340,6 +358,28 @@ function FigureDetail() {
             </ExhibitCard>
           )}
 
+          {/* 7) Historical context — the era they lived in */}
+          {era && (
+            <ExhibitCard accent="var(--brand-gold-deep)">
+              <SectionTitle emoji="🏺" label={contextLabel} />
+              <div className="flex items-center gap-2 mb-2 text-sm font-semibold text-foreground/90">
+                <span aria-hidden className="text-lg">{era.emoji}</span>
+                <span>{t(era.title, lang)}</span>
+                <span className="text-xs text-muted-foreground">· {era.dateRange}</span>
+              </div>
+              <p className="leading-relaxed text-foreground/85">{t(era.summary, lang)}</p>
+              <Link
+                to="/era/$eraId"
+                params={{ eraId: era.id }}
+                className="mt-3 inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:underline"
+              >
+                {tu("relatedEra", lang)}
+                <span aria-hidden>→</span>
+              </Link>
+            </ExhibitCard>
+          )}
+
+
           <Link
             to="/figures/quiz"
             className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-primary-foreground font-semibold"
@@ -363,6 +403,7 @@ function FigureDetail() {
               </div>
             </div>
             <dl className="space-y-3 text-sm">
+              <GlanceRow label={galleryRowLabel} value={`${collection.emblem} ${t(collection.label, lang)}`} />
               {categoryDef && <GlanceRow label={roleLabel} value={t(categoryDef.label, lang)} />}
               <GlanceRow label={eraRowLabel} value={t(legendEra.label, lang)} />
               <GlanceRow label={periodLabel} value={t(f.era, lang)} />
