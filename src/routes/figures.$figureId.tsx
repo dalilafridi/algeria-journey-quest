@@ -14,6 +14,7 @@ import { CollectionEmblem } from "@/components/figures/CollectionEmblem";
 import { t, tu, useLang, type LocalizedString } from "@/lib/i18n";
 import { StoryFlow, type StoryScene } from "@/components/story/StoryFlow";
 import { ConnectionMap } from "@/components/figures/ConnectionMap";
+import { SharePlaque } from "@/components/figures/SharePlaque";
 import { saveJourneyPlace } from "@/lib/continuity";
 
 const CULTURE_KIND_TO: Record<FigureCultureLinkKind, "/cuisine" | "/cinema" | "/words" | "/ideas" | "/moments" | "/timeline" | "/lessons"> = {
