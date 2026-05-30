@@ -25,9 +25,10 @@ function ensureArabicFont() {
 }
 
 export function SkipLink() {
+  const lang = useLang();
   return (
     <a href="#main" className="skip-link">
-      Skip to content
+      {tu("skipToContent", lang)}
     </a>
   );
 }
