@@ -298,3 +298,44 @@ export function resolveRow(row: DiscoveryRow): Figure[] {
   }
   return out;
 }
+
+/* ---------------- Collection page slugs ---------------- */
+
+/**
+ * Stable, human-readable URL slugs for every row, used by the dedicated
+ * "View Collection" exhibit pages (`/figures/collection/<slug>`). Thematic and
+ * era rows live in one flat namespace so a single route resolves both.
+ */
+const ROW_SLUGS: Record<string, string> = {
+  // Thematic collections
+  resistance: "resistance-leaders",
+  revolutionaries: "revolutionaries",
+  women: "women-who-shaped-algeria",
+  rulers: "kings-and-rulers",
+  thinkers: "great-thinkers",
+  faith: "saints-and-reformers",
+  culture: "voices-of-culture",
+  modern: "builders-of-modern-algeria",
+  // Era galleries
+  "era-numidian": "numidian-era",
+  "era-roman": "roman-late-antiquity",
+  "era-islamic": "early-islamic-medieval",
+  "era-ottoman": "ottoman-period",
+  "era-colonial": "colonial-resistance",
+  "era-war": "war-of-independence",
+  "era-modern": "modern-algeria",
+};
+
+/** Every browsable row in one list (thematic collections, then era galleries). */
+export const ALL_ROWS: DiscoveryRow[] = [...DISCOVERY_ROWS, ...ERA_ROWS];
+
+/** The URL slug for a row (falls back to its id). */
+export function slugOfRow(row: DiscoveryRow): string {
+  return ROW_SLUGS[row.id] ?? row.id;
+}
+
+/** Resolve a URL slug back to its row, if any. */
+export function findRowBySlug(slug: string): DiscoveryRow | undefined {
+  return ALL_ROWS.find((row) => slugOfRow(row) === slug);
+}
+
