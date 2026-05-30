@@ -104,6 +104,21 @@ function CollectionPage() {
   const regionsLabel = lang === "fr" ? "Régions" : lang === "ar" ? "المناطق" : "Regions";
   const tourLabel =
     lang === "fr" ? "Faire la visite guidée" : lang === "ar" ? "ابدأ الجولة المُرشدة" : "Walk the Hall of Legends";
+  const overviewLabel = lang === "fr" ? "Aperçu de la salle" : lang === "ar" ? "نظرة على القاعة" : "Collection overview";
+  const significanceLabel = lang === "fr" ? "Importance" : lang === "ar" ? "الأهمية" : "Collection significance";
+  const notableLabel = lang === "fr" ? "Figures phares" : lang === "ar" ? "شخصيات بارزة" : "Notable figures";
+  const continueLabel =
+    lang === "fr" ? "Continuer la découverte" : lang === "ar" ? "تابع الاكتشاف" : "Continue discovering";
+  const relatedLabel =
+    lang === "fr" ? "Collections liées" : lang === "ar" ? "مجموعات ذات صلة" : "Related collections";
+  const emptyTitle =
+    lang === "fr" ? "Salle en préparation" : lang === "ar" ? "قاعة قيد الإعداد" : "This room is being prepared";
+  const emptyBody =
+    lang === "fr"
+      ? "Les artefacts de cette salle ne sont pas encore exposés. Revenez bientôt ou explorez les autres collections du Panthéon."
+      : lang === "ar"
+        ? "لم تُعرض مقتنيات هذه القاعة بعد. عُد قريبًا أو استكشف بقية مجموعات القاعة."
+        : "The artifacts for this room aren't on display yet. Check back soon, or explore the other collections in the hall.";
 
   return (
     <div className="min-h-screen">
