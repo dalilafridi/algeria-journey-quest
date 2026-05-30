@@ -1,10 +1,11 @@
 import { createFileRoute, Link, useParams } from "@tanstack/react-router";
-import { useEffect, useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Header } from "@/components/Header";
 
 import { findRowBySlug, resolveRow } from "@/lib/figureDiscovery";
 import { LEGEND_ERAS, eraOfCategory } from "@/lib/figureEras";
 import { EraBadge } from "@/components/brand/EraBadge";
+import { GuidedTour } from "@/components/figures/GuidedTour";
 import {
   FigureExhibitCard,
   FIGURE_REGION_TO_MAP,
@@ -36,6 +37,7 @@ export const Route = createFileRoute("/figures/collection/$collectionId")({
 
 function CollectionPage() {
   const lang = useLang();
+  const [tourOpen, setTourOpen] = useState(false);
   const { collectionId } = useParams({ from: "/figures/collection/$collectionId" });
   const row = useMemo(() => findRowBySlug(collectionId), [collectionId]);
   const items = useMemo(() => (row ? resolveRow(row) : []), [row]);
@@ -82,10 +84,15 @@ function CollectionPage() {
     lang === "fr" ? "Salle d'exposition" : lang === "ar" ? "قاعة العرض" : "Exhibit room";
   const erasLabel = lang === "fr" ? "Ères" : lang === "ar" ? "الحقب" : "Eras";
   const regionsLabel = lang === "fr" ? "Régions" : lang === "ar" ? "المناطق" : "Regions";
+  const tourLabel =
+    lang === "fr" ? "Faire la visite guidée" : lang === "ar" ? "ابدأ الجولة المُرشدة" : "Walk the Hall of Legends";
 
   return (
     <div className="min-h-screen">
       <Header />
+
+      <GuidedTour open={tourOpen} onClose={() => setTourOpen(false)} lang={lang} />
+
 
       {/* ===== Exhibit hero plaque ===== */}
       <section className="relative overflow-hidden">
@@ -136,8 +143,22 @@ function CollectionPage() {
               <div className="mt-3 text-sm text-muted-foreground font-semibold">
                 {items.length} {figureWord}
               </div>
+              <button
+                type="button"
+                onClick={() => setTourOpen(true)}
+                className="mt-4 inline-flex items-center gap-2 rounded-xl border px-4 py-2 text-sm font-semibold transition hover:border-primary/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 min-h-11"
+                style={{
+                  borderColor: "color-mix(in oklab, var(--brand-gold) 40%, var(--border))",
+                  background: "color-mix(in oklab, var(--brand-gold) 9%, var(--card))",
+                  color: "var(--brand-gold-deep)",
+                }}
+              >
+                <span aria-hidden>❖</span>
+                {tourLabel}
+              </button>
             </div>
           </div>
+
 
           {/* Context markers */}
           {(eraMarkers.length > 0 || regionMarkers.length > 0) && (

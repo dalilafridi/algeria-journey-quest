@@ -15,6 +15,7 @@ import {
 } from "@/lib/figureDiscovery";
 import { EraBadge } from "@/components/brand/EraBadge";
 import { FigureExhibitCard } from "@/components/figures/FigureExhibitCard";
+import { GuidedTour } from "@/components/figures/GuidedTour";
 import { t, tu, useLang, type Lang } from "@/lib/i18n";
 import { saveJourneyPlace } from "@/lib/continuity";
 
@@ -41,6 +42,7 @@ export const Route = createFileRoute("/figures/")({
 
 function FiguresIndex() {
   const lang = useLang();
+  const [tourOpen, setTourOpen] = useState(false);
 
   useEffect(() => {
     saveJourneyPlace({
@@ -92,9 +94,63 @@ function FiguresIndex() {
       <Header />
 
       {/* ============ FEATURED EXHIBITION BILLBOARD ============ */}
-      {featured && <FeaturedBillboard figure={featured} lang={lang} />}
+      {featured && (
+        <FeaturedBillboard figure={featured} lang={lang} onStartTour={() => setTourOpen(true)} />
+      )}
+
+      {/* Guided museum walkthrough */}
+      <GuidedTour open={tourOpen} onClose={() => setTourOpen(false)} lang={lang} />
 
       <main className="max-w-6xl mx-auto px-4 py-8 sm:py-10">
+        {/* ---- Begin the exhibition (guided tour entry) ---- */}
+        <div
+          className="mb-8 rounded-2xl border p-4 sm:p-5 flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-5"
+          style={{
+            borderColor: "color-mix(in oklab, var(--brand-gold) 28%, var(--border))",
+            background:
+              "linear-gradient(135deg, color-mix(in oklab, var(--brand-gold) 9%, var(--card)) 0%, var(--card) 70%)",
+          }}
+        >
+          <div className="flex items-center gap-3 min-w-0 flex-1">
+            <span
+              aria-hidden
+              className="flex items-center justify-center w-11 h-11 rounded-full shrink-0 text-xl"
+              style={{
+                background:
+                  "radial-gradient(circle at 35% 30%, color-mix(in oklab, var(--brand-gold-bright) 55%, var(--card)) 0%, color-mix(in oklab, var(--brand-gold) 30%, var(--card)) 45%, color-mix(in oklab, var(--brand-gold-deep) 28%, var(--card)) 100%)",
+                boxShadow: "0 0 0 1px color-mix(in oklab, var(--brand-gold) 50%, transparent)",
+              }}
+            >
+              ❖
+            </span>
+            <div className="min-w-0">
+              <div className="font-bold leading-tight" style={{ fontFamily: "Georgia, 'Times New Roman', serif" }}>
+                {lang === "fr"
+                  ? "Visite guidée du Panthéon"
+                  : lang === "ar"
+                    ? "جولة مُرشدة في القاعة"
+                    : "Walk the Hall of Legends"}
+              </div>
+              <p className="text-sm text-muted-foreground leading-snug">
+                {lang === "fr"
+                  ? "Six étapes, de la Numidie antique à la mémoire moderne."
+                  : lang === "ar"
+                    ? "ست محطات، من نوميديا القديمة إلى الذاكرة الحديثة."
+                    : "Six stops, from ancient Numidia to modern memory."}
+              </p>
+            </div>
+          </div>
+          <button
+            type="button"
+            onClick={() => setTourOpen(true)}
+            className="inline-flex items-center justify-center gap-2 rounded-xl px-5 py-2.5 text-sm font-semibold text-primary-foreground transition hover:opacity-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 min-h-11 shrink-0"
+            style={{ background: "var(--gradient-warm)" }}
+          >
+            {lang === "fr" ? "Commencer la visite" : lang === "ar" ? "ابدأ الجولة" : "Start guided tour"}
+            <span aria-hidden>→</span>
+          </button>
+        </div>
+
         {/* ---- Quick jump strip (browse, not filter) ---- */}
         <nav
           aria-label={collectionsLabel}
@@ -148,7 +204,15 @@ function FiguresIndex() {
 
 /* ---------------- Featured exhibition billboard ---------------- */
 
-function FeaturedBillboard({ figure: f, lang }: { figure: Figure; lang: Lang }) {
+function FeaturedBillboard({
+  figure: f,
+  lang,
+  onStartTour,
+}: {
+  figure: Figure;
+  lang: Lang;
+  onStartTour: () => void;
+}) {
   const fm = figureMeta[f.id];
   const era = LEGEND_ERAS.find((e) => e.id === eraOfCategory(f.category))!;
   const col = collectionOf(f.id);
@@ -156,6 +220,8 @@ function FeaturedBillboard({ figure: f, lang }: { figure: Figure; lang: Lang }) 
     lang === "fr" ? "Explorer son histoire" : lang === "ar" ? "اكتشف قصته" : "Explore their story";
   const nowShowingLabel =
     lang === "fr" ? "Exposition à l'affiche" : lang === "ar" ? "المعرض المعروض الآن" : "Now showing";
+  const tourLabel =
+    lang === "fr" ? "Visite guidée" : lang === "ar" ? "جولة مُرشدة" : "Guided tour";
 
   return (
     <section className="relative museum-hero">
@@ -173,9 +239,24 @@ function FeaturedBillboard({ figure: f, lang }: { figure: Figure; lang: Lang }) 
             <span aria-hidden>ⵣ</span>
             {lang === "fr" ? "Le Panthéon des Légendes" : lang === "ar" ? "قاعة العظماء" : "The Hall of Legends"}
           </div>
-          <Link to="/figures/quiz" className="text-sm font-semibold text-primary hover:underline">
-            {tu("guessThisFigureCta", lang)}
-          </Link>
+          <div className="inline-flex items-center gap-3">
+            <button
+              type="button"
+              onClick={onStartTour}
+              className="inline-flex items-center gap-1.5 rounded-full border px-3.5 py-1.5 text-sm font-semibold transition hover:border-primary/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40"
+              style={{
+                borderColor: "color-mix(in oklab, var(--brand-gold) 40%, var(--border))",
+                background: "color-mix(in oklab, var(--brand-gold) 10%, var(--card))",
+                color: "var(--brand-gold-deep)",
+              }}
+            >
+              <span aria-hidden>❖</span>
+              {tourLabel}
+            </button>
+            <Link to="/figures/quiz" className="text-sm font-semibold text-primary hover:underline">
+              {tu("guessThisFigureCta", lang)}
+            </Link>
+          </div>
         </div>
       </div>
 

@@ -11,6 +11,7 @@ import { collectionOf } from "@/lib/figureCollections";
 import { EraBadge } from "@/components/brand/EraBadge";
 import { t, tu, useLang, type LocalizedString } from "@/lib/i18n";
 import { StoryFlow, type StoryScene } from "@/components/story/StoryFlow";
+import { ConnectionMap } from "@/components/figures/ConnectionMap";
 import { saveJourneyPlace } from "@/lib/continuity";
 
 const CULTURE_KIND_TO: Record<FigureCultureLinkKind, "/cuisine" | "/cinema" | "/words" | "/ideas" | "/moments" | "/timeline" | "/lessons"> = {
@@ -483,78 +484,48 @@ function FigureDetail() {
         </aside>
       </main>
 
-      {/* ============ 5) CONNECTIONS ============ */}
-      {(relatedFigures.length > 0 || (meta?.cultureLinks && meta.cultureLinks.length > 0)) && (
-        <section className="max-w-5xl mx-auto px-4 pb-12">
-          <div className="flex items-center gap-3 mb-5">
-            <h2
-              className="text-2xl font-bold"
-              style={{ fontFamily: "Georgia, 'Times New Roman', serif" }}
-            >
-              {connectionsLabel}
-            </h2>
-            <div
-              aria-hidden
-              className="flex-1 h-px"
-              style={{
-                background:
-                  "linear-gradient(90deg, color-mix(in oklab, var(--brand-gold) 60%, transparent), transparent)",
-              }}
-            />
+      {/* ============ 5) CONNECTIONS — archive connection wall ============ */}
+      <section className="max-w-5xl mx-auto px-4 pb-12">
+        <div className="flex items-center gap-3 mb-5">
+          <h2
+            className="text-2xl font-bold"
+            style={{ fontFamily: "Georgia, 'Times New Roman', serif" }}
+          >
+            {connectionsLabel}
+          </h2>
+          <div
+            aria-hidden
+            className="flex-1 h-px"
+            style={{
+              background:
+                "linear-gradient(90deg, color-mix(in oklab, var(--brand-gold) 60%, transparent), transparent)",
+            }}
+          />
+        </div>
+
+        <ConnectionMap figure={f} lang={lang} />
+
+        {meta?.cultureLinks && meta.cultureLinks.length > 0 && (
+          <div className="mt-8">
+            <div className="text-xs uppercase tracking-wider text-muted-foreground font-semibold mb-3">
+              {culturalThreadsLabel}
+            </div>
+            <div className="flex flex-wrap gap-2">
+              {meta.cultureLinks.map((c, i) => (
+                <Link
+                  key={i}
+                  to={CULTURE_KIND_TO[c.kind]}
+                  className="px-3 py-1.5 rounded-full bg-card border border-border text-sm hover:border-primary/50 hover:text-primary transition"
+                >
+                  <span className="mr-1" aria-hidden>{cultureKindEmoji(c.kind)}</span>
+                  {t(c.label, lang)}
+                </Link>
+              ))}
+            </div>
           </div>
+        )}
+      </section>
 
-          {relatedFigures.length > 0 && (
-            <>
-              <div className="text-xs uppercase tracking-wider text-muted-foreground font-semibold mb-3">
-                {relatedFiguresLabel}
-              </div>
-              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-2.5 mb-8">
-                {relatedFigures.map((r) => {
-                  const rEra = LEGEND_ERAS.find((e) => e.id === eraOfCategory(r.category))!;
-                  return (
-                    <Link
-                      key={r.id}
-                      to="/figures/$figureId"
-                      params={{ figureId: r.id }}
-                      className="rounded-xl border border-border bg-card px-3 py-3 hover:border-primary/50 transition flex items-center gap-3 group"
-                    >
-                      <EraBadge kind={rEra.badge} size={36} />
-                      <span className="min-w-0">
-                        <span className="block font-semibold text-sm group-hover:text-primary transition truncate">
-                          {t(r.displayName, lang)}
-                        </span>
-                        <span className="block text-[11px] text-muted-foreground truncate">
-                          {t(rEra.label, lang)}
-                        </span>
-                      </span>
-                    </Link>
-                  );
-                })}
-              </div>
-            </>
-          )}
-
-          {meta?.cultureLinks && meta.cultureLinks.length > 0 && (
-            <>
-              <div className="text-xs uppercase tracking-wider text-muted-foreground font-semibold mb-3">
-                {culturalThreadsLabel}
-              </div>
-              <div className="flex flex-wrap gap-2">
-                {meta.cultureLinks.map((c, i) => (
-                  <Link
-                    key={i}
-                    to={CULTURE_KIND_TO[c.kind]}
-                    className="px-3 py-1.5 rounded-full bg-card border border-border text-sm hover:border-primary/50 hover:text-primary transition"
-                  >
-                    <span className="mr-1" aria-hidden>{cultureKindEmoji(c.kind)}</span>
-                    {t(c.label, lang)}
-                  </Link>
-                ))}
-              </div>
-            </>
-          )}
-        </section>
-      )}
 
       {/* Explore other legends */}
       <section className="max-w-5xl mx-auto px-4 pb-16">
