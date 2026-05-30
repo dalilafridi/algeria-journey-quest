@@ -609,7 +609,7 @@ function CulturePage() {
                     </div>
                   </div>
                   <span
-                    className="ml-2 text-muted-foreground transition-transform group-open:rotate-45"
+                    className="ms-2 text-muted-foreground transition-transform group-open:rotate-45"
                     aria-hidden
                   >
                     +
@@ -707,7 +707,7 @@ function FooterLink({ to, label }: { to: "/words" | "/cuisine" | "/lessons"; lab
         className="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:opacity-80 transition"
       >
         {label}
-        <span aria-hidden>→</span>
+        <span aria-hidden className="inline-block rtl:rotate-180">→</span>
       </Link>
     </div>
   );
