@@ -91,6 +91,9 @@ function CollectionPage() {
     <div className="min-h-screen">
       <Header />
 
+      <GuidedTour open={tourOpen} onClose={() => setTourOpen(false)} lang={lang} />
+
+
       {/* ===== Exhibit hero plaque ===== */}
       <section className="relative overflow-hidden">
         <div
