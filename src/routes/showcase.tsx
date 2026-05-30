@@ -415,7 +415,7 @@ function ShowcasePage() {
       {/* Subtle drifting watermark */}
       <span
         aria-hidden
-        className="pointer-events-none absolute -bottom-10 -right-10 text-[22rem] leading-none text-foreground/[0.03] select-none museum-drift"
+        className="pointer-events-none absolute -bottom-10 -end-10 text-[22rem] leading-none text-foreground/[0.03] select-none museum-drift"
       >
         ⵣ
       </span>
