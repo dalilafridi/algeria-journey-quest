@@ -422,7 +422,7 @@ function RegionExplorerPage() {
                         <span aria-hidden className="text-lg">
                           {p.emoji}
                         </span>
-                        <h4 className="font-bold text-sm">{t(p.label, lang)}</h4>
+                        <h3 className="font-bold text-sm">{t(p.label, lang)}</h3>
                       </div>
                       <p className="mt-1.5 text-sm text-foreground/80 leading-snug">
                         {t(p.body, lang)}
@@ -452,7 +452,7 @@ function RegionExplorerPage() {
                       <div className="text-[10px] font-bold uppercase tracking-[0.22em] text-primary/80">
                         {COPY.curator[lang]}
                       </div>
-                      <h4 className="mt-1 font-bold text-sm">{t(n.title, lang)}</h4>
+                      <h3 className="mt-1 font-bold text-sm">{t(n.title, lang)}</h3>
                       <p className="mt-1.5 text-sm text-foreground/85 leading-relaxed">
                         {t(n.body, lang)}
                       </p>
