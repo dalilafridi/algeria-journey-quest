@@ -609,7 +609,7 @@ function CulturePage() {
                     </div>
                   </div>
                   <span
-                    className="ml-2 text-muted-foreground transition-transform group-open:rotate-45"
+                    className="ms-2 text-muted-foreground transition-transform group-open:rotate-45"
                     aria-hidden
                   >
                     +
