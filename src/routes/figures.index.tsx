@@ -14,6 +14,8 @@ import {
   type DiscoveryRow,
 } from "@/lib/figureDiscovery";
 import { EraBadge } from "@/components/brand/EraBadge";
+import { MedallionFrame } from "@/components/brand/MedallionFrame";
+import { MedallionDivider } from "@/components/brand/MedallionDivider";
 import { FigureExhibitCard } from "@/components/figures/FigureExhibitCard";
 import { GuidedTour } from "@/components/figures/GuidedTour";
 import { t, tu, useLang, type Lang } from "@/lib/i18n";
