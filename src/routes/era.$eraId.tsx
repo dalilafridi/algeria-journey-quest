@@ -28,7 +28,7 @@ export const Route = createFileRoute("/era/$eraId")({
     };
   },
   notFoundComponent: () => (
-    <div className="min-h-screen flex items-center justify-center">
+    <div className="min-h-dvh flex items-center justify-center">
       <div className="text-center">
         <p className="text-xl font-bold">Era not found</p>
         <Link to="/timeline" className="text-primary underline">
@@ -81,7 +81,7 @@ function EraPage() {
     .filter(Boolean);
 
   return (
-    <div className="min-h-screen bg-parchment">
+    <div className="min-h-dvh bg-parchment">
       <Header />
       <main className="max-w-3xl mx-auto px-4 py-6 sm:py-8 safe-pb">
         <Link

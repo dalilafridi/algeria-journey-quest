@@ -138,7 +138,7 @@ function RegionExplorerPage() {
   const intro = selected ? regionIntros[selected.id] : undefined;
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-dvh">
       <Header />
       <main className="max-w-3xl mx-auto px-4 py-8 safe-pb">
         <div id="region-explorer-top" />

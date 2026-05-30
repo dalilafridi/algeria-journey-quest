@@ -142,7 +142,7 @@ function Home() {
     eras.find((e) => factText.includes(t(e.title, "en").toLowerCase().split(" ")[0]));
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-dvh">
       <Header />
       <main>
         {/* ========= HERO — Cinematic environmental entrance ========= */}

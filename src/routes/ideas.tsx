@@ -45,7 +45,7 @@ const COPY = {
 function IdeasPage() {
   const lang = useLang();
   return (
-    <div className="min-h-screen">
+    <div className="min-h-dvh">
       <Header />
       <main className="max-w-3xl mx-auto px-4 py-8 safe-pb">
         <h1 className="text-2xl sm:text-3xl font-extrabold">{COPY.title[lang]}</h1>

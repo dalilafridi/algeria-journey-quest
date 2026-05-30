@@ -78,7 +78,7 @@ function CuisinePage() {
   };
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-dvh">
       <Header />
 
       {/* HERO */}

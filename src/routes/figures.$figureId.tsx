@@ -44,7 +44,7 @@ export const Route = createFileRoute("/figures/$figureId")({
       : {},
   component: FigureDetail,
   notFoundComponent: () => (
-    <div className="min-h-screen">
+    <div className="min-h-dvh">
       <Header />
       <main className="max-w-xl mx-auto px-4 py-16 text-center">
         <h1 className="text-2xl font-bold">Figure not found.</h1>
@@ -111,7 +111,7 @@ function FigureDetail() {
     lang === "fr" ? "Archive sonore à venir" : lang === "ar" ? "أرشيف صوتي قادم" : "Future audio archive";
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-dvh">
       <Header />
 
       {/* ============ 1) HERO PRESENTATION ============ */}

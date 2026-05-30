@@ -147,7 +147,7 @@ function QuizPage() {
   // randomized question selection (Math.random) doesn't cause hydration mismatch.
   if (!mounted || !q) {
     return (
-      <div className="min-h-screen">
+      <div className="min-h-dvh">
         <Header />
         <main className="max-w-xl mx-auto px-4 py-8">
           <div className="h-2 rounded-full bg-muted overflow-hidden mt-12" />
@@ -166,7 +166,7 @@ function QuizPage() {
     const level = getLevelInfo(0);
     void level;
     return (
-      <div className="min-h-screen">
+      <div className="min-h-dvh">
         <Header />
         <main className="max-w-xl mx-auto px-4 py-12 text-center">
           <div className="text-7xl animate-pop-in">{perfect ? "🏆" : passed ? "🎉" : "💪"}</div>
@@ -247,7 +247,7 @@ function QuizPage() {
   }
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-dvh">
       <Header />
       <main className="max-w-xl mx-auto px-4 py-8">
         <Link

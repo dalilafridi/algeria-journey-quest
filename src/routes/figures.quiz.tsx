@@ -61,7 +61,7 @@ function GuessQuiz() {
 
   if (!mounted || set.length === 0) {
     return (
-      <div className="min-h-screen">
+      <div className="min-h-dvh">
         <Header />
         <main className="max-w-xl mx-auto px-4 py-12">
           <div className="h-2 rounded-full bg-muted overflow-hidden" />
@@ -108,7 +108,7 @@ function GuessQuiz() {
   if (done) {
     const pct = Math.round((score / set.length) * 100);
     return (
-      <div className="min-h-screen">
+      <div className="min-h-dvh">
         <Header />
         <main className="max-w-xl mx-auto px-4 py-12 text-center">
           <div className="text-7xl">{score === set.length ? "🏆" : pct >= 60 ? "🎉" : "💪"}</div>
@@ -168,7 +168,7 @@ function GuessQuiz() {
   }
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-dvh">
       <Header />
       <main className="max-w-xl mx-auto px-4 py-8">
         <Link to="/figures" className="text-sm text-muted-foreground hover:text-foreground">

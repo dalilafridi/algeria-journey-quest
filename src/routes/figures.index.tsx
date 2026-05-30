@@ -93,7 +93,7 @@ function FiguresIndex() {
         : "Move through history age by age, from ancient Numidia to Algeria today.";
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-dvh">
       <Header />
 
       {/* ============ FEATURED EXHIBITION BILLBOARD ============ */}

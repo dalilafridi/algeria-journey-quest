@@ -120,7 +120,7 @@ function CollectionPage() {
         : "The artifacts for this room aren't on display yet. Check back soon, or explore the other collections in the hall.";
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-dvh">
       <Header />
 
       <GuidedTour open={tourOpen} onClose={() => setTourOpen(false)} lang={lang} />
@@ -399,7 +399,7 @@ function CollectionNotFound({ lang }: { lang: Lang }) {
   const backLabel =
     lang === "fr" ? "Retour au Panthéon" : lang === "ar" ? "العودة إلى قاعة العظماء" : "Back to the Hall of Legends";
   return (
-    <div className="min-h-screen">
+    <div className="min-h-dvh">
       <Header />
       <main className="max-w-3xl mx-auto px-4 py-20 text-center">
         <h1

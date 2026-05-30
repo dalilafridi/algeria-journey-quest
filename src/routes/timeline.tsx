@@ -106,7 +106,7 @@ function Timeline() {
   const progressPct = eras.length > 0 ? (completedEras / eras.length) * 100 : 0;
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-dvh">
       <Header />
       <main className="max-w-3xl mx-auto px-4 py-8 sm:py-10">
         {/* Top section */}
