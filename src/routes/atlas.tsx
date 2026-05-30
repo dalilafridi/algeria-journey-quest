@@ -465,7 +465,7 @@ function AtlasPage() {
 
             {/* Hint badge */}
             {!selected && (
-              <div className="absolute bottom-3 inset-x-3 sm:left-4 sm:right-auto text-center sm:text-start text-[11px] uppercase tracking-[0.18em] font-bold text-muted-foreground bg-card/80 backdrop-blur px-3 py-1.5 rounded-full border border-border w-fit mx-auto sm:mx-0">
+              <div className="absolute bottom-3 inset-x-3 sm:start-4 sm:end-auto text-center sm:text-start text-[11px] uppercase tracking-[0.18em] font-bold text-muted-foreground bg-card/80 backdrop-blur px-3 py-1.5 rounded-full border border-border w-fit mx-auto sm:mx-0">to
                 ✦ {T.selectHint}
               </div>
             )}
