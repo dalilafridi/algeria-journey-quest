@@ -143,8 +143,22 @@ function CollectionPage() {
               <div className="mt-3 text-sm text-muted-foreground font-semibold">
                 {items.length} {figureWord}
               </div>
+              <button
+                type="button"
+                onClick={() => setTourOpen(true)}
+                className="mt-4 inline-flex items-center gap-2 rounded-xl border px-4 py-2 text-sm font-semibold transition hover:border-primary/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 min-h-11"
+                style={{
+                  borderColor: "color-mix(in oklab, var(--brand-gold) 40%, var(--border))",
+                  background: "color-mix(in oklab, var(--brand-gold) 9%, var(--card))",
+                  color: "var(--brand-gold-deep)",
+                }}
+              >
+                <span aria-hidden>❖</span>
+                {tourLabel}
+              </button>
             </div>
           </div>
+
 
           {/* Context markers */}
           {(eraMarkers.length > 0 || regionMarkers.length > 0) && (
