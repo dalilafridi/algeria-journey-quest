@@ -2,7 +2,6 @@ import { createFileRoute, Link, useParams } from "@tanstack/react-router";
 import { useEffect, useMemo } from "react";
 import { Header } from "@/components/Header";
 
-import { type Figure } from "@/data/figures";
 import { findRowBySlug, resolveRow } from "@/lib/figureDiscovery";
 import { LEGEND_ERAS, eraOfCategory } from "@/lib/figureEras";
 import { EraBadge } from "@/components/brand/EraBadge";
@@ -11,7 +10,7 @@ import {
   FIGURE_REGION_TO_MAP,
 } from "@/components/figures/FigureExhibitCard";
 import { mapRegions } from "@/data/mapRegions";
-import { t, useLang, type Lang } from "@/lib/i18n";
+import { t, useLang, type Lang, type LocalizedString } from "@/lib/i18n";
 import { saveJourneyPlace } from "@/lib/continuity";
 
 export const Route = createFileRoute("/figures/collection/$collectionId")({
