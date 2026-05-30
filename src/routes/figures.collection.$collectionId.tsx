@@ -1,10 +1,11 @@
 import { createFileRoute, Link, useParams } from "@tanstack/react-router";
-import { useEffect, useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Header } from "@/components/Header";
 
 import { findRowBySlug, resolveRow } from "@/lib/figureDiscovery";
 import { LEGEND_ERAS, eraOfCategory } from "@/lib/figureEras";
 import { EraBadge } from "@/components/brand/EraBadge";
+import { GuidedTour } from "@/components/figures/GuidedTour";
 import {
   FigureExhibitCard,
   FIGURE_REGION_TO_MAP,
