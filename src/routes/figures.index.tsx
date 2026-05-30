@@ -4,7 +4,7 @@ import { Header } from "@/components/Header";
 
 import { figures, type Figure } from "@/data/figures";
 import { figureMeta } from "@/data/figureMeta";
-import { eraOfCategory, badgeKindOf, LEGEND_ERAS } from "@/lib/figureEras";
+import { eraOfCategory, LEGEND_ERAS } from "@/lib/figureEras";
 import { collectionOf, currentExhibitionId } from "@/lib/figureCollections";
 import {
   DISCOVERY_ROWS,
