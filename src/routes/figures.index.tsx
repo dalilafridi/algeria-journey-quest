@@ -239,9 +239,24 @@ function FeaturedBillboard({
             <span aria-hidden>ⵣ</span>
             {lang === "fr" ? "Le Panthéon des Légendes" : lang === "ar" ? "قاعة العظماء" : "The Hall of Legends"}
           </div>
-          <Link to="/figures/quiz" className="text-sm font-semibold text-primary hover:underline">
-            {tu("guessThisFigureCta", lang)}
-          </Link>
+          <div className="inline-flex items-center gap-3">
+            <button
+              type="button"
+              onClick={onStartTour}
+              className="inline-flex items-center gap-1.5 rounded-full border px-3.5 py-1.5 text-sm font-semibold transition hover:border-primary/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40"
+              style={{
+                borderColor: "color-mix(in oklab, var(--brand-gold) 40%, var(--border))",
+                background: "color-mix(in oklab, var(--brand-gold) 10%, var(--card))",
+                color: "var(--brand-gold-deep)",
+              }}
+            >
+              <span aria-hidden>❖</span>
+              {tourLabel}
+            </button>
+            <Link to="/figures/quiz" className="text-sm font-semibold text-primary hover:underline">
+              {tu("guessThisFigureCta", lang)}
+            </Link>
+          </div>
         </div>
       </div>
 
