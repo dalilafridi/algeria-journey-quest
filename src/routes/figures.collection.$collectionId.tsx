@@ -9,7 +9,6 @@ import {
   relatedRows,
   slugOfRow,
   DISCOVERY_ROWS,
-  ALL_ROWS,
 } from "@/lib/figureDiscovery";
 import { MuseumEmptyState } from "@/components/figures/MuseumEmptyState";
 import { LEGEND_ERAS, eraOfCategory } from "@/lib/figureEras";
