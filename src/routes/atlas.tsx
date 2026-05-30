@@ -392,6 +392,15 @@ function AtlasPage() {
                     onMouseEnter={() => setHovered(r.id)}
                     onMouseLeave={() => setHovered(null)}
                     onClick={() => setSelected(r.id)}
+                    onKeyDown={(e) => {
+                      if (e.key === "Enter" || e.key === " ") {
+                        e.preventDefault();
+                        setSelected(r.id);
+                      }
+                    }}
+                    onFocus={() => setHovered(r.id)}
+                    onBlur={() => setHovered(null)}
+                    tabIndex={0}
                     role="button"
                     aria-label={t(r.name, lang)}
                   >
