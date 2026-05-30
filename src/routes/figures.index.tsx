@@ -4,30 +4,20 @@ import { Header } from "@/components/Header";
 
 import { figures, type Figure } from "@/data/figures";
 import { figureMeta } from "@/data/figureMeta";
-import { mapRegions } from "@/data/mapRegions";
 import { eraOfCategory, badgeKindOf, LEGEND_ERAS } from "@/lib/figureEras";
 import { collectionOf, currentExhibitionId } from "@/lib/figureCollections";
 import {
   DISCOVERY_ROWS,
   ERA_ROWS,
   resolveRow,
+  slugOfRow,
   type DiscoveryRow,
 } from "@/lib/figureDiscovery";
 import { EraBadge } from "@/components/brand/EraBadge";
+import { FigureExhibitCard } from "@/components/figures/FigureExhibitCard";
 import { t, tu, useLang, type Lang } from "@/lib/i18n";
 import { saveJourneyPlace } from "@/lib/continuity";
 
-/** Map a figure region id to a real region page id, when one exists. */
-const FIGURE_REGION_TO_MAP: Partial<Record<string, string>> = {
-  kabylie: "kabylie",
-  aures: "aures",
-  algiers: "algiers",
-  constantine: "constantine",
-  "oran-west": "oran-west",
-  "mascara-west": "oran-west",
-  sahara: "sahara",
-  numidia: "constantine",
-};
 
 export const Route = createFileRoute("/figures/")({
   head: () => ({
