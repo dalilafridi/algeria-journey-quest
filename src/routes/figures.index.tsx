@@ -179,8 +179,10 @@ function FiguresIndex() {
           ))}
         </div>
 
+        <MedallionDivider className="my-12 sm:my-14" />
+
         {/* ============ ERA GALLERIES ============ */}
-        <div className="mt-16">
+        <div className="mt-2">
           <RowGroupHeader title={erasLabel} intro={erasIntro} />
           <div className="space-y-10 sm:space-y-12">
             {eraRows.map(({ row, items }) => (
@@ -188,6 +190,8 @@ function FiguresIndex() {
             ))}
           </div>
         </div>
+
+        <MedallionDivider className="my-12 sm:my-14" />
 
         {/* ============ SEARCH & REFINE (secondary) ============ */}
         <RefineCollection lang={lang} />
