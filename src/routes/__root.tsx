@@ -102,7 +102,7 @@ function RootComponent() {
   useEffect(() => {
     const handleContextMenu = (e: MouseEvent) => {
       e.preventDefault();
-      toast("This contente is protected. Please contact us for permission to reuse. ", { duration: 1500 });
+      toast("This content is protected. Please contact us for permission to reuse.", { duration: 1500 });
     };
     document.addEventListener("contextmenu", handleContextMenu);
     return () => document.removeEventListener("contextmenu", handleContextMenu);
