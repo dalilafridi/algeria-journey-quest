@@ -40,7 +40,7 @@ type MapNode = {
   type: NodeType;
   label: string;
   emoji?: string;
-  badge?: Parameters<typeof EraBadge>[0]["kind"];
+  badge?: EraBadgeKind;
   accent: string;
   nav: Nav;
   ariaLabel: string;
