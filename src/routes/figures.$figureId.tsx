@@ -178,7 +178,7 @@ function FigureDetail() {
                     color: "color-mix(in oklab, var(--brand-gold-deep) 85%, var(--foreground))",
                   }}
                 >
-                  <span aria-hidden style={{ color: collection.accent }}>{collection.emblem}</span>
+                  <CollectionEmblem emblem={collection.emblem} accent={collection.accent} size={18} className="-ms-0.5" />
                   {t(collection.label, lang)}
                 </Link>
                 {categoryDef && (
