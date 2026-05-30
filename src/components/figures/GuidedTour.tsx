@@ -18,6 +18,8 @@ import { figureMeta } from "@/data/figureMeta";
 import { collectionOf } from "@/lib/figureCollections";
 import { eraOfCategory, LEGEND_ERAS } from "@/lib/figureEras";
 import { EraBadge } from "@/components/brand/EraBadge";
+import { MedallionFrame } from "@/components/brand/MedallionFrame";
+import { AmazighSymbol } from "@/components/brand/AmazighSymbol";
 import { HALL_TOUR } from "@/lib/figureTour";
 import { t, type Lang } from "@/lib/i18n";
 
