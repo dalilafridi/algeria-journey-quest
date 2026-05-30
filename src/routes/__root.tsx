@@ -14,23 +14,23 @@ import { MuseumDock } from "@/components/MuseumDock";
 import { MotionReveal } from "@/components/MotionReveal";
 import { SearchOverlay } from "@/components/SearchOverlay";
 import { SkipLink, LangSync } from "@/components/A11y";
+import { getLang, tu } from "@/lib/i18n";
 
 
 function NotFoundComponent() {
+  const lang = getLang();
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background px-4">
+    <div className="flex min-h-dvh items-center justify-center bg-background px-4">
       <div className="max-w-md text-center">
         <h1 className="text-7xl font-bold text-foreground">404</h1>
-        <h2 className="mt-4 text-xl font-semibold text-foreground">Page not found</h2>
-        <p className="mt-2 text-sm text-muted-foreground">
-          The page you're looking for doesn't exist or has been moved.
-        </p>
+        <h2 className="mt-4 text-xl font-semibold text-foreground">{tu("notFoundTitle", lang)}</h2>
+        <p className="mt-2 text-sm text-muted-foreground">{tu("notFoundBody", lang)}</p>
         <div className="mt-6">
           <Link
             to="/"
             className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
           >
-            Go home
+            {tu("goHome", lang)}
           </Link>
         </div>
       </div>
@@ -86,9 +86,17 @@ export const Route = createRootRoute({
 
 function RootShell({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en" dir="ltr">
       <head>
         <HeadContent />
+        {/* Set lang/dir from the saved preference before first paint to avoid
+            a flash of LTR for Arabic (RTL) visitors on hard navigations. */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html:
+              "(function(){try{var l=localStorage.getItem('algeria-history-lang-v1');if(l==='ar'){document.documentElement.lang='ar';document.documentElement.dir='rtl';}else if(l==='fr'){document.documentElement.lang='fr';}}catch(e){}})();",
+          }}
+        />
       </head>
       <body>
         {children}
@@ -102,7 +110,7 @@ function RootComponent() {
   useEffect(() => {
     const handleContextMenu = (e: MouseEvent) => {
       e.preventDefault();
-      toast("This contente is protected. Please contact us for permission to reuse. ", { duration: 1500 });
+      toast(tu("contentProtected", getLang()), { duration: 1500 });
     };
     document.addEventListener("contextmenu", handleContextMenu);
     return () => document.removeEventListener("contextmenu", handleContextMenu);

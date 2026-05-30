@@ -67,8 +67,9 @@ function buildPlaqueSVG(opts: {
   region: string;
   quote?: string;
   emblem: string;
+  tagline: string;
 }): string {
-  const { emoji, name, eraTag, role, lifespan, region, quote, emblem } = opts;
+  const { emoji, name, eraTag, role, lifespan, region, quote, emblem, tagline } = opts;
 
   const nameLines = wrap(name, 18, 2);
   const nameSize = nameLines.length > 1 ? 64 : 78;
@@ -152,7 +153,7 @@ function buildPlaqueSVG(opts: {
 
   <!-- footer -->
   <text x="${W / 2}" y="${H - 58}" text-anchor="middle" font-size="20" letter-spacing="4" fill="${GOLD_DEEP}" font-weight="bold">DZ ODYSSEY</text>
-  <text x="${W / 2}" y="${H - 34}" text-anchor="middle" font-size="15" letter-spacing="2" fill="${INK_SOFT}">A MUSEUM OF ALGERIAN HISTORY</text>
+  <text x="${W / 2}" y="${H - 34}" text-anchor="middle" font-size="15" letter-spacing="2" fill="${INK_SOFT}">${esc(tagline)}</text>
 </svg>`;
 }
 
@@ -175,6 +176,12 @@ export function SharePlaque({ figure: f, lang }: { figure: Figure; lang: Lang })
         region: t(f.regionLabel, lang),
         quote: f.extended?.keyLesson ? t(f.extended.keyLesson, lang) : undefined,
         emblem: collection.emblem,
+        tagline:
+          lang === "fr"
+            ? "UN MUSÉE DE L'HISTOIRE ALGÉRIENNE"
+            : lang === "ar"
+              ? "متحف التاريخ الجزائري"
+              : "A MUSEUM OF ALGERIAN HISTORY",
       }),
     [f, lang, eraDef, categoryDef, collection],
   );

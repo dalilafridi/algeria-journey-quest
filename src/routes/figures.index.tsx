@@ -17,6 +17,7 @@ import { EraBadge } from "@/components/brand/EraBadge";
 import { MedallionFrame } from "@/components/brand/MedallionFrame";
 import { MedallionDivider } from "@/components/brand/MedallionDivider";
 import { FigureExhibitCard } from "@/components/figures/FigureExhibitCard";
+import { MuseumEmptyState } from "@/components/figures/MuseumEmptyState";
 import { GuidedTour } from "@/components/figures/GuidedTour";
 import { t, tu, useLang, type Lang } from "@/lib/i18n";
 import { saveJourneyPlace } from "@/lib/continuity";
@@ -92,7 +93,7 @@ function FiguresIndex() {
         : "Move through history age by age, from ancient Numidia to Algeria today.";
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-dvh">
       <Header />
 
       {/* ============ FEATURED EXHIBITION BILLBOARD ============ */}
@@ -154,7 +155,7 @@ function FiguresIndex() {
             <a
               key={row.id}
               href={`#row-${row.id}`}
-              className="snap-start shrink-0 group inline-flex items-center gap-2 rounded-full border px-3.5 py-1.5 text-sm font-semibold transition-colors"
+              className="snap-start shrink-0 group inline-flex items-center gap-2 rounded-full border px-3.5 py-2.5 min-h-[44px] text-sm font-semibold transition-colors"
               style={{
                 borderColor: "color-mix(in oklab, var(--brand-gold) 30%, var(--border))",
                 background: "var(--card)",
@@ -501,6 +502,12 @@ function RefineCollection({ lang }: { lang: Lang }) {
   const allLabel = lang === "fr" ? "Toutes les ères" : lang === "ar" ? "كل الحقب" : "All eras";
   const noResults =
     lang === "fr" ? "Aucune figure trouvée." : lang === "ar" ? "لا توجد نتائج." : "No legends found.";
+  const noResultsBody =
+    lang === "fr"
+      ? "Cette salle est encore vide. Essayez un autre nom ou changez d'ère."
+      : lang === "ar"
+        ? "هذه القاعة فارغة بعد. جرّب اسمًا آخر أو غيّر الحقبة."
+        : "This room is empty for now. Try another name or switch eras.";
 
   const normalized = query.trim().toLowerCase();
   const active = normalized.length > 0 || eraFilter !== null;
@@ -586,7 +593,7 @@ function RefineCollection({ lang }: { lang: Lang }) {
               {lang === "fr" ? "résultat(s)" : lang === "ar" ? "نتيجة" : "result(s)"}
             </div>
             {results.length === 0 ? (
-              <p className="text-sm text-muted-foreground">{noResults}</p>
+              <MuseumEmptyState glyph="⌕" tone="patina" size={72} title={noResults} body={noResultsBody} />
             ) : (
               <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3.5 sm:gap-4">
                 {results.map((f) => (

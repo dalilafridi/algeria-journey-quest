@@ -106,7 +106,7 @@ function Timeline() {
   const progressPct = eras.length > 0 ? (completedEras / eras.length) * 100 : 0;
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-dvh">
       <Header />
       <main className="max-w-3xl mx-auto px-4 py-8 sm:py-10">
         {/* Top section */}
@@ -156,7 +156,7 @@ function Timeline() {
                 <button
                   key={f.key}
                   onClick={() => setFilter(f.key)}
-                  className={`shrink-0 px-3.5 py-2 rounded-full text-sm font-medium border transition-all min-h-[36px] ${
+                  className={`shrink-0 px-3.5 py-2 rounded-full text-sm font-medium border transition-all min-h-[44px] ${
                     active
                       ? "bg-primary text-primary-foreground border-primary shadow-sm"
                       : "bg-card text-foreground/80 border-border hover:bg-muted"

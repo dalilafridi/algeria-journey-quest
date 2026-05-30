@@ -184,7 +184,7 @@ export function Header() {
               </svg>
             </button>
             {langOpen && (
-              <div className="absolute right-0 mt-2 min-w-[170px] rounded-xl border border-border bg-popover shadow-lg overflow-hidden animate-float-up">
+              <div className="absolute end-0 mt-2 min-w-[170px] rounded-xl border border-border bg-popover shadow-lg overflow-hidden animate-float-up">
                 {LANGS.map((l) => (
                   <button
                     key={l.code}
@@ -235,13 +235,13 @@ export function Header() {
               </svg>
             </button>
             {profileOpen && (
-              <div className="absolute right-0 mt-2 min-w-[200px] rounded-xl border border-border bg-popover shadow-lg overflow-hidden animate-float-up">
+              <div className="absolute end-0 mt-2 min-w-[200px] rounded-xl border border-border bg-popover shadow-lg overflow-hidden animate-float-up">
                 <button
                   onClick={() => {
                     setProfileOpen(false);
                     navigate({ to: "/profile" });
                   }}
-                  className="w-full text-left px-3 py-2 text-sm text-foreground hover:bg-muted transition-colors"
+                  className="w-full text-start px-3 py-2 text-sm text-foreground hover:bg-muted transition-colors"
                 >
                   {T.myProgress}
                 </button>
@@ -250,21 +250,21 @@ export function Header() {
                     setProfileOpen(false);
                     navigate({ to: "/profile" });
                   }}
-                  className="w-full text-left px-3 py-2 text-sm text-foreground hover:bg-muted transition-colors"
+                  className="w-full text-start px-3 py-2 text-sm text-foreground hover:bg-muted transition-colors"
                 >
                   {T.settings}
                 </button>
                 <div className="h-px bg-border" />
                 <button
                   onClick={openAbout}
-                  className="w-full text-left px-3 py-2 text-sm text-foreground hover:bg-muted transition-colors flex items-center gap-2"
+                  className="w-full text-start px-3 py-2 text-sm text-foreground hover:bg-muted transition-colors flex items-center gap-2"
                 >
                   <span aria-hidden>ℹ️</span>
                   {T.about}
                 </button>
                 <button
                   onClick={handleReset}
-                  className="w-full text-left px-3 py-2 text-sm text-destructive hover:bg-muted transition-colors"
+                  className="w-full text-start px-3 py-2 text-sm text-destructive hover:bg-muted transition-colors"
                 >
                   {T.resetQuizzes}
                 </button>
@@ -330,7 +330,7 @@ export function Header() {
             </Link>
             <button
               onClick={openAbout}
-              className="text-left px-3 py-3 rounded-xl text-base font-medium text-foreground hover:bg-muted transition flex items-center gap-2"
+              className="text-start px-3 py-3 rounded-xl text-base font-medium text-foreground hover:bg-muted transition flex items-center gap-2"
             >
               <span aria-hidden>ℹ️</span>
               {T.about}
@@ -340,7 +340,7 @@ export function Header() {
                 setMenuOpen(false);
                 handleReset();
               }}
-              className="text-left px-3 py-3 rounded-xl text-base font-medium text-destructive hover:bg-muted transition"
+              className="text-start px-3 py-3 rounded-xl text-base font-medium text-destructive hover:bg-muted transition"
             >
               {T.resetQuizzes}
             </button>

@@ -121,7 +121,7 @@ function Home() {
           fr: "Entrez par les mots, le cinéma, la cuisine, les idées et l’identité.",
           ar: "ادخل عبر الكلمات والسينما والمطبخ والأفكار والهوية.",
         },
-        to: "/words" as const,
+        to: "/culture" as const,
       },
     ],
     regionLinks: [
@@ -142,7 +142,7 @@ function Home() {
     eras.find((e) => factText.includes(t(e.title, "en").toLowerCase().split(" ")[0]));
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-dvh">
       <Header />
       <main>
         {/* ========= HERO — Cinematic environmental entrance ========= */}

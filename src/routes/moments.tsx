@@ -1067,7 +1067,7 @@ function MomentsPage() {
   const isAr = lang === "ar";
 
   return (
-    <div className="min-h-screen" dir={isAr ? "rtl" : "ltr"}>
+    <div className="min-h-dvh" dir={isAr ? "rtl" : "ltr"}>
       <Header />
       <HeroSection lang={lang} />
 

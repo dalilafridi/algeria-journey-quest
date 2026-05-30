@@ -44,7 +44,7 @@ export const Route = createFileRoute("/figures/$figureId")({
       : {},
   component: FigureDetail,
   notFoundComponent: () => (
-    <div className="min-h-screen">
+    <div className="min-h-dvh">
       <Header />
       <main className="max-w-xl mx-auto px-4 py-16 text-center">
         <h1 className="text-2xl font-bold">Figure not found.</h1>
@@ -111,7 +111,7 @@ function FigureDetail() {
     lang === "fr" ? "Archive sonore à venir" : lang === "ar" ? "أرشيف صوتي قادم" : "Future audio archive";
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-dvh">
       <Header />
 
       {/* ============ 1) HERO PRESENTATION ============ */}
@@ -420,7 +420,7 @@ function FigureDetail() {
                           key={th}
                           className="px-2 py-0.5 rounded-full text-[11px] font-semibold border border-border/70 bg-card/70 text-muted-foreground"
                         >
-                          <span className="mr-0.5" aria-hidden>{def.emoji}</span>
+                          <span className="me-0.5" aria-hidden>{def.emoji}</span>
                           {t(def.label, lang)}
                         </span>
                       );
@@ -512,7 +512,7 @@ function FigureDetail() {
                   to={CULTURE_KIND_TO[c.kind]}
                   className="px-3 py-1.5 rounded-full bg-card border border-border text-sm hover:border-primary/50 hover:text-primary transition"
                 >
-                  <span className="mr-1" aria-hidden>{cultureKindEmoji(c.kind)}</span>
+                  <span className="me-1" aria-hidden>{cultureKindEmoji(c.kind)}</span>
                   {t(c.label, lang)}
                 </Link>
               ))}
@@ -556,7 +556,7 @@ function FigureDetail() {
                 params={{ figureId: x.id }}
                 className="px-3 py-1.5 rounded-full bg-card border border-border text-sm hover:border-primary/50 transition"
               >
-                <span className="mr-1" aria-hidden>{x.emoji}</span>
+                <span className="me-1" aria-hidden>{x.emoji}</span>
                 {t(x.displayName, lang)}
               </Link>
             ))}

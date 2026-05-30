@@ -30,7 +30,7 @@ const COPY = {
 function LessonsPage() {
   const lang = useLang();
   return (
-    <div className="min-h-screen">
+    <div className="min-h-dvh">
       <Header />
       <main className="max-w-3xl mx-auto px-4 py-8 safe-pb">
         <div className="flex items-start justify-between gap-3 flex-wrap">

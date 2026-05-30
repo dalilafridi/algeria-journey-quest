@@ -462,7 +462,7 @@ function CulturePage() {
   ];
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-dvh">
       <Header />
 
       {/* Hero */}
@@ -615,7 +615,7 @@ function CulturePage() {
                     +
                   </span>
                 </summary>
-                <p className="mt-3 pl-9 text-sm leading-relaxed text-foreground/85">{t(l.answer, lang)}</p>
+                <p className="mt-3 ps-9 text-sm leading-relaxed text-foreground/85">{t(l.answer, lang)}</p>
               </details>
             ))}
           </div>
