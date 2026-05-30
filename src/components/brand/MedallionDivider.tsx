@@ -52,9 +52,10 @@ function Rule({ dir }: { dir: "start" | "end" }) {
       <span
         className="absolute top-1/2 -translate-y-1/2 w-1 h-1 rounded-full"
         style={{
-          [dir === "start" ? "right" : "left"]: 0,
+          insetInlineEnd: dir === "start" ? 0 : undefined,
+          insetInlineStart: dir === "end" ? 0 : undefined,
           background: "color-mix(in oklab, var(--brand-gold) 70%, transparent)",
-        } as React.CSSProperties}
+        }}
       />
     </span>
   );
