@@ -1745,3 +1745,24 @@ html.showcase-on body { padding-bottom: 0; }
   .hero-env-placard { display: none; }
 }
 
+
+/* ============ Museum medallion system ============ */
+@keyframes medallion-reveal {
+  0% { opacity: 0; transform: scale(0.82) rotate(-6deg); filter: brightness(0.6); }
+  60% { opacity: 1; filter: brightness(1.15); }
+  100% { opacity: 1; transform: scale(1) rotate(0deg); filter: brightness(1); }
+}
+.animate-medallion-reveal {
+  animation: medallion-reveal 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+@keyframes engrave-sheen {
+  0%, 100% { opacity: 0.25; transform: translateX(-30%); }
+  50% { opacity: 0.6; transform: translateX(30%); }
+}
+.animate-engrave-sheen { animation: engrave-sheen 2.6s ease-in-out infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-medallion-reveal,
+  .animate-engrave-sheen { animation: none; }
+}
