@@ -309,6 +309,21 @@ export const ui = {
   cancel: { en: "Cancel", fr: "Annuler", ar: "إلغاء" },
   confirm: { en: "Yes, reset", fr: "Oui, réinitialiser", ar: "نعم، أعد الضبط" },
   resetDone: { en: "All set — fresh start!", fr: "C'est fait — nouveau départ !", ar: "تمّ — بداية جديدة!" },
+
+  // App chrome / system
+  skipToContent: { en: "Skip to content", fr: "Aller au contenu", ar: "تخطّ إلى المحتوى" },
+  notFoundTitle: { en: "Page not found", fr: "Page introuvable", ar: "الصفحة غير موجودة" },
+  notFoundBody: {
+    en: "The page you're looking for doesn't exist or has been moved.",
+    fr: "La page que vous cherchez n'existe pas ou a été déplacée.",
+    ar: "الصفحة التي تبحث عنها غير موجودة أو تم نقلها.",
+  },
+  goHome: { en: "Go home", fr: "Retour à l'accueil", ar: "العودة إلى الرئيسية" },
+  contentProtected: {
+    en: "This content is protected. Please contact us for permission to reuse.",
+    fr: "Ce contenu est protégé. Contactez-nous pour toute réutilisation.",
+    ar: "هذا المحتوى محمي. يرجى التواصل معنا للحصول على إذن إعادة الاستخدام.",
+  },
 } satisfies Record<string, Localized<string>>;
 
 export type UiKey = keyof typeof ui;
