@@ -403,6 +403,7 @@ function FigureDetail() {
               </div>
             </div>
             <dl className="space-y-3 text-sm">
+              <GlanceRow label={galleryRowLabel} value={`${collection.emblem} ${t(collection.label, lang)}`} />
               {categoryDef && <GlanceRow label={roleLabel} value={t(categoryDef.label, lang)} />}
               <GlanceRow label={eraRowLabel} value={t(legendEra.label, lang)} />
               <GlanceRow label={periodLabel} value={t(f.era, lang)} />
