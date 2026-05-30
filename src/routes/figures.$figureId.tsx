@@ -358,6 +358,28 @@ function FigureDetail() {
             </ExhibitCard>
           )}
 
+          {/* 7) Historical context — the era they lived in */}
+          {era && (
+            <ExhibitCard accent="var(--brand-gold-deep)">
+              <SectionTitle emoji="🏺" label={contextLabel} />
+              <div className="flex items-center gap-2 mb-2 text-sm font-semibold text-foreground/90">
+                <span aria-hidden className="text-lg">{era.emoji}</span>
+                <span>{t(era.title, lang)}</span>
+                <span className="text-xs text-muted-foreground">· {era.dateRange}</span>
+              </div>
+              <p className="leading-relaxed text-foreground/85">{t(era.summary, lang)}</p>
+              <Link
+                to="/era/$eraId"
+                params={{ eraId: era.id }}
+                className="mt-3 inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:underline"
+              >
+                {tu("relatedEra", lang)}
+                <span aria-hidden>→</span>
+              </Link>
+            </ExhibitCard>
+          )}
+
+
           <Link
             to="/figures/quiz"
             className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-primary-foreground font-semibold"
