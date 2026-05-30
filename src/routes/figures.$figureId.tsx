@@ -9,6 +9,8 @@ import { mapRegions } from "@/data/mapRegions";
 import { LEGEND_ERAS, eraOfCategory } from "@/lib/figureEras";
 import { collectionOf } from "@/lib/figureCollections";
 import { EraBadge } from "@/components/brand/EraBadge";
+import { MedallionFrame } from "@/components/brand/MedallionFrame";
+import { CollectionEmblem } from "@/components/figures/CollectionEmblem";
 import { t, tu, useLang, type LocalizedString } from "@/lib/i18n";
 import { StoryFlow, type StoryScene } from "@/components/story/StoryFlow";
 import { ConnectionMap } from "@/components/figures/ConnectionMap";
