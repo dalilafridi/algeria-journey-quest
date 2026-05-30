@@ -37,6 +37,7 @@ export const Route = createFileRoute("/figures/collection/$collectionId")({
 
 function CollectionPage() {
   const lang = useLang();
+  const [tourOpen, setTourOpen] = useState(false);
   const { collectionId } = useParams({ from: "/figures/collection/$collectionId" });
   const row = useMemo(() => findRowBySlug(collectionId), [collectionId]);
   const items = useMemo(() => (row ? resolveRow(row) : []), [row]);
