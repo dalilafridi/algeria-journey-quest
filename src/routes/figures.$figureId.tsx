@@ -16,6 +16,11 @@ import { StoryFlow, type StoryScene } from "@/components/story/StoryFlow";
 import { ConnectionMap } from "@/components/figures/ConnectionMap";
 import { SharePlaque } from "@/components/figures/SharePlaque";
 import { saveJourneyPlace } from "@/lib/continuity";
+import { getCurator } from "@/data/curatorContent";
+import { CuratorNote } from "@/components/curator/CuratorNote";
+import { MemoryMoment } from "@/components/curator/MemoryMoment";
+import { SourcesList } from "@/components/curator/SourcesList";
+import { ContinueExploring, RELATED_LABELS, type ExploreGroup } from "@/components/curator/ContinueExploring";
 
 const CULTURE_KIND_TO: Record<FigureCultureLinkKind, "/cuisine" | "/cinema" | "/words" | "/ideas" | "/moments" | "/timeline" | "/lessons"> = {
   cuisine: "/cuisine",
@@ -72,6 +77,31 @@ function FigureDetail() {
     .map((id) => figures.find((x) => x.id === id))
     .filter((x): x is NonNullable<typeof x> => Boolean(x))
     .filter((x, i, arr) => arr.findIndex((y) => y.id === x.id) === i);
+
+  const curator = getCurator("figure", f.id);
+  const exploreGroups: ExploreGroup[] = [
+    {
+      label: RELATED_LABELS.figures,
+      items: relatedFigures.slice(0, 4).map((x) => ({
+        kind: "figure" as const,
+        id: x.id,
+        emoji: x.emoji,
+        label: x.displayName,
+      })),
+    },
+    {
+      label: RELATED_LABELS.regions,
+      items: relatedRegion
+        ? [{ kind: "region" as const, id: relatedRegion.id, emoji: relatedRegion.emoji, label: relatedRegion.name }]
+        : [],
+    },
+    {
+      label: RELATED_LABELS.eras,
+      items: era
+        ? [{ kind: "era" as const, id: era.id, emoji: era.emoji, label: era.title }]
+        : [],
+    },
+  ];
 
   useEffect(() => {
     saveJourneyPlace({
@@ -222,6 +252,8 @@ function FigureDetail() {
       <main className="max-w-5xl mx-auto px-4 py-8 grid lg:grid-cols-[1fr_300px] gap-6 lg:gap-8 items-start">
         {/* ---- Main narrative column ---- */}
         <div className="space-y-6 min-w-0">
+          {curator?.note && <CuratorNote note={curator.note} />}
+
           {/* 2) Historical significance */}
           <ExhibitCard accent="var(--primary)">
             <SectionTitle emoji="⭐" label={significanceLabel} />
@@ -538,6 +570,19 @@ function FigureDetail() {
         </div>
       </section>
 
+
+      {/* Curator reflection — memory moment + sources */}
+      {(curator?.memory || (curator?.sources && curator.sources.length > 0)) && (
+        <section className="max-w-5xl mx-auto px-4 pb-12 space-y-6">
+          {curator?.memory && <MemoryMoment moment={curator.memory} />}
+          {curator?.sources && curator.sources.length > 0 && <SourcesList sources={curator.sources} />}
+        </section>
+      )}
+
+      {/* Continue exploring — recommended exhibits */}
+      <section className="max-w-5xl mx-auto px-4 pb-14">
+        <ContinueExploring groups={exploreGroups} />
+      </section>
 
       {/* Explore other legends */}
 
