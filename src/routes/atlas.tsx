@@ -661,6 +661,7 @@ function RegionPanel({
           </Link>
         </div>
       </div>
+      <ContextRibbon connects={["figures", "eras", "regions", "culture", "timeline"]} lang={lang} />
     </div>
   );
 }
