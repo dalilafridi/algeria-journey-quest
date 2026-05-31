@@ -313,7 +313,6 @@ export function OverviewStops({
           <li key={i}>
             {s.to ? (
               <Link
-                // @ts-expect-error generic string route
                 to={s.to}
                 params={s.params}
                 hash={s.hash}
