@@ -571,6 +571,19 @@ function FigureDetail() {
       </section>
 
 
+      {/* Curator reflection — memory moment + sources */}
+      {(curator?.memory || (curator?.sources && curator.sources.length > 0)) && (
+        <section className="max-w-5xl mx-auto px-4 pb-12 space-y-6">
+          {curator?.memory && <MemoryMoment moment={curator.memory} />}
+          {curator?.sources && curator.sources.length > 0 && <SourcesList sources={curator.sources} />}
+        </section>
+      )}
+
+      {/* Continue exploring — recommended exhibits */}
+      <section className="max-w-5xl mx-auto px-4 pb-14">
+        <ContinueExploring groups={exploreGroups} />
+      </section>
+
       {/* Explore other legends */}
 
       <section className="max-w-5xl mx-auto px-4 pb-16">
