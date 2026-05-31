@@ -416,10 +416,23 @@ export function ActionPanel({
 }
 
 /** The gold pill CTA used inside ActionPanel (or standalone). */
-export function ActionButton({ children, ...rest }: { children: ReactNode } & React.ComponentProps<typeof Link>) {
+export function ActionButton({
+  children,
+  to,
+  params,
+  hash,
+}: {
+  children: ReactNode;
+  to: string;
+  params?: Record<string, string>;
+  hash?: string;
+}) {
+  const LinkAny = Link as unknown as React.ComponentType<Record<string, unknown>>;
   return (
-    <Link
-      {...rest}
+    <LinkAny
+      to={to}
+      params={params}
+      hash={hash}
       className="inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-xl px-6 py-3 text-sm font-bold text-primary-foreground transition hover:opacity-95 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 min-h-12"
       style={{ background: "var(--gradient-warm)", boxShadow: "var(--shadow-glow)" }}
     >
@@ -427,9 +440,10 @@ export function ActionButton({ children, ...rest }: { children: ReactNode } & Re
       <span aria-hidden className="rtl:rotate-180">
         →
       </span>
-    </Link>
+    </LinkAny>
   );
 }
+
 
 /* ----------------------------------------------------------- Curator tip --- */
 
