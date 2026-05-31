@@ -378,7 +378,7 @@ export function ActionPanel({
 }) {
   return (
     <div
-      className="relative overflow-hidden rounded-2xl px-5 sm:px-7 py-6 sm:py-7"
+      className="@container relative overflow-hidden rounded-2xl px-5 sm:px-7 py-6 sm:py-7"
       style={{
         background:
           "linear-gradient(135deg, oklch(0.26 0.035 55), oklch(0.2 0.03 50))",
