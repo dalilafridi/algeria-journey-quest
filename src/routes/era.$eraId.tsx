@@ -6,7 +6,24 @@ import { eras } from "@/data/eras";
 import { getEraExtras } from "@/data/eraExtras";
 import { mapRegions } from "@/data/mapRegions";
 import { getFigure } from "@/data/figures";
+import { MedallionFrame } from "@/components/brand/MedallionFrame";
+import {
+  ExhibitShell,
+  ExhibitGrid,
+  ExhibitHero,
+  ExhibitBack,
+  ExhibitEyebrow,
+  ExhibitPill,
+  PanelCard,
+  OverviewStops,
+  ExploreStats,
+  ActionPanel,
+  ActionButton,
+  CuratorTip,
+  ContextRibbon,
+} from "@/components/museum/Exhibit";
 import { t, tu, useLang, type LocalizedString } from "@/lib/i18n";
+
 
 export const Route = createFileRoute("/era/$eraId")({
   loader: ({ params }) => {
