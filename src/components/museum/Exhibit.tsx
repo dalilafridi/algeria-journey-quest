@@ -386,7 +386,7 @@ export function ActionPanel({
         border: "1px solid color-mix(in oklab, var(--brand-gold) 30%, transparent)",
       }}
     >
-      <div className="flex flex-col sm:flex-row items-center gap-5 text-center sm:text-start">
+      <div className="flex flex-col items-center gap-4 text-center @lg:flex-row @lg:items-center @lg:gap-5 @lg:text-start">
         {seal ? <div className="shrink-0">{seal}</div> : null}
         <div className="min-w-0 flex-1">
           {eyebrow ? (
@@ -398,7 +398,7 @@ export function ActionPanel({
             </div>
           ) : null}
           <div
-            className="mt-1 text-xl sm:text-2xl font-extrabold leading-tight"
+            className="mt-1 text-xl font-extrabold leading-tight"
             style={{ fontFamily: SERIF, color: "oklch(0.96 0.02 85)" }}
           >
             {title}
@@ -409,7 +409,7 @@ export function ActionPanel({
             </div>
           ) : null}
         </div>
-        <div className="shrink-0 w-full sm:w-auto">{cta}</div>
+        <div className="shrink-0 w-full @lg:w-auto">{cta}</div>
       </div>
     </div>
   );
