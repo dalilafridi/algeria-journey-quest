@@ -252,6 +252,8 @@ function FigureDetail() {
       <main className="max-w-5xl mx-auto px-4 py-8 grid lg:grid-cols-[1fr_300px] gap-6 lg:gap-8 items-start">
         {/* ---- Main narrative column ---- */}
         <div className="space-y-6 min-w-0">
+          {curator?.note && <CuratorNote note={curator.note} />}
+
           {/* 2) Historical significance */}
           <ExhibitCard accent="var(--primary)">
             <SectionTitle emoji="⭐" label={significanceLabel} />
