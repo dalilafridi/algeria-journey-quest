@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useMemo, useState } from "react";
 import { Header } from "@/components/Header";
+import { ContextRibbon } from "@/components/museum/Exhibit";
 import { mapRegions } from "@/data/mapRegions";
 import { regionExtras } from "@/data/regionExtras";
 import { eras } from "@/data/eras";
@@ -661,6 +662,7 @@ function RegionPanel({
           </Link>
         </div>
       </div>
+      <ContextRibbon connects={["figures", "eras", "regions", "culture", "timeline"]} lang={lang} />
     </div>
   );
 }

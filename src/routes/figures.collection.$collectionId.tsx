@@ -1,6 +1,7 @@
 import { createFileRoute, Link, useParams } from "@tanstack/react-router";
 import { useEffect, useMemo, useState } from "react";
 import { Header } from "@/components/Header";
+import { ContextRibbon } from "@/components/museum/Exhibit";
 
 import {
   findRowBySlug,
@@ -417,6 +418,7 @@ function CollectionNotFound({ lang }: { lang: Lang }) {
           <span aria-hidden>←</span>
           {backLabel}
         </Link>
+        <ContextRibbon connects={["figures", "eras", "regions", "culture", "atlas"]} lang={lang} className="px-0 pt-8" />
       </main>
     </div>
   );
