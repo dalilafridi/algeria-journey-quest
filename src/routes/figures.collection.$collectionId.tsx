@@ -1,6 +1,7 @@
 import { createFileRoute, Link, useParams } from "@tanstack/react-router";
 import { useEffect, useMemo, useState } from "react";
 import { Header } from "@/components/Header";
+import { ContextRibbon } from "@/components/museum/Exhibit";
 
 import {
   findRowBySlug,
