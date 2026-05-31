@@ -21,6 +21,7 @@ import { CuratorNote } from "@/components/curator/CuratorNote";
 import { MemoryMoment } from "@/components/curator/MemoryMoment";
 import { SourcesList } from "@/components/curator/SourcesList";
 import { ContinueExploring, RELATED_LABELS, type ExploreGroup } from "@/components/curator/ContinueExploring";
+import { ContextRibbon } from "@/components/museum/Exhibit";
 
 const CULTURE_KIND_TO: Record<FigureCultureLinkKind, "/cuisine" | "/cinema" | "/words" | "/ideas" | "/moments" | "/timeline" | "/lessons"> = {
   cuisine: "/cuisine",
