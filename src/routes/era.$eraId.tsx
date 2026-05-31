@@ -97,16 +97,346 @@ function EraPage() {
     .map((fid) => getFigure(fid))
     .filter(Boolean);
 
+  const figureCount = keyFigureCards.length + (era.figures?.length ?? 0);
+  const exploreLabel = lang === "fr" ? "Ce que vous explorerez" : lang === "ar" ? "ما ستكتشفه" : "You will explore";
+  const overviewLabel = lang === "fr" ? "Aperçu de l'époque" : lang === "ar" ? "نظرة على الحقبة" : "Era overview";
+  const tipLabel = lang === "fr" ? "Conseil du conservateur" : lang === "ar" ? "نصيحة أمين المتحف" : "Curator's tip";
+  const tipBody =
+    lang === "fr"
+      ? "Prenez votre temps à chaque section. Cette époque se comprend mieux en explorant ses figures et ses lieux."
+      : lang === "ar"
+        ? "خذ وقتك مع كل قسم. تُفهم هذه الحقبة بشكل أفضل عبر استكشاف شخصياتها وأماكنها."
+        : "Take your time with each section. This era reads best when you explore its figures and places, not rush.";
+  const placesLabel = lang === "fr" ? "Lieux" : lang === "ar" ? "أماكن" : "Places";
+  const factsLabel = lang === "fr" ? "Faits" : lang === "ar" ? "حقائق" : "Facts";
+
+  const continueCard = nextEra ? (
+    <Link
+      to="/era/$eraId"
+      params={{ eraId: nextEra.id }}
+      className="group block rounded-2xl border border-border bg-card/85 hover:bg-card hover:-translate-y-0.5 transition-all p-4"
+      style={{ boxShadow: "var(--shadow-soft)" }}
+    >
+      <div className="text-[11px] font-bold uppercase tracking-[0.18em] text-primary">
+        {COPY.continueJourney[lang]}
+      </div>
+      <div className="mt-1 text-base font-extrabold leading-tight">
+        <span className="me-2" aria-hidden>
+          {nextEra.emoji}
+        </span>
+        {t(nextEra.title, lang)}
+      </div>
+      <div className="text-xs text-muted-foreground mt-0.5">{nextEra.dateRange}</div>
+    </Link>
+  ) : (
+    <Link
+      to="/figures"
+      className="group block rounded-2xl border border-border bg-card/85 hover:bg-card hover:-translate-y-0.5 transition-all p-4"
+      style={{ boxShadow: "var(--shadow-soft)" }}
+    >
+      <div className="text-[11px] font-bold uppercase tracking-[0.18em] text-primary">
+        {lang === "fr" ? "Le parcours est terminé" : lang === "ar" ? "اكتملت الرحلة" : "You've reached the present"}
+      </div>
+      <div className="mt-1 text-base font-extrabold leading-tight">
+        <span className="me-2" aria-hidden>
+          ⵣ
+        </span>
+        {lang === "fr"
+          ? "Rencontrez les figures qui ont façonné l'Algérie"
+          : lang === "ar"
+            ? "تعرّف على من صاغوا تاريخ الجزائر"
+            : "Meet the people who shaped Algeria"}
+      </div>
+    </Link>
+  );
+
   return (
-    <div className="min-h-dvh bg-parchment">
+    <ExhibitShell>
       <Header />
-      <main className="max-w-3xl mx-auto px-4 py-6 sm:py-8 safe-pb">
-        <Link
-          to="/timeline"
-          className="text-sm text-muted-foreground hover:text-foreground inline-block py-1"
-        >
-          {tu("backToTimeline", lang)}
-        </Link>
+      <main className="safe-pb">
+        {/* ===== Editorial hero ===== */}
+        <div className="max-w-6xl mx-auto px-4 pt-6 sm:pt-8">
+          <ExhibitHero
+            back={<ExhibitBack to="/timeline">{tu("backToTimeline", lang)}</ExhibitBack>}
+            eyebrow={<ExhibitEyebrow>{era.dateRange}</ExhibitEyebrow>}
+            title={t(era.title, lang)}
+            subtitle={extras?.cinematicLine ? `“${t(extras.cinematicLine, lang)}”` : undefined}
+            intro={t(era.summary, lang)}
+            medallion={
+              <MedallionFrame size={148} tone="gold" glow animate="reveal" inset={0.2} className="w-28 h-28 sm:w-36 sm:h-36">
+                <span aria-hidden className="text-5xl sm:text-6xl">
+                  {era.emoji}
+                </span>
+              </MedallionFrame>
+            }
+          />
+        </div>
+
+        {/* ===== Two-column exhibition body ===== */}
+        <ExhibitGrid
+          main={
+            <>
+              {/* Why this era matters */}
+              {extras?.whyItMatters && (
+                <Section title={COPY.whyItMatters[lang]} accent>
+                  <p className="text-base sm:text-lg text-foreground/85 leading-relaxed">
+                    {t(extras.whyItMatters, lang)}
+                  </p>
+                </Section>
+              )}
+
+              {/* Museum notes */}
+              {extras?.museumNotes?.length ? (
+                <section className="animate-float-up">
+                  <SectionLabel>{COPY.museumNotes[lang]}</SectionLabel>
+                  <div className="mt-3 grid sm:grid-cols-2 gap-3">
+                    {extras.museumNotes.map((n, i) => (
+                      <article
+                        key={i}
+                        className="rounded-2xl border border-border/70 bg-card/95 p-4 sm:p-5"
+                        style={{ boxShadow: "var(--shadow-soft)" }}
+                      >
+                        <div className="text-[10px] font-bold uppercase tracking-[0.22em] text-primary/80">
+                          {COPY.curator[lang]}
+                        </div>
+                        <h3 className="mt-1 font-bold text-base leading-snug text-foreground">
+                          {t(n.title, lang)}
+                        </h3>
+                        <p className="mt-2 text-sm text-foreground/80 leading-relaxed">{t(n.body, lang)}</p>
+                      </article>
+                    ))}
+                  </div>
+                </section>
+              ) : null}
+
+              {/* Key figures (rich cards, linked) */}
+              {keyFigureCards.length > 0 && (
+                <section className="animate-float-up">
+                  <SectionLabel>{COPY.keyFigures[lang]}</SectionLabel>
+                  <div className="mt-3 grid sm:grid-cols-2 gap-3">
+                    {keyFigureCards.map((f) => (
+                      <Link
+                        key={f!.id}
+                        to="/figures/$figureId"
+                        params={{ figureId: f!.id }}
+                        className="group rounded-2xl border border-border/70 bg-card hover:border-primary/40 hover:-translate-y-0.5 transition-all p-4 sm:p-5 flex items-start gap-3"
+                        style={{ boxShadow: "var(--shadow-soft)" }}
+                      >
+                        <div
+                          aria-hidden
+                          className="shrink-0 grid place-items-center h-12 w-12 rounded-full text-2xl bg-primary/10 group-hover:bg-primary/15 transition-colors"
+                        >
+                          {f!.emoji}
+                        </div>
+                        <div className="min-w-0">
+                          <div className="font-bold leading-tight group-hover:text-primary transition-colors">
+                            {t(f!.displayName, lang)}
+                          </div>
+                          <div className="text-[11px] text-muted-foreground mt-0.5">{t(f!.era, lang)}</div>
+                          <p className="mt-1.5 text-sm text-foreground/80 leading-snug line-clamp-2">
+                            {t(f!.fact, lang)}
+                          </p>
+                          <div className="mt-2 text-xs font-semibold text-primary opacity-0 group-hover:opacity-100 transition-opacity">
+                            {COPY.exploreFigure[lang]} →
+                          </div>
+                        </div>
+                      </Link>
+                    ))}
+                  </div>
+
+                  {era.figures?.length > 0 && (
+                    <ul className="mt-4 grid sm:grid-cols-2 gap-3">
+                      {era.figures.map((f: { name: LocalizedString; note: LocalizedString }, i: number) => (
+                        <li key={i} className="rounded-xl border border-border/60 bg-muted/40 px-3.5 py-3">
+                          <div className="font-semibold text-sm">{t(f.name, lang)}</div>
+                          <div className="text-xs text-muted-foreground leading-snug mt-0.5">{t(f.note, lang)}</div>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </section>
+              )}
+
+              {/* Key places */}
+              {era.places?.length > 0 && (
+                <section className="animate-float-up">
+                  <SectionLabel>{COPY.keyPlaces[lang]}</SectionLabel>
+                  <ul className="mt-3 grid sm:grid-cols-2 gap-3">
+                    {era.places.map((p: { name: LocalizedString; note: LocalizedString }, i: number) => (
+                      <li
+                        key={i}
+                        className="rounded-2xl border border-border/70 bg-card/95 px-4 py-3.5"
+                        style={{ boxShadow: "var(--shadow-soft)" }}
+                      >
+                        <div className="flex items-start gap-2">
+                          <span aria-hidden className="text-lg leading-none mt-0.5">
+                            📍
+                          </span>
+                          <div>
+                            <div className="font-bold text-sm leading-tight">{t(p.name, lang)}</div>
+                            <div className="text-xs text-muted-foreground leading-snug mt-1">{t(p.note, lang)}</div>
+                          </div>
+                        </div>
+                      </li>
+                    ))}
+                  </ul>
+                </section>
+              )}
+
+              {/* Did you know? (rotating) */}
+              {era.facts?.length > 0 && (
+                <section className="animate-float-up">
+                  <div
+                    className="rounded-2xl border p-5 sm:p-6 bg-mosaic-soft"
+                    style={{
+                      borderColor: "color-mix(in oklab, var(--accent) 45%, transparent)",
+                      backgroundColor: "color-mix(in oklab, var(--accent) 14%, var(--card))",
+                      boxShadow: "var(--shadow-soft)",
+                    }}
+                  >
+                    <div className="flex items-center justify-between gap-3">
+                      <div className="flex items-center gap-2">
+                        <span className="text-xl" aria-hidden>
+                          ✨
+                        </span>
+                        <h3 className="font-bold text-base sm:text-lg">{COPY.didYouKnow[lang]}</h3>
+                      </div>
+                      {era.facts.length > 1 && (
+                        <button type="button" onClick={cycleFact} className="text-xs font-semibold text-primary hover:underline">
+                          {COPY.rotate[lang]} ↻
+                        </button>
+                      )}
+                    </div>
+                    <p key={factIdx} className="mt-3 text-base sm:text-lg leading-relaxed text-foreground/90 animate-fade-in">
+                      {t(era.facts[factIdx] ?? era.facts[0], lang)}
+                    </p>
+                    {era.facts.length > 1 && (
+                      <div className="mt-3 flex gap-1.5">
+                        {era.facts.map((_: LocalizedString, i: number) => (
+                          <span
+                            key={i}
+                            className={"h-1 rounded-full transition-all " + (i === factIdx ? "w-6 bg-primary" : "w-3 bg-primary/25")}
+                            aria-hidden
+                          />
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                </section>
+              )}
+
+              {/* Memory card */}
+              {extras?.memoryCard && (
+                <section className="animate-float-up">
+                  <figure
+                    className="relative overflow-hidden rounded-3xl border border-primary/30 px-6 py-8 sm:py-10 text-center"
+                    style={{
+                      background:
+                        "linear-gradient(135deg, color-mix(in oklab, var(--primary) 14%, var(--card)), color-mix(in oklab, var(--accent) 12%, var(--card)))",
+                      boxShadow: "var(--shadow-glow, var(--shadow-soft))",
+                    }}
+                  >
+                    <span
+                      aria-hidden
+                      className="pointer-events-none absolute -top-6 -start-4 text-[7rem] leading-none font-serif text-primary/20 select-none"
+                    >
+                      “
+                    </span>
+                    <div className="text-[10px] font-bold uppercase tracking-[0.24em] text-primary mb-2">
+                      {COPY.memory[lang]}
+                    </div>
+                    <blockquote className="text-lg sm:text-2xl font-semibold italic text-foreground leading-snug max-w-2xl mx-auto">
+                      {t(extras.memoryCard.quote, lang)}
+                    </blockquote>
+                    {extras.memoryCard.attribution && (
+                      <figcaption className="mt-3 text-xs sm:text-sm text-muted-foreground">
+                        — {t(extras.memoryCard.attribution, lang)}
+                      </figcaption>
+                    )}
+                  </figure>
+                </section>
+              )}
+            </>
+          }
+          aside={
+            <>
+              {/* Era overview + stats */}
+              <PanelCard eyebrow={overviewLabel} icon="🏛️">
+                <div className="flex items-center gap-2 text-sm font-semibold text-foreground mb-3">
+                  <span aria-hidden>{era.emoji}</span>
+                  <span style={{ fontFamily: "Georgia, 'Times New Roman', serif" }}>{t(era.title, lang)}</span>
+                </div>
+                <ExploreStats
+                  stats={[
+                    { value: figureCount, label: COPY.keyFigures[lang], icon: "👤" },
+                    { value: era.places?.length ?? 0, label: placesLabel, icon: "📍" },
+                    { value: relatedRegions.length, label: COPY.relatedRegions[lang], icon: "🗺️" },
+                    { value: era.facts?.length ?? 0, label: factsLabel, icon: "✨" },
+                  ]}
+                />
+              </PanelCard>
+
+              {/* Related regions overview */}
+              {relatedRegions.length > 0 && (
+                <PanelCard eyebrow={COPY.relatedRegions[lang]} icon="📍">
+                  <OverviewStops
+                    stops={relatedRegions.map((r) => ({
+                      title: (
+                        <>
+                          <span className="me-1.5" aria-hidden>
+                            {r.emoji}
+                          </span>
+                          {t(r.name, lang)}
+                        </>
+                      ),
+                      to: "/map",
+                      hash: `region-${r.id}`,
+                    }))}
+                  />
+                </PanelCard>
+              )}
+
+              {/* Quiz action panel */}
+              <ActionPanel
+                eyebrow={lang === "fr" ? "Prêt à tester ?" : lang === "ar" ? "جاهز للاختبار؟" : "Ready to test yourself?"}
+                title={tu("takeQuiz", lang)}
+                subtitle={
+                  lang === "fr"
+                    ? "Mettez vos connaissances à l'épreuve."
+                    : lang === "ar"
+                      ? "اختبر معلوماتك عن هذه الحقبة."
+                      : "Put your knowledge of this era to the test."
+                }
+                seal={
+                  <MedallionFrame size={60} tone="gold" glow inset={0.22}>
+                    <span aria-hidden className="text-2xl">
+                      {era.emoji}
+                    </span>
+                  </MedallionFrame>
+                }
+                cta={
+                  <ActionButton to="/quiz/$eraId" params={{ eraId: era.id }}>
+                    {tu("takeQuiz", lang)}
+                  </ActionButton>
+                }
+              />
+
+              {/* Continue the journey */}
+              {continueCard}
+
+              {/* Curator tip */}
+              <CuratorTip title={tipLabel}>{tipBody}</CuratorTip>
+            </>
+          }
+        />
+
+        {/* ===== Bottom context ribbon ===== */}
+        <ContextRibbon connects={["figures", "regions", "timeline", "culture", "atlas"]} lang={lang} />
+      </main>
+    </ExhibitShell>
+  );
+}
+
 
         {/* ===== Cinematic hero ===== */}
         <header
