@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 
 import { ContinueJourneyInline } from "@/components/ContinueJourneyInline";
 import { DidYouKnowCard } from "@/components/DidYouKnowCard";
+import { SignatureJourneys } from "@/components/journeys/SignatureJourneys";
 import { Header } from "@/components/Header";
 import { PillarIcon } from "@/components/brand/PillarIcon";
 import { RegionIcon } from "@/components/RegionIcon";
@@ -265,6 +266,9 @@ function Home() {
             ))}
           </div>
         </section>
+
+        {/* ========= SIGNATURE JOURNEYS ========= */}
+        <SignatureJourneys className="pb-10 sm:pb-14" />
 
         {/* ========= REGION PREVIEW STRIP ========= */}
         <section className="mx-auto max-w-5xl px-4 pb-10 sm:pb-14">
