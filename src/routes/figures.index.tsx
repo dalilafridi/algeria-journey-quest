@@ -19,6 +19,7 @@ import { MedallionDivider } from "@/components/brand/MedallionDivider";
 import { FigureExhibitCard } from "@/components/figures/FigureExhibitCard";
 import { MuseumEmptyState } from "@/components/figures/MuseumEmptyState";
 import { GuidedTour } from "@/components/figures/GuidedTour";
+import { SignatureJourneys } from "@/components/journeys/SignatureJourneys";
 import { t, tu, useLang, type Lang } from "@/lib/i18n";
 import { saveJourneyPlace } from "@/lib/continuity";
 
@@ -191,6 +192,11 @@ function FiguresIndex() {
             ))}
           </div>
         </div>
+
+        <MedallionDivider className="my-12 sm:my-14" />
+
+        {/* ============ SIGNATURE JOURNEYS ============ */}
+        <SignatureJourneys className="px-0" />
 
         <MedallionDivider className="my-12 sm:my-14" />
 
