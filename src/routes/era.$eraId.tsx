@@ -437,9 +437,6 @@ function EraPage() {
   );
 }
 
-
-        {/* ===== Cinematic hero ===== */}
-        <header
           className="relative mt-3 sm:mt-4 overflow-hidden rounded-3xl border border-border/70 px-5 sm:px-8 py-8 sm:py-10 animate-cinematic-in"
           style={{
             background: "var(--gradient-parchment, linear-gradient(180deg, hsl(var(--card)), hsl(var(--muted))))",
