@@ -417,6 +417,7 @@ function CollectionNotFound({ lang }: { lang: Lang }) {
           <span aria-hidden>←</span>
           {backLabel}
         </Link>
+        <ContextRibbon connects={["figures", "eras", "regions", "culture", "atlas"]} lang={lang} className="px-0 pt-8" />
       </main>
     </div>
   );
