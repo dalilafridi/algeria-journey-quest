@@ -92,7 +92,6 @@ export function ExhibitEyebrow({
 export function ExhibitBack({ to, hash, params, children }: { to: string; hash?: string; params?: Record<string, string>; children: ReactNode }) {
   return (
     <Link
-      // @ts-expect-error generic string route — used across many detail pages
       to={to}
       hash={hash}
       params={params}
