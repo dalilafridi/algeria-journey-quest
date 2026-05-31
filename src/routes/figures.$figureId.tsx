@@ -16,6 +16,11 @@ import { StoryFlow, type StoryScene } from "@/components/story/StoryFlow";
 import { ConnectionMap } from "@/components/figures/ConnectionMap";
 import { SharePlaque } from "@/components/figures/SharePlaque";
 import { saveJourneyPlace } from "@/lib/continuity";
+import { getCurator } from "@/data/curatorContent";
+import { CuratorNote } from "@/components/curator/CuratorNote";
+import { MemoryMoment } from "@/components/curator/MemoryMoment";
+import { SourcesList } from "@/components/curator/SourcesList";
+import { ContinueExploring, RELATED_LABELS, type ExploreGroup } from "@/components/curator/ContinueExploring";
 
 const CULTURE_KIND_TO: Record<FigureCultureLinkKind, "/cuisine" | "/cinema" | "/words" | "/ideas" | "/moments" | "/timeline" | "/lessons"> = {
   cuisine: "/cuisine",
@@ -72,6 +77,31 @@ function FigureDetail() {
     .map((id) => figures.find((x) => x.id === id))
     .filter((x): x is NonNullable<typeof x> => Boolean(x))
     .filter((x, i, arr) => arr.findIndex((y) => y.id === x.id) === i);
+
+  const curator = getCurator("figure", f.id);
+  const exploreGroups: ExploreGroup[] = [
+    {
+      label: RELATED_LABELS.figures,
+      items: relatedFigures.slice(0, 4).map((x) => ({
+        kind: "figure" as const,
+        id: x.id,
+        emoji: x.emoji,
+        label: x.displayName,
+      })),
+    },
+    {
+      label: RELATED_LABELS.regions,
+      items: relatedRegion
+        ? [{ kind: "region" as const, id: relatedRegion.id, emoji: relatedRegion.emoji, label: relatedRegion.name }]
+        : [],
+    },
+    {
+      label: RELATED_LABELS.eras,
+      items: era
+        ? [{ kind: "era" as const, id: era.id, emoji: era.emoji, label: era.title }]
+        : [],
+    },
+  ];
 
   useEffect(() => {
     saveJourneyPlace({
