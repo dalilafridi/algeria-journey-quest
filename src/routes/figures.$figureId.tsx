@@ -607,6 +607,9 @@ function FigureDetail() {
             ))}
         </div>
       </section>
+
+      {/* Bottom context ribbon — what this exhibit connects */}
+      <ContextRibbon connects={["figures", "eras", "regions", "culture", "atlas"]} lang={lang} />
     </div>
   );
 }
