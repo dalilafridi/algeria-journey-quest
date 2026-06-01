@@ -27,6 +27,7 @@ import { CollectionEmblem } from "@/components/figures/CollectionEmblem";
 import { t, tu, useLang, type Lang, type LocalizedString } from "@/lib/i18n";
 import { StoryFlow, type StoryScene } from "@/components/story/StoryFlow";
 import { getCurator } from "@/data/curatorContent";
+import { saveJourneyPlace } from "@/lib/continuity";
 import { MemoryMoment } from "@/components/curator/MemoryMoment";
 import { SourcesList } from "@/components/curator/SourcesList";
 import {
