@@ -207,12 +207,7 @@ function FigureDetail() {
       <MuseumBack to="/figures">{tu("backToFigures", lang)}</MuseumBack>
 
       <MuseumHero
-        label={
-          <MuseumLabel>
-            {t(legendEra.label, lang)}
-            {categoryDef ? ` · ${t(categoryDef.label, lang)}` : ""}
-          </MuseumLabel>
-        }
+        label={<MuseumLabel>{t(legendEra.label, lang)}</MuseumLabel>}
         title={t(f.displayName, lang)}
         subtitle={categoryDef ? t(categoryDef.label, lang) : t(f.regionLabel, lang)}
         pills={
