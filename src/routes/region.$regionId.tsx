@@ -103,7 +103,10 @@ function RegionPage() {
         fr: `Régions · ${t(region.name, "fr")}`,
         ar: `المناطق · ${t(region.name, "ar")}`,
       },
-      description: region.focus,
+      description:
+        typeof region.focus === "string"
+          ? { en: region.focus, fr: region.focus, ar: region.focus }
+          : region.focus,
       href: `/region/${region.id}`,
     });
   }, [region]);
