@@ -590,6 +590,132 @@ export function MuseumCuratorTip({ title, children }: { title?: ReactNode; child
   );
 }
 
+/* ========================================================= Curator note === */
+
+/**
+ * A signed curator's note — a framed editorial aside attributed to the museum
+ * guide. Heavier than MuseumCuratorTip: includes an engraved seal, optional
+ * attribution, and a body suited to longer storytelling in the main column.
+ */
+export function MuseumCuratorNote({
+  title,
+  attribution,
+  seal,
+  children,
+}: {
+  title?: ReactNode;
+  attribution?: ReactNode;
+  seal?: ReactNode;
+  children: ReactNode;
+}) {
+  return (
+    <section
+      className="relative overflow-hidden rounded-2xl border p-5 sm:p-6"
+      style={{
+        borderColor: "color-mix(in oklab, var(--secondary) 32%, var(--border))",
+        background: "color-mix(in oklab, var(--secondary) 8%, var(--card))",
+        boxShadow: "var(--shadow-soft)",
+        borderInlineStartWidth: 3,
+        borderInlineStartColor: "color-mix(in oklab, var(--secondary) 60%, var(--brand-gold))",
+      }}
+    >
+      <div className="flex items-start gap-4">
+        <div className="shrink-0">{seal ?? <CollectionEmblem emblem="❖" size={44} tone="bronze" />}</div>
+        <div className="min-w-0 flex-1">
+          <MuseumLabel className="mb-1.5">{title ?? "Curator's note"}</MuseumLabel>
+          <div className="text-sm sm:text-[15px] text-foreground/85 leading-relaxed space-y-3">{children}</div>
+          {attribution ? (
+            <div
+              className="mt-3 text-xs font-semibold uppercase tracking-[0.14em]"
+              style={{ color: "color-mix(in oklab, var(--brand-gold-deep) 80%, var(--foreground))" }}
+            >
+              — {attribution}
+            </div>
+          ) : null}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ===================================================== Related content === */
+
+export type RelatedItem = {
+  title: ReactNode;
+  note?: ReactNode;
+  glyph?: string;
+  to?: string;
+  params?: Record<string, string>;
+  hash?: string;
+};
+
+/**
+ * A grid of "related stories" cards — engraved medallion + title + short note,
+ * each linking to a connected exhibit. Usable in the main column (related
+ * stories) or the sidebar (related figures / regions / eras).
+ */
+export function MuseumRelatedContent({
+  eyebrow,
+  marker,
+  items,
+  columns = 2,
+}: {
+  eyebrow?: ReactNode;
+  marker?: ReactNode;
+  items: RelatedItem[];
+  columns?: 1 | 2;
+}) {
+  const LinkAny = Link as unknown as React.ComponentType<Record<string, unknown>>;
+  return (
+    <section className="space-y-3">
+      {eyebrow ? <MuseumLabel marker={marker}>{eyebrow}</MuseumLabel> : null}
+      <div className={`grid gap-3 ${columns === 2 ? "sm:grid-cols-2" : ""}`}>
+        {items.map((it, i) => {
+          const inner = (
+            <div
+              className="group flex items-start gap-3 rounded-2xl border bg-card/95 p-4 transition-colors hover:border-primary/30"
+              style={{
+                borderColor: "color-mix(in oklab, var(--brand-gold) 22%, var(--border))",
+                boxShadow: "var(--shadow-soft)",
+              }}
+            >
+              <div className="shrink-0">
+                <CollectionEmblem emblem={it.glyph ?? "◈"} size={38} />
+              </div>
+              <div className="min-w-0 flex-1">
+                <div className="font-bold text-sm leading-snug text-foreground" style={{ fontFamily: SERIF }}>
+                  {it.title}
+                </div>
+                {it.note ? (
+                  <div className="mt-0.5 text-xs text-muted-foreground leading-snug">{it.note}</div>
+                ) : null}
+              </div>
+              {it.to ? (
+                <span aria-hidden className="shrink-0 self-center text-muted-foreground rtl:rotate-180">
+                  →
+                </span>
+              ) : null}
+            </div>
+          );
+          return it.to ? (
+            <LinkAny
+              key={i}
+              to={it.to}
+              params={it.params}
+              hash={it.hash}
+              className="block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 rounded-2xl"
+            >
+              {inner}
+            </LinkAny>
+          ) : (
+            <div key={i}>{inner}</div>
+          );
+        })}
+      </div>
+    </section>
+  );
+}
+
 /* ===================================================== Context ribbon === */
 
 export type RibbonKey = "figures" | "eras" | "regions" | "culture" | "atlas" | "collections" | "timeline";
