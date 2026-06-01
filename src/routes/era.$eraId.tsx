@@ -135,8 +135,8 @@ function EraPage() {
   const regionItems: RelatedItem[] = relatedRegions.map((r) => ({
     title: t(r.name, lang),
     glyph: r.emoji ?? "◈",
-    to: "/map",
-    hash: `region-${r.id}`,
+    to: "/region/$regionId",
+    params: { regionId: r.id },
   }));
 
   /* ---- Sidebar: related collections (derived from key figures) ---- */

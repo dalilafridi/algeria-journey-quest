@@ -24,6 +24,7 @@ import { Route as CinemaRouteImport } from './routes/cinema'
 import { Route as AtlasRouteImport } from './routes/atlas'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as FiguresIndexRouteImport } from './routes/figures.index'
+import { Route as RegionRegionIdRouteImport } from './routes/region.$regionId'
 import { Route as QuizEraIdRouteImport } from './routes/quiz.$eraId'
 import { Route as JourneysJourneyIdRouteImport } from './routes/journeys.$journeyId'
 import { Route as FiguresQuizRouteImport } from './routes/figures.quiz'
@@ -106,6 +107,11 @@ const FiguresIndexRoute = FiguresIndexRouteImport.update({
   path: '/figures/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const RegionRegionIdRoute = RegionRegionIdRouteImport.update({
+  id: '/region/$regionId',
+  path: '/region/$regionId',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const QuizEraIdRoute = QuizEraIdRouteImport.update({
   id: '/quiz/$eraId',
   path: '/quiz/$eraId',
@@ -158,6 +164,7 @@ export interface FileRoutesByFullPath {
   '/figures/quiz': typeof FiguresQuizRoute
   '/journeys/$journeyId': typeof JourneysJourneyIdRoute
   '/quiz/$eraId': typeof QuizEraIdRoute
+  '/region/$regionId': typeof RegionRegionIdRoute
   '/figures/': typeof FiguresIndexRoute
   '/figures/collection/$collectionId': typeof FiguresCollectionCollectionIdRoute
 }
@@ -181,6 +188,7 @@ export interface FileRoutesByTo {
   '/figures/quiz': typeof FiguresQuizRoute
   '/journeys/$journeyId': typeof JourneysJourneyIdRoute
   '/quiz/$eraId': typeof QuizEraIdRoute
+  '/region/$regionId': typeof RegionRegionIdRoute
   '/figures': typeof FiguresIndexRoute
   '/figures/collection/$collectionId': typeof FiguresCollectionCollectionIdRoute
 }
@@ -205,6 +213,7 @@ export interface FileRoutesById {
   '/figures/quiz': typeof FiguresQuizRoute
   '/journeys/$journeyId': typeof JourneysJourneyIdRoute
   '/quiz/$eraId': typeof QuizEraIdRoute
+  '/region/$regionId': typeof RegionRegionIdRoute
   '/figures/': typeof FiguresIndexRoute
   '/figures/collection/$collectionId': typeof FiguresCollectionCollectionIdRoute
 }
@@ -230,6 +239,7 @@ export interface FileRouteTypes {
     | '/figures/quiz'
     | '/journeys/$journeyId'
     | '/quiz/$eraId'
+    | '/region/$regionId'
     | '/figures/'
     | '/figures/collection/$collectionId'
   fileRoutesByTo: FileRoutesByTo
@@ -253,6 +263,7 @@ export interface FileRouteTypes {
     | '/figures/quiz'
     | '/journeys/$journeyId'
     | '/quiz/$eraId'
+    | '/region/$regionId'
     | '/figures'
     | '/figures/collection/$collectionId'
   id:
@@ -276,6 +287,7 @@ export interface FileRouteTypes {
     | '/figures/quiz'
     | '/journeys/$journeyId'
     | '/quiz/$eraId'
+    | '/region/$regionId'
     | '/figures/'
     | '/figures/collection/$collectionId'
   fileRoutesById: FileRoutesById
@@ -300,6 +312,7 @@ export interface RootRouteChildren {
   FiguresQuizRoute: typeof FiguresQuizRoute
   JourneysJourneyIdRoute: typeof JourneysJourneyIdRoute
   QuizEraIdRoute: typeof QuizEraIdRoute
+  RegionRegionIdRoute: typeof RegionRegionIdRoute
   FiguresIndexRoute: typeof FiguresIndexRoute
   FiguresCollectionCollectionIdRoute: typeof FiguresCollectionCollectionIdRoute
 }
@@ -411,6 +424,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof FiguresIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/region/$regionId': {
+      id: '/region/$regionId'
+      path: '/region/$regionId'
+      fullPath: '/region/$regionId'
+      preLoaderRoute: typeof RegionRegionIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/quiz/$eraId': {
       id: '/quiz/$eraId'
       path: '/quiz/$eraId'
@@ -476,6 +496,7 @@ const rootRouteChildren: RootRouteChildren = {
   FiguresQuizRoute: FiguresQuizRoute,
   JourneysJourneyIdRoute: JourneysJourneyIdRoute,
   QuizEraIdRoute: QuizEraIdRoute,
+  RegionRegionIdRoute: RegionRegionIdRoute,
   FiguresIndexRoute: FiguresIndexRoute,
   FiguresCollectionCollectionIdRoute: FiguresCollectionCollectionIdRoute,
 }

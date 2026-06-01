@@ -178,9 +178,11 @@ function RegionExplorerPage() {
             const isSel = r.id === selectedId;
             const keyFigure = getFigure(r.figureIds[0]);
             return (
-              <button
+              <Link
                 key={r.id}
-                onClick={() => handleSelect(r.id)}
+                to="/region/$regionId"
+                params={{ regionId: r.id }}
+                onClick={() => discover("region", r.id, r.name, lang)}
                 className={
                   "group text-left rounded-2xl border px-4 py-4 sm:px-5 sm:py-5 transition-all duration-200 active:scale-[0.98] hover:-translate-y-0.5 " +
                   (isSel
@@ -188,7 +190,6 @@ function RegionExplorerPage() {
                     : "border-border bg-card hover:border-primary/40")
                 }
                 style={isSel ? { boxShadow: "var(--shadow-soft)" } : undefined}
-                aria-pressed={isSel}
               >
                 <div className="flex items-start gap-4">
                   <RegionIcon
@@ -214,7 +215,7 @@ function RegionExplorerPage() {
                     </div>
                   </div>
                 </div>
-              </button>
+              </Link>
             );
           })}
         </section>
