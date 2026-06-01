@@ -25,6 +25,7 @@ import { Route as AtlasRouteImport } from './routes/atlas'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as FiguresIndexRouteImport } from './routes/figures.index'
 import { Route as QuizEraIdRouteImport } from './routes/quiz.$eraId'
+import { Route as JourneysJourneyIdRouteImport } from './routes/journeys.$journeyId'
 import { Route as FiguresQuizRouteImport } from './routes/figures.quiz'
 import { Route as FiguresFigureIdRouteImport } from './routes/figures.$figureId'
 import { Route as EraEraIdRouteImport } from './routes/era.$eraId'
@@ -110,6 +111,11 @@ const QuizEraIdRoute = QuizEraIdRouteImport.update({
   path: '/quiz/$eraId',
   getParentRoute: () => rootRouteImport,
 } as any)
+const JourneysJourneyIdRoute = JourneysJourneyIdRouteImport.update({
+  id: '/journeys/$journeyId',
+  path: '/journeys/$journeyId',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const FiguresQuizRoute = FiguresQuizRouteImport.update({
   id: '/figures/quiz',
   path: '/figures/quiz',
@@ -150,6 +156,7 @@ export interface FileRoutesByFullPath {
   '/era/$eraId': typeof EraEraIdRoute
   '/figures/$figureId': typeof FiguresFigureIdRoute
   '/figures/quiz': typeof FiguresQuizRoute
+  '/journeys/$journeyId': typeof JourneysJourneyIdRoute
   '/quiz/$eraId': typeof QuizEraIdRoute
   '/figures/': typeof FiguresIndexRoute
   '/figures/collection/$collectionId': typeof FiguresCollectionCollectionIdRoute
@@ -172,6 +179,7 @@ export interface FileRoutesByTo {
   '/era/$eraId': typeof EraEraIdRoute
   '/figures/$figureId': typeof FiguresFigureIdRoute
   '/figures/quiz': typeof FiguresQuizRoute
+  '/journeys/$journeyId': typeof JourneysJourneyIdRoute
   '/quiz/$eraId': typeof QuizEraIdRoute
   '/figures': typeof FiguresIndexRoute
   '/figures/collection/$collectionId': typeof FiguresCollectionCollectionIdRoute
@@ -195,6 +203,7 @@ export interface FileRoutesById {
   '/era/$eraId': typeof EraEraIdRoute
   '/figures/$figureId': typeof FiguresFigureIdRoute
   '/figures/quiz': typeof FiguresQuizRoute
+  '/journeys/$journeyId': typeof JourneysJourneyIdRoute
   '/quiz/$eraId': typeof QuizEraIdRoute
   '/figures/': typeof FiguresIndexRoute
   '/figures/collection/$collectionId': typeof FiguresCollectionCollectionIdRoute
@@ -219,6 +228,7 @@ export interface FileRouteTypes {
     | '/era/$eraId'
     | '/figures/$figureId'
     | '/figures/quiz'
+    | '/journeys/$journeyId'
     | '/quiz/$eraId'
     | '/figures/'
     | '/figures/collection/$collectionId'
@@ -241,6 +251,7 @@ export interface FileRouteTypes {
     | '/era/$eraId'
     | '/figures/$figureId'
     | '/figures/quiz'
+    | '/journeys/$journeyId'
     | '/quiz/$eraId'
     | '/figures'
     | '/figures/collection/$collectionId'
@@ -263,6 +274,7 @@ export interface FileRouteTypes {
     | '/era/$eraId'
     | '/figures/$figureId'
     | '/figures/quiz'
+    | '/journeys/$journeyId'
     | '/quiz/$eraId'
     | '/figures/'
     | '/figures/collection/$collectionId'
@@ -286,6 +298,7 @@ export interface RootRouteChildren {
   EraEraIdRoute: typeof EraEraIdRoute
   FiguresFigureIdRoute: typeof FiguresFigureIdRoute
   FiguresQuizRoute: typeof FiguresQuizRoute
+  JourneysJourneyIdRoute: typeof JourneysJourneyIdRoute
   QuizEraIdRoute: typeof QuizEraIdRoute
   FiguresIndexRoute: typeof FiguresIndexRoute
   FiguresCollectionCollectionIdRoute: typeof FiguresCollectionCollectionIdRoute
@@ -405,6 +418,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof QuizEraIdRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/journeys/$journeyId': {
+      id: '/journeys/$journeyId'
+      path: '/journeys/$journeyId'
+      fullPath: '/journeys/$journeyId'
+      preLoaderRoute: typeof JourneysJourneyIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/figures/quiz': {
       id: '/figures/quiz'
       path: '/figures/quiz'
@@ -454,6 +474,7 @@ const rootRouteChildren: RootRouteChildren = {
   EraEraIdRoute: EraEraIdRoute,
   FiguresFigureIdRoute: FiguresFigureIdRoute,
   FiguresQuizRoute: FiguresQuizRoute,
+  JourneysJourneyIdRoute: JourneysJourneyIdRoute,
   QuizEraIdRoute: QuizEraIdRoute,
   FiguresIndexRoute: FiguresIndexRoute,
   FiguresCollectionCollectionIdRoute: FiguresCollectionCollectionIdRoute,
