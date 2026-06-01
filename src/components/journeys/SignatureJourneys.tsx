@@ -4,16 +4,15 @@
  * A Signature Journey is a guided thread through existing exhibits (figures,
  * eras, regions, culture, atlas). This section presents the entry-level Grand
  * Tour as a "start here" invitation, followed by the curated journeys as
- * collectible artifact cards. Selecting one opens the JourneyPlayer overlay —
- * no new routes, no duplicated content.
+ * collectible artifact cards. Selecting one opens its museum-catalog detail
+ * page (/journeys/$journeyId) — no new content, just a curated narrative entry.
  *
  * Reused on the Homepage, the Hall of Legends and the Explore hub.
  */
 
-import { useState } from "react";
+import { Link } from "@tanstack/react-router";
 import { CollectionEmblem } from "@/components/figures/CollectionEmblem";
-import { JourneyPlayer } from "@/components/journeys/JourneyPlayer";
-import { GRAND_TOUR, SIGNATURE_JOURNEYS, type Journey } from "@/lib/journeys";
+import { GRAND_TOUR, SIGNATURE_JOURNEYS } from "@/lib/journeys";
 import { t, useLang } from "@/lib/i18n";
 
 const COPY = {
@@ -30,7 +29,7 @@ const COPY = {
   },
   newHere: { en: "New to Algeria Through Time?", fr: "Nouveau sur Algeria Through Time ?", ar: "جديد على Algeria Through Time؟" },
   takeGrandTour: { en: "Take the Grand Tour", fr: "Faire la Grande Visite", ar: "ابدأ الجولة الكبرى" },
-  startJourney: { en: "Start journey", fr: "Commencer", ar: "ابدأ الرحلة" },
+  startJourney: { en: "View journey", fr: "Voir le parcours", ar: "اعرض الرحلة" },
   minutes: (m: number, lang: "en" | "fr" | "ar") =>
     lang === "fr" ? `≈ ${m} min` : lang === "ar" ? `≈ ${m} دقيقة` : `≈ ${m} min`,
   stops: (n: number, lang: "en" | "fr" | "ar") =>
@@ -39,7 +38,6 @@ const COPY = {
 
 export function SignatureJourneys({ className }: { className?: string }) {
   const lang = useLang();
-  const [active, setActive] = useState<Journey | null>(null);
 
   return (
     <section
@@ -63,10 +61,10 @@ export function SignatureJourneys({ className }: { className?: string }) {
       </div>
 
       {/* Start here — the Grand Tour */}
-      <button
-        type="button"
-        onClick={() => setActive(GRAND_TOUR)}
-        className="group mt-7 w-full text-start rounded-2xl border p-5 sm:p-6 transition-all hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40"
+      <Link
+        to="/journeys/$journeyId"
+        params={{ journeyId: GRAND_TOUR.id }}
+        className="group mt-7 block w-full text-start rounded-2xl border p-5 sm:p-6 transition-all hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40"
         style={{
           borderColor: "color-mix(in oklab, var(--brand-gold) 34%, var(--border))",
           background:
@@ -107,15 +105,15 @@ export function SignatureJourneys({ className }: { className?: string }) {
           {t(COPY.takeGrandTour, lang)}
           <span className="rtl:rotate-180">→</span>
         </span>
-      </button>
+      </Link>
 
       {/* Curated journeys */}
       <div className="mt-6 grid gap-4 sm:grid-cols-2">
         {SIGNATURE_JOURNEYS.map((j) => (
-          <button
+          <Link
             key={j.id}
-            type="button"
-            onClick={() => setActive(j)}
+            to="/journeys/$journeyId"
+            params={{ journeyId: j.id }}
             className="group flex h-full flex-col items-start gap-3 rounded-2xl border border-border/70 bg-card p-5 text-start transition-all hover:-translate-y-0.5 hover:border-primary/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40"
             style={{ boxShadow: "var(--shadow-soft)" }}
           >
@@ -145,11 +143,9 @@ export function SignatureJourneys({ className }: { className?: string }) {
                 →
               </span>
             </span>
-          </button>
+          </Link>
         ))}
       </div>
-
-      <JourneyPlayer journey={active} open={active !== null} onClose={() => setActive(null)} lang={lang} />
     </section>
   );
 }
