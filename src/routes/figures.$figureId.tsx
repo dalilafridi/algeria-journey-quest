@@ -1,3 +1,16 @@
+/**
+ * Figure detail page — the flagship museum exhibit experience.
+ *
+ * Rebuilt on the shared MuseumCatalogPage template: a strong left story column
+ * (exhibit label, serif title, role, narrative, significance, achievements,
+ * legacy, memorable quote, curator note) and a right context sidebar (at a
+ * glance, place in time, related figures / regions / eras), closed by a subtle
+ * bottom context ribbon connecting journeys, collections, atlas and culture.
+ *
+ * Every historical figure reads as one curated exhibit rather than a biography
+ * page — composed entirely from the MuseumCatalog primitives.
+ */
+
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { useEffect } from "react";
 import { Header } from "@/components/Header";
@@ -11,17 +24,30 @@ import { collectionOf } from "@/lib/figureCollections";
 import { EraBadge } from "@/components/brand/EraBadge";
 import { MedallionFrame } from "@/components/brand/MedallionFrame";
 import { CollectionEmblem } from "@/components/figures/CollectionEmblem";
-import { t, tu, useLang, type LocalizedString } from "@/lib/i18n";
+import { t, tu, useLang, type Lang, type LocalizedString } from "@/lib/i18n";
 import { StoryFlow, type StoryScene } from "@/components/story/StoryFlow";
-import { ConnectionMap } from "@/components/figures/ConnectionMap";
-import { SharePlaque } from "@/components/figures/SharePlaque";
-import { saveJourneyPlace } from "@/lib/continuity";
 import { getCurator } from "@/data/curatorContent";
-import { CuratorNote } from "@/components/curator/CuratorNote";
 import { MemoryMoment } from "@/components/curator/MemoryMoment";
 import { SourcesList } from "@/components/curator/SourcesList";
-import { ContinueExploring, RELATED_LABELS, type ExploreGroup } from "@/components/curator/ContinueExploring";
-import { ContextRibbon } from "@/components/museum/Exhibit";
+import {
+  MuseumCatalogPage,
+  MuseumHero,
+  MuseumLabel,
+  MuseumBack,
+  MuseumPill,
+  MuseumCatalogCard,
+  MuseumOverviewPanel,
+  MuseumTimelinePanel,
+  MuseumCuratorNote,
+  MuseumRelatedContent,
+  MuseumCTASection,
+  MuseumActionButton,
+  MuseumContextRibbon,
+  type TimelineStop,
+  type RelatedItem,
+} from "@/components/museum/MuseumCatalog";
+
+const SERIF = "Georgia, 'Times New Roman', serif";
 
 const CULTURE_KIND_TO: Record<FigureCultureLinkKind, "/cuisine" | "/cinema" | "/words" | "/ideas" | "/moments" | "/timeline" | "/lessons"> = {
   cuisine: "/cuisine",
@@ -45,12 +71,14 @@ export const Route = createFileRoute("/figures/$figureId")({
           meta: [
             { title: `${t(loaderData.figure.displayName, "en")} — Hall of Legends` },
             { name: "description", content: t(loaderData.figure.fact, "en") },
+            { property: "og:title", content: `${t(loaderData.figure.displayName, "en")} — Hall of Legends` },
+            { property: "og:description", content: t(loaderData.figure.fact, "en") },
           ],
         }
       : {},
   component: FigureDetail,
   notFoundComponent: () => (
-    <div className="min-h-dvh">
+    <div className="min-h-dvh bg-parchment">
       <Header />
       <main className="max-w-xl mx-auto px-4 py-16 text-center">
         <h1 className="text-2xl font-bold">Figure not found.</h1>
@@ -62,592 +90,406 @@ export const Route = createFileRoute("/figures/$figureId")({
   ),
 });
 
+/* ---------------- Localized copy ---------------- */
+
+const tri = (lang: Lang, en: string, fr: string, ar: string) => (lang === "fr" ? fr : lang === "ar" ? ar : en);
+
 function FigureDetail() {
   const { figure: f } = Route.useLoaderData();
   const lang = useLang();
+
   const era = f.relatedEraId ? eras.find((e) => e.id === f.relatedEraId) : undefined;
   const extras = figureExtras[f.id];
-  const relatedRegion = mapRegions.find((r) => r.id === f.region || (f.region === "mascara-west" && r.id === "oran-west"));
+  const relatedRegion = mapRegions.find(
+    (r) => r.id === f.region || (f.region === "mascara-west" && r.id === "oran-west"),
+  );
   const legendEra = LEGEND_ERAS.find((e) => e.id === eraOfCategory(f.category))!;
   const collection = collectionOf(f.id);
   const categoryDef = FIGURE_CATEGORIES.find((c) => c.id === f.category);
-
   const meta = figureMeta[f.id];
+  const curator = getCurator("figure", f.id);
+
   const relatedFigures = Array.from(new Set(meta?.relatedFigureIds ?? []))
     .filter((id) => id !== f.id)
     .map((id) => figures.find((x) => x.id === id))
     .filter((x): x is NonNullable<typeof x> => Boolean(x))
     .filter((x, i, arr) => arr.findIndex((y) => y.id === x.id) === i);
 
-  const curator = getCurator("figure", f.id);
-  const exploreGroups: ExploreGroup[] = [
-    {
-      label: RELATED_LABELS.figures,
-      items: relatedFigures.slice(0, 4).map((x) => ({
-        kind: "figure" as const,
-        id: x.id,
-        emoji: x.emoji,
-        label: x.displayName,
-      })),
-    },
-    {
-      label: RELATED_LABELS.regions,
-      items: relatedRegion
-        ? [{ kind: "region" as const, id: relatedRegion.id, emoji: relatedRegion.emoji, label: relatedRegion.name }]
-        : [],
-    },
-    {
-      label: RELATED_LABELS.eras,
-      items: era
-        ? [{ kind: "era" as const, id: era.id, emoji: era.emoji, label: era.title }]
-        : [],
-    },
-  ];
-
   useEffect(() => {
-    saveJourneyPlace({
-      section: "figures",
-      label: { fr: `Figure · ${t(f.displayName, "fr")}`, en: `Figure · ${t(f.displayName, "en")}`, ar: `شخصية · ${t(f.displayName, "ar")}` },
-      description: typeof f.era === "string" ? { fr: f.era, en: f.era, ar: f.era } : f.era,
-      href: `/figures/${f.id}`,
-    });
-  }, [f]);
+    saveJourneyPlace(f, lang);
+  }, [f, lang]);
 
-  // ---- Localized section labels ----
-  const atAGlanceLabel = lang === "fr" ? "En un coup d'œil" : lang === "ar" ? "لمحة سريعة" : "At a glance";
-  const significanceLabel =
-    lang === "fr" ? "Importance historique" : lang === "ar" ? "الأهمية التاريخية" : "Historical significance";
-  const contributionsLabel =
-    lang === "fr" ? "Grandes réalisations" : lang === "ar" ? "أبرز الإنجازات" : "Major achievements";
-  const contextLabel =
-    lang === "fr" ? "Contexte historique" : lang === "ar" ? "السياق التاريخي" : "Historical context";
-  const galleryRowLabel = lang === "fr" ? "Galerie" : lang === "ar" ? "القاعة" : "Gallery";
-  const legacyLabel = lang === "fr" ? "Héritage durable" : lang === "ar" ? "الإرث الباقي" : "Lasting legacy";
-  const connectionsLabel = lang === "fr" ? "Connexions" : lang === "ar" ? "روابط" : "Connections";
-  const quoteLabel = lang === "fr" ? "Citation mémorable" : lang === "ar" ? "قول مأثور" : "Memorable quote";
-  const roleLabel = lang === "fr" ? "Rôle" : lang === "ar" ? "الدور" : "Role";
-  const eraRowLabel = lang === "fr" ? "Ère" : lang === "ar" ? "الحقبة" : "Era";
-  const periodLabel = lang === "fr" ? "Période" : lang === "ar" ? "الفترة" : "Period";
-  const regionRowLabel = lang === "fr" ? "Région" : lang === "ar" ? "المنطقة" : "Region";
-  const knownForLabel = lang === "fr" ? "Connu pour" : lang === "ar" ? "اشتهر بـ" : "Known for";
-  const relatedFiguresLabel =
-    lang === "fr" ? "Figures reliées" : lang === "ar" ? "شخصيات مرتبطة" : "Related figures";
-  const culturalThreadsLabel =
-    lang === "fr" ? "Fils culturels" : lang === "ar" ? "خيوط ثقافية" : "Cultural threads";
-  const didYouKnowLabel = lang === "fr" ? "Le saviez-vous ?" : lang === "ar" ? "هل تعلم؟" : "Did you know?";
-  const keyWorksLabel =
-    lang === "fr" ? "Œuvres et lieux clés" : lang === "ar" ? "أعمال وأماكن بارزة" : "Key works & places";
-  const listenLabel = lang === "fr" ? "Écouter sa voix" : lang === "ar" ? "استمع إلى صوته" : "Listen to their voice";
-  const audioComingLabel =
-    lang === "fr" ? "Archive sonore à venir" : lang === "ar" ? "أرشيف صوتي قادم" : "Future audio archive";
+  /* ---- Labels ---- */
+  const significanceLabel = tri(lang, "Historical significance", "Importance historique", "الأهمية التاريخية");
+  const contributionsLabel = tri(lang, "Major achievements", "Grandes réalisations", "أبرز الإنجازات");
+  const legacyLabel = tri(lang, "Lasting legacy", "Héritage durable", "الإرث الباقي");
+  const quoteLabel = tri(lang, "Memorable quote", "Citation mémorable", "قول مأثور");
+  const didYouKnowLabel = tri(lang, "Did you know?", "Le saviez-vous ?", "هل تعلم؟");
+  const keyWorksLabel = tri(lang, "Key works & places", "Œuvres et lieux clés", "أعمال وأماكن بارزة");
+  const atAGlanceLabel = tri(lang, "At a glance", "En un coup d'œil", "لمحة سريعة");
+  const placeInTimeLabel = tri(lang, "Place in time", "Repère chronologique", "الموقع الزمني");
+  const roleLabel = tri(lang, "Role", "Rôle", "الدور");
+  const eraRowLabel = tri(lang, "Era", "Ère", "الحقبة");
+  const periodLabel = tri(lang, "Lifespan", "Période", "الفترة");
+  const regionRowLabel = tri(lang, "Region", "Région", "المنطقة");
+  const galleryRowLabel = tri(lang, "Gallery", "Galerie", "القاعة");
+  const knownForLabel = tri(lang, "Known for", "Connu pour", "اشتهر بـ");
+  const relatedFiguresLabel = tri(lang, "Related figures", "Figures reliées", "شخصيات مرتبطة");
+  const relatedRegionsLabel = tri(lang, "Related regions", "Régions reliées", "مناطق مرتبطة");
+  const relatedErasLabel = tri(lang, "Related eras", "Époques reliées", "عصور مرتبطة");
+  const culturalThreadsLabel = tri(lang, "Cultural threads", "Fils culturels", "خيوط ثقافية");
 
-  return (
-    <div className="min-h-dvh">
-      <Header />
+  /* ---- Sidebar: place in time timeline ---- */
+  const timeline: TimelineStop[] = eras.map((e) => ({
+    title: t(e.title, lang),
+    note: e.dateRange,
+    tag: e.id === f.relatedEraId ? tri(lang, "Here", "Ici", "هنا") : undefined,
+    to: "/era/$eraId",
+    params: { eraId: e.id },
+    active: e.id === f.relatedEraId,
+  }));
 
-      {/* ============ 1) HERO PRESENTATION ============ */}
-      <section className="relative museum-hero">
-        <div
-          aria-hidden
-          className="absolute inset-0 pointer-events-none opacity-[0.05] text-[18rem] sm:text-[26rem] font-black leading-none flex items-center justify-center select-none"
-          style={{ color: "var(--accent)" }}
+  /* ---- Sidebar: related figures / regions / eras ---- */
+  const relatedFigureItems: RelatedItem[] = relatedFigures.slice(0, 6).map((x) => ({
+    title: t(x.displayName, lang),
+    note: t(x.era, lang),
+    glyph: x.emoji,
+    to: "/figures/$figureId",
+    params: { figureId: x.id },
+  }));
+
+  const relatedRegionItems: RelatedItem[] = relatedRegion
+    ? [
+        {
+          title: t(relatedRegion.name, lang),
+          note: t(f.regionLabel, lang),
+          glyph: relatedRegion.emoji ?? "◈",
+          to: "/map",
+          hash: `region-${relatedRegion.id}`,
+        },
+      ]
+    : [];
+
+  const relatedEraItems: RelatedItem[] = era
+    ? [
+        {
+          title: t(era.title, lang),
+          note: era.dateRange,
+          glyph: era.emoji,
+          to: "/era/$eraId",
+          params: { eraId: era.id },
+        },
+      ]
+    : [];
+
+  /* ---- Cultural threads (main column related content) ---- */
+  const cultureItems: RelatedItem[] = (meta?.cultureLinks ?? []).map((c) => ({
+    title: t(c.label, lang),
+    glyph: cultureKindEmoji(c.kind),
+    to: CULTURE_KIND_TO[c.kind],
+  }));
+
+  const heroIntro = meta?.cinematicLine ? t(meta.cinematicLine, lang) : t(f.fact, lang);
+
+  /* =========================================================== MAIN === */
+  const main = (
+    <>
+      <MuseumBack to="/figures">{tu("backToFigures", lang)}</MuseumBack>
+
+      <MuseumHero
+        label={
+          <MuseumLabel>
+            {t(legendEra.label, lang)}
+            {categoryDef ? ` · ${t(categoryDef.label, lang)}` : ""}
+          </MuseumLabel>
+        }
+        title={t(f.displayName, lang)}
+        subtitle={categoryDef ? t(categoryDef.label, lang) : t(f.regionLabel, lang)}
+        pills={
+          <>
+            <MuseumPill icon="◈">{t(collection.label, lang)}</MuseumPill>
+            <MuseumPill icon="❧">{t(f.era, lang)}</MuseumPill>
+            <MuseumPill icon="❖">{t(f.regionLabel, lang)}</MuseumPill>
+          </>
+        }
+        intro={
+          meta?.cinematicLine ? (
+            <span className="italic" style={{ fontFamily: SERIF }}>
+              “{heroIntro}”
+            </span>
+          ) : (
+            heroIntro
+          )
+        }
+        medallion={
+          <MedallionFrame
+            size={156}
+            tone="gold"
+            glow
+            animate="reveal"
+            inset={0.2}
+            label={t(f.displayName, lang)}
+            seal={<EraBadge kind={legendEra.badge} size={46} label={t(legendEra.label, lang)} />}
+          >
+            <span
+              aria-hidden
+              className="relative text-6xl sm:text-7xl drop-shadow-[0_2px_8px_rgba(0,0,0,0.3)]"
+              style={{ filter: "saturate(0.9)" }}
+            >
+              {f.emoji}
+            </span>
+          </MedallionFrame>
+        }
+      />
+
+      {curator?.note && (
+        <MuseumCuratorNote
+          title={tri(lang, "Curator's note", "Note du conservateur", "ملاحظة القيّم")}
+          attribution={tri(lang, "Museum curator", "Le conservateur", "أمين المتحف")}
+          seal={<CollectionEmblem emblem={collection.emblem} accent={collection.accent} size={44} />}
         >
-          ⵣ
-        </div>
-        <div className="relative max-w-5xl mx-auto px-4 py-10 sm:py-14 animate-cinematic-in">
-          <Link
-            to="/figures"
-            className="text-xs uppercase tracking-[0.18em] font-semibold text-muted-foreground hover:text-foreground"
-          >
-            ← {tu("backToFigures", lang)}
-          </Link>
-
-          <div className="mt-6 flex flex-col sm:flex-row items-center sm:items-start gap-6 sm:gap-8 text-center sm:text-start">
-            {/* Large portrait medallion */}
-            <div className="relative shrink-0">
-              <MedallionFrame
-                size={160}
-                tone="gold"
-                glow
-                animate="reveal"
-                inset={0.2}
-                label={t(f.displayName, lang)}
-                className="w-32 h-32 sm:w-40 sm:h-40"
-                seal={<EraBadge kind={legendEra.badge} size={48} label={t(legendEra.label, lang)} />}
-              >
-                <span
-                  aria-hidden
-                  className="relative text-6xl sm:text-7xl drop-shadow-[0_2px_8px_rgba(0,0,0,0.3)]"
-                  style={{ filter: "saturate(0.9)" }}
-                >
-                  {f.emoji}
-                </span>
-              </MedallionFrame>
-            </div>
-
-            <div className="flex-1 min-w-0">
-              <span
-                className="inline-flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-[0.22em]"
-                style={{ color: "color-mix(in oklab, var(--brand-gold-deep) 85%, var(--foreground))" }}
-              >
-                {t(legendEra.label, lang)}
-              </span>
-              <h1
-                className="mt-1.5 text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight leading-[1.05]"
-                style={{ fontFamily: "Georgia, 'Times New Roman', serif" }}
-              >
-                {t(f.displayName, lang)}
-              </h1>
-              {/* Role / title + lifespan */}
-              <div className="mt-3 flex flex-wrap gap-1.5 justify-center sm:justify-start text-xs">
-                <Link
-                  to="/figures"
-                  hash={`gallery-${collection.id}`}
-                  className="px-2.5 py-0.5 rounded-full font-semibold border inline-flex items-center gap-1 hover:border-primary/50 transition-colors"
-                  style={{
-                    borderColor: "color-mix(in oklab, var(--brand-gold) 40%, var(--border))",
-                    background: "color-mix(in oklab, var(--brand-gold) 8%, var(--card))",
-                    color: "color-mix(in oklab, var(--brand-gold-deep) 85%, var(--foreground))",
-                  }}
-                >
-                  <CollectionEmblem emblem={collection.emblem} accent={collection.accent} size={18} className="-ms-0.5" />
-                  {t(collection.label, lang)}
-                </Link>
-                {categoryDef && (
-                  <span className="px-2.5 py-0.5 rounded-full bg-muted text-muted-foreground font-semibold">
-                    {categoryDef.emoji} {t(categoryDef.label, lang)}
-                  </span>
-                )}
-                <span className="px-2.5 py-0.5 rounded-full bg-accent/20 text-accent-foreground font-semibold">
-                  ◈ {t(f.regionLabel, lang)}
-                </span>
-                <span
-                  className="px-2.5 py-0.5 rounded-full font-semibold border"
-                  style={{
-                    borderColor: "color-mix(in oklab, var(--brand-gold) 40%, var(--border))",
-                    background: "color-mix(in oklab, var(--brand-gold) 10%, var(--card))",
-                    color: "color-mix(in oklab, var(--brand-gold-deep) 85%, var(--foreground))",
-                  }}
-                >
-                  {t(f.era, lang)}
-                </span>
-              </div>
-
-              {meta?.cinematicLine && (
-                <p
-                  className="mt-5 text-lg sm:text-xl italic text-foreground/85 leading-relaxed border-l-2 ps-4"
-                  style={{
-                    borderColor: "color-mix(in oklab, var(--accent) 60%, var(--border))",
-                    fontFamily: "Georgia, 'Times New Roman', serif",
-                  }}
-                >
-                  “{t(meta.cinematicLine, lang)}”
-                </p>
-              )}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ============ EXHIBITION BODY ============ */}
-      <main className="max-w-5xl mx-auto px-4 py-8 grid lg:grid-cols-[1fr_300px] gap-6 lg:gap-8 items-start">
-        {/* ---- Main narrative column ---- */}
-        <div className="space-y-6 min-w-0">
-          {curator?.note && <CuratorNote note={curator.note} />}
-
-          {/* 2) Historical significance */}
-          <ExhibitCard accent="var(--primary)">
-            <SectionTitle emoji="⭐" label={significanceLabel} />
-            <p className="leading-relaxed text-foreground/90">{t(f.importance, lang)}</p>
-            {meta?.modernRelevance && (
-              <p className="mt-3 leading-relaxed text-foreground/80">{t(meta.modernRelevance, lang)}</p>
-            )}
-          </ExhibitCard>
-
-          {/* Their story */}
-          <ExhibitCard>
-            <SectionTitle emoji="📖" label={tu("theirStory", lang)} />
-            <p className="leading-relaxed text-foreground/90">{t(f.story, lang)}</p>
-          </ExhibitCard>
-
-          {f.extended?.storyMode && f.extended.storyMode.length > 0 && (
-            <StoryFlow
-              scenes={(f.extended.storyMode as LocalizedString[]).map((p: LocalizedString, i: number): StoryScene => ({
-                icon: i === 0 ? "✨" : undefined,
-                body: p,
-              }))}
-              accent="var(--secondary)"
-              title={lang === "fr" ? "Mode récit" : lang === "ar" ? "وضع السرد" : "Story mode"}
-              continuityTitle={f.displayName}
-              defaultGuide={
-                lang === "fr"
-                  ? "Suis le récit, pas à pas…"
-                  : lang === "ar"
-                    ? "تابع الحكاية، خطوةً بخطوة…"
-                    : "Follow the story, step by step…"
-              }
-            />
-          )}
-
-          {/* 3) Key contributions */}
-          {f.extended?.whatHappened && f.extended.whatHappened.length > 0 && (
-            <ExhibitCard>
-              <SectionTitle emoji="🏛️" label={contributionsLabel} />
-              <ul className="space-y-2.5">
-                {f.extended.whatHappened.map((p: LocalizedString, i: number) => (
-                  <li key={i} className="flex gap-2.5 leading-relaxed text-foreground/90">
-                    <span
-                      className="mt-1 shrink-0 inline-block w-1.5 h-1.5 rounded-full"
-                      style={{ background: "var(--brand-gold)" }}
-                      aria-hidden
-                    />
-                    <span>{t(p, lang)}</span>
-                  </li>
-                ))}
-              </ul>
-            </ExhibitCard>
-          )}
-
-          {extras?.keyPlacesAndWorks && extras.keyPlacesAndWorks.length > 0 && (
-            <ExhibitCard>
-              <SectionTitle emoji="🗺️" label={keyWorksLabel} />
-              <ul className="space-y-2">
-                {extras.keyPlacesAndWorks.map((item, i) => (
-                  <li
-                    key={i}
-                    className="rounded-xl border border-border bg-muted/40 px-3 py-2.5 flex gap-3 items-start"
-                  >
-                    <span className="text-xl leading-none mt-0.5" aria-hidden>
-                      {item.emoji}
-                    </span>
-                    <div className="min-w-0">
-                      <div className="font-semibold text-sm">{t(item.label, lang)}</div>
-                      {item.note && (
-                        <div className="text-xs text-muted-foreground leading-relaxed mt-0.5">
-                          {t(item.note, lang)}
-                        </div>
-                      )}
-                    </div>
-                  </li>
-                ))}
-              </ul>
-            </ExhibitCard>
-          )}
-
-          {/* 4) Memorable quote */}
-          {f.extended?.keyLesson && (
-            <div
-              className="relative rounded-2xl border p-6 sm:p-7 text-center"
-              style={{
-                background:
-                  "linear-gradient(135deg, color-mix(in oklab, var(--accent) 14%, var(--card)), var(--card))",
-                borderColor: "color-mix(in oklab, var(--brand-gold) 35%, var(--border))",
-                boxShadow: "var(--shadow-soft)",
-              }}
-            >
-              <div className="text-[10px] uppercase tracking-[0.22em] font-bold mb-3"
-                style={{ color: "color-mix(in oklab, var(--brand-gold-deep) 85%, var(--foreground))" }}>
-                {quoteLabel}
-              </div>
-              <p
-                className="text-xl sm:text-2xl leading-relaxed font-semibold text-foreground"
-                style={{ fontFamily: "Georgia, 'Times New Roman', serif" }}
-              >
-                <span aria-hidden style={{ color: "var(--brand-gold)" }}>“</span>
-                {t(f.extended.keyLesson, lang)}
-                <span aria-hidden style={{ color: "var(--brand-gold)" }}>”</span>
-              </p>
-            </div>
-          )}
-
-          {/* The one fact */}
-          <ExhibitCard accent="var(--accent)">
-            <SectionTitle emoji="💡" label={tu("oneFact", lang)} />
-            <p className="leading-relaxed font-medium text-foreground/90">{t(f.fact, lang)}</p>
-          </ExhibitCard>
-
-          {extras?.didYouKnow && (
-            <ExhibitCard accent="var(--accent)">
-              <SectionTitle emoji="💭" label={didYouKnowLabel} />
-              <p className="leading-relaxed text-foreground/90">{t(extras.didYouKnow, lang)}</p>
-            </ExhibitCard>
-          )}
-
-          {/* 6) Lasting legacy */}
-          {(f.extended?.aftermath && f.extended.aftermath.length > 0) && (
-            <ExhibitCard accent="var(--secondary)">
-              <SectionTitle emoji="🌿" label={legacyLabel} />
-              <div className="space-y-3">
-                {f.extended.aftermath.map((p: LocalizedString, i: number) => (
-                  <p key={i} className="leading-relaxed text-foreground/90">
-                    {t(p, lang)}
-                  </p>
-                ))}
-              </div>
-            </ExhibitCard>
-          )}
-
-          {/* 7) Historical context — the era they lived in */}
-          {era && (
-            <ExhibitCard accent="var(--brand-gold-deep)">
-              <SectionTitle emoji="🏺" label={contextLabel} />
-              <div className="flex items-center gap-2 mb-2 text-sm font-semibold text-foreground/90">
-                <span aria-hidden className="text-lg">{era.emoji}</span>
-                <span>{t(era.title, lang)}</span>
-                <span className="text-xs text-muted-foreground">· {era.dateRange}</span>
-              </div>
-              <p className="leading-relaxed text-foreground/85">{t(era.summary, lang)}</p>
-              <Link
-                to="/era/$eraId"
-                params={{ eraId: era.id }}
-                className="mt-3 inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:underline"
-              >
-                {tu("relatedEra", lang)}
-                <span aria-hidden>→</span>
-              </Link>
-            </ExhibitCard>
-          )}
-
-
-          <Link
-            to="/figures/quiz"
-            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-primary-foreground font-semibold"
-            style={{ background: "var(--gradient-warm)" }}
-          >
-            {tu("guessThisFigureCta", lang)}
-          </Link>
-        </div>
-
-        {/* ---- At a glance + connections sidebar ---- */}
-        <aside className="space-y-6 lg:sticky lg:top-[76px]">
-          {/* At a glance */}
-          <div
-            className="rounded-2xl border p-5 bg-parchment-card"
-            style={{ borderColor: "var(--border)", boxShadow: "var(--shadow-soft)" }}
-          >
-            <div className="flex items-center gap-2 mb-4">
-              <EraBadge kind={legendEra.badge} size={34} />
-              <div className="text-sm font-bold uppercase tracking-[0.16em] text-foreground">
-                {atAGlanceLabel}
-              </div>
-            </div>
-            <dl className="space-y-3 text-sm">
-              <GlanceRow label={galleryRowLabel} value={`${collection.emblem} ${t(collection.label, lang)}`} />
-              {categoryDef && <GlanceRow label={roleLabel} value={t(categoryDef.label, lang)} />}
-              <GlanceRow label={eraRowLabel} value={t(legendEra.label, lang)} />
-              <GlanceRow label={periodLabel} value={t(f.era, lang)} />
-              <GlanceRow
-                label={regionRowLabel}
-                value={relatedRegion ? t(relatedRegion.name, lang) : t(f.regionLabel, lang)}
-              />
-              {meta?.themes && meta.themes.length > 0 && (
-                <div>
-                  <dt className="text-[10px] uppercase tracking-[0.16em] text-muted-foreground font-bold mb-1.5">
-                    {knownForLabel}
-                  </dt>
-                  <dd className="flex flex-wrap gap-1.5">
-                    {meta.themes.slice(0, 5).map((th) => {
-                      const def = FIGURE_THEMES[th];
-                      return (
-                        <span
-                          key={th}
-                          className="px-2 py-0.5 rounded-full text-[11px] font-semibold border border-border/70 bg-card/70 text-muted-foreground"
-                        >
-                          <span className="me-0.5" aria-hidden>{def.emoji}</span>
-                          {t(def.label, lang)}
-                        </span>
-                      );
-                    })}
-                  </dd>
-                </div>
-              )}
-            </dl>
-
-            {era && (
-              <div className="mt-4 pt-4 border-t border-border">
-                <div className="text-[10px] uppercase tracking-[0.16em] text-muted-foreground font-bold mb-2">
-                  {tu("relatedEra", lang)}
-                </div>
-                <Link
-                  to="/era/$eraId"
-                  params={{ eraId: era.id }}
-                  className="inline-flex items-center gap-2 px-3 py-2 rounded-xl bg-muted hover:bg-muted/70 transition w-full"
-                >
-                  <span className="text-xl">{era.emoji}</span>
-                  <span className="font-semibold text-sm">{t(era.title, lang)}</span>
-                </Link>
-              </div>
-            )}
-
-            {relatedRegion && (
-              <Link
-                to="/map"
-                hash={`region-${relatedRegion.id}`}
-                className="mt-2.5 inline-flex items-center gap-2 px-3 py-2 rounded-xl bg-muted hover:bg-muted/70 transition w-full"
-              >
-                <span className="text-xl" aria-hidden>◈</span>
-                <span className="font-semibold text-sm text-primary">{t(relatedRegion.name, lang)}</span>
-              </Link>
-            )}
-          </div>
-
-          {/* Audio archive placeholder */}
-          {meta?.audioArchive && (
-            <div
-              className="rounded-2xl border border-dashed p-4 flex items-start gap-3"
-              style={{
-                borderColor: "color-mix(in oklab, var(--secondary) 35%, var(--border))",
-                background: "color-mix(in oklab, var(--secondary) 5%, var(--card))",
-              }}
-            >
-              <span className="text-2xl leading-none">🎙️</span>
-              <div className="min-w-0">
-                <div className="text-xs uppercase tracking-wider text-secondary font-bold">{listenLabel}</div>
-                <div className="text-sm text-muted-foreground mt-0.5">
-                  {meta.audioArchive.hint ? t(meta.audioArchive.hint, lang) : audioComingLabel}
-                </div>
-              </div>
-            </div>
-          )}
-        </aside>
-      </main>
-
-      {/* ============ 5) CONNECTIONS — archive connection wall ============ */}
-      <section className="max-w-5xl mx-auto px-4 pb-12">
-        <div className="flex items-center gap-3 mb-5">
-          <h2
-            className="text-2xl font-bold"
-            style={{ fontFamily: "Georgia, 'Times New Roman', serif" }}
-          >
-            {connectionsLabel}
-          </h2>
-          <div
-            aria-hidden
-            className="flex-1 h-px"
-            style={{
-              background:
-                "linear-gradient(90deg, color-mix(in oklab, var(--brand-gold) 60%, transparent), transparent)",
-            }}
-          />
-        </div>
-
-        <ConnectionMap figure={f} lang={lang} />
-
-        {meta?.cultureLinks && meta.cultureLinks.length > 0 && (
-          <div className="mt-8">
-            <div className="text-xs uppercase tracking-wider text-muted-foreground font-semibold mb-3">
-              {culturalThreadsLabel}
-            </div>
-            <div className="flex flex-wrap gap-2">
-              {meta.cultureLinks.map((c, i) => (
-                <Link
-                  key={i}
-                  to={CULTURE_KIND_TO[c.kind]}
-                  className="px-3 py-1.5 rounded-full bg-card border border-border text-sm hover:border-primary/50 hover:text-primary transition"
-                >
-                  <span className="me-1" aria-hidden>{cultureKindEmoji(c.kind)}</span>
-                  {t(c.label, lang)}
-                </Link>
-              ))}
-            </div>
-          </div>
-        )}
-      </section>
-
-      {/* ============ COLLECT & SHARE — exhibit plaque ============ */}
-      <section className="max-w-5xl mx-auto px-4 pb-14">
-        <div className="flex items-center gap-3 mb-5">
-          <h2 className="text-2xl font-bold" style={{ fontFamily: "Georgia, 'Times New Roman', serif" }}>
-            {lang === "fr" ? "Collectionner & partager" : lang === "ar" ? "اجمع وشارك" : "Collect & share"}
-          </h2>
-          <div
-            aria-hidden
-            className="flex-1 h-px"
-            style={{ background: "linear-gradient(90deg, color-mix(in oklab, var(--brand-gold) 60%, transparent), transparent)" }}
-          />
-        </div>
-        <div className="rounded-2xl border bg-card p-5 sm:p-6" style={{ borderColor: "var(--border)", boxShadow: "var(--shadow-soft)" }}>
-          <SharePlaque figure={f} lang={lang} />
-        </div>
-      </section>
-
-
-      {/* Curator reflection — memory moment + sources */}
-      {(curator?.memory || (curator?.sources && curator.sources.length > 0)) && (
-        <section className="max-w-5xl mx-auto px-4 pb-12 space-y-6">
-          {curator?.memory && <MemoryMoment moment={curator.memory} />}
-          {curator?.sources && curator.sources.length > 0 && <SourcesList sources={curator.sources} />}
-        </section>
+          <p>{t(curator.note, lang)}</p>
+        </MuseumCuratorNote>
       )}
 
-      {/* Continue exploring — recommended exhibits */}
-      <section className="max-w-5xl mx-auto px-4 pb-14">
-        <ContinueExploring groups={exploreGroups} />
-      </section>
+      <MuseumCatalogCard accent="var(--primary)" eyebrow={significanceLabel} marker={<span aria-hidden>⭐</span>}>
+        <p className="leading-relaxed text-foreground/90">{t(f.importance, lang)}</p>
+        {meta?.modernRelevance && (
+          <p className="mt-3 leading-relaxed text-foreground/80">{t(meta.modernRelevance, lang)}</p>
+        )}
+      </MuseumCatalogCard>
 
-      {/* Explore other legends */}
+      <MuseumCatalogCard eyebrow={tu("theirStory", lang)} marker={<span aria-hidden>📖</span>}>
+        <p className="leading-relaxed text-foreground/90">{t(f.story, lang)}</p>
+      </MuseumCatalogCard>
 
-      <section className="max-w-5xl mx-auto px-4 pb-16">
-        <div className="text-xs uppercase tracking-wider text-muted-foreground font-semibold mb-3">
-          {tu("exploreFigures", lang)}
-        </div>
-        <div className="flex gap-2 flex-wrap">
-          {figures
-            .filter((x) => x.id !== f.id && !relatedFigures.some((r) => r.id === x.id))
-            .slice(0, 10)
-            .map((x) => (
-              <Link
-                key={x.id}
-                to="/figures/$figureId"
-                params={{ figureId: x.id }}
-                className="px-3 py-1.5 rounded-full bg-card border border-border text-sm hover:border-primary/50 transition"
-              >
-                <span className="me-1" aria-hidden>{x.emoji}</span>
-                {t(x.displayName, lang)}
-              </Link>
-            ))}
-        </div>
-      </section>
-
-      {/* Bottom context ribbon — what this exhibit connects */}
-      <ContextRibbon connects={["figures", "eras", "regions", "culture", "atlas"]} lang={lang} />
-    </div>
-  );
-}
-
-/* ---------------- Presentational helpers ---------------- */
-
-function ExhibitCard({
-  children,
-  accent,
-}: {
-  children: React.ReactNode;
-  accent?: string;
-}) {
-  return (
-    <div
-      className="relative rounded-2xl bg-card border border-border p-5 sm:p-6 overflow-hidden"
-      style={{ boxShadow: "var(--shadow-soft)" }}
-    >
-      {accent && (
-        <span
-          aria-hidden
-          className="absolute inset-y-0 start-0 w-1"
-          style={{ background: `color-mix(in oklab, ${accent} 70%, transparent)` }}
+      {f.extended?.storyMode && f.extended.storyMode.length > 0 && (
+        <StoryFlow
+          scenes={(f.extended.storyMode as LocalizedString[]).map((p, i): StoryScene => ({
+            icon: i === 0 ? "✨" : undefined,
+            body: p,
+          }))}
+          accent="var(--secondary)"
+          title={tri(lang, "Story mode", "Mode récit", "وضع السرد")}
+          continuityTitle={f.displayName}
+          defaultGuide={tri(lang, "Follow the story, step by step…", "Suis le récit, pas à pas…", "تابع الحكاية، خطوةً بخطوة…")}
         />
       )}
-      {children}
-    </div>
+
+      {f.extended?.whatHappened && f.extended.whatHappened.length > 0 && (
+        <MuseumCatalogCard eyebrow={contributionsLabel} marker={<span aria-hidden>🏛️</span>}>
+          <ul className="space-y-2.5">
+            {f.extended.whatHappened.map((p, i) => (
+              <li key={i} className="flex items-start gap-2.5 leading-relaxed text-foreground/90">
+                <span
+                  aria-hidden
+                  className="mt-1.5 shrink-0 inline-block w-1.5 h-1.5 rounded-full"
+                  style={{ background: "var(--brand-gold)" }}
+                />
+                <span className="min-w-0">{t(p, lang)}</span>
+              </li>
+            ))}
+          </ul>
+        </MuseumCatalogCard>
+      )}
+
+      {extras?.keyPlacesAndWorks && extras.keyPlacesAndWorks.length > 0 && (
+        <MuseumCatalogCard eyebrow={keyWorksLabel} marker={<span aria-hidden>🗺️</span>}>
+          <ul className="space-y-2">
+            {extras.keyPlacesAndWorks.map((item, i) => (
+              <li key={i} className="rounded-xl border border-border bg-muted/40 px-3 py-2.5 flex gap-3 items-start">
+                <span className="text-xl leading-none mt-0.5" aria-hidden>
+                  {item.emoji}
+                </span>
+                <div className="min-w-0">
+                  <div className="font-semibold text-sm">{t(item.label, lang)}</div>
+                  {item.note && (
+                    <div className="text-xs text-muted-foreground leading-relaxed mt-0.5">{t(item.note, lang)}</div>
+                  )}
+                </div>
+              </li>
+            ))}
+          </ul>
+        </MuseumCatalogCard>
+      )}
+
+      {f.extended?.keyLesson && (
+        <figure
+          className="relative overflow-hidden rounded-2xl border p-6 sm:p-8 text-center"
+          style={{
+            background: "linear-gradient(135deg, color-mix(in oklab, var(--accent) 14%, var(--card)), var(--card))",
+            borderColor: "color-mix(in oklab, var(--brand-gold) 35%, var(--border))",
+            boxShadow: "var(--shadow-soft)",
+          }}
+        >
+          <div
+            className="text-[10px] uppercase tracking-[0.22em] font-bold mb-3"
+            style={{ color: "color-mix(in oklab, var(--brand-gold-deep) 85%, var(--foreground))" }}
+          >
+            {quoteLabel}
+          </div>
+          <blockquote className="text-xl sm:text-2xl leading-relaxed font-semibold text-foreground" style={{ fontFamily: SERIF }}>
+            <span aria-hidden style={{ color: "var(--brand-gold)" }}>
+              “
+            </span>
+            {t(f.extended.keyLesson, lang)}
+            <span aria-hidden style={{ color: "var(--brand-gold)" }}>
+              ”
+            </span>
+          </blockquote>
+        </figure>
+      )}
+
+      {(f.extended?.aftermath && f.extended.aftermath.length > 0) && (
+        <MuseumCatalogCard accent="var(--secondary)" eyebrow={legacyLabel} marker={<span aria-hidden>🌿</span>}>
+          <div className="space-y-3">
+            {f.extended.aftermath.map((p, i) => (
+              <p key={i} className="leading-relaxed text-foreground/90">
+                {t(p, lang)}
+              </p>
+            ))}
+          </div>
+        </MuseumCatalogCard>
+      )}
+
+      <MuseumCatalogCard accent="var(--accent)" eyebrow={tu("oneFact", lang)} marker={<span aria-hidden>💡</span>}>
+        <p className="leading-relaxed font-medium text-foreground/90">{t(f.fact, lang)}</p>
+      </MuseumCatalogCard>
+
+      {extras?.didYouKnow && (
+        <MuseumCatalogCard accent="var(--accent)" eyebrow={didYouKnowLabel} marker={<span aria-hidden>💭</span>}>
+          <p className="leading-relaxed text-foreground/90">{t(extras.didYouKnow, lang)}</p>
+        </MuseumCatalogCard>
+      )}
+
+      {cultureItems.length > 0 && (
+        <MuseumRelatedContent
+          eyebrow={culturalThreadsLabel}
+          marker={<span aria-hidden>✦</span>}
+          items={cultureItems}
+        />
+      )}
+
+      <MuseumCTASection
+        eyebrow={tri(lang, "Test yourself", "Mettez-vous à l'épreuve", "اختبر معلوماتك")}
+        title={tu("guessThisFigureCta", lang)}
+        subtitle={tri(lang, "Can you recognise the legends of Algeria?", "Saurez-vous reconnaître les légendes de l'Algérie ?", "هل تستطيع التعرّف على رموز الجزائر؟")}
+        seal={<CollectionEmblem emblem="♟" size={56} glow tone="gold" />}
+        action={<MuseumActionButton to="/figures/quiz">{tri(lang, "Play the quiz", "Jouer au quiz", "العب الاختبار")}</MuseumActionButton>}
+      />
+
+      {(curator?.memory || (curator?.sources && curator.sources.length > 0)) && (
+        <div className="space-y-6">
+          {curator?.memory && <MemoryMoment moment={curator.memory} />}
+          {curator?.sources && curator.sources.length > 0 && <SourcesList sources={curator.sources} />}
+        </div>
+      )}
+    </>
+  );
+
+  /* ======================================================== SIDEBAR === */
+  const sidebar = (
+    <>
+      <MuseumOverviewPanel eyebrow={atAGlanceLabel} marker={<EraBadge kind={legendEra.badge} size={20} />}>
+        <dl className="space-y-3 text-sm">
+          <GlanceRow label={galleryRowLabel} value={`${collection.emblem} ${t(collection.label, lang)}`} />
+          {categoryDef && <GlanceRow label={roleLabel} value={t(categoryDef.label, lang)} />}
+          <GlanceRow label={eraRowLabel} value={t(legendEra.label, lang)} />
+          <GlanceRow label={periodLabel} value={t(f.era, lang)} />
+          <GlanceRow
+            label={regionRowLabel}
+            value={relatedRegion ? t(relatedRegion.name, lang) : t(f.regionLabel, lang)}
+          />
+          {meta?.themes && meta.themes.length > 0 && (
+            <div>
+              <dt className="text-[10px] uppercase tracking-[0.16em] text-muted-foreground font-bold mb-1.5">
+                {knownForLabel}
+              </dt>
+              <dd className="flex flex-wrap gap-1.5">
+                {meta.themes.slice(0, 5).map((th) => {
+                  const def = FIGURE_THEMES[th];
+                  return (
+                    <span
+                      key={th}
+                      className="px-2 py-0.5 rounded-full text-[11px] font-semibold border border-border/70 bg-card/70 text-muted-foreground"
+                    >
+                      <span className="me-0.5" aria-hidden>
+                        {def.emoji}
+                      </span>
+                      {t(def.label, lang)}
+                    </span>
+                  );
+                })}
+              </dd>
+            </div>
+          )}
+        </dl>
+      </MuseumOverviewPanel>
+
+      <MuseumTimelinePanel eyebrow={placeInTimeLabel} marker={<span aria-hidden>❧</span>} stops={timeline} />
+
+      {relatedFigureItems.length > 0 && (
+        <MuseumRelatedContent
+          eyebrow={relatedFiguresLabel}
+          marker={<span aria-hidden>♟</span>}
+          items={relatedFigureItems}
+          columns={1}
+        />
+      )}
+
+      {relatedRegionItems.length > 0 && (
+        <MuseumRelatedContent
+          eyebrow={relatedRegionsLabel}
+          marker={<span aria-hidden>❖</span>}
+          items={relatedRegionItems}
+          columns={1}
+        />
+      )}
+
+      {relatedEraItems.length > 0 && (
+        <MuseumRelatedContent
+          eyebrow={relatedErasLabel}
+          marker={<span aria-hidden>♜</span>}
+          items={relatedEraItems}
+          columns={1}
+        />
+      )}
+    </>
+  );
+
+  return (
+    <>
+      <Header />
+      <MuseumCatalogPage
+        main={main}
+        sidebar={sidebar}
+        ribbon={
+          <MuseumContextRibbon
+            connects={["journeys", "collections", "atlas", "culture", "regions"]}
+            lang={lang}
+          />
+        }
+      />
+    </>
   );
 }
 
-function SectionTitle({ emoji, label }: { emoji: string; label: string }) {
-  return (
-    <div className="text-xs uppercase tracking-wider text-muted-foreground font-bold mb-3 flex items-center gap-1.5">
-      <span aria-hidden>{emoji}</span>
-      <span>{label}</span>
-    </div>
-  );
+/* ---------------- Helpers ---------------- */
+
+import { saveJourneyPlace as saveJourneyPlaceRaw } from "@/lib/continuity";
+
+function saveJourneyPlace(f: ReturnType<typeof getFigure> & object, lang: Lang) {
+  if (!f) return;
+  saveJourneyPlaceRaw({
+    section: "figures",
+    label: {
+      fr: `Figure · ${t(f.displayName, "fr")}`,
+      en: `Figure · ${t(f.displayName, "en")}`,
+      ar: `شخصية · ${t(f.displayName, "ar")}`,
+    },
+    description: typeof f.era === "string" ? { fr: f.era, en: f.era, ar: f.era } : f.era,
+    href: `/figures/${f.id}`,
+  });
 }
 
 function GlanceRow({ label, value }: { label: string; value: string }) {
