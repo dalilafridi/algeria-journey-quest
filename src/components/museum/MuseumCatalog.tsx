@@ -718,7 +718,7 @@ export function MuseumRelatedContent({
 
 /* ===================================================== Context ribbon === */
 
-export type RibbonKey = "figures" | "eras" | "regions" | "culture" | "atlas" | "collections" | "timeline";
+export type RibbonKey = "figures" | "eras" | "regions" | "culture" | "atlas" | "collections" | "timeline" | "journeys";
 
 const RIBBON_DEFS: Record<RibbonKey, { to: string; glyph: string; label: LocalizedString }> = {
   figures: { to: "/figures", glyph: "♟", label: { en: "Figures", fr: "Figures", ar: "شخصيات" } },
@@ -728,6 +728,7 @@ const RIBBON_DEFS: Record<RibbonKey, { to: string; glyph: string; label: Localiz
   atlas: { to: "/atlas", glyph: "❂", label: { en: "Atlas", fr: "Atlas", ar: "الأطلس" } },
   collections: { to: "/figures", glyph: "◈", label: { en: "Collections", fr: "Collections", ar: "المجموعات" } },
   timeline: { to: "/timeline", glyph: "❧", label: { en: "Timeline", fr: "Chronologie", ar: "الخط الزمني" } },
+  journeys: { to: "/", glyph: "✦", label: { en: "Journeys", fr: "Parcours", ar: "رحلات" } },
 };
 
 const DEFAULT_RIBBON_TITLE: LocalizedString = {
