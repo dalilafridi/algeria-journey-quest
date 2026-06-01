@@ -15,7 +15,7 @@ import { useEffect } from "react";
 import { Header } from "@/components/Header";
 import { RegionIcon } from "@/components/RegionIcon";
 import { CollectionEmblem } from "@/components/figures/CollectionEmblem";
-import { mapRegions } from "@/data/mapRegions";
+import { mapRegions, type MapRegion } from "@/data/mapRegions";
 import { getRegionExtras } from "@/data/regionExtras";
 import { regionIntros } from "@/data/cinematic";
 import { eras } from "@/data/eras";
@@ -78,7 +78,7 @@ const tri = (lang: Lang, en: string, fr: string, ar: string) =>
   lang === "fr" ? fr : lang === "ar" ? ar : en;
 
 function RegionPage() {
-  const { region } = Route.useLoaderData();
+  const { region } = Route.useLoaderData() as { region: MapRegion };
   const lang = useLang();
   const extras = getRegionExtras(region.id);
   const intro = regionIntros[region.id];
