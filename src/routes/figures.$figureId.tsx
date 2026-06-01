@@ -279,7 +279,7 @@ function FigureDetail() {
       {f.extended?.whatHappened && f.extended.whatHappened.length > 0 && (
         <MuseumCatalogCard eyebrow={contributionsLabel} marker={<span aria-hidden>🏛️</span>}>
           <ul className="space-y-2.5">
-            {f.extended.whatHappened.map((p, i) => (
+            {f.extended.whatHappened.map((p: LocalizedString, i: number) => (
               <li key={i} className="flex items-start gap-2.5 leading-relaxed text-foreground/90">
                 <span
                   aria-hidden
