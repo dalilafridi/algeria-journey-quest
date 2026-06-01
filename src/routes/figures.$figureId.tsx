@@ -116,8 +116,17 @@ function FigureDetail() {
     .filter((x, i, arr) => arr.findIndex((y) => y.id === x.id) === i);
 
   useEffect(() => {
-    saveJourneyPlace(f, lang);
-  }, [f, lang]);
+    saveJourneyPlace({
+      section: "figures",
+      label: {
+        fr: `Figure · ${t(f.displayName, "fr")}`,
+        en: `Figure · ${t(f.displayName, "en")}`,
+        ar: `شخصية · ${t(f.displayName, "ar")}`,
+      },
+      description: typeof f.era === "string" ? { fr: f.era, en: f.era, ar: f.era } : f.era,
+      href: `/figures/${f.id}`,
+    });
+  }, [f]);
 
   /* ---- Labels ---- */
   const significanceLabel = tri(lang, "Historical significance", "Importance historique", "الأهمية التاريخية");
