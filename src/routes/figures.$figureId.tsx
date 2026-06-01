@@ -485,21 +485,6 @@ function FigureDetail() {
 
 /* ---------------- Helpers ---------------- */
 
-import { saveJourneyPlace as saveJourneyPlaceRaw } from "@/lib/continuity";
-
-function saveJourneyPlace(f: ReturnType<typeof getFigure> & object, lang: Lang) {
-  if (!f) return;
-  saveJourneyPlaceRaw({
-    section: "figures",
-    label: {
-      fr: `Figure · ${t(f.displayName, "fr")}`,
-      en: `Figure · ${t(f.displayName, "en")}`,
-      ar: `شخصية · ${t(f.displayName, "ar")}`,
-    },
-    description: typeof f.era === "string" ? { fr: f.era, en: f.era, ar: f.era } : f.era,
-    href: `/figures/${f.id}`,
-  });
-}
 
 function GlanceRow({ label, value }: { label: string; value: string }) {
   return (
