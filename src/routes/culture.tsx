@@ -4,6 +4,8 @@ import { Header } from "@/components/Header";
 import { t, useLang, type Localized, type LocalizedString } from "@/lib/i18n";
 import { saveJourneyPlace } from "@/lib/continuity";
 import { AmazighSymbol } from "@/components/brand/AmazighSymbol";
+import { CollectionEmblem } from "@/components/figures/CollectionEmblem";
+import { CULTURE_TOPICS } from "@/data/cultureTopics";
 
 const L = (en: string, fr: string, ar: string): Localized<string> => ({ en, fr, ar });
 
