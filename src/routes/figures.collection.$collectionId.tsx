@@ -1,7 +1,18 @@
+/**
+ * Collection detail page — a museum gallery dedicated to a theme.
+ *
+ * Rebuilt on the shared MuseumCatalogPage template so a collection reads like
+ * walking into an exhibition room rather than scrolling a filtered list. The
+ * left story column carries the gallery's emblem, exhibition introduction, why
+ * it matters, featured stories, the full figure gallery and a curator note; the
+ * right context sidebar gathers the gallery overview, connected eras and
+ * regions, related collections and quick navigation; a bottom ribbon connects
+ * the rest of the museum.
+ */
+
 import { createFileRoute, Link, useParams } from "@tanstack/react-router";
 import { useEffect, useMemo, useState } from "react";
 import { Header } from "@/components/Header";
-import { ContextRibbon } from "@/components/museum/Exhibit";
 
 import {
   findRowBySlug,
@@ -12,7 +23,7 @@ import {
   DISCOVERY_ROWS,
 } from "@/lib/figureDiscovery";
 import { MuseumEmptyState } from "@/components/figures/MuseumEmptyState";
-import { LEGEND_ERAS, eraOfCategory } from "@/lib/figureEras";
+import { LEGEND_ERAS, eraOfCategory, type LegendEra } from "@/lib/figureEras";
 import { EraBadge } from "@/components/brand/EraBadge";
 import { CollectionEmblem } from "@/components/figures/CollectionEmblem";
 import { GuidedTour } from "@/components/figures/GuidedTour";
@@ -23,6 +34,34 @@ import {
 import { mapRegions } from "@/data/mapRegions";
 import { t, useLang, type Lang, type LocalizedString } from "@/lib/i18n";
 import { saveJourneyPlace } from "@/lib/continuity";
+import {
+  MuseumCatalogPage,
+  MuseumHero,
+  MuseumLabel,
+  MuseumBack,
+  MuseumChip,
+  MuseumPill,
+  MuseumCatalogCard,
+  MuseumOverviewPanel,
+  MuseumCuratorNote,
+  MuseumRelatedContent,
+  MuseumCTASection,
+  MuseumActionButton,
+  MuseumContextRibbon,
+  type RelatedItem,
+} from "@/components/museum/MuseumCatalog";
+
+const SERIF = "Georgia, 'Times New Roman', serif";
+
+/** Map a legend era to its era detail route id. */
+const LEGEND_ERA_TO_ROUTE: Record<LegendEra, string> = {
+  numidian: "numidia",
+  roman: "roman",
+  islamic: "islamic",
+  ottoman: "ottoman",
+  colonial: "french",
+  independence: "independence",
+};
 
 export const Route = createFileRoute("/figures/collection/$collectionId")({
   head: ({ params }) => {
@@ -44,6 +83,9 @@ export const Route = createFileRoute("/figures/collection/$collectionId")({
   },
   component: CollectionPage,
 });
+
+const tri = (lang: Lang, en: string, fr: string, ar: string) =>
+  lang === "fr" ? fr : lang === "ar" ? ar : en;
 
 function CollectionPage() {
   const lang = useLang();
@@ -70,13 +112,13 @@ function CollectionPage() {
 
   const regionMarkers = useMemo(() => {
     const seen = new Set<string>();
-    const out: { id: string; name: LocalizedString }[] = [];
+    const out: { id: string; name: LocalizedString; emoji?: string }[] = [];
     for (const f of items) {
       const mapId = FIGURE_REGION_TO_MAP[f.region];
       const region = mapId ? mapRegions.find((r) => r.id === mapId) : undefined;
       if (region && !seen.has(region.id)) {
         seen.add(region.id);
-        out.push({ id: region.id, name: region.name });
+        out.push({ id: region.id, name: region.name, emoji: region.emoji });
       }
     }
     return out;
@@ -87,196 +129,160 @@ function CollectionPage() {
     () => (row ? relatedRows(row, DISCOVERY_ROWS, 4) : []),
     [row],
   );
-  const notable = useMemo(() => items.slice(0, 4), [items]);
+  const featured = useMemo(() => items.slice(0, 4), [items]);
 
   if (!row) {
     return <CollectionNotFound lang={lang} />;
   }
 
+  /* ---- Labels ---- */
+  const exhibitLabel = tri(lang, "Exhibit room", "Salle d'exposition", "قاعة العرض");
+  const figureWord = tri(lang, "figures", "figures", "شخصية");
+  const erasWord = tri(lang, "eras", "époques", "عصور");
+  const regionsWord = tri(lang, "regions", "régions", "مناطق");
+  const introLabel = tri(lang, "Exhibition introduction", "Introduction de l'exposition", "مقدمة المعرض");
+  const mattersLabel = tri(lang, "Why this collection matters", "Pourquoi cette collection compte", "لماذا تهمّ هذه المجموعة");
+  const significanceLabel = tri(lang, "Collection significance", "Importance de la collection", "أهمية المجموعة");
+  const featuredLabel = tri(lang, "Featured stories", "Récits en vedette", "قصص مختارة");
+  const galleryLabel = tri(lang, "In this gallery", "Dans cette salle", "في هذه القاعة");
+  const overviewLabel = tri(lang, "Collection overview", "Aperçu de la collection", "نظرة على المجموعة");
+  const connectedErasLabel = tri(lang, "Connected eras", "Époques reliées", "عصور مرتبطة");
+  const connectedRegionsLabel = tri(lang, "Connected regions", "Régions reliées", "مناطق مرتبطة");
+  const relatedLabel = tri(lang, "Related collections", "Collections liées", "مجموعات ذات صلة");
+  const quickNavLabel = tri(lang, "Quick navigation", "Navigation rapide", "تنقّل سريع");
+  const erasStatLabel = tri(lang, "Eras", "Époques", "عصور");
+  const figuresStatLabel = tri(lang, "Figures", "Figures", "شخصيات");
+  const regionsStatLabel = tri(lang, "Regions", "Régions", "مناطق");
+  const tourLabel = tri(lang, "Walk the Hall of Legends", "Faire la visite guidée", "ابدأ الجولة المُرشدة");
+  const backLabel = tri(lang, "Back to the Hall of Legends", "Retour au Panthéon", "العودة إلى قاعة العظماء");
+  const emptyTitle = tri(lang, "This room is being prepared", "Salle en préparation", "قاعة قيد الإعداد");
+  const emptyBody = tri(
+    lang,
+    "The artifacts for this room aren't on display yet. Check back soon, or explore the other collections in the hall.",
+    "Les artefacts de cette salle ne sont pas encore exposés. Revenez bientôt ou explorez les autres collections du Panthéon.",
+    "لم تُعرض مقتنيات هذه القاعة بعد. عُد قريبًا أو استكشف بقية مجموعات القاعة.",
+  );
 
+  /* ---- Sidebar items ---- */
+  const eraItems: RelatedItem[] = eraMarkers.map((e) => ({
+    title: t(e.label, lang),
+    note: t(e.tagline, lang),
+    glyph: e.badge === "numidia" ? "ⵣ" : "♜",
+    to: "/era/$eraId",
+    params: { eraId: LEGEND_ERA_TO_ROUTE[e.id] },
+  }));
 
-  const backLabel =
-    lang === "fr" ? "Retour au Panthéon" : lang === "ar" ? "العودة إلى قاعة العظماء" : "Back to the Hall of Legends";
-  const figureWord = lang === "fr" ? "figures" : lang === "ar" ? "شخصية" : "figures";
-  const exhibitLabel =
-    lang === "fr" ? "Salle d'exposition" : lang === "ar" ? "قاعة العرض" : "Exhibit room";
-  const erasLabel = lang === "fr" ? "Ères" : lang === "ar" ? "الحقب" : "Eras";
-  const regionsLabel = lang === "fr" ? "Régions" : lang === "ar" ? "المناطق" : "Regions";
-  const tourLabel =
-    lang === "fr" ? "Faire la visite guidée" : lang === "ar" ? "ابدأ الجولة المُرشدة" : "Walk the Hall of Legends";
-  const overviewLabel = lang === "fr" ? "Aperçu de la salle" : lang === "ar" ? "نظرة على القاعة" : "Collection overview";
-  const significanceLabel = lang === "fr" ? "Importance" : lang === "ar" ? "الأهمية" : "Collection significance";
-  const notableLabel = lang === "fr" ? "Figures phares" : lang === "ar" ? "شخصيات بارزة" : "Notable figures";
-  const continueLabel =
-    lang === "fr" ? "Continuer la découverte" : lang === "ar" ? "تابع الاكتشاف" : "Continue discovering";
-  const relatedLabel =
-    lang === "fr" ? "Collections liées" : lang === "ar" ? "مجموعات ذات صلة" : "Related collections";
-  const emptyTitle =
-    lang === "fr" ? "Salle en préparation" : lang === "ar" ? "قاعة قيد الإعداد" : "This room is being prepared";
-  const emptyBody =
-    lang === "fr"
-      ? "Les artefacts de cette salle ne sont pas encore exposés. Revenez bientôt ou explorez les autres collections du Panthéon."
-      : lang === "ar"
-        ? "لم تُعرض مقتنيات هذه القاعة بعد. عُد قريبًا أو استكشف بقية مجموعات القاعة."
-        : "The artifacts for this room aren't on display yet. Check back soon, or explore the other collections in the hall.";
+  const regionItems: RelatedItem[] = regionMarkers.map((r) => ({
+    title: t(r.name, lang),
+    glyph: r.emoji ?? "❖",
+    to: "/region/$regionId",
+    params: { regionId: r.id },
+  }));
 
-  return (
-    <div className="min-h-dvh">
-      <Header />
+  const relatedItems: RelatedItem[] = related.map((r) => ({
+    title: t(r.label, lang),
+    note: t(r.tagline, lang),
+    glyph: r.emblem,
+    to: "/figures/collection/$collectionId",
+    params: { collectionId: slugOfRow(r) },
+  }));
 
-      <GuidedTour open={tourOpen} onClose={() => setTourOpen(false)} lang={lang} />
+  const featuredItems: RelatedItem[] = featured.map((f) => ({
+    title: t(f.displayName, lang),
+    note: t(f.era, lang),
+    glyph: f.emoji,
+    to: "/figures/$figureId",
+    params: { figureId: f.id },
+  }));
 
+  const quickNavItems: RelatedItem[] = [
+    {
+      title: tri(lang, "All collections", "Toutes les collections", "كل المجموعات"),
+      glyph: "◈",
+      to: "/figures",
+    },
+    {
+      title: tri(lang, "Timeline of eras", "Chronologie des époques", "الخط الزمني"),
+      glyph: "❧",
+      to: "/timeline",
+    },
+    {
+      title: tri(lang, "Atlas of regions", "Atlas des régions", "أطلس المناطق"),
+      glyph: "❂",
+      to: "/atlas",
+    },
+    {
+      title: tri(lang, "Culture & heritage", "Culture et patrimoine", "الثقافة والتراث"),
+      glyph: "✦",
+      to: "/culture",
+    },
+  ];
 
-      {/* ===== Exhibit hero plaque ===== */}
-      <section className="relative overflow-hidden">
-        <div
-          aria-hidden
-          className="absolute inset-0 pointer-events-none opacity-[0.05] text-[16rem] sm:text-[22rem] font-black leading-none flex items-center justify-center select-none"
-          style={{ color: row.accent }}
-        >
-          {row.emblem}
-        </div>
-        <div className="relative max-w-6xl mx-auto px-4 pt-6 pb-8 sm:pt-8 sm:pb-10">
-          <Link
-            to="/figures"
-            className="inline-flex items-center gap-1.5 text-sm font-semibold text-muted-foreground hover:text-primary transition-colors"
-          >
-            <span aria-hidden>←</span>
-            {backLabel}
-          </Link>
+  /* =========================================================== MAIN === */
+  const main = (
+    <>
+      <MuseumBack to="/figures">{backLabel}</MuseumBack>
 
-          <div className="mt-6 flex items-start gap-4 sm:gap-5">
-            <div className="relative shrink-0">
-              <CollectionEmblem
-                emblem={row.emblem}
-                accent={row.accent}
-                size={72}
-                glow
-                animate="reveal"
-                label={t(row.label, lang)}
-              />
-              <span className="absolute -bottom-1.5 -end-1.5">
-                <EraBadge kind={row.badge} size={30} label={t(row.label, lang)} />
-              </span>
-            </div>
-            <div className="min-w-0">
-              <div className="text-[10px] uppercase tracking-[0.22em] font-bold text-muted-foreground">
-                {exhibitLabel}
-              </div>
-              <h1
-                className="mt-1 text-3xl sm:text-4xl lg:text-5xl font-extrabold leading-[1.05]"
-                style={{ fontFamily: "Georgia, 'Times New Roman', serif" }}
-              >
-                {t(row.label, lang)}
-              </h1>
-              <p className="mt-3 max-w-2xl text-base sm:text-lg text-foreground/80 leading-relaxed">
-                {t(row.tagline, lang)}
-              </p>
-              <div className="mt-3 text-sm text-muted-foreground font-semibold">
-                {items.length} {figureWord}
-              </div>
-              <button
-                type="button"
-                onClick={() => setTourOpen(true)}
-                className="mt-4 inline-flex items-center gap-2 rounded-xl border px-4 py-2 text-sm font-semibold transition hover:border-primary/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 min-h-11"
-                style={{
-                  borderColor: "color-mix(in oklab, var(--brand-gold) 40%, var(--border))",
-                  background: "color-mix(in oklab, var(--brand-gold) 9%, var(--card))",
-                  color: "var(--brand-gold-deep)",
-                }}
-              >
-                <span aria-hidden>❖</span>
-                {tourLabel}
-              </button>
-            </div>
-          </div>
-
-
-          {/* Context markers */}
-          {(eraMarkers.length > 0 || regionMarkers.length > 0) && (
-            <div className="mt-6 grid gap-4 sm:grid-cols-2">
-              {eraMarkers.length > 0 && (
-                <MarkerGroup label={erasLabel}>
-                  {eraMarkers.map((e) => (
-                    <Marker key={e.id}>{t(e.label, lang)}</Marker>
-                  ))}
-                </MarkerGroup>
-              )}
-              {regionMarkers.length > 0 && (
-                <MarkerGroup label={regionsLabel}>
-                  {regionMarkers.map((r) => (
-                    <Marker key={r.id}>{t(r.name, lang)}</Marker>
-                  ))}
-                </MarkerGroup>
-              )}
-            </div>
-          )}
-        </div>
-        <span
-          aria-hidden
-          className="block h-px w-full"
-          style={{
-            background:
-              "linear-gradient(90deg, transparent, color-mix(in oklab, var(--brand-gold) 50%, transparent), transparent)",
-          }}
-        />
-      </section>
-
-      {/* ===== Collection overview + significance ===== */}
-      {(deep || notable.length > 0) && (
-        <section className="max-w-6xl mx-auto px-4 pt-8 sm:pt-10">
-          <div className="grid gap-5 lg:grid-cols-[1fr_300px] items-start">
-            <div className="space-y-5">
-              {deep && (
-                <div className="rounded-2xl border bg-card p-5 sm:p-6" style={{ borderColor: "var(--border)", boxShadow: "var(--shadow-soft)" }}>
-                  <div className="text-xs uppercase tracking-wider text-muted-foreground font-bold mb-2">{overviewLabel}</div>
-                  <p className="leading-relaxed text-foreground/90">{t(deep.intro, lang)}</p>
-                </div>
-              )}
-              {deep && (
-                <div
-                  className="relative rounded-2xl border p-5 sm:p-6 overflow-hidden"
-                  style={{
-                    borderColor: "color-mix(in oklab, var(--brand-gold) 35%, var(--border))",
-                    background: "linear-gradient(135deg, color-mix(in oklab, var(--brand-gold) 8%, var(--card)), var(--card))",
-                  }}
-                >
-                  <div className="text-xs uppercase tracking-wider font-bold mb-2" style={{ color: "color-mix(in oklab, var(--brand-gold-deep) 85%, var(--foreground))" }}>
-                    {significanceLabel}
-                  </div>
-                  <p className="leading-relaxed text-foreground/90">{t(deep.significance, lang)}</p>
-                </div>
-              )}
-            </div>
-
-            {notable.length > 0 && (
-              <aside className="rounded-2xl border bg-parchment-card p-5" style={{ borderColor: "var(--border)", boxShadow: "var(--shadow-soft)" }}>
-                <div className="text-xs uppercase tracking-wider text-muted-foreground font-bold mb-3">{notableLabel}</div>
-                <ul className="space-y-2">
-                  {notable.map((f) => (
-                    <li key={f.id}>
-                      <Link
-                        to="/figures/$figureId"
-                        params={{ figureId: f.id }}
-                        className="flex items-center gap-2.5 rounded-xl px-2.5 py-2 hover:bg-muted/60 transition"
-                      >
-                        <span className="text-xl leading-none" aria-hidden>{f.emoji}</span>
-                        <span className="min-w-0">
-                          <span className="block font-semibold text-sm truncate">{t(f.displayName, lang)}</span>
-                          <span className="block text-[11px] text-muted-foreground truncate">{t(f.era, lang)}</span>
-                        </span>
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </aside>
+      <MuseumHero
+        label={<MuseumChip>{exhibitLabel}</MuseumChip>}
+        title={t(row.label, lang)}
+        subtitle={`“${t(row.tagline, lang)}”`}
+        pills={
+          <>
+            <MuseumPill icon="♟">
+              {items.length} {figureWord}
+            </MuseumPill>
+            {eraMarkers.length > 0 && (
+              <MuseumPill icon="♜">
+                {eraMarkers.length} {erasWord}
+              </MuseumPill>
             )}
-          </div>
-        </section>
+            {regionMarkers.length > 0 && (
+              <MuseumPill icon="❖">
+                {regionMarkers.length} {regionsWord}
+              </MuseumPill>
+            )}
+          </>
+        }
+        intro={deep ? t(deep.intro, lang) : t(row.tagline, lang)}
+        medallion={
+          <span className="relative inline-block">
+            <CollectionEmblem
+              emblem={row.emblem}
+              accent={row.accent}
+              size={120}
+              glow
+              animate="reveal"
+              label={t(row.label, lang)}
+            />
+            <span className="absolute -bottom-1.5 -end-1.5">
+              <EraBadge kind={row.badge} size={40} label={t(row.label, lang)} />
+            </span>
+          </span>
+        }
+      />
+
+      {deep && (
+        <MuseumCatalogCard
+          accent="var(--brand-gold-deep)"
+          eyebrow={mattersLabel}
+          marker={<span aria-hidden>❦</span>}
+        >
+          <p className="leading-relaxed text-foreground/90">{t(deep.significance, lang)}</p>
+        </MuseumCatalogCard>
       )}
 
-      {/* ===== Figures grid ===== */}
-      <main className="max-w-6xl mx-auto px-4 py-8 sm:py-10">
+      {featuredItems.length > 0 && (
+        <MuseumRelatedContent
+          eyebrow={featuredLabel}
+          marker={<span aria-hidden>✦</span>}
+          items={featuredItems}
+          columns={2}
+        />
+      )}
+
+      <section className="space-y-3">
+        <MuseumLabel marker={<span aria-hidden>♟</span>}>{galleryLabel}</MuseumLabel>
         {items.length === 0 ? (
           <MuseumEmptyState
             glyph={row.emblem}
@@ -294,95 +300,128 @@ function CollectionPage() {
             }
           />
         ) : (
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3.5 sm:gap-4">
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-3.5 sm:gap-4">
             {items.map((f) => (
               <FigureExhibitCard key={f.id} figure={f} lang={lang} accent={row.accent} fluid />
             ))}
           </div>
         )}
+      </section>
 
-        {/* ===== Related collections — continuous discovery ===== */}
-        {related.length > 0 && (
-          <section className="mt-14">
-            <div className="text-[10px] uppercase tracking-[0.22em] font-bold text-muted-foreground mb-1.5">
-              {continueLabel}
-            </div>
-            <div className="flex items-center gap-3 mb-5">
-              <h2 className="text-2xl font-bold" style={{ fontFamily: "Georgia, 'Times New Roman', serif" }}>
-                {relatedLabel}
-              </h2>
-              <span aria-hidden className="flex-1 h-px" style={{ background: "linear-gradient(90deg, color-mix(in oklab, var(--brand-gold) 55%, transparent), transparent)" }} />
-            </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
-              {related.map((r) => (
-                <Link
-                  key={r.id}
-                  to="/figures/collection/$collectionId"
-                  params={{ collectionId: slugOfRow(r) }}
-                  className="group flex items-center gap-3.5 rounded-2xl border bg-card p-4 transition hover:-translate-y-0.5 hover:border-primary/40"
-                  style={{ borderColor: "var(--border)", boxShadow: "var(--shadow-soft)" }}
-                >
-                  <CollectionEmblem emblem={r.emblem} accent={r.accent} size={48} interactive />
-                  <span className="min-w-0">
-                    <span className="block font-bold leading-tight group-hover:text-primary transition-colors" style={{ fontFamily: "Georgia, 'Times New Roman', serif" }}>
-                      {t(r.label, lang)}
-                    </span>
-                    <span className="block text-xs text-muted-foreground truncate">{t(r.tagline, lang)}</span>
-                  </span>
-                  <span aria-hidden className="ms-auto text-muted-foreground group-hover:text-primary transition-colors">→</span>
-                </Link>
-              ))}
-            </div>
-          </section>
+      {deep && (
+        <MuseumCuratorNote
+          title={tri(lang, "Curator's note", "Note du conservateur", "ملاحظة القيّم")}
+          attribution={tri(lang, "Museum curator", "Le conservateur", "أمين المتحف")}
+          seal={<CollectionEmblem emblem={row.emblem} accent={row.accent} size={44} />}
+        >
+          <p className="italic" style={{ fontFamily: SERIF }}>
+            “{t(deep.intro, lang)}”
+          </p>
+        </MuseumCuratorNote>
+      )}
+
+      <MuseumCTASection
+        eyebrow={tri(lang, "Guided walk", "Visite guidée", "جولة مُرشدة")}
+        title={tri(lang, "Walk this gallery with the curator", "Parcourez cette salle avec le conservateur", "تجوّل في هذه القاعة مع القيّم")}
+        subtitle={tri(
+          lang,
+          "A guided tour through the Hall of Legends, room by room.",
+          "Une visite guidée du Panthéon, salle après salle.",
+          "جولة مُرشدة في قاعة العظماء، قاعةً تلو الأخرى.",
         )}
-
-        <div className="mt-12 text-center">
-          <Link
-            to="/figures"
-            className="inline-flex items-center gap-2 rounded-xl px-5 py-2.5 text-sm font-semibold text-primary-foreground"
-            style={{ background: "var(--gradient-warm)" }}
-          >
-            <span aria-hidden>←</span>
-            {backLabel}
-          </Link>
-        </div>
-      </main>
-    </div>
+        seal={<CollectionEmblem emblem="❖" size={56} glow tone="gold" />}
+        action={
+          <MuseumActionButton onClick={() => setTourOpen(true)}>{tourLabel}</MuseumActionButton>
+        }
+      />
+    </>
   );
 
+  /* ======================================================== SIDEBAR === */
+  const sidebar = (
+    <>
+      <MuseumOverviewPanel eyebrow={overviewLabel} marker={<span aria-hidden>❖</span>}>
+        <div className="flex items-center gap-3 mb-3">
+          <CollectionEmblem emblem={row.emblem} accent={row.accent} size={40} />
+          <div className="min-w-0">
+            <div className="font-bold text-sm leading-snug" style={{ fontFamily: SERIF }}>
+              {t(row.label, lang)}
+            </div>
+          </div>
+        </div>
+        <div className="text-xs text-muted-foreground leading-relaxed mb-4">{t(row.tagline, lang)}</div>
+        <div className="grid grid-cols-3 gap-2 text-center">
+          <Stat value={items.length} label={figuresStatLabel} />
+          <Stat value={eraMarkers.length} label={erasStatLabel} />
+          <Stat value={regionMarkers.length} label={regionsStatLabel} />
+        </div>
+      </MuseumOverviewPanel>
+
+      {eraItems.length > 0 && (
+        <MuseumRelatedContent
+          eyebrow={connectedErasLabel}
+          marker={<span aria-hidden>♜</span>}
+          items={eraItems}
+          columns={1}
+        />
+      )}
+
+      {regionItems.length > 0 && (
+        <MuseumRelatedContent
+          eyebrow={connectedRegionsLabel}
+          marker={<span aria-hidden>❖</span>}
+          items={regionItems}
+          columns={1}
+        />
+      )}
+
+      {relatedItems.length > 0 && (
+        <MuseumRelatedContent
+          eyebrow={relatedLabel}
+          marker={<span aria-hidden>◈</span>}
+          items={relatedItems}
+          columns={1}
+        />
+      )}
+
+      <MuseumRelatedContent
+        eyebrow={quickNavLabel}
+        marker={<span aria-hidden>✧</span>}
+        items={quickNavItems}
+        columns={1}
+      />
+    </>
+  );
+
+  return (
+    <>
+      <Header />
+      <GuidedTour open={tourOpen} onClose={() => setTourOpen(false)} lang={lang} />
+      <MuseumCatalogPage
+        main={main}
+        sidebar={sidebar}
+        ribbon={
+          <MuseumContextRibbon
+            connects={["figures", "regions", "eras", "culture", "journeys"]}
+            lang={lang}
+          />
+        }
+      />
+    </>
+  );
 }
 
-/* ---------------- Context markers ---------------- */
-
-function MarkerGroup({ label, children }: { label: string; children: React.ReactNode }) {
+function Stat({ value, label }: { value: number; label: string }) {
   return (
     <div
-      className="rounded-xl border p-3.5"
-      style={{
-        borderColor: "color-mix(in oklab, var(--brand-gold) 22%, var(--border))",
-        background: "color-mix(in oklab, var(--accent) 6%, var(--card))",
-      }}
+      className="rounded-xl border bg-card/80 px-2 py-2.5"
+      style={{ borderColor: "color-mix(in oklab, var(--brand-gold) 22%, var(--border))" }}
     >
-      <div className="text-[10px] uppercase tracking-[0.2em] font-bold text-muted-foreground mb-2">
-        {label}
+      <div className="text-base font-extrabold leading-none" style={{ fontFamily: SERIF }}>
+        {value}
       </div>
-      <div className="flex flex-wrap gap-1.5">{children}</div>
+      <div className="text-[10px] text-muted-foreground leading-tight mt-1">{label}</div>
     </div>
-  );
-}
-
-function Marker({ children }: { children: React.ReactNode }) {
-  return (
-    <span
-      className="px-2.5 py-0.5 rounded-full text-xs font-semibold border"
-      style={{
-        borderColor: "color-mix(in oklab, var(--brand-gold) 35%, var(--border))",
-        background: "var(--card)",
-        color: "color-mix(in oklab, var(--brand-gold-deep) 80%, var(--foreground))",
-      }}
-    >
-      {children}
-    </span>
   );
 }
 
@@ -400,13 +439,10 @@ function CollectionNotFound({ lang }: { lang: Lang }) {
   const backLabel =
     lang === "fr" ? "Retour au Panthéon" : lang === "ar" ? "العودة إلى قاعة العظماء" : "Back to the Hall of Legends";
   return (
-    <div className="min-h-dvh">
+    <div className="min-h-dvh bg-parchment">
       <Header />
       <main className="max-w-3xl mx-auto px-4 py-20 text-center">
-        <h1
-          className="text-3xl font-extrabold"
-          style={{ fontFamily: "Georgia, 'Times New Roman', serif" }}
-        >
+        <h1 className="text-3xl font-extrabold" style={{ fontFamily: SERIF }}>
           {title}
         </h1>
         <p className="mt-3 text-muted-foreground">{body}</p>
@@ -418,8 +454,9 @@ function CollectionNotFound({ lang }: { lang: Lang }) {
           <span aria-hidden>←</span>
           {backLabel}
         </Link>
-        <ContextRibbon connects={["figures", "eras", "regions", "culture", "atlas"]} lang={lang} className="px-0 pt-8" />
       </main>
     </div>
   );
 }
+
+export default CollectionPage;
