@@ -85,7 +85,11 @@ function CultureTopicPage() {
         fr: `Culture · ${t(topic.title, "fr")}`,
         ar: `الثقافة · ${t(topic.title, "ar")}`,
       },
-      description: topic.tagline,
+      description: {
+        en: t(topic.tagline, "en"),
+        fr: t(topic.tagline, "fr"),
+        ar: t(topic.tagline, "ar"),
+      },
       href: `/culture/${topic.id}`,
     });
   }, [topic]);
