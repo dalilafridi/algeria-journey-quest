@@ -188,25 +188,17 @@ function RegionPage() {
       />
 
       {extras && (
-        <MuseumCatalogCard
-          accent="var(--brand-gold-deep)"
-          eyebrow={identityLabel}
-          marker={<span aria-hidden>🗺️</span>}
-        >
-          <p className="leading-relaxed text-foreground/90">{t(extras.geography, lang)}</p>
-        </MuseumCatalogCard>
-      )}
-
-      {extras && (
         <div className="grid sm:grid-cols-2 gap-4">
-          <MuseumCatalogCard eyebrow={geographyLabel} marker={<span aria-hidden>⛰️</span>}>
+          <MuseumCatalogCard accent="var(--brand-gold-deep)" eyebrow={geographyLabel} marker={<span aria-hidden>⛰️</span>}>
             <p className="text-sm text-foreground/80 leading-relaxed">{t(extras.geography, lang)}</p>
           </MuseumCatalogCard>
-          <MuseumCatalogCard eyebrow={culturalLabel} marker={<span aria-hidden>🎶</span>}>
+          <MuseumCatalogCard accent="var(--brand-gold-deep)" eyebrow={culturalLabel} marker={<span aria-hidden>🎶</span>}>
             <p className="text-sm text-foreground/80 leading-relaxed">{t(extras.culturalImportance, lang)}</p>
           </MuseumCatalogCard>
         </div>
       )}
+
+
 
       {extras?.historicalSignificance && (
         <MuseumCatalogCard accent="var(--primary)" eyebrow={significanceLabel} marker={<span aria-hidden>🏛️</span>}>
