@@ -187,27 +187,17 @@ function RegionPage() {
         }
       />
 
-      <MuseumCatalogCard
-        accent="var(--brand-gold-deep)"
-        eyebrow={identityLabel}
-        marker={<span aria-hidden>❖</span>}
-      >
-        <p className="leading-relaxed text-foreground/90">{t(region.summary, lang)}</p>
-        <p className="mt-2 text-sm font-semibold" style={{ color: "color-mix(in oklab, var(--brand-gold-deep) 85%, var(--foreground))" }}>
-          {focusLabel} · {t(region.focus, lang)}
-        </p>
-      </MuseumCatalogCard>
-
       {extras && (
         <div className="grid sm:grid-cols-2 gap-4">
-          <MuseumCatalogCard eyebrow={geographyLabel} marker={<span aria-hidden>⛰️</span>}>
+          <MuseumCatalogCard accent="var(--brand-gold-deep)" eyebrow={geographyLabel} marker={<span aria-hidden>⛰️</span>}>
             <p className="text-sm text-foreground/80 leading-relaxed">{t(extras.geography, lang)}</p>
           </MuseumCatalogCard>
-          <MuseumCatalogCard eyebrow={culturalLabel} marker={<span aria-hidden>🎶</span>}>
+          <MuseumCatalogCard accent="var(--brand-gold-deep)" eyebrow={culturalLabel} marker={<span aria-hidden>🎶</span>}>
             <p className="text-sm text-foreground/80 leading-relaxed">{t(extras.culturalImportance, lang)}</p>
           </MuseumCatalogCard>
         </div>
       )}
+
 
 
       {extras?.historicalSignificance && (
