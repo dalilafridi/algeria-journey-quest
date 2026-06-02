@@ -4,6 +4,8 @@ import { Header } from "@/components/Header";
 import { t, useLang, type Localized, type LocalizedString } from "@/lib/i18n";
 import { saveJourneyPlace } from "@/lib/continuity";
 import { AmazighSymbol } from "@/components/brand/AmazighSymbol";
+import { CollectionEmblem } from "@/components/figures/CollectionEmblem";
+import { CULTURE_TOPICS } from "@/data/cultureTopics";
 
 const L = (en: string, fr: string, ar: string): Localized<string> => ({ en, fr, ar });
 
@@ -501,6 +503,39 @@ function CulturePage() {
             ))}
           </div>
         </nav>
+
+        {/* Cultural exhibits — dedicated topic rooms */}
+        <section className="museum-stack">
+          <header>
+            <div className="museum-eyebrow">
+              {L("Cultural exhibits", "Expositions culturelles", "معارض ثقافية")[lang]}
+            </div>
+            <h2 className="museum-section-title mt-1">
+              {L("Enter a dedicated room", "Entrez dans une salle dédiée", "ادخل قاعة مخصّصة")[lang]}
+            </h2>
+          </header>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {CULTURE_TOPICS.map((topic) => (
+              <Link
+                key={topic.id}
+                to="/culture/$topicId"
+                params={{ topicId: topic.id }}
+                className="group museum-card flex items-start gap-3 hover:border-primary/40 transition"
+              >
+                <CollectionEmblem emblem={topic.emblem} size={48} />
+                <div className="min-w-0 flex-1">
+                  <h3 className="text-lg font-bold tracking-tight">{t(topic.title, lang)}</h3>
+                  <p className="mt-1 text-sm leading-snug text-muted-foreground line-clamp-2">
+                    {t(topic.tagline, lang)}
+                  </p>
+                </div>
+                <span aria-hidden className="self-center text-muted-foreground rtl:rotate-180">→</span>
+              </Link>
+            ))}
+          </div>
+        </section>
+
+
 
         {/* 1. Living traditions */}
         <Section id="traditions" eyebrow="01" title={C.traditions}>
