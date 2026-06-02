@@ -30,6 +30,7 @@ import { Route as JourneysJourneyIdRouteImport } from './routes/journeys.$journe
 import { Route as FiguresQuizRouteImport } from './routes/figures.quiz'
 import { Route as FiguresFigureIdRouteImport } from './routes/figures.$figureId'
 import { Route as EraEraIdRouteImport } from './routes/era.$eraId'
+import { Route as CultureTopicIdRouteImport } from './routes/culture.$topicId'
 import { Route as FiguresCollectionCollectionIdRouteImport } from './routes/figures.collection.$collectionId'
 
 const WordsRoute = WordsRouteImport.update({
@@ -137,6 +138,11 @@ const EraEraIdRoute = EraEraIdRouteImport.update({
   path: '/era/$eraId',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CultureTopicIdRoute = CultureTopicIdRouteImport.update({
+  id: '/$topicId',
+  path: '/$topicId',
+  getParentRoute: () => CultureRoute,
+} as any)
 const FiguresCollectionCollectionIdRoute =
   FiguresCollectionCollectionIdRouteImport.update({
     id: '/figures/collection/$collectionId',
@@ -149,7 +155,7 @@ export interface FileRoutesByFullPath {
   '/atlas': typeof AtlasRoute
   '/cinema': typeof CinemaRoute
   '/cuisine': typeof CuisineRoute
-  '/culture': typeof CultureRoute
+  '/culture': typeof CultureRouteWithChildren
   '/ideas': typeof IdeasRoute
   '/lessons': typeof LessonsRoute
   '/map': typeof MapRoute
@@ -159,6 +165,7 @@ export interface FileRoutesByFullPath {
   '/stargazing': typeof StargazingRoute
   '/timeline': typeof TimelineRoute
   '/words': typeof WordsRoute
+  '/culture/$topicId': typeof CultureTopicIdRoute
   '/era/$eraId': typeof EraEraIdRoute
   '/figures/$figureId': typeof FiguresFigureIdRoute
   '/figures/quiz': typeof FiguresQuizRoute
@@ -173,7 +180,7 @@ export interface FileRoutesByTo {
   '/atlas': typeof AtlasRoute
   '/cinema': typeof CinemaRoute
   '/cuisine': typeof CuisineRoute
-  '/culture': typeof CultureRoute
+  '/culture': typeof CultureRouteWithChildren
   '/ideas': typeof IdeasRoute
   '/lessons': typeof LessonsRoute
   '/map': typeof MapRoute
@@ -183,6 +190,7 @@ export interface FileRoutesByTo {
   '/stargazing': typeof StargazingRoute
   '/timeline': typeof TimelineRoute
   '/words': typeof WordsRoute
+  '/culture/$topicId': typeof CultureTopicIdRoute
   '/era/$eraId': typeof EraEraIdRoute
   '/figures/$figureId': typeof FiguresFigureIdRoute
   '/figures/quiz': typeof FiguresQuizRoute
@@ -198,7 +206,7 @@ export interface FileRoutesById {
   '/atlas': typeof AtlasRoute
   '/cinema': typeof CinemaRoute
   '/cuisine': typeof CuisineRoute
-  '/culture': typeof CultureRoute
+  '/culture': typeof CultureRouteWithChildren
   '/ideas': typeof IdeasRoute
   '/lessons': typeof LessonsRoute
   '/map': typeof MapRoute
@@ -208,6 +216,7 @@ export interface FileRoutesById {
   '/stargazing': typeof StargazingRoute
   '/timeline': typeof TimelineRoute
   '/words': typeof WordsRoute
+  '/culture/$topicId': typeof CultureTopicIdRoute
   '/era/$eraId': typeof EraEraIdRoute
   '/figures/$figureId': typeof FiguresFigureIdRoute
   '/figures/quiz': typeof FiguresQuizRoute
@@ -234,6 +243,7 @@ export interface FileRouteTypes {
     | '/stargazing'
     | '/timeline'
     | '/words'
+    | '/culture/$topicId'
     | '/era/$eraId'
     | '/figures/$figureId'
     | '/figures/quiz'
@@ -258,6 +268,7 @@ export interface FileRouteTypes {
     | '/stargazing'
     | '/timeline'
     | '/words'
+    | '/culture/$topicId'
     | '/era/$eraId'
     | '/figures/$figureId'
     | '/figures/quiz'
@@ -282,6 +293,7 @@ export interface FileRouteTypes {
     | '/stargazing'
     | '/timeline'
     | '/words'
+    | '/culture/$topicId'
     | '/era/$eraId'
     | '/figures/$figureId'
     | '/figures/quiz'
@@ -297,7 +309,7 @@ export interface RootRouteChildren {
   AtlasRoute: typeof AtlasRoute
   CinemaRoute: typeof CinemaRoute
   CuisineRoute: typeof CuisineRoute
-  CultureRoute: typeof CultureRoute
+  CultureRoute: typeof CultureRouteWithChildren
   IdeasRoute: typeof IdeasRoute
   LessonsRoute: typeof LessonsRoute
   MapRoute: typeof MapRoute
@@ -466,6 +478,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof EraEraIdRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/culture/$topicId': {
+      id: '/culture/$topicId'
+      path: '/$topicId'
+      fullPath: '/culture/$topicId'
+      preLoaderRoute: typeof CultureTopicIdRouteImport
+      parentRoute: typeof CultureRoute
+    }
     '/figures/collection/$collectionId': {
       id: '/figures/collection/$collectionId'
       path: '/figures/collection/$collectionId'
@@ -476,12 +495,23 @@ declare module '@tanstack/react-router' {
   }
 }
 
+interface CultureRouteChildren {
+  CultureTopicIdRoute: typeof CultureTopicIdRoute
+}
+
+const CultureRouteChildren: CultureRouteChildren = {
+  CultureTopicIdRoute: CultureTopicIdRoute,
+}
+
+const CultureRouteWithChildren =
+  CultureRoute._addFileChildren(CultureRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AtlasRoute: AtlasRoute,
   CinemaRoute: CinemaRoute,
   CuisineRoute: CuisineRoute,
-  CultureRoute: CultureRoute,
+  CultureRoute: CultureRouteWithChildren,
   IdeasRoute: IdeasRoute,
   LessonsRoute: LessonsRoute,
   MapRoute: MapRoute,
