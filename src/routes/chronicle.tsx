@@ -526,10 +526,9 @@ function ChroniclePage() {
               {/* Figure markers (above axis) */}
               {chronFigures.map((cf, i) => {
                 const x = yearToX(cf.year);
-                const isActive = eraOfCategory(cf.figure.category) === (
-                  bands.find((b) => b.id === activeEra)?.legend ?? eraOfCategory(cf.figure.category)
-                ) && cf.year >= (ERA_YEARS[activeEra]?.start ?? -Infinity) - 20
-                  && cf.year <= (ERA_YEARS[activeEra]?.end ?? Infinity) + 20;
+                const isActive =
+                  cf.year >= (ERA_YEARS[activeEra]?.start ?? -Infinity) - 20 &&
+                  cf.year <= (ERA_YEARS[activeEra]?.end ?? Infinity) + 20;
                 return (
                   <button
                     key={cf.figure.id}
