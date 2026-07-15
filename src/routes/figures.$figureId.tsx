@@ -25,6 +25,8 @@ import { EraBadge } from "@/components/brand/EraBadge";
 import { MedallionFrame } from "@/components/brand/MedallionFrame";
 import { CollectionEmblem } from "@/components/figures/CollectionEmblem";
 import { t, tu, useLang, type Lang, type LocalizedString } from "@/lib/i18n";
+import { AudioGuideButton } from "@/components/audio/AudioGuide";
+import type { AudioGuide } from "@/lib/audioGuide";
 import { StoryFlow, type StoryScene } from "@/components/story/StoryFlow";
 import { getCurator } from "@/data/curatorContent";
 import { saveJourneyPlace } from "@/lib/continuity";
@@ -246,6 +248,41 @@ function FigureDetail() {
           </MedallionFrame>
         }
       />
+
+      {(() => {
+        const segs: { id: string; text: string }[] = [
+          {
+            id: "intro",
+            text: `${t(f.displayName, lang)}. ${categoryDef ? t(categoryDef.label, lang) : t(f.regionLabel, lang)}. ${t(f.era, lang)}.`,
+          },
+        ];
+        if (curator?.note) segs.push({ id: "curator", text: t(curator.note, lang) });
+        segs.push({ id: "importance", text: t(f.importance, lang) });
+        if (meta?.modernRelevance)
+          segs.push({ id: "modern", text: t(meta.modernRelevance, lang) });
+        segs.push({ id: "story", text: t(f.story, lang) });
+        if (f.extended?.storyMode?.length) {
+          (f.extended.storyMode as LocalizedString[]).forEach((p, i) =>
+            segs.push({ id: `scene-${i}`, text: t(p, lang) }),
+          );
+        }
+        segs.push({ id: "fact", text: t(f.fact, lang) });
+        const guide: AudioGuide = {
+          id: `figure:${f.id}`,
+          title: t(f.displayName, lang),
+          subtitle: categoryDef ? t(categoryDef.label, lang) : t(f.regionLabel, lang),
+          segments: segs,
+        };
+        return (
+          <div className="flex justify-start -mt-2 mb-2">
+            <AudioGuideButton
+              guide={guide}
+              label={tri(lang, "Listen to this figure", "Écouter cette figure", "استمع إلى هذه الشخصية")}
+            />
+          </div>
+        );
+      })()}
+
 
       {curator?.note && (
         <MuseumCuratorNote

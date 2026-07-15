@@ -14,6 +14,8 @@ import { MuseumDock } from "@/components/MuseumDock";
 import { MotionReveal } from "@/components/MotionReveal";
 import { SearchOverlay } from "@/components/SearchOverlay";
 import { SkipLink, LangSync } from "@/components/A11y";
+import { AudioGuideProvider } from "@/lib/audioGuide";
+import { AudioMiniPlayer } from "@/components/audio/AudioGuide";
 import { getLang, tu } from "@/lib/i18n";
 
 
@@ -118,7 +120,7 @@ function RootComponent() {
   }, []);
 
   return (
-    <>
+    <AudioGuideProvider>
       <SkipLink />
       <LangSync />
       <SplashScreen />
@@ -133,8 +135,8 @@ function RootComponent() {
       <MuseumDock />
       <SearchOverlay />
       <MotionReveal />
+      <AudioMiniPlayer />
       <Sonner />
-
-    </>
+    </AudioGuideProvider>
   );
 }
