@@ -56,6 +56,7 @@ export function Header() {
     moments: { fr: "Moments", en: "Moments", ar: "لحظات" }[current],
     cuisine: { fr: "Cuisine", en: "Cuisine", ar: "المطبخ" }[current],
     cinema: { fr: "Cinéma", en: "Cinema", ar: "السينما" }[current],
+    football: { fr: "Football", en: "Football", ar: "كرة القدم" }[current],
     stargazing: { fr: "Astronomie Amazighe", en: "Amazigh Stargazing", ar: "علم الفلك الأمازيغي" }[current],
     appName: { fr: "Algeria Through Time", en: "Algeria Through Time", ar: "Algeria Through Time" }[current],
     myProgress: { fr: "Ma progression", en: "My Progress", ar: "تقدّمي" }[current],
@@ -90,6 +91,7 @@ export function Header() {
     { to: "/map" as const, label: T.regions, active: isRegions },
     { to: "/figures" as const, label: T.figures, active: isFigures },
     { to: "/culture" as const, label: T.culture, active: isCulture },
+    { to: "/football" as const, label: T.football, active: path.startsWith("/football") },
   ];
 
 
