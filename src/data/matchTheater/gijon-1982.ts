@@ -318,7 +318,7 @@ export const gijon1982: MatchTheater = {
     },
     { id: "ht", minute: 45, kind: "halftime", label: { en: "Half-time · 0–0", fr: "Mi-temps · 0–0", ar: "الاستراحة · ٠–٠" } },
     { id: "ft", minute: 90, kind: "fulltime", label: { en: "Full-time · Algeria 2–1 West Germany", fr: "Fin du match · Algérie 2–1 RFA", ar: "نهاية المباراة · الجزائر ٢–١ ألمانيا" } },
-  ]
+  ] satisfies MatchEvent[])
     // Keep events in strict minute order for the timeline.
     .sort((a, b) => a.minute - b.minute),
 
