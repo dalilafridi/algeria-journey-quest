@@ -147,6 +147,57 @@ function Timeline() {
           </div>
         </div>
 
+        {/* Interactive Chronicle invitation */}
+        <Link
+          to="/chronicle"
+          className="group relative block mb-8 overflow-hidden rounded-2xl border border-border animate-fade-in"
+          style={{
+            background:
+              "linear-gradient(120deg, #0b0906 0%, #14100a 55%, #1a130a 100%)",
+            boxShadow: "var(--shadow-glow), var(--shadow-soft)",
+          }}
+        >
+          <div
+            aria-hidden
+            className="absolute inset-0 opacity-30 pointer-events-none"
+            style={{
+              background:
+                "radial-gradient(600px 200px at 20% 0%, oklch(0.75 0.13 82 / 0.35), transparent 60%), radial-gradient(400px 200px at 90% 100%, oklch(0.65 0.12 78 / 0.25), transparent 60%)",
+            }}
+          />
+          <div className="relative flex items-center gap-4 p-4 sm:p-5">
+            <div
+              className="hidden sm:flex items-center justify-center w-14 h-14 rounded-full shrink-0"
+              style={{
+                background:
+                  "radial-gradient(circle at 30% 30%, oklch(0.9 0.11 82) 0%, oklch(0.55 0.11 70) 70%, oklch(0.3 0.05 55) 100%)",
+                color: "#1a120a",
+              }}
+            >
+              <Sparkles className="w-6 h-6" />
+            </div>
+            <div className="min-w-0 flex-1">
+              <div className="text-[10.5px] font-semibold uppercase tracking-[0.28em]" style={{ color: "oklch(0.82 0.13 82)" }}>
+                {lang === "fr" ? "Nouveau" : lang === "ar" ? "جديد" : "New"} · {lang === "fr" ? "Chronique interactive" : lang === "ar" ? "السجل التفاعلي" : "Interactive Chronicle"}
+              </div>
+              <div className="text-base sm:text-lg font-semibold text-[oklch(0.92_0.03_82)] mt-0.5">
+                {lang === "fr"
+                  ? "Faites glisser 3 000 ans d'histoire"
+                  : lang === "ar"
+                    ? "اسحب ثلاثة آلاف عام من التاريخ"
+                    : "Drag through 3,000 years of history"}
+              </div>
+            </div>
+            <span
+              className="shrink-0 inline-flex items-center gap-1 px-3.5 py-1.5 rounded-full text-xs font-semibold transition group-hover:scale-105"
+              style={{ background: "oklch(0.82 0.13 82)", color: "#1a120a" }}
+            >
+              {lang === "fr" ? "Ouvrir" : lang === "ar" ? "افتح" : "Open"}
+              <span aria-hidden className="rtl:rotate-180">→</span>
+            </span>
+          </div>
+        </Link>
+
         {/* Filter chips — horizontally scrollable on mobile to avoid wrapping */}
         <div className="-mx-4 px-4 mb-8 overflow-x-auto no-scrollbar">
           <div className="flex sm:flex-wrap sm:justify-center gap-2 w-max sm:w-auto mx-auto">
