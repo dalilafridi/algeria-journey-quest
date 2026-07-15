@@ -248,6 +248,16 @@ export function Header() {
                 <button
                   onClick={() => {
                     setProfileOpen(false);
+                    navigate({ to: "/passport" });
+                  }}
+                  className="w-full text-start px-3 py-2 text-sm text-foreground hover:bg-muted transition-colors flex items-center gap-2"
+                >
+                  <span aria-hidden>🛂</span>
+                  Visitor Passport
+                </button>
+                <button
+                  onClick={() => {
+                    setProfileOpen(false);
                     navigate({ to: "/profile" });
                   }}
                   className="w-full text-start px-3 py-2 text-sm text-foreground hover:bg-muted transition-colors"
