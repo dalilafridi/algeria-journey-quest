@@ -77,6 +77,7 @@ export const Route = createRootRoute({
       // when the user picks Arabic — keeps non-AR users from paying for it).
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
+      { rel: "icon", type: "image/svg+xml", href: "/favicon.svg" },
     ],
   }),
   shellComponent: RootShell,
