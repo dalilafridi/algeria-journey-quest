@@ -23,6 +23,7 @@ import { Route as FootballRouteImport } from './routes/football'
 import { Route as CultureRouteImport } from './routes/culture'
 import { Route as CuisineRouteImport } from './routes/cuisine'
 import { Route as CompareRouteImport } from './routes/compare'
+import { Route as ClubsRouteImport } from './routes/clubs'
 import { Route as CinemaRouteImport } from './routes/cinema'
 import { Route as ChronicleRouteImport } from './routes/chronicle'
 import { Route as AtlasRouteImport } from './routes/atlas'
@@ -109,6 +110,11 @@ const CompareRoute = CompareRouteImport.update({
   path: '/compare',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ClubsRoute = ClubsRouteImport.update({
+  id: '/clubs',
+  path: '/clubs',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const CinemaRoute = CinemaRouteImport.update({
   id: '/cinema',
   path: '/cinema',
@@ -191,6 +197,7 @@ export interface FileRoutesByFullPath {
   '/atlas': typeof AtlasRoute
   '/chronicle': typeof ChronicleRoute
   '/cinema': typeof CinemaRoute
+  '/clubs': typeof ClubsRoute
   '/compare': typeof CompareRoute
   '/cuisine': typeof CuisineRoute
   '/culture': typeof CultureRouteWithChildren
@@ -222,6 +229,7 @@ export interface FileRoutesByTo {
   '/atlas': typeof AtlasRoute
   '/chronicle': typeof ChronicleRoute
   '/cinema': typeof CinemaRoute
+  '/clubs': typeof ClubsRoute
   '/compare': typeof CompareRoute
   '/cuisine': typeof CuisineRoute
   '/culture': typeof CultureRouteWithChildren
@@ -254,6 +262,7 @@ export interface FileRoutesById {
   '/atlas': typeof AtlasRoute
   '/chronicle': typeof ChronicleRoute
   '/cinema': typeof CinemaRoute
+  '/clubs': typeof ClubsRoute
   '/compare': typeof CompareRoute
   '/cuisine': typeof CuisineRoute
   '/culture': typeof CultureRouteWithChildren
@@ -287,6 +296,7 @@ export interface FileRouteTypes {
     | '/atlas'
     | '/chronicle'
     | '/cinema'
+    | '/clubs'
     | '/compare'
     | '/cuisine'
     | '/culture'
@@ -318,6 +328,7 @@ export interface FileRouteTypes {
     | '/atlas'
     | '/chronicle'
     | '/cinema'
+    | '/clubs'
     | '/compare'
     | '/cuisine'
     | '/culture'
@@ -349,6 +360,7 @@ export interface FileRouteTypes {
     | '/atlas'
     | '/chronicle'
     | '/cinema'
+    | '/clubs'
     | '/compare'
     | '/cuisine'
     | '/culture'
@@ -381,6 +393,7 @@ export interface RootRouteChildren {
   AtlasRoute: typeof AtlasRoute
   ChronicleRoute: typeof ChronicleRoute
   CinemaRoute: typeof CinemaRoute
+  ClubsRoute: typeof ClubsRoute
   CompareRoute: typeof CompareRoute
   CuisineRoute: typeof CuisineRoute
   CultureRoute: typeof CultureRouteWithChildren
@@ -507,6 +520,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CompareRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/clubs': {
+      id: '/clubs'
+      path: '/clubs'
+      fullPath: '/clubs'
+      preLoaderRoute: typeof ClubsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/cinema': {
       id: '/cinema'
       path: '/cinema'
@@ -631,6 +651,7 @@ const rootRouteChildren: RootRouteChildren = {
   AtlasRoute: AtlasRoute,
   ChronicleRoute: ChronicleRoute,
   CinemaRoute: CinemaRoute,
+  ClubsRoute: ClubsRoute,
   CompareRoute: CompareRoute,
   CuisineRoute: CuisineRoute,
   CultureRoute: CultureRouteWithChildren,
