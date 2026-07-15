@@ -376,7 +376,7 @@ function AfricanSection({ club, lang }: { club: ClubMuseum; lang: Lang }) {
       </Plaque>
       <div className="mt-6 grid gap-3 sm:grid-cols-2">
         {a.finals.map((f) => (
-          <div key={`${f.year}-${f.competition.en}`} className="rounded-xl border p-4" style={{ borderColor: "oklch(0.7 0.1 75 / 0.3)" }}>
+          <div key={`${f.year}-${t(f.competition, "en")}`} className="rounded-xl border p-4" style={{ borderColor: "oklch(0.7 0.1 75 / 0.3)" }}>
             <div className="text-xs uppercase tracking-[0.24em] text-[oklch(0.85_0.14_82)]">{f.year}</div>
             <div className="text-base font-semibold mt-1" style={SERIF}>{t(f.competition, lang)}</div>
             <div className="text-sm mt-1">vs {t(f.opponent, lang)} — {f.score}</div>
