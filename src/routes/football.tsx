@@ -1,10 +1,11 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useMemo, useState } from "react";
 
 import { Header } from "@/components/Header";
 import { MedallionFrame } from "@/components/brand/MedallionFrame";
 import { useLang, type Lang, type LocalizedString } from "@/lib/i18n";
 import { useFootballBookmarks } from "@/lib/footballBookmarks";
+import { theaterIdForFootballMatch } from "@/data/matchTheater";
 import {
   AFCON_HISTORY,
   ARTIFACTS,
@@ -532,9 +533,46 @@ function GijonExhibit({ lang }: { lang: Lang }) {
           ))}
         </ol>
       </Plaque>
+
+      {/* Match Theater — reliving the earlier upset that made Gijón matter. */}
+      <div className="lg:col-span-2">
+        <Link
+          to="/theater/$matchId"
+          params={{ matchId: "gijon-1982" }}
+          className="group flex items-center justify-between gap-4 rounded-2xl border border-accent/40 bg-gradient-to-r from-accent/15 via-background/40 to-accent/10 p-4 transition hover:-translate-y-0.5 hover:border-accent"
+          style={{ boxShadow: "var(--shadow-soft)" }}
+        >
+          <div>
+            <div className="text-[10px] uppercase tracking-[0.28em] text-accent-foreground/80" style={SERIF}>
+              {{ en: "Match Theater", fr: "Théâtre du match", ar: "مسرح المباراة" }[lang]}
+            </div>
+            <div className="mt-1 text-base font-semibold text-foreground" style={SERIF}>
+              {{
+                en: "Relive Algeria 2–1 West Germany · 16 June 1982",
+                fr: "Revivez Algérie 2–1 RFA · 16 juin 1982",
+                ar: "أعِد عيش الجزائر ٢–١ ألمانيا الغربية · ١٦ يونيو ١٩٨٢",
+              }[lang]}
+            </div>
+            <div className="mt-0.5 text-xs text-muted-foreground">
+              {{
+                en: "The upset that preceded — and framed — the Shame of Gijón.",
+                fr: "L'exploit qui a précédé — et éclairé — la Honte de Gijón.",
+                ar: "المفاجأة التي سبقت فضيحة خيخون وأضاءت سياقها.",
+              }[lang]}
+            </div>
+          </div>
+          <span
+            aria-hidden
+            className="rounded-full bg-accent px-3 py-1.5 text-sm font-bold text-accent-foreground transition group-hover:translate-x-0.5"
+          >
+            →
+          </span>
+        </Link>
+      </div>
     </div>
   );
 }
+
 
 function TeamBlock({ name, flag }: { name: string; flag: string }) {
   return (
@@ -701,38 +739,52 @@ function MatchesExhibit({ lang }: { lang: Lang }) {
   const { has, toggle } = useFootballBookmarks("matches");
   return (
     <div className="grid gap-4 md:grid-cols-2">
-      {FAMOUS_MATCHES.map((m) => (
-        <article
-          key={m.id}
-          className="rounded-2xl border border-border bg-card p-5 transition hover:-translate-y-0.5"
-          style={{ boxShadow: "var(--shadow-soft)" }}
-        >
-          <div className="flex items-baseline justify-between gap-3">
-            <div className="min-w-0">
-              <div className="text-xs uppercase tracking-widest text-muted-foreground">{m.date}</div>
-              <h3 className="mt-1 text-lg font-semibold truncate" style={SERIF}>{m.title}</h3>
-              <div className="text-xs text-muted-foreground">{m.venue}</div>
+      {FAMOUS_MATCHES.map((m) => {
+        const theaterId = theaterIdForFootballMatch(m.id);
+        return (
+          <article
+            key={m.id}
+            className="rounded-2xl border border-border bg-card p-5 transition hover:-translate-y-0.5"
+            style={{ boxShadow: "var(--shadow-soft)" }}
+          >
+            <div className="flex items-baseline justify-between gap-3">
+              <div className="min-w-0">
+                <div className="text-xs uppercase tracking-widest text-muted-foreground">{m.date}</div>
+                <h3 className="mt-1 text-lg font-semibold truncate" style={SERIF}>{m.title}</h3>
+                <div className="text-xs text-muted-foreground">{m.venue}</div>
+              </div>
+              <div className="text-right">
+                <div className="font-mono text-2xl font-bold text-accent-foreground" style={SERIF}>{m.score}</div>
+                <button
+                  type="button"
+                  onClick={() => toggle(m.id)}
+                  aria-label={has(m.id) ? "Unbookmark" : "Bookmark match"}
+                  className={
+                    "mt-1 inline-flex items-center justify-center w-8 h-8 rounded-full border transition " +
+                    (has(m.id)
+                      ? "bg-accent text-accent-foreground border-accent"
+                      : "border-border text-muted-foreground hover:text-foreground")
+                  }
+                >
+                  {has(m.id) ? "★" : "☆"}
+                </button>
+              </div>
             </div>
-            <div className="text-right">
-              <div className="font-mono text-2xl font-bold text-accent-foreground" style={SERIF}>{m.score}</div>
-              <button
-                type="button"
-                onClick={() => toggle(m.id)}
-                aria-label={has(m.id) ? "Unbookmark" : "Bookmark match"}
-                className={
-                  "mt-1 inline-flex items-center justify-center w-8 h-8 rounded-full border transition " +
-                  (has(m.id)
-                    ? "bg-accent text-accent-foreground border-accent"
-                    : "border-border text-muted-foreground hover:text-foreground")
-                }
+            <p className="mt-3 text-sm text-foreground/85" style={SERIF}>{tt(m.note, lang)}</p>
+            {theaterId && (
+              <Link
+                to="/theater/$matchId"
+                params={{ matchId: theaterId }}
+                className="mt-4 inline-flex items-center gap-2 rounded-full border border-accent/50 bg-accent/10 px-3 py-1.5 text-xs font-semibold text-accent-foreground transition hover:bg-accent/20"
+                style={SERIF}
               >
-                {has(m.id) ? "★" : "☆"}
-              </button>
-            </div>
-          </div>
-          <p className="mt-3 text-sm text-foreground/85" style={SERIF}>{tt(m.note, lang)}</p>
-        </article>
-      ))}
+                {{ en: "Enter Match Theater", fr: "Entrer dans le Théâtre du match", ar: "ادخل مسرح المباراة" }[lang]}
+                <span aria-hidden>→</span>
+              </Link>
+            )}
+          </article>
+        );
+      })}
     </div>
   );
 }

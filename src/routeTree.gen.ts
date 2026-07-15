@@ -28,6 +28,7 @@ import { Route as ChronicleRouteImport } from './routes/chronicle'
 import { Route as AtlasRouteImport } from './routes/atlas'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as FiguresIndexRouteImport } from './routes/figures.index'
+import { Route as TheaterMatchIdRouteImport } from './routes/theater.$matchId'
 import { Route as RegionRegionIdRouteImport } from './routes/region.$regionId'
 import { Route as QuizEraIdRouteImport } from './routes/quiz.$eraId'
 import { Route as JourneysJourneyIdRouteImport } from './routes/journeys.$journeyId'
@@ -133,6 +134,11 @@ const FiguresIndexRoute = FiguresIndexRouteImport.update({
   path: '/figures/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const TheaterMatchIdRoute = TheaterMatchIdRouteImport.update({
+  id: '/theater/$matchId',
+  path: '/theater/$matchId',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const RegionRegionIdRoute = RegionRegionIdRouteImport.update({
   id: '/region/$regionId',
   path: '/region/$regionId',
@@ -207,6 +213,7 @@ export interface FileRoutesByFullPath {
   '/journeys/$journeyId': typeof JourneysJourneyIdRoute
   '/quiz/$eraId': typeof QuizEraIdRoute
   '/region/$regionId': typeof RegionRegionIdRoute
+  '/theater/$matchId': typeof TheaterMatchIdRoute
   '/figures/': typeof FiguresIndexRoute
   '/figures/collection/$collectionId': typeof FiguresCollectionCollectionIdRoute
 }
@@ -237,6 +244,7 @@ export interface FileRoutesByTo {
   '/journeys/$journeyId': typeof JourneysJourneyIdRoute
   '/quiz/$eraId': typeof QuizEraIdRoute
   '/region/$regionId': typeof RegionRegionIdRoute
+  '/theater/$matchId': typeof TheaterMatchIdRoute
   '/figures': typeof FiguresIndexRoute
   '/figures/collection/$collectionId': typeof FiguresCollectionCollectionIdRoute
 }
@@ -268,6 +276,7 @@ export interface FileRoutesById {
   '/journeys/$journeyId': typeof JourneysJourneyIdRoute
   '/quiz/$eraId': typeof QuizEraIdRoute
   '/region/$regionId': typeof RegionRegionIdRoute
+  '/theater/$matchId': typeof TheaterMatchIdRoute
   '/figures/': typeof FiguresIndexRoute
   '/figures/collection/$collectionId': typeof FiguresCollectionCollectionIdRoute
 }
@@ -300,6 +309,7 @@ export interface FileRouteTypes {
     | '/journeys/$journeyId'
     | '/quiz/$eraId'
     | '/region/$regionId'
+    | '/theater/$matchId'
     | '/figures/'
     | '/figures/collection/$collectionId'
   fileRoutesByTo: FileRoutesByTo
@@ -330,6 +340,7 @@ export interface FileRouteTypes {
     | '/journeys/$journeyId'
     | '/quiz/$eraId'
     | '/region/$regionId'
+    | '/theater/$matchId'
     | '/figures'
     | '/figures/collection/$collectionId'
   id:
@@ -360,6 +371,7 @@ export interface FileRouteTypes {
     | '/journeys/$journeyId'
     | '/quiz/$eraId'
     | '/region/$regionId'
+    | '/theater/$matchId'
     | '/figures/'
     | '/figures/collection/$collectionId'
   fileRoutesById: FileRoutesById
@@ -390,6 +402,7 @@ export interface RootRouteChildren {
   JourneysJourneyIdRoute: typeof JourneysJourneyIdRoute
   QuizEraIdRoute: typeof QuizEraIdRoute
   RegionRegionIdRoute: typeof RegionRegionIdRoute
+  TheaterMatchIdRoute: typeof TheaterMatchIdRoute
   FiguresIndexRoute: typeof FiguresIndexRoute
   FiguresCollectionCollectionIdRoute: typeof FiguresCollectionCollectionIdRoute
 }
@@ -529,6 +542,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof FiguresIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/theater/$matchId': {
+      id: '/theater/$matchId'
+      path: '/theater/$matchId'
+      fullPath: '/theater/$matchId'
+      preLoaderRoute: typeof TheaterMatchIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/region/$regionId': {
       id: '/region/$regionId'
       path: '/region/$regionId'
@@ -632,6 +652,7 @@ const rootRouteChildren: RootRouteChildren = {
   JourneysJourneyIdRoute: JourneysJourneyIdRoute,
   QuizEraIdRoute: QuizEraIdRoute,
   RegionRegionIdRoute: RegionRegionIdRoute,
+  TheaterMatchIdRoute: TheaterMatchIdRoute,
   FiguresIndexRoute: FiguresIndexRoute,
   FiguresCollectionCollectionIdRoute: FiguresCollectionCollectionIdRoute,
 }

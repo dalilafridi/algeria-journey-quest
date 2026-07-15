@@ -216,6 +216,42 @@ export function computeStamps(state?: PassportState): Stamp[] {
     });
   }
 
+  // Match Theater stamps — awarded when the visitor reaches the final whistle.
+  // Recorded via `recordVisit("culture", "theater:<matchId>")` from
+  // src/lib/matchTheaterState.ts, so each theater completion contributes
+  // one dedicated stamp regardless of the culture-count milestones above.
+  const theaterStamps: {
+    visitId: string;
+    id: string;
+    title: LocalizedString;
+    hint: LocalizedString;
+  }[] = [
+    {
+      visitId: "theater:gijon-1982",
+      id: "witness-gijon-1982",
+      title: {
+        en: "Witness to Gijón — 1982",
+        fr: "Témoin de Gijón — 1982",
+        ar: "شاهد على خيخون — ١٩٨٢",
+      },
+      hint: {
+        en: "Complete the Match Theater experience of Algeria 2–1 West Germany.",
+        fr: "Terminer l'expérience Match Theater de Algérie 2–1 RFA.",
+        ar: "أكمل تجربة مسرح المباراة للجزائر ٢–١ ألمانيا.",
+      },
+    },
+  ];
+  for (const ts of theaterStamps) {
+    const earned = p.visits.culture.includes(ts.visitId);
+    stamps.push({
+      id: ts.id,
+      title: ts.title,
+      hint: ts.hint,
+      earned,
+      progress: earned ? 1 : 0,
+    });
+  }
+
   // Voidremove unused reference
   void CATEGORY_STAMPS;
 
