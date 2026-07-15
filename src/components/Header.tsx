@@ -248,6 +248,16 @@ export function Header() {
                 <button
                   onClick={() => {
                     setProfileOpen(false);
+                    navigate({ to: "/passport" });
+                  }}
+                  className="w-full text-start px-3 py-2 text-sm text-foreground hover:bg-muted transition-colors flex items-center gap-2"
+                >
+                  <span aria-hidden>🛂</span>
+                  Visitor Passport
+                </button>
+                <button
+                  onClick={() => {
+                    setProfileOpen(false);
                     navigate({ to: "/profile" });
                   }}
                   className="w-full text-start px-3 py-2 text-sm text-foreground hover:bg-muted transition-colors"
@@ -327,6 +337,14 @@ export function Header() {
                 <circle cx="12" cy="7" r="4" />
               </svg>
               {T.myProgress}
+            </Link>
+            <Link
+              to="/passport"
+              onClick={() => setMenuOpen(false)}
+              className="px-3 py-3 rounded-xl text-base font-medium text-foreground hover:bg-muted active:bg-muted transition flex items-center gap-2"
+            >
+              <span aria-hidden>🛂</span>
+              Visitor Passport
             </Link>
             <button
               onClick={openAbout}

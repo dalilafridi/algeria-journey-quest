@@ -14,6 +14,7 @@ import { Route as TimelineRouteImport } from './routes/timeline'
 import { Route as StargazingRouteImport } from './routes/stargazing'
 import { Route as ShowcaseRouteImport } from './routes/showcase'
 import { Route as ProfileRouteImport } from './routes/profile'
+import { Route as PassportRouteImport } from './routes/passport'
 import { Route as MomentsRouteImport } from './routes/moments'
 import { Route as MapRouteImport } from './routes/map'
 import { Route as LessonsRouteImport } from './routes/lessons'
@@ -58,6 +59,11 @@ const ShowcaseRoute = ShowcaseRouteImport.update({
 const ProfileRoute = ProfileRouteImport.update({
   id: '/profile',
   path: '/profile',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PassportRoute = PassportRouteImport.update({
+  id: '/passport',
+  path: '/passport',
   getParentRoute: () => rootRouteImport,
 } as any)
 const MomentsRoute = MomentsRouteImport.update({
@@ -173,6 +179,7 @@ export interface FileRoutesByFullPath {
   '/lessons': typeof LessonsRoute
   '/map': typeof MapRoute
   '/moments': typeof MomentsRoute
+  '/passport': typeof PassportRoute
   '/profile': typeof ProfileRoute
   '/showcase': typeof ShowcaseRoute
   '/stargazing': typeof StargazingRoute
@@ -200,6 +207,7 @@ export interface FileRoutesByTo {
   '/lessons': typeof LessonsRoute
   '/map': typeof MapRoute
   '/moments': typeof MomentsRoute
+  '/passport': typeof PassportRoute
   '/profile': typeof ProfileRoute
   '/showcase': typeof ShowcaseRoute
   '/stargazing': typeof StargazingRoute
@@ -228,6 +236,7 @@ export interface FileRoutesById {
   '/lessons': typeof LessonsRoute
   '/map': typeof MapRoute
   '/moments': typeof MomentsRoute
+  '/passport': typeof PassportRoute
   '/profile': typeof ProfileRoute
   '/showcase': typeof ShowcaseRoute
   '/stargazing': typeof StargazingRoute
@@ -257,6 +266,7 @@ export interface FileRouteTypes {
     | '/lessons'
     | '/map'
     | '/moments'
+    | '/passport'
     | '/profile'
     | '/showcase'
     | '/stargazing'
@@ -284,6 +294,7 @@ export interface FileRouteTypes {
     | '/lessons'
     | '/map'
     | '/moments'
+    | '/passport'
     | '/profile'
     | '/showcase'
     | '/stargazing'
@@ -311,6 +322,7 @@ export interface FileRouteTypes {
     | '/lessons'
     | '/map'
     | '/moments'
+    | '/passport'
     | '/profile'
     | '/showcase'
     | '/stargazing'
@@ -339,6 +351,7 @@ export interface RootRouteChildren {
   LessonsRoute: typeof LessonsRoute
   MapRoute: typeof MapRoute
   MomentsRoute: typeof MomentsRoute
+  PassportRoute: typeof PassportRoute
   ProfileRoute: typeof ProfileRoute
   ShowcaseRoute: typeof ShowcaseRoute
   StargazingRoute: typeof StargazingRoute
@@ -390,6 +403,13 @@ declare module '@tanstack/react-router' {
       path: '/profile'
       fullPath: '/profile'
       preLoaderRoute: typeof ProfileRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/passport': {
+      id: '/passport'
+      path: '/passport'
+      fullPath: '/passport'
+      preLoaderRoute: typeof PassportRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/moments': {
@@ -557,6 +577,7 @@ const rootRouteChildren: RootRouteChildren = {
   LessonsRoute: LessonsRoute,
   MapRoute: MapRoute,
   MomentsRoute: MomentsRoute,
+  PassportRoute: PassportRoute,
   ProfileRoute: ProfileRoute,
   ShowcaseRoute: ShowcaseRoute,
   StargazingRoute: StargazingRoute,
