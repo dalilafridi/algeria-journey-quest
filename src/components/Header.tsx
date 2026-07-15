@@ -133,7 +133,7 @@ export function Header() {
     { label: { fr: "Musées des Clubs", en: "Club Museums", ar: "متاحف الأندية" }[current], to: "/clubs", isActive: () => path.startsWith("/clubs") },
   ];
 
-
+  const handleReset = () => {
     if (typeof window !== "undefined" && window.confirm(T.confirmReset)) {
       resetAllQuizProgress();
     }
