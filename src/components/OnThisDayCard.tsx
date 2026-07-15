@@ -264,7 +264,7 @@ function Medallion({ emoji, size = 96 }: { emoji: string; size?: number }) {
 function PostcardModal({ entry, onClose }: { entry: OnThisDayEntry; onClose: () => void }) {
   const { lang, T } = useTt();
   const [copied, setCopied] = useState(false);
-  const canvasRef = useRef<HTMLCanvasElement>(null);
+  
 
   const dateLabel = formatDate(entry, lang);
   const caption =
