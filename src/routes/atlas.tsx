@@ -226,6 +226,31 @@ function AtlasPage() {
           <p className="mt-2 text-xs text-muted-foreground italic">{T.legend}</p>
         </div>
 
+        {/* Historical overlay selector */}
+        <div className="mb-6">
+          <div className="museum-eyebrow mb-2">{T.overlayLabel}</div>
+          <div className="flex gap-1.5 overflow-x-auto no-scrollbar pb-1 -mx-1 px-1">
+            <LayerChip
+              active={periodId === null}
+              onClick={() => setPeriodId(null)}
+              emoji="◯"
+              label={T.overlayOff}
+            />
+            {ATLAS_PERIODS.map((p) => (
+              <LayerChip
+                key={p.id}
+                active={periodId === p.id}
+                onClick={() => setPeriodId(p.id)}
+                emoji="◈"
+                label={t(p.name, lang)}
+                accent={p.id === periodId ? p.color : undefined}
+              />
+            ))}
+          </div>
+          <p className="mt-2 text-xs text-muted-foreground italic">{T.overlayLegend}</p>
+        </div>
+
+
         <div className="grid lg:grid-cols-[1.15fr_1fr] gap-6 lg:gap-8 items-start">
           {/* MAP */}
           <div
