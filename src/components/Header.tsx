@@ -346,6 +346,15 @@ export function Header() {
               <span aria-hidden>🛂</span>
               Visitor Passport
             </Link>
+            <Link
+              to="/compare"
+              search={{ kind: "figures" }}
+              onClick={() => setMenuOpen(false)}
+              className="px-3 py-3 rounded-xl text-base font-medium text-foreground hover:bg-muted active:bg-muted transition flex items-center gap-2"
+            >
+              <span aria-hidden>⚖️</span>
+              Compare Mode
+            </Link>
             <button
               onClick={openAbout}
               className="text-start px-3 py-3 rounded-xl text-base font-medium text-foreground hover:bg-muted transition flex items-center gap-2"
