@@ -49,6 +49,7 @@ import {
   type TimelineStop,
   type RelatedItem,
 } from "@/components/museum/MuseumCatalog";
+import { CuratorRecommendations } from "@/components/CuratorRecommendations";
 
 const SERIF = "Georgia, 'Times New Roman', serif";
 
