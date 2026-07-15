@@ -89,8 +89,8 @@ const SUGGESTIONS: Record<Kind, { a: string; b: string }[]> = {
 
 function ComparePage() {
   const lang = useLang();
-  const { kind, a, b } = Route.useSearch();
-  const navigate = useNavigate({ from: "/compare" });
+  const search = Route.useSearch() as CompareSearch;
+  const { kind, a, b } = search;
 
   const setSearch = (patch: Partial<CompareSearch>) =>
     navigate({ search: (prev: CompareSearch) => ({ ...prev, ...patch }) });
