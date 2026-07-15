@@ -193,6 +193,7 @@ export function AskCurator() {
             color: PARCHMENT,
           }}
         >
+          <SheetTitle className="sr-only">{copy.title}</SheetTitle>
           {/* Header */}
           <div
             className="flex items-start gap-3 px-5 pt-5 pb-4"
