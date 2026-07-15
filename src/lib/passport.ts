@@ -119,9 +119,9 @@ export function computeStamps(state?: PassportState): Stamp[] {
     stamps.push({
       id: `era-complete-${era.id}`,
       title: {
-        en: `Completed ${era.title.en}`,
-        fr: `Terminé : ${era.title.fr}`,
-        ar: `أتممت: ${era.title.ar}`,
+        en: `Completed ${t(era.title, "en")}`,
+        fr: `Terminé : ${t(era.title, "fr")}`,
+        ar: `أتممت: ${t(era.title, "ar")}`,
       },
       hint: {
         en: "Pass the era quiz",
@@ -139,9 +139,9 @@ export function computeStamps(state?: PassportState): Stamp[] {
     stamps.push({
       id: `region-visit-${region.id}`,
       title: {
-        en: `Explored ${region.name.en}`,
-        fr: `Exploré : ${region.name.fr}`,
-        ar: `استكشفت: ${region.name.ar}`,
+        en: `Explored ${t(region.name, "en")}`,
+        fr: `Exploré : ${t(region.name, "fr")}`,
+        ar: `استكشفت: ${t(region.name, "ar")}`,
       },
       hint: {
         en: "Visit the region exhibit",
