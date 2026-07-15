@@ -513,6 +513,7 @@ function AtlasPage() {
 
                 );
               })}
+              </g>
             </svg>
 
             {/* Hint badge */}
