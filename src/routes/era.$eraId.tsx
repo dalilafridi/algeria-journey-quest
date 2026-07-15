@@ -358,6 +358,8 @@ function EraPage() {
           />
         }
       />
+      <CuratorRecommendations kind="era" id={era.id} />
+      <div className="h-16" />
     </>
   );
 }
