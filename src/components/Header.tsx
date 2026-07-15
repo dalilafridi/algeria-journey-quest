@@ -93,6 +93,7 @@ export function Header() {
     { to: "/figures" as const, label: T.figures, active: isFigures },
     { to: "/culture" as const, label: T.culture, active: isCulture },
     { to: "/football" as const, label: T.football, active: path.startsWith("/football") },
+    { to: "/clubs" as const, label: T.clubs, active: path.startsWith("/clubs") },
   ];
 
 
