@@ -366,7 +366,7 @@ function PostcardModal({ entry, onClose }: { entry: OnThisDayEntry; onClose: () 
           </button>
         </div>
 
-        <canvas ref={canvasRef} className="hidden" />
+        
       </div>
     </div>
   );
