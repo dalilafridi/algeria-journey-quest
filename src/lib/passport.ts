@@ -3,7 +3,7 @@ import { eras } from "@/data/eras";
 import { figures } from "@/data/figures";
 import { mapRegions } from "@/data/mapRegions";
 import { getProgress } from "@/lib/progress";
-import type { LocalizedString } from "@/lib/i18n";
+import { t, type LocalizedString } from "@/lib/i18n";
 
 const KEY = "algeria-passport-v1";
 
