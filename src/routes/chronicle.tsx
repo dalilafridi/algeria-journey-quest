@@ -31,7 +31,6 @@ export const Route = createFileRoute("/chronicle")({
 
 type EraBand = {
   id: string;
-  legend: LegendEra;
   badge: EraBadgeKind;
   start: number; // negative = BC
   end: number;
