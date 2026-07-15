@@ -93,7 +93,7 @@ function ComparePage() {
   const navigate = useNavigate({ from: "/compare" });
 
   const setSearch = (patch: Partial<CompareSearch>) =>
-    navigate({ search: (prev) => ({ ...(prev as CompareSearch), ...patch }) });
+    navigate({ search: (prev: CompareSearch) => ({ ...prev, ...patch }) });
 
   const options = useMemo(() => buildOptions(kind, lang), [kind, lang]);
   const T = (k: keyof typeof TXT) => t(TXT[k], lang);
