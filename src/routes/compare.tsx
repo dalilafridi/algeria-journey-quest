@@ -91,6 +91,7 @@ function ComparePage() {
   const lang = useLang();
   const search = Route.useSearch() as CompareSearch;
   const { kind, a, b } = search;
+  const navigate = useNavigate({ from: "/compare" });
 
   const setSearch = (patch: Partial<CompareSearch>) =>
     navigate({ search: (prev: CompareSearch) => ({ ...prev, ...patch }) });
