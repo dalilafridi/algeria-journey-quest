@@ -221,7 +221,7 @@ function TheaterRoute() {
                         )}
                       </div>
                       <div className="grid gap-2">
-                        {lineup.starting.map((p) => (
+                        {lineup.starting.map((p: LineupPlayer) => (
                           <PlayerPlaque key={p.id} player={p} onSelect={setOpenPlayer} />
                         ))}
                       </div>
@@ -231,7 +231,7 @@ function TheaterRoute() {
                             {tt(heading.subs, lang)}
                           </div>
                           <div className="mt-2 grid gap-2">
-                            {lineup.substitutes.map((p) => (
+                            {lineup.substitutes.map((p: LineupPlayer) => (
                               <PlayerPlaque
                                 key={p.id}
                                 player={p}
