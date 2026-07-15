@@ -139,6 +139,7 @@ function RootComponent() {
       <MotionReveal />
       <AudioMiniPlayer />
       <AskCurator />
+      <PassportTracker />
       <Sonner />
     </AudioGuideProvider>
   );
