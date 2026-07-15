@@ -6,6 +6,9 @@ import { mapRegions } from "@/data/mapRegions";
 import { regionExtras } from "@/data/regionExtras";
 import { eras } from "@/data/eras";
 import { figures } from "@/data/figures";
+import { ATLAS_PERIODS, getPeriod } from "@/data/atlasPeriods";
+import { HistoricalOverlay } from "@/components/atlas/HistoricalOverlay";
+import { HistoricalPeriodPanel } from "@/components/atlas/HistoricalPeriodPanel";
 import { t, useLang, type LocalizedString } from "@/lib/i18n";
 import { saveJourneyPlace } from "@/lib/continuity";
 
@@ -89,6 +92,8 @@ function AtlasPage() {
   const [layer, setLayer] = useState<LayerId>("all");
   const [selected, setSelected] = useState<string | null>(null);
   const [hovered, setHovered] = useState<string | null>(null);
+  const [periodId, setPeriodId] = useState<string | null>(null);
+  const activePeriod = getPeriod(periodId);
 
   useEffect(() => {
     saveJourneyPlace({
@@ -156,6 +161,20 @@ function AtlasPage() {
         : lang === "ar"
           ? "اختر منطقة من الخريطة لكشف قصتها."
           : "Select a region on the map to reveal its story.",
+    overlayLabel:
+      lang === "fr"
+        ? "Superposition historique"
+        : lang === "ar"
+          ? "طبقة تاريخية"
+          : "Historical overlay",
+    overlayOff:
+      lang === "fr" ? "Aucune" : lang === "ar" ? "بلا طبقة" : "No overlay",
+    overlayLegend:
+      lang === "fr"
+        ? "Superposez un royaume, un califat ou une république sur la carte."
+        : lang === "ar"
+          ? "اعرض مملكة أو خلافة أو جمهورية على الخريطة."
+          : "Overlay a kingdom, caliphate or republic onto the map.",
   };
 
   return (
@@ -206,6 +225,31 @@ function AtlasPage() {
           </div>
           <p className="mt-2 text-xs text-muted-foreground italic">{T.legend}</p>
         </div>
+
+        {/* Historical overlay selector */}
+        <div className="mb-6">
+          <div className="museum-eyebrow mb-2">{T.overlayLabel}</div>
+          <div className="flex gap-1.5 overflow-x-auto no-scrollbar pb-1 -mx-1 px-1">
+            <LayerChip
+              active={periodId === null}
+              onClick={() => setPeriodId(null)}
+              emoji="◯"
+              label={T.overlayOff}
+            />
+            {ATLAS_PERIODS.map((p) => (
+              <LayerChip
+                key={p.id}
+                active={periodId === p.id}
+                onClick={() => setPeriodId(p.id)}
+                emoji="◈"
+                label={t(p.name, lang)}
+                accent={p.id === periodId ? p.color : undefined}
+              />
+            ))}
+          </div>
+          <p className="mt-2 text-xs text-muted-foreground italic">{T.overlayLegend}</p>
+        </div>
+
 
         <div className="grid lg:grid-cols-[1.15fr_1fr] gap-6 lg:gap-8 items-start">
           {/* MAP */}
@@ -375,9 +419,16 @@ function AtlasPage() {
                 S A H A R A  ·  T A S S I L I  ·  H O G G A R
               </text>
 
-
+              {/* Historical overlay layers (always mounted for crossfade) */}
+              <HistoricalOverlay activeId={periodId} lang={lang} />
 
               {/* Region pins */}
+              <g
+                style={{
+                  opacity: activePeriod ? 0.28 : 1,
+                  transition: "opacity 520ms ease",
+                }}
+              >
               {mapRegions.map((r) => {
                 const p = REGION_POINTS[r.id];
                 if (!p) return null;
@@ -462,6 +513,7 @@ function AtlasPage() {
 
                 );
               })}
+              </g>
             </svg>
 
             {/* Hint badge */}
@@ -473,10 +525,17 @@ function AtlasPage() {
           </div>
 
           {/* INFO PANEL */}
-          <aside className="lg:sticky lg:top-24">
+          <aside className="lg:sticky lg:top-24 space-y-4">
+            {activePeriod && (
+              <HistoricalPeriodPanel
+                period={activePeriod}
+                lang={lang}
+                onClose={() => setPeriodId(null)}
+              />
+            )}
             {activeRegion ? (
               <RegionPanel region={activeRegion} lang={lang} labels={T} />
-            ) : (
+            ) : activePeriod ? null : (
               <EmptyPanel lang={lang} message={T.pickRegion} />
             )}
           </aside>
@@ -491,16 +550,22 @@ function AtlasPage() {
  * ============================================================ */
 
 function LayerChip({
-  active, onClick, emoji, label,
-}: { active: boolean; onClick: () => void; emoji: string; label: string }) {
+  active, onClick, emoji, label, accent,
+}: { active: boolean; onClick: () => void; emoji: string; label: string; accent?: string }) {
+  const activeStyle = active && accent
+    ? { background: accent, borderColor: accent, color: "#fff" }
+    : undefined;
   return (
     <button
       onClick={onClick}
+      style={activeStyle}
       className={
         "shrink-0 inline-flex items-center gap-1.5 px-3.5 py-2.5 min-h-[44px] rounded-full text-xs font-semibold border transition whitespace-nowrap " +
-        (active
+        (active && !accent
           ? "bg-primary text-primary-foreground border-primary shadow-sm"
-          : "bg-card text-muted-foreground border-border hover:text-foreground hover:border-primary/40")
+          : !active
+            ? "bg-card text-muted-foreground border-border hover:text-foreground hover:border-primary/40"
+            : "shadow-sm")
       }
     >
       <span aria-hidden>{emoji}</span>
