@@ -15,7 +15,7 @@ import { DefaultChatTransport, type UIMessage } from "ai";
 import { Send, X, Sparkles, RotateCcw } from "lucide-react";
 import { useEffect, useMemo, useRef, useState } from "react";
 import ReactMarkdown from "react-markdown";
-import { Sheet, SheetContent } from "@/components/ui/sheet";
+import { Sheet, SheetContent, SheetTitle } from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
 import { useLang } from "@/lib/i18n";
 
