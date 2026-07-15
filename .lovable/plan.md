@@ -1,102 +1,130 @@
-## Goal
 
-Turn `/figures` from a bio list into a **connected cultural archive**: cinematic intro lines, "Why they matter today," theme pills, related-figures network, culture/region links, and a graceful audio-archive placeholder — without redesigning anything.
+## Match Theater — plan
 
-## Scope (no destructive changes)
+A reusable cinematic "museum theater" for reliving historic Algerian matches. First experience: **Algeria 2–1 West Germany, 16 June 1982, El Molinón, Gijón**. Additional matches will later be added by dropping a new data file into `src/data/matchTheater/`.
 
-- Keep all 104 figures, current visual identity, premium tones, and routing.
-- All new fields are **optional**, so figures without curated meta degrade gracefully.
-- Strictly additive UI sections; no removed sections.
+### 1. Route
 
----
+- **New route file** `src/routes/theater.$matchId.tsx`
+  - Params: `matchId` (e.g. `gijon-1982`)
+  - Loads match data from a registry; 404 via existing `notFoundComponent` pattern if unknown.
+  - Preserves progress in `localStorage` (`dz-theater-<matchId>-state`) so leaving and returning restores the current minute, tactical/gallery pane, and completion flags.
+  - Entry from the existing Football wing: the Gijón / Famous Matches cards on `/football` gain a "Enter Match Theater" button linking here (non-destructive addition).
 
-## 1. Extend the `Figure` type — `src/data/figures.ts`
+### 2. Data model — reusable
 
-Add optional fields to `Figure` (and a small companion type):
+New folder `src/data/matchTheater/`:
 
-```text
-cinematicLine?: LocalizedString          // one poetic sentence
-modernRelevance?: LocalizedString        // "Why they matter today"
-themes?: FigureTheme[]                   // 2–4 tags
-relatedFigureIds?: string[]              // 2–4 ids (curated network)
-cultureLinks?: FigureCultureLink[]       // {kind, href, label}
-audioArchive?: {                         // optional placeholder
-  status: "planned" | "coming-soon";
-  hint?: LocalizedString;                // e.g. "Future song archive"
-}
-```
+- `src/data/matchTheater/types.ts` — shared types:
+  - `MatchTheater`: `{ id, competition, stage, date, venue, city, country, teams: { home, away }, lineups, events[], goals[], substitutions[], cards[], tactics, narration[], context[], gallery[], sources[], quiz[], relatedExhibits[], passportStamp, nextMatchId? }`
+  - `TeamInfo`: crest emoji/svg glyph (labelled as stylised, not archival), name, coach, formation, colors.
+  - `LineupPlayer`: `{ id, number, name, position, club, role, bio, linkExhibitId?, isCaptain? }`
+  - `MatchEvent`: discriminated union `kickoff | goal | chance | save | card | substitution | tacticalNote | halftime | fulltime` with minute + short localized description.
+  - `NarrationSegment`: `{ id, minute, title, body, kind: "intro" | "buildup" | "goal" | "context" | "finalWhistle" | "legacy" }`
+  - `ArchivalItem`: `{ id, kind: "photo"|"program"|"ticket"|"newspaper"|"jersey"|"poster"|"video", caption, date, source, rights, reproduction: boolean, url? }`
+  - `QuizQuestion`: `{ id, question, choices[], answerIndex, rationale }`
+- `src/data/matchTheater/index.ts` — registry `MATCH_THEATERS: Record<string, MatchTheater>` + `listMatchTheaters()` helper. Prepared placeholders (no content) for future matches: `chile-1982`, `england-2010`, `south-korea-2014`, `germany-2014`, `senegal-afcon-2019-final`, `egypt-2009-playoff`.
+- `src/data/matchTheater/gijon-1982.ts` — the first, fully-populated match, cross-checked with reliable references (FIFA, RSSSF, contemporary reports). Facts to encode:
+  - Competition: 1982 FIFA World Cup, Group 2, matchday 1.
+  - Venue: Estadio El Molinón, Gijón, Spain, 16 June 1982.
+  - Coaches: **Mahieddine Khalef & Rachid Mekhloufi** (Algeria), **Jupp Derwall** (West Germany).
+  - Full verified Algerian starting XI: **Mehdi Cerbah (GK); Chaâbane Merzekane, Mahmoud Guendouz, Nourredine Kourichi, Salah Larbes; Ali Fergani (c), Mustapha Dahleb, Djamel Zidane; Salah Assad, Rabah Madjer, Lakhdar Belloumi.** Substitutes: **Tedj Bensaoula, Karim Maroc.**
+  - West Germany XI as listed in FIFA/RSSSF records: **Schumacher; Kaltz, K.-H. Förster, Stielike, Briegel; Dremmler, Breitner, Magath; Littbarski, Fischer, Rummenigge (c).** Substitutes on the day: **Hrubesch, Fischer variations per source**.
+  - Goals: 54' Madjer (assist Belloumi); 67' Rummenigge; 68' Belloumi (assist Assad/Madjer per contemporary reports).
+  - Any figure we cannot verify to a specific minute (yellow cards, exact save counts) will be marked "Detailed event data is not available for this moment." rather than invented.
+  - Sources array with named references (FIFA match report, RSSSF, El País archive, L'Équipe archive, Algerian FAF archives). No copyrighted media URLs embedded.
 
-`FigureTheme` is a string-literal union covering: `identity`, `resistance`, `exile`, `oral-memory`, `women-heritage`, `literature`, `music`, `language`, `amazigh`, `independence`, `education`, `diaspora`, `cinema`, `faith`, `philosophy`.
+### 3. Components — all under `src/components/theater/`
 
-`FigureCultureLink.kind` ∈ `region | era | cuisine | cinema | words | ideas | moment | figure`, each resolving to an existing route via TanStack `Link`.
+Reusable across all future matches:
 
-A label map (`FIGURE_THEMES`) provides FR/EN/AR labels + emoji per theme — single source of truth used by cards and detail page.
+- `TheaterShell.tsx` — dark stage (deep black + dark-green gradient), subtle grain, stadium-light vignette; wraps children; respects `prefers-reduced-motion`; exposes an "exit theater" back to the referrer.
+- `TheaterIntro.tsx` — cinematic entry: fades museum chrome, reveals date/venue, team crests (stylised bronze medallions with clear "stylised crest" label), then the title card. Buttons: **Begin Experience**, **Explore Match**, **Listen to Audio Guide**, **Skip Introduction**. No autoplay audio.
+- `MatchTimeline.tsx` — horizontal timeline (drag/swipe on touch, keyboard left/right, tab-focusable). Play/pause, back/forward, jump-to-key-moment chips. Shows kickoff, goals, subs, cards, chances, saves, HT, FT. Emits `onMinuteChange`. Persists to localStorage. `aria-valuenow/min/max` for screen readers.
+- `EventCard.tsx` — expandable cinematic card for a `MatchEvent`, with narration hook.
+- `GoalSequence.tsx` — dedicated sequence for a `goal` event: buildup text, simple pitch diagram (svg), player plaques, historical significance. Used for Madjer 54', Rummenigge 67', Belloumi 68'.
+- `PitchDiagram.tsx` — simple SVG pitch, renders formation dots for a `TeamInfo.formation`, or a passing sequence given `{ from, to }[]` points. Text alternative via `<desc>`.
+- `TacticalView.tsx` — optional toggle. Shows both starting formations side-by-side, coach notes, in-match changes. Shows the "Detailed event data is not available" copy when a match lacks data.
+- `PlayerPlaque.tsx` — museum plaque for a `LineupPlayer` (full name, position, club at the time, role, career summary, link to Legends Hall exhibit).
+- `HistoricalContextPanel.tsx` — contextual pauses (pre-match, post-match, legacy). Dignified factual copy.
+- `ArchivalGallery.tsx` — grid of `ArchivalItem`s. Each tile shows caption, date, source, rights, reproduction badge. No copyrighted media embedded; tiles for missing media render an "Archive placeholder — awaiting sourced material" state and are hidden from lightbox until a real URL is added.
+- `AudioGuidePanel.tsx` — reuses the existing `AudioGuideProvider` / TTS server function (`src/lib/tts.functions.ts`). Plays narration segments generated **only** from verified exhibit copy (no invented quotes). Controls: play/pause/replay/scrub/volume/speed/captions/transcript. Captions rendered from the same segment text. Language follows the app `useLang()`; EN/FR/AR supported.
+- `FinalWhistle.tsx` — final-score reveal, dignified reflection copy, unlocks passport stamp `witness-gijon-1982`, links to related exhibits (Shame of Gijón, 1982 WC, Madjer, Belloumi, FLN Team) and to next Match Theater when defined.
+- `MatchQuiz.tsx` — five-question optional quiz sourced from the match data; answers hidden until submit; awards XP via the existing `progress` lib and reveals a completion badge.
+- `TheaterActions.tsx` — bookmark, add to My Collection, share a museum-style match card (reuses existing share-card canvas pattern from `OnThisDayCard.tsx`), replay goals, "next match" link.
 
-## 2. Curated marquee data — same file, append-only
+### 4. Systems reused (no duplication)
 
-Hand-author the new fields for ~30 highest-impact figures across eras (full list below). Leave the rest untouched; the UI hides empty sections automatically.
+- **Language & RTL**: `useLang()` and `LocalizedString` from `@/lib/i18n`.
+- **Audio narration**: existing `AudioGuideProvider` in `src/lib/audioGuide.tsx` and the TTS server function.
+- **Bookmarks**: extend `src/lib/footballBookmarks.ts` with a third bucket `matches-theater` (or reuse `matches`) — will reuse `matches` since matches already are the concept there.
+- **Passport / stamps**: `recordVisit` + `computeStamps` in `src/lib/passport.ts` — add a new stamp id `witness-gijon-1982` inside `computeStamps` milestones list, awarded when the visitor reaches the FinalWhistle.
+- **Progress / XP**: `src/lib/progress.ts` (existing quiz XP path).
+- **Continuity**: `src/lib/continuity.ts` — record the last-visited theater so `ContinueJourneyCard` can resume it.
+- **Medallions & typography**: `MedallionFrame`, existing `SERIF` styling used across the wing.
+- **Not-found / error boundaries**: same pattern as other dynamic routes.
 
-Marquee set (initial pass):
-- Antiquity: Massinissa, Jugurtha, Juba II, Augustine
-- Medieval/Islamic: Tariq ibn Ziyad, Ibn Khaldun, Ibn Tumart
-- Resistance: Dihya, Emir Abdelkader, Lalla Fatma N'Soumer, El Mokrani, Bou Baghla
-- War of Independence: Ben M'Hidi, Abane Ramdane, Krim Belkacem, Amirouche, Hassiba Ben Bouali, Djamila Bouhired, Zighoud Youcef
-- Thought & letters: Ben Badis, Malek Bennabi, Frantz Fanon, Moufdi Zakaria, Kateb Yacine, Mouloud Feraoun, Mouloud Mammeri, Mohammed Dib, Assia Djebar
-- Music & memory: Taos Amrouche, Jean Amrouche, Fadhma Aït Mansour, El Anka, Idir, Matoub, Aït Menguellet, Warda, Khaled, Rachid Taha
-- Cinema: Lakhdar-Hamina, Merzak Allouache, Rachid Bouchareb, Yamina Bachir-Chouikh
+### 5. Football wing integration
 
-For each: cinematicLine, modernRelevance, 2–4 themes, 2–4 relatedFigureIds, 1–3 cultureLinks. Audio placeholder only on music/oral-memory figures (Taos, Idir, Matoub, Aït Menguellet, El Anka, Warda, Khaled, Rachid Taha, Fadhma).
+- Non-destructive edits to `src/routes/football.tsx`:
+  - The Gijón exhibit and each entry in Famous Matches gets a small "Enter Match Theater" pill linking to `/theater/<id>` when a theater exists for that match. Absent theater → the existing card stays exactly as it is.
+- `src/components/Header.tsx`: no new top-level link (Match Theater is entered from the football wing) to avoid nav sprawl.
 
-Related-figure choices are curated, not auto-generated, so they reflect real ideological/regional/family ties (Amrouche family thread, Ulema circle, FLN strategists, raï/Oran lineage, Kabyle song lineage, Casbah resistance, etc.).
+### 6. Translation strings
 
-## 3. Detail page — `src/routes/figures.$figureId.tsx`
+All static UI copy (buttons, section headings, quiz UI, final-whistle copy, tactical placeholder, source labels) will be authored inline as `LocalizedString` next to the components — matching the wing's existing pattern — in EN/FR/AR. No changes to the central i18n keys file are required.
 
-Insert new sections **inside the existing card**, preserving order/spacing:
+### 7. Mobile & accessibility
 
-1. **Cinematic line** — italic serif-style line under the H1, before the era/region pills. Hidden if absent.
-2. **Theme pills** — soft pill row next to era/region badges. Uses `FIGURE_THEMES` labels + emoji. Wraps cleanly on mobile.
-3. **"Why they matter today"** — new `<Section>` placed right after "Why they matter" (so the historical → present arc reads naturally). Warm-accent left border to distinguish from the historical importance.
-4. **Connected Voices** — replaces the current generic "exploreFigures" tail block when `relatedFigureIds` exist; falls back to the existing 8-figure cloud otherwise. Renders 2–4 curated chips with emoji + display name + a one-line "why related" subtitle derived from shared theme/region (computed at render).
-5. **Cultural threads** — chip row linking to other app routes (cuisine, cinema, words, ideas, region, era, moments) using typed `<Link to=...>` from TanStack. Hidden if no `cultureLinks`.
-6. **Listen to their voice** — subdued bordered card with a muted "Future audio archive" badge + optional `hint`. Only renders when `audioArchive` set. No player, no logic.
+- Mobile-first layout: single-column vertical narrative; timeline as a horizontally-scrollable swipeable strip with sticky play controls in a collapsible bottom sheet; large hit targets; no horizontal overflow.
+- Progress restored from localStorage on return.
+- Full keyboard support (Tab through timeline, ←/→ scrubs one minute, Space plays/pauses).
+- `aria-live="polite"` region announces minute changes and events.
+- Captions + transcript for narration.
+- `prefers-reduced-motion` disables fades, grain, and auto-advance.
+- High-contrast focus rings; no info conveyed by colour alone (icons + text for goals/subs/cards).
+- Text alternatives on every SVG pitch diagram.
 
-All new sections respect existing fade-in (`animate-float-up`) and mobile padding. No layout/columns changed.
+### 8. Performance
 
-## 4. Index cards — `src/routes/figures.index.tsx`
+- Route is a discrete file → code-split automatically.
+- Archival gallery and tactical animations lazy-loaded with `React.lazy` + `Suspense`.
+- Player plaques rendered on-demand (open a plaque → mounts).
+- Audio is fetched only when the visitor presses play.
 
-Tiny enhancements, no layout change:
-- If `cinematicLine` set, show it as italic muted-foreground line under the era (line-clamp-2).
-- If `themes` set, show up to 3 theme pills under the existing region/era badges (small variant from `FIGURE_THEMES`).
+### 9. Content integrity
 
-Existing region link, era link, and "Related figures" block remain.
+- Visible **Sources & Research** section at the bottom of the theater, populated from `match.sources`.
+- Every claim in narration is traceable to a source id.
+- Stylised crests and any diagrams are labelled "Stylised recreation — not an archival crest".
+- Archival tiles show source + rights + reproduction badge; unsourced tiles render as placeholders.
+- No fake quotes, no fake commentary, no fake headlines, no fabricated statistics.
 
-## 5. Region pages — `src/routes/map.tsx`
+### 10. Files summary
 
-Already lists key figures per region. No change needed beyond ensuring the new figure detail page is reachable (it is). Optional micro-polish: pass `themes` through if visible — defer unless trivial.
+**New**
+- `src/routes/theater.$matchId.tsx`
+- `src/data/matchTheater/types.ts`
+- `src/data/matchTheater/index.ts`
+- `src/data/matchTheater/gijon-1982.ts`
+- `src/components/theater/TheaterShell.tsx`
+- `src/components/theater/TheaterIntro.tsx`
+- `src/components/theater/MatchTimeline.tsx`
+- `src/components/theater/EventCard.tsx`
+- `src/components/theater/GoalSequence.tsx`
+- `src/components/theater/PitchDiagram.tsx`
+- `src/components/theater/TacticalView.tsx`
+- `src/components/theater/PlayerPlaque.tsx`
+- `src/components/theater/HistoricalContextPanel.tsx`
+- `src/components/theater/ArchivalGallery.tsx`
+- `src/components/theater/AudioGuidePanel.tsx`
+- `src/components/theater/FinalWhistle.tsx`
+- `src/components/theater/MatchQuiz.tsx`
+- `src/components/theater/TheaterActions.tsx`
+- `src/lib/matchTheaterState.ts` (localStorage persistence + XP/stamp hooks)
 
-## 6. Mobile
+**Edited (additive only)**
+- `src/routes/football.tsx` — link the Gijón / Famous Matches cards into the theater.
+- `src/lib/passport.ts` — add the `witness-gijon-1982` stamp definition.
 
-- Pill rows already wrap (`flex-wrap`); verify on 360–402px.
-- Cinematic line clamps to 3 lines on detail, 2 on index card.
-- Connected Voices chips wrap; subtitle truncated.
-
-## 7. Verification
-
-- `bunx tsc --noEmit` — must stay clean.
-- Spot-check `/figures`, `/figures/assia-djebar`, `/figures/rachid-taha`, `/figures/abane-ramdane`, and a non-curated figure (e.g. `/figures/syphax`) to confirm graceful degradation.
-
----
-
-## Out of scope
-
-- No new routes, no new top-level nav.
-- No actual audio playback.
-- No automated relation graph — curation only.
-- No copy changes to existing `story` / `importance` / `fact` fields.
-
-## Files touched
-
-- `src/data/figures.ts` (type extension + curated meta)
-- `src/routes/figures.$figureId.tsx` (6 new optional sections)
-- `src/routes/figures.index.tsx` (cinematic line + theme pills on cards)
-- Possibly `src/lib/i18n.ts` only if a couple of new `tu(...)` strings are added; otherwise inlined trilingual literals matching existing pattern.
+Confirm and I'll implement.
