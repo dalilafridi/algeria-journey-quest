@@ -371,6 +371,8 @@ function RegionPage() {
           />
         }
       />
+      <CuratorRecommendations kind="region" id={region.id} />
+      <div className="h-16" />
     </>
   );
 }
