@@ -739,38 +739,52 @@ function MatchesExhibit({ lang }: { lang: Lang }) {
   const { has, toggle } = useFootballBookmarks("matches");
   return (
     <div className="grid gap-4 md:grid-cols-2">
-      {FAMOUS_MATCHES.map((m) => (
-        <article
-          key={m.id}
-          className="rounded-2xl border border-border bg-card p-5 transition hover:-translate-y-0.5"
-          style={{ boxShadow: "var(--shadow-soft)" }}
-        >
-          <div className="flex items-baseline justify-between gap-3">
-            <div className="min-w-0">
-              <div className="text-xs uppercase tracking-widest text-muted-foreground">{m.date}</div>
-              <h3 className="mt-1 text-lg font-semibold truncate" style={SERIF}>{m.title}</h3>
-              <div className="text-xs text-muted-foreground">{m.venue}</div>
+      {FAMOUS_MATCHES.map((m) => {
+        const theaterId = theaterIdForFootballMatch(m.id);
+        return (
+          <article
+            key={m.id}
+            className="rounded-2xl border border-border bg-card p-5 transition hover:-translate-y-0.5"
+            style={{ boxShadow: "var(--shadow-soft)" }}
+          >
+            <div className="flex items-baseline justify-between gap-3">
+              <div className="min-w-0">
+                <div className="text-xs uppercase tracking-widest text-muted-foreground">{m.date}</div>
+                <h3 className="mt-1 text-lg font-semibold truncate" style={SERIF}>{m.title}</h3>
+                <div className="text-xs text-muted-foreground">{m.venue}</div>
+              </div>
+              <div className="text-right">
+                <div className="font-mono text-2xl font-bold text-accent-foreground" style={SERIF}>{m.score}</div>
+                <button
+                  type="button"
+                  onClick={() => toggle(m.id)}
+                  aria-label={has(m.id) ? "Unbookmark" : "Bookmark match"}
+                  className={
+                    "mt-1 inline-flex items-center justify-center w-8 h-8 rounded-full border transition " +
+                    (has(m.id)
+                      ? "bg-accent text-accent-foreground border-accent"
+                      : "border-border text-muted-foreground hover:text-foreground")
+                  }
+                >
+                  {has(m.id) ? "★" : "☆"}
+                </button>
+              </div>
             </div>
-            <div className="text-right">
-              <div className="font-mono text-2xl font-bold text-accent-foreground" style={SERIF}>{m.score}</div>
-              <button
-                type="button"
-                onClick={() => toggle(m.id)}
-                aria-label={has(m.id) ? "Unbookmark" : "Bookmark match"}
-                className={
-                  "mt-1 inline-flex items-center justify-center w-8 h-8 rounded-full border transition " +
-                  (has(m.id)
-                    ? "bg-accent text-accent-foreground border-accent"
-                    : "border-border text-muted-foreground hover:text-foreground")
-                }
+            <p className="mt-3 text-sm text-foreground/85" style={SERIF}>{tt(m.note, lang)}</p>
+            {theaterId && (
+              <Link
+                to="/theater/$matchId"
+                params={{ matchId: theaterId }}
+                className="mt-4 inline-flex items-center gap-2 rounded-full border border-accent/50 bg-accent/10 px-3 py-1.5 text-xs font-semibold text-accent-foreground transition hover:bg-accent/20"
+                style={SERIF}
               >
-                {has(m.id) ? "★" : "☆"}
-              </button>
-            </div>
-          </div>
-          <p className="mt-3 text-sm text-foreground/85" style={SERIF}>{tt(m.note, lang)}</p>
-        </article>
-      ))}
+                {{ en: "Enter Match Theater", fr: "Entrer dans le Théâtre du match", ar: "ادخل مسرح المباراة" }[lang]}
+                <span aria-hidden>→</span>
+              </Link>
+            )}
+          </article>
+        );
+      })}
     </div>
   );
 }
