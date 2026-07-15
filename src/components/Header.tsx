@@ -101,6 +101,8 @@ export function Header() {
     path.startsWith("/stargazing") ||
     path.startsWith("/cinema");
 
+  const isFootball = path.startsWith("/football") || path.startsWith("/clubs") || path.startsWith("/theater");
+
   // Primary structural pillars
   const navLinks = [
     { to: "/timeline" as const, label: T.journey, active: isJourney },
@@ -108,12 +110,30 @@ export function Header() {
     { to: "/map" as const, label: T.regions, active: isRegions },
     { to: "/figures" as const, label: T.figures, active: isFigures },
     { to: "/culture" as const, label: T.culture, active: isCulture },
-    { to: "/football" as const, label: T.football, active: path.startsWith("/football") },
-    { to: "/clubs" as const, label: T.clubs, active: path.startsWith("/clubs") },
+  ];
+
+  // Football submenu. Anchor ids match sections in src/routes/football.tsx.
+  type FootballItem = {
+    label: string;
+    to: string;
+    hash?: string;
+    params?: Record<string, string>;
+    isActive: () => boolean;
+  };
+  const onFootballRoot = path === "/football";
+  const footballMenu: FootballItem[] = [
+    { label: { fr: "Musée du Football", en: "Football Museum", ar: "متحف كرة القدم" }[current], to: "/football", isActive: () => onFootballRoot && !hash },
+    { label: { fr: "Équipe Nationale", en: "National Team", ar: "المنتخب الوطني" }[current], to: "/football", hash: "national-team", isActive: () => onFootballRoot && hash === "national-team" },
+    { label: { fr: "Coupes du Monde", en: "World Cups", ar: "كؤوس العالم" }[current], to: "/football", hash: "world-cup", isActive: () => onFootballRoot && hash === "world-cup" },
+    { label: { fr: "Histoire CAN", en: "AFCON History", ar: "تاريخ كأس أفريقيا" }[current], to: "/football", hash: "afcon", isActive: () => onFootballRoot && hash === "afcon" },
+    { label: { fr: "Équipe du FLN", en: "FLN Team", ar: "فريق جبهة التحرير" }[current], to: "/football", hash: "fln-team", isActive: () => onFootballRoot && hash === "fln-team" },
+    { label: { fr: "Théâtre des Matchs", en: "Match Theater", ar: "مسرح المباريات" }[current], to: "/theater/$matchId", params: { matchId: "gijon-1982" }, isActive: () => path.startsWith("/theater") },
+    { label: { fr: "Légendes", en: "Legends", ar: "الأساطير" }[current], to: "/football", hash: "legends", isActive: () => onFootballRoot && hash === "legends" },
+    { label: { fr: "Stades", en: "Stadiums", ar: "الملاعب" }[current], to: "/football", hash: "stadiums", isActive: () => onFootballRoot && hash === "stadiums" },
+    { label: { fr: "Musées des Clubs", en: "Club Museums", ar: "متاحف الأندية" }[current], to: "/clubs", isActive: () => path.startsWith("/clubs") },
   ];
 
 
-  const handleReset = () => {
     if (typeof window !== "undefined" && window.confirm(T.confirmReset)) {
       resetAllQuizProgress();
     }
