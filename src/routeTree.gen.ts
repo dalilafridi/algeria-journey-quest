@@ -32,6 +32,7 @@ import { Route as FiguresQuizRouteImport } from './routes/figures.quiz'
 import { Route as FiguresFigureIdRouteImport } from './routes/figures.$figureId'
 import { Route as EraEraIdRouteImport } from './routes/era.$eraId'
 import { Route as CultureTopicIdRouteImport } from './routes/culture.$topicId'
+import { Route as ApiCuratorRouteImport } from './routes/api/curator'
 import { Route as FiguresCollectionCollectionIdRouteImport } from './routes/figures.collection.$collectionId'
 
 const WordsRoute = WordsRouteImport.update({
@@ -149,6 +150,11 @@ const CultureTopicIdRoute = CultureTopicIdRouteImport.update({
   path: '/$topicId',
   getParentRoute: () => CultureRoute,
 } as any)
+const ApiCuratorRoute = ApiCuratorRouteImport.update({
+  id: '/api/curator',
+  path: '/api/curator',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const FiguresCollectionCollectionIdRoute =
   FiguresCollectionCollectionIdRouteImport.update({
     id: '/figures/collection/$collectionId',
@@ -172,6 +178,7 @@ export interface FileRoutesByFullPath {
   '/stargazing': typeof StargazingRoute
   '/timeline': typeof TimelineRoute
   '/words': typeof WordsRoute
+  '/api/curator': typeof ApiCuratorRoute
   '/culture/$topicId': typeof CultureTopicIdRoute
   '/era/$eraId': typeof EraEraIdRoute
   '/figures/$figureId': typeof FiguresFigureIdRoute
@@ -198,6 +205,7 @@ export interface FileRoutesByTo {
   '/stargazing': typeof StargazingRoute
   '/timeline': typeof TimelineRoute
   '/words': typeof WordsRoute
+  '/api/curator': typeof ApiCuratorRoute
   '/culture/$topicId': typeof CultureTopicIdRoute
   '/era/$eraId': typeof EraEraIdRoute
   '/figures/$figureId': typeof FiguresFigureIdRoute
@@ -225,6 +233,7 @@ export interface FileRoutesById {
   '/stargazing': typeof StargazingRoute
   '/timeline': typeof TimelineRoute
   '/words': typeof WordsRoute
+  '/api/curator': typeof ApiCuratorRoute
   '/culture/$topicId': typeof CultureTopicIdRoute
   '/era/$eraId': typeof EraEraIdRoute
   '/figures/$figureId': typeof FiguresFigureIdRoute
@@ -253,6 +262,7 @@ export interface FileRouteTypes {
     | '/stargazing'
     | '/timeline'
     | '/words'
+    | '/api/curator'
     | '/culture/$topicId'
     | '/era/$eraId'
     | '/figures/$figureId'
@@ -279,6 +289,7 @@ export interface FileRouteTypes {
     | '/stargazing'
     | '/timeline'
     | '/words'
+    | '/api/curator'
     | '/culture/$topicId'
     | '/era/$eraId'
     | '/figures/$figureId'
@@ -305,6 +316,7 @@ export interface FileRouteTypes {
     | '/stargazing'
     | '/timeline'
     | '/words'
+    | '/api/curator'
     | '/culture/$topicId'
     | '/era/$eraId'
     | '/figures/$figureId'
@@ -332,6 +344,7 @@ export interface RootRouteChildren {
   StargazingRoute: typeof StargazingRoute
   TimelineRoute: typeof TimelineRoute
   WordsRoute: typeof WordsRoute
+  ApiCuratorRoute: typeof ApiCuratorRoute
   EraEraIdRoute: typeof EraEraIdRoute
   FiguresFigureIdRoute: typeof FiguresFigureIdRoute
   FiguresQuizRoute: typeof FiguresQuizRoute
@@ -505,6 +518,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CultureTopicIdRouteImport
       parentRoute: typeof CultureRoute
     }
+    '/api/curator': {
+      id: '/api/curator'
+      path: '/api/curator'
+      fullPath: '/api/curator'
+      preLoaderRoute: typeof ApiCuratorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/figures/collection/$collectionId': {
       id: '/figures/collection/$collectionId'
       path: '/figures/collection/$collectionId'
@@ -542,6 +562,7 @@ const rootRouteChildren: RootRouteChildren = {
   StargazingRoute: StargazingRoute,
   TimelineRoute: TimelineRoute,
   WordsRoute: WordsRoute,
+  ApiCuratorRoute: ApiCuratorRoute,
   EraEraIdRoute: EraEraIdRoute,
   FiguresFigureIdRoute: FiguresFigureIdRoute,
   FiguresQuizRoute: FiguresQuizRoute,
