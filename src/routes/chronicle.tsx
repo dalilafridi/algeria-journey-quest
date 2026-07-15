@@ -1,9 +1,8 @@
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import { Header } from "@/components/Header";
 import { eras } from "@/data/eras";
 import { figures, type Figure } from "@/data/figures";
-import { eraOfCategory, legendEraOf, type LegendEra } from "@/lib/figureEras";
 import { EraBadge, type EraBadgeKind } from "@/components/brand/EraBadge";
 import { t, useLang, type Lang } from "@/lib/i18n";
 import { ChevronLeft, ChevronRight, MapPin, Sparkles, Users, Scroll } from "lucide-react";
