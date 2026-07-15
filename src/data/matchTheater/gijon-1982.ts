@@ -11,7 +11,7 @@
  * as placeholder tiles until a properly cleared file is provided.
  */
 
-import type { MatchTheater } from "./types";
+import type { MatchEvent, MatchTheater } from "./types";
 
 const teamAlgeria = {
   id: "algeria",
