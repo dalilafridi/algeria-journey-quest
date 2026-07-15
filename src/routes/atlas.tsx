@@ -161,6 +161,20 @@ function AtlasPage() {
         : lang === "ar"
           ? "اختر منطقة من الخريطة لكشف قصتها."
           : "Select a region on the map to reveal its story.",
+    overlayLabel:
+      lang === "fr"
+        ? "Superposition historique"
+        : lang === "ar"
+          ? "طبقة تاريخية"
+          : "Historical overlay",
+    overlayOff:
+      lang === "fr" ? "Aucune" : lang === "ar" ? "بلا طبقة" : "No overlay",
+    overlayLegend:
+      lang === "fr"
+        ? "Superposez un royaume, un califat ou une république sur la carte."
+        : lang === "ar"
+          ? "اعرض مملكة أو خلافة أو جمهورية على الخريطة."
+          : "Overlay a kingdom, caliphate or republic onto the map.",
   };
 
   return (
