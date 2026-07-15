@@ -387,8 +387,6 @@ function ChroniclePage() {
                 const left = yearToX(b.start);
                 const width = yearToX(b.end) - left;
                 const era = eras.find((e) => e.id === b.id)!;
-                const legend = legendEraOf(era.figures ? "ancient" as never : "ancient" as never);
-                void legend;
                 return (
                   <div
                     key={b.id}
