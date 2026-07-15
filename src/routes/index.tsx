@@ -203,7 +203,10 @@ function Home() {
         <ContinueJourneyInline />
 
 
-        {/* ========= TODAY IN ALGERIAN MEMORY ========= */}
+        {/* ========= ON THIS DAY IN ALGERIAN HISTORY ========= */}
+        <OnThisDayCard />
+
+        {/* ========= TODAY IN ALGERIAN MEMORY (curated quote) ========= */}
         <section className="mx-auto max-w-5xl px-4 pt-10 sm:pt-12">
           <div
             className="relative overflow-hidden rounded-3xl border border-accent/30 p-6 sm:p-8 bg-parchment-card animate-fade-in"
