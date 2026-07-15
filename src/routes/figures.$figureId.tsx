@@ -513,6 +513,8 @@ function FigureDetail() {
           />
         }
       />
+      <CuratorRecommendations kind="figure" id={figure.id} />
+      <div className="h-16" />
     </>
   );
 }
