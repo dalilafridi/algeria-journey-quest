@@ -40,8 +40,8 @@ const en = (v: LocalizedString | undefined): string => {
   return (anyV.en ?? "").trim();
 };
 
-const joinLines = (parts: (string | undefined | null | false)[]): string =>
-  parts.filter((p): p is string => Boolean(p && p.trim())).join("\n");
+const joinLines = (parts: (string | number | undefined | null | false)[]): string =>
+  parts.filter((p): p is string => typeof p === "string" && p.trim().length > 0).join("\n");
 
 const bullets = (items: string[]): string =>
   items
