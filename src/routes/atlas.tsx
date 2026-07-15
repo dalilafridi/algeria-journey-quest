@@ -535,16 +535,22 @@ function AtlasPage() {
  * ============================================================ */
 
 function LayerChip({
-  active, onClick, emoji, label,
-}: { active: boolean; onClick: () => void; emoji: string; label: string }) {
+  active, onClick, emoji, label, accent,
+}: { active: boolean; onClick: () => void; emoji: string; label: string; accent?: string }) {
+  const activeStyle = active && accent
+    ? { background: accent, borderColor: accent, color: "#fff" }
+    : undefined;
   return (
     <button
       onClick={onClick}
+      style={activeStyle}
       className={
         "shrink-0 inline-flex items-center gap-1.5 px-3.5 py-2.5 min-h-[44px] rounded-full text-xs font-semibold border transition whitespace-nowrap " +
-        (active
+        (active && !accent
           ? "bg-primary text-primary-foreground border-primary shadow-sm"
-          : "bg-card text-muted-foreground border-border hover:text-foreground hover:border-primary/40")
+          : !active
+            ? "bg-card text-muted-foreground border-border hover:text-foreground hover:border-primary/40"
+            : "shadow-sm")
       }
     >
       <span aria-hidden>{emoji}</span>
