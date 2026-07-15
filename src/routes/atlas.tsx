@@ -525,10 +525,17 @@ function AtlasPage() {
           </div>
 
           {/* INFO PANEL */}
-          <aside className="lg:sticky lg:top-24">
+          <aside className="lg:sticky lg:top-24 space-y-4">
+            {activePeriod && (
+              <HistoricalPeriodPanel
+                period={activePeriod}
+                lang={lang}
+                onClose={() => setPeriodId(null)}
+              />
+            )}
             {activeRegion ? (
               <RegionPanel region={activeRegion} lang={lang} labels={T} />
-            ) : (
+            ) : activePeriod ? null : (
               <EmptyPanel lang={lang} message={T.pickRegion} />
             )}
           </aside>
