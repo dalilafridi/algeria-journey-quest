@@ -134,7 +134,14 @@ function FootballHero({ lang }: { lang: Lang }) {
             >
               {{ en: "Century timeline", fr: "Chronologie", ar: "الخطّ الزمني" }[lang]}
             </a>
+            <Link
+              to="/clubs"
+              className="inline-flex items-center gap-2 rounded-full border border-[oklch(0.7_0.1_75_/_0.4)] px-5 py-3 text-sm font-semibold text-[oklch(0.92_0.06_82)] hover:bg-[oklch(1_0_0_/_0.06)] transition"
+            >
+              {{ en: "Club Museums →", fr: "Musées des clubs →", ar: "متاحف الأندية ←" }[lang]}
+            </Link>
           </div>
+
         </div>
 
         {/* Display case with rotating ball */}
