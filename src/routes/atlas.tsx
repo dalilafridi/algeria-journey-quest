@@ -92,6 +92,8 @@ function AtlasPage() {
   const [layer, setLayer] = useState<LayerId>("all");
   const [selected, setSelected] = useState<string | null>(null);
   const [hovered, setHovered] = useState<string | null>(null);
+  const [periodId, setPeriodId] = useState<string | null>(null);
+  const activePeriod = getPeriod(periodId);
 
   useEffect(() => {
     saveJourneyPlace({
