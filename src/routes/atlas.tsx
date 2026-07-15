@@ -6,6 +6,9 @@ import { mapRegions } from "@/data/mapRegions";
 import { regionExtras } from "@/data/regionExtras";
 import { eras } from "@/data/eras";
 import { figures } from "@/data/figures";
+import { ATLAS_PERIODS, getPeriod } from "@/data/atlasPeriods";
+import { HistoricalOverlay } from "@/components/atlas/HistoricalOverlay";
+import { HistoricalPeriodPanel } from "@/components/atlas/HistoricalPeriodPanel";
 import { t, useLang, type LocalizedString } from "@/lib/i18n";
 import { saveJourneyPlace } from "@/lib/continuity";
 
