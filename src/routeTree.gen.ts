@@ -15,6 +15,7 @@ import { Route as StargazingRouteImport } from './routes/stargazing'
 import { Route as ShowcaseRouteImport } from './routes/showcase'
 import { Route as ProfileRouteImport } from './routes/profile'
 import { Route as MomentsRouteImport } from './routes/moments'
+import { Route as McpRouteImport } from './routes/mcp'
 import { Route as MapRouteImport } from './routes/map'
 import { Route as LessonsRouteImport } from './routes/lessons'
 import { Route as IdeasRouteImport } from './routes/ideas'
@@ -31,7 +32,10 @@ import { Route as FiguresQuizRouteImport } from './routes/figures.quiz'
 import { Route as FiguresFigureIdRouteImport } from './routes/figures.$figureId'
 import { Route as EraEraIdRouteImport } from './routes/era.$eraId'
 import { Route as CultureTopicIdRouteImport } from './routes/culture.$topicId'
+import { Route as Char91DotwellKnownChar93OauthProtectedResourceRouteImport } from './routes/[.well-known]/oauth-protected-resource'
+import { Route as Char91DotmcpChar93ListToolsRouteImport } from './routes/[.mcp]/list-tools'
 import { Route as FiguresCollectionCollectionIdRouteImport } from './routes/figures.collection.$collectionId'
+import { Route as Char91DotmcpChar93InvokeToolToolRouteImport } from './routes/[.mcp]/invoke-tool/$tool'
 
 const WordsRoute = WordsRouteImport.update({
   id: '/words',
@@ -61,6 +65,11 @@ const ProfileRoute = ProfileRouteImport.update({
 const MomentsRoute = MomentsRouteImport.update({
   id: '/moments',
   path: '/moments',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const McpRoute = McpRouteImport.update({
+  id: '/mcp',
+  path: '/mcp',
   getParentRoute: () => rootRouteImport,
 } as any)
 const MapRoute = MapRouteImport.update({
@@ -143,10 +152,28 @@ const CultureTopicIdRoute = CultureTopicIdRouteImport.update({
   path: '/$topicId',
   getParentRoute: () => CultureRoute,
 } as any)
+const Char91DotwellKnownChar93OauthProtectedResourceRoute =
+  Char91DotwellKnownChar93OauthProtectedResourceRouteImport.update({
+    id: '/.well-known/oauth-protected-resource',
+    path: '/.well-known/oauth-protected-resource',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const Char91DotmcpChar93ListToolsRoute =
+  Char91DotmcpChar93ListToolsRouteImport.update({
+    id: '/.mcp/list-tools',
+    path: '/.mcp/list-tools',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const FiguresCollectionCollectionIdRoute =
   FiguresCollectionCollectionIdRouteImport.update({
     id: '/figures/collection/$collectionId',
     path: '/figures/collection/$collectionId',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const Char91DotmcpChar93InvokeToolToolRoute =
+  Char91DotmcpChar93InvokeToolToolRouteImport.update({
+    id: '/.mcp/invoke-tool/$tool',
+    path: '/.mcp/invoke-tool/$tool',
     getParentRoute: () => rootRouteImport,
   } as any)
 
@@ -159,12 +186,15 @@ export interface FileRoutesByFullPath {
   '/ideas': typeof IdeasRoute
   '/lessons': typeof LessonsRoute
   '/map': typeof MapRoute
+  '/mcp': typeof McpRoute
   '/moments': typeof MomentsRoute
   '/profile': typeof ProfileRoute
   '/showcase': typeof ShowcaseRoute
   '/stargazing': typeof StargazingRoute
   '/timeline': typeof TimelineRoute
   '/words': typeof WordsRoute
+  '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
+  '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
   '/culture/$topicId': typeof CultureTopicIdRoute
   '/era/$eraId': typeof EraEraIdRoute
   '/figures/$figureId': typeof FiguresFigureIdRoute
@@ -173,6 +203,7 @@ export interface FileRoutesByFullPath {
   '/quiz/$eraId': typeof QuizEraIdRoute
   '/region/$regionId': typeof RegionRegionIdRoute
   '/figures/': typeof FiguresIndexRoute
+  '/.mcp/invoke-tool/$tool': typeof Char91DotmcpChar93InvokeToolToolRoute
   '/figures/collection/$collectionId': typeof FiguresCollectionCollectionIdRoute
 }
 export interface FileRoutesByTo {
@@ -184,12 +215,15 @@ export interface FileRoutesByTo {
   '/ideas': typeof IdeasRoute
   '/lessons': typeof LessonsRoute
   '/map': typeof MapRoute
+  '/mcp': typeof McpRoute
   '/moments': typeof MomentsRoute
   '/profile': typeof ProfileRoute
   '/showcase': typeof ShowcaseRoute
   '/stargazing': typeof StargazingRoute
   '/timeline': typeof TimelineRoute
   '/words': typeof WordsRoute
+  '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
+  '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
   '/culture/$topicId': typeof CultureTopicIdRoute
   '/era/$eraId': typeof EraEraIdRoute
   '/figures/$figureId': typeof FiguresFigureIdRoute
@@ -198,6 +232,7 @@ export interface FileRoutesByTo {
   '/quiz/$eraId': typeof QuizEraIdRoute
   '/region/$regionId': typeof RegionRegionIdRoute
   '/figures': typeof FiguresIndexRoute
+  '/.mcp/invoke-tool/$tool': typeof Char91DotmcpChar93InvokeToolToolRoute
   '/figures/collection/$collectionId': typeof FiguresCollectionCollectionIdRoute
 }
 export interface FileRoutesById {
@@ -210,12 +245,15 @@ export interface FileRoutesById {
   '/ideas': typeof IdeasRoute
   '/lessons': typeof LessonsRoute
   '/map': typeof MapRoute
+  '/mcp': typeof McpRoute
   '/moments': typeof MomentsRoute
   '/profile': typeof ProfileRoute
   '/showcase': typeof ShowcaseRoute
   '/stargazing': typeof StargazingRoute
   '/timeline': typeof TimelineRoute
   '/words': typeof WordsRoute
+  '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
+  '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
   '/culture/$topicId': typeof CultureTopicIdRoute
   '/era/$eraId': typeof EraEraIdRoute
   '/figures/$figureId': typeof FiguresFigureIdRoute
@@ -224,6 +262,7 @@ export interface FileRoutesById {
   '/quiz/$eraId': typeof QuizEraIdRoute
   '/region/$regionId': typeof RegionRegionIdRoute
   '/figures/': typeof FiguresIndexRoute
+  '/.mcp/invoke-tool/$tool': typeof Char91DotmcpChar93InvokeToolToolRoute
   '/figures/collection/$collectionId': typeof FiguresCollectionCollectionIdRoute
 }
 export interface FileRouteTypes {
@@ -237,12 +276,15 @@ export interface FileRouteTypes {
     | '/ideas'
     | '/lessons'
     | '/map'
+    | '/mcp'
     | '/moments'
     | '/profile'
     | '/showcase'
     | '/stargazing'
     | '/timeline'
     | '/words'
+    | '/.mcp/list-tools'
+    | '/.well-known/oauth-protected-resource'
     | '/culture/$topicId'
     | '/era/$eraId'
     | '/figures/$figureId'
@@ -251,6 +293,7 @@ export interface FileRouteTypes {
     | '/quiz/$eraId'
     | '/region/$regionId'
     | '/figures/'
+    | '/.mcp/invoke-tool/$tool'
     | '/figures/collection/$collectionId'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -262,12 +305,15 @@ export interface FileRouteTypes {
     | '/ideas'
     | '/lessons'
     | '/map'
+    | '/mcp'
     | '/moments'
     | '/profile'
     | '/showcase'
     | '/stargazing'
     | '/timeline'
     | '/words'
+    | '/.mcp/list-tools'
+    | '/.well-known/oauth-protected-resource'
     | '/culture/$topicId'
     | '/era/$eraId'
     | '/figures/$figureId'
@@ -276,6 +322,7 @@ export interface FileRouteTypes {
     | '/quiz/$eraId'
     | '/region/$regionId'
     | '/figures'
+    | '/.mcp/invoke-tool/$tool'
     | '/figures/collection/$collectionId'
   id:
     | '__root__'
@@ -287,12 +334,15 @@ export interface FileRouteTypes {
     | '/ideas'
     | '/lessons'
     | '/map'
+    | '/mcp'
     | '/moments'
     | '/profile'
     | '/showcase'
     | '/stargazing'
     | '/timeline'
     | '/words'
+    | '/.mcp/list-tools'
+    | '/.well-known/oauth-protected-resource'
     | '/culture/$topicId'
     | '/era/$eraId'
     | '/figures/$figureId'
@@ -301,6 +351,7 @@ export interface FileRouteTypes {
     | '/quiz/$eraId'
     | '/region/$regionId'
     | '/figures/'
+    | '/.mcp/invoke-tool/$tool'
     | '/figures/collection/$collectionId'
   fileRoutesById: FileRoutesById
 }
@@ -313,12 +364,15 @@ export interface RootRouteChildren {
   IdeasRoute: typeof IdeasRoute
   LessonsRoute: typeof LessonsRoute
   MapRoute: typeof MapRoute
+  McpRoute: typeof McpRoute
   MomentsRoute: typeof MomentsRoute
   ProfileRoute: typeof ProfileRoute
   ShowcaseRoute: typeof ShowcaseRoute
   StargazingRoute: typeof StargazingRoute
   TimelineRoute: typeof TimelineRoute
   WordsRoute: typeof WordsRoute
+  Char91DotmcpChar93ListToolsRoute: typeof Char91DotmcpChar93ListToolsRoute
+  Char91DotwellKnownChar93OauthProtectedResourceRoute: typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
   EraEraIdRoute: typeof EraEraIdRoute
   FiguresFigureIdRoute: typeof FiguresFigureIdRoute
   FiguresQuizRoute: typeof FiguresQuizRoute
@@ -326,6 +380,7 @@ export interface RootRouteChildren {
   QuizEraIdRoute: typeof QuizEraIdRoute
   RegionRegionIdRoute: typeof RegionRegionIdRoute
   FiguresIndexRoute: typeof FiguresIndexRoute
+  Char91DotmcpChar93InvokeToolToolRoute: typeof Char91DotmcpChar93InvokeToolToolRoute
   FiguresCollectionCollectionIdRoute: typeof FiguresCollectionCollectionIdRoute
 }
 
@@ -371,6 +426,13 @@ declare module '@tanstack/react-router' {
       path: '/moments'
       fullPath: '/moments'
       preLoaderRoute: typeof MomentsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/mcp': {
+      id: '/mcp'
+      path: '/mcp'
+      fullPath: '/mcp'
+      preLoaderRoute: typeof McpRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/map': {
@@ -485,11 +547,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CultureTopicIdRouteImport
       parentRoute: typeof CultureRoute
     }
+    '/.well-known/oauth-protected-resource': {
+      id: '/.well-known/oauth-protected-resource'
+      path: '/.well-known/oauth-protected-resource'
+      fullPath: '/.well-known/oauth-protected-resource'
+      preLoaderRoute: typeof Char91DotwellKnownChar93OauthProtectedResourceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/.mcp/list-tools': {
+      id: '/.mcp/list-tools'
+      path: '/.mcp/list-tools'
+      fullPath: '/.mcp/list-tools'
+      preLoaderRoute: typeof Char91DotmcpChar93ListToolsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/figures/collection/$collectionId': {
       id: '/figures/collection/$collectionId'
       path: '/figures/collection/$collectionId'
       fullPath: '/figures/collection/$collectionId'
       preLoaderRoute: typeof FiguresCollectionCollectionIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/.mcp/invoke-tool/$tool': {
+      id: '/.mcp/invoke-tool/$tool'
+      path: '/.mcp/invoke-tool/$tool'
+      fullPath: '/.mcp/invoke-tool/$tool'
+      preLoaderRoute: typeof Char91DotmcpChar93InvokeToolToolRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
@@ -515,12 +598,16 @@ const rootRouteChildren: RootRouteChildren = {
   IdeasRoute: IdeasRoute,
   LessonsRoute: LessonsRoute,
   MapRoute: MapRoute,
+  McpRoute: McpRoute,
   MomentsRoute: MomentsRoute,
   ProfileRoute: ProfileRoute,
   ShowcaseRoute: ShowcaseRoute,
   StargazingRoute: StargazingRoute,
   TimelineRoute: TimelineRoute,
   WordsRoute: WordsRoute,
+  Char91DotmcpChar93ListToolsRoute: Char91DotmcpChar93ListToolsRoute,
+  Char91DotwellKnownChar93OauthProtectedResourceRoute:
+    Char91DotwellKnownChar93OauthProtectedResourceRoute,
   EraEraIdRoute: EraEraIdRoute,
   FiguresFigureIdRoute: FiguresFigureIdRoute,
   FiguresQuizRoute: FiguresQuizRoute,
@@ -528,6 +615,7 @@ const rootRouteChildren: RootRouteChildren = {
   QuizEraIdRoute: QuizEraIdRoute,
   RegionRegionIdRoute: RegionRegionIdRoute,
   FiguresIndexRoute: FiguresIndexRoute,
+  Char91DotmcpChar93InvokeToolToolRoute: Char91DotmcpChar93InvokeToolToolRoute,
   FiguresCollectionCollectionIdRoute: FiguresCollectionCollectionIdRoute,
 }
 export const routeTree = rootRouteImport
