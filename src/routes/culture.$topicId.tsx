@@ -326,6 +326,8 @@ function CultureTopicPage() {
           />
         }
       />
+      <CuratorRecommendations kind="culture" id={topic.id} />
+      <div className="h-16" />
     </>
   );
 }
