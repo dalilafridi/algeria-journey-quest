@@ -187,6 +187,71 @@ export function Header() {
               {l.label}
             </Link>
           ))}
+
+          {/* Football dropdown */}
+          <div className="relative" ref={footballRef}>
+            <button
+              type="button"
+              onClick={() => setFootballOpen((v) => !v)}
+              onKeyDown={(e) => {
+                if (e.key === "ArrowDown") {
+                  e.preventDefault();
+                  setFootballOpen(true);
+                }
+              }}
+              aria-haspopup="menu"
+              aria-expanded={footballOpen}
+              className={
+                (isFootball ? activeLinkClass : primaryClass) +
+                " inline-flex items-center gap-1"
+              }
+            >
+              {T.football}
+              <svg
+                width="12"
+                height="12"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className={"opacity-70 transition-transform " + (footballOpen ? "rotate-180" : "")}
+                aria-hidden
+              >
+                <polyline points="6 9 12 15 18 9" />
+              </svg>
+            </button>
+            {footballOpen && (
+              <div
+                role="menu"
+                aria-label={T.football}
+                className="absolute start-1/2 -translate-x-1/2 mt-2 min-w-[240px] rounded-xl border border-border bg-popover shadow-lg overflow-hidden animate-float-up py-1"
+              >
+                {footballMenu.map((item) => {
+                  const active = item.isActive();
+                  return (
+                    <Link
+                      key={`fm-${item.label}`}
+                      to={item.to as any}
+                      params={item.params as any}
+                      hash={item.hash}
+                      role="menuitem"
+                      onClick={() => setFootballOpen(false)}
+                      className={
+                        "block px-3.5 py-2 text-sm transition-colors " +
+                        (active
+                          ? "text-foreground font-semibold bg-muted"
+                          : "text-foreground/85 hover:bg-muted hover:text-foreground")
+                      }
+                    >
+                      {item.label}
+                    </Link>
+                  );
+                })}
+              </div>
+            )}
+          </div>
         </nav>
 
         <div className="flex items-center gap-2 sm:gap-3">
