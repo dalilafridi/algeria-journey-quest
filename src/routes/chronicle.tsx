@@ -128,7 +128,6 @@ function ChroniclePage() {
         .filter((e) => ERA_YEARS[e.id])
         .map((e) => ({
           id: e.id,
-          legend: eraOfCategory("ancient" as never), // placeholder overwritten below
           badge: e.id as EraBadgeKind,
           start: ERA_YEARS[e.id].start,
           end: ERA_YEARS[e.id].end,
