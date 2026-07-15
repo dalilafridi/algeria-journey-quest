@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 
 import { ContinueJourneyInline } from "@/components/ContinueJourneyInline";
 import { DidYouKnowCard } from "@/components/DidYouKnowCard";
+import { OnThisDayCard } from "@/components/OnThisDayCard";
 import { SignatureJourneys } from "@/components/journeys/SignatureJourneys";
 import { Header } from "@/components/Header";
 import { PillarIcon } from "@/components/brand/PillarIcon";
