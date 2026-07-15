@@ -19,6 +19,7 @@ import { Route as MomentsRouteImport } from './routes/moments'
 import { Route as MapRouteImport } from './routes/map'
 import { Route as LessonsRouteImport } from './routes/lessons'
 import { Route as IdeasRouteImport } from './routes/ideas'
+import { Route as FootballRouteImport } from './routes/football'
 import { Route as CultureRouteImport } from './routes/culture'
 import { Route as CuisineRouteImport } from './routes/cuisine'
 import { Route as CompareRouteImport } from './routes/compare'
@@ -85,6 +86,11 @@ const LessonsRoute = LessonsRouteImport.update({
 const IdeasRoute = IdeasRouteImport.update({
   id: '/ideas',
   path: '/ideas',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FootballRoute = FootballRouteImport.update({
+  id: '/football',
+  path: '/football',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CultureRoute = CultureRouteImport.update({
@@ -182,6 +188,7 @@ export interface FileRoutesByFullPath {
   '/compare': typeof CompareRoute
   '/cuisine': typeof CuisineRoute
   '/culture': typeof CultureRouteWithChildren
+  '/football': typeof FootballRoute
   '/ideas': typeof IdeasRoute
   '/lessons': typeof LessonsRoute
   '/map': typeof MapRoute
@@ -211,6 +218,7 @@ export interface FileRoutesByTo {
   '/compare': typeof CompareRoute
   '/cuisine': typeof CuisineRoute
   '/culture': typeof CultureRouteWithChildren
+  '/football': typeof FootballRoute
   '/ideas': typeof IdeasRoute
   '/lessons': typeof LessonsRoute
   '/map': typeof MapRoute
@@ -241,6 +249,7 @@ export interface FileRoutesById {
   '/compare': typeof CompareRoute
   '/cuisine': typeof CuisineRoute
   '/culture': typeof CultureRouteWithChildren
+  '/football': typeof FootballRoute
   '/ideas': typeof IdeasRoute
   '/lessons': typeof LessonsRoute
   '/map': typeof MapRoute
@@ -272,6 +281,7 @@ export interface FileRouteTypes {
     | '/compare'
     | '/cuisine'
     | '/culture'
+    | '/football'
     | '/ideas'
     | '/lessons'
     | '/map'
@@ -301,6 +311,7 @@ export interface FileRouteTypes {
     | '/compare'
     | '/cuisine'
     | '/culture'
+    | '/football'
     | '/ideas'
     | '/lessons'
     | '/map'
@@ -330,6 +341,7 @@ export interface FileRouteTypes {
     | '/compare'
     | '/cuisine'
     | '/culture'
+    | '/football'
     | '/ideas'
     | '/lessons'
     | '/map'
@@ -360,6 +372,7 @@ export interface RootRouteChildren {
   CompareRoute: typeof CompareRoute
   CuisineRoute: typeof CuisineRoute
   CultureRoute: typeof CultureRouteWithChildren
+  FootballRoute: typeof FootballRoute
   IdeasRoute: typeof IdeasRoute
   LessonsRoute: typeof LessonsRoute
   MapRoute: typeof MapRoute
@@ -451,6 +464,13 @@ declare module '@tanstack/react-router' {
       path: '/ideas'
       fullPath: '/ideas'
       preLoaderRoute: typeof IdeasRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/football': {
+      id: '/football'
+      path: '/football'
+      fullPath: '/football'
+      preLoaderRoute: typeof FootballRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/culture': {
@@ -594,6 +614,7 @@ const rootRouteChildren: RootRouteChildren = {
   CompareRoute: CompareRoute,
   CuisineRoute: CuisineRoute,
   CultureRoute: CultureRouteWithChildren,
+  FootballRoute: FootballRoute,
   IdeasRoute: IdeasRoute,
   LessonsRoute: LessonsRoute,
   MapRoute: MapRoute,
