@@ -17,6 +17,7 @@ import { SkipLink, LangSync } from "@/components/A11y";
 import { AudioGuideProvider } from "@/lib/audioGuide";
 import { AudioMiniPlayer } from "@/components/audio/AudioGuide";
 import { AskCurator } from "@/components/curator/AskCurator";
+import { PassportTracker } from "@/components/PassportTracker";
 import { getLang, tu } from "@/lib/i18n";
 
 
