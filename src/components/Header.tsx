@@ -441,6 +441,61 @@ export function Header() {
                 {l.label}
               </Link>
             ))}
+
+            {/* Football accordion */}
+            <button
+              type="button"
+              onClick={() => setMobileFootballOpen((v) => !v)}
+              aria-expanded={mobileFootballOpen}
+              aria-controls="mobile-football-submenu"
+              className={
+                "flex items-center justify-between px-3 py-3 rounded-xl text-base font-semibold transition " +
+                (isFootball
+                  ? "text-foreground bg-muted"
+                  : "text-foreground hover:bg-muted active:bg-muted")
+              }
+            >
+              <span>{T.football}</span>
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2.4"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className={"opacity-70 transition-transform " + (mobileFootballOpen ? "rotate-180" : "")}
+                aria-hidden
+              >
+                <polyline points="6 9 12 15 18 9" />
+              </svg>
+            </button>
+            {mobileFootballOpen && (
+              <div id="mobile-football-submenu" className="ms-3 ps-3 border-s border-border flex flex-col">
+                {footballMenu.map((item) => {
+                  const active = item.isActive();
+                  return (
+                    <Link
+                      key={`mfm-${item.label}`}
+                      to={item.to as any}
+                      params={item.params as any}
+                      hash={item.hash}
+                      onClick={() => setMenuOpen(false)}
+                      className={
+                        "px-3 py-2.5 rounded-xl text-sm transition " +
+                        (active
+                          ? "text-foreground font-semibold bg-muted"
+                          : "text-foreground/85 hover:bg-muted active:bg-muted")
+                      }
+                    >
+                      {item.label}
+                    </Link>
+                  );
+                })}
+              </div>
+            )}
+
             <div className="h-px bg-border my-1 mx-3" />
             <Link
               to="/profile"
