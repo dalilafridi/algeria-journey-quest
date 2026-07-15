@@ -1,10 +1,11 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useMemo, useState } from "react";
 
 import { Header } from "@/components/Header";
 import { MedallionFrame } from "@/components/brand/MedallionFrame";
 import { useLang, type Lang, type LocalizedString } from "@/lib/i18n";
 import { useFootballBookmarks } from "@/lib/footballBookmarks";
+import { theaterIdForFootballMatch } from "@/data/matchTheater";
 import {
   AFCON_HISTORY,
   ARTIFACTS,
