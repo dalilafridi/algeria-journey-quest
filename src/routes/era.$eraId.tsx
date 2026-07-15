@@ -21,6 +21,8 @@ import { getCurator } from "@/data/curatorContent";
 import { MedallionFrame } from "@/components/brand/MedallionFrame";
 import { CollectionEmblem } from "@/components/figures/CollectionEmblem";
 import { t, tu, useLang, type Lang, type LocalizedString } from "@/lib/i18n";
+import { AudioGuideButton } from "@/components/audio/AudioGuide";
+import type { AudioGuide } from "@/lib/audioGuide";
 import {
   MuseumCatalogPage,
   MuseumHero,
@@ -173,6 +175,36 @@ function EraPage() {
           </MedallionFrame>
         }
       />
+
+      {(() => {
+        const segs: { id: string; text: string }[] = [
+          { id: "intro", text: `${t(era.title, lang)}. ${era.dateRange}. ${t(era.summary, lang)}` },
+        ];
+        if (curator?.note) segs.push({ id: "curator", text: t(curator.note, lang) });
+        if (extras?.whyItMatters) segs.push({ id: "why", text: t(extras.whyItMatters, lang) });
+        (extras?.museumNotes ?? []).forEach((n, i) =>
+          segs.push({ id: `note-${i}`, text: `${t(n.title, lang)}. ${t(n.body, lang)}` }),
+        );
+        (era.facts ?? []).slice(0, 4).forEach((f: LocalizedString, i: number) =>
+          segs.push({ id: `fact-${i}`, text: t(f, lang) }),
+        );
+        const guide: AudioGuide = {
+          id: `era:${era.id}`,
+          title: t(era.title, lang),
+          subtitle: era.dateRange,
+          href: `/era/${era.id}` as unknown as AudioGuide["href"],
+          segments: segs,
+        };
+        return (
+          <div className="flex justify-start -mt-2 mb-2">
+            <AudioGuideButton
+              guide={guide}
+              label={tri(lang, "Listen to this era", "Écouter cette époque", "استمع إلى هذه الحقبة")}
+            />
+          </div>
+        );
+      })()}
+
 
       {curator?.note && (
         <MuseumCuratorNote

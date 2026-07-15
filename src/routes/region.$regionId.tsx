@@ -22,6 +22,8 @@ import { eras } from "@/data/eras";
 import { getFigure } from "@/data/figures";
 import { saveJourneyPlace } from "@/lib/continuity";
 import { t, useLang, type Lang, type LocalizedString } from "@/lib/i18n";
+import { AudioGuideButton } from "@/components/audio/AudioGuide";
+import type { AudioGuide } from "@/lib/audioGuide";
 import {
   MuseumCatalogPage,
   MuseumHero,
@@ -186,6 +188,46 @@ function RegionPage() {
           <RegionIcon regionId={region.id} className="h-36 w-36 sm:h-40 sm:w-40 icon-glow animate-cinematic-in" />
         }
       />
+
+      {(() => {
+        const segs: { id: string; text: string }[] = [
+          {
+            id: "intro",
+            text: `${t(region.name, lang)}. ${t(region.focus, lang)}. ${t(region.summary, lang)}`,
+          },
+        ];
+        if (extras?.geography) segs.push({ id: "geo", text: t(extras.geography, lang) });
+        if (extras?.culturalImportance)
+          segs.push({ id: "culture", text: t(extras.culturalImportance, lang) });
+        if (extras?.historicalSignificance)
+          segs.push({ id: "history", text: t(extras.historicalSignificance, lang) });
+        (extras?.museumNotes ?? []).forEach((n, i) =>
+          segs.push({ id: `note-${i}`, text: `${t(n.title, lang)}. ${t(n.body, lang)}` }),
+        );
+        if (extras?.reflection?.quote)
+          segs.push({ id: "reflection", text: t(extras.reflection.quote, lang) });
+        const guide: AudioGuide = {
+          id: `region:${region.id}`,
+          title: t(region.name, lang),
+          subtitle: t(region.focus, lang),
+          segments: segs,
+        };
+        return (
+          <div className="flex justify-start -mt-2 mb-2">
+            <AudioGuideButton
+              guide={guide}
+              label={
+                lang === "fr"
+                  ? "Écouter cette région"
+                  : lang === "ar"
+                    ? "استمع إلى هذه المنطقة"
+                    : "Listen to this region"
+              }
+            />
+          </div>
+        );
+      })()}
+
 
       {extras && (
         <div className="grid sm:grid-cols-2 gap-4">
