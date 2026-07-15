@@ -17,11 +17,15 @@ export function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [langOpen, setLangOpen] = useState(false);
   const [profileOpen, setProfileOpen] = useState(false);
+  const [footballOpen, setFootballOpen] = useState(false);
+  const [mobileFootballOpen, setMobileFootballOpen] = useState(false);
   const lang = useLang();
   const navigate = useNavigate();
   const path = useRouterState({ select: (s) => s.location.pathname });
+  const hash = useRouterState({ select: (s) => s.location.hash });
   const langRef = useRef<HTMLDivElement>(null);
   const profileRef = useRef<HTMLDivElement>(null);
+  const footballRef = useRef<HTMLDivElement>(null);
 
   // Lock body scroll when mobile menu is open
   useEffect(() => {
@@ -39,9 +43,21 @@ export function Header() {
     const onClick = (e: MouseEvent) => {
       if (langRef.current && !langRef.current.contains(e.target as Node)) setLangOpen(false);
       if (profileRef.current && !profileRef.current.contains(e.target as Node)) setProfileOpen(false);
+      if (footballRef.current && !footballRef.current.contains(e.target as Node)) setFootballOpen(false);
+    };
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setLangOpen(false);
+        setProfileOpen(false);
+        setFootballOpen(false);
+      }
     };
     document.addEventListener("mousedown", onClick);
-    return () => document.removeEventListener("mousedown", onClick);
+    document.addEventListener("keydown", onKey);
+    return () => {
+      document.removeEventListener("mousedown", onClick);
+      document.removeEventListener("keydown", onKey);
+    };
   }, []);
 
   const current: Lang = lang ?? getLang();
@@ -85,6 +101,8 @@ export function Header() {
     path.startsWith("/stargazing") ||
     path.startsWith("/cinema");
 
+  const isFootball = path.startsWith("/football") || path.startsWith("/clubs") || path.startsWith("/theater");
+
   // Primary structural pillars
   const navLinks = [
     { to: "/timeline" as const, label: T.journey, active: isJourney },
@@ -92,10 +110,28 @@ export function Header() {
     { to: "/map" as const, label: T.regions, active: isRegions },
     { to: "/figures" as const, label: T.figures, active: isFigures },
     { to: "/culture" as const, label: T.culture, active: isCulture },
-    { to: "/football" as const, label: T.football, active: path.startsWith("/football") },
-    { to: "/clubs" as const, label: T.clubs, active: path.startsWith("/clubs") },
   ];
 
+  // Football submenu. Anchor ids match sections in src/routes/football.tsx.
+  type FootballItem = {
+    label: string;
+    to: string;
+    hash?: string;
+    params?: Record<string, string>;
+    isActive: () => boolean;
+  };
+  const onFootballRoot = path === "/football";
+  const footballMenu: FootballItem[] = [
+    { label: { fr: "Musée du Football", en: "Football Museum", ar: "متحف كرة القدم" }[current], to: "/football", isActive: () => onFootballRoot && !hash },
+    { label: { fr: "Équipe Nationale", en: "National Team", ar: "المنتخب الوطني" }[current], to: "/football", hash: "national-team", isActive: () => onFootballRoot && hash === "national-team" },
+    { label: { fr: "Coupes du Monde", en: "World Cups", ar: "كؤوس العالم" }[current], to: "/football", hash: "world-cup", isActive: () => onFootballRoot && hash === "world-cup" },
+    { label: { fr: "Histoire CAN", en: "AFCON History", ar: "تاريخ كأس أفريقيا" }[current], to: "/football", hash: "afcon", isActive: () => onFootballRoot && hash === "afcon" },
+    { label: { fr: "Équipe du FLN", en: "FLN Team", ar: "فريق جبهة التحرير" }[current], to: "/football", hash: "fln-team", isActive: () => onFootballRoot && hash === "fln-team" },
+    { label: { fr: "Théâtre des Matchs", en: "Match Theater", ar: "مسرح المباريات" }[current], to: "/theater/$matchId", params: { matchId: "gijon-1982" }, isActive: () => path.startsWith("/theater") },
+    { label: { fr: "Légendes", en: "Legends", ar: "الأساطير" }[current], to: "/football", hash: "legends", isActive: () => onFootballRoot && hash === "legends" },
+    { label: { fr: "Stades", en: "Stadiums", ar: "الملاعب" }[current], to: "/football", hash: "stadiums", isActive: () => onFootballRoot && hash === "stadiums" },
+    { label: { fr: "Musées des Clubs", en: "Club Museums", ar: "متاحف الأندية" }[current], to: "/clubs", isActive: () => path.startsWith("/clubs") },
+  ];
 
   const handleReset = () => {
     if (typeof window !== "undefined" && window.confirm(T.confirmReset)) {
@@ -151,6 +187,71 @@ export function Header() {
               {l.label}
             </Link>
           ))}
+
+          {/* Football dropdown */}
+          <div className="relative" ref={footballRef}>
+            <button
+              type="button"
+              onClick={() => setFootballOpen((v) => !v)}
+              onKeyDown={(e) => {
+                if (e.key === "ArrowDown") {
+                  e.preventDefault();
+                  setFootballOpen(true);
+                }
+              }}
+              aria-haspopup="menu"
+              aria-expanded={footballOpen}
+              className={
+                (isFootball ? activeLinkClass : primaryClass) +
+                " inline-flex items-center gap-1"
+              }
+            >
+              {T.football}
+              <svg
+                width="12"
+                height="12"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className={"opacity-70 transition-transform " + (footballOpen ? "rotate-180" : "")}
+                aria-hidden
+              >
+                <polyline points="6 9 12 15 18 9" />
+              </svg>
+            </button>
+            {footballOpen && (
+              <div
+                role="menu"
+                aria-label={T.football}
+                className="absolute start-1/2 -translate-x-1/2 mt-2 min-w-[240px] rounded-xl border border-border bg-popover shadow-lg overflow-hidden animate-float-up py-1"
+              >
+                {footballMenu.map((item) => {
+                  const active = item.isActive();
+                  return (
+                    <Link
+                      key={`fm-${item.label}`}
+                      to={item.to as any}
+                      params={item.params as any}
+                      hash={item.hash}
+                      role="menuitem"
+                      onClick={() => setFootballOpen(false)}
+                      className={
+                        "block px-3.5 py-2 text-sm transition-colors " +
+                        (active
+                          ? "text-foreground font-semibold bg-muted"
+                          : "text-foreground/85 hover:bg-muted hover:text-foreground")
+                      }
+                    >
+                      {item.label}
+                    </Link>
+                  );
+                })}
+              </div>
+            )}
+          </div>
         </nav>
 
         <div className="flex items-center gap-2 sm:gap-3">
@@ -340,6 +441,61 @@ export function Header() {
                 {l.label}
               </Link>
             ))}
+
+            {/* Football accordion */}
+            <button
+              type="button"
+              onClick={() => setMobileFootballOpen((v) => !v)}
+              aria-expanded={mobileFootballOpen}
+              aria-controls="mobile-football-submenu"
+              className={
+                "flex items-center justify-between px-3 py-3 rounded-xl text-base font-semibold transition " +
+                (isFootball
+                  ? "text-foreground bg-muted"
+                  : "text-foreground hover:bg-muted active:bg-muted")
+              }
+            >
+              <span>{T.football}</span>
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2.4"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className={"opacity-70 transition-transform " + (mobileFootballOpen ? "rotate-180" : "")}
+                aria-hidden
+              >
+                <polyline points="6 9 12 15 18 9" />
+              </svg>
+            </button>
+            {mobileFootballOpen && (
+              <div id="mobile-football-submenu" className="ms-3 ps-3 border-s border-border flex flex-col">
+                {footballMenu.map((item) => {
+                  const active = item.isActive();
+                  return (
+                    <Link
+                      key={`mfm-${item.label}`}
+                      to={item.to as any}
+                      params={item.params as any}
+                      hash={item.hash}
+                      onClick={() => setMenuOpen(false)}
+                      className={
+                        "px-3 py-2.5 rounded-xl text-sm transition " +
+                        (active
+                          ? "text-foreground font-semibold bg-muted"
+                          : "text-foreground/85 hover:bg-muted active:bg-muted")
+                      }
+                    >
+                      {item.label}
+                    </Link>
+                  );
+                })}
+              </div>
+            )}
+
             <div className="h-px bg-border my-1 mx-3" />
             <Link
               to="/profile"
