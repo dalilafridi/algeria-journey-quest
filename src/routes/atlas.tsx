@@ -419,9 +419,16 @@ function AtlasPage() {
                 S A H A R A  ·  T A S S I L I  ·  H O G G A R
               </text>
 
-
+              {/* Historical overlay layers (always mounted for crossfade) */}
+              <HistoricalOverlay activeId={periodId} lang={lang} />
 
               {/* Region pins */}
+              <g
+                style={{
+                  opacity: activePeriod ? 0.28 : 1,
+                  transition: "opacity 520ms ease",
+                }}
+              >
               {mapRegions.map((r) => {
                 const p = REGION_POINTS[r.id];
                 if (!p) return null;
