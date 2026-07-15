@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { useMemo, useRef, useState } from "react";
+import { useMemo, useState } from "react";
 import { t, useLang, type Lang } from "@/lib/i18n";
 import { pickOnThisDay, type OnThisDayEntry } from "@/data/onThisDay";
 
