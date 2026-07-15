@@ -533,9 +533,46 @@ function GijonExhibit({ lang }: { lang: Lang }) {
           ))}
         </ol>
       </Plaque>
+
+      {/* Match Theater — reliving the earlier upset that made Gijón matter. */}
+      <div className="lg:col-span-2">
+        <Link
+          to="/theater/$matchId"
+          params={{ matchId: "gijon-1982" }}
+          className="group flex items-center justify-between gap-4 rounded-2xl border border-accent/40 bg-gradient-to-r from-accent/15 via-background/40 to-accent/10 p-4 transition hover:-translate-y-0.5 hover:border-accent"
+          style={{ boxShadow: "var(--shadow-soft)" }}
+        >
+          <div>
+            <div className="text-[10px] uppercase tracking-[0.28em] text-accent-foreground/80" style={SERIF}>
+              {{ en: "Match Theater", fr: "Théâtre du match", ar: "مسرح المباراة" }[lang]}
+            </div>
+            <div className="mt-1 text-base font-semibold text-foreground" style={SERIF}>
+              {{
+                en: "Relive Algeria 2–1 West Germany · 16 June 1982",
+                fr: "Revivez Algérie 2–1 RFA · 16 juin 1982",
+                ar: "أعِد عيش الجزائر ٢–١ ألمانيا الغربية · ١٦ يونيو ١٩٨٢",
+              }[lang]}
+            </div>
+            <div className="mt-0.5 text-xs text-muted-foreground">
+              {{
+                en: "The upset that preceded — and framed — the Shame of Gijón.",
+                fr: "L'exploit qui a précédé — et éclairé — la Honte de Gijón.",
+                ar: "المفاجأة التي سبقت فضيحة خيخون وأضاءت سياقها.",
+              }[lang]}
+            </div>
+          </div>
+          <span
+            aria-hidden
+            className="rounded-full bg-accent px-3 py-1.5 text-sm font-bold text-accent-foreground transition group-hover:translate-x-0.5"
+          >
+            →
+          </span>
+        </Link>
+      </div>
     </div>
   );
 }
+
 
 function TeamBlock({ name, flag }: { name: string; flag: string }) {
   return (
