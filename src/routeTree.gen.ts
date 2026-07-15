@@ -23,6 +23,7 @@ import { Route as FootballRouteImport } from './routes/football'
 import { Route as CultureRouteImport } from './routes/culture'
 import { Route as CuisineRouteImport } from './routes/cuisine'
 import { Route as CompareRouteImport } from './routes/compare'
+import { Route as ClubsRouteImport } from './routes/clubs'
 import { Route as CinemaRouteImport } from './routes/cinema'
 import { Route as ChronicleRouteImport } from './routes/chronicle'
 import { Route as AtlasRouteImport } from './routes/atlas'
@@ -36,6 +37,7 @@ import { Route as FiguresQuizRouteImport } from './routes/figures.quiz'
 import { Route as FiguresFigureIdRouteImport } from './routes/figures.$figureId'
 import { Route as EraEraIdRouteImport } from './routes/era.$eraId'
 import { Route as CultureTopicIdRouteImport } from './routes/culture.$topicId'
+import { Route as ClubsClubIdRouteImport } from './routes/clubs.$clubId'
 import { Route as ApiCuratorRouteImport } from './routes/api/curator'
 import { Route as FiguresCollectionCollectionIdRouteImport } from './routes/figures.collection.$collectionId'
 
@@ -109,6 +111,11 @@ const CompareRoute = CompareRouteImport.update({
   path: '/compare',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ClubsRoute = ClubsRouteImport.update({
+  id: '/clubs',
+  path: '/clubs',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const CinemaRoute = CinemaRouteImport.update({
   id: '/cinema',
   path: '/cinema',
@@ -174,6 +181,11 @@ const CultureTopicIdRoute = CultureTopicIdRouteImport.update({
   path: '/$topicId',
   getParentRoute: () => CultureRoute,
 } as any)
+const ClubsClubIdRoute = ClubsClubIdRouteImport.update({
+  id: '/$clubId',
+  path: '/$clubId',
+  getParentRoute: () => ClubsRoute,
+} as any)
 const ApiCuratorRoute = ApiCuratorRouteImport.update({
   id: '/api/curator',
   path: '/api/curator',
@@ -191,6 +203,7 @@ export interface FileRoutesByFullPath {
   '/atlas': typeof AtlasRoute
   '/chronicle': typeof ChronicleRoute
   '/cinema': typeof CinemaRoute
+  '/clubs': typeof ClubsRouteWithChildren
   '/compare': typeof CompareRoute
   '/cuisine': typeof CuisineRoute
   '/culture': typeof CultureRouteWithChildren
@@ -206,6 +219,7 @@ export interface FileRoutesByFullPath {
   '/timeline': typeof TimelineRoute
   '/words': typeof WordsRoute
   '/api/curator': typeof ApiCuratorRoute
+  '/clubs/$clubId': typeof ClubsClubIdRoute
   '/culture/$topicId': typeof CultureTopicIdRoute
   '/era/$eraId': typeof EraEraIdRoute
   '/figures/$figureId': typeof FiguresFigureIdRoute
@@ -222,6 +236,7 @@ export interface FileRoutesByTo {
   '/atlas': typeof AtlasRoute
   '/chronicle': typeof ChronicleRoute
   '/cinema': typeof CinemaRoute
+  '/clubs': typeof ClubsRouteWithChildren
   '/compare': typeof CompareRoute
   '/cuisine': typeof CuisineRoute
   '/culture': typeof CultureRouteWithChildren
@@ -237,6 +252,7 @@ export interface FileRoutesByTo {
   '/timeline': typeof TimelineRoute
   '/words': typeof WordsRoute
   '/api/curator': typeof ApiCuratorRoute
+  '/clubs/$clubId': typeof ClubsClubIdRoute
   '/culture/$topicId': typeof CultureTopicIdRoute
   '/era/$eraId': typeof EraEraIdRoute
   '/figures/$figureId': typeof FiguresFigureIdRoute
@@ -254,6 +270,7 @@ export interface FileRoutesById {
   '/atlas': typeof AtlasRoute
   '/chronicle': typeof ChronicleRoute
   '/cinema': typeof CinemaRoute
+  '/clubs': typeof ClubsRouteWithChildren
   '/compare': typeof CompareRoute
   '/cuisine': typeof CuisineRoute
   '/culture': typeof CultureRouteWithChildren
@@ -269,6 +286,7 @@ export interface FileRoutesById {
   '/timeline': typeof TimelineRoute
   '/words': typeof WordsRoute
   '/api/curator': typeof ApiCuratorRoute
+  '/clubs/$clubId': typeof ClubsClubIdRoute
   '/culture/$topicId': typeof CultureTopicIdRoute
   '/era/$eraId': typeof EraEraIdRoute
   '/figures/$figureId': typeof FiguresFigureIdRoute
@@ -287,6 +305,7 @@ export interface FileRouteTypes {
     | '/atlas'
     | '/chronicle'
     | '/cinema'
+    | '/clubs'
     | '/compare'
     | '/cuisine'
     | '/culture'
@@ -302,6 +321,7 @@ export interface FileRouteTypes {
     | '/timeline'
     | '/words'
     | '/api/curator'
+    | '/clubs/$clubId'
     | '/culture/$topicId'
     | '/era/$eraId'
     | '/figures/$figureId'
@@ -318,6 +338,7 @@ export interface FileRouteTypes {
     | '/atlas'
     | '/chronicle'
     | '/cinema'
+    | '/clubs'
     | '/compare'
     | '/cuisine'
     | '/culture'
@@ -333,6 +354,7 @@ export interface FileRouteTypes {
     | '/timeline'
     | '/words'
     | '/api/curator'
+    | '/clubs/$clubId'
     | '/culture/$topicId'
     | '/era/$eraId'
     | '/figures/$figureId'
@@ -349,6 +371,7 @@ export interface FileRouteTypes {
     | '/atlas'
     | '/chronicle'
     | '/cinema'
+    | '/clubs'
     | '/compare'
     | '/cuisine'
     | '/culture'
@@ -364,6 +387,7 @@ export interface FileRouteTypes {
     | '/timeline'
     | '/words'
     | '/api/curator'
+    | '/clubs/$clubId'
     | '/culture/$topicId'
     | '/era/$eraId'
     | '/figures/$figureId'
@@ -381,6 +405,7 @@ export interface RootRouteChildren {
   AtlasRoute: typeof AtlasRoute
   ChronicleRoute: typeof ChronicleRoute
   CinemaRoute: typeof CinemaRoute
+  ClubsRoute: typeof ClubsRouteWithChildren
   CompareRoute: typeof CompareRoute
   CuisineRoute: typeof CuisineRoute
   CultureRoute: typeof CultureRouteWithChildren
@@ -507,6 +532,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CompareRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/clubs': {
+      id: '/clubs'
+      path: '/clubs'
+      fullPath: '/clubs'
+      preLoaderRoute: typeof ClubsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/cinema': {
       id: '/cinema'
       path: '/cinema'
@@ -598,6 +630,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CultureTopicIdRouteImport
       parentRoute: typeof CultureRoute
     }
+    '/clubs/$clubId': {
+      id: '/clubs/$clubId'
+      path: '/$clubId'
+      fullPath: '/clubs/$clubId'
+      preLoaderRoute: typeof ClubsClubIdRouteImport
+      parentRoute: typeof ClubsRoute
+    }
     '/api/curator': {
       id: '/api/curator'
       path: '/api/curator'
@@ -615,6 +654,16 @@ declare module '@tanstack/react-router' {
   }
 }
 
+interface ClubsRouteChildren {
+  ClubsClubIdRoute: typeof ClubsClubIdRoute
+}
+
+const ClubsRouteChildren: ClubsRouteChildren = {
+  ClubsClubIdRoute: ClubsClubIdRoute,
+}
+
+const ClubsRouteWithChildren = ClubsRoute._addFileChildren(ClubsRouteChildren)
+
 interface CultureRouteChildren {
   CultureTopicIdRoute: typeof CultureTopicIdRoute
 }
@@ -631,6 +680,7 @@ const rootRouteChildren: RootRouteChildren = {
   AtlasRoute: AtlasRoute,
   ChronicleRoute: ChronicleRoute,
   CinemaRoute: CinemaRoute,
+  ClubsRoute: ClubsRouteWithChildren,
   CompareRoute: CompareRoute,
   CuisineRoute: CuisineRoute,
   CultureRoute: CultureRouteWithChildren,

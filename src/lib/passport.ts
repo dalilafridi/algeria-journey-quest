@@ -240,6 +240,20 @@ export function computeStamps(state?: PassportState): Stamp[] {
         ar: "أكمل تجربة مسرح المباراة للجزائر ٢–١ ألمانيا.",
       },
     },
+    {
+      visitId: "club:js-kabylie",
+      id: "jsk-museum-completed",
+      title: {
+        en: "JS Kabylie Museum Completed",
+        fr: "Musée JS Kabylie complété",
+        ar: "أكملت متحف شبيبة القبائل",
+      },
+      hint: {
+        en: "Walk through the JS Kabylie Club Museum.",
+        fr: "Parcourir le musée du club JS Kabylie.",
+        ar: "تجوّل في متحف نادي شبيبة القبائل.",
+      },
+    },
   ];
   for (const ts of theaterStamps) {
     const earned = p.visits.culture.includes(ts.visitId);
