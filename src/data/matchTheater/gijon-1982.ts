@@ -219,7 +219,7 @@ export const gijon1982: MatchTheater = {
     },
   },
 
-  events: [
+  events: ([
     { id: "ko", minute: 0, kind: "kickoff", label: { en: "Kick-off", fr: "Coup d'envoi", ar: "بداية المباراة" } },
     {
       id: "goal-madjer-54",
