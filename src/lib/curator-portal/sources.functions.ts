@@ -204,7 +204,7 @@ export const createSource = createServerFn({ method: "POST" })
   .inputValidator((d: unknown) => sourcePayloadSchema.parse(d))
   .handler(async ({ data, context }) => {
     const { data: id, error } = await context.supabase.rpc("create_source", {
-      _payload: data as unknown as Record<string, unknown>,
+      _payload: data as never,
     });
     if (error) throw new Error(error.message);
     return { id: id as string };
