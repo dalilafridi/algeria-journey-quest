@@ -47,12 +47,14 @@ import { Route as CuratorStudioIndexRouteImport } from './routes/curator/_studio
 import { Route as FiguresCollectionCollectionIdRouteImport } from './routes/figures.collection.$collectionId'
 import { Route as CuratorStudioTranslationsRouteImport } from './routes/curator/_studio/translations'
 import { Route as CuratorStudioTechnicalRouteImport } from './routes/curator/_studio/technical'
+import { Route as CuratorStudioTeamRouteImport } from './routes/curator/_studio/team'
 import { Route as CuratorStudioSourcesRouteImport } from './routes/curator/_studio/sources'
 import { Route as CuratorStudioSettingsRouteImport } from './routes/curator/_studio/settings'
 import { Route as CuratorStudioRoadmapRouteImport } from './routes/curator/_studio/roadmap'
 import { Route as CuratorStudioReleasesRouteImport } from './routes/curator/_studio/releases'
 import { Route as CuratorStudioQualityRouteImport } from './routes/curator/_studio/quality'
 import { Route as CuratorStudioPublishingRouteImport } from './routes/curator/_studio/publishing'
+import { Route as CuratorStudioProfileRouteImport } from './routes/curator/_studio/profile'
 import { Route as CuratorStudioPreservationRouteImport } from './routes/curator/_studio/preservation'
 import { Route as CuratorStudioMediaRouteImport } from './routes/curator/_studio/media'
 import { Route as CuratorStudioFootballRouteImport } from './routes/curator/_studio/football'
@@ -62,6 +64,7 @@ import { Route as CuratorStudioCoverageRouteImport } from './routes/curator/_stu
 import { Route as CuratorStudioContributorsRouteImport } from './routes/curator/_studio/contributors'
 import { Route as CuratorStudioContentRouteImport } from './routes/curator/_studio/content'
 import { Route as CuratorStudioBlueprintRouteImport } from './routes/curator/_studio/blueprint'
+import { Route as CuratorStudioAuditLogRouteImport } from './routes/curator/_studio/audit-log'
 import { Route as CuratorStudioAnalyticsRouteImport } from './routes/curator/_studio/analytics'
 import { Route as CuratorStudioAcquisitionsRouteImport } from './routes/curator/_studio/acquisitions'
 
@@ -256,6 +259,11 @@ const CuratorStudioTechnicalRoute = CuratorStudioTechnicalRouteImport.update({
   path: '/technical',
   getParentRoute: () => CuratorStudioRouteRoute,
 } as any)
+const CuratorStudioTeamRoute = CuratorStudioTeamRouteImport.update({
+  id: '/team',
+  path: '/team',
+  getParentRoute: () => CuratorStudioRouteRoute,
+} as any)
 const CuratorStudioSourcesRoute = CuratorStudioSourcesRouteImport.update({
   id: '/sources',
   path: '/sources',
@@ -284,6 +292,11 @@ const CuratorStudioQualityRoute = CuratorStudioQualityRouteImport.update({
 const CuratorStudioPublishingRoute = CuratorStudioPublishingRouteImport.update({
   id: '/publishing',
   path: '/publishing',
+  getParentRoute: () => CuratorStudioRouteRoute,
+} as any)
+const CuratorStudioProfileRoute = CuratorStudioProfileRouteImport.update({
+  id: '/profile',
+  path: '/profile',
   getParentRoute: () => CuratorStudioRouteRoute,
 } as any)
 const CuratorStudioPreservationRoute =
@@ -331,6 +344,11 @@ const CuratorStudioContentRoute = CuratorStudioContentRouteImport.update({
 const CuratorStudioBlueprintRoute = CuratorStudioBlueprintRouteImport.update({
   id: '/blueprint',
   path: '/blueprint',
+  getParentRoute: () => CuratorStudioRouteRoute,
+} as any)
+const CuratorStudioAuditLogRoute = CuratorStudioAuditLogRouteImport.update({
+  id: '/audit-log',
+  path: '/audit-log',
   getParentRoute: () => CuratorStudioRouteRoute,
 } as any)
 const CuratorStudioAnalyticsRoute = CuratorStudioAnalyticsRouteImport.update({
@@ -381,6 +399,7 @@ export interface FileRoutesByFullPath {
   '/figures/': typeof FiguresIndexRoute
   '/curator/acquisitions': typeof CuratorStudioAcquisitionsRoute
   '/curator/analytics': typeof CuratorStudioAnalyticsRoute
+  '/curator/audit-log': typeof CuratorStudioAuditLogRoute
   '/curator/blueprint': typeof CuratorStudioBlueprintRoute
   '/curator/content': typeof CuratorStudioContentRoute
   '/curator/contributors': typeof CuratorStudioContributorsRoute
@@ -390,12 +409,14 @@ export interface FileRoutesByFullPath {
   '/curator/football': typeof CuratorStudioFootballRoute
   '/curator/media': typeof CuratorStudioMediaRoute
   '/curator/preservation': typeof CuratorStudioPreservationRoute
+  '/curator/profile': typeof CuratorStudioProfileRoute
   '/curator/publishing': typeof CuratorStudioPublishingRoute
   '/curator/quality': typeof CuratorStudioQualityRoute
   '/curator/releases': typeof CuratorStudioReleasesRoute
   '/curator/roadmap': typeof CuratorStudioRoadmapRoute
   '/curator/settings': typeof CuratorStudioSettingsRoute
   '/curator/sources': typeof CuratorStudioSourcesRoute
+  '/curator/team': typeof CuratorStudioTeamRoute
   '/curator/technical': typeof CuratorStudioTechnicalRoute
   '/curator/translations': typeof CuratorStudioTranslationsRoute
   '/figures/collection/$collectionId': typeof FiguresCollectionCollectionIdRoute
@@ -437,6 +458,7 @@ export interface FileRoutesByTo {
   '/figures': typeof FiguresIndexRoute
   '/curator/acquisitions': typeof CuratorStudioAcquisitionsRoute
   '/curator/analytics': typeof CuratorStudioAnalyticsRoute
+  '/curator/audit-log': typeof CuratorStudioAuditLogRoute
   '/curator/blueprint': typeof CuratorStudioBlueprintRoute
   '/curator/content': typeof CuratorStudioContentRoute
   '/curator/contributors': typeof CuratorStudioContributorsRoute
@@ -446,12 +468,14 @@ export interface FileRoutesByTo {
   '/curator/football': typeof CuratorStudioFootballRoute
   '/curator/media': typeof CuratorStudioMediaRoute
   '/curator/preservation': typeof CuratorStudioPreservationRoute
+  '/curator/profile': typeof CuratorStudioProfileRoute
   '/curator/publishing': typeof CuratorStudioPublishingRoute
   '/curator/quality': typeof CuratorStudioQualityRoute
   '/curator/releases': typeof CuratorStudioReleasesRoute
   '/curator/roadmap': typeof CuratorStudioRoadmapRoute
   '/curator/settings': typeof CuratorStudioSettingsRoute
   '/curator/sources': typeof CuratorStudioSourcesRoute
+  '/curator/team': typeof CuratorStudioTeamRoute
   '/curator/technical': typeof CuratorStudioTechnicalRoute
   '/curator/translations': typeof CuratorStudioTranslationsRoute
   '/figures/collection/$collectionId': typeof FiguresCollectionCollectionIdRoute
@@ -494,6 +518,7 @@ export interface FileRoutesById {
   '/figures/': typeof FiguresIndexRoute
   '/curator/_studio/acquisitions': typeof CuratorStudioAcquisitionsRoute
   '/curator/_studio/analytics': typeof CuratorStudioAnalyticsRoute
+  '/curator/_studio/audit-log': typeof CuratorStudioAuditLogRoute
   '/curator/_studio/blueprint': typeof CuratorStudioBlueprintRoute
   '/curator/_studio/content': typeof CuratorStudioContentRoute
   '/curator/_studio/contributors': typeof CuratorStudioContributorsRoute
@@ -503,12 +528,14 @@ export interface FileRoutesById {
   '/curator/_studio/football': typeof CuratorStudioFootballRoute
   '/curator/_studio/media': typeof CuratorStudioMediaRoute
   '/curator/_studio/preservation': typeof CuratorStudioPreservationRoute
+  '/curator/_studio/profile': typeof CuratorStudioProfileRoute
   '/curator/_studio/publishing': typeof CuratorStudioPublishingRoute
   '/curator/_studio/quality': typeof CuratorStudioQualityRoute
   '/curator/_studio/releases': typeof CuratorStudioReleasesRoute
   '/curator/_studio/roadmap': typeof CuratorStudioRoadmapRoute
   '/curator/_studio/settings': typeof CuratorStudioSettingsRoute
   '/curator/_studio/sources': typeof CuratorStudioSourcesRoute
+  '/curator/_studio/team': typeof CuratorStudioTeamRoute
   '/curator/_studio/technical': typeof CuratorStudioTechnicalRoute
   '/curator/_studio/translations': typeof CuratorStudioTranslationsRoute
   '/figures/collection/$collectionId': typeof FiguresCollectionCollectionIdRoute
@@ -552,6 +579,7 @@ export interface FileRouteTypes {
     | '/figures/'
     | '/curator/acquisitions'
     | '/curator/analytics'
+    | '/curator/audit-log'
     | '/curator/blueprint'
     | '/curator/content'
     | '/curator/contributors'
@@ -561,12 +589,14 @@ export interface FileRouteTypes {
     | '/curator/football'
     | '/curator/media'
     | '/curator/preservation'
+    | '/curator/profile'
     | '/curator/publishing'
     | '/curator/quality'
     | '/curator/releases'
     | '/curator/roadmap'
     | '/curator/settings'
     | '/curator/sources'
+    | '/curator/team'
     | '/curator/technical'
     | '/curator/translations'
     | '/figures/collection/$collectionId'
@@ -608,6 +638,7 @@ export interface FileRouteTypes {
     | '/figures'
     | '/curator/acquisitions'
     | '/curator/analytics'
+    | '/curator/audit-log'
     | '/curator/blueprint'
     | '/curator/content'
     | '/curator/contributors'
@@ -617,12 +648,14 @@ export interface FileRouteTypes {
     | '/curator/football'
     | '/curator/media'
     | '/curator/preservation'
+    | '/curator/profile'
     | '/curator/publishing'
     | '/curator/quality'
     | '/curator/releases'
     | '/curator/roadmap'
     | '/curator/settings'
     | '/curator/sources'
+    | '/curator/team'
     | '/curator/technical'
     | '/curator/translations'
     | '/figures/collection/$collectionId'
@@ -664,6 +697,7 @@ export interface FileRouteTypes {
     | '/figures/'
     | '/curator/_studio/acquisitions'
     | '/curator/_studio/analytics'
+    | '/curator/_studio/audit-log'
     | '/curator/_studio/blueprint'
     | '/curator/_studio/content'
     | '/curator/_studio/contributors'
@@ -673,12 +707,14 @@ export interface FileRouteTypes {
     | '/curator/_studio/football'
     | '/curator/_studio/media'
     | '/curator/_studio/preservation'
+    | '/curator/_studio/profile'
     | '/curator/_studio/publishing'
     | '/curator/_studio/quality'
     | '/curator/_studio/releases'
     | '/curator/_studio/roadmap'
     | '/curator/_studio/settings'
     | '/curator/_studio/sources'
+    | '/curator/_studio/team'
     | '/curator/_studio/technical'
     | '/curator/_studio/translations'
     | '/figures/collection/$collectionId'
@@ -986,6 +1022,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CuratorStudioTechnicalRouteImport
       parentRoute: typeof CuratorStudioRouteRoute
     }
+    '/curator/_studio/team': {
+      id: '/curator/_studio/team'
+      path: '/team'
+      fullPath: '/curator/team'
+      preLoaderRoute: typeof CuratorStudioTeamRouteImport
+      parentRoute: typeof CuratorStudioRouteRoute
+    }
     '/curator/_studio/sources': {
       id: '/curator/_studio/sources'
       path: '/sources'
@@ -1026,6 +1069,13 @@ declare module '@tanstack/react-router' {
       path: '/publishing'
       fullPath: '/curator/publishing'
       preLoaderRoute: typeof CuratorStudioPublishingRouteImport
+      parentRoute: typeof CuratorStudioRouteRoute
+    }
+    '/curator/_studio/profile': {
+      id: '/curator/_studio/profile'
+      path: '/profile'
+      fullPath: '/curator/profile'
+      preLoaderRoute: typeof CuratorStudioProfileRouteImport
       parentRoute: typeof CuratorStudioRouteRoute
     }
     '/curator/_studio/preservation': {
@@ -1091,6 +1141,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CuratorStudioBlueprintRouteImport
       parentRoute: typeof CuratorStudioRouteRoute
     }
+    '/curator/_studio/audit-log': {
+      id: '/curator/_studio/audit-log'
+      path: '/audit-log'
+      fullPath: '/curator/audit-log'
+      preLoaderRoute: typeof CuratorStudioAuditLogRouteImport
+      parentRoute: typeof CuratorStudioRouteRoute
+    }
     '/curator/_studio/analytics': {
       id: '/curator/_studio/analytics'
       path: '/analytics'
@@ -1111,6 +1168,7 @@ declare module '@tanstack/react-router' {
 interface CuratorStudioRouteRouteChildren {
   CuratorStudioAcquisitionsRoute: typeof CuratorStudioAcquisitionsRoute
   CuratorStudioAnalyticsRoute: typeof CuratorStudioAnalyticsRoute
+  CuratorStudioAuditLogRoute: typeof CuratorStudioAuditLogRoute
   CuratorStudioBlueprintRoute: typeof CuratorStudioBlueprintRoute
   CuratorStudioContentRoute: typeof CuratorStudioContentRoute
   CuratorStudioContributorsRoute: typeof CuratorStudioContributorsRoute
@@ -1120,12 +1178,14 @@ interface CuratorStudioRouteRouteChildren {
   CuratorStudioFootballRoute: typeof CuratorStudioFootballRoute
   CuratorStudioMediaRoute: typeof CuratorStudioMediaRoute
   CuratorStudioPreservationRoute: typeof CuratorStudioPreservationRoute
+  CuratorStudioProfileRoute: typeof CuratorStudioProfileRoute
   CuratorStudioPublishingRoute: typeof CuratorStudioPublishingRoute
   CuratorStudioQualityRoute: typeof CuratorStudioQualityRoute
   CuratorStudioReleasesRoute: typeof CuratorStudioReleasesRoute
   CuratorStudioRoadmapRoute: typeof CuratorStudioRoadmapRoute
   CuratorStudioSettingsRoute: typeof CuratorStudioSettingsRoute
   CuratorStudioSourcesRoute: typeof CuratorStudioSourcesRoute
+  CuratorStudioTeamRoute: typeof CuratorStudioTeamRoute
   CuratorStudioTechnicalRoute: typeof CuratorStudioTechnicalRoute
   CuratorStudioTranslationsRoute: typeof CuratorStudioTranslationsRoute
   CuratorStudioIndexRoute: typeof CuratorStudioIndexRoute
@@ -1134,6 +1194,7 @@ interface CuratorStudioRouteRouteChildren {
 const CuratorStudioRouteRouteChildren: CuratorStudioRouteRouteChildren = {
   CuratorStudioAcquisitionsRoute: CuratorStudioAcquisitionsRoute,
   CuratorStudioAnalyticsRoute: CuratorStudioAnalyticsRoute,
+  CuratorStudioAuditLogRoute: CuratorStudioAuditLogRoute,
   CuratorStudioBlueprintRoute: CuratorStudioBlueprintRoute,
   CuratorStudioContentRoute: CuratorStudioContentRoute,
   CuratorStudioContributorsRoute: CuratorStudioContributorsRoute,
@@ -1143,12 +1204,14 @@ const CuratorStudioRouteRouteChildren: CuratorStudioRouteRouteChildren = {
   CuratorStudioFootballRoute: CuratorStudioFootballRoute,
   CuratorStudioMediaRoute: CuratorStudioMediaRoute,
   CuratorStudioPreservationRoute: CuratorStudioPreservationRoute,
+  CuratorStudioProfileRoute: CuratorStudioProfileRoute,
   CuratorStudioPublishingRoute: CuratorStudioPublishingRoute,
   CuratorStudioQualityRoute: CuratorStudioQualityRoute,
   CuratorStudioReleasesRoute: CuratorStudioReleasesRoute,
   CuratorStudioRoadmapRoute: CuratorStudioRoadmapRoute,
   CuratorStudioSettingsRoute: CuratorStudioSettingsRoute,
   CuratorStudioSourcesRoute: CuratorStudioSourcesRoute,
+  CuratorStudioTeamRoute: CuratorStudioTeamRoute,
   CuratorStudioTechnicalRoute: CuratorStudioTechnicalRoute,
   CuratorStudioTranslationsRoute: CuratorStudioTranslationsRoute,
   CuratorStudioIndexRoute: CuratorStudioIndexRoute,
