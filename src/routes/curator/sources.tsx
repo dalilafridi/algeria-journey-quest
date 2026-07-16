@@ -22,7 +22,7 @@ function Sources() {
   return (
     <>
       <header>
-        <h1 className="cp-page-title">Source library</h1>
+        <h1 className="cp-page-title">Research Library</h1>
         <p className="cp-page-sub">Foundation for structured source management. Today most exhibits do not carry per-record source metadata; the proposed model below will land alongside Phase 2 authentication.</p>
       </header>
 

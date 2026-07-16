@@ -63,7 +63,7 @@ function ContentInventory() {
   return (
     <>
       <header>
-        <h1 className="cp-page-title">Content inventory</h1>
+        <h1 className="cp-page-title">Collections & Exhibits</h1>
         <p className="cp-page-sub">
           {inv.length} records derived from public TypeScript data files. Read-only.
         </p>

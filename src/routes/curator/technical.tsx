@@ -47,7 +47,7 @@ function Technical() {
   return (
     <>
       <header>
-        <h1 className="cp-page-title">Technical health</h1>
+        <h1 className="cp-page-title">Technical Health</h1>
         <p className="cp-page-sub">Codebase inspection — no invented bundle sizes, no fabricated performance scores.</p>
       </header>
 

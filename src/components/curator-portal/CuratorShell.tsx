@@ -1,16 +1,14 @@
 /**
- * Curator Portal shell — sidebar + top header + breadcrumbs + mobile drawer.
+ * DZ Odyssey Studio — Museum Operating System shell.
  *
- * Loaded ONLY by /curator routes. Applies a `[data-portal="curator"]`
- * attribute so portal-scoped CSS tokens in styles.css take effect and never
- * leak into the public museum.
+ * Loaded ONLY by /curator routes. Read-only Phase 1.
  */
 
 import { Link, Outlet, useRouterState } from "@tanstack/react-router";
 import { useEffect, useMemo, useState } from "react";
 import {
-  LayoutDashboard,
-  Library,
+  Gauge,
+  Layers,
   Map as MapIcon,
   BookOpen,
   Image as ImageIcon,
@@ -21,6 +19,14 @@ import {
   Activity,
   Compass,
   Settings as SettingsIcon,
+  Languages,
+  Trophy,
+  Send,
+  BarChart3,
+  Users,
+  GraduationCap,
+  HardDriveDownload,
+  Archive,
   Menu,
   X,
   Search,
@@ -28,21 +34,50 @@ import {
   User,
   ChevronsLeft,
   ChevronsRight,
+  ExternalLink,
 } from "lucide-react";
 
-const NAV: { to: string; label: string; icon: typeof LayoutDashboard; exact?: boolean }[] = [
-  { to: "/curator", label: "Dashboard", icon: LayoutDashboard, exact: true },
-  { to: "/curator/content", label: "Content", icon: Library },
-  { to: "/curator/coverage", label: "Coverage", icon: MapIcon },
-  { to: "/curator/sources", label: "Sources", icon: BookOpen },
-  { to: "/curator/media", label: "Media", icon: ImageIcon },
-  { to: "/curator/quality", label: "Quality", icon: ShieldCheck },
-  { to: "/curator/roadmap", label: "Roadmap", icon: GitBranch },
-  { to: "/curator/releases", label: "Releases", icon: PackageCheck },
-  { to: "/curator/decisions", label: "Decisions", icon: Scale },
-  { to: "/curator/technical", label: "Technical Health", icon: Activity },
-  { to: "/curator/blueprint", label: "Master Blueprint", icon: Compass },
-  { to: "/curator/settings", label: "Settings", icon: SettingsIcon },
+const NAV: { to: string; label: string; icon: typeof Gauge; exact?: boolean; group: string }[] = [
+  // Operations
+  { to: "/curator", label: "Mission Control", icon: Gauge, exact: true, group: "Operations" },
+
+  // Content
+  { to: "/curator/content", label: "Collections & Exhibits", icon: Layers, group: "Content" },
+  { to: "/curator/football", label: "Football Studio", icon: Trophy, group: "Content" },
+  { to: "/curator/coverage", label: "Museum Coverage", icon: MapIcon, group: "Content" },
+
+  // Research & Media
+  { to: "/curator/sources", label: "Research Library", icon: BookOpen, group: "Research & Media" },
+  { to: "/curator/media", label: "Media & Digital Assets", icon: ImageIcon, group: "Research & Media" },
+  { to: "/curator/translations", label: "Translation Center", icon: Languages, group: "Research & Media" },
+  { to: "/curator/acquisitions", label: "Acquisitions & Provenance", icon: Archive, group: "Research & Media" },
+  { to: "/curator/preservation", label: "Digital Preservation", icon: HardDriveDownload, group: "Research & Media" },
+
+  // Quality & Publishing
+  { to: "/curator/quality", label: "Curatorial Quality", icon: ShieldCheck, group: "Quality & Publishing" },
+  { to: "/curator/publishing", label: "Publishing & Exhibitions", icon: Send, group: "Quality & Publishing" },
+  { to: "/curator/education", label: "Education Studio", icon: GraduationCap, group: "Quality & Publishing" },
+
+  // Intelligence & People
+  { to: "/curator/analytics", label: "Museum Intelligence", icon: BarChart3, group: "Intelligence & People" },
+  { to: "/curator/contributors", label: "Contributors & Roles", icon: Users, group: "Intelligence & People" },
+
+  // Governance
+  { to: "/curator/roadmap", label: "Roadmap & Idea Lab", icon: GitBranch, group: "Governance" },
+  { to: "/curator/releases", label: "Releases", icon: PackageCheck, group: "Governance" },
+  { to: "/curator/decisions", label: "Governance & Decisions", icon: Scale, group: "Governance" },
+  { to: "/curator/technical", label: "Technical Health", icon: Activity, group: "Governance" },
+  { to: "/curator/blueprint", label: "Museum Constitution", icon: Compass, group: "Governance" },
+  { to: "/curator/settings", label: "Settings", icon: SettingsIcon, group: "Governance" },
+];
+
+const GROUP_ORDER = [
+  "Operations",
+  "Content",
+  "Research & Media",
+  "Quality & Publishing",
+  "Intelligence & People",
+  "Governance",
 ];
 
 export function CuratorShell() {
@@ -69,16 +104,19 @@ export function CuratorShell() {
   const crumbs = useMemo(() => {
     const segs = pathname.split("/").filter(Boolean);
     return segs.map((s, i) => ({
-      label: s === "curator" ? "Curator Portal" : s.replace(/-/g, " "),
+      label: s === "curator" ? "DZ Odyssey Studio" : s.replace(/-/g, " "),
       href: "/" + segs.slice(0, i + 1).join("/"),
     }));
   }, [pathname]);
+
+  const grouped = useMemo(() => {
+    return GROUP_ORDER.map((g) => ({ group: g, items: NAV.filter((n) => n.group === g) }));
+  }, []);
 
   return (
     <div data-portal="curator" data-portal-theme={theme} className="cp-root min-h-dvh">
       <a href="#curator-main" className="cp-skip">Skip to main content</a>
 
-      {/* Mobile drawer */}
       {drawer && (
         <div
           className="fixed inset-0 z-40 bg-black/60 md:hidden"
@@ -88,39 +126,48 @@ export function CuratorShell() {
       )}
       <aside
         className={`cp-sidebar ${collapsed ? "cp-sidebar--collapsed" : ""} ${drawer ? "cp-sidebar--open" : ""}`}
-        aria-label="Curator Portal navigation"
+        aria-label="DZ Odyssey Studio navigation"
       >
         <div className="cp-sidebar__brand">
           <div className="cp-brand-mark" aria-hidden>DZ</div>
           {!collapsed && (
             <div className="cp-brand-text">
-              <div className="cp-brand-title">Curator Portal</div>
-              <div className="cp-brand-sub">DZ Odyssey · internal</div>
+              <div className="cp-brand-title">DZ Odyssey Studio</div>
+              <div className="cp-brand-sub">Museum Operating System</div>
             </div>
           )}
         </div>
         <nav className="cp-nav" aria-label="Sections">
-          <ul>
-            {NAV.map((item) => {
-              const active = item.exact
-                ? pathname === item.to
-                : pathname === item.to || pathname.startsWith(item.to + "/");
-              const Icon = item.icon;
-              return (
-                <li key={item.to}>
-                  <Link
-                    to={item.to as never}
-                    className={`cp-nav__link ${active ? "cp-nav__link--active" : ""}`}
-                    aria-current={active ? "page" : undefined}
-                    title={collapsed ? item.label : undefined}
-                  >
-                    <Icon className="cp-nav__icon" aria-hidden />
-                    {!collapsed && <span>{item.label}</span>}
-                  </Link>
-                </li>
-              );
-            })}
-          </ul>
+          {grouped.map(({ group, items }) => (
+            <div key={group} style={{ marginBottom: 10 }}>
+              {!collapsed && (
+                <div style={{ padding: "8px 10px 4px", fontSize: 10.5, letterSpacing: "0.09em", textTransform: "uppercase", color: "var(--cp-ink-soft)", opacity: 0.7 }}>
+                  {group}
+                </div>
+              )}
+              <ul>
+                {items.map((item) => {
+                  const active = item.exact
+                    ? pathname === item.to
+                    : pathname === item.to || pathname.startsWith(item.to + "/");
+                  const Icon = item.icon;
+                  return (
+                    <li key={item.to}>
+                      <Link
+                        to={item.to as never}
+                        className={`cp-nav__link ${active ? "cp-nav__link--active" : ""}`}
+                        aria-current={active ? "page" : undefined}
+                        title={collapsed ? item.label : undefined}
+                      >
+                        <Icon className="cp-nav__icon" aria-hidden />
+                        {!collapsed && <span>{item.label}</span>}
+                      </Link>
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
+          ))}
         </nav>
         <button
           type="button"
@@ -160,25 +207,31 @@ export function CuratorShell() {
             </ol>
           </nav>
 
+          <span className="cp-status-chip" title="Studio access mode">Read-only · Phase 1</span>
+
           <div className="cp-header__spacer" />
 
           <label className="cp-search">
             <Search className="h-4 w-4" aria-hidden />
             <input
               type="search"
-              placeholder="Search portal…"
-              aria-label="Search portal"
+              placeholder="Search Studio…"
+              aria-label="Search Studio"
               onKeyDown={(e) => {
                 if (e.key === "Enter") {
                   const q = (e.currentTarget.value || "").trim();
                   if (q.length > 0) {
-                    // Navigate via location — inventory search lives on /curator/content
                     window.location.href = `/curator/content?q=${encodeURIComponent(q)}`;
                   }
                 }
               }}
             />
           </label>
+
+          <a href="/" className="cp-view-public" title="Open the public museum in this tab">
+            <ExternalLink className="h-4 w-4" aria-hidden />
+            <span>View Public Museum</span>
+          </a>
 
           <button
             type="button"
@@ -200,20 +253,15 @@ export function CuratorShell() {
           </div>
         </header>
 
-        <TempAccessBanner />
+        <div className="cp-temp-banner" role="status">
+          <span aria-hidden>◆</span>
+          <span>Phase 1 · read-only review environment. Editing, uploads, and publishing are intentionally disabled.</span>
+        </div>
 
         <main id="curator-main" className="cp-content" tabIndex={-1}>
           <Outlet />
         </main>
       </div>
-    </div>
-  );
-}
-
-function TempAccessBanner() {
-  return (
-    <div className="cp-temp-banner" role="status">
-      Read-only Phase 1 review portal. Public access will be replaced with authenticated curator access in Phase 2.
     </div>
   );
 }

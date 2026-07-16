@@ -10,7 +10,7 @@ function Decisions() {
   return (
     <>
       <header>
-        <h1 className="cp-page-title">Decision records</h1>
+        <h1 className="cp-page-title">Governance & Decisions</h1>
         <p className="cp-page-sub">Architecture and product decisions (ADRs). Read-only in Phase 1.</p>
       </header>
 

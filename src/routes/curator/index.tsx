@@ -16,14 +16,34 @@ import {
 import { RELEASES_SEED, ROADMAP_SEED } from "@/data/curator-portal/seeds";
 
 export const Route = createFileRoute("/curator/")({
-  component: Dashboard,
+  component: MissionControl,
 });
 
-function Dashboard() {
+function MissionControl() {
   const counts = getDashboardCounts();
   const health = getMuseumHealth();
   const inv = getInventory();
   const criticalRoadmap = ROADMAP_SEED.filter((r) => r.priority === "critical" || r.priority === "high").slice(0, 6);
+
+  const completion = health.factors.find((f) => f.key === "completion")!;
+  const translation = health.factors.find((f) => f.key === "translation")!;
+  const sources = health.factors.find((f) => f.key === "sources")!;
+  const media = health.factors.find((f) => f.key === "media")!;
+  const accessibility = health.factors.find((f) => f.key === "accessibility")!;
+  const mobile = health.factors.find((f) => f.key === "mobile")!;
+  const readyToPublish = inv.filter((r) => r.status === "complete" && r.hasFr && r.hasAr).length;
+  const needsReview = inv.filter((r) => r.status !== "complete").length;
+
+  const summary: { label: string; value: string; precision: "exact" | "estimated" | "unknown"; formula?: string }[] = [
+    { label: "Museum completion", value: `${Math.round(completion.value * 100)}%`, precision: "exact", formula: completion.formula },
+    { label: "Translation coverage", value: `${Math.round(translation.value * 100)}%`, precision: "exact", formula: translation.formula },
+    { label: "Structured source coverage", value: `${Math.round(sources.value * 100)}%`, precision: "exact", formula: sources.formula },
+    { label: "Media attribution coverage", value: "Unknown", precision: "unknown", formula: "no attribution field is tracked yet — media URLs alone do not prove rights" },
+    { label: "Accessibility readiness", value: `${Math.round(accessibility.value * 100)}%`, precision: "estimated", formula: accessibility.formula },
+    { label: "Mobile readiness", value: `${Math.round(mobile.value * 100)}%`, precision: "estimated", formula: mobile.formula },
+    { label: "Ready to publish", value: `${readyToPublish}`, precision: "exact", formula: "records where status=complete AND both fr+ar strings exist" },
+    { label: "Requires review", value: `${needsReview}`, precision: "exact", formula: "records where status ≠ complete" },
+  ];
 
   const cards: { label: string; value: number; hint?: string }[] = [
     { label: "Historical eras", value: counts.eras },
@@ -45,22 +65,36 @@ function Dashboard() {
   return (
     <>
       <header>
-        <h1 className="cp-page-title">Executive Dashboard</h1>
+        <h1 className="cp-page-title">Mission Control</h1>
         <p className="cp-page-sub">
-          Live counts derived directly from the museum's TypeScript data files.
-          All numbers are <MetricLabel precision="exact" /> unless a metric is
-          explicitly labelled otherwise.
+          A single view of the museum's collections, research, quality, publishing readiness, and technical health.
+          Every metric below is labelled <MetricLabel precision="exact" />, <MetricLabel precision="estimated" />,
+          or <MetricLabel precision="unknown" /> — estimates include the heuristic that produced them.
         </p>
       </header>
 
-      <section className="cp-grid cp-grid--stats" aria-label="Museum content counts">
-        {cards.map((c) => (
-          <StatCard key={c.label} label={c.label} value={c.value} hint={c.hint} precision="exact" />
+      <section className="cp-grid cp-grid--stats" aria-label="Top summary metrics">
+        {summary.map((s) => (
+          <StatCard
+            key={s.label}
+            label={s.label}
+            value={s.value}
+            precision={s.precision}
+            formula={s.formula}
+          />
         ))}
       </section>
 
+      <SectionCard title="Collection counts" subtitle="Live counts derived directly from the museum's TypeScript data files.">
+        <div className="cp-grid cp-grid--stats">
+          {cards.map((c) => (
+            <StatCard key={c.label} label={c.label} value={c.value} hint={c.hint} precision="exact" />
+          ))}
+        </div>
+      </SectionCard>
+
       <div className="cp-grid cp-grid--2">
-        <SectionCard title="Museum health" subtitle="Composite score across eight factors.">
+        <SectionCard title="Museum health" subtitle="Composite score across eight factors — each factor tagged Exact or Estimated.">
           <div style={{ display: "grid", gridTemplateColumns: "auto 1fr", gap: 24, alignItems: "center" }}>
             <HealthGauge score={health.score} />
             <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
@@ -95,7 +129,7 @@ function Dashboard() {
             ))}
           </ul>
           <div style={{ marginTop: 12 }}>
-            <Link to={"/curator/roadmap" as never}>Open full roadmap →</Link>
+            <Link to={"/curator/roadmap" as never}>Open Roadmap & Idea Lab →</Link>
           </div>
         </SectionCard>
 
@@ -113,8 +147,8 @@ function Dashboard() {
           </ul>
         </SectionCard>
 
-        <SectionCard title="Quick actions" subtitle='Editing will be enabled in a future phase.'>
-          <div className="cp-row" style={{ gap: 10 }}>
+        <SectionCard title="Quick actions" subtitle="Editing, uploads, and publishing arrive in Phase 2.">
+          <div className="cp-row" style={{ gap: 10, flexWrap: "wrap" }}>
             <DisabledAction label="New figure" />
             <DisabledAction label="New exhibit" />
             <DisabledAction label="Add source" />
@@ -125,7 +159,7 @@ function Dashboard() {
             <DisabledAction label="Record decision" />
           </div>
           <p className="cp-muted" style={{ marginTop: 12 }}>
-            Read-only inventory of {inv.length} content records is live under Content.
+            Read-only inventory of {inv.length} content records is live under Collections & Exhibits.
           </p>
         </SectionCard>
       </div>
