@@ -270,15 +270,29 @@ export function CuratorShell() {
             <Bell className="h-5 w-5" aria-hidden />
           </button>
 
-          <div className="cp-profile" title="Profile — Phase 2">
+          <Link
+            to="/curator/profile"
+            className="cp-profile"
+            title={session.roles.map((r) => ROLE_LABEL[r]).join(", ") || "No Studio role"}
+          >
             <User className="h-4 w-4" aria-hidden />
-            <span className="hidden sm:inline">Curator (dev)</span>
-          </div>
+            <span className="hidden sm:inline">{session.displayName ?? session.email ?? "Studio user"}</span>
+          </Link>
+
+          <button
+            type="button"
+            className="cp-icon-btn"
+            onClick={handleSignOut}
+            aria-label="Sign out"
+            title="Sign out"
+          >
+            <LogOut className="h-4 w-4" aria-hidden />
+          </button>
         </header>
 
         <div className="cp-temp-banner" role="status">
           <span aria-hidden>◆</span>
-          <span>Phase 1 · read-only review environment. Editing, uploads, and publishing are intentionally disabled.</span>
+          <span>Phase 2A · authentication + roles active. Content editing, uploads, and publishing remain disabled.</span>
         </div>
 
         <main id="curator-main" className="cp-content" tabIndex={-1}>
