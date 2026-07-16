@@ -253,7 +253,7 @@ export const setSourceVerificationStatus = createServerFn({ method: "POST" })
     const { error } = await context.supabase.rpc("set_source_verification", {
       _id: data.id,
       _verified: data.verified,
-      _verification_date: data.verification_date ?? null,
+      _verification_date: data.verification_date ?? (null as unknown as string),
     });
     if (error) throw new Error(error.message);
     return { ok: true };
