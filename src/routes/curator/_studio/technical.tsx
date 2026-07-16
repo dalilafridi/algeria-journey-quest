@@ -27,8 +27,10 @@ function Technical() {
     { label: "Server endpoints", value: "src/routes/api/curator.ts (streaming assistant)", status: "healthy" },
     { label: "localStorage stores", value: "progress · passport · footballBookmarks · matchTheaterState · wordsProgress", status: "healthy" },
     { label: "AI Gateway", value: "Lovable AI Gateway (chat + TTS)", status: "healthy" },
-    { label: "Authentication", value: "Lovable Cloud email/password + role checks", status: "healthy" as Status
-    { label: "Database", value: "Lovable Cloud Postgres (profiles, user_roles, studio_preferences, audit_log)", status: "healthy" as Status
+    { label: "Authentication", value: "Lovable Cloud email/password + role checks", status: "healthy" },
+    { label: "Database", value: "Lovable Cloud Postgres (profiles, user_roles, studio_preferences, audit_log)", status: "healthy" },
+    { label: "RLS", value: "Enabled on all Studio tables; mutations gated by SECURITY DEFINER RPCs", status: "healthy" },
+    { label: "Audit log", value: "Append-only; role changes and profile updates logged in-transaction", status: "healthy" },
     { label: "Automated tests", value: "None currently", status: "missing" },
     { label: "Analytics", value: "None instrumented", status: "missing" },
     { label: "PWA", value: "Not enabled", status: "planned" },
