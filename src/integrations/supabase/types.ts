@@ -80,6 +80,131 @@ export type Database = {
         }
         Relationships: []
       }
+      source_links: {
+        Row: {
+          content_id: string
+          content_label: string
+          content_type: string
+          created_at: string
+          created_by: string
+          id: string
+          public_route: string | null
+          relationship_note: string | null
+          source_id: string
+        }
+        Insert: {
+          content_id: string
+          content_label: string
+          content_type: string
+          created_at?: string
+          created_by: string
+          id?: string
+          public_route?: string | null
+          relationship_note?: string | null
+          source_id: string
+        }
+        Update: {
+          content_id?: string
+          content_label?: string
+          content_type?: string
+          created_at?: string
+          created_by?: string
+          id?: string
+          public_route?: string | null
+          relationship_note?: string | null
+          source_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "source_links_source_id_fkey"
+            columns: ["source_id"]
+            isOneToOne: false
+            referencedRelation: "source_records"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      source_records: {
+        Row: {
+          accessed_date: string | null
+          archive_or_institution: string | null
+          archived_at: string | null
+          author: string | null
+          citation_text: string | null
+          created_at: string
+          created_by: string
+          id: string
+          identifier: string | null
+          isbn: string | null
+          language: string | null
+          notes: string | null
+          publication_date: string | null
+          publication_year: number | null
+          publisher: string | null
+          reliability_tier: Database["public"]["Enums"]["reliability_tier"]
+          rights_status: Database["public"]["Enums"]["rights_status"]
+          source_type: Database["public"]["Enums"]["source_type"]
+          status: Database["public"]["Enums"]["source_status"]
+          title: string
+          updated_at: string
+          updated_by: string
+          url: string | null
+          verification_date: string | null
+        }
+        Insert: {
+          accessed_date?: string | null
+          archive_or_institution?: string | null
+          archived_at?: string | null
+          author?: string | null
+          citation_text?: string | null
+          created_at?: string
+          created_by: string
+          id?: string
+          identifier?: string | null
+          isbn?: string | null
+          language?: string | null
+          notes?: string | null
+          publication_date?: string | null
+          publication_year?: number | null
+          publisher?: string | null
+          reliability_tier?: Database["public"]["Enums"]["reliability_tier"]
+          rights_status?: Database["public"]["Enums"]["rights_status"]
+          source_type?: Database["public"]["Enums"]["source_type"]
+          status?: Database["public"]["Enums"]["source_status"]
+          title: string
+          updated_at?: string
+          updated_by: string
+          url?: string | null
+          verification_date?: string | null
+        }
+        Update: {
+          accessed_date?: string | null
+          archive_or_institution?: string | null
+          archived_at?: string | null
+          author?: string | null
+          citation_text?: string | null
+          created_at?: string
+          created_by?: string
+          id?: string
+          identifier?: string | null
+          isbn?: string | null
+          language?: string | null
+          notes?: string | null
+          publication_date?: string | null
+          publication_year?: number | null
+          publisher?: string | null
+          reliability_tier?: Database["public"]["Enums"]["reliability_tier"]
+          rights_status?: Database["public"]["Enums"]["rights_status"]
+          source_type?: Database["public"]["Enums"]["source_type"]
+          status?: Database["public"]["Enums"]["source_status"]
+          title?: string
+          updated_at?: string
+          updated_by?: string
+          url?: string | null
+          verification_date?: string | null
+        }
+        Relationships: []
+      }
       studio_preferences: {
         Row: {
           sidebar_collapsed: boolean
@@ -130,6 +255,7 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
+      archive_source: { Args: { _id: string }; Returns: undefined }
       assign_role: {
         Args: {
           _role: Database["public"]["Enums"]["app_role"]
@@ -137,6 +263,10 @@ export type Database = {
         }
         Returns: undefined
       }
+      can_archive_sources: { Args: { _uid: string }; Returns: boolean }
+      can_verify_sources: { Args: { _uid: string }; Returns: boolean }
+      can_write_sources: { Args: { _uid: string }; Returns: boolean }
+      create_source: { Args: { _payload: Json }; Returns: string }
       get_my_studio_roles: {
         Args: never
         Returns: Database["public"]["Enums"]["app_role"][]
@@ -150,6 +280,17 @@ export type Database = {
         Returns: boolean
       }
       is_studio_admin: { Args: { _user_id: string }; Returns: boolean }
+      link_source_to_content: {
+        Args: {
+          _content_id: string
+          _content_label: string
+          _content_type: string
+          _public_route: string
+          _relationship_note: string
+          _source_id: string
+        }
+        Returns: string
+      }
       log_audit_event: {
         Args: {
           _action: string
@@ -162,6 +303,7 @@ export type Database = {
         }
         Returns: string
       }
+      restore_source: { Args: { _id: string }; Returns: undefined }
       revoke_role: {
         Args: {
           _role: Database["public"]["Enums"]["app_role"]
@@ -169,8 +311,22 @@ export type Database = {
         }
         Returns: undefined
       }
+      set_source_verification: {
+        Args: { _id: string; _verification_date: string; _verified: boolean }
+        Returns: undefined
+      }
+      show_limit: { Args: never; Returns: number }
+      show_trgm: { Args: { "": string }; Returns: string[] }
+      unlink_source_from_content: {
+        Args: { _link_id: string }
+        Returns: undefined
+      }
       update_my_profile: {
         Args: { _display_name: string; _preferred_language: string }
+        Returns: undefined
+      }
+      update_source: {
+        Args: { _id: string; _payload: Json }
         Returns: undefined
       }
     }
@@ -189,6 +345,38 @@ export type Database = {
         | "educator"
         | "publisher"
         | "technical_administrator"
+      reliability_tier:
+        | "primary"
+        | "scholarly"
+        | "institutional"
+        | "reputable_secondary"
+        | "contextual"
+        | "unverified"
+      rights_status:
+        | "public_domain"
+        | "licensed"
+        | "permission_required"
+        | "fair_use_review"
+        | "unknown"
+        | "not_applicable"
+      source_status: "draft" | "verified" | "archived"
+      source_type:
+        | "primary_source"
+        | "academic_book"
+        | "academic_article"
+        | "archive"
+        | "museum_record"
+        | "government_record"
+        | "oral_history"
+        | "interview"
+        | "newspaper"
+        | "map"
+        | "photograph"
+        | "film"
+        | "audio"
+        | "documentary"
+        | "website"
+        | "other"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -330,6 +518,41 @@ export const Constants = {
         "educator",
         "publisher",
         "technical_administrator",
+      ],
+      reliability_tier: [
+        "primary",
+        "scholarly",
+        "institutional",
+        "reputable_secondary",
+        "contextual",
+        "unverified",
+      ],
+      rights_status: [
+        "public_domain",
+        "licensed",
+        "permission_required",
+        "fair_use_review",
+        "unknown",
+        "not_applicable",
+      ],
+      source_status: ["draft", "verified", "archived"],
+      source_type: [
+        "primary_source",
+        "academic_book",
+        "academic_article",
+        "archive",
+        "museum_record",
+        "government_record",
+        "oral_history",
+        "interview",
+        "newspaper",
+        "map",
+        "photograph",
+        "film",
+        "audio",
+        "documentary",
+        "website",
+        "other",
       ],
     },
   },
