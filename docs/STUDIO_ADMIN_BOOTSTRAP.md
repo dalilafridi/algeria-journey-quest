@@ -85,3 +85,51 @@ because of the continuity guard), an operator with SQL editor access
 can re-run step 2 to restore a Studio administrator. All such recovery
 actions are visible in the SQL history and should be noted in Governance
 & Decisions.
+
+---
+
+## Phase 2B Step 1 — Research Library (write-enabled)
+
+The Research Library at `/curator/sources` is the first write-enabled Studio
+workspace. Public museum content (the TypeScript files under `src/data/`)
+remains unchanged.
+
+### Tables
+- `public.source_records` — catalogued research sources.
+- `public.source_links` — many-to-many links from sources to public museum
+  records (referenced by stable content ID; the public TS files are NOT
+  written back).
+
+### Enums
+- `source_type`, `reliability_tier`, `rights_status`, `source_status`.
+
+### Permission matrix
+
+| Action                              | Roles                                                                     |
+|-------------------------------------|---------------------------------------------------------------------------|
+| Read sources                        | any Studio role                                                           |
+| Create / edit / link / unlink       | museum_director, senior_curator, curator, researcher, fact_checker        |
+| Archive / restore                   | museum_director, senior_curator, curator                                  |
+| Verify / revert verification        | museum_director, senior_curator, fact_checker                             |
+| Permanent delete                    | intentionally not exposed in-app                                          |
+
+All writes flow through `SECURITY DEFINER` RPCs
+(`create_source`, `update_source`, `archive_source`, `restore_source`,
+`set_source_verification`, `link_source_to_content`,
+`unlink_source_from_content`) that:
+- derive the actor from `auth.uid()`
+- re-verify role membership via `can_write_sources` /
+  `can_archive_sources` / `can_verify_sources`
+- write an `audit_log` row in the same transaction
+
+RLS on `source_records` and `source_links` grants **SELECT to authenticated
+Studio members only** and denies all direct writes — every mutation must
+go through the RPCs above.
+
+### Audit events
+
+`source.create`, `source.update`, `source.archive`, `source.restore`,
+`source.verification`, `source.link`, `source.unlink`.
+
+Visible per-source at `/curator/sources/$sourceId` and in the global feed at
+`/curator/audit-log`.
