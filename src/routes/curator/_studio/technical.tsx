@@ -27,8 +27,8 @@ function Technical() {
     { label: "Server endpoints", value: "src/routes/api/curator.ts (streaming assistant)", status: "healthy" },
     { label: "localStorage stores", value: "progress · passport · footballBookmarks · matchTheaterState · wordsProgress", status: "healthy" },
     { label: "AI Gateway", value: "Lovable AI Gateway (chat + TTS)", status: "healthy" },
-    { label: "Authentication", value: "None yet — Phase 2 will introduce Lovable Cloud auth with a curator role", status: "missing" },
-    { label: "Database", value: "None yet — public content lives in typed TS files", status: "planned" },
+    { label: "Authentication", value: "Lovable Cloud email/password + role checks", status: "healthy" as Status
+    { label: "Database", value: "Lovable Cloud Postgres (profiles, user_roles, studio_preferences, audit_log)", status: "healthy" as Status
     { label: "Automated tests", value: "None currently", status: "missing" },
     { label: "Analytics", value: "None instrumented", status: "missing" },
     { label: "PWA", value: "Not enabled", status: "planned" },
