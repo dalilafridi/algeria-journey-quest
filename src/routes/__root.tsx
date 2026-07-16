@@ -112,6 +112,9 @@ function RootShell({ children }: { children: React.ReactNode }) {
 }
 
 function RootComponent() {
+  const pathname = useRouterState({ select: (r) => r.location.pathname });
+  const isCurator = pathname === "/curator" || pathname.startsWith("/curator/");
+
   useEffect(() => {
     const handleContextMenu = (e: MouseEvent) => {
       e.preventDefault();
@@ -120,6 +123,18 @@ function RootComponent() {
     document.addEventListener("contextmenu", handleContextMenu);
     return () => document.removeEventListener("contextmenu", handleContextMenu);
   }, []);
+
+  if (isCurator) {
+    return (
+      <AudioGuideProvider>
+        <LangSync />
+        <div id="main" tabIndex={-1}>
+          <Outlet />
+        </div>
+        <Sonner />
+      </AudioGuideProvider>
+    );
+  }
 
   return (
     <AudioGuideProvider>
