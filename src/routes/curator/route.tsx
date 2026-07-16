@@ -1,13 +1,11 @@
 /**
  * /curator — layout route.
  *
- * Phase-1 access model: available on DEV and on Lovable preview hostnames
- * ONLY. Any other host (custom domain, published .lovable.app) returns 404.
+ * Phase-1 access model: available ONLY on the explicitly approved Lovable
+ * in-editor preview hostname. Any other host returns 404.
  *
- * Allowed hostnames:
- *   - localhost / 127.0.0.1                  (local dev)
- *   - id-preview--*.lovable.app              (Lovable in-editor preview)
- *   - *--*-dev.lovable.app                   (stable preview URL)
+ * Allowed hostname:
+ *   - id-preview--4ec5c163-c082-44f1-a21c-176429962830.lovable.app
  *
  * Blocked (returns notFound):
  *   - dzodyssey.numeradataworks.com          (production custom domain)
@@ -21,21 +19,19 @@
  * Phase 2 will replace this with Lovable Cloud auth + a `curator` role
  * checked server-side via `requireSupabaseAuth`.
  *
- * No VITE_* token, no sessionStorage — gating is purely host-based here.
+ * No DEV flag, VITE_* token, password, or sessionStorage — gating is purely
+ * exact-host based here.
  */
 
 import { createFileRoute, notFound } from "@tanstack/react-router";
 import { createIsomorphicFn } from "@tanstack/react-start";
 import { CuratorShell } from "@/components/curator-portal/CuratorShell";
 
-function isPreviewHost(host: string | null | undefined): boolean {
+const APPROVED_CURATOR_PREVIEW_HOST = "id-preview--4ec5c163-c082-44f1-a21c-176429962830.lovable.app";
+
+function isApprovedCuratorHost(host: string | null | undefined): boolean {
   if (!host) return false;
-  const h = host.toLowerCase().split(":")[0];
-  if (h === "localhost" || h === "127.0.0.1" || h === "0.0.0.0") return true;
-  if (!h.endsWith(".lovable.app")) return false;
-  if (h.startsWith("id-preview--")) return true;
-  if (h.endsWith("-dev.lovable.app")) return true;
-  return false;
+  return host.toLowerCase().split(":")[0] === APPROVED_CURATOR_PREVIEW_HOST;
 }
 
 const getHost = createIsomorphicFn()
@@ -54,8 +50,7 @@ const getHost = createIsomorphicFn()
 
 export const Route = createFileRoute("/curator")({
   beforeLoad: () => {
-    if (import.meta.env.DEV) return;
-    if (!isPreviewHost(getHost())) {
+    if (!isApprovedCuratorHost(getHost())) {
       throw notFound();
     }
   },
