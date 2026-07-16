@@ -45,9 +45,7 @@ function StudioLayout() {
   const { studioSession } = Route.useRouteContext();
   return (
     <StudioSessionProvider value={studioSession}>
-      <CuratorShell>
-        <Outlet />
-      </CuratorShell>
+      <CuratorShell />
     </StudioSessionProvider>
   );
 }
