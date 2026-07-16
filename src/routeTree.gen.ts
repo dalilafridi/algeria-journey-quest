@@ -38,17 +38,25 @@ import { Route as JourneysJourneyIdRouteImport } from './routes/journeys.$journe
 import { Route as FiguresQuizRouteImport } from './routes/figures.quiz'
 import { Route as FiguresFigureIdRouteImport } from './routes/figures.$figureId'
 import { Route as EraEraIdRouteImport } from './routes/era.$eraId'
+import { Route as CuratorTranslationsRouteImport } from './routes/curator/translations'
 import { Route as CuratorTechnicalRouteImport } from './routes/curator/technical'
 import { Route as CuratorSourcesRouteImport } from './routes/curator/sources'
 import { Route as CuratorSettingsRouteImport } from './routes/curator/settings'
 import { Route as CuratorRoadmapRouteImport } from './routes/curator/roadmap'
 import { Route as CuratorReleasesRouteImport } from './routes/curator/releases'
 import { Route as CuratorQualityRouteImport } from './routes/curator/quality'
+import { Route as CuratorPublishingRouteImport } from './routes/curator/publishing'
+import { Route as CuratorPreservationRouteImport } from './routes/curator/preservation'
 import { Route as CuratorMediaRouteImport } from './routes/curator/media'
+import { Route as CuratorFootballRouteImport } from './routes/curator/football'
+import { Route as CuratorEducationRouteImport } from './routes/curator/education'
 import { Route as CuratorDecisionsRouteImport } from './routes/curator/decisions'
 import { Route as CuratorCoverageRouteImport } from './routes/curator/coverage'
+import { Route as CuratorContributorsRouteImport } from './routes/curator/contributors'
 import { Route as CuratorContentRouteImport } from './routes/curator/content'
 import { Route as CuratorBlueprintRouteImport } from './routes/curator/blueprint'
+import { Route as CuratorAnalyticsRouteImport } from './routes/curator/analytics'
+import { Route as CuratorAcquisitionsRouteImport } from './routes/curator/acquisitions'
 import { Route as CultureTopicIdRouteImport } from './routes/culture.$topicId'
 import { Route as ClubsClubIdRouteImport } from './routes/clubs.$clubId'
 import { Route as ApiCuratorRouteImport } from './routes/api/curator'
@@ -199,6 +207,11 @@ const EraEraIdRoute = EraEraIdRouteImport.update({
   path: '/era/$eraId',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CuratorTranslationsRoute = CuratorTranslationsRouteImport.update({
+  id: '/translations',
+  path: '/translations',
+  getParentRoute: () => CuratorRouteRoute,
+} as any)
 const CuratorTechnicalRoute = CuratorTechnicalRouteImport.update({
   id: '/technical',
   path: '/technical',
@@ -229,9 +242,29 @@ const CuratorQualityRoute = CuratorQualityRouteImport.update({
   path: '/quality',
   getParentRoute: () => CuratorRouteRoute,
 } as any)
+const CuratorPublishingRoute = CuratorPublishingRouteImport.update({
+  id: '/publishing',
+  path: '/publishing',
+  getParentRoute: () => CuratorRouteRoute,
+} as any)
+const CuratorPreservationRoute = CuratorPreservationRouteImport.update({
+  id: '/preservation',
+  path: '/preservation',
+  getParentRoute: () => CuratorRouteRoute,
+} as any)
 const CuratorMediaRoute = CuratorMediaRouteImport.update({
   id: '/media',
   path: '/media',
+  getParentRoute: () => CuratorRouteRoute,
+} as any)
+const CuratorFootballRoute = CuratorFootballRouteImport.update({
+  id: '/football',
+  path: '/football',
+  getParentRoute: () => CuratorRouteRoute,
+} as any)
+const CuratorEducationRoute = CuratorEducationRouteImport.update({
+  id: '/education',
+  path: '/education',
   getParentRoute: () => CuratorRouteRoute,
 } as any)
 const CuratorDecisionsRoute = CuratorDecisionsRouteImport.update({
@@ -244,6 +277,11 @@ const CuratorCoverageRoute = CuratorCoverageRouteImport.update({
   path: '/coverage',
   getParentRoute: () => CuratorRouteRoute,
 } as any)
+const CuratorContributorsRoute = CuratorContributorsRouteImport.update({
+  id: '/contributors',
+  path: '/contributors',
+  getParentRoute: () => CuratorRouteRoute,
+} as any)
 const CuratorContentRoute = CuratorContentRouteImport.update({
   id: '/content',
   path: '/content',
@@ -252,6 +290,16 @@ const CuratorContentRoute = CuratorContentRouteImport.update({
 const CuratorBlueprintRoute = CuratorBlueprintRouteImport.update({
   id: '/blueprint',
   path: '/blueprint',
+  getParentRoute: () => CuratorRouteRoute,
+} as any)
+const CuratorAnalyticsRoute = CuratorAnalyticsRouteImport.update({
+  id: '/analytics',
+  path: '/analytics',
+  getParentRoute: () => CuratorRouteRoute,
+} as any)
+const CuratorAcquisitionsRoute = CuratorAcquisitionsRouteImport.update({
+  id: '/acquisitions',
+  path: '/acquisitions',
   getParentRoute: () => CuratorRouteRoute,
 } as any)
 const CultureTopicIdRoute = CultureTopicIdRouteImport.update({
@@ -300,17 +348,25 @@ export interface FileRoutesByFullPath {
   '/api/curator': typeof ApiCuratorRoute
   '/clubs/$clubId': typeof ClubsClubIdRoute
   '/culture/$topicId': typeof CultureTopicIdRoute
+  '/curator/acquisitions': typeof CuratorAcquisitionsRoute
+  '/curator/analytics': typeof CuratorAnalyticsRoute
   '/curator/blueprint': typeof CuratorBlueprintRoute
   '/curator/content': typeof CuratorContentRoute
+  '/curator/contributors': typeof CuratorContributorsRoute
   '/curator/coverage': typeof CuratorCoverageRoute
   '/curator/decisions': typeof CuratorDecisionsRoute
+  '/curator/education': typeof CuratorEducationRoute
+  '/curator/football': typeof CuratorFootballRoute
   '/curator/media': typeof CuratorMediaRoute
+  '/curator/preservation': typeof CuratorPreservationRoute
+  '/curator/publishing': typeof CuratorPublishingRoute
   '/curator/quality': typeof CuratorQualityRoute
   '/curator/releases': typeof CuratorReleasesRoute
   '/curator/roadmap': typeof CuratorRoadmapRoute
   '/curator/settings': typeof CuratorSettingsRoute
   '/curator/sources': typeof CuratorSourcesRoute
   '/curator/technical': typeof CuratorTechnicalRoute
+  '/curator/translations': typeof CuratorTranslationsRoute
   '/era/$eraId': typeof EraEraIdRoute
   '/figures/$figureId': typeof FiguresFigureIdRoute
   '/figures/quiz': typeof FiguresQuizRoute
@@ -345,17 +401,25 @@ export interface FileRoutesByTo {
   '/api/curator': typeof ApiCuratorRoute
   '/clubs/$clubId': typeof ClubsClubIdRoute
   '/culture/$topicId': typeof CultureTopicIdRoute
+  '/curator/acquisitions': typeof CuratorAcquisitionsRoute
+  '/curator/analytics': typeof CuratorAnalyticsRoute
   '/curator/blueprint': typeof CuratorBlueprintRoute
   '/curator/content': typeof CuratorContentRoute
+  '/curator/contributors': typeof CuratorContributorsRoute
   '/curator/coverage': typeof CuratorCoverageRoute
   '/curator/decisions': typeof CuratorDecisionsRoute
+  '/curator/education': typeof CuratorEducationRoute
+  '/curator/football': typeof CuratorFootballRoute
   '/curator/media': typeof CuratorMediaRoute
+  '/curator/preservation': typeof CuratorPreservationRoute
+  '/curator/publishing': typeof CuratorPublishingRoute
   '/curator/quality': typeof CuratorQualityRoute
   '/curator/releases': typeof CuratorReleasesRoute
   '/curator/roadmap': typeof CuratorRoadmapRoute
   '/curator/settings': typeof CuratorSettingsRoute
   '/curator/sources': typeof CuratorSourcesRoute
   '/curator/technical': typeof CuratorTechnicalRoute
+  '/curator/translations': typeof CuratorTranslationsRoute
   '/era/$eraId': typeof EraEraIdRoute
   '/figures/$figureId': typeof FiguresFigureIdRoute
   '/figures/quiz': typeof FiguresQuizRoute
@@ -392,17 +456,25 @@ export interface FileRoutesById {
   '/api/curator': typeof ApiCuratorRoute
   '/clubs/$clubId': typeof ClubsClubIdRoute
   '/culture/$topicId': typeof CultureTopicIdRoute
+  '/curator/acquisitions': typeof CuratorAcquisitionsRoute
+  '/curator/analytics': typeof CuratorAnalyticsRoute
   '/curator/blueprint': typeof CuratorBlueprintRoute
   '/curator/content': typeof CuratorContentRoute
+  '/curator/contributors': typeof CuratorContributorsRoute
   '/curator/coverage': typeof CuratorCoverageRoute
   '/curator/decisions': typeof CuratorDecisionsRoute
+  '/curator/education': typeof CuratorEducationRoute
+  '/curator/football': typeof CuratorFootballRoute
   '/curator/media': typeof CuratorMediaRoute
+  '/curator/preservation': typeof CuratorPreservationRoute
+  '/curator/publishing': typeof CuratorPublishingRoute
   '/curator/quality': typeof CuratorQualityRoute
   '/curator/releases': typeof CuratorReleasesRoute
   '/curator/roadmap': typeof CuratorRoadmapRoute
   '/curator/settings': typeof CuratorSettingsRoute
   '/curator/sources': typeof CuratorSourcesRoute
   '/curator/technical': typeof CuratorTechnicalRoute
+  '/curator/translations': typeof CuratorTranslationsRoute
   '/era/$eraId': typeof EraEraIdRoute
   '/figures/$figureId': typeof FiguresFigureIdRoute
   '/figures/quiz': typeof FiguresQuizRoute
@@ -440,17 +512,25 @@ export interface FileRouteTypes {
     | '/api/curator'
     | '/clubs/$clubId'
     | '/culture/$topicId'
+    | '/curator/acquisitions'
+    | '/curator/analytics'
     | '/curator/blueprint'
     | '/curator/content'
+    | '/curator/contributors'
     | '/curator/coverage'
     | '/curator/decisions'
+    | '/curator/education'
+    | '/curator/football'
     | '/curator/media'
+    | '/curator/preservation'
+    | '/curator/publishing'
     | '/curator/quality'
     | '/curator/releases'
     | '/curator/roadmap'
     | '/curator/settings'
     | '/curator/sources'
     | '/curator/technical'
+    | '/curator/translations'
     | '/era/$eraId'
     | '/figures/$figureId'
     | '/figures/quiz'
@@ -485,17 +565,25 @@ export interface FileRouteTypes {
     | '/api/curator'
     | '/clubs/$clubId'
     | '/culture/$topicId'
+    | '/curator/acquisitions'
+    | '/curator/analytics'
     | '/curator/blueprint'
     | '/curator/content'
+    | '/curator/contributors'
     | '/curator/coverage'
     | '/curator/decisions'
+    | '/curator/education'
+    | '/curator/football'
     | '/curator/media'
+    | '/curator/preservation'
+    | '/curator/publishing'
     | '/curator/quality'
     | '/curator/releases'
     | '/curator/roadmap'
     | '/curator/settings'
     | '/curator/sources'
     | '/curator/technical'
+    | '/curator/translations'
     | '/era/$eraId'
     | '/figures/$figureId'
     | '/figures/quiz'
@@ -531,17 +619,25 @@ export interface FileRouteTypes {
     | '/api/curator'
     | '/clubs/$clubId'
     | '/culture/$topicId'
+    | '/curator/acquisitions'
+    | '/curator/analytics'
     | '/curator/blueprint'
     | '/curator/content'
+    | '/curator/contributors'
     | '/curator/coverage'
     | '/curator/decisions'
+    | '/curator/education'
+    | '/curator/football'
     | '/curator/media'
+    | '/curator/preservation'
+    | '/curator/publishing'
     | '/curator/quality'
     | '/curator/releases'
     | '/curator/roadmap'
     | '/curator/settings'
     | '/curator/sources'
     | '/curator/technical'
+    | '/curator/translations'
     | '/era/$eraId'
     | '/figures/$figureId'
     | '/figures/quiz'
@@ -792,6 +888,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof EraEraIdRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/curator/translations': {
+      id: '/curator/translations'
+      path: '/translations'
+      fullPath: '/curator/translations'
+      preLoaderRoute: typeof CuratorTranslationsRouteImport
+      parentRoute: typeof CuratorRouteRoute
+    }
     '/curator/technical': {
       id: '/curator/technical'
       path: '/technical'
@@ -834,11 +937,39 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CuratorQualityRouteImport
       parentRoute: typeof CuratorRouteRoute
     }
+    '/curator/publishing': {
+      id: '/curator/publishing'
+      path: '/publishing'
+      fullPath: '/curator/publishing'
+      preLoaderRoute: typeof CuratorPublishingRouteImport
+      parentRoute: typeof CuratorRouteRoute
+    }
+    '/curator/preservation': {
+      id: '/curator/preservation'
+      path: '/preservation'
+      fullPath: '/curator/preservation'
+      preLoaderRoute: typeof CuratorPreservationRouteImport
+      parentRoute: typeof CuratorRouteRoute
+    }
     '/curator/media': {
       id: '/curator/media'
       path: '/media'
       fullPath: '/curator/media'
       preLoaderRoute: typeof CuratorMediaRouteImport
+      parentRoute: typeof CuratorRouteRoute
+    }
+    '/curator/football': {
+      id: '/curator/football'
+      path: '/football'
+      fullPath: '/curator/football'
+      preLoaderRoute: typeof CuratorFootballRouteImport
+      parentRoute: typeof CuratorRouteRoute
+    }
+    '/curator/education': {
+      id: '/curator/education'
+      path: '/education'
+      fullPath: '/curator/education'
+      preLoaderRoute: typeof CuratorEducationRouteImport
       parentRoute: typeof CuratorRouteRoute
     }
     '/curator/decisions': {
@@ -855,6 +986,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CuratorCoverageRouteImport
       parentRoute: typeof CuratorRouteRoute
     }
+    '/curator/contributors': {
+      id: '/curator/contributors'
+      path: '/contributors'
+      fullPath: '/curator/contributors'
+      preLoaderRoute: typeof CuratorContributorsRouteImport
+      parentRoute: typeof CuratorRouteRoute
+    }
     '/curator/content': {
       id: '/curator/content'
       path: '/content'
@@ -867,6 +1005,20 @@ declare module '@tanstack/react-router' {
       path: '/blueprint'
       fullPath: '/curator/blueprint'
       preLoaderRoute: typeof CuratorBlueprintRouteImport
+      parentRoute: typeof CuratorRouteRoute
+    }
+    '/curator/analytics': {
+      id: '/curator/analytics'
+      path: '/analytics'
+      fullPath: '/curator/analytics'
+      preLoaderRoute: typeof CuratorAnalyticsRouteImport
+      parentRoute: typeof CuratorRouteRoute
+    }
+    '/curator/acquisitions': {
+      id: '/curator/acquisitions'
+      path: '/acquisitions'
+      fullPath: '/curator/acquisitions'
+      preLoaderRoute: typeof CuratorAcquisitionsRouteImport
       parentRoute: typeof CuratorRouteRoute
     }
     '/culture/$topicId': {
@@ -901,32 +1053,48 @@ declare module '@tanstack/react-router' {
 }
 
 interface CuratorRouteRouteChildren {
+  CuratorAcquisitionsRoute: typeof CuratorAcquisitionsRoute
+  CuratorAnalyticsRoute: typeof CuratorAnalyticsRoute
   CuratorBlueprintRoute: typeof CuratorBlueprintRoute
   CuratorContentRoute: typeof CuratorContentRoute
+  CuratorContributorsRoute: typeof CuratorContributorsRoute
   CuratorCoverageRoute: typeof CuratorCoverageRoute
   CuratorDecisionsRoute: typeof CuratorDecisionsRoute
+  CuratorEducationRoute: typeof CuratorEducationRoute
+  CuratorFootballRoute: typeof CuratorFootballRoute
   CuratorMediaRoute: typeof CuratorMediaRoute
+  CuratorPreservationRoute: typeof CuratorPreservationRoute
+  CuratorPublishingRoute: typeof CuratorPublishingRoute
   CuratorQualityRoute: typeof CuratorQualityRoute
   CuratorReleasesRoute: typeof CuratorReleasesRoute
   CuratorRoadmapRoute: typeof CuratorRoadmapRoute
   CuratorSettingsRoute: typeof CuratorSettingsRoute
   CuratorSourcesRoute: typeof CuratorSourcesRoute
   CuratorTechnicalRoute: typeof CuratorTechnicalRoute
+  CuratorTranslationsRoute: typeof CuratorTranslationsRoute
   CuratorIndexRoute: typeof CuratorIndexRoute
 }
 
 const CuratorRouteRouteChildren: CuratorRouteRouteChildren = {
+  CuratorAcquisitionsRoute: CuratorAcquisitionsRoute,
+  CuratorAnalyticsRoute: CuratorAnalyticsRoute,
   CuratorBlueprintRoute: CuratorBlueprintRoute,
   CuratorContentRoute: CuratorContentRoute,
+  CuratorContributorsRoute: CuratorContributorsRoute,
   CuratorCoverageRoute: CuratorCoverageRoute,
   CuratorDecisionsRoute: CuratorDecisionsRoute,
+  CuratorEducationRoute: CuratorEducationRoute,
+  CuratorFootballRoute: CuratorFootballRoute,
   CuratorMediaRoute: CuratorMediaRoute,
+  CuratorPreservationRoute: CuratorPreservationRoute,
+  CuratorPublishingRoute: CuratorPublishingRoute,
   CuratorQualityRoute: CuratorQualityRoute,
   CuratorReleasesRoute: CuratorReleasesRoute,
   CuratorRoadmapRoute: CuratorRoadmapRoute,
   CuratorSettingsRoute: CuratorSettingsRoute,
   CuratorSourcesRoute: CuratorSourcesRoute,
   CuratorTechnicalRoute: CuratorTechnicalRoute,
+  CuratorTranslationsRoute: CuratorTranslationsRoute,
   CuratorIndexRoute: CuratorIndexRoute,
 }
 
@@ -990,3 +1158,12 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { createStart } from '@tanstack/react-start'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+  }
+}
