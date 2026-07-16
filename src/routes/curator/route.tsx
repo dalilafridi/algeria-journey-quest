@@ -25,7 +25,7 @@
  */
 
 import { createFileRoute, notFound } from "@tanstack/react-router";
-import { getWebRequest } from "@tanstack/react-start/server";
+import { getRequest } from "@tanstack/react-start/server";
 import { CuratorShell } from "@/components/curator-portal/CuratorShell";
 
 function isPreviewHost(host: string | null | undefined): boolean {
