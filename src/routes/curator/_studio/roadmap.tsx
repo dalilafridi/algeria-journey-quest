@@ -4,7 +4,7 @@ import { SectionCard, StatusPill, DisabledAction } from "@/components/curator-po
 import { ROADMAP_SEED, IDEA_LAB_SEED } from "@/data/curator-portal/seeds";
 import type { RoadmapItem } from "@/lib/curator-portal/models";
 
-export const Route = createFileRoute("/curator/roadmap")({
+export const Route = createFileRoute("/curator/_studio/roadmap")({
   component: Roadmap,
 });
 

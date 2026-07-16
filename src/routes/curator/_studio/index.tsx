@@ -15,7 +15,7 @@ import {
 } from "@/components/curator-portal/primitives";
 import { RELEASES_SEED, ROADMAP_SEED } from "@/data/curator-portal/seeds";
 
-export const Route = createFileRoute("/curator/")({
+export const Route = createFileRoute("/curator/_studio/")({
   component: MissionControl,
 });
 

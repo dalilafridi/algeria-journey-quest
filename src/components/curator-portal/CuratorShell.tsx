@@ -35,7 +35,11 @@ import {
   ChevronsLeft,
   ChevronsRight,
   ExternalLink,
+  LogOut,
 } from "lucide-react";
+import { supabase } from "@/integrations/supabase/client";
+import { useStudioSession } from "./StudioSessionContext";
+import { ROLE_LABEL, ROUTE_PERMISSIONS, roleIntersects } from "@/lib/curator-portal/permissions";
 
 const NAV: { to: string; label: string; icon: typeof Gauge; exact?: boolean; group: string }[] = [
   // Operations
@@ -61,6 +65,7 @@ const NAV: { to: string; label: string; icon: typeof Gauge; exact?: boolean; gro
   // Intelligence & People
   { to: "/curator/analytics", label: "Museum Intelligence", icon: BarChart3, group: "Intelligence & People" },
   { to: "/curator/contributors", label: "Contributors & Roles", icon: Users, group: "Intelligence & People" },
+  { to: "/curator/team", label: "Team & Roles", icon: Users, group: "Intelligence & People" },
 
   // Governance
   { to: "/curator/roadmap", label: "Roadmap & Idea Lab", icon: GitBranch, group: "Governance" },
@@ -68,7 +73,9 @@ const NAV: { to: string; label: string; icon: typeof Gauge; exact?: boolean; gro
   { to: "/curator/decisions", label: "Governance & Decisions", icon: Scale, group: "Governance" },
   { to: "/curator/technical", label: "Technical Health", icon: Activity, group: "Governance" },
   { to: "/curator/blueprint", label: "Museum Constitution", icon: Compass, group: "Governance" },
+  { to: "/curator/audit-log", label: "Audit Log", icon: ShieldCheck, group: "Governance" },
   { to: "/curator/settings", label: "Settings", icon: SettingsIcon, group: "Governance" },
+  { to: "/curator/profile", label: "My Profile", icon: User, group: "Governance" },
 ];
 
 const GROUP_ORDER = [
@@ -109,9 +116,25 @@ export function CuratorShell() {
     }));
   }, [pathname]);
 
+  const session = useStudioSession();
+
+  const visibleNav = useMemo(() => {
+    return NAV.filter((n) => {
+      const allowed = ROUTE_PERMISSIONS[n.to];
+      if (!allowed || allowed.length === 0) return true;
+      return roleIntersects(session.roles, allowed);
+    });
+  }, [session.roles]);
+
   const grouped = useMemo(() => {
-    return GROUP_ORDER.map((g) => ({ group: g, items: NAV.filter((n) => n.group === g) }));
-  }, []);
+    return GROUP_ORDER.map((g) => ({ group: g, items: visibleNav.filter((n) => n.group === g) }))
+      .filter((g) => g.items.length > 0);
+  }, [visibleNav]);
+
+  async function handleSignOut() {
+    await supabase.auth.signOut();
+    window.location.href = "/curator/sign-in";
+  }
 
   return (
     <div data-portal="curator" data-portal-theme={theme} className="cp-root min-h-dvh">
@@ -247,15 +270,29 @@ export function CuratorShell() {
             <Bell className="h-5 w-5" aria-hidden />
           </button>
 
-          <div className="cp-profile" title="Profile — Phase 2">
+          <Link
+            to="/curator/profile"
+            className="cp-profile"
+            title={session.roles.map((r) => ROLE_LABEL[r]).join(", ") || "No Studio role"}
+          >
             <User className="h-4 w-4" aria-hidden />
-            <span className="hidden sm:inline">Curator (dev)</span>
-          </div>
+            <span className="hidden sm:inline">{session.displayName ?? session.email ?? "Studio user"}</span>
+          </Link>
+
+          <button
+            type="button"
+            className="cp-icon-btn"
+            onClick={handleSignOut}
+            aria-label="Sign out"
+            title="Sign out"
+          >
+            <LogOut className="h-4 w-4" aria-hidden />
+          </button>
         </header>
 
         <div className="cp-temp-banner" role="status">
           <span aria-hidden>◆</span>
-          <span>Phase 1 · read-only review environment. Editing, uploads, and publishing are intentionally disabled.</span>
+          <span>Phase 2A · authentication + roles active. Content editing, uploads, and publishing remain disabled.</span>
         </div>
 
         <main id="curator-main" className="cp-content" tabIndex={-1}>

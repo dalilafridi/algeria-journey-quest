@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { SectionCard } from "@/components/curator-portal/primitives";
 import { BLUEPRINT_SEED } from "@/data/curator-portal/seeds";
 
-export const Route = createFileRoute("/curator/blueprint")({
+export const Route = createFileRoute("/curator/_studio/blueprint")({
   component: Blueprint,
 });
 

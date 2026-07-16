@@ -6,7 +6,7 @@ import {
 } from "@/components/curator-portal/primitives";
 import { getInventory } from "@/lib/curator-portal/inventory";
 
-export const Route = createFileRoute("/curator/sources")({
+export const Route = createFileRoute("/curator/_studio/sources")({
   component: Sources,
 });
 

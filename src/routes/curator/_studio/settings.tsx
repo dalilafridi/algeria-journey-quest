@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { SectionCard, StatusPill } from "@/components/curator-portal/primitives";
 
-export const Route = createFileRoute("/curator/settings")({
+export const Route = createFileRoute("/curator/_studio/settings")({
   component: Settings,
 });
 
