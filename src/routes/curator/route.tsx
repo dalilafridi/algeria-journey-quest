@@ -46,7 +46,7 @@ export const Route = createFileRoute("/curator")({
       host = window.location.hostname;
     } else {
       try {
-        const req = getWebRequest();
+        const req = getRequest();
         host = req?.headers.get("host");
       } catch {
         host = null;
