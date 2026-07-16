@@ -38,6 +38,7 @@ import { Route as FiguresQuizRouteImport } from './routes/figures.quiz'
 import { Route as FiguresFigureIdRouteImport } from './routes/figures.$figureId'
 import { Route as EraEraIdRouteImport } from './routes/era.$eraId'
 import { Route as CuratorSignInRouteImport } from './routes/curator/sign-in'
+import { Route as CuratorBootstrapCompleteRouteImport } from './routes/curator/bootstrap-complete'
 import { Route as CuratorAccessDeniedRouteImport } from './routes/curator/access-denied'
 import { Route as CultureTopicIdRouteImport } from './routes/culture.$topicId'
 import { Route as ClubsClubIdRouteImport } from './routes/clubs.$clubId'
@@ -213,6 +214,12 @@ const CuratorSignInRoute = CuratorSignInRouteImport.update({
   path: '/sign-in',
   getParentRoute: () => CuratorRouteRoute,
 } as any)
+const CuratorBootstrapCompleteRoute =
+  CuratorBootstrapCompleteRouteImport.update({
+    id: '/bootstrap-complete',
+    path: '/bootstrap-complete',
+    getParentRoute: () => CuratorRouteRoute,
+  } as any)
 const CuratorAccessDeniedRoute = CuratorAccessDeniedRouteImport.update({
   id: '/access-denied',
   path: '/access-denied',
@@ -388,6 +395,7 @@ export interface FileRoutesByFullPath {
   '/clubs/$clubId': typeof ClubsClubIdRoute
   '/culture/$topicId': typeof CultureTopicIdRoute
   '/curator/access-denied': typeof CuratorAccessDeniedRoute
+  '/curator/bootstrap-complete': typeof CuratorBootstrapCompleteRoute
   '/curator/sign-in': typeof CuratorSignInRoute
   '/era/$eraId': typeof EraEraIdRoute
   '/figures/$figureId': typeof FiguresFigureIdRoute
@@ -447,6 +455,7 @@ export interface FileRoutesByTo {
   '/clubs/$clubId': typeof ClubsClubIdRoute
   '/culture/$topicId': typeof CultureTopicIdRoute
   '/curator/access-denied': typeof CuratorAccessDeniedRoute
+  '/curator/bootstrap-complete': typeof CuratorBootstrapCompleteRoute
   '/curator/sign-in': typeof CuratorSignInRoute
   '/era/$eraId': typeof EraEraIdRoute
   '/figures/$figureId': typeof FiguresFigureIdRoute
@@ -507,6 +516,7 @@ export interface FileRoutesById {
   '/clubs/$clubId': typeof ClubsClubIdRoute
   '/culture/$topicId': typeof CultureTopicIdRoute
   '/curator/access-denied': typeof CuratorAccessDeniedRoute
+  '/curator/bootstrap-complete': typeof CuratorBootstrapCompleteRoute
   '/curator/sign-in': typeof CuratorSignInRoute
   '/era/$eraId': typeof EraEraIdRoute
   '/figures/$figureId': typeof FiguresFigureIdRoute
@@ -568,6 +578,7 @@ export interface FileRouteTypes {
     | '/clubs/$clubId'
     | '/culture/$topicId'
     | '/curator/access-denied'
+    | '/curator/bootstrap-complete'
     | '/curator/sign-in'
     | '/era/$eraId'
     | '/figures/$figureId'
@@ -627,6 +638,7 @@ export interface FileRouteTypes {
     | '/clubs/$clubId'
     | '/culture/$topicId'
     | '/curator/access-denied'
+    | '/curator/bootstrap-complete'
     | '/curator/sign-in'
     | '/era/$eraId'
     | '/figures/$figureId'
@@ -686,6 +698,7 @@ export interface FileRouteTypes {
     | '/clubs/$clubId'
     | '/culture/$topicId'
     | '/curator/access-denied'
+    | '/curator/bootstrap-complete'
     | '/curator/sign-in'
     | '/era/$eraId'
     | '/figures/$figureId'
@@ -959,6 +972,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CuratorSignInRouteImport
       parentRoute: typeof CuratorRouteRoute
     }
+    '/curator/bootstrap-complete': {
+      id: '/curator/bootstrap-complete'
+      path: '/bootstrap-complete'
+      fullPath: '/curator/bootstrap-complete'
+      preLoaderRoute: typeof CuratorBootstrapCompleteRouteImport
+      parentRoute: typeof CuratorRouteRoute
+    }
     '/curator/access-denied': {
       id: '/curator/access-denied'
       path: '/access-denied'
@@ -1223,12 +1243,14 @@ const CuratorStudioRouteRouteWithChildren =
 interface CuratorRouteRouteChildren {
   CuratorStudioRouteRoute: typeof CuratorStudioRouteRouteWithChildren
   CuratorAccessDeniedRoute: typeof CuratorAccessDeniedRoute
+  CuratorBootstrapCompleteRoute: typeof CuratorBootstrapCompleteRoute
   CuratorSignInRoute: typeof CuratorSignInRoute
 }
 
 const CuratorRouteRouteChildren: CuratorRouteRouteChildren = {
   CuratorStudioRouteRoute: CuratorStudioRouteRouteWithChildren,
   CuratorAccessDeniedRoute: CuratorAccessDeniedRoute,
+  CuratorBootstrapCompleteRoute: CuratorBootstrapCompleteRoute,
   CuratorSignInRoute: CuratorSignInRoute,
 }
 
