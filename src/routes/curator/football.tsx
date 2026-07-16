@@ -10,8 +10,8 @@ export const Route = createFileRoute("/curator/football")({
 
 function FootballStudio() {
   const c = getDashboardCounts();
-  const clubs = CLUB_MUSEUMS.map((m) => ({ id: m.id, name: (m.name?.en ?? m.id) as string, status: m.status }));
-  const theaters = Object.values(MATCH_THEATERS).map((t) => ({ id: t.id, title: t.title?.en ?? t.id }));
+  const clubs = CLUB_MUSEUMS.map((m) => ({ id: m.id, name: (m.fullName?.en ?? m.shortName) as string, status: m.status }));
+  const theaters = Object.values(MATCH_THEATERS).map((t) => ({ id: t.id, title: (t.cinematicTitle?.en ?? t.id) as string }));
 
   return (
     <Workspace
