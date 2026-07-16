@@ -116,9 +116,25 @@ export function CuratorShell() {
     }));
   }, [pathname]);
 
+  const session = useStudioSession();
+
+  const visibleNav = useMemo(() => {
+    return NAV.filter((n) => {
+      const allowed = ROUTE_PERMISSIONS[n.to];
+      if (!allowed || allowed.length === 0) return true;
+      return roleIntersects(session.roles, allowed);
+    });
+  }, [session.roles]);
+
   const grouped = useMemo(() => {
-    return GROUP_ORDER.map((g) => ({ group: g, items: NAV.filter((n) => n.group === g) }));
-  }, []);
+    return GROUP_ORDER.map((g) => ({ group: g, items: visibleNav.filter((n) => n.group === g) }))
+      .filter((g) => g.items.length > 0);
+  }, [visibleNav]);
+
+  async function handleSignOut() {
+    await supabase.auth.signOut();
+    window.location.href = "/curator/sign-in";
+  }
 
   return (
     <div data-portal="curator" data-portal-theme={theme} className="cp-root min-h-dvh">
