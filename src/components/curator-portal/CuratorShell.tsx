@@ -35,7 +35,11 @@ import {
   ChevronsLeft,
   ChevronsRight,
   ExternalLink,
+  LogOut,
 } from "lucide-react";
+import { supabase } from "@/integrations/supabase/client";
+import { useStudioSession } from "./StudioSessionContext";
+import { ROLE_LABEL, ROUTE_PERMISSIONS, roleIntersects } from "@/lib/curator-portal/permissions";
 
 const NAV: { to: string; label: string; icon: typeof Gauge; exact?: boolean; group: string }[] = [
   // Operations
