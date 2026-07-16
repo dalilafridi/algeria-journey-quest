@@ -45,7 +45,7 @@ function Coverage() {
   return (
     <>
       <header>
-        <h1 className="cp-page-title">Coverage dashboard</h1>
+        <h1 className="cp-page-title">Museum Coverage</h1>
         <p className="cp-page-sub">Where content exists today and where it doesn't. Formulas are shown next to every ratio.</p>
       </header>
 

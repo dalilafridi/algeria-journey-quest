@@ -36,7 +36,7 @@ function Quality() {
   return (
     <>
       <header>
-        <h1 className="cp-page-title">Quality center</h1>
+        <h1 className="cp-page-title">Curatorial Quality</h1>
         <p className="cp-page-sub">Read-only. Each exhibit is graded on translation, sources, media, audio, quiz and accessibility signals derivable from the codebase. Fields we cannot measure are marked <StatusPill tone="muted">Unknown</StatusPill> instead of guessed.</p>
       </header>
 

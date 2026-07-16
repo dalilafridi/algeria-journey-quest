@@ -14,7 +14,7 @@ function Media() {
   return (
     <>
       <header>
-        <h1 className="cp-page-title">Media library</h1>
+        <h1 className="cp-page-title">Media & Digital Assets</h1>
         <p className="cp-page-sub">Foundation for a first-party media asset store with rights, attribution and alt-text tracking.</p>
       </header>
 

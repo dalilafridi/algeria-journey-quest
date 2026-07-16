@@ -10,7 +10,7 @@ function Blueprint() {
   return (
     <>
       <header>
-        <h1 className="cp-page-title">Master Blueprint</h1>
+        <h1 className="cp-page-title">Museum Constitution</h1>
         <p className="cp-page-sub">The living, maintainable representation of the DZ Odyssey blueprint. Read-only in Phase 1.</p>
       </header>
 
