@@ -1881,7 +1881,10 @@ html.showcase-on body { padding-bottom: 0; }
 /* Tags & pills */
 [data-portal="curator"] .cp-tag { display: inline-flex; align-items: center; gap: 4px; padding: 2px 6px; border-radius: 999px; font-size: 10.5px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; }
 [data-portal="curator"] .cp-tag--exact { background: color-mix(in oklab, var(--cp-ok) 22%, transparent); color: var(--cp-ok); }
-[data-portal="curator"] .cp-tag--estimated { background: color-mix(in oklab, var(--cp-warn) 22%, transparent); color: var(--cp-warn); }
+[data-portal="curator"] .cp-tag--estimated { background: color-mix(in oklab, var(--cp-info) 22%, transparent); color: var(--cp-info); }
+[data-portal="curator"] .cp-tag--unknown { background: color-mix(in oklab, var(--cp-warn) 22%, transparent); color: var(--cp-warn); }
+[data-portal="curator"] .cp-tag--planned { background: color-mix(in oklab, oklch(0.62 0.18 300) 22%, transparent); color: oklch(0.72 0.18 300); }
+[data-portal="curator"] .cp-tag--critical { background: color-mix(in oklab, var(--cp-danger) 22%, transparent); color: var(--cp-danger); }
 [data-portal="curator"] .cp-tag--muted { background: color-mix(in oklab, var(--cp-muted) 20%, transparent); color: var(--cp-ink-soft); }
 [data-portal="curator"] .cp-pill { display: inline-flex; align-items: center; padding: 2px 10px; border-radius: 999px; font-size: 11px; font-weight: 600; }
 [data-portal="curator"] .cp-pill--ok { background: color-mix(in oklab, var(--cp-ok) 18%, transparent); color: var(--cp-ok); }
