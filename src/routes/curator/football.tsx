@@ -1,8 +1,9 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
 import { Workspace, BulletList, StatCard, SectionCard, StatusPill } from "@/components/curator-portal/primitives";
 import { getDashboardCounts } from "@/lib/curator-portal/inventory";
 import { CLUB_MUSEUMS } from "@/data/clubs";
 import { MATCH_THEATERS } from "@/data/matchTheater";
+import { t as tr } from "@/lib/i18n";
 
 export const Route = createFileRoute("/curator/football")({
   component: FootballStudio,
@@ -10,8 +11,8 @@ export const Route = createFileRoute("/curator/football")({
 
 function FootballStudio() {
   const c = getDashboardCounts();
-  const clubs = CLUB_MUSEUMS.map((m) => ({ id: m.id, name: (m.fullName?.en ?? m.shortName) as string, status: m.status }));
-  const theaters = Object.values(MATCH_THEATERS).map((t) => ({ id: t.id, title: (t.cinematicTitle?.en ?? t.id) as string }));
+  const clubs = CLUB_MUSEUMS.map((m) => ({ id: m.id, name: tr(m.fullName, "en") || m.shortName, status: m.status }));
+  const theaters = Object.values(MATCH_THEATERS).map((mt) => ({ id: mt.id, title: tr(mt.cinematicTitle, "en") || mt.id }));
 
   return (
     <Workspace
