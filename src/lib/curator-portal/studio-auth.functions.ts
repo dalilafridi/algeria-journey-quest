@@ -56,7 +56,7 @@ async function assertRoles(
 // ---------- Profile ----------------------------------------------------
 
 const profileSchema = z.object({
-  display_name: z.string().trim().min(1).max(120).nullable(),
+  display_name: z.string().trim().min(1).max(120),
   preferred_language: z.enum(["en", "fr", "ar"]),
 });
 
