@@ -65,6 +65,7 @@ const NAV: { to: string; label: string; icon: typeof Gauge; exact?: boolean; gro
   // Intelligence & People
   { to: "/curator/analytics", label: "Museum Intelligence", icon: BarChart3, group: "Intelligence & People" },
   { to: "/curator/contributors", label: "Contributors & Roles", icon: Users, group: "Intelligence & People" },
+  { to: "/curator/team", label: "Team & Roles", icon: Users, group: "Intelligence & People" },
 
   // Governance
   { to: "/curator/roadmap", label: "Roadmap & Idea Lab", icon: GitBranch, group: "Governance" },
@@ -72,7 +73,9 @@ const NAV: { to: string; label: string; icon: typeof Gauge; exact?: boolean; gro
   { to: "/curator/decisions", label: "Governance & Decisions", icon: Scale, group: "Governance" },
   { to: "/curator/technical", label: "Technical Health", icon: Activity, group: "Governance" },
   { to: "/curator/blueprint", label: "Museum Constitution", icon: Compass, group: "Governance" },
+  { to: "/curator/audit-log", label: "Audit Log", icon: ShieldCheck, group: "Governance" },
   { to: "/curator/settings", label: "Settings", icon: SettingsIcon, group: "Governance" },
+  { to: "/curator/profile", label: "My Profile", icon: User, group: "Governance" },
 ];
 
 const GROUP_ORDER = [
