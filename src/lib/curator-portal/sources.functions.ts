@@ -217,7 +217,7 @@ export const updateSource = createServerFn({ method: "POST" })
   .handler(async ({ data, context }) => {
     const { error } = await context.supabase.rpc("update_source", {
       _id: data.id,
-      _payload: data.payload as unknown as Record<string, unknown>,
+      _payload: data.payload as never,
     });
     if (error) throw new Error(error.message);
     return { ok: true };
