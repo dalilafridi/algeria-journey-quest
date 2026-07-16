@@ -1,22 +1,17 @@
 /**
- * /curator — layout route.
+ * /curator — bare layout.
  *
- * Phase-1 review: the portal is read-only and renders on every deployment
- * so reviewers can access it without authentication. All host, DEV, token,
- * and sessionStorage gates have been removed intentionally.
+ * Renders `<Outlet />` only. No auth gate, no CuratorShell.
  *
- * Protections preserved elsewhere:
- *  - No /curator links in public navigation.
- *  - Every editing / upload / delete / publish / role action stays disabled.
- *  - No secrets, credentials, private user data, or unpublished licensed media.
- *
- * Phase 2 will replace this with Lovable Cloud auth + a `curator` role
- * checked server-side via `requireSupabaseAuth`.
+ * - Authenticated Studio pages live under the pathless `_studio` layout
+ *   (`src/routes/curator/_studio/route.tsx`) which enforces auth + roles
+ *   server-side and mounts the Studio shell.
+ * - Public Studio surfaces (`/curator/sign-in`, `/curator/access-denied`)
+ *   are siblings of `_studio` and render their own standalone shell.
  */
 
-import { createFileRoute } from "@tanstack/react-router";
-import { CuratorShell } from "@/components/curator-portal/CuratorShell";
+import { createFileRoute, Outlet } from "@tanstack/react-router";
 
 export const Route = createFileRoute("/curator")({
-  component: CuratorShell,
+  component: () => <Outlet />,
 });
