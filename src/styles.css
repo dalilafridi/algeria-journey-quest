@@ -1892,7 +1892,9 @@ html.showcase-on body { padding-bottom: 0; }
 [data-portal="curator"] .cp-pill--danger { background: color-mix(in oklab, var(--cp-danger) 20%, transparent); color: var(--cp-danger); }
 [data-portal="curator"] .cp-pill--info { background: color-mix(in oklab, var(--cp-info) 20%, transparent); color: var(--cp-info); }
 [data-portal="curator"] .cp-pill--gold { background: color-mix(in oklab, var(--cp-gold) 22%, transparent); color: color-mix(in oklab, var(--cp-gold) 80%, var(--cp-ink)); }
+[data-portal="curator"] .cp-pill--gold { background: color-mix(in oklab, var(--cp-gold) 22%, transparent); color: color-mix(in oklab, var(--cp-gold) 80%, var(--cp-ink)); }
 [data-portal="curator"] .cp-pill--muted { background: color-mix(in oklab, var(--cp-muted) 18%, transparent); color: var(--cp-ink-soft); }
+[data-portal="curator"] .cp-pill--planned { background: color-mix(in oklab, oklch(0.62 0.18 300) 20%, transparent); color: oklch(0.75 0.18 300); }
 
 /* Bars */
 [data-portal="curator"] .cp-bar { display: flex; align-items: center; gap: 10px; }
