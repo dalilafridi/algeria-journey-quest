@@ -213,8 +213,7 @@ export function CuratorShell() {
 function TempAccessBanner() {
   return (
     <div className="cp-temp-banner" role="status">
-      <strong>Temporary development access.</strong>
-      &nbsp;Real role-based authentication will replace this gate in Phase 2.
+      Read-only Phase 1 review portal. Public access will be replaced with authenticated curator access in Phase 2.
     </div>
   );
 }
