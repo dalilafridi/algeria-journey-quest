@@ -25,7 +25,7 @@
  */
 
 import { createFileRoute, notFound } from "@tanstack/react-router";
-import { getRequest } from "@tanstack/react-start/server";
+import { createIsomorphicFn } from "@tanstack/react-start";
 import { CuratorShell } from "@/components/curator-portal/CuratorShell";
 
 function isPreviewHost(host: string | null | undefined): boolean {
@@ -38,23 +38,27 @@ function isPreviewHost(host: string | null | undefined): boolean {
   return false;
 }
 
+const getHost = createIsomorphicFn()
+  .client(() => window.location.hostname)
+  .server(() => {
+    try {
+      // Lazy require keeps the server-only import out of the client bundle.
+      const { getRequest } = require("@tanstack/react-start/server") as {
+        getRequest: () => Request | undefined;
+      };
+      return getRequest()?.headers.get("host") ?? null;
+    } catch {
+      return null;
+    }
+  });
+
 export const Route = createFileRoute("/curator")({
   beforeLoad: () => {
     if (import.meta.env.DEV) return;
-    let host: string | null | undefined;
-    if (typeof window !== "undefined") {
-      host = window.location.hostname;
-    } else {
-      try {
-        const req = getRequest();
-        host = req?.headers.get("host");
-      } catch {
-        host = null;
-      }
-    }
-    if (!isPreviewHost(host)) {
+    if (!isPreviewHost(getHost())) {
       throw notFound();
     }
   },
   component: CuratorShell,
 });
+
