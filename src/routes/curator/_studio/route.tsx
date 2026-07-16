@@ -15,7 +15,7 @@
  * denial is auditable but never leaks restricted data.
  */
 
-import { createFileRoute, Outlet, redirect } from "@tanstack/react-router";
+import { createFileRoute, redirect } from "@tanstack/react-router";
 import { CuratorShell } from "@/components/curator-portal/CuratorShell";
 import { getStudioSession } from "@/lib/curator-portal/studio-auth.functions";
 import { StudioSessionProvider } from "@/components/curator-portal/StudioSessionContext";
