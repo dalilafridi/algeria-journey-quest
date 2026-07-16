@@ -68,6 +68,9 @@ import { Route as CuratorStudioBlueprintRouteImport } from './routes/curator/_st
 import { Route as CuratorStudioAuditLogRouteImport } from './routes/curator/_studio/audit-log'
 import { Route as CuratorStudioAnalyticsRouteImport } from './routes/curator/_studio/analytics'
 import { Route as CuratorStudioAcquisitionsRouteImport } from './routes/curator/_studio/acquisitions'
+import { Route as CuratorStudioSourcesIndexRouteImport } from './routes/curator/_studio/sources.index'
+import { Route as CuratorStudioSourcesNewRouteImport } from './routes/curator/_studio/sources.new'
+import { Route as CuratorStudioSourcesSourceIdRouteImport } from './routes/curator/_studio/sources.$sourceId'
 
 const WordsRoute = WordsRouteImport.update({
   id: '/words',
@@ -369,6 +372,23 @@ const CuratorStudioAcquisitionsRoute =
     path: '/acquisitions',
     getParentRoute: () => CuratorStudioRouteRoute,
   } as any)
+const CuratorStudioSourcesIndexRoute =
+  CuratorStudioSourcesIndexRouteImport.update({
+    id: '/',
+    path: '/',
+    getParentRoute: () => CuratorStudioSourcesRoute,
+  } as any)
+const CuratorStudioSourcesNewRoute = CuratorStudioSourcesNewRouteImport.update({
+  id: '/new',
+  path: '/new',
+  getParentRoute: () => CuratorStudioSourcesRoute,
+} as any)
+const CuratorStudioSourcesSourceIdRoute =
+  CuratorStudioSourcesSourceIdRouteImport.update({
+    id: '/$sourceId',
+    path: '/$sourceId',
+    getParentRoute: () => CuratorStudioSourcesRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -423,12 +443,15 @@ export interface FileRoutesByFullPath {
   '/curator/releases': typeof CuratorStudioReleasesRoute
   '/curator/roadmap': typeof CuratorStudioRoadmapRoute
   '/curator/settings': typeof CuratorStudioSettingsRoute
-  '/curator/sources': typeof CuratorStudioSourcesRoute
+  '/curator/sources': typeof CuratorStudioSourcesRouteWithChildren
   '/curator/team': typeof CuratorStudioTeamRoute
   '/curator/technical': typeof CuratorStudioTechnicalRoute
   '/curator/translations': typeof CuratorStudioTranslationsRoute
   '/figures/collection/$collectionId': typeof FiguresCollectionCollectionIdRoute
   '/curator/': typeof CuratorStudioIndexRoute
+  '/curator/sources/$sourceId': typeof CuratorStudioSourcesSourceIdRoute
+  '/curator/sources/new': typeof CuratorStudioSourcesNewRoute
+  '/curator/sources/': typeof CuratorStudioSourcesIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -483,11 +506,13 @@ export interface FileRoutesByTo {
   '/curator/releases': typeof CuratorStudioReleasesRoute
   '/curator/roadmap': typeof CuratorStudioRoadmapRoute
   '/curator/settings': typeof CuratorStudioSettingsRoute
-  '/curator/sources': typeof CuratorStudioSourcesRoute
   '/curator/team': typeof CuratorStudioTeamRoute
   '/curator/technical': typeof CuratorStudioTechnicalRoute
   '/curator/translations': typeof CuratorStudioTranslationsRoute
   '/figures/collection/$collectionId': typeof FiguresCollectionCollectionIdRoute
+  '/curator/sources/$sourceId': typeof CuratorStudioSourcesSourceIdRoute
+  '/curator/sources/new': typeof CuratorStudioSourcesNewRoute
+  '/curator/sources': typeof CuratorStudioSourcesIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -544,12 +569,15 @@ export interface FileRoutesById {
   '/curator/_studio/releases': typeof CuratorStudioReleasesRoute
   '/curator/_studio/roadmap': typeof CuratorStudioRoadmapRoute
   '/curator/_studio/settings': typeof CuratorStudioSettingsRoute
-  '/curator/_studio/sources': typeof CuratorStudioSourcesRoute
+  '/curator/_studio/sources': typeof CuratorStudioSourcesRouteWithChildren
   '/curator/_studio/team': typeof CuratorStudioTeamRoute
   '/curator/_studio/technical': typeof CuratorStudioTechnicalRoute
   '/curator/_studio/translations': typeof CuratorStudioTranslationsRoute
   '/figures/collection/$collectionId': typeof FiguresCollectionCollectionIdRoute
   '/curator/_studio/': typeof CuratorStudioIndexRoute
+  '/curator/_studio/sources/$sourceId': typeof CuratorStudioSourcesSourceIdRoute
+  '/curator/_studio/sources/new': typeof CuratorStudioSourcesNewRoute
+  '/curator/_studio/sources/': typeof CuratorStudioSourcesIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -612,6 +640,9 @@ export interface FileRouteTypes {
     | '/curator/translations'
     | '/figures/collection/$collectionId'
     | '/curator/'
+    | '/curator/sources/$sourceId'
+    | '/curator/sources/new'
+    | '/curator/sources/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -666,11 +697,13 @@ export interface FileRouteTypes {
     | '/curator/releases'
     | '/curator/roadmap'
     | '/curator/settings'
-    | '/curator/sources'
     | '/curator/team'
     | '/curator/technical'
     | '/curator/translations'
     | '/figures/collection/$collectionId'
+    | '/curator/sources/$sourceId'
+    | '/curator/sources/new'
+    | '/curator/sources'
   id:
     | '__root__'
     | '/'
@@ -732,6 +765,9 @@ export interface FileRouteTypes {
     | '/curator/_studio/translations'
     | '/figures/collection/$collectionId'
     | '/curator/_studio/'
+    | '/curator/_studio/sources/$sourceId'
+    | '/curator/_studio/sources/new'
+    | '/curator/_studio/sources/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -1182,8 +1218,44 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CuratorStudioAcquisitionsRouteImport
       parentRoute: typeof CuratorStudioRouteRoute
     }
+    '/curator/_studio/sources/': {
+      id: '/curator/_studio/sources/'
+      path: '/'
+      fullPath: '/curator/sources/'
+      preLoaderRoute: typeof CuratorStudioSourcesIndexRouteImport
+      parentRoute: typeof CuratorStudioSourcesRoute
+    }
+    '/curator/_studio/sources/new': {
+      id: '/curator/_studio/sources/new'
+      path: '/new'
+      fullPath: '/curator/sources/new'
+      preLoaderRoute: typeof CuratorStudioSourcesNewRouteImport
+      parentRoute: typeof CuratorStudioSourcesRoute
+    }
+    '/curator/_studio/sources/$sourceId': {
+      id: '/curator/_studio/sources/$sourceId'
+      path: '/$sourceId'
+      fullPath: '/curator/sources/$sourceId'
+      preLoaderRoute: typeof CuratorStudioSourcesSourceIdRouteImport
+      parentRoute: typeof CuratorStudioSourcesRoute
+    }
   }
 }
+
+interface CuratorStudioSourcesRouteChildren {
+  CuratorStudioSourcesSourceIdRoute: typeof CuratorStudioSourcesSourceIdRoute
+  CuratorStudioSourcesNewRoute: typeof CuratorStudioSourcesNewRoute
+  CuratorStudioSourcesIndexRoute: typeof CuratorStudioSourcesIndexRoute
+}
+
+const CuratorStudioSourcesRouteChildren: CuratorStudioSourcesRouteChildren = {
+  CuratorStudioSourcesSourceIdRoute: CuratorStudioSourcesSourceIdRoute,
+  CuratorStudioSourcesNewRoute: CuratorStudioSourcesNewRoute,
+  CuratorStudioSourcesIndexRoute: CuratorStudioSourcesIndexRoute,
+}
+
+const CuratorStudioSourcesRouteWithChildren =
+  CuratorStudioSourcesRoute._addFileChildren(CuratorStudioSourcesRouteChildren)
 
 interface CuratorStudioRouteRouteChildren {
   CuratorStudioAcquisitionsRoute: typeof CuratorStudioAcquisitionsRoute
@@ -1204,7 +1276,7 @@ interface CuratorStudioRouteRouteChildren {
   CuratorStudioReleasesRoute: typeof CuratorStudioReleasesRoute
   CuratorStudioRoadmapRoute: typeof CuratorStudioRoadmapRoute
   CuratorStudioSettingsRoute: typeof CuratorStudioSettingsRoute
-  CuratorStudioSourcesRoute: typeof CuratorStudioSourcesRoute
+  CuratorStudioSourcesRoute: typeof CuratorStudioSourcesRouteWithChildren
   CuratorStudioTeamRoute: typeof CuratorStudioTeamRoute
   CuratorStudioTechnicalRoute: typeof CuratorStudioTechnicalRoute
   CuratorStudioTranslationsRoute: typeof CuratorStudioTranslationsRoute
@@ -1230,7 +1302,7 @@ const CuratorStudioRouteRouteChildren: CuratorStudioRouteRouteChildren = {
   CuratorStudioReleasesRoute: CuratorStudioReleasesRoute,
   CuratorStudioRoadmapRoute: CuratorStudioRoadmapRoute,
   CuratorStudioSettingsRoute: CuratorStudioSettingsRoute,
-  CuratorStudioSourcesRoute: CuratorStudioSourcesRoute,
+  CuratorStudioSourcesRoute: CuratorStudioSourcesRouteWithChildren,
   CuratorStudioTeamRoute: CuratorStudioTeamRoute,
   CuratorStudioTechnicalRoute: CuratorStudioTechnicalRoute,
   CuratorStudioTranslationsRoute: CuratorStudioTranslationsRoute,
