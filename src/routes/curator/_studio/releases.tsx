@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { SectionCard, StatusPill, DisabledAction } from "@/components/curator-portal/primitives";
 import { RELEASES_SEED } from "@/data/curator-portal/seeds";
 
-export const Route = createFileRoute("/curator/releases")({
+export const Route = createFileRoute("/curator/_studio/releases")({
   component: Releases,
 });
 

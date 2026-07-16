@@ -5,7 +5,7 @@ import { CLUB_MUSEUMS } from "@/data/clubs";
 import { MATCH_THEATERS } from "@/data/matchTheater";
 import { t as tr } from "@/lib/i18n";
 
-export const Route = createFileRoute("/curator/football")({
+export const Route = createFileRoute("/curator/_studio/football")({
   component: FootballStudio,
 });
 

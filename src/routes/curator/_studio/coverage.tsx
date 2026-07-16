@@ -7,7 +7,7 @@ import {
 } from "@/components/curator-portal/primitives";
 import { getDashboardCounts, getInventory } from "@/lib/curator-portal/inventory";
 
-export const Route = createFileRoute("/curator/coverage")({
+export const Route = createFileRoute("/curator/_studio/coverage")({
   component: Coverage,
 });
 

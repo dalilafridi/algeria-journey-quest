@@ -22,7 +22,7 @@ const KIND_LABEL: Record<ContentKind, string> = {
   quiz: "Quiz",
 };
 
-export const Route = createFileRoute("/curator/content")({
+export const Route = createFileRoute("/curator/_studio/content")({
   validateSearch: (s: Record<string, unknown>) => ({ q: typeof s.q === "string" ? s.q : "" }),
   component: ContentInventory,
 });

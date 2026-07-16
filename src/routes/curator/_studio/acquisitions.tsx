@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Workspace, BulletList } from "@/components/curator-portal/primitives";
 
-export const Route = createFileRoute("/curator/acquisitions")({
+export const Route = createFileRoute("/curator/_studio/acquisitions")({
   component: Acquisitions,
 });
 

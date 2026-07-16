@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Workspace, BulletList, SectionCard } from "@/components/curator-portal/primitives";
 
-export const Route = createFileRoute("/curator/analytics")({
+export const Route = createFileRoute("/curator/_studio/analytics")({
   component: Analytics,
 });
 
