@@ -61,7 +61,7 @@ function FootballStudio() {
             <ul style={{ display: "flex", flexDirection: "column", gap: 4 }}>
               {theaters.map((t) => (
                 <li key={t.id} style={{ fontSize: 13 }}>
-                  <Link to={"/theater/$matchId" as never} params={{ matchId: t.id }}>{t.title}</Link>
+                  <a href={`/theater/${t.id}`} style={{ color: "var(--cp-brand)" }}>{t.title}</a>
                 </li>
               ))}
             </ul>
