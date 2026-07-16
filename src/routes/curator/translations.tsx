@@ -9,7 +9,7 @@ export const Route = createFileRoute("/curator/translations")({
 function Translations() {
   const inv = getInventory();
   const total = inv.length;
-  const en = inv.filter((r) => r.title && r.title.length > 0).length;
+  const en = inv.filter((r) => (r.titleEn ?? "").length > 0).length;
   const fr = inv.filter((r) => r.hasFr).length;
   const ar = inv.filter((r) => r.hasAr).length;
   const missingFr = total - fr;
