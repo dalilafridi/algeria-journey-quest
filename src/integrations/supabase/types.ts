@@ -497,6 +497,48 @@ export type Database = {
         }
         Relationships: []
       }
+      studio_notifications: {
+        Row: {
+          actor_user_id: string | null
+          created_at: string
+          entity_id: string
+          entity_label: string | null
+          entity_type: string
+          id: string
+          kind: string
+          message: string | null
+          metadata: Json | null
+          read_at: string | null
+          recipient_user_id: string
+        }
+        Insert: {
+          actor_user_id?: string | null
+          created_at?: string
+          entity_id: string
+          entity_label?: string | null
+          entity_type: string
+          id?: string
+          kind: string
+          message?: string | null
+          metadata?: Json | null
+          read_at?: string | null
+          recipient_user_id: string
+        }
+        Update: {
+          actor_user_id?: string | null
+          created_at?: string
+          entity_id?: string
+          entity_label?: string | null
+          entity_type?: string
+          id?: string
+          kind?: string
+          message?: string | null
+          metadata?: Json | null
+          read_at?: string | null
+          recipient_user_id?: string
+        }
+        Relationships: []
+      }
       studio_preferences: {
         Row: {
           sidebar_collapsed: boolean
@@ -547,9 +589,39 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
+      _notify: {
+        Args: {
+          _actor: string
+          _entity_id: string
+          _entity_label: string
+          _entity_type: string
+          _kind: string
+          _message: string
+          _metadata: Json
+          _recipient: string
+        }
+        Returns: undefined
+      }
+      _notify_roles: {
+        Args: {
+          _actor: string
+          _entity_id: string
+          _entity_label: string
+          _entity_type: string
+          _kind: string
+          _message: string
+          _metadata: Json
+          _roles: Database["public"]["Enums"]["app_role"][]
+        }
+        Returns: undefined
+      }
       _snapshot_figure_draft: {
         Args: { _actor: string; _id: string; _summary: string }
         Returns: undefined
+      }
+      _users_with_any_role: {
+        Args: { _roles: Database["public"]["Enums"]["app_role"][] }
+        Returns: string[]
       }
       add_figure_draft_relation: {
         Args: {
@@ -583,6 +655,11 @@ export type Database = {
       can_verify_sources: { Args: { _uid: string }; Returns: boolean }
       can_write_figure_drafts: { Args: { _uid: string }; Returns: boolean }
       can_write_sources: { Args: { _uid: string }; Returns: boolean }
+      clone_figure_draft: {
+        Args: { _id: string; _include_relationships: boolean }
+        Returns: string
+      }
+      clone_source: { Args: { _id: string }; Returns: string }
       create_figure_draft: { Args: { _payload: Json }; Returns: string }
       create_source: { Args: { _payload: Json }; Returns: string }
       get_my_studio_roles: {
@@ -621,6 +698,7 @@ export type Database = {
         }
         Returns: string
       }
+      mark_notifications_read: { Args: { _ids: string[] }; Returns: number }
       remove_figure_draft_relation: {
         Args: { _draft_id: string; _kind: string; _ref_id: string }
         Returns: undefined

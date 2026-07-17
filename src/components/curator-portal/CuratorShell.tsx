@@ -1,7 +1,10 @@
 /**
  * DZ Odyssey Studio — Museum Operating System shell.
  *
- * Loaded ONLY by /curator routes. Phase 2B editorial workflows active.
+ * Phase 2B · Step 3: primary sidebar shows only operational
+ * workspaces. Everything else is consolidated into "Planned Workspaces".
+ * Global ⌘K search, keyboard hotkeys, and the notification bell are
+ * mounted here.
  */
 
 import { Link, Outlet, useRouterState } from "@tanstack/react-router";
@@ -11,88 +14,74 @@ import {
   Layers,
   Map as MapIcon,
   BookOpen,
-  Image as ImageIcon,
   ShieldCheck,
-  GitBranch,
-  PackageCheck,
-  Scale,
-  Activity,
   Compass,
   Settings as SettingsIcon,
   Languages,
   Trophy,
-  Send,
-  BarChart3,
   Users,
-  GraduationCap,
-  HardDriveDownload,
-  Archive,
   Menu,
   X,
   Search,
-  Bell,
   User,
   ChevronsLeft,
   ChevronsRight,
   ExternalLink,
   LogOut,
+  Inbox,
+  Briefcase,
 } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useStudioSession } from "./StudioSessionContext";
 import { ROLE_LABEL, ROUTE_PERMISSIONS, roleIntersects } from "@/lib/curator-portal/permissions";
+import { HotkeysProvider, useHotkeys } from "./HotkeysProvider";
+import { GlobalSearchPalette } from "./GlobalSearchPalette";
+import { NotificationBell } from "./NotificationBell";
 
-const NAV: { to: string; label: string; icon: typeof Gauge; exact?: boolean; group: string }[] = [
-  // Operations
+interface NavItem { to: string; label: string; icon: typeof Gauge; exact?: boolean; group: string }
+
+const NAV: NavItem[] = [
+  // Operations — daily driver
   { to: "/curator", label: "Mission Control", icon: Gauge, exact: true, group: "Operations" },
+  { to: "/curator/my-work", label: "My Work", icon: Briefcase, group: "Operations" },
+  { to: "/curator/notifications", label: "Notifications", icon: Inbox, group: "Operations" },
 
-  // Content
-  { to: "/curator/content", label: "Collections & Exhibits", icon: Layers, group: "Content" },
-  { to: "/curator/figures", label: "Historical Figure Drafts", icon: User, group: "Content" },
-  { to: "/curator/football", label: "Football Studio", icon: Trophy, group: "Content" },
-  { to: "/curator/coverage", label: "Museum Coverage", icon: MapIcon, group: "Content" },
+  // Editorial — the workspaces that actually move content
+  { to: "/curator/figures", label: "Historical Figure Drafts", icon: User, group: "Editorial" },
+  { to: "/curator/sources", label: "Research Library", icon: BookOpen, group: "Editorial" },
+  { to: "/curator/content", label: "Collections & Exhibits", icon: Layers, group: "Editorial" },
+  { to: "/curator/coverage", label: "Museum Coverage", icon: MapIcon, group: "Editorial" },
+  { to: "/curator/translations", label: "Translation Center", icon: Languages, group: "Editorial" },
+  { to: "/curator/quality", label: "Curatorial Quality", icon: ShieldCheck, group: "Editorial" },
+  { to: "/curator/football", label: "Football Studio", icon: Trophy, group: "Editorial" },
 
-  // Research & Media
-  { to: "/curator/sources", label: "Research Library", icon: BookOpen, group: "Research & Media" },
-  { to: "/curator/media", label: "Media & Digital Assets", icon: ImageIcon, group: "Research & Media" },
-  { to: "/curator/translations", label: "Translation Center", icon: Languages, group: "Research & Media" },
-  { to: "/curator/acquisitions", label: "Acquisitions & Provenance", icon: Archive, group: "Research & Media" },
-  { to: "/curator/preservation", label: "Digital Preservation", icon: HardDriveDownload, group: "Research & Media" },
-
-  // Quality & Publishing
-  { to: "/curator/quality", label: "Curatorial Quality", icon: ShieldCheck, group: "Quality & Publishing" },
-  { to: "/curator/publishing", label: "Publishing & Exhibitions", icon: Send, group: "Quality & Publishing" },
-  { to: "/curator/education", label: "Education Studio", icon: GraduationCap, group: "Quality & Publishing" },
-
-  // Intelligence & People
-  { to: "/curator/analytics", label: "Museum Intelligence", icon: BarChart3, group: "Intelligence & People" },
-  { to: "/curator/contributors", label: "Contributors & Roles", icon: Users, group: "Intelligence & People" },
-  { to: "/curator/team", label: "Team & Roles", icon: Users, group: "Intelligence & People" },
-
-  // Governance
-  { to: "/curator/roadmap", label: "Roadmap & Idea Lab", icon: GitBranch, group: "Governance" },
-  { to: "/curator/releases", label: "Releases", icon: PackageCheck, group: "Governance" },
-  { to: "/curator/decisions", label: "Governance & Decisions", icon: Scale, group: "Governance" },
-  { to: "/curator/technical", label: "Technical Health", icon: Activity, group: "Governance" },
-  { to: "/curator/blueprint", label: "Museum Constitution", icon: Compass, group: "Governance" },
+  // Governance — daily operational governance surfaces only
+  { to: "/curator/team", label: "Team & Roles", icon: Users, group: "Governance" },
   { to: "/curator/audit-log", label: "Audit Log", icon: ShieldCheck, group: "Governance" },
   { to: "/curator/settings", label: "Settings", icon: SettingsIcon, group: "Governance" },
   { to: "/curator/profile", label: "My Profile", icon: User, group: "Governance" },
+
+  // Everything else lives on the Planned page.
+  { to: "/curator/planned", label: "Planned Workspaces", icon: Compass, group: "Reference" },
 ];
 
-const GROUP_ORDER = [
-  "Operations",
-  "Content",
-  "Research & Media",
-  "Quality & Publishing",
-  "Intelligence & People",
-  "Governance",
-];
+const GROUP_ORDER = ["Operations", "Editorial", "Governance", "Reference"];
 
 export function CuratorShell() {
+  return (
+    <HotkeysProvider>
+      <ShellBody />
+      <GlobalSearchPalette />
+    </HotkeysProvider>
+  );
+}
+
+function ShellBody() {
   const pathname = useRouterState({ select: (r) => r.location.pathname });
   const [collapsed, setCollapsed] = useState(false);
   const [drawer, setDrawer] = useState(false);
   const [theme, setTheme] = useState<"light" | "dark">("dark");
+  const { openSearch } = useHotkeys();
 
   useEffect(() => {
     const saved = typeof window !== "undefined"
@@ -231,26 +220,23 @@ export function CuratorShell() {
             </ol>
           </nav>
 
-          <span className="cp-status-chip" title="Studio access mode">Phase 2B · Editorial Studio</span>
-
           <div className="cp-header__spacer" />
 
-          <label className="cp-search">
+          <button
+            type="button"
+            onClick={openSearch}
+            className="cp-search"
+            aria-label="Open Studio search"
+            title="Search (⌘K)"
+            style={{ cursor: "pointer" }}
+          >
             <Search className="h-4 w-4" aria-hidden />
-            <input
-              type="search"
-              placeholder="Search Studio…"
-              aria-label="Search Studio"
-              onKeyDown={(e) => {
-                if (e.key === "Enter") {
-                  const q = (e.currentTarget.value || "").trim();
-                  if (q.length > 0) {
-                    window.location.href = `/curator/content?q=${encodeURIComponent(q)}`;
-                  }
-                }
-              }}
-            />
-          </label>
+            <span style={{ color: "var(--cp-ink-soft)", fontSize: 13 }}>Search Studio…</span>
+            <kbd style={{
+              marginLeft: "auto", fontSize: 10, padding: "2px 6px", border: "1px solid var(--cp-border)",
+              borderRadius: 4, color: "var(--cp-ink-soft)", fontFamily: "inherit",
+            }}>⌘K</kbd>
+          </button>
 
           <a href="/" className="cp-view-public" title="Open the public museum in this tab">
             <ExternalLink className="h-4 w-4" aria-hidden />
@@ -267,9 +253,7 @@ export function CuratorShell() {
             <span aria-hidden>{theme === "dark" ? "◐" : "◑"}</span>
           </button>
 
-          <button type="button" className="cp-icon-btn" aria-label="Notifications">
-            <Bell className="h-5 w-5" aria-hidden />
-          </button>
+          <NotificationBell />
 
           <Link
             to="/curator/profile"
@@ -290,11 +274,6 @@ export function CuratorShell() {
             <LogOut className="h-4 w-4" aria-hidden />
           </button>
         </header>
-
-        <div className="cp-temp-banner" role="status">
-          <span aria-hidden>◆</span>
-          <span>Phase 2B · Secure editorial workflows are active. Research sources and historical figure drafts can now be created and reviewed. Media uploads and public publishing remain disabled.</span>
-        </div>
 
         <main id="curator-main" className="cp-content" tabIndex={-1}>
           <Outlet />

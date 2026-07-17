@@ -1,12 +1,15 @@
 import { createFileRoute, Link, redirect } from "@tanstack/react-router";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { FigureDraftEditor, type EditorSourceRow } from "@/components/curator-portal/FigureDraftEditor";
 import { SectionCard } from "@/components/curator-portal/primitives";
+import { DraftHealthPanel } from "@/components/curator-portal/DraftHealth";
 import {
   getFigureDraft, archiveFigureDraft, restoreFigureDraft,
   type FigureDraftDetail,
 } from "@/lib/curator-portal/figure-drafts.functions";
 import { listSourcesForContent } from "@/lib/curator-portal/sources.functions";
+import { evaluateFigureReadiness } from "@/lib/curator-portal/readiness";
+import { pushRecent } from "@/lib/curator-portal/recently-viewed";
 import { useStudioSession } from "@/components/curator-portal/StudioSessionContext";
 import type { AppRole } from "@/lib/curator-portal/permissions";
 
@@ -41,10 +44,23 @@ function FigureDraftPage() {
       ]);
       setDetail(d);
       setSources(s as EditorSourceRow[]);
+      // Recently viewed — per-user, browser-local.
+      pushRecent(session.userId, {
+        kind: "figure_draft",
+        id: d.draft.id,
+        title: d.draft.name_en || d.draft.slug,
+        subtitle: d.draft.subtitle_en ?? undefined,
+      });
     } catch (e) { setErr((e as Error).message); }
-  }, [draftId]);
+  }, [draftId, session.userId]);
 
   useEffect(() => { void reload(); }, [reload]);
+
+  const readiness = useMemo(() => {
+    if (!detail) return null;
+    const verified = sources.filter((s) => s.source?.status === "verified").length;
+    return evaluateFigureReadiness(detail, { total: sources.length, verified });
+  }, [detail, sources]);
 
   async function onArchive() {
     if (!confirm("Archive this draft? It becomes read-only until restored.")) return;
@@ -89,6 +105,7 @@ function FigureDraftPage() {
           </div>
         )}
       </header>
+      {readiness && <DraftHealthPanel report={readiness} />}
       <SectionCard title="Private draft" subtitle="This content is Studio-only. It is not indexed by public search, not included in the Curator AI corpus, and not visible outside the Studio.">
         <p style={{ fontSize: 12, color: "var(--cp-ink-soft)", margin: 0 }}>Draft ID <code>{detail.draft.id}</code></p>
       </SectionCard>
@@ -96,3 +113,4 @@ function FigureDraftPage() {
     </>
   );
 }
+
