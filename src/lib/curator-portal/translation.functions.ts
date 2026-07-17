@@ -21,6 +21,42 @@
 import { createServerFn } from "@tanstack/react-start";
 import { z } from "zod";
 import { requireSupabaseAuth } from "@/integrations/supabase/auth-middleware";
+import type { Database } from "@/integrations/supabase/types";
+
+// ---------------- Shared types ---------------------------------------
+
+export type TranslationState =
+  | "missing"
+  | "machine"
+  | "human_edited"
+  | "reviewed"
+  | "approved";
+
+export interface TranslationStatusRow {
+  id: string;
+  content_type: string;
+  content_id: string;
+  field_key: string;
+  language: "en" | "fr" | "ar";
+  state: TranslationState;
+  protected: boolean;
+  source_language: string | null;
+  reviewed_by: string | null;
+  reviewed_at: string | null;
+  updated_by: string | null;
+  created_at: string;
+  updated_at: string;
+}
+
+export const TRANSLATION_STATE_LABEL: Record<TranslationState, string> = {
+  missing: "Missing",
+  machine: "AI Suggestion",
+  human_edited: "AI Suggestion",
+  reviewed: "Reviewed",
+  approved: "Approved",
+};
+
+// ---------------- Reusable translate action --------------------------
 
 const Lang = z.enum(["en", "fr", "ar"]);
 
@@ -191,3 +227,57 @@ export const translateFieldGroup = createServerFn({ method: "POST" })
       translations: [...generated, ...protectedEcho],
     };
   });
+
+// ---------------- Translation status: list ---------------------------
+
+const ListInput = z.object({
+  content_type: z.string().min(1).max(64),
+  content_id: z.string().uuid(),
+});
+
+export const listTranslationStatus = createServerFn({ method: "POST" })
+  .middleware([requireSupabaseAuth])
+  .inputValidator((v: unknown) => ListInput.parse(v))
+  .handler(async ({ data, context }): Promise<TranslationStatusRow[]> => {
+    const { data: rows, error } = await context.supabase
+      .from("content_translation_status")
+      .select("*")
+      .eq("content_type", data.content_type)
+      .eq("content_id", data.content_id);
+    if (error) throw new Error(error.message);
+    return (rows ?? []) as unknown as TranslationStatusRow[];
+  });
+
+// ---------------- Translation status: upsert -------------------------
+
+const UpsertInput = z.object({
+  content_type: z.string().min(1).max(64),
+  content_id: z.string().uuid(),
+  field_key: z.string().min(1).max(64),
+  language: Lang,
+  state: z.enum(["missing", "machine", "human_edited", "reviewed", "approved"]),
+  protected: z.boolean().optional(),
+});
+
+export const upsertTranslationStatus = createServerFn({ method: "POST" })
+  .middleware([requireSupabaseAuth])
+  .inputValidator((v: unknown) => UpsertInput.parse(v))
+  .handler(async ({ data, context }): Promise<TranslationStatusRow> => {
+    const { data: row, error } = await context.supabase.rpc(
+      "upsert_translation_status" as never,
+      {
+        _content_type: data.content_type,
+        _content_id: data.content_id,
+        _field_key: data.field_key,
+        _language: data.language,
+        _state: data.state,
+        _protected: data.protected ?? null,
+      } as never,
+    );
+    if (error) throw new Error(error.message);
+    return row as unknown as TranslationStatusRow;
+  });
+
+// Silence unused Database import if types haven't caught up yet.
+export type _DbAnchor = Database;
+

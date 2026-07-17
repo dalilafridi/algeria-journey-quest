@@ -8,6 +8,7 @@ import {
   type FigureDraftDetail,
 } from "@/lib/curator-portal/figure-drafts.functions";
 import { listSourcesForContent } from "@/lib/curator-portal/sources.functions";
+import { listTranslationStatus, type TranslationStatusRow } from "@/lib/curator-portal/translation.functions";
 import { evaluateFigureReadiness } from "@/lib/curator-portal/readiness";
 import { pushRecent } from "@/lib/curator-portal/recently-viewed";
 import { useStudioSession } from "@/components/curator-portal/StudioSessionContext";
@@ -33,17 +34,20 @@ function FigureDraftPage() {
   const session = useStudioSession();
   const [detail, setDetail] = useState<FigureDraftDetail | null>(null);
   const [sources, setSources] = useState<EditorSourceRow[]>([]);
+  const [translationStatuses, setTranslationStatuses] = useState<TranslationStatusRow[]>([]);
   const [err, setErr] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
 
   const reload = useCallback(async () => {
     try {
-      const [d, s] = await Promise.all([
+      const [d, s, ts] = await Promise.all([
         getFigureDraft({ data: { id: draftId } }),
         listSourcesForContent({ data: { content_type: "figure_draft", content_id: draftId } }),
+        listTranslationStatus({ data: { content_type: "figure_draft", content_id: draftId } }),
       ]);
       setDetail(d);
       setSources(s as EditorSourceRow[]);
+      setTranslationStatuses(ts);
       // Recently viewed — per-user, browser-local.
       pushRecent(session.userId, {
         kind: "figure_draft",
@@ -59,8 +63,8 @@ function FigureDraftPage() {
   const readiness = useMemo(() => {
     if (!detail) return null;
     const verified = sources.filter((s) => s.source?.status === "verified").length;
-    return evaluateFigureReadiness(detail, { total: sources.length, verified });
-  }, [detail, sources]);
+    return evaluateFigureReadiness(detail, { total: sources.length, verified }, translationStatuses);
+  }, [detail, sources, translationStatuses]);
 
   async function onArchive() {
     if (!confirm("Archive this draft? It becomes read-only until restored.")) return;
@@ -109,7 +113,13 @@ function FigureDraftPage() {
       <SectionCard title="Private draft" subtitle="This content is Studio-only. It is not indexed by public search, not included in the Curator AI corpus, and not visible outside the Studio.">
         <p style={{ fontSize: 12, color: "var(--cp-ink-soft)", margin: 0 }}>Draft ID <code>{detail.draft.id}</code></p>
       </SectionCard>
-      <FigureDraftEditor detail={detail} roles={session.roles} sources={sources} onReload={reload} />
+      <FigureDraftEditor
+        detail={detail}
+        roles={session.roles}
+        sources={sources}
+        translationStatuses={translationStatuses}
+        onReload={reload}
+      />
     </>
   );
 }
