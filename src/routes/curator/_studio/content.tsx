@@ -139,7 +139,11 @@ function ContentInventory() {
                 <th scope="col">Title (EN)</th>
                 <th scope="col">FR</th>
                 <th scope="col">AR</th>
-                <th scope="col">Sources</th>
+                <th scope="col">Linked</th>
+                <th scope="col">Verified</th>
+                <th scope="col">Draft</th>
+                <th scope="col">Last verified</th>
+                <th scope="col">Coverage</th>
                 <th scope="col">Media</th>
                 <th scope="col">Status</th>
                 <th scope="col">Complete</th>
