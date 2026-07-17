@@ -5,6 +5,7 @@ import { SourceForm, sourceRowToValues, type SourceFormValues } from "@/componen
 import { ContentPicker, type PickedContent } from "@/components/curator-portal/ContentPicker";
 import { useStudioSession } from "@/components/curator-portal/StudioSessionContext";
 import type { AppRole } from "@/lib/curator-portal/permissions";
+import { pushRecent } from "@/lib/curator-portal/recently-viewed";
 import {
   archiveSource, getSource, linkSourceToContent, restoreSource,
   setSourceVerificationStatus, unlinkSourceFromContent, updateSource,
