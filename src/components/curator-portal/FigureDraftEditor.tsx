@@ -138,7 +138,15 @@ export function FigureDraftEditor({
       {tab === "narrative" && <NarrativeTab detail={detail} locked={locked} onReload={onReload} />}
       {tab === "historical" && <HistoricalTab detail={detail} locked={locked} onReload={onReload} />}
       {tab === "research" && <ResearchTab detail={detail} sources={sources} />}
-      {tab === "translation" && <TranslationTab detail={detail} locked={locked} onReload={onReload} />}
+      {tab === "translation" && (
+        <TranslationTab
+          detail={detail}
+          locked={locked}
+          statuses={translationStatuses ?? []}
+          canApprove={roles.some((r) => APPROVE_TRANSLATION_ROLES.includes(r))}
+          onReload={onReload}
+        />
+      )}
       {tab === "review" && <ReviewTab detail={detail} roles={roles} onReload={onReload} />}
       {tab === "history" && <HistoryTab detail={detail} />}
       {tab === "preview" && <PreviewTab detail={detail} />}
