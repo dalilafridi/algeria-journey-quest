@@ -25,11 +25,11 @@ function Contributors() {
   return (
     <Workspace
       title="Contributors & Roles"
-      subtitle="The people, roles, and permissions that will operate the museum in Phase 2 and beyond."
-      purpose="Define who can do what before authentication exists, so the security and workflow designs are informed by a real role model — not invented at implementation time."
-      why="A museum is a team. Roles clarify accountability: who authors, who verifies, who approves, who publishes, and who preserves. Without an explicit role model, everything collapses into 'admin'."
+      subtitle="The people, roles, and permissions that operate the museum."
+      purpose="Reference view of the institutional role model that governs Studio access and editorial workflows."
+      why="A museum is a team. Roles clarify accountability: who authors, who verifies, who approves, who publishes, and who preserves."
       dataModel={
-        <SectionCard title="Planned roles" subtitle="Conceptual only — no authentication in Phase 1.">
+        <SectionCard title="Institutional roles" subtitle="Enforced today via Studio authentication and RLS.">
           <ul style={{ display: "flex", flexDirection: "column", gap: 6 }}>
             {ROLES.map((r) => (
               <li key={r.role} className="cp-row" style={{ justifyContent: "space-between", padding: "6px 0", borderBottom: "1px solid var(--cp-border)", gap: 12 }}>
@@ -37,7 +37,7 @@ function Contributors() {
                   <div style={{ fontSize: 13, fontWeight: 600 }}>{r.role}</div>
                   <div className="cp-muted" style={{ fontSize: 12 }}>{r.scope}</div>
                 </div>
-                <StatusPill tone="planned">Planned</StatusPill>
+                <StatusPill tone="ok">Active</StatusPill>
               </li>
             ))}
           </ul>
@@ -45,9 +45,9 @@ function Contributors() {
       }
       available={
         <BulletList items={[
-          "No authentication system is enabled in Phase 1.",
-          "The current Studio is a shared read-only surface for reviewers.",
-          "No visitor accounts, no curator accounts, no roles enforced.",
+          "Studio authentication is live (email/password with role-based access).",
+          "Roles govern Research Library and Figure Draft workflows server-side.",
+          "Public visitors remain anonymous — Studio accounts are separate.",
         ]} />
       }
       missing={

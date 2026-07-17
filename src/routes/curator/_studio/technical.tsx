@@ -21,7 +21,7 @@ function Technical() {
     { label: "React", value: "React 19", status: "healthy" },
     { label: "Bundler", value: "Vite 7", status: "healthy" },
     { label: "Routes", value: `${inv.length ? "30+" : "unknown"} file routes under src/routes/`, status: "healthy" },
-    { label: "Portal routes", value: "12 (Phase 1)", status: "healthy" },
+    { label: "Studio routes", value: "Phase 2B — editorial workflows active", status: "healthy" },
     { label: "Data files", value: `${countOf(inv)} public content records`, status: "healthy" },
     { label: "Curator corpus", value: `${counts.corpus} grounded sources`, status: "healthy" },
     { label: "Server endpoints", value: "src/routes/api/curator.ts (streaming assistant)", status: "healthy" },

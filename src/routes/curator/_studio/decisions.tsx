@@ -11,7 +11,7 @@ function Decisions() {
     <>
       <header>
         <h1 className="cp-page-title">Governance & Decisions</h1>
-        <p className="cp-page-sub">Architecture and product decisions (ADRs). Read-only in Phase 1.</p>
+        <p className="cp-page-sub">Architecture and product decisions (ADRs).</p>
       </header>
 
       <div className="cp-row"><DisabledAction label="Record decision" /></div>

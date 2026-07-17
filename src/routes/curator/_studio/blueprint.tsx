@@ -11,7 +11,7 @@ function Blueprint() {
     <>
       <header>
         <h1 className="cp-page-title">Museum Constitution</h1>
-        <p className="cp-page-sub">The living, maintainable representation of the DZ Odyssey blueprint. Read-only in Phase 1.</p>
+        <p className="cp-page-sub">The living, maintainable representation of the DZ Odyssey blueprint.</p>
       </header>
 
       <nav aria-label="Blueprint sections" className="cp-row" style={{ gap: 8, flexWrap: "wrap" }}>

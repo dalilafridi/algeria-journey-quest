@@ -9,7 +9,6 @@ import {
   StatCard,
   HealthGauge,
   MetricLabel,
-  DisabledAction,
   CoverageBar,
   StatusPill,
 } from "@/components/curator-portal/primitives";
@@ -147,19 +146,30 @@ function MissionControl() {
           </ul>
         </SectionCard>
 
-        <SectionCard title="Quick actions" subtitle="Editing, uploads, and publishing arrive in Phase 2.">
-          <div className="cp-row" style={{ gap: 10, flexWrap: "wrap" }}>
-            <DisabledAction label="New figure" />
-            <DisabledAction label="New exhibit" />
-            <DisabledAction label="Add source" />
-            <DisabledAction label="Upload media" />
-            <DisabledAction label="Create Match Theater" />
-            <DisabledAction label="Create Club Museum" />
-            <DisabledAction label="Add roadmap item" />
-            <DisabledAction label="Record decision" />
+        <SectionCard title="Studio Capabilities" subtitle="What editorial teams can do today versus what is not yet enabled.">
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
+            <div>
+              <div style={{ fontSize: 11, textTransform: "uppercase", letterSpacing: 0.6, color: "var(--cp-ink-soft)", marginBottom: 6 }}>Operational</div>
+              <ul style={{ display: "flex", flexDirection: "column", gap: 4, fontSize: 13 }}>
+                <li><StatusPill tone="ok">Live</StatusPill> Research Library</li>
+                <li><StatusPill tone="ok">Live</StatusPill> Figure Drafts</li>
+                <li><StatusPill tone="ok">Live</StatusPill> Source Coverage</li>
+                <li><StatusPill tone="ok">Live</StatusPill> Editorial Review</li>
+                <li><StatusPill tone="ok">Live</StatusPill> Private Preview</li>
+              </ul>
+            </div>
+            <div>
+              <div style={{ fontSize: 11, textTransform: "uppercase", letterSpacing: 0.6, color: "var(--cp-ink-soft)", marginBottom: 6 }}>Not yet enabled</div>
+              <ul style={{ display: "flex", flexDirection: "column", gap: 4, fontSize: 13 }}>
+                <li><StatusPill tone="muted">Planned</StatusPill> Media Uploads</li>
+                <li><StatusPill tone="muted">Planned</StatusPill> Public Publishing</li>
+                <li><StatusPill tone="muted">Planned</StatusPill> AI Drafting</li>
+                <li><StatusPill tone="muted">Planned</StatusPill> Bulk Import</li>
+              </ul>
+            </div>
           </div>
           <p className="cp-muted" style={{ marginTop: 12 }}>
-            Read-only inventory of {inv.length} content records is live under Collections & Exhibits.
+            {inv.length} public content records are indexed under Collections & Exhibits for reference.
           </p>
         </SectionCard>
       </div>

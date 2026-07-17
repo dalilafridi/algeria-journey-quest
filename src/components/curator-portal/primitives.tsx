@@ -178,16 +178,16 @@ export function Workspace({
       </SectionCard>
 
       <div className="cp-grid cp-grid--2">
-        <SectionCard title="Future data & workflow" subtitle="What this workspace will eventually manage.">
+        <SectionCard title="Data & workflow" subtitle="What this workspace manages or will manage.">
           {dataModel}
         </SectionCard>
-        <SectionCard title="Available in the current codebase" subtitle="Read-only inventory derived from existing data files.">
+        <SectionCard title="Available today" subtitle="Inventory and capabilities derived from the current system.">
           {available}
         </SectionCard>
         <SectionCard title="What is missing" subtitle="Explicitly not present today.">
           {missing}
         </SectionCard>
-        <SectionCard title="Phase 2 and beyond" subtitle="Planned capabilities — not yet built.">
+        <SectionCard title="Not yet enabled" subtitle="Planned capabilities — not yet built.">
           {future}
         </SectionCard>
       </div>

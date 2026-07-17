@@ -98,7 +98,7 @@ function ContentInventory() {
       <header>
         <h1 className="cp-page-title">Collections & Exhibits</h1>
         <p className="cp-page-sub">
-          {inv.length} records derived from public TypeScript data files. Read-only.
+          {inv.length} records derived from public TypeScript data files. Editing of public exhibits is not yet enabled; new content flows through Historical Figure Drafts and the Research Library.
         </p>
       </header>
 
