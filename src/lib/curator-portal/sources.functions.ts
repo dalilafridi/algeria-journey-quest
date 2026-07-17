@@ -250,6 +250,32 @@ export const COVERAGE_LABEL: Record<CoverageState, string> = {
   needs_review: "Needs review",
 };
 
+// Reverse lookup: all sources linked to a specific Studio content record.
+export const listSourcesForContent = createServerFn({ method: "POST" })
+  .middleware([requireSupabaseAuth])
+  .inputValidator((d: unknown) => z.object({
+    content_type: z.string().trim().min(1).max(60),
+    content_id: z.string().trim().min(1).max(200),
+  }).parse(d))
+  .handler(async ({ data, context }) => {
+    const { data: links, error } = await context.supabase
+      .from("source_links")
+      .select("*, source_records(*)")
+      .eq("content_type", data.content_type)
+      .eq("content_id", data.content_id)
+      .order("created_at", { ascending: true });
+    if (error) throw new Error(error.message);
+    type Row = SourceLinkRow & { source_records: SourceRow | SourceRow[] | null };
+    return ((links ?? []) as Row[]).map((l) => ({
+      link: {
+        id: l.id, source_id: l.source_id, content_type: l.content_type,
+        content_id: l.content_id, content_label: l.content_label,
+        public_route: l.public_route, relationship_note: l.relationship_note,
+        created_by: l.created_by, created_at: l.created_at,
+      } as SourceLinkRow,
+      source: (Array.isArray(l.source_records) ? l.source_records[0] : l.source_records) as SourceRow | null,
+    }));
+  });
 
 
 export const getSource = createServerFn({ method: "POST" })
