@@ -41,6 +41,7 @@ const LEVEL_SCORE: Record<ReadinessLevel, number> = { ok: 100, warn: 60, missing
 export function evaluateFigureReadiness(
   detail: FigureDraftDetail,
   sourceCount: { total: number; verified: number },
+  translationStatuses: TranslationStatusRow[] = [],
 ): ReadinessReport {
   const d = detail.draft;
 
