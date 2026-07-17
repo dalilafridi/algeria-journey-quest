@@ -21,6 +21,42 @@
 import { createServerFn } from "@tanstack/react-start";
 import { z } from "zod";
 import { requireSupabaseAuth } from "@/integrations/supabase/auth-middleware";
+import type { Database } from "@/integrations/supabase/types";
+
+// ---------------- Shared types ---------------------------------------
+
+export type TranslationState =
+  | "missing"
+  | "machine"
+  | "human_edited"
+  | "reviewed"
+  | "approved";
+
+export interface TranslationStatusRow {
+  id: string;
+  content_type: string;
+  content_id: string;
+  field_key: string;
+  language: "en" | "fr" | "ar";
+  state: TranslationState;
+  protected: boolean;
+  source_language: string | null;
+  reviewed_by: string | null;
+  reviewed_at: string | null;
+  updated_by: string | null;
+  created_at: string;
+  updated_at: string;
+}
+
+export const TRANSLATION_STATE_LABEL: Record<TranslationState, string> = {
+  missing: "Missing",
+  machine: "AI Suggestion",
+  human_edited: "AI Suggestion",
+  reviewed: "Reviewed",
+  approved: "Approved",
+};
+
+// ---------------- Reusable translate action --------------------------
 
 const Lang = z.enum(["en", "fr", "ar"]);
 
