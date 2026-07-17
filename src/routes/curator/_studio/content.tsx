@@ -159,7 +159,19 @@ function ContentInventory() {
                   <td>{r.titleEn}</td>
                   <td>{r.hasFr ? "✓" : "—"}</td>
                   <td>{r.hasAr ? "✓" : "—"}</td>
-                  <td>{r.sourceCount}</td>
+                  {(() => {
+                    const c = cov(r);
+                    const state = coverageStateFor(c);
+                    return (
+                      <>
+                        <td style={{ fontVariantNumeric: "tabular-nums" }}>{c?.linked ?? 0}</td>
+                        <td style={{ fontVariantNumeric: "tabular-nums" }}>{c?.verified ?? 0}</td>
+                        <td style={{ fontVariantNumeric: "tabular-nums" }}>{c?.draft ?? 0}</td>
+                        <td>{c?.last_verification_date ?? "—"}</td>
+                        <td><StatusPill tone={COVERAGE_TONE[state]}>{COVERAGE_LABEL[state]}</StatusPill></td>
+                      </>
+                    );
+                  })()}
                   <td>{r.mediaCount}</td>
                   <td>
                     <StatusPill tone={r.status === "complete" ? "ok" : r.status === "placeholder" ? "danger" : "warn"}>
