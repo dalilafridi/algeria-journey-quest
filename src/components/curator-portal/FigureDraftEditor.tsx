@@ -64,11 +64,12 @@ const STATUS_TONE: Record<FigureDraftStatus, "ok" | "warn" | "muted" | "info" | 
 export interface EditorSourceRow { link: SourceLinkRow; source: SourceRow | null }
 
 export function FigureDraftEditor({
-  detail, roles, sources, onReload,
+  detail, roles, sources, translationStatuses, onReload,
 }: {
   detail: FigureDraftDetail;
   roles: AppRole[];
   sources: EditorSourceRow[];
+  translationStatuses?: TranslationStatusRow[];
   onReload: () => Promise<void>;
 }) {
   const [tab, setTab] = useState<TabId>("identity");
