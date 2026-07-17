@@ -786,6 +786,37 @@ export type Database = {
         Args: { _id: string; _payload: Json }
         Returns: undefined
       }
+      upsert_translation_status: {
+        Args: {
+          _content_id: string
+          _content_type: string
+          _field_key: string
+          _language: string
+          _protected?: boolean
+          _state: Database["public"]["Enums"]["translation_state"]
+        }
+        Returns: {
+          content_id: string
+          content_type: string
+          created_at: string
+          field_key: string
+          id: string
+          language: string
+          protected: boolean
+          reviewed_at: string | null
+          reviewed_by: string | null
+          source_language: string | null
+          state: Database["public"]["Enums"]["translation_state"]
+          updated_at: string
+          updated_by: string | null
+        }
+        SetofOptions: {
+          from: "*"
+          to: "content_translation_status"
+          isOneToOne: true
+          isSetofReturn: false
+        }
+      }
     }
     Enums: {
       app_role:
