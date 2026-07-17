@@ -1,8 +1,18 @@
-import { createFileRoute } from "@tanstack/react-router";
-import { useMemo, useState } from "react";
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { useEffect, useMemo, useState } from "react";
 import { getInventory } from "@/lib/curator-portal/inventory";
 import type { ContentKind, ContentRecord } from "@/lib/curator-portal/models";
 import { SectionCard, StatusPill } from "@/components/curator-portal/primitives";
+import {
+  listContentCoverage, listSourcesForContent, coverageStateFor, COVERAGE_LABEL,
+  type ContentCoverageRow, type SourceLinkRow, type SourceRow,
+} from "@/lib/curator-portal/sources.functions";
+
+const COVERAGE_TONE = {
+  none: "muted", linked: "warn", verified: "ok", needs_review: "danger",
+} as const;
+
+
 
 const KIND_LABEL: Record<ContentKind, string> = {
   era: "Era",
@@ -34,6 +44,29 @@ function ContentInventory() {
   const [kind, setKind] = useState<ContentKind | "all">("all");
   const [sort, setSort] = useState<"title" | "completeness" | "kind">("kind");
   const [selected, setSelected] = useState<ContentRecord | null>(null);
+  const [coverage, setCoverage] = useState<Map<string, ContentCoverageRow>>(new Map());
+  const [selectedLinks, setSelectedLinks] = useState<Array<{ link: SourceLinkRow; source: SourceRow | null }> | null>(null);
+  const [linksErr, setLinksErr] = useState<string | null>(null);
+
+  useEffect(() => {
+    listContentCoverage()
+      .then((rows) => {
+        const m = new Map<string, ContentCoverageRow>();
+        for (const r of rows) m.set(`${r.content_type}:${r.content_id}`, r);
+        setCoverage(m);
+      })
+      .catch(() => { /* coverage optional — page still renders */ });
+  }, []);
+
+  useEffect(() => {
+    if (!selected) { setSelectedLinks(null); setLinksErr(null); return; }
+    setSelectedLinks(null); setLinksErr(null);
+    listSourcesForContent({ data: { content_type: selected.kind, content_id: selected.id } })
+      .then(setSelectedLinks)
+      .catch((e) => setLinksErr((e as Error).message));
+  }, [selected]);
+
+  const cov = (r: ContentRecord) => coverage.get(`${r.kind}:${r.id}`);
 
   const rows = useMemo(() => {
     let list = inv;
@@ -106,7 +139,11 @@ function ContentInventory() {
                 <th scope="col">Title (EN)</th>
                 <th scope="col">FR</th>
                 <th scope="col">AR</th>
-                <th scope="col">Sources</th>
+                <th scope="col">Linked</th>
+                <th scope="col">Verified</th>
+                <th scope="col">Draft</th>
+                <th scope="col">Last verified</th>
+                <th scope="col">Coverage</th>
                 <th scope="col">Media</th>
                 <th scope="col">Status</th>
                 <th scope="col">Complete</th>
@@ -122,7 +159,19 @@ function ContentInventory() {
                   <td>{r.titleEn}</td>
                   <td>{r.hasFr ? "✓" : "—"}</td>
                   <td>{r.hasAr ? "✓" : "—"}</td>
-                  <td>{r.sourceCount}</td>
+                  {(() => {
+                    const c = cov(r);
+                    const state = coverageStateFor(c);
+                    return (
+                      <>
+                        <td style={{ fontVariantNumeric: "tabular-nums" }}>{c?.linked ?? 0}</td>
+                        <td style={{ fontVariantNumeric: "tabular-nums" }}>{c?.verified ?? 0}</td>
+                        <td style={{ fontVariantNumeric: "tabular-nums" }}>{c?.draft ?? 0}</td>
+                        <td>{c?.last_verification_date ?? "—"}</td>
+                        <td><StatusPill tone={COVERAGE_TONE[state]}>{COVERAGE_LABEL[state]}</StatusPill></td>
+                      </>
+                    );
+                  })()}
                   <td>{r.mediaCount}</td>
                   <td>
                     <StatusPill tone={r.status === "complete" ? "ok" : r.status === "placeholder" ? "danger" : "warn"}>
@@ -148,18 +197,55 @@ function ContentInventory() {
 
       {selected && (
         <div role="dialog" aria-modal="true" aria-labelledby="cp-detail-title" onClick={() => setSelected(null)} style={{ position: "fixed", inset: 0, background: "rgba(0,0,0,0.5)", display: "grid", placeItems: "center", zIndex: 60, padding: 20 }}>
-          <div onClick={(e) => e.stopPropagation()} style={{ background: "var(--cp-panel)", color: "var(--cp-ink)", border: "1px solid var(--cp-border)", borderRadius: 14, padding: 20, maxWidth: 520, width: "100%" }}>
+          <div onClick={(e) => e.stopPropagation()} style={{ background: "var(--cp-panel)", color: "var(--cp-ink)", border: "1px solid var(--cp-border)", borderRadius: 14, padding: 20, maxWidth: 620, width: "100%", maxHeight: "90vh", overflow: "auto" }}>
             <h2 id="cp-detail-title" style={{ fontSize: 16, fontWeight: 700 }}>{selected.titleEn}</h2>
             <p className="cp-muted" style={{ marginTop: 4 }}>{KIND_LABEL[selected.kind]} · {selected.id}</p>
-            <dl style={{ marginTop: 12, display: "grid", gridTemplateColumns: "auto 1fr", gap: "6px 12px", fontSize: 13 }}>
-              <dt className="cp-muted">Status</dt><dd>{selected.status}</dd>
-              <dt className="cp-muted">Completeness</dt><dd>{Math.round(selected.completeness * 100)}%</dd>
-              <dt className="cp-muted">Translations</dt><dd>EN ✓ · FR {selected.hasFr ? "✓" : "—"} · AR {selected.hasAr ? "✓" : "—"}</dd>
-              <dt className="cp-muted">Sources</dt><dd>{selected.sourceCount}</dd>
-              <dt className="cp-muted">Media</dt><dd>{selected.mediaCount}</dd>
-              <dt className="cp-muted">File</dt><dd style={{ fontFamily: "ui-monospace, monospace", fontSize: 12 }}>{selected.file}</dd>
-              <dt className="cp-muted">Public route</dt><dd>{selected.href ?? "—"}</dd>
-            </dl>
+            {(() => {
+              const c = cov(selected);
+              const state = coverageStateFor(c);
+              return (
+                <dl style={{ marginTop: 12, display: "grid", gridTemplateColumns: "auto 1fr", gap: "6px 12px", fontSize: 13 }}>
+                  <dt className="cp-muted">Status</dt><dd>{selected.status}</dd>
+                  <dt className="cp-muted">Completeness</dt><dd>{Math.round(selected.completeness * 100)}%</dd>
+                  <dt className="cp-muted">Translations</dt><dd>EN ✓ · FR {selected.hasFr ? "✓" : "—"} · AR {selected.hasAr ? "✓" : "—"}</dd>
+                  <dt className="cp-muted">Linked sources</dt><dd>{c?.linked ?? 0}</dd>
+                  <dt className="cp-muted">Verified</dt><dd>{c?.verified ?? 0}</dd>
+                  <dt className="cp-muted">Draft</dt><dd>{c?.draft ?? 0}</dd>
+                  <dt className="cp-muted">Last verified</dt><dd>{c?.last_verification_date ?? "—"}</dd>
+                  <dt className="cp-muted">Coverage</dt>
+                  <dd><StatusPill tone={COVERAGE_TONE[state]}>{COVERAGE_LABEL[state]}</StatusPill></dd>
+                  <dt className="cp-muted">Media</dt><dd>{selected.mediaCount}</dd>
+                  <dt className="cp-muted">File</dt><dd style={{ fontFamily: "ui-monospace, monospace", fontSize: 12 }}>{selected.file}</dd>
+                  <dt className="cp-muted">Public route</dt><dd>{selected.href ?? "—"}</dd>
+                </dl>
+              );
+            })()}
+
+            <div style={{ marginTop: 16 }}>
+              <div style={{ fontWeight: 600, fontSize: 13, marginBottom: 6 }}>Linked sources</div>
+              {linksErr && <div role="alert" style={{ color: "#a03030", fontSize: 12 }}>{linksErr}</div>}
+              {!selectedLinks && !linksErr && <div className="cp-muted" style={{ fontSize: 12 }}>Loading…</div>}
+              {selectedLinks && selectedLinks.length === 0 && (
+                <div className="cp-muted" style={{ fontSize: 12 }}>No sources linked to this record yet.</div>
+              )}
+              {selectedLinks && selectedLinks.length > 0 && (
+                <ul style={{ listStyle: "none", padding: 0, margin: 0, borderTop: "1px solid var(--cp-border-soft, #eee)" }}>
+                  {selectedLinks.map(({ link, source }) => (
+                    <li key={link.id} style={{ padding: "6px 0", borderBottom: "1px solid var(--cp-border-soft, #eee)", fontSize: 13 }}>
+                      <Link to="/curator/sources/$sourceId" params={{ sourceId: link.source_id }}
+                        onClick={() => setSelected(null)}
+                        style={{ fontWeight: 600, color: "inherit" }}>
+                        {source?.title ?? "(source unavailable)"}
+                      </Link>
+                      <div className="cp-muted" style={{ fontSize: 11 }}>
+                        {source ? `${source.status} · ${source.reliability_tier}${source.verification_date ? ` · verified ${source.verification_date}` : ""}` : "—"}
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
+
             <div className="cp-row" style={{ justifyContent: "flex-end", marginTop: 14, gap: 8 }}>
               {selected.href && <a href={selected.href} target="_blank" rel="noreferrer">Open exhibit</a>}
               <button type="button" onClick={() => setSelected(null)} style={{ padding: "6px 12px", borderRadius: 8, background: "var(--cp-brand-deep)", color: "white", border: 0, cursor: "pointer" }}>Close</button>

@@ -100,6 +100,7 @@ export interface SourceRow {
   rights_status: RightsStatus;
   citation_text: string | null;
   notes: string | null;
+  link_count?: number;
   status: SourceStatus;
   created_by: string;
   updated_by: string;
@@ -157,14 +158,125 @@ export type SourcePayload = z.infer<typeof sourcePayloadSchema>;
 export const listSources = createServerFn({ method: "GET" })
   .middleware([requireSupabaseAuth])
   .handler(async ({ context }) => {
-    const { data, error } = await context.supabase
-      .from("source_records")
-      .select("*")
-      .order("updated_at", { ascending: false })
-      .limit(500);
-    if (error) throw new Error(error.message);
-    return (data ?? []) as SourceRow[];
+    // Two queries — no N+1. Sources plus a flat list of link source_ids
+    // aggregated in memory into an exact link_count per source.
+    const [srcRes, linkRes] = await Promise.all([
+      context.supabase
+        .from("source_records")
+        .select("*")
+        .order("updated_at", { ascending: false })
+        .limit(500),
+      context.supabase.from("source_links").select("source_id"),
+    ]);
+    if (srcRes.error) throw new Error(srcRes.error.message);
+    if (linkRes.error) throw new Error(linkRes.error.message);
+    const counts = new Map<string, number>();
+    for (const l of (linkRes.data ?? []) as { source_id: string }[]) {
+      counts.set(l.source_id, (counts.get(l.source_id) ?? 0) + 1);
+    }
+    return (srcRes.data ?? []).map((r) => ({
+      ...(r as SourceRow),
+      link_count: counts.get((r as SourceRow).id) ?? 0,
+    })) as SourceRow[];
   });
+
+// Studio-only aggregate: for every (content_type, content_id) referenced
+// in source_links, return the exact linked/verified/draft counts and the
+// most recent verification date of any linked source. Single joined query
+// — no N+1. Public museum surfaces do NOT consume this.
+export interface ContentCoverageRow {
+  content_type: string;
+  content_id: string;
+  linked: number;
+  verified: number;
+  draft: number;
+  archived: number;
+  last_verification_date: string | null;
+}
+export const listContentCoverage = createServerFn({ method: "GET" })
+  .middleware([requireSupabaseAuth])
+  .handler(async ({ context }) => {
+    const { data, error } = await context.supabase
+      .from("source_links")
+      .select("content_type, content_id, source_records(status, verification_date)")
+      .limit(5000);
+    if (error) throw new Error(error.message);
+    type Row = {
+      content_type: string;
+      content_id: string;
+      source_records:
+        | { status: SourceStatus; verification_date: string | null }
+        | { status: SourceStatus; verification_date: string | null }[]
+        | null;
+    };
+    const map = new Map<string, ContentCoverageRow>();
+    for (const row of (data ?? []) as Row[]) {
+      const key = `${row.content_type}:${row.content_id}`;
+      let agg = map.get(key);
+      if (!agg) {
+        agg = {
+          content_type: row.content_type,
+          content_id: row.content_id,
+          linked: 0, verified: 0, draft: 0, archived: 0,
+          last_verification_date: null,
+        };
+        map.set(key, agg);
+      }
+      agg.linked += 1;
+      const sr = Array.isArray(row.source_records) ? row.source_records[0] : row.source_records;
+      if (sr) {
+        if (sr.status === "verified") agg.verified += 1;
+        else if (sr.status === "draft") agg.draft += 1;
+        else if (sr.status === "archived") agg.archived += 1;
+        if (sr.verification_date && (!agg.last_verification_date || sr.verification_date > agg.last_verification_date)) {
+          agg.last_verification_date = sr.verification_date;
+        }
+      }
+    }
+    return Array.from(map.values());
+  });
+
+export type CoverageState = "none" | "linked" | "verified" | "needs_review";
+export function coverageStateFor(c: ContentCoverageRow | undefined): CoverageState {
+  if (!c || c.linked === 0) return "none";
+  if (c.verified > 0 && c.draft === 0) return "verified";
+  if (c.verified > 0 && c.draft > 0) return "needs_review";
+  return "linked";
+}
+export const COVERAGE_LABEL: Record<CoverageState, string> = {
+  none: "No structured sources",
+  linked: "Sources linked",
+  verified: "Verified coverage",
+  needs_review: "Needs review",
+};
+
+// Reverse lookup: all sources linked to a specific Studio content record.
+export const listSourcesForContent = createServerFn({ method: "POST" })
+  .middleware([requireSupabaseAuth])
+  .inputValidator((d: unknown) => z.object({
+    content_type: z.string().trim().min(1).max(60),
+    content_id: z.string().trim().min(1).max(200),
+  }).parse(d))
+  .handler(async ({ data, context }) => {
+    const { data: links, error } = await context.supabase
+      .from("source_links")
+      .select("*, source_records(*)")
+      .eq("content_type", data.content_type)
+      .eq("content_id", data.content_id)
+      .order("created_at", { ascending: true });
+    if (error) throw new Error(error.message);
+    type Row = SourceLinkRow & { source_records: SourceRow | SourceRow[] | null };
+    return ((links ?? []) as Row[]).map((l) => ({
+      link: {
+        id: l.id, source_id: l.source_id, content_type: l.content_type,
+        content_id: l.content_id, content_label: l.content_label,
+        public_route: l.public_route, relationship_note: l.relationship_note,
+        created_by: l.created_by, created_at: l.created_at,
+      } as SourceLinkRow,
+      source: (Array.isArray(l.source_records) ? l.source_records[0] : l.source_records) as SourceRow | null,
+    }));
+  });
+
 
 export const getSource = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
