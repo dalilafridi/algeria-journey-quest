@@ -102,12 +102,37 @@ export function evaluateFigureReadiness(
   if (!trPresent.ar) trMissing.push("Arabic");
   if (trMissing.length === 2) trLevel = "missing";
   else if (trMissing.length === 1) trLevel = "warn";
+
+  // Overlay editorial status counts so Draft Health reflects reviewer
+  // progress immediately after a status change.
+  const editorialStatuses = translationStatuses.filter(
+    (s) => s.field_key === "summary" || s.field_key === "biography",
+  );
+  const countBy = (state: TranslationState) =>
+    editorialStatuses.filter((s) => s.state === state).length;
+  const approved = countBy("approved");
+  const reviewed = countBy("reviewed");
+  const suggested = countBy("machine") + countBy("human_edited");
+  const editorialTotal = 4; // summary+biography × fr+ar
+  const statusNote =
+    editorialStatuses.length > 0
+      ? `${approved} approved · ${reviewed} reviewed · ${suggested} AI suggestion`
+      : "";
+  // If everything present is only AI-suggested, downgrade an otherwise-ok bucket to warn.
+  if (trLevel === "ok" && approved + reviewed === 0 && suggested > 0) trLevel = "warn";
+  // If every editorial slot is Approved, mark bucket ok even if a status row lags.
+  if (approved === editorialTotal) trLevel = "ok";
+
   const translations: ReadinessBucket = {
     key: "translations",
     label: "Translations",
     level: trLevel,
-    detail: trMissing.length ? `Missing ${trMissing.join(" and ")}` : "French and Arabic present.",
+    detail: [
+      trMissing.length ? `Missing ${trMissing.join(" and ")}` : "French and Arabic present",
+      statusNote,
+    ].filter(Boolean).join(" · "),
   };
+
 
   // 5. Relationships
   const eras = detail.eras.length;
