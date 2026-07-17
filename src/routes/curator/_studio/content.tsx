@@ -44,6 +44,29 @@ function ContentInventory() {
   const [kind, setKind] = useState<ContentKind | "all">("all");
   const [sort, setSort] = useState<"title" | "completeness" | "kind">("kind");
   const [selected, setSelected] = useState<ContentRecord | null>(null);
+  const [coverage, setCoverage] = useState<Map<string, ContentCoverageRow>>(new Map());
+  const [selectedLinks, setSelectedLinks] = useState<Array<{ link: SourceLinkRow; source: SourceRow | null }> | null>(null);
+  const [linksErr, setLinksErr] = useState<string | null>(null);
+
+  useEffect(() => {
+    listContentCoverage()
+      .then((rows) => {
+        const m = new Map<string, ContentCoverageRow>();
+        for (const r of rows) m.set(`${r.content_type}:${r.content_id}`, r);
+        setCoverage(m);
+      })
+      .catch(() => { /* coverage optional — page still renders */ });
+  }, []);
+
+  useEffect(() => {
+    if (!selected) { setSelectedLinks(null); setLinksErr(null); return; }
+    setSelectedLinks(null); setLinksErr(null);
+    listSourcesForContent({ data: { content_type: selected.kind, content_id: selected.id } })
+      .then(setSelectedLinks)
+      .catch((e) => setLinksErr((e as Error).message));
+  }, [selected]);
+
+  const cov = (r: ContentRecord) => coverage.get(`${r.kind}:${r.id}`);
 
   const rows = useMemo(() => {
     let list = inv;
