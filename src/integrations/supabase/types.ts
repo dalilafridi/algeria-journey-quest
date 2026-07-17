@@ -56,6 +56,54 @@ export type Database = {
         }
         Relationships: []
       }
+      content_translation_status: {
+        Row: {
+          content_id: string
+          content_type: string
+          created_at: string
+          field_key: string
+          id: string
+          language: string
+          protected: boolean
+          reviewed_at: string | null
+          reviewed_by: string | null
+          source_language: string | null
+          state: Database["public"]["Enums"]["translation_state"]
+          updated_at: string
+          updated_by: string | null
+        }
+        Insert: {
+          content_id: string
+          content_type: string
+          created_at?: string
+          field_key: string
+          id?: string
+          language: string
+          protected?: boolean
+          reviewed_at?: string | null
+          reviewed_by?: string | null
+          source_language?: string | null
+          state?: Database["public"]["Enums"]["translation_state"]
+          updated_at?: string
+          updated_by?: string | null
+        }
+        Update: {
+          content_id?: string
+          content_type?: string
+          created_at?: string
+          field_key?: string
+          id?: string
+          language?: string
+          protected?: boolean
+          reviewed_at?: string | null
+          reviewed_by?: string | null
+          source_language?: string | null
+          state?: Database["public"]["Enums"]["translation_state"]
+          updated_at?: string
+          updated_by?: string | null
+        }
+        Relationships: []
+      }
       figure_draft_eras: {
         Row: {
           created_at: string
@@ -795,6 +843,12 @@ export type Database = {
         | "documentary"
         | "website"
         | "other"
+      translation_state:
+        | "missing"
+        | "machine"
+        | "human_edited"
+        | "reviewed"
+        | "approved"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -981,6 +1035,13 @@ export const Constants = {
         "documentary",
         "website",
         "other",
+      ],
+      translation_state: [
+        "missing",
+        "machine",
+        "human_edited",
+        "reviewed",
+        "approved",
       ],
     },
   },
