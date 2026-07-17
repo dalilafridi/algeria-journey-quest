@@ -143,13 +143,19 @@ function Coverage() {
           </p>
         </SectionCard>
 
-        <SectionCard title="Sources & media">
-          <p className="cp-muted">Structured source and media tracking will land with the Source Library and Media Library. Today, most exhibits do not carry that metadata.</p>
-          <ul style={{ marginTop: 8, fontSize: 13 }}>
-            <li>Records with structured sources: <strong>{inv.filter((r) => r.sourceCount > 0).length}</strong></li>
+        <SectionCard title="Structured source coverage" subtitle="Live counts from the Research Library — updated as sources are linked.">
+          <CoverageBar value={withLinks / (inv.length || 1)} label="Records with at least one linked source" />
+          <ul style={{ marginTop: 10, fontSize: 13, display: "grid", gap: 4 }}>
+            <li>Records with structured sources: <strong>{withLinks}</strong> / {inv.length}</li>
+            <li>Records with <em>verified</em> coverage: <strong>{verified}</strong></li>
+            <li>Records needing review (verified + draft mixed): <strong>{needsReview}</strong></li>
             <li>Records with tracked media: <strong>{inv.filter((r) => r.mediaCount > 0).length}</strong></li>
           </ul>
+          <p className="cp-muted" style={{ fontSize: 12, marginTop: 6 }}>
+            Formula: distinct museum records referenced in <code>source_links</code>, joined with <code>source_records.status</code>.
+          </p>
         </SectionCard>
+
 
         <SectionCard title="Interactive Algeria map">
           <p className="cp-muted">Placeholder — a coverage map by wilaya will be introduced once the geographic dataset is authored. This page holds the architecture but does not render a fabricated map.</p>
