@@ -8,6 +8,7 @@ import {
   type FigureDraftDetail,
 } from "@/lib/curator-portal/figure-drafts.functions";
 import { listSourcesForContent } from "@/lib/curator-portal/sources.functions";
+import { listTranslationStatus, type TranslationStatusRow } from "@/lib/curator-portal/translation.functions";
 import { evaluateFigureReadiness } from "@/lib/curator-portal/readiness";
 import { pushRecent } from "@/lib/curator-portal/recently-viewed";
 import { useStudioSession } from "@/components/curator-portal/StudioSessionContext";
