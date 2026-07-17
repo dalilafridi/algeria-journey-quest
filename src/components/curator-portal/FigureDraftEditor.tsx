@@ -12,6 +12,7 @@
 import { useEffect, useMemo, useState, type ReactNode } from "react";
 import { Link } from "@tanstack/react-router";
 import { SectionCard, StatusPill } from "./primitives";
+import { TranslationField } from "./TranslationField";
 import {
   addFigureDraftRelation, removeFigureDraftRelation,
   updateFigureDraft, transitionFigureDraft,
@@ -19,11 +20,19 @@ import {
   type FigureDraftDetail, type FigureDraftStatus, type UpdateScope,
 } from "@/lib/curator-portal/figure-drafts.functions";
 import {
+  translateFieldGroup, upsertTranslationStatus,
+  type TranslationState, type TranslationStatusRow,
+} from "@/lib/curator-portal/translation.functions";
+import {
   eraOptions, regionOptions, themeOptions, figureOptions,
   RELATION_KIND_LABEL, type RelationKind,
 } from "@/lib/curator-portal/taxonomies";
 import type { SourceLinkRow, SourceRow } from "@/lib/curator-portal/sources.functions";
 import type { AppRole } from "@/lib/curator-portal/permissions";
+
+const APPROVE_TRANSLATION_ROLES: AppRole[] = [
+  "museum_director", "senior_curator", "translation_reviewer",
+];
 
 const TABS = [
   "identity", "narrative", "historical", "research",
