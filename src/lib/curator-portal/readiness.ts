@@ -15,6 +15,7 @@
  *   5. relationships  — >= 1 era, >= 1 region, >= 1 theme
  */
 import type { FigureDraftDetail } from "./figure-drafts.functions";
+import type { TranslationStatusRow, TranslationState } from "./translation.functions";
 
 export type ReadinessLevel = "ok" | "warn" | "missing";
 
