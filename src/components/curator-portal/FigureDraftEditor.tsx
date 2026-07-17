@@ -350,8 +350,8 @@ function RelationSection({ kind, detail, locked, onReload }: { kind: RelationKin
             <li key={it.id} style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "6px 10px", border: "1px solid var(--cp-border)", borderRadius: 6, fontSize: 13 }}>
               <div>
                 <strong>{it.label}</strong> <code style={{ fontSize: 11, opacity: 0.7 }}>{it.ref_id}</code>
-                {"type" in it && it.type && <span style={{ fontSize: 11, marginLeft: 8, color: "var(--cp-ink-soft)" }}>· {it.type}</span>}
-                {"note" in it && it.note && <div style={{ fontSize: 11, color: "var(--cp-ink-soft)", marginTop: 2 }}>{it.note}</div>}
+                {"type" in it && it.type ? <span style={{ fontSize: 11, marginLeft: 8, color: "var(--cp-ink-soft)" }}>· {String(it.type)}</span> : null}
+                {"note" in it && it.note ? <div style={{ fontSize: 11, color: "var(--cp-ink-soft)", marginTop: 2 }}>{String(it.note)}</div> : null}
               </div>
               {!locked && (
                 <button type="button" onClick={() => remove(it.ref_id)} disabled={busy}
