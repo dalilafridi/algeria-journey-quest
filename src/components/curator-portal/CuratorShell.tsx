@@ -1,7 +1,7 @@
 /**
  * DZ Odyssey Studio — Museum Operating System shell.
  *
- * Loaded ONLY by /curator routes. Read-only Phase 1.
+ * Loaded ONLY by /curator routes. Phase 2B editorial workflows active.
  */
 
 import { Link, Outlet, useRouterState } from "@tanstack/react-router";
@@ -47,7 +47,7 @@ const NAV: { to: string; label: string; icon: typeof Gauge; exact?: boolean; gro
 
   // Content
   { to: "/curator/content", label: "Collections & Exhibits", icon: Layers, group: "Content" },
-  { to: "/curator/figures", label: "Historical Figures", icon: User, group: "Content" },
+  { to: "/curator/figures", label: "Historical Figure Drafts", icon: User, group: "Content" },
   { to: "/curator/football", label: "Football Studio", icon: Trophy, group: "Content" },
   { to: "/curator/coverage", label: "Museum Coverage", icon: MapIcon, group: "Content" },
 
@@ -231,7 +231,7 @@ export function CuratorShell() {
             </ol>
           </nav>
 
-          <span className="cp-status-chip" title="Studio access mode">Read-only · Phase 1</span>
+          <span className="cp-status-chip" title="Studio access mode">Phase 2B · Editorial Studio</span>
 
           <div className="cp-header__spacer" />
 
@@ -293,7 +293,7 @@ export function CuratorShell() {
 
         <div className="cp-temp-banner" role="status">
           <span aria-hidden>◆</span>
-          <span>Phase 2A · authentication + roles active. Content editing, uploads, and publishing remain disabled.</span>
+          <span>Phase 2B · Secure editorial workflows are active. Research sources and historical figure drafts can now be created and reviewed. Media uploads and public publishing remain disabled.</span>
         </div>
 
         <main id="curator-main" className="cp-content" tabIndex={-1}>
