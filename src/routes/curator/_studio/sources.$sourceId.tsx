@@ -62,9 +62,10 @@ function SourceDetail() {
       setAudit(res.audit as AuditEntry[]);
       setValues(sourceRowToValues(res.source));
       setDirty(false);
+      pushRecent(session.userId, { kind: "source", id: res.source.id, title: res.source.title });
     } catch (e) { setErr((e as Error).message); }
   }
-  useEffect(() => { void load(); }, [sourceId]);
+  useEffect(() => { void load(); /* eslint-disable-next-line react-hooks/exhaustive-deps */ }, [sourceId]);
 
   async function onSave() {
     if (!values || !source) return;
