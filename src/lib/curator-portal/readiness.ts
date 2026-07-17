@@ -66,10 +66,14 @@ export function evaluateFigureReadiness(
   const bioLen = (d.biography_en ?? "").trim().length;
   let narrativeLevel: ReadinessLevel = "ok";
   const narrativeNotes: string[] = [];
-  if (!d.biography_en || bioLen < 200) { narrativeLevel = "missing"; narrativeNotes.push("English biography < 200 chars"); }
-  else if (bioLen < 800) { narrativeLevel = narrativeLevel === "missing" ? "missing" : "warn"; narrativeNotes.push(`biography ${bioLen} chars (target 800+)`); }
-  if (!d.summary_en || summaryLen < 60) { narrativeLevel = "missing"; narrativeNotes.push("summary < 60 chars"); }
-  else if (summaryLen < 120 || summaryLen > 600) { narrativeLevel = narrativeLevel === "missing" ? "missing" : "warn"; narrativeNotes.push(`summary ${summaryLen} chars (target 120–500)`); }
+  const worsen = (next: ReadinessLevel) => {
+    if (narrativeLevel === "missing") return;
+    if (next === "missing" || (next === "warn" && narrativeLevel === "ok")) narrativeLevel = next;
+  };
+  if (!d.biography_en || bioLen < 200) { worsen("missing"); narrativeNotes.push("English biography < 200 chars"); }
+  else if (bioLen < 800) { worsen("warn"); narrativeNotes.push(`biography ${bioLen} chars (target 800+)`); }
+  if (!d.summary_en || summaryLen < 60) { worsen("missing"); narrativeNotes.push("summary < 60 chars"); }
+  else if (summaryLen < 120 || summaryLen > 600) { worsen("warn"); narrativeNotes.push(`summary ${summaryLen} chars (target 120–500)`); }
   const narrative: ReadinessBucket = {
     key: "narrative",
     label: "Narrative",
