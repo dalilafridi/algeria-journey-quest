@@ -183,9 +183,9 @@ export interface FigureDraftDetail {
     action: string;
     actor_user_id: string | null;
     actor_email_snapshot: string | null;
-    before_summary: unknown;
-    after_summary: unknown;
-    metadata: unknown;
+    before_summary: import("@/integrations/supabase/types").Json | null;
+    after_summary: import("@/integrations/supabase/types").Json | null;
+    metadata: import("@/integrations/supabase/types").Json | null;
     created_at: string;
   }>;
 }
