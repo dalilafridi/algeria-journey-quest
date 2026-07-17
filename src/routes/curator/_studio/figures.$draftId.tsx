@@ -113,7 +113,13 @@ function FigureDraftPage() {
       <SectionCard title="Private draft" subtitle="This content is Studio-only. It is not indexed by public search, not included in the Curator AI corpus, and not visible outside the Studio.">
         <p style={{ fontSize: 12, color: "var(--cp-ink-soft)", margin: 0 }}>Draft ID <code>{detail.draft.id}</code></p>
       </SectionCard>
-      <FigureDraftEditor detail={detail} roles={session.roles} sources={sources} onReload={reload} />
+      <FigureDraftEditor
+        detail={detail}
+        roles={session.roles}
+        sources={sources}
+        translationStatuses={translationStatuses}
+        onReload={reload}
+      />
     </>
   );
 }
