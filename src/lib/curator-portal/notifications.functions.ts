@@ -71,7 +71,7 @@ export const listNotifications = createServerFn({ method: "GET" })
   });
 
 const markReadInput = z.object({
-  ids: z.array(z.string().uuid()).max(200).optional(),
+  ids: z.array(z.string().uuid()).min(1).max(500).optional(),
   all: z.boolean().optional(),
 });
 
@@ -79,9 +79,28 @@ export const markNotificationsRead = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
   .inputValidator((d: unknown) => markReadInput.parse(d ?? {}))
   .handler(async ({ data, context }) => {
+    let ids = data.ids ?? null;
+    // The DB RPC only takes an id array; expand "all" client-side by
+    // fetching this user's currently unread notification ids under RLS.
+    if (data.all && !ids) {
+      const sb = context.supabase as unknown as {
+        from: (t: string) => {
+          select: (c: string) => {
+            eq: (col: string, val: unknown) => {
+              is: (col: string, val: unknown) => {
+                limit: (n: number) => Promise<{ data: Array<{ id: string }> | null; error: unknown }>;
+              };
+            };
+          };
+        };
+      };
+      const res = await sb.from("studio_notifications").select("id")
+        .eq("recipient_user_id", context.userId).is("read_at", null).limit(500);
+      ids = (res.data ?? []).map((r) => r.id);
+    }
+    if (!ids || ids.length === 0) return { ok: true };
     const { error } = await context.supabase.rpc("mark_notifications_read", {
-      _ids: data.ids ?? null,
-      _all: data.all ?? false,
+      _ids: ids,
     } as never);
     if (error) throw new Error(error.message);
     return { ok: true };
