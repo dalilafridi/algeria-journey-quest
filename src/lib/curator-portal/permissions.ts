@@ -67,6 +67,8 @@ const GOVERNANCE: AppRole[] = ["museum_director", "senior_curator", "technical_a
 export const ROUTE_PERMISSIONS: Record<string, AppRole[]> = {
   "/curator": [],
   "/curator/content": ["museum_director", "senior_curator", "curator", "researcher", "fact_checker", "educator"],
+  "/curator/figures": ["museum_director", "senior_curator", "curator", "researcher", "fact_checker", "translator", "translation_reviewer", "educator"],
+  "/curator/figures/new": ["museum_director", "senior_curator", "curator", "researcher"],
   "/curator/coverage": [],
   "/curator/sources": ["museum_director", "senior_curator", "curator", "researcher", "fact_checker", "translator", "translation_reviewer", "media_curator", "rights_manager", "accessibility_reviewer", "educator", "publisher", "technical_administrator"],
   "/curator/sources/new": ["museum_director", "senior_curator", "curator", "researcher", "fact_checker"],

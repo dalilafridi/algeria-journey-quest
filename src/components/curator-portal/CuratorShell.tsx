@@ -47,6 +47,7 @@ const NAV: { to: string; label: string; icon: typeof Gauge; exact?: boolean; gro
 
   // Content
   { to: "/curator/content", label: "Collections & Exhibits", icon: Layers, group: "Content" },
+  { to: "/curator/figures", label: "Historical Figures", icon: User, group: "Content" },
   { to: "/curator/football", label: "Football Studio", icon: Trophy, group: "Content" },
   { to: "/curator/coverage", label: "Museum Coverage", icon: MapIcon, group: "Content" },
 
