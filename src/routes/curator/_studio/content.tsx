@@ -4,9 +4,14 @@ import { getInventory } from "@/lib/curator-portal/inventory";
 import type { ContentKind, ContentRecord } from "@/lib/curator-portal/models";
 import { SectionCard, StatusPill } from "@/components/curator-portal/primitives";
 import {
-  listContentCoverage, coverageStateFor, COVERAGE_LABEL,
-  getSource, type ContentCoverageRow, type SourceLinkRow, type SourceRow,
+  listContentCoverage, listSourcesForContent, coverageStateFor, COVERAGE_LABEL,
+  type ContentCoverageRow, type SourceLinkRow, type SourceRow,
 } from "@/lib/curator-portal/sources.functions";
+
+const COVERAGE_TONE = {
+  none: "muted", linked: "warn", verified: "ok", needs_review: "danger",
+} as const;
+
 
 
 const KIND_LABEL: Record<ContentKind, string> = {
