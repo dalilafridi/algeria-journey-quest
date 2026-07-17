@@ -31,7 +31,7 @@ function friendlyError(e: unknown): string {
     if (!issue) return "Please review the highlighted fields.";
     const field = issue.path.join(".");
     if (field === "slug") {
-      if (issue.code === "invalid_format" || issue.code === "invalid_string")
+      if (issue.code === "invalid_format")
         return "Slug may only contain lowercase letters, numbers, and hyphens.";
       if (issue.code === "too_small") return "Slug must be at least 2 characters.";
       if (issue.code === "too_big") return "Slug must be 120 characters or fewer.";
