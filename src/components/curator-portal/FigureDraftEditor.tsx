@@ -455,31 +455,170 @@ function ResearchTab({ detail, sources }: { detail: FigureDraftDetail; sources: 
 }
 
 // ---------------- Translation tab ------------------------------------
+//
+// Reusable pattern: every editable trilingual field is a <TranslationField>
+// with its own AI-assist actions and its own status badge. Names and
+// subtitles are marked protected — AI never overwrites them silently.
+// All saves route through updateFigureDraft; status changes route through
+// upsertTranslationStatus. Neither call bypasses audit or permissions.
 
-function TranslationTab({ detail, locked, onReload }: { detail: FigureDraftDetail; locked: boolean; onReload: () => Promise<void> }) {
+interface FigureTranslationFieldSpec {
+  /** field_key stored in content_translation_status. */
+  key: string;
+  label: string;
+  language: "fr" | "ar";
+  kind: "short" | "long" | "name";
+  /** English source text getter. */
+  sourceOf: (d: FigureDraftDetail["draft"]) => string;
+  /** Current value getter (the fr/ar column). */
+  valueOf: (d: FigureDraftDetail["draft"]) => string;
+  /** Which update_figure_draft scope this field belongs to. */
+  scope: UpdateScope;
+  /** Column name to write into the payload. */
+  column: string;
+  /** Column name for the source (for translateFieldGroup kind hint). */
+  isProtected: boolean;
+  domainHint: string;
+}
+
+const FIGURE_TRANSLATION_FIELDS: FigureTranslationFieldSpec[] = [
+  // Protected identity translations — never overwritten silently.
+  { key: "name",     label: "Nom (Français)",       language: "fr", kind: "name",  scope: "identity",    column: "name_fr",     isProtected: true,  sourceOf: (d) => d.name_en ?? "", valueOf: (d) => d.name_fr ?? "", domainHint: "Historical figure proper name — preserve spelling conventions." },
+  { key: "name",     label: "الاسم (العربية)",       language: "ar", kind: "name",  scope: "identity",    column: "name_ar",     isProtected: true,  sourceOf: (d) => d.name_en ?? "", valueOf: (d) => d.name_ar ?? "", domainHint: "Historical figure proper name — provide canonical Arabic spelling." },
+  { key: "subtitle", label: "Sous-titre (Français)", language: "fr", kind: "short", scope: "identity",    column: "subtitle_fr", isProtected: true,  sourceOf: (d) => d.subtitle_en ?? "", valueOf: (d) => d.subtitle_fr ?? "", domainHint: "Short curatorial subtitle for a historical figure." },
+  { key: "subtitle", label: "العنوان الفرعي (العربية)", language: "ar", kind: "short", scope: "identity",    column: "subtitle_ar", isProtected: true,  sourceOf: (d) => d.subtitle_en ?? "", valueOf: (d) => d.subtitle_ar ?? "", domainHint: "Short curatorial subtitle for a historical figure." },
+  // Editorial translations — AI may draft, curator reviews and approves.
+  { key: "summary",  label: "Résumé (Français)",    language: "fr", kind: "short", scope: "translation", column: "summary_fr",  isProtected: false, sourceOf: (d) => d.summary_en ?? "", valueOf: (d) => d.summary_fr ?? "", domainHint: "Museum summary of a historical figure — encyclopedic tone." },
+  { key: "summary",  label: "ملخص (العربية)",         language: "ar", kind: "short", scope: "translation", column: "summary_ar",  isProtected: false, sourceOf: (d) => d.summary_en ?? "", valueOf: (d) => d.summary_ar ?? "", domainHint: "Museum summary of a historical figure — encyclopedic tone." },
+  { key: "biography", label: "Biographie (Français)", language: "fr", kind: "long", scope: "translation", column: "biography_fr", isProtected: false, sourceOf: (d) => d.biography_en ?? "", valueOf: (d) => d.biography_fr ?? "", domainHint: "Long-form biography of a historical figure — museum register." },
+  { key: "biography", label: "سيرة ذاتية (العربية)",   language: "ar", kind: "long", scope: "translation", column: "biography_ar", isProtected: false, sourceOf: (d) => d.biography_en ?? "", valueOf: (d) => d.biography_ar ?? "", domainHint: "Long-form biography of a historical figure — museum register." },
+];
+
+function statusOf(
+  statuses: TranslationStatusRow[],
+  fieldKey: string,
+  language: "fr" | "ar",
+  hasValue: boolean,
+): TranslationState {
+  const row = statuses.find(
+    (s) => s.field_key === fieldKey && s.language === language,
+  );
+  if (row) return row.state;
+  return hasValue ? "human_edited" : "missing";
+}
+
+function TranslationTab({
+  detail, locked, statuses, canApprove, onReload,
+}: {
+  detail: FigureDraftDetail;
+  locked: boolean;
+  statuses: TranslationStatusRow[];
+  canApprove: boolean;
+  onReload: () => Promise<void>;
+}) {
   const d = detail.draft;
-  const [v, setV] = useState({
-    summary_fr: d.summary_fr ?? "", summary_ar: d.summary_ar ?? "",
-    biography_fr: d.biography_fr ?? "", biography_ar: d.biography_ar ?? "",
-  });
-  const [dirty, setDirty] = useState(false); const [busy, setBusy] = useState(false); const [err, setErr] = useState<string | null>(null);
-  const set = (k: keyof typeof v, val: string) => { setV((s) => ({ ...s, [k]: val })); setDirty(true); };
-  async function save() {
-    setBusy(true); setErr(null);
-    try {
-      await updateFigureDraft({ data: { id: d.id, scope: "translation" as UpdateScope, payload: {
-        summary_fr: v.summary_fr || null, summary_ar: v.summary_ar || null,
-        biography_fr: v.biography_fr || null, biography_ar: v.biography_ar || null,
-      } } });
-      await onReload(); setDirty(false);
-    } catch (e) { setErr((e as Error).message); } finally { setBusy(false); }
+  const [batchBusy, setBatchBusy] = useState(false);
+  const [batchErr, setBatchErr] = useState<string | null>(null);
+  const [batchNote, setBatchNote] = useState<string | null>(null);
+
+  async function suggestOne(spec: FigureTranslationFieldSpec): Promise<string> {
+    const source = spec.sourceOf(d);
+    if (!source.trim()) throw new Error("Add the English source before suggesting a translation.");
+    const res = await translateFieldGroup({ data: {
+      content_type: "figure_draft",
+      domain_hint: spec.domainHint,
+      source_language: "en",
+      target_languages: [spec.language],
+      fields: [{ key: spec.key, text: source, protected: spec.isProtected, kind: spec.kind }],
+    } });
+    const match = res.translations.find((t) => t.key === spec.key && t.language === spec.language);
+    if (!match) throw new Error("The translation service did not return this field.");
+    return match.text;
   }
+
+  async function saveOne(spec: FigureTranslationFieldSpec, value: string) {
+    await updateFigureDraft({ data: {
+      id: d.id, scope: spec.scope,
+      payload: { [spec.column]: value || null } as Record<string, unknown>,
+    } });
+    await onReload();
+  }
+
+  async function setStatusOne(spec: FigureTranslationFieldSpec, next: TranslationState) {
+    await upsertTranslationStatus({ data: {
+      content_type: "figure_draft",
+      content_id: d.id,
+      field_key: spec.key,
+      language: spec.language,
+      state: next,
+      protected: spec.isProtected,
+    } });
+    await onReload();
+  }
+
+  /**
+   * "Suggest all missing translations" — batch fill for every non-protected
+   * editorial field that is currently missing or empty. Protected fields
+   * (names, subtitles) are intentionally excluded and must be reviewed
+   * individually side-by-side.
+   */
+  async function suggestAllMissing() {
+    setBatchBusy(true); setBatchErr(null); setBatchNote(null);
+    const targets = FIGURE_TRANSLATION_FIELDS.filter((f) =>
+      !f.isProtected && f.sourceOf(d).trim().length > 0 && f.valueOf(d).trim().length === 0,
+    );
+    if (targets.length === 0) {
+      setBatchBusy(false);
+      setBatchNote("No missing editorial translations to suggest.");
+      return;
+    }
+    const failures: string[] = [];
+    let successes = 0;
+    for (const spec of targets) {
+      try {
+        const text = await suggestOne(spec);
+        await saveOne(spec, text);
+        await setStatusOne(spec, "machine");
+        successes += 1;
+      } catch (e) {
+        failures.push(`${spec.label}: ${(e as Error).message}`);
+      }
+    }
+    setBatchBusy(false);
+    if (failures.length === 0) {
+      setBatchNote(`Suggested ${successes} translation${successes === 1 ? "" : "s"}. All fields are marked AI Suggestion — review each before approving.`);
+    } else {
+      setBatchErr(
+        `Completed ${successes} of ${targets.length}. Failures: ${failures.slice(0, 3).join(" · ")}${failures.length > 3 ? "…" : ""}`,
+      );
+    }
+  }
+
+  const protectedFields = FIGURE_TRANSLATION_FIELDS.filter((f) => f.isProtected);
+  const editorialFields = FIGURE_TRANSLATION_FIELDS.filter((f) => !f.isProtected);
+
   return (
-    <SectionCard title="Translation" subtitle="French and Arabic renditions. Translators must not alter facts — request changes to the English narrative instead.">
-      {err && <div role="alert" style={{ color: "#a03030", marginBottom: 10 }}>{err}</div>}
-      {locked && <div style={{ marginBottom: 10, fontSize: 12, color: "var(--cp-ink-soft)" }}>Approved drafts are locked. Archive and reopen to edit.</div>}
-      <div style={{ display: "grid", gap: 14 }}>
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 14 }}>
+    <>
+      <SectionCard
+        title="Translation"
+        subtitle="French and Arabic renditions. AI can assist — the curator remains responsible for what is Reviewed and Approved."
+        action={
+          !locked ? (
+            <button
+              type="button"
+              onClick={suggestAllMissing}
+              disabled={batchBusy}
+              style={{ padding: "8px 14px", background: "#2c1e10", color: "white", border: "none", borderRadius: 8, fontWeight: 600, fontSize: 12, cursor: "pointer" }}
+            >
+              {batchBusy ? "Suggesting…" : "Suggest all missing translations"}
+            </button>
+          ) : null
+        }
+      >
+        {locked && <div style={{ marginBottom: 10, fontSize: 12, color: "var(--cp-ink-soft)" }}>Approved drafts are locked. Archive and reopen to edit.</div>}
+        {batchErr && <div role="alert" style={{ color: "#a03030", marginBottom: 10, fontSize: 12 }}>{batchErr}</div>}
+        {batchNote && <div style={{ color: "#3a5a1e", marginBottom: 10, fontSize: 12 }}>{batchNote}</div>}
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 14, marginBottom: 14 }}>
           <div>
             <h3 style={{ fontSize: 12, textTransform: "uppercase", letterSpacing: 0.5, marginBottom: 6 }}>Reference — English summary</h3>
             <div style={{ padding: 10, background: "#faf4e6", border: "1px solid var(--cp-border)", borderRadius: 6, fontSize: 13, minHeight: 80, whiteSpace: "pre-wrap" }}>{d.summary_en ?? "—"}</div>
@@ -489,15 +628,60 @@ function TranslationTab({ detail, locked, onReload }: { detail: FigureDraftDetai
             <div style={{ padding: 10, background: "#faf4e6", border: "1px solid var(--cp-border)", borderRadius: 6, fontSize: 13, minHeight: 80, whiteSpace: "pre-wrap", maxHeight: 240, overflow: "auto" }}>{d.biography_en ?? "—"}</div>
           </div>
         </div>
-        <Field label="Résumé (Français)"><TextArea rows={4} value={v.summary_fr} onChange={(e) => set("summary_fr", e.target.value)} disabled={locked} maxLength={2000} /></Field>
-        <Field label="ملخص (العربية)"><TextArea rows={4} value={v.summary_ar} onChange={(e) => set("summary_ar", e.target.value)} disabled={locked} maxLength={2000} style={{ direction: "rtl" }} /></Field>
-        <Field label="Biographie (Français)"><TextArea rows={10} value={v.biography_fr} onChange={(e) => set("biography_fr", e.target.value)} disabled={locked} maxLength={50_000} /></Field>
-        <Field label="سيرة ذاتية (العربية)"><TextArea rows={10} value={v.biography_ar} onChange={(e) => set("biography_ar", e.target.value)} disabled={locked} maxLength={50_000} style={{ direction: "rtl" }} /></Field>
-      </div>
-      {!locked && <SaveBar dirty={dirty} busy={busy} onSave={save} />}
-    </SectionCard>
+      </SectionCard>
+
+      <SectionCard
+        title="Protected identity translations"
+        subtitle="Historical names and titles are canonical museum spellings. AI suggestions are shown side-by-side and never applied automatically."
+      >
+        <div style={{ display: "grid", gap: 10 }}>
+          {protectedFields.map((spec) => (
+            <TranslationField
+              key={`${spec.key}.${spec.language}`}
+              label={spec.label}
+              language={spec.language}
+              kind={spec.kind}
+              isProtected
+              sourceText={spec.sourceOf(d)}
+              currentValue={spec.valueOf(d)}
+              status={statusOf(statuses, spec.key, spec.language, spec.valueOf(d).trim().length > 0)}
+              canApprove={canApprove}
+              disabled={locked}
+              onSuggest={() => suggestOne(spec)}
+              onSaveValue={(v) => saveOne(spec, v)}
+              onSetStatus={(n) => setStatusOne(spec, n)}
+            />
+          ))}
+        </div>
+      </SectionCard>
+
+      <SectionCard
+        title="Editorial translations"
+        subtitle="Summary and biography in French and Arabic. AI drafts stay marked AI Suggestion until a curator explicitly marks them Reviewed."
+      >
+        <div style={{ display: "grid", gap: 10 }}>
+          {editorialFields.map((spec) => (
+            <TranslationField
+              key={`${spec.key}.${spec.language}`}
+              label={spec.label}
+              language={spec.language}
+              kind={spec.kind}
+              sourceText={spec.sourceOf(d)}
+              currentValue={spec.valueOf(d)}
+              status={statusOf(statuses, spec.key, spec.language, spec.valueOf(d).trim().length > 0)}
+              canApprove={canApprove}
+              disabled={locked}
+              onSuggest={() => suggestOne(spec)}
+              onSaveValue={(v) => saveOne(spec, v)}
+              onSetStatus={(n) => setStatusOne(spec, n)}
+            />
+          ))}
+        </div>
+      </SectionCard>
+    </>
   );
 }
+
 
 // ---------------- Review tab (workflow transitions) -------------------
 
