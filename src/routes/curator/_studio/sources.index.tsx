@@ -6,6 +6,7 @@ import {
   listSources, type SourceRow, type SourceStatus, type SourceType,
   type ReliabilityTier, type RightsStatus,
 } from "@/lib/curator-portal/sources.functions";
+import { cloneSource } from "@/lib/curator-portal/clone.functions";
 import { SectionCard, StatCard, StatusPill } from "@/components/curator-portal/primitives";
 import { useStudioSession } from "@/components/curator-portal/StudioSessionContext";
 import { canAccessRoute } from "@/lib/curator-portal/permissions";
@@ -34,12 +35,23 @@ function ResearchLibrary() {
   const [status, setStatus] = useState<SourceStatus | "active">("active");
   const [linked, setLinked] = useState<"all" | "linked" | "unlinked">("all");
   const [view, setView] = useState<"table" | "cards">("table");
+  const [busyId, setBusyId] = useState<string | null>(null);
 
-  useEffect(() => {
-    listSources()
-      .then((r) => setRows(r as SourceRow[]))
-      .catch((e) => setErr((e as Error).message));
-  }, []);
+  async function reload() {
+    try { setRows(await listSources() as SourceRow[]); }
+    catch (e) { setErr((e as Error).message); }
+  }
+  useEffect(() => { void reload(); }, []);
+
+  async function onClone(r: SourceRow) {
+    setBusyId(r.id);
+    try {
+      const { id } = await cloneSource({ data: { id: r.id, title_suffix: " (copy)" } });
+      await reload();
+      void navigate({ to: "/curator/sources/$sourceId", params: { sourceId: id } });
+    } catch (e) { setErr((e as Error).message); }
+    finally { setBusyId(null); }
+  }
 
   const languages = useMemo(() => {
     const s = new Set<string>();
