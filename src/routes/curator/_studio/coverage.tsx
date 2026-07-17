@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { useEffect, useState } from "react";
 import {
   SectionCard,
   CoverageBar,
@@ -6,6 +7,10 @@ import {
   StatusPill,
 } from "@/components/curator-portal/primitives";
 import { getDashboardCounts, getInventory } from "@/lib/curator-portal/inventory";
+import {
+  listContentCoverage, coverageStateFor,
+  type ContentCoverageRow,
+} from "@/lib/curator-portal/sources.functions";
 
 export const Route = createFileRoute("/curator/_studio/coverage")({
   component: Coverage,
@@ -14,6 +19,21 @@ export const Route = createFileRoute("/curator/_studio/coverage")({
 function Coverage() {
   const c = getDashboardCounts();
   const inv = getInventory();
+  const [coverage, setCoverage] = useState<Map<string, ContentCoverageRow>>(new Map());
+  useEffect(() => {
+    listContentCoverage()
+      .then((rows) => {
+        const m = new Map<string, ContentCoverageRow>();
+        for (const r of rows) m.set(`${r.content_type}:${r.content_id}`, r);
+        setCoverage(m);
+      })
+      .catch(() => { /* stays empty */ });
+  }, []);
+  const covOf = (r: { kind: string; id: string }) => coverage.get(`${r.kind}:${r.id}`);
+  const withLinks = inv.filter((r) => (covOf(r)?.linked ?? 0) > 0).length;
+  const verified = inv.filter((r) => coverageStateFor(covOf(r)) === "verified").length;
+  const needsReview = inv.filter((r) => coverageStateFor(covOf(r)) === "needs_review").length;
+
 
   const byKind = (k: string) => inv.filter((r) => r.kind === k).length;
 
