@@ -105,16 +105,22 @@ export function TranslationField(props: TranslationFieldProps) {
   const [busy, setBusy] = useState<null | "suggest" | "save" | "accept" | "review" | "approve" | "revert">(null);
   const [err, setErr] = useState<string | null>(null);
   const [wasFromSuggestion, setWasFromSuggestion] = useState(false);
+  const lastSyncedRef = useRef(currentValue);
+
+  // Sync local editor with the parent's authoritative value on reload.
+  // Preserve unsaved edits: only overwrite when local matches the last synced value.
+  useEffect(() => {
+    if (currentValue !== lastSyncedRef.current) {
+      setValue((v) => (v === lastSyncedRef.current ? currentValue : v));
+      lastSyncedRef.current = currentValue;
+    }
+  }, [currentValue]);
 
   const rtl = language === "ar";
   const dirty = value !== currentValue;
   const isLong = kind === "long";
   const hasContent = value.trim().length > 0;
 
-  // Sync when parent reloads.
-  if (currentValue !== value && busy === null && !dirty && !suggestion) {
-    // eslint-disable-next-line react-hooks/rules-of-hooks
-  }
 
   async function handleSuggest() {
     if (disabled) return;
