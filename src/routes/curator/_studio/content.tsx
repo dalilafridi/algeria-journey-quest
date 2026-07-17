@@ -1,8 +1,13 @@
-import { createFileRoute } from "@tanstack/react-router";
-import { useMemo, useState } from "react";
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { useEffect, useMemo, useState } from "react";
 import { getInventory } from "@/lib/curator-portal/inventory";
 import type { ContentKind, ContentRecord } from "@/lib/curator-portal/models";
 import { SectionCard, StatusPill } from "@/components/curator-portal/primitives";
+import {
+  listContentCoverage, coverageStateFor, COVERAGE_LABEL,
+  getSource, type ContentCoverageRow, type SourceLinkRow, type SourceRow,
+} from "@/lib/curator-portal/sources.functions";
+
 
 const KIND_LABEL: Record<ContentKind, string> = {
   era: "Era",
