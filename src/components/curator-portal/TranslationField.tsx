@@ -21,7 +21,7 @@
  * directly. This preserves audit, permissions, and validation upstream.
  */
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import type { TranslationState } from "@/lib/curator-portal/translation.functions";
 import { TRANSLATION_STATE_LABEL } from "@/lib/curator-portal/translation.functions";
 
