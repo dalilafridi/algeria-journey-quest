@@ -46,7 +46,7 @@ function ResearchLibrary() {
   async function onClone(r: SourceRow) {
     setBusyId(r.id);
     try {
-      const { id } = await cloneSource({ data: { id: r.id, title_suffix: " (copy)" } });
+      const { id } = await cloneSource({ data: { id: r.id } });
       await reload();
       void navigate({ to: "/curator/sources/$sourceId", params: { sourceId: id } });
     } catch (e) { setErr((e as Error).message); }

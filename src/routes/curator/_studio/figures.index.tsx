@@ -50,12 +50,10 @@ function FiguresIndex() {
   }
 
   async function onClone(row: FigureDraftRow) {
-    const suggested = suggestClonedSlug(row.slug);
-    const target = window.prompt(`New slug for the clone of "${row.name_en}":`, suggested);
-    if (!target) return;
+    if (!confirm(`Clone "${row.name_en}"? A copy will be created as a fresh draft (slug is auto-suffixed).`)) return;
     setBusyId(row.id);
     try {
-      const { id } = await cloneFigureDraft({ data: { id: row.id, new_slug: target.trim(), copy_relations: true } });
+      const { id } = await cloneFigureDraft({ data: { id: row.id, include_relationships: true } });
       await reload();
       void navigate({ to: "/curator/figures/$draftId", params: { draftId: id } });
     } catch (e) { setErr((e as Error).message); }
@@ -150,10 +148,4 @@ function FiguresIndex() {
   );
 }
 
-function suggestClonedSlug(slug: string): string {
-  const m = slug.match(/^(.*?)-copy(-(\d+))?$/);
-  if (!m) return `${slug}-copy`;
-  const n = m[3] ? Number(m[3]) + 1 : 2;
-  return `${m[1]}-copy-${n}`;
-}
 
