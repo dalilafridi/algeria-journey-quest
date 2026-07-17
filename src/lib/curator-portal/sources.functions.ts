@@ -100,6 +100,7 @@ export interface SourceRow {
   rights_status: RightsStatus;
   citation_text: string | null;
   notes: string | null;
+  link_count?: number;
   status: SourceStatus;
   created_by: string;
   updated_by: string;
