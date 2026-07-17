@@ -69,8 +69,12 @@ import { Route as CuratorStudioAuditLogRouteImport } from './routes/curator/_stu
 import { Route as CuratorStudioAnalyticsRouteImport } from './routes/curator/_studio/analytics'
 import { Route as CuratorStudioAcquisitionsRouteImport } from './routes/curator/_studio/acquisitions'
 import { Route as CuratorStudioSourcesIndexRouteImport } from './routes/curator/_studio/sources.index'
+import { Route as CuratorStudioFiguresIndexRouteImport } from './routes/curator/_studio/figures.index'
 import { Route as CuratorStudioSourcesNewRouteImport } from './routes/curator/_studio/sources.new'
 import { Route as CuratorStudioSourcesSourceIdRouteImport } from './routes/curator/_studio/sources.$sourceId'
+import { Route as CuratorStudioFiguresNewRouteImport } from './routes/curator/_studio/figures.new'
+import { Route as CuratorStudioFiguresDraftIdRouteImport } from './routes/curator/_studio/figures.$draftId'
+import { Route as CuratorStudioFiguresDraftIdPreviewRouteImport } from './routes/curator/_studio/figures.$draftId.preview'
 
 const WordsRoute = WordsRouteImport.update({
   id: '/words',
@@ -378,6 +382,12 @@ const CuratorStudioSourcesIndexRoute =
     path: '/',
     getParentRoute: () => CuratorStudioSourcesRoute,
   } as any)
+const CuratorStudioFiguresIndexRoute =
+  CuratorStudioFiguresIndexRouteImport.update({
+    id: '/figures/',
+    path: '/figures/',
+    getParentRoute: () => CuratorStudioRouteRoute,
+  } as any)
 const CuratorStudioSourcesNewRoute = CuratorStudioSourcesNewRouteImport.update({
   id: '/new',
   path: '/new',
@@ -388,6 +398,23 @@ const CuratorStudioSourcesSourceIdRoute =
     id: '/$sourceId',
     path: '/$sourceId',
     getParentRoute: () => CuratorStudioSourcesRoute,
+  } as any)
+const CuratorStudioFiguresNewRoute = CuratorStudioFiguresNewRouteImport.update({
+  id: '/figures/new',
+  path: '/figures/new',
+  getParentRoute: () => CuratorStudioRouteRoute,
+} as any)
+const CuratorStudioFiguresDraftIdRoute =
+  CuratorStudioFiguresDraftIdRouteImport.update({
+    id: '/figures/$draftId',
+    path: '/figures/$draftId',
+    getParentRoute: () => CuratorStudioRouteRoute,
+  } as any)
+const CuratorStudioFiguresDraftIdPreviewRoute =
+  CuratorStudioFiguresDraftIdPreviewRouteImport.update({
+    id: '/preview',
+    path: '/preview',
+    getParentRoute: () => CuratorStudioFiguresDraftIdRoute,
   } as any)
 
 export interface FileRoutesByFullPath {
@@ -449,9 +476,13 @@ export interface FileRoutesByFullPath {
   '/curator/translations': typeof CuratorStudioTranslationsRoute
   '/figures/collection/$collectionId': typeof FiguresCollectionCollectionIdRoute
   '/curator/': typeof CuratorStudioIndexRoute
+  '/curator/figures/$draftId': typeof CuratorStudioFiguresDraftIdRouteWithChildren
+  '/curator/figures/new': typeof CuratorStudioFiguresNewRoute
   '/curator/sources/$sourceId': typeof CuratorStudioSourcesSourceIdRoute
   '/curator/sources/new': typeof CuratorStudioSourcesNewRoute
+  '/curator/figures/': typeof CuratorStudioFiguresIndexRoute
   '/curator/sources/': typeof CuratorStudioSourcesIndexRoute
+  '/curator/figures/$draftId/preview': typeof CuratorStudioFiguresDraftIdPreviewRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -510,9 +541,13 @@ export interface FileRoutesByTo {
   '/curator/technical': typeof CuratorStudioTechnicalRoute
   '/curator/translations': typeof CuratorStudioTranslationsRoute
   '/figures/collection/$collectionId': typeof FiguresCollectionCollectionIdRoute
+  '/curator/figures/$draftId': typeof CuratorStudioFiguresDraftIdRouteWithChildren
+  '/curator/figures/new': typeof CuratorStudioFiguresNewRoute
   '/curator/sources/$sourceId': typeof CuratorStudioSourcesSourceIdRoute
   '/curator/sources/new': typeof CuratorStudioSourcesNewRoute
+  '/curator/figures': typeof CuratorStudioFiguresIndexRoute
   '/curator/sources': typeof CuratorStudioSourcesIndexRoute
+  '/curator/figures/$draftId/preview': typeof CuratorStudioFiguresDraftIdPreviewRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -575,9 +610,13 @@ export interface FileRoutesById {
   '/curator/_studio/translations': typeof CuratorStudioTranslationsRoute
   '/figures/collection/$collectionId': typeof FiguresCollectionCollectionIdRoute
   '/curator/_studio/': typeof CuratorStudioIndexRoute
+  '/curator/_studio/figures/$draftId': typeof CuratorStudioFiguresDraftIdRouteWithChildren
+  '/curator/_studio/figures/new': typeof CuratorStudioFiguresNewRoute
   '/curator/_studio/sources/$sourceId': typeof CuratorStudioSourcesSourceIdRoute
   '/curator/_studio/sources/new': typeof CuratorStudioSourcesNewRoute
+  '/curator/_studio/figures/': typeof CuratorStudioFiguresIndexRoute
   '/curator/_studio/sources/': typeof CuratorStudioSourcesIndexRoute
+  '/curator/_studio/figures/$draftId/preview': typeof CuratorStudioFiguresDraftIdPreviewRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -640,9 +679,13 @@ export interface FileRouteTypes {
     | '/curator/translations'
     | '/figures/collection/$collectionId'
     | '/curator/'
+    | '/curator/figures/$draftId'
+    | '/curator/figures/new'
     | '/curator/sources/$sourceId'
     | '/curator/sources/new'
+    | '/curator/figures/'
     | '/curator/sources/'
+    | '/curator/figures/$draftId/preview'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -701,9 +744,13 @@ export interface FileRouteTypes {
     | '/curator/technical'
     | '/curator/translations'
     | '/figures/collection/$collectionId'
+    | '/curator/figures/$draftId'
+    | '/curator/figures/new'
     | '/curator/sources/$sourceId'
     | '/curator/sources/new'
+    | '/curator/figures'
     | '/curator/sources'
+    | '/curator/figures/$draftId/preview'
   id:
     | '__root__'
     | '/'
@@ -765,9 +812,13 @@ export interface FileRouteTypes {
     | '/curator/_studio/translations'
     | '/figures/collection/$collectionId'
     | '/curator/_studio/'
+    | '/curator/_studio/figures/$draftId'
+    | '/curator/_studio/figures/new'
     | '/curator/_studio/sources/$sourceId'
     | '/curator/_studio/sources/new'
+    | '/curator/_studio/figures/'
     | '/curator/_studio/sources/'
+    | '/curator/_studio/figures/$draftId/preview'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -1225,6 +1276,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CuratorStudioSourcesIndexRouteImport
       parentRoute: typeof CuratorStudioSourcesRoute
     }
+    '/curator/_studio/figures/': {
+      id: '/curator/_studio/figures/'
+      path: '/figures'
+      fullPath: '/curator/figures/'
+      preLoaderRoute: typeof CuratorStudioFiguresIndexRouteImport
+      parentRoute: typeof CuratorStudioRouteRoute
+    }
     '/curator/_studio/sources/new': {
       id: '/curator/_studio/sources/new'
       path: '/new'
@@ -1238,6 +1296,27 @@ declare module '@tanstack/react-router' {
       fullPath: '/curator/sources/$sourceId'
       preLoaderRoute: typeof CuratorStudioSourcesSourceIdRouteImport
       parentRoute: typeof CuratorStudioSourcesRoute
+    }
+    '/curator/_studio/figures/new': {
+      id: '/curator/_studio/figures/new'
+      path: '/figures/new'
+      fullPath: '/curator/figures/new'
+      preLoaderRoute: typeof CuratorStudioFiguresNewRouteImport
+      parentRoute: typeof CuratorStudioRouteRoute
+    }
+    '/curator/_studio/figures/$draftId': {
+      id: '/curator/_studio/figures/$draftId'
+      path: '/figures/$draftId'
+      fullPath: '/curator/figures/$draftId'
+      preLoaderRoute: typeof CuratorStudioFiguresDraftIdRouteImport
+      parentRoute: typeof CuratorStudioRouteRoute
+    }
+    '/curator/_studio/figures/$draftId/preview': {
+      id: '/curator/_studio/figures/$draftId/preview'
+      path: '/preview'
+      fullPath: '/curator/figures/$draftId/preview'
+      preLoaderRoute: typeof CuratorStudioFiguresDraftIdPreviewRouteImport
+      parentRoute: typeof CuratorStudioFiguresDraftIdRoute
     }
   }
 }
@@ -1256,6 +1335,21 @@ const CuratorStudioSourcesRouteChildren: CuratorStudioSourcesRouteChildren = {
 
 const CuratorStudioSourcesRouteWithChildren =
   CuratorStudioSourcesRoute._addFileChildren(CuratorStudioSourcesRouteChildren)
+
+interface CuratorStudioFiguresDraftIdRouteChildren {
+  CuratorStudioFiguresDraftIdPreviewRoute: typeof CuratorStudioFiguresDraftIdPreviewRoute
+}
+
+const CuratorStudioFiguresDraftIdRouteChildren: CuratorStudioFiguresDraftIdRouteChildren =
+  {
+    CuratorStudioFiguresDraftIdPreviewRoute:
+      CuratorStudioFiguresDraftIdPreviewRoute,
+  }
+
+const CuratorStudioFiguresDraftIdRouteWithChildren =
+  CuratorStudioFiguresDraftIdRoute._addFileChildren(
+    CuratorStudioFiguresDraftIdRouteChildren,
+  )
 
 interface CuratorStudioRouteRouteChildren {
   CuratorStudioAcquisitionsRoute: typeof CuratorStudioAcquisitionsRoute
@@ -1281,6 +1375,9 @@ interface CuratorStudioRouteRouteChildren {
   CuratorStudioTechnicalRoute: typeof CuratorStudioTechnicalRoute
   CuratorStudioTranslationsRoute: typeof CuratorStudioTranslationsRoute
   CuratorStudioIndexRoute: typeof CuratorStudioIndexRoute
+  CuratorStudioFiguresDraftIdRoute: typeof CuratorStudioFiguresDraftIdRouteWithChildren
+  CuratorStudioFiguresNewRoute: typeof CuratorStudioFiguresNewRoute
+  CuratorStudioFiguresIndexRoute: typeof CuratorStudioFiguresIndexRoute
 }
 
 const CuratorStudioRouteRouteChildren: CuratorStudioRouteRouteChildren = {
@@ -1307,6 +1404,10 @@ const CuratorStudioRouteRouteChildren: CuratorStudioRouteRouteChildren = {
   CuratorStudioTechnicalRoute: CuratorStudioTechnicalRoute,
   CuratorStudioTranslationsRoute: CuratorStudioTranslationsRoute,
   CuratorStudioIndexRoute: CuratorStudioIndexRoute,
+  CuratorStudioFiguresDraftIdRoute:
+    CuratorStudioFiguresDraftIdRouteWithChildren,
+  CuratorStudioFiguresNewRoute: CuratorStudioFiguresNewRoute,
+  CuratorStudioFiguresIndexRoute: CuratorStudioFiguresIndexRoute,
 }
 
 const CuratorStudioRouteRouteWithChildren =
