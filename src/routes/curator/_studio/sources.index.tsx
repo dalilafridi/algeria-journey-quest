@@ -178,12 +178,11 @@ function ResearchLibrary() {
                     <thead><tr>
                       <th>Title</th><th>Author</th><th>Type</th><th>Year</th><th>Language</th>
                       <th>Reliability</th><th>Rights</th><th>Status</th>
-                      <th>Linked</th><th>Verified</th><th>Updated</th>
+                      <th>Linked</th><th>Verified</th><th>Updated</th><th aria-label="Actions" />
                     </tr></thead>
                     <tbody>
                       {filtered.map((r) => (
-                        <tr key={r.id} style={{ cursor: "pointer" }}
-                          onClick={() => navigate({ to: "/curator/sources/$sourceId", params: { sourceId: r.id } })}>
+                        <tr key={r.id}>
                           <td style={{ fontWeight: 600, maxWidth: 320 }}>
                             <Link to="/curator/sources/$sourceId" params={{ sourceId: r.id }} style={{ color: "inherit" }}>{r.title}</Link>
                           </td>
@@ -201,6 +200,14 @@ function ResearchLibrary() {
                           </td>
                           <td>{r.verification_date ?? "—"}</td>
                           <td>{r.updated_at.slice(0, 10)}</td>
+                          <td style={{ textAlign: "right" }}>
+                            {canCreate && r.status !== "archived" && (
+                              <button type="button" onClick={() => onClone(r)} disabled={busyId === r.id}
+                                style={{ padding: "3px 10px", background: "transparent", border: "1px solid var(--cp-border)", borderRadius: 6, fontSize: 11, cursor: "pointer" }}>
+                                {busyId === r.id ? "…" : "Clone"}
+                              </button>
+                            )}
+                          </td>
                         </tr>
                       ))}
                     </tbody>
