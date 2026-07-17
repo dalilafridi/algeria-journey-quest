@@ -9,7 +9,6 @@ import {
   StatCard,
   HealthGauge,
   MetricLabel,
-  DisabledAction,
   CoverageBar,
   StatusPill,
 } from "@/components/curator-portal/primitives";
