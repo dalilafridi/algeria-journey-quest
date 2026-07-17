@@ -60,11 +60,13 @@ function ResearchLibrary() {
         const hay = [r.title, r.author, r.publisher, r.citation_text, r.identifier].filter(Boolean).join(" ").toLowerCase();
         if (!hay.includes(needle)) return false;
       }
-      // linked filter requires a join — we don't have per-row link counts here.
-      // Kept as no-op for now; link count shown on detail page.
+      const lc = r.link_count ?? 0;
+      if (linked === "linked" && lc === 0) return false;
+      if (linked === "unlinked" && lc > 0) return false;
       return true;
     });
-  }, [rows, q, type, lang, rel, rights, status]);
+  }, [rows, q, type, lang, rel, rights, status, linked]);
+
 
   const counts = useMemo(() => {
     const total = rows?.length ?? 0;
