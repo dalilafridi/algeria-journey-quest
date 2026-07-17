@@ -57,6 +57,9 @@ import { Route as CuratorStudioQualityRouteImport } from './routes/curator/_stud
 import { Route as CuratorStudioPublishingRouteImport } from './routes/curator/_studio/publishing'
 import { Route as CuratorStudioProfileRouteImport } from './routes/curator/_studio/profile'
 import { Route as CuratorStudioPreservationRouteImport } from './routes/curator/_studio/preservation'
+import { Route as CuratorStudioPlannedRouteImport } from './routes/curator/_studio/planned'
+import { Route as CuratorStudioNotificationsRouteImport } from './routes/curator/_studio/notifications'
+import { Route as CuratorStudioMyWorkRouteImport } from './routes/curator/_studio/my-work'
 import { Route as CuratorStudioMediaRouteImport } from './routes/curator/_studio/media'
 import { Route as CuratorStudioFootballRouteImport } from './routes/curator/_studio/football'
 import { Route as CuratorStudioEducationRouteImport } from './routes/curator/_studio/education'
@@ -319,6 +322,22 @@ const CuratorStudioPreservationRoute =
     path: '/preservation',
     getParentRoute: () => CuratorStudioRouteRoute,
   } as any)
+const CuratorStudioPlannedRoute = CuratorStudioPlannedRouteImport.update({
+  id: '/planned',
+  path: '/planned',
+  getParentRoute: () => CuratorStudioRouteRoute,
+} as any)
+const CuratorStudioNotificationsRoute =
+  CuratorStudioNotificationsRouteImport.update({
+    id: '/notifications',
+    path: '/notifications',
+    getParentRoute: () => CuratorStudioRouteRoute,
+  } as any)
+const CuratorStudioMyWorkRoute = CuratorStudioMyWorkRouteImport.update({
+  id: '/my-work',
+  path: '/my-work',
+  getParentRoute: () => CuratorStudioRouteRoute,
+} as any)
 const CuratorStudioMediaRoute = CuratorStudioMediaRouteImport.update({
   id: '/media',
   path: '/media',
@@ -463,6 +482,9 @@ export interface FileRoutesByFullPath {
   '/curator/education': typeof CuratorStudioEducationRoute
   '/curator/football': typeof CuratorStudioFootballRoute
   '/curator/media': typeof CuratorStudioMediaRoute
+  '/curator/my-work': typeof CuratorStudioMyWorkRoute
+  '/curator/notifications': typeof CuratorStudioNotificationsRoute
+  '/curator/planned': typeof CuratorStudioPlannedRoute
   '/curator/preservation': typeof CuratorStudioPreservationRoute
   '/curator/profile': typeof CuratorStudioProfileRoute
   '/curator/publishing': typeof CuratorStudioPublishingRoute
@@ -530,6 +552,9 @@ export interface FileRoutesByTo {
   '/curator/education': typeof CuratorStudioEducationRoute
   '/curator/football': typeof CuratorStudioFootballRoute
   '/curator/media': typeof CuratorStudioMediaRoute
+  '/curator/my-work': typeof CuratorStudioMyWorkRoute
+  '/curator/notifications': typeof CuratorStudioNotificationsRoute
+  '/curator/planned': typeof CuratorStudioPlannedRoute
   '/curator/preservation': typeof CuratorStudioPreservationRoute
   '/curator/profile': typeof CuratorStudioProfileRoute
   '/curator/publishing': typeof CuratorStudioPublishingRoute
@@ -597,6 +622,9 @@ export interface FileRoutesById {
   '/curator/_studio/education': typeof CuratorStudioEducationRoute
   '/curator/_studio/football': typeof CuratorStudioFootballRoute
   '/curator/_studio/media': typeof CuratorStudioMediaRoute
+  '/curator/_studio/my-work': typeof CuratorStudioMyWorkRoute
+  '/curator/_studio/notifications': typeof CuratorStudioNotificationsRoute
+  '/curator/_studio/planned': typeof CuratorStudioPlannedRoute
   '/curator/_studio/preservation': typeof CuratorStudioPreservationRoute
   '/curator/_studio/profile': typeof CuratorStudioProfileRoute
   '/curator/_studio/publishing': typeof CuratorStudioPublishingRoute
@@ -666,6 +694,9 @@ export interface FileRouteTypes {
     | '/curator/education'
     | '/curator/football'
     | '/curator/media'
+    | '/curator/my-work'
+    | '/curator/notifications'
+    | '/curator/planned'
     | '/curator/preservation'
     | '/curator/profile'
     | '/curator/publishing'
@@ -733,6 +764,9 @@ export interface FileRouteTypes {
     | '/curator/education'
     | '/curator/football'
     | '/curator/media'
+    | '/curator/my-work'
+    | '/curator/notifications'
+    | '/curator/planned'
     | '/curator/preservation'
     | '/curator/profile'
     | '/curator/publishing'
@@ -799,6 +833,9 @@ export interface FileRouteTypes {
     | '/curator/_studio/education'
     | '/curator/_studio/football'
     | '/curator/_studio/media'
+    | '/curator/_studio/my-work'
+    | '/curator/_studio/notifications'
+    | '/curator/_studio/planned'
     | '/curator/_studio/preservation'
     | '/curator/_studio/profile'
     | '/curator/_studio/publishing'
@@ -1192,6 +1229,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CuratorStudioPreservationRouteImport
       parentRoute: typeof CuratorStudioRouteRoute
     }
+    '/curator/_studio/planned': {
+      id: '/curator/_studio/planned'
+      path: '/planned'
+      fullPath: '/curator/planned'
+      preLoaderRoute: typeof CuratorStudioPlannedRouteImport
+      parentRoute: typeof CuratorStudioRouteRoute
+    }
+    '/curator/_studio/notifications': {
+      id: '/curator/_studio/notifications'
+      path: '/notifications'
+      fullPath: '/curator/notifications'
+      preLoaderRoute: typeof CuratorStudioNotificationsRouteImport
+      parentRoute: typeof CuratorStudioRouteRoute
+    }
+    '/curator/_studio/my-work': {
+      id: '/curator/_studio/my-work'
+      path: '/my-work'
+      fullPath: '/curator/my-work'
+      preLoaderRoute: typeof CuratorStudioMyWorkRouteImport
+      parentRoute: typeof CuratorStudioRouteRoute
+    }
     '/curator/_studio/media': {
       id: '/curator/_studio/media'
       path: '/media'
@@ -1363,6 +1421,9 @@ interface CuratorStudioRouteRouteChildren {
   CuratorStudioEducationRoute: typeof CuratorStudioEducationRoute
   CuratorStudioFootballRoute: typeof CuratorStudioFootballRoute
   CuratorStudioMediaRoute: typeof CuratorStudioMediaRoute
+  CuratorStudioMyWorkRoute: typeof CuratorStudioMyWorkRoute
+  CuratorStudioNotificationsRoute: typeof CuratorStudioNotificationsRoute
+  CuratorStudioPlannedRoute: typeof CuratorStudioPlannedRoute
   CuratorStudioPreservationRoute: typeof CuratorStudioPreservationRoute
   CuratorStudioProfileRoute: typeof CuratorStudioProfileRoute
   CuratorStudioPublishingRoute: typeof CuratorStudioPublishingRoute
@@ -1392,6 +1453,9 @@ const CuratorStudioRouteRouteChildren: CuratorStudioRouteRouteChildren = {
   CuratorStudioEducationRoute: CuratorStudioEducationRoute,
   CuratorStudioFootballRoute: CuratorStudioFootballRoute,
   CuratorStudioMediaRoute: CuratorStudioMediaRoute,
+  CuratorStudioMyWorkRoute: CuratorStudioMyWorkRoute,
+  CuratorStudioNotificationsRoute: CuratorStudioNotificationsRoute,
+  CuratorStudioPlannedRoute: CuratorStudioPlannedRoute,
   CuratorStudioPreservationRoute: CuratorStudioPreservationRoute,
   CuratorStudioProfileRoute: CuratorStudioProfileRoute,
   CuratorStudioPublishingRoute: CuratorStudioPublishingRoute,
