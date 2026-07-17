@@ -166,7 +166,7 @@ function ResearchLibrary() {
                     <thead><tr>
                       <th>Title</th><th>Author</th><th>Type</th><th>Year</th><th>Language</th>
                       <th>Reliability</th><th>Rights</th><th>Status</th>
-                      <th>Verified</th><th>Updated</th>
+                      <th>Linked</th><th>Verified</th><th>Updated</th>
                     </tr></thead>
                     <tbody>
                       {filtered.map((r) => (
@@ -182,6 +182,11 @@ function ResearchLibrary() {
                           <td>{RELIABILITY_LABEL[r.reliability_tier]}</td>
                           <td>{RIGHTS_LABEL[r.rights_status]}</td>
                           <td><StatusPill tone={STATUS_TONE[r.status]}>{STATUS_LABEL[r.status]}</StatusPill></td>
+                          <td style={{ fontVariantNumeric: "tabular-nums" }}>
+                            <StatusPill tone={(r.link_count ?? 0) > 0 ? "ok" : "muted"}>
+                              {r.link_count ?? 0}
+                            </StatusPill>
+                          </td>
                           <td>{r.verification_date ?? "—"}</td>
                           <td>{r.updated_at.slice(0, 10)}</td>
                         </tr>
@@ -202,6 +207,9 @@ function ResearchLibrary() {
                         <StatusPill tone={STATUS_TONE[r.status]}>{STATUS_LABEL[r.status]}</StatusPill>
                         <StatusPill tone="muted">{SOURCE_TYPE_LABEL[r.source_type]}</StatusPill>
                         <StatusPill tone="muted">{RELIABILITY_LABEL[r.reliability_tier]}</StatusPill>
+                        <StatusPill tone={(r.link_count ?? 0) > 0 ? "ok" : "muted"}>
+                          {(r.link_count ?? 0) > 0 ? `${r.link_count} linked` : "unlinked"}
+                        </StatusPill>
                       </div>
                     </Link>
                   ))}
