@@ -1,22 +1,34 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { useEffect, useState } from "react";
 import { SectionCard, StatusPill } from "@/components/curator-portal/primitives";
 import { getInventory } from "@/lib/curator-portal/inventory";
+import {
+  listContentCoverage, coverageStateFor,
+  type ContentCoverageRow, type CoverageState,
+} from "@/lib/curator-portal/sources.functions";
 
 export const Route = createFileRoute("/curator/_studio/quality")({
   component: Quality,
 });
 
-function gradeFrom(r: { hasFr: boolean; hasAr: boolean; sourceCount: number; status: string }) {
+type SourcesGrade = "verified" | "good" | "needs-review" | "unknown";
+function sourcesGradeFor(state: CoverageState): SourcesGrade {
+  if (state === "verified") return "verified";
+  if (state === "linked") return "good";
+  if (state === "needs_review") return "needs-review";
+  return "unknown";
+}
+function gradeFrom(r: { hasFr: boolean; hasAr: boolean }, sources: SourcesGrade) {
   return {
     english: "good" as const,
     french: (r.hasFr ? "good" : "incomplete") as "good" | "incomplete",
     arabic: (r.hasAr ? "good" : "incomplete") as "good" | "incomplete",
-    sources: (r.sourceCount > 0 ? "good" : "unknown") as "good" | "unknown",
+    sources,
   };
 }
 
 function toneOf(g: string) {
-  if (g === "excellent" || g === "good") return "ok" as const;
+  if (g === "excellent" || g === "verified" || g === "good") return "ok" as const;
   if (g === "needs-review") return "warn" as const;
   if (g === "incomplete") return "danger" as const;
   return "muted" as const;
@@ -24,14 +36,28 @@ function toneOf(g: string) {
 
 function Quality() {
   const inv = getInventory();
-  const rows = inv.map((r) => ({ ...r, grades: gradeFrom(r) }));
+  const [coverage, setCoverage] = useState<Map<string, ContentCoverageRow>>(new Map());
+  useEffect(() => {
+    listContentCoverage()
+      .then((rs) => {
+        const m = new Map<string, ContentCoverageRow>();
+        for (const r of rs) m.set(`${r.content_type}:${r.content_id}`, r);
+        setCoverage(m);
+      })
+      .catch(() => { /* stays empty */ });
+  }, []);
+  const rows = inv.map((r) => {
+    const state = coverageStateFor(coverage.get(`${r.kind}:${r.id}`));
+    return { ...r, grades: gradeFrom(r, sourcesGradeFor(state)) };
+  });
   const summary = {
     completeBoth: rows.filter((r) => r.hasFr && r.hasAr).length,
     missingFr: rows.filter((r) => !r.hasFr).length,
     missingAr: rows.filter((r) => !r.hasAr).length,
     placeholders: rows.filter((r) => r.status === "placeholder").length,
-    unknownSources: rows.filter((r) => r.sourceCount === 0).length,
+    unknownSources: rows.filter((r) => r.grades.sources === "unknown").length,
   };
+
 
   return (
     <>
