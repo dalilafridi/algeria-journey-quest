@@ -56,6 +56,298 @@ export type Database = {
         }
         Relationships: []
       }
+      figure_draft_eras: {
+        Row: {
+          created_at: string
+          created_by: string
+          era_id: string
+          era_label: string
+          figure_draft_id: string
+          id: string
+        }
+        Insert: {
+          created_at?: string
+          created_by: string
+          era_id: string
+          era_label: string
+          figure_draft_id: string
+          id?: string
+        }
+        Update: {
+          created_at?: string
+          created_by?: string
+          era_id?: string
+          era_label?: string
+          figure_draft_id?: string
+          id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "figure_draft_eras_figure_draft_id_fkey"
+            columns: ["figure_draft_id"]
+            isOneToOne: false
+            referencedRelation: "figure_drafts"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      figure_draft_regions: {
+        Row: {
+          created_at: string
+          created_by: string
+          figure_draft_id: string
+          id: string
+          region_id: string
+          region_label: string
+        }
+        Insert: {
+          created_at?: string
+          created_by: string
+          figure_draft_id: string
+          id?: string
+          region_id: string
+          region_label: string
+        }
+        Update: {
+          created_at?: string
+          created_by?: string
+          figure_draft_id?: string
+          id?: string
+          region_id?: string
+          region_label?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "figure_draft_regions_figure_draft_id_fkey"
+            columns: ["figure_draft_id"]
+            isOneToOne: false
+            referencedRelation: "figure_drafts"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      figure_draft_related_figures: {
+        Row: {
+          created_at: string
+          created_by: string
+          figure_draft_id: string
+          id: string
+          related_figure_id: string
+          related_figure_label: string
+          relationship_note: string | null
+          relationship_type: string | null
+        }
+        Insert: {
+          created_at?: string
+          created_by: string
+          figure_draft_id: string
+          id?: string
+          related_figure_id: string
+          related_figure_label: string
+          relationship_note?: string | null
+          relationship_type?: string | null
+        }
+        Update: {
+          created_at?: string
+          created_by?: string
+          figure_draft_id?: string
+          id?: string
+          related_figure_id?: string
+          related_figure_label?: string
+          relationship_note?: string | null
+          relationship_type?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "figure_draft_related_figures_figure_draft_id_fkey"
+            columns: ["figure_draft_id"]
+            isOneToOne: false
+            referencedRelation: "figure_drafts"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      figure_draft_revisions: {
+        Row: {
+          change_summary: string | null
+          changed_by: string
+          created_at: string
+          figure_draft_id: string
+          id: string
+          revision_number: number
+          snapshot: Json
+        }
+        Insert: {
+          change_summary?: string | null
+          changed_by: string
+          created_at?: string
+          figure_draft_id: string
+          id?: string
+          revision_number: number
+          snapshot: Json
+        }
+        Update: {
+          change_summary?: string | null
+          changed_by?: string
+          created_at?: string
+          figure_draft_id?: string
+          id?: string
+          revision_number?: number
+          snapshot?: Json
+        }
+        Relationships: [
+          {
+            foreignKeyName: "figure_draft_revisions_figure_draft_id_fkey"
+            columns: ["figure_draft_id"]
+            isOneToOne: false
+            referencedRelation: "figure_drafts"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      figure_draft_themes: {
+        Row: {
+          created_at: string
+          created_by: string
+          figure_draft_id: string
+          id: string
+          theme_id: string
+          theme_label: string
+        }
+        Insert: {
+          created_at?: string
+          created_by: string
+          figure_draft_id: string
+          id?: string
+          theme_id: string
+          theme_label: string
+        }
+        Update: {
+          created_at?: string
+          created_by?: string
+          figure_draft_id?: string
+          id?: string
+          theme_id?: string
+          theme_label?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "figure_draft_themes_figure_draft_id_fkey"
+            columns: ["figure_draft_id"]
+            isOneToOne: false
+            referencedRelation: "figure_drafts"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      figure_drafts: {
+        Row: {
+          approved_at: string | null
+          approved_by: string | null
+          archived_at: string | null
+          biography_ar: string | null
+          biography_en: string | null
+          biography_fr: string | null
+          birth_date_text: string | null
+          birth_year: number | null
+          birthplace_text_ar: string | null
+          birthplace_text_en: string | null
+          birthplace_text_fr: string | null
+          created_at: string
+          created_by: string
+          death_date_text: string | null
+          death_year: number | null
+          id: string
+          name_ar: string | null
+          name_en: string
+          name_fr: string | null
+          public_figure_id: string | null
+          review_note: string | null
+          slug: string
+          status: Database["public"]["Enums"]["figure_draft_status"]
+          submitted_at: string | null
+          submitted_by: string | null
+          subtitle_ar: string | null
+          subtitle_en: string | null
+          subtitle_fr: string | null
+          summary_ar: string | null
+          summary_en: string | null
+          summary_fr: string | null
+          updated_at: string
+          updated_by: string
+        }
+        Insert: {
+          approved_at?: string | null
+          approved_by?: string | null
+          archived_at?: string | null
+          biography_ar?: string | null
+          biography_en?: string | null
+          biography_fr?: string | null
+          birth_date_text?: string | null
+          birth_year?: number | null
+          birthplace_text_ar?: string | null
+          birthplace_text_en?: string | null
+          birthplace_text_fr?: string | null
+          created_at?: string
+          created_by: string
+          death_date_text?: string | null
+          death_year?: number | null
+          id?: string
+          name_ar?: string | null
+          name_en: string
+          name_fr?: string | null
+          public_figure_id?: string | null
+          review_note?: string | null
+          slug: string
+          status?: Database["public"]["Enums"]["figure_draft_status"]
+          submitted_at?: string | null
+          submitted_by?: string | null
+          subtitle_ar?: string | null
+          subtitle_en?: string | null
+          subtitle_fr?: string | null
+          summary_ar?: string | null
+          summary_en?: string | null
+          summary_fr?: string | null
+          updated_at?: string
+          updated_by: string
+        }
+        Update: {
+          approved_at?: string | null
+          approved_by?: string | null
+          archived_at?: string | null
+          biography_ar?: string | null
+          biography_en?: string | null
+          biography_fr?: string | null
+          birth_date_text?: string | null
+          birth_year?: number | null
+          birthplace_text_ar?: string | null
+          birthplace_text_en?: string | null
+          birthplace_text_fr?: string | null
+          created_at?: string
+          created_by?: string
+          death_date_text?: string | null
+          death_year?: number | null
+          id?: string
+          name_ar?: string | null
+          name_en?: string
+          name_fr?: string | null
+          public_figure_id?: string | null
+          review_note?: string | null
+          slug?: string
+          status?: Database["public"]["Enums"]["figure_draft_status"]
+          submitted_at?: string | null
+          submitted_by?: string | null
+          subtitle_ar?: string | null
+          subtitle_en?: string | null
+          subtitle_fr?: string | null
+          summary_ar?: string | null
+          summary_en?: string | null
+          summary_fr?: string | null
+          updated_at?: string
+          updated_by?: string
+        }
+        Relationships: []
+      }
       profiles: {
         Row: {
           created_at: string
@@ -255,6 +547,22 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
+      _snapshot_figure_draft: {
+        Args: { _actor: string; _id: string; _summary: string }
+        Returns: undefined
+      }
+      add_figure_draft_relation: {
+        Args: {
+          _draft_id: string
+          _kind: string
+          _label: string
+          _ref_id: string
+          _relationship_note: string
+          _relationship_type: string
+        }
+        Returns: undefined
+      }
+      archive_figure_draft: { Args: { _id: string }; Returns: undefined }
       archive_source: { Args: { _id: string }; Returns: undefined }
       assign_role: {
         Args: {
@@ -263,9 +571,19 @@ export type Database = {
         }
         Returns: undefined
       }
+      can_approve_figure_drafts: { Args: { _uid: string }; Returns: boolean }
       can_archive_sources: { Args: { _uid: string }; Returns: boolean }
+      can_fact_check_figure_drafts: { Args: { _uid: string }; Returns: boolean }
+      can_research_figure_drafts: { Args: { _uid: string }; Returns: boolean }
+      can_translate_figure_drafts: { Args: { _uid: string }; Returns: boolean }
+      can_translation_review_figure_drafts: {
+        Args: { _uid: string }
+        Returns: boolean
+      }
       can_verify_sources: { Args: { _uid: string }; Returns: boolean }
+      can_write_figure_drafts: { Args: { _uid: string }; Returns: boolean }
       can_write_sources: { Args: { _uid: string }; Returns: boolean }
+      create_figure_draft: { Args: { _payload: Json }; Returns: string }
       create_source: { Args: { _payload: Json }; Returns: string }
       get_my_studio_roles: {
         Args: never
@@ -303,6 +621,11 @@ export type Database = {
         }
         Returns: string
       }
+      remove_figure_draft_relation: {
+        Args: { _draft_id: string; _kind: string; _ref_id: string }
+        Returns: undefined
+      }
+      restore_figure_draft: { Args: { _id: string }; Returns: undefined }
       restore_source: { Args: { _id: string }; Returns: undefined }
       revoke_role: {
         Args: {
@@ -317,8 +640,16 @@ export type Database = {
       }
       show_limit: { Args: never; Returns: number }
       show_trgm: { Args: { "": string }; Returns: string[] }
+      transition_figure_draft: {
+        Args: { _id: string; _next: string; _note: string }
+        Returns: undefined
+      }
       unlink_source_from_content: {
         Args: { _link_id: string }
+        Returns: undefined
+      }
+      update_figure_draft: {
+        Args: { _id: string; _payload: Json; _scope: string }
         Returns: undefined
       }
       update_my_profile: {
@@ -345,6 +676,15 @@ export type Database = {
         | "educator"
         | "publisher"
         | "technical_administrator"
+      figure_draft_status:
+        | "draft"
+        | "research_review"
+        | "fact_check"
+        | "translation_review"
+        | "curator_review"
+        | "approved"
+        | "changes_requested"
+        | "archived"
       reliability_tier:
         | "primary"
         | "scholarly"
@@ -518,6 +858,16 @@ export const Constants = {
         "educator",
         "publisher",
         "technical_administrator",
+      ],
+      figure_draft_status: [
+        "draft",
+        "research_review",
+        "fact_check",
+        "translation_review",
+        "curator_review",
+        "approved",
+        "changes_requested",
+        "archived",
       ],
       reliability_tier: [
         "primary",
