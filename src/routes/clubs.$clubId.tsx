@@ -47,11 +47,11 @@ const SERIF = { fontFamily: "Georgia, 'Iowan Old Style', 'Times New Roman', seri
 function ClubNotFound() {
   const lang = useLang();
   return (
-    <div className="min-h-screen bg-[oklch(0.14_0.015_45)] text-[oklch(0.94_0.03_80)]">
+    <div className="min-h-screen bg-background text-foreground">
       <Header />
       <div className="max-w-3xl mx-auto px-4 py-24 text-center">
         <h1 className="text-3xl font-bold" style={SERIF}>{{ en: "Museum not found", fr: "Musée introuvable", ar: "المتحف غير موجود" }[lang]}</h1>
-        <Link to="/clubs" className="inline-block mt-6 text-[oklch(0.85_0.14_82)] hover:underline">
+        <Link to="/clubs" className="inline-block mt-6 text-primary hover:underline">
           ← {{ en: "Back to Club Museums", fr: "Retour aux Musées des Clubs", ar: "العودة إلى متاحف الأندية" }[lang]}
         </Link>
       </div>
@@ -79,7 +79,7 @@ function ClubMuseumRoute() {
 
 function ComingSoonView({ club, lang }: { club: ClubMuseum; lang: Lang }) {
   return (
-    <div className="min-h-screen bg-[oklch(0.14_0.015_45)] text-[oklch(0.94_0.03_80)]">
+    <div className="min-h-screen bg-background text-foreground">
       <Header />
       <section className="max-w-3xl mx-auto px-4 sm:px-6 py-16 text-center">
         <MedallionFrame tone="bronze" size={120}>
@@ -100,7 +100,7 @@ function ComingSoonView({ club, lang }: { club: ClubMuseum; lang: Lang }) {
           ✦ {{ en: "This club museum wing is coming soon.", fr: "Cette aile muséale ouvrira bientôt.", ar: "سيُفتتح جناح هذا النادي قريباً." }[lang]}
         </div>
         <div className="mt-8">
-          <Link to="/clubs" className="text-[oklch(0.85_0.14_82)] hover:underline">
+          <Link to="/clubs" className="text-primary hover:underline">
             ← {{ en: "Back to Club Museums", fr: "Retour aux Musées des Clubs", ar: "العودة إلى متاحف الأندية" }[lang]}
           </Link>
         </div>
@@ -132,14 +132,14 @@ function FullMuseumView({ club, lang }: { club: ClubMuseum; lang: Lang }) {
   const { primary, secondary } = club.identity.colors;
 
   return (
-    <div className="min-h-screen bg-[oklch(0.14_0.015_45)] text-[oklch(0.94_0.03_80)]">
+    <div className="min-h-screen bg-background text-foreground">
       <Header />
 
       <Hero club={club} lang={lang} />
 
       <nav
         aria-label={{ en: "Museum sections", fr: "Sections du musée", ar: "أقسام المتحف" }[lang]}
-        className="sticky top-14 z-20 border-y border-[oklch(0.7_0.1_75_/_0.25)] backdrop-blur-md"
+        className="sticky top-14 z-20 border-y border-border/70 backdrop-blur-md"
         style={{ background: "oklch(0.14 0.015 45 / 0.85)" }}
       >
         <div className="max-w-6xl mx-auto px-3 sm:px-6 py-2 flex gap-2 overflow-x-auto scrollbar-none">
@@ -150,7 +150,7 @@ function FullMuseumView({ club, lang }: { club: ClubMuseum; lang: Lang }) {
               <a
                 key={s.id}
                 href={`#${s.id}`}
-                className="whitespace-nowrap text-xs uppercase tracking-[0.2em] rounded-full px-3 py-1.5 border border-[oklch(0.7_0.1_75_/_0.25)] text-[oklch(0.9_0.06_82)] hover:bg-[oklch(1_0_0_/_0.05)] transition"
+                className="whitespace-nowrap text-xs uppercase tracking-[0.2em] rounded-full px-3 py-1.5 border border-border/70 text-foreground hover:bg-muted transition"
               >
                 {s[lang]}
               </a>
@@ -177,7 +177,7 @@ function FullMuseumView({ club, lang }: { club: ClubMuseum; lang: Lang }) {
       </main>
 
       <footer className="border-t border-[oklch(0.7_0.1_75_/_0.2)] py-10 text-center">
-        <Link to="/clubs" className="text-sm text-[oklch(0.85_0.14_82)] hover:underline">
+        <Link to="/clubs" className="text-sm text-primary hover:underline">
           ← {{ en: "Back to Club Museums", fr: "Retour aux Musées des Clubs", ar: "العودة إلى متاحف الأندية" }[lang]}
         </Link>
         <div className="text-[10px] uppercase tracking-[0.28em] mt-4 opacity-60">
@@ -204,7 +204,7 @@ function Hero({ club, lang }: { club: ClubMuseum; lang: Lang }) {
     >
       <div className="relative max-w-6xl mx-auto px-4 sm:px-6 py-14 sm:py-20 grid gap-10 md:grid-cols-[1fr_auto] items-center">
         <div>
-          <p className="text-[10px] sm:text-xs uppercase tracking-[0.28em] font-bold text-[oklch(0.85_0.14_82)]">
+          <p className="text-[10px] sm:text-xs uppercase tracking-[0.28em] font-bold text-primary">
             ⵣ · {{ en: "Club Museum", fr: "Musée du club", ar: "متحف النادي" }[lang]}
           </p>
           <h1 className="mt-3 text-4xl sm:text-5xl md:text-6xl font-bold leading-[1.05]" style={SERIF}>
@@ -296,7 +296,7 @@ function TimelineSection({ club, lang }: { club: ClubMuseum; lang: Lang }) {
           </FilterChip>
         ))}
       </div>
-      <ol className="relative border-s border-[oklch(0.7_0.1_75_/_0.3)] ps-6 space-y-6">
+      <ol className="relative border-s border-border ps-6 space-y-6">
         {filtered.map((e) => (
           <li key={e.id}>
             <span
@@ -304,7 +304,7 @@ function TimelineSection({ club, lang }: { club: ClubMuseum; lang: Lang }) {
               style={{ background: `radial-gradient(circle at 30% 30%, ${club.identity.colors.primary}, ${club.identity.colors.secondary})` }}
               aria-hidden
             />
-            <div className="text-xs uppercase tracking-[0.24em] text-[oklch(0.85_0.14_82)]">
+            <div className="text-xs uppercase tracking-[0.24em] text-primary">
               {e.year} · <span className="opacity-80">{{ foundation: "Foundation", title: "Title", african: "African", final: "Final", player: "Player", coach: "Coach", stadium: "Stadium", milestone: "Milestone" }[e.kind]}</span>
             </div>
             <div className="text-base font-semibold mt-1" style={SERIF}>{t(e.title, lang)}</div>
@@ -352,7 +352,7 @@ function TrophySection({ club, lang }: { club: ClubMuseum; lang: Lang }) {
                       {tr.location && <div>{{ en: "Location", fr: "Lieu", ar: "المكان" }[lang]}: {t(tr.location, lang)}</div>}
                     </div>
                   )}
-                  {tr.significance && <p className="text-xs mt-2 italic text-[oklch(0.9_0.06_82)]">{t(tr.significance, lang)}</p>}
+                  {tr.significance && <p className="text-xs mt-2 italic text-foreground">{t(tr.significance, lang)}</p>}
                   {tr.note && <p className="text-[11px] mt-2 opacity-70">✦ {t(tr.note, lang)}</p>}
                 </div>
               ))}
@@ -377,7 +377,7 @@ function AfricanSection({ club, lang }: { club: ClubMuseum; lang: Lang }) {
       <div className="mt-6 grid gap-3 sm:grid-cols-2">
         {a.finals.map((f) => (
           <div key={`${f.year}-${t(f.competition, "en")}`} className="rounded-xl border p-4" style={{ borderColor: "oklch(0.7 0.1 75 / 0.3)" }}>
-            <div className="text-xs uppercase tracking-[0.24em] text-[oklch(0.85_0.14_82)]">{f.year}</div>
+            <div className="text-xs uppercase tracking-[0.24em] text-primary">{f.year}</div>
             <div className="text-base font-semibold mt-1" style={SERIF}>{t(f.competition, lang)}</div>
             <div className="text-sm mt-1">vs {t(f.opponent, lang)} — {f.score}</div>
             {f.note && <p className="text-[11px] mt-2 opacity-70">✦ {t(f.note, lang)}</p>}
@@ -407,7 +407,7 @@ function LegendsSection({ club, lang }: { club: ClubMuseum; lang: Lang }) {
                   type="button"
                   onClick={() => toggle(id)}
                   aria-pressed={saved}
-                  className="text-xs rounded-full px-3 py-1 border border-[oklch(0.7_0.1_75_/_0.4)] hover:bg-[oklch(1_0_0_/_0.06)] transition"
+                  className="text-xs rounded-full px-3 py-1 border border-border hover:bg-muted transition"
                 >
                   {saved ? "★" : "☆"} {{ en: "Save", fr: "Enregistrer", ar: "احفظ" }[lang]}
                 </button>
@@ -435,7 +435,7 @@ function CoachesSection({ club, lang }: { club: ClubMuseum; lang: Lang }) {
           <Plaque key={c.id}>
             <div className="text-lg font-bold" style={SERIF}>{t(c.name, lang)}</div>
             <div className="text-xs opacity-80">{c.years}</div>
-            {c.philosophy && <p className="text-xs italic mt-2 text-[oklch(0.9_0.06_82)]">{t(c.philosophy, lang)}</p>}
+            {c.philosophy && <p className="text-xs italic mt-2 text-foreground">{t(c.philosophy, lang)}</p>}
             <p className="text-sm mt-3">{t(c.bio, lang)}</p>
             {c.achievements?.length ? (
               <ul className="text-xs mt-3 list-disc ps-5 space-y-1 opacity-90">
@@ -460,7 +460,7 @@ function MatchesSection({ club, lang }: { club: ClubMuseum; lang: Lang }) {
           const theater = m.theaterId && hasMatchTheater(m.theaterId) ? m.theaterId : undefined;
           return (
             <div key={m.id} className="rounded-2xl border p-5" style={{ borderColor: "oklch(0.7 0.1 75 / 0.3)", background: "oklch(0.18 0.02 50 / 0.7)" }}>
-              <div className="text-xs uppercase tracking-[0.24em] text-[oklch(0.85_0.14_82)]">{m.year}</div>
+              <div className="text-xs uppercase tracking-[0.24em] text-primary">{m.year}</div>
               <div className="text-base font-semibold mt-1" style={SERIF}>{t(m.title, lang)}</div>
               <p className="text-sm mt-2">{t(m.summary, lang)}</p>
               <div className="mt-3 flex items-center gap-2">
@@ -478,7 +478,7 @@ function MatchesSection({ club, lang }: { club: ClubMuseum; lang: Lang }) {
                   type="button"
                   onClick={() => toggle(id)}
                   aria-pressed={saved}
-                  className="text-xs rounded-full px-3 py-1.5 border border-[oklch(0.7_0.1_75_/_0.4)] hover:bg-[oklch(1_0_0_/_0.06)] transition"
+                  className="text-xs rounded-full px-3 py-1.5 border border-border hover:bg-muted transition"
                 >
                   {saved ? "★" : "☆"} {{ en: "Save", fr: "Enregistrer", ar: "احفظ" }[lang]}
                 </button>
@@ -557,7 +557,7 @@ function JerseysSection({ club, lang }: { club: ClubMuseum; lang: Lang }) {
               onClick={() => setI(idx)}
               className={
                 "text-start rounded-xl px-3 py-2 border text-sm transition " +
-                (idx === i ? "text-[oklch(0.15_0.02_45)]" : "text-[oklch(0.9_0.03_82)] hover:bg-[oklch(1_0_0_/_0.05)]")
+                (idx === i ? "text-[oklch(0.15_0.02_45)]" : "text-[oklch(0.9_0.03_82)] hover:bg-muted")
               }
               style={idx === i
                 ? { background: "linear-gradient(135deg, oklch(0.92 0.13 86), oklch(0.72 0.14 72))", borderColor: "transparent" }
@@ -594,7 +594,7 @@ function ArchiveSection({ club, lang }: { club: ClubMuseum; lang: Lang }) {
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {club.archive!.map((a) => (
           <div key={a.id} className="rounded-xl border p-4" style={{ borderColor: "oklch(0.7 0.1 75 / 0.3)", background: "oklch(0.18 0.02 50 / 0.7)" }}>
-            <div className="text-xs uppercase tracking-[0.24em] text-[oklch(0.85_0.14_82)]">{a.kind}{a.year ? ` · ${a.year}` : ""}</div>
+            <div className="text-xs uppercase tracking-[0.24em] text-primary">{a.kind}{a.year ? ` · ${a.year}` : ""}</div>
             <div className="text-base font-semibold mt-1" style={SERIF}>{t(a.title, lang)}</div>
             <p className="text-sm mt-2 opacity-90">{t(a.description, lang)}</p>
             {a.source && <p className="text-[11px] mt-2 opacity-70">✦ {t(a.source, lang)}</p>}
@@ -613,7 +613,7 @@ function StatsSection({ club, lang }: { club: ClubMuseum; lang: Lang }) {
       <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
         {s.records.map((r) => (
           <div key={r.id} className="rounded-xl border p-4" style={{ borderColor: "oklch(0.7 0.1 75 / 0.3)" }}>
-            <div className="text-xs uppercase tracking-[0.24em] text-[oklch(0.85_0.14_82)]">{t(r.label, lang)}</div>
+            <div className="text-xs uppercase tracking-[0.24em] text-primary">{t(r.label, lang)}</div>
             <div className="text-lg font-bold mt-1" style={SERIF}>{t(r.value, lang)}</div>
             {r.note && <p className="text-[11px] mt-2 opacity-70">✦ {t(r.note, lang)}</p>}
           </div>
@@ -657,15 +657,15 @@ function QuizSection({ questions, lang }: { questions: QuizQuestion[]; lang: Lan
       <div className="rounded-2xl border p-6" style={{ borderColor: "oklch(0.7 0.1 75 / 0.3)", background: "oklch(0.18 0.02 50 / 0.7)" }}>
         {done ? (
           <div className="text-center">
-            <div className="text-xs uppercase tracking-[0.28em] text-[oklch(0.85_0.14_82)]">{{ en: "Result", fr: "Résultat", ar: "النتيجة" }[lang]}</div>
+            <div className="text-xs uppercase tracking-[0.28em] text-primary">{{ en: "Result", fr: "Résultat", ar: "النتيجة" }[lang]}</div>
             <div className="text-3xl font-bold mt-2" style={SERIF}>{score} / {questions.length}</div>
-            <button onClick={reset} className="mt-5 text-xs rounded-full px-4 py-2 border border-[oklch(0.7_0.1_75_/_0.4)] hover:bg-[oklch(1_0_0_/_0.06)]">
+            <button onClick={reset} className="mt-5 text-xs rounded-full px-4 py-2 border border-border hover:bg-muted">
               {{ en: "Try again", fr: "Réessayer", ar: "أعد المحاولة" }[lang]}
             </button>
           </div>
         ) : (
           <>
-            <div className="text-xs uppercase tracking-[0.24em] text-[oklch(0.85_0.14_82)]">{{ en: "Question", fr: "Question", ar: "سؤال" }[lang]} {step + 1} / {questions.length}</div>
+            <div className="text-xs uppercase tracking-[0.24em] text-primary">{{ en: "Question", fr: "Question", ar: "سؤال" }[lang]} {step + 1} / {questions.length}</div>
             <div className="text-lg font-semibold mt-2" style={SERIF}>{t(q.q, lang)}</div>
             <div className="mt-4 grid gap-2">
               {q.choices.map((c, i) => (
@@ -675,7 +675,7 @@ function QuizSection({ questions, lang }: { questions: QuizQuestion[]; lang: Lan
                   aria-pressed={picked === i}
                   className={
                     "text-start rounded-xl px-4 py-3 border text-sm transition " +
-                    (picked === i ? "bg-[oklch(1_0_0_/_0.08)] border-[oklch(0.85_0.14_82_/_0.6)]" : "border-[oklch(0.7_0.1_75_/_0.3)] hover:bg-[oklch(1_0_0_/_0.05)]")
+                    (picked === i ? "bg-muted border-[oklch(0.85_0.14_82_/_0.6)]" : "border-border hover:bg-muted")
                   }
                 >
                   {t(c, lang)}
@@ -720,7 +720,7 @@ function Plaque({ children, className = "" }: { children: React.ReactNode; class
 }
 
 function PlaqueLabel({ children }: { children: React.ReactNode }) {
-  return <div className="text-[10px] uppercase tracking-[0.28em] text-[oklch(0.85_0.14_82)] mb-2">{children}</div>;
+  return <div className="text-[10px] uppercase tracking-[0.28em] text-primary mb-2">{children}</div>;
 }
 
 function FilterChip({ active, onClick, children }: { active: boolean; onClick: () => void; children: React.ReactNode }) {
@@ -731,7 +731,7 @@ function FilterChip({ active, onClick, children }: { active: boolean; onClick: (
       aria-pressed={active}
       className={
         "text-xs rounded-full px-3 py-1.5 border transition whitespace-nowrap " +
-        (active ? "text-[oklch(0.15_0.02_45)]" : "text-[oklch(0.9_0.06_82)] hover:bg-[oklch(1_0_0_/_0.05)]")
+        (active ? "text-[oklch(0.15_0.02_45)]" : "text-foreground hover:bg-muted")
       }
       style={active
         ? { background: "linear-gradient(135deg, oklch(0.92 0.13 86), oklch(0.72 0.14 72))", borderColor: "transparent" }
