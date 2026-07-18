@@ -300,7 +300,7 @@ export function AskCurator() {
             </DialogPrimitive.Title>
 
             {/* Gallery-entrance header (museum plaque) */}
-            <header className="relative px-6 sm:px-8 pt-7 pb-6">
+            <header className="relative shrink-0 px-6 sm:px-8 pt-7 pb-6">
               <div className="flex items-start gap-4">
                 <div
                   className="flex items-center justify-center w-14 h-14 rounded-full shrink-0"
