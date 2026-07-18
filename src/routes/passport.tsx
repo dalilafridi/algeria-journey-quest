@@ -148,7 +148,7 @@ function PassportPage() {
   };
 
   return (
-    <div className="min-h-dvh bg-[#0e0a06]">
+    <div className="min-h-dvh bg-background">
       <div className="no-print">
         <Header />
       </div>
