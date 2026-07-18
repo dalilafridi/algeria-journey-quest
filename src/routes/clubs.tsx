@@ -42,7 +42,7 @@ function ClubsLanding() {
   };
 
   return (
-    <div className="min-h-screen bg-[oklch(0.14_0.015_45)] text-[oklch(0.94_0.03_80)]">
+    <div className="min-h-screen bg-background text-foreground">
       <Header />
 
       <section
@@ -53,19 +53,19 @@ function ClubsLanding() {
         }}
       >
         <div className="relative max-w-6xl mx-auto px-4 sm:px-6 py-14 sm:py-20">
-          <p className="text-[10px] sm:text-xs uppercase tracking-[0.28em] font-bold text-[oklch(0.85_0.14_82)]">
+          <p className="text-[10px] sm:text-xs uppercase tracking-[0.28em] font-bold text-primary">
             ⵣ · {T.eyebrow}
           </p>
           <h1 className="mt-3 text-4xl sm:text-5xl md:text-6xl font-bold leading-[1.05]" style={SERIF}>
             {T.title}
           </h1>
-          <p className="mt-5 max-w-2xl text-base sm:text-lg italic text-[oklch(0.88_0.03_85)]/85" style={SERIF}>
+          <p className="mt-5 max-w-2xl text-base sm:text-lg italic text-foreground/75" style={SERIF}>
             {T.subtitle}
           </p>
           <div className="mt-6">
             <Link
               to="/football"
-              className="text-sm text-[oklch(0.85_0.14_82)] hover:underline"
+              className="text-sm text-primary hover:underline"
             >
               {T.backToFootball}
             </Link>
@@ -122,7 +122,7 @@ function FeaturedCard({ club, lang, label, cta, founded }: { club: ClubMuseum; l
           </div>
         </div>
         <div>
-          <p className="text-[10px] uppercase tracking-[0.3em] font-bold text-[oklch(0.85_0.14_82)]">{label}</p>
+          <p className="text-[10px] uppercase tracking-[0.3em] font-bold text-primary">{label}</p>
           <h3 className="mt-2 text-2xl sm:text-3xl font-bold" style={SERIF}>{t(club.fullName, lang)}</h3>
           <p className="text-sm text-muted-foreground mt-1">
             {t(club.city, lang)} · {founded} {club.founded}
