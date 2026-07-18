@@ -140,7 +140,7 @@ function FullMuseumView({ club, lang }: { club: ClubMuseum; lang: Lang }) {
       <nav
         aria-label={{ en: "Museum sections", fr: "Sections du musée", ar: "أقسام المتحف" }[lang]}
         className="sticky top-14 z-20 border-y border-border/70 backdrop-blur-md"
-        style={{ background: "oklch(0.14 0.015 45 / 0.85)" }}
+        style={{ background: "oklch(0.98 0.02 84 / 0.9)" }}
       >
         <div className="max-w-6xl mx-auto px-3 sm:px-6 py-2 flex gap-2 overflow-x-auto scrollbar-none">
           {SECTIONS.map((s) => {
@@ -338,7 +338,7 @@ function TrophySection({ club, lang }: { club: ClubMuseum; lang: Lang }) {
             </div>
             <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
               {list.map((tr) => (
-                <div key={tr.id} className="rounded-xl border p-4" style={{ borderColor: "oklch(0.7 0.1 75 / 0.3)", background: "oklch(0.18 0.02 50 / 0.7)" }}>
+                <div key={tr.id} className="rounded-xl border p-4" style={{ borderColor: "oklch(0.78 0.06 68 / 0.55)", background: "oklch(0.99 0.012 86 / 0.85)" }}>
                   <div className="flex items-center gap-3">
                     <div className="text-2xl" aria-hidden>🏆</div>
                     <div>
@@ -376,7 +376,7 @@ function AfricanSection({ club, lang }: { club: ClubMuseum; lang: Lang }) {
       </Plaque>
       <div className="mt-6 grid gap-3 sm:grid-cols-2">
         {a.finals.map((f) => (
-          <div key={`${f.year}-${t(f.competition, "en")}`} className="rounded-xl border p-4" style={{ borderColor: "oklch(0.7 0.1 75 / 0.3)" }}>
+          <div key={`${f.year}-${t(f.competition, "en")}`} className="rounded-xl border p-4" style={{ borderColor: "oklch(0.78 0.06 68 / 0.55)" }}>
             <div className="text-xs uppercase tracking-[0.24em] text-primary">{f.year}</div>
             <div className="text-base font-semibold mt-1" style={SERIF}>{t(f.competition, lang)}</div>
             <div className="text-sm mt-1">vs {t(f.opponent, lang)} — {f.score}</div>
@@ -397,7 +397,7 @@ function LegendsSection({ club, lang }: { club: ClubMuseum; lang: Lang }) {
           const id = `${club.id}:${p.id}`;
           const saved = has(id);
           return (
-            <div key={p.id} className="rounded-2xl border p-5" style={{ borderColor: "oklch(0.7 0.1 75 / 0.3)", background: "oklch(0.18 0.02 50 / 0.7)" }}>
+            <div key={p.id} className="rounded-2xl border p-5" style={{ borderColor: "oklch(0.78 0.06 68 / 0.55)", background: "oklch(0.99 0.012 86 / 0.85)" }}>
               <div className="flex items-start justify-between gap-4">
                 <div>
                   <div className="text-lg font-bold" style={SERIF}>{t(p.name, lang)}</div>
@@ -459,7 +459,7 @@ function MatchesSection({ club, lang }: { club: ClubMuseum; lang: Lang }) {
           const saved = has(id);
           const theater = m.theaterId && hasMatchTheater(m.theaterId) ? m.theaterId : undefined;
           return (
-            <div key={m.id} className="rounded-2xl border p-5" style={{ borderColor: "oklch(0.7 0.1 75 / 0.3)", background: "oklch(0.18 0.02 50 / 0.7)" }}>
+            <div key={m.id} className="rounded-2xl border p-5" style={{ borderColor: "oklch(0.78 0.06 68 / 0.55)", background: "oklch(0.99 0.012 86 / 0.85)" }}>
               <div className="text-xs uppercase tracking-[0.24em] text-primary">{m.year}</div>
               <div className="text-base font-semibold mt-1" style={SERIF}>{t(m.title, lang)}</div>
               <p className="text-sm mt-2">{t(m.summary, lang)}</p>
@@ -533,7 +533,7 @@ function CultureSection({ club, lang }: { club: ClubMuseum; lang: Lang }) {
       </Plaque>
       <div className="mt-4 grid gap-4 md:grid-cols-3">
         {c.entries.map((e) => (
-          <div key={e.id} className="rounded-xl border p-4" style={{ borderColor: "oklch(0.7 0.1 75 / 0.3)" }}>
+          <div key={e.id} className="rounded-xl border p-4" style={{ borderColor: "oklch(0.78 0.06 68 / 0.55)" }}>
             <div className="text-base font-semibold" style={SERIF}>{t(e.title, lang)}</div>
             <p className="text-sm mt-2 opacity-90">{t(e.body, lang)}</p>
           </div>
@@ -561,14 +561,14 @@ function JerseysSection({ club, lang }: { club: ClubMuseum; lang: Lang }) {
               }
               style={idx === i
                 ? { background: "linear-gradient(135deg, oklch(0.92 0.13 86), oklch(0.72 0.14 72))", borderColor: "transparent" }
-                : { borderColor: "oklch(0.7 0.1 75 / 0.3)" }}
+                : { borderColor: "oklch(0.78 0.06 68 / 0.55)" }}
             >
               <div className="font-semibold">{j.decade}</div>
               <div className="text-xs opacity-80">{t(j.title, lang)}</div>
             </button>
           ))}
         </div>
-        <div className="rounded-2xl border p-6" style={{ borderColor: "oklch(0.7 0.1 75 / 0.3)" }}>
+        <div className="rounded-2xl border p-6" style={{ borderColor: "oklch(0.78 0.06 68 / 0.55)" }}>
           <JerseyGraphic primary={active.colors.primary} secondary={active.colors.secondary} />
           <div className="mt-4 text-base font-semibold" style={SERIF}>{t(active.title, lang)} · {active.decade}</div>
           <p className="text-sm mt-2 opacity-90">{t(active.notes, lang)}</p>
@@ -593,7 +593,7 @@ function ArchiveSection({ club, lang }: { club: ClubMuseum; lang: Lang }) {
     <SectionShell id="archive" title={{ en: "Club Museum Archive", fr: "Archives du musée", ar: "أرشيف المتحف" }[lang]}>
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {club.archive!.map((a) => (
-          <div key={a.id} className="rounded-xl border p-4" style={{ borderColor: "oklch(0.7 0.1 75 / 0.3)", background: "oklch(0.18 0.02 50 / 0.7)" }}>
+          <div key={a.id} className="rounded-xl border p-4" style={{ borderColor: "oklch(0.78 0.06 68 / 0.55)", background: "oklch(0.99 0.012 86 / 0.85)" }}>
             <div className="text-xs uppercase tracking-[0.24em] text-primary">{a.kind}{a.year ? ` · ${a.year}` : ""}</div>
             <div className="text-base font-semibold mt-1" style={SERIF}>{t(a.title, lang)}</div>
             <p className="text-sm mt-2 opacity-90">{t(a.description, lang)}</p>
@@ -612,7 +612,7 @@ function StatsSection({ club, lang }: { club: ClubMuseum; lang: Lang }) {
       {s.intro && <p className="text-sm italic opacity-90 mb-4 max-w-3xl" style={SERIF}>{t(s.intro, lang)}</p>}
       <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
         {s.records.map((r) => (
-          <div key={r.id} className="rounded-xl border p-4" style={{ borderColor: "oklch(0.7 0.1 75 / 0.3)" }}>
+          <div key={r.id} className="rounded-xl border p-4" style={{ borderColor: "oklch(0.78 0.06 68 / 0.55)" }}>
             <div className="text-xs uppercase tracking-[0.24em] text-primary">{t(r.label, lang)}</div>
             <div className="text-lg font-bold mt-1" style={SERIF}>{t(r.value, lang)}</div>
             {r.note && <p className="text-[11px] mt-2 opacity-70">✦ {t(r.note, lang)}</p>}
@@ -654,7 +654,7 @@ function QuizSection({ questions, lang }: { questions: QuizQuestion[]; lang: Lan
 
   return (
     <SectionShell id="quiz" title={{ en: "Museum Quiz", fr: "Quiz du musée", ar: "اختبار المتحف" }[lang]}>
-      <div className="rounded-2xl border p-6" style={{ borderColor: "oklch(0.7 0.1 75 / 0.3)", background: "oklch(0.18 0.02 50 / 0.7)" }}>
+      <div className="rounded-2xl border p-6" style={{ borderColor: "oklch(0.78 0.06 68 / 0.55)", background: "oklch(0.99 0.012 86 / 0.85)" }}>
         {done ? (
           <div className="text-center">
             <div className="text-xs uppercase tracking-[0.28em] text-primary">{{ en: "Result", fr: "Résultat", ar: "النتيجة" }[lang]}</div>
@@ -709,8 +709,8 @@ function Plaque({ children, className = "" }: { children: React.ReactNode; class
     <div
       className={"rounded-2xl border p-5 sm:p-6 " + className}
       style={{
-        borderColor: "oklch(0.7 0.1 75 / 0.3)",
-        background: "linear-gradient(180deg, oklch(0.20 0.03 50 / 0.85), oklch(0.14 0.02 45 / 0.9))",
+        borderColor: "oklch(0.78 0.06 68 / 0.55)",
+        background: "linear-gradient(180deg, oklch(0.99 0.02 84 / 0.95), oklch(0.96 0.03 78 / 0.95))",
         boxShadow: "inset 0 1px 0 oklch(1 0 0 / 0.05)",
       }}
     >
@@ -735,7 +735,7 @@ function FilterChip({ active, onClick, children }: { active: boolean; onClick: (
       }
       style={active
         ? { background: "linear-gradient(135deg, oklch(0.92 0.13 86), oklch(0.72 0.14 72))", borderColor: "transparent" }
-        : { borderColor: "oklch(0.7 0.1 75 / 0.3)" }}
+        : { borderColor: "oklch(0.78 0.06 68 / 0.55)" }}
     >
       {children}
     </button>
