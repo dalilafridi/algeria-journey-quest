@@ -1,21 +1,30 @@
 /**
- * Ask the Curator — floating museum-guide assistant.
+ * Ask the Curator — museum-guide gallery panel.
  *
  * A single-conversation, session-only chat that answers strictly from the
  * museum corpus assembled server-side in `src/lib/curator/corpus.ts`.
- * Opens as a right-side drawer on desktop and as a fullscreen sheet on
- * mobile.
  *
- * Visual language: warm parchment / ivory museum palette — designed to feel
- * like stepping into a curator's private office, not a chatbot window.
+ * Visual language: opening the panel should feel like walking through a
+ * doorway into another gallery — the museum softly blurs behind a warm
+ * parchment veil while a panel slides in, appearing to emerge from the
+ * museum wall rather than floating above it.
  */
 
 import { useChat } from "@ai-sdk/react";
 import { DefaultChatTransport, type UIMessage } from "ai";
-import { Send, X, RotateCcw, BookOpen, ScrollText } from "lucide-react";
+import {
+  Send,
+  X,
+  RotateCcw,
+  BookOpen,
+  ScrollText,
+  Compass,
+  ArrowUpRight,
+} from "lucide-react";
 import { useEffect, useMemo, useRef, useState } from "react";
+import * as DialogPrimitive from "@radix-ui/react-dialog";
+import { Link } from "@tanstack/react-router";
 import ReactMarkdown from "react-markdown";
-import { Sheet, SheetContent, SheetTitle } from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
 import { useLang } from "@/lib/i18n";
 
@@ -70,8 +79,9 @@ const THINKING_MESSAGES = {
 const COPY = {
   en: {
     open: "Ask the Curator",
+    kicker: "DZ Odyssey · Museum",
     title: "Ask the Curator",
-    subtitle: "A guided voice from the museum",
+    subtitle: "A guided voice from within the museum",
     empty:
       "Good day. I speak only from what the museum holds — its figures, eras, regions, culture, cuisine and events. Choose a question below, or ask your own.",
     suggestionsLabel: "Suggested inquiries",
@@ -81,9 +91,17 @@ const COPY = {
     close: "Close",
     footer:
       "The Curator draws from DZ Odyssey's verified museum archive. Answers may evolve as new discoveries are added.",
+    exploreLabel: "Continue through the museum",
+    explore: [
+      { to: "/chronicle", label: "The Chronicle", hint: "Eras & timeline" },
+      { to: "/atlas", label: "Atlas of Figures", hint: "Historical figures" },
+      { to: "/map", label: "Regions", hint: "Places & geography" },
+      { to: "/culture", label: "Culture & Cuisine", hint: "Living heritage" },
+    ],
   },
   fr: {
     open: "Demander au conservateur",
+    kicker: "DZ Odyssey · Musée",
     title: "Demander au conservateur",
     subtitle: "Une voix guide au cœur du musée",
     empty:
@@ -95,9 +113,17 @@ const COPY = {
     close: "Fermer",
     footer:
       "Le conservateur puise dans les archives vérifiées du musée DZ Odyssey. Les réponses évolueront au fil des nouvelles découvertes.",
+    exploreLabel: "Continuer la visite",
+    explore: [
+      { to: "/chronicle", label: "La Chronique", hint: "Époques & frise" },
+      { to: "/atlas", label: "Atlas des figures", hint: "Personnages" },
+      { to: "/map", label: "Régions", hint: "Lieux & géographie" },
+      { to: "/culture", label: "Culture & cuisine", hint: "Patrimoine vivant" },
+    ],
   },
   ar: {
     open: "اسأل القيّم",
+    kicker: "DZ Odyssey · المتحف",
     title: "اسأل القيّم",
     subtitle: "صوت مرشد من قلب المتحف",
     empty:
@@ -109,6 +135,13 @@ const COPY = {
     close: "إغلاق",
     footer:
       "يستند القيّم إلى أرشيف متحف DZ Odyssey الموثّق. قد تتطوّر الإجابات مع اكتشافات جديدة.",
+    exploreLabel: "تابع التجوّل في المتحف",
+    explore: [
+      { to: "/chronicle", label: "السجل التاريخي", hint: "الحقب والخط الزمني" },
+      { to: "/atlas", label: "أطلس الشخصيات", hint: "شخصيات تاريخية" },
+      { to: "/map", label: "المناطق", hint: "الأماكن والجغرافيا" },
+      { to: "/culture", label: "الثقافة والمطبخ", hint: "تراث حيّ" },
+    ],
   },
 } as const;
 
@@ -157,12 +190,11 @@ export function AskCurator() {
   }, [messages, status, open]);
 
   useEffect(() => {
-    if (open) setTimeout(() => inputRef.current?.focus(), 120);
+    if (open) setTimeout(() => inputRef.current?.focus(), 260);
   }, [open, messages.length]);
 
   const busy = status === "submitted" || status === "streaming";
 
-  // Rotate the "consulting the archives…" messages while busy.
   useEffect(() => {
     if (!busy) return;
     const t = setInterval(() => {
@@ -177,6 +209,19 @@ export function AskCurator() {
     setInput("");
     void sendMessage({ text: trimmed });
   };
+
+  const lastAssistantIdx = (() => {
+    for (let i = messages.length - 1; i >= 0; i--) {
+      if (messages[i].role === "assistant") return i;
+    }
+    return -1;
+  })();
+
+  const sideClass = isMobile
+    ? "inset-x-0 bottom-0 h-[92dvh] rounded-t-[28px] data-[state=closed]:translate-y-full data-[state=open]:translate-y-0"
+    : rtl
+    ? "inset-y-4 start-4 w-full sm:max-w-[480px] md:max-w-[560px] rounded-[28px] data-[state=closed]:-translate-x-6 data-[state=open]:translate-x-0"
+    : "inset-y-4 end-4 w-full sm:max-w-[480px] md:max-w-[560px] rounded-[28px] data-[state=closed]:translate-x-6 data-[state=open]:translate-x-0";
 
   return (
     <>
@@ -214,213 +259,289 @@ export function AskCurator() {
         <span className="hidden sm:inline">{copy.open}</span>
       </button>
 
-      <Sheet open={open} onOpenChange={setOpen}>
-        <SheetContent
-          side={isMobile ? "bottom" : rtl ? "left" : "right"}
-          dir={rtl ? "rtl" : "ltr"}
-          className={cn(
-            "p-0 border-none flex flex-col overflow-hidden text-foreground",
-            "[&>button]:hidden",
-            isMobile
-              ? "h-[100dvh] max-h-[100dvh] w-full rounded-none"
-              : "w-full sm:max-w-[460px] md:max-w-[560px]",
-          )}
-          style={{
-            background:
-              "linear-gradient(180deg, oklch(0.982 0.018 84) 0%, oklch(0.965 0.024 82) 100%)",
-          }}
-        >
-          <SheetTitle className="sr-only">{copy.title}</SheetTitle>
-
-          {/* Header */}
-          <div
-            className="flex items-start gap-3 px-6 pt-6 pb-5"
+      <DialogPrimitive.Root open={open} onOpenChange={setOpen}>
+        <DialogPrimitive.Portal>
+          {/* Warm parchment veil — softly blurs the museum behind. */}
+          <DialogPrimitive.Overlay
+            className={cn(
+              "fixed inset-0 z-[70]",
+              "data-[state=open]:animate-in data-[state=closed]:animate-out",
+              "data-[state=open]:fade-in-0 data-[state=closed]:fade-out-0",
+              "data-[state=open]:duration-500 data-[state=closed]:duration-300",
+            )}
             style={{
-              borderBottom: "1px solid oklch(0.85 0.03 78 / 0.7)",
+              background:
+                "radial-gradient(120% 90% at 70% 10%, oklch(0.94 0.04 78 / 0.55) 0%, oklch(0.90 0.05 68 / 0.42) 45%, oklch(0.82 0.06 55 / 0.35) 100%)",
+              backdropFilter: "blur(10px) saturate(115%)",
+            }}
+          />
+
+          {/* Panel — emerges from the museum wall */}
+          <DialogPrimitive.Content
+            dir={rtl ? "rtl" : "ltr"}
+            aria-describedby={undefined}
+            className={cn(
+              "fixed z-[71] flex flex-col overflow-hidden text-foreground",
+              "data-[state=open]:animate-in data-[state=closed]:animate-out",
+              "data-[state=open]:fade-in-0 data-[state=closed]:fade-out-0",
+              "data-[state=open]:duration-500 data-[state=closed]:duration-300",
+              "ease-out",
+              sideClass,
+            )}
+            style={{
+              background:
+                "linear-gradient(180deg, oklch(0.985 0.016 84) 0%, oklch(0.968 0.024 80) 100%)",
+              boxShadow:
+                "0 40px 90px -40px rgba(80,50,20,0.45), 0 12px 30px -18px rgba(80,50,20,0.25), 0 0 0 1px oklch(0.82 0.05 74 / 0.6)",
             }}
           >
-            <div
-              className="flex items-center justify-center w-12 h-12 rounded-full shrink-0"
-              style={{
-                background:
-                  "radial-gradient(circle at 30% 30%, oklch(0.94 0.04 82) 0%, oklch(0.78 0.11 68) 75%, oklch(0.55 0.10 55) 100%)",
-                color: "oklch(0.28 0.05 45)",
-                boxShadow:
-                  "inset 0 1px 0 rgba(255,255,255,0.55), 0 4px 12px -6px rgba(120,70,30,0.35)",
-              }}
-              aria-hidden
-            >
-              <CuratorGlyph />
-            </div>
-            <div className="flex-1 min-w-0">
-              <div
-                className="text-[10px] font-semibold uppercase tracking-[0.28em]"
-                style={{ color: "oklch(0.55 0.11 55)" }}
-              >
-                DZ Odyssey · Museum
-              </div>
-              <div
-                className="text-xl font-semibold leading-tight mt-1 text-[oklch(0.22_0.03_45)]"
-                style={{ fontFamily: "'Cormorant Garamond', var(--font-serif, serif)" }}
-              >
-                {copy.title}
-              </div>
-              <div className="text-[13px] text-[oklch(0.42_0.03_55)] mt-0.5 italic">
-                {copy.subtitle}
-              </div>
-            </div>
-            <div className="flex items-center gap-1">
-              {messages.length > 0 && (
-                <button
-                  type="button"
-                  onClick={() => setMessages([])}
-                  aria-label={copy.reset}
-                  title={copy.reset}
-                  className="p-2 rounded-full text-[oklch(0.42_0.03_55)] hover:bg-[oklch(0.88_0.04_78)]/50 hover:text-[oklch(0.28_0.05_45)] transition"
-                >
-                  <RotateCcw className="w-4 h-4" />
-                </button>
-              )}
-              <button
-                type="button"
-                onClick={() => setOpen(false)}
-                aria-label={copy.close}
-                className="p-2 rounded-full text-[oklch(0.42_0.03_55)] hover:bg-[oklch(0.88_0.04_78)]/50 hover:text-[oklch(0.28_0.05_45)] transition"
-              >
-                <X className="w-4 h-4" />
-              </button>
-            </div>
-          </div>
+            <DialogPrimitive.Title className="sr-only">
+              {copy.title}
+            </DialogPrimitive.Title>
 
-          {/* Transcript */}
-          <div
-            ref={scrollRef}
-            className="flex-1 overflow-y-auto px-5 sm:px-6 py-6 space-y-6"
-          >
-            {messages.length === 0 && (
-              <div className="space-y-6">
-                <p
-                  className="text-[15px] leading-relaxed text-[oklch(0.32_0.04_45)]"
-                  style={{ fontFamily: "'Cormorant Garamond', var(--font-serif, serif)", fontSize: "1.05rem" }}
+            {/* Gallery-entrance header (museum plaque) */}
+            <header className="relative px-6 sm:px-8 pt-7 pb-6">
+              <div className="flex items-start gap-4">
+                <div
+                  className="flex items-center justify-center w-14 h-14 rounded-full shrink-0"
+                  style={{
+                    background:
+                      "radial-gradient(circle at 30% 30%, oklch(0.95 0.04 82) 0%, oklch(0.78 0.11 68) 72%, oklch(0.52 0.10 52) 100%)",
+                    color: "oklch(0.26 0.05 45)",
+                    boxShadow:
+                      "inset 0 1px 0 rgba(255,255,255,0.6), 0 6px 16px -8px rgba(120,70,30,0.4)",
+                  }}
+                  aria-hidden
                 >
-                  {copy.empty}
-                </p>
-                <div>
+                  <CuratorGlyph large />
+                </div>
+                <div className="flex-1 min-w-0">
                   <div
-                    className="text-[10px] font-semibold uppercase tracking-[0.28em] mb-3"
+                    className="text-[10px] font-semibold uppercase tracking-[0.32em]"
                     style={{ color: "oklch(0.55 0.11 55)" }}
                   >
-                    <ScrollText className="inline w-3 h-3 me-1.5 -mt-0.5" />
-                    {copy.suggestionsLabel}
+                    {copy.kicker}
                   </div>
-                  <div className="grid grid-cols-1 gap-2.5">
-                    {suggestions.map((q) => (
-                      <button
-                        key={q}
-                        type="button"
-                        onClick={() => ask(q)}
-                        className={cn(
-                          "text-start text-[14px] leading-snug rounded-xl px-4 py-3 transition",
-                          "bg-[oklch(0.995_0.008_86)] hover:bg-[oklch(0.985_0.018_82)]",
-                          "text-[oklch(0.28_0.04_45)]",
-                          "border border-[oklch(0.86_0.03_78)]",
-                          "hover:border-[oklch(0.72_0.09_65)] hover:shadow-[0_4px_14px_-8px_rgba(120,70,30,0.35)]",
-                        )}
-                        style={{ fontFamily: "'Cormorant Garamond', var(--font-serif, serif)", fontSize: "1.02rem" }}
-                      >
-                        {q}
-                      </button>
-                    ))}
-                  </div>
+                  <h2
+                    className="text-[26px] sm:text-[28px] font-semibold leading-tight mt-1.5 text-[oklch(0.20_0.03_45)]"
+                    style={{
+                      fontFamily:
+                        "'Cormorant Garamond', var(--font-serif, serif)",
+                      letterSpacing: "-0.005em",
+                    }}
+                  >
+                    {copy.title}
+                  </h2>
+                  <p
+                    className="text-[14px] text-[oklch(0.42_0.03_55)] mt-1 italic"
+                    style={{
+                      fontFamily:
+                        "'Cormorant Garamond', var(--font-serif, serif)",
+                    }}
+                  >
+                    {copy.subtitle}
+                  </p>
+                </div>
+                <div className="flex items-center gap-1.5 -mt-1">
+                  {messages.length > 0 && (
+                    <button
+                      type="button"
+                      onClick={() => setMessages([])}
+                      aria-label={copy.reset}
+                      title={copy.reset}
+                      className="p-2 rounded-full text-[oklch(0.42_0.03_55)] hover:bg-[oklch(0.88_0.04_78)]/60 hover:text-[oklch(0.24_0.05_45)] transition"
+                    >
+                      <RotateCcw className="w-4 h-4" />
+                    </button>
+                  )}
+                  <button
+                    type="button"
+                    onClick={() => setOpen(false)}
+                    aria-label={copy.close}
+                    className="p-2 rounded-full text-[oklch(0.42_0.03_55)] hover:bg-[oklch(0.88_0.04_78)]/60 hover:text-[oklch(0.24_0.05_45)] transition"
+                  >
+                    <X className="w-4 h-4" />
+                  </button>
                 </div>
               </div>
-            )}
 
-            {messages.map((m) => (
-              <CuratorMessage key={m.id} message={m} />
-            ))}
-
-            {busy && <ThinkingIndicator label={thinkingList[thinkingIdx]} />}
-
-            {error && (
+              {/* Museum divider ornament */}
               <div
-                className="text-sm rounded-lg px-4 py-3"
-                style={{
-                  background: "oklch(0.94 0.04 32)",
-                  color: "oklch(0.35 0.10 32)",
-                  border: "1px solid oklch(0.78 0.08 32)",
-                }}
+                aria-hidden
+                className="mt-6 flex items-center gap-3"
+                style={{ color: "oklch(0.72 0.09 62)" }}
               >
-                {error.message}
+                <span
+                  className="h-px flex-1"
+                  style={{
+                    background:
+                      "linear-gradient(90deg, transparent, oklch(0.82 0.05 72), transparent)",
+                  }}
+                />
+                <span className="text-[10px] tracking-[0.4em] uppercase">
+                  ⵣ
+                </span>
+                <span
+                  className="h-px flex-1"
+                  style={{
+                    background:
+                      "linear-gradient(90deg, transparent, oklch(0.82 0.05 72), transparent)",
+                  }}
+                />
               </div>
-            )}
+            </header>
 
-            {messages.length > 0 && !busy && (
-              <p
-                className="text-[11px] leading-relaxed text-[oklch(0.5_0.03_55)] italic pt-2 pb-1 border-t border-[oklch(0.88_0.03_78)]/60 mt-6"
-                style={{ fontFamily: "'Cormorant Garamond', var(--font-serif, serif)" }}
-              >
-                {copy.footer}
-              </p>
-            )}
-          </div>
-
-          {/* Composer */}
-          <form
-            onSubmit={(e) => {
-              e.preventDefault();
-              ask(input);
-            }}
-            className="px-5 sm:px-6 pt-4 pb-[max(env(safe-area-inset-bottom),1rem)]"
-            style={{
-              borderTop: "1px solid oklch(0.85 0.03 78 / 0.7)",
-              background: "oklch(0.985 0.014 84 / 0.6)",
-            }}
-          >
+            {/* Transcript */}
             <div
-              className="flex items-end gap-2 rounded-2xl ps-4 pe-2 py-2 bg-[oklch(0.995_0.008_86)]"
+              ref={scrollRef}
+              className="flex-1 overflow-y-auto px-6 sm:px-8 pb-6 space-y-7"
+            >
+              {messages.length === 0 && (
+                <div className="space-y-7">
+                  <p
+                    className="text-[oklch(0.30_0.04_45)] leading-relaxed"
+                    style={{
+                      fontFamily:
+                        "'Cormorant Garamond', var(--font-serif, serif)",
+                      fontSize: "1.12rem",
+                    }}
+                  >
+                    {copy.empty}
+                  </p>
+                  <div>
+                    <div
+                      className="text-[10px] font-semibold uppercase tracking-[0.3em] mb-3 flex items-center"
+                      style={{ color: "oklch(0.55 0.11 55)" }}
+                    >
+                      <ScrollText className="inline w-3 h-3 me-1.5" />
+                      {copy.suggestionsLabel}
+                    </div>
+                    <div className="grid grid-cols-1 gap-2.5">
+                      {suggestions.map((q) => (
+                        <button
+                          key={q}
+                          type="button"
+                          onClick={() => ask(q)}
+                          className={cn(
+                            "text-start leading-snug rounded-xl px-4 py-3 transition",
+                            "bg-[oklch(0.995_0.008_86)] hover:bg-[oklch(0.985_0.018_82)]",
+                            "text-[oklch(0.26_0.04_45)]",
+                            "border border-[oklch(0.86_0.03_78)]",
+                            "hover:border-[oklch(0.72_0.09_65)] hover:shadow-[0_4px_14px_-8px_rgba(120,70,30,0.35)]",
+                          )}
+                          style={{
+                            fontFamily:
+                              "'Cormorant Garamond', var(--font-serif, serif)",
+                            fontSize: "1.05rem",
+                          }}
+                        >
+                          {q}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {messages.map((m, i) => (
+                <div key={m.id} className="space-y-4">
+                  <CuratorMessage message={m} />
+                  {i === lastAssistantIdx && !busy && (
+                    <ContinueExploring
+                      label={copy.exploreLabel}
+                      items={copy.explore}
+                      onNavigate={() => setOpen(false)}
+                    />
+                  )}
+                </div>
+              ))}
+
+              {busy && <ThinkingIndicator label={thinkingList[thinkingIdx]} />}
+
+              {error && (
+                <div
+                  className="text-sm rounded-lg px-4 py-3"
+                  style={{
+                    background: "oklch(0.94 0.04 32)",
+                    color: "oklch(0.35 0.10 32)",
+                    border: "1px solid oklch(0.78 0.08 32)",
+                  }}
+                >
+                  {error.message}
+                </div>
+              )}
+
+              {messages.length > 0 && !busy && (
+                <p
+                  className="text-[12px] leading-relaxed text-[oklch(0.5_0.03_55)] italic pt-3 border-t border-[oklch(0.88_0.03_78)]/60"
+                  style={{
+                    fontFamily:
+                      "'Cormorant Garamond', var(--font-serif, serif)",
+                  }}
+                >
+                  {copy.footer}
+                </p>
+              )}
+            </div>
+
+            {/* Composer */}
+            <form
+              onSubmit={(e) => {
+                e.preventDefault();
+                ask(input);
+              }}
+              className="px-6 sm:px-8 pt-4 pb-[max(env(safe-area-inset-bottom),1.25rem)]"
               style={{
-                border: "1px solid oklch(0.82 0.04 76)",
-                boxShadow: "inset 0 1px 2px rgba(120,80,40,0.06), 0 2px 10px -6px rgba(120,70,30,0.15)",
+                borderTop: "1px solid oklch(0.85 0.03 78 / 0.7)",
+                background: "oklch(0.985 0.014 84 / 0.55)",
               }}
             >
-              <textarea
-                ref={inputRef}
-                value={input}
-                onChange={(e) => setInput(e.target.value)}
-                onKeyDown={(e) => {
-                  if (e.key === "Enter" && !e.shiftKey) {
-                    e.preventDefault();
-                    ask(input);
-                  }
-                }}
-                rows={1}
-                placeholder={copy.placeholder}
-                className={cn(
-                  "flex-1 resize-none bg-transparent outline-none py-1.5",
-                  "text-[14px] leading-relaxed max-h-40",
-                  "text-[oklch(0.22_0.03_45)] placeholder:text-[oklch(0.55_0.03_55)]/70",
-                )}
-              />
-              <button
-                type="submit"
-                disabled={!input.trim() || busy}
-                aria-label={copy.send}
-                className="flex items-center justify-center w-9 h-9 rounded-full shrink-0 transition disabled:opacity-40 disabled:pointer-events-none active:scale-95"
+              <div
+                className="flex items-end gap-2 rounded-2xl ps-4 pe-2 py-2 bg-[oklch(0.995_0.008_86)]"
                 style={{
-                  background:
-                    "linear-gradient(135deg, oklch(0.72 0.13 55) 0%, oklch(0.58 0.14 45) 100%)",
-                  color: "oklch(0.99 0.01 84)",
+                  border: "1px solid oklch(0.82 0.04 76)",
                   boxShadow:
-                    "inset 0 1px 0 rgba(255,255,255,0.25), 0 4px 10px -4px rgba(140,60,30,0.45)",
+                    "inset 0 1px 2px rgba(120,80,40,0.06), 0 2px 10px -6px rgba(120,70,30,0.15)",
                 }}
               >
-                <Send className={cn("w-4 h-4", rtl && "rotate-180")} />
-              </button>
-            </div>
-          </form>
-        </SheetContent>
-      </Sheet>
+                <textarea
+                  ref={inputRef}
+                  value={input}
+                  onChange={(e) => setInput(e.target.value)}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter" && !e.shiftKey) {
+                      e.preventDefault();
+                      ask(input);
+                    }
+                  }}
+                  rows={1}
+                  placeholder={copy.placeholder}
+                  className={cn(
+                    "flex-1 resize-none bg-transparent outline-none py-1.5",
+                    "text-[14px] leading-relaxed max-h-40",
+                    "text-[oklch(0.22_0.03_45)] placeholder:text-[oklch(0.55_0.03_55)]/70",
+                  )}
+                />
+                <button
+                  type="submit"
+                  disabled={!input.trim() || busy}
+                  aria-label={copy.send}
+                  className="flex items-center justify-center w-9 h-9 rounded-full shrink-0 transition disabled:opacity-40 disabled:pointer-events-none active:scale-95"
+                  style={{
+                    background:
+                      "linear-gradient(135deg, oklch(0.72 0.13 55) 0%, oklch(0.58 0.14 45) 100%)",
+                    color: "oklch(0.99 0.01 84)",
+                    boxShadow:
+                      "inset 0 1px 0 rgba(255,255,255,0.25), 0 4px 10px -4px rgba(140,60,30,0.45)",
+                  }}
+                >
+                  <Send className={cn("w-4 h-4", rtl && "rotate-180")} />
+                </button>
+              </div>
+            </form>
+          </DialogPrimitive.Content>
+        </DialogPrimitive.Portal>
+      </DialogPrimitive.Root>
     </>
   );
 }
@@ -440,11 +561,69 @@ function ThinkingIndicator({ label }: { label: string }) {
         <BookOpen className="w-4 h-4 animate-pulse" />
       </div>
       <span
-        className="text-[13px] italic text-[oklch(0.42_0.04_55)]"
-        style={{ fontFamily: "'Cormorant Garamond', var(--font-serif, serif)", fontSize: "0.98rem" }}
+        className="italic text-[oklch(0.42_0.04_55)]"
+        style={{
+          fontFamily: "'Cormorant Garamond', var(--font-serif, serif)",
+          fontSize: "1rem",
+        }}
       >
         {label}
       </span>
+    </div>
+  );
+}
+
+function ContinueExploring({
+  label,
+  items,
+  onNavigate,
+}: {
+  label: string;
+  items: ReadonlyArray<{ to: string; label: string; hint: string }>;
+  onNavigate: () => void;
+}) {
+  return (
+    <div className="ms-12 sm:ms-14">
+      <div
+        className="text-[10px] font-semibold uppercase tracking-[0.3em] mb-3 flex items-center"
+        style={{ color: "oklch(0.55 0.11 55)" }}
+      >
+        <Compass className="inline w-3 h-3 me-1.5" />
+        {label}
+      </div>
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+        {items.map((it) => (
+          <Link
+            key={it.to}
+            to={it.to}
+            onClick={onNavigate}
+            className={cn(
+              "group flex items-center justify-between gap-3 rounded-xl px-3.5 py-2.5 transition",
+              "bg-[oklch(0.995_0.008_86)] hover:bg-[oklch(0.985_0.018_82)]",
+              "border border-[oklch(0.87_0.03_78)] hover:border-[oklch(0.72_0.09_65)]",
+            )}
+          >
+            <div className="min-w-0">
+              <div
+                className="text-[14px] font-semibold text-[oklch(0.26_0.05_45)] truncate"
+                style={{
+                  fontFamily:
+                    "'Cormorant Garamond', var(--font-serif, serif)",
+                  fontSize: "1.02rem",
+                }}
+              >
+                {it.label}
+              </div>
+              <div className="text-[11px] text-[oklch(0.5_0.03_55)] truncate">
+                {it.hint}
+              </div>
+            </div>
+            <ArrowUpRight
+              className="w-4 h-4 shrink-0 text-[oklch(0.55_0.11_55)] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"
+            />
+          </Link>
+        ))}
+      </div>
     </div>
   );
 }
@@ -492,13 +671,17 @@ function CuratorMessage({ message }: { message: UIMessage }) {
           "border border-[oklch(0.87_0.03_78)]",
         )}
         style={{
-          boxShadow: "0 8px 24px -18px rgba(120,70,30,0.35), 0 1px 0 rgba(255,255,255,0.6) inset",
+          boxShadow:
+            "0 8px 24px -18px rgba(120,70,30,0.35), 0 1px 0 rgba(255,255,255,0.6) inset",
         }}
       >
         <span
           aria-hidden
           className="absolute inset-y-3 start-0 w-[3px] rounded-full"
-          style={{ background: "linear-gradient(180deg, oklch(0.78 0.11 68), oklch(0.55 0.10 55))" }}
+          style={{
+            background:
+              "linear-gradient(180deg, oklch(0.78 0.11 68), oklch(0.55 0.10 55))",
+          }}
         />
         <div
           className={cn(
@@ -506,8 +689,9 @@ function CuratorMessage({ message }: { message: UIMessage }) {
             "prose-headings:font-serif prose-headings:text-[oklch(0.24_0.04_45)]",
             "prose-headings:font-semibold prose-headings:tracking-tight",
             "prose-h1:text-lg prose-h2:text-base prose-h3:text-[15px]",
-            "prose-h2:mt-4 prose-h2:mb-2 prose-h3:mt-3 prose-h3:mb-1.5",
-            "prose-p:text-[oklch(0.28_0.04_45)] prose-p:leading-[1.75] prose-p:my-2.5 prose-p:text-[14.5px]",
+            "prose-h2:mt-5 prose-h2:mb-2 prose-h3:mt-3 prose-h3:mb-1.5",
+            "prose-h2:pb-1 prose-h2:border-b prose-h2:border-[oklch(0.88_0.03_78)]",
+            "prose-p:text-[oklch(0.28_0.04_45)] prose-p:leading-[1.8] prose-p:my-3 prose-p:text-[14.5px]",
             "prose-strong:text-[oklch(0.42_0.13_45)] prose-strong:font-semibold",
             "prose-em:text-[oklch(0.38_0.08_55)]",
             "prose-a:text-[oklch(0.48_0.14_45)] prose-a:no-underline hover:prose-a:underline",
@@ -526,16 +710,16 @@ function CuratorMessage({ message }: { message: UIMessage }) {
 }
 
 /** Simple museum-curator glyph — a bust-in-frame silhouette. */
-function CuratorGlyph({ small = false }: { small?: boolean }) {
-  const size = small ? 16 : 20;
+function CuratorGlyph({
+  small = false,
+  large = false,
+}: {
+  small?: boolean;
+  large?: boolean;
+}) {
+  const size = large ? 24 : small ? 16 : 20;
   return (
-    <svg
-      width={size}
-      height={size}
-      viewBox="0 0 24 24"
-      fill="none"
-      aria-hidden
-    >
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" aria-hidden>
       <path
         d="M12 3.5c2.2 0 4 1.9 4 4.2s-1.8 4.2-4 4.2S8 10 8 7.7s1.8-4.2 4-4.2Z"
         fill="currentColor"
