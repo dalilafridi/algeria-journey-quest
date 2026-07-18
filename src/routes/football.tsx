@@ -76,19 +76,19 @@ function FootballHero({ lang }: { lang: Lang }) {
 
   return (
     <section
-      className="relative overflow-hidden text-[oklch(0.95_0.03_80)]"
+      className="relative overflow-hidden text-foreground"
       style={{
         background:
-          "radial-gradient(ellipse at 50% 20%, oklch(0.28 0.05 60 / 0.55), transparent 65%), radial-gradient(ellipse at 90% 80%, oklch(0.35 0.08 30 / 0.4), transparent 60%), linear-gradient(180deg, oklch(0.14 0.02 45), oklch(0.09 0.015 40))",
+          "radial-gradient(ellipse at 50% 20%, oklch(0.88 0.06 78 / 0.55), transparent 65%), radial-gradient(ellipse at 90% 80%, oklch(0.82 0.08 40 / 0.35), transparent 60%), var(--gradient-parchment)",
       }}
     >
       {/* Stadium haze — soft light shafts */}
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 opacity-60"
+        className="pointer-events-none absolute inset-0 opacity-40"
         style={{
           background:
-            "repeating-linear-gradient(102deg, transparent 0 60px, oklch(0.9 0.05 80 / 0.03) 60px 120px)",
+            "repeating-linear-gradient(102deg, transparent 0 60px, oklch(0.55 0.08 55 / 0.05) 60px 120px)",
         }}
       />
       {/* Grass line */}
@@ -97,50 +97,48 @@ function FootballHero({ lang }: { lang: Lang }) {
         className="pointer-events-none absolute bottom-0 left-0 right-0 h-24"
         style={{
           background:
-            "linear-gradient(180deg, transparent, oklch(0.35 0.09 130 / 0.35))",
+            "linear-gradient(180deg, transparent, oklch(0.55 0.09 130 / 0.18))",
         }}
       />
 
       <div className="relative max-w-6xl mx-auto px-4 sm:px-6 py-16 sm:py-24 md:py-32 grid gap-10 md:grid-cols-[1.15fr_1fr] items-center">
         <div className="animate-float-up">
-          <p className="text-[10px] sm:text-xs uppercase tracking-[0.28em] font-bold text-[oklch(0.85_0.14_82)]">
+          <p className="text-[10px] sm:text-xs uppercase tracking-[0.28em] font-bold text-primary">
             ⵣ · {eyebrow}
           </p>
           <h1
-            className="mt-4 text-4xl sm:text-5xl md:text-6xl font-bold leading-[1.05] text-[oklch(0.96_0.04_82)]"
+            className="mt-4 text-4xl sm:text-5xl md:text-6xl font-bold leading-[1.05] text-foreground"
             style={SERIF}
           >
             {title}
           </h1>
-          <p className="mt-5 text-lg sm:text-xl max-w-xl text-[oklch(0.88_0.03_85)]/85 italic" style={SERIF}>
+          <p className="mt-5 text-lg sm:text-xl max-w-xl text-foreground/75 italic" style={SERIF}>
             {subtitle}
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
             <a
               href="#exhibits"
-              className="inline-flex items-center gap-2 rounded-full px-5 py-3 text-sm font-semibold text-[oklch(0.15_0.02_45)] transition hover:-translate-y-0.5"
-              style={{
-                background:
-                  "linear-gradient(135deg, oklch(0.92 0.13 86), oklch(0.72 0.14 72))",
-                boxShadow: "0 0 32px -8px oklch(0.85 0.16 80 / 0.55)",
-              }}
+              className="inline-flex items-center gap-2 rounded-full bg-primary text-primary-foreground px-5 py-3 text-sm font-semibold transition hover:-translate-y-0.5"
+              style={{ boxShadow: "var(--shadow-soft)" }}
             >
               {{ en: "Enter the museum", fr: "Entrer dans le musée", ar: "ادخل المتحف" }[lang]}
               <span aria-hidden>→</span>
             </a>
             <a
               href="#timeline"
-              className="inline-flex items-center gap-2 rounded-full border border-[oklch(0.7_0.1_75_/_0.4)] px-5 py-3 text-sm font-semibold text-[oklch(0.92_0.06_82)] hover:bg-[oklch(1_0_0_/_0.06)] transition"
+              className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-5 py-3 text-sm font-semibold text-foreground hover:bg-muted transition"
             >
               {{ en: "Century timeline", fr: "Chronologie", ar: "الخطّ الزمني" }[lang]}
             </a>
             <Link
               to="/clubs"
-              className="inline-flex items-center gap-2 rounded-full border border-[oklch(0.7_0.1_75_/_0.4)] px-5 py-3 text-sm font-semibold text-[oklch(0.92_0.06_82)] hover:bg-[oklch(1_0_0_/_0.06)] transition"
+              className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-5 py-3 text-sm font-semibold text-foreground hover:bg-muted transition"
             >
               {{ en: "Club Museums →", fr: "Musées des clubs →", ar: "متاحف الأندية ←" }[lang]}
             </Link>
           </div>
+
+        </div>
 
         </div>
 
