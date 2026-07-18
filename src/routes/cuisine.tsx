@@ -83,7 +83,7 @@ function CuisinePage() {
 
       {/* HERO */}
       <section className="relative w-full overflow-hidden">
-        <div className="relative h-[62vh] min-h-[420px] max-h-[640px] w-full">
+        <div className="relative h-[62vh] min-h-[440px] max-h-[640px] w-full">
           <img
             src={cuisineHero}
             alt=""
@@ -92,36 +92,75 @@ function CuisinePage() {
             decoding="async"
             data-hero-image
             style={{
-              transform: `translate3d(0, ${Math.min(scrollY * 0.25, 140)}px, 0) scale(1.05)`,
-              filter: "brightness(0.88) contrast(0.98)",
+              transform: `translate3d(0, ${Math.min(scrollY * 0.25, 140)}px, 0) scale(1.08)`,
+              filter: "brightness(0.72) contrast(0.98) blur(3px) saturate(1.05)",
             }}
             width={1920}
             height={1080}
           />
+          {/* Localized gradient — strong enough to mask any text baked into the image */}
           <div
             className="absolute inset-0"
             style={{
               background:
-                "linear-gradient(to bottom, color-mix(in oklab, black 55%, transparent) 0%, color-mix(in oklab, black 35%, transparent) 50%, color-mix(in oklab, black 78%, transparent) 100%)",
+                "radial-gradient(ellipse 70% 80% at 50% 50%, color-mix(in oklab, black 78%, transparent) 0%, color-mix(in oklab, black 62%, transparent) 40%, color-mix(in oklab, black 40%, transparent) 75%, color-mix(in oklab, black 55%, transparent) 100%)",
             }}
             aria-hidden
           />
-          <div className="relative z-10 h-full max-w-3xl mx-auto px-5 flex flex-col items-center justify-center text-center text-white">
+
+          <div className="relative z-10 h-full max-w-2xl mx-auto px-5 flex flex-col items-center justify-center text-center">
             <Link
               to="/words"
               className="absolute top-4 left-4 text-xs sm:text-sm font-medium text-white/85 hover:text-white transition-colors"
+              style={{ color: "rgba(255,255,255,0.9)" }}
             >
               {t(cuisineCopy.back, lang)}
             </Link>
-            <p className="text-[11px] sm:text-xs uppercase tracking-[0.25em] font-bold text-white/75 mb-3">
+
+            {/* Small decorative ornament */}
+            <div
+              aria-hidden
+              className="mb-4 text-white/70 text-lg leading-none select-none"
+              style={{ color: "rgba(255,255,255,0.7)" }}
+            >
+              ⵣ
+            </div>
+
+            {/* Eyebrow */}
+            <p
+              className="text-[11px] sm:text-xs uppercase tracking-[0.28em] font-semibold mb-3"
+              style={{ color: "rgba(255,255,255,0.78)", maxWidth: "none" }}
+            >
               {t(cuisineCopy.sectionTitle, lang)}
             </p>
-            <h1 className="text-2xl sm:text-4xl md:text-5xl font-extrabold leading-tight tracking-tight max-w-2xl text-balance">
-              “{t(cuisineCopy.poetic, lang)}”
+
+            {/* Title — force white + sans to override global h1 serif/dark rules */}
+            <h1
+              className="font-extrabold leading-[1.1] tracking-tight text-balance"
+              style={{
+                color: "#ffffff",
+                fontFamily:
+                  'ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif',
+                fontSize: "clamp(1.9rem, 1.2rem + 3.2vw, 3.4rem)",
+                letterSpacing: "-0.02em",
+                maxWidth: "18ch",
+                textShadow: "0 2px 24px rgba(0,0,0,0.35)",
+              }}
+            >
+              {t(cuisineCopy.sectionTitle, lang)}
             </h1>
-            <p className="mt-4 text-sm sm:text-base text-white/85 max-w-md leading-relaxed">
+
+            {/* Subtitle */}
+            <p
+              className="mt-4 text-sm sm:text-base leading-relaxed"
+              style={{
+                color: "rgba(255,255,255,0.9)",
+                maxWidth: "36ch",
+              }}
+            >
               {t(cuisineCopy.subtitle, lang)}
             </p>
+
             <button
               type="button"
               onClick={scrollToExplore}
@@ -134,6 +173,21 @@ function CuisinePage() {
       </section>
 
       <main className="max-w-3xl mx-auto px-4 py-10 safe-pb space-y-12">
+        {/* Poetic quote — moved out of hero so it can breathe */}
+        <figure className="text-center px-4">
+          <blockquote
+            className="italic leading-relaxed text-foreground/85"
+            style={{
+              fontFamily: 'Georgia, "Iowan Old Style", "Times New Roman", serif',
+              fontSize: "clamp(1.05rem, 0.95rem + 0.6vw, 1.35rem)",
+              maxWidth: "36ch",
+              margin: "0 auto",
+            }}
+          >
+            “{t(cuisineCopy.poetic, lang)}”
+          </blockquote>
+        </figure>
+
         {/* STORY MODE */}
         <section id="cuisine-story" className="scroll-mt-24">
           <StoryFlow
@@ -147,6 +201,7 @@ function CuisinePage() {
             accent="var(--secondary)"
           />
         </section>
+
 
         {/* REGIONS GRID */}
         <section>
