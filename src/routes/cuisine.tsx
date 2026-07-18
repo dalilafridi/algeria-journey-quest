@@ -92,21 +92,22 @@ function CuisinePage() {
             decoding="async"
             data-hero-image
             style={{
-              transform: `translate3d(0, ${Math.min(scrollY * 0.25, 140)}px, 0) scale(1.05)`,
-              filter: "brightness(0.82) contrast(0.98)",
+              transform: `translate3d(0, ${Math.min(scrollY * 0.25, 140)}px, 0) scale(1.08)`,
+              filter: "brightness(0.72) contrast(0.98) blur(3px) saturate(1.05)",
             }}
             width={1920}
             height={1080}
           />
-          {/* Localized gradient — darker only behind the content column */}
+          {/* Localized gradient — strong enough to mask any text baked into the image */}
           <div
             className="absolute inset-0"
             style={{
               background:
-                "radial-gradient(ellipse at 50% 55%, color-mix(in oklab, black 62%, transparent) 0%, color-mix(in oklab, black 40%, transparent) 45%, color-mix(in oklab, black 15%, transparent) 100%)",
+                "radial-gradient(ellipse 70% 80% at 50% 50%, color-mix(in oklab, black 78%, transparent) 0%, color-mix(in oklab, black 62%, transparent) 40%, color-mix(in oklab, black 40%, transparent) 75%, color-mix(in oklab, black 55%, transparent) 100%)",
             }}
             aria-hidden
           />
+
           <div className="relative z-10 h-full max-w-2xl mx-auto px-5 flex flex-col items-center justify-center text-center">
             <Link
               to="/words"
