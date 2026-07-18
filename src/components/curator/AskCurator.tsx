@@ -491,7 +491,7 @@ export function AskCurator() {
                 e.preventDefault();
                 ask(input);
               }}
-              className="px-6 sm:px-8 pt-4 pb-[max(env(safe-area-inset-bottom),1.25rem)]"
+              className="shrink-0 px-6 sm:px-8 pt-4 pb-[max(env(safe-area-inset-bottom),1.25rem)]"
               style={{
                 borderTop: "1px solid oklch(0.85 0.03 78 / 0.7)",
                 background: "oklch(0.985 0.014 84 / 0.55)",
@@ -516,18 +516,19 @@ export function AskCurator() {
                     }
                   }}
                   rows={1}
+                  aria-label={copy.placeholder}
                   placeholder={copy.placeholder}
                   className={cn(
                     "flex-1 resize-none bg-transparent outline-none py-1.5",
                     "text-[14px] leading-relaxed max-h-40",
-                    "text-[oklch(0.22_0.03_45)] placeholder:text-[oklch(0.55_0.03_55)]/70",
+                    "text-[oklch(0.20_0.03_45)] placeholder:text-[oklch(0.48_0.03_55)]",
                   )}
                 />
                 <button
                   type="submit"
                   disabled={!input.trim() || busy}
                   aria-label={copy.send}
-                  className="flex items-center justify-center w-9 h-9 rounded-full shrink-0 transition disabled:opacity-40 disabled:pointer-events-none active:scale-95"
+                  className="flex items-center justify-center min-w-11 min-h-11 rounded-full shrink-0 transition disabled:opacity-40 disabled:pointer-events-none active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[oklch(0.62_0.14_55)]/60"
                   style={{
                     background:
                       "linear-gradient(135deg, oklch(0.72 0.13 55) 0%, oklch(0.58 0.14 45) 100%)",
