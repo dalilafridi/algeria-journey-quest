@@ -346,7 +346,7 @@ function ChroniclePage() {
         {/* Timeline */}
         <section
           className="relative"
-          style={{ background: "linear-gradient(180deg, #0b0906 0%, #100c07 100%)" }}
+          style={{ background: "linear-gradient(180deg, oklch(0.972 0.02 84) 0%, oklch(0.94 0.04 76) 100%)" }}
         >
           <div className="chronicle-fade-l" />
           <div className="chronicle-fade-r" />
