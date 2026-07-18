@@ -550,7 +550,7 @@ export function AskCurator() {
 
 function ThinkingIndicator({ label }: { label: string }) {
   return (
-    <div className="flex items-center gap-3 py-1">
+    <div className="flex items-center gap-3 py-1" role="status" aria-live="polite">
       <div
         aria-hidden
         className="flex items-center justify-center w-8 h-8 rounded-full shrink-0"
