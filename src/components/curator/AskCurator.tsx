@@ -220,6 +220,7 @@ export function AskCurator() {
           dir={rtl ? "rtl" : "ltr"}
           className={cn(
             "p-0 border-none flex flex-col overflow-hidden text-foreground",
+            "[&>button]:hidden",
             isMobile
               ? "h-[100dvh] max-h-[100dvh] w-full rounded-none"
               : "w-full sm:max-w-[460px] md:max-w-[560px]",
