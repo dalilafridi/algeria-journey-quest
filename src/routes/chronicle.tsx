@@ -244,21 +244,21 @@ function ChroniclePage() {
     y < 0 ? `${Math.abs(y)} BC` : `${y}`;
 
   return (
-    <div className="min-h-dvh" style={{ background: "var(--chronicle-bg, #0b0906)" }}>
+    <div className="min-h-dvh" style={{ background: "var(--background)" }}>
       <style>{`
         .chronicle-shell {
-          --gold: oklch(0.82 0.13 82);
-          --gold-soft: oklch(0.72 0.11 78);
-          --parchment: oklch(0.92 0.03 82);
-          --ink: oklch(0.14 0.02 60);
-          --panel: oklch(0.18 0.02 55);
-          --panel-2: oklch(0.12 0.02 55);
-          --rule: color-mix(in oklab, var(--gold) 30%, transparent);
+          --gold: oklch(0.68 0.13 68);
+          --gold-soft: oklch(0.78 0.11 78);
+          --parchment: oklch(0.24 0.035 45);
+          --ink: oklch(0.18 0.03 42);
+          --panel: oklch(0.992 0.012 86);
+          --panel-2: oklch(0.96 0.03 78);
+          --rule: color-mix(in oklab, var(--gold) 32%, transparent);
           color: var(--parchment);
         }
         .chronicle-shell .no-scrollbar::-webkit-scrollbar { display: none; }
         .chronicle-shell .no-scrollbar { scrollbar-width: none; }
-        .chronicle-shell .gold-text { color: var(--gold); }
+        .chronicle-shell .gold-text { color: oklch(0.55 0.14 55); }
         .chronicle-shell .gold-border { border-color: var(--rule); }
         .chronicle-scroller {
           overflow-x: auto;
@@ -272,8 +272,8 @@ function ChroniclePage() {
         .chronicle-fade-l, .chronicle-fade-r {
           position: absolute; top: 0; bottom: 0; width: 96px; pointer-events: none; z-index: 3;
         }
-        .chronicle-fade-l { left: 0; background: linear-gradient(90deg, #0b0906 10%, transparent); }
-        .chronicle-fade-r { right: 0; background: linear-gradient(-90deg, #0b0906 10%, transparent); }
+        .chronicle-fade-l { left: 0; background: linear-gradient(90deg, oklch(0.972 0.02 84) 10%, transparent); }
+        .chronicle-fade-r { right: 0; background: linear-gradient(-90deg, oklch(0.972 0.02 84) 10%, transparent); }
         @keyframes chron-appear {
           from { opacity: 0; transform: translateY(6px) scale(0.9); }
           to   { opacity: 1; transform: translateY(0) scale(1); }
@@ -292,17 +292,17 @@ function ChroniclePage() {
         }
         .chron-panel {
           background:
-            radial-gradient(1200px 200px at 20% -20%, color-mix(in oklab, var(--gold) 8%, transparent), transparent 60%),
+            radial-gradient(1200px 200px at 20% -20%, color-mix(in oklab, var(--gold) 10%, transparent), transparent 60%),
             linear-gradient(180deg, var(--panel) 0%, var(--panel-2) 100%);
           border: 1px solid var(--rule);
-          box-shadow: 0 30px 80px -30px rgba(0,0,0,0.6), inset 0 1px 0 color-mix(in oklab, var(--gold) 12%, transparent);
+          box-shadow: 0 20px 50px -25px oklch(0.4 0.08 50 / 0.25), inset 0 1px 0 color-mix(in oklab, var(--gold) 14%, transparent);
         }
         .chron-chip {
-          background: color-mix(in oklab, var(--gold) 8%, transparent);
+          background: color-mix(in oklab, var(--gold) 10%, transparent);
           border: 1px solid var(--rule);
           color: var(--parchment);
         }
-        .chron-chip:hover { background: color-mix(in oklab, var(--gold) 18%, transparent); }
+        .chron-chip:hover { background: color-mix(in oklab, var(--gold) 22%, transparent); }
         .chron-title-serif {
           font-family: "Cormorant Garamond", "Playfair Display", Georgia, ui-serif, serif;
           letter-spacing: -0.01em;
@@ -312,12 +312,12 @@ function ChroniclePage() {
           letter-spacing: 0.32em;
           text-transform: uppercase;
           font-size: 10.5px;
-          color: color-mix(in oklab, var(--gold) 85%, white);
+          color: oklch(0.5 0.12 55);
         }
         .chron-vignette::before {
           content: ""; position: absolute; inset: 0; pointer-events: none;
           background:
-            radial-gradient(80% 60% at 50% 40%, transparent 55%, rgba(0,0,0,0.55) 100%);
+            radial-gradient(80% 60% at 50% 40%, transparent 55%, oklch(0.4 0.08 50 / 0.14) 100%);
         }
       `}</style>
 
@@ -346,7 +346,7 @@ function ChroniclePage() {
         {/* Timeline */}
         <section
           className="relative"
-          style={{ background: "linear-gradient(180deg, #0b0906 0%, #100c07 100%)" }}
+          style={{ background: "linear-gradient(180deg, oklch(0.972 0.02 84) 0%, oklch(0.94 0.04 76) 100%)" }}
         >
           <div className="chronicle-fade-l" />
           <div className="chronicle-fade-r" />
@@ -510,8 +510,8 @@ function ChroniclePage() {
                     <div
                       className="absolute left-1/2 -translate-x-1/2 mt-2 whitespace-nowrap text-[11px] font-medium px-2 py-1 rounded-md opacity-0 group-hover:opacity-100 transition"
                       style={{
-                        background: "rgba(0,0,0,0.75)",
-                        color: "var(--parchment)",
+                        background: "oklch(0.22 0.03 45)",
+                        color: "oklch(0.96 0.03 82)",
                         border: "1px solid var(--rule)",
                         top: 12,
                       }}

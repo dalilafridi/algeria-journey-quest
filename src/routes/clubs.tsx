@@ -42,30 +42,27 @@ function ClubsLanding() {
   };
 
   return (
-    <div className="min-h-screen bg-[oklch(0.14_0.015_45)] text-[oklch(0.94_0.03_80)]">
+    <div className="min-h-screen bg-background text-foreground">
       <Header />
 
       <section
         className="relative overflow-hidden"
-        style={{
-          background:
-            "radial-gradient(ellipse at 50% 15%, oklch(0.28 0.05 60 / 0.55), transparent 65%), linear-gradient(180deg, oklch(0.14 0.02 45), oklch(0.09 0.015 40))",
-        }}
+        style={{ background: "var(--gradient-parchment)" }}
       >
         <div className="relative max-w-6xl mx-auto px-4 sm:px-6 py-14 sm:py-20">
-          <p className="text-[10px] sm:text-xs uppercase tracking-[0.28em] font-bold text-[oklch(0.85_0.14_82)]">
+          <p className="text-[10px] sm:text-xs uppercase tracking-[0.28em] font-bold text-primary">
             ⵣ · {T.eyebrow}
           </p>
           <h1 className="mt-3 text-4xl sm:text-5xl md:text-6xl font-bold leading-[1.05]" style={SERIF}>
             {T.title}
           </h1>
-          <p className="mt-5 max-w-2xl text-base sm:text-lg italic text-[oklch(0.88_0.03_85)]/85" style={SERIF}>
+          <p className="mt-5 max-w-2xl text-base sm:text-lg italic text-foreground/75" style={SERIF}>
             {T.subtitle}
           </p>
           <div className="mt-6">
             <Link
               to="/football"
-              className="text-sm text-[oklch(0.85_0.14_82)] hover:underline"
+              className="text-sm text-primary hover:underline"
             >
               {T.backToFootball}
             </Link>
@@ -98,13 +95,8 @@ function FeaturedCard({ club, lang, label, cta, founded }: { club: ClubMuseum; l
     <Link
       to="/clubs/$clubId"
       params={{ clubId: club.id }}
-      className="group block rounded-2xl overflow-hidden border transition hover:-translate-y-0.5"
-      style={{
-        borderColor: "oklch(0.7 0.1 75 / 0.35)",
-        background:
-          "linear-gradient(180deg, oklch(0.20 0.03 50 / 0.9), oklch(0.14 0.02 45 / 0.9))",
-        boxShadow: "0 30px 80px -30px oklch(0 0 0 / 0.7)",
-      }}
+      className="group block rounded-2xl overflow-hidden border border-border bg-card text-card-foreground transition hover:-translate-y-0.5"
+      style={{ boxShadow: "var(--shadow-soft)" }}
     >
       <div className="grid gap-6 md:grid-cols-[220px_1fr] p-6 sm:p-8 items-center">
         <div className="flex justify-center md:justify-start">
@@ -122,12 +114,12 @@ function FeaturedCard({ club, lang, label, cta, founded }: { club: ClubMuseum; l
           </div>
         </div>
         <div>
-          <p className="text-[10px] uppercase tracking-[0.3em] font-bold text-[oklch(0.85_0.14_82)]">{label}</p>
+          <p className="text-[10px] uppercase tracking-[0.3em] font-bold text-primary">{label}</p>
           <h3 className="mt-2 text-2xl sm:text-3xl font-bold" style={SERIF}>{t(club.fullName, lang)}</h3>
-          <p className="text-sm text-[oklch(0.85_0.03_80)]/80 mt-1">
+          <p className="text-sm text-muted-foreground mt-1">
             {t(club.city, lang)} · {founded} {club.founded}
           </p>
-          <p className="mt-3 italic text-[oklch(0.9_0.03_82)]" style={SERIF}>{t(club.tagline, lang)}</p>
+          <p className="mt-3 italic text-foreground" style={SERIF}>{t(club.tagline, lang)}</p>
           <span
             className="inline-flex items-center gap-2 mt-5 rounded-full px-4 py-2 text-sm font-semibold text-[oklch(0.15_0.02_45)]"
             style={{ background: "linear-gradient(135deg, oklch(0.92 0.13 86), oklch(0.72 0.14 72))" }}
@@ -143,13 +135,7 @@ function FeaturedCard({ club, lang, label, cta, founded }: { club: ClubMuseum; l
 function ClubCard({ club, lang, enter, comingSoon, founded }: { club: ClubMuseum; lang: Lang; enter: string; comingSoon: string; founded: string }) {
   const isComplete = club.status === "complete";
   const body = (
-    <div
-      className="h-full rounded-2xl overflow-hidden border p-5 flex flex-col gap-3 transition"
-      style={{
-        borderColor: "oklch(0.7 0.1 75 / 0.3)",
-        background: "linear-gradient(180deg, oklch(0.18 0.02 50 / 0.85), oklch(0.12 0.02 45 / 0.9))",
-      }}
-    >
+    <div className="h-full rounded-2xl overflow-hidden border border-border bg-card text-card-foreground p-5 flex flex-col gap-3 transition" style={{ boxShadow: "var(--shadow-soft)" }}>
       <div className="flex items-center gap-3">
         <MedallionFrame tone="bronze" size={56}>
           <div
@@ -165,10 +151,10 @@ function ClubCard({ club, lang, enter, comingSoon, founded }: { club: ClubMuseum
         </MedallionFrame>
         <div>
           <div className="text-base font-bold leading-tight" style={SERIF}>{t(club.fullName, lang)}</div>
-          <div className="text-xs text-[oklch(0.85_0.03_80)]/70">{t(club.city, lang)} · {founded} {club.founded}</div>
+          <div className="text-xs text-muted-foreground">{t(club.city, lang)} · {founded} {club.founded}</div>
         </div>
       </div>
-      <p className="text-sm italic text-[oklch(0.88_0.03_82)]/85" style={SERIF}>{t(club.tagline, lang)}</p>
+      <p className="text-sm italic text-foreground/85" style={SERIF}>{t(club.tagline, lang)}</p>
       <div className="mt-auto pt-2">
         <span
           className={
