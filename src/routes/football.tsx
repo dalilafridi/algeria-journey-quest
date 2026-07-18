@@ -140,7 +140,7 @@ function FootballHero({ lang }: { lang: Lang }) {
 
         </div>
 
-        </div>
+
 
         {/* Display case with rotating ball */}
         <div className="relative flex items-center justify-center animate-float-up">
