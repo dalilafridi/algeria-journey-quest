@@ -128,3 +128,10 @@ All static UI copy (buttons, section headings, quiz UI, final-whistle copy, tact
 - `src/lib/passport.ts` — add the `witness-gijon-1982` stamp definition.
 
 Confirm and I'll implement.
+
+## Cleanup task (logged 2026-07-18) — MedallionFrame hydration warning
+Component: `src/components/brand/MedallionFrame.tsx` (decorative circles ~line 173).
+Symptom: React hydration mismatch — server serializes `cx="13.253920324002607"` while client renders `cx={13.2539203240026}` (float precision drift between server and client `Math.random`/derived math for engraving dots).
+Scope: Global (any page rendering CollectionEmblem / MedallionFrame — Home, Football Hall, Figures, etc.). Not caused by AskCurator.
+Fix direction (do not implement inside AskCurator): seed the decorative point generation deterministically OR round `cx`/`cy` to a fixed decimal (e.g. `toFixed(3)`) so SSR and CSR produce byte-identical strings. Alternatively wrap the decorative dot layer in `<ClientOnly>` if determinism proves hard.
+Priority: low (cosmetic console warning, no user-visible defect).
