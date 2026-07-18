@@ -510,8 +510,8 @@ function ChroniclePage() {
                     <div
                       className="absolute left-1/2 -translate-x-1/2 mt-2 whitespace-nowrap text-[11px] font-medium px-2 py-1 rounded-md opacity-0 group-hover:opacity-100 transition"
                       style={{
-                        background: "rgba(0,0,0,0.75)",
-                        color: "var(--parchment)",
+                        background: "oklch(0.22 0.03 45)",
+                        color: "oklch(0.96 0.03 82)",
                         border: "1px solid var(--rule)",
                         top: 12,
                       }}
