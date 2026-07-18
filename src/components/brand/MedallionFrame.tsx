@@ -168,8 +168,8 @@ export function MedallionFrame({
           {/* Beaded rim */}
           {Array.from({ length: 28 }).map((_, i) => {
             const a = (i / 28) * Math.PI * 2;
-            const cx = 50 + Math.cos(a) * 47;
-            const cy = 50 + Math.sin(a) * 47;
+            const cx = Number((50 + Math.cos(a) * 47).toFixed(3));
+            const cy = Number((50 + Math.sin(a) * 47).toFixed(3));
             return <circle key={i} cx={cx} cy={cy} r="0.7" fill={m.rim} opacity="0.65" />;
           })}
 
