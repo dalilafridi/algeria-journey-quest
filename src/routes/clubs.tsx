@@ -135,13 +135,7 @@ function FeaturedCard({ club, lang, label, cta, founded }: { club: ClubMuseum; l
 function ClubCard({ club, lang, enter, comingSoon, founded }: { club: ClubMuseum; lang: Lang; enter: string; comingSoon: string; founded: string }) {
   const isComplete = club.status === "complete";
   const body = (
-    <div
-      className="h-full rounded-2xl overflow-hidden border p-5 flex flex-col gap-3 transition"
-      style={{
-        borderColor: "oklch(0.7 0.1 75 / 0.3)",
-        background: "linear-gradient(180deg, oklch(0.18 0.02 50 / 0.85), oklch(0.12 0.02 45 / 0.9))",
-      }}
-    >
+    <div className="h-full rounded-2xl overflow-hidden border border-border bg-card text-card-foreground p-5 flex flex-col gap-3 transition" style={{ boxShadow: "var(--shadow-soft)" }}>
       <div className="flex items-center gap-3">
         <MedallionFrame tone="bronze" size={56}>
           <div
