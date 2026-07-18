@@ -95,13 +95,8 @@ function FeaturedCard({ club, lang, label, cta, founded }: { club: ClubMuseum; l
     <Link
       to="/clubs/$clubId"
       params={{ clubId: club.id }}
-      className="group block rounded-2xl overflow-hidden border transition hover:-translate-y-0.5"
-      style={{
-        borderColor: "oklch(0.7 0.1 75 / 0.35)",
-        background:
-          "linear-gradient(180deg, oklch(0.20 0.03 50 / 0.9), oklch(0.14 0.02 45 / 0.9))",
-        boxShadow: "0 30px 80px -30px oklch(0 0 0 / 0.7)",
-      }}
+      className="group block rounded-2xl overflow-hidden border border-border bg-card text-card-foreground transition hover:-translate-y-0.5"
+      style={{ boxShadow: "var(--shadow-soft)" }}
     >
       <div className="grid gap-6 md:grid-cols-[220px_1fr] p-6 sm:p-8 items-center">
         <div className="flex justify-center md:justify-start">
