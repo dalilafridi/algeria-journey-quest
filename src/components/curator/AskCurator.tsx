@@ -347,9 +347,10 @@ export function AskCurator() {
                     <button
                       type="button"
                       onClick={() => setMessages([])}
+                      disabled={busy}
                       aria-label={copy.reset}
                       title={copy.reset}
-                      className="p-2 rounded-full text-[oklch(0.42_0.03_55)] hover:bg-[oklch(0.88_0.04_78)]/60 hover:text-[oklch(0.24_0.05_45)] transition"
+                      className="flex items-center justify-center min-w-11 min-h-11 rounded-full text-[oklch(0.38_0.04_55)] hover:bg-[oklch(0.88_0.04_78)]/60 hover:text-[oklch(0.22_0.05_45)] transition disabled:opacity-40 disabled:pointer-events-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[oklch(0.62_0.14_55)]/60"
                     >
                       <RotateCcw className="w-4 h-4" />
                     </button>
@@ -358,7 +359,7 @@ export function AskCurator() {
                     type="button"
                     onClick={() => setOpen(false)}
                     aria-label={copy.close}
-                    className="p-2 rounded-full text-[oklch(0.42_0.03_55)] hover:bg-[oklch(0.88_0.04_78)]/60 hover:text-[oklch(0.24_0.05_45)] transition"
+                    className="flex items-center justify-center min-w-11 min-h-11 rounded-full text-[oklch(0.38_0.04_55)] hover:bg-[oklch(0.88_0.04_78)]/60 hover:text-[oklch(0.22_0.05_45)] transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[oklch(0.62_0.14_55)]/60"
                   >
                     <X className="w-4 h-4" />
                   </button>
