@@ -47,10 +47,7 @@ function ClubsLanding() {
 
       <section
         className="relative overflow-hidden"
-        style={{
-          background:
-            "radial-gradient(ellipse at 50% 15%, oklch(0.28 0.05 60 / 0.55), transparent 65%), linear-gradient(180deg, oklch(0.985 0.02 84), oklch(0.94 0.04 76))",
-        }}
+        style={{ background: "var(--gradient-parchment)" }}
       >
         <div className="relative max-w-6xl mx-auto px-4 sm:px-6 py-14 sm:py-20">
           <p className="text-[10px] sm:text-xs uppercase tracking-[0.28em] font-bold text-primary">
