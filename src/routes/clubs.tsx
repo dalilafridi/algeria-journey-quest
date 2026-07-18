@@ -49,7 +49,7 @@ function ClubsLanding() {
         className="relative overflow-hidden"
         style={{
           background:
-            "radial-gradient(ellipse at 50% 15%, oklch(0.28 0.05 60 / 0.55), transparent 65%), linear-gradient(180deg, oklch(0.14 0.02 45), oklch(0.09 0.015 40))",
+            "radial-gradient(ellipse at 50% 15%, oklch(0.28 0.05 60 / 0.55), transparent 65%), linear-gradient(180deg, oklch(0.985 0.02 84), oklch(0.94 0.04 76))",
         }}
       >
         <div className="relative max-w-6xl mx-auto px-4 sm:px-6 py-14 sm:py-20">
@@ -124,10 +124,10 @@ function FeaturedCard({ club, lang, label, cta, founded }: { club: ClubMuseum; l
         <div>
           <p className="text-[10px] uppercase tracking-[0.3em] font-bold text-[oklch(0.85_0.14_82)]">{label}</p>
           <h3 className="mt-2 text-2xl sm:text-3xl font-bold" style={SERIF}>{t(club.fullName, lang)}</h3>
-          <p className="text-sm text-[oklch(0.85_0.03_80)]/80 mt-1">
+          <p className="text-sm text-muted-foreground mt-1">
             {t(club.city, lang)} · {founded} {club.founded}
           </p>
-          <p className="mt-3 italic text-[oklch(0.9_0.03_82)]" style={SERIF}>{t(club.tagline, lang)}</p>
+          <p className="mt-3 italic text-foreground" style={SERIF}>{t(club.tagline, lang)}</p>
           <span
             className="inline-flex items-center gap-2 mt-5 rounded-full px-4 py-2 text-sm font-semibold text-[oklch(0.15_0.02_45)]"
             style={{ background: "linear-gradient(135deg, oklch(0.92 0.13 86), oklch(0.72 0.14 72))" }}
@@ -165,10 +165,10 @@ function ClubCard({ club, lang, enter, comingSoon, founded }: { club: ClubMuseum
         </MedallionFrame>
         <div>
           <div className="text-base font-bold leading-tight" style={SERIF}>{t(club.fullName, lang)}</div>
-          <div className="text-xs text-[oklch(0.85_0.03_80)]/70">{t(club.city, lang)} · {founded} {club.founded}</div>
+          <div className="text-xs text-muted-foreground">{t(club.city, lang)} · {founded} {club.founded}</div>
         </div>
       </div>
-      <p className="text-sm italic text-[oklch(0.88_0.03_82)]/85" style={SERIF}>{t(club.tagline, lang)}</p>
+      <p className="text-sm italic text-foreground/85" style={SERIF}>{t(club.tagline, lang)}</p>
       <div className="mt-auto pt-2">
         <span
           className={

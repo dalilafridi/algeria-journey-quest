@@ -95,7 +95,7 @@ function ComingSoonView({ club, lang }: { club: ClubMuseum; lang: Lang }) {
           </div>
         </MedallionFrame>
         <h1 className="mt-6 text-3xl sm:text-4xl font-bold" style={SERIF}>{t(club.fullName, lang)}</h1>
-        <p className="mt-3 italic text-[oklch(0.88_0.03_82)]/85" style={SERIF}>{t(club.tagline, lang)}</p>
+        <p className="mt-3 italic text-foreground/85" style={SERIF}>{t(club.tagline, lang)}</p>
         <div className="mt-8 inline-block rounded-full border px-4 py-2 text-sm" style={{ borderColor: "oklch(0.7 0.1 75 / 0.4)" }}>
           ✦ {{ en: "This club museum wing is coming soon.", fr: "Cette aile muséale ouvrira bientôt.", ar: "سيُفتتح جناح هذا النادي قريباً." }[lang]}
         </div>
@@ -199,7 +199,7 @@ function Hero({ club, lang }: { club: ClubMuseum; lang: Lang }) {
       className="relative overflow-hidden"
       style={{
         background:
-          `radial-gradient(ellipse at 20% 20%, ${primary}22, transparent 55%), radial-gradient(ellipse at 80% 80%, ${secondary}33, transparent 55%), linear-gradient(180deg, oklch(0.14 0.02 45), oklch(0.09 0.015 40))`,
+          `radial-gradient(ellipse at 20% 20%, ${primary}22, transparent 55%), radial-gradient(ellipse at 80% 80%, ${secondary}33, transparent 55%), linear-gradient(180deg, oklch(0.985 0.02 84), oklch(0.94 0.04 76))`,
       }}
     >
       <div className="relative max-w-6xl mx-auto px-4 sm:px-6 py-14 sm:py-20 grid gap-10 md:grid-cols-[1fr_auto] items-center">
@@ -210,10 +210,10 @@ function Hero({ club, lang }: { club: ClubMuseum; lang: Lang }) {
           <h1 className="mt-3 text-4xl sm:text-5xl md:text-6xl font-bold leading-[1.05]" style={SERIF}>
             {t(club.fullName, lang)}
           </h1>
-          <p className="text-sm mt-2 text-[oklch(0.85_0.03_80)]/80">
+          <p className="text-sm mt-2 text-muted-foreground">
             {t(club.city, lang)} · {{ en: "Founded", fr: "Fondé", ar: "تأسس" }[lang]} {club.founded}
           </p>
-          <p className="mt-5 max-w-xl text-lg italic text-[oklch(0.9_0.03_82)]" style={SERIF}>
+          <p className="mt-5 max-w-xl text-lg italic text-foreground" style={SERIF}>
             {t(club.tagline, lang)}
           </p>
         </div>
@@ -557,7 +557,7 @@ function JerseysSection({ club, lang }: { club: ClubMuseum; lang: Lang }) {
               onClick={() => setI(idx)}
               className={
                 "text-start rounded-xl px-3 py-2 border text-sm transition " +
-                (idx === i ? "text-[oklch(0.15_0.02_45)]" : "text-[oklch(0.9_0.03_82)] hover:bg-muted")
+                (idx === i ? "text-[oklch(0.15_0.02_45)]" : "text-foreground hover:bg-muted")
               }
               style={idx === i
                 ? { background: "linear-gradient(135deg, oklch(0.92 0.13 86), oklch(0.72 0.14 72))", borderColor: "transparent" }
