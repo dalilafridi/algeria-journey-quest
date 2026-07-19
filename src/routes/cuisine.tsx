@@ -8,6 +8,8 @@ import { discover } from "@/lib/discoveries";
 import { t, useLang } from "@/lib/i18n";
 import { saveJourneyPlace } from "@/lib/continuity";
 import { JourneyNext } from "@/components/JourneyNext";
+import { ContinueExploring } from "@/components/curator/ContinueExploring";
+import { getCuisineExploreGroups } from "@/lib/exploreGroups";
 import cuisineHero from "@/assets/cuisine-hero.jpg";
 
 export const Route = createFileRoute("/cuisine")({
