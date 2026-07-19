@@ -487,7 +487,7 @@ function CulturePage() {
         </div>
       </section>
 
-        <main className="max-w-5xl mx-auto px-4 py-10 pb-32 sm:py-14 museum-stack-lg">
+        <main className="max-w-5xl mx-auto px-4 pt-10 pb-32 sm:py-14 museum-stack-lg">
         {/* Contents */}
         <nav aria-label={C.contents}>
           <div className="museum-eyebrow mb-3">{C.contents}</div>

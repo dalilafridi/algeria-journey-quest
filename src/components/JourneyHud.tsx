@@ -161,7 +161,7 @@ export function JourneyHud() {
               <button
                 type="button"
                 onClick={() => setImmersion(!immersion)}
-                  className={
+                className={
                   "pointer-events-auto inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-semibold border transition-all " +
                   (immersion
                     ? "bg-foreground text-background border-foreground"
