@@ -329,7 +329,11 @@ function CultureTopicPage() {
         }
       />
       <CuratorRecommendations kind="culture" id={topic.id} />
+      <div className="mx-auto max-w-6xl px-4 sm:px-6 mt-4">
+        <ContinueExploring groups={getCultureExploreGroups(topic.id)} />
+      </div>
       <div className="h-16" />
+
     </>
   );
 }
