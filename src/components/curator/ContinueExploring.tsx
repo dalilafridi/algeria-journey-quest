@@ -17,7 +17,9 @@ export type ExploreItem =
   | { kind: "figure"; id: string; emoji: string; label: LocalizedString }
   | { kind: "region"; id: string; emoji: string; label: LocalizedString }
   | { kind: "era"; id: string; emoji: string; label: LocalizedString }
+  | { kind: "culture"; id: string; emblem: string; label: LocalizedString }
   | { kind: "collection"; slug: string; emblem: string; accent?: string; label: LocalizedString };
+
 
 export type ExploreGroup = {
   label: LocalizedString;
