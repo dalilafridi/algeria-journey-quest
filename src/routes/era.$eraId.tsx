@@ -42,6 +42,8 @@ import {
   type RelatedItem,
 } from "@/components/museum/MuseumCatalog";
 import { CuratorRecommendations } from "@/components/CuratorRecommendations";
+import { ContinueExploring } from "@/components/curator/ContinueExploring";
+import { getEraExploreGroups } from "@/lib/exploreGroups";
 
 const SERIF = "Georgia, 'Times New Roman', serif";
 
