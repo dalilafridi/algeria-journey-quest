@@ -262,9 +262,10 @@ function cultureLinkItemAsExplore(topicId: string): ExploreItem | null {
   const c = cultureLinkItem(topicId);
   if (!c) return null;
   return {
-    kind: "collection",
-    slug: c.id,
+    kind: "culture",
+    id: c.id,
     emblem: c.emblem,
     label: c.label,
   };
 }
+
