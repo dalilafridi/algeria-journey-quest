@@ -42,6 +42,8 @@ import {
   type RelatedItem,
 } from "@/components/museum/MuseumCatalog";
 import { CuratorRecommendations } from "@/components/CuratorRecommendations";
+import { ContinueExploring } from "@/components/curator/ContinueExploring";
+import { getEraExploreGroups } from "@/lib/exploreGroups";
 
 const SERIF = "Georgia, 'Times New Roman', serif";
 
@@ -360,7 +362,11 @@ function EraPage() {
         }
       />
       <CuratorRecommendations kind="era" id={era.id} />
+      <div className="mx-auto max-w-6xl px-4 sm:px-6 mt-4">
+        <ContinueExploring groups={getEraExploreGroups(era.id)} />
+      </div>
       <div className="h-16" />
+
     </>
   );
 }

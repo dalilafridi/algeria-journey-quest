@@ -17,7 +17,9 @@ export type ExploreItem =
   | { kind: "figure"; id: string; emoji: string; label: LocalizedString }
   | { kind: "region"; id: string; emoji: string; label: LocalizedString }
   | { kind: "era"; id: string; emoji: string; label: LocalizedString }
+  | { kind: "culture"; id: string; emblem: string; label: LocalizedString }
   | { kind: "collection"; slug: string; emblem: string; accent?: string; label: LocalizedString };
+
 
 export type ExploreGroup = {
   label: LocalizedString;
@@ -34,8 +36,14 @@ function ItemCard({ item }: { item: ExploreItem }) {
   const lang = useLang();
   const inner = (
     <>
-      {item.kind === "collection" ? (
-        <CollectionEmblem emblem={item.emblem} accent={item.accent} size={44} className="shrink-0" interactive />
+      {item.kind === "collection" || item.kind === "culture" ? (
+        <CollectionEmblem
+          emblem={item.emblem}
+          accent={item.kind === "collection" ? item.accent : undefined}
+          size={44}
+          className="shrink-0"
+          interactive
+        />
       ) : (
         <MedallionFrame size={44} tone="gold" inset={0.2} className="shrink-0">
           <span aria-hidden className="text-xl leading-none">
@@ -82,12 +90,20 @@ function ItemCard({ item }: { item: ExploreItem }) {
       </Link>
     );
   }
+  if (item.kind === "culture") {
+    return (
+      <Link to="/culture/$topicId" params={{ topicId: item.id }} className={cls} style={style}>
+        {inner}
+      </Link>
+    );
+  }
   return (
     <Link to="/figures/collection/$collectionId" params={{ collectionId: item.slug }} className={cls} style={style}>
       {inner}
     </Link>
   );
 }
+
 
 export function ContinueExploring({
   groups,

@@ -42,6 +42,8 @@ import {
   type RelatedItem,
 } from "@/components/museum/MuseumCatalog";
 import { CuratorRecommendations } from "@/components/CuratorRecommendations";
+import { ContinueExploring } from "@/components/curator/ContinueExploring";
+import { getRegionExploreGroups } from "@/lib/exploreGroups";
 
 const SERIF = "Georgia, 'Times New Roman', serif";
 
@@ -372,7 +374,11 @@ function RegionPage() {
         }
       />
       <CuratorRecommendations kind="region" id={region.id} />
+      <div className="mx-auto max-w-6xl px-4 sm:px-6 mt-4">
+        <ContinueExploring groups={getRegionExploreGroups(region.id)} />
+      </div>
       <div className="h-16" />
+
     </>
   );
 }
