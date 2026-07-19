@@ -516,7 +516,11 @@ function FigureDetail() {
         }
       />
       <CuratorRecommendations kind="figure" id={f.id} />
+      <div className="mx-auto max-w-6xl px-4 sm:px-6 mt-4">
+        <ContinueExploring groups={getFigureExploreGroups(f.id)} />
+      </div>
       <div className="h-16" />
+
     </>
   );
 }
