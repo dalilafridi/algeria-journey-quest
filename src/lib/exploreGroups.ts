@@ -236,8 +236,9 @@ export function getCuisineExploreGroups(): ExploreGroup[] {
   const cultureIds = ["music", "festivals", "oral-traditions", "languages", "architecture"];
   const relatedCulture = cultureIds.map((id) => cultureLinkItemAsExplore(id));
 
-  const relatedEras = ["ottoman", "french-colonization", "independence"]
+  const relatedEras = ["ottoman", "french", "independence"]
     .map((id) => eraItem(id));
+
 
   return [
     group(RELATED_LABELS.regions, relatedRegions),
