@@ -487,7 +487,7 @@ function CulturePage() {
         </div>
       </section>
 
-      <main className="max-w-5xl mx-auto px-4 py-10 sm:py-14 museum-stack-lg">
+        <main className="max-w-5xl mx-auto px-4 py-10 pb-32 sm:py-14 museum-stack-lg">
         {/* Contents */}
         <nav aria-label={C.contents}>
           <div className="museum-eyebrow mb-3">{C.contents}</div>
@@ -520,7 +520,8 @@ function CulturePage() {
                 key={topic.id}
                 to="/culture/$topicId"
                 params={{ topicId: topic.id }}
-                className="group museum-card flex items-start gap-3 hover:border-primary/40 transition"
+                aria-label={t(topic.title, lang)}
+                className="group museum-card museum-card-hover relative z-10 flex items-start gap-3 cursor-pointer hover:border-primary/40 transition"
               >
                 <CollectionEmblem emblem={topic.emblem} size={48} />
                 <div className="min-w-0 flex-1">

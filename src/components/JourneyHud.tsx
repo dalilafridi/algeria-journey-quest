@@ -103,7 +103,7 @@ export function JourneyHud() {
     >
       <div className="mx-auto max-w-3xl px-3">
         <div
-          className="pointer-events-auto rounded-2xl border border-border bg-background/85 backdrop-blur-md shadow-[0_6px_24px_-12px_rgba(0,0,0,0.25)]"
+          className="pointer-events-none rounded-2xl border border-border bg-background/85 backdrop-blur-md shadow-[0_6px_24px_-12px_rgba(0,0,0,0.25)]"
         >
           <div className="flex items-center gap-2 px-3 py-2">
             <div className="flex items-center gap-1.5 flex-1 min-w-0 overflow-hidden">
@@ -114,7 +114,7 @@ export function JourneyHud() {
                     key={s.id}
                     type="button"
                     onClick={() => navigate({ to: s.to })}
-                    className="group inline-flex items-center gap-1.5 shrink min-w-0"
+                    className="group pointer-events-auto inline-flex items-center gap-1.5 shrink min-w-0"
                     aria-label={s.label[lang]}
                   >
                     <span
@@ -146,7 +146,7 @@ export function JourneyHud() {
             <button
               type="button"
               onClick={() => setOpen((v) => !v)}
-              className="ml-1 inline-flex items-center justify-center w-8 h-8 rounded-full border border-border bg-card hover:bg-muted transition-colors text-foreground"
+              className="ml-1 pointer-events-auto inline-flex items-center justify-center w-8 h-8 rounded-full border border-border bg-card hover:bg-muted transition-colors text-foreground"
               aria-label="More"
               aria-expanded={open}
             >
@@ -161,8 +161,8 @@ export function JourneyHud() {
               <button
                 type="button"
                 onClick={() => setImmersion(!immersion)}
-                className={
-                  "inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-semibold border transition-all " +
+                  className={
+                  "pointer-events-auto inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-semibold border transition-all " +
                   (immersion
                     ? "bg-foreground text-background border-foreground"
                     : "bg-card text-foreground border-border hover:bg-muted")
@@ -175,7 +175,7 @@ export function JourneyHud() {
               <button
                 type="button"
                 onClick={surprise}
-                className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-bold bg-primary text-primary-foreground hover:opacity-90 active:scale-95 transition-all"
+                className="pointer-events-auto inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-bold bg-primary text-primary-foreground hover:opacity-90 active:scale-95 transition-all"
               >
                 <span aria-hidden>🎲</span>
                 {COPY.surprise[lang]}
