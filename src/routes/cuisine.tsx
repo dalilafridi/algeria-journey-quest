@@ -441,7 +441,11 @@ function CuisinePage() {
           </div>
         </section>
         <JourneyNext current="cuisine" />
+        <div className="mt-12">
+          <ContinueExploring groups={getCuisineExploreGroups()} />
+        </div>
       </main>
     </div>
   );
 }
+
