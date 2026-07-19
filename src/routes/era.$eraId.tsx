@@ -362,7 +362,11 @@ function EraPage() {
         }
       />
       <CuratorRecommendations kind="era" id={era.id} />
+      <div className="mx-auto max-w-6xl px-4 sm:px-6 mt-4">
+        <ContinueExploring groups={getEraExploreGroups(era.id)} />
+      </div>
       <div className="h-16" />
+
     </>
   );
 }
