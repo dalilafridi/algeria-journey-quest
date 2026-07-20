@@ -43,11 +43,14 @@ export function CuratorRecommendations({ kind, id }: { kind: RecKind; id: string
   }, []);
 
   const recs = useMemo(
-    () => getRecommendations(kind, id, 3),
+    // Before hydration completes, force the SSR-equivalent (no passport) result
+    // so the first client render matches the server HTML exactly.
+    () => (hydrated ? getRecommendations(kind, id, 3) : getRecommendationsSSR(kind, id, 3)),
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [kind, id, tick, hydrated],
   );
   if (recs.length === 0) return null;
+
 
 
   return (
