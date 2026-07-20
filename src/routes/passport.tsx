@@ -90,11 +90,20 @@ const tri = (lang: Lang, s: { en: string; fr: string; ar: string }) =>
 
 function PassportPage() {
   const lang = useLang();
-  const [state, setState] = useState<PassportState>(() => getPassport());
+  // Use a stable placeholder for SSR / first client render — genId() is random
+  // and would otherwise hydration-mismatch the visitorId. Real passport is
+  // loaded from localStorage inside useEffect after hydration.
+  const [state, setState] = useState<PassportState>(() => ({
+    visits: { era: [], figure: [], region: [], culture: [] },
+    stamps: [],
+    issuedAt: "",
+    visitorId: "DZ-—",
+  }));
   const [editing, setEditing] = useState(false);
   const [nameInput, setNameInput] = useState("");
 
   useEffect(() => {
+    setState(getPassport());
     const onUpdate = () => setState(getPassport());
     window.addEventListener("passport-updated", onUpdate);
     window.addEventListener("progress-updated", onUpdate);
@@ -103,6 +112,7 @@ function PassportPage() {
       window.removeEventListener("progress-updated", onUpdate);
     };
   }, []);
+
 
   const stamps = useMemo(() => computeStamps(state), [state]);
   const progress = useMemo(() => getProgress(), [state]);
