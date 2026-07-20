@@ -89,7 +89,7 @@ const R = {
  */
 export function getRecommendations(kind: RecKind, id: string, limit = 3, opts: { usePassport?: boolean } = {}): Recommendation[] {
   const usePassport = opts.usePassport !== false;
-  const passport = usePassport ? getPassport() : { visits: { era: [], figure: [], region: [], culture: [] } } as ReturnType<typeof getPassport>;
+  const passport = usePassport ? getPassport() : { visits: { era: [], figure: [], region: [], culture: [] }, stamps: [], issuedAt: "", visitorId: "" };
 
   const visited = new Set<string>(
     [
