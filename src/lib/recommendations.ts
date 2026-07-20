@@ -87,8 +87,10 @@ const R = {
  * Build 3 recommended exhibits for the current view.
  * Sourced from data relations, then personalized via passport visit history.
  */
-export function getRecommendations(kind: RecKind, id: string, limit = 3): Recommendation[] {
-  const passport = getPassport();
+export function getRecommendations(kind: RecKind, id: string, limit = 3, opts: { usePassport?: boolean } = {}): Recommendation[] {
+  const usePassport = opts.usePassport !== false;
+  const passport = usePassport ? getPassport() : { visits: { era: [], figure: [], region: [], culture: [] } } as ReturnType<typeof getPassport>;
+
   const visited = new Set<string>(
     [
       ...passport.visits.era.map((x) => `era:${x}`),
