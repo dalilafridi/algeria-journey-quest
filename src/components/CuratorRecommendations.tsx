@@ -45,7 +45,7 @@ export function CuratorRecommendations({ kind, id }: { kind: RecKind; id: string
   const recs = useMemo(
     // Before hydration completes, force the SSR-equivalent (no passport) result
     // so the first client render matches the server HTML exactly.
-    () => (hydrated ? getRecommendations(kind, id, 3) : getRecommendationsSSR(kind, id, 3)),
+    () => getRecommendations(kind, id, 3, { usePassport: hydrated }),
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [kind, id, tick, hydrated],
   );
