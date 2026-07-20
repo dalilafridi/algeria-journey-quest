@@ -387,7 +387,7 @@ const IDENTITY_TIMELINE: IdentityEra[] = [
 /* Route                                                              */
 /* ------------------------------------------------------------------ */
 
-export const Route = createFileRoute("/culture")({
+export const Route = createFileRoute("/culture/")({
   head: () => ({
     meta: [
       { title: "Culture — A Living Algeria" },
