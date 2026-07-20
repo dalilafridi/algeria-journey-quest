@@ -30,16 +30,28 @@ const tri = (lang: Lang, s: { en: string; fr: string; ar: string }) =>
 
 export function CuratorRecommendations({ kind, id }: { kind: RecKind; id: string }) {
   const lang = useLang();
-  // Recompute after passport updates so personalization reflects the current visit.
+  // Defer personalization until after hydration — getRecommendations reads
+  // localStorage (passport) which differs between SSR and client, and would
+  // otherwise cause a hydration mismatch on the rendered card list.
+  const [hydrated, setHydrated] = useState(false);
   const [tick, setTick] = useState(0);
   useEffect(() => {
+    setHydrated(true);
     const onUpdate = () => setTick((x) => x + 1);
     window.addEventListener("passport-updated", onUpdate);
     return () => window.removeEventListener("passport-updated", onUpdate);
   }, []);
 
-  const recs = useMemo(() => getRecommendations(kind, id, 3), [kind, id, tick]);
+  const recs = useMemo(
+    // Before hydration completes, force the SSR-equivalent (no passport) result
+    // so the first client render matches the server HTML exactly.
+    () => getRecommendations(kind, id, 3, { usePassport: hydrated }),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [kind, id, tick, hydrated],
+  );
   if (recs.length === 0) return null;
+
+
 
   return (
     <section

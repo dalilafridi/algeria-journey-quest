@@ -94,14 +94,18 @@ function Timeline() {
     0,
   );
 
-  // Random "Did you know?" fact across unlocked eras (or all on first load).
+  // Rotating "Did you know?" fact — deterministic per-day so SSR and client
+  // agree on the first render (prevents hydration mismatch); re-rolls when
+  // the user earns XP.
   const randomFact = useMemo(() => {
     const pool = eras.flatMap((e) => (e.facts ?? []).map((f) => ({ fact: f, era: e })));
     if (pool.length === 0) return null;
-    const idx = Math.floor(Math.random() * pool.length);
+    const today = new Date().toISOString().slice(0, 10);
+    const seed = Number(today.replace(/-/g, "")) + (progress.xp ?? 0);
+    const idx = Math.abs(seed) % pool.length;
     return pool[idx];
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [progress.xp]);
+
 
   const progressPct = eras.length > 0 ? (completedEras / eras.length) * 100 : 0;
 
