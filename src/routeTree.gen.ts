@@ -20,6 +20,7 @@ import { Route as MomentsRouteImport } from './routes/moments'
 import { Route as MapRouteImport } from './routes/map'
 import { Route as LessonsRouteImport } from './routes/lessons'
 import { Route as IdeasRouteImport } from './routes/ideas'
+import { Route as FootballRouteImport } from './routes/football'
 import { Route as CuisineRouteImport } from './routes/cuisine'
 import { Route as CompareRouteImport } from './routes/compare'
 import { Route as ClubsRouteImport } from './routes/clubs'
@@ -137,6 +138,11 @@ const IdeasRoute = IdeasRouteImport.update({
   path: '/ideas',
   getParentRoute: () => rootRouteImport,
 } as any)
+const FootballRoute = FootballRouteImport.update({
+  id: '/football',
+  path: '/football',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const CuisineRoute = CuisineRouteImport.update({
   id: '/cuisine',
   path: '/cuisine',
@@ -178,9 +184,9 @@ const IndexRoute = IndexRouteImport.update({
   getParentRoute: () => rootRouteImport,
 } as any)
 const FootballIndexRoute = FootballIndexRouteImport.update({
-  id: '/football/',
-  path: '/football/',
-  getParentRoute: () => rootRouteImport,
+  id: '/',
+  path: '/',
+  getParentRoute: () => FootballRoute,
 } as any)
 const FiguresIndexRoute = FiguresIndexRouteImport.update({
   id: '/figures/',
@@ -218,9 +224,9 @@ const JourneysJourneyIdRoute = JourneysJourneyIdRouteImport.update({
   getParentRoute: () => rootRouteImport,
 } as any)
 const FootballLesvertesRoute = FootballLesvertesRouteImport.update({
-  id: '/football/lesvertes',
-  path: '/football/lesvertes',
-  getParentRoute: () => rootRouteImport,
+  id: '/lesvertes',
+  path: '/lesvertes',
+  getParentRoute: () => FootballRoute,
 } as any)
 const FiguresQuizRoute = FiguresQuizRouteImport.update({
   id: '/figures/quiz',
@@ -463,6 +469,7 @@ export interface FileRoutesByFullPath {
   '/clubs': typeof ClubsRouteWithChildren
   '/compare': typeof CompareRoute
   '/cuisine': typeof CuisineRoute
+  '/football': typeof FootballRouteWithChildren
   '/ideas': typeof IdeasRoute
   '/lessons': typeof LessonsRoute
   '/map': typeof MapRoute
@@ -607,6 +614,7 @@ export interface FileRoutesById {
   '/clubs': typeof ClubsRouteWithChildren
   '/compare': typeof CompareRoute
   '/cuisine': typeof CuisineRoute
+  '/football': typeof FootballRouteWithChildren
   '/ideas': typeof IdeasRoute
   '/lessons': typeof LessonsRoute
   '/map': typeof MapRoute
@@ -683,6 +691,7 @@ export interface FileRouteTypes {
     | '/clubs'
     | '/compare'
     | '/cuisine'
+    | '/football'
     | '/ideas'
     | '/lessons'
     | '/map'
@@ -826,6 +835,7 @@ export interface FileRouteTypes {
     | '/clubs'
     | '/compare'
     | '/cuisine'
+    | '/football'
     | '/ideas'
     | '/lessons'
     | '/map'
@@ -901,6 +911,7 @@ export interface RootRouteChildren {
   ClubsRoute: typeof ClubsRouteWithChildren
   CompareRoute: typeof CompareRoute
   CuisineRoute: typeof CuisineRoute
+  FootballRoute: typeof FootballRouteWithChildren
   IdeasRoute: typeof IdeasRoute
   LessonsRoute: typeof LessonsRoute
   MapRoute: typeof MapRoute
@@ -917,14 +928,12 @@ export interface RootRouteChildren {
   EraEraIdRoute: typeof EraEraIdRoute
   FiguresFigureIdRoute: typeof FiguresFigureIdRoute
   FiguresQuizRoute: typeof FiguresQuizRoute
-  FootballLesvertesRoute: typeof FootballLesvertesRoute
   JourneysJourneyIdRoute: typeof JourneysJourneyIdRoute
   QuizEraIdRoute: typeof QuizEraIdRoute
   RegionRegionIdRoute: typeof RegionRegionIdRoute
   TheaterMatchIdRoute: typeof TheaterMatchIdRoute
   CultureIndexRoute: typeof CultureIndexRoute
   FiguresIndexRoute: typeof FiguresIndexRoute
-  FootballIndexRoute: typeof FootballIndexRoute
   FiguresCollectionCollectionIdRoute: typeof FiguresCollectionCollectionIdRoute
 }
 
@@ -1007,6 +1016,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IdeasRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/football': {
+      id: '/football'
+      path: '/football'
+      fullPath: '/football'
+      preLoaderRoute: typeof FootballRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/cuisine': {
       id: '/cuisine'
       path: '/cuisine'
@@ -1065,10 +1081,10 @@ declare module '@tanstack/react-router' {
     }
     '/football/': {
       id: '/football/'
-      path: '/football'
+      path: '/'
       fullPath: '/football/'
       preLoaderRoute: typeof FootballIndexRouteImport
-      parentRoute: typeof rootRouteImport
+      parentRoute: typeof FootballRoute
     }
     '/figures/': {
       id: '/figures/'
@@ -1121,10 +1137,10 @@ declare module '@tanstack/react-router' {
     }
     '/football/lesvertes': {
       id: '/football/lesvertes'
-      path: '/football/lesvertes'
+      path: '/lesvertes'
       fullPath: '/football/lesvertes'
       preLoaderRoute: typeof FootballLesvertesRouteImport
-      parentRoute: typeof rootRouteImport
+      parentRoute: typeof FootballRoute
     }
     '/figures/quiz': {
       id: '/figures/quiz'
@@ -1565,6 +1581,20 @@ const ClubsRouteChildren: ClubsRouteChildren = {
 
 const ClubsRouteWithChildren = ClubsRoute._addFileChildren(ClubsRouteChildren)
 
+interface FootballRouteChildren {
+  FootballLesvertesRoute: typeof FootballLesvertesRoute
+  FootballIndexRoute: typeof FootballIndexRoute
+}
+
+const FootballRouteChildren: FootballRouteChildren = {
+  FootballLesvertesRoute: FootballLesvertesRoute,
+  FootballIndexRoute: FootballIndexRoute,
+}
+
+const FootballRouteWithChildren = FootballRoute._addFileChildren(
+  FootballRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   CuratorRouteRoute: CuratorRouteRouteWithChildren,
@@ -1574,6 +1604,7 @@ const rootRouteChildren: RootRouteChildren = {
   ClubsRoute: ClubsRouteWithChildren,
   CompareRoute: CompareRoute,
   CuisineRoute: CuisineRoute,
+  FootballRoute: FootballRouteWithChildren,
   IdeasRoute: IdeasRoute,
   LessonsRoute: LessonsRoute,
   MapRoute: MapRoute,
@@ -1590,14 +1621,12 @@ const rootRouteChildren: RootRouteChildren = {
   EraEraIdRoute: EraEraIdRoute,
   FiguresFigureIdRoute: FiguresFigureIdRoute,
   FiguresQuizRoute: FiguresQuizRoute,
-  FootballLesvertesRoute: FootballLesvertesRoute,
   JourneysJourneyIdRoute: JourneysJourneyIdRoute,
   QuizEraIdRoute: QuizEraIdRoute,
   RegionRegionIdRoute: RegionRegionIdRoute,
   TheaterMatchIdRoute: TheaterMatchIdRoute,
   CultureIndexRoute: CultureIndexRoute,
   FiguresIndexRoute: FiguresIndexRoute,
-  FootballIndexRoute: FootballIndexRoute,
   FiguresCollectionCollectionIdRoute: FiguresCollectionCollectionIdRoute,
 }
 export const routeTree = rootRouteImport
