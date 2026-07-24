@@ -6,6 +6,7 @@ import { MedallionFrame } from "@/components/brand/MedallionFrame";
 import { useLang, type Lang, type LocalizedString } from "@/lib/i18n";
 import { useFootballBookmarks } from "@/lib/footballBookmarks";
 import { theaterIdForFootballMatch } from "@/data/matchTheater";
+import flnTeamPhoto from "@/assets/fln-team-1958.jpg.asset.json";
 import {
   AFCON_HISTORY,
   ARTIFACTS,
