@@ -992,27 +992,57 @@ function MemoriesExhibit({ lang }: { lang: Lang }) {
 
 function TimelineExhibit({ lang }: { lang: Lang }) {
   return (
-    <div className="relative overflow-x-auto">
-      <div
-        aria-hidden
-        className="absolute top-16 left-0 right-0 h-px"
-        style={{ background: "linear-gradient(90deg, transparent, oklch(0.7 0.12 70 / 0.5), transparent)" }}
-      />
-      <ol className="flex gap-6 pb-6 pt-4 min-w-max pr-6">
-        {CENTURY.map((c) => (
-          <li key={c.year} className="w-56 shrink-0 relative pt-8">
-            <span
-              className="absolute top-14 left-1/2 -translate-x-1/2 w-3.5 h-3.5 rounded-full border-2 border-card"
-              style={{ background: "oklch(0.82 0.14 78)" }}
-              aria-hidden
-            />
-            <div className="text-center font-mono text-sm font-semibold text-accent-foreground">{c.year}</div>
-            <div className="mt-2 rounded-xl border border-border bg-card p-3 text-center" style={{ boxShadow: "var(--shadow-soft)" }}>
-              <div className="text-sm text-foreground/85" style={SERIF}>{tt(c.label, lang)}</div>
-            </div>
-          </li>
-        ))}
-      </ol>
+    <div>
+      <div className="relative overflow-x-auto">
+        <div
+          aria-hidden
+          className="absolute top-16 left-0 right-0 h-px"
+          style={{ background: "linear-gradient(90deg, transparent, oklch(0.7 0.12 70 / 0.5), transparent)" }}
+        />
+        <ol className="flex gap-6 pb-6 pt-4 min-w-max pr-6">
+          {CENTURY.map((c) => (
+            <li key={c.year} className="w-56 shrink-0 relative pt-8">
+              <span
+                className="absolute top-14 left-1/2 -translate-x-1/2 w-3.5 h-3.5 rounded-full border-2 border-card"
+                style={{ background: "oklch(0.82 0.14 78)" }}
+                aria-hidden
+              />
+              <div className="text-center font-mono text-sm font-semibold text-accent-foreground">{c.year}</div>
+              <div className="mt-2 rounded-xl border border-border bg-card p-3 text-center" style={{ boxShadow: "var(--shadow-soft)" }}>
+                <div className="text-sm text-foreground/85" style={SERIF}>{tt(c.label, lang)}</div>
+              </div>
+            </li>
+          ))}
+        </ol>
+      </div>
+      <div className="mt-8 rounded-2xl border border-border bg-card p-5 sm:p-6 flex flex-col sm:flex-row items-start sm:items-center gap-4" style={{ boxShadow: "var(--shadow-soft)" }}>
+        <MedallionFrame size={56} tone="gold">
+          <span className="text-lg" aria-hidden>♀</span>
+        </MedallionFrame>
+        <div className="flex-1 min-w-0">
+          <div className="text-[10px] uppercase tracking-[0.28em] font-bold text-primary">
+            {{ en: "A parallel timeline", fr: "Une chronologie parallèle", ar: "خطّ زمنيّ موازٍ" }[lang]}
+          </div>
+          <div className="mt-1 font-semibold text-foreground" style={SERIF}>
+            {{ en: "Les Vertes — the women's national team", fr: "Les Vertes — la sélection féminine", ar: "الخضراوات — المنتخب النسوي" }[lang]}
+          </div>
+          <p className="text-sm text-muted-foreground mt-1">
+            {{
+              en: "Explore the rise of Algeria's women's national team — a full exhibit of its own.",
+              fr: "Découvrez l'essor de la sélection féminine algérienne — un exhibit à part entière.",
+              ar: "استكشف صعود المنتخب النسوي الجزائري — معرض قائم بذاته.",
+            }[lang]}
+          </p>
+        </div>
+        <Link
+          to="/football/lesvertes"
+          className="shrink-0 inline-flex items-center gap-2 rounded-full bg-primary text-primary-foreground px-4 py-2 text-sm font-semibold hover:-translate-y-0.5 transition"
+          style={{ boxShadow: "var(--shadow-soft)" }}
+        >
+          {{ en: "Enter Les Vertes", fr: "Entrer chez Les Vertes", ar: "ادخل قاعة الخضراوات" }[lang]}
+          <span aria-hidden>→</span>
+        </Link>
+      </div>
     </div>
   );
 }
