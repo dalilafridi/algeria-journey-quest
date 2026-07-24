@@ -42,7 +42,18 @@ function NotFoundComponent() {
   );
 }
 
+import { resolveInitialLang } from "@/lib/lang-server";
+import type { Lang } from "@/lib/i18n";
+
 export const Route = createRootRoute({
+  // Runs on server for SSR; on client it just returns the last resolved value.
+  loader: async (): Promise<{ lang: Lang }> => {
+    if (typeof window === "undefined") {
+      const lang = await resolveInitialLang();
+      return { lang };
+    }
+    return { lang: getLang() };
+  },
   head: () => ({
     meta: [
       { charSet: "utf-8" },
@@ -61,17 +72,10 @@ export const Route = createRootRoute({
       { property: "og:type", content: "website" },
       { property: "og:site_name", content: "DZ Odyssey" },
       // NOTE (Phase 1): og:image and twitter:image intentionally live only on
-      // leaf routes via `pageMeta({...})`. A global preview here overrides
-      // every child's share image because TanStack Router merges root meta
-      // into every match.
+      // leaf routes via `pageMeta({...})`.
     ],
     links: [
-      {
-        rel: "stylesheet",
-        href: appCss,
-      },
-      // Preconnect for the optional Arabic webfonts (only loaded by LangSync
-      // when the user picks Arabic — keeps non-AR users from paying for it).
+      { rel: "stylesheet", href: appCss },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       { rel: "icon", type: "image/svg+xml", href: "/favicon.svg" },
@@ -83,16 +87,19 @@ export const Route = createRootRoute({
 });
 
 function RootShell({ children }: { children: React.ReactNode }) {
+  const { lang } = Route.useLoaderData();
+  const dir = lang === "ar" ? "rtl" : "ltr";
   return (
-    <html lang="en" dir="ltr">
+    <html lang={lang} dir={dir}>
       <head>
         <HeadContent />
-        {/* Set lang/dir from the saved preference before first paint to avoid
-            a flash of LTR for Arabic (RTL) visitors on hard navigations. */}
+        {/* Reconcile with a stored client preference (localStorage) on hard
+            navigations where the cookie may lag behind the last in-app
+            selection. SSR already sets lang/dir from cookie + Accept-Language. */}
         <script
           dangerouslySetInnerHTML={{
             __html:
-              "(function(){try{var l=localStorage.getItem('algeria-history-lang-v1');if(l==='ar'){document.documentElement.lang='ar';document.documentElement.dir='rtl';}else if(l==='fr'){document.documentElement.lang='fr';}}catch(e){}})();",
+              "(function(){try{var l=localStorage.getItem('algeria-history-lang-v1');if(l==='en'||l==='fr'||l==='ar'){document.documentElement.lang=l;document.documentElement.dir=(l==='ar')?'rtl':'ltr';}}catch(e){}})();",
           }}
         />
       </head>
