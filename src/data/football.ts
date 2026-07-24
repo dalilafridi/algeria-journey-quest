@@ -926,4 +926,5 @@ export const CENTURY: { year: number; label: LocalizedString }[] = [
   { year: 2019, label: { en: "Second continental star", fr: "Deuxième étoile continentale", ar: "النجمة القارّية الثانية" } },
   { year: 2021, label: { en: "Arab Cup Champions in Qatar", fr: "Champions de la Coupe arabe au Qatar", ar: "أبطال كأس العرب في قطر" } },
   { year: 2026, label: { en: "Next chapter — North American World Cup", fr: "Prochain chapitre — Mondial nord-américain", ar: "الفصل القادم — المونديال في أمريكا الشمالية" } },
+  { year: 2027, label: { en: "Les Vertes — a new wing for Algeria's women's national team", fr: "Les Vertes — une nouvelle aile pour la sélection féminine algérienne", ar: "الخضراوات — جناح جديد للمنتخب النسوي الجزائري" } },
 ];
