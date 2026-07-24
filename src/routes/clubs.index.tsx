@@ -7,7 +7,7 @@ import { listClubMuseums } from "@/data/clubs";
 import type { ClubMuseum } from "@/data/clubs/types";
 import { pageMeta } from "@/lib/seo";
 
-export const Route = createFileRoute("/clubs")({
+export const Route = createFileRoute("/clubs/")({
   head: () =>
     pageMeta({
       path: "/clubs",
