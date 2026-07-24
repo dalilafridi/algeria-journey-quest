@@ -152,6 +152,26 @@ function FootballHero({ lang }: { lang: Lang }) {
   );
 }
 
+type VitrineCaption = {
+  title: LocalizedString;
+  years: string;
+  description: LocalizedString;
+};
+
+const VITRINE_CAPTION: VitrineCaption = {
+  title: {
+    en: "FLN Team",
+    fr: "Équipe FLN",
+    ar: "فريق جبهة التحرير الوطني",
+  },
+  years: "1958–1962",
+  description: {
+    en: "The team that carried Algeria's fight for independence onto the world's football stage.",
+    fr: "L'équipe qui porta le combat de l'indépendance algérienne sur la scène mondiale du football.",
+    ar: "الفريق الذي حمل نضال الجزائر من أجل الاستقلال إلى الساحة العالمية لكرة القدم.",
+  },
+};
+
 /**
  * MuseumVitrine — the historical FLN team photograph presented as the
  * permanent hero artifact of the Hall of Algerian Football. Preserved in
@@ -159,7 +179,9 @@ function FootballHero({ lang }: { lang: Lang }) {
  * museum-style frame with soft shadow. No text overlays; the entire team
  * photograph is preserved (no cropping of heads or feet).
  */
-function MuseumVitrine() {
+function MuseumVitrine({ lang }: { lang: Lang }) {
+  const caption = VITRINE_CAPTION;
+  const dir = lang === "ar" ? "rtl" : "ltr";
   return (
     <figure
       className="relative w-full max-w-[440px] mx-auto"
