@@ -6,6 +6,7 @@ import { MedallionFrame } from "@/components/brand/MedallionFrame";
 import { useLang, type Lang, type LocalizedString } from "@/lib/i18n";
 import { useFootballBookmarks } from "@/lib/footballBookmarks";
 import { theaterIdForFootballMatch } from "@/data/matchTheater";
+import flnTeamPhoto from "@/assets/fln-team-1958.jpg.asset.json";
 import {
   AFCON_HISTORY,
   ARTIFACTS,
@@ -152,58 +153,73 @@ function FootballHero({ lang }: { lang: Lang }) {
 }
 
 /**
- * MuseumVitrine — a photorealistic museum display of authentic football
- * artifacts (aged leather ball, vintage boots, brass whistle, historic
- * tickets, captain's armband, sepia team photograph) presented in a warm
- * walnut-and-glass case. The image is intentionally understated so the
- * hero title on the left remains the visual focus.
+ * MuseumVitrine — the historical FLN team photograph presented as the
+ * permanent hero artifact of the Hall of Algerian Football. Preserved in
+ * black & white with a subtle warm sepia wash, gentle vignette, and a
+ * museum-style frame with soft shadow. No text overlays; the entire team
+ * photograph is preserved (no cropping of heads or feet).
  */
 function MuseumVitrine() {
   return (
     <figure
-      className="relative w-[300px] sm:w-[340px] md:w-[380px] lg:w-[420px]"
-      aria-label="Museum display of historic Algerian football artifacts"
+      className="relative w-full max-w-[440px] mx-auto"
+      aria-label="Historic photograph of the FLN football team"
     >
       {/* Ambient cabinet shadow */}
       <div
         aria-hidden
-        className="absolute -inset-x-6 -bottom-4 h-12 rounded-full blur-2xl"
+        className="absolute -inset-x-6 -bottom-5 h-12 rounded-full blur-2xl"
         style={{ background: "oklch(0.22 0.03 40 / 0.45)" }}
       />
-      {/* Framed photograph */}
+      {/* Museum mat + frame */}
       <div
-        className="relative overflow-hidden rounded-[6px]"
+        className="relative rounded-2xl p-3 sm:p-4"
         style={{
+          background:
+            "linear-gradient(160deg, oklch(0.97 0.02 80) 0%, oklch(0.93 0.03 75) 100%)",
           boxShadow:
-            "0 30px 60px -28px oklch(0.15 0.03 40 / 0.55), 0 12px 24px -14px oklch(0.15 0.03 40 / 0.4), inset 0 0 0 1px oklch(0.35 0.05 55 / 0.35)",
+            "0 30px 60px -28px oklch(0.15 0.03 40 / 0.55), 0 12px 24px -14px oklch(0.15 0.03 40 / 0.4), inset 0 0 0 1px oklch(0.55 0.06 60 / 0.35), inset 0 0 0 4px oklch(0.98 0.01 80 / 0.9)",
         }}
       >
-        <img
-          src={new URL("../assets/football-hero-vitrine.jpg", import.meta.url).href}
-          alt="A museum vitrine holding an aged leather football, worn vintage boots, a tarnished brass whistle, historic paper match tickets, and a captain's armband, set before a sepia team photograph."
-          width={1024}
-          height={1280}
-          className="block w-full h-auto"
-          style={{ filter: "saturate(0.98) contrast(1.02)" }}
-        />
-        {/* Subtle warm vignette to blend into parchment page */}
         <div
-          aria-hidden
-          className="pointer-events-none absolute inset-0"
+          className="relative overflow-hidden rounded-xl"
           style={{
-            background:
-              "radial-gradient(120% 90% at 50% 40%, transparent 55%, oklch(0.22 0.04 45 / 0.35) 100%)",
+            boxShadow:
+              "inset 0 0 0 1px oklch(0.35 0.05 55 / 0.45), 0 6px 14px -8px oklch(0.15 0.03 40 / 0.55)",
           }}
-        />
-        {/* Faint glass reflection sweep */}
-        <div
-          aria-hidden
-          className="pointer-events-none absolute inset-0"
-          style={{
-            background:
-              "linear-gradient(115deg, oklch(1 0 0 / 0) 55%, oklch(1 0 0 / 0.08) 62%, oklch(1 0 0 / 0) 70%)",
-          }}
-        />
+        >
+          <img
+            src={flnTeamPhoto.url}
+            alt="Historic team photograph of the FLN football team, players standing and kneeling on a pitch with a ball at the centre."
+            width={900}
+            height={640}
+            loading="eager"
+            className="block w-full h-auto"
+            style={{
+              // B&W preserved, gentle restoration + subtle warm sepia (~8%)
+              filter:
+                "grayscale(1) sepia(0.08) contrast(1.08) brightness(1.02) saturate(1.05)",
+            }}
+          />
+          {/* Soft vignette around edges */}
+          <div
+            aria-hidden
+            className="pointer-events-none absolute inset-0"
+            style={{
+              background:
+                "radial-gradient(115% 90% at 50% 50%, transparent 60%, oklch(0.18 0.03 40 / 0.45) 100%)",
+            }}
+          />
+          {/* Faint glass reflection sweep */}
+          <div
+            aria-hidden
+            className="pointer-events-none absolute inset-0"
+            style={{
+              background:
+                "linear-gradient(115deg, oklch(1 0 0 / 0) 55%, oklch(1 0 0 / 0.06) 62%, oklch(1 0 0 / 0) 70%)",
+            }}
+          />
+        </div>
       </div>
     </figure>
   );
