@@ -452,18 +452,23 @@ export const WORLD_CUPS: WorldCupEdition[] = [
   {
     year: 2026,
     host: "USA · Canada · Mexico",
-    coach: "TBD",
-    finish: { en: "To be written", fr: "À écrire", ar: "لم تُكتب بعد" },
+    coach: "—",
+    finish: { en: "Round of 32", fr: "Seizièmes de finale", ar: "دور الـ٣٢" },
     summary: {
-      en: "The next chapter of the story. This display will fill itself as the qualification campaign unfolds.",
-      fr: "Le prochain chapitre. Cet emplacement se remplira au fil de la campagne de qualification.",
-      ar: "الفصل التالي من الحكاية. ستمتلئ هذه الخانة مع تقدّم مشوار التصفيات.",
+      en: "Twelve years after Porto Alegre, Algeria returned to the knockout stage. A difficult opening defeat against Argentina was followed by an important victory over Jordan. A dramatic 3–3 draw against Austria secured qualification for the Round of 32. The journey ended against Switzerland, but Les Fennecs had once again reached the knockout stage of a FIFA World Cup.",
+      fr: "Douze ans après Porto Alegre, l’Algérie retrouve les phases à élimination directe. Une défaite difficile en ouverture face à l’Argentine est suivie d’une victoire précieuse contre la Jordanie. Un match nul spectaculaire 3–3 face à l’Autriche assure la qualification pour les seizièmes de finale. L’aventure s’arrête contre la Suisse, mais les Fennecs ont de nouveau atteint le tour à élimination directe d’une Coupe du monde.",
+      ar: "بعد اثنَي عشر عامًا من بورتو أليغري، عادت الجزائر إلى الأدوار الإقصائية. هزيمة صعبة في الافتتاح أمام الأرجنتين تبعها فوز مهم على الأردن. تعادل مثير ٣–٣ أمام النمسا ضَمِن التأهّل إلى دور الـ٣٢. انتهت الرحلة أمام سويسرا، لكنّ الفنّاك بلغوا مجدّدًا الأدوار الإقصائية لكأس العالم.",
     },
-    matches: [],
+    matches: [
+      { opp: "Argentina", result: "0–3", note: "Opening match" },
+      { opp: "Jordan", result: "2–1", note: "First World Cup victory of the tournament" },
+      { opp: "Austria", result: "3–3", note: "Algeria qualifies for the Round of 32" },
+      { opp: "Switzerland", result: "0–2", note: "Round of 32" },
+    ],
     moment: {
-      en: "Held for the moment the whistle blows.",
-      fr: "Réservé pour l’instant du coup d’envoi.",
-      ar: "مُخصَّصة للحظة صافرة البداية.",
+      en: "Six goals, one final whistle, and Algeria were back in the knockout rounds.",
+      fr: "Six buts, un coup de sifflet final, et l’Algérie retrouvait les phases à élimination directe.",
+      ar: "ستّة أهداف، صافرة نهاية واحدة، وعادت الجزائر إلى الأدوار الإقصائية.",
     },
   },
 ];
