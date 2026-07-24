@@ -137,6 +137,12 @@ function FootballHero({ lang }: { lang: Lang }) {
             >
               {{ en: "Club Museums →", fr: "Musées des clubs →", ar: "متاحف الأندية ←" }[lang]}
             </Link>
+            <Link
+              to="/football/lesvertes"
+              className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-5 py-3 text-sm font-semibold text-foreground hover:bg-muted transition"
+            >
+              {{ en: "Les Vertes — Women's Team →", fr: "Les Vertes — sélection féminine →", ar: "الخضراوات — المنتخب النسوي ←" }[lang]}
+            </Link>
           </div>
 
         </div>
