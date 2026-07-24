@@ -5,24 +5,15 @@ import { IDEAS, type IdeaTopic } from "@/data/ideas";
 import { words } from "@/data/words";
 import { figures } from "@/data/figures";
 import { t, useLang, type Lang } from "@/lib/i18n";
+import { pageMeta } from "@/lib/seo";
 
 export const Route = createFileRoute("/ideas")({
-  head: () => ({
-    meta: [
-      { title: "Debates & Ideas — Algeria Through Time" },
-      {
-        name: "description",
-        content:
-          "Key ideas, debates and intellectual currents that shaped Algerian thought — from plural Algeria to civilizational renewal.",
-      },
-      { property: "og:title", content: "Debates & Ideas — Algeria Through Time" },
-      {
-        property: "og:description",
-        content:
-          "A museum of ideas: plural Algeria, national identity, culture & language, and the thinkers behind them.",
-      },
-    ],
-  }),
+  head: () =>
+    pageMeta({
+      path: "/ideas",
+      title: "Debates & Ideas — DZ Odyssey",
+      description: "A museum of ideas: plural Algeria, national identity, culture and language, and the thinkers behind them."
+    }),
   component: IdeasPage,
 });
 

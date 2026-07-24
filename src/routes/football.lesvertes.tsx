@@ -5,6 +5,7 @@ import { MedallionFrame } from "@/components/brand/MedallionFrame";
 import { useLang, type Lang, type LocalizedString } from "@/lib/i18n";
 import lesVertesHero from "@/assets/lesvertes-hero.jpg.asset.json";
 import {
+import { pageMeta } from "@/lib/seo";
   LES_VERTES_AFRICAN_JOURNEY,
   LES_VERTES_BARRIERS,
   LES_VERTES_BEGINNING,
@@ -21,24 +22,13 @@ import {
 } from "@/data/lesVertes";
 
 export const Route = createFileRoute("/football/lesvertes")({
-  head: () => ({
-    meta: [
-      { title: "Les Vertes — Algeria's Women's National Team · DZ Odyssey" },
-      {
-        name: "description",
-        content:
-          "A permanent exhibit tracing the rise of Algeria's women's national football team — from the beginnings of organized women's football to the Women's Africa Cup of Nations and the road ahead.",
-      },
-      { property: "og:title", content: "Les Vertes — Algeria's Women's National Team" },
-      {
-        property: "og:description",
-        content:
-          "Football, resilience and a new generation representing Algeria. A museum exhibit in the Hall of Algerian Football.",
-      },
-      { property: "og:type", content: "article" },
-      { name: "twitter:card", content: "summary_large_image" },
-    ],
-  }),
+  head: () =>
+    pageMeta({
+      path: "/football/lesvertes",
+      title: "Les Vertes — Algeria's Women's National Team · DZ Odyssey",
+      description: "Football, resilience and a new generation representing Algeria — a permanent exhibit in the Hall of Algerian Football.",
+      image: lesVertesHero.url
+    }),
   component: LesVertesExhibit,
 });
 

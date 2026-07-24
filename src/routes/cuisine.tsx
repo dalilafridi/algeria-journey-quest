@@ -11,25 +11,16 @@ import { JourneyNext } from "@/components/JourneyNext";
 import { ContinueExploring } from "@/components/curator/ContinueExploring";
 import { getCuisineExploreGroups } from "@/lib/exploreGroups";
 import cuisineHero from "@/assets/cuisine-hero.jpg";
+import { pageMeta } from "@/lib/seo";
 
 export const Route = createFileRoute("/cuisine")({
-  head: () => ({
-    meta: [
-      { title: "Cuisine of Algeria — Where memory, culture, and taste meet" },
-      {
-        name: "description",
-        content:
-          "A cinematic cultural journey through Algerian cuisine — couscous, chorba, rechta, dates and bread — from Kabylie to the Sahara.",
-      },
-      { property: "og:title", content: "Cuisine of Algeria" },
-      {
-        property: "og:description",
-        content: "Food, memory and identity — a sensory journey through the regions of Algeria.",
-      },
-      { property: "og:image", content: cuisineHero },
-      { name: "twitter:image", content: cuisineHero },
-    ],
-  }),
+  head: () =>
+    pageMeta({
+      path: "/cuisine",
+      title: "Cuisine of Algeria — DZ Odyssey",
+      description: "A cinematic cultural journey through Algerian cuisine — couscous, chorba, rechta, dates and bread — from Kabylie to the Sahara.",
+      image: cuisineHero
+    }),
   component: CuisinePage,
 });
 

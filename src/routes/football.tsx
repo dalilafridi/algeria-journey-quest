@@ -8,6 +8,8 @@ import { useFootballBookmarks } from "@/lib/footballBookmarks";
 import { theaterIdForFootballMatch } from "@/data/matchTheater";
 import flnTeamPhoto from "@/assets/fln-team-1958.jpg.asset.json";
 import {
+import footballHero from "@/assets/football-hero-vitrine.jpg";
+import { pageMeta } from "@/lib/seo";
   AFCON_HISTORY,
   ARTIFACTS,
   CENTURY,
@@ -31,22 +33,13 @@ import {
 } from "@/data/football";
 
 export const Route = createFileRoute("/football")({
-  head: () => ({
-    meta: [
-      { title: "The Hall of Algerian Football — DZ Odyssey" },
-      {
-        name: "description",
-        content:
-          "A cinematic museum wing tracing Algerian football from colonial resistance and the FLN team to Gijón, the 2019 AFCON and the road to 2026.",
-      },
-      { property: "og:title", content: "The Hall of Algerian Football" },
-      {
-        property: "og:description",
-        content:
-          "From colonial resistance to World Cup history — a curated exhibit of Algerian football.",
-      },
-    ],
-  }),
+  head: () =>
+    pageMeta({
+      path: "/football",
+      title: "The Hall of Algerian Football — DZ Odyssey",
+      description: "A cinematic museum wing tracing Algerian football from colonial resistance and the FLN team to Gijón, the 2019 AFCON and the road to 2026.",
+      image: footballHero
+    }),
   component: FootballHall,
 });
 

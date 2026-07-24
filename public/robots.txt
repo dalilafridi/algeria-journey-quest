@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /curator/
+Disallow: /api/
+
+Sitemap: https://dzodyssey.numeradataworks.com/sitemap.xml

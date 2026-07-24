@@ -51,26 +51,19 @@ export const Route = createRootRoute({
       { name: "mobile-web-app-capable", content: "yes" },
       { name: "apple-mobile-web-app-capable", content: "yes" },
       { name: "apple-mobile-web-app-status-bar-style", content: "black-translucent" },
-      { title: "Algeria Through Time" },
-      { name: "description", content: "Algeria Through Time – A journey through Algerian history" },
-      { name: "author", content: "Algeria Through Time" },
-      { property: "og:title", content: "Algeria Through Time" },
-      { property: "og:description", content: "Algeria Through Time – A journey through Algerian history" },
+      { title: "DZ Odyssey — Algeria Through Time" },
+      {
+        name: "description",
+        content:
+          "DZ Odyssey — a cinematic museum passage through Algeria's eras, regions, figures and culture, from Numidia to independence.",
+      },
+      { name: "author", content: "DZ Odyssey" },
       { property: "og:type", content: "website" },
-      { property: "og:site_name", content: "Algeria Through Time" },
-      { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "Algeria Through Time" },
-      { name: "twitter:description", content: "Algeria Through Time – A journey through Algerian history" },
-      {
-        property: "og:image",
-        content:
-          "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/3b623ed1-1f9c-426d-8427-90f0fa77ed1b/id-preview-f7737c2e--4ec5c163-c082-44f1-a21c-176429962830.lovable.app-1776796791852.png",
-      },
-      {
-        name: "twitter:image",
-        content:
-          "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/3b623ed1-1f9c-426d-8427-90f0fa77ed1b/id-preview-f7737c2e--4ec5c163-c082-44f1-a21c-176429962830.lovable.app-1776796791852.png",
-      },
+      { property: "og:site_name", content: "DZ Odyssey" },
+      // NOTE (Phase 1): og:image and twitter:image intentionally live only on
+      // leaf routes via `pageMeta({...})`. A global preview here overrides
+      // every child's share image because TanStack Router merges root meta
+      // into every match.
     ],
     links: [
       {

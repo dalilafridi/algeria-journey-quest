@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as WordsRouteImport } from './routes/words'
 import { Route as TimelineRouteImport } from './routes/timeline'
 import { Route as StargazingRouteImport } from './routes/stargazing'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as ShowcaseRouteImport } from './routes/showcase'
 import { Route as ProfileRouteImport } from './routes/profile'
 import { Route as PassportRouteImport } from './routes/passport'
@@ -93,6 +94,11 @@ const TimelineRoute = TimelineRouteImport.update({
 const StargazingRoute = StargazingRouteImport.update({
   id: '/stargazing',
   path: '/stargazing',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ShowcaseRoute = ShowcaseRouteImport.update({
@@ -459,6 +465,7 @@ export interface FileRoutesByFullPath {
   '/passport': typeof PassportRoute
   '/profile': typeof ProfileRoute
   '/showcase': typeof ShowcaseRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/stargazing': typeof StargazingRoute
   '/timeline': typeof TimelineRoute
   '/words': typeof WordsRoute
@@ -530,6 +537,7 @@ export interface FileRoutesByTo {
   '/passport': typeof PassportRoute
   '/profile': typeof ProfileRoute
   '/showcase': typeof ShowcaseRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/stargazing': typeof StargazingRoute
   '/timeline': typeof TimelineRoute
   '/words': typeof WordsRoute
@@ -600,6 +608,7 @@ export interface FileRoutesById {
   '/passport': typeof PassportRoute
   '/profile': typeof ProfileRoute
   '/showcase': typeof ShowcaseRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/stargazing': typeof StargazingRoute
   '/timeline': typeof TimelineRoute
   '/words': typeof WordsRoute
@@ -674,6 +683,7 @@ export interface FileRouteTypes {
     | '/passport'
     | '/profile'
     | '/showcase'
+    | '/sitemap.xml'
     | '/stargazing'
     | '/timeline'
     | '/words'
@@ -745,6 +755,7 @@ export interface FileRouteTypes {
     | '/passport'
     | '/profile'
     | '/showcase'
+    | '/sitemap.xml'
     | '/stargazing'
     | '/timeline'
     | '/words'
@@ -814,6 +825,7 @@ export interface FileRouteTypes {
     | '/passport'
     | '/profile'
     | '/showcase'
+    | '/sitemap.xml'
     | '/stargazing'
     | '/timeline'
     | '/words'
@@ -887,6 +899,7 @@ export interface RootRouteChildren {
   PassportRoute: typeof PassportRoute
   ProfileRoute: typeof ProfileRoute
   ShowcaseRoute: typeof ShowcaseRoute
+  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   StargazingRoute: typeof StargazingRoute
   TimelineRoute: typeof TimelineRoute
   WordsRoute: typeof WordsRoute
@@ -925,6 +938,13 @@ declare module '@tanstack/react-router' {
       path: '/stargazing'
       fullPath: '/stargazing'
       preLoaderRoute: typeof StargazingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/showcase': {
@@ -1554,6 +1574,7 @@ const rootRouteChildren: RootRouteChildren = {
   PassportRoute: PassportRoute,
   ProfileRoute: ProfileRoute,
   ShowcaseRoute: ShowcaseRoute,
+  SitemapDotxmlRoute: SitemapDotxmlRoute,
   StargazingRoute: StargazingRoute,
   TimelineRoute: TimelineRoute,
   WordsRoute: WordsRoute,

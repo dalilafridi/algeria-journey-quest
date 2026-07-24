@@ -5,16 +5,15 @@ import { MedallionFrame } from "@/components/brand/MedallionFrame";
 import { useLang, t, type Lang } from "@/lib/i18n";
 import { listClubMuseums } from "@/data/clubs";
 import type { ClubMuseum } from "@/data/clubs/types";
+import { pageMeta } from "@/lib/seo";
 
 export const Route = createFileRoute("/clubs")({
-  head: () => ({
-    meta: [
-      { title: "Club Museums — The Hall of Algerian Football | DZ Odyssey" },
-      { name: "description", content: "Step inside curated museum wings dedicated to Algeria's great football clubs, from JS Kabylie's continental glory to the historic institutions of Algiers, Sétif and Oran." },
-      { property: "og:title", content: "Club Museums — The Hall of Algerian Football" },
-      { property: "og:description", content: "Curated museum wings for Algeria's great football clubs — starting with JS Kabylie." },
-    ],
-  }),
+  head: () =>
+    pageMeta({
+      path: "/clubs",
+      title: "Club Museums — The Hall of Algerian Football | DZ Odyssey",
+      description: "Curated museum wings for Algeria's great football clubs — starting with JS Kabylie."
+    }),
   component: ClubsLanding,
 });
 

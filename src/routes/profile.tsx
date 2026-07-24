@@ -10,14 +10,16 @@ import {
   type Progress,
 } from "@/lib/progress";
 import { t, tu, useLang } from "@/lib/i18n";
+import { pageMeta } from "@/lib/seo";
 
 export const Route = createFileRoute("/profile")({
-  head: () => ({
-    meta: [
-      { title: "Your Profile — Algeria Through Time" },
-      { name: "description", content: "Track your XP, badges, and history journey progress." },
-    ],
-  }),
+  head: () =>
+    pageMeta({
+      path: "/profile",
+      title: "Your Profile — DZ Odyssey",
+      description: "Track your XP, badges, and history journey progress.",
+      noindex: true
+    }),
   component: ProfilePage,
 });
 

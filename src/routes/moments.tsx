@@ -17,27 +17,18 @@ import {
 } from "@/components/moments/Immersive";
 import { StoryFlow } from "@/components/story/StoryFlow";
 import { TAFSUT_SCENES, DECADE_SCENES, EDUCATION_SCENES, INDEPENDENCE_WAR_SCENES } from "@/data/storyScenes";
+import { pageMeta } from "@/lib/seo";
 
 // ============================================================
 // Route
 // ============================================================
 export const Route = createFileRoute("/moments")({
-  head: () => ({
-    meta: [
-      { title: "Moments That Shaped Algeria — Algeria Through Time" },
-      {
-        name: "description",
-        content:
-          "A gentle, museum-style page for children: identity, courage, memory, freedom, and peace in Algerian history.",
-      },
-      { property: "og:title", content: "Moments That Shaped Algeria" },
-      {
-        property: "og:description",
-        content:
-          "Pivotal chapters of modern Algerian history, told with care for young learners.",
-      },
-    ],
-  }),
+  head: () =>
+    pageMeta({
+      path: "/moments",
+      title: "Moments That Shaped Algeria — DZ Odyssey",
+      description: "Pivotal chapters of modern Algerian history, told with care for young learners."
+    }),
   component: MomentsPage,
 });
 

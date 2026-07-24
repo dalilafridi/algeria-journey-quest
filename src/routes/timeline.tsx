@@ -17,23 +17,17 @@ import { JourneyNext } from "@/components/JourneyNext";
 import { EraPreview } from "@/components/EraPreview";
 import { EraBadge, type EraBadgeKind } from "@/components/brand/EraBadge";
 import { AchievementMedallion } from "@/components/brand/AchievementMedallion";
+import { pageMeta } from "@/lib/seo";
 
 
 export const Route = createFileRoute("/timeline")({
-  head: () => ({
-    meta: [
-      { title: "Timeline — Algeria Through Time" },
-      {
-        name: "description",
-        content: "Explore the major eras of Algerian history, from Numidia to independence.",
-      },
-      { property: "og:title", content: "Algerian History Timeline" },
-      {
-        property: "og:description",
-        content: "Five eras of Algerian history, from antiquity to modern liberation.",
-      },
-    ],
-  }),
+  head: () =>
+    pageMeta({
+      path: "/timeline",
+      title: "Century Timeline — DZ Odyssey",
+      description: "Five eras of Algerian history, from Numidia and Roman North Africa to independence and the modern republic.",
+      image: numidiaImg
+    }),
   component: Timeline,
 });
 

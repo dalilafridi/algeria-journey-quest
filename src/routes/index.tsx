@@ -10,25 +10,18 @@ import { RegionIcon } from "@/components/RegionIcon";
 import { dailyFacts, eras } from "@/data/eras";
 import { t, tu, useLang } from "@/lib/i18n";
 import heroBg from "@/assets/hero-bg.png";
+import { pageMeta } from "@/lib/seo";
 
 
 
 export const Route = createFileRoute("/")({
-  head: () => ({
-    meta: [
-      { title: "Algeria Through Time — A Cinematic Journey Through Algerian History" },
-      {
-        name: "description",
-        content:
-          "A calm, museum-style passage through Algeria — its eras, regions, figures and culture, from Numidia to independence.",
-      },
-      { property: "og:title", content: "Algeria Through Time" },
-      {
-        property: "og:description",
-        content: "A cinematic journey through 2,000+ years of Algerian memory.",
-      },
-    ],
-  }),
+  head: () =>
+    pageMeta({
+      path: "/",
+      title: "DZ Odyssey — Algeria Through Time",
+      description: "A cinematic, museum-style passage through Algeria — its eras, regions, figures and culture, from Numidia to independence.",
+      image: heroBg
+    }),
   component: Home,
 });
 
