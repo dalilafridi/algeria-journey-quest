@@ -32,10 +32,10 @@ import {
   type FootballExhibitId,
 } from "@/data/football";
 
-export const Route = createFileRoute("/football")({
+export const Route = createFileRoute("/football/")({
   head: () =>
     pageMeta({
-      path: "/football",
+      path: "/football/",
       title: "The Hall of Algerian Football — DZ Odyssey",
       description: "A cinematic museum wing tracing Algerian football from colonial resistance and the FLN team to Gijón, the 2019 AFCON and the road to 2026.",
       image: footballHero

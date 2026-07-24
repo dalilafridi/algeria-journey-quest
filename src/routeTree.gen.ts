@@ -20,7 +20,6 @@ import { Route as MomentsRouteImport } from './routes/moments'
 import { Route as MapRouteImport } from './routes/map'
 import { Route as LessonsRouteImport } from './routes/lessons'
 import { Route as IdeasRouteImport } from './routes/ideas'
-import { Route as FootballRouteImport } from './routes/football'
 import { Route as CuisineRouteImport } from './routes/cuisine'
 import { Route as CompareRouteImport } from './routes/compare'
 import { Route as ClubsRouteImport } from './routes/clubs'
@@ -29,6 +28,7 @@ import { Route as ChronicleRouteImport } from './routes/chronicle'
 import { Route as AtlasRouteImport } from './routes/atlas'
 import { Route as CuratorRouteRouteImport } from './routes/curator/route'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as FootballIndexRouteImport } from './routes/football.index'
 import { Route as FiguresIndexRouteImport } from './routes/figures.index'
 import { Route as CultureIndexRouteImport } from './routes/culture.index'
 import { Route as ClubsIndexRouteImport } from './routes/clubs.index'
@@ -137,11 +137,6 @@ const IdeasRoute = IdeasRouteImport.update({
   path: '/ideas',
   getParentRoute: () => rootRouteImport,
 } as any)
-const FootballRoute = FootballRouteImport.update({
-  id: '/football',
-  path: '/football',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const CuisineRoute = CuisineRouteImport.update({
   id: '/cuisine',
   path: '/cuisine',
@@ -182,6 +177,11 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const FootballIndexRoute = FootballIndexRouteImport.update({
+  id: '/football/',
+  path: '/football/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const FiguresIndexRoute = FiguresIndexRouteImport.update({
   id: '/figures/',
   path: '/figures/',
@@ -218,9 +218,9 @@ const JourneysJourneyIdRoute = JourneysJourneyIdRouteImport.update({
   getParentRoute: () => rootRouteImport,
 } as any)
 const FootballLesvertesRoute = FootballLesvertesRouteImport.update({
-  id: '/lesvertes',
-  path: '/lesvertes',
-  getParentRoute: () => FootballRoute,
+  id: '/football/lesvertes',
+  path: '/football/lesvertes',
+  getParentRoute: () => rootRouteImport,
 } as any)
 const FiguresQuizRoute = FiguresQuizRouteImport.update({
   id: '/figures/quiz',
@@ -463,7 +463,6 @@ export interface FileRoutesByFullPath {
   '/clubs': typeof ClubsRouteWithChildren
   '/compare': typeof CompareRoute
   '/cuisine': typeof CuisineRoute
-  '/football': typeof FootballRouteWithChildren
   '/ideas': typeof IdeasRoute
   '/lessons': typeof LessonsRoute
   '/map': typeof MapRoute
@@ -492,6 +491,7 @@ export interface FileRoutesByFullPath {
   '/clubs/': typeof ClubsIndexRoute
   '/culture/': typeof CultureIndexRoute
   '/figures/': typeof FiguresIndexRoute
+  '/football/': typeof FootballIndexRoute
   '/curator/acquisitions': typeof CuratorStudioAcquisitionsRoute
   '/curator/analytics': typeof CuratorStudioAnalyticsRoute
   '/curator/audit-log': typeof CuratorStudioAuditLogRoute
@@ -535,7 +535,6 @@ export interface FileRoutesByTo {
   '/cinema': typeof CinemaRoute
   '/compare': typeof CompareRoute
   '/cuisine': typeof CuisineRoute
-  '/football': typeof FootballRouteWithChildren
   '/ideas': typeof IdeasRoute
   '/lessons': typeof LessonsRoute
   '/map': typeof MapRoute
@@ -564,6 +563,7 @@ export interface FileRoutesByTo {
   '/clubs': typeof ClubsIndexRoute
   '/culture': typeof CultureIndexRoute
   '/figures': typeof FiguresIndexRoute
+  '/football': typeof FootballIndexRoute
   '/curator/acquisitions': typeof CuratorStudioAcquisitionsRoute
   '/curator/analytics': typeof CuratorStudioAnalyticsRoute
   '/curator/audit-log': typeof CuratorStudioAuditLogRoute
@@ -607,7 +607,6 @@ export interface FileRoutesById {
   '/clubs': typeof ClubsRouteWithChildren
   '/compare': typeof CompareRoute
   '/cuisine': typeof CuisineRoute
-  '/football': typeof FootballRouteWithChildren
   '/ideas': typeof IdeasRoute
   '/lessons': typeof LessonsRoute
   '/map': typeof MapRoute
@@ -637,6 +636,7 @@ export interface FileRoutesById {
   '/clubs/': typeof ClubsIndexRoute
   '/culture/': typeof CultureIndexRoute
   '/figures/': typeof FiguresIndexRoute
+  '/football/': typeof FootballIndexRoute
   '/curator/_studio/acquisitions': typeof CuratorStudioAcquisitionsRoute
   '/curator/_studio/analytics': typeof CuratorStudioAnalyticsRoute
   '/curator/_studio/audit-log': typeof CuratorStudioAuditLogRoute
@@ -683,7 +683,6 @@ export interface FileRouteTypes {
     | '/clubs'
     | '/compare'
     | '/cuisine'
-    | '/football'
     | '/ideas'
     | '/lessons'
     | '/map'
@@ -712,6 +711,7 @@ export interface FileRouteTypes {
     | '/clubs/'
     | '/culture/'
     | '/figures/'
+    | '/football/'
     | '/curator/acquisitions'
     | '/curator/analytics'
     | '/curator/audit-log'
@@ -755,7 +755,6 @@ export interface FileRouteTypes {
     | '/cinema'
     | '/compare'
     | '/cuisine'
-    | '/football'
     | '/ideas'
     | '/lessons'
     | '/map'
@@ -784,6 +783,7 @@ export interface FileRouteTypes {
     | '/clubs'
     | '/culture'
     | '/figures'
+    | '/football'
     | '/curator/acquisitions'
     | '/curator/analytics'
     | '/curator/audit-log'
@@ -826,7 +826,6 @@ export interface FileRouteTypes {
     | '/clubs'
     | '/compare'
     | '/cuisine'
-    | '/football'
     | '/ideas'
     | '/lessons'
     | '/map'
@@ -856,6 +855,7 @@ export interface FileRouteTypes {
     | '/clubs/'
     | '/culture/'
     | '/figures/'
+    | '/football/'
     | '/curator/_studio/acquisitions'
     | '/curator/_studio/analytics'
     | '/curator/_studio/audit-log'
@@ -901,7 +901,6 @@ export interface RootRouteChildren {
   ClubsRoute: typeof ClubsRouteWithChildren
   CompareRoute: typeof CompareRoute
   CuisineRoute: typeof CuisineRoute
-  FootballRoute: typeof FootballRouteWithChildren
   IdeasRoute: typeof IdeasRoute
   LessonsRoute: typeof LessonsRoute
   MapRoute: typeof MapRoute
@@ -918,12 +917,14 @@ export interface RootRouteChildren {
   EraEraIdRoute: typeof EraEraIdRoute
   FiguresFigureIdRoute: typeof FiguresFigureIdRoute
   FiguresQuizRoute: typeof FiguresQuizRoute
+  FootballLesvertesRoute: typeof FootballLesvertesRoute
   JourneysJourneyIdRoute: typeof JourneysJourneyIdRoute
   QuizEraIdRoute: typeof QuizEraIdRoute
   RegionRegionIdRoute: typeof RegionRegionIdRoute
   TheaterMatchIdRoute: typeof TheaterMatchIdRoute
   CultureIndexRoute: typeof CultureIndexRoute
   FiguresIndexRoute: typeof FiguresIndexRoute
+  FootballIndexRoute: typeof FootballIndexRoute
   FiguresCollectionCollectionIdRoute: typeof FiguresCollectionCollectionIdRoute
 }
 
@@ -1006,13 +1007,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IdeasRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/football': {
-      id: '/football'
-      path: '/football'
-      fullPath: '/football'
-      preLoaderRoute: typeof FootballRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/cuisine': {
       id: '/cuisine'
       path: '/cuisine'
@@ -1069,6 +1063,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/football/': {
+      id: '/football/'
+      path: '/football'
+      fullPath: '/football/'
+      preLoaderRoute: typeof FootballIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/figures/': {
       id: '/figures/'
       path: '/figures'
@@ -1120,10 +1121,10 @@ declare module '@tanstack/react-router' {
     }
     '/football/lesvertes': {
       id: '/football/lesvertes'
-      path: '/lesvertes'
+      path: '/football/lesvertes'
       fullPath: '/football/lesvertes'
       preLoaderRoute: typeof FootballLesvertesRouteImport
-      parentRoute: typeof FootballRoute
+      parentRoute: typeof rootRouteImport
     }
     '/figures/quiz': {
       id: '/figures/quiz'
@@ -1564,18 +1565,6 @@ const ClubsRouteChildren: ClubsRouteChildren = {
 
 const ClubsRouteWithChildren = ClubsRoute._addFileChildren(ClubsRouteChildren)
 
-interface FootballRouteChildren {
-  FootballLesvertesRoute: typeof FootballLesvertesRoute
-}
-
-const FootballRouteChildren: FootballRouteChildren = {
-  FootballLesvertesRoute: FootballLesvertesRoute,
-}
-
-const FootballRouteWithChildren = FootballRoute._addFileChildren(
-  FootballRouteChildren,
-)
-
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   CuratorRouteRoute: CuratorRouteRouteWithChildren,
@@ -1585,7 +1574,6 @@ const rootRouteChildren: RootRouteChildren = {
   ClubsRoute: ClubsRouteWithChildren,
   CompareRoute: CompareRoute,
   CuisineRoute: CuisineRoute,
-  FootballRoute: FootballRouteWithChildren,
   IdeasRoute: IdeasRoute,
   LessonsRoute: LessonsRoute,
   MapRoute: MapRoute,
@@ -1602,12 +1590,14 @@ const rootRouteChildren: RootRouteChildren = {
   EraEraIdRoute: EraEraIdRoute,
   FiguresFigureIdRoute: FiguresFigureIdRoute,
   FiguresQuizRoute: FiguresQuizRoute,
+  FootballLesvertesRoute: FootballLesvertesRoute,
   JourneysJourneyIdRoute: JourneysJourneyIdRoute,
   QuizEraIdRoute: QuizEraIdRoute,
   RegionRegionIdRoute: RegionRegionIdRoute,
   TheaterMatchIdRoute: TheaterMatchIdRoute,
   CultureIndexRoute: CultureIndexRoute,
   FiguresIndexRoute: FiguresIndexRoute,
+  FootballIndexRoute: FootballIndexRoute,
   FiguresCollectionCollectionIdRoute: FiguresCollectionCollectionIdRoute,
 }
 export const routeTree = rootRouteImport
