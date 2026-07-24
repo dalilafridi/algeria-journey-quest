@@ -23,7 +23,8 @@ import { PlayerPlaque, PlayerPlaqueDetail } from "@/components/theater/PlayerPla
 
 export const Route = createFileRoute("/theater/$matchId")({
   head: ({ loaderData, params }) => {
-    if (!loaderData) {
+    const match = loaderData as MatchTheater | undefined;
+    if (!match) {
       return pageMeta({
         path: `/theater/${params.matchId}`,
         title: "Match Theater — Unavailable",
@@ -31,10 +32,10 @@ export const Route = createFileRoute("/theater/$matchId")({
         noindex: true,
       });
     }
-    const title = `${tt(loaderData.cinematicTitle, "en")} — Match Theater`;
-    const desc = `${tt(loaderData.cinematicSubtitle, "en")} · Match Theater at DZ Odyssey.`;
+    const title = `${tt(match.cinematicTitle, "en")} — Match Theater`;
+    const desc = `${tt(match.cinematicSubtitle, "en")} · Match Theater at DZ Odyssey.`;
     return pageMeta({
-      path: `/theater/${loaderData.id}`,
+      path: `/theater/${match.id}`,
       title,
       description: desc,
       type: "article",
