@@ -1,4 +1,5 @@
 import { createFileRoute, Link, notFound, useNavigate } from "@tanstack/react-router";
+import { pageMeta } from "@/lib/seo";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { Header } from "@/components/Header";
 import { eras, type QuizQuestion } from "@/data/eras";

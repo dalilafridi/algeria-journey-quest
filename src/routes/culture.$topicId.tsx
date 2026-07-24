@@ -1,4 +1,5 @@
 /**
+import { pageMeta } from "@/lib/seo";
  * Culture topic detail page — a cultural exhibit within the museum.
  *
  * Built on the shared MuseumCatalogPage template: a storytelling-first left

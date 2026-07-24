@@ -1,4 +1,5 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
+import { pageMeta } from "@/lib/seo";
 import { useEffect, useMemo, useState } from "react";
 
 import { Header } from "@/components/Header";

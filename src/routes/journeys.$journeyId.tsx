@@ -1,4 +1,5 @@
 /**
+import { pageMeta } from "@/lib/seo";
  * Signature Journey detail page — the flagship of the museum-catalog layout.
  *
  * A guided narrative presented as an open exhibition book: a strong left story

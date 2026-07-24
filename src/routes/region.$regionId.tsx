@@ -1,4 +1,5 @@
 /**
+import { pageMeta } from "@/lib/seo";
  * Region detail page — a museum exhibit about a place.
  *
  * Rebuilt on the shared MuseumCatalogPage template: a strong left story column

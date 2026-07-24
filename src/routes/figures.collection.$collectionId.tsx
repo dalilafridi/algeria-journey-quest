@@ -1,4 +1,5 @@
 /**
+import { pageMeta } from "@/lib/seo";
  * Collection detail page — a museum gallery dedicated to a theme.
  *
  * Rebuilt on the shared MuseumCatalogPage template so a collection reads like
