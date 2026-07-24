@@ -145,7 +145,7 @@ function FootballHero({ lang }: { lang: Lang }) {
 
         {/* Museum vitrine — photographed artifact installation */}
         <div className="relative flex items-center justify-center animate-float-up">
-          <MuseumVitrine />
+          <MuseumVitrine lang={lang} />
         </div>
       </div>
     </section>
