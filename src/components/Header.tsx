@@ -1,9 +1,16 @@
 import { Link, useNavigate, useRouterState } from "@tanstack/react-router";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { resetAllQuizProgress } from "@/lib/progress";
 import { LANGS, getLang, setLang, useLang, type Lang } from "@/lib/i18n";
 import { OPEN_CREATOR_ABOUT_EVENT } from "@/components/WelcomeJourney";
 import { openMuseumSearch } from "@/components/SearchOverlay";
+import {
+  DropdownMenu,
+  DropdownMenuTrigger,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuSeparator,
+} from "@/components/ui/dropdown-menu";
 import brandIcon from "@/assets/brand-icon.png";
 
 
@@ -23,9 +30,6 @@ export function Header() {
   const navigate = useNavigate();
   const path = useRouterState({ select: (s) => s.location.pathname });
   const hash = useRouterState({ select: (s) => s.location.hash });
-  const langRef = useRef<HTMLDivElement>(null);
-  const profileRef = useRef<HTMLDivElement>(null);
-  const footballRef = useRef<HTMLDivElement>(null);
 
   // Lock body scroll when mobile menu is open
   useEffect(() => {
@@ -38,27 +42,9 @@ export function Header() {
     }
   }, [menuOpen]);
 
-  // Close popovers on outside click
-  useEffect(() => {
-    const onClick = (e: MouseEvent) => {
-      if (langRef.current && !langRef.current.contains(e.target as Node)) setLangOpen(false);
-      if (profileRef.current && !profileRef.current.contains(e.target as Node)) setProfileOpen(false);
-      if (footballRef.current && !footballRef.current.contains(e.target as Node)) setFootballOpen(false);
-    };
-    const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") {
-        setLangOpen(false);
-        setProfileOpen(false);
-        setFootballOpen(false);
-      }
-    };
-    document.addEventListener("mousedown", onClick);
-    document.addEventListener("keydown", onKey);
-    return () => {
-      document.removeEventListener("mousedown", onClick);
-      document.removeEventListener("keydown", onKey);
-    };
-  }, []);
+  // Note: outside-click / Escape / focus management for the Language,
+  // Football and Profile dropdowns is now handled by Radix (see below).
+
 
   const current: Lang = lang ?? getLang();
 
