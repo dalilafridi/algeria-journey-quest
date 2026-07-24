@@ -53,18 +53,23 @@ export const Route = createFileRoute("/era/$eraId")({
     if (!era) throw notFound();
     return { era };
   },
-  head: ({ loaderData }) => {
-    if (!loaderData) return {};
+  head: ({ loaderData, params }) => {
+    if (!loaderData) {
+      return pageMeta({
+        path: `/era/${params.eraId}`,
+        title: "Era — DZ Odyssey",
+        description: "This era exhibit could not be found.",
+        noindex: true,
+      });
+    }
     const titleEn = t(loaderData.era.title, "en");
     const summaryEn = t(loaderData.era.summary, "en");
-    return {
-      meta: [
-        { title: `${titleEn} — Algeria Through Time` },
-        { name: "description", content: summaryEn },
-        { property: "og:title", content: titleEn },
-        { property: "og:description", content: summaryEn },
-      ],
-    };
+    return pageMeta({
+      path: `/era/${loaderData.era.id}`,
+      title: `${titleEn} — DZ Odyssey`,
+      description: summaryEn,
+      type: "article",
+    });
   },
   notFoundComponent: () => (
     <div className="min-h-dvh bg-parchment flex items-center justify-center">

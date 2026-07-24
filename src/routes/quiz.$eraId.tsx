@@ -19,18 +19,22 @@ export const Route = createFileRoute("/quiz/$eraId")({
     if (!era) throw notFound();
     return { era };
   },
-  head: ({ loaderData }) =>
-    loaderData
-      ? {
-          meta: [
-            { title: `Quiz: ${t(loaderData.era.title, "en")} — Algeria Through Time` },
-            {
-              name: "description",
-              content: `Test your knowledge of ${t(loaderData.era.title, "en")}.`,
-            },
-          ],
-        }
-      : {},
+  head: ({ loaderData, params }) => {
+    if (!loaderData) {
+      return pageMeta({
+        path: `/quiz/${params.eraId}`,
+        title: "Quiz — DZ Odyssey",
+        description: "Test your knowledge of Algerian history.",
+        noindex: true,
+      });
+    }
+    const titleEn = t(loaderData.era.title, "en");
+    return pageMeta({
+      path: `/quiz/${loaderData.era.id}`,
+      title: `Quiz: ${titleEn} — DZ Odyssey`,
+      description: `Test your knowledge of ${titleEn} in this DZ Odyssey era quiz.`,
+    });
+  },
   component: QuizPage,
 });
 

@@ -47,18 +47,23 @@ export const Route = createFileRoute("/culture/$topicId")({
     if (!topic) throw notFound();
     return { topic };
   },
-  head: ({ loaderData }) => {
-    if (!loaderData) return {};
+  head: ({ loaderData, params }) => {
+    if (!loaderData) {
+      return pageMeta({
+        path: `/culture/${params.topicId}`,
+        title: "Culture — DZ Odyssey",
+        description: "This culture exhibit could not be found.",
+        noindex: true,
+      });
+    }
     const titleEn = t(loaderData.topic.title, "en");
     const descEn = t(loaderData.topic.intro, "en");
-    return {
-      meta: [
-        { title: `${titleEn} — Culture | Algeria Through Time` },
-        { name: "description", content: descEn },
-        { property: "og:title", content: titleEn },
-        { property: "og:description", content: descEn },
-      ],
-    };
+    return pageMeta({
+      path: `/culture/${loaderData.topic.id}`,
+      title: `${titleEn} — Culture | DZ Odyssey`,
+      description: descEn,
+      type: "article",
+    });
   },
   notFoundComponent: () => (
     <div className="min-h-dvh bg-parchment flex items-center justify-center">

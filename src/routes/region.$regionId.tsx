@@ -53,18 +53,23 @@ export const Route = createFileRoute("/region/$regionId")({
     if (!region) throw notFound();
     return { region };
   },
-  head: ({ loaderData }) => {
-    if (!loaderData) return {};
+  head: ({ loaderData, params }) => {
+    if (!loaderData) {
+      return pageMeta({
+        path: `/region/${params.regionId}`,
+        title: "Region — DZ Odyssey",
+        description: "This region exhibit could not be found.",
+        noindex: true,
+      });
+    }
     const titleEn = t(loaderData.region.name, "en");
     const summaryEn = t(loaderData.region.summary, "en");
-    return {
-      meta: [
-        { title: `${titleEn} — Region | Algeria Through Time` },
-        { name: "description", content: summaryEn },
-        { property: "og:title", content: titleEn },
-        { property: "og:description", content: summaryEn },
-      ],
-    };
+    return pageMeta({
+      path: `/region/${loaderData.region.id}`,
+      title: `${titleEn} — Region | DZ Odyssey`,
+      description: summaryEn,
+      type: "article",
+    });
   },
   notFoundComponent: () => (
     <div className="min-h-dvh bg-parchment flex items-center justify-center">

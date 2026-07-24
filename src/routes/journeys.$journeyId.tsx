@@ -41,18 +41,22 @@ export const Route = createFileRoute("/journeys/$journeyId")({
     if (!journey) throw notFound();
     return { journey };
   },
-  head: ({ loaderData }) => {
-    if (!loaderData) return {};
+  head: ({ loaderData, params }) => {
+    if (!loaderData) {
+      return pageMeta({
+        path: `/journeys/${params.journeyId}`,
+        title: "Signature Journey — DZ Odyssey",
+        description: "This signature journey could not be found.",
+        noindex: true,
+      });
+    }
     const titleEn = t(loaderData.journey.title, "en");
     const taglineEn = t(loaderData.journey.tagline, "en");
-    return {
-      meta: [
-        { title: `${titleEn} — Signature Journey | Algeria Through Time` },
-        { name: "description", content: taglineEn },
-        { property: "og:title", content: titleEn },
-        { property: "og:description", content: taglineEn },
-      ],
-    };
+    return pageMeta({
+      path: `/journeys/${loaderData.journey.id}`,
+      title: `${titleEn} — Signature Journey | DZ Odyssey`,
+      description: taglineEn,
+    });
   },
   notFoundComponent: () => (
     <div className="min-h-dvh bg-parchment">

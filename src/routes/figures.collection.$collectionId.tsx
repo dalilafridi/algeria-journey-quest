@@ -72,14 +72,11 @@ export const Route = createFileRoute("/figures/collection/$collectionId")({
     const description = row
       ? t(row.tagline, "en")
       : "A curated exhibit room of Algerian historical figures.";
-    return {
-      meta: [
-        { title },
-        { name: "description", content: description },
-        { property: "og:title", content: title },
-        { property: "og:description", content: description },
-      ],
-    };
+    return pageMeta({
+      path: `/figures/collection/${params.collectionId}`,
+      title,
+      description,
+    });
   },
   component: CollectionPage,
 });
