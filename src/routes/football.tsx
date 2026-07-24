@@ -142,7 +142,7 @@ function FootballHero({ lang }: { lang: Lang }) {
 
 
 
-        {/* Museum vitrine — layered artifacts */}
+        {/* Museum vitrine — photographed artifact installation */}
         <div className="relative flex items-center justify-center animate-float-up">
           <MuseumVitrine />
         </div>
@@ -152,283 +152,60 @@ function FootballHero({ lang }: { lang: Lang }) {
 }
 
 /**
- * MuseumVitrine — a stylised display case holding a small assembly of
- * football artifacts (aged leather ball, boots, ticket stub, whistle) set
- * against a sepia team-photograph plate. Pure SVG/CSS so it stays crisp on
- * every viewport and can be swapped for real photography later.
+ * MuseumVitrine — a photorealistic museum display of authentic football
+ * artifacts (aged leather ball, vintage boots, brass whistle, historic
+ * tickets, captain's armband, sepia team photograph) presented in a warm
+ * walnut-and-glass case. The image is intentionally understated so the
+ * hero title on the left remains the visual focus.
  */
 function MuseumVitrine() {
   return (
-    <div className="relative w-[300px] h-[380px] sm:w-[340px] sm:h-[420px] md:w-[360px] md:h-[440px]">
-      {/* Cabinet shadow */}
+    <figure
+      className="relative w-[300px] sm:w-[340px] md:w-[380px] lg:w-[420px]"
+      aria-label="Museum display of historic Algerian football artifacts"
+    >
+      {/* Ambient cabinet shadow */}
       <div
         aria-hidden
-        className="absolute -inset-x-4 bottom-0 h-10 rounded-full blur-2xl"
-        style={{ background: "oklch(0.25 0.03 40 / 0.35)" }}
+        className="absolute -inset-x-6 -bottom-4 h-12 rounded-full blur-2xl"
+        style={{ background: "oklch(0.22 0.03 40 / 0.45)" }}
       />
-      {/* Wooden plinth */}
+      {/* Framed photograph */}
       <div
-        aria-hidden
-        className="absolute inset-x-4 bottom-0 h-14 rounded-md"
+        className="relative overflow-hidden rounded-[6px]"
         style={{
-          background:
-            "linear-gradient(180deg, oklch(0.42 0.05 45) 0%, oklch(0.28 0.04 40) 55%, oklch(0.20 0.03 38) 100%)",
           boxShadow:
-            "0 18px 32px -18px oklch(0 0 0 / 0.55), inset 0 1px 0 oklch(0.95 0.05 80 / 0.14)",
-        }}
-      />
-      {/* Brass plaque on plinth */}
-      <div
-        className="absolute bottom-3 left-1/2 -translate-x-1/2 px-3 py-1 rounded-sm text-[9.5px] uppercase tracking-[0.28em] font-bold"
-        style={{
-          background:
-            "linear-gradient(180deg, oklch(0.86 0.12 86), oklch(0.66 0.13 72))",
-          color: "oklch(0.20 0.03 40)",
-          boxShadow: "inset 0 1px 0 oklch(1 0 0 / 0.4), 0 1px 2px oklch(0 0 0 / 0.3)",
+            "0 30px 60px -28px oklch(0.15 0.03 40 / 0.55), 0 12px 24px -14px oklch(0.15 0.03 40 / 0.4), inset 0 0 0 1px oklch(0.35 0.05 55 / 0.35)",
         }}
       >
-        Exhibit 01 · Origins
-      </div>
-
-      {/* Glass case */}
-      <div
-        className="absolute inset-x-0 bottom-12 top-0 rounded-t-[14px] rounded-b-md border overflow-hidden"
-        style={{
-          borderColor: "oklch(0.55 0.06 55 / 0.35)",
-          background:
-            "linear-gradient(180deg, oklch(0.94 0.04 82) 0%, oklch(0.88 0.05 76) 55%, oklch(0.78 0.06 66) 100%)",
-          boxShadow:
-            "inset 0 1px 0 oklch(1 0 0 / 0.5), inset 0 -18px 40px oklch(0.35 0.05 45 / 0.18), 0 24px 60px -22px oklch(0.35 0.06 55 / 0.35)",
-        }}
-      >
-        {/* Warm museum spotlight */}
-        <div
-          aria-hidden
-          className="pointer-events-none absolute -top-10 left-1/2 -translate-x-1/2 w-64 h-64 rounded-full blur-3xl"
-          style={{ background: "oklch(0.95 0.14 82 / 0.55)" }}
+        <img
+          src={new URL("../assets/football-hero-vitrine.jpg", import.meta.url).href}
+          alt="A museum vitrine holding an aged leather football, worn vintage boots, a tarnished brass whistle, historic paper match tickets, and a captain's armband, set before a sepia team photograph."
+          width={1024}
+          height={1280}
+          className="block w-full h-auto"
+          style={{ filter: "saturate(0.98) contrast(1.02)" }}
         />
-        {/* Sepia team photograph plate (background) */}
-        <div
-          aria-hidden
-          className="absolute left-6 right-6 top-8 h-40 rounded-sm overflow-hidden"
-          style={{
-            background:
-              "linear-gradient(180deg, oklch(0.72 0.06 62) 0%, oklch(0.58 0.06 55) 100%)",
-            boxShadow:
-              "0 6px 14px -6px oklch(0.2 0.03 40 / 0.55), inset 0 0 0 2px oklch(0.92 0.05 80 / 0.55), inset 0 0 0 3px oklch(0.35 0.04 45 / 0.35)",
-          }}
-        >
-          <svg viewBox="0 0 200 100" className="w-full h-full" preserveAspectRatio="xMidYMid slice">
-            {/* Faux vintage team photograph — silhouetted row of players */}
-            <defs>
-              <linearGradient id="skyPlate" x1="0" x2="0" y1="0" y2="1">
-                <stop offset="0%" stopColor="oklch(0.82 0.05 74)" />
-                <stop offset="100%" stopColor="oklch(0.58 0.05 55)" />
-              </linearGradient>
-              <linearGradient id="grainPlate" x1="0" x2="1" y1="0" y2="1">
-                <stop offset="0%" stopColor="oklch(0.3 0.03 40 / 0.0)" />
-                <stop offset="100%" stopColor="oklch(0.3 0.03 40 / 0.35)" />
-              </linearGradient>
-            </defs>
-            <rect width="200" height="100" fill="url(#skyPlate)" />
-            {/* Distant stand */}
-            <rect x="0" y="30" width="200" height="22" fill="oklch(0.5 0.04 55 / 0.55)" />
-            {/* Standing row silhouettes */}
-            <g fill="oklch(0.28 0.03 40 / 0.85)">
-              {[18, 40, 62, 84, 106, 128, 150, 172].map((cx) => (
-                <g key={cx}>
-                  <circle cx={cx} cy={54} r={4} />
-                  <rect x={cx - 5} y={58} width={10} height={18} rx={2} />
-                </g>
-              ))}
-            </g>
-            {/* Kneeling row silhouettes */}
-            <g fill="oklch(0.22 0.03 40 / 0.9)">
-              {[28, 58, 88, 118, 148, 178].map((cx) => (
-                <g key={cx}>
-                  <circle cx={cx} cy={80} r={3.6} />
-                  <path d={`M${cx - 4} 84 Q ${cx} 92 ${cx + 4} 84 L ${cx + 5} 96 L ${cx - 5} 96 Z`} />
-                </g>
-              ))}
-            </g>
-            {/* Grass line */}
-            <rect x="0" y="94" width="200" height="6" fill="oklch(0.38 0.05 90 / 0.55)" />
-            {/* Aged grain overlay */}
-            <rect width="200" height="100" fill="url(#grainPlate)" />
-          </svg>
-        </div>
-
-        {/* Ticket stub (upper right, tilted) */}
-        <div
-          aria-hidden
-          className="absolute right-5 top-4 w-24 h-10 rotate-[8deg] rounded-[3px]"
-          style={{
-            background:
-              "linear-gradient(180deg, oklch(0.94 0.04 82), oklch(0.82 0.06 72))",
-            boxShadow:
-              "0 4px 10px -4px oklch(0.2 0.03 40 / 0.55), inset 0 0 0 1px oklch(0.4 0.05 55 / 0.3)",
-          }}
-        >
-          <div className="flex items-center h-full px-1.5 gap-1.5">
-            <div className="text-[7px] leading-tight font-bold uppercase tracking-widest" style={{ color: "oklch(0.28 0.06 40)" }}>
-              Gijón<br/>1982
-            </div>
-            <div className="h-full border-l border-dashed" style={{ borderColor: "oklch(0.4 0.05 55 / 0.55)" }} />
-            <div className="text-[6.5px] leading-tight" style={{ color: "oklch(0.32 0.05 45)" }}>
-              N°<br/>0016
-            </div>
-          </div>
-        </div>
-
-        {/* Pennant (upper left) */}
-        <svg
-          aria-hidden
-          className="absolute left-3 top-3 -rotate-[10deg]"
-          width="58"
-          height="34"
-          viewBox="0 0 58 34"
-        >
-          <polygon points="0,0 58,17 0,34" fill="oklch(0.55 0.16 145)" stroke="oklch(0.3 0.06 140)" strokeWidth="0.6" />
-          <polygon points="0,4 46,17 0,30" fill="oklch(0.96 0.02 90)" opacity="0.9" />
-          <text x="8" y="20" fontSize="8" fontWeight="700" fill="oklch(0.5 0.16 30)" fontFamily="Georgia, serif">DZ</text>
-        </svg>
-
-        {/* Aged leather football (center-left, resting on shelf) */}
-        <div className="absolute left-8 bottom-16">
-          <svg width="88" height="88" viewBox="0 0 100 100">
-            <defs>
-              <radialGradient id="leather" cx="35%" cy="30%" r="75%">
-                <stop offset="0%" stopColor="oklch(0.72 0.09 55)" />
-                <stop offset="55%" stopColor="oklch(0.5 0.08 45)" />
-                <stop offset="100%" stopColor="oklch(0.24 0.04 38)" />
-              </radialGradient>
-            </defs>
-            <ellipse cx="50" cy="92" rx="30" ry="4" fill="oklch(0.2 0.03 40 / 0.45)" />
-            <circle cx="50" cy="50" r="42" fill="url(#leather)" />
-            {/* Panel seams — classic 18-panel leather ball */}
-            <g fill="none" stroke="oklch(0.18 0.03 38 / 0.8)" strokeWidth="1" strokeLinecap="round">
-              <path d="M10 50 Q 50 42 90 50" />
-              <path d="M10 50 Q 50 58 90 50" />
-              <path d="M50 8 Q 42 50 50 92" />
-              <path d="M50 8 Q 58 50 50 92" />
-              <path d="M22 20 Q 50 30 78 20" opacity="0.5" />
-              <path d="M22 80 Q 50 70 78 80" opacity="0.5" />
-            </g>
-            {/* Stitches */}
-            <g stroke="oklch(0.9 0.04 82 / 0.55)" strokeWidth="0.5" strokeDasharray="1.2 1.6">
-              <path d="M10 50 Q 50 42 90 50" fill="none" />
-              <path d="M50 8 Q 42 50 50 92" fill="none" />
-            </g>
-            {/* Highlight */}
-            <ellipse cx="38" cy="34" rx="10" ry="6" fill="oklch(0.95 0.03 82 / 0.35)" />
-          </svg>
-        </div>
-
-        {/* Referee whistle (center-right) */}
-        <svg
-          aria-hidden
-          className="absolute right-8 bottom-24 -rotate-[18deg]"
-          width="66"
-          height="40"
-          viewBox="0 0 66 40"
-        >
-          <defs>
-            <linearGradient id="brass" x1="0" x2="0" y1="0" y2="1">
-              <stop offset="0%" stopColor="oklch(0.88 0.12 86)" />
-              <stop offset="50%" stopColor="oklch(0.7 0.14 78)" />
-              <stop offset="100%" stopColor="oklch(0.42 0.08 68)" />
-            </linearGradient>
-          </defs>
-          {/* Cord */}
-          <path d="M2 4 Q 20 -2 30 8" fill="none" stroke="oklch(0.35 0.04 40)" strokeWidth="1.2" />
-          {/* Body */}
-          <rect x="18" y="10" width="34" height="18" rx="4" fill="url(#brass)" stroke="oklch(0.32 0.05 55)" strokeWidth="0.6" />
-          {/* Loop */}
-          <circle cx="20" cy="12" r="3" fill="none" stroke="oklch(0.32 0.05 55)" strokeWidth="1" />
-          {/* Mouthpiece */}
-          <rect x="50" y="14" width="10" height="10" rx="2" fill="oklch(0.5 0.08 68)" stroke="oklch(0.28 0.05 50)" strokeWidth="0.5" />
-          {/* Highlight */}
-          <rect x="22" y="12" width="26" height="3" rx="1.5" fill="oklch(0.96 0.05 85 / 0.7)" />
-        </svg>
-
-        {/* Vintage boots (bottom, small pair) */}
-        <svg
-          aria-hidden
-          className="absolute left-1/2 -translate-x-1/2 bottom-4"
-          width="140"
-          height="46"
-          viewBox="0 0 140 46"
-        >
-          <defs>
-            <linearGradient id="bootLeather" x1="0" x2="0" y1="0" y2="1">
-              <stop offset="0%" stopColor="oklch(0.5 0.07 45)" />
-              <stop offset="100%" stopColor="oklch(0.22 0.04 38)" />
-            </linearGradient>
-          </defs>
-          {/* Left boot */}
-          <g transform="translate(4 4)">
-            <path d="M2 24 Q 4 8 22 8 L 46 8 Q 58 8 60 20 L 60 28 Q 58 32 50 32 L 8 32 Q 2 32 2 28 Z" fill="url(#bootLeather)" stroke="oklch(0.15 0.03 35)" strokeWidth="0.6" />
-            {/* Laces */}
-            <g stroke="oklch(0.92 0.04 82 / 0.85)" strokeWidth="0.8">
-              <line x1="20" y1="12" x2="46" y2="12" />
-              <line x1="20" y1="16" x2="46" y2="16" />
-              <line x1="20" y1="20" x2="46" y2="20" />
-              <line x1="20" y1="24" x2="46" y2="24" />
-            </g>
-            {/* Studs */}
-            <g fill="oklch(0.15 0.02 40)">
-              <circle cx="10" cy="34" r="1.4" /><circle cx="20" cy="35" r="1.4" /><circle cx="32" cy="35" r="1.4" /><circle cx="44" cy="35" r="1.4" /><circle cx="54" cy="34" r="1.4" />
-            </g>
-          </g>
-          {/* Right boot */}
-          <g transform="translate(70 6) scale(-1 1) translate(-62 0)">
-            <path d="M2 24 Q 4 8 22 8 L 46 8 Q 58 8 60 20 L 60 28 Q 58 32 50 32 L 8 32 Q 2 32 2 28 Z" fill="url(#bootLeather)" stroke="oklch(0.15 0.03 35)" strokeWidth="0.6" />
-            <g stroke="oklch(0.92 0.04 82 / 0.85)" strokeWidth="0.8">
-              <line x1="20" y1="12" x2="46" y2="12" />
-              <line x1="20" y1="16" x2="46" y2="16" />
-              <line x1="20" y1="20" x2="46" y2="20" />
-              <line x1="20" y1="24" x2="46" y2="24" />
-            </g>
-            <g fill="oklch(0.15 0.02 40)">
-              <circle cx="10" cy="34" r="1.4" /><circle cx="20" cy="35" r="1.4" /><circle cx="32" cy="35" r="1.4" /><circle cx="44" cy="35" r="1.4" /><circle cx="54" cy="34" r="1.4" />
-            </g>
-          </g>
-        </svg>
-
-        {/* Small era plaques (right column) */}
-        <div className="absolute right-3 bottom-16 flex flex-col gap-1 items-end">
-          {["FLN · 1958", "Gijón · 1982", "Brasil · 2014", "USA/CAN/MEX · 2026"].map((label) => (
-            <div
-              key={label}
-              className="px-1.5 py-0.5 rounded-[2px] text-[7.5px] uppercase tracking-[0.16em] font-bold"
-              style={{
-                background: "oklch(0.96 0.03 82 / 0.85)",
-                color: "oklch(0.28 0.05 40)",
-                boxShadow: "0 1px 2px oklch(0.2 0.03 40 / 0.25), inset 0 0 0 1px oklch(0.55 0.08 60 / 0.35)",
-              }}
-            >
-              {label}
-            </div>
-          ))}
-        </div>
-
-        {/* Glass reflection sweep */}
+        {/* Subtle warm vignette to blend into parchment page */}
         <div
           aria-hidden
           className="pointer-events-none absolute inset-0"
           style={{
             background:
-              "linear-gradient(115deg, oklch(1 0 0 / 0) 40%, oklch(1 0 0 / 0.18) 50%, oklch(1 0 0 / 0) 60%)",
+              "radial-gradient(120% 90% at 50% 40%, transparent 55%, oklch(0.22 0.04 45 / 0.35) 100%)",
           }}
         />
-        {/* Inner frame */}
+        {/* Faint glass reflection sweep */}
         <div
           aria-hidden
-          className="pointer-events-none absolute inset-1 rounded-t-[12px] rounded-b-sm"
-          style={{ boxShadow: "inset 0 0 0 1px oklch(0.55 0.08 60 / 0.35)" }}
+          className="pointer-events-none absolute inset-0"
+          style={{
+            background:
+              "linear-gradient(115deg, oklch(1 0 0 / 0) 55%, oklch(1 0 0 / 0.08) 62%, oklch(1 0 0 / 0) 70%)",
+          }}
         />
       </div>
-    </div>
+    </figure>
   );
 }
 
