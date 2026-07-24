@@ -102,6 +102,7 @@ export function Header() {
     path.startsWith("/cinema");
 
   const isFootball = path.startsWith("/football") || path.startsWith("/clubs") || path.startsWith("/theater");
+  const onLesVertes = path === "/football/lesvertes";
 
   // Primary structural pillars
   const navLinks = [
@@ -130,6 +131,7 @@ export function Header() {
     { label: { fr: "Théâtre des Matchs", en: "Match Theater", ar: "مسرح المباريات" }[current], to: "/theater/$matchId", params: { matchId: "gijon-1982" }, isActive: () => path.startsWith("/theater") },
     { label: { fr: "Légendes", en: "Legends", ar: "الأساطير" }[current], to: "/football", hash: "legends", isActive: () => onFootballRoot && hash === "legends" },
     { label: { fr: "Stades", en: "Stadiums", ar: "الملاعب" }[current], to: "/football", hash: "stadiums", isActive: () => onFootballRoot && hash === "stadiums" },
+    { label: { fr: "Les Vertes — Équipe féminine", en: "Les Vertes — Women's Team", ar: "الخضراوات — المنتخب النسوي" }[current], to: "/football/lesvertes", isActive: () => onLesVertes },
     { label: { fr: "Musées des Clubs", en: "Club Museums", ar: "متاحف الأندية" }[current], to: "/clubs", isActive: () => path.startsWith("/clubs") },
   ];
 

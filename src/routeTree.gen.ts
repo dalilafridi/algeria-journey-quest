@@ -34,6 +34,7 @@ import { Route as TheaterMatchIdRouteImport } from './routes/theater.$matchId'
 import { Route as RegionRegionIdRouteImport } from './routes/region.$regionId'
 import { Route as QuizEraIdRouteImport } from './routes/quiz.$eraId'
 import { Route as JourneysJourneyIdRouteImport } from './routes/journeys.$journeyId'
+import { Route as FootballLesvertesRouteImport } from './routes/football.lesvertes'
 import { Route as FiguresQuizRouteImport } from './routes/figures.quiz'
 import { Route as FiguresFigureIdRouteImport } from './routes/figures.$figureId'
 import { Route as EraEraIdRouteImport } from './routes/era.$eraId'
@@ -203,6 +204,11 @@ const JourneysJourneyIdRoute = JourneysJourneyIdRouteImport.update({
   id: '/journeys/$journeyId',
   path: '/journeys/$journeyId',
   getParentRoute: () => rootRouteImport,
+} as any)
+const FootballLesvertesRoute = FootballLesvertesRouteImport.update({
+  id: '/lesvertes',
+  path: '/lesvertes',
+  getParentRoute: () => FootballRoute,
 } as any)
 const FiguresQuizRoute = FiguresQuizRouteImport.update({
   id: '/figures/quiz',
@@ -445,7 +451,7 @@ export interface FileRoutesByFullPath {
   '/clubs': typeof ClubsRouteWithChildren
   '/compare': typeof CompareRoute
   '/cuisine': typeof CuisineRoute
-  '/football': typeof FootballRoute
+  '/football': typeof FootballRouteWithChildren
   '/ideas': typeof IdeasRoute
   '/lessons': typeof LessonsRoute
   '/map': typeof MapRoute
@@ -465,6 +471,7 @@ export interface FileRoutesByFullPath {
   '/era/$eraId': typeof EraEraIdRoute
   '/figures/$figureId': typeof FiguresFigureIdRoute
   '/figures/quiz': typeof FiguresQuizRoute
+  '/football/lesvertes': typeof FootballLesvertesRoute
   '/journeys/$journeyId': typeof JourneysJourneyIdRoute
   '/quiz/$eraId': typeof QuizEraIdRoute
   '/region/$regionId': typeof RegionRegionIdRoute
@@ -515,7 +522,7 @@ export interface FileRoutesByTo {
   '/clubs': typeof ClubsRouteWithChildren
   '/compare': typeof CompareRoute
   '/cuisine': typeof CuisineRoute
-  '/football': typeof FootballRoute
+  '/football': typeof FootballRouteWithChildren
   '/ideas': typeof IdeasRoute
   '/lessons': typeof LessonsRoute
   '/map': typeof MapRoute
@@ -535,6 +542,7 @@ export interface FileRoutesByTo {
   '/era/$eraId': typeof EraEraIdRoute
   '/figures/$figureId': typeof FiguresFigureIdRoute
   '/figures/quiz': typeof FiguresQuizRoute
+  '/football/lesvertes': typeof FootballLesvertesRoute
   '/journeys/$journeyId': typeof JourneysJourneyIdRoute
   '/quiz/$eraId': typeof QuizEraIdRoute
   '/region/$regionId': typeof RegionRegionIdRoute
@@ -584,7 +592,7 @@ export interface FileRoutesById {
   '/clubs': typeof ClubsRouteWithChildren
   '/compare': typeof CompareRoute
   '/cuisine': typeof CuisineRoute
-  '/football': typeof FootballRoute
+  '/football': typeof FootballRouteWithChildren
   '/ideas': typeof IdeasRoute
   '/lessons': typeof LessonsRoute
   '/map': typeof MapRoute
@@ -605,6 +613,7 @@ export interface FileRoutesById {
   '/era/$eraId': typeof EraEraIdRoute
   '/figures/$figureId': typeof FiguresFigureIdRoute
   '/figures/quiz': typeof FiguresQuizRoute
+  '/football/lesvertes': typeof FootballLesvertesRoute
   '/journeys/$journeyId': typeof JourneysJourneyIdRoute
   '/quiz/$eraId': typeof QuizEraIdRoute
   '/region/$regionId': typeof RegionRegionIdRoute
@@ -677,6 +686,7 @@ export interface FileRouteTypes {
     | '/era/$eraId'
     | '/figures/$figureId'
     | '/figures/quiz'
+    | '/football/lesvertes'
     | '/journeys/$journeyId'
     | '/quiz/$eraId'
     | '/region/$regionId'
@@ -747,6 +757,7 @@ export interface FileRouteTypes {
     | '/era/$eraId'
     | '/figures/$figureId'
     | '/figures/quiz'
+    | '/football/lesvertes'
     | '/journeys/$journeyId'
     | '/quiz/$eraId'
     | '/region/$regionId'
@@ -816,6 +827,7 @@ export interface FileRouteTypes {
     | '/era/$eraId'
     | '/figures/$figureId'
     | '/figures/quiz'
+    | '/football/lesvertes'
     | '/journeys/$journeyId'
     | '/quiz/$eraId'
     | '/region/$regionId'
@@ -867,7 +879,7 @@ export interface RootRouteChildren {
   ClubsRoute: typeof ClubsRouteWithChildren
   CompareRoute: typeof CompareRoute
   CuisineRoute: typeof CuisineRoute
-  FootballRoute: typeof FootballRoute
+  FootballRoute: typeof FootballRouteWithChildren
   IdeasRoute: typeof IdeasRoute
   LessonsRoute: typeof LessonsRoute
   MapRoute: typeof MapRoute
@@ -1068,6 +1080,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/journeys/$journeyId'
       preLoaderRoute: typeof JourneysJourneyIdRouteImport
       parentRoute: typeof rootRouteImport
+    }
+    '/football/lesvertes': {
+      id: '/football/lesvertes'
+      path: '/lesvertes'
+      fullPath: '/football/lesvertes'
+      preLoaderRoute: typeof FootballLesvertesRouteImport
+      parentRoute: typeof FootballRoute
     }
     '/figures/quiz': {
       id: '/figures/quiz'
@@ -1506,6 +1525,18 @@ const ClubsRouteChildren: ClubsRouteChildren = {
 
 const ClubsRouteWithChildren = ClubsRoute._addFileChildren(ClubsRouteChildren)
 
+interface FootballRouteChildren {
+  FootballLesvertesRoute: typeof FootballLesvertesRoute
+}
+
+const FootballRouteChildren: FootballRouteChildren = {
+  FootballLesvertesRoute: FootballLesvertesRoute,
+}
+
+const FootballRouteWithChildren = FootballRoute._addFileChildren(
+  FootballRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   CuratorRouteRoute: CuratorRouteRouteWithChildren,
@@ -1515,7 +1546,7 @@ const rootRouteChildren: RootRouteChildren = {
   ClubsRoute: ClubsRouteWithChildren,
   CompareRoute: CompareRoute,
   CuisineRoute: CuisineRoute,
-  FootballRoute: FootballRoute,
+  FootballRoute: FootballRouteWithChildren,
   IdeasRoute: IdeasRoute,
   LessonsRoute: LessonsRoute,
   MapRoute: MapRoute,
