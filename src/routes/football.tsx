@@ -243,6 +243,22 @@ function MuseumVitrine({ lang }: { lang: Lang }) {
           />
         </div>
       </div>
+      {/* Museum caption plaque beneath the artifact */}
+      <figcaption
+        className="mt-6 text-center px-2 sm:px-4"
+        dir={dir}
+        style={SERIF}
+      >
+        <div className="text-xl sm:text-2xl font-semibold text-foreground">
+          {tt(caption.title, lang)}
+        </div>
+        <div className="mt-1 text-[10px] sm:text-xs uppercase tracking-[0.35em] font-bold text-muted-foreground">
+          {caption.years}
+        </div>
+        <p className="mt-2 text-sm sm:text-base text-muted-foreground leading-relaxed max-w-[360px] mx-auto">
+          {tt(caption.description, lang)}
+        </p>
+      </figcaption>
     </figure>
   );
 }
