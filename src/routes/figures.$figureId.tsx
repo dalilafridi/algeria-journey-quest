@@ -12,6 +12,7 @@
  */
 
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
+import { pageMeta } from "@/lib/seo";
 import { useEffect } from "react";
 import { Header } from "@/components/Header";
 import { eras } from "@/data/eras";
@@ -71,17 +72,24 @@ export const Route = createFileRoute("/figures/$figureId")({
     if (!figure) throw notFound();
     return { figure };
   },
-  head: ({ loaderData }) =>
-    loaderData
-      ? {
-          meta: [
-            { title: `${t(loaderData.figure.displayName, "en")} — Hall of Legends` },
-            { name: "description", content: t(loaderData.figure.fact, "en") },
-            { property: "og:title", content: `${t(loaderData.figure.displayName, "en")} — Hall of Legends` },
-            { property: "og:description", content: t(loaderData.figure.fact, "en") },
-          ],
-        }
-      : {},
+  head: ({ loaderData, params }) => {
+    if (!loaderData) {
+      return pageMeta({
+        path: `/figures/${params.figureId}`,
+        title: "Figure — Hall of Legends",
+        description: "This figure exhibit could not be found.",
+        noindex: true,
+      });
+    }
+    const title = `${t(loaderData.figure.displayName, "en")} — Hall of Legends`;
+    const desc = t(loaderData.figure.fact, "en");
+    return pageMeta({
+      path: `/figures/${loaderData.figure.id}`,
+      title,
+      description: desc,
+      type: "article",
+    });
+  },
   component: FigureDetail,
   notFoundComponent: () => (
     <div className="min-h-dvh bg-parchment">

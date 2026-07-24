@@ -6,24 +6,17 @@ import { figures, type Figure } from "@/data/figures";
 import { EraBadge, type EraBadgeKind } from "@/components/brand/EraBadge";
 import { t, useLang, type Lang } from "@/lib/i18n";
 import { ChevronLeft, ChevronRight, MapPin, Sparkles, Users, Scroll } from "lucide-react";
+import chronicleImg from "@/assets/era-numidia.jpg";
+import { pageMeta } from "@/lib/seo";
 
 export const Route = createFileRoute("/chronicle")({
-  head: () => ({
-    meta: [
-      { title: "Interactive Chronicle — DZ Odyssey" },
-      {
-        name: "description",
-        content:
-          "Drag across three thousand years of Algerian history. Meet the figures, regions and events of every era on one living timeline.",
-      },
-      { property: "og:title", content: "The Interactive Chronicle of Algeria" },
-      {
-        property: "og:description",
-        content:
-          "A cinematic, drag-through timeline of Algerian history — from prehistoric North Africa to the modern republic.",
-      },
-    ],
-  }),
+  head: () =>
+    pageMeta({
+      path: "/chronicle",
+      title: "The Interactive Chronicle of Algeria — DZ Odyssey",
+      description: "Drag across three thousand years of Algerian history. Meet the figures, regions and events of every era on one living timeline.",
+      image: chronicleImg
+    }),
   component: ChroniclePage,
 });
 

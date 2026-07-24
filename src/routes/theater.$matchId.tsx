@@ -1,4 +1,5 @@
 import { createFileRoute, Link, notFound, useRouter } from "@tanstack/react-router";
+import { pageMeta } from "@/lib/seo";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
 import { useLang, type Lang, type LocalizedString } from "@/lib/i18n";
@@ -21,23 +22,24 @@ import { SourcesPanel } from "@/components/theater/SourcesPanel";
 import { PlayerPlaque, PlayerPlaqueDetail } from "@/components/theater/PlayerPlaque";
 
 export const Route = createFileRoute("/theater/$matchId")({
-  head: ({ loaderData }) => {
+  head: ({ loaderData, params }) => {
     const match = loaderData as MatchTheater | undefined;
-    const title = match
-      ? `${tt(match.cinematicTitle, "en")} — Match Theater`
-      : "Match Theater — Unavailable";
-    const desc = match
-      ? `${tt(match.cinematicSubtitle, "en")} · Match Theater at DZ Odyssey.`
-      : "This Match Theater experience is not available.";
-    return {
-      meta: [
-        { title },
-        { name: "description", content: desc },
-        { property: "og:title", content: title },
-        { property: "og:description", content: desc },
-        ...(match ? [] : [{ name: "robots", content: "noindex" }]),
-      ],
-    };
+    if (!match) {
+      return pageMeta({
+        path: `/theater/${params.matchId}`,
+        title: "Match Theater — Unavailable",
+        description: "This Match Theater experience is not available.",
+        noindex: true,
+      });
+    }
+    const title = `${tt(match.cinematicTitle, "en")} — Match Theater`;
+    const desc = `${tt(match.cinematicSubtitle, "en")} · Match Theater at DZ Odyssey.`;
+    return pageMeta({
+      path: `/theater/${match.id}`,
+      title,
+      description: desc,
+      type: "article",
+    });
   },
   loader: ({ params }) => {
     const m = getMatchTheater(params.matchId);

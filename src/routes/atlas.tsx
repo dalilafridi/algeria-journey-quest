@@ -11,6 +11,8 @@ import { HistoricalOverlay } from "@/components/atlas/HistoricalOverlay";
 import { HistoricalPeriodPanel } from "@/components/atlas/HistoricalPeriodPanel";
 import { t, useLang, type LocalizedString } from "@/lib/i18n";
 import { saveJourneyPlace } from "@/lib/continuity";
+import algeriaMap from "@/assets/algeria-map.png";
+import { pageMeta } from "@/lib/seo";
 
 /** ----------------------------------------------------------------
  *  Hand-illustrated Algeria silhouette in a 100x100 viewBox.
@@ -69,21 +71,13 @@ const ERA_REGION_FOCUS: Record<string, string[]> = {
 type LayerId = "all" | string;
 
 export const Route = createFileRoute("/atlas")({
-  head: () => ({
-    meta: [
-      { title: "Interactive Atlas — Algeria Through Time" },
-      {
-        name: "description",
-        content:
-          "An interactive historical atlas of Algeria: explore regions, eras, figures and culture across the country's millennia.",
-      },
-      { property: "og:title", content: "Interactive Atlas — Algeria Through Time" },
-      {
-        property: "og:description",
-        content: "A cinematic, museum-style historical map of Algeria.",
-      },
-    ],
-  }),
+  head: () =>
+    pageMeta({
+      path: "/atlas",
+      title: "Historical Atlas of Algeria — DZ Odyssey",
+      description: "A hand-illustrated atlas of Algeria across the centuries — regions, periods and the people who shaped them.",
+      image: algeriaMap
+    }),
   component: AtlasPage,
 });
 

@@ -11,18 +11,17 @@ import { discover } from "@/lib/discoveries";
 import { t, useLang } from "@/lib/i18n";
 import { saveJourneyPlace } from "@/lib/continuity";
 import { JourneyNext } from "@/components/JourneyNext";
+import mapImg from "@/assets/algeria-map.png";
+import { pageMeta } from "@/lib/seo";
 
 export const Route = createFileRoute("/map")({
-  head: () => ({
-    meta: [
-      { title: "Region Explorer — Algeria Through Time" },
-      {
-        name: "description",
-        content:
-          "Explore Algeria region by region: Kabylie, Aurès, Algiers, Constantine, the West and the Sahara — facts, figures and stories.",
-      },
-    ],
-  }),
+  head: () =>
+    pageMeta({
+      path: "/map",
+      title: "Region Explorer — DZ Odyssey",
+      description: "Explore Algeria region by region: Kabylie, Aurès, Algiers, Constantine, the West and the Sahara — facts, figures and stories.",
+      image: mapImg
+    }),
   component: RegionExplorerPage,
 });
 

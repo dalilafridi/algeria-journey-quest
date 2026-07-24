@@ -6,6 +6,7 @@ import { saveJourneyPlace } from "@/lib/continuity";
 import { AmazighSymbol } from "@/components/brand/AmazighSymbol";
 import { CollectionEmblem } from "@/components/figures/CollectionEmblem";
 import { CULTURE_TOPICS } from "@/data/cultureTopics";
+import { pageMeta } from "@/lib/seo";
 
 const L = (en: string, fr: string, ar: string): Localized<string> => ({ en, fr, ar });
 
@@ -388,21 +389,12 @@ const IDENTITY_TIMELINE: IdentityEra[] = [
 /* ------------------------------------------------------------------ */
 
 export const Route = createFileRoute("/culture/")({
-  head: () => ({
-    meta: [
-      { title: "Culture — A Living Algeria" },
-      {
-        name: "description",
-        content:
-          "A museum-style exploration of Algerian culture: traditions, music, cuisine, words, architecture and the long memory of Amazigh heritage.",
-      },
-      { property: "og:title", content: "Culture — A Living Algeria" },
-      {
-        property: "og:description",
-        content: "Wander through Algerian identity — traditions, music, cuisine, words and architecture.",
-      },
-    ],
-  }),
+  head: () =>
+    pageMeta({
+      path: "/culture",
+      title: "Culture — A Living Algeria | DZ Odyssey",
+      description: "Wander through Algerian identity — traditions, music, cuisine, words, architecture and the long memory of Amazigh heritage."
+    }),
   component: CulturePage,
 });
 

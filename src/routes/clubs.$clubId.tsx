@@ -1,4 +1,5 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
+import { pageMeta } from "@/lib/seo";
 import { useEffect, useMemo, useState } from "react";
 
 import { Header } from "@/components/Header";
@@ -22,21 +23,27 @@ export const Route = createFileRoute("/clubs/$clubId")({
     if (!club) throw notFound();
     return { club };
   },
-  head: ({ loaderData }) => {
+  head: ({ loaderData, params }) => {
     if (!loaderData) {
-      return { meta: [{ title: "Club Museum — DZ Odyssey" }, { name: "robots", content: "noindex" }] };
+      return pageMeta({
+        path: `/clubs/${params.clubId}`,
+        title: "Club Museum — DZ Odyssey",
+        description: "This club museum could not be found.",
+        noindex: true,
+      });
     }
     const { club } = loaderData;
     const title = typeof club.fullName === "string" ? club.fullName : club.fullName.en;
     const desc = typeof club.tagline === "string" ? club.tagline : club.tagline.en;
-    return {
-      meta: [
-        { title: `${title} Museum — DZ Odyssey` },
-        { name: "description", content: desc },
-        { property: "og:title", content: `${title} Museum` },
-        { property: "og:description", content: desc },
-      ],
-    };
+    // Placeholder clubs stay discoverable via /clubs but are not indexable.
+    const noindex = club.status !== "complete";
+    return pageMeta({
+      path: `/clubs/${club.id}`,
+      title: `${title} Museum — DZ Odyssey`,
+      description: desc,
+      type: "article",
+      noindex,
+    });
   },
   component: ClubMuseumRoute,
   notFoundComponent: ClubNotFound,

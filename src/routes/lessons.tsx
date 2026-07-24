@@ -4,17 +4,15 @@ import { LessonCard } from "@/components/LessonCard";
 import { ExplainToggle } from "@/components/ExplainToggle";
 import { lessons } from "@/data/lessons";
 import { useLang } from "@/lib/i18n";
+import { pageMeta } from "@/lib/seo";
 
 export const Route = createFileRoute("/lessons")({
-  head: () => ({
-    meta: [
-      { title: "1-Minute Lessons — Algeria Through Time" },
-      {
-        name: "description",
-        content: "Quick, focused lessons on Algerian history — read a topic in about a minute.",
-      },
-    ],
-  }),
+  head: () =>
+    pageMeta({
+      path: "/lessons",
+      title: "1-Minute Lessons — DZ Odyssey",
+      description: "Quick, focused lessons on Algerian history — read a topic in about a minute."
+    }),
   component: LessonsPage,
 });
 

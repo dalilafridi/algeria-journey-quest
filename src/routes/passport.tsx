@@ -13,24 +13,16 @@ import { getProgress, getLevelInfo } from "@/lib/progress";
 import { eras } from "@/data/eras";
 import { mapRegions } from "@/data/mapRegions";
 import { figures } from "@/data/figures";
+import { pageMeta } from "@/lib/seo";
 
 export const Route = createFileRoute("/passport")({
-  head: () => ({
-    meta: [
-      { title: "Visitor Passport — Algeria Through Time" },
-      {
-        name: "description",
-        content:
-          "Your personal DZ Odyssey museum passport — track visits, collect stamps, and export your journey.",
-      },
-      { property: "og:title", content: "Visitor Passport — Algeria Through Time" },
-      {
-        property: "og:description",
-        content:
-          "A gold-foil museum passport that records the eras, regions and figures you have explored.",
-      },
-    ],
-  }),
+  head: () =>
+    pageMeta({
+      path: "/passport",
+      title: "Visitor Passport — DZ Odyssey",
+      description: "Your personal DZ Odyssey museum passport — track visits, collect stamps, and export your journey.",
+      noindex: true
+    }),
   component: PassportPage,
 });
 

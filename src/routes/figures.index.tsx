@@ -22,25 +22,16 @@ import { GuidedTour } from "@/components/figures/GuidedTour";
 import { SignatureJourneys } from "@/components/journeys/SignatureJourneys";
 import { t, tu, useLang, type Lang } from "@/lib/i18n";
 import { saveJourneyPlace } from "@/lib/continuity";
+import { pageMeta } from "@/lib/seo";
 
 
 export const Route = createFileRoute("/figures/")({
-  head: () => ({
-    meta: [
-      { title: "Hall of Legends — Discover the People Who Shaped Algeria" },
-      {
-        name: "description",
-        content:
-          "Browse the Hall of Legends like a living museum — a featured exhibition, curated collections and era-by-era galleries of the women and men who shaped Algeria. Arrive for one story, leave having discovered ten.",
-      },
-      { property: "og:title", content: "Hall of Legends — Discover the People Who Shaped Algeria" },
-      {
-        property: "og:description",
-        content:
-          "A cinematic, browse-first museum of Algeria's most influential historical figures — curated collections and era galleries.",
-      },
-    ],
-  }),
+  head: () =>
+    pageMeta({
+      path: "/figures",
+      title: "Hall of Legends — Discover the People Who Shaped Algeria | DZ Odyssey",
+      description: "A cinematic, browse-first museum of Algeria's most influential historical figures — curated collections and era galleries."
+    }),
   component: FiguresIndex,
 });
 

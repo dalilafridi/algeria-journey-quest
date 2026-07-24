@@ -2,24 +2,15 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
 import { Header } from "@/components/Header";
 import { useLang, t, type Lang, type Localized } from "@/lib/i18n";
+import { pageMeta } from "@/lib/seo";
 
 export const Route = createFileRoute("/stargazing")({
-  head: () => ({
-    meta: [
-      { title: "Amazigh Stargazing — The Sky of Our Ancestors" },
-      {
-        name: "description",
-        content:
-          "How Amazigh people read the stars for life, land, and time — Pleiades, Orion, Sirius, desert navigation and a living sky calendar.",
-      },
-      { property: "og:title", content: "Amazigh Stargazing — The Sky of Our Ancestors" },
-      {
-        property: "og:description",
-        content:
-          "A cinematic museum of Amazigh star knowledge: seasons, navigation and oral tradition under the desert sky.",
-      },
-    ],
-  }),
+  head: () =>
+    pageMeta({
+      path: "/stargazing",
+      title: "Amazigh Stargazing — The Sky of Our Ancestors | DZ Odyssey",
+      description: "A cinematic museum of Amazigh star knowledge — seasons, navigation and oral tradition under the desert sky."
+    }),
   component: StargazingPage,
 });
 

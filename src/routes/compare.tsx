@@ -5,6 +5,7 @@ import { t, useLang, type Lang, type LocalizedString } from "@/lib/i18n";
 import { figures, type Figure } from "@/data/figures";
 import { eras, type Era } from "@/data/eras";
 import { mapRegions, type MapRegion } from "@/data/mapRegions";
+import { pageMeta } from "@/lib/seo";
 
 type Kind = "figures" | "eras" | "regions";
 
@@ -19,22 +20,12 @@ export const Route = createFileRoute("/compare")({
     const b = typeof raw.b === "string" ? raw.b : undefined;
     return { kind, a, b };
   },
-  head: () => ({
-    meta: [
-      { title: "Compare Mode — Algeria Through Time" },
-      {
-        name: "description",
-        content:
-          "Side-by-side museum plaques comparing Algerian figures, eras, and regions across timeline, geography, achievements, legacy and significance.",
-      },
-      { property: "og:title", content: "Compare Mode — Algeria Through Time" },
-      {
-        property: "og:description",
-        content:
-          "Place two figures, eras, or regions side by side and study their timeline, geography, achievements, legacy and historical significance.",
-      },
-    ],
-  }),
+  head: () =>
+    pageMeta({
+      path: "/compare",
+      title: "Compare Mode — DZ Odyssey",
+      description: "Place two figures, eras or regions side by side and study their timeline, geography, achievements, legacy and historical significance."
+    }),
   component: ComparePage,
 });
 
