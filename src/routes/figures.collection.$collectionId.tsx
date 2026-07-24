@@ -1,5 +1,4 @@
 /**
-import { pageMeta } from "@/lib/seo";
  * Collection detail page — a museum gallery dedicated to a theme.
  *
  * Rebuilt on the shared MuseumCatalogPage template so a collection reads like
@@ -12,6 +11,7 @@ import { pageMeta } from "@/lib/seo";
  */
 
 import { createFileRoute, Link, useParams } from "@tanstack/react-router";
+import { pageMeta } from "@/lib/seo";
 import { useEffect, useMemo, useState } from "react";
 import { Header } from "@/components/Header";
 

@@ -1,5 +1,4 @@
 /**
-import { pageMeta } from "@/lib/seo";
  * Figure detail page — the flagship museum exhibit experience.
  *
  * Rebuilt on the shared MuseumCatalogPage template: a strong left story column
@@ -13,6 +12,7 @@ import { pageMeta } from "@/lib/seo";
  */
 
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
+import { pageMeta } from "@/lib/seo";
 import { useEffect } from "react";
 import { Header } from "@/components/Header";
 import { eras } from "@/data/eras";

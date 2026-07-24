@@ -1,5 +1,4 @@
 /**
-import { pageMeta } from "@/lib/seo";
  * Culture topic detail page — a cultural exhibit within the museum.
  *
  * Built on the shared MuseumCatalogPage template: a storytelling-first left
@@ -11,6 +10,7 @@ import { pageMeta } from "@/lib/seo";
  */
 
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
+import { pageMeta } from "@/lib/seo";
 import { useEffect } from "react";
 import { Header } from "@/components/Header";
 import { CollectionEmblem } from "@/components/figures/CollectionEmblem";

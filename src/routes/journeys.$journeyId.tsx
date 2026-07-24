@@ -1,5 +1,4 @@
 /**
-import { pageMeta } from "@/lib/seo";
  * Signature Journey detail page — the flagship of the museum-catalog layout.
  *
  * A guided narrative presented as an open exhibition book: a strong left story
@@ -10,6 +9,7 @@ import { pageMeta } from "@/lib/seo";
  */
 
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
+import { pageMeta } from "@/lib/seo";
 import { useState } from "react";
 import { Header } from "@/components/Header";
 import { CollectionEmblem } from "@/components/figures/CollectionEmblem";
