@@ -1,9 +1,16 @@
 import { Link, useNavigate, useRouterState } from "@tanstack/react-router";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { resetAllQuizProgress } from "@/lib/progress";
 import { LANGS, getLang, setLang, useLang, type Lang } from "@/lib/i18n";
 import { OPEN_CREATOR_ABOUT_EVENT } from "@/components/WelcomeJourney";
 import { openMuseumSearch } from "@/components/SearchOverlay";
+import {
+  DropdownMenu,
+  DropdownMenuTrigger,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuSeparator,
+} from "@/components/ui/dropdown-menu";
 import brandIcon from "@/assets/brand-icon.png";
 
 
@@ -23,9 +30,6 @@ export function Header() {
   const navigate = useNavigate();
   const path = useRouterState({ select: (s) => s.location.pathname });
   const hash = useRouterState({ select: (s) => s.location.hash });
-  const langRef = useRef<HTMLDivElement>(null);
-  const profileRef = useRef<HTMLDivElement>(null);
-  const footballRef = useRef<HTMLDivElement>(null);
 
   // Lock body scroll when mobile menu is open
   useEffect(() => {
@@ -38,27 +42,9 @@ export function Header() {
     }
   }, [menuOpen]);
 
-  // Close popovers on outside click
-  useEffect(() => {
-    const onClick = (e: MouseEvent) => {
-      if (langRef.current && !langRef.current.contains(e.target as Node)) setLangOpen(false);
-      if (profileRef.current && !profileRef.current.contains(e.target as Node)) setProfileOpen(false);
-      if (footballRef.current && !footballRef.current.contains(e.target as Node)) setFootballOpen(false);
-    };
-    const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") {
-        setLangOpen(false);
-        setProfileOpen(false);
-        setFootballOpen(false);
-      }
-    };
-    document.addEventListener("mousedown", onClick);
-    document.addEventListener("keydown", onKey);
-    return () => {
-      document.removeEventListener("mousedown", onClick);
-      document.removeEventListener("keydown", onKey);
-    };
-  }, []);
+  // Note: outside-click / Escape / focus management for the Language,
+  // Football and Profile dropdowns is now handled by Radix (see below).
+
 
   const current: Lang = lang ?? getLang();
 
@@ -190,58 +176,49 @@ export function Header() {
             </Link>
           ))}
 
-          {/* Football dropdown */}
-          <div className="relative" ref={footballRef}>
-            <button
-              type="button"
-              onClick={() => setFootballOpen((v) => !v)}
-              onKeyDown={(e) => {
-                if (e.key === "ArrowDown") {
-                  e.preventDefault();
-                  setFootballOpen(true);
+          {/* Football dropdown (Radix — a11y & keyboard handled by primitive) */}
+          <DropdownMenu open={footballOpen} onOpenChange={setFootballOpen}>
+            <DropdownMenuTrigger asChild>
+              <button
+                type="button"
+                className={
+                  (isFootball ? activeLinkClass : primaryClass) +
+                  " inline-flex items-center gap-1"
                 }
-              }}
-              aria-haspopup="menu"
-              aria-expanded={footballOpen}
-              className={
-                (isFootball ? activeLinkClass : primaryClass) +
-                " inline-flex items-center gap-1"
-              }
+              >
+                {T.football}
+                <svg
+                  width="12"
+                  height="12"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className={"opacity-70 transition-transform " + (footballOpen ? "rotate-180" : "")}
+                  aria-hidden
+                >
+                  <polyline points="6 9 12 15 18 9" />
+                </svg>
+              </button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent
+              align="center"
+              sideOffset={8}
+              aria-label={T.football}
+              className="min-w-[240px] rounded-xl border border-border bg-popover shadow-lg overflow-hidden py-1"
             >
-              {T.football}
-              <svg
-                width="12"
-                height="12"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className={"opacity-70 transition-transform " + (footballOpen ? "rotate-180" : "")}
-                aria-hidden
-              >
-                <polyline points="6 9 12 15 18 9" />
-              </svg>
-            </button>
-            {footballOpen && (
-              <div
-                role="menu"
-                aria-label={T.football}
-                className="absolute start-1/2 -translate-x-1/2 mt-2 min-w-[240px] rounded-xl border border-border bg-popover shadow-lg overflow-hidden animate-float-up py-1"
-              >
-                {footballMenu.map((item) => {
-                  const active = item.isActive();
-                  return (
+              {footballMenu.map((item) => {
+                const active = item.isActive();
+                return (
+                  <DropdownMenuItem key={`fm-${item.label}`} asChild>
                     <Link
-                      key={`fm-${item.label}`}
                       to={item.to as any}
                       params={item.params as any}
                       hash={item.hash}
-                      role="menuitem"
-                      onClick={() => setFootballOpen(false)}
                       className={
-                        "block px-3.5 py-2 text-sm transition-colors " +
+                        "block px-3.5 py-2 text-sm transition-colors cursor-pointer " +
                         (active
                           ? "text-foreground font-semibold bg-muted"
                           : "text-foreground/85 hover:bg-muted hover:text-foreground")
@@ -249,11 +226,11 @@ export function Header() {
                     >
                       {item.label}
                     </Link>
-                  );
-                })}
-              </div>
-            )}
-          </div>
+                  </DropdownMenuItem>
+                );
+              })}
+            </DropdownMenuContent>
+          </DropdownMenu>
         </nav>
 
         <div className="flex items-center gap-2 sm:gap-3">
@@ -271,49 +248,44 @@ export function Header() {
             </svg>
           </button>
 
-          {/* Language dropdown */}
-          <div className="relative" ref={langRef}>
-
-            <button
-              type="button"
-              onClick={() => {
-                setLangOpen((v) => !v);
-                setProfileOpen(false);
-              }}
-              className="inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-full border border-border bg-card text-sm font-medium text-foreground hover:bg-muted transition-colors"
-              aria-label="Select language"
-              aria-expanded={langOpen}
+          {/* Language dropdown (Radix) */}
+          <DropdownMenu open={langOpen} onOpenChange={setLangOpen}>
+            <DropdownMenuTrigger asChild>
+              <button
+                type="button"
+                className="inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-full border border-border bg-card text-sm font-medium text-foreground hover:bg-muted transition-colors"
+                aria-label="Select language"
+              >
+                <span aria-hidden>🌐</span>
+                <span className="hidden sm:inline">{LANG_LABEL[current]}</span>
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="opacity-60">
+                  <polyline points="6 9 12 15 18 9" />
+                </svg>
+              </button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent
+              align="end"
+              sideOffset={8}
+              className="min-w-[170px] rounded-xl border border-border bg-popover shadow-lg overflow-hidden"
             >
-              <span aria-hidden>🌐</span>
-              <span className="hidden sm:inline">{LANG_LABEL[current]}</span>
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="opacity-60">
-                <polyline points="6 9 12 15 18 9" />
-              </svg>
-            </button>
-            {langOpen && (
-              <div className="absolute end-0 mt-2 min-w-[170px] rounded-xl border border-border bg-popover shadow-lg overflow-hidden animate-float-up">
-                {LANGS.map((l) => (
-                  <button
-                    key={l.code}
-                    lang={l.code}
-                    onClick={() => {
-                      setLang(l.code);
-                      setLangOpen(false);
-                    }}
-                    aria-current={current === l.code ? "true" : undefined}
-                    className={
-                      "w-full px-3 py-2.5 text-sm hover:bg-muted transition-colors min-h-11 " +
-                      (l.code === "ar" ? "text-right" : "text-left") +
-                      " " +
-                      (current === l.code ? "text-foreground font-semibold" : "text-muted-foreground")
-                    }
-                  >
-                    {LANG_LABEL[l.code]}
-                  </button>
-                ))}
-              </div>
-            )}
-          </div>
+              {LANGS.map((l) => (
+                <DropdownMenuItem
+                  key={l.code}
+                  lang={l.code}
+                  onSelect={() => setLang(l.code)}
+                  aria-current={current === l.code ? "true" : undefined}
+                  className={
+                    "w-full px-3 py-2.5 text-sm min-h-11 cursor-pointer " +
+                    (l.code === "ar" ? "justify-end text-right" : "justify-start text-left") +
+                    " " +
+                    (current === l.code ? "text-foreground font-semibold" : "text-muted-foreground")
+                  }
+                >
+                  {LANG_LABEL[l.code]}
+                </DropdownMenuItem>
+              ))}
+            </DropdownMenuContent>
+          </DropdownMenu>
 
           <button
             type="button"
@@ -324,79 +296,68 @@ export function Header() {
             {T.about}
           </button>
 
-          {/* Profile dropdown — desktop */}
-          <div className="relative hidden lg:block" ref={profileRef}>
-            <button
-              type="button"
-              onClick={() => {
-                setProfileOpen((v) => !v);
-                setLangOpen(false);
-              }}
-              className="inline-flex items-center justify-center w-9 h-9 rounded-full border border-border bg-card text-foreground hover:bg-muted transition-colors"
-              aria-label="Profile menu"
-              aria-expanded={profileOpen}
-            >
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
-                <circle cx="12" cy="7" r="4" />
-              </svg>
-            </button>
-            {profileOpen && (
-              <div className="absolute end-0 mt-2 min-w-[200px] rounded-xl border border-border bg-popover shadow-lg overflow-hidden animate-float-up">
+          {/* Profile dropdown — desktop (Radix) */}
+          <div className="hidden lg:block">
+            <DropdownMenu open={profileOpen} onOpenChange={setProfileOpen}>
+              <DropdownMenuTrigger asChild>
                 <button
-                  onClick={() => {
-                    setProfileOpen(false);
-                    navigate({ to: "/profile" });
-                  }}
-                  className="w-full text-start px-3 py-2 text-sm text-foreground hover:bg-muted transition-colors"
+                  type="button"
+                  className="inline-flex items-center justify-center w-9 h-9 rounded-full border border-border bg-card text-foreground hover:bg-muted transition-colors"
+                  aria-label="Profile menu"
+                >
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                    <circle cx="12" cy="7" r="4" />
+                  </svg>
+                </button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent
+                align="end"
+                sideOffset={8}
+                className="min-w-[200px] rounded-xl border border-border bg-popover shadow-lg overflow-hidden"
+              >
+                <DropdownMenuItem
+                  onSelect={() => navigate({ to: "/profile" })}
+                  className="cursor-pointer text-sm text-foreground"
                 >
                   {T.myProgress}
-                </button>
-                <button
-                  onClick={() => {
-                    setProfileOpen(false);
-                    navigate({ to: "/passport" });
-                  }}
-                  className="w-full text-start px-3 py-2 text-sm text-foreground hover:bg-muted transition-colors flex items-center gap-2"
+                </DropdownMenuItem>
+                <DropdownMenuItem
+                  onSelect={() => navigate({ to: "/passport" })}
+                  className="cursor-pointer text-sm text-foreground flex items-center gap-2"
                 >
                   <span aria-hidden>🛂</span>
                   Visitor Passport
-                </button>
-                <button
-                  onClick={() => {
-                    setProfileOpen(false);
-                    navigate({ to: "/compare", search: { kind: "figures" } });
-                  }}
-                  className="w-full text-start px-3 py-2 text-sm text-foreground hover:bg-muted transition-colors flex items-center gap-2"
+                </DropdownMenuItem>
+                <DropdownMenuItem
+                  onSelect={() => navigate({ to: "/compare", search: { kind: "figures" } })}
+                  className="cursor-pointer text-sm text-foreground flex items-center gap-2"
                 >
                   <span aria-hidden>⚖️</span>
                   Compare Mode
-                </button>
-                <button
-                  onClick={() => {
-                    setProfileOpen(false);
-                    navigate({ to: "/profile" });
-                  }}
-                  className="w-full text-start px-3 py-2 text-sm text-foreground hover:bg-muted transition-colors"
+                </DropdownMenuItem>
+                <DropdownMenuItem
+                  onSelect={() => navigate({ to: "/profile" })}
+                  className="cursor-pointer text-sm text-foreground"
                 >
                   {T.settings}
-                </button>
-                <div className="h-px bg-border" />
-                <button
-                  onClick={openAbout}
-                  className="w-full text-start px-3 py-2 text-sm text-foreground hover:bg-muted transition-colors flex items-center gap-2"
+                </DropdownMenuItem>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem
+                  onSelect={openAbout}
+                  className="cursor-pointer text-sm text-foreground flex items-center gap-2"
                 >
                   <span aria-hidden>ℹ️</span>
                   {T.about}
-                </button>
-                <button
-                  onClick={handleReset}
-                  className="w-full text-start px-3 py-2 text-sm text-destructive hover:bg-muted transition-colors"
+                </DropdownMenuItem>
+                <DropdownMenuItem
+                  onSelect={handleReset}
+                  className="cursor-pointer text-sm text-destructive"
                 >
                   {T.resetQuizzes}
-                </button>
-              </div>
-            )}
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
           </div>
 
           {/* Mobile menu button */}

@@ -14,7 +14,20 @@ export type Localized<T = string> = { en: T; fr: T; ar: T };
 export type LocalizedString = string | Localized<string>;
 
 const KEY = "algeria-history-lang-v1";
+const COOKIE = "dzo_lang";
 const EVT = "lang-updated";
+
+function readCookieLang(): Lang | null {
+  if (typeof document === "undefined") return null;
+  const m = /(?:^|;\s*)dzo_lang=(en|fr|ar)/.exec(document.cookie || "");
+  return m ? (m[1] as Lang) : null;
+}
+
+function writeCookieLang(lang: Lang) {
+  if (typeof document === "undefined") return;
+  // 1-year persistent cookie, sent on every request for SSR resolution.
+  document.cookie = `${COOKIE}=${lang}; path=/; max-age=${60 * 60 * 24 * 365}; samesite=lax`;
+}
 
 export function getLang(): Lang {
   if (typeof window === "undefined") return "en";
@@ -24,7 +37,8 @@ export function getLang(): Lang {
   } catch {
     /* noop */
   }
-  // Auto-detect from navigator on first run.
+  const c = readCookieLang();
+  if (c) return c;
   const nav = (typeof navigator !== "undefined" && navigator.language) || "en";
   if (nav.startsWith("fr")) return "fr";
   if (nav.startsWith("ar")) return "ar";
@@ -37,6 +51,7 @@ export function setLang(lang: Lang) {
   } catch {
     /* noop */
   }
+  writeCookieLang(lang);
   applyDir(lang);
   window.dispatchEvent(new Event(EVT));
 }
