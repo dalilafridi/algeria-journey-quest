@@ -7,9 +7,9 @@ import { useLang, type Lang, type LocalizedString } from "@/lib/i18n";
 import { useFootballBookmarks } from "@/lib/footballBookmarks";
 import { theaterIdForFootballMatch } from "@/data/matchTheater";
 import flnTeamPhoto from "@/assets/fln-team-1958.jpg.asset.json";
-import {
 import footballHero from "@/assets/football-hero-vitrine.jpg";
 import { pageMeta } from "@/lib/seo";
+import {
   AFCON_HISTORY,
   ARTIFACTS,
   CENTURY,
