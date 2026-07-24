@@ -145,12 +145,32 @@ function FootballHero({ lang }: { lang: Lang }) {
 
         {/* Museum vitrine — photographed artifact installation */}
         <div className="relative flex items-center justify-center animate-float-up">
-          <MuseumVitrine />
+          <MuseumVitrine lang={lang} />
         </div>
       </div>
     </section>
   );
 }
+
+type VitrineCaption = {
+  title: LocalizedString;
+  years: string;
+  description: LocalizedString;
+};
+
+const VITRINE_CAPTION: VitrineCaption = {
+  title: {
+    en: "FLN Team",
+    fr: "Équipe FLN",
+    ar: "فريق جبهة التحرير الوطني",
+  },
+  years: "1958–1962",
+  description: {
+    en: "The team that carried Algeria's fight for independence onto the world's football stage.",
+    fr: "L'équipe qui porta le combat de l'indépendance algérienne sur la scène mondiale du football.",
+    ar: "الفريق الذي حمل نضال الجزائر من أجل الاستقلال إلى الساحة العالمية لكرة القدم.",
+  },
+};
 
 /**
  * MuseumVitrine — the historical FLN team photograph presented as the
@@ -159,7 +179,9 @@ function FootballHero({ lang }: { lang: Lang }) {
  * museum-style frame with soft shadow. No text overlays; the entire team
  * photograph is preserved (no cropping of heads or feet).
  */
-function MuseumVitrine() {
+function MuseumVitrine({ lang }: { lang: Lang }) {
+  const caption = VITRINE_CAPTION;
+  const dir = lang === "ar" ? "rtl" : "ltr";
   return (
     <figure
       className="relative w-full max-w-[440px] mx-auto"
@@ -221,6 +243,22 @@ function MuseumVitrine() {
           />
         </div>
       </div>
+      {/* Museum caption plaque beneath the artifact */}
+      <figcaption
+        className="mt-6 text-center px-2 sm:px-4"
+        dir={dir}
+        style={SERIF}
+      >
+        <div className="text-xl sm:text-2xl font-semibold text-foreground">
+          {tt(caption.title, lang)}
+        </div>
+        <div className="mt-1 text-[10px] sm:text-xs uppercase tracking-[0.35em] font-bold text-muted-foreground">
+          {caption.years}
+        </div>
+        <p className="mt-2 text-sm sm:text-base text-muted-foreground leading-relaxed max-w-[360px] mx-auto">
+          {tt(caption.description, lang)}
+        </p>
+      </figcaption>
     </figure>
   );
 }
