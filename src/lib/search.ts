@@ -160,15 +160,14 @@ const ALIASES: Record<string, string[]> = {
   "region:constantine": ["cirta", "قسنطينة"],
   "region:numidia": ["numidie", "royaume numide", "نوميديا"],
 
-  // Eras
-  "era:ancient": ["prehistory", "préhistoire", "tassili", "ما قبل التاريخ"],
+  // Eras (ids: earlynorthafrica, numidia, roman, islamic, ottoman, french, independence)
+  "era:earlynorthafrica": ["prehistory", "préhistoire", "tassili", "ما قبل التاريخ", "north africa"],
   "era:numidia": ["numidian kingdom", "royaume numide", "المملكة النوميدية"],
-  "era:roman": ["rome", "romain", "roman africa", "afrique romaine", "روما", "الرومان"],
-  "era:medieval": ["islamic period", "période islamique", "العصر الإسلامي", "medieval algeria"],
+  "era:roman": ["rome", "romain", "roman africa", "afrique romaine", "roman algeria", "روما", "الرومان"],
+  "era:islamic": ["medieval", "islamic period", "période islamique", "العصر الإسلامي", "medieval algeria"],
   "era:ottoman": ["regency of algiers", "régence d'alger", "الإيالة العثمانية", "العهد العثماني"],
-  "era:colonial": ["french colonial", "colonisation française", "الاستعمار الفرنسي"],
-  "era:war-of-independence": ["revolution", "guerre d'algérie", "algerian war", "ثورة التحرير", "حرب الاستقلال"],
-  "era:modern": ["independent algeria", "algérie indépendante", "الجزائر المستقلة"],
+  "era:french": ["colonial", "french colonial", "colonisation française", "الاستعمار الفرنسي"],
+  "era:independence": ["war of independence", "revolution", "guerre d'algérie", "algerian war", "ثورة التحرير", "حرب الاستقلال"],
 
   // Culture
   "culture:music": ["musique", "chaabi", "rai", "raï", "gnawa", "kabyle music", "andalous", "الموسيقى"],
