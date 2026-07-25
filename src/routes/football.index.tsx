@@ -940,7 +940,7 @@ function StatsExhibit({ lang }: { lang: Lang }) {
         <h3 className="text-lg font-semibold mb-3" style={SERIF}>
           {{ en: "Honours ledger", fr: "Palmarès", ar: "سجلّ الألقاب" }[lang]}
         </h3>
-        <dl className="space-y-3 text-sm">
+        <div className="space-y-3 text-sm">
           <StatRow label={{ en: "World Cups", fr: "Coupes du monde", ar: "كأس العالم" }[lang]} value={STATS.worldCups} />
           <StatRow label={{ en: "AFCON titles", fr: "Titres CAN", ar: "ألقاب الكان" }[lang]} value={STATS.afconTitles} highlight />
           <StatRow label={{ en: "Arab Cup", fr: "Coupe arabe", ar: "كأس العرب" }[lang]} value={STATS.arabCups} />
@@ -950,7 +950,8 @@ function StatsExhibit({ lang }: { lang: Lang }) {
             </div>
             <div className="mt-1 font-semibold" style={SERIF}>{STATS.unbeatenRun}</div>
           </div>
-        </dl>
+        </div>
+
       </Plaque>
     </div>
   );
@@ -959,13 +960,14 @@ function StatsExhibit({ lang }: { lang: Lang }) {
 function StatRow({ label, value, highlight }: { label: string; value: number; highlight?: boolean }) {
   return (
     <div className="flex items-baseline justify-between">
-      <dt className="text-foreground/85">{label}</dt>
-      <dd className={"font-mono text-lg font-bold " + (highlight ? "text-accent-foreground" : "text-foreground")}>
+      <span className="text-foreground/85">{label}</span>
+      <span className={"font-mono text-lg font-bold " + (highlight ? "text-accent-foreground" : "text-foreground")}>
         {value}
-      </dd>
+      </span>
     </div>
   );
 }
+
 
 /* -------------------- Memories -------------------- */
 
