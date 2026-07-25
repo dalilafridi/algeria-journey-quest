@@ -243,8 +243,14 @@ function Home() {
           </div>
         </section>
 
+        {/* ========= CURATOR'S PICK — rotating flagship ========= */}
+        <div className="pt-10 sm:pt-14">
+          <CuratorsPick />
+        </div>
+
         {/* ========= EXPLORE — three pillars ========= */}
         <section className="mx-auto max-w-5xl px-4 py-10 sm:py-14">
+
           <div className="text-center mb-6 sm:mb-8">
             <h2 className="text-2xl sm:text-3xl font-extrabold">{copy.exploreJourney[lang]}</h2>
           </div>
