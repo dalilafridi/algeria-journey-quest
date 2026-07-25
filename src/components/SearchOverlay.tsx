@@ -67,6 +67,16 @@ const COPY = {
     ar: "نتائج",
   },
   jumpTo: { en: "Open", fr: "Ouvrir", ar: "افتح" },
+  popular: {
+    en: "Popular exhibits",
+    fr: "Expositions populaires",
+    ar: "معروضات مميّزة",
+  },
+  emptyLead: {
+    en: "No exhibits matched your search.",
+    fr: "Aucune exposition ne correspond à votre recherche.",
+    ar: "لم تتطابق أي معروضات مع بحثك.",
+  },
 } as const;
 
 export function SearchOverlay() {
