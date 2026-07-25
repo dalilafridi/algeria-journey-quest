@@ -346,7 +346,7 @@ export function SearchOverlay() {
                     active={i === activeIndex}
                     query={query}
                     onHover={() => setActiveIndex(i)}
-                    onClick={() => goTo(hit)}
+                    onClick={() => goTo(hit, i)}
                   />
                 </li>
               ))}
@@ -356,23 +356,42 @@ export function SearchOverlay() {
             </ul>
           )}
 
-          {/* Empty state for an active query */}
+          {/* Empty state for an active query — never "no results", always suggest popular exhibits. */}
           {query.trim() && results.length === 0 && (
-            <div className="px-6 py-12 text-center">
-              <div className="text-3xl opacity-60" aria-hidden>
-                ✦
+            <div className="py-2">
+              <div className="px-6 pt-8 pb-4 text-center">
+                <div className="text-3xl opacity-60" aria-hidden>
+                  ✦
+                </div>
+                <p
+                  className="mt-3 text-base text-foreground/90"
+                  style={{ fontFamily: "Georgia, 'Times New Roman', serif" }}
+                >
+                  {t(COPY.emptyLead, lang)}
+                </p>
+                <p className="mt-1 text-xs text-muted-foreground">
+                  {t(COPY.emptyHint, lang)}
+                </p>
               </div>
-              <p
-                className="mt-3 text-base text-foreground/90"
-                style={{ fontFamily: "Georgia, 'Times New Roman', serif" }}
-              >
-                {t(COPY.empty, lang)}
-              </p>
-              <p className="mt-1 text-xs text-muted-foreground">
-                {t(COPY.emptyHint, lang)}
-              </p>
+              <Section label={t(COPY.popular, lang)}>
+                <ul>
+                  {popular.map((d, i) => (
+                    <li key={d.id} data-result-index={i}>
+                      <ResultRow
+                        item={d}
+                        lang={lang}
+                        active={i === activeIndex}
+                        query=""
+                        onHover={() => setActiveIndex(i)}
+                        onClick={() => goTo(d, i)}
+                      />
+                    </li>
+                  ))}
+                </ul>
+              </Section>
             </div>
           )}
+
 
           {/* Idle state — recent + discoveries */}
           {!query.trim() && (
