@@ -1,16 +1,16 @@
 /**
  * The M'Zab Valley — Masterpiece Exhibit #1
  *
- * A self-contained, trilingual (EN / FR / AR) museum exhibit dedicated to the
- * M'Zab: how an Ibadi civilization built five sustainable cities in one of
- * the harshest environments on Earth. The exhibit is organised as a curated
- * museum walk (Hero → Where → Birth → Ksour → Water → Architecture →
- * UNESCO → Daily Life → Engineering → Influence → Did You Know → Collection
- * → Related → Provenance).
+ * Reference implementation of the MasterpieceExhibit component library
+ * (`@/components/exhibit`). Every layout primitive on this page is a shared
+ * component; only the trilingual content and the curated section order are
+ * owned by this file. Any future Algerian exhibit that composes from the
+ * same library will inherit the museum quality of this page.
  *
- * Data and UI live in this single file on purpose: the exhibit is a leaf
- * route, and keeping the trilingual content next to its markup makes the
- * curatorial voice easy to audit and edit as one piece.
+ * Curated walk:
+ *   Hero → Where → Origins → Five Ksour → Water → Architecture →
+ *   UNESCO → Daily Life → Engineering → Influence → Did You Know →
+ *   Collection → Related → Provenance.
  */
 
 import { createFileRoute, Link } from "@tanstack/react-router";
@@ -18,6 +18,27 @@ import { Header } from "@/components/Header";
 import { useLang, type Lang, type LocalizedString } from "@/lib/i18n";
 import { pageMeta } from "@/lib/seo";
 import { ExhibitProvenance } from "@/components/provenance/ExhibitProvenance";
+import {
+  Section,
+  EyebrowTitle,
+  Prose,
+  Plaque,
+  Figure,
+  ExhibitHero,
+  SplitFigure,
+  NumberedGrid,
+  DiscoveryCards,
+  DataStatsCard,
+  CriteriaList,
+  PullQuote,
+  CollectionGrid,
+  RelatedExhibits,
+  SERIF,
+  type NumberedItem,
+  type CollectionPlate,
+  type RelatedExhibit,
+} from "@/components/exhibit";
+import { t as tr } from "@/lib/i18n";
 import mzabHero from "@/assets/mzab-hero.jpg";
 import mzabHouse from "@/assets/mzab-house-diagram.jpg";
 import mzabKsarPlan from "@/assets/mzab-ksar-plan.jpg";
@@ -38,18 +59,11 @@ export const Route = createFileRoute("/mzab")({
 });
 
 /* ------------------------------------------------------------------ */
-/*  helpers                                                            */
+/*  content helpers                                                    */
 /* ------------------------------------------------------------------ */
-
-const SERIF = { fontFamily: "Georgia, 'Iowan Old Style', 'Times New Roman', serif" };
 
 type Tri = { en: string; fr: string; ar: string };
 const L = (en: string, fr: string, ar: string): Tri => ({ en, fr, ar });
-const tt = (v: LocalizedString | undefined, lang: Lang): string => {
-  if (v == null) return "";
-  if (typeof v === "string") return v;
-  return (v as Tri)[lang] ?? (v as Tri).en ?? "";
-};
 
 /* ------------------------------------------------------------------ */
 /*  content                                                            */
@@ -58,11 +72,7 @@ const tt = (v: LocalizedString | undefined, lang: Lang): string => {
 const HERO = {
   eyebrow: L("Masterpiece Exhibit · Sahara", "Exposition maîtresse · Sahara", "معرض استثنائي · الصحراء"),
   title: L("The M'Zab Valley", "La Vallée du M'Zab", "وادي مزاب"),
-  subtitle: L(
-    "Cities against the sun.",
-    "Des cités face au soleil.",
-    "مدن في وجه الشمس.",
-  ),
+  subtitle: L("Cities against the sun.", "Des cités face au soleil.", "مدن في وجه الشمس."),
   lede: L(
     "A thousand years ago, a refugee community walked six hundred kilometres into the Algerian Sahara and did the impossible: they built five living cities of stone, palm and light on a plateau that receives less than eighty millimetres of rain a year — and every one of them is still inhabited today.",
     "Il y a mille ans, une communauté réfugiée a marché six cents kilomètres dans le Sahara algérien et a fait l'impossible : bâtir cinq cités vivantes de pierre, de palme et de lumière sur un plateau qui reçoit moins de quatre-vingts millimètres de pluie par an — et chacune est encore habitée aujourd'hui.",
@@ -75,6 +85,11 @@ const HERO = {
     "Ghardaïa à l'heure dorée · la pentapole vue du plateau ouest",
     "غرداية عند الغروب · المدن الخمس من الهضبة الغربية",
   ),
+  imageAlt: L(
+    "Panoramic view of the M'Zab Valley at sunset — ochre houses of Ghardaïa cascading down a rocky hillside, minaret at the summit, palm groves below.",
+    "Vue panoramique de la vallée du M'Zab au coucher du soleil — les maisons ocre de Ghardaïa cascadant sur la colline rocheuse, minaret au sommet, palmeraie en contrebas.",
+    "منظر بانورامي لوادي مزاب عند الغروب — بيوت غرداية بلون المغرة تنحدر على تلّةٍ صخرية، والمئذنة في القمة، وبستان النخيل في الأسفل.",
+  ),
 };
 
 const WHERE = {
@@ -86,13 +101,19 @@ const WHERE = {
     "وادي مزاب وادٍ ضحل تحفّه جدران صخرية، محفور في هضبة الشبكة شمال الصحراء الكبرى، ضمن ولاية غرداية. لا يقع على طريق نحو مكان — وهذا سرّه. في القرن الحادي عشر مثّلت هذه العزلة الأمان الذي كان يبحث عنه مجتمع مُلاحق. واليوم بفضلها تبقى خمس قصور شبه سليمة، بينما اختفت معظم مدن الصحراء ما قبل الحديثة.",
   ),
   stats: [
-    { label: L("Latitude", "Latitude", "خط العرض"), value: "32°29′ N" },
-    { label: L("Elevation", "Altitude", "الارتفاع"), value: "480 m" },
+    { label: L("Latitude", "Latitude", "خط العرض"), value: L("32°29′ N", "32°29′ N", "32°29′ شمالاً") },
+    { label: L("Elevation", "Altitude", "الارتفاع"), value: L("480 m", "480 m", "480 م") },
     { label: L("Annual rainfall", "Pluviométrie", "الأمطار السنوية"), value: L("~ 70 mm", "~ 70 mm", "~ 70 ملم") },
-    { label: L("Summer high", "Maximales d'été", "الذروة الصيفية"), value: "45 °C" },
-    { label: L("Winter low", "Minimales d'hiver", "الأدنى الشتوي"), value: "−2 °C" },
+    { label: L("Summer high", "Maximales d'été", "الذروة الصيفية"), value: L("45 °C", "45 °C", "45 °م") },
+    { label: L("Winter low", "Minimales d'hiver", "الأدنى الشتوي"), value: L("−2 °C", "−2 °C", "−2 °م") },
     { label: L("Palms in the groves", "Palmiers", "أعداد النخيل"), value: L("~ 200,000", "~ 200 000", "~ 200,000") },
   ],
+  cardLabel: L("Museum data card · M'Zab Valley", "Fiche muséale · Vallée du M'Zab", "بطاقة متحفية · وادي مزاب"),
+  cardFooter: L(
+    "Ghardaïa lies on the same latitude as Marrakech and El Paso — but it receives less than a third of their rainfall.",
+    "Ghardaïa se situe à la latitude de Marrakech et d'El Paso — mais reçoit moins du tiers de leurs précipitations.",
+    "تقع غرداية على خط عرض مرّاكش وإلباسو — لكنّها تتلقّى أقلّ من ثلث أمطارهما.",
+  ),
   timeline: L(
     "First ksar founded: El Atteuf, 1012 CE · Bou Noura 1046 · Beni Isguen 1347 · Melika 1350 · Ghardaïa 1053 (largest, capital of the pentapolis).",
     "Premier ksar fondé : El Atteuf, 1012 · Bou Noura 1046 · Beni Isguen 1347 · Melika 1350 · Ghardaïa 1053 (le plus grand, capitale de la pentapole).",
@@ -122,26 +143,13 @@ const BIRTH = {
   ],
 };
 
-type Ksar = {
-  id: string;
-  arabic: string;
-  name: Tri;
-  meaning: Tri;
-  founded: string;
-  role: Tri;
-  detail: Tri;
-  fact: Tri;
-};
-
-const KSOUR: Ksar[] = [
+const KSOUR: NumberedItem[] = [
   {
-    id: "el-atteuf",
     arabic: "العطف",
-    name: L("El Atteuf", "El Atteuf", "العطف"),
-    meaning: L("\"The bend\" — after the sharp curve of the wadi", "« Le coude » — d'après la courbe du wadi", "\"العطفة\" — نسبةً إلى منعطف الوادي"),
-    founded: "1012 CE",
+    title: L("El Atteuf", "El Atteuf", "العطف"),
+    meta: L("1012 CE", "1012", "1012م"),
     role: L("The elder — where the first prayer was said.", "L'aîné — où fut prononcée la première prière.", "الأقدم — حيث رُفعت أولى الصلوات."),
-    detail: L(
+    body: L(
       "The founding city of the pentapolis. Its Sidi Brahim mosque (13th c.) is a pure white sculpture of hand-shaped lime — a form so honest that Le Corbusier photographed it and wrote of it as a lesson.",
       "La ville fondatrice de la pentapole. Sa mosquée Sidi Brahim (XIIIe s.) est une pure sculpture de chaux façonnée à la main — une forme si sincère que Le Corbusier la photographia et l'évoqua comme une leçon.",
       "المدينة المؤسِّسة للمدن الخمس. مسجد سيدي إبراهيم (القرن 13) نحتٌ أبيض خالص من الجير المُشكَّل باليد — شكل بلغ من الصدق أن صوّره لو كوربوزييه ووصفه بالدرس.",
@@ -149,13 +157,11 @@ const KSOUR: Ksar[] = [
     fact: L("Its cemetery is older than most European cathedrals.", "Son cimetière est plus ancien que la plupart des cathédrales d'Europe.", "مقبرتها أقدم من معظم كاتدرائيات أوروبا."),
   },
   {
-    id: "bou-noura",
     arabic: "بنورة",
-    name: L("Bou Noura", "Bou Noura", "بنورة"),
-    meaning: L("\"Father of light\"", "« Père de la lumière »", "\"أبو النور\""),
-    founded: "1046 CE",
+    title: L("Bou Noura", "Bou Noura", "بنورة"),
+    meta: L("1046 CE", "1046", "1046م"),
     role: L("The luminous one — perched on a rock outcrop.", "La lumineuse — perchée sur un promontoire rocheux.", "المضيئة — على نتوء صخري."),
-    detail: L(
+    body: L(
       "Built on a natural rock spur, Bou Noura's minaret still functions as an astronomical marker for prayer times, calibrated to the horizon rather than a clock.",
       "Édifiée sur un éperon rocheux, Bou Noura conserve un minaret qui sert encore de repère astronomique pour les heures de prière, calé sur l'horizon plutôt que sur l'horloge.",
       "بُنيت على نتوء صخري طبيعي، ولا تزال مئذنتها تُستعمل مِعلَماً فلكياً لمواقيت الصلاة، تُضبَط بالأفق لا بالساعة.",
@@ -163,13 +169,11 @@ const KSOUR: Ksar[] = [
     fact: L("Its name is thought to preserve a pre-Islamic Berber sun-cult toponym.", "Son nom pourrait conserver un toponyme berbère pré-islamique lié au culte solaire.", "يُرجَّح أن يحفظ اسمها توطئة أمازيغية ما قبل إسلامية مرتبطة بعبادة الشمس."),
   },
   {
-    id: "melika",
     arabic: "مليكة",
-    name: L("Melika", "Melika", "مليكة"),
-    meaning: L("\"The queen\"", "« La reine »", "\"الملكة\""),
-    founded: "1350 CE",
+    title: L("Melika", "Melika", "مليكة"),
+    meta: L("1350 CE", "1350", "1350م"),
     role: L("The queen — highest of the five, watching the valley.", "La reine — la plus élevée des cinq, dominant la vallée.", "الملكة — أعلى الخمس، تراقب الوادي."),
-    detail: L(
+    body: L(
       "Melika occupies the loftiest ridge and holds the necropolis of Sidi Aïssa, whose white cubic tombs form one of the most photographed landscapes of the Algerian Sahara.",
       "Melika occupe la crête la plus haute et abrite la nécropole de Sidi Aïssa, dont les tombes cubiques blanches composent l'un des paysages les plus photographiés du Sahara algérien.",
       "تحتل مليكة أعلى الحواف، وتضم مقبرة سيدي عيسى ذات القبور المكعّبة البيضاء، وهي من أكثر مشاهد الصحراء الجزائرية تصويراً.",
@@ -177,13 +181,11 @@ const KSOUR: Ksar[] = [
     fact: L("The tombs point west, aligned with sunset rather than Mecca — an Ibadi peculiarity.", "Les tombes sont orientées à l'ouest, alignées sur le coucher du soleil plutôt que sur La Mecque — une particularité ibadite.", "تتّجه القبور غرباً، محاذيةً للغروب لا للكعبة — خصوصية إباضية."),
   },
   {
-    id: "beni-isguen",
     arabic: "بني يزقن",
-    name: L("Beni Isguen", "Beni Isguen", "بني يزقن"),
-    meaning: L("\"Sons of those who preserve\"", "« Fils de ceux qui préservent »", "\"أبناء الحافظين\""),
-    founded: "1347 CE",
+    title: L("Beni Isguen", "Beni Isguen", "بني يزقن"),
+    meta: L("1347 CE", "1347", "1347م"),
     role: L("The sacred — the guardian of Ibadi observance.", "La sacrée — gardienne de l'orthodoxie ibadite.", "المقدّسة — حارسة الإرث الإباضي."),
-    detail: L(
+    body: L(
       "Beni Isguen is the strictest of the five: gates still close at sunset, photographs are limited, and every dusk its extraordinary open-air auction (the halqa) is called out one item at a time — a market ritual unchanged since the Middle Ages.",
       "Beni Isguen est la plus stricte des cinq : ses portes se ferment encore au coucher du soleil, la photographie y est limitée, et chaque soir sa halqa — une extraordinaire vente aux enchères à ciel ouvert — se tient objet par objet, rituel inchangé depuis le Moyen Âge.",
       "بني يزقن أشدّ الخمس تمسّكاً: تُغلَق أبوابها عند المغرب، ويُقيَّد التصوير، وتُقام مساءً حلقةُ بيعٍ علنية في الهواء الطلق قطعةً قطعة — طقس سوقي لم يتغيّر منذ العصور الوسطى.",
@@ -191,13 +193,11 @@ const KSOUR: Ksar[] = [
     fact: L("Beni Isguen holds one of the oldest continuously used communal libraries in the Muslim world.", "Beni Isguen conserve l'une des plus anciennes bibliothèques communautaires du monde musulman.", "تضمّ بني يزقن واحدة من أقدم المكتبات المجتمعية المستمرّة في العالم الإسلامي."),
   },
   {
-    id: "ghardaia",
     arabic: "غرداية",
-    name: L("Ghardaïa", "Ghardaïa", "غرداية"),
-    meaning: L("From \"Gher Daya\" — the cave of the saintly woman Daya", "De « Gher Daya » — la grotte de la sainte Daya", "من \"غار داية\" — كهف الوليّة داية"),
-    founded: "1053 CE",
+    title: L("Ghardaïa", "Ghardaïa", "غرداية"),
+    meta: L("1053 CE", "1053", "1053م"),
     role: L("The capital — largest, most cosmopolitan of the five.", "La capitale — la plus grande, la plus cosmopolite des cinq.", "العاصمة — الأكبر والأكثر انفتاحاً."),
-    detail: L(
+    body: L(
       "Ghardaïa's great minaret rises 23 metres above the concentric spiral of the city. Its bright textile souq, the busiest in the Algerian south, still opens and closes to a horn call heard from the summit.",
       "Le grand minaret de Ghardaïa s'élève à 23 mètres au-dessus de la spirale concentrique de la ville. Son éclatant souk des tissus, le plus animé du sud algérien, ouvre et ferme encore au son d'une corne entendue depuis le sommet.",
       "ترتفع مئذنة غرداية الكبرى 23 متراً فوق حلزون المدينة المتراكز. ويفتح سوق النسيج الشهير — الأكثر حركةً في الجنوب الجزائري — ويُغلق حتى اليوم على وقع صوت بوقٍ يُسمع من القمّة.",
@@ -247,7 +247,7 @@ const ARCHITECTURE = {
         "تبلغ سماكة الجدران 40 إلى 60 سم، مطليّة بالجير الأبيض من الخارج لعكس الضوء، وخشنة الداخل لحبس الهواء البارد. ويظلّل سقفٌ مشبّك (شبك) السطحَ الأعلى بينما يسمح للهواء الساخن بالصعود والتصريف. تبقى الحرارة الداخلية أقلّ من الخارج بـ10 إلى 15 درجة — دون كهرباء ولا مروحة ولا زجاج.",
       ),
     },
-  ],
+  ] as NumberedItem[],
 };
 
 const WATER = {
@@ -279,6 +279,18 @@ const WATER = {
       "في 2008 دمّر فيضانُ القرن مئات البيوت الحديثة المبنيّة خارج التخطيط التاريخي — أمّا القصور القديمة، حيث وضعها الأجداد بالضبط، فلم تتضرّر بنيوياً.",
     ),
   ],
+  image: {
+    alt: L(
+      "Historic stone dam and carved flood-water dividers of the M'Zab, feeding channels into the palm grove.",
+      "Barrage de pierre historique et pierres sculptées de partage des crues du M'Zab, alimentant les canaux vers la palmeraie.",
+      "سدٌّ حجريّ تاريخي وأحجار منحوتة تقسّم مياه الفيضان في المزاب، تُغذّي القنوات نحو بستان النخيل.",
+    ),
+    caption: L(
+      "The kesria distribution stones · palm grove of Ghardaïa",
+      "Les pierres kesria · palmeraie de Ghardaïa",
+      "أحجار الكِسريا · بستان نخيل غرداية",
+    ),
+  },
 };
 
 const UNESCO = {
@@ -310,26 +322,40 @@ const UNESCO = {
       ),
     },
   ],
-  ouv: L(
-    "Outstanding Universal Value: the M'Zab pentapolis is a complete and functioning example — perhaps the only surviving one — of the medieval Ibadi urban model, in which theology, hydraulics, defence and social order are drawn as one integrated diagram of a city.",
-    "Valeur universelle exceptionnelle : la pentapole du M'Zab est un exemple complet et vivant — sans doute le seul qui subsiste — du modèle urbain ibadite médiéval, où théologie, hydraulique, défense et ordre social se dessinent comme un unique diagramme intégré de la cité.",
-    "القيمة العالمية الاستثنائية: تُمثّل المدن الخمس نموذجاً كاملاً وحيّاً — ولعلّه الوحيد الباقي — للنموذج العمراني الإباضي في العصور الوسطى، حيث تُرسَم اللاهوت والهيدروليكا والدفاع والنظام الاجتماعي في مخطّطٍ واحد للمدينة.",
-  ),
-  authenticity: L(
-    "Authenticity: houses remain built with local stone, palm-log ceilings and lime plaster. Trades are transmitted father to son. The azzaba assembly still legislates on public space.",
-    "Authenticité : les maisons continuent d'être bâties en pierre locale, poutres de palmier et enduit à la chaux. Les métiers se transmettent de père en fils. L'assemblée des azzaba légifère encore sur l'espace public.",
-    "الأصالة: لا تزال البيوت تُبنى من الحجر المحلي وسقوف جذوع النخل والجصّ الجيري. وتنتقل الحرف من الأب إلى الابن. ولا تزال حلقة العزّابة تُشرِّع في الفضاء العام.",
-  ),
-  integrity: L(
-    "Integrity: the historic cores of the five ksour, the palm groves and the traditional cemeteries all survive within a single continuous cultural landscape.",
-    "Intégrité : les noyaux historiques des cinq ksour, les palmeraies et les cimetières traditionnels subsistent dans un même paysage culturel continu.",
-    "التكامل: تبقى النوى التاريخية للقصور الخمسة والبساتين النخيلية والمقابر التقليدية ضمن مشهد ثقافيّ متّصل واحد.",
-  ),
-  conservation: L(
-    "Since 1988 the Office de Protection et de Promotion de la Vallée du M'Zab (OPVM) has managed the site under a rigorous plan of permanent inhabitants, restricted materials, and monitored restoration — one of the earliest such institutions in the Arab world.",
-    "Depuis 1988, l'Office de Protection et de Promotion de la Vallée du M'Zab (OPVM) gère le site selon un plan rigoureux d'habitat permanent, de matériaux restreints et de restauration surveillée — l'une des toutes premières institutions de ce type dans le monde arabe.",
-    "منذ 1988، يُدير ديوانُ حماية وترقية وادي مزاب (OPVM) الموقع وفق خطّة صارمة للسكن الدائم والمواد المرخّصة والترميم المراقَب — من أوائل هذه المؤسسات في العالم العربي.",
-  ),
+  panels: [
+    {
+      title: L("Outstanding Universal Value", "Valeur universelle exceptionnelle", "القيمة العالمية الاستثنائية"),
+      body: L(
+        "Outstanding Universal Value: the M'Zab pentapolis is a complete and functioning example — perhaps the only surviving one — of the medieval Ibadi urban model, in which theology, hydraulics, defence and social order are drawn as one integrated diagram of a city.",
+        "Valeur universelle exceptionnelle : la pentapole du M'Zab est un exemple complet et vivant — sans doute le seul qui subsiste — du modèle urbain ibadite médiéval, où théologie, hydraulique, défense et ordre social se dessinent comme un unique diagramme intégré de la cité.",
+        "القيمة العالمية الاستثنائية: تُمثّل المدن الخمس نموذجاً كاملاً وحيّاً — ولعلّه الوحيد الباقي — للنموذج العمراني الإباضي في العصور الوسطى، حيث تُرسَم اللاهوت والهيدروليكا والدفاع والنظام الاجتماعي في مخطّطٍ واحد للمدينة.",
+      ),
+    },
+    {
+      title: L("Authenticity", "Authenticité", "الأصالة"),
+      body: L(
+        "Authenticity: houses remain built with local stone, palm-log ceilings and lime plaster. Trades are transmitted father to son. The azzaba assembly still legislates on public space.",
+        "Authenticité : les maisons continuent d'être bâties en pierre locale, poutres de palmier et enduit à la chaux. Les métiers se transmettent de père en fils. L'assemblée des azzaba légifère encore sur l'espace public.",
+        "الأصالة: لا تزال البيوت تُبنى من الحجر المحلي وسقوف جذوع النخل والجصّ الجيري. وتنتقل الحرف من الأب إلى الابن. ولا تزال حلقة العزّابة تُشرِّع في الفضاء العام.",
+      ),
+    },
+    {
+      title: L("Integrity", "Intégrité", "التكامل"),
+      body: L(
+        "Integrity: the historic cores of the five ksour, the palm groves and the traditional cemeteries all survive within a single continuous cultural landscape.",
+        "Intégrité : les noyaux historiques des cinq ksour, les palmeraies et les cimetières traditionnels subsistent dans un même paysage culturel continu.",
+        "التكامل: تبقى النوى التاريخية للقصور الخمسة والبساتين النخيلية والمقابر التقليدية ضمن مشهد ثقافيّ متّصل واحد.",
+      ),
+    },
+    {
+      title: L("Conservation", "Conservation", "الحفاظ"),
+      body: L(
+        "Since 1988 the Office de Protection et de Promotion de la Vallée du M'Zab (OPVM) has managed the site under a rigorous plan of permanent inhabitants, restricted materials, and monitored restoration — one of the earliest such institutions in the Arab world.",
+        "Depuis 1988, l'Office de Protection et de Promotion de la Vallée du M'Zab (OPVM) gère le site selon un plan rigoureux d'habitat permanent, de matériaux restreints et de restauration surveillée — l'une des toutes premières institutions de ce type dans le monde arabe.",
+        "منذ 1988، يُدير ديوانُ حماية وترقية وادي مزاب (OPVM) الموقع وفق خطّة صارمة للسكن الدائم والمواد المرخّصة والترميم المراقَب — من أوائل هذه المؤسسات في العالم العربي.",
+      ),
+    },
+  ],
 };
 
 const DAILY = {
@@ -353,6 +379,18 @@ const DAILY = {
     L("The daily market call at Beni Isguen — the halqa — sells everything, from a copper tray to a she-camel, item by item at sunset.", "L'appel quotidien du marché à Beni Isguen — la halqa — vend tout, d'un plateau en cuivre à une chamelle, objet par objet au coucher du soleil.", "نداءُ السوق اليومي في بني يزقن — الحلقة — يبيع كلّ شيء، من صينية نحاس إلى ناقة، قطعةً قطعة عند المغرب."),
     L("Hospitality is codified: any traveller who reaches a ksar at dusk is guaranteed shelter, water and a share of the evening meal — not by law, by convention older than law.", "L'hospitalité est codifiée : tout voyageur arrivant à un ksar au crépuscule est assuré d'un toit, d'eau et d'une part du repas — non par la loi, mais par une convention plus ancienne que la loi.", "الضيافة مقنَّنة: كلّ مسافر يبلغ قصراً عند الغسق يجد مأوىً وماءً ونصيباً من عشاء أهله — لا بحكم القانون بل بحكم عرفٍ أقدم من القانون."),
   ],
+  image: {
+    alt: L(
+      "Sepia photograph of the arcaded market square of Beni Isguen, empty and bathed in Saharan light.",
+      "Photographie sépia de la place du marché à arcades de Beni Isguen, vide et baignée de lumière saharienne.",
+      "صورة سبيا لساحة سوق بني يزقن ذات الأروقة، خالية وتغمرها الشمس الصحراوية.",
+    ),
+    caption: L(
+      "The covered market of Beni Isguen at midday",
+      "Le marché couvert de Beni Isguen à midi",
+      "السوق المسقوف في بني يزقن ظهيرةً",
+    ),
+  },
 };
 
 const ENGINEERING = {
@@ -379,7 +417,7 @@ const ENGINEERING = {
       "Parce que cela fonctionne. Mille ans plus tard, cinq villes totalisant trente mille habitants vivent encore sous les mêmes règles, entre les mêmes murs.",
       "لأنّه ناجح. بعد ألفِ عام، لا تزال خمس مدنٍ يبلغ سكّانها ثلاثين ألف نسمة تعيش بالقواعد نفسها بين الجدران نفسها.",
     ),
-  ],
+  ] as LocalizedString[],
 };
 
 const INFLUENCE = {
@@ -402,9 +440,19 @@ const INFLUENCE = {
       "اليوم، من جائزة الآغا خان إلى الباوهاوس الأوروبي الجديد، ومن ديبيدو فرانسيس كيري في بوركينا فاسو إلى برامج العمارة الطينية في MIT وETH زيورخ، لا يمكن تخيّل قاموس «الاستدامة العامية» دون وادي مزاب. قلّةٌ من الأماكن في الأرض علّمت العالم بهذا القدر وطلبت هذا القدر القليل مقابلَه.",
     ),
   ],
+  quote: L(
+    "\"The M'Zab is the built proof that one can be modern without being new.\"",
+    "« Le M'Zab est la preuve bâtie qu'on peut être moderne sans être nouveau. »",
+    "«وادي مزاب دليلٌ مبنيٌّ على أنّ المرء يمكن أن يكون حديثاً دون أن يكون جديداً.»",
+  ),
+  attribution: L(
+    "— André Ravéreau, Le M'Zab, une leçon d'architecture (1981)",
+    "— André Ravéreau, Le M'Zab, une leçon d'architecture (1981)",
+    "— أندريه رافيرو، المزاب: درس في العمارة (1981)",
+  ),
 };
 
-const FACTS: Tri[] = [
+const FACTS: LocalizedString[] = [
   L(
     "In Beni Isguen, the muezzin's call to the last prayer of the day is also the gate-closing signal. No one enters the city after that call until dawn — a rule respected without any physical enforcement since 1347.",
     "À Beni Isguen, l'appel à la dernière prière du jour est aussi le signal de fermeture des portes. Personne n'entre après cet appel jusqu'à l'aube — une règle respectée sans aucune contrainte physique depuis 1347.",
@@ -437,7 +485,7 @@ const FACTS: Tri[] = [
   ),
 ];
 
-const COLLECTION = [
+const COLLECTION: CollectionPlate[] = [
   {
     src: mzabHero,
     alt: L(
@@ -474,55 +522,40 @@ const COLLECTION = [
   },
 ];
 
-/* ------------------------------------------------------------------ */
-/*  small UI primitives (local to this exhibit)                        */
-/* ------------------------------------------------------------------ */
-
-function EyebrowTitle({ eyebrow, title, lang }: { eyebrow: Tri; title: Tri; lang: Lang }) {
-  return (
-    <header className="mb-8">
-      <p className="text-[10px] sm:text-xs uppercase tracking-[0.28em] font-bold text-primary">
-        ⵣ · {tt(eyebrow, lang)}
-      </p>
-      <h2
-        className="mt-3 text-3xl sm:text-4xl md:text-5xl font-bold leading-tight text-foreground"
-        style={SERIF}
-      >
-        {tt(title, lang)}
-      </h2>
-    </header>
-  );
-}
-
-function Prose({ children }: { children: React.ReactNode }) {
-  return (
-    <div className="text-base sm:text-lg text-foreground/80 leading-[1.75] space-y-5 max-w-3xl">
-      {children}
-    </div>
-  );
-}
-
-function Section({
-  id,
-  children,
-  tone = "parchment",
-}: {
-  id?: string;
-  children: React.ReactNode;
-  tone?: "parchment" | "sand" | "ivory";
-}) {
-  const bg =
-    tone === "sand"
-      ? "radial-gradient(ellipse at 50% 0%, oklch(0.9 0.05 65 / 0.35), transparent 60%), var(--gradient-parchment)"
-      : tone === "ivory"
-      ? "linear-gradient(180deg, oklch(0.985 0.008 80), oklch(0.97 0.014 75))"
-      : "var(--gradient-parchment)";
-  return (
-    <section id={id} className="relative scroll-mt-24" style={{ background: bg }}>
-      <div className="relative max-w-6xl mx-auto px-4 sm:px-6 py-14 sm:py-20">{children}</div>
-    </section>
-  );
-}
+const RELATED: RelatedExhibit[] = [
+  {
+    to: "/region/$regionId",
+    params: { regionId: "sahara" },
+    label: L("The Sahara", "Le Sahara", "الصحراء الكبرى"),
+    body: L("The desert as a civilization, not a void.", "Le désert comme civilisation, non comme vide.", "الصحراء بوصفها حضارة لا فراغاً."),
+  },
+  {
+    to: "/culture/language",
+    label: L("Berber & the Amazigh legacy", "Berbère et héritage amazigh", "الأمازيغية والإرث الأمازيغي"),
+    body: L("The linguistic layer beneath the Ibadi city.", "La strate linguistique sous la cité ibadite.", "الطبقة اللغوية تحت المدينة الإباضية."),
+  },
+  {
+    to: "/era/$eraId",
+    params: { eraId: "islamic" },
+    label: L("The Islamic era", "L'ère islamique", "العصر الإسلامي"),
+    body: L("The Rustamid imamate and the age that shaped the M'Zab.", "L'imamat rustumide et l'âge qui a façonné le M'Zab.", "الإمامة الرستمية والعصر الذي شكّل وادي مزاب."),
+  },
+  {
+    to: "/cuisine",
+    label: L("Dates, cuisine & the palm grove", "Dattes, cuisine et palmeraie", "التمر والمطبخ والبستان"),
+    body: L("How the M'Zab palm shaped a national kitchen.", "Comment la palmeraie du M'Zab a façonné une cuisine nationale.", "كيف شكّل نخيل المزاب مطبخاً وطنياً."),
+  },
+  {
+    to: "/culture/music",
+    label: L("Living culture", "Culture vivante", "الثقافة الحيّة"),
+    body: L("The songs, crafts and rites that still fill the ksour.", "Les chants, les métiers et les rites qui animent encore les ksour.", "الأغاني والحرف والطقوس التي لا تزال تحيي القصور."),
+  },
+  {
+    to: "/timeline",
+    label: L("Algeria across time", "L'Algérie à travers le temps", "الجزائر عبر الزمن"),
+    body: L("Place the M'Zab on the long timeline of the country.", "Situer le M'Zab dans la longue frise du pays.", "ضع وادي مزاب في التسلسل الزمني الطويل للبلاد."),
+  },
+];
 
 /* ------------------------------------------------------------------ */
 /*  page                                                               */
@@ -530,168 +563,56 @@ function Section({
 
 function MzabExhibit() {
   const lang = useLang();
-
   return (
     <div className="min-h-dvh bg-parchment text-foreground">
       <Header />
 
-      {/* ────────── Hero ────────── */}
-      <section
-        className="relative overflow-hidden"
-        style={{
-          background:
-            "radial-gradient(ellipse at 50% 25%, oklch(0.92 0.05 70 / 0.4), transparent 65%), var(--gradient-parchment)",
-        }}
-      >
-        <div className="relative max-w-6xl mx-auto px-4 sm:px-6 py-14 sm:py-20 md:py-24 grid gap-10 md:grid-cols-[1fr_1.2fr] items-center">
-          <div>
-            <p className="text-[10px] sm:text-xs uppercase tracking-[0.28em] font-bold text-primary">
-              ⵣ · {tt(HERO.eyebrow, lang)}
-            </p>
-            <h1
-              className="mt-4 text-4xl sm:text-5xl md:text-6xl font-bold leading-[1.05] text-foreground"
-              style={SERIF}
-            >
-              {tt(HERO.title, lang)}
-            </h1>
-            <p
-              className="mt-4 text-xl sm:text-2xl max-w-xl text-foreground/80 italic"
-              style={SERIF}
-            >
-              {tt(HERO.subtitle, lang)}
-            </p>
-            <p className="mt-5 text-base sm:text-lg max-w-xl text-foreground/70 leading-[1.7]">
-              {tt(HERO.lede, lang)}
-            </p>
-            <div className="mt-7 flex flex-wrap gap-3">
-              <a
-                href="#where"
-                className="inline-flex items-center gap-2 rounded-full bg-primary text-primary-foreground px-5 py-3 text-sm font-semibold transition hover:-translate-y-0.5"
-                style={{ boxShadow: "var(--shadow-soft)" }}
-              >
-                {tt(HERO.cta, lang)}
-                <span aria-hidden>→</span>
-              </a>
-              <Link
-                to="/"
-                className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-5 py-3 text-sm font-semibold text-foreground hover:bg-muted transition"
-              >
-                {tt(HERO.back, lang)}
-              </Link>
-            </div>
-          </div>
+      <ExhibitHero
+        eyebrow={HERO.eyebrow}
+        title={HERO.title}
+        subtitle={HERO.subtitle}
+        lede={HERO.lede}
+        image={mzabHero}
+        imageAlt={HERO.imageAlt}
+        imageCaption={HERO.caption}
+        ctaHref="#where"
+        ctaLabel={HERO.cta}
+        backTo="/"
+        backLabel={HERO.back}
+      />
 
-          <figure className="relative w-full">
-            <div
-              className="relative overflow-hidden rounded-2xl"
-              style={{
-                boxShadow:
-                  "0 30px 60px -28px oklch(0.15 0.03 40 / 0.55), 0 12px 24px -14px oklch(0.15 0.03 40 / 0.4), inset 0 0 0 1px oklch(0.55 0.06 60 / 0.35), inset 0 0 0 4px oklch(0.98 0.01 80 / 0.9)",
-              }}
-            >
-              <img
-                src={mzabHero}
-                alt={tt(
-                  L(
-                    "Panoramic view of the M'Zab Valley at sunset — ochre houses of Ghardaïa cascading down a rocky hillside, minaret at the summit, palm groves below.",
-                    "Vue panoramique de la vallée du M'Zab au coucher du soleil — les maisons ocre de Ghardaïa cascadant sur la colline rocheuse, minaret au sommet, palmeraie en contrebas.",
-                    "منظر بانورامي لوادي مزاب عند الغروب — بيوت غرداية بلون المغرة تنحدر على تلّةٍ صخرية، والمئذنة في القمة، وبستان النخيل في الأسفل.",
-                  ),
-                  lang,
-                )}
-                width={1920}
-                height={1008}
-                loading="eager"
-                className="block w-full h-auto"
-                style={{ filter: "contrast(1.03) saturate(0.98) sepia(0.05)" }}
-              />
-              <div
-                aria-hidden
-                className="pointer-events-none absolute inset-0"
-                style={{
-                  background:
-                    "radial-gradient(115% 90% at 50% 50%, transparent 60%, oklch(0.18 0.03 40 / 0.35) 100%)",
-                }}
-              />
-            </div>
-            <figcaption className="mt-3 text-xs text-muted-foreground text-center italic">
-              {tt(HERO.caption, lang)}
-            </figcaption>
-          </figure>
-        </div>
-      </section>
-
-      {/* ────────── Where ────────── */}
+      {/* Where */}
       <Section id="where" tone="ivory">
         <div className="grid gap-10 md:grid-cols-[1.15fr_1fr]">
           <div>
-            <EyebrowTitle eyebrow={WHERE.eyebrow} title={WHERE.title} lang={lang} />
+            <EyebrowTitle eyebrow={WHERE.eyebrow} title={WHERE.title} />
             <Prose>
-              <p>{tt(WHERE.body, lang)}</p>
-              <p className="italic text-foreground/70">{tt(WHERE.timeline, lang)}</p>
+              <p>{tr(WHERE.body, lang)}</p>
+              <p className="italic text-foreground/70">{tr(WHERE.timeline, lang)}</p>
             </Prose>
           </div>
-          <div
-            className="rounded-2xl border border-border p-6 sm:p-8"
-            style={{ background: "oklch(0.98 0.01 80)", boxShadow: "var(--shadow-soft)" }}
-          >
-            <p
-              className="text-xs uppercase tracking-[0.24em] font-bold text-primary mb-4"
-            >
-              {tt(
-                L(
-                  "Museum data card · M'Zab Valley",
-                  "Fiche muséale · Vallée du M'Zab",
-                  "بطاقة متحفية · وادي مزاب",
-                ),
-                lang,
-              )}
-            </p>
-            <dl className="grid grid-cols-2 gap-x-6 gap-y-4">
-              {WHERE.stats.map((s) => (
-                <div key={typeof s.label === "string" ? s.label : s.label.en}>
-                  <dt className="text-[11px] uppercase tracking-wider text-muted-foreground">
-                    {tt(s.label, lang)}
-                  </dt>
-                  <dd className="text-lg font-bold text-foreground" style={SERIF}>
-                    {typeof s.value === "string" ? s.value : tt(s.value, lang)}
-                  </dd>
-                </div>
-              ))}
-            </dl>
-            <p className="mt-6 text-xs text-muted-foreground italic">
-              {tt(
-                L(
-                  "Ghardaïa lies on the same latitude as Marrakech and El Paso — but it receives less than a third of their rainfall.",
-                  "Ghardaïa se situe à la latitude de Marrakech et d'El Paso — mais reçoit moins du tiers de leurs précipitations.",
-                  "تقع غرداية على خط عرض مرّاكش وإلباسو — لكنّها تتلقّى أقلّ من ثلث أمطارهما.",
-                ),
-                lang,
-              )}
-            </p>
-          </div>
+          <DataStatsCard label={WHERE.cardLabel} stats={WHERE.stats} footer={WHERE.cardFooter} />
         </div>
       </Section>
 
-      {/* ────────── Birth ────────── */}
+      {/* Origins */}
       <Section id="birth" tone="parchment">
-        <EyebrowTitle eyebrow={BIRTH.eyebrow} title={BIRTH.title} lang={lang} />
+        <EyebrowTitle eyebrow={BIRTH.eyebrow} title={BIRTH.title} />
         <Prose>
           {BIRTH.paragraphs.map((p, i) => (
-            <p key={i}>{tt(p, lang)}</p>
+            <p key={i}>{tr(p, lang)}</p>
           ))}
         </Prose>
       </Section>
 
-      {/* ────────── The Five Ksour ────────── */}
+      {/* Five Ksour */}
       <Section id="ksour" tone="sand">
         <EyebrowTitle
           eyebrow={L("The five ksour", "Les cinq ksour", "القصور الخمسة")}
           title={L("A pentapolis, not a city with suburbs", "Une pentapole, non une ville et ses faubourgs", "خمسُ مدنٍ، لا مدينة وأحياؤها")}
-          lang={lang}
         />
         <p className="max-w-3xl text-foreground/80 text-base sm:text-lg leading-[1.75] mb-10">
-          {tt(
+          {tr(
             L(
               "The M'Zab is not a capital and four satellites. It is five autonomous cities that chose, a thousand years ago, to sit within sight of each other's minarets — close enough to share a valley, distant enough to preserve their own councils. Together they form a pentapolis unlike anything else in the Islamic world.",
               "Le M'Zab n'est pas une capitale et quatre satellites. Ce sont cinq cités autonomes qui ont choisi, il y a mille ans, de rester dans la vue mutuelle de leurs minarets — assez proches pour partager une vallée, assez distantes pour préserver leurs propres conseils. Ensemble elles forment une pentapole sans équivalent dans le monde islamique.",
@@ -700,301 +621,112 @@ function MzabExhibit() {
             lang,
           )}
         </p>
-        <ol className="grid gap-6 md:grid-cols-2 xl:grid-cols-3" role="list">
-          {KSOUR.map((k, i) => (
-            <li
-              key={k.id}
-              className="rounded-2xl border border-border bg-card p-6 sm:p-7 transition hover:-translate-y-0.5"
-              style={{ boxShadow: "var(--shadow-soft)" }}
-            >
-              <div className="flex items-baseline justify-between gap-4">
-                <div>
-                  <p className="text-xs uppercase tracking-[0.24em] font-bold text-primary">
-                    {String(i + 1).padStart(2, "0")} · {k.founded}
-                  </p>
-                  <h3 className="mt-2 text-2xl font-bold text-foreground" style={SERIF}>
-                    {tt(k.name, lang)}
-                  </h3>
-                </div>
-                <span
-                  aria-hidden
-                  className="text-2xl text-primary/70"
-                  style={{ fontFamily: "'Amiri', 'Scheherazade New', serif" }}
-                >
-                  {k.arabic}
-                </span>
-              </div>
-              <p className="mt-1 text-xs italic text-muted-foreground">{tt(k.meaning, lang)}</p>
-              <p className="mt-4 text-sm font-semibold text-foreground/90" style={SERIF}>
-                {tt(k.role, lang)}
-              </p>
-              <p className="mt-3 text-sm text-foreground/75 leading-[1.7]">{tt(k.detail, lang)}</p>
-              <p
-                className="mt-4 pt-4 border-t border-border/60 text-xs text-foreground/60 italic"
-              >
-                {tt(
-                  L("Did you know · ", "Le saviez-vous · ", "هل تعلم · "),
-                  lang,
-                )}
-                {tt(k.fact, lang)}
-              </p>
-            </li>
-          ))}
-        </ol>
-      </Section>
-
-      {/* ────────── Water / Living with the desert ────────── */}
-      <Section id="water" tone="ivory">
-        <div className="grid gap-10 md:grid-cols-[1fr_1fr] items-start">
-          <div>
-            <EyebrowTitle eyebrow={WATER.eyebrow} title={WATER.title} lang={lang} />
-            <Prose>
-              <p>{tt(WATER.body, lang)}</p>
-            </Prose>
-            <ul className="mt-6 space-y-3">
-              {WATER.bullets.map((b, i) => (
-                <li key={i} className="flex gap-3 text-sm text-foreground/80 leading-[1.7]">
-                  <span aria-hidden className="mt-2 h-1.5 w-1.5 rounded-full bg-primary shrink-0" />
-                  <span>{tt(b, lang)}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <figure className="relative">
-            <div
-              className="relative overflow-hidden rounded-2xl"
-              style={{
-                boxShadow:
-                  "0 20px 40px -20px oklch(0.15 0.03 40 / 0.5), inset 0 0 0 1px oklch(0.55 0.06 60 / 0.3), inset 0 0 0 4px oklch(0.98 0.01 80 / 0.85)",
-              }}
-            >
-              <img
-                src={mzabWater}
-                alt={tt(
-                  L(
-                    "Historic stone dam and carved flood-water dividers of the M'Zab, feeding channels into the palm grove.",
-                    "Barrage de pierre historique et pierres sculptées de partage des crues du M'Zab, alimentant les canaux vers la palmeraie.",
-                    "سدٌّ حجريّ تاريخي وأحجار منحوتة تقسّم مياه الفيضان في المزاب، تُغذّي القنوات نحو بستان النخيل.",
-                  ),
-                  lang,
-                )}
-                width={1600}
-                height={1008}
-                loading="lazy"
-                className="block w-full h-auto"
-              />
-            </div>
-            <figcaption className="mt-3 text-xs text-muted-foreground text-center italic">
-              {tt(
-                L(
-                  "The kesria distribution stones · palm grove of Ghardaïa",
-                  "Les pierres kesria · palmeraie de Ghardaïa",
-                  "أحجار الكِسريا · بستان نخيل غرداية",
-                ),
-                lang,
-              )}
-            </figcaption>
-          </figure>
-        </div>
-      </Section>
-
-      {/* ────────── Architecture ────────── */}
-      <Section id="architecture" tone="parchment">
-        <EyebrowTitle
-          eyebrow={ARCHITECTURE.eyebrow}
-          title={ARCHITECTURE.title}
-          lang={lang}
+        <NumberedGrid
+          items={KSOUR}
+          columns={3}
+          factLabel={L("Did you know", "Le saviez-vous", "هل تعلم")}
         />
-        <Prose>
-          <p>{tt(ARCHITECTURE.intro, lang)}</p>
-        </Prose>
-
-        <div className="mt-10 grid gap-8 md:grid-cols-2 items-start">
-          <figure className="relative">
-            <div
-              className="relative overflow-hidden rounded-2xl"
-              style={{
-                boxShadow:
-                  "0 20px 40px -20px oklch(0.15 0.03 40 / 0.5), inset 0 0 0 1px oklch(0.55 0.06 60 / 0.3), inset 0 0 0 4px oklch(0.98 0.01 80 / 0.85)",
-              }}
-            >
-              <img
-                src={mzabKsarPlan}
-                alt={tt(
-                  L(
-                    "Sepia isometric drawing of a concentric M'Zab ksar — streets spiralling around a central mosque, defensive wall and cemetery outside.",
-                    "Dessin isométrique sépia d'un ksar concentrique du M'Zab — rues en spirale autour d'une mosquée centrale, enceinte et cimetière extérieurs.",
-                    "رسم إيزومتري بلون السبيا لقصر مزاب متراكز — شوارع تلتفّ حول مسجد مركزي وسور ومقبرة في الخارج.",
-                  ),
-                  lang,
-                )}
-                width={1408}
-                height={1008}
-                loading="lazy"
-                className="block w-full h-auto"
-              />
-            </div>
-            <figcaption className="mt-3 text-xs text-muted-foreground text-center italic">
-              {tt(
-                L(
-                  "Plan of a ksar · concentric spiral around the mosque",
-                  "Plan d'un ksar · spirale concentrique autour de la mosquée",
-                  "مخطّط قصر · حلزون متراكز حول المسجد",
-                ),
-                lang,
-              )}
-            </figcaption>
-          </figure>
-          <figure className="relative">
-            <div
-              className="relative overflow-hidden rounded-2xl"
-              style={{
-                boxShadow:
-                  "0 20px 40px -20px oklch(0.15 0.03 40 / 0.5), inset 0 0 0 1px oklch(0.55 0.06 60 / 0.3), inset 0 0 0 4px oklch(0.98 0.01 80 / 0.85)",
-              }}
-            >
-              <img
-                src={mzabHouse}
-                alt={tt(
-                  L(
-                    "Sepia sectional drawing of a traditional Mozabite house — courtyard (west ed-dar), shaded chebek terrace, thick lime-washed walls.",
-                    "Coupe sépia d'une maison mozabite traditionnelle — patio (west ed-dar), terrasse à claustra (chebek), murs épais chaulés.",
-                    "مقطع بلون السبيا لبيت مزابي تقليدي — الفناء (ويسط الدار)، السطح المشبّك (شبك)، الجدران السميكة المطليّة بالجير.",
-                  ),
-                  lang,
-                )}
-                width={1408}
-                height={1008}
-                loading="lazy"
-                className="block w-full h-auto"
-              />
-            </div>
-            <figcaption className="mt-3 text-xs text-muted-foreground text-center italic">
-              {tt(
-                L(
-                  "Section of an Ibadi house · courtyard, chebek, thermal walls",
-                  "Coupe d'une maison ibadite · patio, chebek, murs à inertie",
-                  "مقطع بيت إباضي · فناء، شبك، جدران حراريّة",
-                ),
-                lang,
-              )}
-            </figcaption>
-          </figure>
-        </div>
-
-        <ol className="mt-12 grid gap-6 md:grid-cols-2" role="list">
-          {ARCHITECTURE.principles.map((p, i) => (
-            <li
-              key={i}
-              className="rounded-2xl border border-border bg-card p-6 sm:p-7"
-              style={{ boxShadow: "var(--shadow-soft)" }}
-            >
-              <p className="text-xs uppercase tracking-[0.24em] font-bold text-primary">
-                {String(i + 1).padStart(2, "0")}
-              </p>
-              <h3 className="mt-2 text-xl font-bold text-foreground" style={SERIF}>
-                {tt(p.title, lang)}
-              </h3>
-              <p className="mt-3 text-sm text-foreground/80 leading-[1.75]">{tt(p.body, lang)}</p>
-            </li>
-          ))}
-        </ol>
       </Section>
 
-      {/* ────────── UNESCO ────────── */}
+      {/* Water */}
+      <Section id="water" tone="ivory">
+        <SplitFigure
+          eyebrow={WATER.eyebrow}
+          title={WATER.title}
+          body={WATER.body}
+          bullets={WATER.bullets}
+          figure={
+            <Figure src={mzabWater} alt={WATER.image.alt} caption={WATER.image.caption} width={1600} height={1008} />
+          }
+        />
+      </Section>
+
+      {/* Architecture */}
+      <Section id="architecture" tone="parchment">
+        <EyebrowTitle eyebrow={ARCHITECTURE.eyebrow} title={ARCHITECTURE.title} />
+        <Prose>
+          <p>{tr(ARCHITECTURE.intro, lang)}</p>
+        </Prose>
+        <div className="mt-10 grid gap-8 md:grid-cols-2 items-start">
+          <Figure
+            src={mzabKsarPlan}
+            alt={L(
+              "Sepia isometric drawing of a concentric M'Zab ksar — streets spiralling around a central mosque, defensive wall and cemetery outside.",
+              "Dessin isométrique sépia d'un ksar concentrique du M'Zab — rues en spirale autour d'une mosquée centrale, enceinte et cimetière extérieurs.",
+              "رسم إيزومتري بلون السبيا لقصر مزاب متراكز — شوارع تلتفّ حول مسجد مركزي وسور ومقبرة في الخارج.",
+            )}
+            caption={L(
+              "Plan of a ksar · concentric spiral around the mosque",
+              "Plan d'un ksar · spirale concentrique autour de la mosquée",
+              "مخطّط قصر · حلزون متراكز حول المسجد",
+            )}
+            width={1408}
+            height={1008}
+          />
+          <Figure
+            src={mzabHouse}
+            alt={L(
+              "Sepia sectional drawing of a traditional Mozabite house — courtyard (west ed-dar), shaded chebek terrace, thick lime-washed walls.",
+              "Coupe sépia d'une maison mozabite traditionnelle — patio (west ed-dar), terrasse à claustra (chebek), murs épais chaulés.",
+              "مقطع بلون السبيا لبيت مزابي تقليدي — الفناء (ويسط الدار)، السطح المشبّك (شبك)، الجدران السميكة المطليّة بالجير.",
+            )}
+            caption={L(
+              "Section of an Ibadi house · courtyard, chebek, thermal walls",
+              "Coupe d'une maison ibadite · patio, chebek, murs à inertie",
+              "مقطع بيت إباضي · فناء، شبك، جدران حراريّة",
+            )}
+            width={1408}
+            height={1008}
+          />
+        </div>
+        <div className="mt-12">
+          <NumberedGrid items={ARCHITECTURE.principles} columns={2} />
+        </div>
+      </Section>
+
+      {/* UNESCO */}
       <Section id="unesco" tone="ivory">
-        <EyebrowTitle eyebrow={UNESCO.eyebrow} title={UNESCO.title} lang={lang} />
+        <EyebrowTitle eyebrow={UNESCO.eyebrow} title={UNESCO.title} />
         <div className="grid gap-10 md:grid-cols-[1fr_1fr]">
           <div>
             <p className="text-xs uppercase tracking-[0.24em] font-bold text-primary">
-              {tt(L("Criteria of inscription", "Critères d'inscription", "معايير الإدراج"), lang)}
+              {tr(L("Criteria of inscription", "Critères d'inscription", "معايير الإدراج"), lang)}
             </p>
-            <ul className="mt-5 space-y-5">
-              {UNESCO.criteria.map((c) => (
-                <li key={c.code} className="flex gap-4">
-                  <span
-                    aria-hidden
-                    className="shrink-0 inline-flex items-center justify-center h-10 w-10 rounded-full border border-border text-sm font-bold text-primary"
-                    style={{ background: "oklch(0.98 0.01 80)", ...SERIF }}
-                  >
-                    {c.code}
-                  </span>
-                  <p className="text-sm sm:text-base text-foreground/80 leading-[1.7]">
-                    {tt(c.body, lang)}
-                  </p>
-                </li>
-              ))}
-            </ul>
+            <CriteriaList items={UNESCO.criteria} />
           </div>
           <div className="space-y-6">
-            {[
-              { title: L("Outstanding Universal Value", "Valeur universelle exceptionnelle", "القيمة العالمية الاستثنائية"), body: UNESCO.ouv },
-              { title: L("Authenticity", "Authenticité", "الأصالة"), body: UNESCO.authenticity },
-              { title: L("Integrity", "Intégrité", "التكامل"), body: UNESCO.integrity },
-              { title: L("Conservation", "Conservation", "الحفاظ"), body: UNESCO.conservation },
-            ].map((b, i) => (
+            {UNESCO.panels.map((b, i) => (
               <div
                 key={i}
                 className="rounded-xl border border-border bg-card p-5"
                 style={{ boxShadow: "var(--shadow-soft)" }}
               >
                 <h3 className="text-sm uppercase tracking-[0.2em] font-bold text-primary">
-                  {tt(b.title, lang)}
+                  {tr(b.title, lang)}
                 </h3>
-                <p className="mt-2 text-sm text-foreground/80 leading-[1.75]">{tt(b.body, lang)}</p>
+                <p className="mt-2 text-sm text-foreground/80 leading-[1.75]">{tr(b.body, lang)}</p>
               </div>
             ))}
           </div>
         </div>
       </Section>
 
-      {/* ────────── Daily life ────────── */}
+      {/* Daily life */}
       <Section id="daily-life" tone="parchment">
-        <div className="grid gap-10 md:grid-cols-[1fr_1fr] items-start">
-          <div>
-            <EyebrowTitle eyebrow={DAILY.eyebrow} title={DAILY.title} lang={lang} />
-            <Prose>
-              {DAILY.paragraphs.map((p, i) => (
-                <p key={i}>{tt(p, lang)}</p>
-              ))}
-            </Prose>
-          </div>
-          <figure className="relative">
-            <div
-              className="relative overflow-hidden rounded-2xl"
-              style={{
-                boxShadow:
-                  "0 20px 40px -20px oklch(0.15 0.03 40 / 0.5), inset 0 0 0 1px oklch(0.55 0.06 60 / 0.3), inset 0 0 0 4px oklch(0.98 0.01 80 / 0.85)",
-              }}
-            >
-              <img
-                src={mzabMarket}
-                alt={tt(
-                  L(
-                    "Sepia photograph of the arcaded market square of Beni Isguen, empty and bathed in Saharan light.",
-                    "Photographie sépia de la place du marché à arcades de Beni Isguen, vide et baignée de lumière saharienne.",
-                    "صورة سبيا لساحة سوق بني يزقن ذات الأروقة، خالية وتغمرها الشمس الصحراوية.",
-                  ),
-                  lang,
-                )}
-                width={1600}
-                height={1008}
-                loading="lazy"
-                className="block w-full h-auto"
-              />
-            </div>
-            <figcaption className="mt-3 text-xs text-muted-foreground text-center italic">
-              {tt(
-                L(
-                  "The covered market of Beni Isguen at midday",
-                  "Le marché couvert de Beni Isguen à midi",
-                  "السوق المسقوف في بني يزقن ظهيرةً",
-                ),
-                lang,
-              )}
-            </figcaption>
-          </figure>
-        </div>
+        <SplitFigure
+          eyebrow={DAILY.eyebrow}
+          title={DAILY.title}
+          body={DAILY.paragraphs}
+          figure={
+            <Figure
+              src={mzabMarket}
+              alt={DAILY.image.alt}
+              caption={DAILY.image.caption}
+              width={1600}
+              height={1008}
+            />
+          }
+        />
         <ul className="mt-10 grid gap-4 md:grid-cols-2" role="list">
           {DAILY.crafts.map((c, i) => (
             <li
@@ -1002,19 +734,15 @@ function MzabExhibit() {
               className="rounded-xl border border-border bg-card p-5 text-sm text-foreground/80 leading-[1.7]"
               style={{ boxShadow: "var(--shadow-soft)" }}
             >
-              {tt(c, lang)}
+              {tr(c, lang)}
             </li>
           ))}
         </ul>
       </Section>
 
-      {/* ────────── Engineering ────────── */}
+      {/* Engineering */}
       <Section id="engineering" tone="sand">
-        <EyebrowTitle
-          eyebrow={ENGINEERING.eyebrow}
-          title={ENGINEERING.title}
-          lang={lang}
-        />
+        <EyebrowTitle eyebrow={ENGINEERING.eyebrow} title={ENGINEERING.title} />
         <ol className="space-y-5 max-w-3xl" role="list">
           {ENGINEERING.bullets.map((b, i) => (
             <li
@@ -1028,77 +756,33 @@ function MzabExhibit() {
               >
                 {String(i + 1).padStart(2, "0")}
               </span>
-              {tt(b, lang)}
+              {tr(b, lang)}
             </li>
           ))}
         </ol>
       </Section>
 
-      {/* ────────── Influence ────────── */}
+      {/* Influence */}
       <Section id="influence" tone="parchment">
-        <EyebrowTitle eyebrow={INFLUENCE.eyebrow} title={INFLUENCE.title} lang={lang} />
+        <EyebrowTitle eyebrow={INFLUENCE.eyebrow} title={INFLUENCE.title} />
         <Prose>
           {INFLUENCE.paragraphs.map((p, i) => (
-            <p key={i}>{tt(p, lang)}</p>
+            <p key={i}>{tr(p, lang)}</p>
           ))}
         </Prose>
-        <figure
-          className="mt-10 rounded-2xl border border-border bg-card p-6 sm:p-8 max-w-3xl"
-          style={{ boxShadow: "var(--shadow-soft)" }}
-        >
-          <blockquote
-            className="text-xl sm:text-2xl italic text-foreground/85 leading-[1.5]"
-            style={SERIF}
-          >
-            {tt(
-              L(
-                "\"The M'Zab is the built proof that one can be modern without being new.\"",
-                "« Le M'Zab est la preuve bâtie qu'on peut être moderne sans être nouveau. »",
-                "«وادي مزاب دليلٌ مبنيٌّ على أنّ المرء يمكن أن يكون حديثاً دون أن يكون جديداً.»",
-              ),
-              lang,
-            )}
-          </blockquote>
-          <figcaption className="mt-4 text-xs uppercase tracking-[0.24em] text-primary font-bold">
-            {tt(
-              L(
-                "— André Ravéreau, Le M'Zab, une leçon d'architecture (1981)",
-                "— André Ravéreau, Le M'Zab, une leçon d'architecture (1981)",
-                "— أندريه رافيرو، المزاب: درس في العمارة (1981)",
-              ),
-              lang,
-            )}
-          </figcaption>
-        </figure>
+        <PullQuote quote={INFLUENCE.quote} attribution={INFLUENCE.attribution} />
       </Section>
 
-      {/* ────────── Did you know ────────── */}
+      {/* Did you know */}
       <Section id="did-you-know" tone="ivory">
         <EyebrowTitle
           eyebrow={L("Did you know?", "Le saviez-vous ?", "هل تعلم؟")}
           title={L("Six things you were not expecting", "Six choses que vous n'attendiez pas", "ستّة أمور لم تكن تتوقّعها")}
-          lang={lang}
         />
-        <ul className="grid gap-5 md:grid-cols-2 lg:grid-cols-3" role="list">
-          {FACTS.map((f, i) => (
-            <li
-              key={i}
-              className="rounded-2xl border border-border bg-card p-6 relative"
-              style={{ boxShadow: "var(--shadow-soft)" }}
-            >
-              <span
-                aria-hidden
-                className="absolute -top-3 left-5 inline-flex items-center justify-center h-7 min-w-7 px-2 rounded-full bg-primary text-primary-foreground text-[10px] uppercase tracking-[0.24em] font-bold"
-              >
-                {tt(L("Fact", "Fait", "معلومة"), lang)} · {String(i + 1).padStart(2, "0")}
-              </span>
-              <p className="mt-2 text-sm text-foreground/80 leading-[1.75]">{tt(f, lang)}</p>
-            </li>
-          ))}
-        </ul>
+        <DiscoveryCards items={FACTS} label={L("Fact", "Fait", "معلومة")} />
       </Section>
 
-      {/* ────────── Museum collection ────────── */}
+      {/* Collection */}
       <Section id="collection" tone="parchment">
         <EyebrowTitle
           eyebrow={L("Museum collection", "Collection muséale", "المجموعة المتحفية")}
@@ -1107,10 +791,9 @@ function MzabExhibit() {
             "Photographies, dessins et planches d'archives",
             "صور ورسوم ولوحات أرشيفية",
           )}
-          lang={lang}
         />
         <p className="max-w-3xl text-foreground/75 text-sm sm:text-base leading-[1.75] mb-8">
-          {tt(
+          {tr(
             L(
               "A curated set of illustrations produced for this exhibit, drawn from published UNESCO documentation, André Ravéreau's architectural studies, and the archives of the OPVM. Each plate carries a museum-style caption; full provenance is listed at the end of the exhibit.",
               "Un ensemble d'illustrations produites pour cette exposition, à partir de la documentation UNESCO, des études architecturales d'André Ravéreau et des archives de l'OPVM. Chaque planche est accompagnée d'une légende muséale ; la provenance complète est indiquée en fin d'exposition.",
@@ -1119,134 +802,23 @@ function MzabExhibit() {
             lang,
           )}
         </p>
-        <ul className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3" role="list">
-          {COLLECTION.map((p, i) => (
-            <li key={i} className="group">
-              <figure
-                className="rounded-xl overflow-hidden border border-border bg-card"
-                style={{ boxShadow: "var(--shadow-soft)" }}
-              >
-                <img
-                  src={p.src}
-                  alt={tt(p.alt, lang)}
-                  loading="lazy"
-                  className="block w-full h-52 object-cover transition duration-500 group-hover:scale-[1.02]"
-                />
-                <figcaption className="p-4">
-                  <p className="text-xs uppercase tracking-[0.22em] font-bold text-primary">
-                    {tt(L("Plate", "Planche", "لوحة"), lang)} {String(i + 1).padStart(2, "0")}
-                  </p>
-                  <p
-                    className="mt-1 text-sm font-semibold text-foreground"
-                    style={SERIF}
-                  >
-                    {tt(p.caption, lang)}
-                  </p>
-                  <p className="mt-1 text-xs text-muted-foreground italic">
-                    {tt(p.note, lang)}
-                  </p>
-                </figcaption>
-              </figure>
-            </li>
-          ))}
-        </ul>
+        <CollectionGrid plates={COLLECTION} plateLabel={L("Plate", "Planche", "لوحة")} />
       </Section>
 
-      {/* ────────── Related exhibits ────────── */}
+      {/* Related exhibits */}
       <Section id="related" tone="sand">
         <EyebrowTitle
           eyebrow={L("Related exhibits", "Expositions liées", "معارض ذات صلة")}
           title={L("Where to go next in the museum", "Où poursuivre la visite", "أين تُتابع الزيارة")}
-          lang={lang}
         />
-        <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3" role="list">
-          {[
-            {
-              to: "/region/sahara" as const,
-              params: undefined,
-              label: L("The Sahara", "Le Sahara", "الصحراء الكبرى"),
-              body: L(
-                "The desert as a civilization, not a void.",
-                "Le désert comme civilisation, non comme vide.",
-                "الصحراء بوصفها حضارة لا فراغاً.",
-              ),
-            },
-            {
-              to: "/culture/language" as const,
-              params: undefined,
-              label: L("Berber & the Amazigh legacy", "Berbère et héritage amazigh", "الأمازيغية والإرث الأمازيغي"),
-              body: L(
-                "The linguistic layer beneath the Ibadi city.",
-                "La strate linguistique sous la cité ibadite.",
-                "الطبقة اللغوية تحت المدينة الإباضية.",
-              ),
-            },
-            {
-              to: "/era/islamic" as const,
-              params: undefined,
-              label: L("The Islamic era", "L'ère islamique", "العصر الإسلامي"),
-              body: L(
-                "The Rustamid imamate and the age that shaped the M'Zab.",
-                "L'imamat rustumide et l'âge qui a façonné le M'Zab.",
-                "الإمامة الرستمية والعصر الذي شكّل وادي مزاب.",
-              ),
-            },
-            {
-              to: "/cuisine" as const,
-              params: undefined,
-              label: L("Dates, cuisine & the palm grove", "Dattes, cuisine et palmeraie", "التمر والمطبخ والبستان"),
-              body: L(
-                "How the M'Zab palm shaped a national kitchen.",
-                "Comment la palmeraie du M'Zab a façonné une cuisine nationale.",
-                "كيف شكّل نخيل المزاب مطبخاً وطنياً.",
-              ),
-            },
-            {
-              to: "/culture/music" as const,
-              params: undefined,
-              label: L("Living culture", "Culture vivante", "الثقافة الحيّة"),
-              body: L(
-                "The songs, crafts and rites that still fill the ksour.",
-                "Les chants, les métiers et les rites qui animent encore les ksour.",
-                "الأغاني والحرف والطقوس التي لا تزال تحيي القصور.",
-              ),
-            },
-            {
-              to: "/timeline" as const,
-              params: undefined,
-              label: L("Algeria across time", "L'Algérie à travers le temps", "الجزائر عبر الزمن"),
-              body: L(
-                "Place the M'Zab on the long timeline of the country.",
-                "Situer le M'Zab dans la longue frise du pays.",
-                "ضع وادي مزاب في التسلسل الزمني الطويل للبلاد.",
-              ),
-            },
-          ].map((r, i) => (
-            <li key={i}>
-              <Link
-                to={r.to}
-                className="block h-full rounded-2xl border border-border bg-card p-5 transition hover:-translate-y-0.5"
-                style={{ boxShadow: "var(--shadow-soft)" }}
-              >
-                <p className="text-xs uppercase tracking-[0.22em] font-bold text-primary">
-                  {tt(L("Related exhibit", "Exposition liée", "معرض ذو صلة"), lang)}
-                </p>
-                <h3 className="mt-2 text-lg font-bold text-foreground" style={SERIF}>
-                  {tt(r.label, lang)}
-                </h3>
-                <p className="mt-2 text-sm text-foreground/75 leading-[1.65]">
-                  {tt(r.body, lang)}
-                </p>
-                <p className="mt-3 text-xs text-primary font-semibold">
-                  {tt(L("Enter →", "Entrer →", "ادخل ←"), lang)}
-                </p>
-              </Link>
-            </li>
-          ))}
-        </ul>
+        <RelatedExhibits
+          items={RELATED}
+          label={L("Related exhibit", "Exposition liée", "معرض ذو صلة")}
+          enterLabel={L("Enter →", "Entrer →", "ادخل ←")}
+        />
       </Section>
 
-      {/* ────────── Provenance ────────── */}
+      {/* Provenance */}
       <section className="max-w-6xl mx-auto px-4 sm:px-6 py-12">
         <ExhibitProvenance exhibitId="mzab" />
       </section>
@@ -1254,7 +826,7 @@ function MzabExhibit() {
       <footer className="border-t border-border/60 bg-card/40">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 py-8 flex flex-wrap items-center justify-between gap-4">
           <p className="text-xs text-muted-foreground italic">
-            {tt(
+            {tr(
               L(
                 "The M'Zab Valley · a permanent exhibit of DZ Odyssey.",
                 "La Vallée du M'Zab · exposition permanente de DZ Odyssey.",
@@ -1267,10 +839,13 @@ function MzabExhibit() {
             to="/"
             className="inline-flex items-center gap-2 text-sm font-semibold text-foreground hover:text-primary transition"
           >
-            {tt(HERO.back, lang)}
+            {tr(HERO.back, lang)}
           </Link>
         </div>
       </footer>
     </div>
   );
 }
+
+// Suppress unused-lang warning under strict linters when reading no direct text
+void ((_: Lang) => _);
