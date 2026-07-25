@@ -60,7 +60,7 @@ export function TacticalView({ match }: { match: MatchTheater }) {
                 <PitchDiagram
                   team={team}
                   players={players}
-                  ariaDescription={`${tt(T.formation, lang)} — ${tt(team.name, lang)} — ${team.formation ?? ""}`}
+                  ariaDescription={`${tt(T.formation, lang)}, ${tt(team.name, lang)}, ${team.formation ?? ""}`}
                 />
               </div>
               {tactic?.approach ? (

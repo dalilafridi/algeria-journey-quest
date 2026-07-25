@@ -107,7 +107,7 @@ export function MatchTimeline({
   );
   useEffect(() => {
     if (!currentEvent) return;
-    const label = `${currentEvent.minute}' — ${tt(currentEvent.label, lang)}`;
+    const label = `${currentEvent.minute}', ${tt(currentEvent.label, lang)}`;
     if (label !== lastAnnounced) setLastAnnounced(label);
   }, [currentEvent, lang, lastAnnounced]);
 
@@ -208,7 +208,7 @@ export function MatchTimeline({
                 }}
                 className="inline-flex items-center gap-1.5 rounded-full border border-white/20 bg-white/5 px-2.5 py-1 text-xs text-white/85 transition hover:bg-white/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#c9a24a]"
                 style={SERIF}
-                aria-label={`${e.minute}' — ${tt(KIND_LABEL[e.kind], lang)} — ${tt(e.label, lang)}`}
+                aria-label={`${e.minute}', ${tt(KIND_LABEL[e.kind], lang)}, ${tt(e.label, lang)}`}
               >
                 <span aria-hidden className="text-[#c9a24a]">{KIND_GLYPH[e.kind]}</span>
                 <span className="font-mono opacity-70">{e.minute}&apos;</span>

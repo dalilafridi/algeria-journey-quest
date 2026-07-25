@@ -103,9 +103,9 @@ export const ui = {
   xp: { en: "XP", fr: "XP", ar: "نقاط" },
   startJourney: { en: "🚀 Start Your Journey", fr: "🚀 Commencer le voyage", ar: "🚀 ابدأ رحلتك" },
   heroSubtitle: {
-    en: "From the Numidian kings to the heroes of independence — a fun, story-driven journey through 2,000+ years of history.",
-    fr: "Des rois numides aux héros de l'indépendance — un voyage ludique à travers plus de 2 000 ans d'histoire.",
-    ar: "من ملوك نوميديا إلى أبطال الاستقلال — رحلة ممتعة عبر أكثر من ألفي سنة من التاريخ.",
+    en: "From the Numidian kings to the heroes of independence, a fun, story-driven journey through 2,000+ years of history.",
+    fr: "Des rois numides aux héros de l'indépendance, un voyage ludique à travers plus de 2 000 ans d'histoire.",
+    ar: "من ملوك نوميديا إلى أبطال الاستقلال، رحلة ممتعة عبر أكثر من ألفي سنة من التاريخ.",
   },
   fiveEras: { en: "5 Eras", fr: "5 époques", ar: "5 حقب" },
   fiveErasDesc: { en: "From Numidia to today", fr: "De Numidie à aujourd'hui", ar: "من نوميديا إلى اليوم" },
@@ -143,9 +143,9 @@ export const ui = {
   badges: { en: "Badges", fr: "Badges", ar: "الأوسمة" },
   completion: { en: "Completion", fr: "Achèvement", ar: "الإنجاز" },
   noBadges: {
-    en: "No badges yet — complete a quiz with a perfect score to earn one! 🏆",
-    fr: "Aucun badge pour l'instant — réussissez un quiz parfait pour en gagner un ! 🏆",
-    ar: "لا أوسمة بعد — أكمل اختبارًا بنتيجة كاملة لتربح واحدًا! 🏆",
+    en: "No badges yet, complete a quiz with a perfect score to earn one! 🏆",
+    fr: "Aucun badge pour l'instant, réussissez un quiz parfait pour en gagner un ! 🏆",
+    ar: "لا أوسمة بعد، أكمل اختبارًا بنتيجة كاملة لتربح واحدًا! 🏆",
   },
   eraProgress: { en: "Era progress", fr: "Progression par époque", ar: "تقدم الحقب" },
   continueJourney: { en: "Continue your journey →", fr: "Continuer le voyage →", ar: "تابع رحلتك ←" },
@@ -206,9 +206,9 @@ export const ui = {
     ar: "أعلام التاريخ الجزائري",
   },
   figuresSubtitle: {
-    en: "A small museum of the people who shaped Algerian history — explore their stories, why they matter, and one striking fact each.",
-    fr: "Un petit musée de celles et ceux qui ont façonné l'histoire algérienne — découvrez leurs histoires, leur importance et un fait marquant.",
-    ar: "متحف صغير لمن صنعوا تاريخ الجزائر — اكتشف قصصهم وأهميّتهم ومعلومة لافتة عن كلّ منهم.",
+    en: "A small museum of the people who shaped Algerian history, explore their stories, why they matter, and one striking fact each.",
+    fr: "Un petit musée de celles et ceux qui ont façonné l'histoire algérienne, découvrez leurs histoires, leur importance et un fait marquant.",
+    ar: "متحف صغير لمن صنعوا تاريخ الجزائر، اكتشف قصصهم وأهميّتهم ومعلومة لافتة عن كلّ منهم.",
   },
   searchFigures: { en: "Search a name…", fr: "Rechercher un nom…", ar: "ابحث عن اسم…" },
   filterAll: { en: "All", fr: "Tous", ar: "الكل" },
@@ -325,7 +325,7 @@ export const ui = {
   },
   cancel: { en: "Cancel", fr: "Annuler", ar: "إلغاء" },
   confirm: { en: "Yes, reset", fr: "Oui, réinitialiser", ar: "نعم، أعد الضبط" },
-  resetDone: { en: "All set — fresh start!", fr: "C'est fait — nouveau départ !", ar: "تمّ — بداية جديدة!" },
+  resetDone: { en: "All set, fresh start!", fr: "C'est fait, nouveau départ !", ar: "تمّ، بداية جديدة!" },
 
   // App chrome / system
   skipToContent: { en: "Skip to content", fr: "Aller au contenu", ar: "تخطّ إلى المحتوى" },

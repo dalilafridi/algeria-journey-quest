@@ -53,7 +53,7 @@ export const Route = createFileRoute("/culture/$topicId")({
     if (!loaderData) {
       return pageMeta({
         path: `/culture/${params.topicId}`,
-        title: "Culture — DZ Odyssey",
+        title: "Culture, DZ Odyssey",
         description: "This culture exhibit could not be found.",
         noindex: true,
       });
@@ -62,7 +62,7 @@ export const Route = createFileRoute("/culture/$topicId")({
     const descEn = t(loaderData.topic.intro, "en");
     return pageMeta({
       path: `/culture/${loaderData.topic.id}`,
-      title: `${titleEn} — Culture | DZ Odyssey`,
+      title: `${titleEn}, Culture | DZ Odyssey`,
       description: descEn,
       type: "article",
     });

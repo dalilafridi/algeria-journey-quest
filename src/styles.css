@@ -462,7 +462,7 @@ main > div > section {
 }
 
 /* ============================================================
-   Unified museum icon interaction — engraved depth + warm glow
+   Unified museum icon interaction, engraved depth + warm glow
    Apply to any icon wrapper (not the <svg> itself).
    No scaling, no flashy effects. Purely filter-based depth.
    ============================================================ */
@@ -505,7 +505,7 @@ main > div > section {
 }
 
 /* ============================================================
-   Phase 5 — Premium refinement layer
+   Phase 5, Premium refinement layer
    Unifies typography rhythm, card surfaces, eyebrows, pullquotes,
    hero treatments, and motion across the entire app.
    ============================================================ */
@@ -636,7 +636,7 @@ a, button, [role="button"] {
 
 
 /* ============================================================
-   Phase 7 — Museum Mode (deeper) + Ambient atmosphere overlays
+   Phase 7, Museum Mode (deeper) + Ambient atmosphere overlays
    ============================================================ */
 
 /* Subtle, always-on cinematic vignette — barely perceptible warmth at edges.
@@ -758,7 +758,7 @@ html.immersion-on main > div > section {
 }
 
 /* ============================================================
-   Phase 9 — Motion + Microinteraction master pass
+   Phase 9, Motion + Microinteraction master pass
    Unified easing, scroll reveals, refined hovers, focus polish.
    Everything below honors prefers-reduced-motion.
    ============================================================ */
@@ -892,7 +892,7 @@ main > div > section[data-reveal] {
 }
 
 /* ============================================================
-   Phase 10 — Accessibility + Multilingual Excellence
+   Phase 10, Accessibility + Multilingual Excellence
    Skip-link, refined focus, RTL/Arabic typography polish,
    reading width caps, contrast, tap targets, reduced motion.
    ============================================================ */
@@ -1092,7 +1092,7 @@ html[lang="ar"] .museum-quote {
 }
 
 /* ============================================================
-   Phase 11 — Showcase / Exhibition Mode
+   Phase 11, Showcase / Exhibition Mode
    Calms global chrome when html.showcase-on is active so the
    curated journey route owns the stage.
    ============================================================ */
@@ -1150,7 +1150,7 @@ html.showcase-on #main {
 }
 
 /* ============================================================
-   Phase 12 — Production perf polish
+   Phase 12, Production perf polish
    Cheap rendering wins: content-visibility on long sections,
    GPU-friendly hover dim, calmer reveal will-change, mobile
    blur reduction. Nothing visual changes; everything renders
@@ -1192,7 +1192,7 @@ html.showcase-on #main {
 }
 
 /* Reveal items only need will-change while animating. CSS hint to keep
-   layers lean — JS in MotionReveal clears the inline style after end. */
+   layers lean, JS in MotionReveal clears the inline style after end. */
 [data-reveal]:not([data-revealed="true"]) {
   will-change: opacity, transform;
 }
@@ -1242,9 +1242,9 @@ html.showcase-on [data-reveal] {
 }
 
 /* ============================================================
-   FINAL PHASE — Art Direction + Launch-Ready Cleanup
+   FINAL PHASE, Art Direction + Launch-Ready Cleanup
    Last-mile polish. Tightens rhythm, eliminates overflow,
-   unifies card / button / image treatments. No new patterns —
+   unifies card / button / image treatments. No new patterns, 
    only enforces what already exists.
    ============================================================ */
 
@@ -1303,7 +1303,7 @@ html.showcase-on body { padding-bottom: 0; }
    CINEMATIC ART DIRECTION LAYER
    Selective dark/atmospheric moments (hero, splash, transitions)
    that coexist with the warm parchment reading interiors.
-   Inspired by museum lighting — gold edge light on deep night.
+   Inspired by museum lighting, gold edge light on deep night.
    ============================================================ */
 
 /* --- Cinematic hero stage (dark, atmospheric) --- */
@@ -1486,11 +1486,11 @@ html.showcase-on body { padding-bottom: 0; }
 /* ============================================================
    CINEMATIC HERO ENVIRONMENT
    Wide, layered, atmospheric exhibition entrance.
-   No centered poster — environment carries the weight.
+   No centered poster, environment carries the weight.
    ============================================================ */
 
 /* ============================================================
-   HERO — Photographic environmental entrance
+   HERO, Photographic environmental entrance
    Uses the uploaded golden-hour Algeria image as the centerpiece.
    Overlays are deliberately minimal: vignette + parchment veil
    + a soft left-side readability gradient.

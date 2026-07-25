@@ -59,7 +59,7 @@ export const Route = createFileRoute("/region/$regionId")({
     if (!loaderData) {
       return pageMeta({
         path: `/region/${params.regionId}`,
-        title: "Region — DZ Odyssey",
+        title: "Region, DZ Odyssey",
         description: "This region exhibit could not be found.",
         noindex: true,
       });
@@ -68,7 +68,7 @@ export const Route = createFileRoute("/region/$regionId")({
     const summaryEn = t(loaderData.region.summary, "en");
     return pageMeta({
       path: `/region/${loaderData.region.id}`,
-      title: `${titleEn} — Region | DZ Odyssey`,
+      title: `${titleEn}, Region | DZ Odyssey`,
       description: summaryEn,
       type: "article",
     });

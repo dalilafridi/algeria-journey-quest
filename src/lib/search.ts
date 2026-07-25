@@ -504,9 +504,9 @@ export function getSearchIndex(): SearchItem[] {
     kind: "football",
     emoji: "🟢",
     title: LES_VERTES_HERO?.title ?? {
-      en: "Les Vertes — Algeria's Women's National Team",
-      fr: "Les Vertes — Sélection féminine d'Algérie",
-      ar: "الخضراوات — منتخب الجزائر للسيدات",
+      en: "Les Vertes, Algeria's Women's National Team",
+      fr: "Les Vertes, Sélection féminine d'Algérie",
+      ar: "الخضراوات، منتخب الجزائر للسيدات",
     },
     snippet: LES_VERTES_HERO?.subtitle ?? {
       en: "A permanent exhibit for the women who wear the green.",

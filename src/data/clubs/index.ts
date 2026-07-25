@@ -37,7 +37,7 @@ export const CLUB_MUSEUMS: ClubMuseum[] = [
     { en: "Algiers", fr: "Alger", ar: "الجزائر" },
     1921,
     { primary: "#137a3f", secondary: "#c81c25" },
-    { en: "The oldest Algerian Muslim club — Le Doyen.", fr: "Le plus ancien club algérien musulman — Le Doyen.", ar: "أعرق نادٍ جزائري مسلم — العميد." }
+    { en: "The oldest Algerian Muslim club, Le Doyen.", fr: "Le plus ancien club algérien musulman, Le Doyen.", ar: "أعرق نادٍ جزائري مسلم، العميد." }
   ),
   placeholder(
     "es-setif",
@@ -73,7 +73,7 @@ export const CLUB_MUSEUMS: ClubMuseum[] = [
     { en: "Oran", fr: "Oran", ar: "وهران" },
     1946,
     { primary: "#c81c25", secondary: "#f2f2f2" },
-    { en: "El Hamri — heart of Oran football.", fr: "El Hamri — cœur du football oranais.", ar: "الحمري — قلب كرة وهران." }
+    { en: "El Hamri, heart of Oran football.", fr: "El Hamri, cœur du football oranais.", ar: "الحمري، قلب كرة وهران." }
   ),
   placeholder(
     "paradou-ac",

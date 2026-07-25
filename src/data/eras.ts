@@ -304,8 +304,8 @@ export const eras: Era[] = [
         ),
         answer: false,
         explanation: L(
-          "It reached Egypt and the wider Mediterranean — Sheshonq I is one example.",
-          "Elle s'étendait à l'Égypte et à toute la Méditerranée — Sheshonq Ier en est un exemple.",
+          "It reached Egypt and the wider Mediterranean, Sheshonq I is one example.",
+          "Elle s'étendait à l'Égypte et à toute la Méditerranée, Sheshonq Ier en est un exemple.",
           "امتدّ إلى مصر وعموم المتوسط، وشيشنق الأول مثال على ذلك.",
         ),
       },
@@ -355,9 +355,9 @@ export const eras: Era[] = [
         ],
         answerIndex: 0,
         explanation: L(
-          "Both clues point to Sheshonq I — Shishak in biblical accounts.",
-          "Les deux indices désignent Sheshonq Ier — Shishaq dans la Bible.",
-          "كلا الدليلَين يشيران إلى شيشنق الأول — شيشاك في الكتاب المقدس.",
+          "Both clues point to Sheshonq I, Shishak in biblical accounts.",
+          "Les deux indices désignent Sheshonq Ier, Shishaq dans la Bible.",
+          "كلا الدليلَين يشيران إلى شيشنق الأول، شيشاك في الكتاب المقدس.",
         ),
       },
       {
@@ -488,9 +488,9 @@ export const eras: Era[] = [
     dateRange: "202 BC – 46 BC",
     emoji: "🏺",
     summary: L(
-      "Centuries before Algeria had a name, Berber tribes galloped across its plains on swift horses. From this world rose Numidia — a proud kingdom of clever kings and feared cavalry that helped decide the fate of empires.",
-      "Bien avant que l'Algérie ne porte ce nom, des tribus berbères galopaient dans ses plaines. De ce monde naquit la Numidie — un royaume fier, aux rois rusés et à la cavalerie redoutée, qui pesa sur le destin des empires.",
-      "قبل قرون من ظهور اسم الجزائر، كانت القبائل الأمازيغية تجوب سهولها على صهوات الخيل. من هذا العالم نشأت نوميديا — مملكة عريقة بملوكها الأذكياء وفرسانها الذين رهبتهم روما وقرطاج.",
+      "Centuries before Algeria had a name, Berber tribes galloped across its plains on swift horses. From this world rose Numidia, a proud kingdom of clever kings and feared cavalry that helped decide the fate of empires.",
+      "Bien avant que l'Algérie ne porte ce nom, des tribus berbères galopaient dans ses plaines. De ce monde naquit la Numidie, un royaume fier, aux rois rusés et à la cavalerie redoutée, qui pesa sur le destin des empires.",
+      "قبل قرون من ظهور اسم الجزائر، كانت القبائل الأمازيغية تجوب سهولها على صهوات الخيل. من هذا العالم نشأت نوميديا، مملكة عريقة بملوكها الأذكياء وفرسانها الذين رهبتهم روما وقرطاج.",
     ),
     figures: [
       {
@@ -536,9 +536,9 @@ export const eras: Era[] = [
         "عاش ماسينيسا أكثر من 90 عامًا وظل يقود جيوشه حتى آخر أيامه.",
       ),
       L(
-        "Numidian riders guided their horses with just a neck rope — no saddles, no bridles.",
-        "Les Numides guidaient leurs chevaux avec une simple corde au cou — sans selle ni mors.",
-        "كان الفرسان يقودون خيولهم بحبل حول الرقبة فقط — بلا سرج ولا لجام.",
+        "Numidian riders guided their horses with just a neck rope, no saddles, no bridles.",
+        "Les Numides guidaient leurs chevaux avec une simple corde au cou, sans selle ni mors.",
+        "كان الفرسان يقودون خيولهم بحبل حول الرقبة فقط، بلا سرج ولا لجام.",
       ),
       L(
         "The word 'Numidia' comes from a Greek term meaning 'nomads'.",
@@ -556,8 +556,8 @@ export const eras: Era[] = [
         "سكّت نوميديا عملتها الخاصة، وغالبًا ما حملت صورة الملك وفيلًا.",
       ),
       L(
-        "Cirta, the Numidian capital, sits on dramatic cliffs — today it is Constantine.",
-        "Cirta, capitale numide, se dresse sur des falaises spectaculaires — c'est l'actuelle Constantine.",
+        "Cirta, the Numidian capital, sits on dramatic cliffs, today it is Constantine.",
+        "Cirta, capitale numide, se dresse sur des falaises spectaculaires, c'est l'actuelle Constantine.",
         "تقوم سيرتا، عاصمة نوميديا، على منحدرات مهيبة، وهي قسنطينة اليوم.",
       ),
       L(
@@ -605,7 +605,7 @@ export const eras: Era[] = [
         ],
         answerIndex: 2,
         explanation: L(
-          "Cirta — today's Constantine — was the royal capital.",
+          "Cirta, today's Constantine, was the royal capital.",
           "Cirta, l'actuelle Constantine, était la capitale royale.",
           "كانت سيرتا، قسنطينة اليوم، العاصمة الملكية.",
         ),
@@ -668,9 +668,9 @@ export const eras: Era[] = [
         ],
         answerIndex: 1,
         explanation: L(
-          "They guided horses with their voice and a neck rope — light and fast.",
-          "Ils guidaient leurs chevaux par la voix et une corde au cou — légers et rapides.",
-          "كانوا يوجهون الخيل بالصوت وحبل العنق — خفّة وسرعة.",
+          "They guided horses with their voice and a neck rope, light and fast.",
+          "Ils guidaient leurs chevaux par la voix et une corde au cou, légers et rapides.",
+          "كانوا يوجهون الخيل بالصوت وحبل العنق، خفّة وسرعة.",
         ),
       },
       {
@@ -752,7 +752,7 @@ export const eras: Era[] = [
         ],
         answerIndex: 1,
         explanation: L(
-          "The Greeks called the region's people 'Nomades' — nomads.",
+          "The Greeks called the region's people 'Nomades', nomads.",
           "Les Grecs appelaient ses habitants « Nomades ».",
           "كان الإغريق يسمّون سكان المنطقة 'نومادس' أي الرحّل.",
         ),
@@ -1036,7 +1036,7 @@ export const eras: Era[] = [
     dateRange: "46 BC – 430 AD",
     emoji: "🏛️",
     summary: L(
-      "When Rome absorbed Numidia, golden wheat fields and silver olive groves turned the region into the empire's pantry. Marble cities like Timgad and Djemila rose from the plains, and a young man from Thagaste — Augustine — would one day reshape the Western mind.",
+      "When Rome absorbed Numidia, golden wheat fields and silver olive groves turned the region into the empire's pantry. Marble cities like Timgad and Djemila rose from the plains, and a young man from Thagaste, Augustine, would one day reshape the Western mind.",
       "Quand Rome absorba la Numidie, blé doré et oliviers argentés firent de la région le grenier de l'empire. Des cités de marbre comme Timgad et Djemila s'élevèrent, et un jeune homme de Thagaste, Augustin, transforma un jour la pensée occidentale.",
       "حين ضمّت روما نوميديا، صارت سهول القمح وأشجار الزيتون مخزن الإمبراطورية. ارتفعت مدن رخامية كتيمقاد وجميلة، ومن مدينة تاغست خرج شاب اسمه أوغسطين سيغيّر الفكر الغربي.",
     ),
@@ -1088,13 +1088,13 @@ export const eras: Era[] = [
         "كانت شمال إفريقيا تُلقّب بـ'سلة خبز روما'.",
       ),
       L(
-        "Saint Augustine wrote his 'Confessions' — one of the first autobiographies ever.",
+        "Saint Augustine wrote his 'Confessions', one of the first autobiographies ever.",
         "Saint Augustin écrivit ses « Confessions », l'une des premières autobiographies.",
         "كتب القديس أوغسطين 'الاعترافات'، من أوائل السير الذاتية في التاريخ.",
       ),
       L(
-        "Djemila means 'the beautiful' in Arabic — and its ruins really live up to the name.",
-        "Djemila signifie « la belle » en arabe — et ses ruines portent bien leur nom.",
+        "Djemila means 'the beautiful' in Arabic and its ruins really live up to the name.",
+        "Djemila signifie « la belle » en arabe et ses ruines portent bien leur nom.",
         "جميلة تعني 'الحسناء' بالعربية، وأطلالها تستحق الاسم.",
       ),
       L(
@@ -1404,7 +1404,7 @@ export const eras: Era[] = [
         ],
         answerIndex: 1,
         explanation: L(
-          "Saint Augustine of Hippo — one of history's most read authors.",
+          "Saint Augustine of Hippo, one of history's most read authors.",
           "Saint Augustin d'Hippone, l'un des auteurs les plus lus de l'histoire.",
           "القديس أوغسطين من أكثر مؤلفي التاريخ قراءةً.",
         ),
@@ -1576,8 +1576,8 @@ export const eras: Era[] = [
     dateRange: "7th – 16th century",
     emoji: "🕌",
     summary: L(
-      "In the 7th century, Arab horsemen crossed the desert carrying a new faith. Islam met Berber spirit, sparked dynasties, and lit up cities like Tlemcen and Béjaïa — where scholars debated, traders bargained, and a young Italian named Fibonacci first met Arabic numerals.",
-      "Au VIIe siècle, des cavaliers arabes traversèrent le désert avec une foi nouvelle. L'islam rencontra l'esprit berbère, fit naître des dynasties et illumina Tlemcen et Béjaïa — où Fibonacci découvrit les chiffres arabes.",
+      "In the 7th century, Arab horsemen crossed the desert carrying a new faith. Islam met Berber spirit, sparked dynasties, and lit up cities like Tlemcen and Béjaïa, where scholars debated, traders bargained, and a young Italian named Fibonacci first met Arabic numerals.",
+      "Au VIIe siècle, des cavaliers arabes traversèrent le désert avec une foi nouvelle. L'islam rencontra l'esprit berbère, fit naître des dynasties et illumina Tlemcen et Béjaïa, où Fibonacci découvrit les chiffres arabes.",
       "في القرن السابع، عبر الفرسان العرب الصحراء حاملين دينًا جديدًا. التقى الإسلام بالروح الأمازيغية، فأنشأ دولًا وأضاء مدنًا كتلمسان وبجاية، حيث تعلّم الإيطالي فيبوناتشي الأرقام العربية.",
     ),
     figures: [
@@ -1633,7 +1633,7 @@ export const eras: Era[] = [
         "كانت تلمسان تُلقّب بـ'لؤلؤة المغرب'.",
       ),
       L(
-        "Algiers earned the nickname 'El Bahdja' — 'the joyful'.",
+        "Algiers earned the nickname 'El Bahdja', 'the joyful'.",
         "Alger fut surnommée « El Bahdja », la joyeuse.",
         "عُرفت الجزائر بـ'البهجة'.",
       ),
@@ -1648,9 +1648,9 @@ export const eras: Era[] = [
         "امتزجت الثقافتان الأمازيغية والعربية لتشكّلا الهوية الجزائرية.",
       ),
       L(
-        "Béjaïa exported beeswax candles to Europe — the French word 'bougie' comes from its name.",
-        "Béjaïa exportait des bougies en cire — le mot « bougie » vient de son nom.",
-        "صدّرت بجاية شموع الشمع إلى أوروبا — وكلمة 'bougie' الفرنسية مشتقة من اسمها.",
+        "Béjaïa exported beeswax candles to Europe, the French word 'bougie' comes from its name.",
+        "Béjaïa exportait des bougies en cire, le mot « bougie » vient de son nom.",
+        "صدّرت بجاية شموع الشمع إلى أوروبا، وكلمة 'bougie' الفرنسية مشتقة من اسمها.",
       ),
       L(
         "Caravans crossed the Sahara linking Algerian markets to West African gold and salt.",
@@ -1781,8 +1781,8 @@ export const eras: Era[] = [
         ],
         answerIndex: 2,
         explanation: L(
-          "Béjaïa exported beeswax candles to Europe — hence 'bougie'.",
-          "Béjaïa exportait des bougies en cire — d'où le mot.",
+          "Béjaïa exported beeswax candles to Europe, hence 'bougie'.",
+          "Béjaïa exportait des bougies en cire, d'où le mot.",
           "صدّرت بجاية شموع الشمع، ومن هنا جاءت الكلمة.",
         ),
       },
@@ -1952,7 +1952,7 @@ export const eras: Era[] = [
         ],
         answerIndex: 0,
         explanation: L(
-          "Kahina (Dihya) — heroine of Berber resistance.",
+          "Kahina (Dihya), heroine of Berber resistance.",
           "Kahina (Dihya), héroïne de la résistance berbère.",
           "الكاهنة (ديهيا) بطلة المقاومة الأمازيغية.",
         ),
@@ -2107,8 +2107,8 @@ export const eras: Era[] = [
         ],
         answerIndex: 1,
         explanation: L(
-          "Tlemcen — a center of art, scholarship, and trade.",
-          "Tlemcen — centre d'art, de savoir et de commerce.",
+          "Tlemcen, a center of art, scholarship, and trade.",
+          "Tlemcen, centre d'art, de savoir et de commerce.",
           "تلمسان مركز للفن والعلم والتجارة.",
         ),
       },
@@ -2480,8 +2480,8 @@ export const eras: Era[] = [
     dateRange: "1830 – 1962",
     emoji: "⚓",
     summary: L(
-      "On a summer day in 1830, French ships appeared off Algiers — and stayed for 132 years. Lands were taken, voices silenced, and yet resistance burned on, from Emir Abdelkader's desert campaigns to the mountain stand of Lalla Fatma N'Soumer.",
-      "Un jour d'été 1830, les navires français parurent devant Alger — et restèrent 132 ans. Terres confisquées, voix réduites au silence, mais la résistance perdura, de l'Émir Abdelkader à Lalla Fatma N'Soumer.",
+      "On a summer day in 1830, French ships appeared off Algiers and stayed for 132 years. Lands were taken, voices silenced, and yet resistance burned on, from Emir Abdelkader's desert campaigns to the mountain stand of Lalla Fatma N'Soumer.",
+      "Un jour d'été 1830, les navires français parurent devant Alger et restèrent 132 ans. Terres confisquées, voix réduites au silence, mais la résistance perdura, de l'Émir Abdelkader à Lalla Fatma N'Soumer.",
       "في صيف 1830، ظهرت السفن الفرنسية أمام الجزائر، وبقيت 132 عامًا. صودرت الأراضي وأُسكتت الأصوات، لكن المقاومة استمرت من حملات الأمير عبد القادر إلى صمود لالة فاطمة نسومر في الجبال.",
     ),
     figures: [
@@ -2527,7 +2527,7 @@ export const eras: Era[] = [
         "للأمير عبد القادر تمثال في دمشق وبلدة باسمه في الولايات المتحدة.",
       ),
       L(
-        "Algeria was treated as part of France itself — not a typical colony.",
+        "Algeria was treated as part of France itself, not a typical colony.",
         "L'Algérie fut traitée comme partie intégrante de la France.",
         "عُومِلت الجزائر كجزء من فرنسا لا كمستعمرة عادية.",
       ),
@@ -2547,7 +2547,7 @@ export const eras: Era[] = [
         "في 8 ماي 1945 تحوّلت احتفالات النصر في سطيف إلى مجزرة.",
       ),
       L(
-        "French settlers were called 'pieds-noirs' — many had never seen France.",
+        "French settlers were called 'pieds-noirs', many had never seen France.",
         "Les colons français étaient appelés « pieds-noirs ».",
         "كان المستوطنون يُسمّون 'الأقدام السوداء' وكثير منهم لم يرَ فرنسا.",
       ),
@@ -2685,7 +2685,7 @@ export const eras: Era[] = [
         ],
         answerIndex: 2,
         explanation: L(
-          "From 1830 to 1962 — 132 years.",
+          "From 1830 to 1962, 132 years.",
           "De 1830 à 1962, 132 ans.",
           "من 1830 إلى 1962 أي 132 سنة.",
         ),
@@ -2856,7 +2856,7 @@ export const eras: Era[] = [
         ],
         answerIndex: 1,
         explanation: L(
-          "Emir Abdelkader — leader, scholar, and symbol of dignity.",
+          "Emir Abdelkader, leader, scholar, and symbol of dignity.",
           "L'Émir Abdelkader, chef, savant et symbole de dignité.",
           "الأمير عبد القادر قائد وعالم ورمز للكرامة.",
         ),
@@ -2994,9 +2994,9 @@ export const eras: Era[] = [
     dateRange: "1954 – 1962",
     emoji: "🕊️",
     summary: L(
-      "Just after midnight on November 1, 1954, gunfire echoed through the Aurès Mountains — the FLN had risen. Eight years of sacrifice followed, until on July 5, 1962, Algeria stood free at last.",
-      "Aux premières heures du 1er novembre 1954, les coups de feu résonnèrent dans les Aurès — le FLN s'était soulevé. Huit ans de sacrifices plus tard, le 5 juillet 1962, l'Algérie devint libre.",
-      "في فجر الفاتح من نوفمبر 1954، دوّى الرصاص في جبال الأوراس — انطلقت ثورة جبهة التحرير. وبعد ثماني سنوات من التضحيات، نالت الجزائر استقلالها في 5 جويلية 1962.",
+      "Just after midnight on November 1, 1954, gunfire echoed through the Aurès Mountains, the FLN had risen. Eight years of sacrifice followed, until on July 5, 1962, Algeria stood free at last.",
+      "Aux premières heures du 1er novembre 1954, les coups de feu résonnèrent dans les Aurès, le FLN s'était soulevé. Huit ans de sacrifices plus tard, le 5 juillet 1962, l'Algérie devint libre.",
+      "في فجر الفاتح من نوفمبر 1954، دوّى الرصاص في جبال الأوراس، انطلقت ثورة جبهة التحرير. وبعد ثماني سنوات من التضحيات، نالت الجزائر استقلالها في 5 جويلية 1962.",
     ),
     figures: [
       {
@@ -3036,8 +3036,8 @@ export const eras: Era[] = [
     ],
     facts: [
       L(
-        "The revolution began with coordinated attacks on November 1, 1954 — 'Toussaint Rouge'.",
-        "La révolution éclata le 1er novembre 1954 — la « Toussaint rouge ».",
+        "The revolution began with coordinated attacks on November 1, 1954, 'Toussaint Rouge'.",
+        "La révolution éclata le 1er novembre 1954, la « Toussaint rouge ».",
         "انطلقت الثورة بهجمات منسّقة في أول نوفمبر 1954.",
       ),
       L(
@@ -3066,8 +3066,8 @@ export const eras: Era[] = [
         "أصبح أحمد بن بلة أول رئيس للجزائر بعد الاستقلال.",
       ),
       L(
-        "July 5 was chosen — exactly 132 years after French troops landed in 1830.",
-        "Le 5 juillet — 132 ans jour pour jour après le débarquement français.",
+        "July 5 was chosen, exactly 132 years after French troops landed in 1830.",
+        "Le 5 juillet, 132 ans jour pour jour après le débarquement français.",
         "اختير 5 جويلية بعد 132 عامًا تمامًا من الإنزال الفرنسي.",
       ),
       L(
@@ -3228,9 +3228,9 @@ export const eras: Era[] = [
         ],
         answerIndex: 0,
         explanation: L(
-          "Front de Libération Nationale — led Algeria to independence.",
+          "Front de Libération Nationale, led Algeria to independence.",
           "Front de Libération Nationale.",
-          "جبهة التحرير الوطني — قادت الجزائر للاستقلال.",
+          "جبهة التحرير الوطني، قادت الجزائر للاستقلال.",
         ),
       },
       {
@@ -3253,7 +3253,7 @@ export const eras: Era[] = [
         ],
         answerIndex: 1,
         explanation: L(
-          "Green and white with a red crescent and star — the flag of free Algeria.",
+          "Green and white with a red crescent and star, the flag of free Algeria.",
           "Vert et blanc, croissant et étoile rouges.",
           "أخضر وأبيض مع هلال ونجمة حمراوين، علم الجزائر الحرة.",
         ),
@@ -3304,7 +3304,7 @@ export const eras: Era[] = [
         ),
         answer: true,
         explanation: L(
-          "From November 1954 to July 1962 — about 7.5 years.",
+          "From November 1954 to July 1962, about 7.5 years.",
           "De novembre 1954 à juillet 1962.",
           "من نوفمبر 1954 إلى جويلية 1962.",
         ),
@@ -3382,7 +3382,7 @@ export const eras: Era[] = [
         ],
         answerIndex: 1,
         explanation: L(
-          "Larbi Ben M'hidi — a hero of the Battle of Algiers.",
+          "Larbi Ben M'hidi, a hero of the Battle of Algiers.",
           "Larbi Ben M'hidi, héros de la Bataille d'Alger.",
           "العربي بن مهيدي بطل معركة الجزائر.",
         ),
@@ -3482,9 +3482,9 @@ export const eras: Era[] = [
           {
             id: "toussaint",
             label: L(
-              "Toussaint Rouge — revolution begins",
-              "Toussaint rouge — début de la révolution",
-              "أول نوفمبر — انطلاق الثورة",
+              "Toussaint Rouge, revolution begins",
+              "Toussaint rouge, début de la révolution",
+              "أول نوفمبر، انطلاق الثورة",
             ),
             hint: L("Nov 1, 1954", "1er nov. 1954", "1 نوفمبر 1954"),
           },

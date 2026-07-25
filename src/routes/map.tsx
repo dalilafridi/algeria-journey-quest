@@ -18,8 +18,8 @@ export const Route = createFileRoute("/map")({
   head: () =>
     pageMeta({
       path: "/map",
-      title: "Region Explorer — DZ Odyssey",
-      description: "Explore Algeria region by region: Kabylie, Aurès, Algiers, Constantine, the West and the Sahara — facts, figures and stories.",
+      title: "Region Explorer, DZ Odyssey",
+      description: "Explore Algeria region by region: Kabylie, Aurès, Algiers, Constantine, the West and the Sahara, facts, figures and stories.",
       image: mapImg
     }),
   component: RegionExplorerPage,
@@ -503,7 +503,7 @@ function RegionExplorerPage() {
                 </blockquote>
                 {extras.reflection.attribution && (
                   <figcaption className="mt-2 text-xs text-muted-foreground">
-                    — {t(extras.reflection.attribution, lang)}
+                   , {t(extras.reflection.attribution, lang)}
                   </figcaption>
                 )}
               </figure>

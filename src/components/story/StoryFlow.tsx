@@ -125,7 +125,7 @@ export function StoryFlow({ scenes, accent = "var(--secondary)", title, continui
         </span>
       </header>
 
-      {/* Scene body — re-mounts on step change so fade-in plays */}
+      {/* Scene body, re-mounts on step change so fade-in plays */}
       <div
         key={tick}
         className="px-5 sm:px-7 py-6 sm:py-8 min-h-[14rem] flex flex-col justify-center animate-fade-in"

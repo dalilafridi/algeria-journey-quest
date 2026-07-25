@@ -10,7 +10,7 @@ export const LISTEN: Record<string, ListenItem> = {
   kassaman: {
     id: "kassaman",
     emoji: "🎶",
-    title: L("Kassaman — National Anthem", "Kassaman — hymne national", "قَسَمًا — النشيد الوطني"),
+    title: L("Kassaman, National Anthem", "Kassaman, hymne national", "قَسَمًا، النشيد الوطني"),
     description: L(
       "The national anthem of Algeria, written during the War of Independence.",
       "L'hymne national algérien, écrit pendant la guerre d'indépendance.",

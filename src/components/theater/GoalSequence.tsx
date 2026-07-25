@@ -105,7 +105,7 @@ export function GoalSequence({
               sequence={event.goal?.sequence}
               ariaDescription={
                 event.goal?.sequence
-                  ? `${tt(T.buildup, lang)} — ${tt(event.label, lang)}`
+                  ? `${tt(T.buildup, lang)}, ${tt(event.label, lang)}`
                   : tt(T.noSequence, lang)
               }
             />

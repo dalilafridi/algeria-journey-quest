@@ -135,7 +135,7 @@ export type QuizQuestion = {
 
 export type ClubIdentity = {
   colors: { primary: string; secondary: string };
-  crestGlyph: string; // stylised placeholder glyph — never presented as archival crest
+  crestGlyph: string; // stylised placeholder glyph, never presented as archival crest
   motto?: LocalizedString;
   meaning?: LocalizedString;
   crestHistory?: LocalizedString;

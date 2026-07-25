@@ -26,8 +26,8 @@ export const Route = createFileRoute("/football/lesvertes")({
   head: () =>
     pageMeta({
       path: "/football/lesvertes",
-      title: "Les Vertes — Algeria's Women's National Team · DZ Odyssey",
-      description: "Football, resilience and a new generation representing Algeria — a permanent exhibit in the Hall of Algerian Football.",
+      title: "Les Vertes, Algeria's Women's National Team · DZ Odyssey",
+      description: "Football, resilience and a new generation representing Algeria, a permanent exhibit in the Hall of Algerian Football.",
       image: lesVertesHero.url
     }),
   component: LesVertesExhibit,
@@ -270,8 +270,8 @@ function BarriersSection({ lang }: { lang: Lang }) {
     >
       <p className="mb-8 max-w-3xl text-[15px] sm:text-base leading-relaxed text-foreground/80" style={SERIF}>
         {{
-          en: "The story of Les Vertes is inseparable from the obstacles the players faced — and the persistence with which they answered.",
-          fr: "L'histoire des Vertes est inséparable des obstacles rencontrés — et de la persévérance avec laquelle elles y ont répondu.",
+          en: "The story of Les Vertes is inseparable from the obstacles the players faced and the persistence with which they answered.",
+          fr: "L'histoire des Vertes est inséparable des obstacles rencontrés et de la persévérance avec laquelle elles y ont répondu.",
           ar: "لا يمكن فصل قصّة الخضراوات عن العقبات التي واجهتها اللاعبات وعن الصبر الذي قابلن به تلك العقبات.",
         }[lang]}
       </p>

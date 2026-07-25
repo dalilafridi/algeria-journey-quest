@@ -57,9 +57,9 @@ export const COLLECTIONS: CollectionDef[] = [
       "ملوك ومؤسسو دول وقادة أمة.",
     ),
     intro: L(
-      "Those who built kingdoms, founded dynasties and steered the destiny of the state — from ancient Numidia to the modern republic.",
-      "Ceux qui ont bâti des royaumes, fondé des dynasties et guidé le destin de l'État — de la Numidie antique à la république moderne.",
-      "من بنوا الممالك وأسّسوا الدول ووجّهوا مصير الدولة — من نوميديا القديمة إلى الجمهورية الحديثة.",
+      "Those who built kingdoms, founded dynasties and steered the destiny of the state, from ancient Numidia to the modern republic.",
+      "Ceux qui ont bâti des royaumes, fondé des dynasties et guidé le destin de l'État, de la Numidie antique à la république moderne.",
+      "من بنوا الممالك وأسّسوا الدول ووجّهوا مصير الدولة، من نوميديا القديمة إلى الجمهورية الحديثة.",
     ),
     accent: "var(--brand-gold-deep)",
     members: [
@@ -98,9 +98,9 @@ export const COLLECTIONS: CollectionDef[] = [
       "مدافعون وقفوا في وجه الإمبراطورية والاحتلال.",
     ),
     intro: L(
-      "Sword-bearers of the land across the ages — ancient rebels, corsairs of the regency, and the great leaders of anti-colonial resistance.",
-      "Porteurs de l'épée à travers les âges — rebelles antiques, corsaires de la régence et grands chefs de la résistance anticoloniale.",
-      "حملة السيف عبر العصور — ثوار القدماء وبحّارة الإيالة وكبار قادة المقاومة ضد الاستعمار.",
+      "Sword-bearers of the land across the ages, ancient rebels, corsairs of the regency, and the great leaders of anti-colonial resistance.",
+      "Porteurs de l'épée à travers les âges, rebelles antiques, corsaires de la régence et grands chefs de la résistance anticoloniale.",
+      "حملة السيف عبر العصور، ثوار القدماء وبحّارة الإيالة وكبار قادة المقاومة ضد الاستعمار.",
     ),
     accent: "var(--primary)",
     members: [
@@ -136,9 +136,9 @@ export const COLLECTIONS: CollectionDef[] = [
       "الجيل الذي أشعل حرب الاستقلال.",
     ),
     intro: L(
-      "The architects and martyrs of 1954 — those who organised, fought and fell for a free Algeria.",
-      "Les architectes et martyrs de 1954 — ceux qui organisèrent, combattirent et tombèrent pour une Algérie libre.",
-      "صنّاع وشهداء 1954 — من نظّموا وقاتلوا واستشهدوا من أجل جزائر حرة.",
+      "The architects and martyrs of 1954, those who organised, fought and fell for a free Algeria.",
+      "Les architectes et martyrs de 1954, ceux qui organisèrent, combattirent et tombèrent pour une Algérie libre.",
+      "صنّاع وشهداء 1954، من نظّموا وقاتلوا واستشهدوا من أجل جزائر حرة.",
     ),
     accent: "var(--primary)",
     members: [
@@ -167,9 +167,9 @@ export const COLLECTIONS: CollectionDef[] = [
       "أولياء ومصلحون وحفظة الإيمان.",
     ),
     intro: L(
-      "Mystics, theologians and reformers who shaped the spiritual life of the land — from Sufi saints to the modern reform movement.",
-      "Mystiques, théologiens et réformateurs qui ont façonné la vie spirituelle du pays — des saints soufis au mouvement réformiste moderne.",
-      "متصوفة وعلماء ومصلحون صاغوا الحياة الروحية للبلاد — من أولياء التصوف إلى حركة الإصلاح الحديثة.",
+      "Mystics, theologians and reformers who shaped the spiritual life of the land, from Sufi saints to the modern reform movement.",
+      "Mystiques, théologiens et réformateurs qui ont façonné la vie spirituelle du pays, des saints soufis au mouvement réformiste moderne.",
+      "متصوفة وعلماء ومصلحون صاغوا الحياة الروحية للبلاد، من أولياء التصوف إلى حركة الإصلاح الحديثة.",
     ),
     accent: "var(--secondary)",
     members: ["augustine", "sidi-boumediene", "ibn-tumart", "ben-badis"],
@@ -210,9 +210,9 @@ export const COLLECTIONS: CollectionDef[] = [
       "الأصوات التي غنّت روح شعب.",
     ),
     intro: L(
-      "Poets, novelists and musicians who carried memory, language and longing — from oral tradition to chaâbi, raï and modern letters.",
-      "Poètes, romanciers et musiciens porteurs de mémoire, de langue et de nostalgie — de la tradition orale au chaâbi, au raï et aux lettres modernes.",
-      "شعراء وروائيون وموسيقيون حملوا الذاكرة واللغة والحنين — من التراث الشفوي إلى الشعبي والراي والأدب الحديث.",
+      "Poets, novelists and musicians who carried memory, language and longing, from oral tradition to chaâbi, raï and modern letters.",
+      "Poètes, romanciers et musiciens porteurs de mémoire, de langue et de nostalgie, de la tradition orale au chaâbi, au raï et aux lettres modernes.",
+      "شعراء وروائيون وموسيقيون حملوا الذاكرة واللغة والحنين، من التراث الشفوي إلى الشعبي والراي والأدب الحديث.",
     ),
     accent: "var(--accent)",
     members: [

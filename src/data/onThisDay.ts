@@ -18,7 +18,7 @@ export type OnThisDayEntry = {
   month: number; // 1–12
   day: number; // 1–31
   year: number;
-  yearLabel?: string; // e.g. "148 BC" — display override
+  yearLabel?: string; // e.g. "148 BC", display override
   event: Localized<string>;
   figureId: string;
   figureName: Localized<string>;
@@ -41,9 +41,9 @@ export const onThisDay: OnThisDayEntry[] = [
     day: 1,
     year: 1954,
     event: L(
-      "The Toussaint Rouge — coordinated attacks announce the start of the Algerian War of Independence.",
-      "La Toussaint Rouge — des attaques coordonnées annoncent le début de la guerre d'indépendance algérienne.",
-      "الفاتح من نوفمبر — عمليات منسّقة تعلن انطلاق حرب التحرير الجزائرية.",
+      "The Toussaint Rouge, coordinated attacks announce the start of the Algerian War of Independence.",
+      "La Toussaint Rouge, des attaques coordonnées annoncent le début de la guerre d'indépendance algérienne.",
+      "الفاتح من نوفمبر، عمليات منسّقة تعلن انطلاق حرب التحرير الجزائرية.",
     ),
     figureId: "mostefa-ben-boulaid",
     figureName: L("Mostefa Ben Boulaïd", "Mostefa Ben Boulaïd", "مصطفى بن بولعيد"),
@@ -92,9 +92,9 @@ export const onThisDay: OnThisDayEntry[] = [
     day: 8,
     year: 1945,
     event: L(
-      "As Europe celebrates victory, peaceful marches in Sétif, Guelma and Kherrata are met with a colonial massacre — a turning point toward the war for independence.",
-      "Alors que l'Europe fête la victoire, des marches pacifiques à Sétif, Guelma et Kherrata sont réprimées dans un massacre colonial — un tournant vers la guerre d'indépendance.",
-      "بينما تحتفل أوروبا بالنصر، تُقمَع مسيرات سلمية في سطيف وقالمة وخراطة بمجزرة استعمارية — نقطة تحوّل نحو حرب الاستقلال.",
+      "As Europe celebrates victory, peaceful marches in Sétif, Guelma and Kherrata are met with a colonial massacre, a turning point toward the war for independence.",
+      "Alors que l'Europe fête la victoire, des marches pacifiques à Sétif, Guelma et Kherrata sont réprimées dans un massacre colonial, un tournant vers la guerre d'indépendance.",
+      "بينما تحتفل أوروبا بالنصر، تُقمَع مسيرات سلمية في سطيف وقالمة وخراطة بمجزرة استعمارية، نقطة تحوّل نحو حرب الاستقلال.",
     ),
     figureId: "ferhat-abbas",
     figureName: L("Ferhat Abbas", "Ferhat Abbas", "فرحات عباس"),
@@ -143,9 +143,9 @@ export const onThisDay: OnThisDayEntry[] = [
     day: 20,
     year: 1980,
     event: L(
-      "Tafsut Imazighen — the Berber Spring — begins in Kabylie, demanding recognition of the Amazigh language and identity.",
-      "Tafsut Imazighen — le Printemps berbère — commence en Kabylie, exigeant la reconnaissance de la langue et de l'identité amazighes.",
-      "تافسوت إيمازيغن — الربيع الأمازيغي — ينطلق في القبائل مطالبًا بالاعتراف باللغة والهوية الأمازيغية.",
+      "Tafsut Imazighen, the Berber Spring, begins in Kabylie, demanding recognition of the Amazigh language and identity.",
+      "Tafsut Imazighen, le Printemps berbère, commence en Kabylie, exigeant la reconnaissance de la langue et de l'identité amazighes.",
+      "تافسوت إيمازيغن، الربيع الأمازيغي، ينطلق في القبائل مطالبًا بالاعتراف باللغة والهوية الأمازيغية.",
     ),
     figureId: "mammeri",
     figureName: L("Mouloud Mammeri", "Mouloud Mammeri", "مولود معمري"),
@@ -160,9 +160,9 @@ export const onThisDay: OnThisDayEntry[] = [
     day: 23,
     year: 1847,
     event: L(
-      "After fifteen years of resistance, Emir Abdelkader surrenders — his ethical conduct of war admired across Europe.",
-      "Après quinze ans de résistance, l'Émir Abdelkader se rend — sa conduite éthique de la guerre est saluée à travers l'Europe.",
-      "بعد خمسة عشر عامًا من المقاومة، يستسلم الأمير عبد القادر — وسلوكه الأخلاقي في الحرب موضع إعجاب في كل أوروبا.",
+      "After fifteen years of resistance, Emir Abdelkader surrenders, his ethical conduct of war admired across Europe.",
+      "Après quinze ans de résistance, l'Émir Abdelkader se rend, sa conduite éthique de la guerre est saluée à travers l'Europe.",
+      "بعد خمسة عشر عامًا من المقاومة، يستسلم الأمير عبد القادر، وسلوكه الأخلاقي في الحرب موضع إعجاب في كل أوروبا.",
     ),
     figureId: "abdelkader",
     figureName: L("Emir Abdelkader", "Émir Abdelkader", "الأمير عبد القادر"),
@@ -211,9 +211,9 @@ export const onThisDay: OnThisDayEntry[] = [
     day: 18,
     year: 2001,
     event: L(
-      "The Black Spring begins in Kabylie — a movement of protest and memory that transforms Amazigh cultural politics.",
-      "Le Printemps noir commence en Kabylie — un mouvement de protestation et de mémoire qui transforme la politique culturelle amazighe.",
-      "الربيع الأسود ينطلق في القبائل — حركة احتجاج وذاكرة تُغيّر السياسة الثقافية الأمازيغية.",
+      "The Black Spring begins in Kabylie, a movement of protest and memory that transforms Amazigh cultural politics.",
+      "Le Printemps noir commence en Kabylie, un mouvement de protestation et de mémoire qui transforme la politique culturelle amazighe.",
+      "الربيع الأسود ينطلق في القبائل، حركة احتجاج وذاكرة تُغيّر السياسة الثقافية الأمازيغية.",
     ),
     figureId: "matoub",
     figureName: L("Matoub Lounès", "Matoub Lounès", "معتوب لوناس"),
@@ -247,9 +247,9 @@ export const onThisDay: OnThisDayEntry[] = [
     year: -105,
     yearLabel: "105 BC",
     event: L(
-      "Jugurtha, defiant king of Numidia, is captured — but his long resistance shakes the Roman Republic to its foundations.",
-      "Jugurtha, roi rebelle de Numidie, est capturé — mais sa longue résistance ébranle les fondations de la République romaine.",
-      "يوغرطة، ملك نوميديا المتمرّد، يقع في الأسر — لكن مقاومته الطويلة تهزّ أركان الجمهورية الرومانية.",
+      "Jugurtha, defiant king of Numidia, is captured, but his long resistance shakes the Roman Republic to its foundations.",
+      "Jugurtha, roi rebelle de Numidie, est capturé, mais sa longue résistance ébranle les fondations de la République romaine.",
+      "يوغرطة، ملك نوميديا المتمرّد، يقع في الأسر، لكن مقاومته الطويلة تهزّ أركان الجمهورية الرومانية.",
     ),
     figureId: "jugurtha",
     figureName: L("Jugurtha", "Jugurtha", "يوغرطة"),
@@ -264,9 +264,9 @@ export const onThisDay: OnThisDayEntry[] = [
     day: 15,
     year: 703,
     event: L(
-      "Queen Dihya (the Kahina) rallies the Aurès against the advancing Umayyad armies — a legend of Amazigh resistance is born.",
-      "La reine Dihya (la Kahina) rallie les Aurès face aux armées omeyyades — une légende de la résistance amazighe naît.",
-      "الملكة ديهيا (الكاهنة) توحّد الأوراس في مواجهة الجيوش الأموية — أسطورة المقاومة الأمازيغية تولد.",
+      "Queen Dihya (the Kahina) rallies the Aurès against the advancing Umayyad armies, a legend of Amazigh resistance is born.",
+      "La reine Dihya (la Kahina) rallie les Aurès face aux armées omeyyades, une légende de la résistance amazighe naît.",
+      "الملكة ديهيا (الكاهنة) توحّد الأوراس في مواجهة الجيوش الأموية، أسطورة المقاومة الأمازيغية تولد.",
     ),
     figureId: "dihya",
     figureName: L("Dihya (Kahina)", "Dihya (Kahina)", "ديهيا (الكاهنة)"),
@@ -281,9 +281,9 @@ export const onThisDay: OnThisDayEntry[] = [
     day: 27,
     year: 1332,
     event: L(
-      "Ibn Khaldun, born on this day, will spend decades in the Maghreb writing the Muqaddimah — the founding text of modern historiography and sociology.",
-      "Ibn Khaldoun, né ce jour, passera des décennies au Maghreb à rédiger la Muqaddima — texte fondateur de l'historiographie et de la sociologie modernes.",
-      "ابن خلدون، المولود في هذا اليوم، سيقضي عقودًا في المغرب يكتب المقدّمة — النصّ المؤسّس للتأريخ وعلم الاجتماع الحديثين.",
+      "Ibn Khaldun, born on this day, will spend decades in the Maghreb writing the Muqaddimah, the founding text of modern historiography and sociology.",
+      "Ibn Khaldoun, né ce jour, passera des décennies au Maghreb à rédiger la Muqaddima, texte fondateur de l'historiographie et de la sociologie modernes.",
+      "ابن خلدون، المولود في هذا اليوم، سيقضي عقودًا في المغرب يكتب المقدّمة، النصّ المؤسّس للتأريخ وعلم الاجتماع الحديثين.",
     ),
     figureId: "ibn-khaldun",
     figureName: L("Ibn Khaldun", "Ibn Khaldoun", "ابن خلدون"),
@@ -332,9 +332,9 @@ export const onThisDay: OnThisDayEntry[] = [
     day: 16,
     year: 1871,
     event: L(
-      "Cheikh El Mokrani launches the great insurrection — one of the largest anti-colonial revolts of the 19th century.",
-      "Cheikh El Mokrani déclenche la grande insurrection — l'un des plus vastes soulèvements anticoloniaux du XIXe siècle.",
-      "الشيخ المقراني يشعل الانتفاضة الكبرى — من أكبر الثورات المناهضة للاستعمار في القرن التاسع عشر.",
+      "Cheikh El Mokrani launches the great insurrection, one of the largest anti-colonial revolts of the 19th century.",
+      "Cheikh El Mokrani déclenche la grande insurrection, l'un des plus vastes soulèvements anticoloniaux du XIXe siècle.",
+      "الشيخ المقراني يشعل الانتفاضة الكبرى، من أكبر الثورات المناهضة للاستعمار في القرن التاسع عشر.",
     ),
     figureId: "el-mokrani",
     figureName: L("Cheikh El Mokrani", "Cheikh El Mokrani", "الشيخ المقراني"),
@@ -349,9 +349,9 @@ export const onThisDay: OnThisDayEntry[] = [
     day: 23,
     year: 1957,
     event: L(
-      "Larbi Ben M'Hidi, one of the six historic leaders of the FLN, is arrested in Algiers — his composure under interrogation becomes legendary.",
-      "Larbi Ben M'Hidi, l'un des six chefs historiques du FLN, est arrêté à Alger — son calme face aux interrogatoires devient légendaire.",
-      "العربي بن مهيدي، أحد الزعماء التاريخيين الستة لجبهة التحرير، يُعتقل في الجزائر — رباطة جأشه أمام المحقّقين تصبح أسطورة.",
+      "Larbi Ben M'Hidi, one of the six historic leaders of the FLN, is arrested in Algiers, his composure under interrogation becomes legendary.",
+      "Larbi Ben M'Hidi, l'un des six chefs historiques du FLN, est arrêté à Alger, son calme face aux interrogatoires devient légendaire.",
+      "العربي بن مهيدي، أحد الزعماء التاريخيين الستة لجبهة التحرير، يُعتقل في الجزائر، رباطة جأشه أمام المحقّقين تصبح أسطورة.",
     ),
     figureId: "ben-mhidi",
     figureName: L("Larbi Ben M'Hidi", "Larbi Ben M'Hidi", "العربي بن مهيدي"),
@@ -383,9 +383,9 @@ export const onThisDay: OnThisDayEntry[] = [
     day: 15,
     year: 1957,
     event: L(
-      "Djamila Bouhired is sentenced to death by a military court — international protest turns her into a symbol of the Algerian cause.",
-      "Djamila Bouhired est condamnée à mort par un tribunal militaire — les protestations internationales font d'elle un symbole de la cause algérienne.",
-      "جميلة بوحيرد يحكم عليها بالإعدام أمام محكمة عسكرية — الاحتجاجات الدولية تُحوّلها إلى رمز للقضية الجزائرية.",
+      "Djamila Bouhired is sentenced to death by a military court, international protest turns her into a symbol of the Algerian cause.",
+      "Djamila Bouhired est condamnée à mort par un tribunal militaire, les protestations internationales font d'elle un symbole de la cause algérienne.",
+      "جميلة بوحيرد يحكم عليها بالإعدام أمام محكمة عسكرية، الاحتجاجات الدولية تُحوّلها إلى رمز للقضية الجزائرية.",
     ),
     figureId: "djamila-bouhired",
     figureName: L("Djamila Bouhired", "Djamila Bouhired", "جميلة بوحيرد"),
@@ -417,9 +417,9 @@ export const onThisDay: OnThisDayEntry[] = [
     day: 17,
     year: 1976,
     event: L(
-      "Idir releases 'A Vava Inouva' — a Kabyle lullaby that quietly carries Amazigh song around the world.",
-      "Idir sort « A Vava Inouva » — une berceuse kabyle qui, en silence, porte le chant amazigh à travers le monde.",
-      "إيدير يصدر «آڤاڤا إينوڤا» — تهويدة قبائلية تحمل الأغنية الأمازيغية بهدوء إلى العالم.",
+      "Idir releases 'A Vava Inouva', a Kabyle lullaby that quietly carries Amazigh song around the world.",
+      "Idir sort « A Vava Inouva », une berceuse kabyle qui, en silence, porte le chant amazigh à travers le monde.",
+      "إيدير يصدر «آڤاڤا إينوڤا»، تهويدة قبائلية تحمل الأغنية الأمازيغية بهدوء إلى العالم.",
     ),
     figureId: "idir",
     figureName: L("Idir", "Idir", "إيدير"),

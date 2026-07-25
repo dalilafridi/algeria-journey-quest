@@ -68,8 +68,8 @@ export const Route = createFileRoute("/figures/collection/$collectionId")({
   head: ({ params }) => {
     const row = findRowBySlug(params.collectionId);
     const title = row
-      ? `${t(row.label, "en")} — Hall of Legends`
-      : "Collection — Hall of Legends";
+      ? `${t(row.label, "en")}, Hall of Legends`
+      : "Collection, Hall of Legends";
     const description = row
       ? t(row.tagline, "en")
       : "A curated exhibit room of Algerian historical figures.";

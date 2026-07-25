@@ -242,7 +242,7 @@ export function getCuisineExploreGroups(): ExploreGroup[] {
 
   return [
     group(RELATED_LABELS.regions, relatedRegions),
-    group(CUISINE_LABEL, []), // reserved slot — currently empty; kept for future dish-level pages
+    group(CUISINE_LABEL, []), // reserved slot, currently empty; kept for future dish-level pages
     group(RELATED_LABELS.eras, relatedEras),
     group(RELATED_LABELS.collections, relatedCulture),
   ].filter((g) => g.items.length > 0);

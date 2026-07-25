@@ -12,9 +12,9 @@ import { THEATER_SERIF as SERIF } from "./TheaterShell";
 const T = {
   heading: { en: "Archival gallery", fr: "Galerie archivistique", ar: "المعرض الأرشيفي" },
   awaiting: {
-    en: "Archive placeholder — awaiting sourced material.",
-    fr: "Emplacement d'archive — en attente de matériel sourcé.",
-    ar: "مكان أرشيفي — بانتظار مادّة موثّقة.",
+    en: "Archive placeholder, awaiting sourced material.",
+    fr: "Emplacement d'archive, en attente de matériel sourcé.",
+    ar: "مكان أرشيفي، بانتظار مادّة موثّقة.",
   },
   reproduction: {
     en: "Reproduction / recreation",

@@ -173,7 +173,7 @@ export function MedallionFrame({
             return <circle key={i} cx={cx} cy={cy} r="0.7" fill={m.rim} opacity="0.65" />;
           })}
 
-          {/* Laurel arcs — the unifier */}
+          {/* Laurel arcs, the unifier */}
           <g fill="none" stroke={m.rim} strokeWidth="0.7" strokeLinecap="round" opacity="0.4">
             <path d="M22 73 Q26 79 33 80" />
             <path d="M78 73 Q74 79 67 80" />

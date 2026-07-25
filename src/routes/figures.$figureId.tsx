@@ -77,12 +77,12 @@ export const Route = createFileRoute("/figures/$figureId")({
     if (!loaderData) {
       return pageMeta({
         path: `/figures/${params.figureId}`,
-        title: "Figure — Hall of Legends",
+        title: "Figure, Hall of Legends",
         description: "This figure exhibit could not be found.",
         noindex: true,
       });
     }
-    const title = `${t(loaderData.figure.displayName, "en")} — Hall of Legends`;
+    const title = `${t(loaderData.figure.displayName, "en")}, Hall of Legends`;
     const desc = t(loaderData.figure.fact, "en");
     return pageMeta({
       path: `/figures/${loaderData.figure.id}`,

@@ -177,14 +177,14 @@ export function computeStamps(state?: PassportState): Stamp[] {
     },
     {
       id: "figures-10",
-      title: { en: "Hall of Legends — Initiate", fr: "Panthéon — Initié", ar: "قاعة الأساطير — مبتدئ" },
+      title: { en: "Hall of Legends, Initiate", fr: "Panthéon, Initié", ar: "قاعة الأساطير، مبتدئ" },
       hint: { en: "View 10 historical figures", fr: "Voir 10 figures historiques", ar: "شاهد 10 شخصيات تاريخية" },
       total: 10,
       current: visitedFigures,
     },
     {
       id: "figures-25",
-      title: { en: "Hall of Legends — Master", fr: "Panthéon — Maître", ar: "قاعة الأساطير — سيد" },
+      title: { en: "Hall of Legends, Master", fr: "Panthéon, Maître", ar: "قاعة الأساطير، سيد" },
       hint: { en: "View 25 historical figures", fr: "Voir 25 figures historiques", ar: "شاهد 25 شخصية تاريخية" },
       total: 25,
       current: visitedFigures,
@@ -230,9 +230,9 @@ export function computeStamps(state?: PassportState): Stamp[] {
       visitId: "theater:gijon-1982",
       id: "witness-gijon-1982",
       title: {
-        en: "Witness to Gijón — 1982",
-        fr: "Témoin de Gijón — 1982",
-        ar: "شاهد على خيخون — ١٩٨٢",
+        en: "Witness to Gijón, 1982",
+        fr: "Témoin de Gijón, 1982",
+        ar: "شاهد على خيخون، ١٩٨٢",
       },
       hint: {
         en: "Complete the Match Theater experience of Algeria 2–1 West Germany.",

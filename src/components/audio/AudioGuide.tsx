@@ -133,7 +133,7 @@ export function AudioMiniPlayer() {
   const isPlaying = status === "playing";
   const isLoading = status === "loading";
   const durationLabel =
-    progress.duration > 0 ? fmt(progress.duration) : "—";
+    progress.duration > 0 ? fmt(progress.duration) : ", ";
   const pct =
     progress.duration > 0
       ? Math.min(100, (progress.current / progress.duration) * 100)

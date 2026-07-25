@@ -74,8 +74,8 @@ export const Route = createFileRoute("/atlas")({
   head: () =>
     pageMeta({
       path: "/atlas",
-      title: "Historical Atlas of Algeria — DZ Odyssey",
-      description: "A hand-illustrated atlas of Algeria across the centuries — regions, periods and the people who shaped them.",
+      title: "Historical Atlas of Algeria, DZ Odyssey",
+      description: "A hand-illustrated atlas of Algeria across the centuries, regions, periods and the people who shaped them.",
       image: algeriaMap
     }),
   component: AtlasPage,
@@ -120,10 +120,10 @@ function AtlasPage() {
           : "Historical Atlas",
     subtitle:
       lang === "fr"
-        ? "Une carte interactive de l'Algérie à travers le temps — régions, époques, figures et héritage culturel."
+        ? "Une carte interactive de l'Algérie à travers le temps, régions, époques, figures et héritage culturel."
         : lang === "ar"
-          ? "خريطة تفاعلية للجزائر عبر الزمن — مناطق وحقب وشخصيات وإرث ثقافي."
-          : "An interactive map of Algeria through time — regions, eras, figures, and cultural heritage.",
+          ? "خريطة تفاعلية للجزائر عبر الزمن، مناطق وحقب وشخصيات وإرث ثقافي."
+          : "An interactive map of Algeria through time, regions, eras, figures, and cultural heritage.",
     eyebrow:
       lang === "fr" ? "Explorer l'Algérie" : lang === "ar" ? "استكشف الجزائر" : "Explore Algeria",
     layerLabel:
@@ -335,12 +335,12 @@ function AtlasPage() {
               {/* Quiet topographic texture */}
               <path d={ALGERIA_PATH} fill="url(#atlas-dots)" opacity="0.28" />
 
-              {/* Interior cartographic hints — clipped to land */}
+              {/* Interior cartographic hints, clipped to land */}
               <g clipPath="url(#atlas-clip)">
                 {/* Sahara wash (south) */}
                 <rect x="0" y="42" width="100" height="56" fill="url(#atlas-sahara)" />
 
-                {/* Tell Atlas — a single restrained ridge line, not repeated peaks */}
+                {/* Tell Atlas, a single restrained ridge line, not repeated peaks */}
                 <path
                   d="M 18 29 Q 26 26.6 34 28.4 T 50 28.6 T 68 28.8"
                   fill="none"
@@ -349,7 +349,7 @@ function AtlasPage() {
                   strokeLinecap="round"
                   opacity="0.55"
                 />
-                {/* Saharan Atlas — a softer parallel ridge */}
+                {/* Saharan Atlas, a softer parallel ridge */}
                 <path
                   d="M 22 40 Q 32 38 44 39.2 T 66 40"
                   fill="none"
@@ -358,7 +358,7 @@ function AtlasPage() {
                   strokeLinecap="round"
                   opacity="0.4"
                 />
-                {/* Hoggar massif — one tiny contour cluster, deep south */}
+                {/* Hoggar massif, one tiny contour cluster, deep south */}
                 <g
                   fill="none"
                   stroke="color-mix(in oklab, var(--primary) 45%, transparent)"
@@ -450,7 +450,7 @@ function AtlasPage() {
                     role="button"
                     aria-label={t(r.name, lang)}
                   >
-                    {/* Glow halo — quieter, smaller */}
+                    {/* Glow halo, quieter, smaller */}
                     {(isFocus || isActive) && (
                       <circle
                         cx={p.x}
@@ -469,7 +469,7 @@ function AtlasPage() {
                         )}
                       </circle>
                     )}
-                    {/* Pin — small, integrated */}
+                    {/* Pin, small, integrated */}
                     <circle
                       cx={p.x}
                       cy={p.y}

@@ -64,9 +64,9 @@ export const mapRegions: MapRegion[] = [
     name: L("Algiers", "Alger", "الجزائر العاصمة"),
     focus: L("Capital & political heart", "Capitale et cœur politique", "العاصمة والقلب السياسي"),
     summary: L(
-      "Mediterranean port and capital — the political and cultural center of the country.",
-      "Port méditerranéen et capitale — centre politique et culturel du pays.",
-      "ميناء متوسطي وعاصمة — المركز السياسي والثقافي للبلاد."
+      "Mediterranean port and capital, the political and cultural center of the country.",
+      "Port méditerranéen et capitale, centre politique et culturel du pays.",
+      "ميناء متوسطي وعاصمة، المركز السياسي والثقافي للبلاد."
     ),
     facts: [
       L("Founded in antiquity, Algiers became a major Mediterranean port.", "Fondée dans l'Antiquité, Alger est devenue un grand port méditerranéen.", "تأسست في العصور القديمة وأصبحت ميناءً متوسطياً كبيراً."),
@@ -104,9 +104,9 @@ export const mapRegions: MapRegion[] = [
     name: L("Western Algeria", "Algérie de l'Ouest", "الغرب الجزائري"),
     focus: L("Early resistance & trade", "Résistance précoce et commerce", "المقاومة المبكرة والتجارة"),
     summary: L(
-      "Coast and plains in the west — fertile lands, busy ports, and the heart of early resistance.",
-      "Côte et plaines de l'ouest — terres fertiles, ports actifs et foyer des premières résistances.",
-      "ساحل وسهول في الغرب — أراضٍ خصبة وموانئ نشطة وموطن أولى المقاومات."
+      "Coast and plains in the west, fertile lands, busy ports, and the heart of early resistance.",
+      "Côte et plaines de l'ouest, terres fertiles, ports actifs et foyer des premières résistances.",
+      "ساحل وسهول في الغرب، أراضٍ خصبة وموانئ نشطة وموطن أولى المقاومات."
     ),
     facts: [
       L("Emir Abdelkader led a 15-year resistance (1832–1847) against French colonisation.", "L'Émir Abdelkader a mené une résistance de 15 ans (1832–1847) contre la colonisation française.", "قاد الأمير عبد القادر مقاومة دامت 15 سنة (1832–1847) ضد الاستعمار الفرنسي."),

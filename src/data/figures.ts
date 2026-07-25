@@ -209,7 +209,7 @@ export const figures: Figure[] = [
       "تبقى واحدة من أبرز الشخصيات الأمازيغية، ورمزًا قويًا لقيادة المرأة في الذاكرة التاريخية الجزائرية.",
     ),
     fact: L(
-      "Her nickname \"al-Kahina\" means \"the soothsayer\" — given by chroniclers impressed by her foresight in battle.",
+      "Her nickname \"al-Kahina\" means \"the soothsayer\", given by chroniclers impressed by her foresight in battle.",
       "Son surnom « al-Kahina » signifie « la devineresse », donné par des chroniqueurs frappés par sa clairvoyance au combat.",
       "لقّبها المؤرخون بـ«الكاهنة»، أي العرّافة، إعجابًا ببصيرتها في ميادين القتال.",
     ),
@@ -235,8 +235,8 @@ export const figures: Figure[] = [
       "يُذكر بوصفه أحد مؤسسي فكرة الدولة الجزائرية الحديثة، ونموذجًا للقيادة التي تجمع الإيمان والعدل والرحمة، حتى مع الأسرى.",
     ),
     fact: L(
-      "Years later, in exile in Damascus, he saved thousands of Christians during sectarian violence — an act that earned him medals from across the world.",
-      "Plus tard, en exil à Damas, il sauva des milliers de chrétiens lors de violences communautaires — un acte qui lui valut des distinctions du monde entier.",
+      "Years later, in exile in Damascus, he saved thousands of Christians during sectarian violence, an act that earned him medals from across the world.",
+      "Plus tard, en exil à Damas, il sauva des milliers de chrétiens lors de violences communautaires, un acte qui lui valut des distinctions du monde entier.",
       "في منفاه بدمشق لاحقًا، أنقذ آلاف المسيحيين خلال أحداث عنف طائفي، فنال أوسمة من شتى أنحاء العالم.",
     ),
   },
@@ -346,7 +346,7 @@ export const figures: Figure[] = [
     extended: {
       storyMode: [
         L(
-          "In a small village of Kabylie, a young boy named Ramdane loved books more than anything. He believed words and ideas could change the world — even more than weapons.",
+          "In a small village of Kabylie, a young boy named Ramdane loved books more than anything. He believed words and ideas could change the world, even more than weapons.",
           "Dans un petit village de Kabylie, un jeune garçon nommé Ramdane aimait les livres plus que tout. Il croyait que les mots et les idées pouvaient changer le monde, plus encore que les armes.",
           "في قرية صغيرة بمنطقة القبائل، كان فتى صغير اسمه رمضان يحبّ الكتب أكثر من أي شيء، ويؤمن بأن الكلمات والأفكار قادرة على تغيير العالم أكثر من السلاح.",
         ),
@@ -356,7 +356,7 @@ export const figures: Figure[] = [
           "حين انتفضت الجزائر سنة 1954، انخرط عبان في العمل السرّي لتنظيم الصفوف. جمع المقاتلين والمفكّرين من كل المناطق وطرح عليهم سؤالاً بسيطًا: «أيّ بلدٍ نريد أن نبنيه بعد الحرب؟»",
         ),
         L(
-          "On 20 August 1956, deep in the Soummam valley, he helped lead a secret congress that gave the revolution a brain, a structure and a clear vision. From that day on, the war was not only about fighting — it was about building a nation.",
+          "On 20 August 1956, deep in the Soummam valley, he helped lead a secret congress that gave the revolution a brain, a structure and a clear vision. From that day on, the war was not only about fighting, it was about building a nation.",
           "Le 20 août 1956, au cœur de la vallée de la Soummam, il contribua à conduire un congrès secret qui donna à la révolution un cerveau, une structure et une vision claire. Dès ce jour, la guerre ne fut plus seulement un combat : elle devint la construction d'une nation.",
           "في 20 أوت 1956، وفي عمق وادي الصومام، ساهم في قيادة مؤتمرٍ سرّي منح الثورة عقلاً وبنيةً ورؤيةً واضحة. منذ ذلك اليوم، لم تعد الحرب مجرّد قتال، بل صارت بناء أمّة.",
         ),
@@ -406,7 +406,7 @@ export const figures: Figure[] = [
         ),
       ],
       keyLesson: L(
-        "A revolution needs more than courage — it needs a clear vision and the discipline to organize it.",
+        "A revolution needs more than courage, it needs a clear vision and the discipline to organize it.",
         "Une révolution a besoin de plus que du courage : elle a besoin d'une vision claire et de la discipline pour l'organiser.",
         "الثورة لا تحتاج إلى الشجاعة وحدها، بل تحتاج إلى رؤيةٍ واضحة وإلى الانضباط لتنظيمها.",
       ),
@@ -551,9 +551,9 @@ export const figures: Figure[] = [
     era: L("20th century (1913–1962)", "XXe siècle (1913–1962)", "القرن العشرون (1913–1962)"),
     regionLabel: L("Kabylie", "Kabylie", "القبائل"),
     story: L(
-      "Born in a small Kabyle village, Mouloud Feraoun became a teacher and a writer who put his world into books. With patience and tenderness, he described the daily life of his people — their poverty, their dignity, their humor — in a French that always carried the rhythm of the mountains.",
-      "Né dans un petit village de Kabylie, Mouloud Feraoun devint instituteur et écrivain, et déposa son monde dans ses livres. Avec patience et tendresse, il décrivit le quotidien des siens — leur pauvreté, leur dignité, leur humour — dans un français qui gardait toujours le rythme de la montagne.",
-      "وُلد مولود فرعون في قرية صغيرة بالقبائل، فصار معلمًا وكاتبًا، وأودع عالمه كتبه. بصبر وحنوّ، رسم الحياة اليومية لأهله — فقرهم وكرامتهم وفكاهتهم — بفرنسية تظلّ تحمل إيقاع الجبل.",
+      "Born in a small Kabyle village, Mouloud Feraoun became a teacher and a writer who put his world into books. With patience and tenderness, he described the daily life of his people, their poverty, their dignity, their humor, in a French that always carried the rhythm of the mountains.",
+      "Né dans un petit village de Kabylie, Mouloud Feraoun devint instituteur et écrivain, et déposa son monde dans ses livres. Avec patience et tendresse, il décrivit le quotidien des siens, leur pauvreté, leur dignité, leur humour, dans un français qui gardait toujours le rythme de la montagne.",
+      "وُلد مولود فرعون في قرية صغيرة بالقبائل، فصار معلمًا وكاتبًا، وأودع عالمه كتبه. بصبر وحنوّ، رسم الحياة اليومية لأهله، فقرهم وكرامتهم وفكاهتهم، بفرنسية تظلّ تحمل إيقاع الجبل.",
     ),
     importance: L(
       "He gave Algerian Berber life a literary voice and remains a beloved figure of 20th-century Algerian literature.",
@@ -576,9 +576,9 @@ export const figures: Figure[] = [
     era: L("20th–21st century (1936–2015)", "XXe–XXIe siècle (1936–2015)", "القرنان العشرون والحادي والعشرون (1936–2015)"),
     regionLabel: L("National / Algeria-wide", "National / Algérie", "وطني / عموم الجزائر"),
     story: L(
-      "Brilliant student, novelist, filmmaker and historian, Assia Djebar wrote Algeria from the inside — its silences, its women, its memory. She crossed languages and forms, from novels to documentary films, always returning to the voices that history had pushed aside.",
-      "Brillante étudiante, romancière, cinéaste et historienne, Assia Djebar écrivit l'Algérie de l'intérieur — ses silences, ses femmes, sa mémoire. Elle traversa les langues et les formes, du roman au film documentaire, revenant toujours aux voix que l'histoire avait mises de côté.",
-      "طالبة متميّزة، وروائية وسينمائية ومؤرّخة، كتبت آسيا جبار الجزائر من الداخل — صمتها، نساءها، ذاكرتها. عبرت اللغات والأشكال، من الرواية إلى الفيلم الوثائقي، عائدةً دائمًا إلى الأصوات التي أزاحها التاريخ.",
+      "Brilliant student, novelist, filmmaker and historian, Assia Djebar wrote Algeria from the inside, its silences, its women, its memory. She crossed languages and forms, from novels to documentary films, always returning to the voices that history had pushed aside.",
+      "Brillante étudiante, romancière, cinéaste et historienne, Assia Djebar écrivit l'Algérie de l'intérieur, ses silences, ses femmes, sa mémoire. Elle traversa les langues et les formes, du roman au film documentaire, revenant toujours aux voix que l'histoire avait mises de côté.",
+      "طالبة متميّزة، وروائية وسينمائية ومؤرّخة، كتبت آسيا جبار الجزائر من الداخل، صمتها، نساءها، ذاكرتها. عبرت اللغات والأشكال، من الرواية إلى الفيلم الوثائقي، عائدةً دائمًا إلى الأصوات التي أزاحها التاريخ.",
     ),
     importance: L(
       "She is one of the most important Algerian and Maghrebi writers of her generation, and the first writer from the Maghreb elected to the Académie française.",
@@ -601,8 +601,8 @@ export const figures: Figure[] = [
     era: L("20th–21st century (1949–2020)", "XXe–XXIe siècle (1949–2020)", "القرنان العشرون والحادي والعشرون (1949–2020)"),
     regionLabel: L("Kabylie", "Kabylie", "القبائل"),
     story: L(
-      "Born in a Kabyle village and trained as a geologist, Idir stepped into a radio studio almost by accident — and stayed in the world's ear. With a soft voice, an acoustic guitar, and lullabies that came straight from his grandmother, he carried Kabyle culture to audiences far beyond Algeria.",
-      "Né dans un village de Kabylie et formé comme géologue, Idir entra presque par hasard dans un studio de radio — et resta dans l'oreille du monde. Avec une voix douce, une guitare acoustique et des berceuses tout droit venues de sa grand-mère, il porta la culture kabyle bien au-delà de l'Algérie.",
+      "Born in a Kabyle village and trained as a geologist, Idir stepped into a radio studio almost by accident and stayed in the world's ear. With a soft voice, an acoustic guitar, and lullabies that came straight from his grandmother, he carried Kabyle culture to audiences far beyond Algeria.",
+      "Né dans un village de Kabylie et formé comme géologue, Idir entra presque par hasard dans un studio de radio et resta dans l'oreille du monde. Avec une voix douce, une guitare acoustique et des berceuses tout droit venues de sa grand-mère, il porta la culture kabyle bien au-delà de l'Algérie.",
       "وُلد في قرية بالقبائل ودرس الجيولوجيا، ثم دخل أستوديو الإذاعة كأنه بالصدفة، فبقي في أذن العالم. بصوت دافئ وغيتار وأغانٍ مهد ورثها عن جدّته، حمل الثقافة القبائلية إلى جمهور واسع خارج الجزائر.",
     ),
     importance: L(
@@ -626,8 +626,8 @@ export const figures: Figure[] = [
     era: L("20th century (1956–1998)", "XXe siècle (1956–1998)", "القرن العشرون (1956–1998)"),
     regionLabel: L("Kabylie", "Kabylie", "القبائل"),
     story: L(
-      "Singer, poet and outspoken activist, Lounès Matoub turned songs into manifestos. He celebrated Amazigh identity, defended freedom of expression, and refused to soften his words for anyone — a stance that made him both deeply loved and a target.",
-      "Chanteur, poète et militant sans détours, Lounès Matoub transforma ses chansons en manifestes. Il célébra l'identité amazighe, défendit la liberté d'expression et refusa d'adoucir ses mots — une posture qui lui valut amour profond et menaces.",
+      "Singer, poet and outspoken activist, Lounès Matoub turned songs into manifestos. He celebrated Amazigh identity, defended freedom of expression, and refused to soften his words for anyone, a stance that made him both deeply loved and a target.",
+      "Chanteur, poète et militant sans détours, Lounès Matoub transforma ses chansons en manifestes. Il célébra l'identité amazighe, défendit la liberté d'expression et refusa d'adoucir ses mots, une posture qui lui valut amour profond et menaces.",
       "مغنٍّ وشاعر وناشط لا يداري، حوّل لونيس معطوب أغانيه إلى بيانات. أعلى من شأن الهوية الأمازيغية، ودافع عن حرية التعبير، ورفض تليين كلماته لأحد، فكان محبوبًا وخائضًا في الخطر معًا.",
     ),
     importance: L(
@@ -636,8 +636,8 @@ export const figures: Figure[] = [
       "يبقى صوتًا قويًا للهوية القبائلية والقيم المدنية وحرية التعبير في الجزائر.",
     ),
     fact: L(
-      "He survived a serious shooting and a kidnapping before being assassinated in 1998 — events that deeply marked Algerian society.",
-      "Il survécut à une tentative d'assassinat par balles et à un enlèvement avant d'être assassiné en 1998 — des événements qui ont profondément marqué la société algérienne.",
+      "He survived a serious shooting and a kidnapping before being assassinated in 1998, events that deeply marked Algerian society.",
+      "Il survécut à une tentative d'assassinat par balles et à un enlèvement avant d'être assassiné en 1998, des événements qui ont profondément marqué la société algérienne.",
       "نجا من إطلاق نار خطير ومن عملية اختطاف قبل اغتياله سنة 1998، في أحداث طبعت المجتمع الجزائري بعمق.",
     ),
   },
@@ -1260,8 +1260,8 @@ export const figures: Figure[] = [
       "نقلت هجمات 20 أوت الثورة من حرب عصابات محدودة إلى كفاح وطني شعبي واسع.",
     ),
     fact: L(
-      "August 20 is also the date of the Soummam Congress one year later — both now national days.",
-      "Le 20 août est aussi la date du Congrès de la Soummam un an plus tard — deux dates devenues nationales.",
+      "August 20 is also the date of the Soummam Congress one year later, both now national days.",
+      "Le 20 août est aussi la date du Congrès de la Soummam un an plus tard, deux dates devenues nationales.",
       "20 أوت هو أيضًا تاريخ مؤتمر الصومام بعد سنة، وكلا التاريخين صارا يومًا وطنيًا.",
     ),
   },
@@ -1302,8 +1302,8 @@ export const figures: Figure[] = [
     era: L("Battle of Algiers (1956–1957)", "Bataille d'Alger (1956–1957)", "معركة الجزائر (1956–1957)"),
     regionLabel: L("Algiers", "Alger", "الجزائر العاصمة"),
     story: L(
-      "From the working-class streets of Algiers, Ali Ammar — \"Ali La Pointe\" — rose to lead urban operations of the FLN in the Casbah, becoming one of the iconic faces of the Battle of Algiers.",
-      "Issu des quartiers populaires d'Alger, Ali Ammar — « Ali La Pointe » — s'imposa à la tête des opérations urbaines du FLN dans la Casbah, devenant l'un des visages emblématiques de la Bataille d'Alger.",
+      "From the working-class streets of Algiers, Ali Ammar, \"Ali La Pointe\", rose to lead urban operations of the FLN in the Casbah, becoming one of the iconic faces of the Battle of Algiers.",
+      "Issu des quartiers populaires d'Alger, Ali Ammar, « Ali La Pointe », s'imposa à la tête des opérations urbaines du FLN dans la Casbah, devenant l'un des visages emblématiques de la Bataille d'Alger.",
       "من الأحياء الشعبية في الجزائر العاصمة، صعد علي عمار «علي لابوانت» ليقود العمليات الحضرية لجبهة التحرير في القصبة، وصار من أبرز وجوه معركة الجزائر.",
     ),
     importance: L(
@@ -1718,8 +1718,8 @@ export const figures: Figure[] = [
       "افتتح نزوله سنة 711 قرونًا من الحضور الإسلامي في شبه الجزيرة الإيبيرية.",
     ),
     fact: L(
-      "Gibraltar takes its name from Jabal Tariq — \"Tariq's mountain.\"",
-      "Gibraltar tire son nom de Jabal Tariq — « la montagne de Tariq ».",
+      "Gibraltar takes its name from Jabal Tariq, \"Tariq's mountain.\"",
+      "Gibraltar tire son nom de Jabal Tariq, « la montagne de Tariq ».",
       "أخذ جبل طارق اسمه من «جبل طارق».",
     ),
   },
@@ -2092,8 +2092,8 @@ export const figures: Figure[] = [
       "وُلد في قرية إغيل بوعمّاس بمنطقة القبائل، وبدأ لونيس آيت منقلات الغناء شابًا بقيثارة بسيطة وحبّ عميق للّغة الأمازيغية. وعلى مرّ العقود، تحوّلت أغانيه من قصائد حبّ رقيقة إلى تأمّلات فلسفية طويلة في الحرية والمنفى والهوية ومعاناة شعبه.",
     ),
     importance: L(
-      "He is considered the voice of Amazigh memory and identity — a poet-singer who turned the Kabyle language into a vehicle for collective reflection, dignity, and quiet resistance.",
-      "Il est considéré comme la voix de la mémoire et de l'identité amazighes — un poète-chanteur qui a fait de la langue kabyle un vecteur de réflexion collective, de dignité et de résistance silencieuse.",
+      "He is considered the voice of Amazigh memory and identity, a poet-singer who turned the Kabyle language into a vehicle for collective reflection, dignity, and quiet resistance.",
+      "Il est considéré comme la voix de la mémoire et de l'identité amazighes, un poète-chanteur qui a fait de la langue kabyle un vecteur de réflexion collective, de dignité et de résistance silencieuse.",
       "يُعدّ صوت الذاكرة والهوية الأمازيغية، شاعرًا ومغنّيًا حوّل اللغة القبائلية إلى أداة للتأمّل الجماعي والكرامة والمقاومة الهادئة.",
     ),
     fact: L(
@@ -2116,9 +2116,9 @@ export const figures: Figure[] = [
     ),
     regionLabel: L("National Identity", "Identité nationale", "الهوية الوطنية"),
     story: L(
-      "Born in Beni Isguen in the M'zab valley, Moufdi Zakaria devoted his life to the Algerian cause through poetry. Imprisoned several times by the French colonial authorities, he wrote the words of 'Kassaman' — Algeria's national anthem — in 1955, while held in Barberousse prison in Algiers. According to tradition, he wrote it on the wall of his cell with his own blood.",
-      "Né à Beni Isguen dans la vallée du M'zab, Moufdi Zakaria a consacré sa vie à la cause algérienne par la poésie. Emprisonné à plusieurs reprises par l'autorité coloniale française, il a écrit en 1955 les paroles de « Kassaman » — l'hymne national algérien — alors qu'il était détenu à la prison de Barberousse, à Alger. La tradition rapporte qu'il l'aurait écrit avec son propre sang sur le mur de sa cellule.",
-      "وُلد في بني يزقن بوادي ميزاب، وكرّس مفدي زكريا حياته للقضية الجزائرية عبر الشعر. اعتُقل عدّة مرات من قِبل السلطة الاستعمارية الفرنسية، وكتب سنة 1955 كلمات نشيد «قسماً» — النشيد الوطني الجزائري — وهو معتقل في سجن بربروس بالجزائر العاصمة. وتقول الرواية إنه كتبه بدمه على جدار زنزانته.",
+      "Born in Beni Isguen in the M'zab valley, Moufdi Zakaria devoted his life to the Algerian cause through poetry. Imprisoned several times by the French colonial authorities, he wrote the words of 'Kassaman', Algeria's national anthem, in 1955, while held in Barberousse prison in Algiers. According to tradition, he wrote it on the wall of his cell with his own blood.",
+      "Né à Beni Isguen dans la vallée du M'zab, Moufdi Zakaria a consacré sa vie à la cause algérienne par la poésie. Emprisonné à plusieurs reprises par l'autorité coloniale française, il a écrit en 1955 les paroles de « Kassaman », l'hymne national algérien, alors qu'il était détenu à la prison de Barberousse, à Alger. La tradition rapporte qu'il l'aurait écrit avec son propre sang sur le mur de sa cellule.",
+      "وُلد في بني يزقن بوادي ميزاب، وكرّس مفدي زكريا حياته للقضية الجزائرية عبر الشعر. اعتُقل عدّة مرات من قِبل السلطة الاستعمارية الفرنسية، وكتب سنة 1955 كلمات نشيد «قسماً»، النشيد الوطني الجزائري، وهو معتقل في سجن بربروس بالجزائر العاصمة. وتقول الرواية إنه كتبه بدمه على جدار زنزانته.",
     ),
     importance: L(
       "He is the poet of the nation: through 'Kassaman' and his epic poems, he gave Algeria a shared voice of resistance, dignity and unity.",
@@ -2155,9 +2155,9 @@ export const figures: Figure[] = [
       "شخصية منسية لكنها أساسية لفهم أسس الفكر السياسي الجزائري ونقاشات الحركة الوطنية الأولى.",
     ),
     fact: L(
-      "He famously argued that people should follow ideas rather than individuals — a quiet rejection of personality cults in early Algerian politics.",
-      "Il affirmait qu'il fallait suivre les idées plutôt que les hommes — un refus discret du culte du chef dans la politique algérienne naissante.",
-      "اشتُهر بقوله إن على الناس أن يتبعوا الأفكار لا الأشخاص — رفضًا هادئًا لعبادة الفرد في السياسة الجزائرية المبكرة.",
+      "He famously argued that people should follow ideas rather than individuals, a quiet rejection of personality cults in early Algerian politics.",
+      "Il affirmait qu'il fallait suivre les idées plutôt que les hommes, un refus discret du culte du chef dans la politique algérienne naissante.",
+      "اشتُهر بقوله إن على الناس أن يتبعوا الأفكار لا الأشخاص، رفضًا هادئًا لعبادة الفرد في السياسة الجزائرية المبكرة.",
     ),
   },
   {
@@ -2175,9 +2175,9 @@ export const figures: Figure[] = [
       "وُلد عبد الحميد بن باديس بقسنطينة في أسرة علم، وغدا أبرز رواد الإصلاح الإسلامي في الجزائر المستعمرَة. أسّس جمعية العلماء المسلمين الجزائريين سنة 1931، وأنشأ المدارس والمجلات وحلقات الدرس في كل أرجاء البلاد لإحياء اللغة العربية والإسلام والشعور بالانتماء الجزائري المشترك.",
     ),
     importance: L(
-      "He gave colonial Algeria a clear cultural and religious identity — \"Islam is my religion, Arabic my language, Algeria my homeland\" — and shaped generations of teachers and nationalists.",
-      "Il donna à l'Algérie coloniale une identité culturelle et religieuse claire — « l'islam est ma religion, l'arabe ma langue, l'Algérie ma patrie » — et forma des générations d'enseignants et de nationalistes.",
-      "أعطى الجزائر المستعمرَة هويةً ثقافية ودينية واضحة — «الإسلام ديني، والعربية لغتي، والجزائر وطني» — وكوّن أجيالًا من المعلمين والمناضلين.",
+      "He gave colonial Algeria a clear cultural and religious identity, \"Islam is my religion, Arabic my language, Algeria my homeland\" and shaped generations of teachers and nationalists.",
+      "Il donna à l'Algérie coloniale une identité culturelle et religieuse claire, « l'islam est ma religion, l'arabe ma langue, l'Algérie ma patrie » et forma des générations d'enseignants et de nationalistes.",
+      "أعطى الجزائر المستعمرَة هويةً ثقافية ودينية واضحة، «الإسلام ديني، والعربية لغتي، والجزائر وطني»، وكوّن أجيالًا من المعلمين والمناضلين.",
     ),
     fact: L(
       "His famous verse \"The Algerian people are Muslim, and to Arabism they belong\" became a rallying cry for the national movement.",
@@ -2195,9 +2195,9 @@ export const figures: Figure[] = [
     era: L("1905–1973", "1905–1973", "1905–1973"),
     regionLabel: L("Constantine / East", "Constantine / Est", "قسنطينة / الشرق"),
     story: L(
-      "Born in Constantine and trained as an engineer in Paris, Malek Bennabi spent his life trying to understand why some societies decline and others rise. He coined the idea of \"colonisability\" — the inner conditions that make a society vulnerable to domination — and called for a civilizational renewal grounded in ideas, ethics, and culture.",
-      "Né à Constantine et formé ingénieur à Paris, Malek Bennabi passa sa vie à comprendre pourquoi certaines sociétés déclinent et d'autres s'élèvent. Il forgea le concept de « colonisabilité » — les conditions intérieures qui rendent une société vulnérable à la domination — et appela à un renouveau civilisationnel fondé sur les idées, l'éthique et la culture.",
-      "وُلد مالك بن نبي بقسنطينة وتكوّن مهندسًا في باريس، وقضى حياته يبحث في أسباب نهوض المجتمعات وسقوطها. صاغ مفهوم «القابلية للاستعمار» — الشروط الداخلية التي تجعل المجتمع عرضةً للهيمنة — ودعا إلى نهضة حضارية تقوم على الأفكار والأخلاق والثقافة.",
+      "Born in Constantine and trained as an engineer in Paris, Malek Bennabi spent his life trying to understand why some societies decline and others rise. He coined the idea of \"colonisability\", the inner conditions that make a society vulnerable to domination and called for a civilizational renewal grounded in ideas, ethics, and culture.",
+      "Né à Constantine et formé ingénieur à Paris, Malek Bennabi passa sa vie à comprendre pourquoi certaines sociétés déclinent et d'autres s'élèvent. Il forgea le concept de « colonisabilité », les conditions intérieures qui rendent une société vulnérable à la domination et appela à un renouveau civilisationnel fondé sur les idées, l'éthique et la culture.",
+      "وُلد مالك بن نبي بقسنطينة وتكوّن مهندسًا في باريس، وقضى حياته يبحث في أسباب نهوض المجتمعات وسقوطها. صاغ مفهوم «القابلية للاستعمار»، الشروط الداخلية التي تجعل المجتمع عرضةً للهيمنة، ودعا إلى نهضة حضارية تقوم على الأفكار والأخلاق والثقافة.",
     ),
     importance: L(
       "He is one of the most original Algerian and Muslim thinkers of the 20th century, widely read across the Arab world for his analysis of culture, civilization, and renewal.",
@@ -2426,9 +2426,9 @@ export const figures: Figure[] = [
       "صوت بارز في ثقافة المهجر الجزائري، حوّل الموسيقى إلى فضاء للذاكرة والمقاومة والحوار بين العوالم.",
     ),
     fact: L(
-      "Known for Ya Rayah and Rock el Casbah — songs that made Algerian voices resonate worldwide.",
-      "Connu pour Ya Rayah et Rock el Casbah — des chansons qui ont fait résonner la voix algérienne dans le monde entier.",
-      "اشتهر بـ«يا رايح» و«روك القصبة» — أغانٍ جعلت الصوت الجزائري يتردّد في العالم.",
+      "Known for Ya Rayah and Rock el Casbah, songs that made Algerian voices resonate worldwide.",
+      "Connu pour Ya Rayah et Rock el Casbah, des chansons qui ont fait résonner la voix algérienne dans le monde entier.",
+      "اشتهر بـ«يا رايح» و«روك القصبة»، أغانٍ جعلت الصوت الجزائري يتردّد في العالم.",
     ),
   },
   {
@@ -2450,14 +2450,14 @@ export const figures: Figure[] = [
       "كرّست طاوس عمروش حياتها لنقل الذاكرة الشفوية القبائلية. من خلال الغناء والحكايات والكتابة، حافظت على جزء مهم من الهوية الأمازيغية.",
     ),
     importance: L(
-      "Writer, singer, and cultural transmitter — she connected literature, music, and memory across generations.",
+      "Writer, singer, and cultural transmitter, she connected literature, music, and memory across generations.",
       "Écrivaine, chanteuse et passeuse de culture, elle a relié littérature, musique et mémoire à travers les générations.",
       "كاتبة ومغنّية وناقلة للثقافة، ربطت بين الأدب والموسيقى والذاكرة عبر الأجيال.",
     ),
     fact: L(
-      "Daughter of Fadhma Aït Mansour Amrouche and sister of Jean Amrouche — part of a family of memory keepers.",
-      "Fille de Fadhma Aït Mansour Amrouche et sœur de Jean Amrouche — issue d'une famille de passeurs de mémoire.",
-      "ابنة فاضمة آيت منصور عمروش وشقيقة جان عمروش — من عائلة حفظة الذاكرة.",
+      "Daughter of Fadhma Aït Mansour Amrouche and sister of Jean Amrouche, part of a family of memory keepers.",
+      "Fille de Fadhma Aït Mansour Amrouche et sœur de Jean Amrouche, issue d'une famille de passeurs de mémoire.",
+      "ابنة فاضمة آيت منصور عمروش وشقيقة جان عمروش، من عائلة حفظة الذاكرة.",
     ),
   },
   {
@@ -2484,9 +2484,9 @@ export const figures: Figure[] = [
       "جسّر بين الأدب الفرنكوفوني والهوية الجزائرية، وأوصل الصوت الجزائري إلى جمهور أوسع بوصفه شخصية فكرية وثقافية مرتبطة بالقضية الوطنية.",
     ),
     fact: L(
-      "Son of Fadhma Aït Mansour and brother of Taos Amrouche — a family where memory passed from voice to page.",
-      "Fils de Fadhma Aït Mansour et frère de Taos Amrouche — une famille où la mémoire passait de la voix à la page.",
-      "ابن فاضمة آيت منصور وشقيق طاوس عمروش — عائلة انتقلت فيها الذاكرة من الصوت إلى الصفحة.",
+      "Son of Fadhma Aït Mansour and brother of Taos Amrouche, a family where memory passed from voice to page.",
+      "Fils de Fadhma Aït Mansour et frère de Taos Amrouche, une famille où la mémoire passait de la voix à la page.",
+      "ابن فاضمة آيت منصور وشقيق طاوس عمروش، عائلة انتقلت فيها الذاكرة من الصوت إلى الصفحة.",
     ),
   },
   {
@@ -2513,18 +2513,18 @@ export const figures: Figure[] = [
       "كاتبة قبائلية وحارسة للتقاليد الشفوية، ترمز إلى دور المرأة في حمل الأسرة واللغة والذاكرة الثقافية.",
     ),
     fact: L(
-      "Mother of Taos and Jean Amrouche — her memories nourished a whole literary and musical legacy.",
-      "Mère de Taos et Jean Amrouche — ses souvenirs ont nourri tout un héritage littéraire et musical.",
-      "أمّ طاوس وجان عمروش — غذّت ذكرياتها إرثًا أدبيًا وموسيقيًا كاملاً.",
+      "Mother of Taos and Jean Amrouche, her memories nourished a whole literary and musical legacy.",
+      "Mère de Taos et Jean Amrouche, ses souvenirs ont nourri tout un héritage littéraire et musical.",
+      "أمّ طاوس وجان عمروش، غذّت ذكرياتها إرثًا أدبيًا وموسيقيًا كاملاً.",
     ),
   },
   {
     id: "amrouche-family-thread",
     name: "Family of Memory",
     displayName: L(
-      "The Amrouche Family — A Family of Memory",
-      "La famille Amrouche — Une famille de la mémoire",
-      "عائلة عمروش — عائلة الذاكرة",
+      "The Amrouche Family, A Family of Memory",
+      "La famille Amrouche, Une famille de la mémoire",
+      "عائلة عمروش، عائلة الذاكرة",
     ),
     emoji: "🕯️",
     category: "cultural-identity",
@@ -2541,14 +2541,14 @@ export const figures: Figure[] = [
       "تُظهر فاضمة وطاوس وجان عمروش كيف تنتقل الذاكرة من الأم إلى الأبناء، ومن الحكاية الشفوية إلى الأدب والموسيقى.",
     ),
     importance: L(
-      "Together they trace a thread of transmission — from a mother's voice in a Kabyle village to books, songs, and broadcasts heard far beyond Algeria.",
-      "Ensemble, ils dessinent un fil de transmission — de la voix d'une mère dans un village kabyle aux livres, chansons et émissions entendus bien au-delà de l'Algérie.",
-      "معًا يرسمون خيط النقل — من صوت أم في قرية قبائلية إلى كتب وأغانٍ وبرامج تُسمع بعيدًا عن الجزائر.",
+      "Together they trace a thread of transmission, from a mother's voice in a Kabyle village to books, songs, and broadcasts heard far beyond Algeria.",
+      "Ensemble, ils dessinent un fil de transmission, de la voix d'une mère dans un village kabyle aux livres, chansons et émissions entendus bien au-delà de l'Algérie.",
+      "معًا يرسمون خيط النقل، من صوت أم في قرية قبائلية إلى كتب وأغانٍ وبرامج تُسمع بعيدًا عن الجزائر.",
     ),
     fact: L(
-      "One family, three voices — oral tradition, literature, and music, all carried from a single hearth.",
-      "Une famille, trois voix — tradition orale, littérature et musique, portées depuis un même foyer.",
-      "عائلة واحدة، ثلاثة أصوات — تقليد شفوي وأدب وموسيقى، كلّها من موقدٍ واحد.",
+      "One family, three voices, oral tradition, literature, and music, all carried from a single hearth.",
+      "Une famille, trois voix, tradition orale, littérature et musique, portées depuis un même foyer.",
+      "عائلة واحدة، ثلاثة أصوات، تقليد شفوي وأدب وموسيقى، كلّها من موقدٍ واحد.",
     ),
   },
 ];

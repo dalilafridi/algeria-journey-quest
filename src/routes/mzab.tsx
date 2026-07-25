@@ -49,7 +49,7 @@ export const Route = createFileRoute("/mzab")({
   head: () =>
     pageMeta({
       path: "/mzab",
-      title: "The M'Zab Valley — Cities Against the Sun · DZ Odyssey",
+      title: "The M'Zab Valley, Cities Against the Sun · DZ Odyssey",
       description:
         "How an Ibadi civilization built five sustainable cities in one of the harshest environments on Earth. A flagship exhibit of DZ Odyssey.",
       image: mzabHero,
@@ -74,9 +74,9 @@ const HERO = {
   title: L("The M'Zab Valley", "La Vallée du M'Zab", "وادي مزاب"),
   subtitle: L("Cities against the sun.", "Des cités face au soleil.", "مدن في وجه الشمس."),
   lede: L(
-    "A thousand years ago, a refugee community walked six hundred kilometres into the Algerian Sahara and did the impossible: they built five living cities of stone, palm and light on a plateau that receives less than eighty millimetres of rain a year — and every one of them is still inhabited today.",
-    "Il y a mille ans, une communauté réfugiée a marché six cents kilomètres dans le Sahara algérien et a fait l'impossible : bâtir cinq cités vivantes de pierre, de palme et de lumière sur un plateau qui reçoit moins de quatre-vingts millimètres de pluie par an — et chacune est encore habitée aujourd'hui.",
-    "قبل ألف عام، سار مجتمع من اللاجئين ستّمئة كيلومتر داخل الصحراء الجزائرية وحقّق المستحيل: بنى خمس مدنٍ حيّة من الحجر والنخيل والنور على هضبة لا يتجاوز مطرها ثمانين ميليمتراً في السنة — وكلّها لا تزال مأهولة إلى اليوم.",
+    "A thousand years ago, a refugee community walked six hundred kilometres into the Algerian Sahara and did the impossible: they built five living cities of stone, palm and light on a plateau that receives less than eighty millimetres of rain a year and every one of them is still inhabited today.",
+    "Il y a mille ans, une communauté réfugiée a marché six cents kilomètres dans le Sahara algérien et a fait l'impossible : bâtir cinq cités vivantes de pierre, de palme et de lumière sur un plateau qui reçoit moins de quatre-vingts millimètres de pluie par an et chacune est encore habitée aujourd'hui.",
+    "قبل ألف عام، سار مجتمع من اللاجئين ستّمئة كيلومتر داخل الصحراء الجزائرية وحقّق المستحيل: بنى خمس مدنٍ حيّة من الحجر والنخيل والنور على هضبة لا يتجاوز مطرها ثمانين ميليمتراً في السنة، وكلّها لا تزال مأهولة إلى اليوم.",
   ),
   cta: L("Enter the exhibit", "Entrer dans l'exposition", "ادخل المعرض"),
   back: L("← Return to museum", "← Retour au musée", "← عودة إلى المتحف"),
@@ -86,9 +86,9 @@ const HERO = {
     "غرداية عند الغروب · المدن الخمس من الهضبة الغربية",
   ),
   imageAlt: L(
-    "Panoramic view of the M'Zab Valley at sunset — ochre houses of Ghardaïa cascading down a rocky hillside, minaret at the summit, palm groves below.",
-    "Vue panoramique de la vallée du M'Zab au coucher du soleil — les maisons ocre de Ghardaïa cascadant sur la colline rocheuse, minaret au sommet, palmeraie en contrebas.",
-    "منظر بانورامي لوادي مزاب عند الغروب — بيوت غرداية بلون المغرة تنحدر على تلّةٍ صخرية، والمئذنة في القمة، وبستان النخيل في الأسفل.",
+    "Panoramic view of the M'Zab Valley at sunset, ochre houses of Ghardaïa cascading down a rocky hillside, minaret at the summit, palm groves below.",
+    "Vue panoramique de la vallée du M'Zab au coucher du soleil, les maisons ocre de Ghardaïa cascadant sur la colline rocheuse, minaret au sommet, palmeraie en contrebas.",
+    "منظر بانورامي لوادي مزاب عند الغروب، بيوت غرداية بلون المغرة تنحدر على تلّةٍ صخرية، والمئذنة في القمة، وبستان النخيل في الأسفل.",
   ),
 };
 
@@ -96,9 +96,9 @@ const WHERE = {
   eyebrow: L("Where", "Où", "أين"),
   title: L("A valley 600 km south of Algiers", "Une vallée à 600 km au sud d'Alger", "وادٍ يبعد 600 كم جنوب الجزائر"),
   body: L(
-    "The M'Zab is a shallow, rock-walled valley (wadi) carved into the Chebka plateau of the northern Sahara, in the wilaya of Ghardaïa. It is not on the way to anywhere — that is the point. In the 11th century its remoteness was the safety a persecuted community was looking for. Today it is the reason five ksour survive almost intact where most other pre-modern Saharan towns have vanished.",
-    "Le M'Zab est une vallée peu profonde, aux parois rocheuses, creusée dans le plateau de la Chebka au nord du Sahara, dans la wilaya de Ghardaïa. Elle n'est sur la route de rien — c'est là son secret. Au XIe siècle, cet isolement offrait la sécurité recherchée par une communauté persécutée. Aujourd'hui, c'est ce qui explique que cinq ksour subsistent presque intacts, alors que la plupart des villes sahariennes anciennes ont disparu.",
-    "وادي مزاب وادٍ ضحل تحفّه جدران صخرية، محفور في هضبة الشبكة شمال الصحراء الكبرى، ضمن ولاية غرداية. لا يقع على طريق نحو مكان — وهذا سرّه. في القرن الحادي عشر مثّلت هذه العزلة الأمان الذي كان يبحث عنه مجتمع مُلاحق. واليوم بفضلها تبقى خمس قصور شبه سليمة، بينما اختفت معظم مدن الصحراء ما قبل الحديثة.",
+    "The M'Zab is a shallow, rock-walled valley (wadi) carved into the Chebka plateau of the northern Sahara, in the wilaya of Ghardaïa. It is not on the way to anywhere, that is the point. In the 11th century its remoteness was the safety a persecuted community was looking for. Today it is the reason five ksour survive almost intact where most other pre-modern Saharan towns have vanished.",
+    "Le M'Zab est une vallée peu profonde, aux parois rocheuses, creusée dans le plateau de la Chebka au nord du Sahara, dans la wilaya de Ghardaïa. Elle n'est sur la route de rien, c'est là son secret. Au XIe siècle, cet isolement offrait la sécurité recherchée par une communauté persécutée. Aujourd'hui, c'est ce qui explique que cinq ksour subsistent presque intacts, alors que la plupart des villes sahariennes anciennes ont disparu.",
+    "وادي مزاب وادٍ ضحل تحفّه جدران صخرية، محفور في هضبة الشبكة شمال الصحراء الكبرى، ضمن ولاية غرداية. لا يقع على طريق نحو مكان، وهذا سرّه. في القرن الحادي عشر مثّلت هذه العزلة الأمان الذي كان يبحث عنه مجتمع مُلاحق. واليوم بفضلها تبقى خمس قصور شبه سليمة، بينما اختفت معظم مدن الصحراء ما قبل الحديثة.",
   ),
   stats: [
     { label: L("Latitude", "Latitude", "خط العرض"), value: L("32°29′ N", "32°29′ N", "32°29′ شمالاً") },
@@ -110,13 +110,13 @@ const WHERE = {
   ],
   cardLabel: L("Museum data card · M'Zab Valley", "Fiche muséale · Vallée du M'Zab", "بطاقة متحفية · وادي مزاب"),
   cardFooter: L(
-    "Ghardaïa lies on the same latitude as Marrakech and El Paso — but it receives less than a third of their rainfall.",
-    "Ghardaïa se situe à la latitude de Marrakech et d'El Paso — mais reçoit moins du tiers de leurs précipitations.",
-    "تقع غرداية على خط عرض مرّاكش وإلباسو — لكنّها تتلقّى أقلّ من ثلث أمطارهما.",
+    "Ghardaïa lies on the same latitude as Marrakech and El Paso, but it receives less than a third of their rainfall.",
+    "Ghardaïa se situe à la latitude de Marrakech et d'El Paso, mais reçoit moins du tiers de leurs précipitations.",
+    "تقع غرداية على خط عرض مرّاكش وإلباسو، لكنّها تتلقّى أقلّ من ثلث أمطارهما.",
   ),
   timeline: L(
-    "First ksar founded: El Atteuf, 1012 CE · Bou Noura 1046 · Ghardaïa 1053 (largest, capital of the pentapolis) · Beni Isguen 1347 · Melika 1350. Two later foundations — Berriane and El Guerrara — extended the historical M'Zab into a heptapolis in the 17th and 18th centuries.",
-    "Premier ksar fondé : El Atteuf, 1012 · Bou Noura 1046 · Ghardaïa 1053 (le plus grand, capitale de la pentapole) · Beni Isguen 1347 · Melika 1350. Deux fondations plus tardives — Berriane et El Guerrara — étendirent le M'Zab historique en heptapole aux XVIIe et XVIIIe siècles.",
+    "First ksar founded: El Atteuf, 1012 CE · Bou Noura 1046 · Ghardaïa 1053 (largest, capital of the pentapolis) · Beni Isguen 1347 · Melika 1350. Two later foundations, Berriane and El Guerrara, extended the historical M'Zab into a heptapolis in the 17th and 18th centuries.",
+    "Premier ksar fondé : El Atteuf, 1012 · Bou Noura 1046 · Ghardaïa 1053 (le plus grand, capitale de la pentapole) · Beni Isguen 1347 · Melika 1350. Deux fondations plus tardives, Berriane et El Guerrara, étendirent le M'Zab historique en heptapole aux XVIIe et XVIIIe siècles.",
     "أوّل قصر أُسّس: العطف 1012م · بونورة 1046 · غرداية 1053 (الأكبر وعاصمة الخمس) · بني يزقن 1347 · مليكة 1350. ثمّ امتدّ وادي مزاب التاريخي إلى سبع مدن بتأسيس بريان والقرارة في القرنين السابع عشر والثامن عشر.",
   ),
 };
@@ -126,9 +126,9 @@ const BIRTH = {
   title: L("A civilization born from exile", "Une civilisation née de l'exil", "حضارة وُلدت من المنفى"),
   paragraphs: [
     L(
-      "The story begins not in the desert but in Tahert (present-day Tiaret), 300 km inland from Algiers, where the Rustamid dynasty had ruled a peaceful, scholarly Ibadi imamate from 776 to 909 CE. When the Fatimid armies crushed Tahert, its Ibadi survivors — a Kharijite branch of Islam known for austere piety, strict equality and communal self-government — began a long southward retreat.",
-      "L'histoire commence non dans le désert mais à Tahert (actuelle Tiaret), à 300 km d'Alger, où la dynastie rustumide dirigea un imamat ibadite paisible et savant de 776 à 909. Quand les armées fatimides écrasèrent Tahert, ses survivants ibadites — branche kharijite de l'islam réputée pour sa piété austère, son égalitarisme strict et son autogouvernement communautaire — entamèrent une longue retraite vers le sud.",
-      "تبدأ الحكاية لا في الصحراء بل في تاهرت (تيارت الحالية) على بُعد 300 كم من الجزائر العاصمة، حيث حكمت الدولة الرستمية إمامةً إباضية علمية مسالمة بين 776 و909م. حين سحق الفاطميون تاهرت، بدأ الناجون الإباضيون — وهم فرع خارجي من الإسلام معروف بتقواه الصارمة، ومساواته المطلقة وحكمه المجتمعي الذاتي — انسحاباً طويلاً نحو الجنوب.",
+      "The story begins not in the desert but in Tahert (present-day Tiaret), 300 km inland from Algiers, where the Rustamid dynasty had ruled a peaceful, scholarly Ibadi imamate from 776 to 909 CE. When the Fatimid armies crushed Tahert, its Ibadi survivors, a Kharijite branch of Islam known for austere piety, strict equality and communal self-government, began a long southward retreat.",
+      "L'histoire commence non dans le désert mais à Tahert (actuelle Tiaret), à 300 km d'Alger, où la dynastie rustumide dirigea un imamat ibadite paisible et savant de 776 à 909. Quand les armées fatimides écrasèrent Tahert, ses survivants ibadites, branche kharijite de l'islam réputée pour sa piété austère, son égalitarisme strict et son autogouvernement communautaire, entamèrent une longue retraite vers le sud.",
+      "تبدأ الحكاية لا في الصحراء بل في تاهرت (تيارت الحالية) على بُعد 300 كم من الجزائر العاصمة، حيث حكمت الدولة الرستمية إمامةً إباضية علمية مسالمة بين 776 و909م. حين سحق الفاطميون تاهرت، بدأ الناجون الإباضيون، وهم فرع خارجي من الإسلام معروف بتقواه الصارمة، ومساواته المطلقة وحكمه المجتمعي الذاتي، انسحاباً طويلاً نحو الجنوب.",
     ),
     L(
       "They first sheltered at Sedrata, near Ouargla, until Sedrata too was destroyed in the 11th century. Only then did they choose the M'Zab: a valley so unforgiving that no rival power would follow. On 1 Muharram 402 AH (August 1012 CE), the first prayer was said at El Atteuf. The civilization the world now calls Mozabite had begun.",
@@ -136,9 +136,9 @@ const BIRTH = {
       "لجأوا أولاً إلى سدراتة قرب ورقلة، إلى أن دُمّرت هي الأخرى في القرن الحادي عشر. عندها فقط اختاروا وادي مزاب: وادٍ قاسٍ لا تجرؤ على متابعتهم فيه قوّة منافسة. في غرّة محرّم 402هـ (أغسطس 1012م)، رُفعت أولى الصلوات في العطف. وُلدت الحضارة التي يسميها العالم اليوم المزابية.",
     ),
     L(
-      "Two forces then converted survival into prosperity. The first was the Trans-Saharan trade: Mozabite caravans linked the Mediterranean to Sub-Saharan Africa, dealing in dates, wool, silver and salt. The second was doctrine: Ibadism demands literacy, thrift, mutual aid and a strict separation between the ummah's spiritual assembly (halqa of the azzaba) and its civic affairs — a discipline that made whole towns behave like disciplined workshops.",
-      "Deux forces transformèrent alors la survie en prospérité. D'abord le commerce transsaharien : les caravanes mozabites reliaient la Méditerranée à l'Afrique subsaharienne, échangeant dattes, laine, argent et sel. Ensuite la doctrine : l'ibadisme exige lettres, épargne, entraide et une stricte séparation entre l'assemblée spirituelle (halqa des azzaba) et les affaires civiles — une discipline qui a fait fonctionner des villes entières comme des ateliers organisés.",
-      "ثم حوّلت قوّتان البقاء إلى ازدهار. الأولى: التجارة عبر الصحراء؛ إذ ربطت قوافل بني مزاب المتوسط بأفريقيا جنوب الصحراء، تتاجر في التمر والصوف والفضة والملح. والثانية: العقيدة؛ إذ يفرض المذهب الإباضي القراءة والاقتصاد والتكافل، ويفصل صرامةً بين المجلس الديني (حلقة العزّابة) والشأن المدني — انضباط جعل مدناً بأكملها تعمل كورش منظّمة.",
+      "Two forces then converted survival into prosperity. The first was the Trans-Saharan trade: Mozabite caravans linked the Mediterranean to Sub-Saharan Africa, dealing in dates, wool, silver and salt. The second was doctrine: Ibadism demands literacy, thrift, mutual aid and a strict separation between the ummah's spiritual assembly (halqa of the azzaba) and its civic affairs, a discipline that made whole towns behave like disciplined workshops.",
+      "Deux forces transformèrent alors la survie en prospérité. D'abord le commerce transsaharien : les caravanes mozabites reliaient la Méditerranée à l'Afrique subsaharienne, échangeant dattes, laine, argent et sel. Ensuite la doctrine : l'ibadisme exige lettres, épargne, entraide et une stricte séparation entre l'assemblée spirituelle (halqa des azzaba) et les affaires civiles, une discipline qui a fait fonctionner des villes entières comme des ateliers organisés.",
+      "ثم حوّلت قوّتان البقاء إلى ازدهار. الأولى: التجارة عبر الصحراء؛ إذ ربطت قوافل بني مزاب المتوسط بأفريقيا جنوب الصحراء، تتاجر في التمر والصوف والفضة والملح. والثانية: العقيدة؛ إذ يفرض المذهب الإباضي القراءة والاقتصاد والتكافل، ويفصل صرامةً بين المجلس الديني (حلقة العزّابة) والشأن المدني، انضباط جعل مدناً بأكملها تعمل كورش منظّمة.",
     ),
   ],
 };
@@ -148,11 +148,11 @@ const KSOUR: NumberedItem[] = [
     arabic: "العطف",
     title: L("El Atteuf", "El Atteuf", "العطف"),
     meta: L("1012 CE", "1012", "1012م"),
-    role: L("The elder — where the first prayer was said.", "L'aîné — où fut prononcée la première prière.", "الأقدم — حيث رُفعت أولى الصلوات."),
+    role: L("The elder, where the first prayer was said.", "L'aîné, où fut prononcée la première prière.", "الأقدم، حيث رُفعت أولى الصلوات."),
     body: L(
-      "The founding city of the pentapolis. Its Sidi Brahim mosque (13th c.) is a pure white sculpture of hand-shaped lime — a form so honest that Le Corbusier photographed it and wrote of it as a lesson.",
-      "La ville fondatrice de la pentapole. Sa mosquée Sidi Brahim (XIIIe s.) est une pure sculpture de chaux façonnée à la main — une forme si sincère que Le Corbusier la photographia et l'évoqua comme une leçon.",
-      "المدينة المؤسِّسة للمدن الخمس. مسجد سيدي إبراهيم (القرن 13) نحتٌ أبيض خالص من الجير المُشكَّل باليد — شكل بلغ من الصدق أن صوّره لو كوربوزييه ووصفه بالدرس.",
+      "The founding city of the pentapolis. Its Sidi Brahim mosque (13th c.) is a pure white sculpture of hand-shaped lime, a form so honest that Le Corbusier photographed it and wrote of it as a lesson.",
+      "La ville fondatrice de la pentapole. Sa mosquée Sidi Brahim (XIIIe s.) est une pure sculpture de chaux façonnée à la main, une forme si sincère que Le Corbusier la photographia et l'évoqua comme une leçon.",
+      "المدينة المؤسِّسة للمدن الخمس. مسجد سيدي إبراهيم (القرن 13) نحتٌ أبيض خالص من الجير المُشكَّل باليد، شكل بلغ من الصدق أن صوّره لو كوربوزييه ووصفه بالدرس.",
     ),
     fact: L("Its cemetery is older than most European cathedrals.", "Son cimetière est plus ancien que la plupart des cathédrales d'Europe.", "مقبرتها أقدم من معظم كاتدرائيات أوروبا."),
   },
@@ -160,7 +160,7 @@ const KSOUR: NumberedItem[] = [
     arabic: "بنورة",
     title: L("Bou Noura", "Bou Noura", "بنورة"),
     meta: L("1046 CE", "1046", "1046م"),
-    role: L("The luminous one — perched on a rock outcrop.", "La lumineuse — perchée sur un promontoire rocheux.", "المضيئة — على نتوء صخري."),
+    role: L("The luminous one, perched on a rock outcrop.", "La lumineuse, perchée sur un promontoire rocheux.", "المضيئة، على نتوء صخري."),
     body: L(
       "Built on a natural rock spur, Bou Noura's minaret still functions as an astronomical marker for prayer times, calibrated to the horizon rather than a clock.",
       "Édifiée sur un éperon rocheux, Bou Noura conserve un minaret qui sert encore de repère astronomique pour les heures de prière, calé sur l'horizon plutôt que sur l'horloge.",
@@ -172,23 +172,23 @@ const KSOUR: NumberedItem[] = [
     arabic: "مليكة",
     title: L("Melika", "Melika", "مليكة"),
     meta: L("1350 CE", "1350", "1350م"),
-    role: L("The queen — highest of the five, watching the valley.", "La reine — la plus élevée des cinq, dominant la vallée.", "الملكة — أعلى الخمس، تراقب الوادي."),
+    role: L("The queen, highest of the five, watching the valley.", "La reine, la plus élevée des cinq, dominant la vallée.", "الملكة، أعلى الخمس، تراقب الوادي."),
     body: L(
       "Melika occupies the loftiest ridge and holds the necropolis of Sidi Aïssa, whose white cubic tombs form one of the most photographed landscapes of the Algerian Sahara.",
       "Melika occupe la crête la plus haute et abrite la nécropole de Sidi Aïssa, dont les tombes cubiques blanches composent l'un des paysages les plus photographiés du Sahara algérien.",
       "تحتل مليكة أعلى الحواف، وتضم مقبرة سيدي عيسى ذات القبور المكعّبة البيضاء، وهي من أكثر مشاهد الصحراء الجزائرية تصويراً.",
     ),
-    fact: L("The tombs point west, aligned with sunset rather than Mecca — an Ibadi peculiarity.", "Les tombes sont orientées à l'ouest, alignées sur le coucher du soleil plutôt que sur La Mecque — une particularité ibadite.", "تتّجه القبور غرباً، محاذيةً للغروب لا للكعبة — خصوصية إباضية."),
+    fact: L("The tombs point west, aligned with sunset rather than Mecca, an Ibadi peculiarity.", "Les tombes sont orientées à l'ouest, alignées sur le coucher du soleil plutôt que sur La Mecque, une particularité ibadite.", "تتّجه القبور غرباً، محاذيةً للغروب لا للكعبة، خصوصية إباضية."),
   },
   {
     arabic: "بني يزقن",
     title: L("Beni Isguen", "Beni Isguen", "بني يزقن"),
     meta: L("1347 CE", "1347", "1347م"),
-    role: L("The sacred — the guardian of Ibadi observance.", "La sacrée — gardienne de l'orthodoxie ibadite.", "المقدّسة — حارسة الإرث الإباضي."),
+    role: L("The sacred, the guardian of Ibadi observance.", "La sacrée, gardienne de l'orthodoxie ibadite.", "المقدّسة، حارسة الإرث الإباضي."),
     body: L(
-      "Beni Isguen is the strictest of the five: gates still close at sunset, photographs are limited, and every dusk its extraordinary open-air auction (the halqa) is called out one item at a time — a market ritual unchanged since the Middle Ages.",
-      "Beni Isguen est la plus stricte des cinq : ses portes se ferment encore au coucher du soleil, la photographie y est limitée, et chaque soir sa halqa — une extraordinaire vente aux enchères à ciel ouvert — se tient objet par objet, rituel inchangé depuis le Moyen Âge.",
-      "بني يزقن أشدّ الخمس تمسّكاً: تُغلَق أبوابها عند المغرب، ويُقيَّد التصوير، وتُقام مساءً حلقةُ بيعٍ علنية في الهواء الطلق قطعةً قطعة — طقس سوقي لم يتغيّر منذ العصور الوسطى.",
+      "Beni Isguen is the strictest of the five: gates still close at sunset, photographs are limited, and every dusk its extraordinary open-air auction (the halqa) is called out one item at a time, a market ritual unchanged since the Middle Ages.",
+      "Beni Isguen est la plus stricte des cinq : ses portes se ferment encore au coucher du soleil, la photographie y est limitée, et chaque soir sa halqa, une extraordinaire vente aux enchères à ciel ouvert, se tient objet par objet, rituel inchangé depuis le Moyen Âge.",
+      "بني يزقن أشدّ الخمس تمسّكاً: تُغلَق أبوابها عند المغرب، ويُقيَّد التصوير، وتُقام مساءً حلقةُ بيعٍ علنية في الهواء الطلق قطعةً قطعة، طقس سوقي لم يتغيّر منذ العصور الوسطى.",
     ),
     fact: L("Beni Isguen holds one of the oldest continuously used communal libraries in the Muslim world.", "Beni Isguen conserve l'une des plus anciennes bibliothèques communautaires du monde musulman.", "تضمّ بني يزقن واحدة من أقدم المكتبات المجتمعية المستمرّة في العالم الإسلامي."),
   },
@@ -196,11 +196,11 @@ const KSOUR: NumberedItem[] = [
     arabic: "غرداية",
     title: L("Ghardaïa", "Ghardaïa", "غرداية"),
     meta: L("1053 CE", "1053", "1053م"),
-    role: L("The capital — largest, most cosmopolitan of the five.", "La capitale — la plus grande, la plus cosmopolite des cinq.", "العاصمة — الأكبر والأكثر انفتاحاً."),
+    role: L("The capital, largest, most cosmopolitan of the five.", "La capitale, la plus grande, la plus cosmopolite des cinq.", "العاصمة، الأكبر والأكثر انفتاحاً."),
     body: L(
       "Ghardaïa's great minaret rises 23 metres above the concentric spiral of the city. Its bright textile souq, the busiest in the Algerian south, still opens and closes to a horn call heard from the summit.",
       "Le grand minaret de Ghardaïa s'élève à 23 mètres au-dessus de la spirale concentrique de la ville. Son éclatant souk des tissus, le plus animé du sud algérien, ouvre et ferme encore au son d'une corne entendue depuis le sommet.",
-      "ترتفع مئذنة غرداية الكبرى 23 متراً فوق حلزون المدينة المتراكز. ويفتح سوق النسيج الشهير — الأكثر حركةً في الجنوب الجزائري — ويُغلق حتى اليوم على وقع صوت بوقٍ يُسمع من القمّة.",
+      "ترتفع مئذنة غرداية الكبرى 23 متراً فوق حلزون المدينة المتراكز. ويفتح سوق النسيج الشهير، الأكثر حركةً في الجنوب الجزائري، ويُغلق حتى اليوم على وقع صوت بوقٍ يُسمع من القمّة.",
     ),
     fact: L("It is one of the very few pre-modern Islamic cities where the mosque was designed before the streets.", "L'une des très rares villes islamiques pré-modernes où la mosquée fut dessinée avant les rues.", "من قلّةٍ نادرة من المدن الإسلامية ما قبل الحديثة صُمِّم فيها المسجد قبل الشوارع."),
   },
@@ -214,15 +214,15 @@ const HEPTAPOLIS_INTRO = {
     "من خمسِ مدنٍ إلى سبع",
   ),
   lead: L(
-    "The five ksour of the valley are the M'Zab that UNESCO inscribed in 1982. But the historical M'Zab did not stop there. Two later Mozabite foundations, set apart from the wadi itself, extended the community into what Algerian geographers call the heptapolis — the seven cities of the M'Zab.",
-    "Les cinq ksour de la vallée forment le M'Zab que l'UNESCO a inscrit en 1982. Mais le M'Zab historique ne s'arrête pas là. Deux fondations mozabites plus tardives, situées hors du wadi lui-même, ont étendu la communauté à ce que les géographes algériens appellent l'heptapole — les sept cités du M'Zab.",
+    "The five ksour of the valley are the M'Zab that UNESCO inscribed in 1982. But the historical M'Zab did not stop there. Two later Mozabite foundations, set apart from the wadi itself, extended the community into what Algerian geographers call the heptapolis, the seven cities of the M'Zab.",
+    "Les cinq ksour de la vallée forment le M'Zab que l'UNESCO a inscrit en 1982. Mais le M'Zab historique ne s'arrête pas là. Deux fondations mozabites plus tardives, situées hors du wadi lui-même, ont étendu la communauté à ce que les géographes algériens appellent l'heptapole, les sept cités du M'Zab.",
     "المدن الخمس في الوادي هي التي أدرجتها اليونسكو عام 1982. غير أنّ وادي مزاب التاريخي لم يقف عندها؛ فقد امتدّ المجتمع المزابي بتأسيسَين لاحقَين خارج الوادي نفسه، إلى ما يُسمّيه الجغرافيون الجزائريون \"السبع مدن\" لوادي مزاب.",
   ),
   plaqueLabel: L("Editorial note", "Note éditoriale", "ملاحظة تحريرية"),
   plaqueBody: L(
-    "The UNESCO World Heritage property is precisely the five original ksour — El Atteuf, Bou Noura, Melika, Beni Isguen and Ghardaïa — together with their palm groves and cemeteries. Berriane and El Guerrara are part of the broader historical and cultural M'Zab, but sit outside the inscribed property.",
-    "Le bien du Patrimoine mondial est précisément constitué des cinq ksour d'origine — El Atteuf, Bou Noura, Melika, Beni Isguen et Ghardaïa — avec leurs palmeraies et leurs cimetières. Berriane et El Guerrara appartiennent au M'Zab historique et culturel élargi, mais se situent hors du bien inscrit.",
-    "الموقع المُدرَج في التراث العالمي هو تحديداً القصور الخمسة الأصلية — العطف، بونورة، مليكة، بني يزقن، غرداية — مع بساتين نخيلها ومقابرها. أمّا بريان والقرارة فتنتميان إلى وادي مزاب التاريخي والثقافي الأوسع، لكنّهما خارج الموقع المُدرَج.",
+    "The UNESCO World Heritage property is precisely the five original ksour, El Atteuf, Bou Noura, Melika, Beni Isguen and Ghardaïa, together with their palm groves and cemeteries. Berriane and El Guerrara are part of the broader historical and cultural M'Zab, but sit outside the inscribed property.",
+    "Le bien du Patrimoine mondial est précisément constitué des cinq ksour d'origine, El Atteuf, Bou Noura, Melika, Beni Isguen et Ghardaïa, avec leurs palmeraies et leurs cimetières. Berriane et El Guerrara appartiennent au M'Zab historique et culturel élargi, mais se situent hors du bien inscrit.",
+    "الموقع المُدرَج في التراث العالمي هو تحديداً القصور الخمسة الأصلية، العطف، بونورة، مليكة، بني يزقن، غرداية، مع بساتين نخيلها ومقابرها. أمّا بريان والقرارة فتنتميان إلى وادي مزاب التاريخي والثقافي الأوسع، لكنّهما خارج الموقع المُدرَج.",
   ),
 };
 
@@ -237,9 +237,9 @@ const HEPTAPOLIS_OUTLIERS: NumberedItem[] = [
       "بوّابة وادي مزاب الشمالية.",
     ),
     body: L(
-      "Berriane was founded on the northern approach to the valley as Mozabite families spread beyond the original ksour. It shares the same Ibadi institutions, the same white-and-ochre building tradition and the same palm-grove economy, but stands apart from the wadi itself — which is why UNESCO did not include it in the 1982 inscription, even though it is fully part of the M'Zab cultural region.",
-      "Berriane fut fondée sur l'accès nord de la vallée, lorsque des familles mozabites essaimèrent hors des ksour d'origine. Elle partage les mêmes institutions ibadites, la même tradition bâtie blanche et ocre et la même économie de palmeraie, mais se tient à l'écart du wadi lui-même — raison pour laquelle l'UNESCO ne l'a pas incluse dans l'inscription de 1982, bien qu'elle appartienne pleinement à l'aire culturelle du M'Zab.",
-      "أُسِّست بريان على المدخل الشمالي للوادي حين توسّعت العائلات المزابية خارج القصور الأصلية. تشترك معها في المؤسسات الإباضية ذاتها، وفي عمارة البيوت البيضاء والمُغرة، وفي اقتصاد الواحة، لكنّها بعيدة عن الوادي نفسه — ولذلك لم تُدرجها اليونسكو ضمن قائمة 1982، رغم انتمائها الكامل إلى الإقليم الثقافي المزابي.",
+      "Berriane was founded on the northern approach to the valley as Mozabite families spread beyond the original ksour. It shares the same Ibadi institutions, the same white-and-ochre building tradition and the same palm-grove economy, but stands apart from the wadi itself, which is why UNESCO did not include it in the 1982 inscription, even though it is fully part of the M'Zab cultural region.",
+      "Berriane fut fondée sur l'accès nord de la vallée, lorsque des familles mozabites essaimèrent hors des ksour d'origine. Elle partage les mêmes institutions ibadites, la même tradition bâtie blanche et ocre et la même économie de palmeraie, mais se tient à l'écart du wadi lui-même, raison pour laquelle l'UNESCO ne l'a pas incluse dans l'inscription de 1982, bien qu'elle appartienne pleinement à l'aire culturelle du M'Zab.",
+      "أُسِّست بريان على المدخل الشمالي للوادي حين توسّعت العائلات المزابية خارج القصور الأصلية. تشترك معها في المؤسسات الإباضية ذاتها، وفي عمارة البيوت البيضاء والمُغرة، وفي اقتصاد الواحة، لكنّها بعيدة عن الوادي نفسه، ولذلك لم تُدرجها اليونسكو ضمن قائمة 1982، رغم انتمائها الكامل إلى الإقليم الثقافي المزابي.",
     ),
     fact: L(
       "Berriane hosts one of the largest Mozabite communities outside the valley and functions as the M'Zab's northern trading gateway.",
@@ -252,9 +252,9 @@ const HEPTAPOLIS_OUTLIERS: NumberedItem[] = [
     title: L("El Guerrara", "El Guerrara", "القرارة"),
     meta: L("Founded 1631 CE · ~110 km north-east of Ghardaïa", "Fondée en 1631 · ~110 km au nord-est de Ghardaïa", "أُسّست 1631م · نحو 110 كم شمال شرق غرداية"),
     role: L(
-      "The eastern outpost — closest of the seven to the Sahara's caravan roads.",
-      "L'avant-poste oriental — la plus proche des sept des routes caravanières sahariennes.",
-      "المرابط الشرقي — أقرب السبع إلى دروب القوافل الصحراوية.",
+      "The eastern outpost, closest of the seven to the Sahara's caravan roads.",
+      "L'avant-poste oriental, la plus proche des sept des routes caravanières sahariennes.",
+      "المرابط الشرقي، أقرب السبع إلى دروب القوافل الصحراوية.",
     ),
     body: L(
       "El Guerrara was founded in the early 17th century on a distinct oasis site well east of the wadi, expanding Mozabite settlement toward the caravan tracks that linked Ouargla and the Ziban. Like Berriane, it belongs to the historical heptapolis but lies outside the UNESCO property, which is confined to the continuous cultural landscape of the five original ksour.",
@@ -262,9 +262,9 @@ const HEPTAPOLIS_OUTLIERS: NumberedItem[] = [
       "أُسِّست القرارة في مطلع القرن السابع عشر على واحة مستقلّة شرق الوادي، لتوسّع الحضور المزابي نحو دروب القوافل التي تربط ورقلة والزيبان. كبريان، تنتمي إلى السبع التاريخية لكنّها خارج موقع اليونسكو المقتصر على المشهد الثقافي المتّصل للقصور الخمسة الأصلية.",
     ),
     fact: L(
-      "El Guerrara's palm grove is fed by a network of foggaras — underground galleries that tap the water table without exposing it to evaporation.",
-      "La palmeraie d'El Guerrara est irriguée par des foggaras — galeries souterraines qui captent la nappe sans l'exposer à l'évaporation.",
-      "تُروى واحة القرارة بشبكة فقّارات — قنواتٍ جوفية تلتقط الماء من الطبقة الحاملة دون تعريضه للتبخّر.",
+      "El Guerrara's palm grove is fed by a network of foggaras, underground galleries that tap the water table without exposing it to evaporation.",
+      "La palmeraie d'El Guerrara est irriguée par des foggaras, galeries souterraines qui captent la nappe sans l'exposer à l'évaporation.",
+      "تُروى واحة القرارة بشبكة فقّارات، قنواتٍ جوفية تلتقط الماء من الطبقة الحاملة دون تعريضه للتبخّر.",
     ),
   },
 ];
@@ -274,17 +274,17 @@ const ARCHITECTURE = {
   eyebrow: L("Architecture", "Architecture", "العمارة"),
   title: L("A city as a single organism", "Une cité comme un organisme unique", "مدينة كائنٌ واحد"),
   intro: L(
-    "There is no formal architect in Ibadi tradition. There is only the community and its rules. The result is a form of urbanism that behaves less like a design and more like a living organism, where every element serves several functions at once — spiritual, climatic, social, defensive.",
-    "Il n'y a pas d'architecte formel dans la tradition ibadite. Il n'y a que la communauté et ses règles. Il en résulte un urbanisme qui ressemble moins à un plan qu'à un organisme vivant, où chaque élément remplit plusieurs fonctions à la fois — spirituelle, climatique, sociale, défensive.",
+    "There is no formal architect in Ibadi tradition. There is only the community and its rules. The result is a form of urbanism that behaves less like a design and more like a living organism, where every element serves several functions at once, spiritual, climatic, social, defensive.",
+    "Il n'y a pas d'architecte formel dans la tradition ibadite. Il n'y a que la communauté et ses règles. Il en résulte un urbanisme qui ressemble moins à un plan qu'à un organisme vivant, où chaque élément remplit plusieurs fonctions à la fois, spirituelle, climatique, sociale, défensive.",
     "لا يعرف التقليد الإباضي معمارياً رسمياً. هناك فقط الجماعة وقواعدها. فينشأ عمرانٌ أقرب إلى كائن حيّ منه إلى تصميم، إذ يؤدّي كلّ عنصر عدّة وظائف في آن: روحية ومناخية واجتماعية ودفاعية.",
   ),
   principles: [
     {
       title: L("The mosque at the summit", "La mosquée au sommet", "المسجد في القمّة"),
       body: L(
-        "Every ksar is crowned by its mosque — never at the centre, always at the highest point. This is not aesthetic: the minaret doubles as a watchtower, a sundial, and, in flood season, a rally point audible across the wadi.",
-        "Chaque ksar est couronné par sa mosquée — jamais au centre, toujours au point le plus haut. Ce n'est pas esthétique : le minaret fait aussi office de tour de guet, de cadran solaire et, en crue, de point de ralliement audible dans tout le wadi.",
-        "يتوَّج كل قصر بمسجده — لا في الوسط بل في أعلى نقطة. ليس ذلك جمالياً: فالمئذنة برج مراقبة، ومزولة شمسية، وفي مواسم الفيضان نقطة نداءٍ تُسمَع في الوادي كلّه.",
+        "Every ksar is crowned by its mosque, never at the centre, always at the highest point. This is not aesthetic: the minaret doubles as a watchtower, a sundial, and, in flood season, a rally point audible across the wadi.",
+        "Chaque ksar est couronné par sa mosquée, jamais au centre, toujours au point le plus haut. Ce n'est pas esthétique : le minaret fait aussi office de tour de guet, de cadran solaire et, en crue, de point de ralliement audible dans tout le wadi.",
+        "يتوَّج كل قصر بمسجده، لا في الوسط بل في أعلى نقطة. ليس ذلك جمالياً: فالمئذنة برج مراقبة، ومزولة شمسية، وفي مواسم الفيضان نقطة نداءٍ تُسمَع في الوادي كلّه.",
       ),
     },
     {
@@ -298,17 +298,17 @@ const ARCHITECTURE = {
     {
       title: L("Houses folded around a courtyard", "Des maisons repliées sur une cour", "بيوت تنطوي حول فناء"),
       body: L(
-        "The Mozabite house turns its back to the street. Blind whitewashed walls face outward; life happens in the west ed-dar, a central patio open to the sky, cooled at night and shaded by day. Doors are offset so that no visitor can see into the courtyard from the street — a spatial expression of the Ibadi ethic of hidden inner life.",
-        "La maison mozabite tourne le dos à la rue. Vers l'extérieur, des murs aveugles chaulés ; à l'intérieur, la vie s'organise autour du west ed-dar, patio central ouvert au ciel, rafraîchi la nuit, ombré le jour. Les portes sont décalées pour qu'aucun visiteur ne puisse voir la cour depuis la rue — expression spatiale de l'éthique ibadite de la vie intérieure discrète.",
-        "يُدير البيت المزابي ظهره للشارع. إلى الخارج جدرانٌ عمياء مطليّة بالجير، وإلى الداخل تنتظم الحياة حول الويسط الدار: فناء مركزيّ مفتوح على السماء، يبرد ليلاً ويُظلَّل نهاراً. والأبواب مُزاحة كي لا يرى الزائر الفناء من الشارع — تجسيدٌ فضائيٌّ للأخلاق الإباضية في ستر الحياة الداخلية.",
+        "The Mozabite house turns its back to the street. Blind whitewashed walls face outward; life happens in the west ed-dar, a central patio open to the sky, cooled at night and shaded by day. Doors are offset so that no visitor can see into the courtyard from the street, a spatial expression of the Ibadi ethic of hidden inner life.",
+        "La maison mozabite tourne le dos à la rue. Vers l'extérieur, des murs aveugles chaulés ; à l'intérieur, la vie s'organise autour du west ed-dar, patio central ouvert au ciel, rafraîchi la nuit, ombré le jour. Les portes sont décalées pour qu'aucun visiteur ne puisse voir la cour depuis la rue, expression spatiale de l'éthique ibadite de la vie intérieure discrète.",
+        "يُدير البيت المزابي ظهره للشارع. إلى الخارج جدرانٌ عمياء مطليّة بالجير، وإلى الداخل تنتظم الحياة حول الويسط الدار: فناء مركزيّ مفتوح على السماء، يبرد ليلاً ويُظلَّل نهاراً. والأبواب مُزاحة كي لا يرى الزائر الفناء من الشارع، تجسيدٌ فضائيٌّ للأخلاق الإباضية في ستر الحياة الداخلية.",
       ),
     },
     {
       title: L("Passive cooling before physics knew it had a name", "Un rafraîchissement passif avant que la physique le nomme", "تبريد سلبيّ قبل أن يعرف العلم اسمه"),
       body: L(
-        "Walls are 40–60 cm thick, lime-washed white on the outside to bounce sunlight, and left rough inside to trap cool air. A lattice roof (chebek) shades the upper terrace while allowing hot air to rise and vent. Interior temperatures stay 10–15 °C below the outside — with no electricity, no fans, no glass.",
-        "Les murs mesurent 40 à 60 cm d'épaisseur, chaulés en blanc à l'extérieur pour renvoyer la lumière, laissés bruts à l'intérieur pour piéger l'air frais. Un toit à claustra (chebek) ombre la terrasse tout en laissant l'air chaud s'évacuer. À l'intérieur, la température reste de 10 à 15 °C sous celle du dehors — sans électricité, sans ventilateur, sans vitre.",
-        "تبلغ سماكة الجدران 40 إلى 60 سم، مطليّة بالجير الأبيض من الخارج لعكس الضوء، وخشنة الداخل لحبس الهواء البارد. ويظلّل سقفٌ مشبّك (شبك) السطحَ الأعلى بينما يسمح للهواء الساخن بالصعود والتصريف. تبقى الحرارة الداخلية أقلّ من الخارج بـ10 إلى 15 درجة — دون كهرباء ولا مروحة ولا زجاج.",
+        "Walls are 40–60 cm thick, lime-washed white on the outside to bounce sunlight, and left rough inside to trap cool air. A lattice roof (chebek) shades the upper terrace while allowing hot air to rise and vent. Interior temperatures stay 10–15 °C below the outside, with no electricity, no fans, no glass.",
+        "Les murs mesurent 40 à 60 cm d'épaisseur, chaulés en blanc à l'extérieur pour renvoyer la lumière, laissés bruts à l'intérieur pour piéger l'air frais. Un toit à claustra (chebek) ombre la terrasse tout en laissant l'air chaud s'évacuer. À l'intérieur, la température reste de 10 à 15 °C sous celle du dehors, sans électricité, sans ventilateur, sans vitre.",
+        "تبلغ سماكة الجدران 40 إلى 60 سم، مطليّة بالجير الأبيض من الخارج لعكس الضوء، وخشنة الداخل لحبس الهواء البارد. ويظلّل سقفٌ مشبّك (شبك) السطحَ الأعلى بينما يسمح للهواء الساخن بالصعود والتصريف. تبقى الحرارة الداخلية أقلّ من الخارج بـ10 إلى 15 درجة، دون كهرباء ولا مروحة ولا زجاج.",
       ),
     },
   ] as NumberedItem[],
@@ -323,24 +323,24 @@ const WATER = {
   ),
   body: L(
     "The wadi is dry for years, then floods catastrophically. In 1900 the Mozabite community, without engineers, designed a distribution system so equitable it has never had to be revised. When a flood arrives, a stone dam (tabya) slows the water; carved dividing stones (kesria) split the flow into precise fractions; and a network of channels (seguia) feeds the palm grove plot by plot, family by family. Not one drop reaches the desert unused. Modern hydrologists have measured its efficiency at over 90 %.",
-    "Le wadi reste sec des années, puis déborde de façon catastrophique. Vers 1900, la communauté mozabite — sans ingénieurs — a conçu un système de partage si équitable qu'il n'a jamais eu à être révisé. Quand la crue arrive, un barrage de pierre (tabya) freine l'eau ; des pierres sculptées (kesria) la divisent en fractions précises ; un réseau de canaux (seguia) irrigue la palmeraie parcelle par parcelle, famille par famille. Pas une goutte n'atteint le désert inutilisée. Les hydrologues actuels mesurent une efficacité supérieure à 90 %.",
-    "يظلّ الوادي جافّاً لسنوات ثم يفيض فيضاناً كارثيّاً. حوالي 1900، صمّم مجتمع بني مزاب — بلا مهندسين — نظام توزيع بلغ من الإنصاف أنه لم يحتَج قطّ إلى مراجعة. حين يقدم الفيضان، يبطئه سدٌّ حجريّ (تابْيا)؛ وتقسمه أحجارٌ منحوتة (كِسريا) إلى نسبٍ دقيقة؛ وتُغذّي شبكة قنوات (سواقي) البستان قطعةً قطعة وعائلةً عائلة. لا تصل قطرةٌ واحدة إلى الصحراء دون أن تُستعمل. وقاس الهيدرولوجيّون المعاصرون كفاءتَه بأكثر من 90 %.",
+    "Le wadi reste sec des années, puis déborde de façon catastrophique. Vers 1900, la communauté mozabite, sans ingénieurs, a conçu un système de partage si équitable qu'il n'a jamais eu à être révisé. Quand la crue arrive, un barrage de pierre (tabya) freine l'eau ; des pierres sculptées (kesria) la divisent en fractions précises ; un réseau de canaux (seguia) irrigue la palmeraie parcelle par parcelle, famille par famille. Pas une goutte n'atteint le désert inutilisée. Les hydrologues actuels mesurent une efficacité supérieure à 90 %.",
+    "يظلّ الوادي جافّاً لسنوات ثم يفيض فيضاناً كارثيّاً. حوالي 1900، صمّم مجتمع بني مزاب، بلا مهندسين، نظام توزيع بلغ من الإنصاف أنه لم يحتَج قطّ إلى مراجعة. حين يقدم الفيضان، يبطئه سدٌّ حجريّ (تابْيا)؛ وتقسمه أحجارٌ منحوتة (كِسريا) إلى نسبٍ دقيقة؛ وتُغذّي شبكة قنوات (سواقي) البستان قطعةً قطعة وعائلةً عائلة. لا تصل قطرةٌ واحدة إلى الصحراء دون أن تُستعمل. وقاس الهيدرولوجيّون المعاصرون كفاءتَه بأكثر من 90 %.",
   ),
   bullets: [
     L(
-      "The three-level palm grove: date palms on top; fruit trees (pomegranate, apricot) in the middle; vegetables (mint, chilli, tomatoes) at ground level — a stacked microclimate that halves evaporation.",
-      "La palmeraie à trois étages : dattiers en haut ; arbres fruitiers (grenadier, abricotier) au milieu ; légumes (menthe, piment, tomate) au sol — un microclimat superposé qui divise l'évaporation par deux.",
-      "بستان النخيل ثلاثيّ الطبقات: النخيل في الأعلى؛ فواكه (رمّان، مشمش) في الوسط؛ خضار (نعناع، فلفل، طماطم) عند الأرض — مناخٌ مصغَّر متطبِّق يخفض التبخّر إلى النصف.",
+      "The three-level palm grove: date palms on top; fruit trees (pomegranate, apricot) in the middle; vegetables (mint, chilli, tomatoes) at ground level, a stacked microclimate that halves evaporation.",
+      "La palmeraie à trois étages : dattiers en haut ; arbres fruitiers (grenadier, abricotier) au milieu ; légumes (menthe, piment, tomate) au sol, un microclimat superposé qui divise l'évaporation par deux.",
+      "بستان النخيل ثلاثيّ الطبقات: النخيل في الأعلى؛ فواكه (رمّان، مشمش) في الوسط؛ خضار (نعناع، فلفل، طماطم) عند الأرض، مناخٌ مصغَّر متطبِّق يخفض التبخّر إلى النصف.",
     ),
     L(
-      "Communal wells (ain) with counterweight beams (chadouf) still work by hand — the ancestral gesture of the Nile Valley, preserved in the Sahara.",
-      "Puits communautaires (ain) à balancier (chadouf) actionnés à la main — le geste ancestral de la vallée du Nil, conservé au Sahara.",
-      "آبار مجتمعية (عين) ذات ذراع موازِنة (شادوف) تُشغَّل باليد — إشارةٌ متوارثة من وادي النيل، محفوظة في الصحراء.",
+      "Communal wells (ain) with counterweight beams (chadouf) still work by hand, the ancestral gesture of the Nile Valley, preserved in the Sahara.",
+      "Puits communautaires (ain) à balancier (chadouf) actionnés à la main, le geste ancestral de la vallée du Nil, conservé au Sahara.",
+      "آبار مجتمعية (عين) ذات ذراع موازِنة (شادوف) تُشغَّل باليد، إشارةٌ متوارثة من وادي النيل، محفوظة في الصحراء.",
     ),
     L(
-      "In 2008 a hundred-year flood destroyed hundreds of modern houses built outside the historical grid — but the old ksour, sitting exactly where the elders had placed them, took no structural damage.",
-      "En 2008, une crue centennale détruisit des centaines de maisons modernes bâties hors du tracé historique — mais les vieux ksour, exactement là où les anciens les avaient placés, ne subirent aucun dommage structurel.",
-      "في 2008 دمّر فيضانُ القرن مئات البيوت الحديثة المبنيّة خارج التخطيط التاريخي — أمّا القصور القديمة، حيث وضعها الأجداد بالضبط، فلم تتضرّر بنيوياً.",
+      "In 2008 a hundred-year flood destroyed hundreds of modern houses built outside the historical grid, but the old ksour, sitting exactly where the elders had placed them, took no structural damage.",
+      "En 2008, une crue centennale détruisit des centaines de maisons modernes bâties hors du tracé historique, mais les vieux ksour, exactement là où les anciens les avaient placés, ne subirent aucun dommage structurel.",
+      "في 2008 دمّر فيضانُ القرن مئات البيوت الحديثة المبنيّة خارج التخطيط التاريخي، أمّا القصور القديمة، حيث وضعها الأجداد بالضبط، فلم تتضرّر بنيوياً.",
     ),
   ],
   image: {
@@ -364,9 +364,9 @@ const UNESCO = {
     {
       code: "ii",
       body: L(
-        "The M'Zab exerted a considerable influence on 20th-century architecture and urbanism — from Le Corbusier and Fernand Pouillon to Hassan Fathy and André Ravéreau.",
-        "Le M'Zab a exercé une influence considérable sur l'architecture et l'urbanisme du XXe siècle — de Le Corbusier et Fernand Pouillon à Hassan Fathy et André Ravéreau.",
-        "أثّر وادي مزاب تأثيراً بالغاً في العمارة والعمران في القرن العشرين — من لو كوربوزييه وفرنان بويون إلى حسن فتحي وأندريه رافيرو.",
+        "The M'Zab exerted a considerable influence on 20th-century architecture and urbanism, from Le Corbusier and Fernand Pouillon to Hassan Fathy and André Ravéreau.",
+        "Le M'Zab a exercé une influence considérable sur l'architecture et l'urbanisme du XXe siècle, de Le Corbusier et Fernand Pouillon à Hassan Fathy et André Ravéreau.",
+        "أثّر وادي مزاب تأثيراً بالغاً في العمارة والعمران في القرن العشرين، من لو كوربوزييه وفرنان بويون إلى حسن فتحي وأندريه رافيرو.",
       ),
     },
     {
@@ -390,9 +390,9 @@ const UNESCO = {
     {
       title: L("Outstanding Universal Value", "Valeur universelle exceptionnelle", "القيمة العالمية الاستثنائية"),
       body: L(
-        "Outstanding Universal Value: the M'Zab pentapolis is a complete and functioning example — perhaps the only surviving one — of the medieval Ibadi urban model, in which theology, hydraulics, defence and social order are drawn as one integrated diagram of a city.",
-        "Valeur universelle exceptionnelle : la pentapole du M'Zab est un exemple complet et vivant — sans doute le seul qui subsiste — du modèle urbain ibadite médiéval, où théologie, hydraulique, défense et ordre social se dessinent comme un unique diagramme intégré de la cité.",
-        "القيمة العالمية الاستثنائية: تُمثّل المدن الخمس نموذجاً كاملاً وحيّاً — ولعلّه الوحيد الباقي — للنموذج العمراني الإباضي في العصور الوسطى، حيث تُرسَم اللاهوت والهيدروليكا والدفاع والنظام الاجتماعي في مخطّطٍ واحد للمدينة.",
+        "Outstanding Universal Value: the M'Zab pentapolis is a complete and functioning example, perhaps the only surviving one, of the medieval Ibadi urban model, in which theology, hydraulics, defence and social order are drawn as one integrated diagram of a city.",
+        "Valeur universelle exceptionnelle : la pentapole du M'Zab est un exemple complet et vivant, sans doute le seul qui subsiste, du modèle urbain ibadite médiéval, où théologie, hydraulique, défense et ordre social se dessinent comme un unique diagramme intégré de la cité.",
+        "القيمة العالمية الاستثنائية: تُمثّل المدن الخمس نموذجاً كاملاً وحيّاً، ولعلّه الوحيد الباقي، للنموذج العمراني الإباضي في العصور الوسطى، حيث تُرسَم اللاهوت والهيدروليكا والدفاع والنظام الاجتماعي في مخطّطٍ واحد للمدينة.",
       ),
     },
     {
@@ -414,9 +414,9 @@ const UNESCO = {
     {
       title: L("Conservation", "Conservation", "الحفاظ"),
       body: L(
-        "Since 1988 the Office de Protection et de Promotion de la Vallée du M'Zab (OPVM) has managed the site under a rigorous plan of permanent inhabitants, restricted materials, and monitored restoration — one of the earliest such institutions in the Arab world.",
-        "Depuis 1988, l'Office de Protection et de Promotion de la Vallée du M'Zab (OPVM) gère le site selon un plan rigoureux d'habitat permanent, de matériaux restreints et de restauration surveillée — l'une des toutes premières institutions de ce type dans le monde arabe.",
-        "منذ 1988، يُدير ديوانُ حماية وترقية وادي مزاب (OPVM) الموقع وفق خطّة صارمة للسكن الدائم والمواد المرخّصة والترميم المراقَب — من أوائل هذه المؤسسات في العالم العربي.",
+        "Since 1988 the Office de Protection et de Promotion de la Vallée du M'Zab (OPVM) has managed the site under a rigorous plan of permanent inhabitants, restricted materials, and monitored restoration, one of the earliest such institutions in the Arab world.",
+        "Depuis 1988, l'Office de Protection et de Promotion de la Vallée du M'Zab (OPVM) gère le site selon un plan rigoureux d'habitat permanent, de matériaux restreints et de restauration surveillée, l'une des toutes premières institutions de ce type dans le monde arabe.",
+        "منذ 1988، يُدير ديوانُ حماية وترقية وادي مزاب (OPVM) الموقع وفق خطّة صارمة للسكن الدائم والمواد المرخّصة والترميم المراقَب، من أوائل هذه المؤسسات في العالم العربي.",
       ),
     },
   ],
@@ -427,9 +427,9 @@ const DAILY = {
   title: L("A society that runs on assemblies, not authorities", "Une société qui fonctionne par assemblées, non par autorités", "مجتمعٌ تُديره المجالس لا السلطات"),
   paragraphs: [
     L(
-      "The Mozabite day is governed by two assemblies, both older than any modern institution in Algeria. The halqa of the azzaba, a religious council of a dozen elders, watches over doctrine, education and burial. The djemaâ, a civic assembly of family heads, decides on water, land, disputes and public works. Neither has a president. Neither takes a vote — decisions are debated until a consensus is reached, however long that takes.",
-      "La journée mozabite est régie par deux assemblées, plus anciennes que toute institution algérienne moderne. La halqa des azzaba, conseil religieux d'une douzaine d'anciens, veille sur la doctrine, l'enseignement et les funérailles. La djemaâ, assemblée civile des chefs de famille, tranche l'eau, la terre, les litiges et les travaux publics. Ni l'une ni l'autre n'a de président. Ni l'une ni l'autre ne vote — on débat jusqu'au consensus, aussi long soit-il.",
-      "يُنظّم يومَ المزابي مجلسان، أقدم من أيّ مؤسّسة جزائرية حديثة. حلقةُ العزّابة، مجلسٌ ديني من نحو اثني عشر شيخاً، تسهر على العقيدة والتعليم والجنائز. والجماعة، مجلس مدني من كبار العائلات، تفصل في الماء والأرض والنزاعات والأشغال العامة. لا رئيسَ لأيّ منهما. ولا يُصوَّت — يُتناقش حتى يبلغ التوافق مهما طال.",
+      "The Mozabite day is governed by two assemblies, both older than any modern institution in Algeria. The halqa of the azzaba, a religious council of a dozen elders, watches over doctrine, education and burial. The djemaâ, a civic assembly of family heads, decides on water, land, disputes and public works. Neither has a president. Neither takes a vote, decisions are debated until a consensus is reached, however long that takes.",
+      "La journée mozabite est régie par deux assemblées, plus anciennes que toute institution algérienne moderne. La halqa des azzaba, conseil religieux d'une douzaine d'anciens, veille sur la doctrine, l'enseignement et les funérailles. La djemaâ, assemblée civile des chefs de famille, tranche l'eau, la terre, les litiges et les travaux publics. Ni l'une ni l'autre n'a de président. Ni l'une ni l'autre ne vote, on débat jusqu'au consensus, aussi long soit-il.",
+      "يُنظّم يومَ المزابي مجلسان، أقدم من أيّ مؤسّسة جزائرية حديثة. حلقةُ العزّابة، مجلسٌ ديني من نحو اثني عشر شيخاً، تسهر على العقيدة والتعليم والجنائز. والجماعة، مجلس مدني من كبار العائلات، تفصل في الماء والأرض والنزاعات والأشغال العامة. لا رئيسَ لأيّ منهما. ولا يُصوَّت، يُتناقش حتى يبلغ التوافق مهما طال.",
     ),
     L(
       "Trade is another pillar. The Mozabite retail merchant is a familiar figure in every Algerian city; the community's ancient system of family capital pooling (touiza) still funds shops and marriages across the diaspora. What flows back to the valley is what has kept it standing: money, but also the discipline of a people who left in order to return.",
@@ -438,10 +438,10 @@ const DAILY = {
     ),
   ],
   crafts: [
-    L("The Ghardaïa carpet — geometric, low-pile, dyed in cochineal red and henna gold — is a UNESCO-recognised living craft.", "Le tapis de Ghardaïa — géométrique, à velours ras, teint au rouge cochenille et à l'or de henné — est un artisanat vivant reconnu par l'UNESCO.", "زربية غرداية — هندسية، قصيرة الوبر، مصبوغة بأحمر القرمز وذهب الحنّاء — حرفةٌ حيّة تعترف بها اليونسكو."),
+    L("The Ghardaïa carpet, geometric, low-pile, dyed in cochineal red and henna gold, is a UNESCO-recognised living craft.", "Le tapis de Ghardaïa, géométrique, à velours ras, teint au rouge cochenille et à l'or de henné, est un artisanat vivant reconnu par l'UNESCO.", "زربية غرداية، هندسية، قصيرة الوبر، مصبوغة بأحمر القرمز وذهب الحنّاء، حرفةٌ حيّة تعترف بها اليونسكو."),
     L("Silversmithing in Beni Isguen still uses medieval filigree techniques passed on within families.", "L'orfèvrerie d'argent à Beni Isguen conserve les techniques médiévales de filigrane, transmises en famille.", "لا تزال صياغةُ الفضّة في بني يزقن تحفظ تقنيّات الفتيل من العصور الوسطى، متوارثةً داخل العائلات."),
-    L("The daily market call at Beni Isguen — the halqa — sells everything, from a copper tray to a she-camel, item by item at sunset.", "L'appel quotidien du marché à Beni Isguen — la halqa — vend tout, d'un plateau en cuivre à une chamelle, objet par objet au coucher du soleil.", "نداءُ السوق اليومي في بني يزقن — الحلقة — يبيع كلّ شيء، من صينية نحاس إلى ناقة، قطعةً قطعة عند المغرب."),
-    L("Hospitality is codified: any traveller who reaches a ksar at dusk is guaranteed shelter, water and a share of the evening meal — not by law, by convention older than law.", "L'hospitalité est codifiée : tout voyageur arrivant à un ksar au crépuscule est assuré d'un toit, d'eau et d'une part du repas — non par la loi, mais par une convention plus ancienne que la loi.", "الضيافة مقنَّنة: كلّ مسافر يبلغ قصراً عند الغسق يجد مأوىً وماءً ونصيباً من عشاء أهله — لا بحكم القانون بل بحكم عرفٍ أقدم من القانون."),
+    L("The daily market call at Beni Isguen, the halqa, sells everything, from a copper tray to a she-camel, item by item at sunset.", "L'appel quotidien du marché à Beni Isguen, la halqa, vend tout, d'un plateau en cuivre à une chamelle, objet par objet au coucher du soleil.", "نداءُ السوق اليومي في بني يزقن، الحلقة، يبيع كلّ شيء، من صينية نحاس إلى ناقة، قطعةً قطعة عند المغرب."),
+    L("Hospitality is codified: any traveller who reaches a ksar at dusk is guaranteed shelter, water and a share of the evening meal, not by law, by convention older than law.", "L'hospitalité est codifiée : tout voyageur arrivant à un ksar au crépuscule est assuré d'un toit, d'eau et d'une part du repas, non par la loi, mais par une convention plus ancienne que la loi.", "الضيافة مقنَّنة: كلّ مسافر يبلغ قصراً عند الغسق يجد مأوىً وماءً ونصيباً من عشاء أهله، لا بحكم القانون بل بحكم عرفٍ أقدم من القانون."),
   ],
   image: {
     alt: L(
@@ -467,9 +467,9 @@ const ENGINEERING = {
       "لأنّه يُثبت، على مقياس مجتمعٍ كامل، أن الراحة الحرارية والأمان المائي والكثافة السكّانية ممكنة بلا طاقة أحفوريّة تقريباً.",
     ),
     L(
-      "Because its urban plan was designed for a climate of extremes — cold nights, brutal days, catastrophic rain — the very conditions many world cities are only now beginning to face under a warming climate.",
-      "Parce que son plan urbain fut conçu pour un climat d'extrêmes — nuits froides, journées brûlantes, pluies catastrophiques — précisément les conditions auxquelles beaucoup de villes du monde commencent seulement à faire face avec le réchauffement.",
-      "لأنّ مخطّطه العمراني صُمّم لمناخٍ من الأقصى — ليالٍ باردة ونهاراتٌ حارقة وأمطارٌ كارثيّة — وهي الظروف نفسها التي بدأت مدنٌ كثيرة في العالم لتوّها تواجهها مع الاحتباس الحراري.",
+      "Because its urban plan was designed for a climate of extremes, cold nights, brutal days, catastrophic rain, the very conditions many world cities are only now beginning to face under a warming climate.",
+      "Parce que son plan urbain fut conçu pour un climat d'extrêmes, nuits froides, journées brûlantes, pluies catastrophiques, précisément les conditions auxquelles beaucoup de villes du monde commencent seulement à faire face avec le réchauffement.",
+      "لأنّ مخطّطه العمراني صُمّم لمناخٍ من الأقصى، ليالٍ باردة ونهاراتٌ حارقة وأمطارٌ كارثيّة، وهي الظروف نفسها التي بدأت مدنٌ كثيرة في العالم لتوّها تواجهها مع الاحتباس الحراري.",
     ),
     L(
       "Because its construction economy is circular by default: mud plaster returns to earth, palm beams regrow every generation, and the volume of a house is limited by what a family can lift by hand.",
@@ -489,14 +489,14 @@ const INFLUENCE = {
   title: L("The lesson that travelled the world", "La leçon qui a fait le tour du monde", "الدرس الذي جاب العالم"),
   paragraphs: [
     L(
-      "In 1931 Le Corbusier disembarked from a small plane at Ghardaïa. He stayed only a week. He would return to the M'Zab in his notes for the rest of his life — the whitewashed cubic house of El Atteuf appears in his sketchbooks alongside Greek temples and Andean citadels. \"An architecture that is not designed,\" he wrote, \"but inherited.\"",
-      "En 1931, Le Corbusier descendit d'un petit avion à Ghardaïa. Il n'y resta qu'une semaine. Il ne cesserait ensuite de revenir au M'Zab dans ses carnets — la maison cubique blanche d'El Atteuf y voisine les temples grecs et les citadelles andines. « Une architecture qui n'est pas dessinée, écrit-il, mais héritée. »",
-      "في 1931 نزل لو كوربوزييه من طائرة صغيرة في غرداية، وأقام أسبوعاً فحسب. ولكنّه لن يكفّ عن العودة إلى وادي مزاب في دفاتره — يظهر بيتُ العطف المكعّب الأبيض إلى جانب المعابد اليونانية والقلاع الأندية. كتب: «عمارةٌ لا تُصمَّم بل تُوَرَّث».",
+      "In 1931 Le Corbusier disembarked from a small plane at Ghardaïa. He stayed only a week. He would return to the M'Zab in his notes for the rest of his life, the whitewashed cubic house of El Atteuf appears in his sketchbooks alongside Greek temples and Andean citadels. \"An architecture that is not designed,\" he wrote, \"but inherited.\"",
+      "En 1931, Le Corbusier descendit d'un petit avion à Ghardaïa. Il n'y resta qu'une semaine. Il ne cesserait ensuite de revenir au M'Zab dans ses carnets, la maison cubique blanche d'El Atteuf y voisine les temples grecs et les citadelles andines. « Une architecture qui n'est pas dessinée, écrit-il, mais héritée. »",
+      "في 1931 نزل لو كوربوزييه من طائرة صغيرة في غرداية، وأقام أسبوعاً فحسب. ولكنّه لن يكفّ عن العودة إلى وادي مزاب في دفاتره، يظهر بيتُ العطف المكعّب الأبيض إلى جانب المعابد اليونانية والقلاع الأندية. كتب: «عمارةٌ لا تُصمَّم بل تُوَرَّث».",
     ),
     L(
-      "The Egyptian master Hassan Fathy visited a generation later and wrote of the M'Zab as \"the finished lesson\" — the built form of everything he had spent his life arguing for. The French-Algerian architect André Ravéreau moved to Ghardaïa in the 1960s and made the valley his life's study; his book \"Le M'Zab, une leçon d'architecture\" is still the reference. Fernand Pouillon's whitewashed housing estates in Algiers, still standing today, are unimaginable without it.",
-      "Le maître égyptien Hassan Fathy visita une génération plus tard et parla du M'Zab comme de « la leçon achevée » — la forme bâtie de tout ce qu'il avait défendu sa vie durant. L'architecte franco-algérien André Ravéreau s'installa à Ghardaïa dans les années 1960 et fit du M'Zab l'étude d'une vie ; son livre « Le M'Zab, une leçon d'architecture » reste la référence. Les cités blanchies à la chaux de Fernand Pouillon à Alger, toujours debout, seraient impensables sans lui.",
-      "زار المعلّم المصري حسن فتحي بعد جيل، ووصف وادي مزاب بـ«الدرس المكتمل» — الصورة المبنيّة لكلّ ما دافع عنه طوال حياته. وانتقل المعماريّ الفرنسي-الجزائري أندريه رافيرو للعيش في غرداية في الستّينيّات، وجعل من الوادي دراسةَ عمر؛ ولا يزال كتابه «المزاب: درس في العمارة» المرجع. وأحياءُ فرنان بويون البيضاء في الجزائر العاصمة، التي لا تزال قائمة، لا يمكن تصوّرها من دونه.",
+      "The Egyptian master Hassan Fathy visited a generation later and wrote of the M'Zab as \"the finished lesson\", the built form of everything he had spent his life arguing for. The French-Algerian architect André Ravéreau moved to Ghardaïa in the 1960s and made the valley his life's study; his book \"Le M'Zab, une leçon d'architecture\" is still the reference. Fernand Pouillon's whitewashed housing estates in Algiers, still standing today, are unimaginable without it.",
+      "Le maître égyptien Hassan Fathy visita une génération plus tard et parla du M'Zab comme de « la leçon achevée », la forme bâtie de tout ce qu'il avait défendu sa vie durant. L'architecte franco-algérien André Ravéreau s'installa à Ghardaïa dans les années 1960 et fit du M'Zab l'étude d'une vie ; son livre « Le M'Zab, une leçon d'architecture » reste la référence. Les cités blanchies à la chaux de Fernand Pouillon à Alger, toujours debout, seraient impensables sans lui.",
+      "زار المعلّم المصري حسن فتحي بعد جيل، ووصف وادي مزاب بـ«الدرس المكتمل»، الصورة المبنيّة لكلّ ما دافع عنه طوال حياته. وانتقل المعماريّ الفرنسي-الجزائري أندريه رافيرو للعيش في غرداية في الستّينيّات، وجعل من الوادي دراسةَ عمر؛ ولا يزال كتابه «المزاب: درس في العمارة» المرجع. وأحياءُ فرنان بويون البيضاء في الجزائر العاصمة، التي لا تزال قائمة، لا يمكن تصوّرها من دونه.",
     ),
     L(
       "Today, from the Aga Khan Award to the New European Bauhaus, from Diébédo Francis Kéré in Burkina Faso to earthen-architecture programmes at MIT and ETH Zürich, the vocabulary of \"vernacular sustainability\" is unimaginable without the M'Zab. Few places on earth have taught the world so much and asked for so little in return.",
@@ -510,22 +510,22 @@ const INFLUENCE = {
     "«وادي مزاب دليلٌ مبنيٌّ على أنّ المرء يمكن أن يكون حديثاً دون أن يكون جديداً.»",
   ),
   attribution: L(
-    "— André Ravéreau, Le M'Zab, une leçon d'architecture (1981)",
-    "— André Ravéreau, Le M'Zab, une leçon d'architecture (1981)",
-    "— أندريه رافيرو، المزاب: درس في العمارة (1981)",
+    ", André Ravéreau, Le M'Zab, une leçon d'architecture (1981)",
+    ", André Ravéreau, Le M'Zab, une leçon d'architecture (1981)",
+    "، أندريه رافيرو، المزاب: درس في العمارة (1981)",
   ),
 };
 
 const FACTS: LocalizedString[] = [
   L(
-    "In Beni Isguen, the muezzin's call to the last prayer of the day is also the gate-closing signal. No one enters the city after that call until dawn — a rule respected without any physical enforcement since 1347.",
-    "À Beni Isguen, l'appel à la dernière prière du jour est aussi le signal de fermeture des portes. Personne n'entre après cet appel jusqu'à l'aube — une règle respectée sans aucune contrainte physique depuis 1347.",
-    "في بني يزقن، نداءُ صلاة العشاء هو أيضاً إشارة إغلاق أبواب المدينة. لا يدخل أحدٌ بعده حتى الفجر — قاعدةٌ يُلتَزم بها دون إكراه ماديّ منذ 1347.",
+    "In Beni Isguen, the muezzin's call to the last prayer of the day is also the gate-closing signal. No one enters the city after that call until dawn, a rule respected without any physical enforcement since 1347.",
+    "À Beni Isguen, l'appel à la dernière prière du jour est aussi le signal de fermeture des portes. Personne n'entre après cet appel jusqu'à l'aube, une règle respectée sans aucune contrainte physique depuis 1347.",
+    "في بني يزقن، نداءُ صلاة العشاء هو أيضاً إشارة إغلاق أبواب المدينة. لا يدخل أحدٌ بعده حتى الفجر، قاعدةٌ يُلتَزم بها دون إكراه ماديّ منذ 1347.",
   ),
   L(
-    "The M'Zab lime — burned locally from a soft limestone called timchent — hardens rather than dissolves in floodwater. A wall built in the 12th century can shed a modern flash flood.",
-    "La chaux du M'Zab — cuite localement à partir d'un calcaire tendre, le timchent — durcit au lieu de se dissoudre dans les crues. Un mur du XIIe siècle résiste encore aux crues éclair modernes.",
-    "جصّ المزاب — يُحرَق محلّياً من حجرٍ جيريٍّ ليّن يسمّى تِمشنت — يتصلّد بدل أن يذوب في مياه الفيضان. جدارٌ من القرن 12 قادر على صدّ فيضانٍ خاطف حديث.",
+    "The M'Zab lime, burned locally from a soft limestone called timchent, hardens rather than dissolves in floodwater. A wall built in the 12th century can shed a modern flash flood.",
+    "La chaux du M'Zab, cuite localement à partir d'un calcaire tendre, le timchent, durcit au lieu de se dissoudre dans les crues. Un mur du XIIe siècle résiste encore aux crues éclair modernes.",
+    "جصّ المزاب، يُحرَق محلّياً من حجرٍ جيريٍّ ليّن يسمّى تِمشنت، يتصلّد بدل أن يذوب في مياه الفيضان. جدارٌ من القرن 12 قادر على صدّ فيضانٍ خاطف حديث.",
   ),
   L(
     "There is no monument to a hero in any Mozabite city. The doctrine forbids it. The tallest thing anywhere in the pentapolis is always the minaret.",
@@ -533,14 +533,14 @@ const FACTS: LocalizedString[] = [
     "لا يوجد نصبٌ لبطلٍ في أيّ من مدن المزاب: المذهب يمنع ذلك. أعلى ما في المدن الخمس دائماً هو المئذنة.",
   ),
   L(
-    "Mozabite women wear a distinctive white veil (haïk el-mrama) with a single eye opening. It is not concealment; it is a spatial signal — a moving reminder that the streets belong to the community, and the inside of the house to the family.",
-    "Les femmes mozabites portent un voile blanc distinctif (haïk el-mrama) à une seule ouverture pour l'œil. Ce n'est pas un masque, c'est un signal spatial — un rappel mouvant que la rue appartient à la communauté et l'intérieur de la maison à la famille.",
-    "ترتدي المزابيّات حائكاً أبيض مميّزاً (حائك المرامة) بفتحةٍ واحدة للعين. ليست ستراً بل إشارةً فضائية — تذكيرٌ متحرّك بأنّ الشارع للجماعة وداخل البيت للعائلة.",
+    "Mozabite women wear a distinctive white veil (haïk el-mrama) with a single eye opening. It is not concealment; it is a spatial signal, a moving reminder that the streets belong to the community, and the inside of the house to the family.",
+    "Les femmes mozabites portent un voile blanc distinctif (haïk el-mrama) à une seule ouverture pour l'œil. Ce n'est pas un masque, c'est un signal spatial, un rappel mouvant que la rue appartient à la communauté et l'intérieur de la maison à la famille.",
+    "ترتدي المزابيّات حائكاً أبيض مميّزاً (حائك المرامة) بفتحةٍ واحدة للعين. ليست ستراً بل إشارةً فضائية، تذكيرٌ متحرّك بأنّ الشارع للجماعة وداخل البيت للعائلة.",
   ),
   L(
-    "The valley grows five distinct varieties of date — including the tinicine, so sugar-dense it was once used as caravan currency all the way to Timbuktu.",
-    "La vallée cultive cinq variétés distinctes de dattes — dont la tinicine, si sucrée qu'elle servit longtemps de monnaie caravanière jusqu'à Tombouctou.",
-    "تزرع الوادي خمسة أصناف مميّزة من التمر — منها التِنيسين، غنيّة السكّر إلى حدّ أنها استُعملت طويلاً عملةً للقوافل حتى تمبكتو.",
+    "The valley grows five distinct varieties of date, including the tinicine, so sugar-dense it was once used as caravan currency all the way to Timbuktu.",
+    "La vallée cultive cinq variétés distinctes de dattes, dont la tinicine, si sucrée qu'elle servit longtemps de monnaie caravanière jusqu'à Tombouctou.",
+    "تزرع الوادي خمسة أصناف مميّزة من التمر، منها التِنيسين، غنيّة السكّر إلى حدّ أنها استُعملت طويلاً عملةً للقوافل حتى تمبكتو.",
   ),
   L(
     "The 2008 flood killed 33 people. In the historical ksour, which sit above the wadi bed exactly where the founders placed them a thousand years earlier, the death toll was zero.",
@@ -678,9 +678,9 @@ function MzabExhibit() {
         <p className="max-w-3xl text-foreground/80 text-base sm:text-lg leading-[1.75] mb-10">
           {tr(
             L(
-              "The M'Zab is not a capital and four satellites. It is five autonomous cities that chose, a thousand years ago, to sit within sight of each other's minarets — close enough to share a valley, distant enough to preserve their own councils. Together they form a pentapolis unlike anything else in the Islamic world.",
-              "Le M'Zab n'est pas une capitale et quatre satellites. Ce sont cinq cités autonomes qui ont choisi, il y a mille ans, de rester dans la vue mutuelle de leurs minarets — assez proches pour partager une vallée, assez distantes pour préserver leurs propres conseils. Ensemble elles forment une pentapole sans équivalent dans le monde islamique.",
-              "وادي مزاب ليس عاصمةً وأربعة توابع. بل خمس مدنٍ مستقلّة اختارت قبل ألفِ عام أن تظلّ في مرأى مآذن بعضها البعض — قريبةً بما يكفي لتقاسم وادٍ واحد، بعيدةً بما يكفي للحفاظ على مجالسها الخاصّة. تُشكّل معاً خمسَ مدنٍ لا نظير لها في العالم الإسلامي.",
+              "The M'Zab is not a capital and four satellites. It is five autonomous cities that chose, a thousand years ago, to sit within sight of each other's minarets, close enough to share a valley, distant enough to preserve their own councils. Together they form a pentapolis unlike anything else in the Islamic world.",
+              "Le M'Zab n'est pas une capitale et quatre satellites. Ce sont cinq cités autonomes qui ont choisi, il y a mille ans, de rester dans la vue mutuelle de leurs minarets, assez proches pour partager une vallée, assez distantes pour préserver leurs propres conseils. Ensemble elles forment une pentapole sans équivalent dans le monde islamique.",
+              "وادي مزاب ليس عاصمةً وأربعة توابع. بل خمس مدنٍ مستقلّة اختارت قبل ألفِ عام أن تظلّ في مرأى مآذن بعضها البعض، قريبةً بما يكفي لتقاسم وادٍ واحد، بعيدةً بما يكفي للحفاظ على مجالسها الخاصّة. تُشكّل معاً خمسَ مدنٍ لا نظير لها في العالم الإسلامي.",
             ),
             lang,
           )}
@@ -692,7 +692,7 @@ function MzabExhibit() {
         />
       </Section>
 
-      {/* Heptapolis — broader historical M'Zab (Berriane + El Guerrara) */}
+      {/* Heptapolis, broader historical M'Zab (Berriane + El Guerrara) */}
       <Section id="heptapolis" tone="parchment">
         <EyebrowTitle eyebrow={HEPTAPOLIS_INTRO.eyebrow} title={HEPTAPOLIS_INTRO.title} />
         <div className="grid gap-8 md:grid-cols-[1.35fr_1fr] items-start mb-10">
@@ -739,9 +739,9 @@ function MzabExhibit() {
           <Figure
             src={mzabKsarPlan}
             alt={L(
-              "Sepia isometric drawing of a concentric M'Zab ksar — streets spiralling around a central mosque, defensive wall and cemetery outside.",
-              "Dessin isométrique sépia d'un ksar concentrique du M'Zab — rues en spirale autour d'une mosquée centrale, enceinte et cimetière extérieurs.",
-              "رسم إيزومتري بلون السبيا لقصر مزاب متراكز — شوارع تلتفّ حول مسجد مركزي وسور ومقبرة في الخارج.",
+              "Sepia isometric drawing of a concentric M'Zab ksar, streets spiralling around a central mosque, defensive wall and cemetery outside.",
+              "Dessin isométrique sépia d'un ksar concentrique du M'Zab, rues en spirale autour d'une mosquée centrale, enceinte et cimetière extérieurs.",
+              "رسم إيزومتري بلون السبيا لقصر مزاب متراكز، شوارع تلتفّ حول مسجد مركزي وسور ومقبرة في الخارج.",
             )}
             caption={L(
               "Plan of a ksar · concentric spiral around the mosque",
@@ -754,9 +754,9 @@ function MzabExhibit() {
           <Figure
             src={mzabHouse}
             alt={L(
-              "Sepia sectional drawing of a traditional Mozabite house — courtyard (west ed-dar), shaded chebek terrace, thick lime-washed walls.",
-              "Coupe sépia d'une maison mozabite traditionnelle — patio (west ed-dar), terrasse à claustra (chebek), murs épais chaulés.",
-              "مقطع بلون السبيا لبيت مزابي تقليدي — الفناء (ويسط الدار)، السطح المشبّك (شبك)، الجدران السميكة المطليّة بالجير.",
+              "Sepia sectional drawing of a traditional Mozabite house, courtyard (west ed-dar), shaded chebek terrace, thick lime-washed walls.",
+              "Coupe sépia d'une maison mozabite traditionnelle, patio (west ed-dar), terrasse à claustra (chebek), murs épais chaulés.",
+              "مقطع بلون السبيا لبيت مزابي تقليدي، الفناء (ويسط الدار)، السطح المشبّك (شبك)، الجدران السميكة المطليّة بالجير.",
             )}
             caption={L(
               "Section of an Ibadi house · courtyard, chebek, thermal walls",
@@ -778,9 +778,9 @@ function MzabExhibit() {
         <p className="max-w-3xl text-foreground/80 text-base sm:text-lg leading-[1.75] mb-10">
           {tr(
             L(
-              "The property inscribed on the World Heritage List in 1982 is the M'Zab pentapolis — the five original ksour of El Atteuf, Bou Noura, Melika, Beni Isguen and Ghardaïa, together with their palm groves and cemeteries. The later Mozabite foundations of Berriane and El Guerrara, described above, belong to the broader historical M'Zab but sit outside this inscription.",
-              "Le bien inscrit sur la Liste du patrimoine mondial en 1982 est la pentapole du M'Zab — les cinq ksour d'origine : El Atteuf, Bou Noura, Melika, Beni Isguen et Ghardaïa, avec leurs palmeraies et leurs cimetières. Les fondations mozabites plus tardives de Berriane et d'El Guerrara, décrites plus haut, relèvent du M'Zab historique élargi mais ne font pas partie du bien inscrit.",
-              "الموقع المُدرَج في قائمة التراث العالمي عام 1982 هو خمسُ مدن وادي مزاب — القصور الأصلية: العطف، بونورة، مليكة، بني يزقن، غرداية، مع بساتين نخيلها ومقابرها. أمّا تأسيسا بريان والقرارة اللاحقان — كما ذُكر أعلاه — فينتميان إلى وادي مزاب التاريخي الأوسع، لكنّهما خارج نطاق هذا الإدراج.",
+              "The property inscribed on the World Heritage List in 1982 is the M'Zab pentapolis, the five original ksour of El Atteuf, Bou Noura, Melika, Beni Isguen and Ghardaïa, together with their palm groves and cemeteries. The later Mozabite foundations of Berriane and El Guerrara, described above, belong to the broader historical M'Zab but sit outside this inscription.",
+              "Le bien inscrit sur la Liste du patrimoine mondial en 1982 est la pentapole du M'Zab, les cinq ksour d'origine : El Atteuf, Bou Noura, Melika, Beni Isguen et Ghardaïa, avec leurs palmeraies et leurs cimetières. Les fondations mozabites plus tardives de Berriane et d'El Guerrara, décrites plus haut, relèvent du M'Zab historique élargi mais ne font pas partie du bien inscrit.",
+              "الموقع المُدرَج في قائمة التراث العالمي عام 1982 هو خمسُ مدن وادي مزاب، القصور الأصلية: العطف، بونورة، مليكة، بني يزقن، غرداية، مع بساتين نخيلها ومقابرها. أمّا تأسيسا بريان والقرارة اللاحقان، كما ذُكر أعلاه، فينتميان إلى وادي مزاب التاريخي الأوسع، لكنّهما خارج نطاق هذا الإدراج.",
             ),
             lang,
           )}

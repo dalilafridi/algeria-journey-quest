@@ -33,7 +33,7 @@ export const Route = createFileRoute("/clubs/$clubId")({
     if (!loaderData) {
       return pageMeta({
         path: `/clubs/${params.clubId}`,
-        title: "Club Museum — DZ Odyssey",
+        title: "Club Museum, DZ Odyssey",
         description: "This club museum could not be found.",
         noindex: true,
       });
@@ -45,7 +45,7 @@ export const Route = createFileRoute("/clubs/$clubId")({
     const noindex = club.status !== "complete";
     return pageMeta({
       path: `/clubs/${club.id}`,
-      title: `${title} Museum — DZ Odyssey`,
+      title: `${title} Museum, DZ Odyssey`,
       description: desc,
       type: "article",
       noindex,
@@ -390,7 +390,7 @@ function AfricanSection({ club, lang }: { club: ClubMuseum; lang: Lang }) {
           <div key={`${f.year}-${t(f.competition, "en")}`} className="rounded-xl border p-4" style={{ borderColor: "oklch(0.78 0.06 68 / 0.55)" }}>
             <div className="text-xs uppercase tracking-[0.24em] text-primary">{f.year}</div>
             <div className="text-base font-semibold mt-1" style={SERIF}>{t(f.competition, lang)}</div>
-            <div className="text-sm mt-1">vs {t(f.opponent, lang)} — {f.score}</div>
+            <div className="text-sm mt-1">vs {t(f.opponent, lang)}, {f.score}</div>
             {f.note && <p className="text-[11px] mt-2 opacity-70">✦ {t(f.note, lang)}</p>}
           </div>
         ))}

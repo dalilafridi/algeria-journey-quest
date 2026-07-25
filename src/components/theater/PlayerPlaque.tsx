@@ -75,7 +75,7 @@ export function PlayerPlaque({
         type="button"
         onClick={() => onSelect(player)}
         className="group block w-full focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#c9a24a]"
-        aria-label={`${player.name} — ${positionLabel}`}
+        aria-label={`${player.name}, ${positionLabel}`}
       >
         {content}
       </button>

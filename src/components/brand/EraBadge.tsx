@@ -173,7 +173,7 @@ export function EraBadge({
             opacity="0.35"
           />
 
-          {/* Beaded rim — 16 small dots evenly placed */}
+          {/* Beaded rim, 16 small dots evenly placed */}
           {Array.from({ length: 16 }).map((_, i) => {
             const a = (i / 16) * Math.PI * 2;
             const cx = 50 + Math.cos(a) * 45.5;

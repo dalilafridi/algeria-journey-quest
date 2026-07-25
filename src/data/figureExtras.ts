@@ -12,14 +12,14 @@ export type FigureExtras = {
 export const figureExtras: Record<string, FigureExtras> = {
   "moufdi-zakaria": {
     didYouKnow: L(
-      "Tradition says Moufdi Zakaria wrote 'Kassaman' on the wall of his prison cell in Barberousse — with his own blood — in April 1956.",
-      "La tradition rapporte que Moufdi Zakaria aurait écrit « Kassaman » sur le mur de sa cellule à Barberousse — avec son propre sang — en avril 1956.",
+      "Tradition says Moufdi Zakaria wrote 'Kassaman' on the wall of his prison cell in Barberousse, with his own blood, in April 1956.",
+      "La tradition rapporte que Moufdi Zakaria aurait écrit « Kassaman » sur le mur de sa cellule à Barberousse, avec son propre sang, en avril 1956.",
       "تقول الرواية إن مفدي زكريا كتب «قسماً» على جدار زنزانته بسجن بربروس بدمه، في أفريل 1956.",
     ),
     keyPlacesAndWorks: [
       {
         emoji: "🎶",
-        label: L("Kassaman — National Anthem", "Kassaman — hymne national", "قسماً — النشيد الوطني"),
+        label: L("Kassaman, National Anthem", "Kassaman, hymne national", "قسماً، النشيد الوطني"),
         note: L(
           "Lyrics written in 1956; music by Mohamed Fawzi; adopted at independence in 1962.",
           "Paroles écrites en 1956 ; musique de Mohamed Fawzi ; adopté à l'indépendance en 1962.",
@@ -48,9 +48,9 @@ export const figureExtras: Record<string, FigureExtras> = {
         emoji: "🏜️",
         label: L("Beni Isguen, M'zab Valley", "Beni Isguen, vallée du M'zab", "بني يزقن، وادي ميزاب"),
         note: L(
-          "His birthplace in 1908 — a town famed for its Mozabite heritage.",
-          "Sa ville natale en 1908 — célèbre pour son patrimoine mozabite.",
-          "مسقط رأسه سنة 1908 — مدينة مشهورة بإرثها الميزابي.",
+          "His birthplace in 1908, a town famed for its Mozabite heritage.",
+          "Sa ville natale en 1908, célèbre pour son patrimoine mozabite.",
+          "مسقط رأسه سنة 1908، مدينة مشهورة بإرثها الميزابي.",
         ),
       },
       {

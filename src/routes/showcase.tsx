@@ -8,7 +8,7 @@ export const Route = createFileRoute("/showcase")({
   head: () =>
     pageMeta({
       path: "/showcase",
-      title: "Showcase — DZ Odyssey",
+      title: "Showcase, DZ Odyssey",
       description: "Step into a curated, museum-quality walkthrough of 2,000+ years of Algerian memory."
     }),
   component: ShowcasePage,
@@ -43,9 +43,9 @@ const STOPS: Stop[] = [
       "أرض أقدم من اسمها",
     ),
     body: L(
-      "Before maps, before borders, before the word Algeria — there was a coastline, a desert, mountains, and the people who learned to live between them. This is a slow walk through their memory.",
-      "Avant les cartes, avant les frontières, avant le mot Algérie — il y avait une côte, un désert, des montagnes, et les peuples qui ont appris à vivre entre eux. Voici une lente promenade dans leur mémoire.",
-      "قبل الخرائط، قبل الحدود، قبل أن تُكتب كلمة «الجزائر» — كان هناك ساحلٌ وصحراءُ وجبالٌ، وأناسٌ تعلّموا العيش بينها. هذه نزهة هادئة في ذاكرتهم.",
+      "Before maps, before borders, before the word Algeria, there was a coastline, a desert, mountains, and the people who learned to live between them. This is a slow walk through their memory.",
+      "Avant les cartes, avant les frontières, avant le mot Algérie, il y avait une côte, un désert, des montagnes, et les peuples qui ont appris à vivre entre eux. Voici une lente promenade dans leur mémoire.",
+      "قبل الخرائط، قبل الحدود، قبل أن تُكتب كلمة «الجزائر»، كان هناك ساحلٌ وصحراءُ وجبالٌ، وأناسٌ تعلّموا العيش بينها. هذه نزهة هادئة في ذاكرتهم.",
     ),
     quote: L(
       "We do not inherit the land from our ancestors; we walk through it with them.",
@@ -71,10 +71,10 @@ const STOPS: Stop[] = [
   {
     key: "roman",
     eyebrow: L("Roman Algeria", "Algérie romaine", "الجزائر الرومانية"),
-    title: L("Timgad — a city drawn with a straight rule", "Timgad — une ville tracée à la règle", "تيمقاد — مدينة رسمت بالمسطرة"),
+    title: L("Timgad, a city drawn with a straight rule", "Timgad, une ville tracée à la règle", "تيمقاد، مدينة رسمت بالمسطرة"),
     body: L(
-      "On the edge of the Aurès, Roman engineers laid out Thamugadi in perfect quadrants. Two centuries later it overflowed its own grid. Today its silent streets and library inscription still read: «Hunting, bathing, playing, laughing — this is to live.»",
-      "Au pied de l'Aurès, les ingénieurs romains tracèrent Thamugadi en quadrants parfaits. Deux siècles plus tard, elle débordait de son propre plan. Aujourd'hui ses rues silencieuses et l'inscription de sa bibliothèque disent encore : « Chasser, se baigner, jouer, rire — c'est vivre. »",
+      "On the edge of the Aurès, Roman engineers laid out Thamugadi in perfect quadrants. Two centuries later it overflowed its own grid. Today its silent streets and library inscription still read: «Hunting, bathing, playing, laughing, this is to live.»",
+      "Au pied de l'Aurès, les ingénieurs romains tracèrent Thamugadi en quadrants parfaits. Deux siècles plus tard, elle débordait de son propre plan. Aujourd'hui ses rues silencieuses et l'inscription de sa bibliothèque disent encore : « Chasser, se baigner, jouer, rire, c'est vivre. »",
       "عند سفح الأوراس، رسم المهندسون الرومان تيموقاد في مربّعات تامّة. وبعد قرنين كانت قد تجاوزت تخطيطها. ولا تزال شوارعها الصامتة ونقش مكتبتها يقولان: «الصيد والاستحمام واللعب والضحك… تلك هي الحياة».",
     ),
     era: L("100 CE", "100 ap. J.-C.", "100 م"),
@@ -107,9 +107,9 @@ const STOPS: Stop[] = [
     eyebrow: L("Interactive Atlas", "Atlas interactif", "أطلس تفاعلي"),
     title: L("A map drawn in many hands", "Une carte tracée à plusieurs mains", "خريطة رسمتها أيادٍ كثيرة"),
     body: L(
-      "Numidian, Roman, Hammadid, Zayyanid, Ottoman, French, Algerian — every era left its capital, its road, its silhouette. Our atlas keeps all of them visible, the way a museum keeps every layer of a fresco.",
-      "Numide, romaine, hammadide, zayyanide, ottomane, française, algérienne — chaque époque a laissé sa capitale, sa route, sa silhouette. Notre atlas les garde toutes visibles, comme un musée conserve chaque couche d'une fresque.",
-      "نوميديّة، رومانيّة، حمّاديّة، زيّانيّة، عثمانيّة، فرنسيّة، جزائريّة — تركت كلّ حقبة عاصمتها وطريقها وملامحها. أطلسنا يُبقي الجميع ظاهرين، كما يحفظ المتحف كلّ طبقة من جداريّة.",
+      "Numidian, Roman, Hammadid, Zayyanid, Ottoman, French, Algerian, every era left its capital, its road, its silhouette. Our atlas keeps all of them visible, the way a museum keeps every layer of a fresco.",
+      "Numide, romaine, hammadide, zayyanide, ottomane, française, algérienne, chaque époque a laissé sa capitale, sa route, sa silhouette. Notre atlas les garde toutes visibles, comme un musée conserve chaque couche d'une fresque.",
+      "نوميديّة، رومانيّة، حمّاديّة، زيّانيّة، عثمانيّة، فرنسيّة، جزائريّة، تركت كلّ حقبة عاصمتها وطريقها وملامحها. أطلسنا يُبقي الجميع ظاهرين، كما يحفظ المتحف كلّ طبقة من جداريّة.",
     ),
     exploreTo: "/atlas",
     exploreLabel: L("Open the atlas", "Ouvrir l'atlas", "افتح الأطلس"),
@@ -118,11 +118,11 @@ const STOPS: Stop[] = [
   {
     key: "emir",
     eyebrow: L("Colonial Resistance", "Résistance coloniale", "المقاومة الاستعمارية"),
-    title: L("Emir Abdelkader — a state on horseback", "Émir Abdelkader — un État à cheval", "الأمير عبد القادر — دولةٌ على صهوة جواد"),
+    title: L("Emir Abdelkader, a state on horseback", "Émir Abdelkader, un État à cheval", "الأمير عبد القادر، دولةٌ على صهوة جواد"),
     body: L(
-      "Fifteen years of resistance, a moving capital, hospitals and schools that travelled with the camp. Later exiled to Damascus, he sheltered thousands of Christians during the 1860 riots — and reminded the world that dignity has no flag.",
-      "Quinze ans de résistance, une capitale mobile, des hôpitaux et des écoles qui voyageaient avec le camp. Exilé à Damas, il protégea des milliers de chrétiens lors des émeutes de 1860 — rappelant au monde que la dignité n'a pas de drapeau.",
-      "خمسة عشر عامًا من المقاومة، وعاصمةٌ متنقّلة، ومستشفياتٌ ومدارس ترافق المعسكر. في منفاه بدمشق، حمى آلاف المسيحيين في أحداث 1860 — وذكّر العالم بأن الكرامة لا تحمل علماً.",
+      "Fifteen years of resistance, a moving capital, hospitals and schools that travelled with the camp. Later exiled to Damascus, he sheltered thousands of Christians during the 1860 riots and reminded the world that dignity has no flag.",
+      "Quinze ans de résistance, une capitale mobile, des hôpitaux et des écoles qui voyageaient avec le camp. Exilé à Damas, il protégea des milliers de chrétiens lors des émeutes de 1860, rappelant au monde que la dignité n'a pas de drapeau.",
+      "خمسة عشر عامًا من المقاومة، وعاصمةٌ متنقّلة، ومستشفياتٌ ومدارس ترافق المعسكر. في منفاه بدمشق، حمى آلاف المسيحيين في أحداث 1860، وذكّر العالم بأن الكرامة لا تحمل علماً.",
     ),
     quote: L(
       "If those who claim to be Muslims act against the Qur'an, then we, who follow the Qur'an, are the true Christians of this hour.",
@@ -140,9 +140,9 @@ const STOPS: Stop[] = [
     eyebrow: L("War of Independence", "Guerre d'indépendance", "حرب الاستقلال"),
     title: L("One million and a half stars", "Un million et demi d'étoiles", "مليون ونصف نجمة"),
     body: L(
-      "Between 1954 and 1962, Algeria paid a price counted in lives that the country still names star by star. Independence was not won — it was carried, on shoulders, by villagers, students, midwives, poets, and unknown men in the maquis.",
-      "Entre 1954 et 1962, l'Algérie a payé un prix compté en vies que le pays continue de nommer étoile par étoile. L'indépendance n'a pas été gagnée — elle a été portée, sur des épaules, par des villageois, des étudiants, des sages-femmes, des poètes et des inconnus du maquis.",
-      "بين 1954 و1962 دفعت الجزائر ثمنًا يُحصى بأرواحٍ ما زال البلد يسمّيها نجمةً نجمة. الاستقلال لم يُكسب — بل حُمل، على الأكتاف، من قرويين وطلبة وقابلاتٍ وشعراء ومجهولين في الجبال.",
+      "Between 1954 and 1962, Algeria paid a price counted in lives that the country still names star by star. Independence was not won, it was carried, on shoulders, by villagers, students, midwives, poets, and unknown men in the maquis.",
+      "Entre 1954 et 1962, l'Algérie a payé un prix compté en vies que le pays continue de nommer étoile par étoile. L'indépendance n'a pas été gagnée, elle a été portée, sur des épaules, par des villageois, des étudiants, des sages-femmes, des poètes et des inconnus du maquis.",
+      "بين 1954 و1962 دفعت الجزائر ثمنًا يُحصى بأرواحٍ ما زال البلد يسمّيها نجمةً نجمة. الاستقلال لم يُكسب، بل حُمل، على الأكتاف، من قرويين وطلبة وقابلاتٍ وشعراء ومجهولين في الجبال.",
     ),
     era: L("1 November 1954", "1ᵉʳ novembre 1954", "1 نوفمبر 1954"),
     exploreTo: "/era/independence",
@@ -165,11 +165,11 @@ const STOPS: Stop[] = [
   {
     key: "coda",
     eyebrow: L("Coda", "Coda", "خاتمة"),
-    title: L("ⵣ — and the word continues", "ⵣ — et le mot continue", "ⵣ — والكلمة تستمر"),
+    title: L("ⵣ and the word continues", "ⵣ et le mot continue", "ⵣ، والكلمة تستمر"),
     body: L(
-      "A country is not a closed book; it is a hand still writing. Thank you for walking this corridor with us. Step back into the museum whenever you wish — the rooms remain open.",
-      "Un pays n'est pas un livre fermé ; c'est une main qui continue d'écrire. Merci d'avoir parcouru ce couloir avec nous. Revenez quand vous le souhaitez — les salles restent ouvertes.",
-      "البلد ليس كتابًا مغلقًا، بل يدٌ ما زالت تكتب. شكرًا لأنك سرت في هذا الممرّ معنا. عُد متى شئت — القاعات لا تُغلق.",
+      "A country is not a closed book; it is a hand still writing. Thank you for walking this corridor with us. Step back into the museum whenever you wish, the rooms remain open.",
+      "Un pays n'est pas un livre fermé ; c'est une main qui continue d'écrire. Merci d'avoir parcouru ce couloir avec nous. Revenez quand vous le souhaitez, les salles restent ouvertes.",
+      "البلد ليس كتابًا مغلقًا، بل يدٌ ما زالت تكتب. شكرًا لأنك سرت في هذا الممرّ معنا. عُد متى شئت، القاعات لا تُغلق.",
     ),
     exploreTo: "/",
     exploreLabel: L("Return to the entrance", "Revenir à l'entrée", "العودة إلى المدخل"),
@@ -268,7 +268,7 @@ function ShowcasePage() {
         `,
       }}
     >
-      {/* Top bar — minimal chrome */}
+      {/* Top bar, minimal chrome */}
       <header className="absolute top-0 inset-x-0 z-20 flex items-center justify-between px-4 sm:px-8 pt-4 sm:pt-6 print:hidden">
         <span className="museum-eyebrow text-[10px] sm:text-xs">
           ⵣ {{ en: "Showcase", fr: "Visite guidée", ar: "العرض" }[lang]}
@@ -322,7 +322,7 @@ function ShowcasePage() {
               “{t(stop.quote, lang)}”
               {stop.quoteAttribution && (
                 <footer className="mt-3 text-xs uppercase tracking-[0.18em] text-muted-foreground not-italic">
-                  — {t(stop.quoteAttribution, lang)}
+                 , {t(stop.quoteAttribution, lang)}
                 </footer>
               )}
             </blockquote>

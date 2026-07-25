@@ -16,7 +16,7 @@ export const Route = createFileRoute("/profile")({
   head: () =>
     pageMeta({
       path: "/profile",
-      title: "Your Profile — DZ Odyssey",
+      title: "Your Profile, DZ Odyssey",
       description: "Track your XP, badges, and history journey progress.",
       noindex: true
     }),
@@ -113,7 +113,7 @@ function ProfilePage() {
                     </div>
                   </div>
                   <div className="text-sm font-bold">
-                    {c && c.total ? `${c.bestScore}/${c.total}` : "—"}
+                    {c && c.total ? `${c.bestScore}/${c.total}` : ", "}
                   </div>
                 </li>
               );

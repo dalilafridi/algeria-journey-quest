@@ -20,17 +20,17 @@ export const jsKabylie: ClubMuseum = {
   status: "complete",
   featured: true,
   tagline: {
-    en: "The Canaries of Djurdjura — the most decorated club of Algerian football.",
-    fr: "Les Canaris du Djurdjura — le club le plus titré du football algérien.",
-    ar: "كناري الجرجرة — النادي الأكثر تتويجاً في كرة القدم الجزائرية.",
+    en: "The Canaries of Djurdjura, the most decorated club of Algerian football.",
+    fr: "Les Canaris du Djurdjura, le club le plus titré du football algérien.",
+    ar: "كناري الجرجرة، النادي الأكثر تتويجاً في كرة القدم الجزائرية.",
   },
   identity: {
     colors: { primary: "#f7c948", secondary: "#0a6b3a" },
     crestGlyph: "JSK",
     motto: {
-      en: "Imazighen — pride and endurance.",
-      fr: "Imazighen — fierté et endurance.",
-      ar: "إيمازيغن — كبرياء وصبر.",
+      en: "Imazighen, pride and endurance.",
+      fr: "Imazighen, fierté et endurance.",
+      ar: "إيمازيغن، كبرياء وصبر.",
     },
     meaning: {
       en: "'Jeunesse Sportive' means Sporting Youth; 'Kabylie' names the mountainous Berber region of northern Algeria the club represents.",
@@ -56,19 +56,19 @@ export const jsKabylie: ClubMuseum = {
     },
     evolution: [
       {
-        en: "1946 — Founded as Rapid Club de Kabylie, later Jeunesse Sportive de Kabylie.",
-        fr: "1946 — Fondation sous le nom de Rapid Club de Kabylie, puis Jeunesse Sportive de Kabylie.",
-        ar: "1946 — التأسيس تحت اسم Rapid Club de Kabylie، ثم شبيبة القبائل.",
+        en: "1946, Founded as Rapid Club de Kabylie, later Jeunesse Sportive de Kabylie.",
+        fr: "1946, Fondation sous le nom de Rapid Club de Kabylie, puis Jeunesse Sportive de Kabylie.",
+        ar: "1946، التأسيس تحت اسم Rapid Club de Kabylie، ثم شبيبة القبائل.",
       },
       {
-        en: "1977 — Under the sports reform the club is renamed JET (Jeunesse Électronique de Tizi‑Ouzou).",
-        fr: "1977 — La réforme sportive renomme le club JET (Jeunesse Électronique de Tizi‑Ouzou).",
-        ar: "1977 — الإصلاح الرياضي يُعيد تسميته إلى JET.",
+        en: "1977, Under the sports reform the club is renamed JET (Jeunesse Électronique de Tizi‑Ouzou).",
+        fr: "1977, La réforme sportive renomme le club JET (Jeunesse Électronique de Tizi‑Ouzou).",
+        ar: "1977، الإصلاح الرياضي يُعيد تسميته إلى JET.",
       },
       {
-        en: "1989 — After years as JE Tizi‑Ouzou, the historic name JS Kabylie is restored.",
-        fr: "1989 — Après des années sous le nom JE Tizi‑Ouzou, le nom historique JS Kabylie est rétabli.",
-        ar: "1989 — بعد سنوات باسم JE Tizi‑Ouzou، يُعاد الاسم التاريخي JS Kabylie.",
+        en: "1989, After years as JE Tizi‑Ouzou, the historic name JS Kabylie is restored.",
+        fr: "1989, Après des années sous le nom JE Tizi‑Ouzou, le nom historique JS Kabylie est rétabli.",
+        ar: "1989، بعد سنوات باسم JE Tizi‑Ouzou، يُعاد الاسم التاريخي JS Kabylie.",
       },
     ],
   },
@@ -77,12 +77,12 @@ export const jsKabylie: ClubMuseum = {
     { id: "t-founded", year: 1946, monthDay: "07-01", kind: "foundation", title: { en: "Club founded in Tizi Ouzou", fr: "Fondation du club à Tizi Ouzou", ar: "تأسيس النادي في تيزي وزو" } },
     { id: "t-title-1973", year: 1973, kind: "title", title: { en: "First national title", fr: "Premier titre national", ar: "أول لقب وطني" } },
     { id: "t-cup-1977", year: 1977, kind: "title", title: { en: "First Algerian Cup", fr: "Première Coupe d'Algérie", ar: "أول كأس جزائرية" } },
-    { id: "t-caf-1981", year: 1981, kind: "african", title: { en: "African Cup of Champions Clubs — champions", fr: "Coupe d'Afrique des Clubs Champions — vainqueur", ar: "كأس أفريقيا للأندية البطلة — بطل" }, detail: { en: "Historic first continental title.", fr: "Premier titre continental historique.", ar: "أول لقب قاري في تاريخ النادي." } },
-    { id: "t-caf-1990", year: 1990, kind: "african", title: { en: "African Cup of Champions Clubs — second continental title", fr: "Coupe d'Afrique des Clubs Champions — deuxième sacre continental", ar: "كأس أفريقيا للأندية البطلة — اللقب القاري الثاني" } },
+    { id: "t-caf-1981", year: 1981, kind: "african", title: { en: "African Cup of Champions Clubs, champions", fr: "Coupe d'Afrique des Clubs Champions, vainqueur", ar: "كأس أفريقيا للأندية البطلة، بطل" }, detail: { en: "Historic first continental title.", fr: "Premier titre continental historique.", ar: "أول لقب قاري في تاريخ النادي." } },
+    { id: "t-caf-1990", year: 1990, kind: "african", title: { en: "African Cup of Champions Clubs, second continental title", fr: "Coupe d'Afrique des Clubs Champions, deuxième sacre continental", ar: "كأس أفريقيا للأندية البطلة، اللقب القاري الثاني" } },
     { id: "t-restored-1989", year: 1989, kind: "milestone", title: { en: "Historic name JSK restored", fr: "Nom historique JSK rétabli", ar: "استعادة الاسم التاريخي JSK" } },
-    { id: "t-cwc-1995", year: 1995, kind: "african", title: { en: "African Cup Winners' Cup — champions", fr: "Coupe d'Afrique des vainqueurs de coupe — vainqueur", ar: "كأس الكؤوس الأفريقية — بطل" } },
-    { id: "t-cafcup-2000", year: 2000, kind: "african", title: { en: "CAF Cup — first of three consecutive titles", fr: "Coupe de la CAF — premier de trois titres consécutifs", ar: "كأس الكاف — أول ثلاثة ألقاب متتالية" } },
-    { id: "t-cafcup-2002", year: 2002, kind: "african", title: { en: "CAF Cup — third consecutive title (record)", fr: "Coupe de la CAF — troisième titre consécutif (record)", ar: "كأس الكاف — ثالث لقب متتالٍ (قياسي)" } },
+    { id: "t-cwc-1995", year: 1995, kind: "african", title: { en: "African Cup Winners' Cup, champions", fr: "Coupe d'Afrique des vainqueurs de coupe, vainqueur", ar: "كأس الكؤوس الأفريقية، بطل" } },
+    { id: "t-cafcup-2000", year: 2000, kind: "african", title: { en: "CAF Cup, first of three consecutive titles", fr: "Coupe de la CAF, premier de trois titres consécutifs", ar: "كأس الكاف، أول ثلاثة ألقاب متتالية" } },
+    { id: "t-cafcup-2002", year: 2002, kind: "african", title: { en: "CAF Cup, third consecutive title (record)", fr: "Coupe de la CAF, troisième titre consécutif (record)", ar: "كأس الكاف، ثالث لقب متتالٍ (قياسي)" } },
     { id: "t-league-2008", year: 2008, kind: "title", title: { en: "14th Algerian league title", fr: "14ᵉ titre de champion d'Algérie", ar: "اللقب المحلي الرابع عشر" } },
     { id: "t-cup-2011", year: 2011, kind: "title", title: { en: "Algerian Cup", fr: "Coupe d'Algérie", ar: "كأس الجزائر" } },
     { id: "t-stade-1er", year: 1978, kind: "stadium", title: { en: "Stade du 1er Novembre 1954 opens in Tizi Ouzou", fr: "Ouverture du Stade du 1er Novembre 1954 à Tizi Ouzou", ar: "افتتاح ملعب أول نوفمبر 1954 بتيزي وزو" }, detail: { en: "Exact inauguration year varies across sources; the ground has been the club's traditional home for decades.", fr: "L'année d'inauguration varie selon les sources ; le stade est depuis des décennies le domicile traditionnel du club.", ar: "تختلف سنة الافتتاح حسب المصادر؛ يبقى الملعب المعقل التقليدي للنادي منذ عقود." } },
@@ -95,7 +95,7 @@ export const jsKabylie: ClubMuseum = {
       id: `league-${y}`,
       year: y,
       category: "domestic-league" as const,
-      competition: { en: `Algerian Ligue 1 — ${y}`, fr: `Ligue 1 algérienne — ${y}`, ar: `الرابطة الجزائرية الأولى — ${y}` },
+      competition: { en: `Algerian Ligue 1, ${y}`, fr: `Ligue 1 algérienne, ${y}`, ar: `الرابطة الجزائرية الأولى، ${y}` },
       significance: i === 0
         ? { en: "First national championship.", fr: "Premier titre de champion national.", ar: "أول لقب وطني." }
         : undefined,
@@ -105,21 +105,21 @@ export const jsKabylie: ClubMuseum = {
       id: `cup-${y}`,
       year: y,
       category: "domestic-cup" as const,
-      competition: { en: `Algerian Cup — ${y}`, fr: `Coupe d'Algérie — ${y}`, ar: `كأس الجزائر — ${y}` },
+      competition: { en: `Algerian Cup, ${y}`, fr: `Coupe d'Algérie, ${y}`, ar: `كأس الجزائر، ${y}` },
     })),
     // Super Cup (1)
     {
       id: "supercup-1992",
       year: 1992,
       category: "super-cup" as const,
-      competition: { en: "Algerian Super Cup — 1992", fr: "Supercoupe d'Algérie — 1992", ar: "كأس السوبر الجزائرية — 1992" },
+      competition: { en: "Algerian Super Cup, 1992", fr: "Supercoupe d'Algérie, 1992", ar: "كأس السوبر الجزائرية، 1992" },
     },
     // CAF Champions (2)
     {
       id: "caf-1981",
       year: 1981,
       category: "caf-champions" as const,
-      competition: { en: "African Cup of Champions Clubs — 1981", fr: "Coupe d'Afrique des Clubs Champions — 1981", ar: "كأس أفريقيا للأندية البطلة — 1981" },
+      competition: { en: "African Cup of Champions Clubs, 1981", fr: "Coupe d'Afrique des Clubs Champions, 1981", ar: "كأس أفريقيا للأندية البطلة، 1981" },
       opponent: { en: "AS Vita Club (DR Congo)", fr: "AS Vita Club (RD Congo)", ar: "أ.س. فيتا كلوب (الكونغو الديمقراطية)" },
       score: "4–2 agg.",
       significance: {
@@ -133,7 +133,7 @@ export const jsKabylie: ClubMuseum = {
       id: "caf-1990",
       year: 1990,
       category: "caf-champions" as const,
-      competition: { en: "African Cup of Champions Clubs — 1990", fr: "Coupe d'Afrique des Clubs Champions — 1990", ar: "كأس أفريقيا للأندية البطلة — 1990" },
+      competition: { en: "African Cup of Champions Clubs, 1990", fr: "Coupe d'Afrique des Clubs Champions, 1990", ar: "كأس أفريقيا للأندية البطلة، 1990" },
       opponent: { en: "Nkana FC (Zambia)", fr: "Nkana FC (Zambie)", ar: "نكانا (زامبيا)" },
       score: "1–1 agg. (JSK on rules)",
       note: { en: "Tie was settled on tie-breaking rules; sources differ on exact final leg scoring.", fr: "Éliminatoire tranchée aux règles de départage ; les sources diffèrent sur le score exact de la manche retour.", ar: "حُسمت المواجهة وفق قواعد التعادل؛ تختلف المصادر حول تفاصيل النتيجة النهائية." },
@@ -143,16 +143,16 @@ export const jsKabylie: ClubMuseum = {
       id: "cwc-1995",
       year: 1995,
       category: "caf-cup-winners" as const,
-      competition: { en: "African Cup Winners' Cup — 1995", fr: "Coupe d'Afrique des vainqueurs de coupe — 1995", ar: "كأس الكؤوس الأفريقية — 1995" },
+      competition: { en: "African Cup Winners' Cup, 1995", fr: "Coupe d'Afrique des vainqueurs de coupe, 1995", ar: "كأس الكؤوس الأفريقية، 1995" },
     },
     // CAF Cup (3 — record)
     ...[2000, 2001, 2002].map((y) => ({
       id: `cafcup-${y}`,
       year: y,
       category: "caf-cup" as const,
-      competition: { en: `CAF Cup — ${y}`, fr: `Coupe de la CAF — ${y}`, ar: `كأس الكاف — ${y}` },
+      competition: { en: `CAF Cup, ${y}`, fr: `Coupe de la CAF, ${y}`, ar: `كأس الكاف، ${y}` },
       significance: y === 2002
-        ? { en: "Third consecutive CAF Cup — a competition record.", fr: "Troisième Coupe de la CAF consécutive — record de la compétition.", ar: "ثالث لقب متتالٍ في كأس الكاف — رقم قياسي في البطولة." }
+        ? { en: "Third consecutive CAF Cup, a competition record.", fr: "Troisième Coupe de la CAF consécutive, record de la compétition.", ar: "ثالث لقب متتالٍ في كأس الكاف، رقم قياسي في البطولة." }
         : undefined,
     })),
   ],
@@ -164,9 +164,9 @@ export const jsKabylie: ClubMuseum = {
       ar: "شبيبة القبائل هي أكثر الأندية الجزائرية تتويجاً على الصعيد القاري، برصيد لقبين لكأس أفريقيا للأندية البطلة، وكأس الكؤوس الأفريقية، وثلاثة ألقاب متتالية لكأس الكاف. لم يبلغ نادٍ جزائري آخر هذا السجل القاري.",
     },
     highlights: [
-      { en: "Two-time African champion (1981, 1990) — first Algerian club to lift the continental cup.", fr: "Double champion d'Afrique (1981, 1990) — premier club algérien à remporter la coupe continentale.", ar: "بطل أفريقيا مرتين (1981، 1990) — أول نادٍ جزائري يرفع الكأس القارية." },
+      { en: "Two-time African champion (1981, 1990), first Algerian club to lift the continental cup.", fr: "Double champion d'Afrique (1981, 1990), premier club algérien à remporter la coupe continentale.", ar: "بطل أفريقيا مرتين (1981، 1990)، أول نادٍ جزائري يرفع الكأس القارية." },
       { en: "African Cup Winners' Cup 1995.", fr: "Coupe d'Afrique des vainqueurs de coupe 1995.", ar: "كأس الكؤوس الأفريقية 1995." },
-      { en: "CAF Cup 2000, 2001, 2002 — a competition record.", fr: "Coupe de la CAF 2000, 2001, 2002 — record de la compétition.", ar: "كأس الكاف 2000، 2001، 2002 — رقم قياسي في البطولة." },
+      { en: "CAF Cup 2000, 2001, 2002, a competition record.", fr: "Coupe de la CAF 2000, 2001, 2002, record de la compétition.", ar: "كأس الكاف 2000، 2001، 2002، رقم قياسي في البطولة." },
     ],
     finals: [
       { year: 1981, competition: { en: "African Cup of Champions Clubs", fr: "Coupe d'Afrique des Clubs Champions", ar: "كأس أفريقيا للأندية البطلة" }, opponent: { en: "AS Vita Club (DR Congo)", fr: "AS Vita Club (RD Congo)", ar: "أ.س. فيتا كلوب" }, score: "4–2 agg." },
@@ -208,7 +208,7 @@ export const jsKabylie: ClubMuseum = {
       summary: { en: "JSK's historic first continental title, taken over two legs against DR Congo's AS Vita Club.", fr: "Premier titre continental historique de la JSK, remporté en deux manches contre l'AS Vita Club de RD Congo.", ar: "أول لقب قاري تاريخي للشبيبة، انتُزع من فيتا كلوب الكونغولي في مباراتين." } },
     { id: "hm-caf-1990", year: 1990, title: { en: "African Cup of Champions Clubs Final 1990 vs Nkana", fr: "Finale de la Coupe d'Afrique des Clubs Champions 1990 vs Nkana", ar: "نهائي كأس أفريقيا للأندية البطلة 1990 أمام نكانا" },
       summary: { en: "Second continental crown, decided on tie-breaking rules against Zambia's Nkana FC.", fr: "Deuxième sacre continental, décidé aux règles de départage contre les Zambiens de Nkana.", ar: "لقب قاري ثانٍ حُسم بقواعد التعادل أمام نكانا الزامبي." } },
-    { id: "hm-cafcup-2002", year: 2002, title: { en: "CAF Cup Final 2002 — third consecutive title", fr: "Finale de la Coupe de la CAF 2002 — troisième titre consécutif", ar: "نهائي كأس الكاف 2002 — ثالث لقب متتالٍ" },
+    { id: "hm-cafcup-2002", year: 2002, title: { en: "CAF Cup Final 2002, third consecutive title", fr: "Finale de la Coupe de la CAF 2002, troisième titre consécutif", ar: "نهائي كأس الكاف 2002، ثالث لقب متتالٍ" },
       summary: { en: "Completed an unprecedented three-in-a-row in the CAF Cup, a competition record.", fr: "Un triplé inédit en Coupe de la CAF, record de la compétition.", ar: "إنجاز ثلاثية غير مسبوقة في كأس الكاف، رقم قياسي في البطولة." } },
   ],
 
@@ -222,9 +222,9 @@ export const jsKabylie: ClubMuseum = {
 
   culture: {
     intro: {
-      en: "JSK's supporters — from the terraces of Tizi Ouzou to the Kabyle diaspora — turn every match day into a celebration of Amazigh identity, memory and endurance.",
-      fr: "Les supporters de la JSK — des tribunes de Tizi Ouzou à la diaspora kabyle — font de chaque jour de match une célébration de l'identité, de la mémoire et de la ténacité amazighes.",
-      ar: "جماهير الشبيبة — من مدرجات تيزي وزو إلى الشتات القبائلي — تحوّل كل يوم مباراة إلى احتفاء بالهوية والذاكرة والصبر الأمازيغي.",
+      en: "JSK's supporters, from the terraces of Tizi Ouzou to the Kabyle diaspora, turn every match day into a celebration of Amazigh identity, memory and endurance.",
+      fr: "Les supporters de la JSK, des tribunes de Tizi Ouzou à la diaspora kabyle, font de chaque jour de match une célébration de l'identité, de la mémoire et de la ténacité amazighes.",
+      ar: "جماهير الشبيبة، من مدرجات تيزي وزو إلى الشتات القبائلي، تحوّل كل يوم مباراة إلى احتفاء بالهوية والذاكرة والصبر الأمازيغي.",
     },
     entries: [
       { id: "cu-anthem", title: { en: "Yellow-and-green sea", fr: "Marée jaune et verte", ar: "موجة صفراء وخضراء" }, body: { en: "Home stands are a wall of yellow and green flags, scarves and tifos, often carrying the Amazigh letter ⵣ (yaz).", fr: "Les tribunes à domicile forment un mur de drapeaux, d'écharpes et de tifos jaunes et verts, portant souvent la lettre amazighe ⵣ (yaz).", ar: "تتحول المدرجات في المباريات المنزلية إلى جدار من الأعلام والأوشحة والتيفوهات الصفراء والخضراء، تحمل غالباً حرف ⵣ (ياز) الأمازيغي." } },
@@ -242,9 +242,9 @@ export const jsKabylie: ClubMuseum = {
   ],
 
   archive: [
-    { id: "ar-caf-1981", kind: "programme", title: { en: "African Champions 1981 — commemorative programme", fr: "Champion d'Afrique 1981 — programme commémoratif", ar: "بطل أفريقيا 1981 — كتيّب تذكاري" }, year: 1981, description: { en: "Programme booklet marking JSK's first African Cup of Champions Clubs.", fr: "Programme marquant la première Coupe d'Afrique des Clubs Champions de la JSK.", ar: "كتيّب تذكاري لأول تتويج قاري للشبيبة." }, source: { en: "Reference: CAF and Algerian press archives.", fr: "Référence : archives CAF et presse algérienne.", ar: "المرجع: أرشيف الكاف والصحافة الجزائرية." } },
-    { id: "ar-cafcup-2002", kind: "newspaper", title: { en: "CAF Cup three-peat — 2002 front pages", fr: "Triplé Coupe de la CAF — Unes de 2002", ar: "ثلاثية كأس الكاف — عناوين 2002" }, year: 2002, description: { en: "Algerian sports press coverage of the record third consecutive CAF Cup.", fr: "Couverture de la presse sportive algérienne du troisième sacre consécutif en Coupe de la CAF.", ar: "تغطية الصحافة الرياضية الجزائرية للقب الثالث المتتالي في كأس الكاف." } },
-    { id: "ar-stade", kind: "photograph", title: { en: "Stade du 1er Novembre 1954 — full house", fr: "Stade du 1er Novembre 1954 — plein à craquer", ar: "ملعب أول نوفمبر 1954 — ملعب ممتلئ" }, description: { en: "Archival photograph of the home ground during a major continental match night.", fr: "Photographie d'archives du stade lors d'une grande soirée continentale.", ar: "صورة أرشيفية للملعب في ليلة قارية كبرى." } },
+    { id: "ar-caf-1981", kind: "programme", title: { en: "African Champions 1981, commemorative programme", fr: "Champion d'Afrique 1981, programme commémoratif", ar: "بطل أفريقيا 1981، كتيّب تذكاري" }, year: 1981, description: { en: "Programme booklet marking JSK's first African Cup of Champions Clubs.", fr: "Programme marquant la première Coupe d'Afrique des Clubs Champions de la JSK.", ar: "كتيّب تذكاري لأول تتويج قاري للشبيبة." }, source: { en: "Reference: CAF and Algerian press archives.", fr: "Référence : archives CAF et presse algérienne.", ar: "المرجع: أرشيف الكاف والصحافة الجزائرية." } },
+    { id: "ar-cafcup-2002", kind: "newspaper", title: { en: "CAF Cup three-peat, 2002 front pages", fr: "Triplé Coupe de la CAF, Unes de 2002", ar: "ثلاثية كأس الكاف، عناوين 2002" }, year: 2002, description: { en: "Algerian sports press coverage of the record third consecutive CAF Cup.", fr: "Couverture de la presse sportive algérienne du troisième sacre consécutif en Coupe de la CAF.", ar: "تغطية الصحافة الرياضية الجزائرية للقب الثالث المتتالي في كأس الكاف." } },
+    { id: "ar-stade", kind: "photograph", title: { en: "Stade du 1er Novembre 1954, full house", fr: "Stade du 1er Novembre 1954, plein à craquer", ar: "ملعب أول نوفمبر 1954، ملعب ممتلئ" }, description: { en: "Archival photograph of the home ground during a major continental match night.", fr: "Photographie d'archives du stade lors d'une grande soirée continentale.", ar: "صورة أرشيفية للملعب في ليلة قارية كبرى." } },
     { id: "ar-tifo", kind: "photograph", title: { en: "Yellow-and-green tifo", fr: "Tifo jaune et vert", ar: "تيفو أصفر وأخضر" }, description: { en: "Supporters' choreography combining the JSK colours and the Amazigh letter ⵣ.", fr: "Chorégraphie des supporters combinant les couleurs de la JSK et la lettre amazighe ⵣ.", ar: "لوحة جماهيرية تجمع بين ألوان الشبيبة وحرف ⵣ الأمازيغي." } },
     { id: "ar-1946", kind: "memorabilia", title: { en: "1946 founding pennant (reproduction)", fr: "Fanion de fondation 1946 (reproduction)", ar: "شارة التأسيس 1946 (نسخة تذكارية)" }, year: 1946, description: { en: "Reproduction pennant marking the club's foundation year.", fr: "Fanion reproduction marquant l'année de fondation du club.", ar: "شارة تذكارية تخلّد سنة تأسيس النادي." } },
   ],
@@ -260,7 +260,7 @@ export const jsKabylie: ClubMuseum = {
       { id: "st-cup", label: { en: "Algerian Cup", fr: "Coupe d'Algérie", ar: "كأس الجزائر" }, value: { en: "5", fr: "5", ar: "5" } },
       { id: "st-caf-cl", label: { en: "African Cup of Champions Clubs", fr: "Coupe d'Afrique des Clubs Champions", ar: "كأس أفريقيا للأندية البطلة" }, value: { en: "2 (1981, 1990)", fr: "2 (1981, 1990)", ar: "2 (1981، 1990)" } },
       { id: "st-cwc", label: { en: "African Cup Winners' Cup", fr: "Coupe d'Afrique des vainqueurs de coupe", ar: "كأس الكؤوس الأفريقية" }, value: { en: "1 (1995)", fr: "1 (1995)", ar: "1 (1995)" } },
-      { id: "st-cafcup", label: { en: "CAF Cup", fr: "Coupe de la CAF", ar: "كأس الكاف" }, value: { en: "3 (2000, 2001, 2002) — competition record", fr: "3 (2000, 2001, 2002) — record de la compétition", ar: "3 (2000، 2001، 2002) — رقم قياسي في البطولة" } },
+      { id: "st-cafcup", label: { en: "CAF Cup", fr: "Coupe de la CAF", ar: "كأس الكاف" }, value: { en: "3 (2000, 2001, 2002), competition record", fr: "3 (2000, 2001, 2002), record de la compétition", ar: "3 (2000، 2001، 2002)، رقم قياسي في البطولة" } },
       { id: "st-supercup", label: { en: "Algerian Super Cup", fr: "Supercoupe d'Algérie", ar: "كأس السوبر الجزائرية" }, value: { en: "1 (1992)", fr: "1 (1992)", ar: "1 (1992)" } },
       { id: "st-continental-total", label: { en: "Total major continental trophies", fr: "Total des trophées continentaux majeurs", ar: "إجمالي الألقاب القارية الكبرى" }, value: { en: "6 (most of any Algerian club)", fr: "6 (le plus grand total pour un club algérien)", ar: "6 (الأعلى بين الأندية الجزائرية)" } },
     ],
@@ -272,7 +272,7 @@ export const jsKabylie: ClubMuseum = {
     ], answerIndex: 1, explain: { en: "The club was founded on 1 July 1946 in Tizi Ouzou.", fr: "Le club a été fondé le 1er juillet 1946 à Tizi Ouzou.", ar: "تأسس النادي في 1 جويلية 1946 بتيزي وزو." } },
     { id: "q2", q: { en: "How many African Cup of Champions Clubs has JSK won?", fr: "Combien de Coupes d'Afrique des Clubs Champions la JSK a-t-elle remportées ?", ar: "كم مرة فازت شبيبة القبائل بكأس أفريقيا للأندية البطلة؟" }, choices: [
       { en: "1", fr: "1", ar: "1" }, { en: "2", fr: "2", ar: "2" }, { en: "3", fr: "3", ar: "3" }, { en: "4", fr: "4", ar: "4" }
-    ], answerIndex: 1, explain: { en: "Two — 1981 and 1990.", fr: "Deux — 1981 et 1990.", ar: "مرتان — 1981 و1990." } },
+    ], answerIndex: 1, explain: { en: "Two, 1981 and 1990.", fr: "Deux, 1981 et 1990.", ar: "مرتان، 1981 و1990." } },
     { id: "q3", q: { en: "Which CAF Cup years form JSK's record three-peat?", fr: "Quelles années de Coupe de la CAF forment le triplé record de la JSK ?", ar: "أي سنوات كأس الكاف تشكّل ثلاثية الشبيبة القياسية؟" }, choices: [
       { en: "1998–2000", fr: "1998–2000", ar: "1998–2000" }, { en: "2000–2002", fr: "2000–2002", ar: "2000–2002" }, { en: "2001–2003", fr: "2001–2003", ar: "2001–2003" }, { en: "2003–2005", fr: "2003–2005", ar: "2003–2005" }
     ], answerIndex: 1 },
@@ -285,8 +285,8 @@ export const jsKabylie: ClubMuseum = {
   ],
 
   sources: [
-    { en: "Confédération Africaine de Football (CAF) — club honours and continental competition archives.", fr: "Confédération Africaine de Football (CAF) — palmarès du club et archives des compétitions continentales.", ar: "الاتحاد الأفريقي لكرة القدم (الكاف) — سجلات الألقاب والمنافسات القارية." },
-    { en: "RSSSF (Rec.Sport.Soccer Statistics Foundation) — Algerian league and cup archives.", fr: "RSSSF — archives de la Ligue et de la Coupe d'Algérie.", ar: "RSSSF — أرشيف الدوري والكأس الجزائريين." },
+    { en: "Confédération Africaine de Football (CAF), club honours and continental competition archives.", fr: "Confédération Africaine de Football (CAF), palmarès du club et archives des compétitions continentales.", ar: "الاتحاد الأفريقي لكرة القدم (الكاف)، سجلات الألقاب والمنافسات القارية." },
+    { en: "RSSSF (Rec.Sport.Soccer Statistics Foundation), Algerian league and cup archives.", fr: "RSSSF, archives de la Ligue et de la Coupe d'Algérie.", ar: "RSSSF، أرشيف الدوري والكأس الجزائريين." },
     { en: "Official JS Kabylie communications and Algerian press coverage (Liberté, El Watan, El Heddaf).", fr: "Communications officielles de la JS Kabylie et presse algérienne (Liberté, El Watan, El Heddaf).", ar: "بلاغات نادي شبيبة القبائل الرسمية وصحافة جزائرية (ليبرتي، الوطن، الهدّاف)." },
     { en: "Where individual leg scores of continental finals differ between sources, the entry is marked with a note.", fr: "Lorsque les scores des manches de finales continentales diffèrent selon les sources, l'entrée est marquée d'une note.", ar: "عند اختلاف مصادر النتائج الجزئية للنهائيات القارية، تُدرج ملاحظة توضيحية." },
   ],

@@ -37,7 +37,7 @@ export const Route = createFileRoute("/football/")({
   head: () =>
     pageMeta({
       path: "/football",
-      title: "The Hall of Algerian Football — DZ Odyssey",
+      title: "The Hall of Algerian Football, DZ Odyssey",
       description: "A cinematic museum wing tracing Algerian football from colonial resistance and the FLN team to Gijón, the 2019 AFCON and the road to 2026.",
       image: footballHero
     }),
@@ -77,7 +77,7 @@ function FootballHero({ lang }: { lang: Lang }) {
           "radial-gradient(ellipse at 50% 20%, oklch(0.88 0.06 78 / 0.55), transparent 65%), radial-gradient(ellipse at 90% 80%, oklch(0.82 0.08 40 / 0.35), transparent 60%), var(--gradient-parchment)",
       }}
     >
-      {/* Stadium haze — soft light shafts */}
+      {/* Stadium haze, soft light shafts */}
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0 opacity-40"
@@ -135,7 +135,7 @@ function FootballHero({ lang }: { lang: Lang }) {
               to="/football/lesvertes"
               className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-5 py-3 text-sm font-semibold text-foreground hover:bg-muted transition"
             >
-              {{ en: "Les Vertes — Women's Team →", fr: "Les Vertes — sélection féminine →", ar: "الخضراوات — المنتخب النسوي ←" }[lang]}
+              {{ en: "Les Vertes, Women's Team →", fr: "Les Vertes, sélection féminine →", ar: "الخضراوات، المنتخب النسوي ←" }[lang]}
             </Link>
           </div>
 
@@ -143,7 +143,7 @@ function FootballHero({ lang }: { lang: Lang }) {
 
 
 
-        {/* Museum vitrine — photographed artifact installation */}
+        {/* Museum vitrine, photographed artifact installation */}
         <div className="relative flex items-center justify-center animate-float-up">
           <MuseumVitrine lang={lang} />
         </div>
@@ -736,7 +736,7 @@ function GijonExhibit({ lang }: { lang: Lang }) {
         </ol>
       </Plaque>
 
-      {/* Match Theater — reliving the earlier upset that made Gijón matter. */}
+      {/* Match Theater, reliving the earlier upset that made Gijón matter. */}
       <div className="lg:col-span-2">
         <Link
           to="/theater/$matchId"
@@ -757,8 +757,8 @@ function GijonExhibit({ lang }: { lang: Lang }) {
             </div>
             <div className="mt-0.5 text-xs text-muted-foreground">
               {{
-                en: "The upset that preceded — and framed — the Shame of Gijón.",
-                fr: "L'exploit qui a précédé — et éclairé — la Honte de Gijón.",
+                en: "The upset that preceded and framed, the Shame of Gijón.",
+                fr: "L'exploit qui a précédé et éclairé, la Honte de Gijón.",
                 ar: "المفاجأة التي سبقت فضيحة خيخون وأضاءت سياقها.",
               }[lang]}
             </div>
@@ -1197,13 +1197,13 @@ function TimelineExhibit({ lang }: { lang: Lang }) {
             {{ en: "A parallel timeline", fr: "Une chronologie parallèle", ar: "خطّ زمنيّ موازٍ" }[lang]}
           </div>
           <div className="mt-1 font-semibold text-foreground" style={SERIF}>
-            {{ en: "Les Vertes — the women's national team", fr: "Les Vertes — la sélection féminine", ar: "الخضراوات — المنتخب النسوي" }[lang]}
+            {{ en: "Les Vertes, the women's national team", fr: "Les Vertes, la sélection féminine", ar: "الخضراوات، المنتخب النسوي" }[lang]}
           </div>
           <p className="text-sm text-muted-foreground mt-1">
             {{
-              en: "Explore the rise of Algeria's women's national team — a full exhibit of its own.",
-              fr: "Découvrez l'essor de la sélection féminine algérienne — un exhibit à part entière.",
-              ar: "استكشف صعود المنتخب النسوي الجزائري — معرض قائم بذاته.",
+              en: "Explore the rise of Algeria's women's national team, a full exhibit of its own.",
+              fr: "Découvrez l'essor de la sélection féminine algérienne, un exhibit à part entière.",
+              ar: "استكشف صعود المنتخب النسوي الجزائري، معرض قائم بذاته.",
             }[lang]}
           </p>
         </div>

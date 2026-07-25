@@ -24,8 +24,8 @@ export const Route = createFileRoute("/")({
   head: () =>
     pageMeta({
       path: "/",
-      title: "DZ Odyssey — Algeria Through Time",
-      description: "A cinematic, museum-style passage through Algeria — its eras, regions, figures and culture, from Numidia to independence.",
+      title: "DZ Odyssey, Algeria Through Time",
+      description: "A cinematic, museum-style passage through Algeria, its eras, regions, figures and culture, from Numidia to independence.",
       image: heroBg
     }),
   component: Home,
@@ -84,14 +84,14 @@ function Home() {
       ar: "ابدأ الرحلة",
     },
     beginDesc: {
-      en: "Two thousand years of Algerian memory, told slowly and carefully — chapter by chapter.",
-      fr: "Deux mille ans de mémoire algérienne, racontés lentement et avec soin — chapitre après chapitre.",
-      ar: "ألفا عام من الذاكرة الجزائرية، تُروى بهدوء وعناية — فصلًا تلو الآخر.",
+      en: "Two thousand years of Algerian memory, told slowly and carefully, chapter by chapter.",
+      fr: "Deux mille ans de mémoire algérienne, racontés lentement et avec soin, chapitre après chapitre.",
+      ar: "ألفا عام من الذاكرة الجزائرية، تُروى بهدوء وعناية، فصلًا تلو الآخر.",
     },
     footer: {
-      en: "Algeria Through Time — a calm cultural journey through land, memory and language.",
-      fr: "Algeria Through Time — un voyage culturel paisible entre terres, mémoire et langue.",
-      ar: "Algeria Through Time — رحلة ثقافية هادئة عبر الأرض والذاكرة واللغة.",
+      en: "Algeria Through Time, a calm cultural journey through land, memory and language.",
+      fr: "Algeria Through Time, un voyage culturel paisible entre terres, mémoire et langue.",
+      ar: "Algeria Through Time، رحلة ثقافية هادئة عبر الأرض والذاكرة واللغة.",
     },
     entries: [
       {
@@ -146,7 +146,7 @@ function Home() {
     <div className="min-h-dvh">
       <Header />
       <main>
-        {/* ========= HERO — Cinematic environmental entrance ========= */}
+        {/* ========= HERO, Cinematic environmental entrance ========= */}
         <section className="hero-environment" aria-label={copy.title[lang]}>
           <img
             src={heroBg}
@@ -232,7 +232,7 @@ function Home() {
                 </p>
                 {matchedEra && (
                   <div className="mt-3 text-xs text-muted-foreground">
-                    — {t(matchedEra.title, lang)} · {matchedEra.dateRange}
+                   , {t(matchedEra.title, lang)} · {matchedEra.dateRange}
                   </div>
                 )}
                 <div className="mt-1 text-[11px] italic text-muted-foreground/80">
@@ -243,12 +243,12 @@ function Home() {
           </div>
         </section>
 
-        {/* ========= CURATOR'S PICK — rotating flagship ========= */}
+        {/* ========= CURATOR'S PICK, rotating flagship ========= */}
         <div className="pt-10 sm:pt-14">
           <CuratorsPick />
         </div>
 
-        {/* ========= EXPLORE — three pillars ========= */}
+        {/* ========= EXPLORE, three pillars ========= */}
         <section className="mx-auto max-w-5xl px-4 py-10 sm:py-14">
 
           <div className="text-center mb-6 sm:mb-8">

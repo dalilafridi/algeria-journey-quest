@@ -180,10 +180,10 @@ export function ConnectionMap({ figure: f, lang }: { figure: Figure; lang: Lang 
         : "Why these connections matter";
   const whyBody =
     lang === "fr"
-      ? `Aucune figure ne se tient seule. ${t(f.displayName, lang)} appartient à une ère, à une région et à des courants partagés avec d'autres légendes — autant de fils qui, tissés ensemble, racontent l'histoire plus vaste de l'Algérie.`
+      ? `Aucune figure ne se tient seule. ${t(f.displayName, lang)} appartient à une ère, à une région et à des courants partagés avec d'autres légendes, autant de fils qui, tissés ensemble, racontent l'histoire plus vaste de l'Algérie.`
       : lang === "ar"
-        ? `لا تقف أي شخصية وحدها. ينتمي ${t(f.displayName, lang)} إلى حقبة ومنطقة وتيارات يتقاسمها مع أساطير أخرى — خيوط تُنسج معًا لتروي قصة الجزائر الأوسع.`
-        : `No figure stands alone. ${t(f.displayName, lang)} belongs to an era, a region and shared currents that connect to other legends — threads that, woven together, tell Algeria's larger story.`;
+        ? `لا تقف أي شخصية وحدها. ينتمي ${t(f.displayName, lang)} إلى حقبة ومنطقة وتيارات يتقاسمها مع أساطير أخرى، خيوط تُنسج معًا لتروي قصة الجزائر الأوسع.`
+        : `No figure stands alone. ${t(f.displayName, lang)} belongs to an era, a region and shared currents that connect to other legends, threads that, woven together, tell Algeria's larger story.`;
 
   return (
     <div>

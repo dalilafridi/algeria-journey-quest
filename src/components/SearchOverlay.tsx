@@ -258,7 +258,7 @@ export function SearchOverlay() {
             "linear-gradient(180deg, color-mix(in oklab, var(--card) 94%, var(--accent) 6%), var(--card))",
         }}
       >
-        {/* Header — input */}
+        {/* Header, input */}
         <div className="flex items-center gap-3 px-4 sm:px-5 pt-4 sm:pt-5 pb-3 border-b border-border/60">
           <span
             aria-hidden
@@ -356,7 +356,7 @@ export function SearchOverlay() {
             </ul>
           )}
 
-          {/* Empty state for an active query — never "no results", always suggest popular exhibits. */}
+          {/* Empty state for an active query, never "no results", always suggest popular exhibits. */}
           {query.trim() && results.length === 0 && (
             <div className="py-2">
               <div className="px-6 pt-8 pb-4 text-center">
@@ -393,7 +393,7 @@ export function SearchOverlay() {
           )}
 
 
-          {/* Idle state — recent + discoveries */}
+          {/* Idle state, recent + discoveries */}
           {!query.trim() && (
             <div className="py-3">
               {recent.length > 0 && (
@@ -450,7 +450,7 @@ export function SearchOverlay() {
           )}
         </div>
 
-        {/* Footer — quiet shortcut hint */}
+        {/* Footer, quiet shortcut hint */}
         <div className="hidden sm:flex items-center justify-between gap-3 px-5 py-2.5 border-t border-border/60 bg-background/40 text-[11px] text-muted-foreground">
           <span>{t(COPY.hintShortcut, lang)}</span>
           <span className="inline-flex items-center gap-1.5">

@@ -59,7 +59,7 @@ export const Route = createFileRoute("/era/$eraId")({
     if (!loaderData) {
       return pageMeta({
         path: `/era/${params.eraId}`,
-        title: "Era — DZ Odyssey",
+        title: "Era, DZ Odyssey",
         description: "This era exhibit could not be found.",
         noindex: true,
       });
@@ -68,7 +68,7 @@ export const Route = createFileRoute("/era/$eraId")({
     const summaryEn = t(loaderData.era.summary, "en");
     return pageMeta({
       path: `/era/${loaderData.era.id}`,
-      title: `${titleEn} — DZ Odyssey`,
+      title: `${titleEn}, DZ Odyssey`,
       description: summaryEn,
       type: "article",
     });
@@ -285,7 +285,7 @@ function EraPage() {
           </blockquote>
           {extras.memoryCard.attribution && (
             <figcaption className="mt-3 text-xs sm:text-sm text-muted-foreground">
-              — {t(extras.memoryCard.attribution, lang)}
+             , {t(extras.memoryCard.attribution, lang)}
             </figcaption>
           )}
         </figure>
