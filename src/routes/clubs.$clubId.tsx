@@ -209,52 +209,44 @@ function FullMuseumView({ club, lang }: { club: ClubMuseum; lang: Lang }) {
 
 function Hero({ club, lang }: { club: ClubMuseum; lang: Lang }) {
   const { primary, secondary } = club.identity.colors;
-  return (
-    <section
-      className="relative overflow-hidden"
+  const heroBg =
+    `radial-gradient(ellipse at 20% 20%, ${primary}22, transparent 55%), ` +
+    `radial-gradient(ellipse at 80% 80%, ${secondary}33, transparent 55%), ` +
+    `linear-gradient(180deg, oklch(0.985 0.02 84), oklch(0.94 0.04 76))`;
+  const cityMeta = (
+    <>
+      {t(club.city, lang)} · {{ en: "Founded", fr: "Fondé", ar: "تأسس" }[lang]} {club.founded}
+    </>
+  );
+  const medallion = (
+    <div
+      className="w-[180px] h-[180px] sm:w-[220px] sm:h-[220px] rounded-full flex items-center justify-center"
       style={{
-        background:
-          `radial-gradient(ellipse at 20% 20%, ${primary}22, transparent 55%), radial-gradient(ellipse at 80% 80%, ${secondary}33, transparent 55%), linear-gradient(180deg, oklch(0.985 0.02 84), oklch(0.94 0.04 76))`,
+        background: `radial-gradient(circle at 30% 30%, ${primary}, ${secondary})`,
+        boxShadow:
+          "0 25px 55px -20px oklch(0 0 0 / 0.7), inset 0 0 0 5px oklch(1 0 0 / 0.08)",
       }}
+      aria-hidden
     >
-      <div className="relative max-w-6xl mx-auto px-4 sm:px-6 py-14 sm:py-20 grid gap-10 md:grid-cols-[1fr_auto] items-center">
-        <div>
-          <p className="text-[10px] sm:text-xs uppercase tracking-[0.28em] font-bold text-primary">
-            ⵣ · {{ en: "Club Museum", fr: "Musée du club", ar: "متحف النادي" }[lang]}
-          </p>
-          <h1 className="mt-3 text-4xl sm:text-5xl md:text-6xl font-bold leading-[1.05]" style={SERIF}>
-            {t(club.fullName, lang)}
-          </h1>
-          <p className="text-sm mt-2 text-muted-foreground">
-            {t(club.city, lang)} · {{ en: "Founded", fr: "Fondé", ar: "تأسس" }[lang]} {club.founded}
-          </p>
-          <p className="mt-5 max-w-xl text-lg italic text-foreground" style={SERIF}>
-            {t(club.tagline, lang)}
-          </p>
-        </div>
-
-        <div className="flex justify-center md:justify-end">
-          <div
-            className="w-[180px] h-[180px] sm:w-[220px] sm:h-[220px] rounded-full flex items-center justify-center"
-            style={{
-              background: `radial-gradient(circle at 30% 30%, ${primary}, ${secondary})`,
-              boxShadow: "0 25px 55px -20px oklch(0 0 0 / 0.7), inset 0 0 0 5px oklch(1 0 0 / 0.08)",
-            }}
-            aria-hidden
-          >
-            <span className="text-4xl sm:text-5xl font-black tracking-widest text-[oklch(0.98_0.02_80)]" style={SERIF}>
-              {club.identity.crestGlyph}
-            </span>
-          </div>
-        </div>
-      </div>
-    </section>
+      <span
+        className="text-4xl sm:text-5xl font-black tracking-widest text-[oklch(0.98_0.02_80)]"
+        style={SERIF}
+      >
+        {club.identity.crestGlyph}
+      </span>
+    </div>
+  );
+  return (
+    <ExhibitHero
+      eyebrow={{ en: "Club Museum", fr: "Musée du club", ar: "متحف النادي" }}
+      title={club.fullName}
+      subtitle={club.tagline}
+      meta={cityMeta}
+      medallion={medallion}
+      background={heroBg}
+    />
   );
 }
-
-/* -------------------------------- Sections -------------------------------- */
-
-function SectionShell({ id, title, children }: { id: string; title: string; children: React.ReactNode }) {
   return (
     <section id={id} className="scroll-mt-32">
       <h2 className="text-2xl sm:text-3xl font-bold mb-6" style={SERIF}>{title}</h2>
