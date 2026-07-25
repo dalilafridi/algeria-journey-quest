@@ -84,10 +84,12 @@ export function SearchOverlay() {
   const navigate = useNavigate();
   const [open, setOpen] = useState(false);
   const [query, setQuery] = useState("");
+  const [category, setCategory] = useState<SearchCategory>("all");
   const [activeIndex, setActiveIndex] = useState(0);
   const [recent, setRecent] = useState<string[]>([]);
   const inputRef = useRef<HTMLInputElement>(null);
   const listRef = useRef<HTMLDivElement>(null);
+  const popular = useMemo(() => getPopularExhibits(9), []);
 
   // Open / close API ------------------------------------------------------
   useEffect(() => {
