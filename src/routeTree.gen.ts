@@ -16,6 +16,7 @@ import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as ShowcaseRouteImport } from './routes/showcase'
 import { Route as ProfileRouteImport } from './routes/profile'
 import { Route as PassportRouteImport } from './routes/passport'
+import { Route as MzabRouteImport } from './routes/mzab'
 import { Route as MomentsRouteImport } from './routes/moments'
 import { Route as MapRouteImport } from './routes/map'
 import { Route as LessonsRouteImport } from './routes/lessons'
@@ -116,6 +117,11 @@ const ProfileRoute = ProfileRouteImport.update({
 const PassportRoute = PassportRouteImport.update({
   id: '/passport',
   path: '/passport',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MzabRoute = MzabRouteImport.update({
+  id: '/mzab',
+  path: '/mzab',
   getParentRoute: () => rootRouteImport,
 } as any)
 const MomentsRoute = MomentsRouteImport.update({
@@ -474,6 +480,7 @@ export interface FileRoutesByFullPath {
   '/lessons': typeof LessonsRoute
   '/map': typeof MapRoute
   '/moments': typeof MomentsRoute
+  '/mzab': typeof MzabRoute
   '/passport': typeof PassportRoute
   '/profile': typeof ProfileRoute
   '/showcase': typeof ShowcaseRoute
@@ -546,6 +553,7 @@ export interface FileRoutesByTo {
   '/lessons': typeof LessonsRoute
   '/map': typeof MapRoute
   '/moments': typeof MomentsRoute
+  '/mzab': typeof MzabRoute
   '/passport': typeof PassportRoute
   '/profile': typeof ProfileRoute
   '/showcase': typeof ShowcaseRoute
@@ -619,6 +627,7 @@ export interface FileRoutesById {
   '/lessons': typeof LessonsRoute
   '/map': typeof MapRoute
   '/moments': typeof MomentsRoute
+  '/mzab': typeof MzabRoute
   '/passport': typeof PassportRoute
   '/profile': typeof ProfileRoute
   '/showcase': typeof ShowcaseRoute
@@ -696,6 +705,7 @@ export interface FileRouteTypes {
     | '/lessons'
     | '/map'
     | '/moments'
+    | '/mzab'
     | '/passport'
     | '/profile'
     | '/showcase'
@@ -768,6 +778,7 @@ export interface FileRouteTypes {
     | '/lessons'
     | '/map'
     | '/moments'
+    | '/mzab'
     | '/passport'
     | '/profile'
     | '/showcase'
@@ -840,6 +851,7 @@ export interface FileRouteTypes {
     | '/lessons'
     | '/map'
     | '/moments'
+    | '/mzab'
     | '/passport'
     | '/profile'
     | '/showcase'
@@ -916,6 +928,7 @@ export interface RootRouteChildren {
   LessonsRoute: typeof LessonsRoute
   MapRoute: typeof MapRoute
   MomentsRoute: typeof MomentsRoute
+  MzabRoute: typeof MzabRoute
   PassportRoute: typeof PassportRoute
   ProfileRoute: typeof ProfileRoute
   ShowcaseRoute: typeof ShowcaseRoute
@@ -986,6 +999,13 @@ declare module '@tanstack/react-router' {
       path: '/passport'
       fullPath: '/passport'
       preLoaderRoute: typeof PassportRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/mzab': {
+      id: '/mzab'
+      path: '/mzab'
+      fullPath: '/mzab'
+      preLoaderRoute: typeof MzabRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/moments': {
@@ -1609,6 +1629,7 @@ const rootRouteChildren: RootRouteChildren = {
   LessonsRoute: LessonsRoute,
   MapRoute: MapRoute,
   MomentsRoute: MomentsRoute,
+  MzabRoute: MzabRoute,
   PassportRoute: PassportRoute,
   ProfileRoute: ProfileRoute,
   ShowcaseRoute: ShowcaseRoute,
