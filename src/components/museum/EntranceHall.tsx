@@ -13,7 +13,7 @@
  */
 
 import { Link } from "@tanstack/react-router";
-import { useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 import { t, useLang, type Lang } from "@/lib/i18n";
 import {
