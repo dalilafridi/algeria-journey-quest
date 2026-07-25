@@ -110,24 +110,6 @@ export const EXHIBIT_PROVENANCE: Record<string, ExhibitProvenanceRecord> = {
     sourceIds: ["britannica-numidia", "brett-fentress-berbers"],
     confidence: "widely-accepted",
   }),
-    sourceIds: ["stora-histoire-algerie", "horne-savage-war", "anom-aix"],
-    confidence: "verified",
-  }),
-  "figure:larbi-ben-mhidi": R({
-    sourceIds: ["horne-savage-war", "stora-histoire-algerie", "el-moudjahid"],
-    confidence: "verified",
-  }),
-  "figure:abane-ramdane": R({
-    sourceIds: ["horne-savage-war", "stora-histoire-algerie"],
-    confidence: "verified",
-  }),
-  "figure:hassiba-ben-bouali": R({
-    sourceIds: ["horne-savage-war", "el-moudjahid", "aps-algerie-presse-service"],
-    confidence: "verified",
-  }),
-  "figure:djamila-bouhired": R({
-    sourceIds: ["horne-savage-war", "le-monde-archives", "aps-algerie-presse-service"],
-    confidence: "verified",
   }),
 
   // ─── Eras ───────────────────────────────────────────────────────────
