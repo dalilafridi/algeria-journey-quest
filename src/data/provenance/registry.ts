@@ -1,0 +1,264 @@
+/**
+ * Exhibit → provenance registry.
+ *
+ * A single flat map keyed by a canonical exhibit id:
+ *   figure:<id>, era:<id>, region:<id>, club:<id>, culture:<id>,
+ *   match:<id>, cuisine, timeline, football, football-lesvertes.
+ *
+ * Sources are referenced by id only. Add or extend a record here — never
+ * duplicate the underlying `ProvenanceSource` entries.
+ */
+
+import type { ExhibitProvenanceRecord } from "@/lib/provenance";
+import { SOURCES, getSource } from "@/data/provenance/sources";
+
+const R = <T extends ExhibitProvenanceRecord>(r: T) => r;
+
+const T = {
+  intro: {
+    en: "Every historical statement on this page is traceable to the reliable sources listed below.",
+    fr: "Chaque affirmation historique de cette page est traçable aux sources fiables listées ci-dessous.",
+    ar: "كلّ ادّعاء تاريخي في هذه الصفحة يمكن تتبّعه إلى المصادر الموثوقة المدرجة أدناه.",
+  },
+  datesVary: {
+    en: "Dates and place names vary slightly between historical sources; we follow the mainstream scholarly consensus.",
+    fr: "Les dates et toponymes varient légèrement selon les sources ; nous suivons le consensus universitaire dominant.",
+    ar: "تتباين التواريخ والأسماء قليلاً بين المصادر التاريخية؛ نتبع الإجماع العلمي السائد.",
+  },
+  oralTradition: {
+    en: "Elements of this account are preserved through oral tradition and are marked as such.",
+    fr: "Des éléments de ce récit sont transmis par tradition orale et signalés comme tels.",
+    ar: "بعض عناصر هذه الرواية محفوظة عبر التقليد الشفهي ومُشار إليها بذلك.",
+  },
+} as const;
+
+/* eslint-disable-next-line @typescript-eslint/no-explicit-any */
+export const EXHIBIT_PROVENANCE: Record<string, ExhibitProvenanceRecord> = {
+  // ─── Historical figures ─────────────────────────────────────────────
+  "figure:massinissa": R({
+    sourceIds: ["britannica-massinissa", "britannica-numidia", "brett-fentress-berbers", "camps-encyclopedie-berbere"],
+    confidence: "widely-accepted",
+    intro: T.intro,
+    notes: [{ kind: "dates", body: T.datesVary }],
+    furtherReadingIds: ["further-mcdougall-algeria"],
+  }),
+  "figure:jugurtha": R({
+    sourceIds: ["britannica-numidia", "brett-fentress-berbers", "camps-encyclopedie-berbere"],
+    confidence: "widely-accepted",
+  }),
+  "figure:dihya": R({
+    sourceIds: ["camps-encyclopedie-berbere", "brett-fentress-berbers", "ibn-khaldun-muqaddimah"],
+    confidence: "academic-debate",
+    intro: T.intro,
+    notes: [
+      {
+        kind: "debate",
+        body: {
+          en: "Dihya's life is documented largely through medieval Arab chroniclers writing centuries after her death; details of her origin, faith and death remain debated among historians.",
+          fr: "La vie de Dihya nous est essentiellement connue par des chroniqueurs arabes médiévaux écrivant plusieurs siècles après sa mort ; ses origines, sa foi et sa mort restent débattues.",
+          ar: "تُعرف حياة ديهيا أساساً من المؤرخين العرب في العصور الوسطى الذين كتبوا بعد قرون من وفاتها؛ ولا تزال أصولها وعقيدتها ووفاتها موضع نقاش.",
+        },
+      },
+    ],
+  }),
+  "figure:kahina": R({
+    sourceIds: ["camps-encyclopedie-berbere", "brett-fentress-berbers", "ibn-khaldun-muqaddimah"],
+    confidence: "traditional",
+    notes: [{ kind: "oral-tradition", body: T.oralTradition }],
+  }),
+  "figure:abd-el-kader": R({
+    sourceIds: ["ruedy-modern-algeria", "stora-histoire-algerie", "anom-aix", "bnf-gallica"],
+    confidence: "verified",
+  }),
+  "figure:emir-abdelkader": R({
+    sourceIds: ["ruedy-modern-algeria", "stora-histoire-algerie", "anom-aix", "bnf-gallica"],
+    confidence: "verified",
+  }),
+  "figure:ben-badis": R({
+    sourceIds: ["ruedy-modern-algeria", "bnalgerie", "el-moudjahid"],
+    confidence: "verified",
+  }),
+  "figure:messali-hadj": R({
+    sourceIds: ["stora-histoire-algerie", "horne-savage-war", "anom-aix"],
+    confidence: "verified",
+  }),
+  "figure:larbi-ben-mhidi": R({
+    sourceIds: ["horne-savage-war", "stora-histoire-algerie", "el-moudjahid"],
+    confidence: "verified",
+  }),
+  "figure:abane-ramdane": R({
+    sourceIds: ["horne-savage-war", "stora-histoire-algerie"],
+    confidence: "verified",
+  }),
+  "figure:hassiba-ben-bouali": R({
+    sourceIds: ["horne-savage-war", "el-moudjahid", "aps-algerie-presse-service"],
+    confidence: "verified",
+  }),
+  "figure:djamila-bouhired": R({
+    sourceIds: ["horne-savage-war", "le-monde-archives", "aps-algerie-presse-service"],
+    confidence: "verified",
+  }),
+
+  // ─── Eras ───────────────────────────────────────────────────────────
+  "era:earlynorthafrica": R({
+    sourceIds: ["camps-encyclopedie-berbere", "brett-fentress-berbers", "unesco-tassili"],
+    confidence: "widely-accepted",
+    notes: [{ kind: "dates", body: T.datesVary }],
+  }),
+  "era:numidia": R({
+    sourceIds: ["britannica-numidia", "brett-fentress-berbers", "cirta-constantine", "camps-encyclopedie-berbere"],
+    confidence: "widely-accepted",
+    intro: T.intro,
+  }),
+  "era:roman": R({
+    sourceIds: ["unesco-timgad", "unesco-djemila", "louvre-north-africa", "brett-fentress-berbers"],
+    confidence: "verified",
+    intro: T.intro,
+  }),
+  "era:islamic": R({
+    sourceIds: ["ibn-khaldun-muqaddimah", "further-shatzmiller-berbers", "brett-fentress-berbers"],
+    confidence: "widely-accepted",
+  }),
+  "era:ottoman": R({
+    sourceIds: ["ruedy-modern-algeria", "bnf-gallica", "further-mcdougall-algeria"],
+    confidence: "widely-accepted",
+  }),
+  "era:french": R({
+    sourceIds: ["stora-histoire-algerie", "ruedy-modern-algeria", "anom-aix", "bnf-gallica"],
+    confidence: "verified",
+    intro: T.intro,
+  }),
+  "era:independence": R({
+    sourceIds: ["horne-savage-war", "stora-histoire-algerie", "el-moudjahid", "aps-algerie-presse-service"],
+    confidence: "verified",
+    furtherReadingIds: ["further-mcdougall-algeria"],
+  }),
+
+  // ─── Regions ────────────────────────────────────────────────────────
+  "region:kabylie": R({
+    sourceIds: ["camps-encyclopedie-berbere", "brett-fentress-berbers", "further-shatzmiller-berbers"],
+    confidence: "widely-accepted",
+  }),
+  "region:algiers": R({
+    sourceIds: ["unesco-kasbah", "stora-histoire-algerie", "bnf-gallica"],
+    confidence: "verified",
+  }),
+  "region:constantine": R({
+    sourceIds: ["cirta-constantine", "britannica-numidia", "brett-fentress-berbers"],
+    confidence: "widely-accepted",
+  }),
+  "region:aures": R({
+    sourceIds: ["camps-encyclopedie-berbere", "horne-savage-war"],
+    confidence: "widely-accepted",
+  }),
+  "region:oran-west": R({
+    sourceIds: ["ruedy-modern-algeria", "bnf-gallica"],
+    confidence: "widely-accepted",
+  }),
+  "region:numidia": R({
+    sourceIds: ["britannica-numidia", "cirta-constantine", "brett-fentress-berbers"],
+    confidence: "widely-accepted",
+  }),
+  "region:sahara": R({
+    sourceIds: ["unesco-tassili", "camps-encyclopedie-berbere"],
+    confidence: "widely-accepted",
+  }),
+
+  // ─── Clubs ──────────────────────────────────────────────────────────
+  "club:js-kabylie": R({
+    sourceIds: ["jsk-club-archives", "faf-dz", "caf-online", "aps-algerie-presse-service", "el-moudjahid"],
+    confidence: "verified",
+    intro: {
+      en: "JSK results, honours and dates are cross-checked against club archives, the Algerian FA (FAF), CAF records and contemporary press.",
+      fr: "Les résultats, titres et dates du JSK sont recoupés avec les archives du club, la FAF, la CAF et la presse d'époque.",
+      ar: "تُوثَّق نتائج شبيبة القبائل وألقابها وتواريخها بمقارنتها مع أرشيف النادي والفاف والكاف والصحافة المعاصرة.",
+    },
+  }),
+
+  // ─── Football (hall) ────────────────────────────────────────────────
+  football: R({
+    sourceIds: ["fifa-com", "caf-online", "faf-dz", "rsssf", "fln-team-history", "el-moudjahid"],
+    confidence: "verified",
+    intro: {
+      en: "Match results, squads and tournament records are cross-checked against FIFA, CAF, the Algerian FA (FAF) and RSSSF.",
+      fr: "Résultats, effectifs et palmarès sont recoupés avec la FIFA, la CAF, la FAF et RSSSF.",
+      ar: "تُتحقَّق النتائج والتشكيلات والسجلات بمقارنتها مع الفيفا والكاف والفاف وRSSSF.",
+    },
+  }),
+  "football-lesvertes": R({
+    sourceIds: ["cafonline-wafcon", "faf-dz", "fifa-com", "aps-algerie-presse-service"],
+    confidence: "widely-accepted",
+    intro: {
+      en: "The women's national team's history is documented through CAF (WAFCON records), the FAF, FIFA and the Algerian Press Service.",
+      fr: "L'histoire des Vertes est documentée via la CAF (CAN féminine), la FAF, la FIFA et l'APS.",
+      ar: "يُوثَّق تاريخ المنتخب الوطني للسيدات عبر الكاف (كأس أفريقيا للسيدات) والفاف والفيفا ووكالة الأنباء الجزائرية.",
+    },
+  }),
+
+  // ─── Culture / cuisine / timeline ───────────────────────────────────
+  cuisine: R({
+    sourceIds: ["unesco-couscous", "bardo-algiers", "camps-encyclopedie-berbere"],
+    confidence: "verified",
+    intro: {
+      en: "Recipes and cultural notes draw on UNESCO's intangible heritage records, the Bardo Museum, and the Encyclopédie berbère.",
+      fr: "Les recettes et notes culturelles s'appuient sur l'UNESCO (patrimoine immatériel), le musée du Bardo et l'Encyclopédie berbère.",
+      ar: "تستند الوصفات والملاحظات الثقافية إلى سجلات التراث غير المادي لليونسكو ومتحف الباردو والموسوعة الأمازيغية.",
+    },
+  }),
+  timeline: R({
+    sourceIds: [
+      "britannica-numidia",
+      "brett-fentress-berbers",
+      "ruedy-modern-algeria",
+      "stora-histoire-algerie",
+      "horne-savage-war",
+      "unesco-timgad",
+    ],
+    confidence: "widely-accepted",
+    notes: [{ kind: "dates", body: T.datesVary }],
+    furtherReadingIds: ["further-mcdougall-algeria", "further-shatzmiller-berbers"],
+  }),
+  "culture:music": R({
+    sourceIds: ["bardo-algiers", "bnalgerie", "camps-encyclopedie-berbere"],
+    confidence: "widely-accepted",
+  }),
+  "culture:literature": R({
+    sourceIds: ["bnf-gallica", "bnalgerie", "camps-encyclopedie-berbere"],
+    confidence: "widely-accepted",
+  }),
+  "culture:cinema": R({
+    sourceIds: ["bnf-gallica", "le-monde-archives", "aps-algerie-presse-service"],
+    confidence: "widely-accepted",
+  }),
+  "culture:language": R({
+    sourceIds: ["camps-encyclopedie-berbere", "further-shatzmiller-berbers"],
+    confidence: "widely-accepted",
+  }),
+  "culture:cuisine": R({
+    sourceIds: ["unesco-couscous", "bardo-algiers"],
+    confidence: "verified",
+  }),
+};
+
+export function getExhibitProvenance(exhibitId: string): ExhibitProvenanceRecord | undefined {
+  return EXHIBIT_PROVENANCE[exhibitId];
+}
+
+export function totalExhibitsWithProvenance(): number {
+  return Object.keys(EXHIBIT_PROVENANCE).length;
+}
+
+// Validate registry integrity in dev — every id must exist in SOURCES.
+if (import.meta.env?.DEV) {
+  const allIds = new Set(SOURCES.map((s) => s.id));
+  for (const [key, rec] of Object.entries(EXHIBIT_PROVENANCE)) {
+    for (const id of [...rec.sourceIds, ...(rec.furtherReadingIds ?? [])]) {
+      if (!allIds.has(id)) {
+        // eslint-disable-next-line no-console
+        console.warn(`[provenance] ${key} references unknown source "${id}"`);
+      }
+    }
+  }
+  // touch getSource to keep the import used
+  void getSource;
+}
