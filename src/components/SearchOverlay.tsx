@@ -141,15 +141,35 @@ export function SearchOverlay() {
 
   // Computed --------------------------------------------------------------
   const results: SearchHit[] = useMemo(
-    () => (query.trim() ? searchAll(query, 30) : []),
-    [query],
+    () => (query.trim() ? searchAll(query, { limit: 30, category }) : []),
+    [query, category],
   );
   const discoveries = useMemo(() => (query.trim() ? [] : getDiscoveries()), [query]);
 
   // Reset active index when result set changes
   useEffect(() => {
     setActiveIndex(0);
-  }, [query]);
+  }, [query, category]);
+
+  // Analytics — fire when the user pauses typing (debounced).
+  useEffect(() => {
+    if (!open) return;
+    const q = query.trim();
+    if (!q) return;
+    const id = window.setTimeout(() => {
+      emitSearchAnalytics({
+        type: "search-query",
+        query: q,
+        results: results.length,
+        category,
+      });
+      if (results.length === 0) {
+        emitSearchAnalytics({ type: "search-zero-results", query: q, category });
+      }
+    }, 350);
+    return () => window.clearTimeout(id);
+  }, [query, category, results.length, open]);
+
 
   // Scroll active result into view
   useEffect(() => {
