@@ -27,9 +27,9 @@ export const TAFSUT_SCENES: StoryScene[] = [
     icon: "🚪",
     title: L("Une porte qui se ferme", "A door that closes", "بابٌ يُغلق"),
     body: L(
-      "Mais sa conférence fut interdite. Beaucoup d'étudiants, surtout en Kabylie, trouvèrent cela injuste — comme si on demandait à leur langue de se taire.",
-      "But the talk was cancelled. Many students, especially in Kabylie, felt this was unfair — as if their own language was being asked to stay silent.",
-      "لكنّ المحاضرة مُنعت. شعر كثير من الطلبة، خاصة في منطقة القبائل، أنّ هذا ظلم — وكأنّ لغتهم يُطلب منها أن تصمت.",
+      "Mais sa conférence fut interdite. Beaucoup d'étudiants, surtout en Kabylie, trouvèrent cela injuste, comme si on demandait à leur langue de se taire.",
+      "But the talk was cancelled. Many students, especially in Kabylie, felt this was unfair, as if their own language was being asked to stay silent.",
+      "لكنّ المحاضرة مُنعت. شعر كثير من الطلبة، خاصة في منطقة القبائل، أنّ هذا ظلم، وكأنّ لغتهم يُطلب منها أن تصمت.",
     ),
   },
   {
@@ -86,9 +86,9 @@ export const EDUCATION_SCENES: StoryScene[] = [
       "حين لا يمكنك الصراخ، تتعلّم…",
     ),
     body: L(
-      "Face à cette situation, certains choisissent le savoir comme moyen de résistance. Apprendre à lire, à écrire, à transmettre — devient un acte de courage tranquille.",
-      "In response, some chose knowledge as a form of resistance. Learning to read, to write, to pass on — became a quiet act of courage.",
-      "في مواجهة ذلك، اختار البعض العلم وسيلةً للمقاومة. تعلُّم القراءة والكتابة ونقل المعرفة — أصبح فعل شجاعة هادئًا.",
+      "Face à cette situation, certains choisissent le savoir comme moyen de résistance. Apprendre à lire, à écrire, à transmettre, devient un acte de courage tranquille.",
+      "In response, some chose knowledge as a form of resistance. Learning to read, to write, to pass on, became a quiet act of courage.",
+      "في مواجهة ذلك، اختار البعض العلم وسيلةً للمقاومة. تعلُّم القراءة والكتابة ونقل المعرفة، أصبح فعل شجاعة هادئًا.",
     ),
   },
   {
@@ -132,9 +132,9 @@ export const EDUCATION_SCENES: StoryScene[] = [
       "وأنت، كيف تنقل ما تحبّ؟",
     ),
     body: L(
-      "Aujourd'hui, cet héritage continue d'influencer l'éducation et l'identité algériennes. Apprendre, lire, parler sa langue — c'est encore une manière douce de dire qui l'on est.",
-      "Today, this legacy still shapes Algerian education and identity. Learning, reading, speaking your language — is still a gentle way of saying who you are.",
-      "اليوم، لا يزال هذا الإرث يؤثّر في التعليم والهوية في الجزائر. أن تتعلّم، أن تقرأ، أن تتحدّث لغتك — يبقى طريقةً لطيفة لتقول من أنت.",
+      "Aujourd'hui, cet héritage continue d'influencer l'éducation et l'identité algériennes. Apprendre, lire, parler sa langue, c'est encore une manière douce de dire qui l'on est.",
+      "Today, this legacy still shapes Algerian education and identity. Learning, reading, speaking your language, is still a gentle way of saying who you are.",
+      "اليوم، لا يزال هذا الإرث يؤثّر في التعليم والهوية في الجزائر. أن تتعلّم، أن تقرأ، أن تتحدّث لغتك، يبقى طريقةً لطيفة لتقول من أنت.",
     ),
   },
 ];
@@ -272,9 +272,9 @@ export const DECADE_SCENES: StoryScene[] = [
       "وهكذا عاد الأمل…",
     ),
     body: L(
-      "Vers la fin des années 1990, l'Algérie a choisi la paix. La Concorde civile, puis la Charte pour la paix, ont aidé le pays à se relever — lentement, ensemble.",
-      "Toward the end of the 1990s, Algeria chose peace. The Civil Concord, then the Charter for Peace, helped the country rise again — slowly, together.",
-      "نحو نهاية التسعينيات، اختارت الجزائر السلام. ساعد ميثاق الوئام المدني ثمّ ميثاق السلم البلادَ على النهوض من جديد — برفق، معًا.",
+      "Vers la fin des années 1990, l'Algérie a choisi la paix. La Concorde civile, puis la Charte pour la paix, ont aidé le pays à se relever, lentement, ensemble.",
+      "Toward the end of the 1990s, Algeria chose peace. The Civil Concord, then the Charter for Peace, helped the country rise again, slowly, together.",
+      "نحو نهاية التسعينيات، اختارت الجزائر السلام. ساعد ميثاق الوئام المدني ثمّ ميثاق السلم البلادَ على النهوض من جديد، برفق، معًا.",
     ),
   },
   {

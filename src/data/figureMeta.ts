@@ -104,7 +104,7 @@ export const figureMeta: Record<string, FigureMeta> = {
   jugurtha: {
     cinematicLine: L("He bought Rome, until Rome could no longer be bought.", "Il a acheté Rome, jusqu'à ce que Rome ne soit plus à vendre.", "اشترى روما حتى عجزت روما عن أن تُشترى."),
     modernRelevance: L(
-      "A symbol of defiance against empire — quoted across Algerian schoolbooks and resistance memory.",
+      "A symbol of defiance against empire, quoted across Algerian schoolbooks and resistance memory.",
       "Symbole de défi face à l'empire, cité dans les manuels et la mémoire algérienne de la résistance.",
       "رمز للتحدي في وجه الإمبراطورية، حاضر في المناهج وذاكرة المقاومة الجزائرية.",
     ),
@@ -124,9 +124,9 @@ export const figureMeta: Record<string, FigureMeta> = {
   augustine: {
     cinematicLine: L("He turned a restless life into a language for the soul.", "Il a transformé une vie inquiète en une langue pour l'âme.", "حوّل حياة قلقة إلى لغة للروح."),
     modernRelevance: L(
-      "Born in what is now Souk Ahras — a constant reminder that universal thought has Algerian soil under it.",
-      "Né dans l'actuelle Souk Ahras — preuve que la pensée universelle a aussi des racines algériennes.",
-      "وُلد في سوق أهراس الحالية — شاهد على أن الفكر الكوني له جذور جزائرية.",
+      "Born in what is now Souk Ahras, a constant reminder that universal thought has Algerian soil under it.",
+      "Né dans l'actuelle Souk Ahras, preuve que la pensée universelle a aussi des racines algériennes.",
+      "وُلد في سوق أهراس الحالية، شاهد على أن الفكر الكوني له جذور جزائرية.",
     ),
     themes: ["philosophy", "literature", "faith"],
     relatedFigureIds: ["apuleius", "ibn-khaldun"],
@@ -187,7 +187,7 @@ export const figureMeta: Record<string, FigureMeta> = {
   "lalla-fatma-nsoumer": {
     cinematicLine: L("The Kabyle mountain answered in her voice.", "La montagne kabyle répondit par sa voix.", "أجابت جبال القبائل بصوتها."),
     modernRelevance: L(
-      "A model for women's leadership rooted in faith, land, and community — not borrowed from outside.",
+      "A model for women's leadership rooted in faith, land, and community, not borrowed from outside.",
       "Modèle d'un leadership féminin enraciné dans la foi, la terre et la communauté, non importé.",
       "نموذج لقيادة نسائية متجذرة في الإيمان والأرض والمجتمع، غير مستورد.",
     ),
@@ -232,9 +232,9 @@ export const figureMeta: Record<string, FigureMeta> = {
   "krim-belkacem": {
     cinematicLine: L("He carried the maquis from the mountains to the negotiating table.", "Il a porté le maquis des montagnes à la table de négociation.", "حمل المقاومة من الجبال إلى طاولة المفاوضات."),
     modernRelevance: L(
-      "Signed Evian — a reminder that armed struggle had to learn diplomacy to finish what it started.",
-      "Signataire d'Évian — rappel que la lutte armée a dû apprendre la diplomatie pour aboutir.",
-      "موقّع اتفاقيات إيفيان — تذكير بأن الكفاح المسلح كان عليه أن يتعلم الدبلوماسية ليُكمل ما بدأه.",
+      "Signed Evian, a reminder that armed struggle had to learn diplomacy to finish what it started.",
+      "Signataire d'Évian, rappel que la lutte armée a dû apprendre la diplomatie pour aboutir.",
+      "موقّع اتفاقيات إيفيان، تذكير بأن الكفاح المسلح كان عليه أن يتعلم الدبلوماسية ليُكمل ما بدأه.",
     ),
     themes: ["independence", "resistance"],
     relatedFigureIds: ["abane-ramdane", "ben-mhidi", "ait-ahmed"],
@@ -252,9 +252,9 @@ export const figureMeta: Record<string, FigureMeta> = {
   "hassiba-ben-bouali": {
     cinematicLine: L("Twenty years old, and unafraid of the explosion.", "Vingt ans, et sans peur de l'explosion.", "في العشرين من عمرها، ولم تخشَ الانفجار."),
     modernRelevance: L(
-      "A name Algerian girls grow up hearing — proof that the revolution was also young and female.",
-      "Un nom que les jeunes Algériennes connaissent depuis l'enfance — preuve que la révolution fut aussi jeune et féminine.",
-      "اسم تنشأ الفتيات الجزائريات على سماعه — دليل أن الثورة كانت أيضاً شابة وأنثوية.",
+      "A name Algerian girls grow up hearing, proof that the revolution was also young and female.",
+      "Un nom que les jeunes Algériennes connaissent depuis l'enfance, preuve que la révolution fut aussi jeune et féminine.",
+      "اسم تنشأ الفتيات الجزائريات على سماعه، دليل أن الثورة كانت أيضاً شابة وأنثوية.",
     ),
     themes: ["independence", "women-heritage", "resistance"],
     relatedFigureIds: ["djamila-bouhired", "djamila-boupacha", "ali-la-pointe", "ben-mhidi"],
@@ -285,7 +285,7 @@ export const figureMeta: Record<string, FigureMeta> = {
     ],
   },
   "malek-bennabi": {
-    cinematicLine: L("He asked why civilisations rise — and why they consent to fall.", "Il a demandé pourquoi les civilisations s'élèvent — et pourquoi elles consentent à choir.", "تساءل لمَ تنهض الحضارات ولمَ تقبل سقوطها."),
+    cinematicLine: L("He asked why civilisations rise and why they consent to fall.", "Il a demandé pourquoi les civilisations s'élèvent et pourquoi elles consentent à choir.", "تساءل لمَ تنهض الحضارات ولمَ تقبل سقوطها."),
     modernRelevance: L(
       "His idea of 'colonisability' is still cited when Algerians debate post-independence stagnation.",
       "Sa notion de « colonisabilité » est encore citée dans les débats sur la stagnation post-indépendance.",
@@ -323,9 +323,9 @@ export const figureMeta: Record<string, FigureMeta> = {
   "mouloud-feraoun": {
     cinematicLine: L("He wrote the poor son of the village into world literature.", "Il fit entrer le fils pauvre du village dans la littérature mondiale.", "أدخل ابن القرية الفقير إلى الأدب العالمي."),
     modernRelevance: L(
-      "Assassinated in 1962 — a reminder that Algerian literature was paid for in blood.",
-      "Assassiné en 1962 — rappel que la littérature algérienne s'est aussi payée au prix du sang.",
-      "اغتيل عام 1962 — تذكير بأن الأدب الجزائري دُفع ثمنه أيضاً بالدم.",
+      "Assassinated in 1962, a reminder that Algerian literature was paid for in blood.",
+      "Assassiné en 1962, rappel que la littérature algérienne s'est aussi payée au prix du sang.",
+      "اغتيل عام 1962، تذكير بأن الأدب الجزائري دُفع ثمنه أيضاً بالدم.",
     ),
     themes: ["literature", "amazigh", "education"],
     relatedFigureIds: ["mammeri", "dib", "kateb-yacine"],
@@ -356,7 +356,7 @@ export const figureMeta: Record<string, FigureMeta> = {
   "assia-djebar": {
     cinematicLine: L("She wrote against silence.", "Elle a écrit contre le silence.", "كتبت ضد الصمت."),
     modernRelevance: L(
-      "Made Algerian women's voices an archive of their own — read across the Arab and Francophone worlds.",
+      "Made Algerian women's voices an archive of their own, read across the Arab and Francophone worlds.",
       "A fait des voix de femmes algériennes une archive autonome, lue dans le monde arabe et francophone.",
       "جعلت من أصوات النساء الجزائريات أرشيفاً مستقلاً يُقرأ في العالمين العربي والفرنكوفوني.",
     ),
@@ -369,9 +369,9 @@ export const figureMeta: Record<string, FigureMeta> = {
   "moufdi-zakaria": {
     cinematicLine: L("He gave a country the words it sings to itself.", "Il a donné à un pays les mots qu'il se chante.", "أعطى وطناً الكلمات التي يغنّيها لنفسه."),
     modernRelevance: L(
-      "Author of Kassaman — every Algerian schoolchild meets him through the national anthem.",
-      "Auteur de Kassaman — tout écolier algérien le rencontre par l'hymne national.",
-      "صاحب «قسماً» — يلتقيه كل تلميذ جزائري عبر النشيد الوطني.",
+      "Author of Kassaman, every Algerian schoolchild meets him through the national anthem.",
+      "Auteur de Kassaman, tout écolier algérien le rencontre par l'hymne national.",
+      "صاحب «قسماً»، يلتقيه كل تلميذ جزائري عبر النشيد الوطني.",
     ),
     themes: ["independence", "literature", "identity"],
     relatedFigureIds: ["ben-badis", "messali-hadj", "kateb-yacine"],
@@ -421,9 +421,9 @@ export const figureMeta: Record<string, FigureMeta> = {
   "el-anka": {
     cinematicLine: L("He taught the Casbah how to sing itself.", "Il a appris à la Casbah à se chanter elle-même.", "علّم القصبة أن تغنّي ذاتها."),
     modernRelevance: L(
-      "Father of modern chaâbi — the soundtrack of Algiers' streets, weddings and grief, still.",
-      "Père du chaâbi moderne — bande-son des rues, des mariages et du deuil à Alger, encore aujourd'hui.",
-      "أبو الشعبي الحديث — موسيقى شوارع الجزائر العاصمة وأفراحها وأحزانها حتى اليوم.",
+      "Father of modern chaâbi, the soundtrack of Algiers' streets, weddings and grief, still.",
+      "Père du chaâbi moderne, bande-son des rues, des mariages et du deuil à Alger, encore aujourd'hui.",
+      "أبو الشعبي الحديث، موسيقى شوارع الجزائر العاصمة وأفراحها وأحزانها حتى اليوم.",
     ),
     themes: ["music", "oral-memory", "identity"],
     relatedFigureIds: ["warda", "khaled", "rachid-taha"],
@@ -465,9 +465,9 @@ export const figureMeta: Record<string, FigureMeta> = {
   warda: {
     cinematicLine: L("A voice that made an Arab world feel Algerian.", "Une voix qui rendit le monde arabe algérien.", "صوتٌ جعل العالم العربي يشعر بالجزائر."),
     modernRelevance: L(
-      "Bridged Algerian song with the Cairo stage — pride of women's voice across generations.",
-      "A relié la chanson algérienne à la scène du Caire — fierté féminine portée à travers les générations.",
-      "ربطت الأغنية الجزائرية بمسرح القاهرة — اعتزاز بصوت المرأة عبر الأجيال.",
+      "Bridged Algerian song with the Cairo stage, pride of women's voice across generations.",
+      "A relié la chanson algérienne à la scène du Caire, fierté féminine portée à travers les générations.",
+      "ربطت الأغنية الجزائرية بمسرح القاهرة، اعتزاز بصوت المرأة عبر الأجيال.",
     ),
     themes: ["music", "women-heritage", "diaspora", "identity"],
     relatedFigureIds: ["el-anka", "khaled", "rachid-taha"],
@@ -501,7 +501,7 @@ export const figureMeta: Record<string, FigureMeta> = {
 
   // ===== Cinema =====
   "mohammed-lakhdar-hamina": {
-    cinematicLine: L("The first Arab and African Palme d'Or — won with sand and wind.", "La première Palme d'Or arabe et africaine — gagnée avec du sable et du vent.", "أول سعفة ذهبية عربية وإفريقية، فاز بها بالرمل والريح."),
+    cinematicLine: L("The first Arab and African Palme d'Or, won with sand and wind.", "La première Palme d'Or arabe et africaine, gagnée avec du sable et du vent.", "أول سعفة ذهبية عربية وإفريقية، فاز بها بالرمل والريح."),
     modernRelevance: L(
       "Chronicle of the Years of Embers framed how the war is filmed and remembered.",
       "« Chronique des années de braise » a fixé la manière de filmer et de se souvenir de la guerre.",
@@ -529,7 +529,7 @@ export const figureMeta: Record<string, FigureMeta> = {
   "rachid-bouchareb": {
     cinematicLine: L("He put forgotten Algerian soldiers back on the world's screen.", "Il a remis les soldats algériens oubliés sur les écrans du monde.", "أعاد الجنود الجزائريين المنسيين إلى شاشات العالم."),
     modernRelevance: L(
-      "Days of Glory forced France to revisit its debt to colonial soldiers — on screen and in law.",
+      "Days of Glory forced France to revisit its debt to colonial soldiers, on screen and in law.",
       "« Indigènes » a obligé la France à revisiter sa dette envers les soldats coloniaux, à l'écran et dans la loi.",
       "أرغم فيلم «بلديون» فرنسا على مراجعة دينها للجنود المستعمرين، شاشةً وقانوناً.",
     ),

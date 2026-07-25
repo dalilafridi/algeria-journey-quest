@@ -60,7 +60,7 @@ export function SignatureJourneys({ className }: { className?: string }) {
         </p>
       </div>
 
-      {/* Start here — the Grand Tour */}
+      {/* Start here, the Grand Tour */}
       <Link
         to="/journeys/$journeyId"
         params={{ journeyId: GRAND_TOUR.id }}

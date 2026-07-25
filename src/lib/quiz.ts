@@ -101,7 +101,7 @@ export function describeCorrectAnswer(q: QuizQuestion, lang: Lang): string {
     case "mcq":
     case "whoami":
     case "image":
-      return t(q.options[q.answerIndex], lang) ?? "—";
+      return t(q.options[q.answerIndex], lang) ?? ", ";
     case "truefalse":
       return q.answer ? tu("trueShort", lang) : tu("falseShort", lang);
     case "order":
@@ -116,15 +116,15 @@ export function describeUserAnswer(q: QuizQuestion, answer: unknown, lang: Lang)
     case "mcq":
     case "whoami":
     case "image":
-      return typeof answer === "number" ? (t(q.options[answer], lang) ?? "—") : "—";
+      return typeof answer === "number" ? (t(q.options[answer], lang) ?? ", ") : ", ";
     case "truefalse":
       return answer === true
         ? tu("trueShort", lang)
         : answer === false
           ? tu("falseShort", lang)
-          : "—";
+          : ", ";
     case "order":
-      if (!Array.isArray(answer)) return "—";
+      if (!Array.isArray(answer)) return ", ";
       // answer is an array of item ids
       return (answer as string[])
         .map((id) => {
@@ -144,7 +144,7 @@ export function getPrompt(q: QuizQuestion, lang: Lang): string {
     case "truefalse":
       return t(q.statement, lang);
     case "whoami":
-      return tu("whoAmI", lang) + " — " + q.clues.map((c) => t(c, lang)).join(" / ");
+      return tu("whoAmI", lang) + ", " + q.clues.map((c) => t(c, lang)).join(" / ");
     case "order":
       return t(q.prompt, lang);
   }

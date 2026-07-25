@@ -27,12 +27,12 @@ export const Route = createFileRoute("/theater/$matchId")({
     if (!match) {
       return pageMeta({
         path: `/theater/${params.matchId}`,
-        title: "Match Theater — Unavailable",
+        title: "Match Theater, Unavailable",
         description: "This Match Theater experience is not available.",
         noindex: true,
       });
     }
-    const title = `${tt(match.cinematicTitle, "en")} — Match Theater`;
+    const title = `${tt(match.cinematicTitle, "en")}, Match Theater`;
     const desc = `${tt(match.cinematicSubtitle, "en")} · Match Theater at DZ Odyssey.`;
     return pageMeta({
       path: `/theater/${match.id}`,

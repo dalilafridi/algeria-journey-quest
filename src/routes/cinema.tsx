@@ -27,8 +27,8 @@ export const Route = createFileRoute("/cinema")({
   head: () =>
     pageMeta({
       path: "/cinema",
-      title: "Algerian Cinema & Film — DZ Odyssey",
-      description: "Featured Algerian films and a mini-quiz — memory, youth, women, society and resistance through cinema."
+      title: "Algerian Cinema & Film, DZ Odyssey",
+      description: "Featured Algerian films and a mini-quiz, memory, youth, women, society and resistance through cinema."
     }),
   component: CinemaPage,
 });

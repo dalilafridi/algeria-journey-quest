@@ -351,9 +351,9 @@ export type RowDeep = { intro: LocalizedString; significance: LocalizedString };
 export const ROW_DEEP: Record<string, RowDeep> = {
   resistance: {
     intro: L(
-      "From ancient rebels to the great leaders of the anti-colonial struggle, this room gathers the defenders of the land — those who chose to stand when standing cost everything.",
-      "Des rebelles antiques aux grands chefs de la lutte anticoloniale, cette salle réunit les défenseurs de la terre — ceux qui choisirent de résister quand résister coûtait tout.",
-      "من ثوار القدماء إلى كبار قادة الكفاح ضد الاستعمار، تجمع هذه القاعة المدافعين عن الأرض — من اختاروا الوقوف حين كان الوقوف يكلّف كل شيء.",
+      "From ancient rebels to the great leaders of the anti-colonial struggle, this room gathers the defenders of the land, those who chose to stand when standing cost everything.",
+      "Des rebelles antiques aux grands chefs de la lutte anticoloniale, cette salle réunit les défenseurs de la terre, ceux qui choisirent de résister quand résister coûtait tout.",
+      "من ثوار القدماء إلى كبار قادة الكفاح ضد الاستعمار، تجمع هذه القاعة المدافعين عن الأرض، من اختاروا الوقوف حين كان الوقوف يكلّف كل شيء.",
     ),
     significance: L(
       "Their resistance became the moral spine of Algerian identity: proof that a people could refuse domination across centuries, and a memory the nation still draws strength from today.",
@@ -363,45 +363,45 @@ export const ROW_DEEP: Record<string, RowDeep> = {
   },
   revolutionaries: {
     intro: L(
-      "The generation of November 1954 — organisers, strategists and martyrs who turned a clandestine network into a revolution and a revolution into a free state.",
-      "La génération de novembre 1954 — organisateurs, stratèges et martyrs qui firent d'un réseau clandestin une révolution, et d'une révolution un État libre.",
-      "جيل نوفمبر 1954 — منظّمون واستراتيجيون وشهداء حوّلوا شبكة سرية إلى ثورة، والثورة إلى دولة حرة.",
+      "The generation of November 1954, organisers, strategists and martyrs who turned a clandestine network into a revolution and a revolution into a free state.",
+      "La génération de novembre 1954, organisateurs, stratèges et martyrs qui firent d'un réseau clandestin une révolution, et d'une révolution un État libre.",
+      "جيل نوفمبر 1954، منظّمون واستراتيجيون وشهداء حوّلوا شبكة سرية إلى ثورة، والثورة إلى دولة حرة.",
     ),
     significance: L(
-      "They paid for independence with their lives, and their names became the founding language of the republic — streets, schools and the collective memory of a nation born in 1962.",
-      "Ils payèrent l'indépendance de leur vie, et leurs noms devinrent la langue fondatrice de la république — rues, écoles et mémoire collective d'une nation née en 1962.",
-      "دفعوا الاستقلال بأرواحهم، فصارت أسماؤهم اللغة المؤسِّسة للجمهورية — شوارع ومدارس وذاكرة جماعية لأمة وُلدت عام 1962.",
+      "They paid for independence with their lives, and their names became the founding language of the republic, streets, schools and the collective memory of a nation born in 1962.",
+      "Ils payèrent l'indépendance de leur vie, et leurs noms devinrent la langue fondatrice de la république, rues, écoles et mémoire collective d'une nation née en 1962.",
+      "دفعوا الاستقلال بأرواحهم، فصارت أسماؤهم اللغة المؤسِّسة للجمهورية، شوارع ومدارس وذاكرة جماعية لأمة وُلدت عام 1962.",
     ),
   },
   women: {
     intro: L(
-      "Queens, fighters, writers and singers — a gallery for the women whose courage and voice carried Algeria across every era, often without the recognition their deeds deserved.",
-      "Reines, combattantes, écrivaines et chanteuses — une salle pour les femmes dont le courage et la voix portèrent l'Algérie à travers chaque époque, souvent sans la reconnaissance que méritaient leurs actes.",
-      "ملكات ومقاتلات وكاتبات ومغنيات — قاعة للنساء اللواتي حملت شجاعتهنّ وأصواتهنّ الجزائر عبر كل العصور، غالبًا دون ما تستحقه أفعالهنّ من تقدير.",
+      "Queens, fighters, writers and singers, a gallery for the women whose courage and voice carried Algeria across every era, often without the recognition their deeds deserved.",
+      "Reines, combattantes, écrivaines et chanteuses, une salle pour les femmes dont le courage et la voix portèrent l'Algérie à travers chaque époque, souvent sans la reconnaissance que méritaient leurs actes.",
+      "ملكات ومقاتلات وكاتبات ومغنيات، قاعة للنساء اللواتي حملت شجاعتهنّ وأصواتهنّ الجزائر عبر كل العصور، غالبًا دون ما تستحقه أفعالهنّ من تقدير.",
     ),
     significance: L(
-      "Together they rewrite the story of the nation as one shaped as much by women as by men — from the throne of the Aurès to the prisons of the war and the pages of world literature.",
-      "Ensemble, elles réécrivent l'histoire de la nation comme une histoire façonnée autant par les femmes que par les hommes — du trône des Aurès aux prisons de la guerre et aux pages de la littérature mondiale.",
-      "معًا يُعِدن كتابة قصة الأمة بوصفها قصة صنعتها النساء كما صنعها الرجال — من عرش الأوراس إلى سجون الحرب وصفحات الأدب العالمي.",
+      "Together they rewrite the story of the nation as one shaped as much by women as by men, from the throne of the Aurès to the prisons of the war and the pages of world literature.",
+      "Ensemble, elles réécrivent l'histoire de la nation comme une histoire façonnée autant par les femmes que par les hommes, du trône des Aurès aux prisons de la guerre et aux pages de la littérature mondiale.",
+      "معًا يُعِدن كتابة قصة الأمة بوصفها قصة صنعتها النساء كما صنعها الرجال، من عرش الأوراس إلى سجون الحرب وصفحات الأدب العالمي.",
     ),
   },
   rulers: {
     intro: L(
-      "Kings, dynasty founders and heads of state — the builders of order, from the unified kingdom of ancient Numidia to the leaders of the modern republic.",
-      "Rois, fondateurs de dynasties et chefs d'État — les bâtisseurs de l'ordre, du royaume unifié de la Numidie antique aux dirigeants de la république moderne.",
-      "ملوك ومؤسسو دول ورؤساء — بُناة النظام، من مملكة نوميديا القديمة الموحّدة إلى قادة الجمهورية الحديثة.",
+      "Kings, dynasty founders and heads of state, the builders of order, from the unified kingdom of ancient Numidia to the leaders of the modern republic.",
+      "Rois, fondateurs de dynasties et chefs d'État, les bâtisseurs de l'ordre, du royaume unifié de la Numidie antique aux dirigeants de la république moderne.",
+      "ملوك ومؤسسو دول ورؤساء، بُناة النظام، من مملكة نوميديا القديمة الموحّدة إلى قادة الجمهورية الحديثة.",
     ),
     significance: L(
       "Their statecraft gave North Africa some of its earliest political structures and, much later, the institutions of a sovereign Algeria.",
       "Leur art de gouverner donna à l'Afrique du Nord certaines de ses premières structures politiques et, bien plus tard, les institutions d'une Algérie souveraine.",
-      "منحت سياستهم شمال إفريقيا بعضًا من أولى بُناه السياسية، ثم — بعد قرون — مؤسسات جزائر ذات سيادة.",
+      "منحت سياستهم شمال إفريقيا بعضًا من أولى بُناه السياسية، ثم، بعد قرون، مؤسسات جزائر ذات سيادة.",
     ),
   },
   thinkers: {
     intro: L(
-      "Philosophers, historians and theorists born of this soil whose ideas crossed centuries and continents — a room where Algeria thinks aloud.",
-      "Philosophes, historiens et théoriciens nés de cette terre, dont les idées traversèrent siècles et continents — une salle où l'Algérie pense à voix haute.",
-      "فلاسفة ومؤرخون ومنظّرون من هذه الأرض عبرت أفكارهم القرون والقارات — قاعة تفكّر فيها الجزائر بصوت عالٍ.",
+      "Philosophers, historians and theorists born of this soil whose ideas crossed centuries and continents, a room where Algeria thinks aloud.",
+      "Philosophes, historiens et théoriciens nés de cette terre, dont les idées traversèrent siècles et continents, une salle où l'Algérie pense à voix haute.",
+      "فلاسفة ومؤرخون ومنظّرون من هذه الأرض عبرت أفكارهم القرون والقارات، قاعة تفكّر فيها الجزائر بصوت عالٍ.",
     ),
     significance: L(
       "From Augustine to Ibn Khaldun to Fanon, their work shaped theology, the social sciences and the very vocabulary of liberation used around the world.",
@@ -411,21 +411,21 @@ export const ROW_DEEP: Record<string, RowDeep> = {
   },
   faith: {
     intro: L(
-      "Mystics, theologians and reformers who shaped the spiritual life of the land — from the Sufi saints of the lodges to the modern movement of religious reform.",
-      "Mystiques, théologiens et réformateurs qui façonnèrent la vie spirituelle du pays — des saints soufis des zaouïas au mouvement moderne de réforme religieuse.",
-      "متصوفة وعلماء ومصلحون صاغوا الحياة الروحية للبلاد — من أولياء الزوايا الصوفية إلى حركة الإصلاح الديني الحديثة.",
+      "Mystics, theologians and reformers who shaped the spiritual life of the land, from the Sufi saints of the lodges to the modern movement of religious reform.",
+      "Mystiques, théologiens et réformateurs qui façonnèrent la vie spirituelle du pays, des saints soufis des zaouïas au mouvement moderne de réforme religieuse.",
+      "متصوفة وعلماء ومصلحون صاغوا الحياة الروحية للبلاد، من أولياء الزوايا الصوفية إلى حركة الإصلاح الديني الحديثة.",
     ),
     significance: L(
-      "Their teaching bound communities together, preserved learning through hard centuries, and — in the reform era — helped reawaken a national consciousness.",
-      "Leur enseignement souda les communautés, préserva le savoir à travers des siècles difficiles et — à l'ère réformiste — contribua à réveiller une conscience nationale.",
-      "وحّد تعليمهم المجتمعات، وحفظ العلم عبر قرون عسيرة، وأسهم — في عصر الإصلاح — في إيقاظ وعي وطني.",
+      "Their teaching bound communities together, preserved learning through hard centuries, and, in the reform era, helped reawaken a national consciousness.",
+      "Leur enseignement souda les communautés, préserva le savoir à travers des siècles difficiles et, à l'ère réformiste, contribua à réveiller une conscience nationale.",
+      "وحّد تعليمهم المجتمعات، وحفظ العلم عبر قرون عسيرة، وأسهم، في عصر الإصلاح، في إيقاظ وعي وطني.",
     ),
   },
   culture: {
     intro: L(
-      "Poets, novelists and musicians who carried memory, language and longing — from oral tradition to chaâbi, raï and modern letters.",
-      "Poètes, romanciers et musiciens porteurs de mémoire, de langue et de nostalgie — de la tradition orale au chaâbi, au raï et aux lettres modernes.",
-      "شعراء وروائيون وموسيقيون حملوا الذاكرة واللغة والحنين — من التراث الشفوي إلى الشعبي والراي والأدب الحديث.",
+      "Poets, novelists and musicians who carried memory, language and longing, from oral tradition to chaâbi, raï and modern letters.",
+      "Poètes, romanciers et musiciens porteurs de mémoire, de langue et de nostalgie, de la tradition orale au chaâbi, au raï et aux lettres modernes.",
+      "شعراء وروائيون وموسيقيون حملوا الذاكرة واللغة والحنين، من التراث الشفوي إلى الشعبي والراي والأدب الحديث.",
     ),
     significance: L(
       "They kept the soul of a people audible under censorship and exile, turning songs and stories into the most durable archive of Algerian identity.",
@@ -440,9 +440,9 @@ export const ROW_DEEP: Record<string, RowDeep> = {
       "رجال دولة وسينمائيون وفنانون معاصرون يرفعون مرآة لأمة متحوّلة، على الشاشات والمسارح في الداخل والخارج.",
     ),
     significance: L(
-      "They translate Algeria for a new century — winning the world's highest honours while asking, at home, what the nation has become and might still be.",
-      "Ils traduisent l'Algérie pour un siècle nouveau — remportant les plus hautes distinctions mondiales tout en interrogeant, chez eux, ce que la nation est devenue et pourrait encore être.",
-      "يترجمون الجزائر لقرن جديد — يفوزون بأرفع جوائز العالم بينما يسائلون، في الداخل، ما صارت إليه الأمة وما قد تصير.",
+      "They translate Algeria for a new century, winning the world's highest honours while asking, at home, what the nation has become and might still be.",
+      "Ils traduisent l'Algérie pour un siècle nouveau, remportant les plus hautes distinctions mondiales tout en interrogeant, chez eux, ce que la nation est devenue et pourrait encore être.",
+      "يترجمون الجزائر لقرن جديد، يفوزون بأرفع جوائز العالم بينما يسائلون، في الداخل، ما صارت إليه الأمة وما قد تصير.",
     ),
   },
 };

@@ -38,8 +38,8 @@ export type RegionExtras = {
 export const regionExtras: Record<string, RegionExtras> = {
   kabylie: {
     geography: L(
-      "A mountainous block in northern Algeria, between the Djurdjura range and the Mediterranean — villages perched, valleys deep, light sharp.",
-      "Un massif montagneux du nord algérien, entre le Djurdjura et la Méditerranée — villages perchés, vallées profondes, lumière vive.",
+      "A mountainous block in northern Algeria, between the Djurdjura range and the Mediterranean, villages perched, valleys deep, light sharp.",
+      "Un massif montagneux du nord algérien, entre le Djurdjura et la Méditerranée, villages perchés, vallées profondes, lumière vive.",
       "كتلةٌ جبليّة في شمال الجزائر بين جرجرة والمتوسط، قرىً معلّقة وأودية عميقة ونورٌ حادّ.",
     ),
     historicalSignificance: L(
@@ -58,18 +58,18 @@ export const regionExtras: Record<string, RegionExtras> = {
         emoji: "🏘️",
         label: L("Architecture", "Architecture", "العمارة"),
         body: L(
-          "Stone houses with tiled roofs, fountains and djemaâs — villages built to face the mountain and each other.",
-          "Maisons de pierre aux toits de tuiles, fontaines et djemaâs — villages bâtis face à la montagne et les uns aux autres.",
-          "بيوتٌ من الحجر بسقوفٍ من القرميد، وعيون ماء وجماعات قروية — قرى بُنيت في مواجهة الجبل وبعضها بعضًا.",
+          "Stone houses with tiled roofs, fountains and djemaâs, villages built to face the mountain and each other.",
+          "Maisons de pierre aux toits de tuiles, fontaines et djemaâs, villages bâtis face à la montagne et les uns aux autres.",
+          "بيوتٌ من الحجر بسقوفٍ من القرميد، وعيون ماء وجماعات قروية، قرى بُنيت في مواجهة الجبل وبعضها بعضًا.",
         ),
       },
       {
         emoji: "🎶",
         label: L("Music", "Musique", "موسيقى"),
         body: L(
-          "Idir, Aït Menguellet, Matoub — Kabyle song is poetry sung against forgetting.",
-          "Idir, Aït Menguellet, Matoub — la chanson kabyle est une poésie chantée contre l'oubli.",
-          "إيدير وآيت منقلات ومعطوب — الأغنية القبائلية شعرٌ يُغنَّى ضدّ النسيان.",
+          "Idir, Aït Menguellet, Matoub, Kabyle song is poetry sung against forgetting.",
+          "Idir, Aït Menguellet, Matoub, la chanson kabyle est une poésie chantée contre l'oubli.",
+          "إيدير وآيت منقلات ومعطوب، الأغنية القبائلية شعرٌ يُغنَّى ضدّ النسيان.",
         ),
       },
       {
@@ -85,9 +85,9 @@ export const regionExtras: Record<string, RegionExtras> = {
         emoji: "🍲",
         label: L("Cuisine", "Cuisine", "المطبخ"),
         body: L(
-          "Couscous, berkoukes, fresh herbs and olive oil — food of the mountain, made to gather generations.",
-          "Couscous, berkoukes, herbes fraîches et huile d'olive — cuisine de la montagne, faite pour réunir les générations.",
-          "كسكسي وبركوكس وأعشاب طازجة وزيت زيتون — مطبخ الجبل صُنع ليجمع الأجيال.",
+          "Couscous, berkoukes, fresh herbs and olive oil, food of the mountain, made to gather generations.",
+          "Couscous, berkoukes, herbes fraîches et huile d'olive, cuisine de la montagne, faite pour réunir les générations.",
+          "كسكسي وبركوكس وأعشاب طازجة وزيت زيتون، مطبخ الجبل صُنع ليجمع الأجيال.",
         ),
       },
       {
@@ -123,8 +123,8 @@ export const regionExtras: Record<string, RegionExtras> = {
 
   aures: {
     geography: L(
-      "A massif of high, dry mountains in eastern Algeria — pine forests, ochre canyons and villages that hide in stone.",
-      "Un massif de montagnes hautes et sèches dans l'est algérien — forêts de pins, canyons ocre et villages cachés dans la pierre.",
+      "A massif of high, dry mountains in eastern Algeria, pine forests, ochre canyons and villages that hide in stone.",
+      "Un massif de montagnes hautes et sèches dans l'est algérien, forêts de pins, canyons ocre et villages cachés dans la pierre.",
       "كتلةٌ من جبالٍ عالية وجافّة في شرق الجزائر، غاباتُ صنوبر وأخاديد بلون المغرة وقرى تختبئ في الحجر.",
     ),
     historicalSignificance: L(
@@ -198,8 +198,8 @@ export const regionExtras: Record<string, RegionExtras> = {
 
   algiers: {
     geography: L(
-      "A white amphitheatre rising from the Mediterranean — a bay, a Casbah, and a long staircase down to the sea.",
-      "Un amphithéâtre blanc dressé sur la Méditerranée — une baie, une Casbah, et un long escalier vers la mer.",
+      "A white amphitheatre rising from the Mediterranean, a bay, a Casbah, and a long staircase down to the sea.",
+      "Un amphithéâtre blanc dressé sur la Méditerranée, une baie, une Casbah, et un long escalier vers la mer.",
       "مدرّجٌ أبيض يرتفع فوق المتوسط، خليجٌ وقصبةٌ ودرجٌ طويل نحو البحر.",
     ),
     historicalSignificance: L(
@@ -245,9 +245,9 @@ export const regionExtras: Record<string, RegionExtras> = {
         emoji: "🍽️",
         label: L("Table", "Table", "المائدة"),
         body: L(
-          "Dolma, rechta and bourek — refined Ottoman-Andalusian flavours kept alive in family kitchens.",
-          "Dolma, rechta et bourek — saveurs ottomano-andalouses raffinées, gardées dans les cuisines familiales.",
-          "الدولمة والرّشتة والبوراك — نكهات عثمانية أندلسية راقية تحفظها مطابخ العائلات.",
+          "Dolma, rechta and bourek, refined Ottoman-Andalusian flavours kept alive in family kitchens.",
+          "Dolma, rechta et bourek, saveurs ottomano-andalouses raffinées, gardées dans les cuisines familiales.",
+          "الدولمة والرّشتة والبوراك، نكهات عثمانية أندلسية راقية تحفظها مطابخ العائلات.",
         ),
       },
     ],
@@ -255,18 +255,18 @@ export const regionExtras: Record<string, RegionExtras> = {
       {
         title: L("5 July 1962", "5 juillet 1962", "5 جويلية 1962"),
         body: L(
-          "The day a colony of 132 years became a country again — and the bay of Algiers filled with green-and-white flags.",
-          "Le jour où une colonie de 132 ans redevint un pays — et où la baie d'Alger se remplit de drapeaux vert et blanc.",
-          "اليوم الذي عادت فيه مستعمرة 132 سنة بلدًا — وامتلأ خليج الجزائر بالأعلام الخضراء البيضاء.",
+          "The day a colony of 132 years became a country again and the bay of Algiers filled with green-and-white flags.",
+          "Le jour où une colonie de 132 ans redevint un pays et où la baie d'Alger se remplit de drapeaux vert et blanc.",
+          "اليوم الذي عادت فيه مستعمرة 132 سنة بلدًا، وامتلأ خليج الجزائر بالأعلام الخضراء البيضاء.",
         ),
       },
     ],
     nearbyRegionIds: ["kabylie", "constantine", "oran-west"],
     reflection: {
       quote: L(
-        "Algiers the white — a city that looks at the sea and dares it to forget her.",
-        "Alger la blanche — une ville qui regarde la mer et la défie de l'oublier.",
-        "الجزائر البيضاء — مدينةٌ تنظر إلى البحر فتتحدّاه أن ينساها.",
+        "Algiers the white, a city that looks at the sea and dares it to forget her.",
+        "Alger la blanche, une ville qui regarde la mer et la défie de l'oublier.",
+        "الجزائر البيضاء، مدينةٌ تنظر إلى البحر فتتحدّاه أن ينساها.",
       ),
     },
   },
@@ -283,8 +283,8 @@ export const regionExtras: Record<string, RegionExtras> = {
       "سيرتا القديمة، عاصمة نوميديا ومعقل ماسينيسا، ثم سُمّيت لاحقًا باسم الإمبراطور قسنطين، وصارت بعدئذٍ قلب مقاومة أحمد باي وإصلاح ابن باديس.",
     ),
     culturalImportance: L(
-      "A city of scholars and of malouf — the refined Andalusian music that survived here long after Granada fell.",
-      "Une ville de savants et du malouf — la musique andalouse raffinée qui a survécu ici longtemps après la chute de Grenade.",
+      "A city of scholars and of malouf, the refined Andalusian music that survived here long after Granada fell.",
+      "Une ville de savants et du malouf, la musique andalouse raffinée qui a survécu ici longtemps après la chute de Grenade.",
       "مدينةُ علماءٍ وملوف، تلك الموسيقى الأندلسية الراقية التي بقيت هنا طويلًا بعد سقوط غرناطة.",
     ),
     eraIds: ["earlynorthafrica", "numidia", "roman", "islamic", "french"],
@@ -293,8 +293,8 @@ export const regionExtras: Record<string, RegionExtras> = {
         emoji: "🌉",
         label: L("Bridges", "Ponts", "الجسور"),
         body: L(
-          "Sidi M'Cid, Sidi Rached and El-Kantara — engineering hung above a canyon, used every day.",
-          "Sidi M'Cid, Sidi Rached et El-Kantara — une ingénierie suspendue au-dessus d'un canyon, empruntée chaque jour.",
+          "Sidi M'Cid, Sidi Rached and El-Kantara, engineering hung above a canyon, used every day.",
+          "Sidi M'Cid, Sidi Rached et El-Kantara, une ingénierie suspendue au-dessus d'un canyon, empruntée chaque jour.",
           "سيدي مسيد وسيدي راشد والقنطرة، هندسةٌ معلّقة فوق وادٍ يَعبرها الناس كلّ يوم.",
         ),
       },
@@ -320,8 +320,8 @@ export const regionExtras: Record<string, RegionExtras> = {
         emoji: "🍽️",
         label: L("Table", "Table", "المائدة"),
         body: L(
-          "Chakhchoukha and trida — patient, hand-rolled dishes that taste of family Friday mornings.",
-          "Chakhchoukha et trida — plats patients, roulés à la main, au goût des matins de vendredi en famille.",
+          "Chakhchoukha and trida, patient, hand-rolled dishes that taste of family Friday mornings.",
+          "Chakhchoukha et trida, plats patients, roulés à la main, au goût des matins de vendredi en famille.",
           "الشخشوخة والطريدة، أطباقٌ صابرة تُلَفّ يدويًا، تحمل طعم صباحات الجمعة العائلية.",
         ),
       },
@@ -330,27 +330,27 @@ export const regionExtras: Record<string, RegionExtras> = {
       {
         title: L("The city of the rock", "La ville du rocher", "مدينةُ الصخرة"),
         body: L(
-          "For two millennia, Constantine has defended itself simply by being itself — a fortress shaped by geology.",
-          "Pendant deux millénaires, Constantine s'est défendue en étant simplement elle-même — une forteresse façonnée par la géologie.",
-          "طوال ألفي عام، دافعت قسنطينة عن نفسها بكونها هي فحسب — قلعةٌ صاغتها الجيولوجيا.",
+          "For two millennia, Constantine has defended itself simply by being itself, a fortress shaped by geology.",
+          "Pendant deux millénaires, Constantine s'est défendue en étant simplement elle-même, une forteresse façonnée par la géologie.",
+          "طوال ألفي عام، دافعت قسنطينة عن نفسها بكونها هي فحسب، قلعةٌ صاغتها الجيولوجيا.",
         ),
       },
     ],
     nearbyRegionIds: ["aures", "kabylie", "algiers"],
     reflection: {
       quote: L(
-        "A city you do not enter — you climb into.",
-        "Une ville où l'on n'entre pas — on y monte.",
-        "مدينةٌ لا تدخلها — بل تصعد إليها.",
+        "A city you do not enter, you climb into.",
+        "Une ville où l'on n'entre pas, on y monte.",
+        "مدينةٌ لا تدخلها، بل تصعد إليها.",
       ),
     },
   },
 
   "oran-west": {
     geography: L(
-      "A coast and a wide plain — vineyards, wheat, olive groves, and the ports of Oran, Mostaganem and Arzew.",
-      "Une côte et une grande plaine — vignes, blé, oliveraies, et les ports d'Oran, Mostaganem et Arzew.",
-      "ساحلٌ وسهلٌ واسع — كروم وقمح وزيتون، وموانئ وهران ومستغانم وأرزيو.",
+      "A coast and a wide plain, vineyards, wheat, olive groves, and the ports of Oran, Mostaganem and Arzew.",
+      "Une côte et une grande plaine, vignes, blé, oliveraies, et les ports d'Oran, Mostaganem et Arzew.",
+      "ساحلٌ وسهلٌ واسع، كروم وقمح وزيتون، وموانئ وهران ومستغانم وأرزيو.",
     ),
     historicalSignificance: L(
       "Home of Emir Abdelkader's 15-year resistance, of Tlemcen the medieval capital, and of Ahmed Zabana, whose execution in 1956 set the West on fire.",
@@ -377,9 +377,9 @@ export const regionExtras: Record<string, RegionExtras> = {
         emoji: "🕌",
         label: L("Tlemcen", "Tlemcen", "تلمسان"),
         body: L(
-          "Mosques, madrasas and Andalusian gardens — a medieval capital that hosted scholars and musicians from Granada.",
-          "Mosquées, madrasas et jardins andalous — une capitale médiévale qui accueillit savants et musiciens de Grenade.",
-          "مساجد ومدارس وحدائق أندلسية — عاصمةٌ من العصور الوسطى استضافت علماء غرناطة وموسيقيّيها.",
+          "Mosques, madrasas and Andalusian gardens, a medieval capital that hosted scholars and musicians from Granada.",
+          "Mosquées, madrasas et jardins andalous, une capitale médiévale qui accueillit savants et musiciens de Grenade.",
+          "مساجد ومدارس وحدائق أندلسية، عاصمةٌ من العصور الوسطى استضافت علماء غرناطة وموسيقيّيها.",
         ),
       },
       {
@@ -423,9 +423,9 @@ export const regionExtras: Record<string, RegionExtras> = {
 
   sahara: {
     geography: L(
-      "About eighty percent of Algeria — dunes, hamadas, oases, and night skies so wide they teach humility.",
-      "Environ quatre-vingts pour cent de l'Algérie — dunes, hamadas, oasis et ciels nocturnes si vastes qu'ils enseignent l'humilité.",
-      "نحو ثمانين في المئة من الجزائر — كثبان وحمادات وواحات وسماواتُ ليلٍ شاسعة تعلّم التواضع.",
+      "About eighty percent of Algeria, dunes, hamadas, oases, and night skies so wide they teach humility.",
+      "Environ quatre-vingts pour cent de l'Algérie, dunes, hamadas, oasis et ciels nocturnes si vastes qu'ils enseignent l'humilité.",
+      "نحو ثمانين في المئة من الجزائر، كثبان وحمادات وواحات وسماواتُ ليلٍ شاسعة تعلّم التواضع.",
     ),
     historicalSignificance: L(
       "Crossed for centuries by trans-Saharan caravans, painted long before pyramids by the artists of Tassili n'Ajjer, and ruled in spirit by the Tuareg people of Tamasheq and Tifinagh.",
@@ -443,18 +443,18 @@ export const regionExtras: Record<string, RegionExtras> = {
         emoji: "🪨",
         label: L("Tassili rock art", "Art rupestre du Tassili", "نقوش طاسيلي"),
         body: L(
-          "Hunters, dancers and lost rivers painted on stone — a Saharan past that was once green.",
-          "Chasseurs, danseurs et rivières disparues peints sur la pierre — un Sahara qui fut un jour vert.",
-          "صيّادون وراقصون وأنهارٌ غائبة على الحجر — صحراء كانت يومًا خضراء.",
+          "Hunters, dancers and lost rivers painted on stone, a Saharan past that was once green.",
+          "Chasseurs, danseurs et rivières disparues peints sur la pierre, un Sahara qui fut un jour vert.",
+          "صيّادون وراقصون وأنهارٌ غائبة على الحجر، صحراء كانت يومًا خضراء.",
         ),
       },
       {
         emoji: "🏚️",
         label: L("Ksour & oases", "Ksour et oasis", "القصور والواحات"),
         body: L(
-          "Ghardaïa, Timimoun, Djanet — earth-built towns shaped by sun, palm and water management.",
-          "Ghardaïa, Timimoun, Djanet — villes en terre façonnées par le soleil, le palmier et la gestion de l'eau.",
-          "غرداية وتيميمون وجانت — مدنٌ من الطين شكّلتها الشمس والنخلة وإدارة الماء.",
+          "Ghardaïa, Timimoun, Djanet, earth-built towns shaped by sun, palm and water management.",
+          "Ghardaïa, Timimoun, Djanet, villes en terre façonnées par le soleil, le palmier et la gestion de l'eau.",
+          "غرداية وتيميمون وجانت، مدنٌ من الطين شكّلتها الشمس والنخلة وإدارة الماء.",
         ),
       },
       {
@@ -470,9 +470,9 @@ export const regionExtras: Record<string, RegionExtras> = {
         emoji: "🫓",
         label: L("Desert table", "Table du désert", "مائدة الصحراء"),
         body: L(
-          "Taguella, dates and mint tea — food born of long journeys and longer evenings.",
-          "Taguella, dattes et thé à la menthe — cuisine née de longs voyages et de soirées plus longues encore.",
-          "تاقلّة وتمر وشاي بالنعناع — مأكولاتٌ وُلدت من رحلاتٍ طويلة وأمسياتٍ أطول.",
+          "Taguella, dates and mint tea, food born of long journeys and longer evenings.",
+          "Taguella, dattes et thé à la menthe, cuisine née de longs voyages et de soirées plus longues encore.",
+          "تاقلّة وتمر وشاي بالنعناع، مأكولاتٌ وُلدت من رحلاتٍ طويلة وأمسياتٍ أطول.",
         ),
       },
     ],

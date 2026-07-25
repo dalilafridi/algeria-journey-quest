@@ -728,7 +728,7 @@ export const figureQuiz: FigureQuizQuestion[] = [
   make("augustine-1", "easy",
     [
       L("I was a bishop in Roman North Africa.", "J'étais un évêque en Afrique romaine.", "كنتُ أسقفًا في إفريقيا الرومانية."),
-      L("I was born in Thagaste — today Souk Ahras.", "Je suis né à Thagaste — l'actuelle Souk Ahras.", "وُلدتُ في تاغاست، سوق أهراس اليوم."),
+      L("I was born in Thagaste, today Souk Ahras.", "Je suis né à Thagaste, l'actuelle Souk Ahras.", "وُلدتُ في تاغاست، سوق أهراس اليوم."),
     ],
     "Augustine of Hippo", ["Septimius Severus", "Ibn Khaldun", "Sidi Boumediene"],
     L("Augustine of Hippo was bishop of Hippo (Annaba).", "Augustin d'Hippone fut évêque d'Hippone (Annaba).", "كان أوغسطين أسقفًا لهيبو (عنابة)."),
@@ -1202,7 +1202,7 @@ export const figureQuiz: FigureQuizQuestion[] = [
     "medium",
     [
       L("True or false: my songs are often read as long poems on Algerian society.", "Vrai ou faux : mes chansons sont souvent lues comme de longs poèmes sur la société algérienne.", "صح أم خطأ: تُقرأ أغانيّ في الغالب كقصائد طويلة عن المجتمع الجزائري."),
-      L("Answer: TRUE — many albums are studied like literature.", "Réponse : VRAI — de nombreux albums sont étudiés comme de la littérature.", "الجواب: صحيح — تُدرَس كثير من ألبوماتي كأنها أدب."),
+      L("Answer: TRUE, many albums are studied like literature.", "Réponse : VRAI, de nombreux albums sont étudiés comme de la littérature.", "الجواب: صحيح، تُدرَس كثير من ألبوماتي كأنها أدب."),
     ],
     "Lounis Ait Menguellet",
     ["Idir", "Matoub Lounès", "Assia Djebar"],
@@ -1309,7 +1309,7 @@ export const figureQuiz: FigureQuizQuestion[] = [
     "hard",
     [
       L("I am called the 'Poet of the Nation'.", "On m'appelle le « poète de la nation ».", "يلقّبونني بـ«شاعر الأمة»."),
-      L("Tradition says I wrote my most famous poem on a prison wall — with my own blood.", "La tradition raconte que j'ai écrit mon poème le plus célèbre sur le mur d'une prison — avec mon propre sang.", "تقول الرواية إنني كتبتُ أشهر قصائدي على جدار زنزانة بدمي."),
+      L("Tradition says I wrote my most famous poem on a prison wall, with my own blood.", "La tradition raconte que j'ai écrit mon poème le plus célèbre sur le mur d'une prison, avec mon propre sang.", "تقول الرواية إنني كتبتُ أشهر قصائدي على جدار زنزانة بدمي."),
     ],
     "Moufdi Zakaria",
     ["Mohamed Belkheir", "Mostefa Ben Boulaïd", "Abdelhamid Ben Badis"],
@@ -1433,9 +1433,9 @@ export const figureQuiz: FigureQuizQuestion[] = [
     "medium",
     [
       L(
-        "Who sang \"A Vava Inouva\" — the lullaby that took Tamazight around the world in 1976?",
-        "Qui a chanté « A Vava Inouva » — la berceuse qui fit voyager le tamazight dans le monde en 1976 ?",
-        "من غنّى «أ فافا إينوفا» — التهويدة التي حملت الأمازيغية إلى العالم سنة 1976؟",
+        "Who sang \"A Vava Inouva\", the lullaby that took Tamazight around the world in 1976?",
+        "Qui a chanté « A Vava Inouva », la berceuse qui fit voyager le tamazight dans le monde en 1976 ?",
+        "من غنّى «أ فافا إينوفا»، التهويدة التي حملت الأمازيغية إلى العالم سنة 1976؟",
       ),
     ],
     "Idir",

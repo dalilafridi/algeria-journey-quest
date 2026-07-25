@@ -29,8 +29,8 @@ export const Route = createFileRoute("/figures/")({
   head: () =>
     pageMeta({
       path: "/figures",
-      title: "Hall of Legends — Discover the People Who Shaped Algeria | DZ Odyssey",
-      description: "A cinematic, browse-first museum of Algeria's most influential historical figures — curated collections and era galleries."
+      title: "Hall of Legends, Discover the People Who Shaped Algeria | DZ Odyssey",
+      description: "A cinematic, browse-first museum of Algeria's most influential historical figures, curated collections and era galleries."
     }),
   component: FiguresIndex,
 });
@@ -71,10 +71,10 @@ function FiguresIndex() {
     lang === "fr" ? "Collections" : lang === "ar" ? "مجموعات" : "Collections";
   const collectionsIntro =
     lang === "fr"
-      ? "Avancez de salle en salle. Chaque rangée est une collection conservée — faites défiler pour découvrir."
+      ? "Avancez de salle en salle. Chaque rangée est une collection conservée, faites défiler pour découvrir."
       : lang === "ar"
-        ? "تنقّل من قاعة إلى قاعة. كل صف مجموعة مختارة — مرّر لتكتشف."
-        : "Walk room to room. Each row is a curated collection — scroll sideways to discover.";
+        ? "تنقّل من قاعة إلى قاعة. كل صف مجموعة مختارة، مرّر لتكتشف."
+        : "Walk room to room. Each row is a curated collection, scroll sideways to discover.";
   const erasLabel =
     lang === "fr" ? "Explorer par ère" : lang === "ar" ? "استكشف حسب الحقبة" : "Explore by era";
   const erasIntro =

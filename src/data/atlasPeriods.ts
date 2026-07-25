@@ -103,9 +103,9 @@ export const ATLAS_PERIODS: AtlasPeriod[] = [
       { kind: "site", name: L("Djemila basilica", "Basilique de Djémila", "بازيليك جميلة"), x: 58, y: 26 },
     ],
     summary: L(
-      "Justinian's reconquest rebuilt walled towns along the coast, but the Byzantine hold was thin — chapels, garrisons and taxes without the depth of Rome.",
-      "La reconquête de Justinien reconstruisit les villes fortifiées côtières, mais l'emprise byzantine resta ténue — chapelles, garnisons et impôts sans la profondeur de Rome.",
-      "أعادت استعادة جستنيان بناء المدن المسوّرة الساحلية، لكن الحضور البيزنطي ظل رفيعًا — كنائس وحاميات وضرائب دون عمق روما.",
+      "Justinian's reconquest rebuilt walled towns along the coast, but the Byzantine hold was thin, chapels, garrisons and taxes without the depth of Rome.",
+      "La reconquête de Justinien reconstruisit les villes fortifiées côtières, mais l'emprise byzantine resta ténue, chapelles, garnisons et impôts sans la profondeur de Rome.",
+      "أعادت استعادة جستنيان بناء المدن المسوّرة الساحلية، لكن الحضور البيزنطي ظل رفيعًا، كنائس وحاميات وضرائب دون عمق روما.",
     ),
   },
   {
@@ -128,9 +128,9 @@ export const ATLAS_PERIODS: AtlasPeriod[] = [
       { kind: "site", name: L("Great Mosque, Tlemcen", "Grande mosquée de Tlemcen", "الجامع الكبير بتلمسان"), x: 18, y: 27 },
     ],
     summary: L(
-      "Islam entered through Kairouan; then local dynasties emerged — the Ibāḍī Rustamids at Tahert became a scholarly, principled counter-caliphate in the interior.",
-      "L'islam entra par Kairouan ; puis des dynasties locales émergèrent — les Rostémides ibadites de Tahert formèrent un contre-califat savant et rigoriste à l'intérieur.",
-      "دخل الإسلام عبر القيروان؛ ثم برزت دول محلية — أسّس الرستميون الإباضيون في تاهرت خلافة مضادّة علمية وصارمة في الداخل.",
+      "Islam entered through Kairouan; then local dynasties emerged, the Ibāḍī Rustamids at Tahert became a scholarly, principled counter-caliphate in the interior.",
+      "L'islam entra par Kairouan ; puis des dynasties locales émergèrent, les Rostémides ibadites de Tahert formèrent un contre-califat savant et rigoriste à l'intérieur.",
+      "دخل الإسلام عبر القيروان؛ ثم برزت دول محلية، أسّس الرستميون الإباضيون في تاهرت خلافة مضادّة علمية وصارمة في الداخل.",
     ),
   },
   {
@@ -166,9 +166,9 @@ export const ATLAS_PERIODS: AtlasPeriod[] = [
       { kind: "site", name: L("Great Mosque of the Qal'a", "Grande mosquée de la Qal'a", "الجامع الكبير بالقلعة"), x: 58, y: 28.5 },
     ],
     summary: L(
-      "Breaking from the Zirids, Hammad ibn Buluggin built a mountain capital whose minaret still stands — a UNESCO site above the plains of the Hodna.",
-      "Rompant avec les Zirides, Hammad ibn Buluggin fonda une capitale de montagne dont le minaret domine encore les plaines du Hodna — site UNESCO.",
-      "انفصل حماد بن بلقين عن الزيريين، وشيّد عاصمة جبلية لا تزال مئذنتها قائمة فوق سهول الحضنة — من مواقع اليونسكو.",
+      "Breaking from the Zirids, Hammad ibn Buluggin built a mountain capital whose minaret still stands, a UNESCO site above the plains of the Hodna.",
+      "Rompant avec les Zirides, Hammad ibn Buluggin fonda une capitale de montagne dont le minaret domine encore les plaines du Hodna, site UNESCO.",
+      "انفصل حماد بن بلقين عن الزيريين، وشيّد عاصمة جبلية لا تزال مئذنتها قائمة فوق سهول الحضنة، من مواقع اليونسكو.",
     ),
   },
   {
@@ -228,9 +228,9 @@ export const ATLAS_PERIODS: AtlasPeriod[] = [
       { kind: "battle", name: L("Naval Battle of Algiers (1541)", "Débâcle de Charles Quint", "غزوة شارل الخامس"), x: 44, y: 20.5 },
     ],
     summary: L(
-      "Founded by the Barbarossa brothers, the Regency became an autonomous Ottoman province ruled by deys — its corsair fleet shook every Mediterranean court for three centuries.",
-      "Fondée par les frères Barberousse, la Régence devint une province ottomane autonome dirigée par des deys — sa flotte corsaire fit trembler la Méditerranée trois siècles durant.",
-      "أسّسها الإخوة بربروس، وأصبحت ولاية عثمانية مستقلّة يحكمها الدايات — أرهب أسطولها القرصاني بلاطات المتوسط ثلاثة قرون.",
+      "Founded by the Barbarossa brothers, the Regency became an autonomous Ottoman province ruled by deys, its corsair fleet shook every Mediterranean court for three centuries.",
+      "Fondée par les frères Barberousse, la Régence devint une province ottomane autonome dirigée par des deys, sa flotte corsaire fit trembler la Méditerranée trois siècles durant.",
+      "أسّسها الإخوة بربروس، وأصبحت ولاية عثمانية مستقلّة يحكمها الدايات، أرهب أسطولها القرصاني بلاطات المتوسط ثلاثة قرون.",
     ),
   },
   {
@@ -267,12 +267,12 @@ export const ATLAS_PERIODS: AtlasPeriod[] = [
     relatedEraId: "independence",
     markers: [
       { kind: "capital", name: L("Algiers (target)", "Alger (objectif)", "الجزائر"), x: 43, y: 22 },
-      { kind: "site", name: L("Wilaya I — Aurès", "Wilaya I — Aurès", "الولاية الأولى — الأوراس"), x: 62, y: 32 },
-      { kind: "site", name: L("Wilaya II — North Constantinois", "Wilaya II — Nord constantinois", "الولاية الثانية"), x: 71, y: 24 },
-      { kind: "site", name: L("Wilaya III — Kabylie", "Wilaya III — Kabylie", "الولاية الثالثة — القبائل"), x: 52, y: 24 },
-      { kind: "site", name: L("Wilaya IV — Algérois", "Wilaya IV — Algérois", "الولاية الرابعة"), x: 42, y: 26 },
-      { kind: "site", name: L("Wilaya V — Oranie", "Wilaya V — Oranie", "الولاية الخامسة"), x: 24, y: 28 },
-      { kind: "site", name: L("Wilaya VI — Sahara", "Wilaya VI — Sahara", "الولاية السادسة"), x: 48, y: 56 },
+      { kind: "site", name: L("Wilaya I, Aurès", "Wilaya I, Aurès", "الولاية الأولى، الأوراس"), x: 62, y: 32 },
+      { kind: "site", name: L("Wilaya II, North Constantinois", "Wilaya II, Nord constantinois", "الولاية الثانية"), x: 71, y: 24 },
+      { kind: "site", name: L("Wilaya III, Kabylie", "Wilaya III, Kabylie", "الولاية الثالثة، القبائل"), x: 52, y: 24 },
+      { kind: "site", name: L("Wilaya IV, Algérois", "Wilaya IV, Algérois", "الولاية الرابعة"), x: 42, y: 26 },
+      { kind: "site", name: L("Wilaya V, Oranie", "Wilaya V, Oranie", "الولاية الخامسة"), x: 24, y: 28 },
+      { kind: "site", name: L("Wilaya VI, Sahara", "Wilaya VI, Sahara", "الولاية السادسة"), x: 48, y: 56 },
       { kind: "battle", name: L("Toussaint Rouge (1 Nov 1954)", "Toussaint Rouge", "الفاتح من نوفمبر"), x: 62, y: 30 },
       { kind: "battle", name: L("Battle of Algiers (1957)", "Bataille d'Alger", "معركة الجزائر"), x: 43, y: 22 },
       { kind: "site", name: L("Soummam Congress (1956)", "Congrès de la Soummam", "مؤتمر الصومام"), x: 52, y: 24.5 },
@@ -302,9 +302,9 @@ export const ATLAS_PERIODS: AtlasPeriod[] = [
       { kind: "site", name: L("Tassili n'Ajjer (UNESCO)", "Tassili n'Ajjer (UNESCO)", "الطاسيلي ناجر"), x: 72, y: 68 },
     ],
     summary: L(
-      "The People's Democratic Republic of Algeria, largest country in Africa, spans the Mediterranean to the Sahel — from the Kasbah of Algiers to the sandstone galleries of Tassili.",
-      "La République algérienne démocratique et populaire, plus grand pays d'Afrique, va de la Méditerranée au Sahel — de la Casbah d'Alger aux grès du Tassili.",
-      "الجمهورية الجزائرية الديمقراطية الشعبية، أكبر بلد في إفريقيا، تمتدّ من المتوسط إلى الساحل — من قصبة الجزائر إلى نقوش الطاسيلي.",
+      "The People's Democratic Republic of Algeria, largest country in Africa, spans the Mediterranean to the Sahel, from the Kasbah of Algiers to the sandstone galleries of Tassili.",
+      "La République algérienne démocratique et populaire, plus grand pays d'Afrique, va de la Méditerranée au Sahel, de la Casbah d'Alger aux grès du Tassili.",
+      "الجمهورية الجزائرية الديمقراطية الشعبية، أكبر بلد في إفريقيا، تمتدّ من المتوسط إلى الساحل، من قصبة الجزائر إلى نقوش الطاسيلي.",
     ),
   },
 ];

@@ -19,8 +19,8 @@ export const Route = createFileRoute("/passport")({
   head: () =>
     pageMeta({
       path: "/passport",
-      title: "Visitor Passport — DZ Odyssey",
-      description: "Your personal DZ Odyssey museum passport — track visits, collect stamps, and export your journey.",
+      title: "Visitor Passport, DZ Odyssey",
+      description: "Your personal DZ Odyssey museum passport, track visits, collect stamps, and export your journey.",
       noindex: true
     }),
   component: PassportPage,
@@ -31,9 +31,9 @@ const SERIF = "Georgia, 'Times New Roman', serif";
 const TXT = {
   title: { en: "Visitor Passport", fr: "Passeport du visiteur", ar: "جواز الزائر" },
   subtitle: {
-    en: "Algeria Through Time — Museum of Memory",
-    fr: "L'Algérie à travers le temps — Musée de la mémoire",
-    ar: "الجزائر عبر الزمن — متحف الذاكرة",
+    en: "Algeria Through Time, Museum of Memory",
+    fr: "L'Algérie à travers le temps, Musée de la mémoire",
+    ar: "الجزائر عبر الزمن، متحف الذاكرة",
   },
   issued: { en: "Issued", fr: "Émis le", ar: "تاريخ الإصدار" },
   passportNo: { en: "Passport N°", fr: "N° de passeport", ar: "رقم الجواز" },
@@ -61,9 +61,9 @@ const TXT = {
   visitedFigures: { en: "Figures", fr: "Figures", ar: "الشخصيات" },
   locked: { en: "Locked", fr: "Verrouillé", ar: "مقفل" },
   empty: {
-    en: "No visits yet — start exploring the museum to fill your passport.",
-    fr: "Aucune visite pour l'instant — explorez le musée pour remplir votre passeport.",
-    ar: "لم تتم أي زيارة بعد — استكشف المتحف لملء جوازك.",
+    en: "No visits yet, start exploring the museum to fill your passport.",
+    fr: "Aucune visite pour l'instant, explorez le musée pour remplir votre passeport.",
+    ar: "لم تتم أي زيارة بعد، استكشف المتحف لملء جوازك.",
   },
   startExploring: { en: "Start exploring", fr: "Commencer à explorer", ar: "ابدأ الاستكشاف" },
   level: { en: "Rank", fr: "Rang", ar: "الرتبة" },
@@ -89,7 +89,7 @@ function PassportPage() {
     visits: { era: [], figure: [], region: [], culture: [] },
     stamps: [],
     issuedAt: "",
-    visitorId: "DZ-—",
+    visitorId: "DZ-, ",
   }));
   const [editing, setEditing] = useState(false);
   const [nameInput, setNameInput] = useState("");
@@ -247,7 +247,7 @@ function PassportPage() {
             <div className="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-4">
               <IdField label={tri(lang, TXT.visitor)}>
                 <span className="text-amber-100" style={{ fontFamily: SERIF }}>
-                  {state.visitorName || "—"}
+                  {state.visitorName || ", "}
                 </span>
               </IdField>
               <IdField label={tri(lang, TXT.passportNo)}>

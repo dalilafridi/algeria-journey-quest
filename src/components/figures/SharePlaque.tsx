@@ -201,10 +201,10 @@ export function SharePlaque({ figure: f, lang }: { figure: Figure; lang: Lang })
     lang === "fr" ? "Plaque d'exposition" : lang === "ar" ? "لوحة المعرض" : "Exhibit plaque";
   const introLabel =
     lang === "fr"
-      ? "Emportez cette plaque de musée — partagez-la ou collectionnez-la."
+      ? "Emportez cette plaque de musée, partagez-la ou collectionnez-la."
       : lang === "ar"
-        ? "خذ لوحة المتحف هذه — شاركها أو اجمعها."
-        : "Take this museum plaque with you — share it or collect it.";
+        ? "خذ لوحة المتحف هذه، شاركها أو اجمعها."
+        : "Take this museum plaque with you, share it or collect it.";
   const copyLabel = lang === "fr" ? "Copier le lien" : lang === "ar" ? "نسخ الرابط" : "Copy link";
   const copiedLabel = lang === "fr" ? "Lien copié !" : lang === "ar" ? "تم النسخ!" : "Link copied!";
   const downloadLabel =
@@ -263,7 +263,7 @@ export function SharePlaque({ figure: f, lang }: { figure: Figure; lang: Lang })
   }
 
   async function nativeShare() {
-    const title = `${t(f.displayName, lang)} — Hall of Legends`;
+    const title = `${t(f.displayName, lang)}, Hall of Legends`;
     const text = f.extended?.keyLesson ? t(f.extended.keyLesson, lang) : t(f.fact, lang);
     if (navigator.share) {
       try {
@@ -288,7 +288,7 @@ export function SharePlaque({ figure: f, lang }: { figure: Figure; lang: Lang })
       >
         <img
           src={dataUrl}
-          alt={`${t(f.displayName, lang)} — ${headingLabel}`}
+          alt={`${t(f.displayName, lang)}, ${headingLabel}`}
           className="block w-full h-auto"
           loading="lazy"
           width={W}

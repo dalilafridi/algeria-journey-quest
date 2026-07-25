@@ -22,9 +22,9 @@ const T = {
   captain: { en: "Captain", fr: "Capitaine", ar: "القائد" },
   coach: { en: "Head coach", fr: "Entraîneur", ar: "المدرّب" },
   stylised: {
-    en: "Stylised recreation — not an archival crest.",
-    fr: "Recréation stylisée — pas un écusson d'archive.",
-    ar: "إعادة تصوير أسلوبية — ليست شعاراً أرشيفياً.",
+    en: "Stylised recreation, not an archival crest.",
+    fr: "Recréation stylisée, pas un écusson d'archive.",
+    ar: "إعادة تصوير أسلوبية، ليست شعاراً أرشيفياً.",
   },
   versus: { en: "vs.", fr: "contre", ar: "ضدّ" },
 } as const;
@@ -74,7 +74,7 @@ export function TheaterIntro({
       className="mx-auto flex min-h-[80dvh] max-w-4xl flex-col items-center justify-center gap-8 px-4 py-8 text-center sm:px-6"
       aria-label={tt(match.cinematicTitle, lang)}
     >
-      {/* Stage 0 — Date + venue */}
+      {/* Stage 0, Date + venue */}
       <div
         className={`transition-opacity duration-1000 ${stage >= 0 ? "opacity-100" : "opacity-0"}`}
         style={SERIF}
@@ -90,7 +90,7 @@ export function TheaterIntro({
         </div>
       </div>
 
-      {/* Stage 1 — Teams */}
+      {/* Stage 1, Teams */}
       <div
         className={`grid w-full grid-cols-[1fr_auto_1fr] items-center gap-4 transition-all duration-1000 sm:gap-8 ${
           stage >= 1 ? "opacity-100 translate-y-0" : "opacity-0 translate-y-3"
@@ -103,7 +103,7 @@ export function TheaterIntro({
         <TeamCrest team={away} captain={awayCaptain?.name} lang={lang} align="start" />
       </div>
 
-      {/* Stage 2 — Cinematic title + actions */}
+      {/* Stage 2, Cinematic title + actions */}
       <div
         className={`w-full transition-all duration-1000 ${
           stage >= 2 ? "opacity-100 translate-y-0" : "opacity-0 translate-y-3"

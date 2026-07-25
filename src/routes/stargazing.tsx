@@ -8,8 +8,8 @@ export const Route = createFileRoute("/stargazing")({
   head: () =>
     pageMeta({
       path: "/stargazing",
-      title: "Amazigh Stargazing — The Sky of Our Ancestors | DZ Odyssey",
-      description: "A cinematic museum of Amazigh star knowledge — seasons, navigation and oral tradition under the desert sky."
+      title: "Amazigh Stargazing, The Sky of Our Ancestors | DZ Odyssey",
+      description: "A cinematic museum of Amazigh star knowledge, seasons, navigation and oral tradition under the desert sky."
     }),
   component: StargazingPage,
 });
@@ -55,15 +55,15 @@ const COPY = {
   calendarTitle: { fr: "Calendrier vivant", en: "Living Calendar", ar: "تقويمٌ حيّ" },
   calendarSub: {
     fr: "Les étoiles ne sont pas regardées : elles sont écoutées comme une horloge.",
-    en: "Stars are not just watched — they are read like a clock of seasons.",
+    en: "Stars are not just watched, they are read like a clock of seasons.",
     ar: "النجومُ لا تُرى فقط، بل تُقرأ كساعةٍ للفصول.",
   },
 
   storyTitle: { fr: "L'étoile et la mariée", en: "The Star and the Bride", ar: "النجمةُ والعروس" },
   storyBody: {
-    fr: "Les anciens racontent que les Pléiades — Tislit n Itri, « la mariée des étoiles » — fuyaient un prétendant trop ardent. Le ciel devint leur abri, et chaque automne leur retour annonçait les semailles. Une histoire d'amour transmise de bouche à oreille, sous la tente, près du feu.",
-    en: "The elders say the Pleiades — Tislit n Itri, “the bride of the stars” — fled a suitor too eager. The sky became her refuge, and each autumn her return announced the time to sow. A love story passed from mouth to ear, beneath the tent, beside the fire.",
-    ar: "يحكي الشيوخ أنّ الثريّا — تيسليت ن إتري، «عروسُ النجوم» — هربت من خاطبٍ مُلِحّ، فآوتها السماء، وعودتها كلَّ خريفٍ تُعلن أوانَ البذر. قصّةُ حُبٍّ تُروى من فمٍ إلى أذن، تحت الخيمة، قُربَ النار.",
+    fr: "Les anciens racontent que les Pléiades, Tislit n Itri, « la mariée des étoiles », fuyaient un prétendant trop ardent. Le ciel devint leur abri, et chaque automne leur retour annonçait les semailles. Une histoire d'amour transmise de bouche à oreille, sous la tente, près du feu.",
+    en: "The elders say the Pleiades, Tislit n Itri, “the bride of the stars”, fled a suitor too eager. The sky became her refuge, and each autumn her return announced the time to sow. A love story passed from mouth to ear, beneath the tent, beside the fire.",
+    ar: "يحكي الشيوخ أنّ الثريّا، تيسليت ن إتري، «عروسُ النجوم»، هربت من خاطبٍ مُلِحّ، فآوتها السماء، وعودتها كلَّ خريفٍ تُعلن أوانَ البذر. قصّةُ حُبٍّ تُروى من فمٍ إلى أذن، تحت الخيمة، قُربَ النار.",
   },
   oralBadge: { fr: "Tradition orale", en: "Oral tradition", ar: "روايةٌ شفهيّة" },
 
@@ -113,9 +113,9 @@ const STARS: Star[] = [
       ar: "القوّة والصيد والشتاء",
     },
     desc: {
-      fr: "Le chasseur du ciel — gardien des nuits froides et symbole d'endurance dans les contes transmis au coin du feu.",
-      en: "The hunter of the sky — guardian of cold nights and symbol of endurance in tales told around the fire.",
-      ar: "صيّادُ السماء — حارسُ الليالي الباردة ورمزُ الصبر في حكاياتٍ تُروى حولَ النار.",
+      fr: "Le chasseur du ciel, gardien des nuits froides et symbole d'endurance dans les contes transmis au coin du feu.",
+      en: "The hunter of the sky, guardian of cold nights and symbol of endurance in tales told around the fire.",
+      ar: "صيّادُ السماء، حارسُ الليالي الباردة ورمزُ الصبر في حكاياتٍ تُروى حولَ النار.",
     },
   },
   {
@@ -249,7 +249,7 @@ function StargazingPage() {
         </div>
       </section>
 
-      {/* SECTION 1 — STAR KNOWLEDGE */}
+      {/* SECTION 1, STAR KNOWLEDGE */}
       <section className="max-w-5xl mx-auto px-5 sm:px-6 py-14 sm:py-20">
         <SectionHeader title={t(COPY.starsTitle, lang)} subtitle={t(COPY.starsSub, lang)} />
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
@@ -259,7 +259,7 @@ function StargazingPage() {
         </div>
       </section>
 
-      {/* SECTION 2 — DESERT NAVIGATION */}
+      {/* SECTION 2, DESERT NAVIGATION */}
       <section className="bg-[oklch(0.97_0.02_75)]/60 border-y border-border">
         <div className="max-w-5xl mx-auto px-5 sm:px-6 py-14 sm:py-20">
           <SectionHeader title={t(COPY.navTitle, lang)} subtitle={t(COPY.navSub, lang)} />
@@ -286,7 +286,7 @@ function StargazingPage() {
         </div>
       </section>
 
-      {/* SECTION 3 — LIVING CALENDAR */}
+      {/* SECTION 3, LIVING CALENDAR */}
       <section className="max-w-5xl mx-auto px-5 sm:px-6 py-14 sm:py-20">
         <SectionHeader title={t(COPY.calendarTitle, lang)} subtitle={t(COPY.calendarSub, lang)} />
         <div className="-mx-5 sm:mx-0 px-5 sm:px-0 overflow-x-auto">
@@ -311,7 +311,7 @@ function StargazingPage() {
         </div>
       </section>
 
-      {/* SECTION 4 — CULTURAL STORY */}
+      {/* SECTION 4, CULTURAL STORY */}
       <section className="bg-gradient-to-b from-[oklch(0.96_0.03_75)] to-background border-t border-border">
         <div className="max-w-3xl mx-auto px-5 sm:px-6 py-14 sm:py-20">
           <div className="rounded-3xl border border-amber-700/20 bg-card p-7 sm:p-10 shadow-[0_10px_40px_-20px_rgba(155,107,31,0.45)]">
@@ -332,7 +332,7 @@ function StargazingPage() {
         </div>
       </section>
 
-      {/* SECTION 5 — MINI QUIZ */}
+      {/* SECTION 5, MINI QUIZ */}
       <section className="max-w-3xl mx-auto px-5 sm:px-6 py-14 sm:py-20">
         <SectionHeader title={t(COPY.quizTitle, lang)} subtitle={t(COPY.quizSub, lang)} />
         <MiniQuiz lang={lang} />

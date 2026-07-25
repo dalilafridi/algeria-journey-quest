@@ -23,7 +23,7 @@ export const Route = createFileRoute("/compare")({
   head: () =>
     pageMeta({
       path: "/compare",
-      title: "Compare Mode — DZ Odyssey",
+      title: "Compare Mode, DZ Odyssey",
       description: "Place two figures, eras or regions side by side and study their timeline, geography, achievements, legacy and historical significance."
     }),
   component: ComparePage,
@@ -242,7 +242,7 @@ function Selector({
         className="w-full rounded-xl border border-border bg-background px-3 py-2.5 text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-amber-500/40"
         style={{ fontFamily: SERIF }}
       >
-        <option value="">—</option>
+        <option value="">, </option>
         {options.map((o) => (
           <option key={o.id} value={o.id}>
             {o.label}
@@ -406,7 +406,7 @@ function RowCell({ content }: { content: React.ReactNode }) {
       className="text-sm text-foreground/90 leading-relaxed"
       style={{ fontFamily: SERIF }}
     >
-      {content ?? <span className="text-muted-foreground">—</span>}
+      {content ?? <span className="text-muted-foreground">, </span>}
     </div>
   );
 }
@@ -523,12 +523,12 @@ function eraPlaque(e: Era, lang: Lang): Plaque {
               {places.map((p, i) => (
                 <li key={i}>
                   <span className="font-medium">{tt(p.name, lang)}</span>
-                  <span className="text-muted-foreground"> — {tt(p.note, lang)}</span>
+                  <span className="text-muted-foreground">, {tt(p.note, lang)}</span>
                 </li>
               ))}
             </ul>
           ) : (
-            "—"
+            ", "
           ),
       },
       {
@@ -591,7 +591,7 @@ function regionPlaque(r: MapRegion, lang: Lang): Plaque {
           ? `${tt(linkedEra.title, lang)} · ${linkedEra.dateRange}`
           : r.facts[0]
           ? tt(r.facts[0], lang)
-          : "—",
+          : ", ",
       },
       { key: "geography", title: "Geography", content: tt(r.focus, lang) },
       {

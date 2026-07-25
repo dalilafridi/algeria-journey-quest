@@ -89,9 +89,9 @@ export const LES_VERTES_BEGINNING = {
       ar: "نمَت كرة القدم النسوية المنظّمة في الجزائر ببطء وضدّ التيار. بعد الاستقلال، فتحت بعض النوادي المحلية أقسامًا نسويّة بفضل إرادة اللاعبات والمدرّبين المتطوّعين أكثر من أيّ استثمار مهيكل. كانت الملاعب مشتركة، والمعدّات مرتَجَلة، والمباريات تُلعب بعيدًا عن الأضواء في الغالب.",
     },
     {
-      en: "The Fédération Algérienne de Football progressively recognised a national women's team, and Algeria began competing internationally. Each appearance on the continental stage was, first, a logistical victory — proof that a national side could be assembled, prepared and sent to represent the country.",
-      fr: "La Fédération algérienne de football a progressivement reconnu une sélection nationale féminine, et l'Algérie a commencé à s'aligner sur la scène internationale. Chaque apparition continentale fut d'abord une victoire logistique — la preuve qu'une équipe pouvait être réunie, préparée et envoyée représenter le pays.",
-      ar: "اعترف الاتحاد الجزائري لكرة القدم تدريجيًا بمنتخب نسوي وطني، وبدأت الجزائر تنافس دوليًا. كانت كلّ مشاركة قارّية انتصارًا لوجستيًا أوّلًا — دليلًا على أنّ منتخبًا وطنيًا يمكن أن يُجمَع ويُحضَّر ويُبعَث لتمثيل البلاد.",
+      en: "The Fédération Algérienne de Football progressively recognised a national women's team, and Algeria began competing internationally. Each appearance on the continental stage was, first, a logistical victory, proof that a national side could be assembled, prepared and sent to represent the country.",
+      fr: "La Fédération algérienne de football a progressivement reconnu une sélection nationale féminine, et l'Algérie a commencé à s'aligner sur la scène internationale. Chaque apparition continentale fut d'abord une victoire logistique, la preuve qu'une équipe pouvait être réunie, préparée et envoyée représenter le pays.",
+      ar: "اعترف الاتحاد الجزائري لكرة القدم تدريجيًا بمنتخب نسوي وطني، وبدأت الجزائر تنافس دوليًا. كانت كلّ مشاركة قارّية انتصارًا لوجستيًا أوّلًا، دليلًا على أنّ منتخبًا وطنيًا يمكن أن يُجمَع ويُحضَّر ويُبعَث لتمثيل البلاد.",
     },
   ] as LocalizedString[],
 };
@@ -166,7 +166,7 @@ export const LES_VERTES_BARRIERS: BarrierTheme[] = [
     title: { en: "Visibility", fr: "Visibilité", ar: "الحضور الإعلامي" },
     body: {
       en: "For years, matches were played with little media coverage. Highlights were rare and archives thin, which made every game a private effort of memory.",
-      fr: "Longtemps, les matchs se jouaient sans véritable couverture médiatique. Les résumés étaient rares et les archives ténues — chaque rencontre relevait d'un travail de mémoire.",
+      fr: "Longtemps, les matchs se jouaient sans véritable couverture médiatique. Les résumés étaient rares et les archives ténues, chaque rencontre relevait d'un travail de mémoire.",
       ar: "لسنوات طويلة، لُعبت المباريات دون تغطية إعلامية تُذكر. كانت المقاطع نادرة والأرشيف شحيحًا، فكانت كلّ مباراة عملًا خاصًّا للذاكرة.",
     },
   },
@@ -210,9 +210,9 @@ export const LES_VERTES_BARRIERS: BarrierTheme[] = [
     id: "coverage",
     title: { en: "Media coverage today", fr: "La couverture aujourd'hui", ar: "التغطية اليوم" },
     body: {
-      en: "Recent seasons have brought more televised matches, more journalism, and a growing audience — a slow but real shift towards equal recognition.",
-      fr: "Les dernières saisons ont apporté davantage de matchs télévisés, plus de journalisme et un public grandissant — un tournant lent mais réel vers une reconnaissance équitable.",
-      ar: "شهدت المواسم الأخيرة بثّ مباريات أكثر وصحافة أوسع وجمهورًا متزايدًا — تحوّلًا بطيئًا لكنّه حقيقيّ نحو اعتراف منصف.",
+      en: "Recent seasons have brought more televised matches, more journalism, and a growing audience, a slow but real shift towards equal recognition.",
+      fr: "Les dernières saisons ont apporté davantage de matchs télévisés, plus de journalisme et un public grandissant, un tournant lent mais réel vers une reconnaissance équitable.",
+      ar: "شهدت المواسم الأخيرة بثّ مباريات أكثر وصحافة أوسع وجمهورًا متزايدًا، تحوّلًا بطيئًا لكنّه حقيقيّ نحو اعتراف منصف.",
     },
   },
 ];
@@ -248,9 +248,9 @@ export const LES_VERTES_NEW_GENERATION = {
   } satisfies LocalizedString,
   paragraphs: [
     {
-      en: "The current squad reflects a game in transformation. Algerian players are increasingly visible in professional leagues abroad — in France, Belgium, and beyond — bringing a full-time training culture back to the national set-up. At home, younger players are entering academies with pathways their predecessors did not have.",
-      fr: "La sélection actuelle reflète un football en pleine transformation. Les joueuses algériennes sont de plus en plus visibles dans les championnats professionnels étrangers — en France, en Belgique et ailleurs — et ramènent une culture d'entraînement à plein temps au sein de la sélection. Au pays, les jeunes joueuses intègrent désormais des académies avec des parcours que leurs aînées n'ont pas connus.",
-      ar: "يعكس المنتخب الحالي كرةً في تحوّل. تزداد بروز اللاعبات الجزائريّات في الدوريات الاحترافية بالخارج — فرنسا وبلجيكا وسواها — فيَحملن إلى المنتخب ثقافة تدريب متفرّغة. وفي الداخل، تلتحق اللاعبات الشابّات بأكاديميات بمسارات لم يعرفها الجيل السابق.",
+      en: "The current squad reflects a game in transformation. Algerian players are increasingly visible in professional leagues abroad, in France, Belgium, and beyond, bringing a full-time training culture back to the national set-up. At home, younger players are entering academies with pathways their predecessors did not have.",
+      fr: "La sélection actuelle reflète un football en pleine transformation. Les joueuses algériennes sont de plus en plus visibles dans les championnats professionnels étrangers, en France, en Belgique et ailleurs et ramènent une culture d'entraînement à plein temps au sein de la sélection. Au pays, les jeunes joueuses intègrent désormais des académies avec des parcours que leurs aînées n'ont pas connus.",
+      ar: "يعكس المنتخب الحالي كرةً في تحوّل. تزداد بروز اللاعبات الجزائريّات في الدوريات الاحترافية بالخارج، فرنسا وبلجيكا وسواها، فيَحملن إلى المنتخب ثقافة تدريب متفرّغة. وفي الداخل، تلتحق اللاعبات الشابّات بأكاديميات بمسارات لم يعرفها الجيل السابق.",
     },
   ] as LocalizedString[],
   currentSquad: {

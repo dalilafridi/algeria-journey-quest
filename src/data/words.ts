@@ -86,16 +86,16 @@ export const words: WordItem[] = [
       "Nous jurons par la foudre destructrice, par les flots de sang généreux versé…",
       "قَسَمًا بالنازلاتِ الماحقاتْ، والدماءِ الزاكياتِ الطاهراتْ…",
     ),
-    author: L("Moufdi Zakaria — Kassaman (1956)", "Moufdi Zakaria — Kassaman (1956)", "مفدي زكريا — قَسَمًا (1956)"),
+    author: L("Moufdi Zakaria, Kassaman (1956)", "Moufdi Zakaria, Kassaman (1956)", "مفدي زكريا، قَسَمًا (1956)"),
     context: L(
       "Written in Barberousse Prison during the War of Independence; later set to music and adopted as the national anthem.",
       "Écrit à la prison de Barberousse pendant la guerre d'indépendance ; mis en musique et adopté comme hymne national.",
       "كُتبت في سجن بربروس خلال حرب التحرير، ولُحّنت لاحقًا واعتُمدت نشيدًا وطنيًا.",
     ),
     meaning: L(
-      "A vow of sacrifice and unity — the soul of Algerian independence in seven verses.",
-      "Un serment de sacrifice et d'unité — l'âme de l'indépendance algérienne en sept strophes.",
-      "قَسَم بالتضحية والوحدة — روح الاستقلال الجزائري في سبعة مقاطع.",
+      "A vow of sacrifice and unity, the soul of Algerian independence in seven verses.",
+      "Un serment de sacrifice et d'unité, l'âme de l'indépendance algérienne en sept strophes.",
+      "قَسَم بالتضحية والوحدة، روح الاستقلال الجزائري في سبعة مقاطع.",
     ),
   },
 
@@ -105,14 +105,14 @@ export const words: WordItem[] = [
     emoji: "📜",
     figureId: "moufdi-zakaria",
     quote: L(
-      "Algeria, O land of glory — your history is an epic written in light.",
-      "Algérie, ô terre de gloire — ton histoire est une épopée écrite de lumière.",
-      "الجزائرُ يا أرضَ المجدِ — تاريخُكِ ملحمةٌ كُتبت بالنور.",
+      "Algeria, O land of glory, your history is an epic written in light.",
+      "Algérie, ô terre de gloire, ton histoire est une épopée écrite de lumière.",
+      "الجزائرُ يا أرضَ المجدِ، تاريخُكِ ملحمةٌ كُتبت بالنور.",
     ),
     author: L(
-      "Moufdi Zakaria — Iliyadha al-Jaza'ir (The Algerian Iliad)",
-      "Moufdi Zakaria — Iliyadha al-Jaza'ir (L'Iliade algérienne)",
-      "مفدي زكريا — إلياذة الجزائر",
+      "Moufdi Zakaria, Iliyadha al-Jaza'ir (The Algerian Iliad)",
+      "Moufdi Zakaria, Iliyadha al-Jaza'ir (L'Iliade algérienne)",
+      "مفدي زكريا، إلياذة الجزائر",
     ),
     context: L(
       "An epic poem of more than 1,000 verses, recited by Moufdi Zakaria in 1972 to celebrate ten years of independence.",
@@ -131,9 +131,9 @@ export const words: WordItem[] = [
     emoji: "🏛️",
     figureId: "jugurtha",
     quote: L(
-      "Rome is a city for sale — and doomed the day she finds a buyer.",
-      "Rome est une ville à vendre — et perdue le jour où elle trouvera preneur.",
-      "روما مدينةٌ للبيع — وهالكةٌ يومَ تجدُ من يشتريها.",
+      "Rome is a city for sale and doomed the day she finds a buyer.",
+      "Rome est une ville à vendre et perdue le jour où elle trouvera preneur.",
+      "روما مدينةٌ للبيع، وهالكةٌ يومَ تجدُ من يشتريها.",
     ),
     author: L("Jugurtha (reported by Sallust)", "Jugurtha (rapporté par Salluste)", "يوغرطة (نقلًا عن سالوست)"),
     context: L(
@@ -142,9 +142,9 @@ export const words: WordItem[] = [
       "قالها الملك النوميدي بعد رشوته أعضاء مجلس الشيوخ الروماني خلال محاكمته في القرن الثاني قبل الميلاد.",
     ),
     meaning: L(
-      "A North African voice exposing imperial corruption — defiance turned into legend.",
-      "Une voix nord-africaine dénonçant la corruption impériale — un défi devenu légende.",
-      "صوتٌ من شمال إفريقيا يفضح فساد الإمبراطورية — تحدٍّ تحوّل إلى أسطورة.",
+      "A North African voice exposing imperial corruption, defiance turned into legend.",
+      "Une voix nord-africaine dénonçant la corruption impériale, un défi devenu légende.",
+      "صوتٌ من شمال إفريقيا يفضح فساد الإمبراطورية، تحدٍّ تحوّل إلى أسطورة.",
     ),
   },
 
@@ -161,9 +161,9 @@ export const words: WordItem[] = [
     ),
     author: L("Mouloud Mammeri", "Mouloud Mammeri", "مولود معمري"),
     context: L(
-      "Mammeri spent his life collecting Tamazight poetry and grammar — work that helped spark the 1980 Berber Spring.",
-      "Mammeri consacra sa vie à recueillir la poésie et la grammaire tamazightes — un travail qui contribua au Printemps berbère de 1980.",
-      "كرّس معمري حياته لجمع الشعر والقواعد الأمازيغية — عمل أسهم في إشعال الربيع الأمازيغي 1980.",
+      "Mammeri spent his life collecting Tamazight poetry and grammar, work that helped spark the 1980 Berber Spring.",
+      "Mammeri consacra sa vie à recueillir la poésie et la grammaire tamazightes, un travail qui contribua au Printemps berbère de 1980.",
+      "كرّس معمري حياته لجمع الشعر والقواعد الأمازيغية، عمل أسهم في إشعال الربيع الأمازيغي 1980.",
     ),
     meaning: L(
       "Language is identity. Defending it is defending who we are.",
@@ -177,9 +177,9 @@ export const words: WordItem[] = [
     emoji: "⛰️",
     figureId: "mammeri",
     quote: L(
-      "The mountain forgets nothing — it only waits to be heard.",
-      "La montagne n'oublie rien — elle attend seulement d'être entendue.",
-      "الجبلُ لا ينسى شيئًا — إنّما ينتظر من يُصغي إليه.",
+      "The mountain forgets nothing, it only waits to be heard.",
+      "La montagne n'oublie rien, elle attend seulement d'être entendue.",
+      "الجبلُ لا ينسى شيئًا، إنّما ينتظر من يُصغي إليه.",
     ),
     author: L("Mouloud Mammeri", "Mouloud Mammeri", "مولود معمري"),
     context: L(
@@ -188,9 +188,9 @@ export const words: WordItem[] = [
       "مستوحاة من عمله الميداني في القبائل لجمع التقاليد الشفهية قبل اندثارها.",
     ),
     meaning: L(
-      "Memory survives in places and people — if we take time to listen.",
-      "La mémoire survit dans les lieux et les gens — à condition de prendre le temps d'écouter.",
-      "الذاكرة تحيا في الأماكن والناس — إنْ منحناها وقتًا لنُصغي.",
+      "Memory survives in places and people, if we take time to listen.",
+      "La mémoire survit dans les lieux et les gens, à condition de prendre le temps d'écouter.",
+      "الذاكرة تحيا في الأماكن والناس، إنْ منحناها وقتًا لنُصغي.",
     ),
   },
   {
@@ -203,16 +203,16 @@ export const words: WordItem[] = [
       "Chaque génération doit, dans une relative opacité, découvrir sa mission, l'accomplir ou la trahir.",
       "على كلّ جيلٍ أن يكتشف، في غموضٍ نسبيّ، رسالتَه، فإمّا أن يحقّقها أو يخونها.",
     ),
-    author: L("Frantz Fanon — The Wretched of the Earth", "Frantz Fanon — Les Damnés de la Terre", "فرانز فانون — معذّبو الأرض"),
+    author: L("Frantz Fanon, The Wretched of the Earth", "Frantz Fanon, Les Damnés de la Terre", "فرانز فانون، معذّبو الأرض"),
     context: L(
-      "Written in Algeria during the war of independence — a global call to free thought and action.",
-      "Écrit en Algérie pendant la guerre d'indépendance — un appel mondial à la pensée et à l'action libres.",
-      "كُتب في الجزائر إبّان حرب التحرير — نداءٌ عالمي للفكر والفعل الحرّين.",
+      "Written in Algeria during the war of independence, a global call to free thought and action.",
+      "Écrit en Algérie pendant la guerre d'indépendance, un appel mondial à la pensée et à l'action libres.",
+      "كُتب في الجزائر إبّان حرب التحرير، نداءٌ عالمي للفكر والفعل الحرّين.",
     ),
     meaning: L(
-      "Freedom is not inherited — it is renewed, choice by choice, in every generation.",
-      "La liberté ne s'hérite pas — elle se renouvelle, choix après choix, à chaque génération.",
-      "الحريّةُ لا تُورَث — تتجدّد قرارًا بقرار، في كلّ جيلٍ من جديد.",
+      "Freedom is not inherited, it is renewed, choice by choice, in every generation.",
+      "La liberté ne s'hérite pas, elle se renouvelle, choix après choix, à chaque génération.",
+      "الحريّةُ لا تُورَث، تتجدّد قرارًا بقرار، في كلّ جيلٍ من جديد.",
     ),
   },
   {
@@ -254,9 +254,9 @@ export const words: WordItem[] = [
       "مبدأ قاد عمله الأنثروبولوجي في جمع الأشعار والمعارف الشفهية الأمازيغية قبل اندثارها.",
     ),
     meaning: L(
-      "Identity survives only through transmission — language, story, gesture, song.",
-      "L'identité ne survit que par la transmission — langue, récit, geste, chant.",
-      "لا تنجو الهوية إلا بالنقل — لغةً وحكايةً وإشارةً ونشيدًا.",
+      "Identity survives only through transmission, language, story, gesture, song.",
+      "L'identité ne survit que par la transmission, langue, récit, geste, chant.",
+      "لا تنجو الهوية إلا بالنقل، لغةً وحكايةً وإشارةً ونشيدًا.",
     ),
   },
   {
@@ -311,15 +311,15 @@ export const words: WordItem[] = [
     emoji: "🎵",
     figureId: "ait-menguellet",
     quote: L(
-      "Our words are all we have left — guard them like a flame.",
-      "Nos paroles sont tout ce qu'il nous reste — gardez-les comme une flamme.",
-      "كلماتُنا كلُّ ما تبقّى لنا — احرسوها كأنّها لهب.",
+      "Our words are all we have left, guard them like a flame.",
+      "Nos paroles sont tout ce qu'il nous reste, gardez-les comme une flamme.",
+      "كلماتُنا كلُّ ما تبقّى لنا، احرسوها كأنّها لهب.",
     ),
     author: L("Lounis Aït Menguellet", "Lounis Aït Menguellet", "لونيس آيت منقلات"),
     context: L(
-      "From decades of Kabyle song — turning poetry into a quiet, steady form of resistance.",
-      "Issu de décennies de chanson kabyle — la poésie devenue une forme tranquille et durable de résistance.",
-      "من عقود من الأغنية القبائلية — شعرٌ تحوّل إلى مقاومة هادئة وراسخة.",
+      "From decades of Kabyle song, turning poetry into a quiet, steady form of resistance.",
+      "Issu de décennies de chanson kabyle, la poésie devenue une forme tranquille et durable de résistance.",
+      "من عقود من الأغنية القبائلية، شعرٌ تحوّل إلى مقاومة هادئة وراسخة.",
     ),
     meaning: L(
       "When freedom is hard, language and song carry it forward.",
@@ -344,9 +344,9 @@ export const words: WordItem[] = [
       "عبارة تختصر مسار مغنٍّ دفع حياته ثمنًا للدفاع عن الهوية الأمازيغية وحرية الكلمة.",
     ),
     meaning: L(
-      "Dignity is non-negotiable — even when the price is the highest.",
-      "La dignité ne se négocie pas — même au prix le plus fort.",
-      "الكرامةُ لا تُساوَم — مهما كان الثمن.",
+      "Dignity is non-negotiable, even when the price is the highest.",
+      "La dignité ne se négocie pas, même au prix le plus fort.",
+      "الكرامةُ لا تُساوَم، مهما كان الثمن.",
     ),
   },
   {
@@ -355,15 +355,15 @@ export const words: WordItem[] = [
     emoji: "🌿",
     figureId: "idir",
     quote: L(
-      "A vava inouva — open the door for me, father…",
-      "A vava inouva — ouvre-moi la porte, ô mon père…",
-      "أ فافا إينوفا — افتح ليَ البابَ يا أبي…",
+      "A vava inouva, open the door for me, father…",
+      "A vava inouva, ouvre-moi la porte, ô mon père…",
+      "أ فافا إينوفا، افتح ليَ البابَ يا أبي…",
     ),
-    author: L("Idir — A Vava Inouva (1976)", "Idir — A Vava Inouva (1976)", "إيدير — أ فافا إينوفا (1976)"),
+    author: L("Idir, A Vava Inouva (1976)", "Idir, A Vava Inouva (1976)", "إيدير، أ فافا إينوفا (1976)"),
     context: L(
-      "A lullaby drawn from a Kabyle folk tale — the first Algerian song to travel the world in Tamazight.",
-      "Une berceuse issue d'un conte kabyle — la première chanson algérienne à parcourir le monde en tamazight.",
-      "تهويدة مأخوذة من حكاية قبائلية شعبية — أوّل أغنية جزائرية تجوب العالم بالأمازيغية.",
+      "A lullaby drawn from a Kabyle folk tale, the first Algerian song to travel the world in Tamazight.",
+      "Une berceuse issue d'un conte kabyle, la première chanson algérienne à parcourir le monde en tamazight.",
+      "تهويدة مأخوذة من حكاية قبائلية شعبية، أوّل أغنية جزائرية تجوب العالم بالأمازيغية.",
     ),
     meaning: L(
       "A whisper from home reminding the world that Tamazight is alive and beautiful.",
@@ -379,9 +379,9 @@ export const words: WordItem[] = [
     emoji: "🪔",
     figureId: "fadhma-amrouche",
     quote: L(
-      "Oral memory — what is spoken can outlive what is written.",
-      "Mémoire orale — ce qui se dit peut survivre à ce qui s'écrit.",
-      "الذاكرة الشفوية — ما يُقال قد يبقى أطول مما يُكتب.",
+      "Oral memory, what is spoken can outlive what is written.",
+      "Mémoire orale, ce qui se dit peut survivre à ce qui s'écrit.",
+      "الذاكرة الشفوية، ما يُقال قد يبقى أطول مما يُكتب.",
     ),
     author: L(
       "Inspired by Fadhma Aït Mansour Amrouche",
@@ -394,9 +394,9 @@ export const words: WordItem[] = [
       "حافظت التقاليد القبائلية على التاريخ عبر الحكايات والتهويدات والأمثال المنقولة من الأم إلى الطفل.",
     ),
     meaning: L(
-      "Memory is not only in books — it lives in voices.",
-      "La mémoire n'est pas que dans les livres — elle vit dans les voix.",
-      "الذاكرة ليست في الكتب وحدها — إنّها تعيش في الأصوات.",
+      "Memory is not only in books, it lives in voices.",
+      "La mémoire n'est pas que dans les livres, elle vit dans les voix.",
+      "الذاكرة ليست في الكتب وحدها، إنّها تعيش في الأصوات.",
     ),
   },
   {
@@ -405,9 +405,9 @@ export const words: WordItem[] = [
     emoji: "🛤️",
     figureId: "rachid-taha",
     quote: L(
-      "Exile and identity — to leave a country, and carry it with you.",
-      "Exil et identité — quitter un pays, et le porter avec soi.",
-      "الغربة والهوية — أن تترك وطنًا، وتحمله معك.",
+      "Exile and identity, to leave a country, and carry it with you.",
+      "Exil et identité, quitter un pays, et le porter avec soi.",
+      "الغربة والهوية، أن تترك وطنًا، وتحمله معك.",
     ),
     author: L(
       "Inspired by Rachid Taha",
@@ -420,9 +420,9 @@ export const words: WordItem[] = [
       "حملت أجيال من الجزائريين في المهجر اللغة والموسيقى والذاكرة أينما حلّوا.",
     ),
     meaning: L(
-      "Diaspora is not absence — it is another way of being present.",
-      "La diaspora n'est pas une absence — c'est une autre manière d'être présent.",
-      "المهجر ليس غيابًا — بل طريقة أخرى للحضور.",
+      "Diaspora is not absence, it is another way of being present.",
+      "La diaspora n'est pas une absence, c'est une autre manière d'être présent.",
+      "المهجر ليس غيابًا، بل طريقة أخرى للحضور.",
     ),
   },
   {
@@ -431,9 +431,9 @@ export const words: WordItem[] = [
     emoji: "👵",
     figureId: "fadhma-amrouche",
     quote: L(
-      "Women as keepers of heritage — the first language is a mother's voice.",
-      "Les femmes, gardiennes du patrimoine — la première langue est la voix d'une mère.",
-      "النساء حارسات التراث — اللغة الأولى هي صوت الأم.",
+      "Women as keepers of heritage, the first language is a mother's voice.",
+      "Les femmes, gardiennes du patrimoine, la première langue est la voix d'une mère.",
+      "النساء حارسات التراث، اللغة الأولى هي صوت الأم.",
     ),
     author: L(
       "Inspired by Fadhma, Taos and Jean Amrouche",
@@ -457,9 +457,9 @@ export const words: WordItem[] = [
     emoji: "🎸",
     figureId: "taos-amrouche",
     quote: L(
-      "Music as cultural resistance — a song can carry what speeches cannot.",
-      "La musique comme résistance culturelle — un chant porte ce que les discours ne peuvent pas dire.",
-      "الموسيقى كمقاومة ثقافية — تحمل الأغنية ما تعجز الخطب عن قوله.",
+      "Music as cultural resistance, a song can carry what speeches cannot.",
+      "La musique comme résistance culturelle, un chant porte ce que les discours ne peuvent pas dire.",
+      "الموسيقى كمقاومة ثقافية، تحمل الأغنية ما تعجز الخطب عن قوله.",
     ),
     author: L(
       "Inspired by Taos Amrouche and Rachid Taha",

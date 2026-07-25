@@ -24,8 +24,8 @@ export const Route = createFileRoute("/words")({
   head: () =>
     pageMeta({
       path: "/words",
-      title: "Words That Shaped History — DZ Odyssey",
-      description: "Quotes, verses and song lines that shaped Algerian identity — from Kassaman to Mammeri, Aït Menguellet, Matoub and Idir."
+      title: "Words That Shaped History, DZ Odyssey",
+      description: "Quotes, verses and song lines that shaped Algerian identity, from Kassaman to Mammeri, Aït Menguellet, Matoub and Idir."
     }),
   component: WordsPage,
 });
@@ -132,7 +132,7 @@ function WordsPage() {
       }
       if (res.newBadge) {
         const cat = WORD_CATEGORIES.find((c) => c.id === res.newBadge);
-        if (cat) setToast(`🏅 ${COPY.badgeEarned[lang]} — ${t(cat.label, lang)}`);
+        if (cat) setToast(`🏅 ${COPY.badgeEarned[lang]}, ${t(cat.label, lang)}`);
       }
     }
   };
@@ -147,17 +147,17 @@ function WordsPage() {
           {COPY.relatedIdeas[lang]} →
         </Link>
 
-        {/* Culture themes — guided exploration */}
+        {/* Culture themes, guided exploration */}
         <div className="mt-6">
           <div className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground mb-1">
             {lang === "fr" ? "Explorer la culture" : lang === "ar" ? "استكشاف الثقافة" : "Explore Culture"}
           </div>
           <p className="text-xs sm:text-[13px] text-muted-foreground italic leading-relaxed mb-3">
             {lang === "fr"
-              ? "Quatre fenêtres sur l'âme algérienne — à parcourir à votre rythme."
+              ? "Quatre fenêtres sur l'âme algérienne, à parcourir à votre rythme."
               : lang === "ar"
-                ? "أربع نوافذ على الروح الجزائرية — استكشفها على مهلك."
-                : "Four windows into the Algerian soul — explore at your own pace."}
+                ? "أربع نوافذ على الروح الجزائرية، استكشفها على مهلك."
+                : "Four windows into the Algerian soul, explore at your own pace."}
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
             {[

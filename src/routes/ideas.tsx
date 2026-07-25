@@ -11,7 +11,7 @@ export const Route = createFileRoute("/ideas")({
   head: () =>
     pageMeta({
       path: "/ideas",
-      title: "Debates & Ideas — DZ Odyssey",
+      title: "Debates & Ideas, DZ Odyssey",
       description: "A museum of ideas: plural Algeria, national identity, culture and language, and the thinkers behind them."
     }),
   component: IdeasPage,
@@ -20,9 +20,9 @@ export const Route = createFileRoute("/ideas")({
 const COPY = {
   title: { en: "Debates & Ideas", fr: "Débats & idées", ar: "نقاشات وأفكار" },
   intro: {
-    en: "History is not only events — it is also ideas. Explore the debates and intellectual currents that shaped Algeria.",
-    fr: "L'histoire n'est pas faite que d'événements — elle est aussi faite d'idées. Explorez les débats et les courants qui ont façonné l'Algérie.",
-    ar: "التاريخ ليس وقائع وحسب — هو أفكارٌ أيضًا. استكشف النقاشات والتيارات التي صنعت الجزائر.",
+    en: "History is not only events, it is also ideas. Explore the debates and intellectual currents that shaped Algeria.",
+    fr: "L'histoire n'est pas faite que d'événements, elle est aussi faite d'idées. Explorez les débats et les courants qui ont façonné l'Algérie.",
+    ar: "التاريخ ليس وقائع وحسب، هو أفكارٌ أيضًا. استكشف النقاشات والتيارات التي صنعت الجزائر.",
   },
   thinkers: { en: "Thinkers", fr: "Penseurs", ar: "المفكرون" },
   quotes: { en: "Supporting voices", fr: "Voix associées", ar: "أصوات مرافقة" },

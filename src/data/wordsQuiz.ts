@@ -53,9 +53,9 @@ export const wordsQuiz: WordsQuizItem[] = [
     ],
     correctIndex: 0,
     explanation: L(
-      "Yes — written in 1956 during the War of Independence, six years before independence in 1962.",
-      "Oui — écrit en 1956 pendant la guerre d'indépendance, six ans avant l'indépendance de 1962.",
-      "نعم — كُتب سنة 1956 خلال حرب التحرير، أي قبل الاستقلال (1962) بست سنوات.",
+      "Yes, written in 1956 during the War of Independence, six years before independence in 1962.",
+      "Oui, écrit en 1956 pendant la guerre d'indépendance, six ans avant l'indépendance de 1962.",
+      "نعم، كُتب سنة 1956 خلال حرب التحرير، أي قبل الاستقلال (1962) بست سنوات.",
     ),
   },
 
@@ -76,9 +76,9 @@ export const wordsQuiz: WordsQuizItem[] = [
     ],
     correctIndex: 0,
     explanation: L(
-      "Moufdi Zakaria — author of both Kassaman and Iliyadha al-Jaza'ir, an epic of more than 1,000 verses.",
-      "Moufdi Zakaria — auteur de Kassaman et de « Iliyadha al-Jaza'ir », une épopée de plus de 1 000 vers.",
-      "مفدي زكريا — صاحب «قَسَمًا» و«إلياذة الجزائر» المؤلَّفة من أكثر من ألف بيت.",
+      "Moufdi Zakaria, author of both Kassaman and Iliyadha al-Jaza'ir, an epic of more than 1,000 verses.",
+      "Moufdi Zakaria, auteur de Kassaman et de « Iliyadha al-Jaza'ir », une épopée de plus de 1 000 vers.",
+      "مفدي زكريا، صاحب «قَسَمًا» و«إلياذة الجزائر» المؤلَّفة من أكثر من ألف بيت.",
     ),
   },
   {
@@ -95,18 +95,18 @@ export const wordsQuiz: WordsQuizItem[] = [
     ],
     correctIndex: 0,
     explanation: L(
-      "True — more than 1,000 verses recited in 1972 to celebrate ten years of independence.",
-      "Vrai — plus de 1 000 vers récités en 1972 pour célébrer dix ans d'indépendance.",
-      "صحيح — أكثر من ألف بيت أُلقيت سنة 1972 احتفاءً بعشرية الاستقلال.",
+      "True, more than 1,000 verses recited in 1972 to celebrate ten years of independence.",
+      "Vrai, plus de 1 000 vers récités en 1972 pour célébrer dix ans d'indépendance.",
+      "صحيح، أكثر من ألف بيت أُلقيت سنة 1972 احتفاءً بعشرية الاستقلال.",
     ),
   },
   {
     wordId: "iliyadha-aljazair",
     kind: "who-am-i",
     question: L(
-      "I wrote Kassaman and The Algerian Iliad — who am I?",
-      "J'ai écrit Kassaman et L'Iliade algérienne — qui suis-je ?",
-      "كتبتُ «قَسَمًا» و«إلياذة الجزائر» — من أكون؟",
+      "I wrote Kassaman and The Algerian Iliad, who am I?",
+      "J'ai écrit Kassaman et L'Iliade algérienne, qui suis-je ?",
+      "كتبتُ «قَسَمًا» و«إلياذة الجزائر»، من أكون؟",
     ),
     options: [
       L("Moufdi Zakaria", "Moufdi Zakaria", "مفدي زكريا"),
@@ -115,9 +115,9 @@ export const wordsQuiz: WordsQuizItem[] = [
     ],
     correctIndex: 0,
     explanation: L(
-      "Moufdi Zakaria — poet of the Algerian nation, from the anthem to the great epic.",
-      "Moufdi Zakaria — poète de la nation algérienne, de l'hymne à la grande épopée.",
-      "مفدي زكريا — شاعر الأمّة الجزائرية، من النشيد إلى الملحمة الكبرى.",
+      "Moufdi Zakaria, poet of the Algerian nation, from the anthem to the great epic.",
+      "Moufdi Zakaria, poète de la nation algérienne, de l'hymne à la grande épopée.",
+      "مفدي زكريا، شاعر الأمّة الجزائرية، من النشيد إلى الملحمة الكبرى.",
     ),
   },
   {
@@ -157,18 +157,18 @@ export const wordsQuiz: WordsQuizItem[] = [
     ],
     correctIndex: 0,
     explanation: L(
-      "True — his work helped spark the 1980 Berber Spring (Tafsut Imazighen).",
-      "Vrai — son travail contribua au Printemps berbère de 1980 (Tafsut Imazighen).",
-      "صحيح — أسهم عمله في إشعال الربيع الأمازيغي 1980 (تافسوت إيمازيغن).",
+      "True, his work helped spark the 1980 Berber Spring (Tafsut Imazighen).",
+      "Vrai, son travail contribua au Printemps berbère de 1980 (Tafsut Imazighen).",
+      "صحيح، أسهم عمله في إشعال الربيع الأمازيغي 1980 (تافسوت إيمازيغن).",
     ),
   },
   {
     wordId: "fanon-each-generation",
     kind: "who-said",
     question: L(
-      "\"Each generation must discover its mission, fulfill it, or betray it.\" — who?",
-      "« Chaque génération doit découvrir sa mission, l'accomplir ou la trahir. » — qui ?",
-      "«على كلّ جيل أن يكتشف رسالته فيحقّقها أو يخونها» — من؟",
+      "\"Each generation must discover its mission, fulfill it, or betray it.\", who?",
+      "« Chaque génération doit découvrir sa mission, l'accomplir ou la trahir. », qui ?",
+      "«على كلّ جيل أن يكتشف رسالته فيحقّقها أو يخونها»، من؟",
     ),
     options: [
       L("Frantz Fanon", "Frantz Fanon", "فرانز فانون"),
@@ -178,9 +178,9 @@ export const wordsQuiz: WordsQuizItem[] = [
     ],
     correctIndex: 0,
     explanation: L(
-      "Frantz Fanon, in The Wretched of the Earth — written in Algeria during the war of independence.",
-      "Frantz Fanon, dans Les Damnés de la Terre — écrit en Algérie pendant la guerre d'indépendance.",
-      "فرانز فانون في «معذّبو الأرض» — كُتب في الجزائر إبّان حرب التحرير.",
+      "Frantz Fanon, in The Wretched of the Earth, written in Algeria during the war of independence.",
+      "Frantz Fanon, dans Les Damnés de la Terre, écrit en Algérie pendant la guerre d'indépendance.",
+      "فرانز فانون في «معذّبو الأرض»، كُتب في الجزائر إبّان حرب التحرير.",
     ),
   },
   {
@@ -199,18 +199,18 @@ export const wordsQuiz: WordsQuizItem[] = [
     ],
     correctIndex: 0,
     explanation: L(
-      "Amar Imache — early nationalist who rejected personality cults and championed a plural, democratic Algeria.",
-      "Amar Imache — militant nationaliste qui rejetait le culte du chef et défendait une Algérie plurielle et démocratique.",
-      "عمار إيماش — مناضل وطني مبكر رفض عبادة الأشخاص ودعا إلى جزائر تعددية وديمقراطية.",
+      "Amar Imache, early nationalist who rejected personality cults and championed a plural, democratic Algeria.",
+      "Amar Imache, militant nationaliste qui rejetait le culte du chef et défendait une Algérie plurielle et démocratique.",
+      "عمار إيماش، مناضل وطني مبكر رفض عبادة الأشخاص ودعا إلى جزائر تعددية وديمقراطية.",
     ),
   },
   {
     wordId: "imache-ideas",
     kind: "who-am-i",
     question: L(
-      "\"I believed people should follow ideas, not individuals.\" — who am I?",
-      "« Je pensais qu'il fallait suivre les idées, et non les individus. » — qui suis-je ?",
-      "«آمنتُ بأن على الناس اتباع الأفكار لا الأشخاص» — من أكون؟",
+      "\"I believed people should follow ideas, not individuals.\", who am I?",
+      "« Je pensais qu'il fallait suivre les idées, et non les individus. », qui suis-je ?",
+      "«آمنتُ بأن على الناس اتباع الأفكار لا الأشخاص»، من أكون؟",
     ),
     options: [
       L("Amar Imache", "Amar Imache", "عمار إيماش"),
@@ -219,9 +219,9 @@ export const wordsQuiz: WordsQuizItem[] = [
     ],
     correctIndex: 0,
     explanation: L(
-      "Amar Imache — a Kabyle nationalist who advocated for a plural, idea-driven Algeria within the Étoile nord-africaine.",
-      "Amar Imache — nationaliste kabyle qui défendait une Algérie plurielle, fondée sur les idées, au sein de l'Étoile nord-africaine.",
-      "عمار إيماش — مناضل قبائلي دافع عن جزائر تعددية قائمة على الأفكار ضمن نجم شمال أفريقيا.",
+      "Amar Imache, a Kabyle nationalist who advocated for a plural, idea-driven Algeria within the Étoile nord-africaine.",
+      "Amar Imache, nationaliste kabyle qui défendait une Algérie plurielle, fondée sur les idées, au sein de l'Étoile nord-africaine.",
+      "عمار إيماش، مناضل قبائلي دافع عن جزائر تعددية قائمة على الأفكار ضمن نجم شمال أفريقيا.",
     ),
   },
   {
@@ -238,9 +238,9 @@ export const wordsQuiz: WordsQuizItem[] = [
     ],
     correctIndex: 1,
     explanation: L(
-      "False — he rejected personality cults and urged people to follow ideas rather than individuals.",
-      "Faux — il rejetait le culte du chef et appelait à suivre les idées plutôt que les individus.",
-      "خطأ — رفض عبادة الأشخاص ودعا إلى اتباع الأفكار بدل الأفراد.",
+      "False, he rejected personality cults and urged people to follow ideas rather than individuals.",
+      "Faux, il rejetait le culte du chef et appelait à suivre les idées plutôt que les individus.",
+      "خطأ، رفض عبادة الأشخاص ودعا إلى اتباع الأفكار بدل الأفراد.",
     ),
   },
   {
@@ -259,9 +259,9 @@ export const wordsQuiz: WordsQuizItem[] = [
     ],
     correctIndex: 0,
     explanation: L(
-      "Malek Bennabi — a central thesis of his work on civilization and renewal.",
-      "Malek Bennabi — thèse centrale de son œuvre sur la civilisation et le renouveau.",
-      "مالك بن نبي — أطروحة محورية في فكره عن الحضارة والنهضة.",
+      "Malek Bennabi, a central thesis of his work on civilization and renewal.",
+      "Malek Bennabi, thèse centrale de son œuvre sur la civilisation et le renouveau.",
+      "مالك بن نبي، أطروحة محورية في فكره عن الحضارة والنهضة.",
     ),
   },
   {
@@ -278,9 +278,9 @@ export const wordsQuiz: WordsQuizItem[] = [
     ],
     correctIndex: 0,
     explanation: L(
-      "True — for Bennabi, ideas, ethics and culture are the inner conditions of any civilizational renewal.",
-      "Vrai — pour Bennabi, idées, éthique et culture sont les conditions intérieures de tout renouveau civilisationnel.",
-      "صحيح — يرى بن نبي أن الأفكار والأخلاق والثقافة هي الشروط الداخلية لأيّ نهضة حضارية.",
+      "True, for Bennabi, ideas, ethics and culture are the inner conditions of any civilizational renewal.",
+      "Vrai, pour Bennabi, idées, éthique et culture sont les conditions intérieures de tout renouveau civilisationnel.",
+      "صحيح، يرى بن نبي أن الأفكار والأخلاق والثقافة هي الشروط الداخلية لأيّ نهضة حضارية.",
     ),
   },
   {
@@ -299,18 +299,18 @@ export const wordsQuiz: WordsQuizItem[] = [
     ],
     correctIndex: 0,
     explanation: L(
-      "Abdelhamid Ben Badis — a founding formula of the Association of Algerian Muslim Ulama (1931).",
-      "Abdelhamid Ben Badis — formule fondatrice de l'Association des oulémas musulmans algériens (1931).",
-      "عبد الحميد بن باديس — صيغة تأسيسية لجمعية العلماء المسلمين الجزائريين (1931).",
+      "Abdelhamid Ben Badis, a founding formula of the Association of Algerian Muslim Ulama (1931).",
+      "Abdelhamid Ben Badis, formule fondatrice de l'Association des oulémas musulmans algériens (1931).",
+      "عبد الحميد بن باديس، صيغة تأسيسية لجمعية العلماء المسلمين الجزائريين (1931).",
     ),
   },
   {
     wordId: "ben-badis-identity",
     kind: "who-am-i",
     question: L(
-      "I founded the Association of Algerian Muslim Ulama in 1931 — who am I?",
-      "J'ai fondé l'Association des oulémas musulmans algériens en 1931 — qui suis-je ?",
-      "أسّستُ جمعية العلماء المسلمين الجزائريين سنة 1931 — من أكون؟",
+      "I founded the Association of Algerian Muslim Ulama in 1931, who am I?",
+      "J'ai fondé l'Association des oulémas musulmans algériens en 1931, qui suis-je ?",
+      "أسّستُ جمعية العلماء المسلمين الجزائريين سنة 1931، من أكون؟",
     ),
     options: [
       L("Abdelhamid Ben Badis", "Abdelhamid Ben Badis", "عبد الحميد بن باديس"),
@@ -319,9 +319,9 @@ export const wordsQuiz: WordsQuizItem[] = [
     ],
     correctIndex: 0,
     explanation: L(
-      "Ben Badis — leader of the Algerian reformist movement and shaper of a shared cultural identity.",
-      "Ben Badis — chef du mouvement réformiste algérien et artisan d'une identité culturelle partagée.",
-      "ابن باديس — زعيم الحركة الإصلاحية الجزائرية وصانع هوية ثقافية مشتركة.",
+      "Ben Badis, leader of the Algerian reformist movement and shaper of a shared cultural identity.",
+      "Ben Badis, chef du mouvement réformiste algérien et artisan d'une identité culturelle partagée.",
+      "ابن باديس، زعيم الحركة الإصلاحية الجزائرية وصانع هوية ثقافية مشتركة.",
     ),
   },
   {
@@ -338,9 +338,9 @@ export const wordsQuiz: WordsQuizItem[] = [
     ],
     correctIndex: 0,
     explanation: L(
-      "True — \"What is not transmitted is lost\" guided his life's work collecting Tamazight poetry and oral knowledge.",
-      "Vrai — « Ce qui n'est pas transmis est perdu » a guidé toute son œuvre de collecte de la poésie et du savoir oral tamazights.",
-      "صحيح — «ما لا يُنقَل يُفقَد» قاد عمله في جمع الشعر والمعارف الشفهية الأمازيغية.",
+      "True, \"What is not transmitted is lost\" guided his life's work collecting Tamazight poetry and oral knowledge.",
+      "Vrai, « Ce qui n'est pas transmis est perdu » a guidé toute son œuvre de collecte de la poésie et du savoir oral tamazights.",
+      "صحيح، «ما لا يُنقَل يُفقَد» قاد عمله في جمع الشعر والمعارف الشفهية الأمازيغية.",
     ),
   },
 
@@ -349,9 +349,9 @@ export const wordsQuiz: WordsQuizItem[] = [
     wordId: "ait-menguellet-words",
     kind: "who-am-i",
     question: L(
-      "I am a Kabyle poet-singer whose songs became a quiet form of resistance — who am I?",
-      "Je suis un poète-chanteur kabyle dont les chansons sont devenues une forme tranquille de résistance — qui suis-je ?",
-      "أنا شاعر ومغنٍّ قبائلي تحوّلت أغانيه إلى مقاومة هادئة — من أكون؟",
+      "I am a Kabyle poet-singer whose songs became a quiet form of resistance, who am I?",
+      "Je suis un poète-chanteur kabyle dont les chansons sont devenues une forme tranquille de résistance, qui suis-je ?",
+      "أنا شاعر ومغنٍّ قبائلي تحوّلت أغانيه إلى مقاومة هادئة، من أكون؟",
     ),
     options: [
       L("Idir", "Idir", "إيدير"),
@@ -360,9 +360,9 @@ export const wordsQuiz: WordsQuizItem[] = [
     ],
     correctIndex: 2,
     explanation: L(
-      "Lounis Aït Menguellet — decades of Kabyle song turning poetry into steady, quiet resistance.",
-      "Lounis Aït Menguellet — des décennies de chanson kabyle, la poésie devenue résistance tranquille.",
-      "لونيس آيت منقلات — عقود من الأغنية القبائلية حوّلت الشعر إلى مقاومة هادئة وراسخة.",
+      "Lounis Aït Menguellet, decades of Kabyle song turning poetry into steady, quiet resistance.",
+      "Lounis Aït Menguellet, des décennies de chanson kabyle, la poésie devenue résistance tranquille.",
+      "لونيس آيت منقلات، عقود من الأغنية القبائلية حوّلت الشعر إلى مقاومة هادئة وراسخة.",
     ),
   },
   {
@@ -379,9 +379,9 @@ export const wordsQuiz: WordsQuizItem[] = [
     ],
     correctIndex: 0,
     explanation: L(
-      "True — he was assassinated in 1998, becoming a symbol of resistance through song.",
-      "Vrai — assassiné en 1998, il est devenu un symbole de résistance par la chanson.",
-      "صحيح — اغتيل سنة 1998 وأصبح رمزًا للمقاومة عبر الأغنية.",
+      "True, he was assassinated in 1998, becoming a symbol of resistance through song.",
+      "Vrai, assassiné en 1998, il est devenu un symbole de résistance par la chanson.",
+      "صحيح، اغتيل سنة 1998 وأصبح رمزًا للمقاومة عبر الأغنية.",
     ),
   },
   {
@@ -400,9 +400,9 @@ export const wordsQuiz: WordsQuizItem[] = [
     ],
     correctIndex: 0,
     explanation: L(
-      "Idir released A Vava Inouva in 1976 — a Kabyle lullaby that became a worldwide hit.",
-      "Idir a sorti A Vava Inouva en 1976 — une berceuse kabyle devenue un succès mondial.",
-      "أصدر إيدير «أ فافا إينوفا» سنة 1976 — تهويدة قبائلية تحوّلت إلى نجاح عالمي.",
+      "Idir released A Vava Inouva in 1976, a Kabyle lullaby that became a worldwide hit.",
+      "Idir a sorti A Vava Inouva en 1976, une berceuse kabyle devenue un succès mondial.",
+      "أصدر إيدير «أ فافا إينوفا» سنة 1976، تهويدة قبائلية تحوّلت إلى نجاح عالمي.",
     ),
   },
 ];

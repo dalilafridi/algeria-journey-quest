@@ -24,7 +24,7 @@ export const lessons: Lesson[] = [
     id: "sheshonq",
     emoji: "👑",
     topic: L("Ancient kings", "Rois antiques", "الملوك القدماء"),
-    title: L("Sheshonq I — A Berber Pharaoh", "Sheshonq Ier — Un pharaon berbère", "شيشنق الأول — فرعون أمازيغي"),
+    title: L("Sheshonq I, A Berber Pharaoh", "Sheshonq Ier, Un pharaon berbère", "شيشنق الأول، فرعون أمازيغي"),
     facts: [
       {
         simple: L(
@@ -73,7 +73,7 @@ export const lessons: Lesson[] = [
     id: "numidia",
     emoji: "🐎",
     topic: L("Ancient kingdoms", "Royaumes antiques", "ممالك قديمة"),
-    title: L("Numidia — A Kingdom of Horsemen", "Numidie — Un royaume de cavaliers", "نوميديا — مملكة الفرسان"),
+    title: L("Numidia, A Kingdom of Horsemen", "Numidie, Un royaume de cavaliers", "نوميديا، مملكة الفرسان"),
     facts: [
       {
         simple: L(
@@ -123,7 +123,7 @@ export const lessons: Lesson[] = [
     id: "abane-ramdane",
     emoji: "🧠",
     topic: L("War of Independence", "Guerre d'indépendance", "حرب الاستقلال"),
-    title: L("Abane Ramdane — The Architect", "Abane Ramdane — L'architecte", "عبان رمضان — المهندس"),
+    title: L("Abane Ramdane, The Architect", "Abane Ramdane, L'architecte", "عبان رمضان، المهندس"),
     facts: [
       {
         simple: L(
@@ -132,8 +132,8 @@ export const lessons: Lesson[] = [
           "نظّم عبان رمضان الثورة الجزائرية كمهندسٍ دقيق."
         ),
         deeper: L(
-          "He believed the revolution needed clear politics, not only fighters — and insisted on civilian leadership over the military.",
-          "Pour lui, la révolution avait besoin d'une vision politique claire, pas seulement de combattants — et le pouvoir civil devait primer sur le militaire.",
+          "He believed the revolution needed clear politics, not only fighters and insisted on civilian leadership over the military.",
+          "Pour lui, la révolution avait besoin d'une vision politique claire, pas seulement de combattants et le pouvoir civil devait primer sur le militaire.",
           "كان يؤمن بأن الثورة تحتاج إلى رؤية سياسية واضحة لا إلى مقاتلين فقط، وأصرّ على أولوية القيادة المدنية على العسكرية."
         ),
       },
@@ -157,8 +157,8 @@ export const lessons: Lesson[] = [
         "لولا رؤيته، لربما بقيت الثورة مشتّتة."
       ),
       deeper: L(
-        "He turned a popular uprising into an organized national project — a model still studied today.",
-        "Il transforma un soulèvement populaire en projet national organisé — un modèle encore étudié aujourd'hui.",
+        "He turned a popular uprising into an organized national project, a model still studied today.",
+        "Il transforma un soulèvement populaire en projet national organisé, un modèle encore étudié aujourd'hui.",
         "حوّل انتفاضة شعبية إلى مشروع وطني منظّم، ولا يزال نموذجه يُدرَّس حتى اليوم."
       ),
     },
@@ -173,7 +173,7 @@ export const lessons: Lesson[] = [
     id: "tafsut",
     emoji: "🌱",
     topic: L("Memory & identity", "Mémoire & identité", "ذاكرة وهوية"),
-    title: L("Tafsut Imazighen — The Berber Spring", "Tafsut Imazighen — Le Printemps berbère", "تافسوت إيمازيغن — الربيع الأمازيغي"),
+    title: L("Tafsut Imazighen, The Berber Spring", "Tafsut Imazighen, Le Printemps berbère", "تافسوت إيمازيغن، الربيع الأمازيغي"),
     facts: [
       {
         simple: L(
@@ -182,8 +182,8 @@ export const lessons: Lesson[] = [
           "في أفريل 1980، طالب طلبة ومواطنون في القبائل بسلميةٍ بالاعتراف باللغة الأمازيغية."
         ),
         deeper: L(
-          "It began when a lecture by Mouloud Mammeri on ancient Berber poetry was cancelled — sparking weeks of strikes and protests for cultural rights.",
-          "Tout commença par l'annulation d'une conférence de Mouloud Mammeri sur la poésie berbère ancienne — déclenchant des semaines de grèves et de manifestations pour les droits culturels.",
+          "It began when a lecture by Mouloud Mammeri on ancient Berber poetry was cancelled, sparking weeks of strikes and protests for cultural rights.",
+          "Tout commença par l'annulation d'une conférence de Mouloud Mammeri sur la poésie berbère ancienne, déclenchant des semaines de grèves et de manifestations pour les droits culturels.",
           "بدأ كلّ شيء بإلغاء محاضرة لمولود معمري عن الشعر الأمازيغي القديم، مما أشعل أسابيع من الإضرابات والمظاهرات من أجل الحقوق الثقافية."
         ),
       },
@@ -222,7 +222,7 @@ export const lessons: Lesson[] = [
     id: "black-decade",
     emoji: "🕊️",
     topic: L("Modern Algeria", "Algérie moderne", "الجزائر الحديثة"),
-    title: L("The Black Decade — A Painful Memory", "La Décennie noire — Une mémoire douloureuse", "العشرية السوداء — ذاكرة مؤلمة"),
+    title: L("The Black Decade, A Painful Memory", "La Décennie noire, Une mémoire douloureuse", "العشرية السوداء، ذاكرة مؤلمة"),
     facts: [
       {
         simple: L(
@@ -271,7 +271,7 @@ export const lessons: Lesson[] = [
     id: "ottoman-algeria",
     emoji: "⚓",
     topic: L("Ottoman Era", "Époque ottomane", "العهد العثماني"),
-    title: L("Ottoman Algeria — Regency of Algiers", "L'Algérie ottomane — Régence d'Alger", "الجزائر العثمانية — إيالة الجزائر"),
+    title: L("Ottoman Algeria, Regency of Algiers", "L'Algérie ottomane, Régence d'Alger", "الجزائر العثمانية، إيالة الجزائر"),
     facts: [
       {
         simple: L(
@@ -287,7 +287,7 @@ export const lessons: Lesson[] = [
       },
       {
         simple: L(
-          "Algiers signed treaties with European countries — like a real state.",
+          "Algiers signed treaties with European countries, like a real state.",
           "Alger signait des traités avec des pays européens, comme un véritable État.",
           "كانت الجزائر توقّع معاهدات مع دول أوروبية كأي دولةٍ حقيقية."
         ),

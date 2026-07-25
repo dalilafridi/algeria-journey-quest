@@ -22,9 +22,9 @@ const TRADITIONS: Tradition[] = [
     emoji: "🫖",
     title: L("The Three Glasses of Tea", "Les trois verres de thé", "أكواب الشاي الثلاثة"),
     body: L(
-      "In the Sahara, tea is poured three times — bitter as life, gentle as love, sweet as death. To share it is to share time itself.",
-      "Au Sahara, le thé est servi trois fois — amer comme la vie, doux comme l'amour, sucré comme la mort. Le partager, c'est partager le temps lui-même.",
-      "في الصحراء، يُسكب الشاي ثلاث مرات — مرّ كالحياة، لطيف كالحب، حلو كالممات. ومشاركته مشاركة للزمن ذاته.",
+      "In the Sahara, tea is poured three times, bitter as life, gentle as love, sweet as death. To share it is to share time itself.",
+      "Au Sahara, le thé est servi trois fois, amer comme la vie, doux comme l'amour, sucré comme la mort. Le partager, c'est partager le temps lui-même.",
+      "في الصحراء، يُسكب الشاي ثلاث مرات، مرّ كالحياة، لطيف كالحب، حلو كالممات. ومشاركته مشاركة للزمن ذاته.",
     ),
   },
   {
@@ -40,36 +40,36 @@ const TRADITIONS: Tradition[] = [
     emoji: "🕌",
     title: L("Souk Days", "Les jours de souk", "أيام السوق"),
     body: L(
-      "Weekly markets keep towns breathing. Spices, wool, olives, news, gossip and gossip about news — the souk is Algeria's oldest social network.",
-      "Les marchés hebdomadaires font respirer les villes. Épices, laine, olives, nouvelles, rumeurs et rumeurs sur les nouvelles — le souk est le plus ancien réseau social d'Algérie.",
-      "تحفظ الأسواق الأسبوعية أنفاس المدن. توابل وصوف وزيتون وأخبار وقيل وقال حول الأخبار — السوق هو أقدم شبكة اجتماعية في الجزائر.",
+      "Weekly markets keep towns breathing. Spices, wool, olives, news, gossip and gossip about news, the souk is Algeria's oldest social network.",
+      "Les marchés hebdomadaires font respirer les villes. Épices, laine, olives, nouvelles, rumeurs et rumeurs sur les nouvelles, le souk est le plus ancien réseau social d'Algérie.",
+      "تحفظ الأسواق الأسبوعية أنفاس المدن. توابل وصوف وزيتون وأخبار وقيل وقال حول الأخبار، السوق هو أقدم شبكة اجتماعية في الجزائر.",
     ),
   },
   {
     emoji: "💒",
     title: L("Seven Nights of Wedding", "Sept nuits de noces", "سبع ليال للعرس"),
     body: L(
-      "Traditional weddings unfold over days — henna, processions, ululations, embroidered dresses passed between generations. The ceremony is a slow act of belonging.",
-      "Les mariages traditionnels s'étirent sur plusieurs jours — henné, cortèges, youyous, robes brodées transmises de génération en génération. La cérémonie est un lent acte d'appartenance.",
-      "تمتدّ الأعراس التقليدية أيامًا — حنّاء وزفّة وزغاريد وفساتين مطرّزة تتوارث من جيل إلى جيل. والعرس فعل انتماء بطيء.",
+      "Traditional weddings unfold over days, henna, processions, ululations, embroidered dresses passed between generations. The ceremony is a slow act of belonging.",
+      "Les mariages traditionnels s'étirent sur plusieurs jours, henné, cortèges, youyous, robes brodées transmises de génération en génération. La cérémonie est un lent acte d'appartenance.",
+      "تمتدّ الأعراس التقليدية أيامًا، حنّاء وزفّة وزغاريد وفساتين مطرّزة تتوارث من جيل إلى جيل. والعرس فعل انتماء بطيء.",
     ),
   },
   {
     emoji: "🎙️",
     title: L("The Storyteller's Circle", "Le cercle du conteur", "حلقة الحكواتي"),
     body: L(
-      "Before screens, there was the halqa — a circle in a square where a storyteller summoned saints, sultans and tricksters from memory alone.",
-      "Avant les écrans, il y avait la halqa — un cercle sur une place où un conteur convoquait saints, sultans et filous de mémoire seule.",
-      "قبل الشاشات كانت الحلقة — دائرة في ساحة يستحضر فيها الحكواتي الأولياء والسلاطين والمحتالين من الذاكرة وحدها.",
+      "Before screens, there was the halqa, a circle in a square where a storyteller summoned saints, sultans and tricksters from memory alone.",
+      "Avant les écrans, il y avait la halqa, un cercle sur une place où un conteur convoquait saints, sultans et filous de mémoire seule.",
+      "قبل الشاشات كانت الحلقة، دائرة في ساحة يستحضر فيها الحكواتي الأولياء والسلاطين والمحتالين من الذاكرة وحدها.",
     ),
   },
   {
     emoji: "🧶",
     title: L("Hands That Remember", "Les mains qui se souviennent", "أيادٍ تتذكّر"),
     body: L(
-      "Berber rugs, Constantine embroidery, copper from the Casbah — every craft is a written language whose letters are knots, threads and hammer-strikes.",
-      "Tapis berbères, broderies constantinoises, cuivre de la Casbah — chaque artisanat est une langue écrite dont les lettres sont nœuds, fils et coups de marteau.",
-      "زرابي أمازيغية وتطريز قسنطيني ونحاس القصبة — كل حرفة لغة مكتوبة حروفها عُقد وخيوط وضربات مطرقة.",
+      "Berber rugs, Constantine embroidery, copper from the Casbah, every craft is a written language whose letters are knots, threads and hammer-strikes.",
+      "Tapis berbères, broderies constantinoises, cuivre de la Casbah, chaque artisanat est une langue écrite dont les lettres sont nœuds, fils et coups de marteau.",
+      "زرابي أمازيغية وتطريز قسنطيني ونحاس القصبة، كل حرفة لغة مكتوبة حروفها عُقد وخيوط وضربات مطرقة.",
     ),
   },
 ];
@@ -87,19 +87,19 @@ const MUSIC: MusicTradition[] = [
     title: L("Andalusian Nuba", "Nouba andalouse", "النوبة الأندلسية"),
     region: L("Algiers · Tlemcen · Constantine", "Alger · Tlemcen · Constantine", "الجزائر · تلمسان · قسنطينة"),
     body: L(
-      "Carried from al-Andalus by exiled Muslims and Jews, the Nuba is a courtly suite of moods — a Mediterranean memory still rehearsed every week in city conservatories.",
-      "Apportée d'al-Andalus par les exilés musulmans et juifs, la Nouba est une suite raffinée de modes — une mémoire méditerranéenne encore répétée chaque semaine dans les conservatoires.",
-      "حُملت من الأندلس مع المنفيين المسلمين واليهود، النوبة سلسلة مقامية راقية — ذاكرة متوسطية لا تزال تُعزف كل أسبوع في معاهد المدن.",
+      "Carried from al-Andalus by exiled Muslims and Jews, the Nuba is a courtly suite of moods, a Mediterranean memory still rehearsed every week in city conservatories.",
+      "Apportée d'al-Andalus par les exilés musulmans et juifs, la Nouba est une suite raffinée de modes, une mémoire méditerranéenne encore répétée chaque semaine dans les conservatoires.",
+      "حُملت من الأندلس مع المنفيين المسلمين واليهود، النوبة سلسلة مقامية راقية، ذاكرة متوسطية لا تزال تُعزف كل أسبوع في معاهد المدن.",
     ),
   },
   {
     emoji: "🎤",
-    title: L("Raï — Voice of the West", "Raï — la voix de l'Ouest", "الرّاي — صوت الغرب"),
+    title: L("Raï, Voice of the West", "Raï, la voix de l'Ouest", "الرّاي، صوت الغرب"),
     region: L("Oran & the western coast", "Oran et la côte ouest", "وهران والساحل الغربي"),
     body: L(
-      "Born in the cabarets of Oran, Raï turned everyday pain — exile, love, defiance — into pulse. Cheikha Rimitti and Khaled gave Algeria a sound the world danced to.",
-      "Né dans les cabarets d'Oran, le Raï a transformé la douleur quotidienne — exil, amour, défi — en pulsation. Cheikha Rimitti et Khaled ont donné à l'Algérie un son que le monde a dansé.",
-      "وُلد الرّاي في حانات وهران، فحوّل ألم اليومي — الغربة، الحب، التحدي — إلى نبض. منحت الشيخة الريميتي وخالد الجزائرَ صوتًا رقص عليه العالم.",
+      "Born in the cabarets of Oran, Raï turned everyday pain, exile, love, defiance, into pulse. Cheikha Rimitti and Khaled gave Algeria a sound the world danced to.",
+      "Né dans les cabarets d'Oran, le Raï a transformé la douleur quotidienne, exil, amour, défi, en pulsation. Cheikha Rimitti et Khaled ont donné à l'Algérie un son que le monde a dansé.",
+      "وُلد الرّاي في حانات وهران، فحوّل ألم اليومي، الغربة، الحب، التحدي، إلى نبض. منحت الشيخة الريميتي وخالد الجزائرَ صوتًا رقص عليه العالم.",
     ),
   },
   {
@@ -107,9 +107,9 @@ const MUSIC: MusicTradition[] = [
     title: L("Chaabi of the Casbah", "Chaâbi de la Casbah", "الشعبي في القصبة"),
     region: L("Algiers", "Alger", "الجزائر العاصمة"),
     body: L(
-      "El Hadj M'Hamed El Anka took popular poetry and tuned it to mandole and tambourine. Chaabi is the long evening of an Algerian café — patient, witty, deep.",
-      "El Hadj M'Hamed El Anka a accordé la poésie populaire au mandole et au tambourin. Le Chaâbi, c'est la longue soirée d'un café algérien — patient, spirituel, profond.",
-      "أخذ الحاج محمد العنقا الشعر الشعبي وضبطه على الماندول والدف. الشعبي هو مساء طويل في مقهى جزائري — صبور، ذكي، عميق.",
+      "El Hadj M'Hamed El Anka took popular poetry and tuned it to mandole and tambourine. Chaabi is the long evening of an Algerian café, patient, witty, deep.",
+      "El Hadj M'Hamed El Anka a accordé la poésie populaire au mandole et au tambourin. Le Chaâbi, c'est la longue soirée d'un café algérien, patient, spirituel, profond.",
+      "أخذ الحاج محمد العنقا الشعر الشعبي وضبطه على الماندول والدف. الشعبي هو مساء طويل في مقهى جزائري، صبور، ذكي، عميق.",
     ),
   },
   {
@@ -117,9 +117,9 @@ const MUSIC: MusicTradition[] = [
     title: L("Tuareg Tinde & Imzad", "Tinde et Imzad touaregs", "تندي وإمزاد الطوارق"),
     region: L("Hoggar & Tassili", "Hoggar et Tassili", "الهقار وطاسيلي"),
     body: L(
-      "The imzad — a one-string violin played only by women — and the tinde drum carry desert nights into history. Music here is conversation between dunes and stars.",
-      "L'imzad — vièle à une corde jouée seulement par les femmes — et le tambour tinde portent les nuits du désert dans l'histoire. Ici, la musique dialogue avec les dunes et les étoiles.",
-      "الإمزاد — كمان بوتر واحد لا تعزفه إلا النساء — وطبل التندي يحملان ليالي الصحراء إلى التاريخ. الموسيقى هنا حوار بين الكثبان والنجوم.",
+      "The imzad, a one-string violin played only by women and the tinde drum carry desert nights into history. Music here is conversation between dunes and stars.",
+      "L'imzad, vièle à une corde jouée seulement par les femmes et le tambour tinde portent les nuits du désert dans l'histoire. Ici, la musique dialogue avec les dunes et les étoiles.",
+      "الإمزاد، كمان بوتر واحد لا تعزفه إلا النساء، وطبل التندي يحملان ليالي الصحراء إلى التاريخ. الموسيقى هنا حوار بين الكثبان والنجوم.",
     ),
   },
   {
@@ -141,27 +141,27 @@ const CUISINE_RITUALS: Ritual[] = [
     emoji: "🍲",
     title: L("Couscous on Friday", "Le couscous du vendredi", "كسكس الجمعة"),
     body: L(
-      "Friday couscous gathers the family in one motion — rolling semolina, stacking the steamer, waiting. The dish is a calendar more than a meal.",
-      "Le couscous du vendredi rassemble la famille en un seul geste — rouler la semoule, dresser le couscoussier, attendre. Le plat est plus un calendrier qu'un repas.",
-      "كسكس الجمعة يجمع العائلة في حركة واحدة — فتل السميد، تركيب الكسكاس، الانتظار. الطبق تقويم أكثر منه وجبة.",
+      "Friday couscous gathers the family in one motion, rolling semolina, stacking the steamer, waiting. The dish is a calendar more than a meal.",
+      "Le couscous du vendredi rassemble la famille en un seul geste, rouler la semoule, dresser le couscoussier, attendre. Le plat est plus un calendrier qu'un repas.",
+      "كسكس الجمعة يجمع العائلة في حركة واحدة، فتل السميد، تركيب الكسكاس، الانتظار. الطبق تقويم أكثر منه وجبة.",
     ),
   },
   {
     emoji: "🌴",
     title: L("Dates of the Oasis", "Les dattes de l'oasis", "تمر الواحة"),
     body: L(
-      "Deglet Nour is the 'finger of light' — fruit of three generations of patience. To break a fast with a date is to taste the desert's restraint.",
-      "Deglet Nour, le « doigt de lumière » — fruit de trois générations de patience. Rompre le jeûne avec une datte, c'est goûter la retenue du désert.",
-      "دقلة نور هي «إصبع النور» — ثمرة صبر ثلاثة أجيال. أن تفطر على تمرة هو أن تتذوّق صبر الصحراء.",
+      "Deglet Nour is the 'finger of light', fruit of three generations of patience. To break a fast with a date is to taste the desert's restraint.",
+      "Deglet Nour, le « doigt de lumière », fruit de trois générations de patience. Rompre le jeûne avec une datte, c'est goûter la retenue du désert.",
+      "دقلة نور هي «إصبع النور»، ثمرة صبر ثلاثة أجيال. أن تفطر على تمرة هو أن تتذوّق صبر الصحراء.",
     ),
   },
   {
     emoji: "🌙",
     title: L("Ramadan Evenings", "Les soirées du Ramadan", "ليالي رمضان"),
     body: L(
-      "Streets quiet at dusk, then bloom — chorba steaming, lanterns up, neighbours louder than usual. Ramadan turns the country into one long shared table.",
-      "Les rues se taisent au crépuscule, puis fleurissent — chorba fumante, lanternes allumées, voisins plus bruyants qu'à l'ordinaire. Le Ramadan fait du pays une longue table partagée.",
-      "تهدأ الشوارع عند الغروب ثم تتفتّح — شربة تتصاعد بخارها، فوانيس مضاءة، جيران أعلى صوتًا من المعتاد. يحوّل رمضان البلاد إلى مائدة طويلة مشتركة.",
+      "Streets quiet at dusk, then bloom, chorba steaming, lanterns up, neighbours louder than usual. Ramadan turns the country into one long shared table.",
+      "Les rues se taisent au crépuscule, puis fleurissent, chorba fumante, lanternes allumées, voisins plus bruyants qu'à l'ordinaire. Le Ramadan fait du pays une longue table partagée.",
+      "تهدأ الشوارع عند الغروب ثم تتفتّح، شربة تتصاعد بخارها، فوانيس مضاءة، جيران أعلى صوتًا من المعتاد. يحوّل رمضان البلاد إلى مائدة طويلة مشتركة.",
     ),
   },
   {
@@ -177,9 +177,9 @@ const CUISINE_RITUALS: Ritual[] = [
     emoji: "🥖",
     title: L("Bread Is Sacred", "Le pain est sacré", "الخبز مقدّس"),
     body: L(
-      "Kesra, matlouε, baguette française — a fallen crumb is picked up and kissed. Bread carries a debt to land, hands, and the women who shaped both.",
-      "Kesra, matlouε, baguette française — une miette tombée se ramasse et s'embrasse. Le pain porte une dette envers la terre, les mains et les femmes qui ont façonné les deux.",
-      "كسرة، مطلوع، بغات فرنسية — كسرة سقطت تُلتقط وتُقبَّل. الخبز يحمل دينًا للأرض وللأيدي وللنساء اللواتي شكّلتهما.",
+      "Kesra, matlouε, baguette française, a fallen crumb is picked up and kissed. Bread carries a debt to land, hands, and the women who shaped both.",
+      "Kesra, matlouε, baguette française, une miette tombée se ramasse et s'embrasse. Le pain porte une dette envers la terre, les mains et les femmes qui ont façonné les deux.",
+      "كسرة، مطلوع، بغات فرنسية، كسرة سقطت تُلتقط وتُقبَّل. الخبز يحمل دينًا للأرض وللأيدي وللنساء اللواتي شكّلتهما.",
     ),
   },
 ];
@@ -189,8 +189,8 @@ type Word = { quote: LocalizedString; source: LocalizedString };
 const WORDS: Word[] = [
   {
     quote: L(
-      "Awal d wagur — d uchedhad af tudert.",
-      "« La parole est lune — elle veille sur la vie. »",
+      "Awal d wagur, d uchedhad af tudert.",
+      "« La parole est lune, elle veille sur la vie. »",
       "«الكلمة قمر يسهر على الحياة.»",
     ),
     source: L("Kabyle proverb", "Proverbe kabyle", "مثل قبائلي"),
@@ -228,36 +228,36 @@ const ARCHITECTURE: Place[] = [
     emoji: "🏛️",
     title: L("The Casbah of Algiers", "La Casbah d'Alger", "قصبة الجزائر"),
     body: L(
-      "A vertical city of white cubes spilling toward the sea. Ottoman palaces, secret alleys, courtyards turned inward — a fortress of intimacy.",
-      "Une ville verticale de cubes blancs versés vers la mer. Palais ottomans, ruelles secrètes, patios tournés vers l'intérieur — une forteresse d'intimité.",
-      "مدينة عمودية من مكعّبات بيضاء تنحدر نحو البحر. قصور عثمانية وأزقة سرية وأفنية مفتوحة على الداخل — حصن للحميمية.",
+      "A vertical city of white cubes spilling toward the sea. Ottoman palaces, secret alleys, courtyards turned inward, a fortress of intimacy.",
+      "Une ville verticale de cubes blancs versés vers la mer. Palais ottomans, ruelles secrètes, patios tournés vers l'intérieur, une forteresse d'intimité.",
+      "مدينة عمودية من مكعّبات بيضاء تنحدر نحو البحر. قصور عثمانية وأزقة سرية وأفنية مفتوحة على الداخل، حصن للحميمية.",
     ),
   },
   {
     emoji: "🏯",
     title: L("Ksour of the Sahara", "Les ksour du Sahara", "قصور الصحراء"),
     body: L(
-      "Earth fortresses raised against the dunes — Timimoun, Beni Isguen, Taghit. Walls breathe heat by day and hold the cold of night.",
-      "Forteresses de terre dressées contre les dunes — Timimoun, Beni Isguen, Taghit. Les murs respirent la chaleur le jour et gardent la fraîcheur de la nuit.",
-      "قصور من طين تنتصب أمام الكثبان — تيميمون، بني يزقن، تاغيت. جدران تتنفّس حرارة النهار وتحفظ برودة الليل.",
+      "Earth fortresses raised against the dunes, Timimoun, Beni Isguen, Taghit. Walls breathe heat by day and hold the cold of night.",
+      "Forteresses de terre dressées contre les dunes, Timimoun, Beni Isguen, Taghit. Les murs respirent la chaleur le jour et gardent la fraîcheur de la nuit.",
+      "قصور من طين تنتصب أمام الكثبان، تيميمون، بني يزقن، تاغيت. جدران تتنفّس حرارة النهار وتحفظ برودة الليل.",
     ),
   },
   {
     emoji: "🗿",
     title: L("Roman Stones of Djemila & Timgad", "Pierres romaines de Djemila et Timgad", "حجارة جميلة وتيمقاد الرومانية"),
     body: L(
-      "Forums, arches and theatres in the highlands — empire laid out on a grid, then quietly reclaimed by olive trees and goats.",
-      "Forums, arcs et théâtres sur les hauts plateaux — l'empire dessiné en damier, puis doucement repris par les oliviers et les chèvres.",
-      "ساحات وأقواس ومسارح في الهضاب — إمبراطورية مرسومة على شبكة، ثم استرجعها الزيتون والمعزى بهدوء.",
+      "Forums, arches and theatres in the highlands, empire laid out on a grid, then quietly reclaimed by olive trees and goats.",
+      "Forums, arcs et théâtres sur les hauts plateaux, l'empire dessiné en damier, puis doucement repris par les oliviers et les chèvres.",
+      "ساحات وأقواس ومسارح في الهضاب، إمبراطورية مرسومة على شبكة، ثم استرجعها الزيتون والمعزى بهدوء.",
     ),
   },
   {
     emoji: "🕌",
     title: L("Mosques & Inner Courtyards", "Mosquées et patios intérieurs", "المساجد والأفنية الداخلية"),
     body: L(
-      "From the Great Mosque of Tlemcen to the smallest village zawiya, sacred space in Algeria turns inward — toward fountain, shade, prayer.",
-      "De la Grande Mosquée de Tlemcen à la plus petite zaouïa de village, l'espace sacré algérien se tourne vers l'intérieur — fontaine, ombre, prière.",
-      "من جامع تلمسان الكبير إلى أصغر زاوية قروية، يلتفّ الفضاء المقدّس في الجزائر نحو الداخل — نافورة، ظلّ، صلاة.",
+      "From the Great Mosque of Tlemcen to the smallest village zawiya, sacred space in Algeria turns inward, toward fountain, shade, prayer.",
+      "De la Grande Mosquée de Tlemcen à la plus petite zaouïa de village, l'espace sacré algérien se tourne vers l'intérieur, fontaine, ombre, prière.",
+      "من جامع تلمسان الكبير إلى أصغر زاوية قروية، يلتفّ الفضاء المقدّس في الجزائر نحو الداخل، نافورة، ظلّ، صلاة.",
     ),
   },
   {
@@ -282,18 +282,18 @@ const MINI_LESSONS: MiniLesson[] = [
     emoji: "🫖",
     question: L("Why is tea symbolic?", "Pourquoi le thé est-il symbolique ?", "لماذا الشاي رمز؟"),
     answer: L(
-      "Time. To accept tea is to accept slowness — three rounds, two hours, one conversation that matters.",
-      "Le temps. Accepter le thé, c'est accepter la lenteur — trois tournées, deux heures, une conversation qui compte.",
-      "إنه الوقت. قبول الشاي قبول للبطء — ثلاث جولات، ساعتان، وحديث واحد يستحق.",
+      "Time. To accept tea is to accept slowness, three rounds, two hours, one conversation that matters.",
+      "Le temps. Accepter le thé, c'est accepter la lenteur, trois tournées, deux heures, une conversation qui compte.",
+      "إنه الوقت. قبول الشاي قبول للبطء، ثلاث جولات، ساعتان، وحديث واحد يستحق.",
     ),
   },
   {
     emoji: "🏛️",
     question: L("What is the Casbah?", "Qu'est-ce que la Casbah ?", "ما هي القصبة؟"),
     answer: L(
-      "An Ottoman-era citadel-quarter above Algiers — UNESCO-listed, fiercely lived-in, a vertical labyrinth of memory.",
-      "Une citadelle-quartier d'époque ottomane au-dessus d'Alger — classée UNESCO, vivante avec fougue, labyrinthe vertical de mémoire.",
-      "حيّ-قلعة من العهد العثماني فوق الجزائر — مصنّف لدى اليونسكو، يعجّ بالحياة، متاهة عمودية من الذاكرة.",
+      "An Ottoman-era citadel-quarter above Algiers, UNESCO-listed, fiercely lived-in, a vertical labyrinth of memory.",
+      "Une citadelle-quartier d'époque ottomane au-dessus d'Alger, classée UNESCO, vivante avec fougue, labyrinthe vertical de mémoire.",
+      "حيّ-قلعة من العهد العثماني فوق الجزائر، مصنّف لدى اليونسكو، يعجّ بالحياة، متاهة عمودية من الذاكرة.",
     ),
   },
   {
@@ -309,18 +309,18 @@ const MINI_LESSONS: MiniLesson[] = [
     emoji: "🏯",
     question: L("What is a ksar?", "Qu'est-ce qu'un ksar ?", "ما هو القصر؟"),
     answer: L(
-      "A fortified earthen village of the Sahara — granary, mosque and homes folded into a single climate-clever organism.",
-      "Un village fortifié en terre du Sahara — grenier, mosquée et habitations pliés en un même organisme intelligent face au climat.",
-      "قرية صحراوية محصّنة من الطين — مخزن وجامع ومساكن مطوية في كائن واحد ذكي مناخيًا.",
+      "A fortified earthen village of the Sahara, granary, mosque and homes folded into a single climate-clever organism.",
+      "Un village fortifié en terre du Sahara, grenier, mosquée et habitations pliés en un même organisme intelligent face au climat.",
+      "قرية صحراوية محصّنة من الطين، مخزن وجامع ومساكن مطوية في كائن واحد ذكي مناخيًا.",
     ),
   },
   {
     emoji: "🏜️",
     question: L("Why does the Sahara shape identity?", "Pourquoi le Sahara façonne-t-il l'identité ?", "لماذا تصوغ الصحراء الهوية؟"),
     answer: L(
-      "It teaches restraint, hospitality and patience — virtues that travel north with every caravan and stay.",
-      "Il enseigne la retenue, l'hospitalité et la patience — vertus qui remontent au nord avec chaque caravane et y demeurent.",
-      "تعلّم التحفّظ والكرم والصبر — فضائل تصعد شمالًا مع كل قافلة وتستقرّ.",
+      "It teaches restraint, hospitality and patience, virtues that travel north with every caravan and stay.",
+      "Il enseigne la retenue, l'hospitalité et la patience, vertus qui remontent au nord avec chaque caravane et y demeurent.",
+      "تعلّم التحفّظ والكرم والصبر، فضائل تصعد شمالًا مع كل قافلة وتستقرّ.",
     ),
   },
 ];
@@ -332,9 +332,9 @@ const IDENTITY_TIMELINE: IdentityEra[] = [
     dot: "ⵣ",
     era: L("Amazigh roots", "Racines amazighes", "الجذور الأمازيغية"),
     body: L(
-      "Before any empire spoke to this land, the land already spoke Tamazight. The yaz — ⵣ — is the signature beneath every later layer.",
-      "Avant qu'aucun empire ne parle à cette terre, la terre parlait déjà tamazight. Le yaz — ⵣ — est la signature sous toutes les couches qui suivront.",
-      "قبل أن تخاطب أيّ إمبراطورية هذه الأرض، كانت الأرض تتحدّث الأمازيغية. اليازْ — ⵣ — توقيع تحت كل الطبقات اللاحقة.",
+      "Before any empire spoke to this land, the land already spoke Tamazight. The yaz, ⵣ, is the signature beneath every later layer.",
+      "Avant qu'aucun empire ne parle à cette terre, la terre parlait déjà tamazight. Le yaz, ⵣ, est la signature sous toutes les couches qui suivront.",
+      "قبل أن تخاطب أيّ إمبراطورية هذه الأرض، كانت الأرض تتحدّث الأمازيغية. اليازْ، ⵣ، توقيع تحت كل الطبقات اللاحقة.",
     ),
   },
   {
@@ -359,27 +359,27 @@ const IDENTITY_TIMELINE: IdentityEra[] = [
     dot: "⚓",
     era: L("Ottoman Algiers", "Alger ottomane", "الجزائر العثمانية"),
     body: L(
-      "A city-state on the Mediterranean — corsairs, embassies, Andalusian refugees, courtyards opening on the sea.",
-      "Une cité-État méditerranéenne — corsaires, ambassades, réfugiés andalous, patios ouverts sur la mer.",
-      "دولة مدينة متوسطية — قراصنة وسفارات ولاجئون أندلسيون وأفنية تطلّ على البحر.",
+      "A city-state on the Mediterranean, corsairs, embassies, Andalusian refugees, courtyards opening on the sea.",
+      "Une cité-État méditerranéenne, corsaires, ambassades, réfugiés andalous, patios ouverts sur la mer.",
+      "دولة مدينة متوسطية، قراصنة وسفارات ولاجئون أندلسيون وأفنية تطلّ على البحر.",
     ),
   },
   {
     dot: "🕯️",
     era: L("Colonial fracture", "Fracture coloniale", "كسر الاستعمار"),
     body: L(
-      "Land seized, language pressed, identity wounded — and quietly preserved in kitchens, songs and grandmothers' tongues.",
-      "Terres saisies, langue pressée, identité blessée — et discrètement préservée dans les cuisines, les chansons, la langue des grands-mères.",
-      "أرض مصادرة، لغة مكبوتة، هوية مجروحة — وحُفظت بهدوء في المطابخ والأغاني وألسنة الجدّات.",
+      "Land seized, language pressed, identity wounded and quietly preserved in kitchens, songs and grandmothers' tongues.",
+      "Terres saisies, langue pressée, identité blessée et discrètement préservée dans les cuisines, les chansons, la langue des grands-mères.",
+      "أرض مصادرة، لغة مكبوتة، هوية مجروحة، وحُفظت بهدوء في المطابخ والأغاني وألسنة الجدّات.",
     ),
   },
   {
     dot: "🇩🇿",
     era: L("Independence & today", "Indépendance et aujourd'hui", "الاستقلال واليوم"),
     body: L(
-      "A nation re-stitched from its layers — Arabic, Tamazight, French; sea, mountain, desert; memory and modern noise.",
-      "Une nation recousue à partir de ses couches — arabe, tamazight, français ; mer, montagne, désert ; mémoire et bruit moderne.",
-      "أمّة أُعيد خياطتها من طبقاتها — العربية والأمازيغية والفرنسية، بحر وجبل وصحراء، ذاكرة وضجيج حديث.",
+      "A nation re-stitched from its layers, Arabic, Tamazight, French; sea, mountain, desert; memory and modern noise.",
+      "Une nation recousue à partir de ses couches, arabe, tamazight, français ; mer, montagne, désert ; mémoire et bruit moderne.",
+      "أمّة أُعيد خياطتها من طبقاتها، العربية والأمازيغية والفرنسية، بحر وجبل وصحراء، ذاكرة وضجيج حديث.",
     ),
   },
 ];
@@ -392,8 +392,8 @@ export const Route = createFileRoute("/culture/")({
   head: () =>
     pageMeta({
       path: "/culture",
-      title: "Culture — A Living Algeria | DZ Odyssey",
-      description: "Wander through Algerian identity — traditions, music, cuisine, words, architecture and the long memory of Amazigh heritage."
+      title: "Culture, A Living Algeria | DZ Odyssey",
+      description: "Wander through Algerian identity, traditions, music, cuisine, words, architecture and the long memory of Amazigh heritage."
     }),
   component: CulturePage,
 });
@@ -404,7 +404,7 @@ function CulturePage() {
   useEffect(() => {
     saveJourneyPlace({
       section: "regions",
-      label: L("Culture — A Living Algeria", "Culture — une Algérie vivante", "الثقافة — جزائر حيّة"),
+      label: L("Culture, A Living Algeria", "Culture, une Algérie vivante", "الثقافة، جزائر حيّة"),
       description: L(
         "Traditions, music, cuisine, words and architecture",
         "Traditions, musique, cuisine, mots et architecture",
@@ -418,9 +418,9 @@ function CulturePage() {
     eyebrow: L("A living Algeria", "Une Algérie vivante", "جزائر حيّة")[lang],
     title: L("The Culture", "La Culture", "الثقافة")[lang],
     intro: L(
-      "Not a list of customs — a long sentence written by sea, mountain and desert, in three languages and many silences. Wander slowly.",
-      "Pas une liste de coutumes — une longue phrase écrite par la mer, la montagne et le désert, en trois langues et bien des silences. Avancez lentement.",
-      "ليست قائمة عادات — بل جملة طويلة كتبها البحر والجبل والصحراء، بثلاث لغات وكثير من الصمت. تجوّل بهدوء.",
+      "Not a list of customs, a long sentence written by sea, mountain and desert, in three languages and many silences. Wander slowly.",
+      "Pas une liste de coutumes, une longue phrase écrite par la mer, la montagne et le désert, en trois langues et bien des silences. Avancez lentement.",
+      "ليست قائمة عادات، بل جملة طويلة كتبها البحر والجبل والصحراء، بثلاث لغات وكثير من الصمت. تجوّل بهدوء.",
     )[lang],
 
     contents: L("In this hall", "Dans cette salle", "في هذه القاعة")[lang],
@@ -438,9 +438,9 @@ function CulturePage() {
     moreLessons: L("Open the lessons hall", "Ouvrir la salle des leçons", "افتح قاعة الدروس")[lang],
 
     amazighBody: L(
-      "Before Phoenicians, before Rome, before any later name — there was Tamazight. The yaz ⵣ marks doorways, rugs, jewellery and skin. It is not nostalgia; it is the grammar of this land.",
-      "Avant les Phéniciens, avant Rome, avant tout nom plus tardif — il y avait le tamazight. Le yaz ⵣ orne portes, tapis, bijoux et peau. Ce n'est pas de la nostalgie ; c'est la grammaire de cette terre.",
-      "قبل الفينيقيين، قبل روما، قبل كل اسم لاحق — كانت الأمازيغية. اليازْ ⵣ يعلّم الأبواب والزرابي والحلي والجلد. ليست حنينًا، بل قواعد لهذه الأرض.",
+      "Before Phoenicians, before Rome, before any later name, there was Tamazight. The yaz ⵣ marks doorways, rugs, jewellery and skin. It is not nostalgia; it is the grammar of this land.",
+      "Avant les Phéniciens, avant Rome, avant tout nom plus tardif, il y avait le tamazight. Le yaz ⵣ orne portes, tapis, bijoux et peau. Ce n'est pas de la nostalgie ; c'est la grammaire de cette terre.",
+      "قبل الفينيقيين، قبل روما، قبل كل اسم لاحق، كانت الأمازيغية. اليازْ ⵣ يعلّم الأبواب والزرابي والحلي والجلد. ليست حنينًا، بل قواعد لهذه الأرض.",
     )[lang],
   };
 
@@ -496,7 +496,7 @@ function CulturePage() {
           </div>
         </nav>
 
-        {/* Cultural exhibits — dedicated topic rooms */}
+        {/* Cultural exhibits, dedicated topic rooms */}
         <section className="museum-stack">
           <header>
             <div className="museum-eyebrow">
@@ -595,7 +595,7 @@ function CulturePage() {
               >
                 <p className="text-lg leading-snug">{t(w.quote, lang)}</p>
                 <footer className="mt-3 text-xs uppercase tracking-[0.18em] font-bold text-muted-foreground not-italic">
-                  — {t(w.source, lang)}
+                 , {t(w.source, lang)}
                 </footer>
               </blockquote>
             ))}
@@ -694,10 +694,10 @@ function CulturePage() {
         {/* Closing note */}
         <p className="museum-note text-center max-w-xl mx-auto">
           {lang === "fr"
-            ? "La culture n'est pas un musée fermé — c'est une conversation que vous venez de rejoindre."
+            ? "La culture n'est pas un musée fermé, c'est une conversation que vous venez de rejoindre."
             : lang === "ar"
-              ? "الثقافة ليست متحفًا مغلقًا — بل حوار للتوّ انضممتَ إليه."
-              : "Culture is not a closed museum — it is a conversation you have just joined."}
+              ? "الثقافة ليست متحفًا مغلقًا، بل حوار للتوّ انضممتَ إليه."
+              : "Culture is not a closed museum, it is a conversation you have just joined."}
         </p>
       </main>
     </div>

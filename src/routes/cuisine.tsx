@@ -18,8 +18,8 @@ export const Route = createFileRoute("/cuisine")({
   head: () =>
     pageMeta({
       path: "/cuisine",
-      title: "Cuisine of Algeria — DZ Odyssey",
-      description: "A cinematic cultural journey through Algerian cuisine — couscous, chorba, rechta, dates and bread — from Kabylie to the Sahara.",
+      title: "Cuisine of Algeria, DZ Odyssey",
+      description: "A cinematic cultural journey through Algerian cuisine, couscous, chorba, rechta, dates and bread, from Kabylie to the Sahara.",
       image: cuisineHero
     }),
   component: CuisinePage,
@@ -92,7 +92,7 @@ function CuisinePage() {
             width={1920}
             height={1080}
           />
-          {/* Localized gradient — strong enough to mask any text baked into the image */}
+          {/* Localized gradient, strong enough to mask any text baked into the image */}
           <div
             className="absolute inset-0"
             style={{
@@ -128,7 +128,7 @@ function CuisinePage() {
               {t(cuisineCopy.sectionTitle, lang)}
             </p>
 
-            {/* Title — force white + sans to override global h1 serif/dark rules */}
+            {/* Title, force white + sans to override global h1 serif/dark rules */}
             <h1
               className="font-extrabold leading-[1.1] tracking-tight text-balance"
               style={{
@@ -167,7 +167,7 @@ function CuisinePage() {
       </section>
 
       <main className="max-w-3xl mx-auto px-4 py-10 safe-pb space-y-12">
-        {/* Poetic quote — moved out of hero so it can breathe */}
+        {/* Poetic quote, moved out of hero so it can breathe */}
         <figure className="text-center px-4">
           <blockquote
             className="italic leading-relaxed text-foreground/85"

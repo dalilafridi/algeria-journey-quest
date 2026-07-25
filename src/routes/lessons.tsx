@@ -10,8 +10,8 @@ export const Route = createFileRoute("/lessons")({
   head: () =>
     pageMeta({
       path: "/lessons",
-      title: "1-Minute Lessons — DZ Odyssey",
-      description: "Quick, focused lessons on Algerian history — read a topic in about a minute."
+      title: "1-Minute Lessons, DZ Odyssey",
+      description: "Quick, focused lessons on Algerian history, read a topic in about a minute."
     }),
   component: LessonsPage,
 });

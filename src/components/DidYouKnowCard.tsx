@@ -14,7 +14,7 @@ type Props = {
 const L = (en: string, fr: string, ar: string) => ({ en, fr, ar });
 
 const COPY = {
-  tapToExpand: L("Daily Discovery — tap to explore the story behind it", "Découverte du jour — touchez pour explorer son histoire", "اكتشاف اليوم — اضغط لاستكشاف القصة وراءه"),
+  tapToExpand: L("Daily Discovery, tap to explore the story behind it", "Découverte du jour, touchez pour explorer son histoire", "اكتشاف اليوم، اضغط لاستكشاف القصة وراءه"),
   era: L("Era", "Époque", "الحقبة"),
   whyMatters: L("Why it matters", "Pourquoi c'est important", "لماذا يهمّ"),
   exploreEra: L("Explore this era", "Explorer cette époque", "استكشف هذه الحقبة"),
@@ -22,9 +22,9 @@ const COPY = {
   viewRegion: L("Visit this region", "Voir cette région", "زيارة هذه المنطقة"),
   close: L("Close", "Fermer", "إغلاق"),
   defaultWhy: L(
-    "Small details like this stitch together the larger story of Algeria — its land, its people, and the memory passed between generations.",
-    "Ces petits détails tissent ensemble la grande histoire de l'Algérie — sa terre, son peuple et la mémoire transmise entre les générations.",
-    "تنسج هذه التفاصيل الصغيرة معًا الحكاية الكبرى للجزائر — أرضها وشعبها والذاكرة المتوارثة بين الأجيال.",
+    "Small details like this stitch together the larger story of Algeria, its land, its people, and the memory passed between generations.",
+    "Ces petits détails tissent ensemble la grande histoire de l'Algérie, sa terre, son peuple et la mémoire transmise entre les générations.",
+    "تنسج هذه التفاصيل الصغيرة معًا الحكاية الكبرى للجزائر، أرضها وشعبها والذاكرة المتوارثة بين الأجيال.",
   ),
   remaining: (n: number) =>
     L(
@@ -33,9 +33,9 @@ const COPY = {
       `${n} اختبار متبقٍ لفتح الخطوة التالية في الرحلة`,
     ),
   allUnlocked: L(
-    "All eras unlocked — keep exploring",
-    "Toutes les époques débloquées — continuez l'exploration",
-    "تم فتح جميع الحقب — تابع الاستكشاف",
+    "All eras unlocked, keep exploring",
+    "Toutes les époques débloquées, continuez l'exploration",
+    "تم فتح جميع الحقب، تابع الاستكشاف",
   ),
 };
 

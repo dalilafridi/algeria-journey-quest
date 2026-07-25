@@ -26,7 +26,7 @@ export const Route = createFileRoute("/moments")({
   head: () =>
     pageMeta({
       path: "/moments",
-      title: "Moments That Shaped Algeria — DZ Odyssey",
+      title: "Moments That Shaped Algeria, DZ Odyssey",
       description: "Pivotal chapters of modern Algerian history, told with care for young learners."
     }),
   component: MomentsPage,
@@ -50,9 +50,9 @@ const UI = {
       "لحظات صنعت الجزائر",
     ),
     subtitle: L(
-      "Identité, courage, mémoire, liberté et paix — des chapitres essentiels de l'histoire algérienne, racontés avec douceur.",
-      "Identity, courage, memory, freedom, and peace — essential chapters of Algerian history, told with care.",
-      "الهوية، الشجاعة، الذاكرة، الحرية والسلام — فصول أساسية من تاريخ الجزائر، تُروى برفق.",
+      "Identité, courage, mémoire, liberté et paix, des chapitres essentiels de l'histoire algérienne, racontés avec douceur.",
+      "Identity, courage, memory, freedom, and peace, essential chapters of Algerian history, told with care.",
+      "الهوية، الشجاعة، الذاكرة، الحرية والسلام، فصول أساسية من تاريخ الجزائر، تُروى برفق.",
     ),
     badge: L("Voyage à travers le temps", "Journey Through Time", "رحلة عبر الزمن"),
   },
@@ -491,7 +491,7 @@ function BadgeDisplay({ badges, earned, lang }: { badges: Badge[]; earned: Set<s
 // Topic data — Tafsut Imazighen (1980)
 // ============================================================
 const TAFSUT = {
-  title: L("Tafsut Imazighen — Le Printemps berbère (1980)", "Tafsut Imazighen — Berber Spring (1980)", "تافسوت إمازيغن — الربيع الأمازيغي (1980)"),
+  title: L("Tafsut Imazighen, Le Printemps berbère (1980)", "Tafsut Imazighen, Berber Spring (1980)", "تافسوت إمازيغن، الربيع الأمازيغي (1980)"),
   year: "1980",
   tagColor: "var(--secondary)",
   story: L(
@@ -528,7 +528,7 @@ const TAFSUT = {
           label: L("Parler calmement avec d'autres élèves", "Speak calmly with other students", "أتحدّث بهدوء مع زملائي"),
           feedback: L(
             "Bravo. Partager ses idées avec respect aide les autres à comprendre, et c'est souvent comme ça que tout commence.",
-            "Well done. Sharing ideas with respect helps others understand — that's often how change begins.",
+            "Well done. Sharing ideas with respect helps others understand, that's often how change begins.",
             "أحسنت. مشاركة الأفكار باحترام تساعد الآخرين على الفهم، وهكذا يبدأ التغيير غالبًا.",
           ),
         },
@@ -543,8 +543,8 @@ const TAFSUT = {
         {
           label: L("Rester silencieux·se pour éviter les ennuis", "Stay silent to avoid trouble", "أصمت لتجنّب المشاكل"),
           feedback: L(
-            "C'est compréhensible : la peur est humaine. Mais avec le temps, parler — gentiment — peut aider à se sentir plus libre.",
-            "That's understandable — fear is human. But with time, speaking up gently can help you feel freer.",
+            "C'est compréhensible : la peur est humaine. Mais avec le temps, parler, gentiment, peut aider à se sentir plus libre.",
+            "That's understandable, fear is human. But with time, speaking up gently can help you feel freer.",
             "هذا مفهوم؛ الخوف شعور إنساني. لكن مع الوقت، الكلام بلطف قد يجعلك تشعر بحرية أكبر.",
           ),
         },
@@ -1063,7 +1063,7 @@ function MomentsPage() {
       <HeroSection lang={lang} />
 
       <main className="max-w-4xl mx-auto px-4 pb-20">
-        {/* Daily card — retention */}
+        {/* Daily card, retention */}
         <MuseumReveal className="mt-2 sm:mt-4">
           <DailyCard facts={dailyFacts3} questions={dailyQs} lang={lang} />
         </MuseumReveal>
@@ -1359,9 +1359,9 @@ function MomentsPage() {
 
           <GuideBubble
             text={L(
-              "Ce récit n'est pas une histoire de guerre — c'est une histoire d'idées, d'apprentissage et d'identité.",
-              "This is not a war story — it is a story of ideas, learning, and identity.",
-              "هذه ليست قصة حرب — بل قصة أفكار وتعلّم وهوية.",
+              "Ce récit n'est pas une histoire de guerre, c'est une histoire d'idées, d'apprentissage et d'identité.",
+              "This is not a war story, it is a story of ideas, learning, and identity.",
+              "هذه ليست قصة حرب، بل قصة أفكار وتعلّم وهوية.",
             )}
             lang={lang}
           />

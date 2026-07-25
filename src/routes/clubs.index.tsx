@@ -11,8 +11,8 @@ export const Route = createFileRoute("/clubs/")({
   head: () =>
     pageMeta({
       path: "/clubs",
-      title: "Club Museums — The Hall of Algerian Football | DZ Odyssey",
-      description: "Curated museum wings for Algeria's great football clubs — starting with JS Kabylie."
+      title: "Club Museums, The Hall of Algerian Football | DZ Odyssey",
+      description: "Curated museum wings for Algeria's great football clubs, starting with JS Kabylie."
     }),
   component: ClubsLanding,
 });
@@ -29,9 +29,9 @@ function ClubsLanding() {
     eyebrow: { en: "A new wing of the Hall of Algerian Football", fr: "Une nouvelle aile de la Galerie du Football Algérien", ar: "جناح جديد من قاعة كرة القدم الجزائرية" }[lang],
     title: { en: "Club Museums", fr: "Musées des Clubs", ar: "متاحف الأندية" }[lang],
     subtitle: {
-      en: "Walk through curated museum wings for each of Algeria's great clubs — their origins, trophies, legends and matchday culture.",
-      fr: "Parcourez des ailes muséales dédiées à chacun des grands clubs algériens — leurs origines, leurs trophées, leurs légendes et leur culture des jours de match.",
-      ar: "تجوّل بين أجنحة متحفية مخصصة لأعرق الأندية الجزائرية — نشأتها، وألقابها، وأساطيرها، وثقافة يوم المباراة.",
+      en: "Walk through curated museum wings for each of Algeria's great clubs, their origins, trophies, legends and matchday culture.",
+      fr: "Parcourez des ailes muséales dédiées à chacun des grands clubs algériens, leurs origines, leurs trophées, leurs légendes et leur culture des jours de match.",
+      ar: "تجوّل بين أجنحة متحفية مخصصة لأعرق الأندية الجزائرية، نشأتها، وألقابها، وأساطيرها، وثقافة يوم المباراة.",
     }[lang],
     featured: { en: "Flagship exhibit", fr: "Exposition phare", ar: "المعرض الرئيسي" }[lang],
     enter: { en: "Enter the museum", fr: "Entrer dans le musée", ar: "ادخل المتحف" }[lang],

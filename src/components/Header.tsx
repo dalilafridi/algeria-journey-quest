@@ -117,7 +117,7 @@ export function Header() {
     { label: { fr: "Théâtre des Matchs", en: "Match Theater", ar: "مسرح المباريات" }[current], to: "/theater/$matchId", params: { matchId: "gijon-1982" }, isActive: () => path.startsWith("/theater") },
     { label: { fr: "Légendes", en: "Legends", ar: "الأساطير" }[current], to: "/football", hash: "legends", isActive: () => onFootballRoot && hash === "legends" },
     { label: { fr: "Stades", en: "Stadiums", ar: "الملاعب" }[current], to: "/football", hash: "stadiums", isActive: () => onFootballRoot && hash === "stadiums" },
-    { label: { fr: "Les Vertes — Équipe féminine", en: "Les Vertes — Women's Team", ar: "الخضراوات — المنتخب النسوي" }[current], to: "/football/lesvertes", isActive: () => onLesVertes },
+    { label: { fr: "Les Vertes, Équipe féminine", en: "Les Vertes, Women's Team", ar: "الخضراوات، المنتخب النسوي" }[current], to: "/football/lesvertes", isActive: () => onLesVertes },
     { label: { fr: "Musées des Clubs", en: "Club Museums", ar: "متاحف الأندية" }[current], to: "/clubs", isActive: () => path.startsWith("/clubs") },
   ];
 
@@ -176,7 +176,7 @@ export function Header() {
             </Link>
           ))}
 
-          {/* Football dropdown (Radix — a11y & keyboard handled by primitive) */}
+          {/* Football dropdown (Radix, a11y & keyboard handled by primitive) */}
           <DropdownMenu open={footballOpen} onOpenChange={setFootballOpen}>
             <DropdownMenuTrigger asChild>
               <button
@@ -234,7 +234,7 @@ export function Header() {
         </nav>
 
         <div className="flex items-center gap-2 sm:gap-3">
-          {/* Search trigger — opens museum overlay */}
+          {/* Search trigger, opens museum overlay */}
           <button
             type="button"
             onClick={openMuseumSearch}
@@ -296,7 +296,7 @@ export function Header() {
             {T.about}
           </button>
 
-          {/* Profile dropdown — desktop (Radix) */}
+          {/* Profile dropdown, desktop (Radix) */}
           <div className="hidden lg:block">
             <DropdownMenu open={profileOpen} onOpenChange={setProfileOpen}>
               <DropdownMenuTrigger asChild>

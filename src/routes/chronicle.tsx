@@ -13,7 +13,7 @@ export const Route = createFileRoute("/chronicle")({
   head: () =>
     pageMeta({
       path: "/chronicle",
-      title: "The Interactive Chronicle of Algeria — DZ Odyssey",
+      title: "The Interactive Chronicle of Algeria, DZ Odyssey",
       description: "Drag across three thousand years of Algerian history. Meet the figures, regions and events of every era on one living timeline.",
       image: chronicleImg
     }),
@@ -71,7 +71,7 @@ const EVENTS: ChronEvent[] = [
   { eraId: "french", year: 1847, label: { en: "Emir Abdelkader surrenders", fr: "Reddition de l'Émir Abdelkader", ar: "استسلام الأمير عبد القادر" } },
   { eraId: "french", year: 1857, label: { en: "Lalla Fatma N'Soumer captured", fr: "Capture de Lalla Fatma N'Soumer", ar: "أسر لالة فاطمة نسومر" } },
   { eraId: "french", year: 1945, label: { en: "Sétif & Guelma massacres", fr: "Massacres de Sétif et Guelma", ar: "مجازر سطيف وقالمة" } },
-  { eraId: "independence", year: 1954, label: { en: "Toussaint Rouge — war begins", fr: "Toussaint Rouge — début de la guerre", ar: "الفاتح نوفمبر — انطلاق الثورة" } },
+  { eraId: "independence", year: 1954, label: { en: "Toussaint Rouge, war begins", fr: "Toussaint Rouge, début de la guerre", ar: "الفاتح نوفمبر، انطلاق الثورة" } },
   { eraId: "independence", year: 1957, label: { en: "Battle of Algiers", fr: "Bataille d'Alger", ar: "معركة الجزائر" } },
   { eraId: "independence", year: 1962, label: { en: "Independence of Algeria", fr: "Indépendance de l'Algérie", ar: "استقلال الجزائر" } },
   { eraId: "independence", year: 2019, label: { en: "Hirak popular movement", fr: "Mouvement populaire Hirak", ar: "الحراك الشعبي" } },

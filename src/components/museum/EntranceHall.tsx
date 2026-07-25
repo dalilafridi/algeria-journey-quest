@@ -146,9 +146,9 @@ const FEATURED_COPY = {
     ar: "روائع المجموعة",
   },
   subtitle: {
-    en: "Six rooms to begin with — each one a full exhibit, told at museum pace.",
-    fr: "Six salles pour commencer — chacune une exposition à part entière, racontée au rythme du musée.",
-    ar: "ستّ قاعات لتبدأ منها — كلّ واحدة معرضٌ كامل يُروى بإيقاع المتحف.",
+    en: "Six rooms to begin with, each one a full exhibit, told at museum pace.",
+    fr: "Six salles pour commencer, chacune une exposition à part entière, racontée au rythme du musée.",
+    ar: "ستّ قاعات لتبدأ منها، كلّ واحدة معرضٌ كامل يُروى بإيقاع المتحف.",
   },
 };
 
@@ -404,9 +404,9 @@ const LATEST_COPY = {
     ar: "أحدث المعارض",
   },
   subtitle: {
-    en: "Recently opened rooms — return often, the collection keeps growing.",
-    fr: "Salles récemment ouvertes — revenez souvent, la collection grandit.",
-    ar: "قاعات افتُتحت مؤخّرًا — عُدْ كثيرًا، فالمجموعة تنمو.",
+    en: "Recently opened rooms, return often, the collection keeps growing.",
+    fr: "Salles récemment ouvertes, revenez souvent, la collection grandit.",
+    ar: "قاعات افتُتحت مؤخّرًا، عُدْ كثيرًا، فالمجموعة تنمو.",
   },
   openedOn: {
     en: (d: string) => `Opened ${d}`,

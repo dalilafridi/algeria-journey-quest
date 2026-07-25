@@ -25,7 +25,7 @@ export const Route = createFileRoute("/timeline")({
   head: () =>
     pageMeta({
       path: "/timeline",
-      title: "Century Timeline — DZ Odyssey",
+      title: "Century Timeline, DZ Odyssey",
       description: "Five eras of Algerian history, from Numidia and Roman North Africa to independence and the modern republic.",
       image: numidiaImg
     }),
@@ -197,7 +197,7 @@ function Timeline() {
           </div>
         </Link>
 
-        {/* Filter chips — horizontally scrollable on mobile to avoid wrapping */}
+        {/* Filter chips, horizontally scrollable on mobile to avoid wrapping */}
         <div className="-mx-4 px-4 mb-8 overflow-x-auto no-scrollbar">
           <div className="flex sm:flex-wrap sm:justify-center gap-2 w-max sm:w-auto mx-auto">
             {FILTERS.map((f) => {
@@ -256,7 +256,7 @@ function Timeline() {
               <p className="mt-2 text-sm text-foreground/85 leading-relaxed">
                 {t(randomFact.fact, lang)}
               </p>
-              <div className="mt-2 text-xs text-muted-foreground">— {t(randomFact.era.title, lang)}</div>
+              <div className="mt-2 text-xs text-muted-foreground">, {t(randomFact.era.title, lang)}</div>
             </div>
           )}
           <div
@@ -338,9 +338,9 @@ function ChapterRow({
   const factsFound = done ? factsTotal : 0;
 
   const lockedMsg = {
-    fr: "Bientôt accessible — terminez l’époque précédente",
-    en: "Coming soon — complete the previous era",
-    ar: "قريبًا — أكمل الحقبة السابقة",
+    fr: "Bientôt accessible, terminez l’époque précédente",
+    en: "Coming soon, complete the previous era",
+    ar: "قريبًا، أكمل الحقبة السابقة",
   }[lang];
 
   return (

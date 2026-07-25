@@ -629,7 +629,7 @@ export function MuseumCuratorNote({
               className="mt-3 text-xs font-semibold uppercase tracking-[0.14em]"
               style={{ color: "color-mix(in oklab, var(--brand-gold-deep) 80%, var(--foreground))" }}
             >
-              — {attribution}
+             , {attribution}
             </div>
           ) : null}
         </div>

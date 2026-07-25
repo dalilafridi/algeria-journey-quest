@@ -11,7 +11,7 @@ export const Route = createFileRoute("/figures/quiz")({
   head: () =>
     pageMeta({
       path: "/figures/quiz",
-      title: "Guess the Figure — DZ Odyssey",
+      title: "Guess the Figure, DZ Odyssey",
       description: "Read the clues and identify the right person from Algerian history."
     }),
   component: GuessQuiz,

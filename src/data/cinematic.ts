@@ -54,9 +54,9 @@ export const dishMemoryLines: Record<string, LocalizedString> = {
     "أوّل قرمشة في كلّ إفطار رمضان.",
   ),
   chakhchoukha: L(
-    "Shared from one plate — because we eat together, or not at all.",
-    "Partagée dans un seul plat — car on mange ensemble, sinon pas du tout.",
-    "تُؤكل من صحن واحد — فإمّا نأكل معًا، أو لا نأكل.",
+    "Shared from one plate, because we eat together, or not at all.",
+    "Partagée dans un seul plat, car on mange ensemble, sinon pas du tout.",
+    "تُؤكل من صحن واحد، فإمّا نأكل معًا، أو لا نأكل.",
   ),
   trida: L(
     "Tiny squares of patience, rolled for those we love.",
@@ -64,14 +64,14 @@ export const dishMemoryLines: Record<string, LocalizedString> = {
     "مربّعاتٌ صغيرة من الصبر، تُلفّ لمن نحبّ.",
   ),
   taguella: L(
-    "Bread of the sand — broken by hand, shared by fire.",
-    "Pain du sable — rompu à la main, partagé près du feu.",
-    "خبز الرمل — يُكسَر باليد ويُقتسم حول النار.",
+    "Bread of the sand, broken by hand, shared by fire.",
+    "Pain du sable, rompu à la main, partagé près du feu.",
+    "خبز الرمل، يُكسَر باليد ويُقتسم حول النار.",
   ),
   karantika: L(
-    "Sold on a metal tray — Oran's humble crown.",
-    "Vendue sur un plateau de métal — l'humble couronne d'Oran.",
-    "تُباع على صينيّة معدنيّة — تاج وهران المتواضع.",
+    "Sold on a metal tray, Oran's humble crown.",
+    "Vendue sur un plateau de métal, l'humble couronne d'Oran.",
+    "تُباع على صينيّة معدنيّة، تاج وهران المتواضع.",
   ),
   zviti: L(
     "A fire that warms Bousaâda's evenings.",

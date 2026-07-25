@@ -35,8 +35,8 @@ export const eraExtras: Record<string, EraExtras> = {
       "قبل أن تُرسم الحدود، كانت رياح شمال إفريقيا تحمل أسماءً سيعرفها العالم.",
     ),
     whyItMatters: L(
-      "This era reminds us that Algerian roots reach into the deepest layers of antiquity — and that Amazigh leaders once shaped empires far beyond their own land.",
-      "Cette époque nous rappelle que les racines algériennes plongent au plus profond de l'Antiquité — et que des chefs amazighs ont façonné des empires bien au-delà de leur terre.",
+      "This era reminds us that Algerian roots reach into the deepest layers of antiquity and that Amazigh leaders once shaped empires far beyond their own land.",
+      "Cette époque nous rappelle que les racines algériennes plongent au plus profond de l'Antiquité et que des chefs amazighs ont façonné des empires bien au-delà de leur terre.",
       "تذكّرنا هذه الحقبة بأن جذور الجزائر تمتد في أعمق طبقات التاريخ، وأن قادةً أمازيغ صاغوا إمبراطوريات أبعد بكثير من أرضهم.",
     ),
     museumNotes: [
@@ -51,8 +51,8 @@ export const eraExtras: Record<string, EraExtras> = {
       {
         title: L("A pharaoh from the west", "Un pharaon venu de l'ouest", "فرعون من الغرب"),
         body: L(
-          "Sheshonq I, of Amazigh origin, founded Egypt's 22nd Dynasty — proof that North African influence reached the heart of the ancient world.",
-          "Sheshonq Ier, d'origine amazighe, fonda la 22e dynastie d'Égypte — preuve que l'influence nord-africaine atteignit le cœur du monde antique.",
+          "Sheshonq I, of Amazigh origin, founded Egypt's 22nd Dynasty, proof that North African influence reached the heart of the ancient world.",
+          "Sheshonq Ier, d'origine amazighe, fonda la 22e dynastie d'Égypte, preuve que l'influence nord-africaine atteignit le cœur du monde antique.",
           "أسس شيشنق الأول، من أصل أمازيغي، الأسرة الثانية والعشرين في مصر، وهو دليل على بلوغ تأثير شمال إفريقيا قلبَ العالم القديم.",
         ),
       },
@@ -76,8 +76,8 @@ export const eraExtras: Record<string, EraExtras> = {
       "على صهوة الخيل، بين قرطاج وروما، تعلّمت مملكةٌ من الفرسان أن تتكلم باسمها.",
     ),
     whyItMatters: L(
-      "Numidia is the first time North Africa appears in history as a state of its own — with kings, coins, and an unbroken pride that still echoes in modern Algerian identity.",
-      "La Numidie marque la première apparition de l'Afrique du Nord dans l'histoire comme un État à part entière — avec ses rois, sa monnaie et une fierté ininterrompue qui résonne encore dans l'identité algérienne.",
+      "Numidia is the first time North Africa appears in history as a state of its own, with kings, coins, and an unbroken pride that still echoes in modern Algerian identity.",
+      "La Numidie marque la première apparition de l'Afrique du Nord dans l'histoire comme un État à part entière, avec ses rois, sa monnaie et une fierté ininterrompue qui résonne encore dans l'identité algérienne.",
       "نوميديا أوّل ظهور لشمال إفريقيا في التاريخ بوصفه دولة قائمة بذاتها، لها ملوكها وعملتها وكبرياءٌ متّصل لا يزال صداه في الهوية الجزائرية الحديثة.",
     ),
     museumNotes: [
@@ -118,8 +118,8 @@ export const eraExtras: Record<string, EraExtras> = {
       "طرقٌ من حجر، ومعاصر زيت، وقدّيسٌ لا تزال أسئلته تفتح القلوب.",
     ),
     whyItMatters: L(
-      "Roman Africa was not only conquered — it produced thinkers, emperors and a faith tradition whose words still travel the world.",
-      "L'Afrique romaine ne fut pas seulement conquise — elle produisit des penseurs, des empereurs et une tradition de foi dont les mots voyagent encore.",
+      "Roman Africa was not only conquered, it produced thinkers, emperors and a faith tradition whose words still travel the world.",
+      "L'Afrique romaine ne fut pas seulement conquise, elle produisit des penseurs, des empereurs et une tradition de foi dont les mots voyagent encore.",
       "لم تكن إفريقيا الرومانية مفتوحةً فحسب، بل أنجبت مفكّرين وأباطرة وتقليدًا روحيًا لا تزال كلماته تجوب العالم.",
     ),
     museumNotes: [
@@ -160,8 +160,8 @@ export const eraExtras: Record<string, EraExtras> = {
       "حروفٌ جديدة وصلاةٌ جديدة، وألف سنة من المدن والعلماء والأولياء.",
     ),
     whyItMatters: L(
-      "From the Rustamids to the Almohads, this era wove Algeria into the great Islamic and Andalusian civilisation — its mosques, libraries and trade routes still shape what the country reads, sings and believes.",
-      "Des Rostémides aux Almohades, cette époque tissa l'Algérie à la grande civilisation islamique et andalouse — ses mosquées, ses bibliothèques et ses routes commerciales façonnent encore ce que le pays lit, chante et croit.",
+      "From the Rustamids to the Almohads, this era wove Algeria into the great Islamic and Andalusian civilisation, its mosques, libraries and trade routes still shape what the country reads, sings and believes.",
+      "Des Rostémides aux Almohades, cette époque tissa l'Algérie à la grande civilisation islamique et andalouse, ses mosquées, ses bibliothèques et ses routes commerciales façonnent encore ce que le pays lit, chante et croit.",
       "من الرستميين إلى الموحّدين، نسجت هذه الحقبة الجزائر في الحضارة الإسلامية والأندلسية الكبرى، ولا تزال مساجدها ومكتباتها وطرق تجارتها تشكّل ما يقرأه البلد ويغنّيه ويؤمن به.",
     ),
     museumNotes: [
@@ -176,8 +176,8 @@ export const eraExtras: Record<string, EraExtras> = {
       {
         title: L("Ibn Khaldun listens to history", "Ibn Khaldoun écoute l'histoire", "ابن خلدون يُنصت إلى التاريخ"),
         body: L(
-          "From a tower in Frenda, he wrote the Muqaddimah — and invented the social science of how civilisations rise and fall.",
-          "Depuis une tour à Frenda, il écrivit la Muqaddima — et inventa la science sociale de la montée et de la chute des civilisations.",
+          "From a tower in Frenda, he wrote the Muqaddimah and invented the social science of how civilisations rise and fall.",
+          "Depuis une tour à Frenda, il écrivit la Muqaddima et inventa la science sociale de la montée et de la chute des civilisations.",
           "من برجٍ في فرندة كتب «المقدّمة»، فأسّس علم اجتماع نهوض الحضارات وسقوطها.",
         ),
       },
@@ -210,16 +210,16 @@ export const eraExtras: Record<string, EraExtras> = {
       "التفّ المتوسط حول الجزائر كأنّه سورٌ ثانٍ.",
     ),
     whyItMatters: L(
-      "For three centuries the Regency of Algiers was a Mediterranean power with its own fleet, treaties and pluralistic city life — a chapter often flattened, but full of nuance.",
-      "Pendant trois siècles, la Régence d'Alger fut une puissance méditerranéenne dotée de sa propre flotte, de ses traités et d'une vie urbaine plurielle — un chapitre souvent aplati, mais plein de nuances.",
+      "For three centuries the Regency of Algiers was a Mediterranean power with its own fleet, treaties and pluralistic city life, a chapter often flattened, but full of nuance.",
+      "Pendant trois siècles, la Régence d'Alger fut une puissance méditerranéenne dotée de sa propre flotte, de ses traités et d'une vie urbaine plurielle, un chapitre souvent aplati, mais plein de nuances.",
       "ظلّت إيالة الجزائر ثلاثة قرون قوّةً متوسطية ذات أسطولها ومعاهداتها وحياتها المدينية المتنوّعة، فصلٌ كثيرًا ما يُختزل وهو غنيٌّ بالتفاصيل.",
     ),
     museumNotes: [
       {
         title: L("The Casbah, a city within a city", "La Casbah, une cité dans la cité", "القصبة، مدينةٌ داخل المدينة"),
         body: L(
-          "Narrow stairs, white walls, courtyards open to the sky — UNESCO heritage and lived neighbourhood at once.",
-          "Escaliers étroits, murs blancs, cours ouvertes sur le ciel — patrimoine UNESCO et quartier vivant à la fois.",
+          "Narrow stairs, white walls, courtyards open to the sky, UNESCO heritage and lived neighbourhood at once.",
+          "Escaliers étroits, murs blancs, cours ouvertes sur le ciel, patrimoine UNESCO et quartier vivant à la fois.",
           "أدراجٌ ضيّقة وجدرانٌ بيضاء وأفنيةٌ مفتوحة على السماء، تراثٌ عالمي وحيٌّ مسكون في آنٍ.",
         ),
       },
@@ -236,8 +236,8 @@ export const eraExtras: Record<string, EraExtras> = {
     relatedRegionIds: ["algiers", "oran-west", "constantine"],
     memoryCard: {
       quote: L(
-        "Algiers did not look inland — it looked across the sea, and the sea answered back.",
-        "Alger ne regardait pas vers l'intérieur — elle regardait la mer, et la mer lui répondait.",
+        "Algiers did not look inland, it looked across the sea, and the sea answered back.",
+        "Alger ne regardait pas vers l'intérieur, elle regardait la mer, et la mer lui répondait.",
         "لم تكن الجزائر تتطلّع إلى الداخل، بل إلى البحر، فكان البحر يجيبها.",
       ),
     },
@@ -246,13 +246,13 @@ export const eraExtras: Record<string, EraExtras> = {
 
   french: {
     cinematicLine: L(
-      "A country was wounded in its language, its land, and its name — and learned to remember in three tongues.",
-      "Un pays fut blessé dans sa langue, sa terre et son nom — et apprit à se souvenir en trois langues.",
+      "A country was wounded in its language, its land, and its name and learned to remember in three tongues.",
+      "Un pays fut blessé dans sa langue, sa terre et son nom et apprit à se souvenir en trois langues.",
       "بلدٌ جُرح في لغته وأرضه واسمه، فتعلّم أن يتذكّر بثلاث لغات.",
     ),
     whyItMatters: L(
-      "132 years of colonisation reshaped land, names and families — but also forged a generation of leaders, poets and witnesses whose voices still guide the country.",
-      "132 ans de colonisation ont remodelé la terre, les noms et les familles — mais ont aussi forgé une génération de chefs, de poètes et de témoins dont les voix guident encore le pays.",
+      "132 years of colonisation reshaped land, names and families, but also forged a generation of leaders, poets and witnesses whose voices still guide the country.",
+      "132 ans de colonisation ont remodelé la terre, les noms et les familles, mais ont aussi forgé une génération de chefs, de poètes et de témoins dont les voix guident encore le pays.",
       "غيّر استعمارٌ دام 132 عامًا الأرض والأسماء والعائلات، لكنّه صنع أيضًا جيلًا من القادة والشعراء والشهود لا تزال أصواتهم تهدي البلاد.",
     ),
     museumNotes: [
@@ -265,7 +265,7 @@ export const eraExtras: Record<string, EraExtras> = {
         ),
       },
       {
-        title: L("8 May 1945 — a date that did not heal", "8 mai 1945 — une date qui n'a pas guéri", "8 ماي 1945 — تاريخٌ لم يلتئم"),
+        title: L("8 May 1945, a date that did not heal", "8 mai 1945, une date qui n'a pas guéri", "8 ماي 1945، تاريخٌ لم يلتئم"),
         body: L(
           "The Sétif and Guelma massacres turned a celebration of peace into a generational rupture.",
           "Les massacres de Sétif et Guelma transformèrent une fête de la paix en rupture générationnelle.",
@@ -293,32 +293,32 @@ export const eraExtras: Record<string, EraExtras> = {
       "أمّةٌ كتبت اسمها بالنار، ولا تزال تتعلّم أن تكتبه بالسلام.",
     ),
     whyItMatters: L(
-      "From the first shots of 1 November 1954 to today, this is the era Algerians live inside — and the one they argue about the most.",
-      "Des premiers coups de feu du 1ᵉʳ novembre 1954 à aujourd'hui, c'est l'époque dans laquelle les Algériens vivent — et celle dont ils débattent le plus.",
+      "From the first shots of 1 November 1954 to today, this is the era Algerians live inside and the one they argue about the most.",
+      "Des premiers coups de feu du 1ᵉʳ novembre 1954 à aujourd'hui, c'est l'époque dans laquelle les Algériens vivent et celle dont ils débattent le plus.",
       "من رصاصات أوّل نوفمبر 1954 إلى اليوم، هذه هي الحقبة التي يعيش فيها الجزائريون، والأكثر إثارةً للنقاش بينهم.",
     ),
     museumNotes: [
       {
         title: L("Soummam, 1956", "Soummam, 1956", "الصومام، 1956"),
         body: L(
-          "In a Kabyle valley, the revolution gave itself a constitution — and a debate about power that never quite ended.",
-          "Dans une vallée kabyle, la révolution se donna une constitution — et un débat sur le pouvoir qui ne s'est jamais vraiment refermé.",
+          "In a Kabyle valley, the revolution gave itself a constitution and a debate about power that never quite ended.",
+          "Dans une vallée kabyle, la révolution se donna une constitution et un débat sur le pouvoir qui ne s'est jamais vraiment refermé.",
           "في وادٍ قبائلي، منحت الثورة نفسها دستورًا، ونقاشًا حول السلطة لم يُغلَق فعلًا قطّ.",
         ),
       },
       {
         title: L("5 July 1962", "5 juillet 1962", "5 جويلية 1962"),
         body: L(
-          "Independence at last, exactly 132 years after the French landing — a date carried inside almost every Algerian family story.",
-          "L'indépendance enfin, exactement 132 ans après le débarquement français — une date logée dans presque chaque histoire de famille algérienne.",
+          "Independence at last, exactly 132 years after the French landing, a date carried inside almost every Algerian family story.",
+          "L'indépendance enfin, exactement 132 ans après le débarquement français, une date logée dans presque chaque histoire de famille algérienne.",
           "الاستقلال أخيرًا، بعد 132 سنةً بالضبط من الإنزال الفرنسي، تاريخٌ يسكن قصص العائلات الجزائرية كلّها تقريبًا.",
         ),
       },
       {
         title: L("A young, multilingual country", "Un pays jeune et multilingue", "بلدٌ شابٌّ متعدّد اللغات"),
         body: L(
-          "Arabic, Tamazight and French live side by side in the same conversation — sometimes the same sentence.",
-          "Arabe, tamazight et français cohabitent dans la même conversation — parfois la même phrase.",
+          "Arabic, Tamazight and French live side by side in the same conversation, sometimes the same sentence.",
+          "Arabe, tamazight et français cohabitent dans la même conversation, parfois la même phrase.",
           "تتجاور العربية وتامازيغت والفرنسية في الحديث نفسه، وأحيانًا في الجملة الواحدة.",
         ),
       },

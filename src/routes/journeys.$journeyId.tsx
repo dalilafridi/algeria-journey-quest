@@ -46,7 +46,7 @@ export const Route = createFileRoute("/journeys/$journeyId")({
     if (!loaderData) {
       return pageMeta({
         path: `/journeys/${params.journeyId}`,
-        title: "Signature Journey — DZ Odyssey",
+        title: "Signature Journey, DZ Odyssey",
         description: "This signature journey could not be found.",
         noindex: true,
       });
@@ -55,7 +55,7 @@ export const Route = createFileRoute("/journeys/$journeyId")({
     const taglineEn = t(loaderData.journey.tagline, "en");
     return pageMeta({
       path: `/journeys/${loaderData.journey.id}`,
-      title: `${titleEn} — Signature Journey | DZ Odyssey`,
+      title: `${titleEn}, Signature Journey | DZ Odyssey`,
       description: taglineEn,
     });
   },
@@ -191,9 +191,9 @@ function JourneyDetail() {
   });
 
   const exploreStats = [
-    { glyph: "♟", value: figureCount > 0 ? `${figureCount}` : "—", label: t(COPY.keyFigures, lang) },
-    { glyph: "♜", value: eraCount > 0 ? `${eraCount}` : "—", label: t(COPY.majorEras, lang) },
-    { glyph: "❖", value: regionCount > 0 ? `${regionCount}` : "—", label: t(COPY.regions, lang) },
+    { glyph: "♟", value: figureCount > 0 ? `${figureCount}` : ", ", label: t(COPY.keyFigures, lang) },
+    { glyph: "♜", value: eraCount > 0 ? `${eraCount}` : ", ", label: t(COPY.majorEras, lang) },
+    { glyph: "❖", value: regionCount > 0 ? `${regionCount}` : ", ", label: t(COPY.regions, lang) },
     { glyph: "✦", value: `${journey.stops.length}`, label: t(COPY.storiesLegacies, lang) },
   ];
 

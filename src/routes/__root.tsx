@@ -62,11 +62,11 @@ export const Route = createRootRoute({
       { name: "mobile-web-app-capable", content: "yes" },
       { name: "apple-mobile-web-app-capable", content: "yes" },
       { name: "apple-mobile-web-app-status-bar-style", content: "black-translucent" },
-      { title: "DZ Odyssey — Algeria Through Time" },
+      { title: "DZ Odyssey, Algeria Through Time" },
       {
         name: "description",
         content:
-          "DZ Odyssey — a cinematic museum passage through Algeria's eras, regions, figures and culture, from Numidia to independence.",
+          "DZ Odyssey, a cinematic museum passage through Algeria's eras, regions, figures and culture, from Numidia to independence.",
       },
       { name: "author", content: "DZ Odyssey" },
       { property: "og:type", content: "website" },

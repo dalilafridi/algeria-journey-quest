@@ -49,8 +49,8 @@ export const FOOTBALL_EXHIBITS: FootballExhibit[] = [
       ar: "كرة القدم، الاستعمار، ومقاومة هادئة",
     },
     intro: {
-      en: "Football arrived in Algeria in the early 1900s carried by French settlers and sailors along the Mediterranean coast. Within two decades it had slipped its colonial frame — Muslim clubs stitched their own crests, their own colours, and their own quiet politics.",
-      fr: "Le football arrive en Algérie au début du XXᵉ siècle, porté par les colons et les marins français le long du littoral. En deux décennies, il échappe à son cadre colonial — les clubs musulmans brodent leurs propres écussons, leurs couleurs et une politique discrète.",
+      en: "Football arrived in Algeria in the early 1900s carried by French settlers and sailors along the Mediterranean coast. Within two decades it had slipped its colonial frame, Muslim clubs stitched their own crests, their own colours, and their own quiet politics.",
+      fr: "Le football arrive en Algérie au début du XXᵉ siècle, porté par les colons et les marins français le long du littoral. En deux décennies, il échappe à son cadre colonial, les clubs musulmans brodent leurs propres écussons, leurs couleurs et une politique discrète.",
       ar: "وصلت كرة القدم إلى الجزائر في مطلع القرن العشرين مع المستوطنين والبحّارة الفرنسيين على طول الساحل المتوسطي. خلال عقدين أفلتت من إطارها الاستعماري لتُنسج ألوان النوادي المسلمة وشاراتها.",
     },
   },
@@ -64,7 +64,7 @@ export const FOOTBALL_EXHIBITS: FootballExhibit[] = [
       ar: "١٩٦٢–١٩٦٣ · أمّة ترتدي أول قميص لها",
     },
     intro: {
-      en: "In the year of independence, Algeria assembled its first officially sanctioned national team. The green-and-white took the pitch as a young republic still finding its borders on paper — and its identity in front of a stadium full of witnesses.",
+      en: "In the year of independence, Algeria assembled its first officially sanctioned national team. The green-and-white took the pitch as a young republic still finding its borders on paper and its identity in front of a stadium full of witnesses.",
       fr: "L’année de l’indépendance, l’Algérie assemble sa première équipe nationale officielle. Le vert-et-blanc entre en scène tandis que la jeune république se cherche encore, sur le papier comme devant des tribunes pleines.",
       ar: "في عام الاستقلال، جمعت الجزائر أوّل منتخب وطني معترف به رسميًا. دخل الأخضر والأبيض الملعب بينما لا تزال الجمهورية الفتيّة ترسم حدودها على الورق وهويتها أمام جمهور شاهد.",
     },
@@ -79,7 +79,7 @@ export const FOOTBALL_EXHIBITS: FootballExhibit[] = [
       ar: "١٩٥٨–١٩٦٢ · فريق كرة قدم في خدمة وطن يولد",
     },
     intro: {
-      en: "In April 1958 nine professional players walked out of French clubs at the peak of their careers and boarded a train for Tunis. There, under the FLN’s green banner, they became a football team, a diplomatic mission and a moving symbol — all at once.",
+      en: "In April 1958 nine professional players walked out of French clubs at the peak of their careers and boarded a train for Tunis. There, under the FLN’s green banner, they became a football team, a diplomatic mission and a moving symbol, all at once.",
       fr: "En avril 1958, neuf professionnels quittent leurs clubs français au sommet de leur carrière et prennent le train pour Tunis. Sous la bannière verte du FLN, ils deviennent à la fois équipe, mission diplomatique et symbole itinérant.",
       ar: "في أفريل ١٩٥٨ غادر تسعة محترفين أنديتهم الفرنسية في أوج مسيرتهم وامتطوا قطارًا إلى تونس. تحت الراية الخضراء لجبهة التحرير صاروا فريقًا وبعثة دبلوماسية ورمزًا متنقّلًا في آنٍ واحد.",
     },
@@ -94,9 +94,9 @@ export const FOOTBALL_EXHIBITS: FootballExhibit[] = [
       ar: "١٩٨٢ · ١٩٨٦ · ٢٠١٠ · ٢٠١٤ · ٢٠٢٦",
     },
     intro: {
-      en: "Five appearances, one continent held in suspense. Algeria’s World Cup story runs from the shock of Gijón to the sixteenth minute of Porto Alegre — a full arc of ambition, heartbreak, and hard-won respect.",
-      fr: "Cinq participations, un continent en apnée. L’histoire mondiale de l’Algérie va du choc de Gijón à la seizième minute de Porto Alegre — un arc entier d’ambition, de peine et de respect gagné.",
-      ar: "خمس مشاركات وقارّة حابسة أنفاسها. تمتد قصة الجزائر في المونديال من صدمة خيخون إلى الدقيقة السادسة عشرة في بورتو أليغري — قوسٌ كامل من الطموح والألم والاحترام المكتسب.",
+      en: "Five appearances, one continent held in suspense. Algeria’s World Cup story runs from the shock of Gijón to the sixteenth minute of Porto Alegre, a full arc of ambition, heartbreak, and hard-won respect.",
+      fr: "Cinq participations, un continent en apnée. L’histoire mondiale de l’Algérie va du choc de Gijón à la seizième minute de Porto Alegre, un arc entier d’ambition, de peine et de respect gagné.",
+      ar: "خمس مشاركات وقارّة حابسة أنفاسها. تمتد قصة الجزائر في المونديال من صدمة خيخون إلى الدقيقة السادسة عشرة في بورتو أليغري، قوسٌ كامل من الطموح والألم والاحترام المكتسب.",
     },
   },
   {
@@ -109,9 +109,9 @@ export const FOOTBALL_EXHIBITS: FootballExhibit[] = [
       ar: "٢٥ جوان ١٩٨٢ · لماذا تُلعب المباريات الأخيرة في وقت واحد",
     },
     intro: {
-      en: "On the final day of Group 2, West Germany and Austria knew exactly which scoreline would eliminate Algeria — and played to it. The world watched a match without a contest. FIFA’s response would reshape every group stage that followed.",
-      fr: "Le dernier jour du groupe 2, la RFA et l’Autriche connaissent exactement le score qui éliminera l’Algérie — et le jouent. Le monde regarde un match sans opposition. La réponse de la FIFA redessinera toutes les phases de groupes à venir.",
-      ar: "في اليوم الأخير من المجموعة الثانية، عرفت ألمانيا الغربية والنمسا النتيجة التي تُقصي الجزائر — ولعبتاها. تابع العالم مباراة بلا منافسة. جواب الفيفا سيُعيد رسم كل دور مجموعات لاحق.",
+      en: "On the final day of Group 2, West Germany and Austria knew exactly which scoreline would eliminate Algeria and played to it. The world watched a match without a contest. FIFA’s response would reshape every group stage that followed.",
+      fr: "Le dernier jour du groupe 2, la RFA et l’Autriche connaissent exactement le score qui éliminera l’Algérie et le jouent. Le monde regarde un match sans opposition. La réponse de la FIFA redessinera toutes les phases de groupes à venir.",
+      ar: "في اليوم الأخير من المجموعة الثانية، عرفت ألمانيا الغربية والنمسا النتيجة التي تُقصي الجزائر، ولعبتاها. تابع العالم مباراة بلا منافسة. جواب الفيفا سيُعيد رسم كل دور مجموعات لاحق.",
     },
   },
   {
@@ -139,9 +139,9 @@ export const FOOTBALL_EXHIBITS: FootballExhibit[] = [
       ar: "اللاعبون الذين كتبوا النشيد",
     },
     intro: {
-      en: "A gallery of the players whose gestures, goals and gravity became national memory — from Mekhloufi’s exile to Mahrez’s corner-kick in Cotonou.",
-      fr: "Une galerie des joueurs dont les gestes, les buts et la présence sont devenus mémoire nationale — de l’exil de Mekhloufi au corner de Mahrez à Cotonou.",
-      ar: "معرض للاعبين تحوّلت لمساتهم وأهدافهم وحضورهم إلى ذاكرة وطنية — من منفى مخلوفي إلى ركنيّة محرز في كوتونو.",
+      en: "A gallery of the players whose gestures, goals and gravity became national memory, from Mekhloufi’s exile to Mahrez’s corner-kick in Cotonou.",
+      fr: "Une galerie des joueurs dont les gestes, les buts et la présence sont devenus mémoire nationale, de l’exil de Mekhloufi au corner de Mahrez à Cotonou.",
+      ar: "معرض للاعبين تحوّلت لمساتهم وأهدافهم وحضورهم إلى ذاكرة وطنية، من منفى مخلوفي إلى ركنيّة محرز في كوتونو.",
     },
   },
   {
@@ -184,9 +184,9 @@ export const FOOTBALL_EXHIBITS: FootballExhibit[] = [
       ar: "تسعون دقيقة غيّرت وطنًا",
     },
     intro: {
-      en: "A handful of games that no Algerian will describe with statistics alone — the scoreline is always followed by where you were when it happened.",
-      fr: "Quelques matchs qu’aucun Algérien ne décrit avec de simples chiffres — le score est toujours suivi de « j’étais où quand c’est arrivé ».",
-      ar: "حفنة مباريات لا يصفها جزائريّ بالأرقام وحدها — النتيجة تتبعها دائمًا عبارة «أين كنتَ حين وقع ذلك؟».",
+      en: "A handful of games that no Algerian will describe with statistics alone, the scoreline is always followed by where you were when it happened.",
+      fr: "Quelques matchs qu’aucun Algérien ne décrit avec de simples chiffres, le score est toujours suivi de « j’étais où quand c’est arrivé ».",
+      ar: "حفنة مباريات لا يصفها جزائريّ بالأرقام وحدها، النتيجة تتبعها دائمًا عبارة «أين كنتَ حين وقع ذلك؟».",
     },
   },
   {
@@ -199,9 +199,9 @@ export const FOOTBALL_EXHIBITS: FootballExhibit[] = [
       ar: "الشوارع، الأهازيج، الديربيات، الهويّة",
     },
     intro: {
-      en: "In Algeria the game lives outside the stadium too — in the cracked concrete of Bab El-Oued, in Kabyle drums, in ultras chants that travel across the Mediterranean and come back as protest anthems.",
-      fr: "En Algérie le jeu vit aussi hors du stade — dans le béton fissuré de Bab El-Oued, dans les tambours kabyles, dans les chants d’ultras qui traversent la Méditerranée et reviennent en hymnes de rue.",
-      ar: "في الجزائر تحيا اللعبة خارج الملعب أيضًا — في إسمنت باب الوادي المتشقّق، في طبول القبائل، في أهازيج الأولتراس التي تعبر المتوسط لتعود أناشيدَ شارعٍ.",
+      en: "In Algeria the game lives outside the stadium too, in the cracked concrete of Bab El-Oued, in Kabyle drums, in ultras chants that travel across the Mediterranean and come back as protest anthems.",
+      fr: "En Algérie le jeu vit aussi hors du stade, dans le béton fissuré de Bab El-Oued, dans les tambours kabyles, dans les chants d’ultras qui traversent la Méditerranée et reviennent en hymnes de rue.",
+      ar: "في الجزائر تحيا اللعبة خارج الملعب أيضًا، في إسمنت باب الوادي المتشقّق، في طبول القبائل، في أهازيج الأولتراس التي تعبر المتوسط لتعود أناشيدَ شارعٍ.",
     },
   },
   {
@@ -214,9 +214,9 @@ export const FOOTBALL_EXHIBITS: FootballExhibit[] = [
       ar: "فضّة وبرونز وثقل القارّات",
     },
     intro: {
-      en: "Hover a plaque to hear its story. Every trophy in this room was won under a different generation’s pressure — and remembered by all of them.",
-      fr: "Approchez une plaque pour entendre son histoire. Chaque trophée exposé a été gagné sous la pression d’une génération — et gardé en mémoire par toutes les autres.",
-      ar: "اقترب من اللوحة لتسمع قصّتها. كلّ كأس في هذه القاعة رُفع تحت ضغط جيل — واحتفظت به الأجيال كلّها.",
+      en: "Hover a plaque to hear its story. Every trophy in this room was won under a different generation’s pressure and remembered by all of them.",
+      fr: "Approchez une plaque pour entendre son histoire. Chaque trophée exposé a été gagné sous la pression d’une génération et gardé en mémoire par toutes les autres.",
+      ar: "اقترب من اللوحة لتسمع قصّتها. كلّ كأس في هذه القاعة رُفع تحت ضغط جيل، واحتفظت به الأجيال كلّها.",
     },
   },
   {
@@ -229,9 +229,9 @@ export const FOOTBALL_EXHIBITS: FootballExhibit[] = [
       ar: "الأرقام خلف النشيد",
     },
     intro: {
-      en: "Appearances, goals, qualification runs — the quiet ledger of a national side told in figures.",
-      fr: "Sélections, buts, campagnes de qualification — le registre discret d’une sélection raconté en chiffres.",
-      ar: "المشاركات، الأهداف، حملات التصفيات — سجلّ هادئ لمنتخب رُوي بالأرقام.",
+      en: "Appearances, goals, qualification runs, the quiet ledger of a national side told in figures.",
+      fr: "Sélections, buts, campagnes de qualification, le registre discret d’une sélection raconté en chiffres.",
+      ar: "المشاركات، الأهداف، حملات التصفيات، سجلّ هادئ لمنتخب رُوي بالأرقام.",
     },
   },
   {
@@ -244,9 +244,9 @@ export const FOOTBALL_EXHIBITS: FootballExhibit[] = [
       ar: "قمصان، تذاكر، وأشياء نجت من المباراة",
     },
     intro: {
-      en: "The small artifacts that never make the highlights reel — but that families kept in a drawer for forty years anyway.",
-      fr: "Les petits objets qui n’entrent jamais dans les résumés — mais que les familles ont gardés au tiroir pendant quarante ans.",
-      ar: "أشياء صغيرة لا تدخل ملخّصات المباريات — لكنّ العائلات احتفظت بها في الأدراج أربعين عامًا.",
+      en: "The small artifacts that never make the highlights reel, but that families kept in a drawer for forty years anyway.",
+      fr: "Les petits objets qui n’entrent jamais dans les résumés, mais que les familles ont gardés au tiroir pendant quarante ans.",
+      ar: "أشياء صغيرة لا تدخل ملخّصات المباريات، لكنّ العائلات احتفظت بها في الأدراج أربعين عامًا.",
     },
   },
   {
@@ -273,17 +273,17 @@ export type OriginClub = { year: number; club: string; city: string; note: strin
 export const ORIGIN_CLUBS: OriginClub[] = [
   { year: 1897, club: "Club des Joyeusetés d’Oran", city: "Oran", note: "One of the first football-adjacent clubs on the coast, still European in composition." },
   { year: 1907, club: "Club Athlétique Liberté d’Oran", city: "Oran", note: "Early codified football under French league rules." },
-  { year: 1921, club: "Mouloudia Club d’Alger (MCA)", city: "Algiers", note: "Founded by Muslim youth — green and red, the first Algerian-identified colours." },
-  { year: 1926, club: "Union Sportive Musulmane de Blida (USMB)", city: "Blida", note: "‘Musulmane’ in the name — an open declaration of identity under colonial rule." },
+  { year: 1921, club: "Mouloudia Club d’Alger (MCA)", city: "Algiers", note: "Founded by Muslim youth, green and red, the first Algerian-identified colours." },
+  { year: 1926, club: "Union Sportive Musulmane de Blida (USMB)", city: "Blida", note: "‘Musulmane’ in the name, an open declaration of identity under colonial rule." },
   { year: 1927, club: "Union Sportive de la Médina d’Alger (USMA)", city: "Algiers", note: "Born in the Casbah; would become one of the great derby names." },
   { year: 1932, club: "Widad Athletic Club Tlemcen (WATL)", city: "Tlemcen", note: "One of the great western clubs; nursed generations of national players." },
-  { year: 1936, club: "Jeunesse Sportive Kabylie (JSK)", city: "Tizi Ouzou", note: "Founded in the mountains — later Africa’s most-titled club." },
+  { year: 1936, club: "Jeunesse Sportive Kabylie (JSK)", city: "Tizi Ouzou", note: "Founded in the mountains, later Africa’s most-titled club." },
 ];
 
 export const ORIGIN_TIMELINE: { year: string; label: LocalizedString }[] = [
   { year: "1897", label: { en: "First codified clubs form on the Oran coast.", fr: "Premiers clubs codifiés sur le littoral oranais.", ar: "أوّل النوادي المنظّمة على ساحل وهران." } },
-  { year: "1921", label: { en: "Mouloudia founded in Algiers — the first Muslim-identified club.", fr: "Fondation du Mouloudia à Alger — premier club à identité musulmane.", ar: "تأسيس مولودية الجزائر — أوّل نادٍ بهويّة مسلمة." } },
-  { year: "1928", label: { en: "The colonial authorities require a quota of ‘European’ players per team — clubs quietly defy it.", fr: "Les autorités imposent un quota de joueurs « européens » par équipe — les clubs le défient discrètement.", ar: "تفرض السلطات حصّة من اللاعبين «الأوروبيين» في كلّ فريق — والنوادي تتحدّاها بهدوء." } },
+  { year: "1921", label: { en: "Mouloudia founded in Algiers, the first Muslim-identified club.", fr: "Fondation du Mouloudia à Alger, premier club à identité musulmane.", ar: "تأسيس مولودية الجزائر، أوّل نادٍ بهويّة مسلمة." } },
+  { year: "1928", label: { en: "The colonial authorities require a quota of ‘European’ players per team, clubs quietly defy it.", fr: "Les autorités imposent un quota de joueurs « européens » par équipe, les clubs le défient discrètement.", ar: "تفرض السلطات حصّة من اللاعبين «الأوروبيين» في كلّ فريق، والنوادي تتحدّاها بهدوء." } },
   { year: "1956", label: { en: "The FLN calls on Algerian players to leave French clubs.", fr: "Le FLN appelle les joueurs algériens à quitter les clubs français.", ar: "جبهة التحرير تدعو اللاعبين الجزائريين إلى مغادرة الأندية الفرنسية." } },
 ];
 
@@ -346,9 +346,9 @@ export const FLN_TOUR: { country: string; year: string }[] = [
 ];
 
 export const FLN_LEGACY: LocalizedString = {
-  en: "In four years the FLN team played close to eighty matches on four continents. FIFA refused to recognise any of them. Every player who left France sacrificed a European career at its peak — several never played professionally again. In 1963 they walked back into a free Algeria and became its first national team.",
-  fr: "En quatre ans, l’équipe du FLN dispute près de quatre-vingts matchs sur quatre continents. La FIFA refuse de les reconnaître. Chaque joueur ayant quitté la France a sacrifié une carrière européenne à son sommet — plusieurs ne rejoueront jamais professionnellement. En 1963, ils rentrent dans une Algérie libre et deviennent sa première sélection.",
-  ar: "خلال أربع سنوات لعب فريق جبهة التحرير قرابة ثمانين مباراة في أربع قارات. رفض الفيفا الاعتراف بأيّ منها. ضحّى كلّ لاعب غادر فرنسا بمسيرة أوروبية في أوجها — ولم يعد بعضهم إلى الاحتراف. عاد الفريق سنة ١٩٦٣ إلى جزائر حرّة ليكون أوّل منتخب لها.",
+  en: "In four years the FLN team played close to eighty matches on four continents. FIFA refused to recognise any of them. Every player who left France sacrificed a European career at its peak, several never played professionally again. In 1963 they walked back into a free Algeria and became its first national team.",
+  fr: "En quatre ans, l’équipe du FLN dispute près de quatre-vingts matchs sur quatre continents. La FIFA refuse de les reconnaître. Chaque joueur ayant quitté la France a sacrifié une carrière européenne à son sommet, plusieurs ne rejoueront jamais professionnellement. En 1963, ils rentrent dans une Algérie libre et deviennent sa première sélection.",
+  ar: "خلال أربع سنوات لعب فريق جبهة التحرير قرابة ثمانين مباراة في أربع قارات. رفض الفيفا الاعتراف بأيّ منها. ضحّى كلّ لاعب غادر فرنسا بمسيرة أوروبية في أوجها، ولم يعد بعضهم إلى الاحتراف. عاد الفريق سنة ١٩٦٣ إلى جزائر حرّة ليكون أوّل منتخب لها.",
 };
 
 /* ---------- 4. World Cup ---------- */
@@ -413,19 +413,19 @@ export const WORLD_CUPS: WorldCupEdition[] = [
       { opp: "Chile", result: "3–2", note: "Assad brace" },
     ],
     moment: {
-      en: "Belloumi’s goal, 68th minute, against Rummenigge’s Germany — one of the great World Cup upsets.",
-      fr: "But de Belloumi à la 68ᵉ face à la RFA de Rummenigge — l’un des grands exploits mondiaux.",
-      ar: "هدف بلومي في الدقيقة ٦٨ في مرمى ألمانيا رومينيغه — من أعظم مفاجآت المونديال.",
+      en: "Belloumi’s goal, 68th minute, against Rummenigge’s Germany, one of the great World Cup upsets.",
+      fr: "But de Belloumi à la 68ᵉ face à la RFA de Rummenigge, l’un des grands exploits mondiaux.",
+      ar: "هدف بلومي في الدقيقة ٦٨ في مرمى ألمانيا رومينيغه، من أعظم مفاجآت المونديال.",
     },
     overview: {
-      en: "España 82 was Algeria’s first World Cup — and the first in which an African side beat a European champion. In three matches Les Fennecs redrew the map of world football and, in defeat, forced FIFA to rewrite its own rulebook.",
-      fr: "España 82 est le premier Mondial de l’Algérie — et le premier où une sélection africaine bat un champion européen. En trois matchs, les Fennecs redessinent la carte du football mondial et, dans la défaite, obligent la FIFA à réécrire son règlement.",
-      ar: "إسبانيا ٨٢ كانت أوّل مونديال للجزائر — وأوّل مرّة يهزم فيها منتخب إفريقيّ بطل أوروبا. في ثلاث مباريات أعاد الفنّاك رسم خارطة الكرة العالميّة، وفي الهزيمة أرغموا الفيفا على إعادة كتابة قوانينه.",
+      en: "España 82 was Algeria’s first World Cup and the first in which an African side beat a European champion. In three matches Les Fennecs redrew the map of world football and, in defeat, forced FIFA to rewrite its own rulebook.",
+      fr: "España 82 est le premier Mondial de l’Algérie et le premier où une sélection africaine bat un champion européen. En trois matchs, les Fennecs redessinent la carte du football mondial et, dans la défaite, obligent la FIFA à réécrire son règlement.",
+      ar: "إسبانيا ٨٢ كانت أوّل مونديال للجزائر، وأوّل مرّة يهزم فيها منتخب إفريقيّ بطل أوروبا. في ثلاث مباريات أعاد الفنّاك رسم خارطة الكرة العالميّة، وفي الهزيمة أرغموا الفيفا على إعادة كتابة قوانينه.",
     },
     qualification: {
-      en: "CAF opened two World Cup slots for the first time in 1982. Algeria beat Sudan, Liberia and Guinea in the early rounds before an African final showdown with Nigeria — a 2–0 win in Constantine and a 1–2 loss in Lagos sent Les Fennecs to Spain on aggregate.",
-      fr: "La CAF ouvre pour la première fois deux places au Mondial 1982. L’Algérie écarte le Soudan, le Liberia et la Guinée puis dispute la finale africaine face au Nigeria — victoire 2-0 à Constantine, défaite 1-2 à Lagos, qualification à la différence de buts.",
-      ar: "منح الكاف مقعدَين لكأس العالم لأوّل مرّة سنة ١٩٨٢. أقصت الجزائر السودان وليبيريا وغينيا في الأدوار الأولى، ثمّ واجهت نيجيريا في النهائي الإفريقيّ — فوز ٢-٠ في قسنطينة وخسارة ١-٢ في لاغوس، والتأهّل بفارق الأهداف.",
+      en: "CAF opened two World Cup slots for the first time in 1982. Algeria beat Sudan, Liberia and Guinea in the early rounds before an African final showdown with Nigeria, a 2–0 win in Constantine and a 1–2 loss in Lagos sent Les Fennecs to Spain on aggregate.",
+      fr: "La CAF ouvre pour la première fois deux places au Mondial 1982. L’Algérie écarte le Soudan, le Liberia et la Guinée puis dispute la finale africaine face au Nigeria, victoire 2-0 à Constantine, défaite 1-2 à Lagos, qualification à la différence de buts.",
+      ar: "منح الكاف مقعدَين لكأس العالم لأوّل مرّة سنة ١٩٨٢. أقصت الجزائر السودان وليبيريا وغينيا في الأدوار الأولى، ثمّ واجهت نيجيريا في النهائي الإفريقيّ، فوز ٢-٠ في قسنطينة وخسارة ١-٢ في لاغوس، والتأهّل بفارق الأهداف.",
     },
     groupStage: {
       en: "In Group 2 with West Germany, Austria and Chile, Algeria opened at El Molinón and stunned the reigning European champions 2–1 through Madjer and Belloumi. Four days later Austria’s discipline exposed the fatigue in Algerian legs. Against Chile in Oviedo, Salah Assad’s brace sealed a 3–2 win that carried Les Fennecs to the edge of qualification.",
@@ -434,15 +434,15 @@ export const WORLD_CUPS: WorldCupEdition[] = [
     },
     formation: "4-4-2",
     tacticalIdentity: {
-      en: "A patient, technical 4-4-2 built on the FLN school: quick vertical passing, wingers running at defenders, and a midfield anchored by Fergani and Bencheikh. What surprised Europe was the calm — never the pace.",
-      fr: "Un 4-4-2 patient et technique, héritier de l’école FLN : passes verticales, ailiers face aux défenseurs, un milieu tenu par Fergani et Bencheikh. Ce qui étonne l’Europe, c’est la sérénité — jamais le rythme.",
-      ar: "خطّة ٤-٤-٢ صبورة تقنيّة على مدرسة جبهة التحرير: تمريرات عموديّة سريعة، أجنحة تواجه المدافعين، ووسط ميدان يقوده فرقاني وبن الشيخ. ما أدهش أوروبا كان الهدوء — لا السرعة.",
+      en: "A patient, technical 4-4-2 built on the FLN school: quick vertical passing, wingers running at defenders, and a midfield anchored by Fergani and Bencheikh. What surprised Europe was the calm, never the pace.",
+      fr: "Un 4-4-2 patient et technique, héritier de l’école FLN : passes verticales, ailiers face aux défenseurs, un milieu tenu par Fergani et Bencheikh. Ce qui étonne l’Europe, c’est la sérénité, jamais le rythme.",
+      ar: "خطّة ٤-٤-٢ صبورة تقنيّة على مدرسة جبهة التحرير: تمريرات عموديّة سريعة، أجنحة تواجه المدافعين، ووسط ميدان يقوده فرقاني وبن الشيخ. ما أدهش أوروبا كان الهدوء، لا السرعة.",
     },
     keyPlayers: [
       { name: "Lakhdar Belloumi", role: { en: "Attacking midfielder", fr: "Meneur de jeu", ar: "صانع ألعاب" }, note: { en: "Scored the winner against West Germany. Named African Footballer of the Year in 1981.", fr: "Buteur vainqueur face à la RFA. Ballon d’Or africain 1981.", ar: "سجّل هدف الفوز أمام ألمانيا الغربيّة. الكرة الذهبيّة الإفريقيّة ١٩٨١." } },
       { name: "Rabah Madjer", role: { en: "Forward", fr: "Attaquant", ar: "مهاجم" }, note: { en: "Opened the scoring in Gijón; five years later he would win the European Cup with Porto.", fr: "Ouvre le score à Gijón ; cinq ans plus tard, vainqueur de la C1 avec Porto.", ar: "افتتح التسجيل في خيخون؛ بعد خمس سنوات يفوز بدوري الأبطال مع بورتو." } },
       { name: "Salah Assad", role: { en: "Winger", fr: "Ailier", ar: "جناح" }, note: { en: "Two goals against Chile. The tournament’s most fearless dribbler on either wing.", fr: "Doublé contre le Chili. Le dribbleur le plus audacieux du tournoi.", ar: "ثنائيّة أمام تشيلي. أجرأ مراوغ في البطولة على الجناحَين." } },
-      { name: "Ali Fergani", role: { en: "Captain, midfielder", fr: "Capitaine, milieu", ar: "قائد، لاعب وسط" }, note: { en: "Wore the armband in Algeria’s first World Cup match — a symbol of the passage from the FLN era to the modern national team.", fr: "Capitaine du premier match de l’Algérie en Coupe du monde — symbole du passage de l’ère FLN à l’équipe nationale moderne.", ar: "قائد أوّل مباراة للجزائر في المونديال — رمز الانتقال من حقبة جبهة التحرير إلى المنتخب الحديث." } },
+      { name: "Ali Fergani", role: { en: "Captain, midfielder", fr: "Capitaine, milieu", ar: "قائد، لاعب وسط" }, note: { en: "Wore the armband in Algeria’s first World Cup match, a symbol of the passage from the FLN era to the modern national team.", fr: "Capitaine du premier match de l’Algérie en Coupe du monde, symbole du passage de l’ère FLN à l’équipe nationale moderne.", ar: "قائد أوّل مباراة للجزائر في المونديال، رمز الانتقال من حقبة جبهة التحرير إلى المنتخب الحديث." } },
     ],
     stats: {
       matches: 3,
@@ -455,9 +455,9 @@ export const WORLD_CUPS: WorldCupEdition[] = [
       topScorer: "Salah Assad (2)",
     },
     legacy: {
-      en: "Algeria left Spain eliminated on goals scored despite matching every rival on points. The Gijón fix pushed FIFA to make the final round of group matches kick off simultaneously at every future World Cup — a rule change written, in effect, in Algerian ink.",
-      fr: "L’Algérie quitte l’Espagne éliminée aux buts marqués malgré un total de points identique. Le scandale de Gijón pousse la FIFA à faire jouer simultanément la dernière journée des poules dans chaque Mondial suivant — un changement de règle écrit, de fait, à l’encre algérienne.",
-      ar: "غادرت الجزائر إسبانيا مقصاةً بفارق الأهداف المسجّلة رغم تعادل النقاط. فضيحة خيخون دفعت الفيفا إلى إقامة الجولة الأخيرة من دور المجموعات في وقت واحد في كلّ مونديال لاحق — تعديل في القانون كُتب فعليًّا بحبر جزائريّ.",
+      en: "Algeria left Spain eliminated on goals scored despite matching every rival on points. The Gijón fix pushed FIFA to make the final round of group matches kick off simultaneously at every future World Cup, a rule change written, in effect, in Algerian ink.",
+      fr: "L’Algérie quitte l’Espagne éliminée aux buts marqués malgré un total de points identique. Le scandale de Gijón pousse la FIFA à faire jouer simultanément la dernière journée des poules dans chaque Mondial suivant, un changement de règle écrit, de fait, à l’encre algérienne.",
+      ar: "غادرت الجزائر إسبانيا مقصاةً بفارق الأهداف المسجّلة رغم تعادل النقاط. فضيحة خيخون دفعت الفيفا إلى إقامة الجولة الأخيرة من دور المجموعات في وقت واحد في كلّ مونديال لاحق، تعديل في القانون كُتب فعليًّا بحبر جزائريّ.",
     },
     related: [
       { label: { en: "Match Theater · Algeria–West Germany", fr: "Théâtre de match · Algérie–RFA", ar: "مسرح المباراة · الجزائر–ألمانيا الغربيّة" }, href: "/theater/gijon-1982" },
@@ -487,19 +487,19 @@ export const WORLD_CUPS: WorldCupEdition[] = [
       { opp: "Spain", result: "0–3" },
     ],
     moment: {
-      en: "Zidane Djamel’s equaliser against Northern Ireland — Algeria’s first ever World Cup point.",
-      fr: "L’égalisation contre l’Irlande du Nord — premier point de l’Algérie en Coupe du monde.",
-      ar: "التعادل أمام إيرلندا الشمالية — أوّل نقطة للجزائر في المونديال.",
+      en: "Zidane Djamel’s equaliser against Northern Ireland, Algeria’s first ever World Cup point.",
+      fr: "L’égalisation contre l’Irlande du Nord, premier point de l’Algérie en Coupe du monde.",
+      ar: "التعادل أمام إيرلندا الشمالية، أوّل نقطة للجزائر في المونديال.",
     },
     overview: {
-      en: "Mexico 86 was the sequel nobody could win. The generation that had shaken Europe returned older, thinner and burdened by expectation. Algeria left with its first World Cup point — and with the sense that a golden chapter had closed.",
-      fr: "Mexico 86 est la suite impossible à gagner. La génération qui avait secoué l’Europe revient plus âgée, plus mince, sous le poids de l’attente. L’Algérie repart avec son premier point en Coupe du monde — et le sentiment qu’un chapitre doré s’est refermé.",
-      ar: "المكسيك ٨٦ كان الجزء الثاني الذي لا يمكن ربحه. عاد الجيل الذي هزّ أوروبا أكبر سنًّا وأقلّ عددًا وتحت ثقل التوقّعات. غادرت الجزائر بأوّل نقطة لها في المونديال — وبإحساس أنّ فصلًا ذهبيًّا قد طُوي.",
+      en: "Mexico 86 was the sequel nobody could win. The generation that had shaken Europe returned older, thinner and burdened by expectation. Algeria left with its first World Cup point and with the sense that a golden chapter had closed.",
+      fr: "Mexico 86 est la suite impossible à gagner. La génération qui avait secoué l’Europe revient plus âgée, plus mince, sous le poids de l’attente. L’Algérie repart avec son premier point en Coupe du monde et le sentiment qu’un chapitre doré s’est refermé.",
+      ar: "المكسيك ٨٦ كان الجزء الثاني الذي لا يمكن ربحه. عاد الجيل الذي هزّ أوروبا أكبر سنًّا وأقلّ عددًا وتحت ثقل التوقّعات. غادرت الجزائر بأوّل نقطة لها في المونديال، وبإحساس أنّ فصلًا ذهبيًّا قد طُوي.",
     },
     qualification: {
-      en: "A patient African campaign: past Angola in the second round, past Ivory Coast, and finally past Tunisia in a two-legged decider (4–1 in Constantine, 0–3 in Tunis) — through on aggregate goal difference for the second Mondial in a row.",
-      fr: "Une campagne africaine patiente : Angola au deuxième tour, puis Côte d’Ivoire, enfin Tunisie en aller-retour décisif (4-1 à Constantine, 0-3 à Tunis) — qualifiée à la différence de buts pour le deuxième Mondial consécutif.",
-      ar: "حملة إفريقيّة صبورة: تجاوزت أنغولا في الدور الثاني، ثمّ كوت ديفوار، وأخيرًا تونس في مواجهة ذهاب وإياب حاسمة (٤-١ في قسنطينة و٠-٣ في تونس) — تأهّلت بفارق الأهداف للمونديال الثاني على التوالي.",
+      en: "A patient African campaign: past Angola in the second round, past Ivory Coast, and finally past Tunisia in a two-legged decider (4–1 in Constantine, 0–3 in Tunis), through on aggregate goal difference for the second Mondial in a row.",
+      fr: "Une campagne africaine patiente : Angola au deuxième tour, puis Côte d’Ivoire, enfin Tunisie en aller-retour décisif (4-1 à Constantine, 0-3 à Tunis), qualifiée à la différence de buts pour le deuxième Mondial consécutif.",
+      ar: "حملة إفريقيّة صبورة: تجاوزت أنغولا في الدور الثاني، ثمّ كوت ديفوار، وأخيرًا تونس في مواجهة ذهاب وإياب حاسمة (٤-١ في قسنطينة و٠-٣ في تونس)، تأهّلت بفارق الأهداف للمونديال الثاني على التوالي.",
     },
     groupStage: {
       en: "Group D opened well: Djamel Zidane’s equaliser against Northern Ireland brought the historic first point. Against Brazil, Careca’s single goal separated the sides on a night when Algeria matched the Seleção for long spells. The final match against Spain, on tired legs at 2,200 metres, ended in a 3–0 defeat that closed the campaign.",
@@ -508,15 +508,15 @@ export const WORLD_CUPS: WorldCupEdition[] = [
     },
     formation: "4-4-2",
     tacticalIdentity: {
-      en: "Saâdane kept the shape of 1982 but rebuilt around a defensive spine. The attacking width of Assad had gone; the plan was containment first, opportunism second — a template that would reappear in 2010.",
-      fr: "Saâdane conserve la structure de 1982 mais reconstruit autour d’une colonne défensive. La largeur offensive d’Assad a disparu ; le plan est d’abord la contention, ensuite l’opportunisme — un modèle qui réapparaîtra en 2010.",
-      ar: "أبقى سعدان على شكل ١٩٨٢ لكنّه أعاد البناء حول عمود دفاعيّ. اختفى الاتّساع الهجوميّ لعصّاد؛ صار المخطّط احتواءً أوّلًا وانتهازيّة ثانيًا — نموذج سيعود سنة ٢٠١٠.",
+      en: "Saâdane kept the shape of 1982 but rebuilt around a defensive spine. The attacking width of Assad had gone; the plan was containment first, opportunism second, a template that would reappear in 2010.",
+      fr: "Saâdane conserve la structure de 1982 mais reconstruit autour d’une colonne défensive. La largeur offensive d’Assad a disparu ; le plan est d’abord la contention, ensuite l’opportunisme, un modèle qui réapparaîtra en 2010.",
+      ar: "أبقى سعدان على شكل ١٩٨٢ لكنّه أعاد البناء حول عمود دفاعيّ. اختفى الاتّساع الهجوميّ لعصّاد؛ صار المخطّط احتواءً أوّلًا وانتهازيّة ثانيًا، نموذج سيعود سنة ٢٠١٠.",
     },
     keyPlayers: [
-      { name: "Djamel Zidane", role: { en: "Midfielder", fr: "Milieu", ar: "لاعب وسط" }, note: { en: "Scored the equaliser against Northern Ireland — the goal that gave Algeria its first ever World Cup point.", fr: "Auteur de l’égalisation face à l’Irlande du Nord — le but du premier point mondial algérien.", ar: "صاحب هدف التعادل أمام إيرلندا الشمالية — الهدف الذي منح الجزائر أوّل نقطة عالميّة." } },
+      { name: "Djamel Zidane", role: { en: "Midfielder", fr: "Milieu", ar: "لاعب وسط" }, note: { en: "Scored the equaliser against Northern Ireland, the goal that gave Algeria its first ever World Cup point.", fr: "Auteur de l’égalisation face à l’Irlande du Nord, le but du premier point mondial algérien.", ar: "صاحب هدف التعادل أمام إيرلندا الشمالية، الهدف الذي منح الجزائر أوّل نقطة عالميّة." } },
       { name: "Lakhdar Belloumi", role: { en: "Playmaker", fr: "Meneur de jeu", ar: "صانع ألعاب" }, note: { en: "Returned four years after Gijón. His creativity ran into referees more often than defenders.", fr: "De retour quatre ans après Gijón. Sa créativité se heurte plus souvent aux arbitres qu’aux défenseurs.", ar: "عاد بعد أربع سنوات من خيخون. اصطدم إبداعه بالحكّام أكثر من المدافعين." } },
-      { name: "Nour-Eddine Kourichi", role: { en: "Captain, defender", fr: "Capitaine, défenseur", ar: "قائد، مدافع" }, note: { en: "Wore the armband through the Mexican altitude — a defender-captain for a defender’s tournament.", fr: "Capitaine à l’altitude mexicaine — un défenseur pour un tournoi de défenseurs.", ar: "حمل الشارة في الارتفاع المكسيكيّ — قائد مدافع لبطولة المدافعين." } },
-      { name: "Chérif Oudjani", role: { en: "Forward", fr: "Attaquant", ar: "مهاجم" }, note: { en: "Young striker of the new generation — cap-tied to the changing of the guard between 1982 and 2010.", fr: "Jeune attaquant de la nouvelle génération — figure du passage entre 1982 et 2010.", ar: "مهاجم شابّ من الجيل الجديد — شاهد على تسليم المشعل بين ١٩٨٢ و٢٠١٠." } },
+      { name: "Nour-Eddine Kourichi", role: { en: "Captain, defender", fr: "Capitaine, défenseur", ar: "قائد، مدافع" }, note: { en: "Wore the armband through the Mexican altitude, a defender-captain for a defender’s tournament.", fr: "Capitaine à l’altitude mexicaine, un défenseur pour un tournoi de défenseurs.", ar: "حمل الشارة في الارتفاع المكسيكيّ، قائد مدافع لبطولة المدافعين." } },
+      { name: "Chérif Oudjani", role: { en: "Forward", fr: "Attaquant", ar: "مهاجم" }, note: { en: "Young striker of the new generation, cap-tied to the changing of the guard between 1982 and 2010.", fr: "Jeune attaquant de la nouvelle génération, figure du passage entre 1982 et 2010.", ar: "مهاجم شابّ من الجيل الجديد، شاهد على تسليم المشعل بين ١٩٨٢ و٢٠١٠." } },
     ],
     stats: {
       matches: 3,
@@ -529,9 +529,9 @@ export const WORLD_CUPS: WorldCupEdition[] = [
       topScorer: "Djamel Zidane (1)",
     },
     legacy: {
-      en: "Mexico closed the Belloumi–Madjer arc at international level and opened a twenty-four-year absence from the World Cup. The lesson — a single tournament of brilliance is not a project — would shape every federation president who followed.",
-      fr: "Mexico ferme le cycle Belloumi–Madjer en sélection et ouvre vingt-quatre années d’absence du Mondial. La leçon — un seul tournoi brillant ne fait pas un projet — marquera chaque président de fédération suivant.",
-      ar: "أغلقت المكسيك قوس بلومي–ماجر في المنتخب وفتحت أربعًا وعشرين سنة من الغياب عن المونديال. الدرس — بطولة واحدة رائعة ليست مشروعًا — سيرافق كلّ رئيس اتّحاديّة بعدها.",
+      en: "Mexico closed the Belloumi–Madjer arc at international level and opened a twenty-four-year absence from the World Cup. The lesson, a single tournament of brilliance is not a project, would shape every federation president who followed.",
+      fr: "Mexico ferme le cycle Belloumi–Madjer en sélection et ouvre vingt-quatre années d’absence du Mondial. La leçon, un seul tournoi brillant ne fait pas un projet, marquera chaque président de fédération suivant.",
+      ar: "أغلقت المكسيك قوس بلومي–ماجر في المنتخب وفتحت أربعًا وعشرين سنة من الغياب عن المونديال. الدرس، بطولة واحدة رائعة ليست مشروعًا، سيرافق كلّ رئيس اتّحاديّة بعدها.",
     },
     related: [
       { label: { en: "1982 · The precedent", fr: "1982 · Le précédent", ar: "١٩٨٢ · السابقة" }, href: "/football#world-cup" },
@@ -561,9 +561,9 @@ export const WORLD_CUPS: WorldCupEdition[] = [
       { opp: "USA", result: "0–1" },
     ],
     moment: {
-      en: "M’Bolhi’s clean sheet against England — a defiant, disciplined night.",
-      fr: "Le clean sheet de M’Bolhi contre l’Angleterre — une nuit disciplinée et fière.",
-      ar: "شباك مبولحي النظيفة أمام إنكلترا — ليلة انضباط وكبرياء.",
+      en: "M’Bolhi’s clean sheet against England, a defiant, disciplined night.",
+      fr: "Le clean sheet de M’Bolhi contre l’Angleterre, une nuit disciplinée et fière.",
+      ar: "شباك مبولحي النظيفة أمام إنكلترا، ليلة انضباط وكبرياء.",
     },
     overview: {
       en: "South Africa 2010 mattered because it happened at all. A generation of Algerians had grown up without seeing Les Fennecs at a World Cup. The football was cautious, the goals never came, but a country reconnected with its national team on the biggest stage.",
@@ -571,9 +571,9 @@ export const WORLD_CUPS: WorldCupEdition[] = [
       ar: "جنوب إفريقيا ٢٠١٠ لها أهمّيّة لأنّها حدثت أصلًا. جيل من الجزائريّين كبر دون أن يرى الفنّاك في مونديال. كانت الكرة حذرة والأهداف غائبة، لكنّ بلدًا استعاد صلته بمنتخبه على أكبر مسرح.",
     },
     qualification: {
-      en: "The CAF third round pitted Algeria against Egypt, Zambia and Rwanda. A pair of 3–1 victories set up a decisive night in Cairo, lost 0–2, which forced a one-match playoff. On 18 November 2009 in Omdurman, Sudan, Antar Yahia’s volley in the fortieth minute — his only international goal — sent Algeria to a World Cup for the first time since 1986.",
-      fr: "Le troisième tour CAF oppose l’Algérie à l’Égypte, la Zambie et le Rwanda. Deux victoires 3-1 amènent une soirée décisive au Caire, perdue 0-2, imposant un barrage. Le 18 novembre 2009 à Omdurman (Soudan), la volée d’Antar Yahia à la 40ᵉ — son unique but international — envoie l’Algérie en Coupe du monde pour la première fois depuis 1986.",
-      ar: "جمعت المرحلة الإفريقيّة الثالثة الجزائر مع مصر وزامبيا ورواندا. فوزان بنتيجة ٣-١ قادا إلى ليلة حاسمة في القاهرة انتهت ٠-٢، ففُرضت مباراة فاصلة. في ١٨ نوفمبر ٢٠٠٩ في أمّ درمان بالسودان، مقصّية عنتر يحيى في الدقيقة الأربعين — هدفه الدوليّ الوحيد — أرسلت الجزائر إلى المونديال لأوّل مرّة منذ ١٩٨٦.",
+      en: "The CAF third round pitted Algeria against Egypt, Zambia and Rwanda. A pair of 3–1 victories set up a decisive night in Cairo, lost 0–2, which forced a one-match playoff. On 18 November 2009 in Omdurman, Sudan, Antar Yahia’s volley in the fortieth minute, his only international goal, sent Algeria to a World Cup for the first time since 1986.",
+      fr: "Le troisième tour CAF oppose l’Algérie à l’Égypte, la Zambie et le Rwanda. Deux victoires 3-1 amènent une soirée décisive au Caire, perdue 0-2, imposant un barrage. Le 18 novembre 2009 à Omdurman (Soudan), la volée d’Antar Yahia à la 40ᵉ, son unique but international, envoie l’Algérie en Coupe du monde pour la première fois depuis 1986.",
+      ar: "جمعت المرحلة الإفريقيّة الثالثة الجزائر مع مصر وزامبيا ورواندا. فوزان بنتيجة ٣-١ قادا إلى ليلة حاسمة في القاهرة انتهت ٠-٢، ففُرضت مباراة فاصلة. في ١٨ نوفمبر ٢٠٠٩ في أمّ درمان بالسودان، مقصّية عنتر يحيى في الدقيقة الأربعين، هدفه الدوليّ الوحيد، أرسلت الجزائر إلى المونديال لأوّل مرّة منذ ١٩٨٦.",
     },
     groupStage: {
       en: "Group C offered a rare English opponent and two winnable games. Slovenia struck late from a goalkeeper error. England was suffocated for ninety minutes in Cape Town, M’Bolhi never once tested. The United States needed only Landon Donovan’s 91st-minute goal to break Algerian hearts and finish top of the group.",
@@ -582,15 +582,15 @@ export const WORLD_CUPS: WorldCupEdition[] = [
     },
     formation: "4-2-3-1",
     tacticalIdentity: {
-      en: "Saâdane’s second Mondial: a compact block of two banks of four with Ziani floating behind a lone striker. The defensive identity was pure — no goals conceded in open play against England — but the transition to attack rarely arrived. It was a defender’s tournament with a defender’s outcome.",
-      fr: "Deuxième Mondial de Saâdane : un bloc compact en deux lignes de quatre, Ziani flottant derrière un attaquant seul. L’identité défensive est pure — aucun but concédé dans le jeu face à l’Angleterre — mais la transition offensive ne vient presque jamais. Un tournoi de défenseur, à l’issue de défenseur.",
-      ar: "المونديال الثاني لسعدان: كتلة مكتنزة من خطَّي أربعة، وزياني يتحرّك خلف مهاجم وحيد. الهويّة الدفاعيّة صافية — دون أيّ هدف مستقبَل من اللعب المفتوح أمام إنكلترا — لكن الانتقال إلى الهجوم لم يكن يأتي. بطولة مدافع بنتيجة مدافع.",
+      en: "Saâdane’s second Mondial: a compact block of two banks of four with Ziani floating behind a lone striker. The defensive identity was pure, no goals conceded in open play against England, but the transition to attack rarely arrived. It was a defender’s tournament with a defender’s outcome.",
+      fr: "Deuxième Mondial de Saâdane : un bloc compact en deux lignes de quatre, Ziani flottant derrière un attaquant seul. L’identité défensive est pure, aucun but concédé dans le jeu face à l’Angleterre, mais la transition offensive ne vient presque jamais. Un tournoi de défenseur, à l’issue de défenseur.",
+      ar: "المونديال الثاني لسعدان: كتلة مكتنزة من خطَّي أربعة، وزياني يتحرّك خلف مهاجم وحيد. الهويّة الدفاعيّة صافية، دون أيّ هدف مستقبَل من اللعب المفتوح أمام إنكلترا، لكن الانتقال إلى الهجوم لم يكن يأتي. بطولة مدافع بنتيجة مدافع.",
     },
     keyPlayers: [
-      { name: "Raïs M’Bolhi", role: { en: "Goalkeeper", fr: "Gardien", ar: "حارس مرمى" }, note: { en: "The revelation of the tournament for Algeria. His performance against England — nine clean interventions, one full clean sheet — began a decade at national number one.", fr: "La révélation du tournoi côté algérien. Sa prestation face à l’Angleterre — neuf interventions, une clean sheet totale — ouvre une décennie de titulariat.", ar: "مفاجأة البطولة في صفوف الجزائر. أداؤه أمام إنكلترا — تسعة تدخّلات وشباك نظيفة تامّة — بدأ عقدًا من الحراسة الأولى." } },
-      { name: "Antar Yahia", role: { en: "Centre-back", fr: "Défenseur central", ar: "قلب دفاع" }, note: { en: "Scorer of the Omdurman volley. Without that goal, there is no 2010 — and probably no 2014.", fr: "Auteur de la volée d’Omdurman. Sans ce but, pas de 2010 — probablement pas de 2014 non plus.", ar: "صاحب مقصّيّة أمّ درمان. بدون ذلك الهدف لا وجود لـ ٢٠١٠ — وربّما لا وجود لـ ٢٠١٤." } },
+      { name: "Raïs M’Bolhi", role: { en: "Goalkeeper", fr: "Gardien", ar: "حارس مرمى" }, note: { en: "The revelation of the tournament for Algeria. His performance against England, nine clean interventions, one full clean sheet, began a decade at national number one.", fr: "La révélation du tournoi côté algérien. Sa prestation face à l’Angleterre, neuf interventions, une clean sheet totale, ouvre une décennie de titulariat.", ar: "مفاجأة البطولة في صفوف الجزائر. أداؤه أمام إنكلترا، تسعة تدخّلات وشباك نظيفة تامّة، بدأ عقدًا من الحراسة الأولى." } },
+      { name: "Antar Yahia", role: { en: "Centre-back", fr: "Défenseur central", ar: "قلب دفاع" }, note: { en: "Scorer of the Omdurman volley. Without that goal, there is no 2010 and probably no 2014.", fr: "Auteur de la volée d’Omdurman. Sans ce but, pas de 2010, probablement pas de 2014 non plus.", ar: "صاحب مقصّيّة أمّ درمان. بدون ذلك الهدف لا وجود لـ ٢٠١٠، وربّما لا وجود لـ ٢٠١٤." } },
       { name: "Yazid Mansouri", role: { en: "Captain, midfielder", fr: "Capitaine, milieu", ar: "قائد، لاعب وسط" }, note: { en: "Wore the armband through the return. His retirement after the tournament closed a transitional generation.", fr: "Capitaine du retour. Sa retraite après le tournoi clôt une génération de transition.", ar: "قائد العودة. اعتزاله بعد البطولة أنهى جيل الانتقال." } },
-      { name: "Karim Ziani", role: { en: "Attacking midfielder", fr: "Milieu offensif", ar: "لاعب وسط هجوميّ" }, note: { en: "Algeria’s creator-in-chief — a set-piece specialist and the only Fennec who consistently opened the pitch.", fr: "Le créateur en chef algérien — spécialiste des coups de pied arrêtés, seul Fennec à ouvrir régulièrement le jeu.", ar: "صانع اللعب الأوّل — متخصّص في الكرات الثابتة، والوحيد الذي كان يفتح الملعب بانتظام." } },
+      { name: "Karim Ziani", role: { en: "Attacking midfielder", fr: "Milieu offensif", ar: "لاعب وسط هجوميّ" }, note: { en: "Algeria’s creator-in-chief, a set-piece specialist and the only Fennec who consistently opened the pitch.", fr: "Le créateur en chef algérien, spécialiste des coups de pied arrêtés, seul Fennec à ouvrir régulièrement le jeu.", ar: "صانع اللعب الأوّل، متخصّص في الكرات الثابتة، والوحيد الذي كان يفتح الملعب بانتظام." } },
     ],
     stats: {
       matches: 3,
@@ -600,7 +600,7 @@ export const WORLD_CUPS: WorldCupEdition[] = [
       goalsFor: 0,
       goalsAgainst: 2,
       captain: "Yazid Mansouri",
-      topScorer: "— (no goals scored)",
+      topScorer: ", (no goals scored)",
     },
     legacy: {
       en: "South Africa was a defensive foundation, not a peak. The clean sheet against England proved Algeria could survive at that level; the goal drought proved it could not yet thrive. Four years later, Halilhodžić would inherit the discipline and add the missing verticality.",
@@ -625,20 +625,20 @@ export const WORLD_CUPS: WorldCupEdition[] = [
     coach: "Vahid Halilhodžić",
     finish: { en: "Round of 16", fr: "Huitièmes de finale", ar: "دور الـ١٦" },
     summary: {
-      en: "Algeria’s finest World Cup. A 4–2 win over South Korea, a point against Russia, a knockout tie against Germany that ended in extra time — Porto Alegre knew it had seen a special side.",
+      en: "Algeria’s finest World Cup. A 4–2 win over South Korea, a point against Russia, a knockout tie against Germany that ended in extra time, Porto Alegre knew it had seen a special side.",
       fr: "Le plus beau Mondial algérien. Une victoire 4–2 sur la Corée du Sud, un point face à la Russie, un huitième contre l’Allemagne joué jusqu’en prolongations.",
       ar: "أجمل مونديال جزائريّ. فوز ٤–٢ على كوريا الجنوبية، نقطة أمام روسيا، ثمن نهائي أمام ألمانيا امتدّ إلى الوقت الإضافي.",
     },
     matches: [
       { opp: "Belgium", result: "1–2" },
       { opp: "South Korea", result: "4–2", note: "Slimani, Halliche, Djabou, Brahimi" },
-      { opp: "Russia", result: "1–1", note: "Slimani equaliser — qualification confirmed" },
+      { opp: "Russia", result: "1–1", note: "Slimani equaliser, qualification confirmed" },
       { opp: "Germany", result: "1–2 aet", note: "Round of 16 · Djabou scores in extra time" },
     ],
     moment: {
-      en: "Slimani rises in the 60th minute against Russia — Algeria are in the last sixteen for the first time.",
-      fr: "Slimani s’élève à la 60ᵉ face à la Russie — l’Algérie est en huitièmes pour la première fois.",
-      ar: "سليماني يرتفع في الدقيقة ٦٠ أمام روسيا — الجزائر في الدور الثاني لأوّل مرّة.",
+      en: "Slimani rises in the 60th minute against Russia, Algeria are in the last sixteen for the first time.",
+      fr: "Slimani s’élève à la 60ᵉ face à la Russie, l’Algérie est en huitièmes pour la première fois.",
+      ar: "سليماني يرتفع في الدقيقة ٦٠ أمام روسيا، الجزائر في الدور الثاني لأوّل مرّة.",
     },
     overview: {
       en: "Brazil 2014 is the tournament in which Algeria finally translated a generation of French-Algerian talent into a coherent, aggressive side. Under Halilhodžić the Fennecs pressed high, scored seven goals, and, in a Porto Alegre knockout tie held to extra time, made the future world champions blink.",
@@ -646,19 +646,19 @@ export const WORLD_CUPS: WorldCupEdition[] = [
       ar: "البرازيل ٢٠١٤ هي البطولة التي حوّلت فيها الجزائر أخيرًا جيلًا من المواهب الفرنسيّة–الجزائريّة إلى منتخب متماسك وعدوانيّ. تحت قيادة خليلوزيتش ضغط الفنّاك عاليًا وسجّلوا سبعة أهداف، وفي ثمن نهائيّ في بورتو أليغري امتدّ إلى الأشواط الإضافيّة أرغموا أبطال العالم القادمين على التردّد.",
     },
     qualification: {
-      en: "The African third round paired Algeria with Mali, Benin and Rwanda — six matches, sixteen points, group won. In the final playoff Burkina Faso struck first at home (2–3 in Ouagadougou) before Bougherra’s captain’s performance in Blida delivered a 1–0 win and qualification on away goals. Halilhodžić built the World Cup squad around that survival.",
-      fr: "Le troisième tour africain place l’Algérie avec le Mali, le Bénin et le Rwanda — six matchs, seize points, groupe remporté. En barrage, le Burkina Faso frappe d’abord chez lui (2-3 à Ouagadougou) avant qu’une prestation de capitaine de Bougherra à Blida n’offre le 1-0 et la qualification aux buts à l’extérieur. Halilhodžić construit le groupe du Mondial autour de cette survie.",
-      ar: "جمع الدور الإفريقيّ الثالث الجزائر مع مالي وبنن ورواندا — ستّ مباريات وستّ عشرة نقطة وفوز بالمجموعة. في الملحق سجّلت بوركينا فاسو أوّلًا في أرضها (٢-٣ في واغادوغو) قبل أن يقود بوغرّة في البليدة أداءً قياديًّا يمنح فوزًا ١-٠ وتأهّلًا بأهداف الأرض. بنى خليلوزيتش تشكيلة المونديال حول تلك النجاة.",
+      en: "The African third round paired Algeria with Mali, Benin and Rwanda, six matches, sixteen points, group won. In the final playoff Burkina Faso struck first at home (2–3 in Ouagadougou) before Bougherra’s captain’s performance in Blida delivered a 1–0 win and qualification on away goals. Halilhodžić built the World Cup squad around that survival.",
+      fr: "Le troisième tour africain place l’Algérie avec le Mali, le Bénin et le Rwanda, six matchs, seize points, groupe remporté. En barrage, le Burkina Faso frappe d’abord chez lui (2-3 à Ouagadougou) avant qu’une prestation de capitaine de Bougherra à Blida n’offre le 1-0 et la qualification aux buts à l’extérieur. Halilhodžić construit le groupe du Mondial autour de cette survie.",
+      ar: "جمع الدور الإفريقيّ الثالث الجزائر مع مالي وبنن ورواندا، ستّ مباريات وستّ عشرة نقطة وفوز بالمجموعة. في الملحق سجّلت بوركينا فاسو أوّلًا في أرضها (٢-٣ في واغادوغو) قبل أن يقود بوغرّة في البليدة أداءً قياديًّا يمنح فوزًا ١-٠ وتأهّلًا بأهداف الأرض. بنى خليلوزيتش تشكيلة المونديال حول تلك النجاة.",
     },
     groupStage: {
-      en: "Group H opened in Belo Horizonte: Belgium’s Origi settled a 2–1 after Feghouli’s early penalty. Six days later, in Porto Alegre, Algeria produced the most complete performance of its World Cup history — Slimani, Halliche, Djabou and Brahimi punishing South Korea 4–2 inside 62 minutes. At the Arena da Baixada in Curitiba, Slimani’s header for 1–1 against Russia sent Les Fennecs into the knockout stage for the first time.",
-      fr: "Le groupe H s’ouvre à Belo Horizonte : Origi conclut à 2-1 après le penalty précoce de Feghouli. Six jours plus tard à Porto Alegre, l’Algérie produit la plus belle performance de son histoire mondiale — Slimani, Halliche, Djabou et Brahimi punissent la Corée du Sud 4-2 en 62 minutes. À la Baixada de Curitiba, la tête de Slimani à 1-1 face à la Russie envoie les Fennecs en huitièmes pour la première fois.",
-      ar: "افتُتحت المجموعة الثامنة في بيلو هوريزونتي: أوريغي يحسم ٢-١ بعد ركلة الجزاء المبكّرة لفيغولي. بعد ستّة أيّام في بورتو أليغري قدّم الجزائريّون أفضل أداء في تاريخهم بالمونديال — سليماني وحليش وجابو وبراهيمي عاقبوا كوريا الجنوبيّة ٤-٢ في ٦٢ دقيقة. في أرينا دا بايشادا بكوريتيبا، رأسيّة سليماني للتعادل ١-١ أمام روسيا أرسلت الفنّاك إلى الأدوار الإقصائيّة لأوّل مرّة.",
+      en: "Group H opened in Belo Horizonte: Belgium’s Origi settled a 2–1 after Feghouli’s early penalty. Six days later, in Porto Alegre, Algeria produced the most complete performance of its World Cup history, Slimani, Halliche, Djabou and Brahimi punishing South Korea 4–2 inside 62 minutes. At the Arena da Baixada in Curitiba, Slimani’s header for 1–1 against Russia sent Les Fennecs into the knockout stage for the first time.",
+      fr: "Le groupe H s’ouvre à Belo Horizonte : Origi conclut à 2-1 après le penalty précoce de Feghouli. Six jours plus tard à Porto Alegre, l’Algérie produit la plus belle performance de son histoire mondiale, Slimani, Halliche, Djabou et Brahimi punissent la Corée du Sud 4-2 en 62 minutes. À la Baixada de Curitiba, la tête de Slimani à 1-1 face à la Russie envoie les Fennecs en huitièmes pour la première fois.",
+      ar: "افتُتحت المجموعة الثامنة في بيلو هوريزونتي: أوريغي يحسم ٢-١ بعد ركلة الجزاء المبكّرة لفيغولي. بعد ستّة أيّام في بورتو أليغري قدّم الجزائريّون أفضل أداء في تاريخهم بالمونديال، سليماني وحليش وجابو وبراهيمي عاقبوا كوريا الجنوبيّة ٤-٢ في ٦٢ دقيقة. في أرينا دا بايشادا بكوريتيبا، رأسيّة سليماني للتعادل ١-١ أمام روسيا أرسلت الفنّاك إلى الأدوار الإقصائيّة لأوّل مرّة.",
     },
     knockout: {
-      en: "Porto Alegre, 30 June. For ninety minutes Algeria matched Germany blow for blow — M’Bolhi produced one of the great goalkeeping displays in World Cup history, and Halilhodžić’s counter-press disrupted Löw’s midfield. Schürrle broke the game in the 92nd minute of extra time; Özil doubled the lead; Djabou pulled one back in the last minute. Germany went on to win the World Cup — but Porto Alegre stood and applauded Algeria off the pitch.",
-      fr: "Porto Alegre, 30 juin. Pendant 90 minutes, l’Algérie répond coup pour coup à l’Allemagne — M’Bolhi livre l’une des grandes performances de gardien de l’histoire du Mondial, et le contre-pressing d’Halilhodžić perturbe le milieu de Löw. Schürrle brise le match à la 92ᵉ de la prolongation ; Özil double la mise ; Djabou réduit à la dernière minute. L’Allemagne remportera la Coupe du monde — mais Porto Alegre s’est levé pour applaudir l’Algérie qui sortait.",
-      ar: "بورتو أليغري، ٣٠ يونيو. لتسعين دقيقة ردّت الجزائر على ألمانيا ضربةً بضربة — قدّم مبولحي واحدًا من أعظم عروض الحرّاس في تاريخ المونديال، وضغط خليلوزيتش المرتدّ عطّل وسط لوف. شورله كسر المباراة في الدقيقة ٩٢ من الوقت الإضافيّ؛ ثمّ أوزيل ضاعف النتيجة؛ وقلّص جابو الفارق في الدقيقة الأخيرة. فازت ألمانيا بالمونديال لاحقًا — لكنّ بورتو أليغري وقف يصفّق للجزائر وهي تغادر.",
+      en: "Porto Alegre, 30 June. For ninety minutes Algeria matched Germany blow for blow, M’Bolhi produced one of the great goalkeeping displays in World Cup history, and Halilhodžić’s counter-press disrupted Löw’s midfield. Schürrle broke the game in the 92nd minute of extra time; Özil doubled the lead; Djabou pulled one back in the last minute. Germany went on to win the World Cup, but Porto Alegre stood and applauded Algeria off the pitch.",
+      fr: "Porto Alegre, 30 juin. Pendant 90 minutes, l’Algérie répond coup pour coup à l’Allemagne, M’Bolhi livre l’une des grandes performances de gardien de l’histoire du Mondial, et le contre-pressing d’Halilhodžić perturbe le milieu de Löw. Schürrle brise le match à la 92ᵉ de la prolongation ; Özil double la mise ; Djabou réduit à la dernière minute. L’Allemagne remportera la Coupe du monde, mais Porto Alegre s’est levé pour applaudir l’Algérie qui sortait.",
+      ar: "بورتو أليغري، ٣٠ يونيو. لتسعين دقيقة ردّت الجزائر على ألمانيا ضربةً بضربة، قدّم مبولحي واحدًا من أعظم عروض الحرّاس في تاريخ المونديال، وضغط خليلوزيتش المرتدّ عطّل وسط لوف. شورله كسر المباراة في الدقيقة ٩٢ من الوقت الإضافيّ؛ ثمّ أوزيل ضاعف النتيجة؛ وقلّص جابو الفارق في الدقيقة الأخيرة. فازت ألمانيا بالمونديال لاحقًا، لكنّ بورتو أليغري وقف يصفّق للجزائر وهي تغادر.",
     },
     formation: "4-2-3-1",
     tacticalIdentity: {
@@ -667,7 +667,7 @@ export const WORLD_CUPS: WorldCupEdition[] = [
       ar: "خطّة ٤-٢-٣-١ مصنوعة للانتقال. محوران منضبطان (مجاني وبن طالب) يحرّران فيغولي وبراهيمي وجابو للانطلاق بشكل مائل نحو المدافعين؛ سليماني يثبّت الخطّ الأماميّ وينهي. مصائد ضغط خليلوزيتش في وسط الميدان كانت أكثر ابتكار جزائريّ في البطولة.",
     },
     keyPlayers: [
-      { name: "Islam Slimani", role: { en: "Striker", fr: "Attaquant", ar: "مهاجم" }, note: { en: "Two goals, one assist — including the header against Russia that carried Algeria into the knockout stage.", fr: "Deux buts, une passe décisive — dont la tête face à la Russie qui envoie l’Algérie en huitièmes.", ar: "هدفان وتمريرة حاسمة — من بينها الرأسيّة أمام روسيا التي قادت الجزائر إلى الدور الثاني." } },
+      { name: "Islam Slimani", role: { en: "Striker", fr: "Attaquant", ar: "مهاجم" }, note: { en: "Two goals, one assist, including the header against Russia that carried Algeria into the knockout stage.", fr: "Deux buts, une passe décisive, dont la tête face à la Russie qui envoie l’Algérie en huitièmes.", ar: "هدفان وتمريرة حاسمة، من بينها الرأسيّة أمام روسيا التي قادت الجزائر إلى الدور الثاني." } },
       { name: "Raïs M’Bolhi", role: { en: "Goalkeeper", fr: "Gardien", ar: "حارس مرمى" }, note: { en: "Officially named FIFA’s Man of the Match against Germany. Twelve saves, most of them elite.", fr: "Homme du match FIFA face à l’Allemagne. Douze arrêts, la plupart d’élite.", ar: "أفضل لاعب فيفا في مباراة ألمانيا. اثنتا عشرة تصدّيًا، معظمها من الطراز الرفيع." } },
       { name: "Yacine Brahimi", role: { en: "Winger", fr: "Ailier", ar: "جناح" }, note: { en: "Scored against South Korea; his balance and left-foot delivery became Algeria’s attacking signature.", fr: "Buteur contre la Corée du Sud ; son équilibre et son pied gauche deviennent la signature offensive algérienne.", ar: "سجّل أمام كوريا الجنوبيّة؛ توازنه وقدمه اليسرى صارا توقيع الجزائر الهجوميّ." } },
       { name: "Madjid Bougherra", role: { en: "Captain, centre-back", fr: "Capitaine, défenseur central", ar: "قائد، قلب دفاع" }, note: { en: "Wore the armband; retired from international football after the Germany match. His playoff-winning performance against Burkina Faso is what put Algeria on the plane.", fr: "Capitaine ; il met un terme à sa carrière internationale après le match contre l’Allemagne. Sa performance en barrage face au Burkina Faso a envoyé l’Algérie au Brésil.", ar: "القائد؛ اعتزل الدوليّة بعد مباراة ألمانيا. أداؤه في الملحق أمام بوركينا فاسو هو ما أوصل الجزائر إلى الطائرة." } },
@@ -683,9 +683,9 @@ export const WORLD_CUPS: WorldCupEdition[] = [
       topScorer: "Islam Slimani (2)",
     },
     legacy: {
-      en: "Porto Alegre proved that Algerian football could be dominant, not merely resilient, on the world stage. The Halilhodžić blueprint — a disciplined block that could counter with genuine pace — became the tactical DNA of the 2019 AFCON-winning side.",
-      fr: "Porto Alegre a prouvé que le football algérien pouvait être dominant, et non seulement résilient, sur la scène mondiale. Le canevas d’Halilhodžić — un bloc discipliné capable de contrer avec une vraie vitesse — devient l’ADN tactique de l’équipe qui gagnera la CAN 2019.",
-      ar: "أثبتت بورتو أليغري أنّ الكرة الجزائريّة قادرة على الهيمنة، لا الصمود فقط، على المسرح العالميّ. مخطّط خليلوزيتش — كتلة منضبطة قادرة على المرتدّ بسرعة حقيقيّة — صار الحمض التكتيكيّ لجيل التتويج بكأس إفريقيا ٢٠١٩.",
+      en: "Porto Alegre proved that Algerian football could be dominant, not merely resilient, on the world stage. The Halilhodžić blueprint, a disciplined block that could counter with genuine pace, became the tactical DNA of the 2019 AFCON-winning side.",
+      fr: "Porto Alegre a prouvé que le football algérien pouvait être dominant, et non seulement résilient, sur la scène mondiale. Le canevas d’Halilhodžić, un bloc discipliné capable de contrer avec une vraie vitesse, devient l’ADN tactique de l’équipe qui gagnera la CAN 2019.",
+      ar: "أثبتت بورتو أليغري أنّ الكرة الجزائريّة قادرة على الهيمنة، لا الصمود فقط، على المسرح العالميّ. مخطّط خليلوزيتش، كتلة منضبطة قادرة على المرتدّ بسرعة حقيقيّة، صار الحمض التكتيكيّ لجيل التتويج بكأس إفريقيا ٢٠١٩.",
     },
     related: [
       { label: { en: "Match Theater · South Korea 2014", fr: "Théâtre de match · Corée du Sud 2014", ar: "مسرح المباراة · كوريا الجنوبيّة ٢٠١٤" }, href: "/football#matches" },
@@ -702,7 +702,7 @@ export const WORLD_CUPS: WorldCupEdition[] = [
   {
     year: 2026,
     host: "USA · Canada · Mexico",
-    coach: "—",
+    coach: ", ",
     finish: { en: "Round of 32", fr: "Seizièmes de finale", ar: "دور الـ٣٢" },
     summary: {
       en: "Twelve years after Porto Alegre, Algeria returned to the knockout stage. A difficult opening defeat against Argentina was followed by an important victory over Jordan. A dramatic 3–3 draw against Austria secured qualification for the Round of 32. The journey ended against Switzerland, but Les Fennecs had once again reached the knockout stage of a FIFA World Cup.",
@@ -721,24 +721,24 @@ export const WORLD_CUPS: WorldCupEdition[] = [
       ar: "ستّة أهداف، صافرة نهاية واحدة، وعادت الجزائر إلى الأدوار الإقصائية.",
     },
     overview: {
-      en: "The 2026 Mondial, staged for the first time across three host nations and expanded to 48 teams, marked Algeria’s return to the knockout stage after twelve years. A tournament of two openings — an Argentine reality-check followed by a run of resilience — reconnected a new generation of supporters with the emotions of Porto Alegre.",
-      fr: "Le Mondial 2026, organisé pour la première fois par trois pays hôtes et élargi à 48 équipes, marque le retour de l’Algérie en phase à élimination directe après douze ans. Un tournoi en deux ouvertures — un rappel argentin, puis une remontée de caractère — reconnecte une nouvelle génération de supporters aux émotions de Porto Alegre.",
-      ar: "المونديال ٢٠٢٦، الذي أُقيم لأوّل مرّة في ثلاث دول مضيفة ووُسِّع إلى ٤٨ منتخبًا، سجّل عودة الجزائر إلى الأدوار الإقصائيّة بعد اثنَي عشر عامًا. بطولة بافتتاحَين — درس أرجنتينيّ ثمّ عودة قويّة — أعادت وصل جيل جديد من المشجّعين بمشاعر بورتو أليغري.",
+      en: "The 2026 Mondial, staged for the first time across three host nations and expanded to 48 teams, marked Algeria’s return to the knockout stage after twelve years. A tournament of two openings, an Argentine reality-check followed by a run of resilience, reconnected a new generation of supporters with the emotions of Porto Alegre.",
+      fr: "Le Mondial 2026, organisé pour la première fois par trois pays hôtes et élargi à 48 équipes, marque le retour de l’Algérie en phase à élimination directe après douze ans. Un tournoi en deux ouvertures, un rappel argentin, puis une remontée de caractère, reconnecte une nouvelle génération de supporters aux émotions de Porto Alegre.",
+      ar: "المونديال ٢٠٢٦، الذي أُقيم لأوّل مرّة في ثلاث دول مضيفة ووُسِّع إلى ٤٨ منتخبًا، سجّل عودة الجزائر إلى الأدوار الإقصائيّة بعد اثنَي عشر عامًا. بطولة بافتتاحَين، درس أرجنتينيّ ثمّ عودة قويّة، أعادت وصل جيل جديد من المشجّعين بمشاعر بورتو أليغري.",
     },
     qualification: {
-      en: "Algeria came through the CAF second-round group as winners, the format redesigned to open nine African places for the expanded tournament. The qualification campaign — clean at home, disciplined away — was defined more by consistency than by any single decisive night.",
-      fr: "L’Algérie sort en tête de son groupe du deuxième tour CAF, dans un format redessiné pour offrir neuf places africaines au tournoi élargi. La campagne — propre à domicile, discipliné à l’extérieur — se définit par la régularité plutôt que par une soirée décisive.",
-      ar: "تصدّرت الجزائر مجموعتها في الدور الإفريقيّ الثاني، ضمن نظام جديد يمنح تسعة مقاعد إفريقيّة للبطولة الموسّعة. تميّزت الحملة بالثبات — نظيفة في الديار ومنضبطة خارجها — أكثر من أيّ ليلة حاسمة بعينها.",
+      en: "Algeria came through the CAF second-round group as winners, the format redesigned to open nine African places for the expanded tournament. The qualification campaign, clean at home, disciplined away, was defined more by consistency than by any single decisive night.",
+      fr: "L’Algérie sort en tête de son groupe du deuxième tour CAF, dans un format redessiné pour offrir neuf places africaines au tournoi élargi. La campagne, propre à domicile, discipliné à l’extérieur, se définit par la régularité plutôt que par une soirée décisive.",
+      ar: "تصدّرت الجزائر مجموعتها في الدور الإفريقيّ الثاني، ضمن نظام جديد يمنح تسعة مقاعد إفريقيّة للبطولة الموسّعة. تميّزت الحملة بالثبات، نظيفة في الديار ومنضبطة خارجها، أكثر من أيّ ليلة حاسمة بعينها.",
     },
     groupStage: {
-      en: "The tournament opened against Argentina and ended in a 0–3 defeat that reminded the squad how narrow the margins are at this level. Four days later a 2–1 win over Jordan — Algeria’s first victory of the tournament — restored confidence. In the deciding third match a 3–3 draw against Austria, played with the same tactical courage as Porto Alegre 2014, sent Les Fennecs through as one of the best third-placed sides.",
-      fr: "Le tournoi s’ouvre face à l’Argentine et se conclut par une défaite 0-3 qui rappelle l’étroitesse des marges à ce niveau. Quatre jours plus tard, un 2-1 face à la Jordanie — premier succès dans le tournoi — restaure la confiance. Le troisième match décisif, un 3-3 face à l’Autriche joué avec la même audace tactique qu’à Porto Alegre 2014, envoie les Fennecs en seizièmes parmi les meilleurs troisièmes.",
-      ar: "افتُتحت البطولة أمام الأرجنتين وانتهت بخسارة ٠-٣ ذكّرت المنتخب كم هي ضيّقة الهوامش في هذا المستوى. بعد أربعة أيّام أعاد فوز ٢-١ على الأردن — أوّل انتصار في البطولة — الثقة. في المباراة الثالثة الحاسمة، تعادل ٣-٣ أمام النمسا لُعِب بنفس الجرأة التكتيكيّة لبورتو أليغري ٢٠١٤، وأرسل الفنّاك إلى دور الـ٣٢ ضمن أفضل ثوالث المجموعات.",
+      en: "The tournament opened against Argentina and ended in a 0–3 defeat that reminded the squad how narrow the margins are at this level. Four days later a 2–1 win over Jordan, Algeria’s first victory of the tournament, restored confidence. In the deciding third match a 3–3 draw against Austria, played with the same tactical courage as Porto Alegre 2014, sent Les Fennecs through as one of the best third-placed sides.",
+      fr: "Le tournoi s’ouvre face à l’Argentine et se conclut par une défaite 0-3 qui rappelle l’étroitesse des marges à ce niveau. Quatre jours plus tard, un 2-1 face à la Jordanie, premier succès dans le tournoi, restaure la confiance. Le troisième match décisif, un 3-3 face à l’Autriche joué avec la même audace tactique qu’à Porto Alegre 2014, envoie les Fennecs en seizièmes parmi les meilleurs troisièmes.",
+      ar: "افتُتحت البطولة أمام الأرجنتين وانتهت بخسارة ٠-٣ ذكّرت المنتخب كم هي ضيّقة الهوامش في هذا المستوى. بعد أربعة أيّام أعاد فوز ٢-١ على الأردن، أوّل انتصار في البطولة، الثقة. في المباراة الثالثة الحاسمة، تعادل ٣-٣ أمام النمسا لُعِب بنفس الجرأة التكتيكيّة لبورتو أليغري ٢٠١٤، وأرسل الفنّاك إلى دور الـ٣٢ ضمن أفضل ثوالث المجموعات.",
     },
     knockout: {
-      en: "In the Round of 32 Algeria met Switzerland. A 0–2 defeat closed the campaign — no shame in the result, but a reminder that the step from qualifying-in-extremis to sustaining a knockout run is still the hardest gap in the modern game.",
-      fr: "En seizièmes, l’Algérie retrouve la Suisse. Une défaite 0-2 clôt la campagne — pas de honte dans le résultat, mais un rappel que le pas entre se qualifier de justesse et tenir un vrai parcours en phase finale reste le plus difficile du jeu moderne.",
-      ar: "في دور الـ٣٢ التقت الجزائر بسويسرا. أنهت خسارة ٠-٢ الحملة — لا خجل في النتيجة، لكنّها تذكير بأنّ الخطوة من التأهّل المتأخّر إلى ترسيخ مسار في الأدوار الإقصائيّة تبقى الأصعب في الكرة الحديثة.",
+      en: "In the Round of 32 Algeria met Switzerland. A 0–2 defeat closed the campaign, no shame in the result, but a reminder that the step from qualifying-in-extremis to sustaining a knockout run is still the hardest gap in the modern game.",
+      fr: "En seizièmes, l’Algérie retrouve la Suisse. Une défaite 0-2 clôt la campagne, pas de honte dans le résultat, mais un rappel que le pas entre se qualifier de justesse et tenir un vrai parcours en phase finale reste le plus difficile du jeu moderne.",
+      ar: "في دور الـ٣٢ التقت الجزائر بسويسرا. أنهت خسارة ٠-٢ الحملة، لا خجل في النتيجة، لكنّها تذكير بأنّ الخطوة من التأهّل المتأخّر إلى ترسيخ مسار في الأدوار الإقصائيّة تبقى الأصعب في الكرة الحديثة.",
     },
     stats: {
       matches: 4,
@@ -747,13 +747,13 @@ export const WORLD_CUPS: WorldCupEdition[] = [
       losses: 2,
       goalsFor: 5,
       goalsAgainst: 9,
-      captain: "—",
-      topScorer: "—",
+      captain: ", ",
+      topScorer: ", ",
     },
     legacy: {
-      en: "2026 does not yet have the mythology of Gijón or Porto Alegre, but it re-established a rhythm — Algeria is again a country that expects to play World Cup knockout football. The next generation of supporters will grow up with that expectation as a baseline, not a dream.",
-      fr: "2026 n’a pas encore la mythologie de Gijón ou de Porto Alegre, mais il rétablit un rythme — l’Algérie est de nouveau un pays qui s’attend à jouer les phases à élimination directe. La prochaine génération de supporters grandira avec cette attente comme base, non comme rêve.",
-      ar: "لا يمتلك ٢٠٢٦ بعد أسطورة خيخون أو بورتو أليغري، لكنّه أعاد إيقاعًا — الجزائر مجدّدًا بلد يتوقّع أن يلعب أدوار الإقصاء في المونديال. سيكبر الجيل القادم من المشجّعين على هذا التوقّع كخطّ أساس، لا كحلم.",
+      en: "2026 does not yet have the mythology of Gijón or Porto Alegre, but it re-established a rhythm, Algeria is again a country that expects to play World Cup knockout football. The next generation of supporters will grow up with that expectation as a baseline, not a dream.",
+      fr: "2026 n’a pas encore la mythologie de Gijón ou de Porto Alegre, mais il rétablit un rythme, l’Algérie est de nouveau un pays qui s’attend à jouer les phases à élimination directe. La prochaine génération de supporters grandira avec cette attente comme base, non comme rêve.",
+      ar: "لا يمتلك ٢٠٢٦ بعد أسطورة خيخون أو بورتو أليغري، لكنّه أعاد إيقاعًا، الجزائر مجدّدًا بلد يتوقّع أن يلعب أدوار الإقصاء في المونديال. سيكبر الجيل القادم من المشجّعين على هذا التوقّع كخطّ أساس، لا كحلم.",
     },
     related: [
       { label: { en: "2014 · Porto Alegre precedent", fr: "2014 · précédent de Porto Alegre", ar: "٢٠١٤ · سابقة بورتو أليغري" }, href: "/football#world-cup" },
@@ -774,7 +774,7 @@ export const GIJON_TIMELINE: { time: string; event: LocalizedString }[] = [
   { time: "10'", event: { en: "Horst Hrubesch heads Germany 1–0 up. Austria only needs to lose by fewer than two goals to qualify with Germany.", fr: "Hrubesch place la RFA en tête 1–0. L’Autriche n’a besoin que d’une défaite par moins de deux buts.", ar: "هروبيش يسجّل ١–٠ لألمانيا. النمسا لا تحتاج إلّا إلى خسارة بأقلّ من هدفَين." } },
   { time: "20'–89'", event: { en: "The match slows to a walking pace. No shots, no tackles, no pressing. Spanish commentators fall silent.", fr: "Le match s’étire au ralenti. Aucun tir, aucun tacle, aucun pressing. Les commentateurs espagnols se taisent.", ar: "تسير المباراة بخطى المشي. لا تسديدات ولا تدخّلات ولا ضغط. المعلّقون الإسبان يصمتون." } },
   { time: "FT", event: { en: "1–0. Both sides qualify. Algeria is eliminated with the same number of points and a better goal difference than one of the sides on the pitch.", fr: "1–0. Les deux équipes passent. L’Algérie est éliminée à égalité de points et avec une meilleure différence de buts qu’une des équipes sur le terrain.", ar: "١–٠. تأهّل الفريقان. تُقصى الجزائر بالتساوي في النقاط وبفارق أهداف أفضل من إحدى المنتخبَين على الميدان." } },
-  { time: "1986", event: { en: "FIFA rules that all final group-stage matches must now kick off simultaneously — the direct legacy of Gijón.", fr: "La FIFA impose que les derniers matchs de poule se jouent en même temps — héritage direct de Gijón.", ar: "تُقرّر الفيفا أن تُقام كلّ المباريات الأخيرة في المجموعات في وقت واحد — الإرث المباشر لخيخون." } },
+  { time: "1986", event: { en: "FIFA rules that all final group-stage matches must now kick off simultaneously, the direct legacy of Gijón.", fr: "La FIFA impose que les derniers matchs de poule se jouent en même temps, héritage direct de Gijón.", ar: "تُقرّر الفيفا أن تُقام كلّ المباريات الأخيرة في المجموعات في وقت واحد، الإرث المباشر لخيخون." } },
 ];
 
 /* ---------- 6. AFCON ---------- */
@@ -802,7 +802,7 @@ export const AFCON_HISTORY: AfconEntry[] = [
   { year: 2015, host: "Equatorial Guinea", finish: { en: "Quarter-finals", fr: "Quarts", ar: "ربع النهائي" } },
   { year: 2017, host: "Gabon", finish: { en: "Group stage", fr: "Poules", ar: "المجموعات" } },
   { year: 2019, host: "Egypt", finish: { en: "Champions", fr: "Champions", ar: "الأبطال" }, note: { en: "Second star. Belmadi’s side, Mahrez’s tournament.", fr: "Deuxième étoile. La sélection de Belmadi, le tournoi de Mahrez.", ar: "النجمة الثانية. منتخب بلماضي، بطولة محرز." }, highlight: true },
-  { year: 2021, host: "Cameroon", finish: { en: "Group stage", fr: "Poules", ar: "المجموعات" }, note: { en: "Defending champions eliminated early — a hard hangover.", fr: "Champions sortants éliminés tôt — dure gueule de bois.", ar: "الأبطال يودّعون مبكرًا — صحوة قاسية." } },
+  { year: 2021, host: "Cameroon", finish: { en: "Group stage", fr: "Poules", ar: "المجموعات" }, note: { en: "Defending champions eliminated early, a hard hangover.", fr: "Champions sortants éliminés tôt, dure gueule de bois.", ar: "الأبطال يودّعون مبكرًا، صحوة قاسية." } },
   { year: 2023, host: "Côte d’Ivoire", finish: { en: "Group stage", fr: "Poules", ar: "المجموعات" } },
 ];
 
@@ -853,7 +853,7 @@ export const LEGENDS: FootballLegend[] = [
     years: "1958–",
     position: { en: "Winger", fr: "Ailier", ar: "جناح" },
     clubs: "JS Kabylie · Paris FC · Mulhouse",
-    note: { en: "Brace against Chile in 1982 — the dancer of Gijón, before the shame.", fr: "Doublé face au Chili en 1982 — le danseur de Gijón, avant la honte.", ar: "ثنائيّة أمام تشيلي في ١٩٨٢ — راقص خيخون قبل الفضيحة." },
+    note: { en: "Brace against Chile in 1982, the dancer of Gijón, before the shame.", fr: "Doublé face au Chili en 1982, le danseur de Gijón, avant la honte.", ar: "ثنائيّة أمام تشيلي في ١٩٨٢، راقص خيخون قبل الفضيحة." },
   },
   {
     id: "bencheikh",
@@ -869,7 +869,7 @@ export const LEGENDS: FootballLegend[] = [
     years: "1952–",
     position: { en: "Attacking midfielder", fr: "Meneur", ar: "صانع لعب" },
     clubs: "Paris Saint-Germain",
-    note: { en: "PSG icon — first Algerian star of the French Ligue 1. Chose Algeria over France for the 1982 World Cup.", fr: "Icône du PSG — première star algérienne de Ligue 1. Choisit l’Algérie plutôt que la France en 1982.", ar: "أيقونة سان جيرمان — أوّل نجم جزائري في الليغ ١. اختار الجزائر على فرنسا في ١٩٨٢." },
+    note: { en: "PSG icon, first Algerian star of the French Ligue 1. Chose Algeria over France for the 1982 World Cup.", fr: "Icône du PSG, première star algérienne de Ligue 1. Choisit l’Algérie plutôt que la France en 1982.", ar: "أيقونة سان جيرمان، أوّل نجم جزائري في الليغ ١. اختار الجزائر على فرنسا في ١٩٨٢." },
   },
   {
     id: "cerbah",
@@ -920,7 +920,7 @@ export const LEGENDS: FootballLegend[] = [
     years: "1989–",
     position: { en: "Winger", fr: "Ailier", ar: "جناح" },
     clubs: "Valencia · West Ham · Galatasaray",
-    note: { en: "Opened the scoring at Brazil 2014 against Belgium — quiet metronome of the 2019 champions.", fr: "Ouvre le score face à la Belgique en 2014. Métronome discret des champions 2019.", ar: "افتتح التسجيل أمام بلجيكا ٢٠١٤. متحكّم هادئ في بطل ٢٠١٩." },
+    note: { en: "Opened the scoring at Brazil 2014 against Belgium, quiet metronome of the 2019 champions.", fr: "Ouvre le score face à la Belgique en 2014. Métronome discret des champions 2019.", ar: "افتتح التسجيل أمام بلجيكا ٢٠١٤. متحكّم هادئ في بطل ٢٠١٩." },
   },
 ];
 
@@ -953,14 +953,14 @@ export const COACHES: FootballCoach[] = [
     id: "halilhodzic",
     name: "Vahid Halilhodžić",
     era: "2011–2014",
-    note: { en: "Bosnian tactician who forged the Brazil 2014 side — direct, physical, ruthless.", fr: "Tacticien bosnien qui forge la sélection du Brésil 2014 — directe, physique, tranchante.", ar: "مدرّب بوسنيّ صاغ منتخب مونديال ٢٠١٤ — مباشر وبدنيّ وحاسم." },
+    note: { en: "Bosnian tactician who forged the Brazil 2014 side, direct, physical, ruthless.", fr: "Tacticien bosnien qui forge la sélection du Brésil 2014, directe, physique, tranchante.", ar: "مدرّب بوسنيّ صاغ منتخب مونديال ٢٠١٤، مباشر وبدنيّ وحاسم." },
     achievement: { en: "Round of 16 · World Cup 2014", fr: "Huitièmes de finale · Mondial 2014", ar: "دور الـ١٦ · مونديال ٢٠١٤" },
   },
   {
     id: "belmadi",
     name: "Djamel Belmadi",
     era: "2018–2022",
-    note: { en: "Player-turned-coach who ended a 29-year continental drought in Cairo and led a 35-match unbeaten run.", fr: "Joueur devenu sélectionneur — met fin à 29 ans de disette continentale au Caire et signe une série de 35 matchs sans défaite.", ar: "لاعبٌ صار مدرّبًا؛ أنهى ٢٩ سنة من الجفاف القارّي في القاهرة، وقاد سلسلة ٣٥ مباراة دون هزيمة." },
+    note: { en: "Player-turned-coach who ended a 29-year continental drought in Cairo and led a 35-match unbeaten run.", fr: "Joueur devenu sélectionneur, met fin à 29 ans de disette continentale au Caire et signe une série de 35 matchs sans défaite.", ar: "لاعبٌ صار مدرّبًا؛ أنهى ٢٩ سنة من الجفاف القارّي في القاهرة، وقاد سلسلة ٣٥ مباراة دون هزيمة." },
     achievement: { en: "AFCON Champion 2019 · Arab Cup 2021", fr: "Champion CAN 2019 · Coupe arabe 2021", ar: "بطل «الكان» ٢٠١٩ · كأس العرب ٢٠٢١" },
   },
   {
@@ -1022,7 +1022,7 @@ export const STADIUMS: Stadium[] = [
     city: "Oran",
     capacity: "40,000",
     opened: "2021",
-    note: { en: "The Mediterranean stadium built for the 2022 Games — Oran’s new pride.", fr: "Le stade méditerranéen construit pour les Jeux 2022 — fierté d’Oran.", ar: "الملعب المتوسّطي الذي بُني لدورة ٢٠٢٢ — فخر وهران." },
+    note: { en: "The Mediterranean stadium built for the 2022 Games, Oran’s new pride.", fr: "Le stade méditerranéen construit pour les Jeux 2022, fierté d’Oran.", ar: "الملعب المتوسّطي الذي بُني لدورة ٢٠٢٢، فخر وهران." },
   },
 ];
 
@@ -1052,7 +1052,7 @@ export const FAMOUS_MATCHES: FamousMatch[] = [
     title: "Algeria vs Chile",
     score: "3 – 2",
     venue: "Riazor, Oviedo",
-    note: { en: "Salah Assad’s brace lifts Algeria to the edge of qualification — before Gijón takes it away.", fr: "Le doublé de Salah Assad porte l’Algérie au bord de la qualification — avant que Gijón ne la retire.", ar: "ثنائيّة صلاح عصّاد ترفع الجزائر إلى حافة التأهّل — قبل أن تسلبه خيخون." },
+    note: { en: "Salah Assad’s brace lifts Algeria to the edge of qualification, before Gijón takes it away.", fr: "Le doublé de Salah Assad porte l’Algérie au bord de la qualification, avant que Gijón ne la retire.", ar: "ثنائيّة صلاح عصّاد ترفع الجزائر إلى حافة التأهّل، قبل أن تسلبه خيخون." },
   },
   {
     id: "algeria-egypt-1989",
@@ -1060,7 +1060,7 @@ export const FAMOUS_MATCHES: FamousMatch[] = [
     title: "Algeria vs Egypt (World Cup qualifier)",
     score: "0 – 0",
     venue: "5 Juillet, Algiers",
-    note: { en: "A goalless night that sent Algeria to Italia 90 qualification territory — and one of the most watched matches in the country’s history.", fr: "Un 0-0 qui envoie l’Algérie vers la qualification à Italia 90 — un des matchs les plus regardés du pays.", ar: "تعادل سلبيّ أرسل الجزائر نحو التأهّل إلى إيطاليا ٩٠ — من أكثر المباريات مشاهدةً في تاريخ البلاد." },
+    note: { en: "A goalless night that sent Algeria to Italia 90 qualification territory and one of the most watched matches in the country’s history.", fr: "Un 0-0 qui envoie l’Algérie vers la qualification à Italia 90, un des matchs les plus regardés du pays.", ar: "تعادل سلبيّ أرسل الجزائر نحو التأهّل إلى إيطاليا ٩٠، من أكثر المباريات مشاهدةً في تاريخ البلاد." },
   },
   {
     id: "algeria-korea-2014",
@@ -1097,7 +1097,7 @@ export const CULTURE_THEMES: { title: LocalizedString; body: LocalizedString }[]
   },
   {
     title: { en: "The derbies", fr: "Les derbys", ar: "الديربيات" },
-    body: { en: "MCA vs USMA in Algiers, MCO vs ASMO in Oran, JSK vs USMA nationwide — each match carries its own century.", fr: "MCA-USMA à Alger, MCO-ASMO à Oran, JSK-USMA en national — chaque match porte son siècle.", ar: "مولودية الجزائر × إتحاد العاصمة، مولودية وهران × جمعية وهران، شبيبة القبائل × إتحاد العاصمة على الصعيد الوطني — لكلّ منها قرنه." },
+    body: { en: "MCA vs USMA in Algiers, MCO vs ASMO in Oran, JSK vs USMA nationwide, each match carries its own century.", fr: "MCA-USMA à Alger, MCO-ASMO à Oran, JSK-USMA en national, chaque match porte son siècle.", ar: "مولودية الجزائر × إتحاد العاصمة، مولودية وهران × جمعية وهران، شبيبة القبائل × إتحاد العاصمة على الصعيد الوطني، لكلّ منها قرنه." },
   },
   {
     title: { en: "Ultras & chants", fr: "Ultras & chants", ar: "الأولتراس والأهازيج" },
@@ -1179,7 +1179,7 @@ export const STATS = {
   worldCups: 5,
   afconTitles: 2,
   arabCups: 1,
-  unbeatenRun: "35 matches (2018–2022) — Belmadi era",
+  unbeatenRun: "35 matches (2018–2022), Belmadi era",
 };
 
 /* ---------- 14. Memories ---------- */
@@ -1194,10 +1194,10 @@ export type Artifact = {
 export const ARTIFACTS: Artifact[] = [
   { id: "1982-jersey", emoji: "👕", title: { en: "1982 Home Jersey", fr: "Maillot domicile 1982", ar: "قميص ١٩٨٢" }, note: { en: "Green shirt with a modest white collar. Le Coq Sportif.", fr: "Maillot vert au col blanc. Le Coq Sportif.", ar: "قميص أخضر بياقة بيضاء. لو كوك سبورتيف." } },
   { id: "1990-trophy-ticket", emoji: "🎟️", title: { en: "1990 AFCON Final ticket", fr: "Billet finale CAN 1990", ar: "تذكرة نهائي كان ٩٠" }, note: { en: "Algiers, 16 March 1990. General admission, 5 dinars.", fr: "Alger, 16 mars 1990. Populaire, 5 DA.", ar: "الجزائر، ١٦ مارس ١٩٩٠. مدرّج شعبيّ بخمسة دنانير." } },
-  { id: "2014-boots", emoji: "👟", title: { en: "Slimani’s boots — Brazil 2014", fr: "Crampons de Slimani — Brésil 2014", ar: "حذاء سليماني — البرازيل ٢٠١٤" }, note: { en: "Worn during the header against Russia.", fr: "Portés lors de la tête face à la Russie.", ar: "استُخدم في رأسيّة روسيا." } },
+  { id: "2014-boots", emoji: "👟", title: { en: "Slimani’s boots, Brazil 2014", fr: "Crampons de Slimani, Brésil 2014", ar: "حذاء سليماني، البرازيل ٢٠١٤" }, note: { en: "Worn during the header against Russia.", fr: "Portés lors de la tête face à la Russie.", ar: "استُخدم في رأسيّة روسيا." } },
   { id: "2019-medal", emoji: "🏅", title: { en: "2019 AFCON winner’s medal", fr: "Médaille CAN 2019", ar: "ميدالية بطل الكان ٢٠١٩" }, note: { en: "Awarded in Cairo, 19 July 2019.", fr: "Remise au Caire, 19 juillet 2019.", ar: "سُلّمت في القاهرة، ١٩ جويلية ٢٠١٩." } },
-  { id: "1958-photo", emoji: "🖼️", title: { en: "FLN team portrait — Tunis 1958", fr: "Portrait du FLN — Tunis 1958", ar: "صورة فريق جبهة التحرير — تونس ١٩٥٨" }, note: { en: "Nine men, one shirt, a country still to come.", fr: "Neuf hommes, un maillot, un pays à venir.", ar: "تسعة رجال، قميص واحد، وطن قادم." } },
-  { id: "2014-ball", emoji: "⚽", title: { en: "Match ball — Algeria 4-2 South Korea", fr: "Ballon du match Algérie 4-2 Corée", ar: "كرة مباراة الجزائر × كوريا" }, note: { en: "Brazuca, Porto Alegre.", fr: "Brazuca, Porto Alegre.", ar: "برازوكا، بورتو أليغري." } },
+  { id: "1958-photo", emoji: "🖼️", title: { en: "FLN team portrait, Tunis 1958", fr: "Portrait du FLN, Tunis 1958", ar: "صورة فريق جبهة التحرير، تونس ١٩٥٨" }, note: { en: "Nine men, one shirt, a country still to come.", fr: "Neuf hommes, un maillot, un pays à venir.", ar: "تسعة رجال، قميص واحد، وطن قادم." } },
+  { id: "2014-ball", emoji: "⚽", title: { en: "Match ball, Algeria 4-2 South Korea", fr: "Ballon du match Algérie 4-2 Corée", ar: "كرة مباراة الجزائر × كوريا" }, note: { en: "Brazuca, Porto Alegre.", fr: "Brazuca, Porto Alegre.", ar: "برازوكا، بورتو أليغري." } },
   { id: "programme-1990", emoji: "📓", title: { en: "1990 AFCON programme", fr: "Programme CAN 1990", ar: "برنامج الكان ١٩٩٠" }, note: { en: "Line-ups, coach interviews, and the anthem lyrics printed in three languages.", fr: "Compositions, entretiens et paroles de l’hymne en trois langues.", ar: "تشكيلات ومقابلات وكلمات النشيد بثلاث لغات." } },
 ];
 
@@ -1219,5 +1219,5 @@ export const CENTURY: { year: number; label: LocalizedString }[] = [
   { year: 2014, label: { en: "Round of 16 in Brazil", fr: "Huitièmes au Brésil", ar: "الدور الثاني في البرازيل" } },
   { year: 2019, label: { en: "Second continental star", fr: "Deuxième étoile continentale", ar: "النجمة القارّية الثانية" } },
   { year: 2021, label: { en: "Arab Cup Champions in Qatar", fr: "Champions de la Coupe arabe au Qatar", ar: "أبطال كأس العرب في قطر" } },
-  { year: 2026, label: { en: "Next chapter — North American World Cup", fr: "Prochain chapitre — Mondial nord-américain", ar: "الفصل القادم — المونديال في أمريكا الشمالية" } },
+  { year: 2026, label: { en: "Next chapter, North American World Cup", fr: "Prochain chapitre, Mondial nord-américain", ar: "الفصل القادم، المونديال في أمريكا الشمالية" } },
 ];

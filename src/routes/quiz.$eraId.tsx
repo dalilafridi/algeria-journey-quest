@@ -24,7 +24,7 @@ export const Route = createFileRoute("/quiz/$eraId")({
     if (!loaderData) {
       return pageMeta({
         path: `/quiz/${params.eraId}`,
-        title: "Quiz — DZ Odyssey",
+        title: "Quiz, DZ Odyssey",
         description: "Test your knowledge of Algerian history.",
         noindex: true,
       });
@@ -32,7 +32,7 @@ export const Route = createFileRoute("/quiz/$eraId")({
     const titleEn = t(loaderData.era.title, "en");
     return pageMeta({
       path: `/quiz/${loaderData.era.id}`,
-      title: `Quiz: ${titleEn} — DZ Odyssey`,
+      title: `Quiz: ${titleEn}, DZ Odyssey`,
       description: `Test your knowledge of ${titleEn} in this DZ Odyssey era quiz.`,
     });
   },
@@ -45,7 +45,7 @@ const CORRECT_MESSAGES = [
   "Spot on!",
   "Nailed it!",
 ];
-const WRONG_MESSAGES = ["Close! Try again.", "Not quite — keep going!", "So close! 💪"];
+const WRONG_MESSAGES = ["Close! Try again.", "Not quite, keep going!", "So close! 💪"];
 
 function pickMessage(list: string[]) {
   return list[Math.floor(Math.random() * list.length)];
