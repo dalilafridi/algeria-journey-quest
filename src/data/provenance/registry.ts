@@ -250,6 +250,25 @@ export const EXHIBIT_PROVENANCE: Record<string, ExhibitProvenanceRecord> = {
     sourceIds: ["unesco-couscous", "bardo-algiers"],
     confidence: "verified",
   }),
+
+  // ─── M'Zab Valley flagship exhibit ──────────────────────────────────
+  mzab: R({
+    sourceIds: [
+      "unesco-mzab",
+      "ravereau-mzab",
+      "donnadieu-habiter-desert",
+      "opvm-ghardaia",
+      "aghlabid-chronicles-ibadi",
+      "getty-earthen-mzab",
+    ],
+    confidence: "verified",
+    intro: {
+      en: "The exhibit draws on the UNESCO World Heritage record, André Ravéreau's canonical architectural study, and Algerian conservation archives.",
+      fr: "L'exposition s'appuie sur la fiche du patrimoine mondial (UNESCO), l'étude architecturale de référence d'André Ravéreau et les archives algériennes de conservation.",
+      ar: "يعتمد المعرض على سجل التراث العالمي لليونسكو، والدراسة المعمارية المرجعية لأندريه رافيرو، وأرشيفات الحفاظ الجزائرية.",
+    },
+    furtherReadingIds: ["corbusier-oeuvre-complete", "further-mcdougall-algeria"],
+  }),
 };
 
 export function getExhibitProvenance(exhibitId: string): ExhibitProvenanceRecord | undefined {

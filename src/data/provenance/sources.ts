@@ -355,6 +355,125 @@ export const SOURCES: readonly ProvenanceSource[] = [
     publisher: L("Markus Wiener", "Markus Wiener", "ماركوس فينر"),
     publishedAt: "2000",
   }),
+
+  // ─── M'Zab Valley exhibit ─────────────────────────────────────────────
+  S({
+    id: "unesco-mzab",
+    kind: "official",
+    category: "international",
+    title: L(
+      "M'Zab Valley — UNESCO World Heritage Centre",
+      "Vallée du M'Zab — Centre du patrimoine mondial UNESCO",
+      "وادي مزاب — مركز التراث العالمي لليونسكو",
+    ),
+    publisher: L("UNESCO", "UNESCO", "اليونسكو"),
+    url: "https://whc.unesco.org/en/list/188/",
+    publishedAt: "1982",
+    badge: "UNESCO",
+    note: L(
+      "Inscribed 1982 (criteria ii, iii, v) — an intact 10th-century Ibadi urban ensemble that still functions as a living city.",
+      "Inscrite en 1982 (critères ii, iii, v) — ensemble urbain ibadite du Xe siècle, toujours habité.",
+      "أُدرج عام 1982 (المعايير ii و iii و v) — منظومة عمرانية إباضية من القرن العاشر لا تزال مأهولة.",
+    ),
+  }),
+  S({
+    id: "ravereau-mzab",
+    kind: "book",
+    category: "academic",
+    title: L(
+      "Le M'Zab, une leçon d'architecture",
+      "Le M'Zab, une leçon d'architecture",
+      "المزاب: درس في العمارة",
+    ),
+    author: L("André Ravéreau", "André Ravéreau", "أندريه رافيرو"),
+    publisher: L("Sindbad / Actes Sud", "Sindbad / Actes Sud", "سندباد / أكت سود"),
+    publishedAt: "1981",
+    badge: "Ravéreau",
+    note: L(
+      "The canonical architectural study of the M'Zab, prefaced by Hassan Fathy — the reference work for climatic and communal design of the ksour.",
+      "L'étude architecturale de référence, préfacée par Hassan Fathy — analyse du dessin climatique et communautaire des ksour.",
+      "المرجع المعماري الأساسي، بمقدمة حسن فتحي — تحليل للتصميم المناخي والمجتمعي للقصور.",
+    ),
+  }),
+  S({
+    id: "donnadieu-habiter-desert",
+    kind: "book",
+    category: "academic",
+    title: L(
+      "Habiter le désert : les maisons mozabites",
+      "Habiter le désert : les maisons mozabites",
+      "سكن الصحراء: بيوت المزاب",
+    ),
+    author: L(
+      "Catherine & Pierre Donnadieu, Hubert Didillon",
+      "Catherine et Pierre Donnadieu, Hubert Didillon",
+      "كاثرين وبيير دونادييه، هوبير ديديّون",
+    ),
+    publisher: L("Mardaga", "Mardaga", "مارداغا"),
+    publishedAt: "1986",
+  }),
+  S({
+    id: "corbusier-oeuvre-complete",
+    kind: "book",
+    category: "further",
+    title: L(
+      "Le Corbusier — Œuvre complète (Sahara notebooks & M'Zab studies)",
+      "Le Corbusier — Œuvre complète (carnets sahariens et études du M'Zab)",
+      "لو كوربوزييه — الأعمال الكاملة (دفاتر الصحراء ودراسات المزاب)",
+    ),
+    author: L("Le Corbusier", "Le Corbusier", "لو كوربوزييه"),
+    publisher: L("Éditions Girsberger / Birkhäuser", "Éditions Girsberger / Birkhäuser", "غيرسبرغر / بيركهاوزر"),
+    publishedAt: "1931–1957",
+    note: L(
+      "Le Corbusier travelled to Ghardaïa in 1931 and repeatedly cited the M'Zab as a lesson in rational, humane urbanism.",
+      "Le Corbusier se rend à Ghardaïa en 1931 et cite à plusieurs reprises le M'Zab comme leçon d'urbanisme rationnel et humain.",
+      "زار لو كوربوزييه غرداية عام 1931 واستشهد بالمزاب مراراً كدرس في العمران العقلاني والإنساني.",
+    ),
+  }),
+  S({
+    id: "opvm-ghardaia",
+    kind: "official",
+    category: "archive",
+    title: L(
+      "Office de Protection et de Promotion de la Vallée du M'Zab (OPVM)",
+      "Office de Protection et de Promotion de la Vallée du M'Zab (OPVM)",
+      "ديوان حماية والترقية لوادي مزاب",
+    ),
+    publisher: L("Ministry of Culture, Algeria", "Ministère de la Culture, Algérie", "وزارة الثقافة، الجزائر"),
+    url: "https://www.opvm.dz/",
+    language: "fr",
+    note: L(
+      "The Algerian public body responsible for the conservation, documentation and interpretation of the M'Zab Valley since 1988.",
+      "L'établissement public algérien chargé de la conservation, de la documentation et de la valorisation de la vallée depuis 1988.",
+      "المؤسسة العمومية الجزائرية المكلفة بحماية الوادي وتوثيقه والتعريف به منذ 1988.",
+    ),
+  }),
+  S({
+    id: "aghlabid-chronicles-ibadi",
+    kind: "book",
+    category: "academic",
+    title: L(
+      "The Ibāḍī Tradition and the Making of the Rustamid Imamate",
+      "La tradition ibadite et la formation de l'imamat rustumide",
+      "التقليد الإباضي وتشكّل الإمامة الرستمية",
+    ),
+    author: L("Virginie Prevost", "Virginie Prevost", "فيرجيني بريفوست"),
+    publisher: L("Peeters", "Peeters", "بيترز"),
+    publishedAt: "2010",
+  }),
+  S({
+    id: "getty-earthen-mzab",
+    kind: "article",
+    category: "international",
+    title: L(
+      "Conserving Earthen Architecture — M'Zab Case Study",
+      "Conserver l'architecture de terre — étude de cas du M'Zab",
+      "حفظ العمارة الطينية — دراسة حالة المزاب",
+    ),
+    publisher: L("Getty Conservation Institute", "Getty Conservation Institute", "معهد غيتي للحفظ"),
+    url: "https://www.getty.edu/conservation/",
+    badge: "Getty",
+  }),
 ];
 
 const byId = new Map(SOURCES.map((s) => [s.id, s]));
