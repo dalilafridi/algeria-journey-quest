@@ -1200,6 +1200,7 @@ function FootballHall() {
           }[lang]}
         </p>
       </footer>
+      <ExhibitProvenance exhibitId="football" />
     </div>
   );
 }

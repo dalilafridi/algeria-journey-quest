@@ -510,6 +510,7 @@ function LesVertesExhibit() {
           }[lang]}
         </p>
       </footer>
+      <ExhibitProvenance exhibitId="football-lesvertes" />
     </div>
   );
 }

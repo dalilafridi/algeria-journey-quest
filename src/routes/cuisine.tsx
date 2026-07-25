@@ -9,6 +9,7 @@ import { t, useLang } from "@/lib/i18n";
 import { saveJourneyPlace } from "@/lib/continuity";
 import { JourneyNext } from "@/components/JourneyNext";
 import { ContinueExploring } from "@/components/curator/ContinueExploring";
+import { ExhibitProvenance } from "@/components/provenance/ExhibitProvenance";
 import { getCuisineExploreGroups } from "@/lib/exploreGroups";
 import cuisineHero from "@/assets/cuisine-hero.jpg";
 import { pageMeta } from "@/lib/seo";
@@ -435,6 +436,7 @@ function CuisinePage() {
         <div className="mt-12">
           <ContinueExploring groups={getCuisineExploreGroups()} />
         </div>
+        <ExhibitProvenance exhibitId="cuisine" />
       </main>
     </div>
   );

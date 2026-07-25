@@ -300,6 +300,7 @@ function Timeline() {
 
         <JourneyNext current="history" />
       </main>
+      <ExhibitProvenance exhibitId="timeline" />
     </div>
   );
 }
