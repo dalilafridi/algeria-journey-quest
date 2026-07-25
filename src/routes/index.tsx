@@ -4,6 +4,12 @@ import { ContinueJourneyInline } from "@/components/ContinueJourneyInline";
 import { DidYouKnowCard } from "@/components/DidYouKnowCard";
 import { OnThisDayCard } from "@/components/OnThisDayCard";
 import { SignatureJourneys } from "@/components/journeys/SignatureJourneys";
+import {
+  FeaturedExhibits,
+  ExploreByTheme,
+  CuratorsPick,
+  LatestExhibits,
+} from "@/components/museum/EntranceHall";
 import { Header } from "@/components/Header";
 import { PillarIcon } from "@/components/brand/PillarIcon";
 import { RegionIcon } from "@/components/RegionIcon";
@@ -196,8 +202,12 @@ function Home() {
         <ContinueJourneyInline />
 
 
+        {/* ========= FEATURED MASTERPIECE EXHIBITS ========= */}
+        <FeaturedExhibits className="pt-10 sm:pt-14" />
+
         {/* ========= ON THIS DAY IN ALGERIAN HISTORY ========= */}
         <OnThisDayCard />
+
 
         {/* ========= TODAY IN ALGERIAN MEMORY (curated quote) ========= */}
         <section className="mx-auto max-w-5xl px-4 pt-10 sm:pt-12">
@@ -233,8 +243,14 @@ function Home() {
           </div>
         </section>
 
+        {/* ========= CURATOR'S PICK — rotating flagship ========= */}
+        <div className="pt-10 sm:pt-14">
+          <CuratorsPick />
+        </div>
+
         {/* ========= EXPLORE — three pillars ========= */}
         <section className="mx-auto max-w-5xl px-4 py-10 sm:py-14">
+
           <div className="text-center mb-6 sm:mb-8">
             <h2 className="text-2xl sm:text-3xl font-extrabold">{copy.exploreJourney[lang]}</h2>
           </div>
@@ -267,6 +283,11 @@ function Home() {
         {/* ========= SIGNATURE JOURNEYS ========= */}
         <SignatureJourneys className="pb-10 sm:pb-14" />
 
+        {/* ========= EXPLORE BY THEME ========= */}
+        <ExploreByTheme className="pb-10 sm:pb-14" />
+
+
+
         {/* ========= REGION PREVIEW STRIP ========= */}
         <section className="mx-auto max-w-5xl px-4 pb-10 sm:pb-14">
           <div className="flex items-end justify-between mb-4">
@@ -296,10 +317,14 @@ function Home() {
         </section>
 
 
+        {/* ========= LATEST EXHIBITS ========= */}
+        <LatestExhibits className="pb-10 sm:pb-14" />
+
         {/* ========= DID YOU KNOW ========= */}
         <section className="mx-auto max-w-5xl px-4 pb-10 sm:pb-14">
           <DidYouKnowCard fact={homepageFact} />
         </section>
+
 
         {/* ========= FINAL CTA ========= */}
         <section className="relative overflow-hidden">
