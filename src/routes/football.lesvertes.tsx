@@ -5,6 +5,7 @@ import { MedallionFrame } from "@/components/brand/MedallionFrame";
 import { useLang, type Lang, type LocalizedString } from "@/lib/i18n";
 import lesVertesHero from "@/assets/lesvertes-hero.jpg.asset.json";
 import { pageMeta } from "@/lib/seo";
+import { ExhibitProvenance } from "@/components/provenance/ExhibitProvenance";
 import {
   LES_VERTES_AFRICAN_JOURNEY,
   LES_VERTES_BARRIERS,
