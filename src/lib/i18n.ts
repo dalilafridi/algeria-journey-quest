@@ -31,19 +31,21 @@ function writeCookieLang(lang: Lang) {
 
 export function getLang(): Lang {
   if (typeof window === "undefined") return "en";
+  // Cookie is authoritative (matches SSR); localStorage is a secondary fallback.
+  const c = readCookieLang();
+  if (c) return c;
   try {
     const v = localStorage.getItem(KEY) as Lang | null;
     if (v === "en" || v === "fr" || v === "ar") return v;
   } catch {
     /* noop */
   }
-  const c = readCookieLang();
-  if (c) return c;
   const nav = (typeof navigator !== "undefined" && navigator.language) || "en";
   if (nav.startsWith("fr")) return "fr";
   if (nav.startsWith("ar")) return "ar";
   return "en";
 }
+
 
 export function setLang(lang: Lang) {
   try {

@@ -93,15 +93,17 @@ function RootShell({ children }: { children: React.ReactNode }) {
     <html lang={lang} dir={dir}>
       <head>
         <HeadContent />
-        {/* Reconcile with a stored client preference (localStorage) on hard
-            navigations where the cookie may lag behind the last in-app
-            selection. SSR already sets lang/dir from cookie + Accept-Language. */}
+        {/* Cookie is authoritative for SSR/hydration. If a stale
+            localStorage value disagrees with the cookie, sync localStorage
+            TO the cookie rather than flipping the rendered language.
+            Only fall back to localStorage if the cookie is absent. */}
         <script
           dangerouslySetInnerHTML={{
             __html:
-              "(function(){try{var l=localStorage.getItem('algeria-history-lang-v1');if(l==='en'||l==='fr'||l==='ar'){document.documentElement.lang=l;document.documentElement.dir=(l==='ar')?'rtl':'ltr';}}catch(e){}})();",
+              "(function(){try{var K='algeria-history-lang-v1';var m=/(?:^|;\\s*)dzo_lang=(en|fr|ar)/.exec(document.cookie||'');var c=m?m[1]:null;var l=localStorage.getItem(K);if(c){if(l!==c){localStorage.setItem(K,c);}}else if(l==='en'||l==='fr'||l==='ar'){document.documentElement.lang=l;document.documentElement.dir=(l==='ar')?'rtl':'ltr';document.cookie='dzo_lang='+l+'; path=/; max-age=31536000; samesite=lax';}}catch(e){}})();",
           }}
         />
+
       </head>
       <body>
         {children}
