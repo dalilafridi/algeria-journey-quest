@@ -1,11 +1,11 @@
 {
   "version": 1,
-  "asset_id": "862c40bf-74d2-4f0e-b030-563d37059c69",
+  "asset_id": "6994648a-230c-4062-8510-1270d645a6cd",
   "project_id": "4ec5c163-c082-44f1-a21c-176429962830",
-  "url": "/__l5e/assets-v1/862c40bf-74d2-4f0e-b030-563d37059c69/lesvertes-hero.jpg",
-  "r2_key": "a/v1/4ec5c163-c082-44f1-a21c-176429962830/862c40bf-74d2-4f0e-b030-563d37059c69/lesvertes-hero.jpg",
-  "original_filename": "lesvertes-hero.jpg",
-  "size": 217274,
-  "content_type": "image/jpeg",
-  "created_at": "2026-07-24T18:31:57Z"
+  "url": "/__l5e/assets-v1/6994648a-230c-4062-8510-1270d645a6cd/lesvertes-hero.webp",
+  "r2_key": "a/v1/4ec5c163-c082-44f1-a21c-176429962830/6994648a-230c-4062-8510-1270d645a6cd/lesvertes-hero.webp",
+  "original_filename": "lesvertes-hero.webp",
+  "size": 110788,
+  "content_type": "image/webp",
+  "created_at": "2026-07-25T17:24:37Z"
 }
