@@ -226,7 +226,7 @@ const POPULARITY: Record<string, number> = {
   "region:sahara": 14,
   "era:numidia": 16,
   "era:roman": 14,
-  "era:war-of-independence": 16,
+  "era:independence": 16,
   "football:hub": 14,
   "football:les-vertes": 12,
   "club:js-kabylie": 14,
@@ -245,7 +245,7 @@ const POPULAR_LANDMARK_IDS: string[] = [
   "football:les-vertes",
   "football:hub",
   "cuisine:hub",
-  "era:war-of-independence",
+  "era:independence",
 ];
 
 // ---------------------------------------------------------------- Index
