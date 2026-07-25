@@ -13,7 +13,7 @@
  */
 
 import { Link } from "@tanstack/react-router";
-import { useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 import { t, useLang, type Lang } from "@/lib/i18n";
 import {
@@ -192,7 +192,7 @@ function ExhibitCard({ exhibit, lang }: { exhibit: FeaturedExhibit; lang: Lang }
           {t(exhibit.teaser, lang)}
         </p>
         <div className="mt-4 flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.14em] text-primary opacity-80 group-hover:opacity-100 transition-opacity">
-          <span>{CTA_ENTER[lang]}</span>
+          <span>{exhibit.cta ? t(exhibit.cta, lang) : CTA_ENTER[lang]}</span>
           <span aria-hidden>{CTA_ARROW[lang]}</span>
         </div>
       </div>
@@ -322,12 +322,19 @@ const PICK_COPY = {
 
 export function CuratorsPick({ className }: { className?: string }) {
   const lang = useLang();
-  // Deterministic daily rotation — same all day, changes next day.
+  // SSR-safe: render a stable default on server + first client render,
+  // then rotate to the daily pick after mount. Prevents hydration mismatch
+  // when server and client fall on different calendar days.
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
   const pick = useMemo(() => {
+    if (FEATURED_EXHIBITS.length === 0) return null;
+    if (!mounted) return FEATURED_EXHIBITS[0];
     const key = new Date().toISOString().slice(0, 10);
     const seed = Number(key.replace(/-/g, "")) || 1;
     return FEATURED_EXHIBITS[seed % FEATURED_EXHIBITS.length];
-  }, []);
+  }, [mounted]);
+  if (!pick) return null;
 
   return (
     <section
@@ -373,7 +380,7 @@ export function CuratorsPick({ className }: { className?: string }) {
             {t(pick.teaser, lang)}
           </p>
           <div className="mt-5 flex items-center gap-2 text-sm font-semibold text-primary">
-            <span>{t(PICK_COPY.cta, lang)}</span>
+            <span>{pick.cta ? t(pick.cta, lang) : t(PICK_COPY.cta, lang)}</span>
             <span aria-hidden>{CTA_ARROW[lang]}</span>
           </div>
           <div className="mt-2 text-[11px] italic text-muted-foreground/80">
