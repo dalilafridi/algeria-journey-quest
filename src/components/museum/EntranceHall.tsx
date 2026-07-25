@@ -322,12 +322,19 @@ const PICK_COPY = {
 
 export function CuratorsPick({ className }: { className?: string }) {
   const lang = useLang();
-  // Deterministic daily rotation — same all day, changes next day.
+  // SSR-safe: render a stable default on server + first client render,
+  // then rotate to the daily pick after mount. Prevents hydration mismatch
+  // when server and client fall on different calendar days.
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
   const pick = useMemo(() => {
+    if (FEATURED_EXHIBITS.length === 0) return null;
+    if (!mounted) return FEATURED_EXHIBITS[0];
     const key = new Date().toISOString().slice(0, 10);
     const seed = Number(key.replace(/-/g, "")) || 1;
     return FEATURED_EXHIBITS[seed % FEATURED_EXHIBITS.length];
-  }, []);
+  }, [mounted]);
+  if (!pick) return null;
 
   return (
     <section
