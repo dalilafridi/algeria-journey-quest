@@ -7,7 +7,9 @@
  */
 
 import type { ProvenanceSource } from "@/lib/provenance";
-import { L } from "@/data/football"; // reuses the trilingual helper
+import type { LocalizedString } from "@/lib/i18n";
+
+const L = (en: string, fr: string, ar: string): LocalizedString => ({ en, fr, ar });
 
 const S = <T extends ProvenanceSource>(s: T) => s;
 
