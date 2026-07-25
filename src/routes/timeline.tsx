@@ -266,11 +266,12 @@ function Timeline() {
               <Sparkles className="w-4 h-4" />
               {tu("yourProgress", lang)}
             </div>
-            <dl className="mt-3 grid grid-cols-3 gap-2 text-center">
+            <div className="mt-3 grid grid-cols-3 gap-2 text-center">
               <Stat value={completedEras} label={tu("erasCompleted", lang)} />
               <Stat value={quizzesCompleted} label={tu("quizzesCompleted", lang)} />
               <Stat value={`${factsDiscovered}/${totalFacts}`} label={tu("factsCount", lang)} />
-            </dl>
+            </div>
+
           </div>
         </div>
 
