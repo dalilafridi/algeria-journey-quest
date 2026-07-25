@@ -775,7 +775,18 @@ function MzabExhibit() {
       {/* UNESCO */}
       <Section id="unesco" tone="ivory">
         <EyebrowTitle eyebrow={UNESCO.eyebrow} title={UNESCO.title} />
+        <p className="max-w-3xl text-foreground/80 text-base sm:text-lg leading-[1.75] mb-10">
+          {tr(
+            L(
+              "The property inscribed on the World Heritage List in 1982 is the M'Zab pentapolis — the five original ksour of El Atteuf, Bou Noura, Melika, Beni Isguen and Ghardaïa, together with their palm groves and cemeteries. The later Mozabite foundations of Berriane and El Guerrara, described above, belong to the broader historical M'Zab but sit outside this inscription.",
+              "Le bien inscrit sur la Liste du patrimoine mondial en 1982 est la pentapole du M'Zab — les cinq ksour d'origine : El Atteuf, Bou Noura, Melika, Beni Isguen et Ghardaïa, avec leurs palmeraies et leurs cimetières. Les fondations mozabites plus tardives de Berriane et d'El Guerrara, décrites plus haut, relèvent du M'Zab historique élargi mais ne font pas partie du bien inscrit.",
+              "الموقع المُدرَج في قائمة التراث العالمي عام 1982 هو خمسُ مدن وادي مزاب — القصور الأصلية: العطف، بونورة، مليكة، بني يزقن، غرداية، مع بساتين نخيلها ومقابرها. أمّا تأسيسا بريان والقرارة اللاحقان — كما ذُكر أعلاه — فينتميان إلى وادي مزاب التاريخي الأوسع، لكنّهما خارج نطاق هذا الإدراج.",
+            ),
+            lang,
+          )}
+        </p>
         <div className="grid gap-10 md:grid-cols-[1fr_1fr]">
+
           <div>
             <p className="text-xs uppercase tracking-[0.24em] font-bold text-primary">
               {tr(L("Criteria of inscription", "Critères d'inscription", "معايير الإدراج"), lang)}
