@@ -2,13 +2,18 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { useNavigate } from "@tanstack/react-router";
 import { t, useLang, type Lang } from "@/lib/i18n";
 import {
+  CATEGORIES,
+  CATEGORY_LABEL,
   clearRecent,
+  emitSearchAnalytics,
   getDiscoveries,
+  getPopularExhibits,
   getRecent,
   highlight,
   kindLabel,
   pushRecent,
   searchAll,
+  type SearchCategory,
   type SearchHit,
   type SearchItem,
   type SearchKind,
@@ -62,6 +67,16 @@ const COPY = {
     ar: "نتائج",
   },
   jumpTo: { en: "Open", fr: "Ouvrir", ar: "افتح" },
+  popular: {
+    en: "Popular exhibits",
+    fr: "Expositions populaires",
+    ar: "معروضات مميّزة",
+  },
+  emptyLead: {
+    en: "No exhibits matched your search.",
+    fr: "Aucune exposition ne correspond à votre recherche.",
+    ar: "لم تتطابق أي معروضات مع بحثك.",
+  },
 } as const;
 
 export function SearchOverlay() {
@@ -69,10 +84,12 @@ export function SearchOverlay() {
   const navigate = useNavigate();
   const [open, setOpen] = useState(false);
   const [query, setQuery] = useState("");
+  const [category, setCategory] = useState<SearchCategory>("all");
   const [activeIndex, setActiveIndex] = useState(0);
   const [recent, setRecent] = useState<string[]>([]);
   const inputRef = useRef<HTMLInputElement>(null);
   const listRef = useRef<HTMLDivElement>(null);
+  const popular = useMemo(() => getPopularExhibits(9), []);
 
   // Open / close API ------------------------------------------------------
   useEffect(() => {
@@ -124,15 +141,35 @@ export function SearchOverlay() {
 
   // Computed --------------------------------------------------------------
   const results: SearchHit[] = useMemo(
-    () => (query.trim() ? searchAll(query, 30) : []),
-    [query],
+    () => (query.trim() ? searchAll(query, { limit: 30, category }) : []),
+    [query, category],
   );
   const discoveries = useMemo(() => (query.trim() ? [] : getDiscoveries()), [query]);
 
   // Reset active index when result set changes
   useEffect(() => {
     setActiveIndex(0);
-  }, [query]);
+  }, [query, category]);
+
+  // Analytics — fire when the user pauses typing (debounced).
+  useEffect(() => {
+    if (!open) return;
+    const q = query.trim();
+    if (!q) return;
+    const id = window.setTimeout(() => {
+      emitSearchAnalytics({
+        type: "search-query",
+        query: q,
+        results: results.length,
+        category,
+      });
+      if (results.length === 0) {
+        emitSearchAnalytics({ type: "search-zero-results", query: q, category });
+      }
+    }, 350);
+    return () => window.clearTimeout(id);
+  }, [query, category, results.length, open]);
+
 
   // Scroll active result into view
   useEffect(() => {
@@ -144,8 +181,16 @@ export function SearchOverlay() {
   }, [activeIndex, open]);
 
   // Navigation -----------------------------------------------------------
-  const goTo = (item: SearchItem) => {
-    pushRecent(query.trim() || t(item.title, lang));
+  const goTo = (item: SearchItem, rank?: number) => {
+    const q = query.trim();
+    pushRecent(q || t(item.title, lang));
+    emitSearchAnalytics({
+      type: "search-result-selected",
+      query: q,
+      itemId: item.id,
+      kind: item.kind,
+      rank: rank ?? 0,
+    });
     setOpen(false);
     setQuery("");
     const [path, hash] = item.href.split("#");
@@ -154,22 +199,37 @@ export function SearchOverlay() {
 
 
   const onInputKey = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    const list = results.length ? results : (discoveries as SearchItem[]);
+    const list = results.length
+      ? results
+      : ((query.trim() ? popular : discoveries) as SearchItem[]);
     if (e.key === "ArrowDown") {
       e.preventDefault();
       setActiveIndex((i) => Math.min(i + 1, Math.max(0, list.length - 1)));
     } else if (e.key === "ArrowUp") {
       e.preventDefault();
       setActiveIndex((i) => Math.max(0, i - 1));
+    } else if (e.key === "Home") {
+      e.preventDefault();
+      setActiveIndex(0);
+    } else if (e.key === "End") {
+      e.preventDefault();
+      setActiveIndex(Math.max(0, list.length - 1));
     } else if (e.key === "Enter") {
       e.preventDefault();
       const chosen = list[activeIndex];
-      if (chosen) goTo(chosen);
+      if (chosen) goTo(chosen, activeIndex);
     } else if (e.key === "Escape") {
       e.preventDefault();
       setOpen(false);
     }
   };
+
+  const selectCategory = (c: SearchCategory) => {
+    setCategory(c);
+    emitSearchAnalytics({ type: "search-category-selected", category: c });
+    inputRef.current?.focus();
+  };
+
 
   if (!open) return null;
 
@@ -242,6 +302,34 @@ export function SearchOverlay() {
           </button>
         </div>
 
+        {/* Category chips */}
+        <div
+          role="tablist"
+          aria-label="Search categories"
+          className="flex gap-1.5 overflow-x-auto scrollbar-none px-3 sm:px-4 py-2 border-b border-border/50 bg-background/30"
+        >
+          {CATEGORIES.map((c) => {
+            const active = c === category;
+            return (
+              <button
+                key={c}
+                type="button"
+                role="tab"
+                aria-selected={active}
+                onClick={() => selectCategory(c)}
+                className={
+                  "shrink-0 inline-flex items-center px-3 py-1.5 rounded-full border text-[11px] font-semibold uppercase tracking-[0.16em] transition " +
+                  (active
+                    ? "border-accent/60 bg-accent/15 text-accent-foreground"
+                    : "border-border bg-background/60 text-muted-foreground hover:text-foreground hover:border-accent/40")
+                }
+              >
+                {t(CATEGORY_LABEL[c], lang)}
+              </button>
+            );
+          })}
+        </div>
+
         {/* Body */}
         <div
           ref={listRef}
@@ -258,7 +346,7 @@ export function SearchOverlay() {
                     active={i === activeIndex}
                     query={query}
                     onHover={() => setActiveIndex(i)}
-                    onClick={() => goTo(hit)}
+                    onClick={() => goTo(hit, i)}
                   />
                 </li>
               ))}
@@ -268,23 +356,42 @@ export function SearchOverlay() {
             </ul>
           )}
 
-          {/* Empty state for an active query */}
+          {/* Empty state for an active query — never "no results", always suggest popular exhibits. */}
           {query.trim() && results.length === 0 && (
-            <div className="px-6 py-12 text-center">
-              <div className="text-3xl opacity-60" aria-hidden>
-                ✦
+            <div className="py-2">
+              <div className="px-6 pt-8 pb-4 text-center">
+                <div className="text-3xl opacity-60" aria-hidden>
+                  ✦
+                </div>
+                <p
+                  className="mt-3 text-base text-foreground/90"
+                  style={{ fontFamily: "Georgia, 'Times New Roman', serif" }}
+                >
+                  {t(COPY.emptyLead, lang)}
+                </p>
+                <p className="mt-1 text-xs text-muted-foreground">
+                  {t(COPY.emptyHint, lang)}
+                </p>
               </div>
-              <p
-                className="mt-3 text-base text-foreground/90"
-                style={{ fontFamily: "Georgia, 'Times New Roman', serif" }}
-              >
-                {t(COPY.empty, lang)}
-              </p>
-              <p className="mt-1 text-xs text-muted-foreground">
-                {t(COPY.emptyHint, lang)}
-              </p>
+              <Section label={t(COPY.popular, lang)}>
+                <ul>
+                  {popular.map((d, i) => (
+                    <li key={d.id} data-result-index={i}>
+                      <ResultRow
+                        item={d}
+                        lang={lang}
+                        active={i === activeIndex}
+                        query=""
+                        onHover={() => setActiveIndex(i)}
+                        onClick={() => goTo(d, i)}
+                      />
+                    </li>
+                  ))}
+                </ul>
+              </Section>
             </div>
           )}
+
 
           {/* Idle state — recent + discoveries */}
           {!query.trim() && (
@@ -332,7 +439,7 @@ export function SearchOverlay() {
                           active={i === activeIndex}
                           query=""
                           onHover={() => setActiveIndex(i)}
-                          onClick={() => goTo(d)}
+                          onClick={() => goTo(d, i)}
                         />
                       </li>
                     ))}
