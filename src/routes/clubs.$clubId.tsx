@@ -11,6 +11,11 @@ import { hasMatchTheater } from "@/data/matchTheater";
 import { getClubMuseum, listClubMuseums } from "@/data/clubs";
 import { ExhibitProvenance } from "@/components/provenance/ExhibitProvenance";
 import {
+  ExhibitHero,
+  Plaque as ExhibitPlaque,
+  SERIF as EXHIBIT_SERIF,
+} from "@/components/exhibit";
+import {
   TROPHY_CATEGORY_LABEL,
   type ClubMuseum,
   type QuizQuestion,
@@ -50,7 +55,7 @@ export const Route = createFileRoute("/clubs/$clubId")({
   notFoundComponent: ClubNotFound,
 });
 
-const SERIF = { fontFamily: "Georgia, 'Iowan Old Style', 'Times New Roman', serif" };
+const SERIF = EXHIBIT_SERIF;
 
 function ClubNotFound() {
   const lang = useLang();
@@ -204,46 +209,42 @@ function FullMuseumView({ club, lang }: { club: ClubMuseum; lang: Lang }) {
 
 function Hero({ club, lang }: { club: ClubMuseum; lang: Lang }) {
   const { primary, secondary } = club.identity.colors;
-  return (
-    <section
-      className="relative overflow-hidden"
+  const heroBg =
+    `radial-gradient(ellipse at 20% 20%, ${primary}22, transparent 55%), ` +
+    `radial-gradient(ellipse at 80% 80%, ${secondary}33, transparent 55%), ` +
+    `linear-gradient(180deg, oklch(0.985 0.02 84), oklch(0.94 0.04 76))`;
+  const cityMeta = (
+    <>
+      {t(club.city, lang)} · {{ en: "Founded", fr: "Fondé", ar: "تأسس" }[lang]} {club.founded}
+    </>
+  );
+  const medallion = (
+    <div
+      className="w-[180px] h-[180px] sm:w-[220px] sm:h-[220px] rounded-full flex items-center justify-center"
       style={{
-        background:
-          `radial-gradient(ellipse at 20% 20%, ${primary}22, transparent 55%), radial-gradient(ellipse at 80% 80%, ${secondary}33, transparent 55%), linear-gradient(180deg, oklch(0.985 0.02 84), oklch(0.94 0.04 76))`,
+        background: `radial-gradient(circle at 30% 30%, ${primary}, ${secondary})`,
+        boxShadow:
+          "0 25px 55px -20px oklch(0 0 0 / 0.7), inset 0 0 0 5px oklch(1 0 0 / 0.08)",
       }}
+      aria-hidden
     >
-      <div className="relative max-w-6xl mx-auto px-4 sm:px-6 py-14 sm:py-20 grid gap-10 md:grid-cols-[1fr_auto] items-center">
-        <div>
-          <p className="text-[10px] sm:text-xs uppercase tracking-[0.28em] font-bold text-primary">
-            ⵣ · {{ en: "Club Museum", fr: "Musée du club", ar: "متحف النادي" }[lang]}
-          </p>
-          <h1 className="mt-3 text-4xl sm:text-5xl md:text-6xl font-bold leading-[1.05]" style={SERIF}>
-            {t(club.fullName, lang)}
-          </h1>
-          <p className="text-sm mt-2 text-muted-foreground">
-            {t(club.city, lang)} · {{ en: "Founded", fr: "Fondé", ar: "تأسس" }[lang]} {club.founded}
-          </p>
-          <p className="mt-5 max-w-xl text-lg italic text-foreground" style={SERIF}>
-            {t(club.tagline, lang)}
-          </p>
-        </div>
-
-        <div className="flex justify-center md:justify-end">
-          <div
-            className="w-[180px] h-[180px] sm:w-[220px] sm:h-[220px] rounded-full flex items-center justify-center"
-            style={{
-              background: `radial-gradient(circle at 30% 30%, ${primary}, ${secondary})`,
-              boxShadow: "0 25px 55px -20px oklch(0 0 0 / 0.7), inset 0 0 0 5px oklch(1 0 0 / 0.08)",
-            }}
-            aria-hidden
-          >
-            <span className="text-4xl sm:text-5xl font-black tracking-widest text-[oklch(0.98_0.02_80)]" style={SERIF}>
-              {club.identity.crestGlyph}
-            </span>
-          </div>
-        </div>
-      </div>
-    </section>
+      <span
+        className="text-4xl sm:text-5xl font-black tracking-widest text-[oklch(0.98_0.02_80)]"
+        style={SERIF}
+      >
+        {club.identity.crestGlyph}
+      </span>
+    </div>
+  );
+  return (
+    <ExhibitHero
+      eyebrow={{ en: "Club Museum", fr: "Musée du club", ar: "متحف النادي" }}
+      title={club.fullName}
+      subtitle={club.tagline}
+      meta={cityMeta}
+      medallion={medallion}
+      background={heroBg}
+    />
   );
 }
 
@@ -714,20 +715,7 @@ function QuizSection({ questions, lang }: { questions: QuizQuestion[]; lang: Lan
 
 /* --------------------------------- Atoms --------------------------------- */
 
-function Plaque({ children, className = "" }: { children: React.ReactNode; className?: string }) {
-  return (
-    <div
-      className={"rounded-2xl border p-5 sm:p-6 " + className}
-      style={{
-        borderColor: "oklch(0.78 0.06 68 / 0.55)",
-        background: "linear-gradient(180deg, oklch(0.99 0.02 84 / 0.95), oklch(0.96 0.03 78 / 0.95))",
-        boxShadow: "inset 0 1px 0 oklch(1 0 0 / 0.05)",
-      }}
-    >
-      {children}
-    </div>
-  );
-}
+const Plaque = ExhibitPlaque;
 
 function PlaqueLabel({ children }: { children: React.ReactNode }) {
   return <div className="text-[10px] uppercase tracking-[0.28em] text-primary mb-2">{children}</div>;
