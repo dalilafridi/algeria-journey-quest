@@ -247,6 +247,10 @@ function Hero({ club, lang }: { club: ClubMuseum; lang: Lang }) {
     />
   );
 }
+
+/* -------------------------------- Sections -------------------------------- */
+
+function SectionShell({ id, title, children }: { id: string; title: string; children: React.ReactNode }) {
   return (
     <section id={id} className="scroll-mt-32">
       <h2 className="text-2xl sm:text-3xl font-bold mb-6" style={SERIF}>{title}</h2>
