@@ -2,13 +2,18 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { useNavigate } from "@tanstack/react-router";
 import { t, useLang, type Lang } from "@/lib/i18n";
 import {
+  CATEGORIES,
+  CATEGORY_LABEL,
   clearRecent,
+  emitSearchAnalytics,
   getDiscoveries,
+  getPopularExhibits,
   getRecent,
   highlight,
   kindLabel,
   pushRecent,
   searchAll,
+  type SearchCategory,
   type SearchHit,
   type SearchItem,
   type SearchKind,
