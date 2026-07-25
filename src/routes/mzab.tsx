@@ -115,9 +115,9 @@ const WHERE = {
     "تقع غرداية على خط عرض مرّاكش وإلباسو — لكنّها تتلقّى أقلّ من ثلث أمطارهما.",
   ),
   timeline: L(
-    "First ksar founded: El Atteuf, 1012 CE · Bou Noura 1046 · Beni Isguen 1347 · Melika 1350 · Ghardaïa 1053 (largest, capital of the pentapolis).",
-    "Premier ksar fondé : El Atteuf, 1012 · Bou Noura 1046 · Beni Isguen 1347 · Melika 1350 · Ghardaïa 1053 (le plus grand, capitale de la pentapole).",
-    "أول قصر أُسّس: العطف 1012م · بونورة 1046 · بني يزقن 1347 · مليكة 1350 · غرداية 1053 (الأكبر وعاصمة الخمس).",
+    "First ksar founded: El Atteuf, 1012 CE · Bou Noura 1046 · Ghardaïa 1053 (largest, capital of the pentapolis) · Beni Isguen 1347 · Melika 1350. Two later foundations — Berriane and El Guerrara — extended the historical M'Zab into a heptapolis in the 17th and 18th centuries.",
+    "Premier ksar fondé : El Atteuf, 1012 · Bou Noura 1046 · Ghardaïa 1053 (le plus grand, capitale de la pentapole) · Beni Isguen 1347 · Melika 1350. Deux fondations plus tardives — Berriane et El Guerrara — étendirent le M'Zab historique en heptapole aux XVIIe et XVIIIe siècles.",
+    "أوّل قصر أُسّس: العطف 1012م · بونورة 1046 · غرداية 1053 (الأكبر وعاصمة الخمس) · بني يزقن 1347 · مليكة 1350. ثمّ امتدّ وادي مزاب التاريخي إلى سبع مدن بتأسيس بريان والقرارة في القرنين السابع عشر والثامن عشر.",
   ),
 };
 
