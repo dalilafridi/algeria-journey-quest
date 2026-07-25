@@ -18,6 +18,7 @@ import { EraPreview } from "@/components/EraPreview";
 import { EraBadge, type EraBadgeKind } from "@/components/brand/EraBadge";
 import { AchievementMedallion } from "@/components/brand/AchievementMedallion";
 import { pageMeta } from "@/lib/seo";
+import { ExhibitProvenance } from "@/components/provenance/ExhibitProvenance";
 
 
 export const Route = createFileRoute("/timeline")({
@@ -300,6 +301,7 @@ function Timeline() {
 
         <JourneyNext current="history" />
       </main>
+      <ExhibitProvenance exhibitId="timeline" />
     </div>
   );
 }

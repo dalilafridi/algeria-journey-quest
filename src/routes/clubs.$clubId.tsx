@@ -9,6 +9,7 @@ import { recordVisit } from "@/lib/passport";
 import { useFootballBookmarks } from "@/lib/footballBookmarks";
 import { hasMatchTheater } from "@/data/matchTheater";
 import { getClubMuseum, listClubMuseums } from "@/data/clubs";
+import { ExhibitProvenance } from "@/components/provenance/ExhibitProvenance";
 import {
   TROPHY_CATEGORY_LABEL,
   type ClubMuseum,
@@ -182,6 +183,8 @@ function FullMuseumView({ club, lang }: { club: ClubMuseum; lang: Lang }) {
         {club.quiz?.length ? <QuizSection questions={club.quiz} lang={lang} accent={primary} /> : null}
         {club.sources?.length ? <SourcesSection club={club} lang={lang} /> : null}
       </main>
+      <ExhibitProvenance exhibitId={`club:${club.id}`} />
+
 
       <footer className="border-t border-[oklch(0.7_0.1_75_/_0.2)] py-10 text-center">
         <Link to="/clubs" className="text-sm text-primary hover:underline">

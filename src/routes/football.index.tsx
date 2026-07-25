@@ -9,6 +9,7 @@ import { theaterIdForFootballMatch } from "@/data/matchTheater";
 import flnTeamPhoto from "@/assets/fln-team-1958.jpg.asset.json";
 import footballHero from "@/assets/football-hero-vitrine.jpg";
 import { pageMeta } from "@/lib/seo";
+import { ExhibitProvenance } from "@/components/provenance/ExhibitProvenance";
 import {
   AFCON_HISTORY,
   ARTIFACTS,
@@ -1200,6 +1201,7 @@ function FootballHall() {
           }[lang]}
         </p>
       </footer>
+      <ExhibitProvenance exhibitId="football" />
     </div>
   );
 }

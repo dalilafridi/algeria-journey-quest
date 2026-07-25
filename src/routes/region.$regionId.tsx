@@ -44,6 +44,7 @@ import {
 } from "@/components/museum/MuseumCatalog";
 import { CuratorRecommendations } from "@/components/CuratorRecommendations";
 import { ContinueExploring } from "@/components/curator/ContinueExploring";
+import { ExhibitProvenance } from "@/components/provenance/ExhibitProvenance";
 import { getRegionExploreGroups } from "@/lib/exploreGroups";
 
 const SERIF = "Georgia, 'Times New Roman', serif";
@@ -383,6 +384,7 @@ function RegionPage() {
       <div className="mx-auto max-w-6xl px-4 sm:px-6 mt-4">
         <ContinueExploring groups={getRegionExploreGroups(region.id)} />
       </div>
+      <ExhibitProvenance exhibitId={`region:${region.id}`} />
       <div className="h-16" />
 
     </>
