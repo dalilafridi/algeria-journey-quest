@@ -283,6 +283,11 @@ function Home() {
         {/* ========= SIGNATURE JOURNEYS ========= */}
         <SignatureJourneys className="pb-10 sm:pb-14" />
 
+        {/* ========= EXPLORE BY THEME ========= */}
+        <ExploreByTheme className="pb-10 sm:pb-14" />
+
+
+
         {/* ========= REGION PREVIEW STRIP ========= */}
         <section className="mx-auto max-w-5xl px-4 pb-10 sm:pb-14">
           <div className="flex items-end justify-between mb-4">
