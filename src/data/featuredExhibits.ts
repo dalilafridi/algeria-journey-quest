@@ -34,6 +34,17 @@ export type FeaturedExhibit = {
   publishedAt: string;
   themes: ThemeId[];
   target: ExhibitTarget;
+  /**
+   * Optional CTA override. Use when the destination is a broader gallery
+   * (region, era) rather than a dedicated standalone exhibit, so visitors
+   * know what room they are entering.
+   */
+  cta?: LocalizedString;
+  /**
+   * Optional flag: mark true when the hero image is illustrative /
+   * generated rather than a documentary archival photograph.
+   */
+  illustrative?: boolean;
 };
 
 export type ThemeId =
