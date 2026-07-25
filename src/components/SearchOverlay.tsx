@@ -302,6 +302,34 @@ export function SearchOverlay() {
           </button>
         </div>
 
+        {/* Category chips */}
+        <div
+          role="tablist"
+          aria-label="Search categories"
+          className="flex gap-1.5 overflow-x-auto scrollbar-none px-3 sm:px-4 py-2 border-b border-border/50 bg-background/30"
+        >
+          {CATEGORIES.map((c) => {
+            const active = c === category;
+            return (
+              <button
+                key={c}
+                type="button"
+                role="tab"
+                aria-selected={active}
+                onClick={() => selectCategory(c)}
+                className={
+                  "shrink-0 inline-flex items-center px-3 py-1.5 rounded-full border text-[11px] font-semibold uppercase tracking-[0.16em] transition " +
+                  (active
+                    ? "border-accent/60 bg-accent/15 text-accent-foreground"
+                    : "border-border bg-background/60 text-muted-foreground hover:text-foreground hover:border-accent/40")
+                }
+              >
+                {t(CATEGORY_LABEL[c], lang)}
+              </button>
+            );
+          })}
+        </div>
+
         {/* Body */}
         <div
           ref={listRef}
