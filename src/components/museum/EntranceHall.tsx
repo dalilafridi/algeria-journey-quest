@@ -380,7 +380,7 @@ export function CuratorsPick({ className }: { className?: string }) {
             {t(pick.teaser, lang)}
           </p>
           <div className="mt-5 flex items-center gap-2 text-sm font-semibold text-primary">
-            <span>{t(PICK_COPY.cta, lang)}</span>
+            <span>{pick.cta ? t(pick.cta, lang) : t(PICK_COPY.cta, lang)}</span>
             <span aria-hidden>{CTA_ARROW[lang]}</span>
           </div>
           <div className="mt-2 text-[11px] italic text-muted-foreground/80">
