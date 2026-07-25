@@ -441,13 +441,39 @@ function WorldCupExhibit({ lang }: { lang: Lang }) {
   const [active, setActive] = useState(2014);
   const wc = WORLD_CUPS.find((w) => w.year === active) ?? WORLD_CUPS[0];
 
+  const L = {
+    overview: { en: "Overview", fr: "Vue d’ensemble", ar: "لمحة عامّة" }[lang],
+    qualification: { en: "Qualification journey", fr: "Parcours qualificatif", ar: "طريق التأهّل" }[lang],
+    groupStage: { en: "Group stage", fr: "Phase de groupes", ar: "دور المجموعات" }[lang],
+    knockout: { en: "Knockout stage", fr: "Phase à élimination directe", ar: "الأدوار الإقصائيّة" }[lang],
+    formation: { en: "Formation", fr: "Système", ar: "التشكيل" }[lang],
+    tactics: { en: "Tactical identity", fr: "Identité tactique", ar: "الهويّة التكتيكيّة" }[lang],
+    keyPlayers: { en: "Key players", fr: "Joueurs clés", ar: "لاعبون محوريّون" }[lang],
+    stats: { en: "Tournament statistics", fr: "Statistiques du tournoi", ar: "إحصاءات البطولة" }[lang],
+    turningPoint: { en: "Turning point", fr: "Instant décisif", ar: "المنعطف" }[lang],
+    legacy: { en: "Legacy", fr: "Héritage", ar: "الإرث" }[lang],
+    related: { en: "Related exhibits", fr: "Expositions liées", ar: "معروضات ذات صلة" }[lang],
+    sources: { en: "Sources", fr: "Sources", ar: "المصادر" }[lang],
+    matchesLabel: { en: "Matches", fr: "Matchs", ar: "المباريات" }[lang],
+    winsLabel: { en: "Wins", fr: "Victoires", ar: "انتصارات" }[lang],
+    drawsLabel: { en: "Draws", fr: "Nuls", ar: "تعادلات" }[lang],
+    lossesLabel: { en: "Losses", fr: "Défaites", ar: "هزائم" }[lang],
+    gfLabel: { en: "Goals for", fr: "Buts pour", ar: "أهداف له" }[lang],
+    gaLabel: { en: "Goals against", fr: "Buts contre", ar: "أهداف عليه" }[lang],
+    captainLabel: { en: "Captain", fr: "Capitaine", ar: "القائد" }[lang],
+    topScorerLabel: { en: "Top scorer", fr: "Meilleur buteur", ar: "الهدّاف" }[lang],
+    coachLabel: { en: "Manager", fr: "Sélectionneur", ar: "المدرّب" }[lang],
+  };
+
   return (
     <div className="space-y-6">
       {/* Year selector */}
-      <div className="flex flex-wrap gap-2">
+      <div className="flex flex-wrap gap-2" role="tablist" aria-label="World Cup editions">
         {WORLD_CUPS.map((w) => (
           <button
             key={w.year}
+            role="tab"
+            aria-selected={w.year === active}
             onClick={() => setActive(w.year)}
             className={
               "px-4 py-2 rounded-full text-sm font-semibold transition border " +
@@ -461,6 +487,7 @@ function WorldCupExhibit({ lang }: { lang: Lang }) {
         ))}
       </div>
 
+      {/* Header + matches + turning-point */}
       <div className="grid gap-6 lg:grid-cols-[1.1fr_1fr]">
         <Plaque>
           <div className="flex items-baseline justify-between flex-wrap gap-2">
@@ -492,9 +519,7 @@ function WorldCupExhibit({ lang }: { lang: Lang }) {
           )}
         </Plaque>
 
-        <Plaque
-          className="relative overflow-hidden"
-        >
+        <Plaque className="relative overflow-hidden">
           <div
             aria-hidden
             className="absolute -top-16 -end-16 w-56 h-56 rounded-full blur-3xl opacity-40"
@@ -502,7 +527,7 @@ function WorldCupExhibit({ lang }: { lang: Lang }) {
           />
           <div className="relative">
             <div className="text-[10px] uppercase tracking-[0.28em] font-bold text-muted-foreground">
-              {{ en: "Historic moment", fr: "Instant historique", ar: "لحظة تاريخيّة" }[lang]}
+              {L.turningPoint}
             </div>
             <p className="mt-4 text-lg leading-snug text-foreground italic" style={SERIF}>
               “{tt(wc.moment, lang)}”
@@ -510,9 +535,155 @@ function WorldCupExhibit({ lang }: { lang: Lang }) {
           </div>
         </Plaque>
       </div>
+
+      {/* Overview */}
+      {wc.overview && (
+        <Plaque>
+          <SectionLabel>{L.overview}</SectionLabel>
+          <Prose text={tt(wc.overview, lang)} />
+        </Plaque>
+      )}
+
+      {/* Qualification + Group + Knockout narratives */}
+      {(wc.qualification || wc.groupStage || wc.knockout) && (
+        <div className="grid gap-6 md:grid-cols-2">
+          {wc.qualification && (
+            <Plaque>
+              <SectionLabel>{L.qualification}</SectionLabel>
+              <Prose text={tt(wc.qualification, lang)} />
+            </Plaque>
+          )}
+          {wc.groupStage && (
+            <Plaque>
+              <SectionLabel>{L.groupStage}</SectionLabel>
+              <Prose text={tt(wc.groupStage, lang)} />
+            </Plaque>
+          )}
+          {wc.knockout && (
+            <Plaque className="md:col-span-2">
+              <SectionLabel>{L.knockout}</SectionLabel>
+              <Prose text={tt(wc.knockout, lang)} />
+            </Plaque>
+          )}
+        </div>
+      )}
+
+      {/* Tactical identity */}
+      {(wc.formation || wc.tacticalIdentity) && (
+        <Plaque>
+          <div className="flex items-baseline justify-between flex-wrap gap-2">
+            <SectionLabel>{L.tactics}</SectionLabel>
+            {wc.formation && (
+              <span className="inline-flex items-center rounded-full border border-border bg-muted px-3 py-1 font-mono text-sm font-semibold text-foreground">
+                {L.formation}: {wc.formation}
+              </span>
+            )}
+          </div>
+          {wc.tacticalIdentity && <div className="mt-3"><Prose text={tt(wc.tacticalIdentity, lang)} /></div>}
+        </Plaque>
+      )}
+
+      {/* Key players */}
+      {wc.keyPlayers && wc.keyPlayers.length > 0 && (
+        <div>
+          <SectionLabel>{L.keyPlayers}</SectionLabel>
+          <ul className="mt-3 grid gap-3 sm:grid-cols-2">
+            {wc.keyPlayers.map((p) => (
+              <li key={p.name} className="rounded-xl border border-border bg-card p-4" style={{ boxShadow: "var(--shadow-soft)" }}>
+                <div className="font-semibold text-foreground" style={SERIF}>{p.name}</div>
+                <div className="text-xs uppercase tracking-widest text-muted-foreground mt-0.5">{tt(p.role, lang)}</div>
+                <p className="mt-2 text-sm text-foreground/85 leading-relaxed" style={SERIF}>{tt(p.note, lang)}</p>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+
+      {/* Stats grid */}
+      {wc.stats && (
+        <Plaque>
+          <SectionLabel>{L.stats}</SectionLabel>
+          <dl className="mt-3 grid grid-cols-2 sm:grid-cols-4 gap-3">
+            <StatCell label={L.matchesLabel} value={wc.stats.matches} />
+            <StatCell label={L.winsLabel} value={wc.stats.wins} />
+            <StatCell label={L.drawsLabel} value={wc.stats.draws} />
+            <StatCell label={L.lossesLabel} value={wc.stats.losses} />
+            <StatCell label={L.gfLabel} value={wc.stats.goalsFor} />
+            <StatCell label={L.gaLabel} value={wc.stats.goalsAgainst} />
+            <StatCell label={L.coachLabel} value={wc.coach} />
+            <StatCell label={L.captainLabel} value={wc.stats.captain} />
+            <StatCell label={L.topScorerLabel} value={wc.stats.topScorer} wide />
+          </dl>
+        </Plaque>
+      )}
+
+      {/* Legacy */}
+      {wc.legacy && (
+        <Plaque>
+          <SectionLabel>{L.legacy}</SectionLabel>
+          <Prose text={tt(wc.legacy, lang)} />
+        </Plaque>
+      )}
+
+      {/* Related exhibits */}
+      {wc.related && wc.related.length > 0 && (
+        <div>
+          <SectionLabel>{L.related}</SectionLabel>
+          <ul className="mt-3 flex flex-wrap gap-2">
+            {wc.related.map((r) => (
+              <li key={r.href + tt(r.label, lang)}>
+                <Link
+                  to={r.href}
+                  className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-3 py-1.5 text-sm text-foreground hover:bg-muted transition"
+                >
+                  <span aria-hidden>→</span>
+                  {tt(r.label, lang)}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+
+      {/* Sources */}
+      {wc.sources && wc.sources.length > 0 && (
+        <Plaque>
+          <SectionLabel>{L.sources}</SectionLabel>
+          <ul className="mt-3 space-y-1 text-sm text-foreground/80">
+            {wc.sources.map((s) => (
+              <li key={s.label} className="flex gap-2">
+                <span aria-hidden className="text-muted-foreground">·</span>
+                {s.url ? (
+                  <a href={s.url} target="_blank" rel="noopener noreferrer" className="underline underline-offset-2 hover:text-foreground">{s.label}</a>
+                ) : (
+                  <span>{s.label}</span>
+                )}
+              </li>
+            ))}
+          </ul>
+        </Plaque>
+      )}
     </div>
   );
 }
+
+function SectionLabel({ children }: { children: React.ReactNode }) {
+  return (
+    <div className="text-[10px] uppercase tracking-[0.28em] font-bold text-muted-foreground">
+      {children}
+    </div>
+  );
+}
+
+function StatCell({ label, value, wide = false }: { label: string; value: string | number; wide?: boolean }) {
+  return (
+    <div className={"rounded-lg border border-border/70 bg-background/40 p-3 " + (wide ? "col-span-2 sm:col-span-4" : "")}>
+      <dt className="text-[10px] uppercase tracking-widest text-muted-foreground">{label}</dt>
+      <dd className="mt-1 font-semibold text-foreground" style={SERIF}>{value}</dd>
+    </div>
+  );
+}
+
 
 /* -------------------- Gijón -------------------- */
 
