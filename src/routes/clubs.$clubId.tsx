@@ -55,7 +55,7 @@ export const Route = createFileRoute("/clubs/$clubId")({
   notFoundComponent: ClubNotFound,
 });
 
-const SERIF = { fontFamily: "Georgia, 'Iowan Old Style', 'Times New Roman', serif" };
+const SERIF = EXHIBIT_SERIF;
 
 function ClubNotFound() {
   const lang = useLang();
