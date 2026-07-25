@@ -20,9 +20,9 @@ import { getExhibitProvenance } from "@/data/provenance/registry";
 import { getSources } from "@/data/provenance/sources";
 
 const HEADING: LocalizedString = {
-  en: "Sources & Further Reading",
-  fr: "Sources et lectures complémentaires",
-  ar: "المصادر وقراءات إضافية",
+  en: "Provenance & Sources",
+  fr: "Provenance et sources",
+  ar: "الأصول والمصادر",
 };
 
 const HINT: LocalizedString = {
