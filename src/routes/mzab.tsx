@@ -115,9 +115,9 @@ const WHERE = {
     "تقع غرداية على خط عرض مرّاكش وإلباسو — لكنّها تتلقّى أقلّ من ثلث أمطارهما.",
   ),
   timeline: L(
-    "First ksar founded: El Atteuf, 1012 CE · Bou Noura 1046 · Beni Isguen 1347 · Melika 1350 · Ghardaïa 1053 (largest, capital of the pentapolis).",
-    "Premier ksar fondé : El Atteuf, 1012 · Bou Noura 1046 · Beni Isguen 1347 · Melika 1350 · Ghardaïa 1053 (le plus grand, capitale de la pentapole).",
-    "أول قصر أُسّس: العطف 1012م · بونورة 1046 · بني يزقن 1347 · مليكة 1350 · غرداية 1053 (الأكبر وعاصمة الخمس).",
+    "First ksar founded: El Atteuf, 1012 CE · Bou Noura 1046 · Ghardaïa 1053 (largest, capital of the pentapolis) · Beni Isguen 1347 · Melika 1350. Two later foundations — Berriane and El Guerrara — extended the historical M'Zab into a heptapolis in the 17th and 18th centuries.",
+    "Premier ksar fondé : El Atteuf, 1012 · Bou Noura 1046 · Ghardaïa 1053 (le plus grand, capitale de la pentapole) · Beni Isguen 1347 · Melika 1350. Deux fondations plus tardives — Berriane et El Guerrara — étendirent le M'Zab historique en heptapole aux XVIIe et XVIIIe siècles.",
+    "أوّل قصر أُسّس: العطف 1012م · بونورة 1046 · غرداية 1053 (الأكبر وعاصمة الخمس) · بني يزقن 1347 · مليكة 1350. ثمّ امتدّ وادي مزاب التاريخي إلى سبع مدن بتأسيس بريان والقرارة في القرنين السابع عشر والثامن عشر.",
   ),
 };
 
@@ -205,6 +205,70 @@ const KSOUR: NumberedItem[] = [
     fact: L("It is one of the very few pre-modern Islamic cities where the mosque was designed before the streets.", "L'une des très rares villes islamiques pré-modernes où la mosquée fut dessinée avant les rues.", "من قلّةٍ نادرة من المدن الإسلامية ما قبل الحديثة صُمِّم فيها المسجد قبل الشوارع."),
   },
 ];
+
+const HEPTAPOLIS_INTRO = {
+  eyebrow: L("The wider M'Zab", "Le M'Zab élargi", "وادي مزاب الموسّع"),
+  title: L(
+    "From pentapolis to heptapolis",
+    "De la pentapole à l'heptapole",
+    "من خمسِ مدنٍ إلى سبع",
+  ),
+  lead: L(
+    "The five ksour of the valley are the M'Zab that UNESCO inscribed in 1982. But the historical M'Zab did not stop there. Two later Mozabite foundations, set apart from the wadi itself, extended the community into what Algerian geographers call the heptapolis — the seven cities of the M'Zab.",
+    "Les cinq ksour de la vallée forment le M'Zab que l'UNESCO a inscrit en 1982. Mais le M'Zab historique ne s'arrête pas là. Deux fondations mozabites plus tardives, situées hors du wadi lui-même, ont étendu la communauté à ce que les géographes algériens appellent l'heptapole — les sept cités du M'Zab.",
+    "المدن الخمس في الوادي هي التي أدرجتها اليونسكو عام 1982. غير أنّ وادي مزاب التاريخي لم يقف عندها؛ فقد امتدّ المجتمع المزابي بتأسيسَين لاحقَين خارج الوادي نفسه، إلى ما يُسمّيه الجغرافيون الجزائريون \"السبع مدن\" لوادي مزاب.",
+  ),
+  plaqueLabel: L("Editorial note", "Note éditoriale", "ملاحظة تحريرية"),
+  plaqueBody: L(
+    "The UNESCO World Heritage property is precisely the five original ksour — El Atteuf, Bou Noura, Melika, Beni Isguen and Ghardaïa — together with their palm groves and cemeteries. Berriane and El Guerrara are part of the broader historical and cultural M'Zab, but sit outside the inscribed property.",
+    "Le bien du Patrimoine mondial est précisément constitué des cinq ksour d'origine — El Atteuf, Bou Noura, Melika, Beni Isguen et Ghardaïa — avec leurs palmeraies et leurs cimetières. Berriane et El Guerrara appartiennent au M'Zab historique et culturel élargi, mais se situent hors du bien inscrit.",
+    "الموقع المُدرَج في التراث العالمي هو تحديداً القصور الخمسة الأصلية — العطف، بونورة، مليكة، بني يزقن، غرداية — مع بساتين نخيلها ومقابرها. أمّا بريان والقرارة فتنتميان إلى وادي مزاب التاريخي والثقافي الأوسع، لكنّهما خارج الموقع المُدرَج.",
+  ),
+};
+
+const HEPTAPOLIS_OUTLIERS: NumberedItem[] = [
+  {
+    arabic: "بريان",
+    title: L("Berriane", "Berriane", "بريان"),
+    meta: L("Founded 1690 CE · ~45 km north of Ghardaïa", "Fondée en 1690 · ~45 km au nord de Ghardaïa", "أُسّست 1690م · نحو 45 كم شمال غرداية"),
+    role: L(
+      "The northern gate of the M'Zab.",
+      "La porte nord du M'Zab.",
+      "بوّابة وادي مزاب الشمالية.",
+    ),
+    body: L(
+      "Berriane was founded on the northern approach to the valley as Mozabite families spread beyond the original ksour. It shares the same Ibadi institutions, the same white-and-ochre building tradition and the same palm-grove economy, but stands apart from the wadi itself — which is why UNESCO did not include it in the 1982 inscription, even though it is fully part of the M'Zab cultural region.",
+      "Berriane fut fondée sur l'accès nord de la vallée, lorsque des familles mozabites essaimèrent hors des ksour d'origine. Elle partage les mêmes institutions ibadites, la même tradition bâtie blanche et ocre et la même économie de palmeraie, mais se tient à l'écart du wadi lui-même — raison pour laquelle l'UNESCO ne l'a pas incluse dans l'inscription de 1982, bien qu'elle appartienne pleinement à l'aire culturelle du M'Zab.",
+      "أُسِّست بريان على المدخل الشمالي للوادي حين توسّعت العائلات المزابية خارج القصور الأصلية. تشترك معها في المؤسسات الإباضية ذاتها، وفي عمارة البيوت البيضاء والمُغرة، وفي اقتصاد الواحة، لكنّها بعيدة عن الوادي نفسه — ولذلك لم تُدرجها اليونسكو ضمن قائمة 1982، رغم انتمائها الكامل إلى الإقليم الثقافي المزابي.",
+    ),
+    fact: L(
+      "Berriane hosts one of the largest Mozabite communities outside the valley and functions as the M'Zab's northern trading gateway.",
+      "Berriane abrite l'une des plus importantes communautés mozabites hors vallée et fait office de porte commerciale nord du M'Zab.",
+      "تضمّ بريان واحدة من أكبر الجاليات المزابية خارج الوادي، وتؤدّي دور البوّابة التجارية الشمالية للمزاب.",
+    ),
+  },
+  {
+    arabic: "القرارة",
+    title: L("El Guerrara", "El Guerrara", "القرارة"),
+    meta: L("Founded 1631 CE · ~110 km north-east of Ghardaïa", "Fondée en 1631 · ~110 km au nord-est de Ghardaïa", "أُسّست 1631م · نحو 110 كم شمال شرق غرداية"),
+    role: L(
+      "The eastern outpost — closest of the seven to the Sahara's caravan roads.",
+      "L'avant-poste oriental — la plus proche des sept des routes caravanières sahariennes.",
+      "المرابط الشرقي — أقرب السبع إلى دروب القوافل الصحراوية.",
+    ),
+    body: L(
+      "El Guerrara was founded in the early 17th century on a distinct oasis site well east of the wadi, expanding Mozabite settlement toward the caravan tracks that linked Ouargla and the Ziban. Like Berriane, it belongs to the historical heptapolis but lies outside the UNESCO property, which is confined to the continuous cultural landscape of the five original ksour.",
+      "El Guerrara fut fondée au début du XVIIe siècle sur une oasis distincte, nettement à l'est du wadi, étendant l'implantation mozabite vers les pistes caravanières reliant Ouargla et le Ziban. Comme Berriane, elle appartient à l'heptapole historique mais se trouve hors du bien UNESCO, limité au paysage culturel continu des cinq ksour d'origine.",
+      "أُسِّست القرارة في مطلع القرن السابع عشر على واحة مستقلّة شرق الوادي، لتوسّع الحضور المزابي نحو دروب القوافل التي تربط ورقلة والزيبان. كبريان، تنتمي إلى السبع التاريخية لكنّها خارج موقع اليونسكو المقتصر على المشهد الثقافي المتّصل للقصور الخمسة الأصلية.",
+    ),
+    fact: L(
+      "El Guerrara's palm grove is fed by a network of foggaras — underground galleries that tap the water table without exposing it to evaporation.",
+      "La palmeraie d'El Guerrara est irriguée par des foggaras — galeries souterraines qui captent la nappe sans l'exposer à l'évaporation.",
+      "تُروى واحة القرارة بشبكة فقّارات — قنواتٍ جوفية تلتقط الماء من الطبقة الحاملة دون تعريضه للتبخّر.",
+    ),
+  },
+];
+
 
 const ARCHITECTURE = {
   eyebrow: L("Architecture", "Architecture", "العمارة"),
@@ -628,7 +692,31 @@ function MzabExhibit() {
         />
       </Section>
 
+      {/* Heptapolis — broader historical M'Zab (Berriane + El Guerrara) */}
+      <Section id="heptapolis" tone="parchment">
+        <EyebrowTitle eyebrow={HEPTAPOLIS_INTRO.eyebrow} title={HEPTAPOLIS_INTRO.title} />
+        <div className="grid gap-8 md:grid-cols-[1.35fr_1fr] items-start mb-10">
+          <p className="text-foreground/80 text-base sm:text-lg leading-[1.75]">
+            {tr(HEPTAPOLIS_INTRO.lead, lang)}
+          </p>
+          <Plaque>
+            <div className="text-[10px] uppercase tracking-[0.28em] text-primary mb-2">
+              {tr(HEPTAPOLIS_INTRO.plaqueLabel, lang)}
+            </div>
+            <p className="text-sm sm:text-base leading-[1.7] text-foreground/80">
+              {tr(HEPTAPOLIS_INTRO.plaqueBody, lang)}
+            </p>
+          </Plaque>
+        </div>
+        <NumberedGrid
+          items={HEPTAPOLIS_OUTLIERS}
+          columns={2}
+          factLabel={L("Did you know", "Le saviez-vous", "هل تعلم")}
+        />
+      </Section>
+
       {/* Water */}
+
       <Section id="water" tone="ivory">
         <SplitFigure
           eyebrow={WATER.eyebrow}
@@ -687,7 +775,18 @@ function MzabExhibit() {
       {/* UNESCO */}
       <Section id="unesco" tone="ivory">
         <EyebrowTitle eyebrow={UNESCO.eyebrow} title={UNESCO.title} />
+        <p className="max-w-3xl text-foreground/80 text-base sm:text-lg leading-[1.75] mb-10">
+          {tr(
+            L(
+              "The property inscribed on the World Heritage List in 1982 is the M'Zab pentapolis — the five original ksour of El Atteuf, Bou Noura, Melika, Beni Isguen and Ghardaïa, together with their palm groves and cemeteries. The later Mozabite foundations of Berriane and El Guerrara, described above, belong to the broader historical M'Zab but sit outside this inscription.",
+              "Le bien inscrit sur la Liste du patrimoine mondial en 1982 est la pentapole du M'Zab — les cinq ksour d'origine : El Atteuf, Bou Noura, Melika, Beni Isguen et Ghardaïa, avec leurs palmeraies et leurs cimetières. Les fondations mozabites plus tardives de Berriane et d'El Guerrara, décrites plus haut, relèvent du M'Zab historique élargi mais ne font pas partie du bien inscrit.",
+              "الموقع المُدرَج في قائمة التراث العالمي عام 1982 هو خمسُ مدن وادي مزاب — القصور الأصلية: العطف، بونورة، مليكة، بني يزقن، غرداية، مع بساتين نخيلها ومقابرها. أمّا تأسيسا بريان والقرارة اللاحقان — كما ذُكر أعلاه — فينتميان إلى وادي مزاب التاريخي الأوسع، لكنّهما خارج نطاق هذا الإدراج.",
+            ),
+            lang,
+          )}
+        </p>
         <div className="grid gap-10 md:grid-cols-[1fr_1fr]">
+
           <div>
             <p className="text-xs uppercase tracking-[0.24em] font-bold text-primary">
               {tr(L("Criteria of inscription", "Critères d'inscription", "معايير الإدراج"), lang)}
