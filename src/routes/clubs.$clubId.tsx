@@ -715,20 +715,7 @@ function QuizSection({ questions, lang }: { questions: QuizQuestion[]; lang: Lan
 
 /* --------------------------------- Atoms --------------------------------- */
 
-function Plaque({ children, className = "" }: { children: React.ReactNode; className?: string }) {
-  return (
-    <div
-      className={"rounded-2xl border p-5 sm:p-6 " + className}
-      style={{
-        borderColor: "oklch(0.78 0.06 68 / 0.55)",
-        background: "linear-gradient(180deg, oklch(0.99 0.02 84 / 0.95), oklch(0.96 0.03 78 / 0.95))",
-        boxShadow: "inset 0 1px 0 oklch(1 0 0 / 0.05)",
-      }}
-    >
-      {children}
-    </div>
-  );
-}
+const Plaque = ExhibitPlaque;
 
 function PlaqueLabel({ children }: { children: React.ReactNode }) {
   return <div className="text-[10px] uppercase tracking-[0.28em] text-primary mb-2">{children}</div>;
