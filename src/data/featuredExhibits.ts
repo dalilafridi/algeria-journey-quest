@@ -143,6 +143,12 @@ export const FEATURED_EXHIBITS: FeaturedExhibit[] = [
     publishedAt: "2025-11-02",
     themes: ["regions", "culture", "figures"],
     target: { kind: "region", regionId: "kabylie" },
+    cta: {
+      en: "Visit the Kabylie regional gallery",
+      fr: "Visiter la galerie régionale de Kabylie",
+      ar: "زُر قاعة منطقة القبائل",
+    },
+    illustrative: true,
   },
   {
     id: "timgad",
@@ -156,6 +162,12 @@ export const FEATURED_EXHIBITS: FeaturedExhibit[] = [
     publishedAt: "2025-09-14",
     themes: ["ancient", "unesco", "architecture"],
     target: { kind: "era", eraId: "roman" },
+    cta: {
+      en: "Explore in the Roman Algeria gallery",
+      fr: "Découvrir dans la galerie Algérie romaine",
+      ar: "استكشف في قاعة الجزائر الرومانية",
+    },
+    illustrative: true,
   },
   {
     id: "tassili",
@@ -169,6 +181,12 @@ export const FEATURED_EXHIBITS: FeaturedExhibit[] = [
     publishedAt: "2025-08-01",
     themes: ["ancient", "unesco", "regions"],
     target: { kind: "era", eraId: "earlynorthafrica" },
+    cta: {
+      en: "Discover Tassili in Early North Africa",
+      fr: "Découvrir le Tassili dans l'Afrique du Nord ancienne",
+      ar: "اكتشف طاسيلي في شمال إفريقيا القديم",
+    },
+    illustrative: true,
   },
   {
     id: "casbah",
@@ -182,6 +200,12 @@ export const FEATURED_EXHIBITS: FeaturedExhibit[] = [
     publishedAt: "2025-07-20",
     themes: ["unesco", "architecture", "regions", "culture"],
     target: { kind: "region", regionId: "algiers" },
+    cta: {
+      en: "Visit the Algiers regional gallery",
+      fr: "Visiter la galerie régionale d'Alger",
+      ar: "زُر قاعة منطقة الجزائر العاصمة",
+    },
+    illustrative: true,
   },
   {
     id: "football",
