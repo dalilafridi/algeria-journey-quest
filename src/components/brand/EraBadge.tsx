@@ -122,8 +122,10 @@ export function EraBadge({
         animate ? "animate-badge-unlock" : ""
       } ${className ?? ""}`}
       style={{ width: size }}
+      role="img"
       aria-label={label ?? kind}
     >
+
       <div
         className={`relative rounded-full transition-all icon-glow ${
           unlocked ? "" : "grayscale opacity-55"

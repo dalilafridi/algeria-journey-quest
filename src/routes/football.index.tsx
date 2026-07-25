@@ -992,7 +992,7 @@ function MemoriesExhibit({ lang }: { lang: Lang }) {
 function TimelineExhibit({ lang }: { lang: Lang }) {
   return (
     <div>
-      <div className="relative overflow-x-auto">
+      <div className="relative overflow-x-auto" tabIndex={0} role="region" aria-label="Football timeline">
         <div
           aria-hidden
           className="absolute top-16 left-0 right-0 h-px"
