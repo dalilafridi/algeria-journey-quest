@@ -110,7 +110,6 @@ export const EXHIBIT_PROVENANCE: Record<string, ExhibitProvenanceRecord> = {
     sourceIds: ["britannica-numidia", "brett-fentress-berbers"],
     confidence: "widely-accepted",
   }),
-  }),
 
   // ─── Eras ───────────────────────────────────────────────────────────
   "era:earlynorthafrica": R({
