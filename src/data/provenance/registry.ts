@@ -66,19 +66,50 @@ export const EXHIBIT_PROVENANCE: Record<string, ExhibitProvenanceRecord> = {
     confidence: "traditional",
     notes: [{ kind: "oral-tradition", body: T.oralTradition }],
   }),
-  "figure:abd-el-kader": R({
+  "figure:abdelkader": R({
     sourceIds: ["ruedy-modern-algeria", "stora-histoire-algerie", "anom-aix", "bnf-gallica"],
     confidence: "verified",
   }),
-  "figure:emir-abdelkader": R({
-    sourceIds: ["ruedy-modern-algeria", "stora-histoire-algerie", "anom-aix", "bnf-gallica"],
+  "figure:ibn-khaldun": R({
+    sourceIds: ["ibn-khaldun-muqaddimah", "further-shatzmiller-berbers"],
     confidence: "verified",
   }),
-  "figure:ben-badis": R({
-    sourceIds: ["ruedy-modern-algeria", "bnalgerie", "el-moudjahid"],
+  "figure:ben-mhidi": R({
+    sourceIds: ["horne-savage-war", "stora-histoire-algerie", "el-moudjahid"],
     confidence: "verified",
   }),
-  "figure:messali-hadj": R({
+  "figure:abane-ramdane": R({
+    sourceIds: ["horne-savage-war", "stora-histoire-algerie"],
+    confidence: "verified",
+  }),
+  "figure:lalla-fatma-nsoumer": R({
+    sourceIds: ["stora-histoire-algerie", "camps-encyclopedie-berbere", "anom-aix"],
+    confidence: "widely-accepted",
+  }),
+  "figure:el-mokrani": R({
+    sourceIds: ["stora-histoire-algerie", "anom-aix", "bnf-gallica"],
+    confidence: "verified",
+  }),
+  "figure:krim-belkacem": R({
+    sourceIds: ["horne-savage-war", "stora-histoire-algerie"],
+    confidence: "verified",
+  }),
+  "figure:ferhat-abbas": R({
+    sourceIds: ["stora-histoire-algerie", "ruedy-modern-algeria"],
+    confidence: "verified",
+  }),
+  "figure:mouloud-feraoun": R({
+    sourceIds: ["bnf-gallica", "stora-histoire-algerie"],
+    confidence: "verified",
+  }),
+  "figure:assia-djebar": R({
+    sourceIds: ["bnf-gallica", "le-monde-archives"],
+    confidence: "verified",
+  }),
+  "figure:syphax": R({
+    sourceIds: ["britannica-numidia", "brett-fentress-berbers"],
+    confidence: "widely-accepted",
+  }),
     sourceIds: ["stora-histoire-algerie", "horne-savage-war", "anom-aix"],
     confidence: "verified",
   }),
