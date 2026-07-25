@@ -4,6 +4,12 @@ import { ContinueJourneyInline } from "@/components/ContinueJourneyInline";
 import { DidYouKnowCard } from "@/components/DidYouKnowCard";
 import { OnThisDayCard } from "@/components/OnThisDayCard";
 import { SignatureJourneys } from "@/components/journeys/SignatureJourneys";
+import {
+  FeaturedExhibits,
+  ExploreByTheme,
+  CuratorsPick,
+  LatestExhibits,
+} from "@/components/museum/EntranceHall";
 import { Header } from "@/components/Header";
 import { PillarIcon } from "@/components/brand/PillarIcon";
 import { RegionIcon } from "@/components/RegionIcon";
