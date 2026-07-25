@@ -439,7 +439,7 @@ export function SearchOverlay() {
                           active={i === activeIndex}
                           query=""
                           onHover={() => setActiveIndex(i)}
-                          onClick={() => goTo(d)}
+                          onClick={() => goTo(d, i)}
                         />
                       </li>
                     ))}
