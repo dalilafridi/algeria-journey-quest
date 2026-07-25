@@ -317,10 +317,14 @@ function Home() {
         </section>
 
 
+        {/* ========= LATEST EXHIBITS ========= */}
+        <LatestExhibits className="pb-10 sm:pb-14" />
+
         {/* ========= DID YOU KNOW ========= */}
         <section className="mx-auto max-w-5xl px-4 pb-10 sm:pb-14">
           <DidYouKnowCard fact={homepageFact} />
         </section>
+
 
         {/* ========= FINAL CTA ========= */}
         <section className="relative overflow-hidden">
