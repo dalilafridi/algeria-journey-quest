@@ -181,8 +181,16 @@ export function SearchOverlay() {
   }, [activeIndex, open]);
 
   // Navigation -----------------------------------------------------------
-  const goTo = (item: SearchItem) => {
-    pushRecent(query.trim() || t(item.title, lang));
+  const goTo = (item: SearchItem, rank?: number) => {
+    const q = query.trim();
+    pushRecent(q || t(item.title, lang));
+    emitSearchAnalytics({
+      type: "search-result-selected",
+      query: q,
+      itemId: item.id,
+      kind: item.kind,
+      rank: rank ?? 0,
+    });
     setOpen(false);
     setQuery("");
     const [path, hash] = item.href.split("#");
@@ -191,22 +199,37 @@ export function SearchOverlay() {
 
 
   const onInputKey = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    const list = results.length ? results : (discoveries as SearchItem[]);
+    const list = results.length
+      ? results
+      : ((query.trim() ? popular : discoveries) as SearchItem[]);
     if (e.key === "ArrowDown") {
       e.preventDefault();
       setActiveIndex((i) => Math.min(i + 1, Math.max(0, list.length - 1)));
     } else if (e.key === "ArrowUp") {
       e.preventDefault();
       setActiveIndex((i) => Math.max(0, i - 1));
+    } else if (e.key === "Home") {
+      e.preventDefault();
+      setActiveIndex(0);
+    } else if (e.key === "End") {
+      e.preventDefault();
+      setActiveIndex(Math.max(0, list.length - 1));
     } else if (e.key === "Enter") {
       e.preventDefault();
       const chosen = list[activeIndex];
-      if (chosen) goTo(chosen);
+      if (chosen) goTo(chosen, activeIndex);
     } else if (e.key === "Escape") {
       e.preventDefault();
       setOpen(false);
     }
   };
+
+  const selectCategory = (c: SearchCategory) => {
+    setCategory(c);
+    emitSearchAnalytics({ type: "search-category-selected", category: c });
+    inputRef.current?.focus();
+  };
+
 
   if (!open) return null;
 
