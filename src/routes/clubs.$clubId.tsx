@@ -11,6 +11,11 @@ import { hasMatchTheater } from "@/data/matchTheater";
 import { getClubMuseum, listClubMuseums } from "@/data/clubs";
 import { ExhibitProvenance } from "@/components/provenance/ExhibitProvenance";
 import {
+  ExhibitHero,
+  Plaque as ExhibitPlaque,
+  SERIF as EXHIBIT_SERIF,
+} from "@/components/exhibit";
+import {
   TROPHY_CATEGORY_LABEL,
   type ClubMuseum,
   type QuizQuestion,
