@@ -202,8 +202,12 @@ function Home() {
         <ContinueJourneyInline />
 
 
+        {/* ========= FEATURED MASTERPIECE EXHIBITS ========= */}
+        <FeaturedExhibits className="pt-10 sm:pt-14" />
+
         {/* ========= ON THIS DAY IN ALGERIAN HISTORY ========= */}
         <OnThisDayCard />
+
 
         {/* ========= TODAY IN ALGERIAN MEMORY (curated quote) ========= */}
         <section className="mx-auto max-w-5xl px-4 pt-10 sm:pt-12">
