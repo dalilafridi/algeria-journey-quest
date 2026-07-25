@@ -692,7 +692,31 @@ function MzabExhibit() {
         />
       </Section>
 
+      {/* Heptapolis — broader historical M'Zab (Berriane + El Guerrara) */}
+      <Section id="heptapolis" tone="parchment">
+        <EyebrowTitle eyebrow={HEPTAPOLIS_INTRO.eyebrow} title={HEPTAPOLIS_INTRO.title} />
+        <div className="grid gap-8 md:grid-cols-[1.35fr_1fr] items-start mb-10">
+          <p className="text-foreground/80 text-base sm:text-lg leading-[1.75]">
+            {tr(HEPTAPOLIS_INTRO.lead, lang)}
+          </p>
+          <Plaque>
+            <div className="text-[10px] uppercase tracking-[0.28em] text-primary mb-2">
+              {tr(HEPTAPOLIS_INTRO.plaqueLabel, lang)}
+            </div>
+            <p className="text-sm sm:text-base leading-[1.7] text-foreground/80">
+              {tr(HEPTAPOLIS_INTRO.plaqueBody, lang)}
+            </p>
+          </Plaque>
+        </div>
+        <NumberedGrid
+          items={HEPTAPOLIS_OUTLIERS}
+          columns={2}
+          factLabel={L("Did you know", "Le saviez-vous", "هل تعلم")}
+        />
+      </Section>
+
       {/* Water */}
+
       <Section id="water" tone="ivory">
         <SplitFigure
           eyebrow={WATER.eyebrow}
