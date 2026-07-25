@@ -192,7 +192,7 @@ function ExhibitCard({ exhibit, lang }: { exhibit: FeaturedExhibit; lang: Lang }
           {t(exhibit.teaser, lang)}
         </p>
         <div className="mt-4 flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.14em] text-primary opacity-80 group-hover:opacity-100 transition-opacity">
-          <span>{CTA_ENTER[lang]}</span>
+          <span>{exhibit.cta ? t(exhibit.cta, lang) : CTA_ENTER[lang]}</span>
           <span aria-hidden>{CTA_ARROW[lang]}</span>
         </div>
       </div>
