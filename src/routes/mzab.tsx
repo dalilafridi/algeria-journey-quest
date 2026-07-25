@@ -206,6 +206,70 @@ const KSOUR: NumberedItem[] = [
   },
 ];
 
+const HEPTAPOLIS_INTRO = {
+  eyebrow: L("The wider M'Zab", "Le M'Zab élargi", "وادي مزاب الموسّع"),
+  title: L(
+    "From pentapolis to heptapolis",
+    "De la pentapole à l'heptapole",
+    "من خمسِ مدنٍ إلى سبع",
+  ),
+  lead: L(
+    "The five ksour of the valley are the M'Zab that UNESCO inscribed in 1982. But the historical M'Zab did not stop there. Two later Mozabite foundations, set apart from the wadi itself, extended the community into what Algerian geographers call the heptapolis — the seven cities of the M'Zab.",
+    "Les cinq ksour de la vallée forment le M'Zab que l'UNESCO a inscrit en 1982. Mais le M'Zab historique ne s'arrête pas là. Deux fondations mozabites plus tardives, situées hors du wadi lui-même, ont étendu la communauté à ce que les géographes algériens appellent l'heptapole — les sept cités du M'Zab.",
+    "المدن الخمس في الوادي هي التي أدرجتها اليونسكو عام 1982. غير أنّ وادي مزاب التاريخي لم يقف عندها؛ فقد امتدّ المجتمع المزابي بتأسيسَين لاحقَين خارج الوادي نفسه، إلى ما يُسمّيه الجغرافيون الجزائريون \"السبع مدن\" لوادي مزاب.",
+  ),
+  plaqueLabel: L("Editorial note", "Note éditoriale", "ملاحظة تحريرية"),
+  plaqueBody: L(
+    "The UNESCO World Heritage property is precisely the five original ksour — El Atteuf, Bou Noura, Melika, Beni Isguen and Ghardaïa — together with their palm groves and cemeteries. Berriane and El Guerrara are part of the broader historical and cultural M'Zab, but sit outside the inscribed property.",
+    "Le bien du Patrimoine mondial est précisément constitué des cinq ksour d'origine — El Atteuf, Bou Noura, Melika, Beni Isguen et Ghardaïa — avec leurs palmeraies et leurs cimetières. Berriane et El Guerrara appartiennent au M'Zab historique et culturel élargi, mais se situent hors du bien inscrit.",
+    "الموقع المُدرَج في التراث العالمي هو تحديداً القصور الخمسة الأصلية — العطف، بونورة، مليكة، بني يزقن، غرداية — مع بساتين نخيلها ومقابرها. أمّا بريان والقرارة فتنتميان إلى وادي مزاب التاريخي والثقافي الأوسع، لكنّهما خارج الموقع المُدرَج.",
+  ),
+};
+
+const HEPTAPOLIS_OUTLIERS: NumberedItem[] = [
+  {
+    arabic: "بريان",
+    title: L("Berriane", "Berriane", "بريان"),
+    meta: L("Founded 1690 CE · ~45 km north of Ghardaïa", "Fondée en 1690 · ~45 km au nord de Ghardaïa", "أُسّست 1690م · نحو 45 كم شمال غرداية"),
+    role: L(
+      "The northern gate of the M'Zab.",
+      "La porte nord du M'Zab.",
+      "بوّابة وادي مزاب الشمالية.",
+    ),
+    body: L(
+      "Berriane was founded on the northern approach to the valley as Mozabite families spread beyond the original ksour. It shares the same Ibadi institutions, the same white-and-ochre building tradition and the same palm-grove economy, but stands apart from the wadi itself — which is why UNESCO did not include it in the 1982 inscription, even though it is fully part of the M'Zab cultural region.",
+      "Berriane fut fondée sur l'accès nord de la vallée, lorsque des familles mozabites essaimèrent hors des ksour d'origine. Elle partage les mêmes institutions ibadites, la même tradition bâtie blanche et ocre et la même économie de palmeraie, mais se tient à l'écart du wadi lui-même — raison pour laquelle l'UNESCO ne l'a pas incluse dans l'inscription de 1982, bien qu'elle appartienne pleinement à l'aire culturelle du M'Zab.",
+      "أُسِّست بريان على المدخل الشمالي للوادي حين توسّعت العائلات المزابية خارج القصور الأصلية. تشترك معها في المؤسسات الإباضية ذاتها، وفي عمارة البيوت البيضاء والمُغرة، وفي اقتصاد الواحة، لكنّها بعيدة عن الوادي نفسه — ولذلك لم تُدرجها اليونسكو ضمن قائمة 1982، رغم انتمائها الكامل إلى الإقليم الثقافي المزابي.",
+    ),
+    fact: L(
+      "Berriane hosts one of the largest Mozabite communities outside the valley and functions as the M'Zab's northern trading gateway.",
+      "Berriane abrite l'une des plus importantes communautés mozabites hors vallée et fait office de porte commerciale nord du M'Zab.",
+      "تضمّ بريان واحدة من أكبر الجاليات المزابية خارج الوادي، وتؤدّي دور البوّابة التجارية الشمالية للمزاب.",
+    ),
+  },
+  {
+    arabic: "القرارة",
+    title: L("El Guerrara", "El Guerrara", "القرارة"),
+    meta: L("Founded 1631 CE · ~110 km north-east of Ghardaïa", "Fondée en 1631 · ~110 km au nord-est de Ghardaïa", "أُسّست 1631م · نحو 110 كم شمال شرق غرداية"),
+    role: L(
+      "The eastern outpost — closest of the seven to the Sahara's caravan roads.",
+      "L'avant-poste oriental — la plus proche des sept des routes caravanières sahariennes.",
+      "المرابط الشرقي — أقرب السبع إلى دروب القوافل الصحراوية.",
+    ),
+    body: L(
+      "El Guerrara was founded in the early 17th century on a distinct oasis site well east of the wadi, expanding Mozabite settlement toward the caravan tracks that linked Ouargla and the Ziban. Like Berriane, it belongs to the historical heptapolis but lies outside the UNESCO property, which is confined to the continuous cultural landscape of the five original ksour.",
+      "El Guerrara fut fondée au début du XVIIe siècle sur une oasis distincte, nettement à l'est du wadi, étendant l'implantation mozabite vers les pistes caravanières reliant Ouargla et le Ziban. Comme Berriane, elle appartient à l'heptapole historique mais se trouve hors du bien UNESCO, limité au paysage culturel continu des cinq ksour d'origine.",
+      "أُسِّست القرارة في مطلع القرن السابع عشر على واحة مستقلّة شرق الوادي، لتوسّع الحضور المزابي نحو دروب القوافل التي تربط ورقلة والزيبان. كبريان، تنتمي إلى السبع التاريخية لكنّها خارج موقع اليونسكو المقتصر على المشهد الثقافي المتّصل للقصور الخمسة الأصلية.",
+    ),
+    fact: L(
+      "El Guerrara's palm grove is fed by a network of foggaras — underground galleries that tap the water table without exposing it to evaporation.",
+      "La palmeraie d'El Guerrara est irriguée par des foggaras — galeries souterraines qui captent la nappe sans l'exposer à l'évaporation.",
+      "تُروى واحة القرارة بشبكة فقّارات — قنواتٍ جوفية تلتقط الماء من الطبقة الحاملة دون تعريضه للتبخّر.",
+    ),
+  },
+];
+
+
 const ARCHITECTURE = {
   eyebrow: L("Architecture", "Architecture", "العمارة"),
   title: L("A city as a single organism", "Une cité comme un organisme unique", "مدينة كائنٌ واحد"),
