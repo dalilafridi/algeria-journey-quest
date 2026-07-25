@@ -131,9 +131,9 @@ export function MedallionFrame({
     <span
       className={`relative inline-flex items-center justify-center align-middle ${animClass} ${className ?? ""}`}
       style={{ width: size, height: size, ...style }}
-      role="img"
-      aria-label={label}
+      {...(label ? { role: "img", "aria-label": label } : { "aria-hidden": true })}
     >
+
       <span
         className={`relative block rounded-full transition-transform duration-500 ${
           interactive ? "group-hover:scale-[1.06] group-focus-visible:scale-[1.06]" : ""
