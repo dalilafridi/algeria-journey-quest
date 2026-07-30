@@ -11,6 +11,8 @@ import { discover } from "@/lib/discoveries";
 import { t, useLang } from "@/lib/i18n";
 import { saveJourneyPlace } from "@/lib/continuity";
 import { JourneyNext } from "@/components/JourneyNext";
+import { ExhibitShowcase } from "@/components/museum/EntranceHall";
+import { MUSEUM_HIGHLIGHTS } from "@/data/museumHighlights";
 import mapImg from "@/assets/algeria-map.png";
 import { pageMeta } from "@/lib/seo";
 
@@ -18,21 +20,39 @@ export const Route = createFileRoute("/map")({
   head: () =>
     pageMeta({
       path: "/map",
-      title: "Region Explorer, DZ Odyssey",
-      description: "Explore Algeria region by region: Kabylie, Aurès, Algiers, Constantine, the West and the Sahara, facts, figures and stories.",
+      title: "Explore Algeria, DZ Odyssey",
+      description: "Explore Algeria region by region and discover the museum's flagship destinations: M'Zab, Tassili n'Ajjer, Timgad, Djémila, the Casbah of Algiers and Tipasa.",
       image: mapImg
     }),
   component: RegionExplorerPage,
 });
 
 const COPY = {
-  title: { en: "Region Explorer", fr: "Explorateur des régions", ar: "مستكشف المناطق" },
+  title: { en: "Explore Algeria", fr: "Explorer l'Algérie", ar: "استكشف الجزائر" },
   subtitle: {
+    en: "Two ways in: understand the country region by region, then step into its greatest destinations.",
+    fr: "Deux entrées : comprendre le pays région par région, puis entrer dans ses plus grandes destinations.",
+    ar: "مدخلان: افهم البلد منطقةً منطقة، ثم ادخل إلى أعظم وجهاته.",
+  },
+  regionsTitle: { en: "Explore by region", fr: "Explorer par région", ar: "استكشف حسب المنطقة" },
+  regionsHint: {
     en: "Tap a region to discover its story, key facts and great figures.",
     fr: "Touchez une région pour découvrir son histoire, ses faits clés et ses grandes figures.",
     ar: "اضغط على منطقة لاكتشاف قصتها وأهم حقائقها وكبار شخصياتها.",
   },
+  highlightsEyebrow: { en: "Museum highlights", fr: "Temps forts du musée", ar: "أبرز معالم المتحف" },
+  highlightsTitle: {
+    en: "Algeria's greatest destinations",
+    fr: "Les plus grandes destinations d'Algérie",
+    ar: "أعظم وجهات الجزائر",
+  },
+  highlightsSubtitle: {
+    en: "Masterpiece places from the collection, ancient cities, desert ksour and painted cliffs.",
+    fr: "Les lieux chefs-d'œuvre de la collection : cités antiques, ksour du désert et falaises peintes.",
+    ar: "أماكن من روائع المجموعة: مدن قديمة، وقصور صحراوية، وجروف مرسومة.",
+  },
   pickRegion: { en: "Choose a region to begin", fr: "Choisissez une région pour commencer", ar: "اختر منطقة للبدء" },
+
   keyFacts: { en: "Key facts", fr: "Faits clés", ar: "حقائق أساسية" },
   greatFigures: { en: "Great figures", fr: "Grandes figures", ar: "شخصيات بارزة" },
   focus: { en: "Focus", fr: "Thème", ar: "المحور" },
