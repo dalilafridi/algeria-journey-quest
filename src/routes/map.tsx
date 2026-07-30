@@ -252,6 +252,18 @@ function RegionExplorerPage() {
           })}
         </section>
 
+        {/* Section 2: Museum Highlights (data-driven, same cards as the homepage) */}
+        <ExhibitShowcase
+          exhibits={MUSEUM_HIGHLIGHTS}
+          eyebrow={COPY.highlightsEyebrow[lang]}
+          title={COPY.highlightsTitle[lang]}
+          subtitle={COPY.highlightsSubtitle[lang]}
+          align="start"
+          className="mt-12"
+        />
+
+
+
         {/* Cinematic intro line */}
         {selected && intro && (
           <figure
