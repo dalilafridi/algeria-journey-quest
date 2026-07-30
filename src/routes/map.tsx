@@ -11,6 +11,8 @@ import { discover } from "@/lib/discoveries";
 import { t, useLang } from "@/lib/i18n";
 import { saveJourneyPlace } from "@/lib/continuity";
 import { JourneyNext } from "@/components/JourneyNext";
+import { ExhibitShowcase } from "@/components/museum/EntranceHall";
+import { MUSEUM_HIGHLIGHTS } from "@/data/museumHighlights";
 import mapImg from "@/assets/algeria-map.png";
 import { pageMeta } from "@/lib/seo";
 
@@ -18,21 +20,39 @@ export const Route = createFileRoute("/map")({
   head: () =>
     pageMeta({
       path: "/map",
-      title: "Region Explorer, DZ Odyssey",
-      description: "Explore Algeria region by region: Kabylie, Aurès, Algiers, Constantine, the West and the Sahara, facts, figures and stories.",
+      title: "Explore Algeria, DZ Odyssey",
+      description: "Explore Algeria region by region and discover the museum's flagship destinations: M'Zab, Tassili n'Ajjer, Timgad, Djémila, the Casbah of Algiers and Tipasa.",
       image: mapImg
     }),
   component: RegionExplorerPage,
 });
 
 const COPY = {
-  title: { en: "Region Explorer", fr: "Explorateur des régions", ar: "مستكشف المناطق" },
+  title: { en: "Explore Algeria", fr: "Explorer l'Algérie", ar: "استكشف الجزائر" },
   subtitle: {
+    en: "Two ways in: understand the country region by region, then step into its greatest destinations.",
+    fr: "Deux entrées : comprendre le pays région par région, puis entrer dans ses plus grandes destinations.",
+    ar: "مدخلان: افهم البلد منطقةً منطقة، ثم ادخل إلى أعظم وجهاته.",
+  },
+  regionsTitle: { en: "Explore by region", fr: "Explorer par région", ar: "استكشف حسب المنطقة" },
+  regionsHint: {
     en: "Tap a region to discover its story, key facts and great figures.",
     fr: "Touchez une région pour découvrir son histoire, ses faits clés et ses grandes figures.",
     ar: "اضغط على منطقة لاكتشاف قصتها وأهم حقائقها وكبار شخصياتها.",
   },
+  highlightsEyebrow: { en: "Museum highlights", fr: "Temps forts du musée", ar: "أبرز معالم المتحف" },
+  highlightsTitle: {
+    en: "Algeria's greatest destinations",
+    fr: "Les plus grandes destinations d'Algérie",
+    ar: "أعظم وجهات الجزائر",
+  },
+  highlightsSubtitle: {
+    en: "Masterpiece places from the collection, ancient cities, desert ksour and painted cliffs.",
+    fr: "Les lieux chefs-d'œuvre de la collection : cités antiques, ksour du désert et falaises peintes.",
+    ar: "أماكن من روائع المجموعة: مدن قديمة، وقصور صحراوية، وجروف مرسومة.",
+  },
   pickRegion: { en: "Choose a region to begin", fr: "Choisissez une région pour commencer", ar: "اختر منطقة للبدء" },
+
   keyFacts: { en: "Key facts", fr: "Faits clés", ar: "حقائق أساسية" },
   greatFigures: { en: "Great figures", fr: "Grandes figures", ar: "شخصيات بارزة" },
   focus: { en: "Focus", fr: "Thème", ar: "المحور" },
@@ -146,7 +166,7 @@ function RegionExplorerPage() {
 
         {/* Sticky region selector */}
         <nav
-          aria-label={t(COPY.title, lang)}
+          aria-label={t(COPY.regionsTitle, lang)}
           className="sticky top-14 z-20 -mx-4 mt-4 border-y border-border/60 bg-background/85 backdrop-blur-md px-4 py-2"
         >
           <div className="flex gap-2 overflow-x-auto no-scrollbar">
@@ -171,8 +191,21 @@ function RegionExplorerPage() {
           </div>
         </nav>
 
+        {/* Section 1 heading */}
+        <div className="mt-8">
+          <h2
+            className="text-xl sm:text-2xl font-extrabold"
+            style={{ fontFamily: "Georgia, 'Times New Roman', serif" }}
+          >
+            {COPY.regionsTitle[lang]}
+          </h2>
+          <p className="mt-1.5 text-sm text-muted-foreground">{COPY.regionsHint[lang]}</p>
+        </div>
+
+
         {/* Region cards grid */}
-        <section className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <section aria-label={t(COPY.regionsTitle, lang)} className="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-4">
+
           {mapRegions.map((r) => {
             const isSel = r.id === selectedId;
             const keyFigure = getFigure(r.figureIds[0]);
@@ -218,6 +251,18 @@ function RegionExplorerPage() {
             );
           })}
         </section>
+
+        {/* Section 2: Museum Highlights (data-driven, same cards as the homepage) */}
+        <ExhibitShowcase
+          exhibits={MUSEUM_HIGHLIGHTS}
+          eyebrow={COPY.highlightsEyebrow[lang]}
+          title={COPY.highlightsTitle[lang]}
+          subtitle={COPY.highlightsSubtitle[lang]}
+          align="start"
+          className="mt-12"
+        />
+
+
 
         {/* Cinematic intro line */}
         {selected && intro && (

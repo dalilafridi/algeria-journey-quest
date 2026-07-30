@@ -45,7 +45,10 @@ export type FeaturedExhibit = {
    * generated rather than a documentary archival photograph.
    */
   illustrative?: boolean;
+  /** Optional flag: the destination is a UNESCO World Heritage site. */
+  unesco?: boolean;
 };
+
 
 export type ThemeId =
   | "ancient"
