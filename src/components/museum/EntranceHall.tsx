@@ -152,6 +152,12 @@ const FEATURED_COPY = {
   },
 };
 
+const UNESCO_LABEL = {
+  en: "UNESCO World Heritage",
+  fr: "Patrimoine mondial UNESCO",
+  ar: "التراث العالمي لليونسكو",
+} as const;
+
 function ExhibitCard({ exhibit, lang }: { exhibit: FeaturedExhibit; lang: Lang }) {
   return (
     <ExhibitLink
@@ -180,6 +186,11 @@ function ExhibitCard({ exhibit, lang }: { exhibit: FeaturedExhibit; lang: Lang }
           style={{ background: "var(--gradient-warm)" }}
           aria-hidden
         />
+        {exhibit.unesco && (
+          <span className="absolute top-3 start-3 rounded-full border border-accent/40 bg-background/85 px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.14em] text-primary backdrop-blur-sm">
+            {UNESCO_LABEL[lang]}
+          </span>
+        )}
       </div>
       <div className="flex flex-1 flex-col p-5">
         <h3
@@ -200,27 +211,53 @@ function ExhibitCard({ exhibit, lang }: { exhibit: FeaturedExhibit; lang: Lang }
   );
 }
 
-export function FeaturedExhibits({ className }: { className?: string }) {
+/**
+ * Reusable showcase grid for any list of exhibits (homepage masterpieces,
+ * Museum Highlights on Explore Algeria, future collections).
+ */
+export function ExhibitShowcase({
+  exhibits,
+  eyebrow,
+  title,
+  subtitle,
+  align = "center",
+  className,
+}: {
+  exhibits: FeaturedExhibit[];
+  eyebrow: string;
+  title: string;
+  subtitle?: string;
+  align?: "start" | "center";
+  className?: string;
+}) {
   const lang = useLang();
+  if (exhibits.length === 0) return null;
   return (
-    <section
-      aria-label={t(FEATURED_COPY.title, lang)}
-      className={`mx-auto max-w-6xl px-4 ${className ?? ""}`}
-    >
-      <SectionHeader
-        eyebrow={t(FEATURED_COPY.eyebrow, lang)}
-        title={t(FEATURED_COPY.title, lang)}
-        subtitle={t(FEATURED_COPY.subtitle, lang)}
-        align="center"
-      />
+    <section aria-label={title} className={className}>
+      <SectionHeader eyebrow={eyebrow} title={title} subtitle={subtitle} align={align} />
       <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-        {FEATURED_EXHIBITS.map((ex) => (
+        {exhibits.map((ex) => (
           <ExhibitCard key={ex.id} exhibit={ex} lang={lang} />
         ))}
       </div>
     </section>
   );
 }
+
+export function FeaturedExhibits({ className }: { className?: string }) {
+  const lang = useLang();
+  return (
+    <ExhibitShowcase
+      exhibits={FEATURED_EXHIBITS}
+      eyebrow={t(FEATURED_COPY.eyebrow, lang)}
+      title={t(FEATURED_COPY.title, lang)}
+      subtitle={t(FEATURED_COPY.subtitle, lang)}
+      align="center"
+      className={`mx-auto max-w-6xl px-4 ${className ?? ""}`}
+    />
+  );
+}
+
 
 /* ------------------------------------------------------------------ */
 /* 2) Explore by theme                                                 */
