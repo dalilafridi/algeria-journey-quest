@@ -193,17 +193,15 @@ function RegionExplorerPage() {
 
         {/* Section 1 heading */}
         <div className="mt-8">
-          <div className="text-[11px] font-bold uppercase tracking-[0.2em] text-primary">
-            {COPY.highlightsEyebrow[lang] && COPY.regionsTitle[lang]}
-          </div>
           <h2
-            className="mt-1 text-xl sm:text-2xl font-extrabold"
+            className="text-xl sm:text-2xl font-extrabold"
             style={{ fontFamily: "Georgia, 'Times New Roman', serif" }}
           >
             {COPY.regionsTitle[lang]}
           </h2>
           <p className="mt-1.5 text-sm text-muted-foreground">{COPY.regionsHint[lang]}</p>
         </div>
+
 
         {/* Region cards grid */}
         <section aria-label={t(COPY.regionsTitle, lang)} className="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-4">
