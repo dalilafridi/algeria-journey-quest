@@ -166,7 +166,7 @@ function RegionExplorerPage() {
 
         {/* Sticky region selector */}
         <nav
-          aria-label={t(COPY.title, lang)}
+          aria-label={t(COPY.regionsTitle, lang)}
           className="sticky top-14 z-20 -mx-4 mt-4 border-y border-border/60 bg-background/85 backdrop-blur-md px-4 py-2"
         >
           <div className="flex gap-2 overflow-x-auto no-scrollbar">
@@ -191,8 +191,23 @@ function RegionExplorerPage() {
           </div>
         </nav>
 
+        {/* Section 1 heading */}
+        <div className="mt-8">
+          <div className="text-[11px] font-bold uppercase tracking-[0.2em] text-primary">
+            {COPY.highlightsEyebrow[lang] && COPY.regionsTitle[lang]}
+          </div>
+          <h2
+            className="mt-1 text-xl sm:text-2xl font-extrabold"
+            style={{ fontFamily: "Georgia, 'Times New Roman', serif" }}
+          >
+            {COPY.regionsTitle[lang]}
+          </h2>
+          <p className="mt-1.5 text-sm text-muted-foreground">{COPY.regionsHint[lang]}</p>
+        </div>
+
         {/* Region cards grid */}
-        <section className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <section aria-label={t(COPY.regionsTitle, lang)} className="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-4">
+
           {mapRegions.map((r) => {
             const isSel = r.id === selectedId;
             const keyFigure = getFigure(r.figureIds[0]);
