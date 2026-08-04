@@ -11,11 +11,14 @@ export function HistoricalOverlay({
   activeId,
   lang,
   onSelectHighlight,
+  selectedHighlightId,
 }: {
   activeId: string | null;
   lang: Lang;
   /** Called when a pin tied to a Museum Highlight is tapped. */
   onSelectHighlight?: (highlightId: string) => void;
+  /** Museum Highlight currently open in the panel: its pin gets a focus pulse. */
+  selectedHighlightId?: string | null;
 }) {
   return (
     <g style={{ pointerEvents: "none" }}>
@@ -26,23 +29,28 @@ export function HistoricalOverlay({
           active={p.id === activeId}
           lang={lang}
           onSelectHighlight={onSelectHighlight}
+          selectedHighlightId={selectedHighlightId}
         />
       ))}
     </g>
   );
 }
 
+
 function PeriodLayer({
   period,
   active,
   lang,
   onSelectHighlight,
+  selectedHighlightId,
 }: {
   period: AtlasPeriod;
   active: boolean;
   lang: Lang;
   onSelectHighlight?: (highlightId: string) => void;
+  selectedHighlightId?: string | null;
 }) {
+
   return (
     <g
       style={{
@@ -78,6 +86,9 @@ function PeriodLayer({
           color={period.color}
           interactive={active}
           onSelectHighlight={onSelectHighlight}
+          selected={Boolean(
+            m.highlightId && selectedHighlightId && m.highlightId === selectedHighlightId,
+          )}
         />
       ))}
     </g>
@@ -90,12 +101,14 @@ function Marker({
   color,
   interactive,
   onSelectHighlight,
+  selected,
 }: {
   marker: AtlasMarker;
   lang: Lang;
   color: string;
   interactive?: boolean;
   onSelectHighlight?: (highlightId: string) => void;
+  selected?: boolean;
 }) {
   const isCapital = marker.kind === "capital";
   const isBattle = marker.kind === "battle";
@@ -103,6 +116,7 @@ function Marker({
   const label = t(marker.name, lang);
   const linked = Boolean(marker.highlightId && onSelectHighlight);
   const clickable = linked && interactive;
+
 
   return (
     <g
@@ -151,11 +165,45 @@ function Marker({
           r={size * 2.5}
           fill="none"
           stroke={color}
-          strokeWidth="0.3"
+          strokeWidth={selected ? 0.5 : 0.3}
           strokeDasharray="0.9 0.9"
-          opacity={clickable ? 0.9 : 0.35}
+          opacity={selected ? 1 : clickable ? 0.9 : 0.35}
         />
       )}
+      {selected && (
+        <>
+          <circle
+            cx={marker.x}
+            cy={marker.y}
+            r={size * 3.4}
+            fill={color}
+            opacity="0.16"
+          >
+            <animate
+              attributeName="r"
+              values={`${size * 2.8};${size * 4.4};${size * 2.8}`}
+              dur="2.2s"
+              repeatCount="indefinite"
+            />
+            <animate
+              attributeName="opacity"
+              values="0.24;0.04;0.24"
+              dur="2.2s"
+              repeatCount="indefinite"
+            />
+          </circle>
+          <circle
+            cx={marker.x}
+            cy={marker.y}
+            r={size * 3.4}
+            fill="none"
+            stroke={color}
+            strokeWidth="0.28"
+            opacity="0.85"
+          />
+        </>
+      )}
+
       {isCapital ? (
         <Star cx={marker.x} cy={marker.y} r={size} fill={color} />
       ) : isBattle ? (

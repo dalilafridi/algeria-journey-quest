@@ -1,12 +1,12 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { Header } from "@/components/Header";
 import { ContextRibbon } from "@/components/museum/Exhibit";
 import { mapRegions } from "@/data/mapRegions";
 import { regionExtras } from "@/data/regionExtras";
 import { eras } from "@/data/eras";
 import { figures } from "@/data/figures";
-import { ATLAS_PERIODS, getPeriod } from "@/data/atlasPeriods";
+import { ATLAS_PERIODS, getPeriod, findHighlightLocation } from "@/data/atlasPeriods";
 import { HistoricalOverlay } from "@/components/atlas/HistoricalOverlay";
 import { HistoricalPeriodPanel } from "@/components/atlas/HistoricalPeriodPanel";
 import { ExhibitShowcase } from "@/components/museum/EntranceHall";
@@ -15,6 +15,19 @@ import { t, useLang, type LocalizedString } from "@/lib/i18n";
 import { saveJourneyPlace } from "@/lib/continuity";
 import algeriaMap from "@/assets/algeria-map.png";
 import { pageMeta } from "@/lib/seo";
+
+/** Map camera: [minX, minY, width, height] inside the 100x100 atlas space. */
+type ViewBox = [number, number, number, number];
+const FULL_VIEW: ViewBox = [0, 0, 100, 100];
+const ZOOM_SIZE = 44;
+
+/** Camera box centred on a pin, clamped so it never leaves the map. */
+function centerOn(x: number, y: number): ViewBox {
+  const s = ZOOM_SIZE;
+  const clamp = (v: number) => Math.max(0, Math.min(100 - s, v));
+  return [clamp(x - s / 2), clamp(y - s / 2), s, s];
+}
+
 
 /** ----------------------------------------------------------------
  *  Hand-illustrated Algeria silhouette in a 100x100 viewBox.
@@ -95,6 +108,59 @@ function AtlasPage() {
     [highlightId],
   );
   const activePeriod = getPeriod(periodId);
+
+  /** Animated map viewport, tweened when a Museum Highlight is selected. */
+  const [viewBox, setViewBox] = useState<ViewBox>(FULL_VIEW);
+  const tweenRef = useRef<number | null>(null);
+  const tweenTo = (target: ViewBox) => {
+    if (tweenRef.current) cancelAnimationFrame(tweenRef.current);
+    const start = viewBoxRef.current;
+    const t0 = performance.now();
+    const dur = 620;
+    const step = (now: number) => {
+      const p = Math.min(1, (now - t0) / dur);
+      const e = 1 - Math.pow(1 - p, 3);
+      const next: ViewBox = [
+        start[0] + (target[0] - start[0]) * e,
+        start[1] + (target[1] - start[1]) * e,
+        start[2] + (target[2] - start[2]) * e,
+        start[3] + (target[3] - start[3]) * e,
+      ];
+      viewBoxRef.current = next;
+      setViewBox(next);
+      if (p < 1) tweenRef.current = requestAnimationFrame(step);
+    };
+    tweenRef.current = requestAnimationFrame(step);
+  };
+  const viewBoxRef = useRef<ViewBox>(FULL_VIEW);
+  useEffect(() => () => {
+    if (tweenRef.current) cancelAnimationFrame(tweenRef.current);
+  }, []);
+
+  /** Two-way sync: card or pin selection drives period, pin pulse and camera. */
+  const selectHighlight = (id: string | null) => {
+    setHighlightId(id);
+    if (!id) {
+      tweenTo(FULL_VIEW);
+      return;
+    }
+    const loc = findHighlightLocation(id, periodId);
+    if (!loc) return;
+    if (loc.periodId !== periodId) setPeriodId(loc.periodId);
+    tweenTo(centerOn(loc.x, loc.y));
+  };
+
+  /** Changing period clears any open highlight and pulls the camera back out. */
+  const selectPeriod = (id: string | null) => {
+    setPeriodId(id);
+    if (highlightId) {
+      setHighlightId(null);
+      tweenTo(FULL_VIEW);
+    }
+  };
+
+
+
 
   useEffect(() => {
     saveJourneyPlace({
@@ -233,7 +299,7 @@ function AtlasPage() {
           <div className="flex gap-1.5 overflow-x-auto no-scrollbar pb-1 -mx-1 px-1">
             <LayerChip
               active={periodId === null}
-              onClick={() => setPeriodId(null)}
+              onClick={() => selectPeriod(null)}
               emoji="◯"
               label={T.overlayOff}
             />
@@ -241,7 +307,7 @@ function AtlasPage() {
               <LayerChip
                 key={p.id}
                 active={periodId === p.id}
-                onClick={() => setPeriodId(p.id)}
+                onClick={() => selectPeriod(p.id)}
                 emoji="◈"
                 label={t(p.name, lang)}
                 accent={p.id === periodId ? p.color : undefined}
@@ -250,6 +316,34 @@ function AtlasPage() {
           </div>
           <p className="mt-2 text-xs text-muted-foreground italic">{T.overlayLegend}</p>
         </div>
+
+        {/* Museum Highlights rail: selecting a card syncs the map pin and camera */}
+        <div className="mb-6">
+          <div className="museum-eyebrow mb-2">{t(HIGHLIGHT_COPY.eyebrow, lang)}</div>
+          <div className="flex gap-1.5 overflow-x-auto no-scrollbar pb-1 -mx-1 px-1">
+            {MUSEUM_HIGHLIGHTS.filter((h) => findHighlightLocation(h.id)).map((h) => (
+              <LayerChip
+                key={h.id}
+                active={highlightId === h.id}
+                onClick={() =>
+                  selectHighlight(highlightId === h.id ? null : h.id)
+                }
+                emoji="◆"
+                label={t(h.title, lang)}
+                accent={
+                  highlightId === h.id
+                    ? findHighlightLocation(h.id)?.color
+                    : undefined
+                }
+              />
+            ))}
+          </div>
+          <p className="mt-2 text-xs text-muted-foreground italic">
+            {t(HIGHLIGHT_COPY.railHint, lang)}
+          </p>
+        </div>
+
+
 
 
         <div className="grid lg:grid-cols-[1.15fr_1fr] gap-6 lg:gap-8 items-start">
@@ -268,7 +362,7 @@ function AtlasPage() {
               className="absolute inset-0 pointer-events-none opacity-60 bg-parchment"
             />
             <svg
-              viewBox="0 0 100 100"
+              viewBox={viewBox.map((n) => Number(n.toFixed(3))).join(" ")}
               className="relative w-full h-auto block"
               role="img"
               aria-label={T.title}
@@ -424,8 +518,10 @@ function AtlasPage() {
               <HistoricalOverlay
                 activeId={periodId}
                 lang={lang}
-                onSelectHighlight={setHighlightId}
+                onSelectHighlight={selectHighlight}
+                selectedHighlightId={highlightId}
               />
+
 
               {/* Region pins */}
               <g
@@ -537,7 +633,7 @@ function AtlasPage() {
               <div className="relative animate-float-up">
                 <button
                   type="button"
-                  onClick={() => setHighlightId(null)}
+                  onClick={() => selectHighlight(null)}
                   aria-label={t(HIGHLIGHT_COPY.close, lang)}
                   className="absolute -top-2 end-0 z-10 inline-flex h-8 w-8 items-center justify-center rounded-full border border-border bg-card text-muted-foreground transition hover:border-primary/40 hover:text-foreground"
                 >
@@ -556,8 +652,8 @@ function AtlasPage() {
               <HistoricalPeriodPanel
                 period={activePeriod}
                 lang={lang}
-                onClose={() => setPeriodId(null)}
-                onSelectHighlight={setHighlightId}
+                onClose={() => selectPeriod(null)}
+                onSelectHighlight={selectHighlight}
               />
             )}
             {activeRegion ? (
@@ -580,6 +676,12 @@ const HIGHLIGHT_COPY = {
     ar: "لهذا الموقع على الخريطة معرضه الخاص. تفضّل بالدخول.",
   },
   close: { en: "Close highlight", fr: "Fermer le temps fort", ar: "إغلاق" },
+  railHint: {
+    en: "Choose a highlight to light up its pin and bring the map to it.",
+    fr: "Choisissez un temps fort pour éclairer son repère et y amener la carte.",
+    ar: "اختر معلمًا لإضاءة علامته على الخريطة والانتقال إليه.",
+  },
+
 } as const satisfies Record<string, LocalizedString>;
 
 /* ============================================================
