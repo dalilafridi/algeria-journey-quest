@@ -614,7 +614,7 @@ function AtlasPage() {
                 period={activePeriod}
                 lang={lang}
                 onClose={() => setPeriodId(null)}
-                onSelectHighlight={setHighlightId}
+                onSelectHighlight={selectHighlight}
               />
             )}
             {activeRegion ? (
