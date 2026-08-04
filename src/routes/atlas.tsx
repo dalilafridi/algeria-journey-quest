@@ -432,6 +432,8 @@ function AtlasPage() {
                 style={{
                   opacity: activePeriod ? 0.28 : 1,
                   transition: "opacity 520ms ease",
+                  /* While an overlay is active its pins own the map. */
+                  pointerEvents: activePeriod ? "none" : undefined,
                 }}
               >
               {mapRegions.map((r) => {
