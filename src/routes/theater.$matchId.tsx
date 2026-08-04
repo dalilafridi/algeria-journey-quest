@@ -22,24 +22,33 @@ import { SourcesPanel } from "@/components/theater/SourcesPanel";
 import { PlayerPlaque, PlayerPlaqueDetail } from "@/components/theater/PlayerPlaque";
 
 export const Route = createFileRoute("/theater/$matchId")({
-  head: ({ loaderData, params, match }) => {
-    const match = loaderData as MatchTheater | undefined;
-    if (!match) {
+  head: ({ loaderData, params, match: routeMatch }) => {
+    const lang = headLang(routeMatch);
+    const theater = loaderData as MatchTheater | undefined;
+    if (!theater) {
       return pageMeta({
-      lang: headLang(match),
+        lang,
         path: `/theater/${params.matchId}`,
-        title: "Match Theater, Unavailable",
-        description: "This Match Theater experience is not available.",
+        title: {
+          en: "Match Theater, Unavailable",
+          fr: "Théâtre du match, indisponible",
+          ar: "مسرح المباراة، غير متاح",
+        },
+        description: {
+          en: "This Match Theater experience is not available.",
+          fr: "Cette expérience Théâtre du match n'est pas disponible.",
+          ar: "تجربة مسرح المباراة هذه غير متاحة.",
+        },
         noindex: true,
       });
     }
-    const title = `${tt(match.cinematicTitle, "en")}, Match Theater`;
-    const desc = `${tt(match.cinematicSubtitle, "en")} · Match Theater at DZ Odyssey.`;
+    const suffix = { en: "Match Theater", fr: "Théâtre du match", ar: "مسرح المباراة" };
+    const label = suffix[lang] ?? suffix.en;
     return pageMeta({
-      lang: headLang(match),
-      path: `/theater/${match.id}`,
-      title,
-      description: desc,
+      lang,
+      path: `/theater/${theater.id}`,
+      title: `${tt(theater.cinematicTitle, lang)}, ${label}`,
+      description: `${tt(theater.cinematicSubtitle, lang)} · ${label}, DZ Odyssey.`,
       type: "article",
     });
   },
