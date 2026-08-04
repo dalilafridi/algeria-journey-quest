@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AboutRouteImport } from './routes/about'
 import { Route as AtlasRouteImport } from './routes/atlas'
 import { Route as ChronicleRouteImport } from './routes/chronicle'
 import { Route as CinemaRouteImport } from './routes/cinema'
@@ -27,6 +28,7 @@ import { Route as PassportRouteImport } from './routes/passport'
 import { Route as ProfileRouteImport } from './routes/profile'
 import { Route as ShowcaseRouteImport } from './routes/showcase'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as SourcesRouteImport } from './routes/sources'
 import { Route as StargazingRouteImport } from './routes/stargazing'
 import { Route as TimelineRouteImport } from './routes/timeline'
 import { Route as WordsRouteImport } from './routes/words'
@@ -87,6 +89,11 @@ import { Route as CuratorStudioFiguresDraftIdPreviewRouteImport } from './routes
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AtlasRoute = AtlasRouteImport.update({
@@ -172,6 +179,11 @@ const ShowcaseRoute = ShowcaseRouteImport.update({
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   id: '/sitemap.xml',
   path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SourcesRoute = SourcesRouteImport.update({
+  id: '/sources',
+  path: '/sources',
   getParentRoute: () => rootRouteImport,
 } as any)
 const StargazingRoute = StargazingRouteImport.update({
@@ -469,6 +481,7 @@ const CuratorStudioFiguresDraftIdPreviewRoute =
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/curator': typeof CuratorRouteRouteWithChildren
+  '/about': typeof AboutRoute
   '/atlas': typeof AtlasRoute
   '/chronicle': typeof ChronicleRoute
   '/cinema': typeof CinemaRoute
@@ -485,6 +498,7 @@ export interface FileRoutesByFullPath {
   '/profile': typeof ProfileRoute
   '/showcase': typeof ShowcaseRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/sources': typeof SourcesRoute
   '/stargazing': typeof StargazingRoute
   '/timeline': typeof TimelineRoute
   '/words': typeof WordsRoute
@@ -544,6 +558,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/curator': typeof CuratorStudioIndexRoute
+  '/about': typeof AboutRoute
   '/atlas': typeof AtlasRoute
   '/chronicle': typeof ChronicleRoute
   '/cinema': typeof CinemaRoute
@@ -558,6 +573,7 @@ export interface FileRoutesByTo {
   '/profile': typeof ProfileRoute
   '/showcase': typeof ShowcaseRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/sources': typeof SourcesRoute
   '/stargazing': typeof StargazingRoute
   '/timeline': typeof TimelineRoute
   '/words': typeof WordsRoute
@@ -616,6 +632,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/curator': typeof CuratorRouteRouteWithChildren
+  '/about': typeof AboutRoute
   '/atlas': typeof AtlasRoute
   '/chronicle': typeof ChronicleRoute
   '/cinema': typeof CinemaRoute
@@ -632,6 +649,7 @@ export interface FileRoutesById {
   '/profile': typeof ProfileRoute
   '/showcase': typeof ShowcaseRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/sources': typeof SourcesRoute
   '/stargazing': typeof StargazingRoute
   '/timeline': typeof TimelineRoute
   '/words': typeof WordsRoute
@@ -694,6 +712,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/curator'
+    | '/about'
     | '/atlas'
     | '/chronicle'
     | '/cinema'
@@ -710,6 +729,7 @@ export interface FileRouteTypes {
     | '/profile'
     | '/showcase'
     | '/sitemap.xml'
+    | '/sources'
     | '/stargazing'
     | '/timeline'
     | '/words'
@@ -769,6 +789,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/curator'
+    | '/about'
     | '/atlas'
     | '/chronicle'
     | '/cinema'
@@ -783,6 +804,7 @@ export interface FileRouteTypes {
     | '/profile'
     | '/showcase'
     | '/sitemap.xml'
+    | '/sources'
     | '/stargazing'
     | '/timeline'
     | '/words'
@@ -840,6 +862,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/curator'
+    | '/about'
     | '/atlas'
     | '/chronicle'
     | '/cinema'
@@ -856,6 +879,7 @@ export interface FileRouteTypes {
     | '/profile'
     | '/showcase'
     | '/sitemap.xml'
+    | '/sources'
     | '/stargazing'
     | '/timeline'
     | '/words'
@@ -917,6 +941,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   CuratorRouteRoute: typeof CuratorRouteRouteWithChildren
+  AboutRoute: typeof AboutRoute
   AtlasRoute: typeof AtlasRoute
   ChronicleRoute: typeof ChronicleRoute
   CinemaRoute: typeof CinemaRoute
@@ -933,6 +958,7 @@ export interface RootRouteChildren {
   ProfileRoute: typeof ProfileRoute
   ShowcaseRoute: typeof ShowcaseRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
+  SourcesRoute: typeof SourcesRoute
   StargazingRoute: typeof StargazingRoute
   TimelineRoute: typeof TimelineRoute
   WordsRoute: typeof WordsRoute
@@ -957,6 +983,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/atlas': {
@@ -1076,6 +1109,13 @@ declare module '@tanstack/react-router' {
       path: '/sitemap.xml'
       fullPath: '/sitemap.xml'
       preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sources': {
+      id: '/sources'
+      path: '/sources'
+      fullPath: '/sources'
+      preLoaderRoute: typeof SourcesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/stargazing': {
@@ -1618,6 +1658,7 @@ const FootballRouteWithChildren = FootballRoute._addFileChildren(
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   CuratorRouteRoute: CuratorRouteRouteWithChildren,
+  AboutRoute: AboutRoute,
   AtlasRoute: AtlasRoute,
   ChronicleRoute: ChronicleRoute,
   CinemaRoute: CinemaRoute,
@@ -1634,6 +1675,7 @@ const rootRouteChildren: RootRouteChildren = {
   ProfileRoute: ProfileRoute,
   ShowcaseRoute: ShowcaseRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
+  SourcesRoute: SourcesRoute,
   StargazingRoute: StargazingRoute,
   TimelineRoute: TimelineRoute,
   WordsRoute: WordsRoute,
