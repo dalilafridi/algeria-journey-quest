@@ -11,6 +11,7 @@ export interface InfoSection {
   heading: Record<Lang, string>;
   paras?: Record<Lang, string>[];
   bullets?: Record<Lang, string>[];
+  postBullets?: Record<Lang, string>[];
 }
 
 export function InfoPage({
@@ -55,6 +56,11 @@ export function InfoPage({
                   ))}
                 </ul>
               )}
+              {s.postBullets?.map((p) => (
+                <p key={p.en} className="text-sm leading-7 text-foreground/85 sm:text-base">
+                  {p[lang]}
+                </p>
+              ))}
             </section>
           ))}
         </div>
