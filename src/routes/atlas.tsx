@@ -96,6 +96,48 @@ function AtlasPage() {
   );
   const activePeriod = getPeriod(periodId);
 
+  /** Animated map viewport, tweened when a Museum Highlight is selected. */
+  const [viewBox, setViewBox] = useState<ViewBox>(FULL_VIEW);
+  const tweenRef = useRef<number | null>(null);
+  const tweenTo = (target: ViewBox) => {
+    if (tweenRef.current) cancelAnimationFrame(tweenRef.current);
+    const start = viewBoxRef.current;
+    const t0 = performance.now();
+    const dur = 620;
+    const step = (now: number) => {
+      const p = Math.min(1, (now - t0) / dur);
+      const e = 1 - Math.pow(1 - p, 3);
+      const next: ViewBox = [
+        start[0] + (target[0] - start[0]) * e,
+        start[1] + (target[1] - start[1]) * e,
+        start[2] + (target[2] - start[2]) * e,
+        start[3] + (target[3] - start[3]) * e,
+      ];
+      viewBoxRef.current = next;
+      setViewBox(next);
+      if (p < 1) tweenRef.current = requestAnimationFrame(step);
+    };
+    tweenRef.current = requestAnimationFrame(step);
+  };
+  const viewBoxRef = useRef<ViewBox>(FULL_VIEW);
+  useEffect(() => () => {
+    if (tweenRef.current) cancelAnimationFrame(tweenRef.current);
+  }, []);
+
+  /** Two-way sync: card or pin selection drives period, pin pulse and camera. */
+  const selectHighlight = (id: string | null) => {
+    setHighlightId(id);
+    if (!id) {
+      tweenTo(FULL_VIEW);
+      return;
+    }
+    const loc = findHighlightLocation(id, periodId);
+    if (!loc) return;
+    if (loc.periodId !== periodId) setPeriodId(loc.periodId);
+    tweenTo(centerOn(loc.x, loc.y));
+  };
+
+
   useEffect(() => {
     saveJourneyPlace({
       section: "regions",
