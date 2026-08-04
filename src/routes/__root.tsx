@@ -1,4 +1,10 @@
-import { Outlet, createRootRoute, HeadContent, Scripts, useRouterState } from "@tanstack/react-router";
+import {
+  Outlet,
+  createRootRoute,
+  HeadContent,
+  Scripts,
+  useRouterState,
+} from "@tanstack/react-router";
 import { useEffect } from "react";
 import { toast } from "sonner";
 
@@ -35,8 +41,6 @@ const ROOT_DESCRIPTION = {
   ar: "دي زد أوديسي، رحلة متحفية سينمائية عبر حِقب الجزائر ومناطقها وشخصياتها وثقافتها، من نوميديا إلى الاستقلال.",
 };
 
-
-
 import { resolveInitialLang } from "@/lib/lang-server";
 import type { Lang } from "@/lib/i18n";
 
@@ -54,7 +58,10 @@ export const Route = createRootRoute({
   head: ({ match }) => ({
     meta: [
       { charSet: "utf-8" },
-      { name: "viewport", content: "width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=5" },
+      {
+        name: "viewport",
+        content: "width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=5",
+      },
       { name: "theme-color", content: "#1a1410" },
       { name: "mobile-web-app-capable", content: "yes" },
       { name: "apple-mobile-web-app-capable", content: "yes" },
@@ -96,7 +103,6 @@ function RootShell({ children }: { children: React.ReactNode }) {
               "(function(){try{var K='algeria-history-lang-v1';var m=/(?:^|;\\s*)dzo_lang=(en|fr|ar)/.exec(document.cookie||'');var c=m?m[1]:null;var l=localStorage.getItem(K);if(c){if(l!==c){localStorage.setItem(K,c);}}else if(l==='en'||l==='fr'||l==='ar'){document.documentElement.lang=l;document.documentElement.dir=(l==='ar')?'rtl':'ltr';document.cookie='dzo_lang='+l+'; path=/; max-age=31536000; samesite=lax';}}catch(e){}})();",
           }}
         />
-
       </head>
       <body>
         {children}

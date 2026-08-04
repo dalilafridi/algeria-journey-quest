@@ -21,9 +21,15 @@ const AREAS_LABEL = {
 
 const AREAS = [
   { to: "/timeline", label: { en: "Timeline", fr: "Chronologie", ar: "الخط الزمني" } },
-  { to: "/atlas", label: { en: "Explore Algeria", fr: "Explorer l'Algérie", ar: "استكشف الجزائر" } },
+  {
+    to: "/atlas",
+    label: { en: "Explore Algeria", fr: "Explorer l'Algérie", ar: "استكشف الجزائر" },
+  },
   { to: "/figures", label: { en: "Hall of Legends", fr: "Panthéon", ar: "قاعة الرموز" } },
-  { to: "/football", label: { en: "Hall of Football", fr: "Hall du football", ar: "قاعة كرة القدم" } },
+  {
+    to: "/football",
+    label: { en: "Hall of Football", fr: "Hall du football", ar: "قاعة كرة القدم" },
+  },
   { to: "/culture", label: { en: "Culture", fr: "Culture", ar: "الثقافة" } },
 ] as const;
 
