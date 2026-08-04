@@ -91,7 +91,7 @@ export function report(event: MonitoringReport) {
       page_url: truncate(event.page_url ?? window.location.href, 800),
       resource_url: truncate(event.resource_url, 800),
       stack: truncate(event.stack, 4000),
-      language: event.language ?? document.documentElement.lang || null,
+      language: event.language ?? (document.documentElement.lang || null),
       viewport: `${window.innerWidth}x${window.innerHeight}`,
       occurred_at: event.occurred_at ?? new Date().toISOString(),
     });
