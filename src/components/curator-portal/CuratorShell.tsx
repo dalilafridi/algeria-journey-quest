@@ -30,6 +30,7 @@ import {
   LogOut,
   Inbox,
   Briefcase,
+  Activity,
 } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useStudioSession } from "./StudioSessionContext";
