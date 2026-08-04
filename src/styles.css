@@ -85,12 +85,13 @@
   /* Soft gold accent */
   --accent: oklch(0.78 0.14 80);
   --accent-foreground: oklch(0.22 0.05 40);
-  /* Darkened to L 0.53 for AA on parchment. */
-  --destructive: oklch(0.53 0.22 25);
+  /* L 0.50 for AA on parchment and for white text on `bg-destructive`. */
+  --destructive: oklch(0.5 0.22 25);
   --destructive-foreground: oklch(0.98 0.01 80);
   --border: oklch(0.88 0.03 76 / 0.9);
   --input: oklch(0.93 0.025 80);
-  --ring: oklch(0.55 0.165 38);
+  /* Focus ring tracks --primary so keyboard focus stays AA-visible. */
+  --ring: oklch(0.51 0.165 38);
   --success: oklch(0.62 0.13 142);
   --success-foreground: oklch(0.98 0.01 80);
   --gradient-warm: linear-gradient(135deg, oklch(0.78 0.14 80), oklch(0.6 0.165 38));
