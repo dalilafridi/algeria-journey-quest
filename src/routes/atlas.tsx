@@ -150,6 +150,17 @@ function AtlasPage() {
     tweenTo(centerOn(loc.x, loc.y));
   };
 
+  /** Changing period clears any open highlight and pulls the camera back out. */
+  const selectPeriod = (id: string | null) => {
+    setPeriodId(id);
+    if (highlightId) {
+      setHighlightId(null);
+      tweenTo(FULL_VIEW);
+    }
+  };
+
+
+
 
   useEffect(() => {
     saveJourneyPlace({
