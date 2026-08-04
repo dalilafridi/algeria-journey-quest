@@ -72,12 +72,13 @@
   --card-foreground: oklch(0.24 0.035 45);
   --popover: oklch(0.99 0.015 85);
   --popover-foreground: oklch(0.22 0.04 42);
-  /* Terracotta primary — darkened to L 0.55 so both `text-primary` on parchment
-     and `text-primary-foreground` on `bg-primary` clear WCAG AA (4.5:1). */
-  --primary: oklch(0.55 0.165 38);
+  /* Terracotta primary. L 0.51 so `text-primary` clears WCAG AA (4.5:1) on
+     parchment AND on tinted `bg-primary/10` surfaces, and
+     `text-primary-foreground` clears AA on `bg-primary`. */
+  --primary: oklch(0.51 0.165 38);
   --primary-foreground: oklch(0.98 0.01 80);
-  /* Olive green secondary — darkened to L 0.54 for AA on parchment. */
-  --secondary: oklch(0.54 0.085 128);
+  /* Olive green secondary. L 0.49 for AA on parchment and `bg-secondary/15`. */
+  --secondary: oklch(0.49 0.085 128);
   --secondary-foreground: oklch(0.98 0.01 80);
   --muted: oklch(0.93 0.03 80);
   --muted-foreground: oklch(0.42 0.04 50);
