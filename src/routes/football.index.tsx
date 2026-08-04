@@ -6,7 +6,7 @@ import { MedallionFrame } from "@/components/brand/MedallionFrame";
 import { useLang, type Lang, type LocalizedString } from "@/lib/i18n";
 import { useFootballBookmarks } from "@/lib/footballBookmarks";
 import { theaterIdForFootballMatch } from "@/data/matchTheater";
-import flnTeamPhoto from "@/assets/fln-team-1958.jpg.asset.json";
+import flnIllustration from "@/assets/fln-team-illustration.png";
 import footballHero from "@/assets/football-hero-vitrine.jpg";
 import { pageMeta, headLang } from "@/lib/seo";
 import { PAGE_META } from "@/lib/pageMetaCopy";
@@ -144,7 +144,7 @@ function FootballHero({ lang }: { lang: Lang }) {
 
 
 
-        {/* Museum vitrine, photographed artifact installation */}
+        {/* Museum vitrine, interpretive illustration created for DZ Odyssey */}
         <div className="relative flex items-center justify-center animate-float-up">
           <MuseumVitrine lang={lang} />
         </div>
@@ -173,12 +173,23 @@ const VITRINE_CAPTION: VitrineCaption = {
   },
 };
 
+const VITRINE_ALT: LocalizedString = {
+  en: "Interpretive engraved illustration of a football team of the independence era, players standing and kneeling on a pitch with a ball at the centre, drawn in bronze and parchment tones with an Amazigh border.",
+  fr: "Illustration gravée interprétative d'une équipe de football de l'époque de l'indépendance, joueurs debout et accroupis sur un terrain avec un ballon au centre, dessinée dans des tons bronze et parchemin avec une bordure amazighe.",
+  ar: "رسم محفور تفسيري لفريق كرة قدم من زمن الاستقلال، لاعبون واقفون وجاثون على الملعب والكرة في الوسط، بألوان البرونز والرقّ وإطار أمازيغي.",
+};
+
+const VITRINE_LABEL: LocalizedString = {
+  en: "Interpretive illustration created for DZ Odyssey",
+  fr: "Illustration interprétative créée pour DZ Odyssey",
+  ar: "رسم تفسيري أُنشئ خصيصًا لدي زد أوديسي",
+};
+
 /**
- * MuseumVitrine — the historical FLN team photograph presented as the
- * permanent hero artifact of the Hall of Algerian Football. Preserved in
- * black & white with a subtle warm sepia wash, gentle vignette, and a
- * museum-style frame with soft shadow. No text overlays; the entire team
- * photograph is preserved (no cropping of heads or feet).
+ * MuseumVitrine — an interpretive illustration created for DZ Odyssey,
+ * evoking the FLN team of 1958 to 1962. It is an original museum-poster
+ * drawing, not an archival photograph, and is labelled as such on the page.
+ * No third-party crest, federation mark or competition branding appears.
  */
 function MuseumVitrine({ lang }: { lang: Lang }) {
   const caption = VITRINE_CAPTION;
@@ -186,7 +197,7 @@ function MuseumVitrine({ lang }: { lang: Lang }) {
   return (
     <figure
       className="relative w-full max-w-[440px] mx-auto"
-      aria-label="Historic photograph of the FLN football team"
+      aria-label={tt(VITRINE_LABEL, lang)}
     >
       {/* Ambient cabinet shadow */}
       <div
@@ -212,17 +223,13 @@ function MuseumVitrine({ lang }: { lang: Lang }) {
           }}
         >
           <img
-            src={flnTeamPhoto.url}
-            alt="Historic team photograph of the FLN football team, players standing and kneeling on a pitch with a ball at the centre."
-            width={900}
-            height={640}
+            src={flnIllustration}
+            alt={tt(VITRINE_ALT, lang)}
+            width={1200}
+            height={864}
             loading="eager"
             className="block w-full h-auto"
-            style={{
-              // B&W preserved, gentle restoration + subtle warm sepia (~8%)
-              filter:
-                "grayscale(1) sepia(0.08) contrast(1.08) brightness(1.02) saturate(1.05)",
-            }}
+            style={{ filter: "contrast(1.02) saturate(0.98)" }}
           />
           {/* Soft vignette around edges */}
           <div
@@ -258,6 +265,9 @@ function MuseumVitrine({ lang }: { lang: Lang }) {
         </div>
         <p className="mt-2 text-sm sm:text-base text-muted-foreground leading-relaxed max-w-[360px] mx-auto">
           {tt(caption.description, lang)}
+        </p>
+        <p className="mt-3 text-[11px] sm:text-xs italic text-muted-foreground/80 max-w-[360px] mx-auto">
+          {tt(VITRINE_LABEL, lang)}
         </p>
       </figcaption>
     </figure>

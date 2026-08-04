@@ -564,13 +564,13 @@ const COLLECTION: CollectionPlate[] = [
     src: mzabKsarPlan,
     alt: L("Sepia isometric drawing of a concentric ksar with a central minaret and outer walls.", "Dessin isométrique sépia d'un ksar concentrique avec minaret central et enceinte extérieure.", "رسمٌ إيزومتري بلون السبيا لقصرٍ متراكز بمئذنة مركزية وسور خارجي."),
     caption: L("Ksar plan · isometric study", "Plan du ksar · étude isométrique", "مخطّط القصر · دراسة إيزومترية"),
-    note: L("Museum diagram after Ravéreau (1981).", "Diagramme muséal d'après Ravéreau (1981).", "مخطّط متحفي مستوحى من رافيرو (1981)."),
+    note: L("Interpretive reconstruction created for DZ Odyssey after Ravéreau (1981). Not a surveyed architectural drawing.", "Reconstitution interprétative créée pour DZ Odyssey d'après Ravéreau (1981). Il ne s'agit pas d'un relevé architectural.", "إعادة بناء تفسيرية أُنشئت لدي زد أوديسي استنادًا إلى رافيرو (1981). وليست رفعًا معماريًا مساحيًا."),
   },
   {
     src: mzabHouse,
     alt: L("Sepia architectural cross-section of a traditional Mozabite house showing courtyard, chebek and thick walls.", "Coupe sépia d'une maison mozabite traditionnelle montrant patio, chebek et murs épais.", "مقطع معماري بلون السبيا لبيت مزابي تقليدي يُظهر الفناء والشبك والجدران السميكة."),
     caption: L("Ibadi house · sectional drawing", "Maison ibadite · coupe", "البيت الإباضي · مقطع"),
-    note: L("Museum drawing after Donnadieu (1986).", "Dessin muséal d'après Donnadieu (1986).", "رسم متحفيّ مستوحى من دونادييه (1986)."),
+    note: L("Interpretive reconstruction created for DZ Odyssey after Donnadieu (1986). Not a surveyed architectural drawing.", "Reconstitution interprétative créée pour DZ Odyssey d'après Donnadieu (1986). Il ne s'agit pas d'un relevé architectural.", "إعادة بناء تفسيرية أُنشئت لدي زد أوديسي استنادًا إلى دونادييه (1986). وليست رفعًا معماريًا مساحيًا."),
   },
   {
     src: mzabWater,
@@ -768,6 +768,16 @@ function MzabExhibit() {
             height={1008}
           />
         </div>
+        <p className="mt-4 text-xs sm:text-sm italic text-muted-foreground max-w-3xl">
+          {tr(
+            L(
+              "Interpretive reconstruction created for DZ Odyssey. Not a surveyed architectural drawing.",
+              "Reconstitution interprétative créée pour DZ Odyssey. Il ne s'agit pas d'un relevé architectural.",
+              "إعادة بناء تفسيرية أُنشئت خصيصًا لدي زد أوديسي. وليست رفعًا معماريًا مساحيًا.",
+            ),
+            lang,
+          )}
+        </p>
         <div className="mt-12">
           <NumberedGrid items={ARCHITECTURE.principles} columns={2} />
         </div>

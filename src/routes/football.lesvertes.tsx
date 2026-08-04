@@ -3,7 +3,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { Header } from "@/components/Header";
 import { MedallionFrame } from "@/components/brand/MedallionFrame";
 import { useLang, type Lang, type LocalizedString } from "@/lib/i18n";
-import lesVertesHero from "@/assets/lesvertes-hero.jpg.asset.json";
+import lesVertesHero from "@/assets/lesvertes-illustration.png";
 import { pageMeta, headLang } from "@/lib/seo";
 import { PAGE_META } from "@/lib/pageMetaCopy";
 import { ExhibitProvenance } from "@/components/provenance/ExhibitProvenance";
@@ -29,7 +29,7 @@ export const Route = createFileRoute("/football/lesvertes")({
       lang: headLang(match),
       path: "/football/lesvertes",
       ...PAGE_META["/football/lesvertes"],
-      image: lesVertesHero.url
+      image: lesVertesHero
     }),
   component: LesVertesExhibit,
 });
@@ -98,8 +98,12 @@ function Hero({ lang }: { lang: Lang }) {
             }}
           >
             <img
-              src={lesVertesHero.url}
-              alt="Algeria's women's national football team in green and white, standing together on a pitch."
+              src={lesVertesHero}
+              alt={{
+                en: "Interpretive engraved illustration of Algeria's women's national football team, stylized players in green and white standing together on a pitch, drawn in parchment and bronze tones with an Amazigh border.",
+                fr: "Illustration gravée interprétative de la sélection féminine algérienne, joueuses stylisées en vert et blanc réunies sur un terrain, dessinée dans des tons parchemin et bronze avec une bordure amazighe.",
+                ar: "رسم محفور تفسيري للمنتخب النسوي الجزائري، لاعبات بأسلوب مبسّط بالأخضر والأبيض يقفن معًا على الملعب، بألوان الرقّ والبرونز وإطار أمازيغي.",
+              }[lang]}
               width={1600}
               height={1000}
               loading="eager"
@@ -117,10 +121,17 @@ function Hero({ lang }: { lang: Lang }) {
           </div>
           <figcaption className="mt-3 text-xs text-muted-foreground text-center italic">
             {{
-              en: "Les Vertes · a museum portrait of Algeria's women's national team.",
-              fr: "Les Vertes · portrait muséal de la sélection féminine algérienne.",
-              ar: "الخضراوات · صورة متحفية للمنتخب النسوي الجزائري.",
+              en: "Les Vertes · a museum tribute to Algeria's women's national team.",
+              fr: "Les Vertes · hommage muséal à la sélection féminine algérienne.",
+              ar: "الخضراوات · تحية متحفية للمنتخب النسوي الجزائري.",
             }[lang]}
+            <span className="block mt-1 not-italic text-muted-foreground/80">
+              {{
+                en: "Interpretive illustration created for DZ Odyssey",
+                fr: "Illustration interprétative créée pour DZ Odyssey",
+                ar: "رسم تفسيري أُنشئ خصيصًا لدي زد أوديسي",
+              }[lang]}
+            </span>
           </figcaption>
         </figure>
       </div>

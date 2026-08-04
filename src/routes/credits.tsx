@@ -103,6 +103,11 @@ const SECTIONS: InfoSection[] = [
     },
     paras: [
       {
+        en: "The museum publishes a documentary photograph only when its provenance and usage rights are documented. Until that record exists, the item is not shown. Interpretive illustrations and reconstructions support the storytelling in the galleries and are never presented as archival evidence.",
+        fr: "Le musée ne publie une photographie documentaire que lorsque sa provenance et ses droits d'usage sont documentés. Tant que ce dossier n'existe pas, l'élément n'est pas montré. Les illustrations et reconstitutions interprétatives accompagnent le récit des salles et ne sont jamais présentées comme des preuves d'archives.",
+        ar: "لا ينشر المتحف صورة وثائقية إلا إذا كان مصدرها وحقوق استخدامها موثّقين. وما دام ذلك السجل غير متوفر، فلا يُعرض العنصر. أما الرسوم التفسيرية وعمليات إعادة البناء فتخدم السرد داخل القاعات ولا تُقدَّم أبدًا بوصفها أدلة أرشيفية.",
+      },
+      {
         en: "Where the museum shows a photograph, the intention is to credit it to its photographer or collection. Credits are added as each item's provenance is confirmed, and an item is corrected or withdrawn if its attribution cannot be established.",
         fr: "Lorsque le musée présente une photographie, l'intention est de la créditer à son photographe ou à son fonds. Les crédits sont ajoutés à mesure que la provenance de chaque élément est confirmée, et un élément est corrigé ou retiré si son attribution ne peut être établie.",
         ar: "حين يعرض المتحف صورة فوتوغرافية، فالغاية أن تُنسب إلى مصوّرها أو إلى المجموعة التي تحفظها. وتُضاف الاعتمادات كلما تأكّد مصدر العنصر، ويُصحَّح العنصر أو يُسحب إذا تعذّر إثبات نسبته.",

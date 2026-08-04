@@ -28,23 +28,24 @@
 | Public domain | 0 | No asset carries public-domain evidence |
 | Licensed | 0 | No licence document is held for any asset |
 | Used with permission | 0 | No permission record is held for any asset |
-| **Unknown, requires review** | **2** | Both are photographic, both are on public routes |
+| **Retained internally, blocked from public use** | **2** | Both photographic. Removed from every public route on 2026-08-04. |
 
-No asset in the museum currently has a written licence, permission, or public-domain determination on file. The two photographic assets are the only ones whose subject matter makes that gap a launch risk.
+No asset in the museum currently has a written licence, permission, or public-domain determination on file. The two photographic assets were the only ones whose subject matter made that gap a launch risk. Both have now been withdrawn from public display and replaced with original interpretive illustrations, so **no publicly used asset has unknown rights status**.
 
 ---
 
-## 2. Unknown-risk assets (complete list)
+## 2. Blocked assets (retained internally, removed from public use)
 
 ### U-1 · `src/assets/fln-team-1958.jpg.asset.json`
 
 | Field | Value |
 | --- | --- |
 | Storage | Remote, Lovable CDN pointer (`/__l5e/assets-v1/...`) |
-| Public routes | `/football` |
-| Component | `MuseumVitrine` in `src/routes/football.index.tsx` (hero artifact) |
+| Public routes | **None.** Withdrawn from `/football`. |
+| Replacement | `src/assets/fln-team-illustration.png`, an interpretive illustration created for DZ Odyssey, labelled as such in the vitrine caption. |
+| Component | Formerly `MuseumVitrine` in `src/routes/football.index.tsx`. No component references the file. |
 | Existing credit on page | Caption plaque: "FLN Team, 1958–1962" plus a descriptive line. **No photographer, no collection, no archive reference.** |
-| Rights status | **Unknown** |
+| Rights status | **Retained internally, blocked from public use pending documented rights.** |
 | Risk class | Archival photograph of identifiable people, historical/press origin |
 | Why flagged | A 1958 team photograph is almost certainly a third-party press or archival image. It is presented as the permanent hero artifact of the Hall of Algerian Football, at large size, with a museum frame that implies institutional provenance. |
 | Needed before launch | Origin of the file, rights holder or collection, and either a licence, a permission, or a documented public-domain determination under the applicable jurisdiction. |
@@ -54,15 +55,16 @@ No asset in the museum currently has a written licence, permission, or public-do
 | Field | Value |
 | --- | --- |
 | Storage | Remote, Lovable CDN pointer |
-| Public routes | `/football/lesvertes` |
-| Component | Hero figure in `src/routes/football.lesvertes.tsx` |
+| Public routes | **None.** Withdrawn from `/football/lesvertes`, including the social preview image. |
+| Replacement | `src/assets/lesvertes-illustration.png`, an interpretive illustration created for DZ Odyssey, labelled as such under the hero. |
+| Component | Formerly the hero figure in `src/routes/football.lesvertes.tsx`. No component references the file. |
 | Existing credit on page | Caption: "Les Vertes, a museum portrait of Algeria's women's national team." **No photographer, no agency, no date.** |
-| Rights status | **Unknown** |
+| Rights status | **Retained internally, blocked from public use pending documented rights.** |
 | Risk class | Contemporary photograph of identifiable living athletes; likely sports-agency or federation origin |
 | Why flagged | Contemporary sports photography is routinely agency-owned and rights-managed. It also depicts identifiable living people, which raises image-rights questions separate from copyright. Supplied to the project as an attachment with no accompanying source. |
 | Needed before launch | Photographer or agency, date and event, licence terms, and confirmation that editorial museum use is covered. |
 
-Both assets are the **highest-risk items in the museum** and are the only two that should block launch on rights grounds.
+Both files are retained in the repository, unreferenced and unbundled, under the status "Retained internally, blocked from public use pending documented rights." They no longer block launch. They may return to public display only once a licence, permission, or documented public-domain determination is on file.
 
 ---
 
@@ -161,3 +163,48 @@ The public `/credits` page publishes **only** what is verifiable without externa
 - how a rights holder can contact the museum.
 
 It does not publish filenames, internal classifications, uncertainty, review notes, or anything about U-1 and U-2. It makes no public-domain, licence, or ownership claim about any asset for which no evidence is held.
+
+
+---
+
+## 9. Machine-readable media classification (added 2026-08-04)
+
+Every media file is now classified once in `src/data/mediaRegistry.ts`, the single
+source of truth. There is no second metadata system: the optional `mediaType`
+field on `FeaturedExhibit` re-uses the same `MediaType` union exported by the
+registry, and the existing `illustrative` flag remains the visitor-facing
+display cue.
+
+`MediaType` vocabulary:
+
+| Value | Meaning |
+| --- | --- |
+| `decorative-artwork` | Ornamental artwork with no documentary claim |
+| `interpretive-illustration` | Original artwork evoking a place, period, team or scene |
+| `interpretive-reconstruction` | Original drawing reconstructing a structure or system, not a survey |
+| `brand-mark` | First-party DZ Odyssey mark, emblem or identity asset |
+| `documentary-media` | Real photograph or archival document with documented provenance |
+
+`MediaUse` records publication state: `public`, `dormant`, or `blocked`.
+
+- The 33 previously undeclared in-project assets now carry an explicit
+  `mediaType`, alongside the 9 already declared illustrative.
+- `mzab-ksar-plan.jpg` and `mzab-house-diagram.jpg` are classified
+  `interpretive-reconstruction`. The public wording on `/mzab`, next to the
+  drawings and in their collection plates, reads: "Interpretive reconstruction
+  created for DZ Odyssey. Not a surveyed architectural drawing." It is
+  translated into French and Arabic.
+- The seven dormant files are retained, classified, and marked `use: "dormant"`.
+  None is referenced by a public route.
+- Registry entries are data only. No repetitive badge is rendered on decorative
+  imagery; disclosure appears on exhibit heroes, the reconstructions, and the
+  public Credits page.
+
+### Public-route rights status
+
+A repository-wide search for `fln-team-1958` and `lesvertes-hero` returns matches
+only inside the two retained `.asset.json` pointer files and inside this internal
+document. No route, component, metadata block, social image, or preload references
+them, and neither file appears in the production build output.
+
+**Zero publicly used assets have unknown rights status.**
