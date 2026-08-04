@@ -165,11 +165,45 @@ function Marker({
           r={size * 2.5}
           fill="none"
           stroke={color}
-          strokeWidth="0.3"
+          strokeWidth={selected ? 0.5 : 0.3}
           strokeDasharray="0.9 0.9"
-          opacity={clickable ? 0.9 : 0.35}
+          opacity={selected ? 1 : clickable ? 0.9 : 0.35}
         />
       )}
+      {selected && (
+        <>
+          <circle
+            cx={marker.x}
+            cy={marker.y}
+            r={size * 3.4}
+            fill={color}
+            opacity="0.16"
+          >
+            <animate
+              attributeName="r"
+              values={`${size * 2.8};${size * 4.4};${size * 2.8}`}
+              dur="2.2s"
+              repeatCount="indefinite"
+            />
+            <animate
+              attributeName="opacity"
+              values="0.24;0.04;0.24"
+              dur="2.2s"
+              repeatCount="indefinite"
+            />
+          </circle>
+          <circle
+            cx={marker.x}
+            cy={marker.y}
+            r={size * 3.4}
+            fill="none"
+            stroke={color}
+            strokeWidth="0.28"
+            opacity="0.85"
+          />
+        </>
+      )}
+
       {isCapital ? (
         <Star cx={marker.x} cy={marker.y} r={size} fill={color} />
       ) : isBattle ? (
