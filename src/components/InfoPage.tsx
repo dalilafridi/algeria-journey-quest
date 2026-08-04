@@ -32,7 +32,7 @@ export function InfoPage({
   return (
     <div className="min-h-dvh" dir={dir}>
       <Header />
-      <main className="mx-auto max-w-3xl px-4 py-10 safe-pb">
+      <main id="main" tabIndex={-1} className="mx-auto max-w-3xl px-4 py-10 safe-pb">
         <p className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">
           {kicker[lang]}
         </p>

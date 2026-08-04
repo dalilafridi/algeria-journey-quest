@@ -53,7 +53,7 @@ function CinemaPage() {
   return (
     <div className="min-h-dvh">
       <Header />
-      <main className="max-w-5xl mx-auto px-4 py-8">
+      <main id="main" tabIndex={-1} className="max-w-5xl mx-auto px-4 py-8">
         <nav className="text-xs text-muted-foreground mb-4">
           <Link to="/words" className="hover:text-foreground transition-colors">
             {lang === "fr" ? "Culture" : lang === "ar" ? "الثقافة" : "Culture"}

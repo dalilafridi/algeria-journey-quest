@@ -107,7 +107,7 @@ function Timeline() {
   return (
     <div className="min-h-dvh">
       <Header />
-      <main className="max-w-3xl mx-auto px-4 py-8 sm:py-10">
+      <main id="main" tabIndex={-1} className="max-w-3xl mx-auto px-4 py-8 sm:py-10">
         {/* Top section */}
         <div className="text-center mb-6 animate-cinematic-in">
           <div className="inline-flex items-center gap-2 rounded-full border border-border bg-card/70 backdrop-blur px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-muted-foreground">

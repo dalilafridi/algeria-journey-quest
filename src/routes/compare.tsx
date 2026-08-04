@@ -95,7 +95,7 @@ function ComparePage() {
       <Header />
       <PageBackdrop />
 
-      <main className="relative max-w-6xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
+      <main id="main" tabIndex={-1} className="relative max-w-6xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
         <header className="text-center mb-8">
           <div
             className="inline-flex items-center gap-2 rounded-full border border-amber-300/40 bg-amber-50/40 px-4 py-1 text-xs uppercase tracking-[0.28em] text-amber-800 dark:text-amber-200"

@@ -155,7 +155,7 @@ function PassportPage() {
         <Header />
       </div>
 
-      <main className="max-w-5xl mx-auto px-3 sm:px-6 py-6 sm:py-10">
+      <main id="main" tabIndex={-1} className="max-w-5xl mx-auto px-3 sm:px-6 py-6 sm:py-10">
         {/* Toolbar */}
         <div className="no-print mb-5 flex flex-wrap items-center justify-between gap-3">
           <div>

@@ -159,7 +159,7 @@ function RegionExplorerPage() {
   return (
     <div className="min-h-dvh">
       <Header />
-      <main className="max-w-3xl mx-auto px-4 py-8 safe-pb">
+      <main id="main" tabIndex={-1} className="max-w-3xl mx-auto px-4 py-8 safe-pb">
         <div id="region-explorer-top" />
         <h1 className="text-2xl sm:text-3xl font-extrabold">{COPY.title[lang]}</h1>
         <p className="text-muted-foreground mt-1 text-sm sm:text-base">{COPY.subtitle[lang]}</p>

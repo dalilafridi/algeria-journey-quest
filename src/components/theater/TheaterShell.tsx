@@ -72,7 +72,7 @@ export function TheaterShell({ children }: { children: ReactNode }) {
         </Link>
       </header>
 
-      <main className="relative z-10 pb-16">{children}</main>
+      <main id="main" tabIndex={-1} className="relative z-10 pb-16">{children}</main>
     </div>
   );
 }

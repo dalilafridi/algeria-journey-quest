@@ -316,6 +316,7 @@ function ChroniclePage() {
 
       <div className="chronicle-shell relative">
         <Header />
+        <main id="main" tabIndex={-1}>
 
         {/* Hero */}
         <section className="max-w-6xl mx-auto px-4 pt-8 sm:pt-12 pb-6 text-center">
@@ -709,6 +710,7 @@ function ChroniclePage() {
                 : "Drag, scroll, or use the arrows"}
           </p>
         </section>
+        </main>
       </div>
     </div>
   );

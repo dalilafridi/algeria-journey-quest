@@ -489,6 +489,7 @@ function LesVertesExhibit() {
   return (
     <div className="min-h-dvh bg-background">
       <Header />
+      <main id="main" tabIndex={-1}>
       <Hero lang={lang} />
 
       {LES_VERTES_PUBLISHED["beginning"] && <BeginningSection lang={lang} />}
@@ -512,6 +513,7 @@ function LesVertesExhibit() {
         </p>
       </footer>
       <ExhibitProvenance exhibitId="football-lesvertes" />
+      </main>
     </div>
   );
 }

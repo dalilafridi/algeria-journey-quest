@@ -62,27 +62,27 @@ export const Route = createFileRoute("/journeys/$journeyId")({
   notFoundComponent: () => (
     <div className="min-h-dvh bg-parchment">
       <Header />
-      <div className="flex items-center justify-center py-24">
+      <main id="main" tabIndex={-1} className="flex items-center justify-center py-24">
         <div className="text-center">
-          <p className="text-xl font-bold">Journey not found</p>
+          <h1 className="text-xl font-bold">Journey not found</h1>
           <Link to="/" className="text-primary underline">
             Back to the museum
           </Link>
         </div>
-      </div>
+      </main>
     </div>
   ),
   errorComponent: () => (
     <div className="min-h-dvh bg-parchment">
       <Header />
-      <div className="flex items-center justify-center py-24">
+      <main id="main" tabIndex={-1} className="flex items-center justify-center py-24">
         <div className="text-center">
-          <p className="text-xl font-bold">Something went wrong</p>
+          <h1 className="text-xl font-bold">Something went wrong</h1>
           <Link to="/" className="text-primary underline">
             Back to the museum
           </Link>
         </div>
-      </div>
+      </main>
     </div>
   ),
   component: JourneyDetail,

@@ -30,7 +30,7 @@ function LessonsPage() {
   return (
     <div className="min-h-dvh">
       <Header />
-      <main className="max-w-3xl mx-auto px-4 py-8 safe-pb">
+      <main id="main" tabIndex={-1} className="max-w-3xl mx-auto px-4 py-8 safe-pb">
         <div className="flex items-start justify-between gap-3 flex-wrap">
           <div>
             <h1 className="text-2xl sm:text-3xl font-extrabold">{COPY.title[lang]}</h1>

@@ -145,7 +145,7 @@ function Home() {
   return (
     <div className="min-h-dvh">
       <Header />
-      <main>
+      <main id="main" tabIndex={-1}>
         {/* ========= HERO, Cinematic environmental entrance ========= */}
         <section className="hero-environment" aria-label={copy.title[lang]}>
           <img
@@ -357,11 +357,10 @@ function Home() {
             </Link>
           </div>
         </section>
+        <section className="border-t border-border bg-card/70 px-4 py-8 text-center">
+          <p className="mx-auto max-w-2xl text-sm text-muted-foreground">{copy.footer[lang]}</p>
+        </section>
       </main>
-
-      <footer className="border-t border-border bg-card/70 px-4 py-8 text-center">
-        <p className="mx-auto max-w-2xl text-sm text-muted-foreground">{copy.footer[lang]}</p>
-      </footer>
     </div>
   );
 }

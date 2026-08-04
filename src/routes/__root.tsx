@@ -25,7 +25,7 @@ import { getLang, tu } from "@/lib/i18n";
 function NotFoundComponent() {
   const lang = getLang();
   return (
-    <div className="flex min-h-dvh items-center justify-center bg-background px-4">
+    <main id="main" tabIndex={-1} className="flex min-h-dvh items-center justify-center bg-background px-4">
       <div className="max-w-md text-center">
         <h1 className="text-7xl font-bold text-foreground">404</h1>
         <h2 className="mt-4 text-xl font-semibold text-foreground">{tu("notFoundTitle", lang)}</h2>
@@ -39,7 +39,7 @@ function NotFoundComponent() {
           </Link>
         </div>
       </div>
-    </div>
+    </main>
   );
 }
 
@@ -131,9 +131,7 @@ function RootComponent() {
     return (
       <AudioGuideProvider>
         <LangSync />
-        <div id="main" tabIndex={-1}>
-          <Outlet />
-        </div>
+        <Outlet />
         <Sonner />
       </AudioGuideProvider>
     );
@@ -146,9 +144,7 @@ function RootComponent() {
       <SplashScreen />
       <SignatureIntro />
       <ContinueJourneyCard />
-      <div id="main" tabIndex={-1}>
-        <Outlet />
-      </div>
+      <Outlet />
       <SiteFooter />
       <WelcomeJourney />
       <JourneyHud />

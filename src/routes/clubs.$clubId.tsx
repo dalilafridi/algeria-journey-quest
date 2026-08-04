@@ -172,7 +172,7 @@ function FullMuseumView({ club, lang }: { club: ClubMuseum; lang: Lang }) {
         </div>
       </nav>
 
-      <main className="max-w-6xl mx-auto px-4 sm:px-6 py-12 space-y-16">
+      <main id="main" tabIndex={-1} className="max-w-6xl mx-auto px-4 sm:px-6 py-12 space-y-16">
         {club.origins && <OriginsSection club={club} lang={lang} />}
         {club.timeline?.length ? <TimelineSection club={club} lang={lang} /> : null}
         {club.trophies?.length ? <TrophySection club={club} lang={lang} /> : null}

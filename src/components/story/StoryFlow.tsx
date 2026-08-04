@@ -18,6 +18,8 @@ export type StoryScene = {
 
 export type StoryFlowProps = {
   scenes: StoryScene[];
+  /** Heading level used for scene titles, so pages keep a valid heading order. */
+  headingLevel?: 2 | 3;
   /** CSS color (var or oklch). Used for a soft gradient background and accents. */
   accent?: string;
   /** Optional global title shown above the scene (e.g. topic name). */
@@ -48,7 +50,8 @@ const slugify = (value: string) =>
  * Pacing: one scene at a time, soft fade-in, narrator voice, tiny progress dots.
  * Lightweight: pure CSS transitions, no media. Works in EN / FR / AR (RTL-safe).
  */
-export function StoryFlow({ scenes, accent = "var(--secondary)", title, continuityTitle, defaultGuide }: StoryFlowProps) {
+export function StoryFlow({ scenes, accent = "var(--secondary)", title, continuityTitle, defaultGuide, headingLevel = 3 }: StoryFlowProps) {
+  const SceneHeading = (headingLevel === 2 ? "h2" : "h3") as "h2" | "h3";
   const lang = useLang();
   const isAr = lang === "ar";
   const [step, setStep] = useState(0);
@@ -147,9 +150,9 @@ export function StoryFlow({ scenes, accent = "var(--secondary)", title, continui
         )}
 
         {scene.title && (
-          <h3 className="text-xl sm:text-2xl font-extrabold tracking-tight leading-snug">
+          <SceneHeading className="text-xl sm:text-2xl font-extrabold tracking-tight leading-snug">
             {t(scene.title, lang)}
-          </h3>
+          </SceneHeading>
         )}
 
         <div className={(scene.title ? "mt-3 " : "") + "space-y-3 max-w-prose text-base sm:text-[17px] leading-relaxed text-foreground/90"}>
