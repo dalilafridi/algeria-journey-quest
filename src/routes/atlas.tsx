@@ -594,7 +594,7 @@ function AtlasPage() {
               <div className="relative animate-float-up">
                 <button
                   type="button"
-                  onClick={() => setHighlightId(null)}
+                  onClick={() => selectHighlight(null)}
                   aria-label={t(HIGHLIGHT_COPY.close, lang)}
                   className="absolute -top-2 end-0 z-10 inline-flex h-8 w-8 items-center justify-center rounded-full border border-border bg-card text-muted-foreground transition hover:border-primary/40 hover:text-foreground"
                 >
