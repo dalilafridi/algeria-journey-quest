@@ -1,4 +1,5 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
+import { useRouter } from "@tanstack/react-router";
 import { applyDir, getLang, tu, useLang } from "@/lib/i18n";
 
 /**
