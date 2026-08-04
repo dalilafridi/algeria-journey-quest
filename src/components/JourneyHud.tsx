@@ -130,7 +130,7 @@ export function JourneyHud() {
                         "text-[11px] font-semibold whitespace-nowrap transition-colors " +
                         (isActive
                           ? "text-foreground"
-                          : "text-muted-foreground/70 hidden sm:inline")
+                          : "text-muted-foreground hidden sm:inline")
                       }
                     >
                       {s.label[lang]}
