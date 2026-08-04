@@ -7,6 +7,7 @@ import { AmazighSymbol } from "@/components/brand/AmazighSymbol";
 import { CollectionEmblem } from "@/components/figures/CollectionEmblem";
 import { CULTURE_TOPICS } from "@/data/cultureTopics";
 import { pageMeta, headLang } from "@/lib/seo";
+import { PAGE_META } from "@/lib/pageMetaCopy";
 
 const L = (en: string, fr: string, ar: string): Localized<string> => ({ en, fr, ar });
 
@@ -393,8 +394,7 @@ export const Route = createFileRoute("/culture/")({
     pageMeta({
       lang: headLang(match),
       path: "/culture",
-      title: "Culture, A Living Algeria | DZ Odyssey",
-      description: "Wander through Algerian identity, traditions, music, cuisine, words, architecture and the long memory of Amazigh heritage."
+      ...PAGE_META["/culture"]
     }),
   component: CulturePage,
 });

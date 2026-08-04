@@ -17,6 +17,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { Header } from "@/components/Header";
 import { useLang, type Lang, type LocalizedString } from "@/lib/i18n";
 import { pageMeta, headLang } from "@/lib/seo";
+import { PAGE_META } from "@/lib/pageMetaCopy";
 import { ExhibitProvenance } from "@/components/provenance/ExhibitProvenance";
 import {
   Section,
@@ -50,9 +51,7 @@ export const Route = createFileRoute("/mzab")({
     pageMeta({
       lang: headLang(match),
       path: "/mzab",
-      title: "The M'Zab Valley, Cities Against the Sun · DZ Odyssey",
-      description:
-        "How an Ibadi civilization built five sustainable cities in one of the harshest environments on Earth. A flagship exhibit of DZ Odyssey.",
+      ...PAGE_META["/mzab"],
       image: mzabHero,
       type: "article",
     }),

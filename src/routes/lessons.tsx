@@ -5,14 +5,14 @@ import { ExplainToggle } from "@/components/ExplainToggle";
 import { lessons } from "@/data/lessons";
 import { useLang } from "@/lib/i18n";
 import { pageMeta, headLang } from "@/lib/seo";
+import { PAGE_META } from "@/lib/pageMetaCopy";
 
 export const Route = createFileRoute("/lessons")({
   head: ({ match }) =>
     pageMeta({
       lang: headLang(match),
       path: "/lessons",
-      title: "1-Minute Lessons, DZ Odyssey",
-      description: "Quick, focused lessons on Algerian history, read a topic in about a minute."
+      ...PAGE_META["/lessons"]
     }),
   component: LessonsPage,
 });

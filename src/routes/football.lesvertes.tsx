@@ -5,6 +5,7 @@ import { MedallionFrame } from "@/components/brand/MedallionFrame";
 import { useLang, type Lang, type LocalizedString } from "@/lib/i18n";
 import lesVertesHero from "@/assets/lesvertes-hero.jpg.asset.json";
 import { pageMeta, headLang } from "@/lib/seo";
+import { PAGE_META } from "@/lib/pageMetaCopy";
 import { ExhibitProvenance } from "@/components/provenance/ExhibitProvenance";
 import {
   LES_VERTES_AFRICAN_JOURNEY,
@@ -27,8 +28,7 @@ export const Route = createFileRoute("/football/lesvertes")({
     pageMeta({
       lang: headLang(match),
       path: "/football/lesvertes",
-      title: "Les Vertes, Algeria's Women's National Team · DZ Odyssey",
-      description: "Football, resilience and a new generation representing Algeria, a permanent exhibit in the Hall of Algerian Football.",
+      ...PAGE_META["/football/lesvertes"],
       image: lesVertesHero.url
     }),
   component: LesVertesExhibit,

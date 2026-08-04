@@ -6,6 +6,7 @@ import { figures, type Figure } from "@/data/figures";
 import { eras, type Era } from "@/data/eras";
 import { mapRegions, type MapRegion } from "@/data/mapRegions";
 import { pageMeta, headLang } from "@/lib/seo";
+import { PAGE_META } from "@/lib/pageMetaCopy";
 
 type Kind = "figures" | "eras" | "regions";
 
@@ -24,8 +25,7 @@ export const Route = createFileRoute("/compare")({
     pageMeta({
       lang: headLang(match),
       path: "/compare",
-      title: "Compare Mode, DZ Odyssey",
-      description: "Place two figures, eras or regions side by side and study their timeline, geography, achievements, legacy and historical significance."
+      ...PAGE_META["/compare"]
     }),
   component: ComparePage,
 });

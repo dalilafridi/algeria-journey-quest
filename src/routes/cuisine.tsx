@@ -13,14 +13,14 @@ import { ExhibitProvenance } from "@/components/provenance/ExhibitProvenance";
 import { getCuisineExploreGroups } from "@/lib/exploreGroups";
 import cuisineHero from "@/assets/cuisine-hero.jpg";
 import { pageMeta, headLang } from "@/lib/seo";
+import { PAGE_META } from "@/lib/pageMetaCopy";
 
 export const Route = createFileRoute("/cuisine")({
   head: ({ match }) =>
     pageMeta({
       lang: headLang(match),
       path: "/cuisine",
-      title: "Cuisine of Algeria, DZ Odyssey",
-      description: "A cinematic cultural journey through Algerian cuisine, couscous, chorba, rechta, dates and bread, from Kabylie to the Sahara.",
+      ...PAGE_META["/cuisine"],
       image: cuisineHero
     }),
   component: CuisinePage,

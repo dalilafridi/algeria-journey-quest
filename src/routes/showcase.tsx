@@ -3,14 +3,14 @@ import { useCallback, useEffect, useMemo, useState } from "react";
 import { useLang, t, type LocalizedString, type Lang } from "@/lib/i18n";
 import { setShowcase } from "@/lib/showcase";
 import { pageMeta, headLang } from "@/lib/seo";
+import { PAGE_META } from "@/lib/pageMetaCopy";
 
 export const Route = createFileRoute("/showcase")({
   head: ({ match }) =>
     pageMeta({
       lang: headLang(match),
       path: "/showcase",
-      title: "Showcase, DZ Odyssey",
-      description: "Step into a curated, museum-quality walkthrough of 2,000+ years of Algerian memory."
+      ...PAGE_META["/showcase"]
     }),
   component: ShowcasePage,
 });

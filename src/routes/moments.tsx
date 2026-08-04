@@ -18,6 +18,7 @@ import {
 import { StoryFlow } from "@/components/story/StoryFlow";
 import { TAFSUT_SCENES, DECADE_SCENES, EDUCATION_SCENES, INDEPENDENCE_WAR_SCENES } from "@/data/storyScenes";
 import { pageMeta, headLang } from "@/lib/seo";
+import { PAGE_META } from "@/lib/pageMetaCopy";
 
 // ============================================================
 // Route
@@ -27,8 +28,7 @@ export const Route = createFileRoute("/moments")({
     pageMeta({
       lang: headLang(match),
       path: "/moments",
-      title: "Moments That Shaped Algeria, DZ Odyssey",
-      description: "Pivotal chapters of modern Algerian history, told with care for young learners."
+      ...PAGE_META["/moments"]
     }),
   component: MomentsPage,
 });

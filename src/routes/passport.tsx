@@ -14,14 +14,14 @@ import { eras } from "@/data/eras";
 import { mapRegions } from "@/data/mapRegions";
 import { figures } from "@/data/figures";
 import { pageMeta, headLang } from "@/lib/seo";
+import { PAGE_META } from "@/lib/pageMetaCopy";
 
 export const Route = createFileRoute("/passport")({
   head: ({ match }) =>
     pageMeta({
       lang: headLang(match),
       path: "/passport",
-      title: "Visitor Passport, DZ Odyssey",
-      description: "Your personal DZ Odyssey museum passport, track visits, collect stamps, and export your journey.",
+      ...PAGE_META["/passport"],
       noindex: true
     }),
   component: PassportPage,

@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { InfoPage, InfoPlaque, type InfoSection } from "@/components/InfoPage";
 import { useLang, t as tr, type Lang } from "@/lib/i18n";
 import { pageMeta, headLang } from "@/lib/seo";
+import { PAGE_META } from "@/lib/pageMetaCopy";
 import { SOURCES } from "@/data/provenance/sources";
 import type { SourceCategory } from "@/lib/provenance";
 import { PUBLIC_CONTACT_EMAIL, hasPublicContact } from "@/lib/siteContact";
@@ -11,9 +12,7 @@ export const Route = createFileRoute("/sources")({
     pageMeta({
       lang: headLang(match),
       path: "/sources",
-      title: "Sources & Editorial Method, DZ Odyssey",
-      description:
-        "How DZ Odyssey researches, cites and reviews its exhibits: source hierarchy, citation standards, disputed interpretations, translation review and corrections policy.",
+      ...PAGE_META["/sources"],
     }),
   component: SourcesPage,
 });

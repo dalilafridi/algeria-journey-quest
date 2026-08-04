@@ -19,14 +19,14 @@ import {
 import { t, useLang, type Lang } from "@/lib/i18n";
 import { saveJourneyPlace } from "@/lib/continuity";
 import { pageMeta, headLang } from "@/lib/seo";
+import { PAGE_META } from "@/lib/pageMetaCopy";
 
 export const Route = createFileRoute("/words")({
   head: ({ match }) =>
     pageMeta({
       lang: headLang(match),
       path: "/words",
-      title: "Words That Shaped History, DZ Odyssey",
-      description: "Quotes, verses and song lines that shaped Algerian identity, from Kassaman to Mammeri, Aït Menguellet, Matoub and Idir."
+      ...PAGE_META["/words"]
     }),
   component: WordsPage,
 });

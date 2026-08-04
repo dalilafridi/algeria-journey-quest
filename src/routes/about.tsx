@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { InfoPage, InfoPlaque, type InfoSection } from "@/components/InfoPage";
 import { useLang } from "@/lib/i18n";
 import { pageMeta, headLang } from "@/lib/seo";
+import { PAGE_META } from "@/lib/pageMetaCopy";
 import { PUBLIC_CONTACT_EMAIL, hasPublicContact } from "@/lib/siteContact";
 
 export const Route = createFileRoute("/about")({
@@ -9,9 +10,7 @@ export const Route = createFileRoute("/about")({
     pageMeta({
       lang: headLang(match),
       path: "/about",
-      title: "About DZ Odyssey, an independent digital museum of Algeria",
-      description:
-        "What DZ Odyssey is, who it is for, and how it approaches historical accuracy, cultural respect, visible sourcing and multilingual access.",
+      ...PAGE_META["/about"],
     }),
   component: AboutPage,
 });

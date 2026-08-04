@@ -15,6 +15,7 @@ import { t, useLang, type LocalizedString } from "@/lib/i18n";
 import { saveJourneyPlace } from "@/lib/continuity";
 import algeriaMap from "@/assets/algeria-map.png";
 import { pageMeta, headLang } from "@/lib/seo";
+import { PAGE_META } from "@/lib/pageMetaCopy";
 
 /** Map camera: [minX, minY, width, height] inside the 100x100 atlas space. */
 type ViewBox = [number, number, number, number];
@@ -78,8 +79,7 @@ export const Route = createFileRoute("/atlas")({
     pageMeta({
       lang: headLang(match),
       path: "/atlas",
-      title: "Historical Atlas of Algeria, DZ Odyssey",
-      description: "A hand-illustrated atlas of Algeria across the centuries, regions, periods and the people who shaped them.",
+      ...PAGE_META["/atlas"],
       image: algeriaMap
     }),
   component: AtlasPage,

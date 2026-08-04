@@ -23,6 +23,7 @@ import { SignatureJourneys } from "@/components/journeys/SignatureJourneys";
 import { t, tu, useLang, type Lang } from "@/lib/i18n";
 import { saveJourneyPlace } from "@/lib/continuity";
 import { pageMeta, headLang } from "@/lib/seo";
+import { PAGE_META } from "@/lib/pageMetaCopy";
 
 
 export const Route = createFileRoute("/figures/")({
@@ -30,8 +31,7 @@ export const Route = createFileRoute("/figures/")({
     pageMeta({
       lang: headLang(match),
       path: "/figures",
-      title: "Hall of Legends, Discover the People Who Shaped Algeria | DZ Odyssey",
-      description: "A cinematic, browse-first museum of Algeria's most influential historical figures, curated collections and era galleries."
+      ...PAGE_META["/figures"]
     }),
   component: FiguresIndex,
 });

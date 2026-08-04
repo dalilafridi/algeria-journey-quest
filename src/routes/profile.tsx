@@ -11,14 +11,14 @@ import {
 } from "@/lib/progress";
 import { t, tu, useLang } from "@/lib/i18n";
 import { pageMeta, headLang } from "@/lib/seo";
+import { PAGE_META } from "@/lib/pageMetaCopy";
 
 export const Route = createFileRoute("/profile")({
   head: ({ match }) =>
     pageMeta({
       lang: headLang(match),
       path: "/profile",
-      title: "Your Profile, DZ Odyssey",
-      description: "Track your XP, badges, and history journey progress.",
+      ...PAGE_META["/profile"],
       noindex: true
     }),
   component: ProfilePage,

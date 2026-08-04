@@ -8,14 +8,14 @@ import { t, useLang, type Lang } from "@/lib/i18n";
 import { ChevronLeft, ChevronRight, MapPin, Sparkles, Users, Scroll } from "lucide-react";
 import chronicleImg from "@/assets/era-numidia.jpg";
 import { pageMeta, headLang } from "@/lib/seo";
+import { PAGE_META } from "@/lib/pageMetaCopy";
 
 export const Route = createFileRoute("/chronicle")({
   head: ({ match }) =>
     pageMeta({
       lang: headLang(match),
       path: "/chronicle",
-      title: "The Interactive Chronicle of Algeria, DZ Odyssey",
-      description: "Drag across three thousand years of Algerian history. Meet the figures, regions and events of every era on one living timeline.",
+      ...PAGE_META["/chronicle"],
       image: chronicleImg
     }),
   component: ChroniclePage,

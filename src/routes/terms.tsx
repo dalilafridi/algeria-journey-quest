@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { InfoPage, InfoPlaque, type InfoSection } from "@/components/InfoPage";
 import { useLang } from "@/lib/i18n";
 import { pageMeta, headLang } from "@/lib/seo";
+import { PAGE_META } from "@/lib/pageMetaCopy";
 import { PUBLIC_CONTACT_EMAIL, hasPublicContact } from "@/lib/siteContact";
 
 export const Route = createFileRoute("/terms")({
@@ -9,9 +10,7 @@ export const Route = createFileRoute("/terms")({
     pageMeta({
       lang: headLang(match),
       path: "/terms",
-      title: "Terms of Use, DZ Odyssey",
-      description:
-        "The terms for visiting DZ Odyssey: educational purpose, permitted personal use, media rights, accuracy and corrections, AI answers, external links and prohibited misuse.",
+      ...PAGE_META["/terms"],
     }),
   component: TermsPage,
 });

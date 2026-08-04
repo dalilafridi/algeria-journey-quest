@@ -6,14 +6,14 @@ import { shuffle } from "@/lib/quiz";
 import { addXp } from "@/lib/progress";
 import { t, tu, useLang } from "@/lib/i18n";
 import { pageMeta, headLang } from "@/lib/seo";
+import { PAGE_META } from "@/lib/pageMetaCopy";
 
 export const Route = createFileRoute("/figures/quiz")({
   head: ({ match }) =>
     pageMeta({
       lang: headLang(match),
       path: "/figures/quiz",
-      title: "Guess the Figure, DZ Odyssey",
-      description: "Read the clues and identify the right person from Algerian history."
+      ...PAGE_META["/figures/quiz"]
     }),
   component: GuessQuiz,
 });
