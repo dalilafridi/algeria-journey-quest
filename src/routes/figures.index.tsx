@@ -625,7 +625,7 @@ function FilterChip({
           ? "color-mix(in oklab, var(--brand-gold) 55%, var(--border))"
           : "var(--border)",
         background: active ? "color-mix(in oklab, var(--brand-gold) 14%, var(--card))" : "var(--card)",
-        color: active ? "color-mix(in oklab, var(--brand-gold-deep) 88%, var(--foreground))" : "var(--foreground)",
+        color: active ? "color-mix(in oklab, var(--brand-gold-deep) 62%, var(--foreground))" : "var(--foreground)",
       }}
     >
       {children}

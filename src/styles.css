@@ -72,24 +72,26 @@
   --card-foreground: oklch(0.24 0.035 45);
   --popover: oklch(0.99 0.015 85);
   --popover-foreground: oklch(0.22 0.04 42);
-  /* Terracotta primary — darkened to L 0.55 so both `text-primary` on parchment
-     and `text-primary-foreground` on `bg-primary` clear WCAG AA (4.5:1). */
-  --primary: oklch(0.55 0.165 38);
+  /* Terracotta primary. L 0.51 so `text-primary` clears WCAG AA (4.5:1) on
+     parchment AND on tinted `bg-primary/10` surfaces, and
+     `text-primary-foreground` clears AA on `bg-primary`. */
+  --primary: oklch(0.51 0.165 38);
   --primary-foreground: oklch(0.98 0.01 80);
-  /* Olive green secondary — darkened to L 0.54 for AA on parchment. */
-  --secondary: oklch(0.54 0.085 128);
+  /* Olive green secondary. L 0.49 for AA on parchment and `bg-secondary/15`. */
+  --secondary: oklch(0.465 0.085 128);
   --secondary-foreground: oklch(0.98 0.01 80);
   --muted: oklch(0.93 0.03 80);
   --muted-foreground: oklch(0.42 0.04 50);
   /* Soft gold accent */
   --accent: oklch(0.78 0.14 80);
   --accent-foreground: oklch(0.22 0.05 40);
-  /* Darkened to L 0.53 for AA on parchment. */
-  --destructive: oklch(0.53 0.22 25);
+  /* L 0.50 for AA on parchment and for white text on `bg-destructive`. */
+  --destructive: oklch(0.5 0.22 25);
   --destructive-foreground: oklch(0.98 0.01 80);
   --border: oklch(0.88 0.03 76 / 0.9);
   --input: oklch(0.93 0.025 80);
-  --ring: oklch(0.55 0.165 38);
+  /* Focus ring tracks --primary so keyboard focus stays AA-visible. */
+  --ring: oklch(0.51 0.165 38);
   --success: oklch(0.62 0.13 142);
   --success-foreground: oklch(0.98 0.01 80);
   --gradient-warm: linear-gradient(135deg, oklch(0.78 0.14 80), oklch(0.6 0.165 38));
@@ -236,7 +238,7 @@
 
   /* Standardized focus ring — applied to all interactive elements. */
   :where(a, button, [role="button"], input, select, textarea):focus-visible {
-    outline: 2px solid color-mix(in oklab, var(--primary) 70%, transparent);
+    outline: 2px solid color-mix(in oklab, var(--primary) 92%, transparent);
     outline-offset: 2px;
     border-radius: 0.5rem;
   }
@@ -879,7 +881,7 @@ main > div > section[data-reveal] {
 
 /* Focus ring polish — soft warm glow instead of a hard outline */
 :where(a, button, [role="button"], input, select, textarea):focus-visible {
-  outline: 2px solid color-mix(in oklab, var(--primary) 65%, transparent);
+  outline: 2px solid color-mix(in oklab, var(--primary) 92%, transparent);
   outline-offset: 2px;
   box-shadow: 0 0 0 4px color-mix(in oklab, var(--accent) 22%, transparent);
   transition: box-shadow var(--dur-quick) var(--ease-soft);
@@ -919,7 +921,7 @@ main > div > section[data-reveal] {
 .skip-link:focus,
 .skip-link:focus-visible {
   transform: translate(-50%, 0);
-  outline: 2px solid color-mix(in oklab, var(--primary) 70%, transparent);
+  outline: 2px solid color-mix(in oklab, var(--primary) 92%, transparent);
   outline-offset: 3px;
 }
 
@@ -1043,7 +1045,7 @@ html.immersion-on {
 
 /* === Focus polish — visible on every interactive surface === */
 :where(a, button, [role="button"], summary, [tabindex]):focus-visible {
-  outline: 2px solid color-mix(in oklab, var(--primary) 70%, transparent);
+  outline: 2px solid color-mix(in oklab, var(--primary) 92%, transparent);
   outline-offset: 3px;
   border-radius: 0.6rem;
 }
