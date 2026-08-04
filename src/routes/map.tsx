@@ -276,7 +276,7 @@ function RegionExplorerPage() {
             }
             style={{ boxShadow: "var(--shadow-soft)" }}
           >
-            <div className="text-[10px] uppercase tracking-[0.25em] font-bold text-primary/80 mb-2">
+            <div className="text-[10px] uppercase tracking-[0.25em] font-bold text-primary mb-2">
               {t(cinematicCopy.cinematicLabel, lang)}
             </div>
             <blockquote className="text-base sm:text-lg italic font-semibold text-foreground/90 leading-relaxed max-w-xl mx-auto">
@@ -412,7 +412,7 @@ function RegionExplorerPage() {
                       className="rounded-2xl border border-border/70 bg-card/95 p-3.5"
                       style={{ boxShadow: "var(--shadow-soft)" }}
                     >
-                      <div className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.2em] text-primary/80">
+                      <div className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.2em] text-primary">
                         <span aria-hidden>{b.emoji}</span>
                         {b.label}
                       </div>
@@ -495,7 +495,7 @@ function RegionExplorerPage() {
                         boxShadow: "var(--shadow-soft)",
                       }}
                     >
-                      <div className="text-[10px] font-bold uppercase tracking-[0.22em] text-primary/80">
+                      <div className="text-[10px] font-bold uppercase tracking-[0.22em] text-primary">
                         {COPY.curator[lang]}
                       </div>
                       <h3 className="mt-1 font-bold text-sm">{t(n.title, lang)}</h3>
