@@ -78,7 +78,7 @@
   --primary: oklch(0.51 0.165 38);
   --primary-foreground: oklch(0.98 0.01 80);
   /* Olive green secondary. L 0.49 for AA on parchment and `bg-secondary/15`. */
-  --secondary: oklch(0.49 0.085 128);
+  --secondary: oklch(0.465 0.085 128);
   --secondary-foreground: oklch(0.98 0.01 80);
   --muted: oklch(0.93 0.03 80);
   --muted-foreground: oklch(0.42 0.04 50);
@@ -238,7 +238,7 @@
 
   /* Standardized focus ring — applied to all interactive elements. */
   :where(a, button, [role="button"], input, select, textarea):focus-visible {
-    outline: 2px solid color-mix(in oklab, var(--primary) 70%, transparent);
+    outline: 2px solid color-mix(in oklab, var(--primary) 92%, transparent);
     outline-offset: 2px;
     border-radius: 0.5rem;
   }
@@ -881,7 +881,7 @@ main > div > section[data-reveal] {
 
 /* Focus ring polish — soft warm glow instead of a hard outline */
 :where(a, button, [role="button"], input, select, textarea):focus-visible {
-  outline: 2px solid color-mix(in oklab, var(--primary) 65%, transparent);
+  outline: 2px solid color-mix(in oklab, var(--primary) 92%, transparent);
   outline-offset: 2px;
   box-shadow: 0 0 0 4px color-mix(in oklab, var(--accent) 22%, transparent);
   transition: box-shadow var(--dur-quick) var(--ease-soft);
@@ -921,7 +921,7 @@ main > div > section[data-reveal] {
 .skip-link:focus,
 .skip-link:focus-visible {
   transform: translate(-50%, 0);
-  outline: 2px solid color-mix(in oklab, var(--primary) 70%, transparent);
+  outline: 2px solid color-mix(in oklab, var(--primary) 92%, transparent);
   outline-offset: 3px;
 }
 
@@ -1045,7 +1045,7 @@ html.immersion-on {
 
 /* === Focus polish — visible on every interactive surface === */
 :where(a, button, [role="button"], summary, [tabindex]):focus-visible {
-  outline: 2px solid color-mix(in oklab, var(--primary) 70%, transparent);
+  outline: 2px solid color-mix(in oklab, var(--primary) 92%, transparent);
   outline-offset: 3px;
   border-radius: 0.6rem;
 }
