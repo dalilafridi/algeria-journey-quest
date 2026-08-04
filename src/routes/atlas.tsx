@@ -479,8 +479,10 @@ function AtlasPage() {
               <HistoricalOverlay
                 activeId={periodId}
                 lang={lang}
-                onSelectHighlight={setHighlightId}
+                onSelectHighlight={selectHighlight}
+                selectedHighlightId={highlightId}
               />
+
 
               {/* Region pins */}
               <g
