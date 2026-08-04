@@ -1,4 +1,4 @@
-import { Outlet, Link, createRootRoute, HeadContent, Scripts, useRouterState } from "@tanstack/react-router";
+import { Outlet, createRootRoute, HeadContent, Scripts, useRouterState } from "@tanstack/react-router";
 import { useEffect } from "react";
 import { toast } from "sonner";
 
@@ -19,6 +19,7 @@ import { AudioGuideProvider } from "@/lib/audioGuide";
 import { AudioMiniPlayer } from "@/components/audio/AudioGuide";
 import { AskCurator } from "@/components/curator/AskCurator";
 import { PassportTracker } from "@/components/PassportTracker";
+import { NotFoundView } from "@/components/NotFoundView";
 import { getLang, t, tu } from "@/lib/i18n";
 import { headLang } from "@/lib/seo";
 
@@ -35,26 +36,6 @@ const ROOT_DESCRIPTION = {
 };
 
 
-function NotFoundComponent() {
-  const lang = getLang();
-  return (
-    <main id="main" tabIndex={-1} className="flex min-h-dvh items-center justify-center bg-background px-4">
-      <div className="max-w-md text-center">
-        <h1 className="text-7xl font-bold text-foreground">404</h1>
-        <h2 className="mt-4 text-xl font-semibold text-foreground">{tu("notFoundTitle", lang)}</h2>
-        <p className="mt-2 text-sm text-muted-foreground">{tu("notFoundBody", lang)}</p>
-        <div className="mt-6">
-          <Link
-            to="/"
-            className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
-          >
-            {tu("goHome", lang)}
-          </Link>
-        </div>
-      </div>
-    </main>
-  );
-}
 
 import { resolveInitialLang } from "@/lib/lang-server";
 import type { Lang } from "@/lib/i18n";
@@ -95,7 +76,7 @@ export const Route = createRootRoute({
   }),
   shellComponent: RootShell,
   component: RootComponent,
-  notFoundComponent: NotFoundComponent,
+  notFoundComponent: NotFoundView,
 });
 
 function RootShell({ children }: { children: React.ReactNode }) {
@@ -128,6 +109,11 @@ function RootShell({ children }: { children: React.ReactNode }) {
 function RootComponent() {
   const pathname = useRouterState({ select: (r) => r.location.pathname });
   const isCurator = pathname === "/curator" || pathname.startsWith("/curator/");
+  // On an unmatched URL the journey chrome ("Continue Your Journey", HUD,
+  // welcome overlay) is irrelevant and would advertise stale progress.
+  const isNotFound = useRouterState({
+    select: (r) => r.matches.some((m) => m.routeId === "/$" || m.globalNotFound === true),
+  });
 
   useEffect(() => {
     const handleContextMenu = (e: MouseEvent) => {
@@ -154,11 +140,11 @@ function RootComponent() {
       <LangSync />
       <SplashScreen />
       <SignatureIntro />
-      <ContinueJourneyCard />
+      {!isNotFound && <ContinueJourneyCard />}
       <Outlet />
       <SiteFooter />
-      <WelcomeJourney />
-      <JourneyHud />
+      {!isNotFound && <WelcomeJourney />}
+      {!isNotFound && <JourneyHud />}
       <BackToTop />
       <MuseumDock />
       <SearchOverlay />
