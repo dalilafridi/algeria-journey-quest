@@ -652,7 +652,7 @@ function AtlasPage() {
               <HistoricalPeriodPanel
                 period={activePeriod}
                 lang={lang}
-                onClose={() => setPeriodId(null)}
+                onClose={() => selectPeriod(null)}
                 onSelectHighlight={selectHighlight}
               />
             )}
