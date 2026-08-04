@@ -89,3 +89,14 @@ export function pageMeta(input: PageMetaInput): HeadResult {
     links: [{ rel: "canonical", href: url }],
   };
 }
+
+/**
+ * Read the active language out of a route match inside `head()`.
+ * The root route publishes `lang` on the router context: server side it comes
+ * from the dzo_lang cookie / Accept-Language, client side from the visitor's
+ * saved choice, and the router is invalidated whenever that choice changes.
+ */
+export function headLang(match: { context?: unknown } | undefined): Lang {
+  const ctx = (match?.context ?? {}) as { lang?: Lang };
+  return ctx.lang === "fr" || ctx.lang === "ar" || ctx.lang === "en" ? ctx.lang : "en";
+}

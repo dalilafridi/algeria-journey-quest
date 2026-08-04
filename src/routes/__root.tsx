@@ -47,14 +47,16 @@ import { resolveInitialLang } from "@/lib/lang-server";
 import type { Lang } from "@/lib/i18n";
 
 export const Route = createRootRoute({
-  // Runs on server for SSR; on client it just returns the last resolved value.
-  loader: async (): Promise<{ lang: Lang }> => {
+  // Publishes the active language on the router context so every route's
+  // head() can emit localized title / description / og tags. Server side it
+  // resolves from the dzo_lang cookie, client side from the saved choice.
+  beforeLoad: async (): Promise<{ lang: Lang }> => {
     if (typeof window === "undefined") {
-      const lang = await resolveInitialLang();
-      return { lang };
+      return { lang: await resolveInitialLang() };
     }
     return { lang: getLang() };
   },
+  loader: ({ context }): { lang: Lang } => ({ lang: context.lang }),
   head: () => ({
     meta: [
       { charSet: "utf-8" },
