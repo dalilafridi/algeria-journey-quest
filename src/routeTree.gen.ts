@@ -82,6 +82,7 @@ import { Route as CuratorStudioTeamRouteImport } from './routes/curator/_studio/
 import { Route as CuratorStudioTechnicalRouteImport } from './routes/curator/_studio/technical'
 import { Route as CuratorStudioTranslationsRouteImport } from './routes/curator/_studio/translations'
 import { Route as FiguresCollectionCollectionIdRouteImport } from './routes/figures.collection.$collectionId'
+import { Route as ApiPublicMonitoringReportRouteImport } from './routes/api/public/monitoring.report'
 import { Route as CuratorStudioFiguresIndexRouteImport } from './routes/curator/_studio/figures.index'
 import { Route as CuratorStudioFiguresDraftIdRouteImport } from './routes/curator/_studio/figures.$draftId'
 import { Route as CuratorStudioFiguresNewRouteImport } from './routes/curator/_studio/figures.new'
@@ -461,6 +462,12 @@ const FiguresCollectionCollectionIdRoute =
     path: '/figures/collection/$collectionId',
     getParentRoute: () => rootRouteImport,
   } as any)
+const ApiPublicMonitoringReportRoute =
+  ApiPublicMonitoringReportRouteImport.update({
+    id: '/api/public/monitoring/report',
+    path: '/api/public/monitoring/report',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const CuratorStudioFiguresIndexRoute =
   CuratorStudioFiguresIndexRouteImport.update({
     id: '/figures/',
@@ -575,6 +582,7 @@ export interface FileRoutesByFullPath {
   '/curator/translations': typeof CuratorStudioTranslationsRoute
   '/figures/collection/$collectionId': typeof FiguresCollectionCollectionIdRoute
   '/curator/': typeof CuratorStudioIndexRoute
+  '/api/public/monitoring/report': typeof ApiPublicMonitoringReportRoute
   '/curator/figures/$draftId': typeof CuratorStudioFiguresDraftIdRouteWithChildren
   '/curator/figures/new': typeof CuratorStudioFiguresNewRoute
   '/curator/sources/$sourceId': typeof CuratorStudioSourcesSourceIdRoute
@@ -652,6 +660,7 @@ export interface FileRoutesByTo {
   '/curator/technical': typeof CuratorStudioTechnicalRoute
   '/curator/translations': typeof CuratorStudioTranslationsRoute
   '/figures/collection/$collectionId': typeof FiguresCollectionCollectionIdRoute
+  '/api/public/monitoring/report': typeof ApiPublicMonitoringReportRoute
   '/curator/figures/$draftId': typeof CuratorStudioFiguresDraftIdRouteWithChildren
   '/curator/figures/new': typeof CuratorStudioFiguresNewRoute
   '/curator/sources/$sourceId': typeof CuratorStudioSourcesSourceIdRoute
@@ -735,6 +744,7 @@ export interface FileRoutesById {
   '/curator/_studio/translations': typeof CuratorStudioTranslationsRoute
   '/figures/collection/$collectionId': typeof FiguresCollectionCollectionIdRoute
   '/curator/_studio/': typeof CuratorStudioIndexRoute
+  '/api/public/monitoring/report': typeof ApiPublicMonitoringReportRoute
   '/curator/_studio/figures/$draftId': typeof CuratorStudioFiguresDraftIdRouteWithChildren
   '/curator/_studio/figures/new': typeof CuratorStudioFiguresNewRoute
   '/curator/_studio/sources/$sourceId': typeof CuratorStudioSourcesSourceIdRoute
@@ -818,6 +828,7 @@ export interface FileRouteTypes {
     | '/curator/translations'
     | '/figures/collection/$collectionId'
     | '/curator/'
+    | '/api/public/monitoring/report'
     | '/curator/figures/$draftId'
     | '/curator/figures/new'
     | '/curator/sources/$sourceId'
@@ -895,6 +906,7 @@ export interface FileRouteTypes {
     | '/curator/technical'
     | '/curator/translations'
     | '/figures/collection/$collectionId'
+    | '/api/public/monitoring/report'
     | '/curator/figures/$draftId'
     | '/curator/figures/new'
     | '/curator/sources/$sourceId'
@@ -977,6 +989,7 @@ export interface FileRouteTypes {
     | '/curator/_studio/translations'
     | '/figures/collection/$collectionId'
     | '/curator/_studio/'
+    | '/api/public/monitoring/report'
     | '/curator/_studio/figures/$draftId'
     | '/curator/_studio/figures/new'
     | '/curator/_studio/sources/$sourceId'
@@ -1026,6 +1039,7 @@ export interface RootRouteChildren {
   CultureIndexRoute: typeof CultureIndexRoute
   FiguresIndexRoute: typeof FiguresIndexRoute
   FiguresCollectionCollectionIdRoute: typeof FiguresCollectionCollectionIdRoute
+  ApiPublicMonitoringReportRoute: typeof ApiPublicMonitoringReportRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -1541,6 +1555,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof FiguresCollectionCollectionIdRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/public/monitoring/report': {
+      id: '/api/public/monitoring/report'
+      path: '/api/public/monitoring/report'
+      fullPath: '/api/public/monitoring/report'
+      preLoaderRoute: typeof ApiPublicMonitoringReportRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/curator/_studio/figures/': {
       id: '/curator/_studio/figures/'
       path: '/figures'
@@ -1775,6 +1796,7 @@ const rootRouteChildren: RootRouteChildren = {
   CultureIndexRoute: CultureIndexRoute,
   FiguresIndexRoute: FiguresIndexRoute,
   FiguresCollectionCollectionIdRoute: FiguresCollectionCollectionIdRoute,
+  ApiPublicMonitoringReportRoute: ApiPublicMonitoringReportRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
