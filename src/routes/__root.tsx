@@ -19,7 +19,20 @@ import { AudioGuideProvider } from "@/lib/audioGuide";
 import { AudioMiniPlayer } from "@/components/audio/AudioGuide";
 import { AskCurator } from "@/components/curator/AskCurator";
 import { PassportTracker } from "@/components/PassportTracker";
-import { getLang, tu } from "@/lib/i18n";
+import { getLang, t, tu } from "@/lib/i18n";
+import { headLang } from "@/lib/seo";
+
+/** Site-wide fallback metadata, in the three reviewed museum languages. */
+const ROOT_TITLE = {
+  en: "DZ Odyssey, Algeria Through Time",
+  fr: "DZ Odyssey, l'Algérie à travers le temps",
+  ar: "دي زد أوديسي، الجزائر عبر الزمن",
+};
+const ROOT_DESCRIPTION = {
+  en: "DZ Odyssey, a cinematic museum passage through Algeria's eras, regions, figures and culture, from Numidia to independence.",
+  fr: "DZ Odyssey, une traversée muséale et cinématique des époques, régions, figures et cultures de l'Algérie, de la Numidie à l'indépendance.",
+  ar: "دي زد أوديسي، رحلة متحفية سينمائية عبر حِقب الجزائر ومناطقها وشخصياتها وثقافتها، من نوميديا إلى الاستقلال.",
+};
 
 
 function NotFoundComponent() {
@@ -65,18 +78,13 @@ export const Route = createRootRoute({
       { name: "mobile-web-app-capable", content: "yes" },
       { name: "apple-mobile-web-app-capable", content: "yes" },
       { name: "apple-mobile-web-app-status-bar-style", content: "black-translucent" },
-      { title: "DZ Odyssey, Algeria Through Time" },
-      {
-        name: "description",
-        content:
-          "DZ Odyssey, a cinematic museum passage through Algeria's eras, regions, figures and culture, from Numidia to independence.",
-      },
+      { title: t(ROOT_TITLE, headLang(match)) },
+      { name: "description", content: t(ROOT_DESCRIPTION, headLang(match)) },
       { name: "author", content: "DZ Odyssey" },
       { property: "og:type", content: "website" },
       { property: "og:site_name", content: "DZ Odyssey" },
       // NOTE (Phase 1): og:image and twitter:image intentionally live only on
-      // leaf routes via `pageMeta({
-      lang: headLang(match),...})`.
+      // leaf routes, through the shared pageMeta helper.
     ],
     links: [
       { rel: "stylesheet", href: appCss },
