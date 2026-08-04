@@ -17,6 +17,7 @@
  */
 
 import brandCover from "@/assets/brand-cover.png";
+import { t, type Lang, type LocalizedString } from "@/lib/i18n";
 
 export const SITE_URL = "https://dzodyssey.numeradataworks.com";
 
@@ -28,8 +29,15 @@ export type OgType = "website" | "article";
 export interface PageMetaInput {
   /** Path portion of the canonical URL, always starting with "/". */
   path: string;
-  title: string;
-  description: string;
+  /** Plain string (English only) or a reviewed {en, fr, ar} record. */
+  title: LocalizedString;
+  description: LocalizedString;
+  /**
+   * Active language for this render. Routes pass `match.context.lang`, which
+   * is resolved server side from the dzo_lang cookie and refreshed on the
+   * client whenever the visitor switches language.
+   */
+  lang?: Lang;
   /** Absolute URL or Vite-imported asset path. Falls back to DEFAULT_OG_IMAGE. */
   image?: string;
   type?: OgType;
@@ -54,18 +62,23 @@ export function pageMeta(input: PageMetaInput): HeadResult {
   const url = absUrl(input.path);
   const image = absUrl(input.image ?? DEFAULT_OG_IMAGE);
   const type: OgType = input.type ?? "website";
+  const lang: Lang = input.lang ?? "en";
+  const title = t(input.title, lang);
+  const description = t(input.description, lang);
+  const ogLocale = lang === "fr" ? "fr_FR" : lang === "ar" ? "ar_DZ" : "en_US";
 
   const meta: Array<Record<string, string>> = [
-    { title: input.title },
-    { name: "description", content: input.description },
-    { property: "og:title", content: input.title },
-    { property: "og:description", content: input.description },
+    { title },
+    { name: "description", content: description },
+    { property: "og:title", content: title },
+    { property: "og:description", content: description },
+    { property: "og:locale", content: ogLocale },
     { property: "og:type", content: type },
     { property: "og:url", content: url },
     { property: "og:image", content: image },
     { name: "twitter:card", content: "summary_large_image" },
-    { name: "twitter:title", content: input.title },
-    { name: "twitter:description", content: input.description },
+    { name: "twitter:title", content: title },
+    { name: "twitter:description", content: description },
     { name: "twitter:image", content: image },
   ];
 
