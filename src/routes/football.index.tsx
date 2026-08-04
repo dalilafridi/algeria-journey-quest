@@ -957,10 +957,10 @@ function MatchesExhibit({ lang }: { lang: Lang }) {
         return (
           <article
             key={m.id}
-            className="rounded-2xl border border-border bg-card p-5 transition hover:-translate-y-0.5"
+            className="min-w-0 rounded-2xl border border-border bg-card p-5 transition hover:-translate-y-0.5"
             style={{ boxShadow: "var(--shadow-soft)" }}
           >
-            <div className="flex items-baseline justify-between gap-3">
+            <div className="flex min-w-0 items-baseline justify-between gap-3">
               <div className="min-w-0">
                 <div className="text-xs uppercase tracking-widest text-muted-foreground">{m.date}</div>
                 <h3 className="mt-1 text-lg font-semibold truncate" style={SERIF}>{m.title}</h3>
