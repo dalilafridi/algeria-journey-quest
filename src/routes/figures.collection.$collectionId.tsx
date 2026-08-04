@@ -11,7 +11,7 @@
  */
 
 import { createFileRoute, Link, useParams } from "@tanstack/react-router";
-import { pageMeta } from "@/lib/seo";
+import { pageMeta, headLang } from "@/lib/seo";
 import { useEffect, useMemo, useState } from "react";
 import { Header } from "@/components/Header";
 
@@ -65,18 +65,28 @@ const LEGEND_ERA_TO_ROUTE: Record<LegendEra, string> = {
 };
 
 export const Route = createFileRoute("/figures/collection/$collectionId")({
-  head: ({ params }) => {
+  head: ({ params, match }) => {
+    const lang = headLang(match);
+    const hall = { en: "Hall of Legends", fr: "Panthéon des légendes", ar: "قاعة الأساطير" }[lang];
     const row = findRowBySlug(params.collectionId);
-    const title = row
-      ? `${t(row.label, "en")}, Hall of Legends`
-      : "Collection, Hall of Legends";
-    const description = row
-      ? t(row.tagline, "en")
-      : "A curated exhibit room of Algerian historical figures.";
+    if (!row) {
+      return pageMeta({
+        lang,
+        path: `/figures/collection/${params.collectionId}`,
+        title: { en: "Collection not found, Hall of Legends", fr: "Collection introuvable, Panthéon des légendes", ar: "المجموعة غير موجودة، قاعة الأساطير" },
+        description: {
+          en: "This curated exhibit room could not be found.",
+          fr: "Cette salle d'exposition est introuvable.",
+          ar: "لم يتم العثور على قاعة العرض هذه.",
+        },
+        noindex: true,
+      });
+    }
     return pageMeta({
+      lang,
       path: `/figures/collection/${params.collectionId}`,
-      title,
-      description,
+      title: `${t(row.label, lang)}, ${hall}`,
+      description: t(row.tagline, lang),
     });
   },
   component: CollectionPage,

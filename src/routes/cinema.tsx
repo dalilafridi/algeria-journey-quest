@@ -6,7 +6,8 @@ import { figures } from "@/data/figures";
 import { t, useLang } from "@/lib/i18n";
 import { saveJourneyPlace } from "@/lib/continuity";
 import { JourneyNext } from "@/components/JourneyNext";
-import { pageMeta } from "@/lib/seo";
+import { pageMeta, headLang } from "@/lib/seo";
+import { PAGE_META } from "@/lib/pageMetaCopy";
 
 /** Map a film to a director figure profile when one exists in figures.ts. */
 const FILM_DIRECTOR_FIGURE: Record<string, string> = {
@@ -24,11 +25,11 @@ const FILM_REGION: Record<string, string> = {
 };
 
 export const Route = createFileRoute("/cinema")({
-  head: () =>
+  head: ({ match }) =>
     pageMeta({
+      lang: headLang(match),
       path: "/cinema",
-      title: "Algerian Cinema & Film, DZ Odyssey",
-      description: "Featured Algerian films and a mini-quiz, memory, youth, women, society and resistance through cinema."
+      ...PAGE_META["/cinema"]
     }),
   component: CinemaPage,
 });

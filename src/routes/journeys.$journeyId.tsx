@@ -9,7 +9,7 @@
  */
 
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
-import { pageMeta } from "@/lib/seo";
+import { pageMeta, headLang, siteSuffix } from "@/lib/seo";
 import { useState } from "react";
 import { Header } from "@/components/Header";
 import { CollectionEmblem } from "@/components/figures/CollectionEmblem";
@@ -42,21 +42,27 @@ export const Route = createFileRoute("/journeys/$journeyId")({
     if (!journey) throw notFound();
     return { journey };
   },
-  head: ({ loaderData, params }) => {
+  head: ({ loaderData, params, match }) => {
+    const lang = headLang(match);
+    const kind = { en: "Signature Journey", fr: "Parcours signature", ar: "مسار مميز" }[lang];
     if (!loaderData) {
       return pageMeta({
+        lang,
         path: `/journeys/${params.journeyId}`,
-        title: "Signature Journey, DZ Odyssey",
-        description: "This signature journey could not be found.",
+        title: { en: "Journey not found, DZ Odyssey", fr: "Parcours introuvable, DZ Odyssey", ar: "المسار غير موجود، دي زد أوديسي" },
+        description: {
+          en: "This signature journey could not be found.",
+          fr: "Ce parcours signature est introuvable.",
+          ar: "لم يتم العثور على هذا المسار المميز.",
+        },
         noindex: true,
       });
     }
-    const titleEn = t(loaderData.journey.title, "en");
-    const taglineEn = t(loaderData.journey.tagline, "en");
     return pageMeta({
+      lang,
       path: `/journeys/${loaderData.journey.id}`,
-      title: `${titleEn}, Signature Journey | DZ Odyssey`,
-      description: taglineEn,
+      title: `${t(loaderData.journey.title, lang)}, ${kind}${siteSuffix(lang)}`,
+      description: t(loaderData.journey.tagline, lang),
     });
   },
   notFoundComponent: () => (

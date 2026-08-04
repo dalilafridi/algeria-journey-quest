@@ -1,5 +1,5 @@
 import { createFileRoute, Link, notFound, useNavigate } from "@tanstack/react-router";
-import { pageMeta } from "@/lib/seo";
+import { pageMeta, headLang } from "@/lib/seo";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { Header } from "@/components/Header";
 import { eras, type QuizQuestion } from "@/data/eras";
@@ -20,21 +20,30 @@ export const Route = createFileRoute("/quiz/$eraId")({
     if (!era) throw notFound();
     return { era };
   },
-  head: ({ loaderData, params }) => {
+  head: ({ loaderData, params, match }) => {
+    const lang = headLang(match);
     if (!loaderData) {
       return pageMeta({
+        lang,
         path: `/quiz/${params.eraId}`,
-        title: "Quiz, DZ Odyssey",
-        description: "Test your knowledge of Algerian history.",
+        title: { en: "Quiz not found, DZ Odyssey", fr: "Quiz introuvable, DZ Odyssey", ar: "الاختبار غير موجود، دي زد أوديسي" },
+        description: {
+          en: "This era quiz could not be found.",
+          fr: "Ce quiz d'époque est introuvable.",
+          ar: "لم يتم العثور على اختبار هذه الحقبة.",
+        },
         noindex: true,
       });
     }
-    const titleEn = t(loaderData.era.title, "en");
-    return pageMeta({
-      path: `/quiz/${loaderData.era.id}`,
-      title: `Quiz: ${titleEn}, DZ Odyssey`,
-      description: `Test your knowledge of ${titleEn} in this DZ Odyssey era quiz.`,
-    });
+    const name = t(loaderData.era.title, lang);
+    const title = lang === "fr" ? `Quiz : ${name}, DZ Odyssey` : lang === "ar" ? `اختبار: ${name}، دي زد أوديسي` : `Quiz: ${name}, DZ Odyssey`;
+    const description =
+      lang === "fr"
+        ? `Testez vos connaissances sur ${name} dans ce quiz d'époque de DZ Odyssey.`
+        : lang === "ar"
+          ? `اختبر معرفتك بـ${name} في اختبار الحقبة هذا من دي زد أوديسي.`
+          : `Test your knowledge of ${name} in this DZ Odyssey era quiz.`;
+    return pageMeta({ lang, path: `/quiz/${loaderData.era.id}`, title, description });
   },
   component: QuizPage,
 });

@@ -11,7 +11,7 @@
  */
 
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
-import { pageMeta } from "@/lib/seo";
+import { pageMeta, headLang, siteSuffix } from "@/lib/seo";
 import { useEffect } from "react";
 import { Header } from "@/components/Header";
 import { RegionIcon } from "@/components/RegionIcon";
@@ -55,21 +55,27 @@ export const Route = createFileRoute("/region/$regionId")({
     if (!region) throw notFound();
     return { region };
   },
-  head: ({ loaderData, params }) => {
+  head: ({ loaderData, params, match }) => {
+    const lang = headLang(match);
     if (!loaderData) {
       return pageMeta({
+        lang,
         path: `/region/${params.regionId}`,
-        title: "Region, DZ Odyssey",
-        description: "This region exhibit could not be found.",
+        title: { en: "Region not found, DZ Odyssey", fr: "Région introuvable, DZ Odyssey", ar: "المنطقة غير موجودة، دي زد أوديسي" },
+        description: {
+          en: "This region exhibit could not be found.",
+          fr: "Cette exposition régionale est introuvable.",
+          ar: "لم يتم العثور على معرض هذه المنطقة.",
+        },
         noindex: true,
       });
     }
-    const titleEn = t(loaderData.region.name, "en");
-    const summaryEn = t(loaderData.region.summary, "en");
+    const kind = { en: "Region", fr: "Région", ar: "منطقة" }[lang];
     return pageMeta({
+      lang,
       path: `/region/${loaderData.region.id}`,
-      title: `${titleEn}, Region | DZ Odyssey`,
-      description: summaryEn,
+      title: `${t(loaderData.region.name, lang)}, ${kind}${siteSuffix(lang)}`,
+      description: t(loaderData.region.summary, lang),
       type: "article",
     });
   },

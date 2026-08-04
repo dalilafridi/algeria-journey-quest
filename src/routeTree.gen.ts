@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as SplatRouteImport } from './routes/$'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as AtlasRouteImport } from './routes/atlas'
 import { Route as ChronicleRouteImport } from './routes/chronicle'
@@ -91,6 +92,11 @@ import { Route as CuratorStudioFiguresDraftIdPreviewRouteImport } from './routes
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SplatRoute = SplatRouteImport.update({
+  id: '/$',
+  path: '/$',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AboutRoute = AboutRouteImport.update({
@@ -493,6 +499,7 @@ const CuratorStudioFiguresDraftIdPreviewRoute =
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/curator': typeof CuratorRouteRouteWithChildren
+  '/$': typeof SplatRoute
   '/about': typeof AboutRoute
   '/atlas': typeof AtlasRoute
   '/chronicle': typeof ChronicleRoute
@@ -572,6 +579,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/curator': typeof CuratorStudioIndexRoute
+  '/$': typeof SplatRoute
   '/about': typeof AboutRoute
   '/atlas': typeof AtlasRoute
   '/chronicle': typeof ChronicleRoute
@@ -648,6 +656,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/curator': typeof CuratorRouteRouteWithChildren
+  '/$': typeof SplatRoute
   '/about': typeof AboutRoute
   '/atlas': typeof AtlasRoute
   '/chronicle': typeof ChronicleRoute
@@ -730,6 +739,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/curator'
+    | '/$'
     | '/about'
     | '/atlas'
     | '/chronicle'
@@ -809,6 +819,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/curator'
+    | '/$'
     | '/about'
     | '/atlas'
     | '/chronicle'
@@ -884,6 +895,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/curator'
+    | '/$'
     | '/about'
     | '/atlas'
     | '/chronicle'
@@ -965,6 +977,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   CuratorRouteRoute: typeof CuratorRouteRouteWithChildren
+  SplatRoute: typeof SplatRoute
   AboutRoute: typeof AboutRoute
   AtlasRoute: typeof AtlasRoute
   ChronicleRoute: typeof ChronicleRoute
@@ -1009,6 +1022,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/$': {
+      id: '/$'
+      path: '/$'
+      fullPath: '/$'
+      preLoaderRoute: typeof SplatRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/about': {
@@ -1698,6 +1718,7 @@ const FootballRouteWithChildren = FootballRoute._addFileChildren(
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   CuratorRouteRoute: CuratorRouteRouteWithChildren,
+  SplatRoute: SplatRoute,
   AboutRoute: AboutRoute,
   AtlasRoute: AtlasRoute,
   ChronicleRoute: ChronicleRoute,

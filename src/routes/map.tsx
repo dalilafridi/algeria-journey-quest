@@ -14,14 +14,15 @@ import { JourneyNext } from "@/components/JourneyNext";
 import { ExhibitShowcase } from "@/components/museum/EntranceHall";
 import { MUSEUM_HIGHLIGHTS } from "@/data/museumHighlights";
 import mapImg from "@/assets/algeria-map.png";
-import { pageMeta } from "@/lib/seo";
+import { pageMeta, headLang } from "@/lib/seo";
+import { PAGE_META } from "@/lib/pageMetaCopy";
 
 export const Route = createFileRoute("/map")({
-  head: () =>
+  head: ({ match }) =>
     pageMeta({
+      lang: headLang(match),
       path: "/map",
-      title: "Explore Algeria, DZ Odyssey",
-      description: "Explore Algeria region by region and discover the museum's flagship destinations: M'Zab, Tassili n'Ajjer, Timgad, Djémila, the Casbah of Algiers and Tipasa.",
+      ...PAGE_META["/map"],
       image: mapImg
     }),
   component: RegionExplorerPage,

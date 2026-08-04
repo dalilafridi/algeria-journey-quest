@@ -1,5 +1,5 @@
 import { createFileRoute, Link, notFound, useRouter } from "@tanstack/react-router";
-import { pageMeta } from "@/lib/seo";
+import { pageMeta, headLang, siteSuffix } from "@/lib/seo";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
 import { useLang, type Lang, type LocalizedString } from "@/lib/i18n";
@@ -22,22 +22,33 @@ import { SourcesPanel } from "@/components/theater/SourcesPanel";
 import { PlayerPlaque, PlayerPlaqueDetail } from "@/components/theater/PlayerPlaque";
 
 export const Route = createFileRoute("/theater/$matchId")({
-  head: ({ loaderData, params }) => {
-    const match = loaderData as MatchTheater | undefined;
-    if (!match) {
+  head: ({ loaderData, params, match: routeMatch }) => {
+    const lang = headLang(routeMatch);
+    const theater = loaderData as MatchTheater | undefined;
+    if (!theater) {
       return pageMeta({
+        lang,
         path: `/theater/${params.matchId}`,
-        title: "Match Theater, Unavailable",
-        description: "This Match Theater experience is not available.",
+        title: {
+          en: "Match Theater, Unavailable",
+          fr: "Théâtre du match, indisponible",
+          ar: "مسرح المباراة، غير متاح",
+        },
+        description: {
+          en: "This Match Theater experience is not available.",
+          fr: "Cette expérience Théâtre du match n'est pas disponible.",
+          ar: "تجربة مسرح المباراة هذه غير متاحة.",
+        },
         noindex: true,
       });
     }
-    const title = `${tt(match.cinematicTitle, "en")}, Match Theater`;
-    const desc = `${tt(match.cinematicSubtitle, "en")} · Match Theater at DZ Odyssey.`;
+    const suffix = { en: "Match Theater", fr: "Théâtre du match", ar: "مسرح المباراة" };
+    const label = suffix[lang] ?? suffix.en;
     return pageMeta({
-      path: `/theater/${match.id}`,
-      title,
-      description: desc,
+      lang,
+      path: `/theater/${theater.id}`,
+      title: `${tt(theater.cinematicTitle, lang)}, ${label}`,
+      description: `${tt(theater.cinematicSubtitle, lang)} · ${label}${siteSuffix(lang)}.`,
       type: "article",
     });
   },

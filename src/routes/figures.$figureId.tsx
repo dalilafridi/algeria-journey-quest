@@ -12,7 +12,7 @@
  */
 
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
-import { pageMeta } from "@/lib/seo";
+import { pageMeta, headLang } from "@/lib/seo";
 import { useEffect } from "react";
 import { Header } from "@/components/Header";
 import { eras } from "@/data/eras";
@@ -73,21 +73,27 @@ export const Route = createFileRoute("/figures/$figureId")({
     if (!figure) throw notFound();
     return { figure };
   },
-  head: ({ loaderData, params }) => {
+  head: ({ loaderData, params, match }) => {
+    const lang = headLang(match);
+    const hall = { en: "Hall of Legends", fr: "Panthéon des légendes", ar: "قاعة الأساطير" }[lang];
     if (!loaderData) {
       return pageMeta({
+        lang,
         path: `/figures/${params.figureId}`,
-        title: "Figure, Hall of Legends",
-        description: "This figure exhibit could not be found.",
+        title: { en: "Figure not found, Hall of Legends", fr: "Figure introuvable, Panthéon des légendes", ar: "الشخصية غير موجودة، قاعة الأساطير" },
+        description: {
+          en: "This figure exhibit could not be found.",
+          fr: "Cette exposition consacrée à une figure est introuvable.",
+          ar: "لم يتم العثور على معرض هذه الشخصية.",
+        },
         noindex: true,
       });
     }
-    const title = `${t(loaderData.figure.displayName, "en")}, Hall of Legends`;
-    const desc = t(loaderData.figure.fact, "en");
     return pageMeta({
+      lang,
       path: `/figures/${loaderData.figure.id}`,
-      title,
-      description: desc,
+      title: `${t(loaderData.figure.displayName, lang)}, ${hall}`,
+      description: t(loaderData.figure.fact, lang),
       type: "article",
     });
   },

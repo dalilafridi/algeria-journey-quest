@@ -1,4 +1,5 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
+import { useRouter } from "@tanstack/react-router";
 import { applyDir, getLang, tu, useLang } from "@/lib/i18n";
 
 /**
@@ -48,10 +49,20 @@ export function SkipLink() {
 
 export function LangSync() {
   const lang = useLang();
+  const router = useRouter();
+  const first = useRef(true);
   useEffect(() => {
     const l = lang ?? getLang();
     applyDir(l);
     if (l === "ar") ensureArabicFont();
-  }, [lang]);
+    // Re-run beforeLoad + head() so document title, description and social
+    // tags follow the active language. Skipped on the first pass because the
+    // server already rendered the correct metadata.
+    if (first.current) {
+      first.current = false;
+      return;
+    }
+    void router.invalidate();
+  }, [lang, router]);
   return null;
 }

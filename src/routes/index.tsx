@@ -16,16 +16,17 @@ import { RegionIcon } from "@/components/RegionIcon";
 import { dailyFacts, eras } from "@/data/eras";
 import { t, tu, useLang } from "@/lib/i18n";
 import heroBg from "@/assets/hero-bg.png";
-import { pageMeta } from "@/lib/seo";
+import { pageMeta, headLang } from "@/lib/seo";
+import { PAGE_META } from "@/lib/pageMetaCopy";
 
 
 
 export const Route = createFileRoute("/")({
-  head: () =>
+  head: ({ match }) =>
     pageMeta({
+      lang: headLang(match),
       path: "/",
-      title: "DZ Odyssey, Algeria Through Time",
-      description: "A cinematic, museum-style passage through Algeria, its eras, regions, figures and culture, from Numidia to independence.",
+      ...PAGE_META["/"],
       image: heroBg
     }),
   component: Home,

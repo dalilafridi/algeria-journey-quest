@@ -19,7 +19,20 @@ import { AudioGuideProvider } from "@/lib/audioGuide";
 import { AudioMiniPlayer } from "@/components/audio/AudioGuide";
 import { AskCurator } from "@/components/curator/AskCurator";
 import { PassportTracker } from "@/components/PassportTracker";
-import { getLang, tu } from "@/lib/i18n";
+import { getLang, t, tu } from "@/lib/i18n";
+import { headLang } from "@/lib/seo";
+
+/** Site-wide fallback metadata, in the three reviewed museum languages. */
+const ROOT_TITLE = {
+  en: "DZ Odyssey, Algeria Through Time",
+  fr: "DZ Odyssey, l'Algérie à travers le temps",
+  ar: "دي زد أوديسي، الجزائر عبر الزمن",
+};
+const ROOT_DESCRIPTION = {
+  en: "DZ Odyssey, a cinematic museum passage through Algeria's eras, regions, figures and culture, from Numidia to independence.",
+  fr: "DZ Odyssey, une traversée muséale et cinématique des époques, régions, figures et cultures de l'Algérie, de la Numidie à l'indépendance.",
+  ar: "دي زد أوديسي، رحلة متحفية سينمائية عبر حِقب الجزائر ومناطقها وشخصياتها وثقافتها، من نوميديا إلى الاستقلال.",
+};
 
 
 function NotFoundComponent() {
@@ -47,15 +60,17 @@ import { resolveInitialLang } from "@/lib/lang-server";
 import type { Lang } from "@/lib/i18n";
 
 export const Route = createRootRoute({
-  // Runs on server for SSR; on client it just returns the last resolved value.
-  loader: async (): Promise<{ lang: Lang }> => {
+  // Publishes the active language on the router context so every route's
+  // head() can emit localized title / description / og tags. Server side it
+  // resolves from the dzo_lang cookie, client side from the saved choice.
+  beforeLoad: async (): Promise<{ lang: Lang }> => {
     if (typeof window === "undefined") {
-      const lang = await resolveInitialLang();
-      return { lang };
+      return { lang: await resolveInitialLang() };
     }
     return { lang: getLang() };
   },
-  head: () => ({
+  loader: ({ context }): { lang: Lang } => ({ lang: context.lang }),
+  head: ({ match }) => ({
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=5" },
@@ -63,17 +78,13 @@ export const Route = createRootRoute({
       { name: "mobile-web-app-capable", content: "yes" },
       { name: "apple-mobile-web-app-capable", content: "yes" },
       { name: "apple-mobile-web-app-status-bar-style", content: "black-translucent" },
-      { title: "DZ Odyssey, Algeria Through Time" },
-      {
-        name: "description",
-        content:
-          "DZ Odyssey, a cinematic museum passage through Algeria's eras, regions, figures and culture, from Numidia to independence.",
-      },
+      { title: t(ROOT_TITLE, headLang(match)) },
+      { name: "description", content: t(ROOT_DESCRIPTION, headLang(match)) },
       { name: "author", content: "DZ Odyssey" },
       { property: "og:type", content: "website" },
       { property: "og:site_name", content: "DZ Odyssey" },
       // NOTE (Phase 1): og:image and twitter:image intentionally live only on
-      // leaf routes via `pageMeta({...})`.
+      // leaf routes, through the shared pageMeta helper.
     ],
     links: [
       { rel: "stylesheet", href: appCss },

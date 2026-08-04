@@ -17,16 +17,17 @@ import { JourneyNext } from "@/components/JourneyNext";
 import { EraPreview } from "@/components/EraPreview";
 import { EraBadge, type EraBadgeKind } from "@/components/brand/EraBadge";
 import { AchievementMedallion } from "@/components/brand/AchievementMedallion";
-import { pageMeta } from "@/lib/seo";
+import { pageMeta, headLang } from "@/lib/seo";
+import { PAGE_META } from "@/lib/pageMetaCopy";
 import { ExhibitProvenance } from "@/components/provenance/ExhibitProvenance";
 
 
 export const Route = createFileRoute("/timeline")({
-  head: () =>
+  head: ({ match }) =>
     pageMeta({
+      lang: headLang(match),
       path: "/timeline",
-      title: "Century Timeline, DZ Odyssey",
-      description: "Five eras of Algerian history, from Numidia and Roman North Africa to independence and the modern republic.",
+      ...PAGE_META["/timeline"],
       image: numidiaImg
     }),
   component: Timeline,

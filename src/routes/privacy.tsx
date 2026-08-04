@@ -1,16 +1,16 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { InfoPage, InfoPlaque, type InfoSection } from "@/components/InfoPage";
 import { useLang } from "@/lib/i18n";
-import { pageMeta } from "@/lib/seo";
+import { pageMeta, headLang } from "@/lib/seo";
+import { PAGE_META } from "@/lib/pageMetaCopy";
 import { PUBLIC_CONTACT_EMAIL, hasPublicContact } from "@/lib/siteContact";
 
 export const Route = createFileRoute("/privacy")({
-  head: () =>
+  head: ({ match }) =>
     pageMeta({
+      lang: headLang(match),
       path: "/privacy",
-      title: "Privacy at DZ Odyssey, what the museum stores",
-      description:
-        "What DZ Odyssey stores on your device, the one cookie it sets, how Ask the Curator and the audio guide handle your text, and how to erase everything.",
+      ...PAGE_META["/privacy"],
     }),
   component: PrivacyPage,
 });
