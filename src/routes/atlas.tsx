@@ -182,9 +182,6 @@ function AtlasPage() {
           : "An interactive map of Algeria through time, regions, eras, figures, and cultural heritage.",
     eyebrow:
       lang === "fr" ? "Explorer l'Algérie" : lang === "ar" ? "استكشف الجزائر" : "Explore Algeria",
-    layerLabel:
-      lang === "fr" ? "Couche historique" : lang === "ar" ? "طبقة تاريخية" : "Historical layer",
-    allLayer: lang === "fr" ? "Toutes les époques" : lang === "ar" ? "كل الحقب" : "All eras",
     selectHint:
       lang === "fr"
         ? "Touchez une région pour l'explorer"
