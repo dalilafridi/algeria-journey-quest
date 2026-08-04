@@ -396,6 +396,132 @@ export type Database = {
         }
         Relationships: []
       }
+      monitoring_alert_settings: {
+        Row: {
+          alert_email: string | null
+          enabled: boolean
+          error_threshold: number
+          id: boolean
+          last_alert_at: string | null
+          updated_at: string
+          window_minutes: number
+        }
+        Insert: {
+          alert_email?: string | null
+          enabled?: boolean
+          error_threshold?: number
+          id?: boolean
+          last_alert_at?: string | null
+          updated_at?: string
+          window_minutes?: number
+        }
+        Update: {
+          alert_email?: string | null
+          enabled?: boolean
+          error_threshold?: number
+          id?: boolean
+          last_alert_at?: string | null
+          updated_at?: string
+          window_minutes?: number
+        }
+        Relationships: []
+      }
+      monitoring_alerts: {
+        Row: {
+          acknowledged_at: string | null
+          delivered: boolean
+          delivery_error: string | null
+          event_count: number
+          id: string
+          kind: string
+          recipient: string | null
+          summary: string
+          triggered_at: string
+          window_minutes: number
+        }
+        Insert: {
+          acknowledged_at?: string | null
+          delivered?: boolean
+          delivery_error?: string | null
+          event_count?: number
+          id?: string
+          kind: string
+          recipient?: string | null
+          summary: string
+          triggered_at?: string
+          window_minutes?: number
+        }
+        Update: {
+          acknowledged_at?: string | null
+          delivered?: boolean
+          delivery_error?: string | null
+          event_count?: number
+          id?: string
+          kind?: string
+          recipient?: string | null
+          summary?: string
+          triggered_at?: string
+          window_minutes?: number
+        }
+        Relationships: []
+      }
+      monitoring_events: {
+        Row: {
+          created_at: string
+          environment: string
+          event_type: string
+          fingerprint: string
+          id: string
+          language: string | null
+          message: string
+          occurred_at: string
+          page_url: string | null
+          resource_url: string | null
+          route: string | null
+          severity: string
+          stack: string | null
+          status_code: number | null
+          user_agent: string | null
+          viewport: string | null
+        }
+        Insert: {
+          created_at?: string
+          environment?: string
+          event_type: string
+          fingerprint: string
+          id?: string
+          language?: string | null
+          message: string
+          occurred_at?: string
+          page_url?: string | null
+          resource_url?: string | null
+          route?: string | null
+          severity?: string
+          stack?: string | null
+          status_code?: number | null
+          user_agent?: string | null
+          viewport?: string | null
+        }
+        Update: {
+          created_at?: string
+          environment?: string
+          event_type?: string
+          fingerprint?: string
+          id?: string
+          language?: string | null
+          message?: string
+          occurred_at?: string
+          page_url?: string | null
+          resource_url?: string | null
+          route?: string | null
+          severity?: string
+          stack?: string | null
+          status_code?: number | null
+          user_agent?: string | null
+          viewport?: string | null
+        }
+        Relationships: []
+      }
       profiles: {
         Row: {
           created_at: string
