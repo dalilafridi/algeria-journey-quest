@@ -1246,10 +1246,10 @@ function ExhibitNavigator({ lang }: { lang: Lang }) {
       </div>
       <ol className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
         {FOOTBALL_EXHIBITS.map((e, i) => (
-          <li key={e.id}>
+          <li key={e.id} className="min-w-0">
             <a
               href={`#${e.id}`}
-              className="group flex items-center gap-4 rounded-2xl border border-border bg-card p-4 transition hover:-translate-y-0.5 hover:border-accent/50"
+              className="group flex min-w-0 items-center gap-4 rounded-2xl border border-border bg-card p-4 transition hover:-translate-y-0.5 hover:border-accent/50"
               style={{ boxShadow: "var(--shadow-soft)" }}
             >
               <MedallionFrame size={48} tone="gold">
