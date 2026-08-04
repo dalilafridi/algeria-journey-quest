@@ -202,7 +202,7 @@ function MuseumVitrine({ lang }: { lang: Lang }) {
       {/* Ambient cabinet shadow */}
       <div
         aria-hidden
-        className="absolute -inset-x-6 -bottom-5 h-12 rounded-full blur-2xl"
+        className="absolute inset-x-0 -bottom-5 h-12 rounded-full blur-2xl"
         style={{ background: "oklch(0.22 0.03 40 / 0.45)" }}
       />
       {/* Museum mat + frame */}
