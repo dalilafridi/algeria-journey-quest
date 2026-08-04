@@ -228,7 +228,7 @@ export function DidYouKnowCard({ fact: override }: Props) {
               <span className="text-xs font-bold uppercase tracking-wider text-accent-foreground/80">
                 {tu("didYouKnow", lang)}
               </span>
-              <span className="text-xs font-medium text-muted-foreground opacity-70 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity">
+              <span className="text-xs font-medium text-muted-foreground sm:opacity-0 sm:group-hover:opacity-100 transition-opacity">
                 {open ? t(COPY.close, lang) : t(COPY.tapToExpand, lang)}
               </span>
             </span>

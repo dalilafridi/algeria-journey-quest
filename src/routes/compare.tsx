@@ -191,7 +191,7 @@ function ComparePage() {
                   className="rounded-full border border-border bg-background px-3 py-1 text-xs text-muted-foreground hover:text-foreground hover:border-amber-500/50 hover:bg-amber-500/5 transition"
                   style={{ fontFamily: SERIF }}
                 >
-                  {la} <span className="opacity-60">{T("vs")}</span> {lb}
+                  {la} <span className="opacity-80">{T("vs")}</span> {lb}
                 </button>
               );
             })}

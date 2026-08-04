@@ -720,7 +720,7 @@ function GijonExhibit({ lang }: { lang: Lang }) {
             {{ en: "Eliminated", fr: "Éliminée", ar: "مقصاة" }[lang]}
           </div>
           <div className="mt-1 text-lg font-semibold" style={SERIF}>Algeria · 🇩🇿</div>
-          <p className="mt-1 text-xs text-foreground/70">
+          <p className="mt-1 text-xs text-muted-foreground">
             {{
               en: "Same points as one qualifier. Better goal difference than one qualifier. Eliminated on goals scored.",
               fr: "Mêmes points qu’un qualifié. Meilleure différence qu’un qualifié. Éliminée aux buts marqués.",
