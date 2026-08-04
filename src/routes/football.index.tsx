@@ -202,7 +202,7 @@ function MuseumVitrine({ lang }: { lang: Lang }) {
       {/* Ambient cabinet shadow */}
       <div
         aria-hidden
-        className="absolute -inset-x-6 -bottom-5 h-12 rounded-full blur-2xl"
+        className="absolute inset-x-0 -bottom-5 h-12 rounded-full blur-2xl"
         style={{ background: "oklch(0.22 0.03 40 / 0.45)" }}
       />
       {/* Museum mat + frame */}
@@ -957,10 +957,10 @@ function MatchesExhibit({ lang }: { lang: Lang }) {
         return (
           <article
             key={m.id}
-            className="rounded-2xl border border-border bg-card p-5 transition hover:-translate-y-0.5"
+            className="min-w-0 rounded-2xl border border-border bg-card p-5 transition hover:-translate-y-0.5"
             style={{ boxShadow: "var(--shadow-soft)" }}
           >
-            <div className="flex items-baseline justify-between gap-3">
+            <div className="flex min-w-0 items-baseline justify-between gap-3">
               <div className="min-w-0">
                 <div className="text-xs uppercase tracking-widest text-muted-foreground">{m.date}</div>
                 <h3 className="mt-1 text-lg font-semibold truncate" style={SERIF}>{m.title}</h3>
@@ -1246,10 +1246,10 @@ function ExhibitNavigator({ lang }: { lang: Lang }) {
       </div>
       <ol className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
         {FOOTBALL_EXHIBITS.map((e, i) => (
-          <li key={e.id}>
+          <li key={e.id} className="min-w-0">
             <a
               href={`#${e.id}`}
-              className="group flex items-center gap-4 rounded-2xl border border-border bg-card p-4 transition hover:-translate-y-0.5 hover:border-accent/50"
+              className="group flex min-w-0 items-center gap-4 rounded-2xl border border-border bg-card p-4 transition hover:-translate-y-0.5 hover:border-accent/50"
               style={{ boxShadow: "var(--shadow-soft)" }}
             >
               <MedallionFrame size={48} tone="gold">

@@ -27,7 +27,7 @@ import { AskCurator } from "@/components/curator/AskCurator";
 import { PassportTracker } from "@/components/PassportTracker";
 import { NotFoundView } from "@/components/NotFoundView";
 import { MonitoringProbe } from "@/components/MonitoringProbe";
-import { getLang, t, tu } from "@/lib/i18n";
+import { LangContext, getLang, t, tu } from "@/lib/i18n";
 import { headLang } from "@/lib/seo";
 
 /** Site-wide fallback metadata, in the three reviewed museum languages. */
@@ -121,6 +121,9 @@ function RootComponent() {
   const isNotFound = useRouterState({
     select: (r) => r.matches.some((m) => m.routeId === "/$" || m.globalNotFound === true),
   });
+  // Cookie-resolved language, shared with every component so the server and
+  // the first client render agree (no hydration mismatch in FR / AR).
+  const { lang: ssrLang } = Route.useLoaderData();
 
   useEffect(() => {
     const handleContextMenu = (e: MouseEvent) => {
@@ -133,35 +136,39 @@ function RootComponent() {
 
   if (isCurator) {
     return (
-      <AudioGuideProvider>
-        <LangSync />
-        <MonitoringProbe />
-        <Outlet />
-        <Sonner />
-      </AudioGuideProvider>
+      <LangContext.Provider value={ssrLang}>
+        <AudioGuideProvider>
+          <LangSync />
+          <MonitoringProbe />
+          <Outlet />
+          <Sonner />
+        </AudioGuideProvider>
+      </LangContext.Provider>
     );
   }
 
   return (
-    <AudioGuideProvider>
-      <SkipLink />
-      <LangSync />
-      <MonitoringProbe />
-      <SplashScreen />
-      <SignatureIntro />
-      {!isNotFound && <ContinueJourneyCard />}
-      <Outlet />
-      <SiteFooter />
-      {!isNotFound && <WelcomeJourney />}
-      {!isNotFound && <JourneyHud />}
-      <BackToTop />
-      <MuseumDock />
-      <SearchOverlay />
-      <MotionReveal />
-      <AudioMiniPlayer />
-      <AskCurator />
-      <PassportTracker />
-      <Sonner />
-    </AudioGuideProvider>
+    <LangContext.Provider value={ssrLang}>
+      <AudioGuideProvider>
+        <SkipLink />
+        <LangSync />
+        <MonitoringProbe />
+        <SplashScreen />
+        <SignatureIntro />
+        {!isNotFound && <ContinueJourneyCard />}
+        <Outlet />
+        <SiteFooter />
+        {!isNotFound && <WelcomeJourney />}
+        {!isNotFound && <JourneyHud />}
+        <BackToTop />
+        <MuseumDock />
+        <SearchOverlay />
+        <MotionReveal />
+        <AudioMiniPlayer />
+        <AskCurator />
+        <PassportTracker />
+        <Sonner />
+      </AudioGuideProvider>
+    </LangContext.Provider>
   );
 }

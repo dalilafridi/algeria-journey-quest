@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 
 export type Lang = "en" | "fr" | "ar";
 
@@ -64,9 +64,20 @@ export function applyDir(lang: Lang) {
   document.documentElement.dir = lang === "ar" ? "rtl" : "ltr";
 }
 
+/**
+ * Server-render language, published by the root route from the dzo_lang
+ * cookie. Without it every component would render English on the server and
+ * the visitor's language on the client, producing a hydration mismatch on
+ * every French and Arabic page.
+ */
+export const LangContext = createContext<Lang | null>(null);
+
 /** React hook returning the current language and reacting to changes. */
 export function useLang(): Lang {
-  const [lang, setLangState] = useState<Lang>(() => getLang());
+  const ssrLang = useContext(LangContext);
+  const [lang, setLangState] = useState<Lang>(() =>
+    typeof window === "undefined" ? (ssrLang ?? "en") : getLang(),
+  );
   useEffect(() => {
     const update = () => setLangState(getLang());
     update();

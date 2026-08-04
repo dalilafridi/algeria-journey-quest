@@ -66,6 +66,7 @@ function GuessQuiz() {
       <div className="min-h-dvh">
         <Header />
         <main id="main" tabIndex={-1} className="max-w-xl mx-auto px-4 py-12">
+          <h1 className="sr-only">{tu("guessTheFigure", lang)}</h1>
           <div className="h-2 rounded-full bg-muted overflow-hidden" />
           <div className="mt-6 h-64 rounded-2xl bg-card border border-border animate-pulse" />
         </main>
@@ -173,6 +174,7 @@ function GuessQuiz() {
     <div className="min-h-dvh">
       <Header />
       <main id="main" tabIndex={-1} className="max-w-xl mx-auto px-4 py-8">
+        <h1 className="sr-only">{tu("guessTheFigure", lang)}</h1>
         <Link to="/figures" className="text-sm text-muted-foreground hover:text-foreground">
           {tu("backToFigures", lang)}
         </Link>
