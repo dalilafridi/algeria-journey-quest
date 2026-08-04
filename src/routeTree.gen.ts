@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AboutRouteImport } from './routes/about'
 import { Route as AtlasRouteImport } from './routes/atlas'
 import { Route as ChronicleRouteImport } from './routes/chronicle'
 import { Route as CinemaRouteImport } from './routes/cinema'
@@ -24,10 +25,13 @@ import { Route as MapRouteImport } from './routes/map'
 import { Route as MomentsRouteImport } from './routes/moments'
 import { Route as MzabRouteImport } from './routes/mzab'
 import { Route as PassportRouteImport } from './routes/passport'
+import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as ProfileRouteImport } from './routes/profile'
 import { Route as ShowcaseRouteImport } from './routes/showcase'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as SourcesRouteImport } from './routes/sources'
 import { Route as StargazingRouteImport } from './routes/stargazing'
+import { Route as TermsRouteImport } from './routes/terms'
 import { Route as TimelineRouteImport } from './routes/timeline'
 import { Route as WordsRouteImport } from './routes/words'
 import { Route as ApiCuratorRouteImport } from './routes/api/curator'
@@ -87,6 +91,11 @@ import { Route as CuratorStudioFiguresDraftIdPreviewRouteImport } from './routes
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AtlasRoute = AtlasRouteImport.update({
@@ -159,6 +168,11 @@ const PassportRoute = PassportRouteImport.update({
   path: '/passport',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PrivacyRoute = PrivacyRouteImport.update({
+  id: '/privacy',
+  path: '/privacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ProfileRoute = ProfileRouteImport.update({
   id: '/profile',
   path: '/profile',
@@ -174,9 +188,19 @@ const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   path: '/sitemap.xml',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SourcesRoute = SourcesRouteImport.update({
+  id: '/sources',
+  path: '/sources',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const StargazingRoute = StargazingRouteImport.update({
   id: '/stargazing',
   path: '/stargazing',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TermsRoute = TermsRouteImport.update({
+  id: '/terms',
+  path: '/terms',
   getParentRoute: () => rootRouteImport,
 } as any)
 const TimelineRoute = TimelineRouteImport.update({
@@ -469,6 +493,7 @@ const CuratorStudioFiguresDraftIdPreviewRoute =
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/curator': typeof CuratorRouteRouteWithChildren
+  '/about': typeof AboutRoute
   '/atlas': typeof AtlasRoute
   '/chronicle': typeof ChronicleRoute
   '/cinema': typeof CinemaRoute
@@ -482,10 +507,13 @@ export interface FileRoutesByFullPath {
   '/moments': typeof MomentsRoute
   '/mzab': typeof MzabRoute
   '/passport': typeof PassportRoute
+  '/privacy': typeof PrivacyRoute
   '/profile': typeof ProfileRoute
   '/showcase': typeof ShowcaseRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/sources': typeof SourcesRoute
   '/stargazing': typeof StargazingRoute
+  '/terms': typeof TermsRoute
   '/timeline': typeof TimelineRoute
   '/words': typeof WordsRoute
   '/api/curator': typeof ApiCuratorRoute
@@ -544,6 +572,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/curator': typeof CuratorStudioIndexRoute
+  '/about': typeof AboutRoute
   '/atlas': typeof AtlasRoute
   '/chronicle': typeof ChronicleRoute
   '/cinema': typeof CinemaRoute
@@ -555,10 +584,13 @@ export interface FileRoutesByTo {
   '/moments': typeof MomentsRoute
   '/mzab': typeof MzabRoute
   '/passport': typeof PassportRoute
+  '/privacy': typeof PrivacyRoute
   '/profile': typeof ProfileRoute
   '/showcase': typeof ShowcaseRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/sources': typeof SourcesRoute
   '/stargazing': typeof StargazingRoute
+  '/terms': typeof TermsRoute
   '/timeline': typeof TimelineRoute
   '/words': typeof WordsRoute
   '/api/curator': typeof ApiCuratorRoute
@@ -616,6 +648,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/curator': typeof CuratorRouteRouteWithChildren
+  '/about': typeof AboutRoute
   '/atlas': typeof AtlasRoute
   '/chronicle': typeof ChronicleRoute
   '/cinema': typeof CinemaRoute
@@ -629,10 +662,13 @@ export interface FileRoutesById {
   '/moments': typeof MomentsRoute
   '/mzab': typeof MzabRoute
   '/passport': typeof PassportRoute
+  '/privacy': typeof PrivacyRoute
   '/profile': typeof ProfileRoute
   '/showcase': typeof ShowcaseRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/sources': typeof SourcesRoute
   '/stargazing': typeof StargazingRoute
+  '/terms': typeof TermsRoute
   '/timeline': typeof TimelineRoute
   '/words': typeof WordsRoute
   '/curator/_studio': typeof CuratorStudioRouteRouteWithChildren
@@ -694,6 +730,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/curator'
+    | '/about'
     | '/atlas'
     | '/chronicle'
     | '/cinema'
@@ -707,10 +744,13 @@ export interface FileRouteTypes {
     | '/moments'
     | '/mzab'
     | '/passport'
+    | '/privacy'
     | '/profile'
     | '/showcase'
     | '/sitemap.xml'
+    | '/sources'
     | '/stargazing'
+    | '/terms'
     | '/timeline'
     | '/words'
     | '/api/curator'
@@ -769,6 +809,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/curator'
+    | '/about'
     | '/atlas'
     | '/chronicle'
     | '/cinema'
@@ -780,10 +821,13 @@ export interface FileRouteTypes {
     | '/moments'
     | '/mzab'
     | '/passport'
+    | '/privacy'
     | '/profile'
     | '/showcase'
     | '/sitemap.xml'
+    | '/sources'
     | '/stargazing'
+    | '/terms'
     | '/timeline'
     | '/words'
     | '/api/curator'
@@ -840,6 +884,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/curator'
+    | '/about'
     | '/atlas'
     | '/chronicle'
     | '/cinema'
@@ -853,10 +898,13 @@ export interface FileRouteTypes {
     | '/moments'
     | '/mzab'
     | '/passport'
+    | '/privacy'
     | '/profile'
     | '/showcase'
     | '/sitemap.xml'
+    | '/sources'
     | '/stargazing'
+    | '/terms'
     | '/timeline'
     | '/words'
     | '/curator/_studio'
@@ -917,6 +965,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   CuratorRouteRoute: typeof CuratorRouteRouteWithChildren
+  AboutRoute: typeof AboutRoute
   AtlasRoute: typeof AtlasRoute
   ChronicleRoute: typeof ChronicleRoute
   CinemaRoute: typeof CinemaRoute
@@ -930,10 +979,13 @@ export interface RootRouteChildren {
   MomentsRoute: typeof MomentsRoute
   MzabRoute: typeof MzabRoute
   PassportRoute: typeof PassportRoute
+  PrivacyRoute: typeof PrivacyRoute
   ProfileRoute: typeof ProfileRoute
   ShowcaseRoute: typeof ShowcaseRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
+  SourcesRoute: typeof SourcesRoute
   StargazingRoute: typeof StargazingRoute
+  TermsRoute: typeof TermsRoute
   TimelineRoute: typeof TimelineRoute
   WordsRoute: typeof WordsRoute
   ApiCuratorRoute: typeof ApiCuratorRoute
@@ -957,6 +1009,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/atlas': {
@@ -1057,6 +1116,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PassportRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/privacy': {
+      id: '/privacy'
+      path: '/privacy'
+      fullPath: '/privacy'
+      preLoaderRoute: typeof PrivacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/profile': {
       id: '/profile'
       path: '/profile'
@@ -1078,11 +1144,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SitemapDotxmlRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/sources': {
+      id: '/sources'
+      path: '/sources'
+      fullPath: '/sources'
+      preLoaderRoute: typeof SourcesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/stargazing': {
       id: '/stargazing'
       path: '/stargazing'
       fullPath: '/stargazing'
       preLoaderRoute: typeof StargazingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/terms': {
+      id: '/terms'
+      path: '/terms'
+      fullPath: '/terms'
+      preLoaderRoute: typeof TermsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/timeline': {
@@ -1618,6 +1698,7 @@ const FootballRouteWithChildren = FootballRoute._addFileChildren(
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   CuratorRouteRoute: CuratorRouteRouteWithChildren,
+  AboutRoute: AboutRoute,
   AtlasRoute: AtlasRoute,
   ChronicleRoute: ChronicleRoute,
   CinemaRoute: CinemaRoute,
@@ -1631,10 +1712,13 @@ const rootRouteChildren: RootRouteChildren = {
   MomentsRoute: MomentsRoute,
   MzabRoute: MzabRoute,
   PassportRoute: PassportRoute,
+  PrivacyRoute: PrivacyRoute,
   ProfileRoute: ProfileRoute,
   ShowcaseRoute: ShowcaseRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
+  SourcesRoute: SourcesRoute,
   StargazingRoute: StargazingRoute,
+  TermsRoute: TermsRoute,
   TimelineRoute: TimelineRoute,
   WordsRoute: WordsRoute,
   ApiCuratorRoute: ApiCuratorRoute,

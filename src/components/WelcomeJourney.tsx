@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
+import { Link } from "@tanstack/react-router";
 import { type Lang, useLang } from "@/lib/i18n";
 
 export const OPEN_CREATOR_ABOUT_EVENT = "open-creator-about";
@@ -18,10 +19,10 @@ const CREATOR_NARRATIVE: Record<Lang, { name: string; text: string }> = {
   },
 };
 
-const ABOUT_UI: Record<Lang, { label: string; close: string; byline: string }> = {
-  fr: { label: "À propos", close: "Fermer", byline: "Créatrice de l’expérience" },
-  en: { label: "About", close: "Close", byline: "Creator of the experience" },
-  ar: { label: "حول", close: "إغلاق", byline: "مُنشِئة التجربة" },
+const ABOUT_UI: Record<Lang, { label: string; close: string; byline: string; fullPage: string }> = {
+  fr: { label: "À propos", close: "Fermer", byline: "Créatrice de l’expérience", fullPage: "Lire la page À propos complète" },
+  en: { label: "About", close: "Close", byline: "Creator of the experience", fullPage: "Read the full About page" },
+  ar: { label: "حول", close: "إغلاق", byline: "مُنشِئة التجربة", fullPage: "اقرأ صفحة حول المتحف كاملة" },
 };
 
 export function WelcomeJourney() {
@@ -72,6 +73,15 @@ export function WelcomeJourney() {
             <div className="mx-auto mt-7 whitespace-pre-line text-center text-base leading-8 text-foreground/85">
               {body}
             </div>
+            <p className="mt-8">
+              <Link
+                to="/about"
+                onClick={() => setVisible(false)}
+                className="inline-flex items-center justify-center rounded-full border border-border bg-background px-4 py-2 text-sm font-medium text-foreground transition hover:bg-muted"
+              >
+                {ABOUT_UI[lang].fullPage}
+              </Link>
+            </p>
           </div>
         </section>
       </div>
