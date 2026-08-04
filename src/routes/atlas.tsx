@@ -665,6 +665,12 @@ const HIGHLIGHT_COPY = {
     ar: "لهذا الموقع على الخريطة معرضه الخاص. تفضّل بالدخول.",
   },
   close: { en: "Close highlight", fr: "Fermer le temps fort", ar: "إغلاق" },
+  railHint: {
+    en: "Choose a highlight to light up its pin and bring the map to it.",
+    fr: "Choisissez un temps fort pour éclairer son repère et y amener la carte.",
+    ar: "اختر معلمًا لإضاءة علامته على الخريطة والانتقال إليه.",
+  },
+
 } as const satisfies Record<string, LocalizedString>;
 
 /* ============================================================
