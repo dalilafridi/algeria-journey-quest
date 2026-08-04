@@ -4,7 +4,7 @@ import { LessonCard } from "@/components/LessonCard";
 import { ExplainToggle } from "@/components/ExplainToggle";
 import { lessons } from "@/data/lessons";
 import { useLang } from "@/lib/i18n";
-import { pageMeta, headLang, headLang } from "@/lib/seo";
+import { pageMeta, headLang } from "@/lib/seo";
 
 export const Route = createFileRoute("/lessons")({
   head: ({ match }) =>

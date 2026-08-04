@@ -6,7 +6,7 @@ import { saveJourneyPlace } from "@/lib/continuity";
 import { AmazighSymbol } from "@/components/brand/AmazighSymbol";
 import { CollectionEmblem } from "@/components/figures/CollectionEmblem";
 import { CULTURE_TOPICS } from "@/data/cultureTopics";
-import { pageMeta, headLang, headLang } from "@/lib/seo";
+import { pageMeta, headLang } from "@/lib/seo";
 
 const L = (en: string, fr: string, ar: string): Localized<string> => ({ en, fr, ar });
 

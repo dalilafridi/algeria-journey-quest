@@ -14,7 +14,7 @@ import { JourneyNext } from "@/components/JourneyNext";
 import { ExhibitShowcase } from "@/components/museum/EntranceHall";
 import { MUSEUM_HIGHLIGHTS } from "@/data/museumHighlights";
 import mapImg from "@/assets/algeria-map.png";
-import { pageMeta, headLang, headLang } from "@/lib/seo";
+import { pageMeta, headLang } from "@/lib/seo";
 
 export const Route = createFileRoute("/map")({
   head: ({ match }) =>

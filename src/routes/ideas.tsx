@@ -5,7 +5,7 @@ import { IDEAS, type IdeaTopic } from "@/data/ideas";
 import { words } from "@/data/words";
 import { figures } from "@/data/figures";
 import { t, useLang, type Lang } from "@/lib/i18n";
-import { pageMeta, headLang, headLang } from "@/lib/seo";
+import { pageMeta, headLang } from "@/lib/seo";
 
 export const Route = createFileRoute("/ideas")({
   head: ({ match }) =>

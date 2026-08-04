@@ -11,7 +11,7 @@
  */
 
 import { createFileRoute, Link, useParams } from "@tanstack/react-router";
-import { pageMeta, headLang, headLang } from "@/lib/seo";
+import { pageMeta, headLang } from "@/lib/seo";
 import { useEffect, useMemo, useState } from "react";
 import { Header } from "@/components/Header";
 

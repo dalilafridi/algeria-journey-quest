@@ -16,7 +16,7 @@ import { RegionIcon } from "@/components/RegionIcon";
 import { dailyFacts, eras } from "@/data/eras";
 import { t, tu, useLang } from "@/lib/i18n";
 import heroBg from "@/assets/hero-bg.png";
-import { pageMeta, headLang, headLang } from "@/lib/seo";
+import { pageMeta, headLang } from "@/lib/seo";
 
 
 

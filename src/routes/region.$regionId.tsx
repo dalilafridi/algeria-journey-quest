@@ -11,7 +11,7 @@
  */
 
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
-import { pageMeta, headLang, headLang } from "@/lib/seo";
+import { pageMeta, headLang } from "@/lib/seo";
 import { useEffect } from "react";
 import { Header } from "@/components/Header";
 import { RegionIcon } from "@/components/RegionIcon";

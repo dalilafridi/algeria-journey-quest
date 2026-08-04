@@ -5,7 +5,7 @@ import { MedallionFrame } from "@/components/brand/MedallionFrame";
 import { useLang, t, type Lang } from "@/lib/i18n";
 import { listClubMuseums } from "@/data/clubs";
 import type { ClubMuseum } from "@/data/clubs/types";
-import { pageMeta, headLang, headLang } from "@/lib/seo";
+import { pageMeta, headLang } from "@/lib/seo";
 
 export const Route = createFileRoute("/clubs/")({
   head: ({ match }) =>

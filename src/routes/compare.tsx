@@ -5,7 +5,7 @@ import { t, useLang, type Lang, type LocalizedString } from "@/lib/i18n";
 import { figures, type Figure } from "@/data/figures";
 import { eras, type Era } from "@/data/eras";
 import { mapRegions, type MapRegion } from "@/data/mapRegions";
-import { pageMeta, headLang, headLang } from "@/lib/seo";
+import { pageMeta, headLang } from "@/lib/seo";
 
 type Kind = "figures" | "eras" | "regions";
 

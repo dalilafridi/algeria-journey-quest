@@ -10,7 +10,7 @@ import {
   type Progress,
 } from "@/lib/progress";
 import { t, tu, useLang } from "@/lib/i18n";
-import { pageMeta, headLang, headLang } from "@/lib/seo";
+import { pageMeta, headLang } from "@/lib/seo";
 
 export const Route = createFileRoute("/profile")({
   head: ({ match }) =>

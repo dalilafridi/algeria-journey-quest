@@ -18,7 +18,7 @@ import {
 } from "@/lib/wordsProgress";
 import { t, useLang, type Lang } from "@/lib/i18n";
 import { saveJourneyPlace } from "@/lib/continuity";
-import { pageMeta, headLang, headLang } from "@/lib/seo";
+import { pageMeta, headLang } from "@/lib/seo";
 
 export const Route = createFileRoute("/words")({
   head: ({ match }) =>

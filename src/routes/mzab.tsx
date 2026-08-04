@@ -16,7 +16,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Header } from "@/components/Header";
 import { useLang, type Lang, type LocalizedString } from "@/lib/i18n";
-import { pageMeta, headLang, headLang } from "@/lib/seo";
+import { pageMeta, headLang } from "@/lib/seo";
 import { ExhibitProvenance } from "@/components/provenance/ExhibitProvenance";
 import {
   Section,

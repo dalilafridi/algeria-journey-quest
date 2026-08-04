@@ -17,7 +17,7 @@ import { JourneyNext } from "@/components/JourneyNext";
 import { EraPreview } from "@/components/EraPreview";
 import { EraBadge, type EraBadgeKind } from "@/components/brand/EraBadge";
 import { AchievementMedallion } from "@/components/brand/AchievementMedallion";
-import { pageMeta, headLang, headLang } from "@/lib/seo";
+import { pageMeta, headLang } from "@/lib/seo";
 import { ExhibitProvenance } from "@/components/provenance/ExhibitProvenance";
 
 

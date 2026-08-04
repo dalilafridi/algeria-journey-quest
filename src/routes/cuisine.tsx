@@ -12,7 +12,7 @@ import { ContinueExploring } from "@/components/curator/ContinueExploring";
 import { ExhibitProvenance } from "@/components/provenance/ExhibitProvenance";
 import { getCuisineExploreGroups } from "@/lib/exploreGroups";
 import cuisineHero from "@/assets/cuisine-hero.jpg";
-import { pageMeta, headLang, headLang } from "@/lib/seo";
+import { pageMeta, headLang } from "@/lib/seo";
 
 export const Route = createFileRoute("/cuisine")({
   head: ({ match }) =>

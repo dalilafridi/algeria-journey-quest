@@ -17,7 +17,7 @@ import {
 } from "@/components/moments/Immersive";
 import { StoryFlow } from "@/components/story/StoryFlow";
 import { TAFSUT_SCENES, DECADE_SCENES, EDUCATION_SCENES, INDEPENDENCE_WAR_SCENES } from "@/data/storyScenes";
-import { pageMeta, headLang, headLang } from "@/lib/seo";
+import { pageMeta, headLang } from "@/lib/seo";
 
 // ============================================================
 // Route

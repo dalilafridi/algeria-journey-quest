@@ -5,7 +5,7 @@ import { figureQuiz, type FigureQuizQuestion } from "@/data/figureQuiz";
 import { shuffle } from "@/lib/quiz";
 import { addXp } from "@/lib/progress";
 import { t, tu, useLang } from "@/lib/i18n";
-import { pageMeta, headLang, headLang } from "@/lib/seo";
+import { pageMeta, headLang } from "@/lib/seo";
 
 export const Route = createFileRoute("/figures/quiz")({
   head: ({ match }) =>

@@ -22,7 +22,7 @@ import { GuidedTour } from "@/components/figures/GuidedTour";
 import { SignatureJourneys } from "@/components/journeys/SignatureJourneys";
 import { t, tu, useLang, type Lang } from "@/lib/i18n";
 import { saveJourneyPlace } from "@/lib/continuity";
-import { pageMeta, headLang, headLang } from "@/lib/seo";
+import { pageMeta, headLang } from "@/lib/seo";
 
 
 export const Route = createFileRoute("/figures/")({

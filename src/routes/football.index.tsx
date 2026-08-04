@@ -8,7 +8,7 @@ import { useFootballBookmarks } from "@/lib/footballBookmarks";
 import { theaterIdForFootballMatch } from "@/data/matchTheater";
 import flnTeamPhoto from "@/assets/fln-team-1958.jpg.asset.json";
 import footballHero from "@/assets/football-hero-vitrine.jpg";
-import { pageMeta, headLang, headLang } from "@/lib/seo";
+import { pageMeta, headLang } from "@/lib/seo";
 import { ExhibitProvenance } from "@/components/provenance/ExhibitProvenance";
 import {
   AFCON_HISTORY,

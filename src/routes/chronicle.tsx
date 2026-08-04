@@ -7,7 +7,7 @@ import { EraBadge, type EraBadgeKind } from "@/components/brand/EraBadge";
 import { t, useLang, type Lang } from "@/lib/i18n";
 import { ChevronLeft, ChevronRight, MapPin, Sparkles, Users, Scroll } from "lucide-react";
 import chronicleImg from "@/assets/era-numidia.jpg";
-import { pageMeta, headLang, headLang } from "@/lib/seo";
+import { pageMeta, headLang } from "@/lib/seo";
 
 export const Route = createFileRoute("/chronicle")({
   head: ({ match }) =>

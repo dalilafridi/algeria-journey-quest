@@ -2,7 +2,7 @@ import { createFileRoute, useNavigate, Link } from "@tanstack/react-router";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { useLang, t, type LocalizedString, type Lang } from "@/lib/i18n";
 import { setShowcase } from "@/lib/showcase";
-import { pageMeta, headLang, headLang } from "@/lib/seo";
+import { pageMeta, headLang } from "@/lib/seo";
 
 export const Route = createFileRoute("/showcase")({
   head: ({ match }) =>

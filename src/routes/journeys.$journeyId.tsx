@@ -9,7 +9,7 @@
  */
 
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
-import { pageMeta, headLang, headLang } from "@/lib/seo";
+import { pageMeta, headLang } from "@/lib/seo";
 import { useState } from "react";
 import { Header } from "@/components/Header";
 import { CollectionEmblem } from "@/components/figures/CollectionEmblem";

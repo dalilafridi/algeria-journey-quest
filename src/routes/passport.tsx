@@ -13,7 +13,7 @@ import { getProgress, getLevelInfo } from "@/lib/progress";
 import { eras } from "@/data/eras";
 import { mapRegions } from "@/data/mapRegions";
 import { figures } from "@/data/figures";
-import { pageMeta, headLang, headLang } from "@/lib/seo";
+import { pageMeta, headLang } from "@/lib/seo";
 
 export const Route = createFileRoute("/passport")({
   head: ({ match }) =>
