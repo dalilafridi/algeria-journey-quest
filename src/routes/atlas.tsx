@@ -519,24 +519,20 @@ function AtlasPage() {
                     aria-label={t(r.name, lang)}
                   >
                     {/* Glow halo, quieter, smaller */}
-                    {(isFocus || isActive) && (
-                      <circle
-                        cx={p.x}
-                        cy={p.y}
-                        r={radius * 1.6}
-                        fill="url(#atlas-region-glow)"
-                        opacity={isActive ? 0.7 : 0.35}
-                      >
-                        {isFocus && (
-                          <animate
-                            attributeName="opacity"
-                            values={isActive ? "0.6;0.8;0.6" : "0.22;0.4;0.22"}
-                            dur="4.2s"
-                            repeatCount="indefinite"
-                          />
-                        )}
-                      </circle>
-                    )}
+                    <circle
+                      cx={p.x}
+                      cy={p.y}
+                      r={radius * 1.6}
+                      fill="url(#atlas-region-glow)"
+                      opacity={isActive ? 0.7 : 0.35}
+                    >
+                      <animate
+                        attributeName="opacity"
+                        values={isActive ? "0.6;0.8;0.6" : "0.22;0.4;0.22"}
+                        dur="4.2s"
+                        repeatCount="indefinite"
+                      />
+                    </circle>
                     {/* Pin, small, integrated */}
                     <circle
                       cx={p.x}
