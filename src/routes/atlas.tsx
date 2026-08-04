@@ -196,12 +196,6 @@ function AtlasPage() {
     regionPage: lang === "fr" ? "Page région" : lang === "ar" ? "صفحة المنطقة" : "Region page",
     figuresPage: lang === "fr" ? "Toutes les figures" : lang === "ar" ? "كل الشخصيات" : "All figures",
     timeline: lang === "fr" ? "Frise chronologique" : lang === "ar" ? "الخط الزمني" : "Timeline",
-    legend:
-      lang === "fr"
-        ? "Choisissez une époque pour voir où elle a marqué l'Algérie."
-        : lang === "ar"
-          ? "اختر حقبة لرؤية أين تركت أثرها في الجزائر."
-          : "Pick an era to see where it shaped Algeria.",
     pickRegion:
       lang === "fr"
         ? "Sélectionnez une région sur la carte pour révéler son histoire."
