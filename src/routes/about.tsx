@@ -29,6 +29,87 @@ const INTRO = {
 
 const SECTIONS: InfoSection[] = [
   {
+    heading: {
+      en: "Creator of the Experience",
+      fr: "La créatrice de l'expérience",
+      ar: "خالقة التجربة",
+    },
+    paras: [
+      {
+        en: "Dalila Fridi",
+        fr: "Dalila Fridi",
+        ar: "دليلة فريدي",
+      },
+      {
+        en: "I have always loved history, but what fascinates me most are the stories that connect us.",
+        fr: "J'ai toujours aimé l'histoire, mais ce qui me fascine le plus, ce sont les histoires qui nous relient.",
+        ar: "لطالما أحببت التاريخ، لكن ما يأسرني أكثر هو القصص التي تربطنا ببعضنا.",
+      },
+      {
+        en: "I grew up in a family where freedom was never just a word. It was a living memory, passed down quietly through the voices of my mother and grandmothers.",
+        fr: "J'ai grandi dans une famille où la liberté n'a jamais été qu'un simple mot. C'était un souvenir vivant, transmis en silence par la voix de ma mère et de mes grands-mères.",
+        ar: "نشأت في عائلة حيث لم تكن الحرية مجرد كلمة. كانت ذكرى حية، تُنقَل بهدوء عبر أصوات أمّي وجدّاتي.",
+      },
+      {
+        en: "They did more than tell us stories about the past. They reminded us who we are, where we come from, and why remembering matters.",
+        fr: "Elles ne se contentaient pas de nous raconter des histoires du passé. Elles nous rappelaient qui nous sommes, d'où nous venons, et pourquoi se souvenir compte.",
+        ar: "لم يقتصر الأمر على حكايات من الماضي. لقد ذكّرننا بمن نحن، ومن أين أتينا، ولماذا يهمّ أن نتذكّر.",
+      },
+      {
+        en: "I also lived through defining moments in Algeria's modern history, including the Berber Spring of 1980 and the October 1988 uprising. Those experiences taught me that identity is not something we simply inherit. It is something we live, protect, question, and pass on.",
+        fr: "J'ai aussi vécu des moments déterminants de l'histoire moderne de l'Algérie, dont le printemps berbère de 1980 et les émeutes d'octobre 1988. Ces expériences m'ont appris que l'identité ne se reçoit pas simplement. Elle se vit, se protège, se questionne et se transmet.",
+        ar: "عشتُ أيضًا لحظات محورية في التاريخ الجزائري الحديث، منها الربيع الأمازيغي عام 1980 وانتفاضة أكتوبر 1988. علّمتني هذه التجارب أن الهوية ليست شيئًا نرثه ببساطة. إنها شيء نعيشه، نحميه، نسأل عنه، ونورّثه.",
+      },
+      {
+        en: "One truth has stayed with me throughout my life:",
+        fr: "Une vérité m'est restée au fil de ma vie :",
+        ar: "حقيقة واحدة بقيت معي طوال حياتي:",
+      },
+      {
+        en: "Never forget where you come from.",
+        fr: "N'oublie jamais d'où tu viens.",
+        ar: "لا تنسَ أبدًا من أين أنت.",
+      },
+      {
+        en: "That belief inspired me to create DZ Odyssey, a space where history is not only studied, but explored, heard, felt, and rediscovered.",
+        fr: "Cette conviction m'a inspirée pour créer DZ Odyssey, un espace où l'histoire ne se contente pas d'être étudiée, mais explorée, entendue, ressentie et redécouverte.",
+        ar: "هذا الإيمان هو ما ألهمني لإنشاء دي زد أوديسي، مساحة حيث لا يُدرس التاريخ فحسب، بل يُستكشف ويُسمع ويُشعر ويُعاد اكتشافه.",
+      },
+      {
+        en: "I spent months researching historical events, people, traditions, and stories. Along the way, I discovered things about Algeria that even I did not know. Every discovery deepened my curiosity and reminded me how much of our story is still waiting to be shared.",
+        fr: "J'ai passé des mois à rechercher des événements historiques, des personnes, des traditions et des récits. En chemin, j'ai découvert des choses sur l'Algérie que moi-même je ne connaissais pas. Chaque découverte a renforcé ma curiosité et m'a rappelé combien de notre histoire attend encore d'être partagée.",
+        ar: "قضيتُ شهورًا أبحث في الأحداث التاريخية والشخصيات والتقاليد والقصص. وفي الطريق، اكتشفتُ أشياء عن الجزائر حتى أنا لم أكن أعرفها. كل اكتشاف عمّق فضولي وذكّرني بكمّ من قصتنا لا يزال ينتظر أن يُشارك.",
+      },
+      {
+        en: "Drawing on my background in technology, my love for history, my attachment to Algeria, and my curiosity about AI and emerging tools, I began building this experience.",
+        fr: "En m'appuyant sur mon parcours dans la technologie, mon amour de l'histoire, mon attachement à l'Algérie et ma curiosité pour l'intelligence artificielle et les outils émergents, j'ai commencé à construire cette expérience.",
+        ar: "مستفيدةً من خلفيتي في التكنولوجيا، وحبي للتاريخ، وارتباطي بالجزائر، وفضولي حول الذكاء الاصطناعي والأدوات الناشئة، بدأتُ ببناء هذه التجربة.",
+      },
+      {
+        en: "My hope is that DZ Odyssey will help children and adults, in Algeria and across the diaspora, reconnect with the invisible thread that ties us to our roots.",
+        fr: "J'espère que DZ Odyssey aidera les enfants et les adultes, en Algérie et dans la diaspora, à renouer avec le fil invisible qui nous lie à nos racines.",
+        ar: "أملي أن تساعد دي زد أوديسي الأطفال والكبار، في الجزائر وفي المهجر، على إعادة الاتصال بالخيط الخفي الذي يربطنا بجذورنا.",
+      },
+    ],
+    bullets: [
+      {
+        en: "💻 Retired from IT, but never from curiosity",
+        fr: "💻 Retraitée de l'informatique, mais jamais de la curiosité",
+        ar: "💻 متقاعدة من تكنولوجيا المعلومات، لكن ليس من الفضول",
+      },
+      {
+        en: "🎛️ Still exploring, building, and creating",
+        fr: "🎛️ Toujours en train d'explorer, de construire et de créer",
+        ar: "🎛️ ما زلت أستكشف وأبني وأبدع",
+      },
+      {
+        en: "📚 Always learning and looking toward what comes next",
+        fr: "📚 Toujours en train d'apprendre et de regarder vers la suite",
+        ar: "📚 دائمًا أتعلّم وأنظر إلى ما يأتي",
+      },
+    ],
+  },
+  {
     heading: { en: "What this museum is", fr: "Ce qu'est ce musée", ar: "ما هو هذا المتحف" },
     paras: [
       {
