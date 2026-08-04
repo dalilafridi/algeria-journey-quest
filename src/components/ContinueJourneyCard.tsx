@@ -1,4 +1,4 @@
-import { Link, useRouterState } from "@tanstack/react-router";
+import { useRouterState } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import {
   dismissContinueCard,
@@ -65,7 +65,7 @@ export function ContinueJourneyCard() {
           <span className="mt-0.5 text-xl" aria-hidden>
             ✨
           </span>
-          <Link to={place.href} className="min-w-0 flex-1 group text-start">
+          <a href={place.href} className="min-w-0 flex-1 group text-start">
             <div className="text-xs font-bold uppercase tracking-wider text-primary">
               {t(COPY.title, lang)}
             </div>
@@ -81,7 +81,7 @@ export function ContinueJourneyCard() {
                 {t(place.description, lang)}
               </p>
             )}
-          </Link>
+          </a>
           <button
             type="button"
             onClick={() => {
