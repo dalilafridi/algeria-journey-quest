@@ -146,6 +146,7 @@ function RootComponent() {
     <AudioGuideProvider>
       <SkipLink />
       <LangSync />
+      <MonitoringProbe />
       <SplashScreen />
       <SignatureIntro />
       {!isNotFound && <ContinueJourneyCard />}
