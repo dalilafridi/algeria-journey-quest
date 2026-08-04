@@ -56,6 +56,11 @@ export function InfoPage({
                   ))}
                 </ul>
               )}
+              {s.postBullets?.map((p) => (
+                <p key={p.en} className="text-sm leading-7 text-foreground/85 sm:text-base">
+                  {p[lang]}
+                </p>
+              ))}
             </section>
           ))}
         </div>
