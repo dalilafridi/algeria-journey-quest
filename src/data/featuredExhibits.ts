@@ -10,6 +10,7 @@
  */
 
 import type { LocalizedString } from "@/lib/i18n";
+import type { MediaType } from "@/data/mediaRegistry";
 
 import mzabHero from "@/assets/mzab-hero.jpg";
 import kabylieHero from "@/assets/exhibit-kabylie.jpg";
@@ -45,6 +46,12 @@ export type FeaturedExhibit = {
    * generated rather than a documentary archival photograph.
    */
   illustrative?: boolean;
+  /**
+   * Optional machine-readable classification of the hero image, drawn from the
+   * shared museum vocabulary in `@/data/mediaRegistry`. When omitted, the
+   * registry entry for the file remains the authoritative record.
+   */
+  mediaType?: MediaType;
   /** Optional flag: the destination is a UNESCO World Heritage site. */
   unesco?: boolean;
 };
