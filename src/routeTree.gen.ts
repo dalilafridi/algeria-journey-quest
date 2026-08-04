@@ -25,11 +25,13 @@ import { Route as MapRouteImport } from './routes/map'
 import { Route as MomentsRouteImport } from './routes/moments'
 import { Route as MzabRouteImport } from './routes/mzab'
 import { Route as PassportRouteImport } from './routes/passport'
+import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as ProfileRouteImport } from './routes/profile'
 import { Route as ShowcaseRouteImport } from './routes/showcase'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as SourcesRouteImport } from './routes/sources'
 import { Route as StargazingRouteImport } from './routes/stargazing'
+import { Route as TermsRouteImport } from './routes/terms'
 import { Route as TimelineRouteImport } from './routes/timeline'
 import { Route as WordsRouteImport } from './routes/words'
 import { Route as ApiCuratorRouteImport } from './routes/api/curator'
@@ -166,6 +168,11 @@ const PassportRoute = PassportRouteImport.update({
   path: '/passport',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PrivacyRoute = PrivacyRouteImport.update({
+  id: '/privacy',
+  path: '/privacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ProfileRoute = ProfileRouteImport.update({
   id: '/profile',
   path: '/profile',
@@ -189,6 +196,11 @@ const SourcesRoute = SourcesRouteImport.update({
 const StargazingRoute = StargazingRouteImport.update({
   id: '/stargazing',
   path: '/stargazing',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TermsRoute = TermsRouteImport.update({
+  id: '/terms',
+  path: '/terms',
   getParentRoute: () => rootRouteImport,
 } as any)
 const TimelineRoute = TimelineRouteImport.update({
@@ -495,11 +507,13 @@ export interface FileRoutesByFullPath {
   '/moments': typeof MomentsRoute
   '/mzab': typeof MzabRoute
   '/passport': typeof PassportRoute
+  '/privacy': typeof PrivacyRoute
   '/profile': typeof ProfileRoute
   '/showcase': typeof ShowcaseRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/sources': typeof SourcesRoute
   '/stargazing': typeof StargazingRoute
+  '/terms': typeof TermsRoute
   '/timeline': typeof TimelineRoute
   '/words': typeof WordsRoute
   '/api/curator': typeof ApiCuratorRoute
@@ -570,11 +584,13 @@ export interface FileRoutesByTo {
   '/moments': typeof MomentsRoute
   '/mzab': typeof MzabRoute
   '/passport': typeof PassportRoute
+  '/privacy': typeof PrivacyRoute
   '/profile': typeof ProfileRoute
   '/showcase': typeof ShowcaseRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/sources': typeof SourcesRoute
   '/stargazing': typeof StargazingRoute
+  '/terms': typeof TermsRoute
   '/timeline': typeof TimelineRoute
   '/words': typeof WordsRoute
   '/api/curator': typeof ApiCuratorRoute
@@ -646,11 +662,13 @@ export interface FileRoutesById {
   '/moments': typeof MomentsRoute
   '/mzab': typeof MzabRoute
   '/passport': typeof PassportRoute
+  '/privacy': typeof PrivacyRoute
   '/profile': typeof ProfileRoute
   '/showcase': typeof ShowcaseRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/sources': typeof SourcesRoute
   '/stargazing': typeof StargazingRoute
+  '/terms': typeof TermsRoute
   '/timeline': typeof TimelineRoute
   '/words': typeof WordsRoute
   '/curator/_studio': typeof CuratorStudioRouteRouteWithChildren
@@ -726,11 +744,13 @@ export interface FileRouteTypes {
     | '/moments'
     | '/mzab'
     | '/passport'
+    | '/privacy'
     | '/profile'
     | '/showcase'
     | '/sitemap.xml'
     | '/sources'
     | '/stargazing'
+    | '/terms'
     | '/timeline'
     | '/words'
     | '/api/curator'
@@ -801,11 +821,13 @@ export interface FileRouteTypes {
     | '/moments'
     | '/mzab'
     | '/passport'
+    | '/privacy'
     | '/profile'
     | '/showcase'
     | '/sitemap.xml'
     | '/sources'
     | '/stargazing'
+    | '/terms'
     | '/timeline'
     | '/words'
     | '/api/curator'
@@ -876,11 +898,13 @@ export interface FileRouteTypes {
     | '/moments'
     | '/mzab'
     | '/passport'
+    | '/privacy'
     | '/profile'
     | '/showcase'
     | '/sitemap.xml'
     | '/sources'
     | '/stargazing'
+    | '/terms'
     | '/timeline'
     | '/words'
     | '/curator/_studio'
@@ -955,11 +979,13 @@ export interface RootRouteChildren {
   MomentsRoute: typeof MomentsRoute
   MzabRoute: typeof MzabRoute
   PassportRoute: typeof PassportRoute
+  PrivacyRoute: typeof PrivacyRoute
   ProfileRoute: typeof ProfileRoute
   ShowcaseRoute: typeof ShowcaseRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   SourcesRoute: typeof SourcesRoute
   StargazingRoute: typeof StargazingRoute
+  TermsRoute: typeof TermsRoute
   TimelineRoute: typeof TimelineRoute
   WordsRoute: typeof WordsRoute
   ApiCuratorRoute: typeof ApiCuratorRoute
@@ -1090,6 +1116,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PassportRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/privacy': {
+      id: '/privacy'
+      path: '/privacy'
+      fullPath: '/privacy'
+      preLoaderRoute: typeof PrivacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/profile': {
       id: '/profile'
       path: '/profile'
@@ -1123,6 +1156,13 @@ declare module '@tanstack/react-router' {
       path: '/stargazing'
       fullPath: '/stargazing'
       preLoaderRoute: typeof StargazingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/terms': {
+      id: '/terms'
+      path: '/terms'
+      fullPath: '/terms'
+      preLoaderRoute: typeof TermsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/timeline': {
@@ -1672,11 +1712,13 @@ const rootRouteChildren: RootRouteChildren = {
   MomentsRoute: MomentsRoute,
   MzabRoute: MzabRoute,
   PassportRoute: PassportRoute,
+  PrivacyRoute: PrivacyRoute,
   ProfileRoute: ProfileRoute,
   ShowcaseRoute: ShowcaseRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   SourcesRoute: SourcesRoute,
   StargazingRoute: StargazingRoute,
+  TermsRoute: TermsRoute,
   TimelineRoute: TimelineRoute,
   WordsRoute: WordsRoute,
   ApiCuratorRoute: ApiCuratorRoute,
