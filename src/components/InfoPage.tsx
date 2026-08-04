@@ -11,6 +11,7 @@ export interface InfoSection {
   heading: Record<Lang, string>;
   paras?: Record<Lang, string>[];
   bullets?: Record<Lang, string>[];
+  postBullets?: Record<Lang, string>[];
 }
 
 export function InfoPage({
