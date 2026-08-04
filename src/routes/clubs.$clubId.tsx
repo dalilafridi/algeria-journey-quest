@@ -70,12 +70,12 @@ function ClubNotFound() {
   return (
     <div className="min-h-screen bg-background text-foreground">
       <Header />
-      <div className="max-w-3xl mx-auto px-4 py-24 text-center">
+      <main id="main" tabIndex={-1} className="max-w-3xl mx-auto px-4 py-24 text-center">
         <h1 className="text-3xl font-bold" style={SERIF}>{{ en: "Museum not found", fr: "Musée introuvable", ar: "المتحف غير موجود" }[lang]}</h1>
         <Link to="/clubs" className="inline-block mt-6 text-primary hover:underline">
           ← {{ en: "Back to Club Museums", fr: "Retour aux Musées des Clubs", ar: "العودة إلى متاحف الأندية" }[lang]}
         </Link>
-      </div>
+      </main>
     </div>
   );
 }
