@@ -7,7 +7,7 @@ import {
   isContinueDismissed,
   isSamePlace,
   journeyContinuityEvent,
-  SECTION_LABELS,
+  placeCategory,
   type JourneyPlace,
 } from "@/lib/continuity";
 import { t, useLang } from "@/lib/i18n";
@@ -52,7 +52,7 @@ export function ContinueJourneyCard() {
   if (isBannerHiddenPath(pathname)) return null;
   if (isSamePlace(place.href, pathname)) return null;
 
-  const category = t(SECTION_LABELS[place.section] ?? SECTION_LABELS.story, lang);
+  const category = t(placeCategory(place), lang);
 
   return (
     <aside

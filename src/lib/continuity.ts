@@ -138,7 +138,44 @@ export function getJourneyPlace(): JourneyPlace | null {
   }
 }
 
-/** Localized category label shown above the exhibit title. */
+/**
+ * Localized category shown next to the exhibit title. Derived from the href
+ * so the label always matches the museum area the visitor actually entered.
+ */
+const CATEGORY_BY_PREFIX: Array<[string, Localized<string>]> = [
+  ["/region/", { en: "Regions", fr: "Régions", ar: "المناطق" }],
+  ["/figures/", { en: "Figures", fr: "Figures", ar: "شخصيات" }],
+  ["/culture/", { en: "Culture", fr: "Culture", ar: "الثقافة" }],
+  ["/era/", { en: "Eras", fr: "Époques", ar: "الحقب" }],
+  ["/clubs/", { en: "Football", fr: "Football", ar: "كرة القدم" }],
+  ["/theater/", { en: "Football", fr: "Football", ar: "كرة القدم" }],
+  ["/journeys/", { en: "Journeys", fr: "Parcours", ar: "المسارات" }],
+  ["/quiz/", { en: "Quiz", fr: "Quiz", ar: "اختبار" }],
+];
+
+const CATEGORY_BY_PATH: Record<string, Localized<string>> = {
+  "/football": { en: "Football", fr: "Football", ar: "كرة القدم" },
+  "/football/lesvertes": { en: "Football", fr: "Football", ar: "كرة القدم" },
+  "/mzab": { en: "Heritage", fr: "Patrimoine", ar: "التراث" },
+  "/cuisine": { en: "Culture", fr: "Culture", ar: "الثقافة" },
+  "/cinema": { en: "Culture", fr: "Culture", ar: "الثقافة" },
+  "/words": { en: "Culture", fr: "Culture", ar: "الثقافة" },
+  "/stargazing": { en: "Culture", fr: "Culture", ar: "الثقافة" },
+  "/timeline": { en: "Story", fr: "Récit", ar: "الحكاية" },
+  "/moments": { en: "Story", fr: "Récit", ar: "الحكاية" },
+  "/chronicle": { en: "Story", fr: "Récit", ar: "الحكاية" },
+};
+
+export function placeCategory(place: JourneyPlace): Localized<string> {
+  const path = normalize(place.href);
+  const exact = CATEGORY_BY_PATH[path];
+  if (exact) return exact;
+  const prefixed = CATEGORY_BY_PREFIX.find(([prefix]) => path.startsWith(prefix));
+  if (prefixed) return prefixed[1];
+  return SECTION_LABELS[place.section] ?? SECTION_LABELS.story;
+}
+
+/** Fallback category labels keyed by the stored section. */
 export const SECTION_LABELS = {
   story: { en: "Story", fr: "Récit", ar: "الحكاية" },
   regions: { en: "Regions", fr: "Régions", ar: "المناطق" },
