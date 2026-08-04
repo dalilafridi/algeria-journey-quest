@@ -253,28 +253,6 @@ function AtlasPage() {
       </section>
 
       <main className="max-w-6xl mx-auto px-4 py-8 sm:py-10">
-        {/* Era layer selector */}
-        <div className="mb-6">
-          <div className="museum-eyebrow mb-2">{T.layerLabel}</div>
-          <div className="flex gap-1.5 overflow-x-auto no-scrollbar pb-1 -mx-1 px-1">
-            <LayerChip
-              active={layer === "all"}
-              onClick={() => setLayer("all")}
-              emoji="✦"
-              label={T.allLayer}
-            />
-            {eras.map((e) => (
-              <LayerChip
-                key={e.id}
-                active={layer === e.id}
-                onClick={() => setLayer(e.id)}
-                emoji={e.emoji}
-                label={t(e.title, lang)}
-              />
-            ))}
-          </div>
-          <p className="mt-2 text-xs text-muted-foreground italic">{T.legend}</p>
-        </div>
 
         {/* Historical overlay selector */}
         <div className="mb-6">
