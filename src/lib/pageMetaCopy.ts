@@ -318,6 +318,18 @@ export const PAGE_META = {
       ar: "شروط زيارة دي زد أوديسي: الغاية التعليمية، الاستخدام الشخصي المسموح، حقوق الوسائط، الدقة والتصحيح، إجابات الذكاء الاصطناعي، الروابط الخارجية والاستخدامات الممنوعة.",
     },
   },
+  "/credits": {
+    title: {
+      en: "Image & Media Credits, DZ Odyssey",
+      fr: "Crédits images et médias, DZ Odyssey",
+      ar: "اعتمادات الصور والوسائط، دي زد أوديسي",
+    },
+    description: {
+      en: "Where the museum's visual material comes from: imagery created for DZ Odyssey, illustrative visuals, emblems, photograph credits and how to reach us about rights.",
+      fr: "La provenance du matériel visuel du musée : images créées pour DZ Odyssey, visuels illustratifs, emblèmes, crédits photographiques et contact pour les droits.",
+      ar: "مصدر المواد البصرية في المتحف: صور أُنشئت لدي زد أوديسي، ومشاهد توضيحية، وشعارات، واعتمادات الصور، وسبل التواصل بشأن الحقوق.",
+    },
+  },
   "/passport": {
     title: {
       en: "Visitor Passport, DZ Odyssey",
