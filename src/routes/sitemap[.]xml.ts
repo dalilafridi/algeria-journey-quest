@@ -41,7 +41,9 @@ function collect(): SitemapEntry[] {
     { path: "/atlas", changefreq: "monthly", priority: "0.7" },
     { path: "/chronicle", changefreq: "monthly", priority: "0.7" },
     { path: "/map", changefreq: "monthly", priority: "0.8" },
-    { path: "/compare", changefreq: "monthly", priority: "0.5" },
+    // /compare normalises its search params, so the bare path 307-redirects.
+    // Advertise the resolved URL so the sitemap contains no redirects.
+    { path: "/compare?kind=figures", changefreq: "monthly", priority: "0.5" },
     // Institutional pages
     { path: "/about", changefreq: "yearly", priority: "0.5" },
     { path: "/sources", changefreq: "yearly", priority: "0.5" },
