@@ -72,18 +72,6 @@ const REGION_POINTS: Record<string, { x: number; y: number; size: number }> = {
   sahara:        { x: 48, y: 58, size: 5.0 },
 };
 
-/** Which regions glow most strongly per era. */
-const ERA_REGION_FOCUS: Record<string, string[]> = {
-  earlynorthafrica: ["sahara", "aures", "constantine", "kabylie"],
-  numidia:          ["constantine", "aures", "oran-west"],
-  roman:            ["constantine", "oran-west", "algiers"],
-  islamic:          ["algiers", "oran-west", "constantine", "sahara"],
-  ottoman:          ["algiers", "oran-west", "constantine"],
-  french:           ["algiers", "kabylie", "aures", "oran-west", "constantine"],
-  independence:     ["aures", "kabylie", "algiers", "constantine", "oran-west"],
-};
-
-type LayerId = "all" | string;
 
 export const Route = createFileRoute("/atlas")({
   head: () =>
@@ -98,7 +86,6 @@ export const Route = createFileRoute("/atlas")({
 
 function AtlasPage() {
   const lang = useLang();
-  const [layer, setLayer] = useState<LayerId>("all");
   const [selected, setSelected] = useState<string | null>(null);
   const [hovered, setHovered] = useState<string | null>(null);
   const [periodId, setPeriodId] = useState<string | null>(null);
@@ -175,10 +162,6 @@ function AtlasPage() {
     });
   }, []);
 
-  const focusIds = useMemo(() => {
-    if (layer === "all") return new Set(mapRegions.map((r) => r.id));
-    return new Set(ERA_REGION_FOCUS[layer] ?? []);
-  }, [layer]);
 
   const activeRegion = selected
     ? mapRegions.find((r) => r.id === selected)
@@ -199,9 +182,6 @@ function AtlasPage() {
           : "An interactive map of Algeria through time, regions, eras, figures, and cultural heritage.",
     eyebrow:
       lang === "fr" ? "Explorer l'Algérie" : lang === "ar" ? "استكشف الجزائر" : "Explore Algeria",
-    layerLabel:
-      lang === "fr" ? "Couche historique" : lang === "ar" ? "طبقة تاريخية" : "Historical layer",
-    allLayer: lang === "fr" ? "Toutes les époques" : lang === "ar" ? "كل الحقب" : "All eras",
     selectHint:
       lang === "fr"
         ? "Touchez une région pour l'explorer"
@@ -216,12 +196,6 @@ function AtlasPage() {
     regionPage: lang === "fr" ? "Page région" : lang === "ar" ? "صفحة المنطقة" : "Region page",
     figuresPage: lang === "fr" ? "Toutes les figures" : lang === "ar" ? "كل الشخصيات" : "All figures",
     timeline: lang === "fr" ? "Frise chronologique" : lang === "ar" ? "الخط الزمني" : "Timeline",
-    legend:
-      lang === "fr"
-        ? "Choisissez une époque pour voir où elle a marqué l'Algérie."
-        : lang === "ar"
-          ? "اختر حقبة لرؤية أين تركت أثرها في الجزائر."
-          : "Pick an era to see where it shaped Algeria.",
     pickRegion:
       lang === "fr"
         ? "Sélectionnez une région sur la carte pour révéler son histoire."
@@ -270,28 +244,6 @@ function AtlasPage() {
       </section>
 
       <main className="max-w-6xl mx-auto px-4 py-8 sm:py-10">
-        {/* Era layer selector */}
-        <div className="mb-6">
-          <div className="museum-eyebrow mb-2">{T.layerLabel}</div>
-          <div className="flex gap-1.5 overflow-x-auto no-scrollbar pb-1 -mx-1 px-1">
-            <LayerChip
-              active={layer === "all"}
-              onClick={() => setLayer("all")}
-              emoji="✦"
-              label={T.allLayer}
-            />
-            {eras.map((e) => (
-              <LayerChip
-                key={e.id}
-                active={layer === e.id}
-                onClick={() => setLayer(e.id)}
-                emoji={e.emoji}
-                label={t(e.title, lang)}
-              />
-            ))}
-          </div>
-          <p className="mt-2 text-xs text-muted-foreground italic">{T.legend}</p>
-        </div>
 
         {/* Historical overlay selector */}
         <div className="mb-6">
@@ -535,7 +487,6 @@ function AtlasPage() {
               {mapRegions.map((r) => {
                 const p = REGION_POINTS[r.id];
                 if (!p) return null;
-                const isFocus = focusIds.has(r.id);
                 const isActive = selected === r.id;
                 const isHover = hovered === r.id;
                 const radius = p.size * (isActive ? 1.15 : isHover ? 1.08 : 1);
@@ -543,7 +494,6 @@ function AtlasPage() {
                   <g
                     key={r.id}
                     style={{ cursor: "pointer", transition: "opacity .4s ease" }}
-                    opacity={isFocus ? 1 : 0.32}
                     onMouseEnter={() => setHovered(r.id)}
                     onMouseLeave={() => setHovered(null)}
                     onClick={() => setSelected(r.id)}
@@ -560,24 +510,20 @@ function AtlasPage() {
                     aria-label={t(r.name, lang)}
                   >
                     {/* Glow halo, quieter, smaller */}
-                    {(isFocus || isActive) && (
-                      <circle
-                        cx={p.x}
-                        cy={p.y}
-                        r={radius * 1.6}
-                        fill="url(#atlas-region-glow)"
-                        opacity={isActive ? 0.7 : 0.35}
-                      >
-                        {isFocus && (
-                          <animate
-                            attributeName="opacity"
-                            values={isActive ? "0.6;0.8;0.6" : "0.22;0.4;0.22"}
-                            dur="4.2s"
-                            repeatCount="indefinite"
-                          />
-                        )}
-                      </circle>
-                    )}
+                    <circle
+                      cx={p.x}
+                      cy={p.y}
+                      r={radius * 1.6}
+                      fill="url(#atlas-region-glow)"
+                      opacity={isActive ? 0.7 : 0.35}
+                    >
+                      <animate
+                        attributeName="opacity"
+                        values={isActive ? "0.6;0.8;0.6" : "0.22;0.4;0.22"}
+                        dur="4.2s"
+                        repeatCount="indefinite"
+                      />
+                    </circle>
                     {/* Pin, small, integrated */}
                     <circle
                       cx={p.x}
@@ -753,12 +699,9 @@ function RegionPanel({
 
   const extras = regionExtras[region.id];
 
-  // Connected eras: primary eraId + any era that focuses this region.
+  // Connected eras: the region's primary era.
   const connectedEraIds = new Set<string>();
   if (region.eraId) connectedEraIds.add(region.eraId);
-  Object.entries(ERA_REGION_FOCUS).forEach(([eraId, regs]) => {
-    if (regs.includes(region.id)) connectedEraIds.add(eraId);
-  });
   const connectedEras = eras.filter((e) => connectedEraIds.has(e.id));
 
   const culturalPillars: { emoji: string; label: LocalizedString }[] = [];
