@@ -1,12 +1,13 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { InfoPage, InfoPlaque, type InfoSection } from "@/components/InfoPage";
 import { useLang } from "@/lib/i18n";
-import { pageMeta } from "@/lib/seo";
+import { pageMeta, headLang, headLang } from "@/lib/seo";
 import { PUBLIC_CONTACT_EMAIL, hasPublicContact } from "@/lib/siteContact";
 
 export const Route = createFileRoute("/terms")({
-  head: () =>
+  head: ({ match }) =>
     pageMeta({
+      lang: headLang(match),
       path: "/terms",
       title: "Terms of Use, DZ Odyssey",
       description:

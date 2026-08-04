@@ -11,7 +11,7 @@
  */
 
 import { createFileRoute, Link, useParams } from "@tanstack/react-router";
-import { pageMeta } from "@/lib/seo";
+import { pageMeta, headLang, headLang } from "@/lib/seo";
 import { useEffect, useMemo, useState } from "react";
 import { Header } from "@/components/Header";
 
@@ -65,7 +65,7 @@ const LEGEND_ERA_TO_ROUTE: Record<LegendEra, string> = {
 };
 
 export const Route = createFileRoute("/figures/collection/$collectionId")({
-  head: ({ params }) => {
+  head: ({ params, match }) => {
     const row = findRowBySlug(params.collectionId);
     const title = row
       ? `${t(row.label, "en")}, Hall of Legends`
@@ -74,6 +74,7 @@ export const Route = createFileRoute("/figures/collection/$collectionId")({
       ? t(row.tagline, "en")
       : "A curated exhibit room of Algerian historical figures.";
     return pageMeta({
+      lang: headLang(match),
       path: `/figures/collection/${params.collectionId}`,
       title,
       description,

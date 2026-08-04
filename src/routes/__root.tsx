@@ -57,7 +57,7 @@ export const Route = createRootRoute({
     return { lang: getLang() };
   },
   loader: ({ context }): { lang: Lang } => ({ lang: context.lang }),
-  head: () => ({
+  head: ({ match }) => ({
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=5" },
@@ -75,7 +75,8 @@ export const Route = createRootRoute({
       { property: "og:type", content: "website" },
       { property: "og:site_name", content: "DZ Odyssey" },
       // NOTE (Phase 1): og:image and twitter:image intentionally live only on
-      // leaf routes via `pageMeta({...})`.
+      // leaf routes via `pageMeta({
+      lang: headLang(match),...})`.
     ],
     links: [
       { rel: "stylesheet", href: appCss },

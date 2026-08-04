@@ -10,7 +10,7 @@
  */
 
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
-import { pageMeta } from "@/lib/seo";
+import { pageMeta, headLang, headLang } from "@/lib/seo";
 import { useEffect } from "react";
 import { Header } from "@/components/Header";
 import { CollectionEmblem } from "@/components/figures/CollectionEmblem";
@@ -49,9 +49,10 @@ export const Route = createFileRoute("/culture/$topicId")({
     if (!topic) throw notFound();
     return { topic };
   },
-  head: ({ loaderData, params }) => {
+  head: ({ loaderData, params, match }) => {
     if (!loaderData) {
       return pageMeta({
+      lang: headLang(match),
         path: `/culture/${params.topicId}`,
         title: "Culture, DZ Odyssey",
         description: "This culture exhibit could not be found.",
@@ -61,6 +62,7 @@ export const Route = createFileRoute("/culture/$topicId")({
     const titleEn = t(loaderData.topic.title, "en");
     const descEn = t(loaderData.topic.intro, "en");
     return pageMeta({
+      lang: headLang(match),
       path: `/culture/${loaderData.topic.id}`,
       title: `${titleEn}, Culture | DZ Odyssey`,
       description: descEn,

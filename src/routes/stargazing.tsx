@@ -2,11 +2,12 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
 import { Header } from "@/components/Header";
 import { useLang, t, type Lang, type Localized } from "@/lib/i18n";
-import { pageMeta } from "@/lib/seo";
+import { pageMeta, headLang, headLang } from "@/lib/seo";
 
 export const Route = createFileRoute("/stargazing")({
-  head: () =>
+  head: ({ match }) =>
     pageMeta({
+      lang: headLang(match),
       path: "/stargazing",
       title: "Amazigh Stargazing, The Sky of Our Ancestors | DZ Odyssey",
       description: "A cinematic museum of Amazigh star knowledge, seasons, navigation and oral tradition under the desert sky."

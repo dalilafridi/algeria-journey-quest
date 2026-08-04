@@ -2,11 +2,12 @@ import { createFileRoute, useNavigate, Link } from "@tanstack/react-router";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { useLang, t, type LocalizedString, type Lang } from "@/lib/i18n";
 import { setShowcase } from "@/lib/showcase";
-import { pageMeta } from "@/lib/seo";
+import { pageMeta, headLang, headLang } from "@/lib/seo";
 
 export const Route = createFileRoute("/showcase")({
-  head: () =>
+  head: ({ match }) =>
     pageMeta({
+      lang: headLang(match),
       path: "/showcase",
       title: "Showcase, DZ Odyssey",
       description: "Step into a curated, museum-quality walkthrough of 2,000+ years of Algerian memory."

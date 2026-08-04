@@ -16,7 +16,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Header } from "@/components/Header";
 import { useLang, type Lang, type LocalizedString } from "@/lib/i18n";
-import { pageMeta } from "@/lib/seo";
+import { pageMeta, headLang, headLang } from "@/lib/seo";
 import { ExhibitProvenance } from "@/components/provenance/ExhibitProvenance";
 import {
   Section,
@@ -46,8 +46,9 @@ import mzabWater from "@/assets/mzab-water.jpg";
 import mzabMarket from "@/assets/mzab-market.jpg";
 
 export const Route = createFileRoute("/mzab")({
-  head: () =>
+  head: ({ match }) =>
     pageMeta({
+      lang: headLang(match),
       path: "/mzab",
       title: "The M'Zab Valley, Cities Against the Sun · DZ Odyssey",
       description:

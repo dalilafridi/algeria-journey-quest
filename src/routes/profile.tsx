@@ -10,11 +10,12 @@ import {
   type Progress,
 } from "@/lib/progress";
 import { t, tu, useLang } from "@/lib/i18n";
-import { pageMeta } from "@/lib/seo";
+import { pageMeta, headLang, headLang } from "@/lib/seo";
 
 export const Route = createFileRoute("/profile")({
-  head: () =>
+  head: ({ match }) =>
     pageMeta({
+      lang: headLang(match),
       path: "/profile",
       title: "Your Profile, DZ Odyssey",
       description: "Track your XP, badges, and history journey progress.",

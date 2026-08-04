@@ -18,11 +18,12 @@ import {
 } from "@/lib/wordsProgress";
 import { t, useLang, type Lang } from "@/lib/i18n";
 import { saveJourneyPlace } from "@/lib/continuity";
-import { pageMeta } from "@/lib/seo";
+import { pageMeta, headLang, headLang } from "@/lib/seo";
 
 export const Route = createFileRoute("/words")({
-  head: () =>
+  head: ({ match }) =>
     pageMeta({
+      lang: headLang(match),
       path: "/words",
       title: "Words That Shaped History, DZ Odyssey",
       description: "Quotes, verses and song lines that shaped Algerian identity, from Kassaman to Mammeri, Aït Menguellet, Matoub and Idir."

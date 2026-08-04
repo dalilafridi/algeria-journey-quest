@@ -4,11 +4,12 @@ import { LessonCard } from "@/components/LessonCard";
 import { ExplainToggle } from "@/components/ExplainToggle";
 import { lessons } from "@/data/lessons";
 import { useLang } from "@/lib/i18n";
-import { pageMeta } from "@/lib/seo";
+import { pageMeta, headLang, headLang } from "@/lib/seo";
 
 export const Route = createFileRoute("/lessons")({
-  head: () =>
+  head: ({ match }) =>
     pageMeta({
+      lang: headLang(match),
       path: "/lessons",
       title: "1-Minute Lessons, DZ Odyssey",
       description: "Quick, focused lessons on Algerian history, read a topic in about a minute."

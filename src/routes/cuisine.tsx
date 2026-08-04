@@ -12,11 +12,12 @@ import { ContinueExploring } from "@/components/curator/ContinueExploring";
 import { ExhibitProvenance } from "@/components/provenance/ExhibitProvenance";
 import { getCuisineExploreGroups } from "@/lib/exploreGroups";
 import cuisineHero from "@/assets/cuisine-hero.jpg";
-import { pageMeta } from "@/lib/seo";
+import { pageMeta, headLang, headLang } from "@/lib/seo";
 
 export const Route = createFileRoute("/cuisine")({
-  head: () =>
+  head: ({ match }) =>
     pageMeta({
+      lang: headLang(match),
       path: "/cuisine",
       title: "Cuisine of Algeria, DZ Odyssey",
       description: "A cinematic cultural journey through Algerian cuisine, couscous, chorba, rechta, dates and bread, from Kabylie to the Sahara.",

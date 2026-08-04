@@ -5,11 +5,12 @@ import { IDEAS, type IdeaTopic } from "@/data/ideas";
 import { words } from "@/data/words";
 import { figures } from "@/data/figures";
 import { t, useLang, type Lang } from "@/lib/i18n";
-import { pageMeta } from "@/lib/seo";
+import { pageMeta, headLang, headLang } from "@/lib/seo";
 
 export const Route = createFileRoute("/ideas")({
-  head: () =>
+  head: ({ match }) =>
     pageMeta({
+      lang: headLang(match),
       path: "/ideas",
       title: "Debates & Ideas, DZ Odyssey",
       description: "A museum of ideas: plural Algeria, national identity, culture and language, and the thinkers behind them."

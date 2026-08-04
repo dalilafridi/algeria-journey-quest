@@ -1,5 +1,5 @@
 import { createFileRoute, Link, notFound, useNavigate } from "@tanstack/react-router";
-import { pageMeta } from "@/lib/seo";
+import { pageMeta, headLang, headLang } from "@/lib/seo";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { Header } from "@/components/Header";
 import { eras, type QuizQuestion } from "@/data/eras";
@@ -20,9 +20,10 @@ export const Route = createFileRoute("/quiz/$eraId")({
     if (!era) throw notFound();
     return { era };
   },
-  head: ({ loaderData, params }) => {
+  head: ({ loaderData, params, match }) => {
     if (!loaderData) {
       return pageMeta({
+      lang: headLang(match),
         path: `/quiz/${params.eraId}`,
         title: "Quiz, DZ Odyssey",
         description: "Test your knowledge of Algerian history.",
@@ -31,6 +32,7 @@ export const Route = createFileRoute("/quiz/$eraId")({
     }
     const titleEn = t(loaderData.era.title, "en");
     return pageMeta({
+      lang: headLang(match),
       path: `/quiz/${loaderData.era.id}`,
       title: `Quiz: ${titleEn}, DZ Odyssey`,
       description: `Test your knowledge of ${titleEn} in this DZ Odyssey era quiz.`,

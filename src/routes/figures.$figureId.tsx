@@ -12,7 +12,7 @@
  */
 
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
-import { pageMeta } from "@/lib/seo";
+import { pageMeta, headLang, headLang } from "@/lib/seo";
 import { useEffect } from "react";
 import { Header } from "@/components/Header";
 import { eras } from "@/data/eras";
@@ -73,9 +73,10 @@ export const Route = createFileRoute("/figures/$figureId")({
     if (!figure) throw notFound();
     return { figure };
   },
-  head: ({ loaderData, params }) => {
+  head: ({ loaderData, params, match }) => {
     if (!loaderData) {
       return pageMeta({
+      lang: headLang(match),
         path: `/figures/${params.figureId}`,
         title: "Figure, Hall of Legends",
         description: "This figure exhibit could not be found.",
@@ -85,6 +86,7 @@ export const Route = createFileRoute("/figures/$figureId")({
     const title = `${t(loaderData.figure.displayName, "en")}, Hall of Legends`;
     const desc = t(loaderData.figure.fact, "en");
     return pageMeta({
+      lang: headLang(match),
       path: `/figures/${loaderData.figure.id}`,
       title,
       description: desc,

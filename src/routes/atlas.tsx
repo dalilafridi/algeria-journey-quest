@@ -14,7 +14,7 @@ import { MUSEUM_HIGHLIGHTS } from "@/data/museumHighlights";
 import { t, useLang, type LocalizedString } from "@/lib/i18n";
 import { saveJourneyPlace } from "@/lib/continuity";
 import algeriaMap from "@/assets/algeria-map.png";
-import { pageMeta } from "@/lib/seo";
+import { pageMeta, headLang, headLang } from "@/lib/seo";
 
 /** Map camera: [minX, minY, width, height] inside the 100x100 atlas space. */
 type ViewBox = [number, number, number, number];
@@ -74,8 +74,9 @@ const REGION_POINTS: Record<string, { x: number; y: number; size: number }> = {
 
 
 export const Route = createFileRoute("/atlas")({
-  head: () =>
+  head: ({ match }) =>
     pageMeta({
+      lang: headLang(match),
       path: "/atlas",
       title: "Historical Atlas of Algeria, DZ Odyssey",
       description: "A hand-illustrated atlas of Algeria across the centuries, regions, periods and the people who shaped them.",

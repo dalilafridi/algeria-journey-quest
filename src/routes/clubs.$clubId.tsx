@@ -1,5 +1,5 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
-import { pageMeta } from "@/lib/seo";
+import { pageMeta, headLang, headLang } from "@/lib/seo";
 import { useEffect, useMemo, useState } from "react";
 
 import { Header } from "@/components/Header";
@@ -29,9 +29,10 @@ export const Route = createFileRoute("/clubs/$clubId")({
     if (!club) throw notFound();
     return { club };
   },
-  head: ({ loaderData, params }) => {
+  head: ({ loaderData, params, match }) => {
     if (!loaderData) {
       return pageMeta({
+      lang: headLang(match),
         path: `/clubs/${params.clubId}`,
         title: "Club Museum, DZ Odyssey",
         description: "This club museum could not be found.",
@@ -44,6 +45,7 @@ export const Route = createFileRoute("/clubs/$clubId")({
     // Placeholder clubs stay discoverable via /clubs but are not indexable.
     const noindex = club.status !== "complete";
     return pageMeta({
+      lang: headLang(match),
       path: `/clubs/${club.id}`,
       title: `${title} Museum, DZ Odyssey`,
       description: desc,

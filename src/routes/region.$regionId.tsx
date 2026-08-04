@@ -11,7 +11,7 @@
  */
 
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
-import { pageMeta } from "@/lib/seo";
+import { pageMeta, headLang, headLang } from "@/lib/seo";
 import { useEffect } from "react";
 import { Header } from "@/components/Header";
 import { RegionIcon } from "@/components/RegionIcon";
@@ -55,9 +55,10 @@ export const Route = createFileRoute("/region/$regionId")({
     if (!region) throw notFound();
     return { region };
   },
-  head: ({ loaderData, params }) => {
+  head: ({ loaderData, params, match }) => {
     if (!loaderData) {
       return pageMeta({
+      lang: headLang(match),
         path: `/region/${params.regionId}`,
         title: "Region, DZ Odyssey",
         description: "This region exhibit could not be found.",
@@ -67,6 +68,7 @@ export const Route = createFileRoute("/region/$regionId")({
     const titleEn = t(loaderData.region.name, "en");
     const summaryEn = t(loaderData.region.summary, "en");
     return pageMeta({
+      lang: headLang(match),
       path: `/region/${loaderData.region.id}`,
       title: `${titleEn}, Region | DZ Odyssey`,
       description: summaryEn,

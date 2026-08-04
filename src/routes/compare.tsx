@@ -5,7 +5,7 @@ import { t, useLang, type Lang, type LocalizedString } from "@/lib/i18n";
 import { figures, type Figure } from "@/data/figures";
 import { eras, type Era } from "@/data/eras";
 import { mapRegions, type MapRegion } from "@/data/mapRegions";
-import { pageMeta } from "@/lib/seo";
+import { pageMeta, headLang, headLang } from "@/lib/seo";
 
 type Kind = "figures" | "eras" | "regions";
 
@@ -20,8 +20,9 @@ export const Route = createFileRoute("/compare")({
     const b = typeof raw.b === "string" ? raw.b : undefined;
     return { kind, a, b };
   },
-  head: () =>
+  head: ({ match }) =>
     pageMeta({
+      lang: headLang(match),
       path: "/compare",
       title: "Compare Mode, DZ Odyssey",
       description: "Place two figures, eras or regions side by side and study their timeline, geography, achievements, legacy and historical significance."

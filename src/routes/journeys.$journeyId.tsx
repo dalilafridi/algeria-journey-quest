@@ -9,7 +9,7 @@
  */
 
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
-import { pageMeta } from "@/lib/seo";
+import { pageMeta, headLang, headLang } from "@/lib/seo";
 import { useState } from "react";
 import { Header } from "@/components/Header";
 import { CollectionEmblem } from "@/components/figures/CollectionEmblem";
@@ -42,9 +42,10 @@ export const Route = createFileRoute("/journeys/$journeyId")({
     if (!journey) throw notFound();
     return { journey };
   },
-  head: ({ loaderData, params }) => {
+  head: ({ loaderData, params, match }) => {
     if (!loaderData) {
       return pageMeta({
+      lang: headLang(match),
         path: `/journeys/${params.journeyId}`,
         title: "Signature Journey, DZ Odyssey",
         description: "This signature journey could not be found.",
@@ -54,6 +55,7 @@ export const Route = createFileRoute("/journeys/$journeyId")({
     const titleEn = t(loaderData.journey.title, "en");
     const taglineEn = t(loaderData.journey.tagline, "en");
     return pageMeta({
+      lang: headLang(match),
       path: `/journeys/${loaderData.journey.id}`,
       title: `${titleEn}, Signature Journey | DZ Odyssey`,
       description: taglineEn,

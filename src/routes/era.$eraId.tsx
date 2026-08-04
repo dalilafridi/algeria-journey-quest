@@ -10,7 +10,7 @@
  */
 
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
-import { pageMeta } from "@/lib/seo";
+import { pageMeta, headLang, headLang } from "@/lib/seo";
 import { useEffect } from "react";
 import { Header } from "@/components/Header";
 import { eras } from "@/data/eras";
@@ -55,9 +55,10 @@ export const Route = createFileRoute("/era/$eraId")({
     if (!era) throw notFound();
     return { era };
   },
-  head: ({ loaderData, params }) => {
+  head: ({ loaderData, params, match }) => {
     if (!loaderData) {
       return pageMeta({
+      lang: headLang(match),
         path: `/era/${params.eraId}`,
         title: "Era, DZ Odyssey",
         description: "This era exhibit could not be found.",
@@ -67,6 +68,7 @@ export const Route = createFileRoute("/era/$eraId")({
     const titleEn = t(loaderData.era.title, "en");
     const summaryEn = t(loaderData.era.summary, "en");
     return pageMeta({
+      lang: headLang(match),
       path: `/era/${loaderData.era.id}`,
       title: `${titleEn}, DZ Odyssey`,
       description: summaryEn,
