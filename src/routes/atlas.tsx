@@ -1,12 +1,12 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { Header } from "@/components/Header";
 import { ContextRibbon } from "@/components/museum/Exhibit";
 import { mapRegions } from "@/data/mapRegions";
 import { regionExtras } from "@/data/regionExtras";
 import { eras } from "@/data/eras";
 import { figures } from "@/data/figures";
-import { ATLAS_PERIODS, getPeriod } from "@/data/atlasPeriods";
+import { ATLAS_PERIODS, getPeriod, findHighlightLocation } from "@/data/atlasPeriods";
 import { HistoricalOverlay } from "@/components/atlas/HistoricalOverlay";
 import { HistoricalPeriodPanel } from "@/components/atlas/HistoricalPeriodPanel";
 import { ExhibitShowcase } from "@/components/museum/EntranceHall";
@@ -15,6 +15,19 @@ import { t, useLang, type LocalizedString } from "@/lib/i18n";
 import { saveJourneyPlace } from "@/lib/continuity";
 import algeriaMap from "@/assets/algeria-map.png";
 import { pageMeta } from "@/lib/seo";
+
+/** Map camera: [minX, minY, width, height] inside the 100x100 atlas space. */
+type ViewBox = [number, number, number, number];
+const FULL_VIEW: ViewBox = [0, 0, 100, 100];
+const ZOOM_SIZE = 44;
+
+/** Camera box centred on a pin, clamped so it never leaves the map. */
+function centerOn(x: number, y: number): ViewBox {
+  const s = ZOOM_SIZE;
+  const clamp = (v: number) => Math.max(0, Math.min(100 - s, v));
+  return [clamp(x - s / 2), clamp(y - s / 2), s, s];
+}
+
 
 /** ----------------------------------------------------------------
  *  Hand-illustrated Algeria silhouette in a 100x100 viewBox.
