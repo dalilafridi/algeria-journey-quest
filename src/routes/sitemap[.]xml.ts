@@ -21,7 +21,7 @@ import { eras } from "@/data/eras";
 import { figures } from "@/data/figures";
 import { mapRegions } from "@/data/mapRegions";
 import { CULTURE_TOPICS } from "@/data/cultureTopics";
-import { COLLECTIONS } from "@/lib/figureCollections";
+import { ALL_ROWS, slugOfRow } from "@/lib/figureDiscovery";
 import { JOURNEYS } from "@/lib/journeys";
 import { lessons } from "@/data/lessons";
 import { CLUB_MUSEUMS } from "@/data/clubs";
@@ -41,7 +41,9 @@ function collect(): SitemapEntry[] {
     { path: "/atlas", changefreq: "monthly", priority: "0.7" },
     { path: "/chronicle", changefreq: "monthly", priority: "0.7" },
     { path: "/map", changefreq: "monthly", priority: "0.8" },
-    { path: "/compare", changefreq: "monthly", priority: "0.5" },
+    // /compare normalises its search params, so the bare path 307-redirects.
+    // Advertise the resolved URL so the sitemap contains no redirects.
+    { path: "/compare?kind=figures", changefreq: "monthly", priority: "0.5" },
     // Institutional pages
     { path: "/about", changefreq: "yearly", priority: "0.5" },
     { path: "/sources", changefreq: "yearly", priority: "0.5" },
@@ -71,7 +73,10 @@ function collect(): SitemapEntry[] {
   for (const r of mapRegions) entries.push({ path: `/region/${r.id}`, changefreq: "monthly", priority: "0.8" });
   for (const c of CULTURE_TOPICS) entries.push({ path: `/culture/${c.id}`, changefreq: "monthly", priority: "0.7" });
   for (const f of figures) entries.push({ path: `/figures/${f.id}`, changefreq: "monthly", priority: "0.7" });
-  for (const col of COLLECTIONS) entries.push({ path: `/figures/collection/${col.id}`, changefreq: "monthly", priority: "0.6" });
+  // Collection pages resolve their slug through figureDiscovery's row registry,
+  // not the COLLECTIONS list, so the sitemap must enumerate the same source.
+  for (const row of ALL_ROWS)
+    entries.push({ path: `/figures/collection/${slugOfRow(row)}`, changefreq: "monthly", priority: "0.6" });
   for (const j of JOURNEYS) entries.push({ path: `/journeys/${j.id}`, changefreq: "monthly", priority: "0.7" });
   // Lessons are aggregated on /lessons; individual lessons don't have their own route.
   void lessons;

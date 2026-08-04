@@ -432,7 +432,7 @@ export function NumberedGrid({
           )}
           <p className="mt-3 text-sm text-foreground/80 leading-[1.75]">{t(k.body, lang)}</p>
           {k.fact && (
-            <p className="mt-4 pt-4 border-t border-border/60 text-xs text-foreground/60 italic">
+            <p className="mt-4 pt-4 border-t border-border/60 text-xs text-muted-foreground italic">
               {factLabel ? `${t(factLabel, lang)} · ` : ""}
               {t(k.fact, lang)}
             </p>
