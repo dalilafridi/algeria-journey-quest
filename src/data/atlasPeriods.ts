@@ -79,9 +79,9 @@ export const ATLAS_PERIODS: AtlasPeriod[] = [
     markers: [
       { kind: "capital", name: L("Caesarea (Cherchell)", "Césarée (Cherchell)", "قيصرية"), x: 39, y: 22 },
       { kind: "city", name: L("Cirta (Constantine)", "Cirta (Constantine)", "سيرتا"), x: 65, y: 24 },
-      { kind: "site", name: L("Timgad", "Timgad", "تيمقاد"), x: 62, y: 30 },
-      { kind: "site", name: L("Djemila (Cuicul)", "Djémila (Cuicul)", "جميلة"), x: 58, y: 26 },
-      { kind: "site", name: L("Tipaza", "Tipaza", "تيبازة"), x: 40, y: 22 },
+      { kind: "site", name: L("Timgad", "Timgad", "تيمقاد"), x: 62, y: 30, highlightId: "timgad" },
+      { kind: "site", name: L("Djemila (Cuicul)", "Djémila (Cuicul)", "جميلة"), x: 58, y: 26, highlightId: "djemila" },
+      { kind: "site", name: L("Tipaza", "Tipaza", "تيبازة"), x: 40, y: 22, highlightId: "tipasa" },
       { kind: "battle", name: L("Fall of Cirta (311)", "Chute de Cirta", "سقوط سيرتا"), x: 65, y: 24.5 },
     ],
     summary: L(
@@ -104,8 +104,8 @@ export const ATLAS_PERIODS: AtlasPeriod[] = [
     markers: [
       { kind: "capital", name: L("Cirta", "Cirta", "سيرتا"), x: 65, y: 24 },
       { kind: "city", name: L("Hippo Regius", "Hippone", "هيبون"), x: 74, y: 21 },
-      { kind: "site", name: L("Tipaza fortifications", "Fortifications de Tipaza", "تحصينات تيبازة"), x: 40, y: 22 },
-      { kind: "site", name: L("Djemila basilica", "Basilique de Djémila", "بازيليك جميلة"), x: 58, y: 26 },
+      { kind: "site", name: L("Tipaza fortifications", "Fortifications de Tipaza", "تحصينات تيبازة"), x: 40, y: 22, highlightId: "tipasa" },
+      { kind: "site", name: L("Djemila basilica", "Basilique de Djémila", "بازيليك جميلة"), x: 58, y: 26, highlightId: "djemila" },
     ],
     summary: L(
       "Justinian's reconquest rebuilt walled towns along the coast, but the Byzantine hold was thin, chapels, garrisons and taxes without the depth of Rome.",
@@ -229,7 +229,7 @@ export const ATLAS_PERIODS: AtlasPeriod[] = [
       { kind: "city", name: L("Oran", "Oran", "وهران"), x: 22, y: 24 },
       { kind: "city", name: L("Constantine", "Constantine", "قسنطينة"), x: 65, y: 24 },
       { kind: "city", name: L("Mascara", "Mascara", "معسكر"), x: 26, y: 27 },
-      { kind: "site", name: L("Kasbah of Algiers", "Casbah d'Alger", "قصبة الجزائر"), x: 43, y: 21.5 },
+      { kind: "site", name: L("Kasbah of Algiers", "Casbah d'Alger", "قصبة الجزائر"), x: 43, y: 21.5, highlightId: "casbah" },
       { kind: "battle", name: L("Naval Battle of Algiers (1541)", "Débâcle de Charles Quint", "غزوة شارل الخامس"), x: 44, y: 20.5 },
     ],
     summary: L(
@@ -302,9 +302,9 @@ export const ATLAS_PERIODS: AtlasPeriod[] = [
       { kind: "city", name: L("Constantine", "Constantine", "قسنطينة"), x: 65, y: 24 },
       { kind: "city", name: L("Annaba", "Annaba", "عنابة"), x: 74, y: 22 },
       { kind: "city", name: L("Tlemcen", "Tlemcen", "تلمسان"), x: 18, y: 26 },
-      { kind: "city", name: L("Ghardaia", "Ghardaïa", "غرداية"), x: 45, y: 50 },
+      { kind: "city", name: L("Ghardaia", "Ghardaïa", "غرداية"), x: 45, y: 50, highlightId: "mzab" },
       { kind: "city", name: L("Tamanrasset", "Tamanrasset", "تمنراست"), x: 55, y: 80 },
-      { kind: "site", name: L("Tassili n'Ajjer (UNESCO)", "Tassili n'Ajjer (UNESCO)", "الطاسيلي ناجر"), x: 72, y: 68 },
+      { kind: "site", name: L("Tassili n'Ajjer (UNESCO)", "Tassili n'Ajjer (UNESCO)", "الطاسيلي ناجر"), x: 72, y: 68, highlightId: "tassili" },
     ],
     summary: L(
       "The People's Democratic Republic of Algeria, largest country in Africa, spans the Mediterranean to the Sahel, from the Kasbah of Algiers to the sandstone galleries of Tassili.",
