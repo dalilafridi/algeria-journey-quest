@@ -11,6 +11,11 @@ export type AtlasMarker = {
   x: number;
   y: number;
   note?: LocalizedString;
+  /**
+   * Optional id of a Museum Highlight (see src/data/museumHighlights.ts).
+   * When present the pin becomes tappable and opens that exhibit flow.
+   */
+  highlightId?: string;
 };
 
 export type AtlasPeriod = {
