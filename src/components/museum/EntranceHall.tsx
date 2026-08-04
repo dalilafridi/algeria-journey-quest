@@ -512,7 +512,7 @@ export function LatestExhibits({
                 />
               </div>
               <div className="flex min-w-0 flex-col justify-center">
-                <div className="text-[10px] font-bold uppercase tracking-[0.16em] text-primary/80">
+                <div className="text-[10px] font-bold uppercase tracking-[0.16em] text-primary">
                   {LATEST_COPY.openedOn[lang](formatDate(ex.publishedAt, lang))}
                 </div>
                 <h3
