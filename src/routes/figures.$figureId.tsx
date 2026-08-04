@@ -95,7 +95,7 @@ export const Route = createFileRoute("/figures/$figureId")({
   notFoundComponent: () => (
     <div className="min-h-dvh bg-parchment">
       <Header />
-      <main className="max-w-xl mx-auto px-4 py-16 text-center">
+      <main id="main" tabIndex={-1} className="max-w-xl mx-auto px-4 py-16 text-center">
         <h1 className="text-2xl font-bold">Figure not found.</h1>
         <Link to="/figures" className="mt-4 inline-block text-primary underline">
           Back to the Hall of Legends

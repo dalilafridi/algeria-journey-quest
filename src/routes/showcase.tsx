@@ -293,7 +293,7 @@ function ShowcasePage() {
       </header>
 
       {/* Stage */}
-      <main className="relative z-10 mx-auto flex min-h-dvh max-w-3xl flex-col justify-center px-5 sm:px-10 py-24 sm:py-28">
+      <main id="main" tabIndex={-1} className="relative z-10 mx-auto flex min-h-dvh max-w-3xl flex-col justify-center px-5 sm:px-10 py-24 sm:py-28">
         <article
           key={stop.key}
           className="showcase-card animate-cinematic-in text-center"

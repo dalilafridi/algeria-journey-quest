@@ -215,6 +215,7 @@ function StargazingPage() {
   return (
     <div className="min-h-dvh bg-background">
       <Header />
+      <main id="main" tabIndex={-1}>
 
       {/* HERO */}
       <section
@@ -345,6 +346,7 @@ function StargazingPage() {
           </Link>
         </div>
       </section>
+      </main>
     </div>
   );
 }

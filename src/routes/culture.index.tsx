@@ -459,6 +459,7 @@ function CulturePage() {
     <div className="min-h-dvh">
       <Header />
 
+      <main id="main" tabIndex={-1}>
       {/* Hero */}
       <section className="museum-hero">
         <div
@@ -479,7 +480,7 @@ function CulturePage() {
         </div>
       </section>
 
-        <main className="max-w-5xl mx-auto px-4 pt-10 pb-32 sm:py-14 museum-stack-lg">
+        <div className="max-w-5xl mx-auto px-4 pt-10 pb-32 sm:py-14 museum-stack-lg">
         {/* Contents */}
         <nav aria-label={C.contents}>
           <div className="museum-eyebrow mb-3">{C.contents}</div>
@@ -699,6 +700,7 @@ function CulturePage() {
               ? "الثقافة ليست متحفًا مغلقًا، بل حوار للتوّ انضممتَ إليه."
               : "Culture is not a closed museum, it is a conversation you have just joined."}
         </p>
+      </div>
       </main>
     </div>
   );

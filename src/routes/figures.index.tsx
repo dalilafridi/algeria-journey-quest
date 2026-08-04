@@ -96,7 +96,7 @@ function FiguresIndex() {
       {/* Guided museum walkthrough */}
       <GuidedTour open={tourOpen} onClose={() => setTourOpen(false)} lang={lang} />
 
-      <main className="max-w-6xl mx-auto px-4 py-8 sm:py-10">
+      <main id="main" tabIndex={-1} className="max-w-6xl mx-auto px-4 py-8 sm:py-10">
         {/* ---- Begin the exhibition (guided tour entry) ---- */}
         <div
           className="mb-8 rounded-2xl border p-4 sm:p-5 flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-5"
@@ -231,10 +231,10 @@ function FeaturedBillboard({
 
       <div className="relative max-w-6xl mx-auto px-4 pt-8 pb-2 sm:pt-10">
         <div className="flex items-center justify-between gap-3 flex-wrap">
-          <div className="inline-flex items-center gap-1.5 text-[11px] uppercase tracking-[0.18em] font-bold text-muted-foreground">
+          <h1 className="inline-flex items-center gap-1.5 text-[11px] uppercase tracking-[0.18em] font-bold text-muted-foreground">
             <span aria-hidden>ⵣ</span>
             {lang === "fr" ? "Le Panthéon des Légendes" : lang === "ar" ? "قاعة العظماء" : "The Hall of Legends"}
-          </div>
+          </h1>
           <div className="inline-flex items-center gap-3">
             <button
               type="button"
@@ -325,12 +325,12 @@ function FeaturedBillboard({
                   {t(f.era, lang)}
                 </span>
               </div>
-              <h1
+              <h2
                 className="mt-3 text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-[1.04] group-hover:text-primary transition-colors"
                 style={{ fontFamily: "Georgia, 'Times New Roman', serif" }}
               >
                 {t(f.displayName, lang)}
-              </h1>
+              </h2>
               {fm?.cinematicLine ? (
                 <p
                   className="mt-5 text-lg sm:text-xl lg:text-2xl italic text-foreground/85 leading-relaxed max-w-2xl mx-auto md:mx-0"

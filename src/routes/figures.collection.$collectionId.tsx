@@ -439,7 +439,7 @@ function CollectionNotFound({ lang }: { lang: Lang }) {
   return (
     <div className="min-h-dvh bg-parchment">
       <Header />
-      <main className="max-w-3xl mx-auto px-4 py-20 text-center">
+      <main id="main" tabIndex={-1} className="max-w-3xl mx-auto px-4 py-20 text-center">
         <h1 className="text-3xl font-extrabold" style={{ fontFamily: SERIF }}>
           {title}
         </h1>

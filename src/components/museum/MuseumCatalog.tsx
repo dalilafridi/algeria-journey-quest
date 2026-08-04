@@ -43,7 +43,9 @@ export function MuseumCatalogPage({
           sidebar ? "lg:grid-cols-[1fr_360px]" : ""
         }`}
       >
-        <MuseumMainColumn>{main}</MuseumMainColumn>
+        <main id="main" tabIndex={-1} className="min-w-0 space-y-6">
+          {main}
+        </main>
         {sidebar ? <MuseumSidebar>{sidebar}</MuseumSidebar> : null}
       </div>
       {ribbon}

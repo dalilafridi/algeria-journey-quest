@@ -57,7 +57,7 @@ function ProfilePage() {
   return (
     <div className="min-h-dvh">
       <Header />
-      <main className="max-w-3xl mx-auto px-4 py-8">
+      <main id="main" tabIndex={-1} className="max-w-3xl mx-auto px-4 py-8">
         <h1 className="text-3xl font-extrabold">{tu("yourJourney", lang)}</h1>
         <p className="text-muted-foreground mt-1">{tu("trackProgress", lang)}</p>
 

@@ -61,7 +61,7 @@ export function MuseumDock() {
   };
 
   return (
-    <div
+    <nav
       data-museum-dock
       className="fixed z-40 bottom-[calc(env(safe-area-inset-bottom)+4.75rem)] sm:bottom-[calc(env(safe-area-inset-bottom)+1.25rem)] right-3 sm:right-5 print:hidden"
       aria-label={T.open}
@@ -132,7 +132,7 @@ export function MuseumDock() {
           />
         )}
       </button>
-    </div>
+    </nav>
   );
 }
 

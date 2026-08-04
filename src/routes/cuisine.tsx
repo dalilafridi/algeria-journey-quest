@@ -166,7 +166,7 @@ function CuisinePage() {
         </div>
       </section>
 
-      <main className="max-w-3xl mx-auto px-4 py-10 safe-pb space-y-12">
+      <main id="main" tabIndex={-1} className="max-w-3xl mx-auto px-4 py-10 safe-pb space-y-12">
         {/* Poetic quote, moved out of hero so it can breathe */}
         <figure className="text-center px-4">
           <blockquote
@@ -185,6 +185,7 @@ function CuisinePage() {
         {/* STORY MODE */}
         <section id="cuisine-story" className="scroll-mt-24">
           <StoryFlow
+            headingLevel={2}
             title={cuisineCopy.storyTitle}
             continuityTitle={cuisineCopy.storyTitle}
             scenes={cuisineStory.map((s) => ({

@@ -630,6 +630,7 @@ function MzabExhibit() {
   return (
     <div className="min-h-dvh bg-parchment text-foreground">
       <Header />
+      <main id="main" tabIndex={-1}>
 
       <ExhibitHero
         eyebrow={HERO.eyebrow}
@@ -942,6 +943,7 @@ function MzabExhibit() {
           </Link>
         </div>
       </footer>
+      </main>
     </div>
   );
 }

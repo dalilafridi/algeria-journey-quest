@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useId, useMemo, useRef, useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { t, tu, useLang, type LocalizedString, type Lang } from "@/lib/i18n";
 import { eras, dailyFacts } from "@/data/eras";
@@ -185,13 +185,8 @@ export function DidYouKnowCard({ fact: override }: Props) {
   const region = useMemo(() => findRegionForFact(fact), [fact]);
   const remaining = useRemainingQuizzes();
 
+  const panelId = useId();
   const onToggle = () => setOpen((v) => !v);
-  const onKey = (e: React.KeyboardEvent) => {
-    if (e.key === "Enter" || e.key === " ") {
-      e.preventDefault();
-      onToggle();
-    }
-  };
 
   const handleHighlight = (targetId: string) => (e: React.MouseEvent) => {
     // Only intercept if the target is on the same page
@@ -211,12 +206,7 @@ export function DidYouKnowCard({ fact: override }: Props) {
   return (
     <div
       ref={btnRef}
-      role="button"
-      tabIndex={0}
-      onClick={onToggle}
-      onKeyDown={onKey}
-      aria-expanded={open}
-      className="group block w-full text-left rounded-3xl border border-accent/40 p-5 sm:p-6 transition-all duration-300 hover:-translate-y-0.5 hover:border-accent/70 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent/70 focus-visible:ring-offset-2 focus-visible:ring-offset-background cursor-pointer"
+      className="group block w-full text-left rounded-3xl border border-accent/40 p-5 sm:p-6 transition-all duration-300 hover:-translate-y-0.5 hover:border-accent/70"
       style={{
         backgroundColor: "color-mix(in oklab, var(--accent) 18%, var(--card))",
         boxShadow: open ? "var(--shadow-glow)" : "var(--shadow-soft)",
@@ -227,22 +217,31 @@ export function DidYouKnowCard({ fact: override }: Props) {
           💡
         </div>
         <div className="flex-1 min-w-0">
-          <div className="flex items-center justify-between gap-2">
-            <div className="text-xs font-bold uppercase tracking-wider text-accent-foreground/80">
-              {tu("didYouKnow", lang)}
-            </div>
-            <span className="text-xs font-medium text-muted-foreground opacity-70 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity">
-              {open ? t(COPY.close, lang) : t(COPY.tapToExpand, lang)}
-            </span>
-          </div>
-          <p
-            key={t(fact, lang)}
-            className="mt-1 text-foreground font-medium leading-relaxed animate-fade-in"
+          <button
+            type="button"
+            onClick={onToggle}
+            aria-expanded={open}
+            aria-controls={panelId}
+            className="block w-full text-start rounded-xl cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-accent/70 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
           >
-            {t(fact, lang)}
-          </p>
+            <span className="flex items-center justify-between gap-2">
+              <span className="text-xs font-bold uppercase tracking-wider text-accent-foreground/80">
+                {tu("didYouKnow", lang)}
+              </span>
+              <span className="text-xs font-medium text-muted-foreground opacity-70 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity">
+                {open ? t(COPY.close, lang) : t(COPY.tapToExpand, lang)}
+              </span>
+            </span>
+            <span
+              key={t(fact, lang)}
+              className="mt-1 block text-foreground font-medium leading-relaxed animate-fade-in"
+            >
+              {t(fact, lang)}
+            </span>
+          </button>
 
           <div
+            id={panelId}
             className="grid transition-all duration-500 ease-out"
             style={{
               gridTemplateRows: open ? "1fr" : "0fr",

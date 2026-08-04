@@ -222,6 +222,7 @@ function AtlasPage() {
     <div className="min-h-dvh">
       <Header />
 
+      <main id="main" tabIndex={-1}>
       {/* Hero */}
       <section className="museum-hero">
         <div
@@ -243,7 +244,7 @@ function AtlasPage() {
         </div>
       </section>
 
-      <main className="max-w-6xl mx-auto px-4 py-8 sm:py-10">
+      <div className="max-w-6xl mx-auto px-4 py-8 sm:py-10">
 
         {/* Historical overlay selector */}
         <div className="mb-6">
@@ -316,7 +317,7 @@ function AtlasPage() {
             <svg
               viewBox={viewBox.map((n) => Number(n.toFixed(3))).join(" ")}
               className="relative w-full h-auto block"
-              role="img"
+              role="group"
               aria-label={T.title}
             >
               <defs>
@@ -609,6 +610,7 @@ function AtlasPage() {
             )}
           </aside>
         </div>
+      </div>
       </main>
     </div>
   );

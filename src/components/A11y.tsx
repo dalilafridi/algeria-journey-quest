@@ -27,7 +27,20 @@ function ensureArabicFont() {
 export function SkipLink() {
   const lang = useLang();
   return (
-    <a href="#main" className="skip-link">
+    <a
+      href="#main"
+      className="skip-link"
+      onClick={(e) => {
+        // Guarantee focus lands on the main region, even when the browser
+        // would only scroll (client-side routing / fragment quirks).
+        const el = document.getElementById("main");
+        if (!el) return;
+        e.preventDefault();
+        if (!el.hasAttribute("tabindex")) el.setAttribute("tabindex", "-1");
+        el.focus({ preventScroll: false });
+        el.scrollIntoView({ block: "start", behavior: "auto" });
+      }}
+    >
       {tu("skipToContent", lang)}
     </a>
   );

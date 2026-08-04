@@ -1338,6 +1338,7 @@ function FootballHall() {
   return (
     <div className="min-h-dvh bg-background">
       <Header />
+      <main id="main" tabIndex={-1}>
       <FootballHero lang={lang} />
       <AchievementBanner lang={lang} />
       <ExhibitNavigator lang={lang} />
@@ -1373,6 +1374,7 @@ function FootballHall() {
         </p>
       </footer>
       <ExhibitProvenance exhibitId="football" />
+      </main>
     </div>
   );
 }

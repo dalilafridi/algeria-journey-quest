@@ -64,7 +64,7 @@ function GuessQuiz() {
     return (
       <div className="min-h-dvh">
         <Header />
-        <main className="max-w-xl mx-auto px-4 py-12">
+        <main id="main" tabIndex={-1} className="max-w-xl mx-auto px-4 py-12">
           <div className="h-2 rounded-full bg-muted overflow-hidden" />
           <div className="mt-6 h-64 rounded-2xl bg-card border border-border animate-pulse" />
         </main>
@@ -111,7 +111,7 @@ function GuessQuiz() {
     return (
       <div className="min-h-dvh">
         <Header />
-        <main className="max-w-xl mx-auto px-4 py-12 text-center">
+        <main id="main" tabIndex={-1} className="max-w-xl mx-auto px-4 py-12 text-center">
           <div className="text-7xl">{score === set.length ? "🏆" : pct >= 60 ? "🎉" : "💪"}</div>
           <h1 className="mt-4 text-3xl font-extrabold">
             {score === set.length ? tu("perfectRun", lang) : pct >= 60 ? tu("wellDone", lang) : tu("keepGoing", lang)}
@@ -171,7 +171,7 @@ function GuessQuiz() {
   return (
     <div className="min-h-dvh">
       <Header />
-      <main className="max-w-xl mx-auto px-4 py-8">
+      <main id="main" tabIndex={-1} className="max-w-xl mx-auto px-4 py-8">
         <Link to="/figures" className="text-sm text-muted-foreground hover:text-foreground">
           {tu("backToFigures", lang)}
         </Link>

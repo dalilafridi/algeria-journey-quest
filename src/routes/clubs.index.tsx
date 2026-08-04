@@ -43,6 +43,7 @@ function ClubsLanding() {
   return (
     <div className="min-h-screen bg-background text-foreground">
       <Header />
+      <main id="main" tabIndex={-1}>
 
       <section
         className="relative overflow-hidden"
@@ -85,6 +86,7 @@ function ClubsLanding() {
           ))}
         </div>
       </section>
+      </main>
     </div>
   );
 }
@@ -114,7 +116,7 @@ function FeaturedCard({ club, lang, label, cta, founded }: { club: ClubMuseum; l
         </div>
         <div>
           <p className="text-[10px] uppercase tracking-[0.3em] font-bold text-primary">{label}</p>
-          <h3 className="mt-2 text-2xl sm:text-3xl font-bold" style={SERIF}>{t(club.fullName, lang)}</h3>
+          <h2 className="mt-2 text-2xl sm:text-3xl font-bold" style={SERIF}>{t(club.fullName, lang)}</h2>
           <p className="text-sm text-muted-foreground mt-1">
             {t(club.city, lang)} · {founded} {club.founded}
           </p>

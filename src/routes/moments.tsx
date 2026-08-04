@@ -1062,7 +1062,7 @@ function MomentsPage() {
       <Header />
       <HeroSection lang={lang} />
 
-      <main className="max-w-4xl mx-auto px-4 pb-20">
+      <main id="main" tabIndex={-1} className="max-w-4xl mx-auto px-4 pb-20">
         {/* Daily card, retention */}
         <MuseumReveal className="mt-2 sm:mt-4">
           <DailyCard facts={dailyFacts3} questions={dailyQs} lang={lang} />

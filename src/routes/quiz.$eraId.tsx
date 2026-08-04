@@ -154,7 +154,7 @@ function QuizPage() {
     return (
       <div className="min-h-dvh">
         <Header />
-        <main className="max-w-xl mx-auto px-4 py-8">
+        <main id="main" tabIndex={-1} className="max-w-xl mx-auto px-4 py-8">
           <div className="h-2 rounded-full bg-muted overflow-hidden mt-12" />
           <div className="mt-6 rounded-2xl bg-card p-6 border border-border h-64 animate-pulse" />
         </main>
@@ -173,7 +173,7 @@ function QuizPage() {
     return (
       <div className="min-h-dvh">
         <Header />
-        <main className="max-w-xl mx-auto px-4 py-12 text-center">
+        <main id="main" tabIndex={-1} className="max-w-xl mx-auto px-4 py-12 text-center">
           <div className="text-7xl animate-pop-in">{perfect ? "🏆" : passed ? "🎉" : "💪"}</div>
           <h1 className="mt-4 text-3xl font-extrabold">
             {perfect ? tu("perfectRun", lang) : passed ? tu("wellDone", lang) : tu("keepGoing", lang)}
@@ -254,7 +254,7 @@ function QuizPage() {
   return (
     <div className="min-h-dvh">
       <Header />
-      <main className="max-w-xl mx-auto px-4 py-8">
+      <main id="main" tabIndex={-1} className="max-w-xl mx-auto px-4 py-8">
         <Link
           to="/era/$eraId"
           params={{ eraId: era.id }}
