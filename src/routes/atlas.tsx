@@ -72,18 +72,6 @@ const REGION_POINTS: Record<string, { x: number; y: number; size: number }> = {
   sahara:        { x: 48, y: 58, size: 5.0 },
 };
 
-/** Which regions glow most strongly per era. */
-const ERA_REGION_FOCUS: Record<string, string[]> = {
-  earlynorthafrica: ["sahara", "aures", "constantine", "kabylie"],
-  numidia:          ["constantine", "aures", "oran-west"],
-  roman:            ["constantine", "oran-west", "algiers"],
-  islamic:          ["algiers", "oran-west", "constantine", "sahara"],
-  ottoman:          ["algiers", "oran-west", "constantine"],
-  french:           ["algiers", "kabylie", "aures", "oran-west", "constantine"],
-  independence:     ["aures", "kabylie", "algiers", "constantine", "oran-west"],
-};
-
-type LayerId = "all" | string;
 
 export const Route = createFileRoute("/atlas")({
   head: () =>
