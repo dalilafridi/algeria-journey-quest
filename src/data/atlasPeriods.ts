@@ -328,3 +328,26 @@ export function getPeriod(id: string | null | undefined): AtlasPeriod | null {
   if (!id) return null;
   return ATLAS_PERIODS.find((p) => p.id === id) ?? null;
 }
+
+/**
+ * Locate a Museum Highlight on the atlas: which overlay period carries its
+ * pin, and where that pin sits in the 100x100 map viewBox.
+ * Prefers the earliest period that tags the highlight.
+ */
+export function findHighlightLocation(
+  highlightId: string | null | undefined,
+  preferredPeriodId?: string | null,
+): { periodId: string; x: number; y: number; color: string } | null {
+  if (!highlightId) return null;
+  const search = preferredPeriodId
+    ? [
+        ...ATLAS_PERIODS.filter((p) => p.id === preferredPeriodId),
+        ...ATLAS_PERIODS.filter((p) => p.id !== preferredPeriodId),
+      ]
+    : ATLAS_PERIODS;
+  for (const p of search) {
+    const m = p.markers.find((mk) => mk.highlightId === highlightId);
+    if (m) return { periodId: p.id, x: m.x, y: m.y, color: p.color };
+  }
+  return null;
+}
