@@ -67,6 +67,7 @@ import { Route as CuratorStudioDecisionsRouteImport } from './routes/curator/_st
 import { Route as CuratorStudioEducationRouteImport } from './routes/curator/_studio/education'
 import { Route as CuratorStudioFootballRouteImport } from './routes/curator/_studio/football'
 import { Route as CuratorStudioMediaRouteImport } from './routes/curator/_studio/media'
+import { Route as CuratorStudioMonitoringRouteImport } from './routes/curator/_studio/monitoring'
 import { Route as CuratorStudioMyWorkRouteImport } from './routes/curator/_studio/my-work'
 import { Route as CuratorStudioNotificationsRouteImport } from './routes/curator/_studio/notifications'
 import { Route as CuratorStudioPlannedRouteImport } from './routes/curator/_studio/planned'
@@ -82,6 +83,7 @@ import { Route as CuratorStudioTeamRouteImport } from './routes/curator/_studio/
 import { Route as CuratorStudioTechnicalRouteImport } from './routes/curator/_studio/technical'
 import { Route as CuratorStudioTranslationsRouteImport } from './routes/curator/_studio/translations'
 import { Route as FiguresCollectionCollectionIdRouteImport } from './routes/figures.collection.$collectionId'
+import { Route as ApiPublicMonitoringReportRouteImport } from './routes/api/public/monitoring.report'
 import { Route as CuratorStudioFiguresIndexRouteImport } from './routes/curator/_studio/figures.index'
 import { Route as CuratorStudioFiguresDraftIdRouteImport } from './routes/curator/_studio/figures.$draftId'
 import { Route as CuratorStudioFiguresNewRouteImport } from './routes/curator/_studio/figures.new'
@@ -382,6 +384,11 @@ const CuratorStudioMediaRoute = CuratorStudioMediaRouteImport.update({
   path: '/media',
   getParentRoute: () => CuratorStudioRouteRoute,
 } as any)
+const CuratorStudioMonitoringRoute = CuratorStudioMonitoringRouteImport.update({
+  id: '/monitoring',
+  path: '/monitoring',
+  getParentRoute: () => CuratorStudioRouteRoute,
+} as any)
 const CuratorStudioMyWorkRoute = CuratorStudioMyWorkRouteImport.update({
   id: '/my-work',
   path: '/my-work',
@@ -459,6 +466,12 @@ const FiguresCollectionCollectionIdRoute =
   FiguresCollectionCollectionIdRouteImport.update({
     id: '/figures/collection/$collectionId',
     path: '/figures/collection/$collectionId',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const ApiPublicMonitoringReportRoute =
+  ApiPublicMonitoringReportRouteImport.update({
+    id: '/api/public/monitoring/report',
+    path: '/api/public/monitoring/report',
     getParentRoute: () => rootRouteImport,
   } as any)
 const CuratorStudioFiguresIndexRoute =
@@ -559,6 +572,7 @@ export interface FileRoutesByFullPath {
   '/curator/education': typeof CuratorStudioEducationRoute
   '/curator/football': typeof CuratorStudioFootballRoute
   '/curator/media': typeof CuratorStudioMediaRoute
+  '/curator/monitoring': typeof CuratorStudioMonitoringRoute
   '/curator/my-work': typeof CuratorStudioMyWorkRoute
   '/curator/notifications': typeof CuratorStudioNotificationsRoute
   '/curator/planned': typeof CuratorStudioPlannedRoute
@@ -575,6 +589,7 @@ export interface FileRoutesByFullPath {
   '/curator/translations': typeof CuratorStudioTranslationsRoute
   '/figures/collection/$collectionId': typeof FiguresCollectionCollectionIdRoute
   '/curator/': typeof CuratorStudioIndexRoute
+  '/api/public/monitoring/report': typeof ApiPublicMonitoringReportRoute
   '/curator/figures/$draftId': typeof CuratorStudioFiguresDraftIdRouteWithChildren
   '/curator/figures/new': typeof CuratorStudioFiguresNewRoute
   '/curator/sources/$sourceId': typeof CuratorStudioSourcesSourceIdRoute
@@ -638,6 +653,7 @@ export interface FileRoutesByTo {
   '/curator/education': typeof CuratorStudioEducationRoute
   '/curator/football': typeof CuratorStudioFootballRoute
   '/curator/media': typeof CuratorStudioMediaRoute
+  '/curator/monitoring': typeof CuratorStudioMonitoringRoute
   '/curator/my-work': typeof CuratorStudioMyWorkRoute
   '/curator/notifications': typeof CuratorStudioNotificationsRoute
   '/curator/planned': typeof CuratorStudioPlannedRoute
@@ -652,6 +668,7 @@ export interface FileRoutesByTo {
   '/curator/technical': typeof CuratorStudioTechnicalRoute
   '/curator/translations': typeof CuratorStudioTranslationsRoute
   '/figures/collection/$collectionId': typeof FiguresCollectionCollectionIdRoute
+  '/api/public/monitoring/report': typeof ApiPublicMonitoringReportRoute
   '/curator/figures/$draftId': typeof CuratorStudioFiguresDraftIdRouteWithChildren
   '/curator/figures/new': typeof CuratorStudioFiguresNewRoute
   '/curator/sources/$sourceId': typeof CuratorStudioSourcesSourceIdRoute
@@ -719,6 +736,7 @@ export interface FileRoutesById {
   '/curator/_studio/education': typeof CuratorStudioEducationRoute
   '/curator/_studio/football': typeof CuratorStudioFootballRoute
   '/curator/_studio/media': typeof CuratorStudioMediaRoute
+  '/curator/_studio/monitoring': typeof CuratorStudioMonitoringRoute
   '/curator/_studio/my-work': typeof CuratorStudioMyWorkRoute
   '/curator/_studio/notifications': typeof CuratorStudioNotificationsRoute
   '/curator/_studio/planned': typeof CuratorStudioPlannedRoute
@@ -735,6 +753,7 @@ export interface FileRoutesById {
   '/curator/_studio/translations': typeof CuratorStudioTranslationsRoute
   '/figures/collection/$collectionId': typeof FiguresCollectionCollectionIdRoute
   '/curator/_studio/': typeof CuratorStudioIndexRoute
+  '/api/public/monitoring/report': typeof ApiPublicMonitoringReportRoute
   '/curator/_studio/figures/$draftId': typeof CuratorStudioFiguresDraftIdRouteWithChildren
   '/curator/_studio/figures/new': typeof CuratorStudioFiguresNewRoute
   '/curator/_studio/sources/$sourceId': typeof CuratorStudioSourcesSourceIdRoute
@@ -802,6 +821,7 @@ export interface FileRouteTypes {
     | '/curator/education'
     | '/curator/football'
     | '/curator/media'
+    | '/curator/monitoring'
     | '/curator/my-work'
     | '/curator/notifications'
     | '/curator/planned'
@@ -818,6 +838,7 @@ export interface FileRouteTypes {
     | '/curator/translations'
     | '/figures/collection/$collectionId'
     | '/curator/'
+    | '/api/public/monitoring/report'
     | '/curator/figures/$draftId'
     | '/curator/figures/new'
     | '/curator/sources/$sourceId'
@@ -881,6 +902,7 @@ export interface FileRouteTypes {
     | '/curator/education'
     | '/curator/football'
     | '/curator/media'
+    | '/curator/monitoring'
     | '/curator/my-work'
     | '/curator/notifications'
     | '/curator/planned'
@@ -895,6 +917,7 @@ export interface FileRouteTypes {
     | '/curator/technical'
     | '/curator/translations'
     | '/figures/collection/$collectionId'
+    | '/api/public/monitoring/report'
     | '/curator/figures/$draftId'
     | '/curator/figures/new'
     | '/curator/sources/$sourceId'
@@ -961,6 +984,7 @@ export interface FileRouteTypes {
     | '/curator/_studio/education'
     | '/curator/_studio/football'
     | '/curator/_studio/media'
+    | '/curator/_studio/monitoring'
     | '/curator/_studio/my-work'
     | '/curator/_studio/notifications'
     | '/curator/_studio/planned'
@@ -977,6 +1001,7 @@ export interface FileRouteTypes {
     | '/curator/_studio/translations'
     | '/figures/collection/$collectionId'
     | '/curator/_studio/'
+    | '/api/public/monitoring/report'
     | '/curator/_studio/figures/$draftId'
     | '/curator/_studio/figures/new'
     | '/curator/_studio/sources/$sourceId'
@@ -1026,6 +1051,7 @@ export interface RootRouteChildren {
   CultureIndexRoute: typeof CultureIndexRoute
   FiguresIndexRoute: typeof FiguresIndexRoute
   FiguresCollectionCollectionIdRoute: typeof FiguresCollectionCollectionIdRoute
+  ApiPublicMonitoringReportRoute: typeof ApiPublicMonitoringReportRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -1436,6 +1462,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CuratorStudioMediaRouteImport
       parentRoute: typeof CuratorStudioRouteRoute
     }
+    '/curator/_studio/monitoring': {
+      id: '/curator/_studio/monitoring'
+      path: '/monitoring'
+      fullPath: '/curator/monitoring'
+      preLoaderRoute: typeof CuratorStudioMonitoringRouteImport
+      parentRoute: typeof CuratorStudioRouteRoute
+    }
     '/curator/_studio/my-work': {
       id: '/curator/_studio/my-work'
       path: '/my-work'
@@ -1541,6 +1574,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof FiguresCollectionCollectionIdRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/public/monitoring/report': {
+      id: '/api/public/monitoring/report'
+      path: '/api/public/monitoring/report'
+      fullPath: '/api/public/monitoring/report'
+      preLoaderRoute: typeof ApiPublicMonitoringReportRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/curator/_studio/figures/': {
       id: '/curator/_studio/figures/'
       path: '/figures'
@@ -1635,6 +1675,7 @@ interface CuratorStudioRouteRouteChildren {
   CuratorStudioEducationRoute: typeof CuratorStudioEducationRoute
   CuratorStudioFootballRoute: typeof CuratorStudioFootballRoute
   CuratorStudioMediaRoute: typeof CuratorStudioMediaRoute
+  CuratorStudioMonitoringRoute: typeof CuratorStudioMonitoringRoute
   CuratorStudioMyWorkRoute: typeof CuratorStudioMyWorkRoute
   CuratorStudioNotificationsRoute: typeof CuratorStudioNotificationsRoute
   CuratorStudioPlannedRoute: typeof CuratorStudioPlannedRoute
@@ -1667,6 +1708,7 @@ const CuratorStudioRouteRouteChildren: CuratorStudioRouteRouteChildren = {
   CuratorStudioEducationRoute: CuratorStudioEducationRoute,
   CuratorStudioFootballRoute: CuratorStudioFootballRoute,
   CuratorStudioMediaRoute: CuratorStudioMediaRoute,
+  CuratorStudioMonitoringRoute: CuratorStudioMonitoringRoute,
   CuratorStudioMyWorkRoute: CuratorStudioMyWorkRoute,
   CuratorStudioNotificationsRoute: CuratorStudioNotificationsRoute,
   CuratorStudioPlannedRoute: CuratorStudioPlannedRoute,
@@ -1775,6 +1817,7 @@ const rootRouteChildren: RootRouteChildren = {
   CultureIndexRoute: CultureIndexRoute,
   FiguresIndexRoute: FiguresIndexRoute,
   FiguresCollectionCollectionIdRoute: FiguresCollectionCollectionIdRoute,
+  ApiPublicMonitoringReportRoute: ApiPublicMonitoringReportRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

@@ -26,6 +26,7 @@ import { AudioMiniPlayer } from "@/components/audio/AudioGuide";
 import { AskCurator } from "@/components/curator/AskCurator";
 import { PassportTracker } from "@/components/PassportTracker";
 import { NotFoundView } from "@/components/NotFoundView";
+import { MonitoringProbe } from "@/components/MonitoringProbe";
 import { getLang, t, tu } from "@/lib/i18n";
 import { headLang } from "@/lib/seo";
 
@@ -134,6 +135,7 @@ function RootComponent() {
     return (
       <AudioGuideProvider>
         <LangSync />
+        <MonitoringProbe />
         <Outlet />
         <Sonner />
       </AudioGuideProvider>
@@ -144,6 +146,7 @@ function RootComponent() {
     <AudioGuideProvider>
       <SkipLink />
       <LangSync />
+      <MonitoringProbe />
       <SplashScreen />
       <SignatureIntro />
       {!isNotFound && <ContinueJourneyCard />}

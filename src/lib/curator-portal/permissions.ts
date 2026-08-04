@@ -94,6 +94,7 @@ export const ROUTE_PERMISSIONS: Record<string, AppRole[]> = {
   "/curator/profile": [],
   "/curator/team": ADMIN,
   "/curator/audit-log": GOVERNANCE,
+  "/curator/monitoring": GOVERNANCE,
 };
 
 export function roleIntersects(userRoles: AppRole[], allowed: AppRole[]): boolean {

@@ -30,6 +30,7 @@ import {
   LogOut,
   Inbox,
   Briefcase,
+  Activity,
 } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useStudioSession } from "./StudioSessionContext";
@@ -56,6 +57,7 @@ const NAV: NavItem[] = [
   { to: "/curator/football", label: "Football Studio", icon: Trophy, group: "Editorial" },
 
   // Governance — daily operational governance surfaces only
+  { to: "/curator/monitoring", label: "Production Monitoring", icon: Activity, group: "Governance" },
   { to: "/curator/team", label: "Team & Roles", icon: Users, group: "Governance" },
   { to: "/curator/audit-log", label: "Audit Log", icon: ShieldCheck, group: "Governance" },
   { to: "/curator/settings", label: "Settings", icon: SettingsIcon, group: "Governance" },
