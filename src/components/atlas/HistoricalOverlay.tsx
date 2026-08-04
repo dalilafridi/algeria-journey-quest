@@ -135,6 +135,15 @@ function Marker({
         fill={color}
         opacity="0.18"
       />
+      {clickable && (
+        <circle
+          cx={marker.x}
+          cy={marker.y}
+          r={size * 2.6}
+          fill="transparent"
+          style={{ pointerEvents: "all" }}
+        />
+      )}
       {linked && (
         <circle
           cx={marker.x}
