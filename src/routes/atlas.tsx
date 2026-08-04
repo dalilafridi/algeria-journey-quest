@@ -288,7 +288,7 @@ function AtlasPage() {
           <div className="flex gap-1.5 overflow-x-auto no-scrollbar pb-1 -mx-1 px-1">
             <LayerChip
               active={periodId === null}
-              onClick={() => setPeriodId(null)}
+              onClick={() => selectPeriod(null)}
               emoji="◯"
               label={T.overlayOff}
             />
@@ -296,7 +296,7 @@ function AtlasPage() {
               <LayerChip
                 key={p.id}
                 active={periodId === p.id}
-                onClick={() => setPeriodId(p.id)}
+                onClick={() => selectPeriod(p.id)}
                 emoji="◈"
                 label={t(p.name, lang)}
                 accent={p.id === periodId ? p.color : undefined}
@@ -305,6 +305,34 @@ function AtlasPage() {
           </div>
           <p className="mt-2 text-xs text-muted-foreground italic">{T.overlayLegend}</p>
         </div>
+
+        {/* Museum Highlights rail: selecting a card syncs the map pin and camera */}
+        <div className="mb-6">
+          <div className="museum-eyebrow mb-2">{t(HIGHLIGHT_COPY.eyebrow, lang)}</div>
+          <div className="flex gap-1.5 overflow-x-auto no-scrollbar pb-1 -mx-1 px-1">
+            {MUSEUM_HIGHLIGHTS.filter((h) => findHighlightLocation(h.id)).map((h) => (
+              <LayerChip
+                key={h.id}
+                active={highlightId === h.id}
+                onClick={() =>
+                  selectHighlight(highlightId === h.id ? null : h.id)
+                }
+                emoji="◆"
+                label={t(h.title, lang)}
+                accent={
+                  highlightId === h.id
+                    ? findHighlightLocation(h.id)?.color
+                    : undefined
+                }
+              />
+            ))}
+          </div>
+          <p className="mt-2 text-xs text-muted-foreground italic">
+            {t(HIGHLIGHT_COPY.railHint, lang)}
+          </p>
+        </div>
+
+
 
 
         <div className="grid lg:grid-cols-[1.15fr_1fr] gap-6 lg:gap-8 items-start">
