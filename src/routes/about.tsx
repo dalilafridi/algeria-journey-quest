@@ -107,15 +107,15 @@ const SECTIONS: InfoSection[] = [
         fr: "📚 Toujours en train d'apprendre et de regarder vers la suite",
         ar: "📚 دائمًا أتعلّم وأنظر إلى ما يأتي",
       },
-      ],
-      postBullets: [
-        {
-          en: "✨ Every story matters, especially ours.",
-          fr: "✨ Chaque histoire compte, surtout la nôtre.",
-          ar: "✨ كل قصةٍ لها قيمة، وخاصة قصتنا.",
-        },
-      ],
-    },
+    ],
+    postBullets: [
+      {
+        en: "✨ Every story matters, especially ours.",
+        fr: "✨ Chaque histoire compte, surtout la nôtre.",
+        ar: "✨ كل قصةٍ لها قيمة، وخاصة قصتنا.",
+      },
+    ],
+  },
   {
     heading: { en: "What this museum is", fr: "Ce qu'est ce musée", ar: "ما هو هذا المتحف" },
     paras: [
