@@ -323,7 +323,7 @@ function AtlasPage() {
               className="absolute inset-0 pointer-events-none opacity-60 bg-parchment"
             />
             <svg
-              viewBox="0 0 100 100"
+              viewBox={viewBox.map((n) => Number(n.toFixed(3))).join(" ")}
               className="relative w-full h-auto block"
               role="img"
               aria-label={T.title}
