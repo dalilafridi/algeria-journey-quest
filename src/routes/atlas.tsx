@@ -496,7 +496,6 @@ function AtlasPage() {
               {mapRegions.map((r) => {
                 const p = REGION_POINTS[r.id];
                 if (!p) return null;
-                const isFocus = focusIds.has(r.id);
                 const isActive = selected === r.id;
                 const isHover = hovered === r.id;
                 const radius = p.size * (isActive ? 1.15 : isHover ? 1.08 : 1);
@@ -504,7 +503,6 @@ function AtlasPage() {
                   <g
                     key={r.id}
                     style={{ cursor: "pointer", transition: "opacity .4s ease" }}
-                    opacity={isFocus ? 1 : 0.32}
                     onMouseEnter={() => setHovered(r.id)}
                     onMouseLeave={() => setHovered(null)}
                     onClick={() => setSelected(r.id)}
