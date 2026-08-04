@@ -42,12 +42,15 @@ function PeriodLayer({
   active,
   lang,
   onSelectHighlight,
+  selectedHighlightId,
 }: {
   period: AtlasPeriod;
   active: boolean;
   lang: Lang;
   onSelectHighlight?: (highlightId: string) => void;
+  selectedHighlightId?: string | null;
 }) {
+
   return (
     <g
       style={{
