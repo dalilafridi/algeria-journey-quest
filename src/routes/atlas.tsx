@@ -9,6 +9,8 @@ import { figures } from "@/data/figures";
 import { ATLAS_PERIODS, getPeriod } from "@/data/atlasPeriods";
 import { HistoricalOverlay } from "@/components/atlas/HistoricalOverlay";
 import { HistoricalPeriodPanel } from "@/components/atlas/HistoricalPeriodPanel";
+import { ExhibitShowcase } from "@/components/museum/EntranceHall";
+import { MUSEUM_HIGHLIGHTS } from "@/data/museumHighlights";
 import { t, useLang, type LocalizedString } from "@/lib/i18n";
 import { saveJourneyPlace } from "@/lib/continuity";
 import algeriaMap from "@/assets/algeria-map.png";
@@ -87,6 +89,11 @@ function AtlasPage() {
   const [selected, setSelected] = useState<string | null>(null);
   const [hovered, setHovered] = useState<string | null>(null);
   const [periodId, setPeriodId] = useState<string | null>(null);
+  const [highlightId, setHighlightId] = useState<string | null>(null);
+  const activeHighlight = useMemo(
+    () => MUSEUM_HIGHLIGHTS.find((h) => h.id === highlightId) ?? null,
+    [highlightId],
+  );
   const activePeriod = getPeriod(periodId);
 
   useEffect(() => {
@@ -414,13 +421,19 @@ function AtlasPage() {
               </text>
 
               {/* Historical overlay layers (always mounted for crossfade) */}
-              <HistoricalOverlay activeId={periodId} lang={lang} />
+              <HistoricalOverlay
+                activeId={periodId}
+                lang={lang}
+                onSelectHighlight={setHighlightId}
+              />
 
               {/* Region pins */}
               <g
                 style={{
                   opacity: activePeriod ? 0.28 : 1,
                   transition: "opacity 520ms ease",
+                  /* While an overlay is active its pins own the map. */
+                  pointerEvents: activePeriod ? "none" : undefined,
                 }}
               >
               {mapRegions.map((r) => {
@@ -520,11 +533,31 @@ function AtlasPage() {
 
           {/* INFO PANEL */}
           <aside className="lg:sticky lg:top-24 space-y-4">
+            {activeHighlight && (
+              <div className="relative animate-float-up">
+                <button
+                  type="button"
+                  onClick={() => setHighlightId(null)}
+                  aria-label={t(HIGHLIGHT_COPY.close, lang)}
+                  className="absolute -top-2 end-0 z-10 inline-flex h-8 w-8 items-center justify-center rounded-full border border-border bg-card text-muted-foreground transition hover:border-primary/40 hover:text-foreground"
+                >
+                  ×
+                </button>
+                <ExhibitShowcase
+                  exhibits={[activeHighlight]}
+                  eyebrow={t(HIGHLIGHT_COPY.eyebrow, lang)}
+                  title={t(activeHighlight.title, lang)}
+                  subtitle={t(HIGHLIGHT_COPY.subtitle, lang)}
+                  align="start"
+                />
+              </div>
+            )}
             {activePeriod && (
               <HistoricalPeriodPanel
                 period={activePeriod}
                 lang={lang}
                 onClose={() => setPeriodId(null)}
+                onSelectHighlight={setHighlightId}
               />
             )}
             {activeRegion ? (
@@ -538,6 +571,16 @@ function AtlasPage() {
     </div>
   );
 }
+
+const HIGHLIGHT_COPY = {
+  eyebrow: { en: "Museum highlight", fr: "Temps fort du musée", ar: "من أبرز معالم المتحف" },
+  subtitle: {
+    en: "This place on the map has its own exhibit. Step inside.",
+    fr: "Ce lieu de la carte possède son propre parcours. Entrez.",
+    ar: "لهذا الموقع على الخريطة معرضه الخاص. تفضّل بالدخول.",
+  },
+  close: { en: "Close highlight", fr: "Fermer le temps fort", ar: "إغلاق" },
+} as const satisfies Record<string, LocalizedString>;
 
 /* ============================================================
  *  Subcomponents

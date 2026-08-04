@@ -10,14 +10,23 @@ import { ATLAS_PERIODS, MARKER_META, type AtlasMarker, type AtlasPeriod } from "
 export function HistoricalOverlay({
   activeId,
   lang,
+  onSelectHighlight,
 }: {
   activeId: string | null;
   lang: Lang;
+  /** Called when a pin tied to a Museum Highlight is tapped. */
+  onSelectHighlight?: (highlightId: string) => void;
 }) {
   return (
     <g style={{ pointerEvents: "none" }}>
       {ATLAS_PERIODS.map((p) => (
-        <PeriodLayer key={p.id} period={p} active={p.id === activeId} lang={lang} />
+        <PeriodLayer
+          key={p.id}
+          period={p}
+          active={p.id === activeId}
+          lang={lang}
+          onSelectHighlight={onSelectHighlight}
+        />
       ))}
     </g>
   );
@@ -27,10 +36,12 @@ function PeriodLayer({
   period,
   active,
   lang,
+  onSelectHighlight,
 }: {
   period: AtlasPeriod;
   active: boolean;
   lang: Lang;
+  onSelectHighlight?: (highlightId: string) => void;
 }) {
   return (
     <g
@@ -60,7 +71,14 @@ function PeriodLayer({
 
       {/* Markers */}
       {period.markers.map((m, i) => (
-        <Marker key={i} marker={m} lang={lang} color={period.color} />
+        <Marker
+          key={i}
+          marker={m}
+          lang={lang}
+          color={period.color}
+          interactive={active}
+          onSelectHighlight={onSelectHighlight}
+        />
       ))}
     </g>
   );
@@ -70,18 +88,44 @@ function Marker({
   marker,
   lang,
   color,
+  interactive,
+  onSelectHighlight,
 }: {
   marker: AtlasMarker;
   lang: Lang;
   color: string;
+  interactive?: boolean;
+  onSelectHighlight?: (highlightId: string) => void;
 }) {
   const isCapital = marker.kind === "capital";
   const isBattle = marker.kind === "battle";
   const size = isCapital ? 1.6 : isBattle ? 1.4 : 1.1;
   const label = t(marker.name, lang);
+  const linked = Boolean(marker.highlightId && onSelectHighlight);
+  const clickable = linked && interactive;
 
   return (
-    <g>
+    <g
+      role={clickable ? "button" : undefined}
+      tabIndex={clickable ? 0 : undefined}
+      aria-label={clickable ? label : undefined}
+      onClick={clickable ? () => onSelectHighlight!(marker.highlightId!) : undefined}
+      onKeyDown={
+        clickable
+          ? (e) => {
+              if (e.key === "Enter" || e.key === " ") {
+                e.preventDefault();
+                onSelectHighlight!(marker.highlightId!);
+              }
+            }
+          : undefined
+      }
+      style={{
+        pointerEvents: clickable ? "auto" : "none",
+        cursor: clickable ? "pointer" : undefined,
+      }}
+      className={clickable ? "atlas-pin-linked" : undefined}
+    >
       <title>{`${MARKER_META[marker.kind].glyph} ${label}`}</title>
       {/* Soft halo */}
       <circle
@@ -91,6 +135,27 @@ function Marker({
         fill={color}
         opacity="0.18"
       />
+      {clickable && (
+        <circle
+          cx={marker.x}
+          cy={marker.y}
+          r={size * 2.6}
+          fill="transparent"
+          style={{ pointerEvents: "all" }}
+        />
+      )}
+      {linked && (
+        <circle
+          cx={marker.x}
+          cy={marker.y}
+          r={size * 2.5}
+          fill="none"
+          stroke={color}
+          strokeWidth="0.3"
+          strokeDasharray="0.9 0.9"
+          opacity={clickable ? 0.9 : 0.35}
+        />
+      )}
       {isCapital ? (
         <Star cx={marker.x} cy={marker.y} r={size} fill={color} />
       ) : isBattle ? (

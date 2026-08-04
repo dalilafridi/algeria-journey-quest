@@ -235,7 +235,13 @@ export function ExhibitShowcase({
   return (
     <section aria-label={title} className={className}>
       <SectionHeader eyebrow={eyebrow} title={title} subtitle={subtitle} align={align} />
-      <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+      <div
+        className={
+          exhibits.length === 1
+            ? "mt-8 grid gap-5"
+            : "mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3"
+        }
+      >
         {exhibits.map((ex) => (
           <ExhibitCard key={ex.id} exhibit={ex} lang={lang} />
         ))}
