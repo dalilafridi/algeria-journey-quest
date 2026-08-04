@@ -12,6 +12,7 @@ const COPY = {
   sources: { en: "Sources & Method", fr: "Sources & méthode", ar: "المصادر والمنهج" },
   privacy: { en: "Privacy", fr: "Confidentialité", ar: "الخصوصية" },
   terms: { en: "Terms", fr: "Conditions", ar: "شروط الاستخدام" },
+  credits: { en: "Credits", fr: "Crédits", ar: "الاعتمادات" },
   note: {
     en: "DZ Odyssey, an independent digital museum of Algeria.",
     fr: "DZ Odyssey, musée numérique indépendant de l'Algérie.",
@@ -50,6 +51,11 @@ export function SiteFooter() {
           <li>
             <Link to="/terms" className={linkClass}>
               {COPY.terms[lang]}
+            </Link>
+          </li>
+          <li>
+            <Link to="/credits" className={linkClass}>
+              {COPY.credits[lang]}
             </Link>
           </li>
         </ul>

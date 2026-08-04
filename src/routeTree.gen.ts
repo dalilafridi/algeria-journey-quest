@@ -17,6 +17,7 @@ import { Route as ChronicleRouteImport } from './routes/chronicle'
 import { Route as CinemaRouteImport } from './routes/cinema'
 import { Route as ClubsRouteImport } from './routes/clubs'
 import { Route as CompareRouteImport } from './routes/compare'
+import { Route as CreditsRouteImport } from './routes/credits'
 import { Route as CuisineRouteImport } from './routes/cuisine'
 import { Route as CuratorRouteRouteImport } from './routes/curator/route'
 import { Route as FootballRouteImport } from './routes/football'
@@ -127,6 +128,11 @@ const ClubsRoute = ClubsRouteImport.update({
 const CompareRoute = CompareRouteImport.update({
   id: '/compare',
   path: '/compare',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CreditsRoute = CreditsRouteImport.update({
+  id: '/credits',
+  path: '/credits',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CuisineRoute = CuisineRouteImport.update({
@@ -506,6 +512,7 @@ export interface FileRoutesByFullPath {
   '/cinema': typeof CinemaRoute
   '/clubs': typeof ClubsRouteWithChildren
   '/compare': typeof CompareRoute
+  '/credits': typeof CreditsRoute
   '/cuisine': typeof CuisineRoute
   '/football': typeof FootballRouteWithChildren
   '/ideas': typeof IdeasRoute
@@ -585,6 +592,7 @@ export interface FileRoutesByTo {
   '/chronicle': typeof ChronicleRoute
   '/cinema': typeof CinemaRoute
   '/compare': typeof CompareRoute
+  '/credits': typeof CreditsRoute
   '/cuisine': typeof CuisineRoute
   '/ideas': typeof IdeasRoute
   '/lessons': typeof LessonsRoute
@@ -663,6 +671,7 @@ export interface FileRoutesById {
   '/cinema': typeof CinemaRoute
   '/clubs': typeof ClubsRouteWithChildren
   '/compare': typeof CompareRoute
+  '/credits': typeof CreditsRoute
   '/cuisine': typeof CuisineRoute
   '/football': typeof FootballRouteWithChildren
   '/ideas': typeof IdeasRoute
@@ -746,6 +755,7 @@ export interface FileRouteTypes {
     | '/cinema'
     | '/clubs'
     | '/compare'
+    | '/credits'
     | '/cuisine'
     | '/football'
     | '/ideas'
@@ -825,6 +835,7 @@ export interface FileRouteTypes {
     | '/chronicle'
     | '/cinema'
     | '/compare'
+    | '/credits'
     | '/cuisine'
     | '/ideas'
     | '/lessons'
@@ -902,6 +913,7 @@ export interface FileRouteTypes {
     | '/cinema'
     | '/clubs'
     | '/compare'
+    | '/credits'
     | '/cuisine'
     | '/football'
     | '/ideas'
@@ -984,6 +996,7 @@ export interface RootRouteChildren {
   CinemaRoute: typeof CinemaRoute
   ClubsRoute: typeof ClubsRouteWithChildren
   CompareRoute: typeof CompareRoute
+  CreditsRoute: typeof CreditsRoute
   CuisineRoute: typeof CuisineRoute
   FootballRoute: typeof FootballRouteWithChildren
   IdeasRoute: typeof IdeasRoute
@@ -1071,6 +1084,13 @@ declare module '@tanstack/react-router' {
       path: '/compare'
       fullPath: '/compare'
       preLoaderRoute: typeof CompareRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/credits': {
+      id: '/credits'
+      path: '/credits'
+      fullPath: '/credits'
+      preLoaderRoute: typeof CreditsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/cuisine': {
@@ -1725,6 +1745,7 @@ const rootRouteChildren: RootRouteChildren = {
   CinemaRoute: CinemaRoute,
   ClubsRoute: ClubsRouteWithChildren,
   CompareRoute: CompareRoute,
+  CreditsRoute: CreditsRoute,
   CuisineRoute: CuisineRoute,
   FootballRoute: FootballRouteWithChildren,
   IdeasRoute: IdeasRoute,
