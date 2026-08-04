@@ -56,22 +56,26 @@ export const Route = createFileRoute("/region/$regionId")({
     return { region };
   },
   head: ({ loaderData, params, match }) => {
+    const lang = headLang(match);
     if (!loaderData) {
       return pageMeta({
-      lang: headLang(match),
+        lang,
         path: `/region/${params.regionId}`,
-        title: "Region, DZ Odyssey",
-        description: "This region exhibit could not be found.",
+        title: { en: "Region not found, DZ Odyssey", fr: "Région introuvable, DZ Odyssey", ar: "المنطقة غير موجودة، دي زد أوديسي" },
+        description: {
+          en: "This region exhibit could not be found.",
+          fr: "Cette exposition régionale est introuvable.",
+          ar: "لم يتم العثور على معرض هذه المنطقة.",
+        },
         noindex: true,
       });
     }
-    const titleEn = t(loaderData.region.name, "en");
-    const summaryEn = t(loaderData.region.summary, "en");
+    const kind = { en: "Region", fr: "Région", ar: "منطقة" }[lang];
     return pageMeta({
-      lang: headLang(match),
+      lang,
       path: `/region/${loaderData.region.id}`,
-      title: `${titleEn}, Region | DZ Odyssey`,
-      description: summaryEn,
+      title: `${t(loaderData.region.name, lang)}, ${kind} | DZ Odyssey`,
+      description: t(loaderData.region.summary, lang),
       type: "article",
     });
   },

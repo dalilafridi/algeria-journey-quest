@@ -50,22 +50,26 @@ export const Route = createFileRoute("/culture/$topicId")({
     return { topic };
   },
   head: ({ loaderData, params, match }) => {
+    const lang = headLang(match);
     if (!loaderData) {
       return pageMeta({
-      lang: headLang(match),
+        lang,
         path: `/culture/${params.topicId}`,
-        title: "Culture, DZ Odyssey",
-        description: "This culture exhibit could not be found.",
+        title: { en: "Culture topic not found, DZ Odyssey", fr: "Sujet culturel introuvable, DZ Odyssey", ar: "الموضوع الثقافي غير موجود، دي زد أوديسي" },
+        description: {
+          en: "This culture exhibit could not be found.",
+          fr: "Cette exposition culturelle est introuvable.",
+          ar: "لم يتم العثور على هذا المعرض الثقافي.",
+        },
         noindex: true,
       });
     }
-    const titleEn = t(loaderData.topic.title, "en");
-    const descEn = t(loaderData.topic.intro, "en");
+    const kind = { en: "Culture", fr: "Culture", ar: "ثقافة" }[lang];
     return pageMeta({
-      lang: headLang(match),
+      lang,
       path: `/culture/${loaderData.topic.id}`,
-      title: `${titleEn}, Culture | DZ Odyssey`,
-      description: descEn,
+      title: `${t(loaderData.topic.title, lang)}, ${kind} | DZ Odyssey`,
+      description: t(loaderData.topic.intro, lang),
       type: "article",
     });
   },

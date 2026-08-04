@@ -56,22 +56,25 @@ export const Route = createFileRoute("/era/$eraId")({
     return { era };
   },
   head: ({ loaderData, params, match }) => {
+    const lang = headLang(match);
     if (!loaderData) {
       return pageMeta({
-      lang: headLang(match),
+        lang,
         path: `/era/${params.eraId}`,
-        title: "Era, DZ Odyssey",
-        description: "This era exhibit could not be found.",
+        title: { en: "Era not found, DZ Odyssey", fr: "Époque introuvable, DZ Odyssey", ar: "الحقبة غير موجودة، دي زد أوديسي" },
+        description: {
+          en: "This era exhibit could not be found.",
+          fr: "Cette exposition d'époque est introuvable.",
+          ar: "لم يتم العثور على معرض هذه الحقبة.",
+        },
         noindex: true,
       });
     }
-    const titleEn = t(loaderData.era.title, "en");
-    const summaryEn = t(loaderData.era.summary, "en");
     return pageMeta({
-      lang: headLang(match),
+      lang,
       path: `/era/${loaderData.era.id}`,
-      title: `${titleEn}, DZ Odyssey`,
-      description: summaryEn,
+      title: `${t(loaderData.era.title, lang)}, DZ Odyssey`,
+      description: t(loaderData.era.summary, lang),
       type: "article",
     });
   },
