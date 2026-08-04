@@ -42,6 +42,11 @@ function collect(): SitemapEntry[] {
     { path: "/chronicle", changefreq: "monthly", priority: "0.7" },
     { path: "/map", changefreq: "monthly", priority: "0.8" },
     { path: "/compare", changefreq: "monthly", priority: "0.5" },
+    // Institutional pages
+    { path: "/about", changefreq: "yearly", priority: "0.5" },
+    { path: "/sources", changefreq: "yearly", priority: "0.5" },
+    { path: "/privacy", changefreq: "yearly", priority: "0.3" },
+    { path: "/terms", changefreq: "yearly", priority: "0.3" },
     // Halls
     { path: "/figures", changefreq: "monthly", priority: "0.9" },
     { path: "/figures/quiz", changefreq: "monthly", priority: "0.6" },
