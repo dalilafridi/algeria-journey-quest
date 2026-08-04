@@ -84,9 +84,11 @@ export function pageMeta(input: PageMetaInput): HeadResult {
 
   if (input.noindex) meta.push({ name: "robots", content: "noindex" });
 
+  // A noindex page (404, personal passport, missing exhibit) must not claim a
+  // canonical URL, otherwise crawlers attribute it to a real page.
   return {
     meta,
-    links: [{ rel: "canonical", href: url }],
+    links: input.noindex ? [] : [{ rel: "canonical", href: url }],
   };
 }
 

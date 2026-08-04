@@ -30,24 +30,30 @@ export const Route = createFileRoute("/clubs/$clubId")({
     return { club };
   },
   head: ({ loaderData, params, match }) => {
+    const lang = headLang(match);
+    const museum = { en: "Museum", fr: "Musée", ar: "متحف" }[lang];
     if (!loaderData) {
       return pageMeta({
-      lang: headLang(match),
+        lang,
         path: `/clubs/${params.clubId}`,
-        title: "Club Museum, DZ Odyssey",
-        description: "This club museum could not be found.",
+        title: { en: "Club museum not found, DZ Odyssey", fr: "Musée de club introuvable, DZ Odyssey", ar: "متحف النادي غير موجود، دي زد أوديسي" },
+        description: {
+          en: "This club museum could not be found.",
+          fr: "Ce musée de club est introuvable.",
+          ar: "لم يتم العثور على متحف هذا النادي.",
+        },
         noindex: true,
       });
     }
     const { club } = loaderData;
-    const title = typeof club.fullName === "string" ? club.fullName : club.fullName.en;
-    const desc = typeof club.tagline === "string" ? club.tagline : club.tagline.en;
+    const title = typeof club.fullName === "string" ? club.fullName : t(club.fullName, lang);
+    const desc = typeof club.tagline === "string" ? club.tagline : t(club.tagline, lang);
     // Placeholder clubs stay discoverable via /clubs but are not indexable.
     const noindex = club.status !== "complete";
     return pageMeta({
       lang: headLang(match),
       path: `/clubs/${club.id}`,
-      title: `${title} Museum, DZ Odyssey`,
+      title: `${title} ${museum}, DZ Odyssey`,
       description: desc,
       type: "article",
       noindex,
