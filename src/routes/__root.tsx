@@ -27,7 +27,7 @@ import { AskCurator } from "@/components/curator/AskCurator";
 import { PassportTracker } from "@/components/PassportTracker";
 import { NotFoundView } from "@/components/NotFoundView";
 import { MonitoringProbe } from "@/components/MonitoringProbe";
-import { getLang, t, tu } from "@/lib/i18n";
+import { LangContext, getLang, t, tu } from "@/lib/i18n";
 import { headLang } from "@/lib/seo";
 
 /** Site-wide fallback metadata, in the three reviewed museum languages. */
