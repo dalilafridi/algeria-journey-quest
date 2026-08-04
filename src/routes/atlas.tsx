@@ -86,7 +86,6 @@ export const Route = createFileRoute("/atlas")({
 
 function AtlasPage() {
   const lang = useLang();
-  const [layer, setLayer] = useState<LayerId>("all");
   const [selected, setSelected] = useState<string | null>(null);
   const [hovered, setHovered] = useState<string | null>(null);
   const [periodId, setPeriodId] = useState<string | null>(null);
@@ -163,10 +162,6 @@ function AtlasPage() {
     });
   }, []);
 
-  const focusIds = useMemo(() => {
-    if (layer === "all") return new Set(mapRegions.map((r) => r.id));
-    return new Set(ERA_REGION_FOCUS[layer] ?? []);
-  }, [layer]);
 
   const activeRegion = selected
     ? mapRegions.find((r) => r.id === selected)
