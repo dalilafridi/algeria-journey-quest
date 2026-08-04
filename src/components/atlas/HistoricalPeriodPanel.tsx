@@ -9,10 +9,13 @@ export function HistoricalPeriodPanel({
   period,
   lang,
   onClose,
+  onSelectHighlight,
 }: {
   period: AtlasPeriod;
   lang: Lang;
   onClose: () => void;
+  /** Called when a listed place is tied to a Museum Highlight. */
+  onSelectHighlight?: (highlightId: string) => void;
 }) {
   const groups: MarkerKind[] = ["capital", "city", "site", "battle"];
 
@@ -79,23 +82,45 @@ export function HistoricalPeriodPanel({
               </span>
             </div>
             <ul className="space-y-1">
-              {items.map((m, i) => (
-                <li
-                  key={i}
-                  className="flex items-start gap-2 rounded-lg px-2 py-1.5 border border-border/60 bg-card/50"
-                >
-                  <span
-                    aria-hidden
-                    className="mt-[3px] text-xs shrink-0"
-                    style={{ color: period.color }}
-                  >
-                    {MARKER_META[kind].glyph}
-                  </span>
-                  <span className="text-sm font-semibold text-foreground truncate">
-                    {t(m.name, lang)}
-                  </span>
-                </li>
-              ))}
+              {items.map((m, i) => {
+                const linked = Boolean(m.highlightId && onSelectHighlight);
+                const inner = (
+                  <>
+                    <span
+                      aria-hidden
+                      className="mt-[3px] text-xs shrink-0"
+                      style={{ color: period.color }}
+                    >
+                      {MARKER_META[kind].glyph}
+                    </span>
+                    <span className="text-sm font-semibold text-foreground truncate">
+                      {t(m.name, lang)}
+                    </span>
+                    {linked && (
+                      <span className="ms-auto text-xs text-primary rtl:rotate-180" aria-hidden>
+                        →
+                      </span>
+                    )}
+                  </>
+                );
+                return (
+                  <li key={i}>
+                    {linked ? (
+                      <button
+                        type="button"
+                        onClick={() => onSelectHighlight!(m.highlightId!)}
+                        className="w-full flex items-start gap-2 rounded-lg px-2 py-1.5 border border-border/60 bg-card/50 text-start transition hover:border-primary/40 hover:bg-card"
+                      >
+                        {inner}
+                      </button>
+                    ) : (
+                      <div className="flex items-start gap-2 rounded-lg px-2 py-1.5 border border-border/60 bg-card/50">
+                        {inner}
+                      </div>
+                    )}
+                  </li>
+                );
+              })}
             </ul>
           </div>
         );
