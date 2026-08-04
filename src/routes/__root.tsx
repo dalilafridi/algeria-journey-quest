@@ -1,4 +1,10 @@
-import { Outlet, Link, createRootRoute, HeadContent, Scripts, useRouterState } from "@tanstack/react-router";
+import {
+  Outlet,
+  createRootRoute,
+  HeadContent,
+  Scripts,
+  useRouterState,
+} from "@tanstack/react-router";
 import { useEffect } from "react";
 import { toast } from "sonner";
 
@@ -19,6 +25,7 @@ import { AudioGuideProvider } from "@/lib/audioGuide";
 import { AudioMiniPlayer } from "@/components/audio/AudioGuide";
 import { AskCurator } from "@/components/curator/AskCurator";
 import { PassportTracker } from "@/components/PassportTracker";
+import { NotFoundView } from "@/components/NotFoundView";
 import { getLang, t, tu } from "@/lib/i18n";
 import { headLang } from "@/lib/seo";
 
@@ -33,28 +40,6 @@ const ROOT_DESCRIPTION = {
   fr: "DZ Odyssey, une traversée muséale et cinématique des époques, régions, figures et cultures de l'Algérie, de la Numidie à l'indépendance.",
   ar: "دي زد أوديسي، رحلة متحفية سينمائية عبر حِقب الجزائر ومناطقها وشخصياتها وثقافتها، من نوميديا إلى الاستقلال.",
 };
-
-
-function NotFoundComponent() {
-  const lang = getLang();
-  return (
-    <main id="main" tabIndex={-1} className="flex min-h-dvh items-center justify-center bg-background px-4">
-      <div className="max-w-md text-center">
-        <h1 className="text-7xl font-bold text-foreground">404</h1>
-        <h2 className="mt-4 text-xl font-semibold text-foreground">{tu("notFoundTitle", lang)}</h2>
-        <p className="mt-2 text-sm text-muted-foreground">{tu("notFoundBody", lang)}</p>
-        <div className="mt-6">
-          <Link
-            to="/"
-            className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
-          >
-            {tu("goHome", lang)}
-          </Link>
-        </div>
-      </div>
-    </main>
-  );
-}
 
 import { resolveInitialLang } from "@/lib/lang-server";
 import type { Lang } from "@/lib/i18n";
@@ -73,7 +58,10 @@ export const Route = createRootRoute({
   head: ({ match }) => ({
     meta: [
       { charSet: "utf-8" },
-      { name: "viewport", content: "width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=5" },
+      {
+        name: "viewport",
+        content: "width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=5",
+      },
       { name: "theme-color", content: "#1a1410" },
       { name: "mobile-web-app-capable", content: "yes" },
       { name: "apple-mobile-web-app-capable", content: "yes" },
@@ -95,7 +83,7 @@ export const Route = createRootRoute({
   }),
   shellComponent: RootShell,
   component: RootComponent,
-  notFoundComponent: NotFoundComponent,
+  notFoundComponent: NotFoundView,
 });
 
 function RootShell({ children }: { children: React.ReactNode }) {
@@ -115,7 +103,6 @@ function RootShell({ children }: { children: React.ReactNode }) {
               "(function(){try{var K='algeria-history-lang-v1';var m=/(?:^|;\\s*)dzo_lang=(en|fr|ar)/.exec(document.cookie||'');var c=m?m[1]:null;var l=localStorage.getItem(K);if(c){if(l!==c){localStorage.setItem(K,c);}}else if(l==='en'||l==='fr'||l==='ar'){document.documentElement.lang=l;document.documentElement.dir=(l==='ar')?'rtl':'ltr';document.cookie='dzo_lang='+l+'; path=/; max-age=31536000; samesite=lax';}}catch(e){}})();",
           }}
         />
-
       </head>
       <body>
         {children}
@@ -128,6 +115,11 @@ function RootShell({ children }: { children: React.ReactNode }) {
 function RootComponent() {
   const pathname = useRouterState({ select: (r) => r.location.pathname });
   const isCurator = pathname === "/curator" || pathname.startsWith("/curator/");
+  // On an unmatched URL the journey chrome ("Continue Your Journey", HUD,
+  // welcome overlay) is irrelevant and would advertise stale progress.
+  const isNotFound = useRouterState({
+    select: (r) => r.matches.some((m) => m.routeId === "/$" || m.globalNotFound === true),
+  });
 
   useEffect(() => {
     const handleContextMenu = (e: MouseEvent) => {
@@ -154,11 +146,11 @@ function RootComponent() {
       <LangSync />
       <SplashScreen />
       <SignatureIntro />
-      <ContinueJourneyCard />
+      {!isNotFound && <ContinueJourneyCard />}
       <Outlet />
       <SiteFooter />
-      <WelcomeJourney />
-      <JourneyHud />
+      {!isNotFound && <WelcomeJourney />}
+      {!isNotFound && <JourneyHud />}
       <BackToTop />
       <MuseumDock />
       <SearchOverlay />
