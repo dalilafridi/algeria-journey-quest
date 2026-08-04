@@ -86,6 +86,9 @@ function PeriodLayer({
           color={period.color}
           interactive={active}
           onSelectHighlight={onSelectHighlight}
+          selected={Boolean(
+            m.highlightId && selectedHighlightId && m.highlightId === selectedHighlightId,
+          )}
         />
       ))}
     </g>
@@ -98,12 +101,14 @@ function Marker({
   color,
   interactive,
   onSelectHighlight,
+  selected,
 }: {
   marker: AtlasMarker;
   lang: Lang;
   color: string;
   interactive?: boolean;
   onSelectHighlight?: (highlightId: string) => void;
+  selected?: boolean;
 }) {
   const isCapital = marker.kind === "capital";
   const isBattle = marker.kind === "battle";
@@ -111,6 +116,7 @@ function Marker({
   const label = t(marker.name, lang);
   const linked = Boolean(marker.highlightId && onSelectHighlight);
   const clickable = linked && interactive;
+
 
   return (
     <g
