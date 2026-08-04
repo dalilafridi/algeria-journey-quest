@@ -708,12 +708,9 @@ function RegionPanel({
 
   const extras = regionExtras[region.id];
 
-  // Connected eras: primary eraId + any era that focuses this region.
+  // Connected eras: the region's primary era.
   const connectedEraIds = new Set<string>();
   if (region.eraId) connectedEraIds.add(region.eraId);
-  Object.entries(ERA_REGION_FOCUS).forEach(([eraId, regs]) => {
-    if (regs.includes(region.id)) connectedEraIds.add(eraId);
-  });
   const connectedEras = eras.filter((e) => connectedEraIds.has(e.id));
 
   const culturalPillars: { emoji: string; label: LocalizedString }[] = [];
