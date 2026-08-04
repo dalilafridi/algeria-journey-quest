@@ -11,11 +11,14 @@ export function HistoricalOverlay({
   activeId,
   lang,
   onSelectHighlight,
+  selectedHighlightId,
 }: {
   activeId: string | null;
   lang: Lang;
   /** Called when a pin tied to a Museum Highlight is tapped. */
   onSelectHighlight?: (highlightId: string) => void;
+  /** Museum Highlight currently open in the panel: its pin gets a focus pulse. */
+  selectedHighlightId?: string | null;
 }) {
   return (
     <g style={{ pointerEvents: "none" }}>
@@ -26,11 +29,13 @@ export function HistoricalOverlay({
           active={p.id === activeId}
           lang={lang}
           onSelectHighlight={onSelectHighlight}
+          selectedHighlightId={selectedHighlightId}
         />
       ))}
     </g>
   );
 }
+
 
 function PeriodLayer({
   period,
