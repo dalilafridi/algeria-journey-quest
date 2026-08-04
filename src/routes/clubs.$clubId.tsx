@@ -1,5 +1,5 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
-import { pageMeta, headLang } from "@/lib/seo";
+import { pageMeta, headLang, siteSuffix } from "@/lib/seo";
 import { useEffect, useMemo, useState } from "react";
 
 import { Header } from "@/components/Header";
@@ -53,7 +53,7 @@ export const Route = createFileRoute("/clubs/$clubId")({
     return pageMeta({
       lang: headLang(match),
       path: `/clubs/${club.id}`,
-      title: `${title} ${museum}, DZ Odyssey`,
+      title: `${title} ${museum}${siteSuffix(lang)}`,
       description: desc,
       type: "article",
       noindex,

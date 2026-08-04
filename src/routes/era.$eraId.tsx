@@ -10,7 +10,7 @@
  */
 
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
-import { pageMeta, headLang } from "@/lib/seo";
+import { pageMeta, headLang, siteSuffix } from "@/lib/seo";
 import { useEffect } from "react";
 import { Header } from "@/components/Header";
 import { eras } from "@/data/eras";
@@ -73,7 +73,7 @@ export const Route = createFileRoute("/era/$eraId")({
     return pageMeta({
       lang,
       path: `/era/${loaderData.era.id}`,
-      title: `${t(loaderData.era.title, lang)}, DZ Odyssey`,
+      title: `${t(loaderData.era.title, lang)}${siteSuffix(lang)}`,
       description: t(loaderData.era.summary, lang),
       type: "article",
     });

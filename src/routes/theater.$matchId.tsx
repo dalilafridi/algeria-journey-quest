@@ -1,5 +1,5 @@
 import { createFileRoute, Link, notFound, useRouter } from "@tanstack/react-router";
-import { pageMeta, headLang } from "@/lib/seo";
+import { pageMeta, headLang, siteSuffix } from "@/lib/seo";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
 import { useLang, type Lang, type LocalizedString } from "@/lib/i18n";
@@ -48,7 +48,7 @@ export const Route = createFileRoute("/theater/$matchId")({
       lang,
       path: `/theater/${theater.id}`,
       title: `${tt(theater.cinematicTitle, lang)}, ${label}`,
-      description: `${tt(theater.cinematicSubtitle, lang)} · ${label}, DZ Odyssey.`,
+      description: `${tt(theater.cinematicSubtitle, lang)} · ${label}${siteSuffix(lang)}.`,
       type: "article",
     });
   },

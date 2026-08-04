@@ -11,7 +11,7 @@
  */
 
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
-import { pageMeta, headLang } from "@/lib/seo";
+import { pageMeta, headLang, siteSuffix } from "@/lib/seo";
 import { useEffect } from "react";
 import { Header } from "@/components/Header";
 import { RegionIcon } from "@/components/RegionIcon";
@@ -74,7 +74,7 @@ export const Route = createFileRoute("/region/$regionId")({
     return pageMeta({
       lang,
       path: `/region/${loaderData.region.id}`,
-      title: `${t(loaderData.region.name, lang)}, ${kind} | DZ Odyssey`,
+      title: `${t(loaderData.region.name, lang)}, ${kind}${siteSuffix(lang)}`,
       description: t(loaderData.region.summary, lang),
       type: "article",
     });

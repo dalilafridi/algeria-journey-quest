@@ -9,7 +9,7 @@
  */
 
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
-import { pageMeta, headLang } from "@/lib/seo";
+import { pageMeta, headLang, siteSuffix } from "@/lib/seo";
 import { useState } from "react";
 import { Header } from "@/components/Header";
 import { CollectionEmblem } from "@/components/figures/CollectionEmblem";
@@ -61,7 +61,7 @@ export const Route = createFileRoute("/journeys/$journeyId")({
     return pageMeta({
       lang,
       path: `/journeys/${loaderData.journey.id}`,
-      title: `${t(loaderData.journey.title, lang)}, ${kind} | DZ Odyssey`,
+      title: `${t(loaderData.journey.title, lang)}, ${kind}${siteSuffix(lang)}`,
       description: t(loaderData.journey.tagline, lang),
     });
   },

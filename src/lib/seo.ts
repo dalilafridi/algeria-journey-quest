@@ -102,3 +102,11 @@ export function headLang(match: { context?: unknown } | undefined): Lang {
   const ctx = (match?.context ?? {}) as { lang?: Lang };
   return ctx.lang === "fr" || ctx.lang === "ar" || ctx.lang === "en" ? ctx.lang : "en";
 }
+
+/**
+ * ", DZ Odyssey" in the active language. Arabic uses the Arabic comma and the
+ * transliterated museum name so dynamic titles read naturally in RTL.
+ */
+export function siteSuffix(lang: Lang): string {
+  return lang === "ar" ? "، دي زد أوديسي" : ", DZ Odyssey";
+}
