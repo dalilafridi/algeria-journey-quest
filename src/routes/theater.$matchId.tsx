@@ -68,7 +68,10 @@ function tt(v: LocalizedString | undefined, lang: Lang): string {
 }
 
 function TheaterRoute() {
-  const match = Route.useLoaderData();
+  // The loader throws notFound() when the match is missing, so by the time this
+  // component renders the loader data is always a MatchTheater. The inferred
+  // type still widens to `| undefined`, hence the narrowing cast.
+  const match = Route.useLoaderData() as MatchTheater;
   const lang = useLang();
   const { state, update } = useTheaterState(match.id);
   const [phase, setPhase] = useState<"intro" | "experience">("intro");
