@@ -46,6 +46,8 @@ import { CuratorRecommendations } from "@/components/CuratorRecommendations";
 import { ContinueExploring } from "@/components/curator/ContinueExploring";
 import { ExhibitProvenance } from "@/components/provenance/ExhibitProvenance";
 import { getRegionExploreGroups } from "@/lib/exploreGroups";
+import { KabyleJewelry } from "@/components/regions/KabyleJewelry";
+
 
 const SERIF = "Georgia, 'Times New Roman', serif";
 
@@ -276,6 +278,10 @@ function RegionPage() {
           </div>
         </section>
       )}
+
+      {region.id === "kabylie" && <KabyleJewelry />}
+
+
 
       {extras?.reflection && (
         <MuseumCuratorNote
