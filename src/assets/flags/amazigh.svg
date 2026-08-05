@@ -3,13 +3,9 @@
   <rect width="900" height="200" y="0" fill="#009edb"/>
   <rect width="900" height="200" y="200" fill="#5fbf00"/>
   <rect width="900" height="200" y="400" fill="#ffd800"/>
-  <g fill="none" stroke="#e70013" stroke-width="44" stroke-linecap="butt">
-    <path d="M450 110v380"/>
-    <path d="M300 300h300"/>
-    <path d="M300 300v-120"/>
-    <path d="M600 300v-120"/>
-    <path d="M300 490v-90"/>
-    <path d="M600 490v-90"/>
-    <path d="M300 490h-1"/>
+  <g fill="none" stroke="#e70013" stroke-width="44" stroke-linejoin="miter" stroke-linecap="butt">
+    <path d="M450 120V500"/>
+    <path d="M310 180V300H590V180"/>
+    <path d="M330 500L450 420L570 500"/>
   </g>
 </svg>
