@@ -149,15 +149,43 @@ const SECTIONS: InfoSection[] = [
       },
     ],
   },
+  {
+    heading: {
+      en: "The corrections and suggestions form",
+      fr: "Le formulaire de corrections et suggestions",
+      ar: "استمارة التصحيحات والاقتراحات",
+    },
+    paras: [
+      {
+        en: "When you send a message from the form on the About page, we collect the name and email address you enter, the message type, your message, and the optional page, page URL and source link. Our server also records the time of the submission, a reference number, a one way fingerprint of your network address and your browser identification string, used only to block spam and repeated submissions.",
+        fr: "Lorsque vous envoyez un message depuis le formulaire de la page À propos, nous recueillons le nom et l'adresse e-mail que vous saisissez, le type de message, votre message ainsi que la page, l'URL et le lien de source facultatifs. Notre serveur enregistre aussi la date d'envoi, un numéro de référence, une empreinte irréversible de votre adresse réseau et l'identifiant de votre navigateur, utilisés uniquement pour bloquer le spam et les envois répétés.",
+        ar: "عند إرسال رسالة من استمارة صفحة «حول المتحف»، نجمع الاسم والبريد الإلكتروني اللذين تدخلهما، ونوع الرسالة، ونصّ رسالتك، إضافة إلى الصفحة ورابطها ورابط المصدر الاختيارية. كما يسجّل الخادم وقت الإرسال ورقماً مرجعياً وبصمة غير قابلة للعكس لعنوان شبكتك ومعرّف متصفّحك، وتُستخدم فقط لمنع الرسائل المزعجة والإرسال المتكرّر.",
+      },
+      {
+        en: "This information is used only to review your message, to correct or improve the museum, and to reply to you if a reply is needed. Your email address is used as the reply address on the notification sent to the curatorial team. It is never sold, published, or used for any mailing list.",
+        fr: "Ces informations servent uniquement à examiner votre message, à corriger ou enrichir le musée et à vous répondre si nécessaire. Votre adresse e-mail est utilisée comme adresse de réponse dans la notification envoyée à l'équipe de conservation. Elle n'est jamais vendue, publiée ni ajoutée à une liste de diffusion.",
+        ar: "تُستخدم هذه المعلومات فقط لمراجعة رسالتك ولتصحيح المتحف أو تحسينه وللردّ عليك عند الحاجة. ويُستخدم بريدك الإلكتروني كعنوان ردّ في الإشعار المرسل إلى فريق الأمانة العلمية. ولا يُباع ولا يُنشر ولا يُضاف إلى أي قائمة بريدية.",
+      },
+      {
+        en: "Submissions are stored in the museum's private database and in the notification email. They are readable only by the museum team, never by other visitors. There is no automatic deletion schedule, so a submission is kept while it remains useful to the correction it concerns. You may ask for your submission and your address to be deleted at any time by sending a message through the same form with your reference number, and it will be removed.",
+        fr: "Les messages sont conservés dans la base de données privée du musée et dans l'e-mail de notification. Seule l'équipe du musée peut les consulter, jamais les autres visiteurs. Aucune suppression automatique n'est programmée : un message est conservé tant qu'il reste utile à la correction concernée. Vous pouvez demander à tout moment la suppression de votre message et de votre adresse en écrivant via le même formulaire avec votre numéro de référence, et elle sera effectuée.",
+        ar: "تُحفظ الرسائل في قاعدة بيانات المتحف الخاصة وفي بريد الإشعار. ولا يطّلع عليها سوى فريق المتحف، ولا يراها الزوّار الآخرون. لا يوجد حذف تلقائي مجدول، إذ تُحفظ الرسالة ما دامت مفيدة للتصحيح المعني. ويمكنك في أي وقت طلب حذف رسالتك وعنوانك بإرسال طلب عبر الاستمارة نفسها مع رقمك المرجعي، وسيُنفَّذ الحذف.",
+      },
+    ],
+  },
 ];
 
 const CONTACT = {
   heading: { en: "Privacy questions", fr: "Questions de confidentialité", ar: "أسئلة حول الخصوصية" },
-  withAddress: { en: "Write to us at", fr: "Écrivez-nous à", ar: "راسلنا على" },
-  pending: {
-    en: "A public contact channel for privacy questions is being prepared and will be published here.",
-    fr: "Un canal de contact public pour les questions de confidentialité est en préparation et sera publié ici.",
-    ar: "تجري تهيئة قناة تواصل عمومية لأسئلة الخصوصية وستُنشر هنا.",
+  lead: {
+    en: "Questions about this page, or a request to delete a submission, can be sent through the corrections form on the About page.",
+    fr: "Les questions relatives à cette page, ou une demande de suppression d'un message, peuvent être adressées via le formulaire de corrections de la page À propos.",
+    ar: "يمكن إرسال الأسئلة حول هذه الصفحة أو طلب حذف رسالة عبر استمارة التصحيحات في صفحة «حول المتحف».",
+  },
+  formLink: {
+    en: "Corrections & Suggestions form",
+    fr: "Formulaire de corrections et suggestions",
+    ar: "استمارة التصحيحات والاقتراحات",
   },
   terms: { en: "Terms of use", fr: "Conditions d'utilisation", ar: "شروط الاستخدام" },
 };
@@ -168,18 +196,11 @@ function PrivacyPage() {
     <InfoPage lang={lang} kicker={KICKER} title={TITLE} intro={INTRO} sections={SECTIONS}>
       <InfoPlaque>
         <h2 className="text-base font-semibold text-foreground">{CONTACT.heading[lang]}</h2>
-        <p className="mt-2">
-          {hasPublicContact() ? (
-            <>
-              {CONTACT.withAddress[lang]}{" "}
-              <a className="underline underline-offset-4" href={`mailto:${PUBLIC_CONTACT_EMAIL}`}>
-                {PUBLIC_CONTACT_EMAIL}
-              </a>
-              .
-            </>
-          ) : (
-            CONTACT.pending[lang]
-          )}
+        <p className="mt-2">{CONTACT.lead[lang]}</p>
+        <p className="mt-3">
+          <Link to="/about" hash="contact-corrections" className="underline underline-offset-4">
+            {CONTACT.formLink[lang]}
+          </Link>
         </p>
         <p className="mt-3">
           <Link to="/terms" className="underline underline-offset-4">
