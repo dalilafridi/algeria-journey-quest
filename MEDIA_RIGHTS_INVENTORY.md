@@ -234,8 +234,9 @@ JS Kabylie.
 
 | Asset | Classification | Rights basis |
 | --- | --- | --- |
-| `src/assets/kabyle-jewelry-illustration.jpg` | `interpretive-illustration`, `public` | Original interpretive illustration generated specifically for DZ Odyssey to accompany the Kabyle jewelry exhibit on the Kabylie region page. Not a photograph, not a copy of a specific museum object or published image, and contains no people. Displayed with the visible disclosure "Interpretive illustration created for DZ Odyssey". |
+| `src/assets/bijou-artisanale.jpg` (original filename `bijou-artisanale.jpg`) | `photograph`, `public`, **Unknown, requires review before publication** | Main exhibit photograph on the Kabylie region page, Kabyle Jewelry exhibit. Public caption: "Kabyle silverwork brings together intricate metalwork, vivid enamel, and coral-red ornament." Source or person who supplied it: uploaded to the project by the project owner; upload alone does not establish ownership. Photographer: unknown. Rights holder: unknown. License or permission: not documented. Rights status: **Unknown, requires review before publication.** |
+| `src/assets/bijoux.jpg` (original filename `bijoux.jpg`) | `photograph`, `public`, **Unknown, requires review before publication** | Supporting detail photograph in "The Colors of Kabylie", Kabylie region page, Kabyle Jewelry exhibit. Public caption: "Blue, green, and yellow enamel creates a vivid contrast against the silver." Source or person who supplied it: uploaded to the project by the project owner; upload alone does not establish ownership. Photographer: unknown. Rights holder: unknown. License or permission: not documented. Rights status: **Unknown, requires review before publication.** |
 
-No Wikipedia, Wikimedia Commons, social media, or commercial imagery was used
-for this exhibit. Text is an original museum adaptation based on the French
+The previous generated interpretive illustration was removed from this exhibit
+and deleted from the project. Text is an original museum adaptation based on the French
 Wikipedia overview and the scholarly references it lists.
