@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { type Lang, useLang } from "@/lib/i18n";
 import algeriaFlag from "@/assets/flags/algeria.svg";
-import amazighFlag from "@/assets/flags/amazigh.svg";
+import amazighFlagAsset from "@/assets/flags/amazigh-flag.png.asset.json";
 
 const FLAG_LABELS: Record<Lang, { algeria: string; amazigh: string }> = {
   fr: { algeria: "Drapeau de l'Algérie", amazigh: "Drapeau amazigh" },
