@@ -1,6 +1,14 @@
 import { useEffect, useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { type Lang, useLang } from "@/lib/i18n";
+import algeriaFlag from "@/assets/flags/algeria.svg";
+import amazighFlag from "@/assets/flags/amazigh.svg";
+
+const FLAG_LABELS: Record<Lang, { algeria: string; amazigh: string }> = {
+  fr: { algeria: "Drapeau de l'Algérie", amazigh: "Drapeau amazigh" },
+  en: { algeria: "Flag of Algeria", amazigh: "Amazigh flag" },
+  ar: { algeria: "علم الجزائر", amazigh: "العلم الأمازيغي" },
+};
 
 export const OPEN_CREATOR_ABOUT_EVENT = "open-creator-about";
 
