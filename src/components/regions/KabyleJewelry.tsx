@@ -8,7 +8,8 @@
  */
 
 import { t, useLang, type LocalizedString } from "@/lib/i18n";
-import illustration from "@/assets/kabyle-jewelry-illustration.jpg";
+import mainPhoto from "@/assets/bijou-artisanale.jpg.asset.json";
+import detailPhoto from "@/assets/bijoux.jpg.asset.json";
 
 const SERIF = "Georgia, 'Times New Roman', serif";
 
@@ -118,15 +119,25 @@ const COPY = {
     "مرجان أحمر متوسطي مرصّع في الفضة.",
   ),
 
-  illustrationAlt: L(
-    "Interpretive illustration of an arrangement of Kabyle silver jewelry with blue, green, and yellow enamel and coral-red settings.",
-    "Illustration interprétative d'un ensemble de bijoux kabyles en argent, aux émaux bleus, verts et jaunes et aux sertissages de corail rouge.",
-    "رسم تفسيري لمجموعة من الحلي القبائلية الفضية بمينا زرقاء وخضراء وصفراء وترصيع مرجاني أحمر.",
+  mainAlt: L(
+    "Display of traditional Kabyle silver jewelry decorated with colorful enamel and coral-red details",
+    "Présentation de bijoux kabyles traditionnels en argent, ornés d'émaux colorés et de détails rouge corail",
+    "عرض لحلي قبائلية فضية تقليدية مزيّنة بمينا ملوّنة وتفاصيل حمراء مرجانية",
   ),
-  illustrationCredit: L(
-    "Interpretive illustration created for DZ Odyssey",
-    "Illustration interprétative créée pour DZ Odyssey",
-    "رسم تفسيري أُنجز خصيصاً لـ DZ Odyssey",
+  mainCaption: L(
+    "Kabyle silverwork brings together intricate metalwork, vivid enamel, and coral-red ornament.",
+    "L'orfèvrerie kabyle réunit un travail du métal minutieux, des émaux éclatants et un ornement rouge corail.",
+    "تجمع صياغة الفضة القبائلية بين دقّة العمل المعدني، والمينا الزاهية، والزخرفة الحمراء المرجانية.",
+  ),
+  detailAlt: L(
+    "Kabyle bracelets and jewelry decorated with colored enamel and coral-red stones",
+    "Bracelets et bijoux kabyles ornés d'émaux colorés et de pierres rouge corail",
+    "أساور وحلي قبائلية مزيّنة بمينا ملوّنة وأحجار حمراء مرجانية",
+  ),
+  detailCaption: L(
+    "Blue, green, and yellow enamel creates a vivid contrast against the silver.",
+    "Les émaux bleus, verts et jaunes créent un contraste éclatant avec l'argent.",
+    "تخلق المينا الزرقاء والخضراء والصفراء تبايناً حيّاً مع الفضة.",
   ),
 
   sourcesTitle: L(
@@ -253,23 +264,26 @@ export function KabyleJewelry() {
         </div>
       </header>
 
-      {/* Illustration */}
-      <figure className="space-y-2">
+      {/* Main photograph */}
+      <figure className="space-y-2 mx-auto max-w-3xl">
         <div
-          className="overflow-hidden rounded-xl border"
+          className="overflow-hidden rounded-xl border bg-card"
           style={{ borderColor: "color-mix(in oklab, var(--brand-bronze) 35%, var(--border))" }}
         >
           <img
-            src={illustration}
-            alt={tr(COPY.illustrationAlt)}
+            src={mainPhoto.url}
+            alt={tr(COPY.mainAlt)}
             loading="lazy"
-            width={1536}
-            height={1024}
-            className="w-full h-auto object-cover"
+            width={960}
+            height={719}
+            className="w-full h-auto object-contain"
           />
         </div>
-        <figcaption className="text-xs text-muted-foreground">{tr(COPY.illustrationCredit)}</figcaption>
+        <figcaption className="text-xs sm:text-[13px] text-muted-foreground">
+          {tr(COPY.mainCaption)}
+        </figcaption>
       </figure>
+
 
       {/* Section 1 */}
       <div className="space-y-3 max-w-3xl">
@@ -278,6 +292,23 @@ export function KabyleJewelry() {
         </h3>
         <Body>{tr(COPY.s1a)}</Body>
         <Body>{tr(COPY.s1b)}</Body>
+
+        <figure className="space-y-2 pt-2 max-w-sm">
+          <div
+            className="overflow-hidden rounded-lg border bg-card"
+            style={{ borderColor: "color-mix(in oklab, var(--brand-bronze) 30%, var(--border))" }}
+          >
+            <img
+              src={detailPhoto.url}
+              alt={tr(COPY.detailAlt)}
+              loading="lazy"
+              width={562}
+              height={355}
+              className="w-full h-auto object-contain"
+            />
+          </div>
+          <figcaption className="text-xs text-muted-foreground">{tr(COPY.detailCaption)}</figcaption>
+        </figure>
       </div>
 
       <p
