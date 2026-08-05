@@ -229,3 +229,13 @@ Trademark and usage clearance for the JS Kabylie crest may still require
 confirmation with the club. The crest is used solely to identify the subject of
 the exhibit. DZ Odyssey is not affiliated with, sponsored by, or endorsed by
 JS Kabylie.
+
+## Kabylie jewelry exhibit
+
+| Asset | Classification | Rights basis |
+| --- | --- | --- |
+| `src/assets/kabyle-jewelry-illustration.jpg` | `interpretive-illustration`, `public` | Original interpretive illustration generated specifically for DZ Odyssey to accompany the Kabyle jewelry exhibit on the Kabylie region page. Not a photograph, not a copy of a specific museum object or published image, and contains no people. Displayed with the visible disclosure "Interpretive illustration created for DZ Odyssey". |
+
+No Wikipedia, Wikimedia Commons, social media, or commercial imagery was used
+for this exhibit. Text is an original museum adaptation based on the French
+Wikipedia overview and the scholarly references it lists.
