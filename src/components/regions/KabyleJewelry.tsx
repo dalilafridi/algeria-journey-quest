@@ -8,7 +8,8 @@
  */
 
 import { t, useLang, type LocalizedString } from "@/lib/i18n";
-import illustration from "@/assets/kabyle-jewelry-illustration.jpg";
+import mainPhoto from "@/assets/bijou-artisanale.jpg.asset.json";
+import detailPhoto from "@/assets/bijoux.jpg.asset.json";
 
 const SERIF = "Georgia, 'Times New Roman', serif";
 
