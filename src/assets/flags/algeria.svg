@@ -1,12 +1,14 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600" width="900" height="600" role="img">
   <title>Flag of Algeria</title>
+  <defs>
+    <mask id="dzCrescent">
+      <rect width="900" height="600" fill="black"/>
+      <circle cx="430" cy="300" r="128" fill="white"/>
+      <circle cx="478" cy="300" r="108" fill="black"/>
+    </mask>
+  </defs>
   <rect width="900" height="600" fill="#ffffff"/>
   <rect width="450" height="600" fill="#006233"/>
-  <g fill="#d21034">
-    <path d="M496 300a134 134 0 1 0 134-134 110 110 0 1 1 0 268 134 134 0 0 1-134-134z" fill-rule="evenodd"/>
-    <circle cx="630" cy="300" r="110" fill="#ffffff"/>
-    <path d="M496 300a134 134 0 1 1 134 134 110 110 0 1 0 0-268 134 134 0 0 0-134 134z" fill="#d21034"/>
-    <path d="M527 300 630 266.5 630 375.5z" fill="none"/>
-  </g>
-  <path fill="#d21034" d="m600 300 85.6-27.8-52.9 72.8V255.0l52.9 72.8z"/>
+  <rect width="900" height="600" fill="#d21034" mask="url(#dzCrescent)"/>
+  <path fill="#d21034" d="M530 300 611.2 273.6 561.0 342.7V257.3L611.2 326.4Z"/>
 </svg>
