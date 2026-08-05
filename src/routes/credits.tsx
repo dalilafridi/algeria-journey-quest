@@ -132,12 +132,16 @@ const SECTIONS: InfoSection[] = [
 
 const CONTACT = {
   heading: { en: "Contact", fr: "Contact", ar: "التواصل" },
-  pending: {
-    en: "A public contact channel for rights and credit enquiries is being prepared and will be published here.",
-    fr: "Un canal de contact public pour les questions de droits et de crédits est en préparation et sera publié ici.",
-    ar: "تجري تهيئة قناة تواصل عمومية لمسائل الحقوق والاعتمادات وستُنشر هنا.",
+  lead: {
+    en: "Rights holders and anyone with an attribution question can reach the museum through the corrections form on the About page.",
+    fr: "Les ayants droit et toute personne ayant une question d'attribution peuvent joindre le musée via le formulaire de corrections de la page À propos.",
+    ar: "يمكن لأصحاب الحقوق ولكل من لديه سؤال حول النسبة التواصل مع المتحف عبر استمارة التصحيحات في صفحة «حول المتحف».",
   },
-  withAddress: { en: "Write to us at", fr: "Écrivez-nous à", ar: "راسلنا على" },
+  formLink: {
+    en: "Rights or attribution concern form",
+    fr: "Formulaire pour les questions de droits ou d'attribution",
+    ar: "استمارة مسائل الحقوق والنسبة",
+  },
   sourcesLink: {
     en: "Sources & editorial method",
     fr: "Sources et méthode éditoriale",
@@ -152,17 +156,11 @@ function CreditsPage() {
     <InfoPage lang={lang} kicker={KICKER} title={TITLE} intro={INTRO} sections={SECTIONS}>
       <InfoPlaque>
         <h2 className="text-sm font-semibold text-foreground">{CONTACT.heading[lang]}</h2>
-        <p className="mt-2 text-sm leading-7 text-muted-foreground">
-          {hasPublicContact() ? (
-            <>
-              {CONTACT.withAddress[lang]}{" "}
-              <a className="underline underline-offset-4" href={`mailto:${PUBLIC_CONTACT_EMAIL}`}>
-                {PUBLIC_CONTACT_EMAIL}
-              </a>
-            </>
-          ) : (
-            CONTACT.pending[lang]
-          )}
+        <p className="mt-2 text-sm leading-7 text-muted-foreground">{CONTACT.lead[lang]}</p>
+        <p className="mt-3 text-sm">
+          <Link to="/about" hash="contact-corrections" className="underline underline-offset-4">
+            {CONTACT.formLink[lang]}
+          </Link>
         </p>
         <p className="mt-3 text-sm">
           <Link to="/sources" className="underline underline-offset-4">
