@@ -20,6 +20,7 @@ export function InfoPage({
   title,
   intro,
   sections,
+  beforeSections,
   children,
 }: {
   lang: Lang;
@@ -27,6 +28,8 @@ export function InfoPage({
   title: Record<Lang, string>;
   intro: Record<Lang, string>;
   sections: InfoSection[];
+  /** Optional custom block rendered between the intro and the sections. */
+  beforeSections?: ReactNode;
   children?: ReactNode;
 }) {
   const dir = lang === "ar" ? "rtl" : "ltr";
@@ -40,7 +43,10 @@ export function InfoPage({
         <h1 className="mt-3 text-3xl font-semibold leading-tight sm:text-4xl">{title[lang]}</h1>
         <p className="mt-4 text-base leading-relaxed text-muted-foreground">{intro[lang]}</p>
 
+        {beforeSections ? <div className="mt-10">{beforeSections}</div> : null}
+
         <div className="mt-10 space-y-10">
+
           {sections.map((s) => (
             <section key={s.heading.en} className="space-y-3">
               <h2 className="text-lg font-semibold text-foreground sm:text-xl">{s.heading[lang]}</h2>
