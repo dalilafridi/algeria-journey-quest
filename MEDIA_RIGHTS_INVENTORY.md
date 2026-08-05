@@ -214,7 +214,7 @@ them, and neither file appears in the production build output.
 | Asset | Classification | Rights basis |
 | --- | --- | --- |
 | `src/assets/flags/algeria.svg` | `brand-mark`, `public` | Factual representation of the national flag of Algeria, drawn as a clean local SVG specifically for DZ Odyssey. Not hotlinked, no third-party or CDN source. |
-| `src/assets/flags/amazigh.svg` | `brand-mark`, `public` | Factual representation of the Amazigh flag, drawn as a clean local SVG specifically for DZ Odyssey. Not hotlinked, no third-party or CDN source. |
+| `src/assets/flags/amazigh-flag.png.asset.json` | `brand-mark`, `public` | Factual reproduction of the Amazigh flag, supplied by the project owner and stored as a local PNG asset. Not hotlinked, no third-party or CDN source. |
 
 Both are simple factual reproductions of established public designs, used at
 small size beneath the About popup title as cultural identification.
