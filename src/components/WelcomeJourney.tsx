@@ -86,6 +86,22 @@ export function WelcomeJourney() {
             <h2 id="about-popup-title" className="mt-3 text-2xl font-semibold sm:text-3xl">
               {content.title}
             </h2>
+            <div className="mt-4 flex items-center justify-center gap-3" dir="ltr">
+              <img
+                src={algeriaFlag}
+                alt={FLAG_LABELS[lang].algeria}
+                width={36}
+                height={24}
+                className="h-6 w-9 rounded-[2px] border border-border object-cover shadow-sm"
+              />
+              <img
+                src={amazighFlag}
+                alt={FLAG_LABELS[lang].amazigh}
+                width={36}
+                height={24}
+                className="h-6 w-9 rounded-[2px] border border-border object-cover shadow-sm"
+              />
+            </div>
             <div className="mt-6 space-y-4 text-base leading-7 text-foreground/90">
               {content.paragraphs.map((p, i) => (
                 <p key={i}>{p}</p>
