@@ -22,6 +22,13 @@ import {
   type Trophy,
   type TrophyCategory,
 } from "@/data/clubs/types";
+import jskCrest from "@/assets/jsk-crest.png.asset.json";
+
+const CLUB_CREST_IMAGES: Record<string, string | undefined> = {
+  "js-kabylie": jskCrest.url,
+};
+
+
 
 export const Route = createFileRoute("/clubs/$clubId")({
   loader: ({ params }) => {
@@ -226,7 +233,22 @@ function Hero({ club, lang }: { club: ClubMuseum; lang: Lang }) {
       {t(club.city, lang)} · {{ en: "Founded", fr: "Fondé", ar: "تأسس" }[lang]} {club.founded}
     </>
   );
-  const medallion = (
+  const crestUrl = CLUB_CREST_IMAGES[club.id];
+  const medallion = crestUrl ? (
+    <img
+      src={crestUrl}
+      alt={{
+        en: "Jeunesse Sportive de Kabylie club crest",
+        fr: "Jeunesse Sportive de Kabylie club crest",
+        ar: "Jeunesse Sportive de Kabylie club crest",
+      }[lang]}
+      width={300}
+      height={300}
+      className="w-[150px] h-[150px] sm:w-[190px] sm:h-[190px] lg:w-[280px] lg:h-[280px] object-contain max-w-full"
+      style={{ filter: "drop-shadow(0 18px 30px oklch(0 0 0 / 0.22))" }}
+      loading="eager"
+    />
+  ) : (
     <div
       className="w-[180px] h-[180px] sm:w-[220px] sm:h-[220px] rounded-full flex items-center justify-center"
       style={{
@@ -244,6 +266,7 @@ function Hero({ club, lang }: { club: ClubMuseum; lang: Lang }) {
       </span>
     </div>
   );
+
   return (
     <ExhibitHero
       eyebrow={{ en: "Club Museum", fr: "Musée du club", ar: "متحف النادي" }}

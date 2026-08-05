@@ -218,3 +218,14 @@ them, and neither file appears in the production build output.
 
 Both are simple factual reproductions of established public designs, used at
 small size beneath the About popup title as cultural identification.
+
+## Third-party club crests
+
+| Asset | Classification | Rights basis |
+| --- | --- | --- |
+| `src/assets/jsk-crest.png.asset.json` | `club-crest-third-party`, `public` | Official JS Kabylie club crest, supplied by the project owner for editorial identification of the club in its museum wing. Not generated imagery and not a DZ Odyssey owned brand mark. Stored locally as an optimized PNG with transparency, never hotlinked. |
+
+Trademark and usage clearance for the JS Kabylie crest may still require
+confirmation with the club. The crest is used solely to identify the subject of
+the exhibit. DZ Odyssey is not affiliated with, sponsored by, or endorsed by
+JS Kabylie.
