@@ -209,12 +209,16 @@ const REGISTRY_COPY = {
 
 const CONTACT = {
   heading: { en: "Report a correction", fr: "Signaler une correction", ar: "الإبلاغ عن تصحيح" },
-  pending: {
-    en: "A public contact channel for corrections is being prepared and will be published here.",
-    fr: "Un canal de contact public pour les corrections est en préparation et sera publié ici.",
-    ar: "تجري تهيئة قناة تواصل عمومية للتصحيحات وستُنشر هنا.",
+  lead: {
+    en: "Use the corrections form on the About page. Please name the exhibit, quote the passage, and add a published source when you can.",
+    fr: "Utilisez le formulaire de corrections sur la page À propos. Indiquez si possible l'exposition, citez le passage et ajoutez une source publiée.",
+    ar: "استخدم استمارة التصحيحات في صفحة «حول المتحف». يرجى ذكر المعروضة واقتباس المقطع وإضافة مصدر منشور إن أمكن.",
   },
-  withAddress: { en: "Write to us at", fr: "Écrivez-nous à", ar: "راسلنا على" },
+  formLink: {
+    en: "Corrections & Suggestions form",
+    fr: "Formulaire de corrections et suggestions",
+    ar: "استمارة التصحيحات والاقتراحات",
+  },
   aboutLink: { en: "About the museum", fr: "À propos du musée", ar: "حول المتحف" },
 };
 
