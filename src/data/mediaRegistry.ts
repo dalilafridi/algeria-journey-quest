@@ -44,6 +44,20 @@ export interface MediaRecord {
 }
 
 export const MEDIA_REGISTRY: MediaRecord[] = [
+  /* ---------------- Flags ---------------- */
+  {
+    path: "src/assets/flags/algeria.svg",
+    mediaType: "brand-mark",
+    use: "public",
+    note: "Factual representation of the national flag of Algeria, drawn as a clean local SVG specifically for DZ Odyssey. No third-party or CDN source.",
+  },
+  {
+    path: "src/assets/flags/amazigh.svg",
+    mediaType: "brand-mark",
+    use: "public",
+    note: "Factual representation of the Amazigh flag, drawn as a clean local SVG specifically for DZ Odyssey. No third-party or CDN source.",
+  },
+
   /* ---------------- Exhibit and highlight imagery ---------------- */
   { path: "src/assets/exhibit-timgad.jpg", mediaType: "interpretive-illustration", use: "public" },
   { path: "src/assets/exhibit-tassili.jpg", mediaType: "interpretive-illustration", use: "public" },

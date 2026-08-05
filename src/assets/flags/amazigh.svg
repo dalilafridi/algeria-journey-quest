@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600" width="900" height="600" role="img">
+  <title>Amazigh flag</title>
+  <rect width="900" height="200" y="0" fill="#009edb"/>
+  <rect width="900" height="200" y="200" fill="#5fbf00"/>
+  <rect width="900" height="200" y="400" fill="#ffd800"/>
+  <g fill="none" stroke="#e70013" stroke-width="44" stroke-linejoin="miter" stroke-linecap="butt">
+    <path d="M450 120V430"/>
+    <path d="M310 180V300H590V180"/>
+    <path d="M340 505L450 425L560 505"/>
+  </g>
+</svg>
