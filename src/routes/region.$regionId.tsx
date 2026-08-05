@@ -277,6 +277,10 @@ function RegionPage() {
         </section>
       )}
 
+      {region.id === "kabylie" && <KabyleJewelry />}
+
+
+
       {extras?.reflection && (
         <MuseumCuratorNote
           title={tri(lang, "Curator's note", "Note du conservateur", "ملاحظة القيّم")}
