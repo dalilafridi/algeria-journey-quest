@@ -1,40 +1,50 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { type Lang, useLang } from "@/lib/i18n";
 
 export const OPEN_CREATOR_ABOUT_EVENT = "open-creator-about";
 
-const CREATOR_NARRATIVE: Record<Lang, { name: string; text: string }> = {
+const POPUP_CONTENT: Record<Lang, { eyebrow: string; title: string; paragraphs: string[]; cta: string }> = {
   fr: {
-    name: "Dalila Fridi",
-    text: "J’aime l’histoire… mais surtout les histoires qui nous relient.\n\nJ’ai grandi dans une famille où la liberté n’était pas un mot… mais une mémoire vivante.\nUne mémoire transmise à voix basse, dans les récits de ma mère et de mes grand-mères.\n\nElles ne racontaient pas seulement le passé…\nelles nous rappelaient qui nous sommes.\n\nJ’ai traversé des moments qui ont marqué notre histoire, Tafsut Imazighen en 1980, les événements de 1988 et j’ai appris que l’identité se vit, se protège… et se transmet.\n\nOn m’a appris une chose essentielle : ne jamais oublier d’où nous venons.\n\nAlors j’ai voulu créer cet espace…\nun lieu pour explorer, comprendre, et ressentir l’Algérie autrement, \npour que les enfants d’ici et d’ailleurs puissent retrouver ce fil invisible qui les relie à leur histoire. 🇩🇿\n\n💻 Retraitée de l’IT… mais jamais de la curiosité\n🎛️ Toujours en train d’explorer et de créer\n📚 Toujours guidée par l’envie de comprendre ce qui vient après\n\n✨ « Chaque histoire compte… surtout la nôtre. »",
+    eyebrow: "À propos",
+    title: "À propos de DZ Odyssey",
+    paragraphs: [
+      "DZ Odyssey est un musée numérique indépendant créé par Dalila Fridi pour rassembler l'histoire, la culture, les régions, les gens et les récits de l'Algérie au sein d'une expérience immersive.",
+      "Conçu au fil de mois de recherche et d'un profond attachement à l'Algérie, il invite les visiteurs, chez eux et au sein de la diaspora, à explorer, découvrir et renouer avec leurs racines.",
+    ],
+    cta: "Découvrir l'histoire de DZ Odyssey",
   },
   en: {
-    name: "Dalila Fridi",
-    text: "I love history… but even more, I love the stories that connect us.\n\nI grew up in a family where freedom was not just a word… but a living memory.\nA memory passed down quietly through the voices of my mother and grandmothers.\n\nThey didn’t just tell stories of the past…\nthey reminded us of who we are.\n\nI lived through moments that shaped our history, the 1980 Berber Spring and the 1988 uprising and I learned that identity is something we live, protect… and pass on.\n\nI was taught one essential truth: never forget where we come from.\n\nSo I created this space…\na place to explore, understand, and feel Algeria differently, \nso that children here and across the diaspora can reconnect with that invisible thread that ties them to their roots. 🇩🇿\n\n💻 Retired from IT… but never from curiosity\n🎛️ Still exploring, still building, still creating\n📚 Always drawn to what comes next\n\n✨ “Every story matters… especially ours.”",
+    eyebrow: "About",
+    title: "About DZ Odyssey",
+    paragraphs: [
+      "DZ Odyssey is an independent digital museum created by Dalila Fridi to bring Algeria's history, culture, regions, people, and stories together in one immersive experience.",
+      "Built from months of research and a deep attachment to Algeria, it invites visitors at home and across the diaspora to explore, discover, and reconnect with their roots.",
+    ],
+    cta: "Discover the Story Behind DZ Odyssey",
   },
   ar: {
-    name: "دليلة فريدي",
-    text: "أحب التاريخ… لكنني أحب أكثر القصص التي تربطنا ببعضنا البعض.\n\nنشأت في عائلة لم تكن الحرية فيها مجرد كلمة… بل ذاكرة حية.\nذاكرة تُروى بهدوء في حكايات أمي وجدّاتي.\n\nلم تكن تلك الحكايات عن الماضي فقط…\nبل كانت تذكرنا بمن نكون.\n\nعشت محطات شكّلت تاريخنا، الربيع الأمازيغي عام 1980 وأحداث 1988، وتعلمت أن الهوية تُعاش، وتُحمى… وتُورث.\n\nتعلمت حقيقة بسيطة وعميقة: لا تنسَ أبدًا من أين أتيت.\n\nلهذا أنشأت هذا الفضاء…\nمكانًا لاكتشاف الجزائر بشكل مختلف، \nللفهم، للشعور، ولربط الأجيال بذلك الخيط الخفي الذي يصلهم بجذورهم. 🇩🇿\n\n💻 متقاعدة من مجال التكنولوجيا… لكن الفضول لا يتوقف\n🎛️ ما زلت أستكشف وأبتكر\n📚 وما زلت أنجذب لما هو قادم\n\n✨ \"كل قصة مهمة… وخاصة قصتنا.\"",
+    eyebrow: "حول",
+    title: "حول DZ Odyssey",
+    paragraphs: [
+      "DZ Odyssey متحف رقمي مستقل أنشأته دليلة فريدي لجمع تاريخ الجزائر وثقافتها ومناطقها وأهلها وقصصها في تجربة واحدة غامرة.",
+      "بُني على مدى أشهر من البحث وارتباط عميق بالجزائر، ليدعو الزوار في الوطن وفي المهجر إلى الاستكشاف والاكتشاف وإعادة الاتصال بجذورهم.",
+    ],
+    cta: "اكتشف قصة DZ Odyssey",
   },
 };
 
-const ABOUT_UI: Record<Lang, { label: string; close: string; byline: string; fullPage: string }> = {
-  fr: { label: "À propos", close: "Fermer", byline: "Créatrice de l’expérience", fullPage: "Lire la page À propos complète" },
-  en: { label: "About", close: "Close", byline: "Creator of the experience", fullPage: "Read the full About page" },
-  ar: { label: "حول", close: "إغلاق", byline: "مُنشِئة التجربة", fullPage: "اقرأ صفحة حول المتحف كاملة" },
+const CLOSE_LABEL: Record<Lang, string> = {
+  fr: "Fermer",
+  en: "Close",
+  ar: "إغلاق",
 };
 
 export function WelcomeJourney() {
   const lang = useLang();
   const [visible, setVisible] = useState(false);
-  const content = CREATOR_NARRATIVE[lang];
+  const content = POPUP_CONTENT[lang];
   const isArabic = lang === "ar";
-
-  const [opening, body] = useMemo(() => {
-    const [first, ...rest] = content.text.split("\n\n");
-    return [first, rest.join("\n\n")];
-  }, [content.text]);
 
   useEffect(() => {
     const openAbout = () => setVisible(true);
@@ -50,36 +60,36 @@ export function WelcomeJourney() {
       dir={isArabic ? "rtl" : "ltr"}
       role="dialog"
       aria-modal="true"
-      aria-labelledby="creator-about-title"
+      aria-labelledby="about-popup-title"
     >
-      <div className="mx-auto flex min-h-full w-full max-w-2xl items-center text-foreground">
-        <section className="relative w-full max-h-[88vh] overflow-y-auto rounded-2xl border border-border bg-card p-5 shadow-xl animate-fade-in sm:p-8">
+      <div className="mx-auto flex min-h-full w-full max-w-xl items-center text-foreground">
+        <section className="relative w-full max-h-[88vh] overflow-y-auto rounded-2xl border border-border bg-card p-6 shadow-xl animate-fade-in sm:p-8">
           <button
             type="button"
             onClick={() => setVisible(false)}
             className="absolute end-4 top-4 inline-flex h-9 w-9 items-center justify-center rounded-full border border-border bg-background text-foreground transition hover:bg-muted"
-            aria-label={ABOUT_UI[lang].close}
+            aria-label={CLOSE_LABEL[lang]}
           >
             ×
           </button>
 
-          <div className="mx-auto max-w-xl text-center">
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">{ABOUT_UI[lang].label}</p>
-            <h2 id="creator-about-title" className="mt-3 text-3xl font-semibold sm:text-4xl">
-              {content.name}
+          <div className="mx-auto max-w-lg text-center">
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">{content.eyebrow}</p>
+            <h2 id="about-popup-title" className="mt-3 text-2xl font-semibold sm:text-3xl">
+              {content.title}
             </h2>
-            <p className="mx-auto mt-2 text-sm font-medium text-primary">{ABOUT_UI[lang].byline}</p>
-            <p className="mx-auto mt-8 text-xl font-semibold leading-relaxed text-foreground sm:text-2xl">{opening}</p>
-            <div className="mx-auto mt-7 whitespace-pre-line text-center text-base leading-8 text-foreground/85">
-              {body}
+            <div className="mt-6 space-y-4 text-base leading-7 text-foreground/90">
+              {content.paragraphs.map((p, i) => (
+                <p key={i}>{p}</p>
+              ))}
             </div>
             <p className="mt-8">
               <Link
                 to="/about"
                 onClick={() => setVisible(false)}
-                className="inline-flex items-center justify-center rounded-full border border-border bg-background px-4 py-2 text-sm font-medium text-foreground transition hover:bg-muted"
+                className="inline-flex items-center justify-center rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground shadow-sm transition hover:bg-primary/90"
               >
-                {ABOUT_UI[lang].fullPage}
+                {content.cta}
               </Link>
             </p>
           </div>
