@@ -264,23 +264,26 @@ export function KabyleJewelry() {
         </div>
       </header>
 
-      {/* Illustration */}
-      <figure className="space-y-2">
+      {/* Main photograph */}
+      <figure className="space-y-2 mx-auto max-w-3xl">
         <div
-          className="overflow-hidden rounded-xl border"
+          className="overflow-hidden rounded-xl border bg-card"
           style={{ borderColor: "color-mix(in oklab, var(--brand-bronze) 35%, var(--border))" }}
         >
           <img
-            src={illustration}
-            alt={tr(COPY.illustrationAlt)}
+            src={mainPhoto.url}
+            alt={tr(COPY.mainAlt)}
             loading="lazy"
-            width={1536}
-            height={1024}
-            className="w-full h-auto object-cover"
+            width={960}
+            height={719}
+            className="w-full h-auto object-contain"
           />
         </div>
-        <figcaption className="text-xs text-muted-foreground">{tr(COPY.illustrationCredit)}</figcaption>
+        <figcaption className="text-xs sm:text-[13px] text-muted-foreground">
+          {tr(COPY.mainCaption)}
+        </figcaption>
       </figure>
+
 
       {/* Section 1 */}
       <div className="space-y-3 max-w-3xl">
