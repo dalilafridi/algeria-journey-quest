@@ -3,7 +3,6 @@ import { InfoPage, InfoPlaque, type InfoSection } from "@/components/InfoPage";
 import { useLang } from "@/lib/i18n";
 import { pageMeta, headLang } from "@/lib/seo";
 import { PAGE_META } from "@/lib/pageMetaCopy";
-import { PUBLIC_CONTACT_EMAIL, hasPublicContact } from "@/lib/siteContact";
 
 /**
  * Public credits page.
