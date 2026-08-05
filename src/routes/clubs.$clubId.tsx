@@ -22,6 +22,13 @@ import {
   type Trophy,
   type TrophyCategory,
 } from "@/data/clubs/types";
+import jskCrest from "@/assets/jsk-crest.png.asset.json";
+
+const CLUB_CREST_IMAGES: Record<string, string | undefined> = {
+  "js-kabylie": jskCrest.url,
+};
+
+
 
 export const Route = createFileRoute("/clubs/$clubId")({
   loader: ({ params }) => {
