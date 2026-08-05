@@ -5,7 +5,6 @@ import { pageMeta, headLang } from "@/lib/seo";
 import { PAGE_META } from "@/lib/pageMetaCopy";
 import { SOURCES } from "@/data/provenance/sources";
 import type { SourceCategory } from "@/lib/provenance";
-import { PUBLIC_CONTACT_EMAIL, hasPublicContact } from "@/lib/siteContact";
 
 export const Route = createFileRoute("/sources")({
   head: ({ match }) =>
