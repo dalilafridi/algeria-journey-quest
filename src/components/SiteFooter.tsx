@@ -58,6 +58,11 @@ export function SiteFooter() {
               {COPY.credits[lang]}
             </Link>
           </li>
+          <li>
+            <Link to="/about" hash="contact-corrections" className={linkClass}>
+              {COPY.corrections[lang]}
+            </Link>
+          </li>
         </ul>
       </nav>
     </footer>
