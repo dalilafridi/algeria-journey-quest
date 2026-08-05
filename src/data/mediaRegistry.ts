@@ -52,11 +52,12 @@ export const MEDIA_REGISTRY: MediaRecord[] = [
     note: "Factual representation of the national flag of Algeria, drawn as a clean local SVG specifically for DZ Odyssey. No third-party or CDN source.",
   },
   {
-    path: "src/assets/flags/amazigh.svg",
+    path: "src/assets/flags/amazigh-flag.png.asset.json",
     mediaType: "brand-mark",
     use: "public",
-    note: "Factual representation of the Amazigh flag, drawn as a clean local SVG specifically for DZ Odyssey. No third-party or CDN source.",
+    note: "Factual reproduction of the Amazigh flag, supplied by the project owner as a local PNG asset. Not hotlinked, no third-party or CDN source.",
   },
+
 
   /* ---------------- Exhibit and highlight imagery ---------------- */
   { path: "src/assets/exhibit-timgad.jpg", mediaType: "interpretive-illustration", use: "public" },
