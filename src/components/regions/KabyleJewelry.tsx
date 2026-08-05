@@ -292,6 +292,23 @@ export function KabyleJewelry() {
         </h3>
         <Body>{tr(COPY.s1a)}</Body>
         <Body>{tr(COPY.s1b)}</Body>
+
+        <figure className="space-y-2 pt-2 max-w-sm">
+          <div
+            className="overflow-hidden rounded-lg border bg-card"
+            style={{ borderColor: "color-mix(in oklab, var(--brand-bronze) 30%, var(--border))" }}
+          >
+            <img
+              src={detailPhoto.url}
+              alt={tr(COPY.detailAlt)}
+              loading="lazy"
+              width={562}
+              height={355}
+              className="w-full h-auto object-contain"
+            />
+          </div>
+          <figcaption className="text-xs text-muted-foreground">{tr(COPY.detailCaption)}</figcaption>
+        </figure>
       </div>
 
       <p
