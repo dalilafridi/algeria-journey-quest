@@ -78,9 +78,12 @@ export function InfoPage({
 }
 
 /** Quiet plaque used for contact and cross-links at the end of a page. */
-export function InfoPlaque({ children }: { children: ReactNode }) {
+export function InfoPlaque({ children, id }: { children: ReactNode; id?: string }) {
   return (
-    <div className="mt-10 rounded-xl border border-border bg-card/70 p-5 text-sm leading-7 text-foreground/85">
+    <div
+      id={id}
+      className="mt-10 scroll-mt-24 rounded-xl border border-border bg-card/70 p-5 text-sm leading-7 text-foreground/85"
+    >
       {children}
     </div>
   );

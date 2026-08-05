@@ -546,6 +546,54 @@ export type Database = {
         }
         Relationships: []
       }
+      public_feedback: {
+        Row: {
+          created_at: string
+          email: string
+          id: string
+          ip_hash: string | null
+          message: string
+          message_type: string
+          name: string
+          page_title: string | null
+          page_url: string | null
+          reference_number: string
+          source_url: string | null
+          status: string
+          user_agent: string | null
+        }
+        Insert: {
+          created_at?: string
+          email: string
+          id?: string
+          ip_hash?: string | null
+          message: string
+          message_type: string
+          name: string
+          page_title?: string | null
+          page_url?: string | null
+          reference_number: string
+          source_url?: string | null
+          status?: string
+          user_agent?: string | null
+        }
+        Update: {
+          created_at?: string
+          email?: string
+          id?: string
+          ip_hash?: string | null
+          message?: string
+          message_type?: string
+          name?: string
+          page_title?: string | null
+          page_url?: string | null
+          reference_number?: string
+          source_url?: string | null
+          status?: string
+          user_agent?: string | null
+        }
+        Relationships: []
+      }
       source_links: {
         Row: {
           content_id: string

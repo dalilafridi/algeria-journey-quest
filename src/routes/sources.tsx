@@ -5,7 +5,6 @@ import { pageMeta, headLang } from "@/lib/seo";
 import { PAGE_META } from "@/lib/pageMetaCopy";
 import { SOURCES } from "@/data/provenance/sources";
 import type { SourceCategory } from "@/lib/provenance";
-import { PUBLIC_CONTACT_EMAIL, hasPublicContact } from "@/lib/siteContact";
 
 export const Route = createFileRoute("/sources")({
   head: ({ match }) =>
@@ -209,12 +208,16 @@ const REGISTRY_COPY = {
 
 const CONTACT = {
   heading: { en: "Report a correction", fr: "Signaler une correction", ar: "الإبلاغ عن تصحيح" },
-  pending: {
-    en: "A public contact channel for corrections is being prepared and will be published here.",
-    fr: "Un canal de contact public pour les corrections est en préparation et sera publié ici.",
-    ar: "تجري تهيئة قناة تواصل عمومية للتصحيحات وستُنشر هنا.",
+  lead: {
+    en: "Use the corrections form on the About page. Please name the exhibit, quote the passage, and add a published source when you can.",
+    fr: "Utilisez le formulaire de corrections sur la page À propos. Indiquez si possible l'exposition, citez le passage et ajoutez une source publiée.",
+    ar: "استخدم استمارة التصحيحات في صفحة «حول المتحف». يرجى ذكر المعروضة واقتباس المقطع وإضافة مصدر منشور إن أمكن.",
   },
-  withAddress: { en: "Write to us at", fr: "Écrivez-nous à", ar: "راسلنا على" },
+  formLink: {
+    en: "Corrections & Suggestions form",
+    fr: "Formulaire de corrections et suggestions",
+    ar: "استمارة التصحيحات والاقتراحات",
+  },
   aboutLink: { en: "About the museum", fr: "À propos du musée", ar: "حول المتحف" },
 };
 
@@ -281,18 +284,15 @@ function SourcesPage() {
 
       <InfoPlaque>
         <h2 className="text-base font-semibold text-foreground">{CONTACT.heading[lang]}</h2>
-        <p className="mt-2">
-          {hasPublicContact() ? (
-            <>
-              {CONTACT.withAddress[lang]}{" "}
-              <a className="underline underline-offset-4" href={`mailto:${PUBLIC_CONTACT_EMAIL}`}>
-                {PUBLIC_CONTACT_EMAIL}
-              </a>
-              .
-            </>
-          ) : (
-            CONTACT.pending[lang]
-          )}
+        <p className="mt-2">{CONTACT.lead[lang]}</p>
+        <p className="mt-3">
+          <Link
+            to="/about"
+            hash="contact-corrections"
+            className="underline underline-offset-4"
+          >
+            {CONTACT.formLink[lang]}
+          </Link>
         </p>
         <p className="mt-3">
           <Link to="/about" className="underline underline-offset-4">
