@@ -7,7 +7,7 @@ import type { Lang } from "@/lib/i18n";
 
 type T = Record<Lang, string>;
 
-const EYEBROW: T = { en: "The creator", fr: "La créatrice", ar: "خالقة التجربة" };
+const EYEBROW: T = { en: "The creator", fr: "La créatrice", ar: "المُبدِعة" };
 const NAME = "Dalila Fridi";
 const ROLE: T = {
   en: "Creator of the Experience",
