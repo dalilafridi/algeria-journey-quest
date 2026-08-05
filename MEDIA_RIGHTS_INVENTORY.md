@@ -208,3 +208,13 @@ document. No route, component, metadata block, social image, or preload referenc
 them, and neither file appears in the production build output.
 
 **Zero publicly used assets have unknown rights status.**
+
+## Flags (added for the About popup)
+
+| Asset | Classification | Rights basis |
+| --- | --- | --- |
+| `src/assets/flags/algeria.svg` | `brand-mark`, `public` | Factual representation of the national flag of Algeria, drawn as a clean local SVG specifically for DZ Odyssey. Not hotlinked, no third-party or CDN source. |
+| `src/assets/flags/amazigh.svg` | `brand-mark`, `public` | Factual representation of the Amazigh flag, drawn as a clean local SVG specifically for DZ Odyssey. Not hotlinked, no third-party or CDN source. |
+
+Both are simple factual reproductions of established public designs, used at
+small size beneath the About popup title as cultural identification.
