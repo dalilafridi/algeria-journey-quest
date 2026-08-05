@@ -119,15 +119,25 @@ const COPY = {
     "مرجان أحمر متوسطي مرصّع في الفضة.",
   ),
 
-  illustrationAlt: L(
-    "Interpretive illustration of an arrangement of Kabyle silver jewelry with blue, green, and yellow enamel and coral-red settings.",
-    "Illustration interprétative d'un ensemble de bijoux kabyles en argent, aux émaux bleus, verts et jaunes et aux sertissages de corail rouge.",
-    "رسم تفسيري لمجموعة من الحلي القبائلية الفضية بمينا زرقاء وخضراء وصفراء وترصيع مرجاني أحمر.",
+  mainAlt: L(
+    "Display of traditional Kabyle silver jewelry decorated with colorful enamel and coral-red details",
+    "Présentation de bijoux kabyles traditionnels en argent, ornés d'émaux colorés et de détails rouge corail",
+    "عرض لحلي قبائلية فضية تقليدية مزيّنة بمينا ملوّنة وتفاصيل حمراء مرجانية",
   ),
-  illustrationCredit: L(
-    "Interpretive illustration created for DZ Odyssey",
-    "Illustration interprétative créée pour DZ Odyssey",
-    "رسم تفسيري أُنجز خصيصاً لـ DZ Odyssey",
+  mainCaption: L(
+    "Kabyle silverwork brings together intricate metalwork, vivid enamel, and coral-red ornament.",
+    "L'orfèvrerie kabyle réunit un travail du métal minutieux, des émaux éclatants et un ornement rouge corail.",
+    "تجمع صياغة الفضة القبائلية بين دقّة العمل المعدني، والمينا الزاهية، والزخرفة الحمراء المرجانية.",
+  ),
+  detailAlt: L(
+    "Kabyle bracelets and jewelry decorated with colored enamel and coral-red stones",
+    "Bracelets et bijoux kabyles ornés d'émaux colorés et de pierres rouge corail",
+    "أساور وحلي قبائلية مزيّنة بمينا ملوّنة وأحجار حمراء مرجانية",
+  ),
+  detailCaption: L(
+    "Blue, green, and yellow enamel creates a vivid contrast against the silver.",
+    "Les émaux bleus, verts et jaunes créent un contraste éclatant avec l'argent.",
+    "تخلق المينا الزرقاء والخضراء والصفراء تبايناً حيّاً مع الفضة.",
   ),
 
   sourcesTitle: L(
