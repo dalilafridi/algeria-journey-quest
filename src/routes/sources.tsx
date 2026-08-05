@@ -285,18 +285,15 @@ function SourcesPage() {
 
       <InfoPlaque>
         <h2 className="text-base font-semibold text-foreground">{CONTACT.heading[lang]}</h2>
-        <p className="mt-2">
-          {hasPublicContact() ? (
-            <>
-              {CONTACT.withAddress[lang]}{" "}
-              <a className="underline underline-offset-4" href={`mailto:${PUBLIC_CONTACT_EMAIL}`}>
-                {PUBLIC_CONTACT_EMAIL}
-              </a>
-              .
-            </>
-          ) : (
-            CONTACT.pending[lang]
-          )}
+        <p className="mt-2">{CONTACT.lead[lang]}</p>
+        <p className="mt-3">
+          <Link
+            to="/about"
+            hash="contact-corrections"
+            className="underline underline-offset-4"
+          >
+            {CONTACT.formLink[lang]}
+          </Link>
         </p>
         <p className="mt-3">
           <Link to="/about" className="underline underline-offset-4">
