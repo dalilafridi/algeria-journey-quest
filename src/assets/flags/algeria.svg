@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600" width="900" height="600" role="img">
+  <title>Flag of Algeria</title>
+  <rect width="900" height="600" fill="#ffffff"/>
+  <rect width="450" height="600" fill="#006233"/>
+  <g fill="#d21034">
+    <path d="M525 300a150 150 0 1 0 150-150 120 120 0 1 1 0 300 150 150 0 0 1-150-150z"/>
+    <path d="M712.5 300 762 268.5l-1.5 58.5 55.5 18-55.5 18 1.5 58.5-49.5-31.5-49.5 31.5 1.5-58.5-55.5-18 55.5-18-1.5-58.5z" transform="translate(0,-73)"/>
+  </g>
+</svg>
