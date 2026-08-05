@@ -4,6 +4,7 @@ import { useLang } from "@/lib/i18n";
 import { pageMeta, headLang } from "@/lib/seo";
 import { PAGE_META } from "@/lib/pageMetaCopy";
 import { PUBLIC_CONTACT_EMAIL, hasPublicContact } from "@/lib/siteContact";
+import { CreatorStory } from "@/components/about/CreatorStory";
 
 export const Route = createFileRoute("/about")({
   head: ({ match }) =>
@@ -29,7 +30,6 @@ const INTRO = {
 
 const SECTIONS: InfoSection[] = [
   {
-
     heading: { en: "What this museum is", fr: "Ce qu'est ce musée", ar: "ما هو هذا المتحف" },
     paras: [
       {
@@ -161,7 +161,7 @@ const CONTACT = {
 function AboutPage() {
   const lang = useLang();
   return (
-    <InfoPage lang={lang} kicker={KICKER} title={TITLE} intro={INTRO} sections={SECTIONS}>
+    <InfoPage lang={lang} kicker={KICKER} title={TITLE} intro={INTRO} sections={SECTIONS} beforeSections={<CreatorStory lang={lang} />}>
       <InfoPlaque>
         <h2 className="text-base font-semibold text-foreground">{CONTACT.heading[lang]}</h2>
         <p className="mt-2">
