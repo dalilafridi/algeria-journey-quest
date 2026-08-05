@@ -13,6 +13,7 @@ const COPY = {
   privacy: { en: "Privacy", fr: "Confidentialité", ar: "الخصوصية" },
   terms: { en: "Terms", fr: "Conditions", ar: "شروط الاستخدام" },
   credits: { en: "Credits", fr: "Crédits", ar: "الاعتمادات" },
+  corrections: { en: "Corrections", fr: "Corrections", ar: "التصحيحات" },
   note: {
     en: "DZ Odyssey, an independent digital museum of Algeria.",
     fr: "DZ Odyssey, musée numérique indépendant de l'Algérie.",
