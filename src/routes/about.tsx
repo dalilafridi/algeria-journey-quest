@@ -138,51 +138,23 @@ const SECTIONS: InfoSection[] = [
   },
 ];
 
-const CONTACT = {
-  heading: { en: "Contact and corrections", fr: "Contact et corrections", ar: "التواصل والتصحيحات" },
-  withAddress: {
-    en: "Write to us at",
-    fr: "Écrivez-nous à",
-    ar: "راسلنا على",
-  },
-  pending: {
-    en: "A public contact channel for corrections is being prepared and will be published here.",
-    fr: "Un canal de contact public pour les corrections est en préparation et sera publié ici.",
-    ar: "تجري تهيئة قناة تواصل عمومية للتصحيحات وستُنشر هنا.",
-  },
-  more: {
-    en: "Read how exhibits are researched and cited:",
-    fr: "Découvrez comment les expositions sont documentées et citées :",
-    ar: "اطّلع على طريقة توثيق المعروضات والاستشهاد بمصادرها:",
-  },
-  sourcesLink: { en: "Sources & Editorial Method", fr: "Sources & méthode éditoriale", ar: "المصادر والمنهج التحريري" },
-};
-
 function AboutPage() {
   const lang = useLang();
+
+  // Deep links such as /about#contact-corrections must land on the panel even
+  // when the router hydrates after the browser's initial hash handling.
+  useEffect(() => {
+    if (window.location.hash !== "#contact-corrections") return;
+    const el = document.getElementById("contact-corrections");
+    if (!el) return;
+    const id = window.setTimeout(() => el.scrollIntoView({ block: "start" }), 60);
+    return () => window.clearTimeout(id);
+  }, []);
+
   return (
     <InfoPage lang={lang} kicker={KICKER} title={TITLE} intro={INTRO} sections={SECTIONS} beforeSections={<CreatorStory lang={lang} />}>
-      <InfoPlaque>
-        <h2 className="text-base font-semibold text-foreground">{CONTACT.heading[lang]}</h2>
-        <p className="mt-2">
-          {hasPublicContact() ? (
-            <>
-              {CONTACT.withAddress[lang]}{" "}
-              <a className="underline underline-offset-4" href={`mailto:${PUBLIC_CONTACT_EMAIL}`}>
-                {PUBLIC_CONTACT_EMAIL}
-              </a>
-              .
-            </>
-          ) : (
-            CONTACT.pending[lang]
-          )}
-        </p>
-        <p className="mt-3">
-          {CONTACT.more[lang]}{" "}
-          <Link to="/sources" className="underline underline-offset-4">
-            {CONTACT.sourcesLink[lang]}
-          </Link>
-        </p>
+      <InfoPlaque id="contact-corrections">
+        <CorrectionsForm lang={lang} />
       </InfoPlaque>
     </InfoPage>
   );
