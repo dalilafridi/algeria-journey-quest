@@ -1,10 +1,11 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { useEffect } from "react";
+import { createFileRoute } from "@tanstack/react-router";
 import { InfoPage, InfoPlaque, type InfoSection } from "@/components/InfoPage";
 import { useLang } from "@/lib/i18n";
 import { pageMeta, headLang } from "@/lib/seo";
 import { PAGE_META } from "@/lib/pageMetaCopy";
-import { PUBLIC_CONTACT_EMAIL, hasPublicContact } from "@/lib/siteContact";
 import { CreatorStory } from "@/components/about/CreatorStory";
+import { CorrectionsForm } from "@/components/about/CorrectionsForm";
 
 export const Route = createFileRoute("/about")({
   head: ({ match }) =>
