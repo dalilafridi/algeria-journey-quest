@@ -95,12 +95,13 @@ export function WelcomeJourney() {
                 className="h-6 w-9 rounded-[2px] border border-border object-cover shadow-sm"
               />
               <img
-                src={amazighFlag}
-                alt={FLAG_LABELS[lang].amazigh}
+                src={amazighFlagAsset.url}
+                alt="Amazigh flag"
                 width={36}
                 height={24}
                 className="h-6 w-9 rounded-[2px] border border-border object-cover shadow-sm"
               />
+
             </div>
             <div className="mt-6 space-y-4 text-base leading-7 text-foreground/90">
               {content.paragraphs.map((p, i) => (
