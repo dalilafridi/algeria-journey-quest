@@ -695,6 +695,7 @@ type PanelLabels = {
   overview: string;
   eras: string;
   figuresL: string;
+  assocNote: string;
   culture: string;
   explore: string;
   regionPage: string;
