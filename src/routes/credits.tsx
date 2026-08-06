@@ -115,6 +115,20 @@ const SECTIONS: InfoSection[] = [
   },
   {
     heading: {
+      en: "Football photography",
+      fr: "Photographies de football",
+      ar: "الصور الفوتوغرافية لكرة القدم",
+    },
+    paras: [
+      {
+        en: "Football photography: Fédération Algérienne de Football (FAF). This credit records the source of the photographs shown in the football galleries. It does not indicate any partnership, sponsorship or endorsement.",
+        fr: "Photographies de football : Fédération Algérienne de Football (FAF). Ce crédit indique la source des photographies présentées dans les salles du football. Il ne traduit aucun partenariat, parrainage ni approbation.",
+        ar: "الصور الفوتوغرافية لكرة القدم: Fédération Algérienne de Football (FAF). يسجّل هذا الاعتماد مصدر الصور المعروضة في قاعات كرة القدم، ولا يدل على أي شراكة أو رعاية أو تأييد.",
+      },
+    ],
+  },
+  {
+    heading: {
       en: "If you hold rights to something shown here",
       fr: "Si vous détenez des droits sur un élément affiché ici",
       ar: "إذا كنت تملك حقوقًا على عنصر معروض هنا",
