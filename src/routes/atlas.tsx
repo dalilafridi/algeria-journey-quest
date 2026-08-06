@@ -253,6 +253,9 @@ function AtlasPage() {
           <p className="mt-4 max-w-2xl mx-auto text-base sm:text-lg text-muted-foreground">
             {T.subtitle}
           </p>
+          <p className="mt-4 max-w-2xl mx-auto text-sm sm:text-base leading-relaxed text-muted-foreground/90 border-t border-border/60 pt-4">
+            {T.assocNote}
+          </p>
         </div>
       </section>
 
