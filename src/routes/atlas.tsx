@@ -766,9 +766,12 @@ function RegionPanel({
         </Block>
       )}
 
-      {/* Key figures */}
+      {/* Figures connected to this region */}
       {figureList.length > 0 && (
         <Block title={labels.figuresL} emoji="🏛️">
+          <p className="mb-2.5 text-sm leading-relaxed text-muted-foreground/90">
+            {labels.assocNote}
+          </p>
           <div className="grid grid-cols-2 gap-1.5">
             {figureList.map((f) => (
               <Link
