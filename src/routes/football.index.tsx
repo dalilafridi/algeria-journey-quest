@@ -6,7 +6,7 @@ import { MedallionFrame } from "@/components/brand/MedallionFrame";
 import { useLang, type Lang, type LocalizedString } from "@/lib/i18n";
 import { useFootballBookmarks } from "@/lib/footballBookmarks";
 import { theaterIdForFootballMatch } from "@/data/matchTheater";
-import flnIllustration from "@/assets/fln-team-illustration.png";
+import flnPhoto from "@/assets/fln-team-1958.webp";
 import footballHero from "@/assets/football-hero-vitrine.jpg";
 import { pageMeta, headLang } from "@/lib/seo";
 import { PAGE_META } from "@/lib/pageMetaCopy";
@@ -144,7 +144,7 @@ function FootballHero({ lang }: { lang: Lang }) {
 
 
 
-        {/* Museum vitrine, interpretive illustration created for DZ Odyssey */}
+        {/* Museum vitrine: the FLN team photograph, credited to the FAF */}
         <div className="relative flex items-center justify-center animate-float-up">
           <MuseumVitrine lang={lang} />
         </div>
@@ -174,22 +174,17 @@ const VITRINE_CAPTION: VitrineCaption = {
 };
 
 const VITRINE_ALT: LocalizedString = {
-  en: "Interpretive engraved illustration of a football team of the independence era, players standing and kneeling on a pitch with a ball at the centre, drawn in bronze and parchment tones with an Amazigh border.",
-  fr: "Illustration gravée interprétative d'une équipe de football de l'époque de l'indépendance, joueurs debout et accroupis sur un terrain avec un ballon au centre, dessinée dans des tons bronze et parchemin avec une bordure amazighe.",
-  ar: "رسم محفور تفسيري لفريق كرة قدم من زمن الاستقلال، لاعبون واقفون وجاثون على الملعب والكرة في الوسط، بألوان البرونز والرقّ وإطار أمازيغي.",
+  en: "Historic photograph of the FLN football team",
+  fr: "Historic photograph of the FLN football team",
+  ar: "Historic photograph of the FLN football team",
 };
 
-const VITRINE_LABEL: LocalizedString = {
-  en: "Interpretive illustration created for DZ Odyssey",
-  fr: "Illustration interprétative créée pour DZ Odyssey",
-  ar: "رسم تفسيري أُنشئ خصيصًا لدي زد أوديسي",
-};
+const VITRINE_CREDIT = "Photo: Fédération Algérienne de Football (FAF)";
 
 /**
- * MuseumVitrine — an interpretive illustration created for DZ Odyssey,
- * evoking the FLN team of 1958 to 1962. It is an original museum-poster
- * drawing, not an archival photograph, and is labelled as such on the page.
- * No third-party crest, federation mark or competition branding appears.
+ * MuseumVitrine - the historic FLN team photograph shown in a restrained
+ * museum frame. The photograph is displayed unaltered and credited on the
+ * page to the Fédération Algérienne de Football (FAF).
  */
 function MuseumVitrine({ lang }: { lang: Lang }) {
   const caption = VITRINE_CAPTION;
@@ -197,7 +192,7 @@ function MuseumVitrine({ lang }: { lang: Lang }) {
   return (
     <figure
       className="relative w-full max-w-[440px] mx-auto"
-      aria-label={tt(VITRINE_LABEL, lang)}
+      aria-label={tt(VITRINE_CAPTION.title, lang)}
     >
       {/* Ambient cabinet shadow */}
       <div
@@ -223,31 +218,13 @@ function MuseumVitrine({ lang }: { lang: Lang }) {
           }}
         >
           <img
-            src={flnIllustration}
+            src={flnPhoto}
             alt={tt(VITRINE_ALT, lang)}
-            width={1200}
-            height={864}
+            width={900}
+            height={647}
             loading="eager"
             className="block w-full h-auto"
-            style={{ filter: "contrast(1.02) saturate(0.98)" }}
-          />
-          {/* Soft vignette around edges */}
-          <div
-            aria-hidden
-            className="pointer-events-none absolute inset-0"
-            style={{
-              background:
-                "radial-gradient(115% 90% at 50% 50%, transparent 60%, oklch(0.18 0.03 40 / 0.45) 100%)",
-            }}
-          />
-          {/* Faint glass reflection sweep */}
-          <div
-            aria-hidden
-            className="pointer-events-none absolute inset-0"
-            style={{
-              background:
-                "linear-gradient(115deg, oklch(1 0 0 / 0) 55%, oklch(1 0 0 / 0.06) 62%, oklch(1 0 0 / 0) 70%)",
-            }}
+            style={{ objectFit: "contain" }}
           />
         </div>
       </div>
@@ -267,7 +244,7 @@ function MuseumVitrine({ lang }: { lang: Lang }) {
           {tt(caption.description, lang)}
         </p>
         <p className="mt-3 text-[11px] sm:text-xs italic text-muted-foreground/80 max-w-[360px] mx-auto">
-          {tt(VITRINE_LABEL, lang)}
+          {VITRINE_CREDIT}
         </p>
       </figcaption>
     </figure>

@@ -75,26 +75,38 @@ export const MEDIA_REGISTRY: MediaRecord[] = [
   {
     path: "src/assets/fln-team-illustration.png",
     mediaType: "interpretive-illustration",
-    use: "public",
-    note: "Replacement hero for the Hall of Algerian Football. Original museum-poster drawing, no crest or federation mark.",
+    use: "dormant",
+    note: "Former hero drawing for the Hall of Algerian Football. Replaced by the FAF photograph, retained but unreferenced.",
   },
   {
     path: "src/assets/lesvertes-illustration.png",
     mediaType: "interpretive-illustration",
+    use: "dormant",
+    note: "Former hero drawing for the Les Vertes exhibit. Replaced by the FAF photograph, retained but unreferenced.",
+  },
+  {
+    path: "src/assets/fln-team-1958.webp",
+    mediaType: "documentary-media",
     use: "public",
-    note: "Replacement hero for the Les Vertes exhibit. Non-identifying stylized figures, no kit branding.",
+    note: "FLN Team photograph shown on /football. Source and attribution supplied by the project owner: Fédération Algérienne de Football (FAF). Credited on the page. Written permission not yet on file.",
+  },
+  {
+    path: "src/assets/lesvertes-hero.webp",
+    mediaType: "documentary-media",
+    use: "public",
+    note: "Algeria women's national team photograph shown on /football/lesvertes. Source and attribution supplied by the project owner: Fédération Algérienne de Football (FAF). Credited on the page. Written permission not yet on file.",
   },
   {
     path: "src/assets/fln-team-1958.jpg.asset.json",
     mediaType: "documentary-media",
-    use: "blocked",
-    note: "Retained internally, blocked from public use pending documented rights.",
+    use: "dormant",
+    note: "CDN pointer for the same FLN photograph. The public route uses the bundled local copy.",
   },
   {
     path: "src/assets/lesvertes-hero.jpg.asset.json",
     mediaType: "documentary-media",
-    use: "blocked",
-    note: "Retained internally, blocked from public use pending documented rights.",
+    use: "dormant",
+    note: "CDN pointer for the same Les Vertes photograph. The public route uses the bundled local copy.",
   },
 
   /* ---------------- Era imagery ---------------- */

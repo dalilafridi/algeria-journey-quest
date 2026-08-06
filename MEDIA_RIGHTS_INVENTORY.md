@@ -28,43 +28,59 @@
 | Public domain | 0 | No asset carries public-domain evidence |
 | Licensed | 0 | No licence document is held for any asset |
 | Used with permission | 0 | No permission record is held for any asset |
-| **Retained internally, blocked from public use** | **2** | Both photographic. Removed from every public route on 2026-08-04. |
+| **Published with supplied attribution, no permission on file** | **2** | The two football photographs, credited on page to the Fédération Algérienne de Football (FAF). See section 2. |
 
-No asset in the museum currently has a written licence, permission, or public-domain determination on file. The two photographic assets were the only ones whose subject matter made that gap a launch risk. Both have now been withdrawn from public display and replaced with original interpretive illustrations, so **no publicly used asset has unknown rights status**.
+No asset in the museum currently has a written licence, permission, or public-domain determination on file. The two photographic assets are the football photographs in section 2. Their source and required attribution is Fédération Algérienne de Football (FAF), supplied by the project owner and displayed beneath each photograph; no written permission is on file.
 
 ---
 
-## 2. Blocked assets (retained internally, removed from public use)
+## 2. Football photographs published with supplied FAF attribution
 
-### U-1 · `src/assets/fln-team-1958.jpg.asset.json`
+Updated 2026-08-06. Both photographs are now published on public routes, as
+bundled local assets, with a visible credit. Source/attribution and permission
+are recorded as separate fields: a visible credit is not a licence.
 
-| Field | Value |
-| --- | --- |
-| Storage | Remote, Lovable CDN pointer (`/__l5e/assets-v1/...`) |
-| Public routes | **None.** Withdrawn from `/football`. |
-| Replacement | `src/assets/fln-team-illustration.png`, an interpretive illustration created for DZ Odyssey, labelled as such in the vitrine caption. |
-| Component | Formerly `MuseumVitrine` in `src/routes/football.index.tsx`. No component references the file. |
-| Existing credit on page | Caption plaque: "FLN Team, 1958–1962" plus a descriptive line. **No photographer, no collection, no archive reference.** |
-| Rights status | **Retained internally, blocked from public use pending documented rights.** |
-| Risk class | Archival photograph of identifiable people, historical/press origin |
-| Why flagged | A 1958 team photograph is almost certainly a third-party press or archival image. It is presented as the permanent hero artifact of the Hall of Algerian Football, at large size, with a museum frame that implies institutional provenance. |
-| Needed before launch | Origin of the file, rights holder or collection, and either a licence, a permission, or a documented public-domain determination under the applicable jurisdiction. |
-
-### U-2 · `src/assets/lesvertes-hero.jpg.asset.json`
+### P-1 · `src/assets/fln-team-1958.webp`
 
 | Field | Value |
 | --- | --- |
-| Storage | Remote, Lovable CDN pointer |
-| Public routes | **None.** Withdrawn from `/football/lesvertes`, including the social preview image. |
-| Replacement | `src/assets/lesvertes-illustration.png`, an interpretive illustration created for DZ Odyssey, labelled as such under the hero. |
-| Component | Formerly the hero figure in `src/routes/football.lesvertes.tsx`. No component references the file. |
-| Existing credit on page | Caption: "Les Vertes, a museum portrait of Algeria's women's national team." **No photographer, no agency, no date.** |
-| Rights status | **Retained internally, blocked from public use pending documented rights.** |
-| Risk class | Contemporary photograph of identifiable living athletes; likely sports-agency or federation origin |
-| Why flagged | Contemporary sports photography is routinely agency-owned and rights-managed. It also depicts identifiable living people, which raises image-rights questions separate from copyright. Supplied to the project as an attachment with no accompanying source. |
-| Needed before launch | Photographer or agency, date and event, licence terms, and confirmation that editorial museum use is covered. |
+| Storage | Local, bundled by Vite from `src/assets`. CDN pointer `fln-team-1958.jpg.asset.json` retained but unreferenced. |
+| Public route | `/football` |
+| Placement | Hall of Algerian Football hero, FLN Team museum frame |
+| Supplied source and attribution | Fédération Algérienne de Football (FAF) |
+| Public credit shown on page | Photo: Fédération Algérienne de Football (FAF) |
+| Photographer | Unknown. Not separately documented. |
+| Date, location, event | Not documented. Only the exhibit's existing "1958–1962" team date range is displayed; no photograph date is claimed. |
+| Licence or permission | None on file. No written licence, permission, or public-domain determination has been supplied. |
+| Rights holder | Not determined. No rights holder is inferred beyond the supplied attribution. |
+| Current status | **FAF attribution supplied by the project owner.** |
+| If permission arrives | Update status to "Used with permission from Fédération Algérienne de Football (FAF)" and record the permission date and the location of the documentation. |
 
-Both files are retained in the repository, unreferenced and unbundled, under the status "Retained internally, blocked from public use pending documented rights." They no longer block launch. They may return to public display only once a licence, permission, or documented public-domain determination is on file.
+### P-2 · `src/assets/lesvertes-hero.webp`
+
+| Field | Value |
+| --- | --- |
+| Storage | Local, bundled by Vite from `src/assets`. CDN pointer `lesvertes-hero.jpg.asset.json` retained but unreferenced. |
+| Public route | `/football/lesvertes` |
+| Placement | Les Vertes hero |
+| Supplied source and attribution | Fédération Algérienne de Football (FAF) |
+| Public credit shown on page | Photo: Fédération Algérienne de Football (FAF) |
+| Photographer | Unknown. Not separately documented. |
+| Date, location, event, competition | Not documented and not claimed on the page. |
+| Licence or permission | None on file. No written licence, permission, or public-domain determination has been supplied. |
+| Rights holder | Not determined. No rights holder is inferred beyond the supplied attribution. |
+| Current status | **FAF attribution supplied by the project owner.** |
+| If permission arrives | Update status to "Used with permission from Fédération Algérienne de Football (FAF)" and record the permission date and the location of the documentation. |
+
+Neither photograph is classified as project-owned, generated for DZ Odyssey,
+public domain, licensed, or used with permission. The museum makes no claim of
+partnership, sponsorship, endorsement, or affiliation with the FAF.
+
+### Dormant illustrations
+
+`src/assets/fln-team-illustration.png` and `src/assets/lesvertes-illustration.png`
+are the former interpretive heroes. They are retained in the repository, marked
+`use: "dormant"` in `src/data/mediaRegistry.ts`, and referenced by no route.
 
 ---
 
@@ -202,12 +218,10 @@ display cue.
 
 ### Public-route rights status
 
-A repository-wide search for `fln-team-1958` and `lesvertes-hero` returns matches
-only inside the two retained `.asset.json` pointer files and inside this internal
-document. No route, component, metadata block, social image, or preload references
-them, and neither file appears in the production build output.
-
-**Zero publicly used assets have unknown rights status.**
+The two football photographs are published from bundled local assets, not from a
+remote CDN, and each displays the credit "Photo: Fédération Algérienne de Football
+(FAF)" directly beneath the image. Their source is recorded; their permission
+status is recorded separately as not documented (see section 2).
 
 ## Flags (added for the About popup)
 
