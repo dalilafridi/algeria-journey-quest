@@ -19,7 +19,7 @@
 import brandCover from "@/assets/brand-cover.png";
 import { t, type Lang, type LocalizedString } from "@/lib/i18n";
 
-export const SITE_URL = "https://dzodyssey.numeradataworks.com";
+export const SITE_URL = "https://dzodyssey.numerasense.com";
 
 /** Absolute URL for the site's default social preview. */
 export const DEFAULT_OG_IMAGE = absUrl(brandCover);
