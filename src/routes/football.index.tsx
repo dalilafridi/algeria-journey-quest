@@ -144,7 +144,7 @@ function FootballHero({ lang }: { lang: Lang }) {
 
 
 
-        {/* Museum vitrine, interpretive illustration created for DZ Odyssey */}
+        {/* Museum vitrine: the FLN team photograph, credited to the FAF */}
         <div className="relative flex items-center justify-center animate-float-up">
           <MuseumVitrine lang={lang} />
         </div>
