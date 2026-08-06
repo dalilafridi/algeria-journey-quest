@@ -181,11 +181,20 @@ function ExhibitLink({ entry, label }: { entry: OnThisDayEntry; label: string })
   );
 }
 
-function ExhibitCTA({ entry }: { entry: OnThisDayEntry }) {
+function ExhibitCTA({ entry, primary }: { entry: OnThisDayEntry; primary?: boolean }) {
   const { T } = useTt();
-  const cls =
-    "inline-flex items-center gap-2 rounded-full border border-border bg-background px-4 py-2 text-sm font-semibold text-foreground hover:bg-muted transition";
+  const cls = primary
+    ? "inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold text-primary-foreground transition-transform hover:scale-[1.02] active:scale-95"
+    : "inline-flex items-center gap-2 rounded-full border border-border bg-background px-4 py-2 text-sm font-semibold text-foreground hover:bg-muted transition";
+  const style = primary
+    ? {
+        fontFamily: SERIF,
+        background: "var(--gradient-warm, linear-gradient(135deg, #b8860b, #d4af37))",
+        boxShadow: "var(--shadow-glow, 0 10px 30px -10px rgba(184,134,11,0.5))",
+      }
+    : { fontFamily: SERIF };
   const label = entry.exhibit.kind === "figure" ? T("openFigure") : T("open");
+
   if (entry.exhibit.kind === "era") {
     return (
       <Link to="/era/$eraId" params={{ eraId: entry.exhibit.id }} className={cls} style={{ fontFamily: SERIF }}>
