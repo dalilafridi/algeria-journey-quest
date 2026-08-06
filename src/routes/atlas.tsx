@@ -64,13 +64,16 @@ const ALGERIA_COAST =
   "M 14 22 C 22 19, 34 18, 44 18 S 62 19, 72 21 Q 76 22 76 25";
 
 /** Region map pins — smaller, integrated into the terrain. */
-const REGION_POINTS: Record<string, { x: number; y: number; size: number }> = {
-  "oran-west":   { x: 22, y: 26, size: 3.4 },
-  algiers:       { x: 43, y: 22, size: 3.2 },
-  kabylie:       { x: 54, y: 23, size: 3.1 },
-  constantine:   { x: 65, y: 24, size: 3.2 },
-  aures:         { x: 62, y: 33, size: 3.3 },
-  sahara:        { x: 48, y: 58, size: 5.0 },
+const REGION_POINTS: Record<
+  string,
+  { x: number; y: number; size: number; label: "above" | "below"; lx?: number }
+> = {
+  "oran-west":   { x: 21, y: 27, size: 3.2, label: "below" },
+  algiers:       { x: 40, y: 21.5, size: 3.0, label: "above", lx: 38 },
+  kabylie:       { x: 53, y: 23.5, size: 3.0, label: "below", lx: 52 },
+  constantine:   { x: 68, y: 24, size: 3.0, label: "above", lx: 69 },
+  aures:         { x: 61, y: 34, size: 3.1, label: "below" },
+  sahara:        { x: 47, y: 58, size: 4.6, label: "below" },
 };
 
 
@@ -189,6 +192,12 @@ function AtlasPage() {
         : lang === "ar"
           ? "اضغط على منطقة لاستكشافها"
           : "Tap a region to explore",
+    seaLabel:
+      lang === "fr"
+        ? "Mer Méditerranée"
+        : lang === "ar"
+          ? "البحر الأبيض المتوسط"
+          : "Mediterranean Sea",
     overview: lang === "fr" ? "Aperçu" : lang === "ar" ? "نظرة عامة" : "Overview",
     eras: lang === "fr" ? "Époques liées" : lang === "ar" ? "حقب مرتبطة" : "Connected eras",
     figuresL:
@@ -331,7 +340,7 @@ function AtlasPage() {
             />
             <svg
               viewBox={viewBox.map((n) => Number(n.toFixed(3))).join(" ")}
-              className="relative w-full h-auto block"
+              className="relative w-full h-auto block pb-12 sm:pb-10"
               role="group"
               aria-label={T.title}
             >
@@ -459,27 +468,18 @@ function AtlasPage() {
                 strokeLinecap="round"
               />
 
-              {/* Mediterranean label, curved along the coast */}
+              {/* Sea label, set in open water so it never meets the coast or pins */}
               <text
-                fontSize="1.9"
+                x="42"
+                y="8.5"
+                textAnchor="middle"
+                fontSize="2"
                 fill="color-mix(in oklab, var(--accent) 70%, var(--muted-foreground))"
                 fontStyle="italic"
-                letterSpacing="0.45"
+                letterSpacing="0.32"
+                style={{ direction: lang === "ar" ? "rtl" : "ltr" }}
               >
-                <textPath href="#atlas-coast-arc" startOffset="32%" textAnchor="middle">
-                  M E D I T E R R A N E A N   S E A
-                </textPath>
-              </text>
-              <text
-                x="50" y="97"
-                textAnchor="middle"
-                fontSize="1.8"
-                fill="color-mix(in oklab, var(--primary) 55%, var(--muted-foreground))"
-                fontStyle="italic"
-                letterSpacing="0.55"
-                opacity="0.65"
-              >
-                S A H A R A  ·  T A S S I L I  ·  H O G G A R
+                {T.seaLabel}
               </text>
 
               {/* Historical overlay layers (always mounted for crossfade) */}
@@ -559,10 +559,14 @@ function AtlasPage() {
                     />
                     {/* Label */}
                     <text
-                      x={p.x}
-                      y={p.y + radius * 0.55 + 2.6}
+                      x={p.lx ?? p.x}
+                      y={
+                        p.label === "above"
+                          ? p.y - radius * 0.55 - 1.6
+                          : p.y + radius * 0.55 + 2.8
+                      }
                       textAnchor="middle"
-                      fontSize="2.1"
+                      fontSize="2"
                       fontWeight={isActive ? 700 : 600}
                       letterSpacing="0.1"
                       fill={
@@ -583,8 +587,10 @@ function AtlasPage() {
 
             {/* Hint badge */}
             {!selected && (
-              <div className="absolute bottom-3 inset-x-3 sm:start-4 sm:end-auto text-center sm:text-start text-[11px] uppercase tracking-[0.18em] font-bold text-muted-foreground bg-card/80 backdrop-blur px-3 py-1.5 rounded-full border border-border w-fit mx-auto sm:mx-0">
-                ✦ {T.selectHint}
+              <div className="pointer-events-none absolute bottom-3 start-3 end-3 sm:end-auto flex justify-start">
+                <span className="max-w-full truncate rounded-full border border-border bg-card/85 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-muted-foreground backdrop-blur sm:text-[11px]">
+                  {T.selectHint}
+                </span>
               </div>
             )}
           </div>
