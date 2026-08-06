@@ -13,8 +13,8 @@ const TXT = {
   },
   figure: { en: "Figure of the day", fr: "Figure du jour", ar: "شخصية اليوم" },
   exhibit: { en: "Related exhibit", fr: "Vitrine associée", ar: "المعرض المرتبط" },
-  open: { en: "Open exhibit →", fr: "Ouvrir la vitrine →", ar: "افتح المعرض →" },
-  openFigure: { en: "Meet the figure →", fr: "Rencontrer la figure →", ar: "تعرّف على الشخصية →" },
+  open: { en: "Learn more about this →", fr: "En savoir plus →", ar: "اعرف المزيد →" },
+  openFigure: { en: "Learn more about this figure →", fr: "En savoir plus sur cette figure →", ar: "اعرف المزيد عن هذه الشخصية →" },
   share: { en: "Share postcard", fr: "Partager la carte", ar: "شارك البطاقة" },
   preview: { en: "Preview postcard", fr: "Aperçu de la carte", ar: "معاينة البطاقة" },
   download: { en: "Download postcard", fr: "Télécharger la carte", ar: "تحميل البطاقة" },
@@ -197,20 +197,20 @@ function ExhibitCTA({ entry, primary }: { entry: OnThisDayEntry; primary?: boole
 
   if (entry.exhibit.kind === "era") {
     return (
-      <Link to="/era/$eraId" params={{ eraId: entry.exhibit.id }} className={cls} style={{ fontFamily: SERIF }}>
+      <Link to="/era/$eraId" params={{ eraId: entry.exhibit.id }} className={cls} style={style}>
         {label}
       </Link>
     );
   }
   if (entry.exhibit.kind === "region") {
     return (
-      <Link to="/region/$regionId" params={{ regionId: entry.exhibit.id }} className={cls} style={{ fontFamily: SERIF }}>
+      <Link to="/region/$regionId" params={{ regionId: entry.exhibit.id }} className={cls} style={style}>
         {label}
       </Link>
     );
   }
   return (
-    <Link to="/figures/$figureId" params={{ figureId: entry.exhibit.id }} className={cls} style={{ fontFamily: SERIF }}>
+    <Link to="/figures/$figureId" params={{ figureId: entry.exhibit.id }} className={cls} style={style}>
       {label}
     </Link>
   );
