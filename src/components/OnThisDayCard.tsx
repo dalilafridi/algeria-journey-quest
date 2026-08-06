@@ -109,20 +109,18 @@ export function OnThisDayCard() {
 
             {/* Actions */}
             <div className="mt-5 flex flex-wrap items-center gap-2">
+              <ExhibitCTA entry={entry} primary />
               <button
                 type="button"
                 onClick={() => setPreviewOpen(true)}
-                className="inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold text-primary-foreground transition-transform hover:scale-[1.02] active:scale-95"
-                style={{
-                  background: "var(--gradient-warm, linear-gradient(135deg, #b8860b, #d4af37))",
-                  boxShadow: "var(--shadow-glow, 0 10px 30px -10px rgba(184,134,11,0.5))",
-                }}
+                className="inline-flex items-center gap-2 rounded-full border border-border bg-background px-4 py-2 text-sm font-semibold text-foreground hover:bg-muted transition"
+                style={{ fontFamily: SERIF }}
               >
                 <IconPostcard />
                 {T("share")}
               </button>
-              <ExhibitCTA entry={entry} />
             </div>
+
           </div>
 
           {/* Decorative side seal (desktop) */}
