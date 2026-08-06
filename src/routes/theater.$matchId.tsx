@@ -2,7 +2,7 @@ import { createFileRoute, Link, notFound, useRouter } from "@tanstack/react-rout
 import { pageMeta, headLang, siteSuffix } from "@/lib/seo";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
-import { useLang, type Lang, type LocalizedString } from "@/lib/i18n";
+import { useLang, t as tt, type Lang, type LocalizedString } from "@/lib/i18n";
 import type { LineupPlayer, MatchEvent, MatchTheater } from "@/data/matchTheater/types";
 import { getMatchTheater } from "@/data/matchTheater";
 import { useTheaterState } from "@/lib/matchTheaterState";
@@ -61,11 +61,6 @@ export const Route = createFileRoute("/theater/$matchId")({
   notFoundComponent: TheaterNotFound,
   component: TheaterRoute,
 });
-
-function tt(v: LocalizedString | undefined, lang: Lang): string {
-  if (!v) return "";
-  return typeof v === "string" ? v : (v[lang] ?? v.en);
-}
 
 function TheaterRoute() {
   // The loader throws notFound() when the match is missing, so by the time this
