@@ -30,7 +30,7 @@
 | Used with permission | 0 | No permission record is held for any asset |
 | **Published with supplied attribution, no permission on file** | **2** | The two football photographs, credited on page to the Fédération Algérienne de Football (FAF). See section 2. |
 
-No asset in the museum currently has a written licence, permission, or public-domain determination on file. The two photographic assets were the only ones whose subject matter made that gap a launch risk. Both have now been withdrawn from public display and replaced with original interpretive illustrations, so **no publicly used asset has unknown rights status**.
+No asset in the museum currently has a written licence, permission, or public-domain determination on file. The two photographic assets are the football photographs in section 2. Their source and required attribution is Fédération Algérienne de Football (FAF), supplied by the project owner and displayed beneath each photograph; no written permission is on file.
 
 ---
 
