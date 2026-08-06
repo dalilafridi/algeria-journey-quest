@@ -184,10 +184,11 @@ function QuizPage() {
       <div className="min-h-dvh">
         <Header />
         <main id="main" tabIndex={-1} className="max-w-xl mx-auto px-4 py-12 text-center">
+          <h1 className="sr-only">{t(era.title, lang)}</h1>
           <div className="text-7xl animate-pop-in">{perfect ? "🏆" : passed ? "🎉" : "💪"}</div>
-          <h1 className="mt-4 text-3xl font-extrabold">
+          <h2 className="mt-4 text-3xl font-extrabold">
             {perfect ? tu("perfectRun", lang) : passed ? tu("wellDone", lang) : tu("keepGoing", lang)}
-          </h1>
+          </h2>
           <p className="mt-2 text-muted-foreground">
             {tu("youScored", lang)}{" "}
             <span className="font-bold text-foreground">{score}</span> {tu("outOf", lang)}{" "}

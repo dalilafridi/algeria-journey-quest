@@ -114,10 +114,11 @@ function GuessQuiz() {
       <div className="min-h-dvh">
         <Header />
         <main id="main" tabIndex={-1} className="max-w-xl mx-auto px-4 py-12 text-center">
+          <h1 className="sr-only">{tu("guessTheFigure", lang)}</h1>
           <div className="text-7xl">{score === set.length ? "🏆" : pct >= 60 ? "🎉" : "💪"}</div>
-          <h1 className="mt-4 text-3xl font-extrabold">
+          <h2 className="mt-4 text-3xl font-extrabold">
             {score === set.length ? tu("perfectRun", lang) : pct >= 60 ? tu("wellDone", lang) : tu("keepGoing", lang)}
-          </h1>
+          </h2>
           <p className="mt-2 text-muted-foreground">
             {tu("youScored", lang)} <span className="font-bold text-foreground">{score}</span> {tu("outOf", lang)} {set.length}
           </p>
