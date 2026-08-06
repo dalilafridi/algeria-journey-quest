@@ -191,7 +191,18 @@ function AtlasPage() {
           : "Tap a region to explore",
     overview: lang === "fr" ? "Aperçu" : lang === "ar" ? "نظرة عامة" : "Overview",
     eras: lang === "fr" ? "Époques liées" : lang === "ar" ? "حقب مرتبطة" : "Connected eras",
-    figuresL: lang === "fr" ? "Figures clés" : lang === "ar" ? "شخصيات بارزة" : "Key figures",
+    figuresL:
+      lang === "fr"
+        ? "Figures liées à cette région"
+        : lang === "ar"
+          ? "شخصيات مرتبطة بهذه المنطقة"
+          : "Figures Connected to This Region",
+    assocNote:
+      lang === "fr"
+        ? "Les figures sont associées aux régions selon leur lieu de naissance, leur résidence, leur rôle politique, leur participation à la résistance, leur contribution culturelle ou tout autre lien historique important. Leur présence ne signifie pas nécessairement qu’elles y sont nées."
+        : lang === "ar"
+          ? "ترتبط الشخصيات بالمناطق من خلال مكان الميلاد أو الإقامة أو القيادة السياسية أو المقاومة أو الإسهام الثقافي أو غير ذلك من الروابط التاريخية المهمة. ولا يعني إدراج الشخصية بالضرورة أنها وُلدت في هذه المنطقة."
+          : "Figures are associated with regions through birthplace, residence, political leadership, resistance, cultural contribution, or other significant historical connections. Inclusion does not necessarily indicate place of birth.",
     culture: lang === "fr" ? "Identité culturelle" : lang === "ar" ? "الهوية الثقافية" : "Cultural identity",
     explore: lang === "fr" ? "Explorer davantage" : lang === "ar" ? "استكشف أكثر" : "Explore deeper",
     regionPage: lang === "fr" ? "Page région" : lang === "ar" ? "صفحة المنطقة" : "Region page",
