@@ -13,8 +13,8 @@ const TXT = {
   },
   figure: { en: "Figure of the day", fr: "Figure du jour", ar: "شخصية اليوم" },
   exhibit: { en: "Related exhibit", fr: "Vitrine associée", ar: "المعرض المرتبط" },
-  open: { en: "Open exhibit →", fr: "Ouvrir la vitrine →", ar: "افتح المعرض →" },
-  openFigure: { en: "Meet the figure →", fr: "Rencontrer la figure →", ar: "تعرّف على الشخصية →" },
+  open: { en: "Learn more about this →", fr: "En savoir plus →", ar: "اعرف المزيد →" },
+  openFigure: { en: "Learn more about this figure →", fr: "En savoir plus sur cette figure →", ar: "اعرف المزيد عن هذه الشخصية →" },
   share: { en: "Share postcard", fr: "Partager la carte", ar: "شارك البطاقة" },
   preview: { en: "Preview postcard", fr: "Aperçu de la carte", ar: "معاينة البطاقة" },
   download: { en: "Download postcard", fr: "Télécharger la carte", ar: "تحميل البطاقة" },
@@ -109,20 +109,18 @@ export function OnThisDayCard() {
 
             {/* Actions */}
             <div className="mt-5 flex flex-wrap items-center gap-2">
+              <ExhibitCTA entry={entry} primary />
               <button
                 type="button"
                 onClick={() => setPreviewOpen(true)}
-                className="inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold text-primary-foreground transition-transform hover:scale-[1.02] active:scale-95"
-                style={{
-                  background: "var(--gradient-warm, linear-gradient(135deg, #b8860b, #d4af37))",
-                  boxShadow: "var(--shadow-glow, 0 10px 30px -10px rgba(184,134,11,0.5))",
-                }}
+                className="inline-flex items-center gap-2 rounded-full border border-border bg-background px-4 py-2 text-sm font-semibold text-foreground hover:bg-muted transition"
+                style={{ fontFamily: SERIF }}
               >
                 <IconPostcard />
                 {T("share")}
               </button>
-              <ExhibitCTA entry={entry} />
             </div>
+
           </div>
 
           {/* Decorative side seal (desktop) */}
@@ -183,27 +181,36 @@ function ExhibitLink({ entry, label }: { entry: OnThisDayEntry; label: string })
   );
 }
 
-function ExhibitCTA({ entry }: { entry: OnThisDayEntry }) {
+function ExhibitCTA({ entry, primary }: { entry: OnThisDayEntry; primary?: boolean }) {
   const { T } = useTt();
-  const cls =
-    "inline-flex items-center gap-2 rounded-full border border-border bg-background px-4 py-2 text-sm font-semibold text-foreground hover:bg-muted transition";
+  const cls = primary
+    ? "inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold text-primary-foreground transition-transform hover:scale-[1.02] active:scale-95"
+    : "inline-flex items-center gap-2 rounded-full border border-border bg-background px-4 py-2 text-sm font-semibold text-foreground hover:bg-muted transition";
+  const style = primary
+    ? {
+        fontFamily: SERIF,
+        background: "var(--gradient-warm, linear-gradient(135deg, #b8860b, #d4af37))",
+        boxShadow: "var(--shadow-glow, 0 10px 30px -10px rgba(184,134,11,0.5))",
+      }
+    : { fontFamily: SERIF };
   const label = entry.exhibit.kind === "figure" ? T("openFigure") : T("open");
+
   if (entry.exhibit.kind === "era") {
     return (
-      <Link to="/era/$eraId" params={{ eraId: entry.exhibit.id }} className={cls} style={{ fontFamily: SERIF }}>
+      <Link to="/era/$eraId" params={{ eraId: entry.exhibit.id }} className={cls} style={style}>
         {label}
       </Link>
     );
   }
   if (entry.exhibit.kind === "region") {
     return (
-      <Link to="/region/$regionId" params={{ regionId: entry.exhibit.id }} className={cls} style={{ fontFamily: SERIF }}>
+      <Link to="/region/$regionId" params={{ regionId: entry.exhibit.id }} className={cls} style={style}>
         {label}
       </Link>
     );
   }
   return (
-    <Link to="/figures/$figureId" params={{ figureId: entry.exhibit.id }} className={cls} style={{ fontFamily: SERIF }}>
+    <Link to="/figures/$figureId" params={{ figureId: entry.exhibit.id }} className={cls} style={style}>
       {label}
     </Link>
   );
