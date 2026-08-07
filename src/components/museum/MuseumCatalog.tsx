@@ -128,7 +128,7 @@ export function MuseumChip({ children }: { children: ReactNode }) {
       style={{
         borderColor: "color-mix(in oklab, var(--brand-gold) 40%, var(--border))",
         background: "color-mix(in oklab, var(--brand-gold) 12%, var(--card))",
-        color: "color-mix(in oklab, var(--brand-gold-deep) 88%, var(--foreground))",
+        color: "color-mix(in oklab, var(--brand-gold-deep) 42%, var(--foreground))",
       }}
     >
       {children}
