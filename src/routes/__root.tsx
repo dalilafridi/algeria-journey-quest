@@ -94,16 +94,17 @@ function RootShell({ children }: { children: React.ReactNode }) {
     <html lang={lang} dir={dir}>
       <head>
         <HeadContent />
-        {/* Cookie is authoritative for SSR/hydration. If a stale
-            localStorage value disagrees with the cookie, sync localStorage
-            TO the cookie rather than flipping the rendered language.
-            Only fall back to localStorage if the cookie is absent. */}
+        {/* Cookie is authoritative for SSR/hydration. The server-rendered
+            language is recorded first so hydration can reuse it verbatim; a
+            stale localStorage value only seeds the cookie for later loads and
+            never flips the language mid-hydration. */}
         <script
           dangerouslySetInnerHTML={{
             __html:
-              "(function(){try{var K='algeria-history-lang-v1';var m=/(?:^|;\\s*)dzo_lang=(en|fr|ar)/.exec(document.cookie||'');var c=m?m[1]:null;var l=localStorage.getItem(K);if(c){if(l!==c){localStorage.setItem(K,c);}}else if(l==='en'||l==='fr'||l==='ar'){document.documentElement.lang=l;document.documentElement.dir=(l==='ar')?'rtl':'ltr';document.cookie='dzo_lang='+l+'; path=/; max-age=31536000; samesite=lax';}}catch(e){}})();",
+              "(function(){try{window.__DZO_SSR_LANG=document.documentElement.lang||'en';var K='algeria-history-lang-v1';var m=/(?:^|;\\s*)dzo_lang=(en|fr|ar)/.exec(document.cookie||'');var c=m?m[1]:null;var l=localStorage.getItem(K);if(c){if(l!==c){localStorage.setItem(K,c);}}else if(l==='en'||l==='fr'||l==='ar'){document.cookie='dzo_lang='+l+'; path=/; max-age=31536000; samesite=lax';}}catch(e){}})();",
           }}
         />
+
       </head>
       <body>
         {children}
