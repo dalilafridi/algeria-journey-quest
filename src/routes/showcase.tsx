@@ -442,7 +442,7 @@ function ProgressDots({
             aria-selected={active}
             aria-label={`${labels.goto} ${i + 1}`}
             onClick={() => onJump(i)}
-            className={"flex h-6 items-center justify-center " + (active ? "w-10" : "w-6")}
+            className={"flex h-6 min-h-6 min-w-6 shrink-0 items-center justify-center " + (active ? "w-10" : "w-6")}
           >
             <span
               aria-hidden
