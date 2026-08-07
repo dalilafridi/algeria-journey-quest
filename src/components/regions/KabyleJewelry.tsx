@@ -13,6 +13,9 @@ import detailPhoto from "@/assets/bijoux.jpg.asset.json";
 
 const SERIF = "Georgia, 'Times New Roman', serif";
 
+const PHOTO_CREDIT_URL =
+  "https://www.lejourdalgerie.com/ath-yenni-une-forte-affluence-du-public-a-la-fete-du-bijou/";
+
 const L = (en: string, fr: string, ar: string): LocalizedString => ({ en, fr, ar });
 
 const COPY = {
@@ -140,9 +143,9 @@ const COPY = {
     "تخلق المينا الزرقاء والخضراء والصفراء تبايناً حيّاً مع الفضة.",
   ),
   photoCredit: L(
-    "Source: El Moudjahid, Fête du Bijou d'Ath Yenni",
-    "Source : El Moudjahid, Fête du Bijou d'Ath Yenni",
-    "المصدر: El Moudjahid، Fête du Bijou d'Ath Yenni",
+    "Source: Le Jour d'Algérie, Fête du Bijou d'Ath Yenni",
+    "Source : Le Jour d'Algérie, Fête du Bijou d'Ath Yenni",
+    "المصدر: Le Jour d'Algérie، Fête du Bijou d'Ath Yenni",
   ),
 
 
@@ -287,7 +290,14 @@ export function KabyleJewelry() {
         </div>
         <figcaption className="text-xs sm:text-[13px] text-muted-foreground">
           {tr(COPY.mainCaption)}
-          <span className="mt-1 block text-[11px] sm:text-xs">{tr(COPY.photoCredit)}</span>
+          <a
+            href={PHOTO_CREDIT_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-1 block text-[11px] sm:text-xs underline underline-offset-2"
+          >
+            {tr(COPY.photoCredit)}
+          </a>
         </figcaption>
       </figure>
 
@@ -317,7 +327,14 @@ export function KabyleJewelry() {
           </div>
           <figcaption className="text-xs text-muted-foreground">
             {tr(COPY.detailCaption)}
-            <span className="mt-1 block text-[11px]">{tr(COPY.photoCredit)}</span>
+            <a
+              href={PHOTO_CREDIT_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-1 block text-[11px] underline underline-offset-2"
+            >
+              {tr(COPY.photoCredit)}
+            </a>
           </figcaption>
 
         </figure>
