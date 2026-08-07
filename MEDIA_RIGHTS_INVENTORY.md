@@ -28,9 +28,9 @@
 | Public domain | 0 | No asset carries public-domain evidence |
 | Licensed | 0 | No licence document is held for any asset |
 | Used with permission | 0 | No permission record is held for any asset |
-| **Published with supplied attribution, no permission on file** | **4** | The two football photographs, credited on page to the Fédération Algérienne de Football (FAF), and the two Kabyle jewelry photographs, credited on page to El Moudjahid, Fête du Bijou d'Ath Yenni. See sections 2 and 10. |
+| **Published with supplied attribution, no permission on file** | **4** | The two football photographs, credited on page to the Fédération Algérienne de Football (FAF), and the two Kabyle jewelry photographs, credited on page to Le Jour d'Algérie, Fête du Bijou d'Ath Yenni. See sections 2 and 10. |
 
-No asset in the museum currently has a written licence, permission, or public-domain determination on file. Four photographic assets are published with a supplied source credit: the two football photographs (source and required attribution: Fédération Algérienne de Football (FAF)) and the two Kabyle jewelry photographs (source: El Moudjahid; context: Fête du Bijou d'Ath Yenni). In every case the credit is displayed beneath the image, and permission is recorded separately as not documented.
+No asset in the museum currently has a written licence, permission, or public-domain determination on file. Four photographic assets are published with a supplied source credit: the two football photographs (source and required attribution: Fédération Algérienne de Football (FAF)) and the two Kabyle jewelry photographs (source: Le Jour d'Algérie; context: Fête du Bijou d'Ath Yenni). In every case the credit is displayed beneath the image, and permission is recorded separately as not documented.
 
 
 ---
@@ -57,7 +57,7 @@ are recorded as separate fields: a visible credit is not a licence.
 | Current status | **FAF attribution supplied by the project owner.** |
 | If permission arrives | Update status to "Used with permission from Fédération Algérienne de Football (FAF)" and record the permission date and the location of the documentation. |
 
-### P-2 · `src/assets/lesvertes-hero.webp`
+### P-2 · `src/assets/lesvertes-faf-2026.jpg`
 
 | Field | Value |
 | --- | --- |
@@ -247,18 +247,18 @@ JS Kabylie.
 ## Kabylie jewelry exhibit
 
 Updated 2026-08-07. Source documentation has been supplied by the project owner:
-both photographs come from El Moudjahid coverage of the Fête du Bijou d'Ath Yenni.
+both photographs come from Le Jour d'Algérie coverage of the Fête du Bijou d'Ath Yenni.
 Neither photograph was taken or owned by Dalila Fridi, and neither is classified as
 project-owned.
 
 | Field | `src/assets/bijou-artisanale.jpg` | `src/assets/bijoux.jpg` |
 | --- | --- | --- |
 | Placement | Kabylie region page, Kabyle Jewelry exhibit, main plate | Kabylie region page, "The Colors of Kabylie" detail plate |
-| Source | El Moudjahid | El Moudjahid |
+| Source | Le Jour d'Algérie | Le Jour d'Algérie |
 | Context | Fête du Bijou d'Ath Yenni | Fête du Bijou d'Ath Yenni |
 | Photographer | Not identified in the available source | Not identified in the available source |
 | Rights holder | Not confirmed | Not confirmed |
-| Required attribution | Source: El Moudjahid, Fête du Bijou d'Ath Yenni | Source: El Moudjahid, Fête du Bijou d'Ath Yenni |
+| Required attribution | Source: Le Jour d'Algérie, Fête du Bijou d'Ath Yenni | Source: Le Jour d'Algérie, Fête du Bijou d'Ath Yenni |
 | Public credit shown on page | Yes, beneath the photograph, in EN, FR and AR | Yes, beneath the photograph, in EN, FR and AR |
 | Licence or permission | Not documented | Not documented |
 | Current rights status | Attribution provided; reuse permission not documented | Attribution provided; reuse permission not documented |
@@ -267,7 +267,7 @@ Neither photograph is classified as project-owned, public domain, licensed, or u
 with permission. Attribution identifies the source; it does not establish permission
 to republish. No publication date, photographer, depicted artisan, jewelry owner or
 additional rights holder is claimed. The museum makes no claim of partnership,
-sponsorship, endorsement or affiliation with El Moudjahid.
+sponsorship, endorsement or affiliation with Le Jour d'Algérie.
 
 The previous generated interpretive illustration was removed from this exhibit
 and deleted from the project. Text is an original museum adaptation based on the French

@@ -3,7 +3,11 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { Header } from "@/components/Header";
 import { MedallionFrame } from "@/components/brand/MedallionFrame";
 import { useLang, type Lang, type LocalizedString } from "@/lib/i18n";
-import lesVertesHero from "@/assets/lesvertes-hero.webp";
+import lesVertesHeroAsset from "@/assets/lesvertes-faf-2026.jpg.asset.json";
+
+const lesVertesHero = lesVertesHeroAsset.url;
+const FAF_SOURCE_URL =
+  "https://www.faf.dz/can-feminine-2026-kenya-0-algerie-2-les-vertes-en-quart-de-finale/";
 import { pageMeta, headLang } from "@/lib/seo";
 import { PAGE_META } from "@/lib/pageMetaCopy";
 import { ExhibitProvenance } from "@/components/provenance/ExhibitProvenance";
@@ -100,12 +104,12 @@ function Hero({ lang }: { lang: Lang }) {
             <img
               src={lesVertesHero}
               alt={{
-                en: "Algeria women's national football team",
-                fr: "Sélection féminine algérienne de football",
-                ar: "المنتخب الجزائري النسوي لكرة القدم",
+                en: "The Algeria women's national football team lined up on the pitch in white kits before a Women's Africa Cup of Nations match",
+                fr: "La sélection féminine algérienne de football alignée sur la pelouse en maillots blancs avant un match de la CAN féminine",
+                ar: "المنتخب الجزائري النسوي لكرة القدم مصطفًّا على أرضية الملعب بالأطقم البيضاء قبل مباراة في كأس أمم إفريقيا للسيدات",
               }[lang]}
-              width={900}
-              height={675}
+              width={1200}
+              height={800}
               loading="eager"
               className="block w-full h-auto"
               style={{ objectFit: "contain" }}
@@ -117,9 +121,14 @@ function Hero({ lang }: { lang: Lang }) {
               fr: "Les Vertes · hommage muséal à la sélection féminine algérienne.",
               ar: "الخضراوات · تحية متحفية للمنتخب النسوي الجزائري.",
             }[lang]}
-            <span className="block mt-1 not-italic text-muted-foreground/80">
-              Source: Algerian Football Federation (FAF)
-            </span>
+            <a
+              href={FAF_SOURCE_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block mt-1 not-italic text-muted-foreground/80 underline underline-offset-2"
+            >
+              Source: Fédération Algérienne de Football (FAF)
+            </a>
           </figcaption>
         </figure>
       </div>

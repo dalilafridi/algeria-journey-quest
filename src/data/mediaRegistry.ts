@@ -91,22 +91,22 @@ export const MEDIA_REGISTRY: MediaRecord[] = [
     note: "FLN Team photograph shown on /football. Source and attribution supplied by the project owner: Fédération Algérienne de Football (FAF). Credited on the page. Written permission not yet on file.",
   },
   {
-    path: "src/assets/lesvertes-hero.webp",
+    path: "src/assets/lesvertes-faf-2026.jpg.asset.json",
     mediaType: "documentary-media",
     use: "public",
-    note: "Algeria women's national team photograph shown on /football/lesvertes. Source and attribution supplied by the project owner: Fédération Algérienne de Football (FAF). Credited on the page. Written permission not yet on file.",
+    note: "Algeria women's national team photograph shown on /football/lesvertes. Source: Fédération Algérienne de Football (FAF), https://www.faf.dz/can-feminine-2026-kenya-0-algerie-2-les-vertes-en-quart-de-finale/. Required attribution: 'Source: Fédération Algérienne de Football (FAF)', displayed and linked beneath the photograph. Rights status: attribution provided; reuse permission not documented.",
   },
   {
     path: "src/assets/bijou-artisanale.jpg.asset.json",
     mediaType: "documentary-media",
     use: "public",
-    note: "Kabyle jewelry photograph shown on /region/kabylie. Source: El Moudjahid. Context: Fête du Bijou d'Ath Yenni. Photographer: not identified in the available source. Rights holder: not confirmed. Required attribution: 'Source: El Moudjahid, Fête du Bijou d'Ath Yenni', displayed beneath the photograph. Rights status: attribution provided; reuse permission not documented. Not project-owned, not public domain, not licensed, not used with permission.",
+    note: "Kabyle jewelry photograph shown on /region/kabylie. Source: Le Jour d'Algérie, https://www.lejourdalgerie.com/ath-yenni-une-forte-affluence-du-public-a-la-fete-du-bijou/. Context: Fête du Bijou d'Ath Yenni. Photographer: not identified in the available source. Rights holder: not confirmed. Required attribution: 'Source: Le Jour d'Algérie, Fête du Bijou d'Ath Yenni', displayed and linked beneath the photograph. Rights status: attribution provided; reuse permission not documented. Not project-owned, not public domain, not licensed, not used with permission.",
   },
   {
     path: "src/assets/bijoux.jpg.asset.json",
     mediaType: "documentary-media",
     use: "public",
-    note: "Supporting Kabyle jewelry detail photograph shown on /region/kabylie. Source: El Moudjahid. Context: Fête du Bijou d'Ath Yenni. Photographer: not identified in the available source. Rights holder: not confirmed. Required attribution: 'Source: El Moudjahid, Fête du Bijou d'Ath Yenni', displayed beneath the photograph. Rights status: attribution provided; reuse permission not documented. Not project-owned, not public domain, not licensed, not used with permission.",
+    note: "Supporting Kabyle jewelry detail photograph shown on /region/kabylie. Source: Le Jour d'Algérie, https://www.lejourdalgerie.com/ath-yenni-une-forte-affluence-du-public-a-la-fete-du-bijou/. Context: Fête du Bijou d'Ath Yenni. Photographer: not identified in the available source. Rights holder: not confirmed. Required attribution: 'Source: Le Jour d'Algérie, Fête du Bijou d'Ath Yenni', displayed and linked beneath the photograph. Rights status: attribution provided; reuse permission not documented. Not project-owned, not public domain, not licensed, not used with permission.",
   },
 
   {
@@ -119,7 +119,7 @@ export const MEDIA_REGISTRY: MediaRecord[] = [
     path: "src/assets/lesvertes-hero.jpg.asset.json",
     mediaType: "documentary-media",
     use: "dormant",
-    note: "CDN pointer for the same Les Vertes photograph. The public route uses the bundled local copy.",
+    note: "CDN pointer for the superseded Les Vertes photograph. Replaced by lesvertes-faf-2026.jpg and no longer referenced by any route.",
   },
 
   /* ---------------- Era imagery ---------------- */
