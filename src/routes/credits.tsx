@@ -129,6 +129,21 @@ const SECTIONS: InfoSection[] = [
   },
   {
     heading: {
+      en: "Kabyle jewelry photography",
+      fr: "Photographies des bijoux kabyles",
+      ar: "الصور الفوتوغرافية للحلي القبائلية",
+    },
+    paras: [
+      {
+        en: "Kabyle jewelry photography: Source: El Moudjahid, Fête du Bijou d'Ath Yenni. This credit records the source of the photographs shown in the Kabyle jewelry exhibit. It does not indicate any partnership, sponsorship or endorsement.",
+        fr: "Photographies des bijoux kabyles : Source : El Moudjahid, Fête du Bijou d'Ath Yenni. Ce crédit indique la source des photographies présentées dans l'exposition consacrée aux bijoux kabyles. Il ne traduit aucun partenariat, parrainage ni approbation.",
+        ar: "الصور الفوتوغرافية للحلي القبائلية: المصدر: El Moudjahid، Fête du Bijou d'Ath Yenni. يسجّل هذا الاعتماد مصدر الصور المعروضة في معرض الحلي القبائلية، ولا يدل على أي شراكة أو رعاية أو تأييد.",
+      },
+    ],
+  },
+
+  {
+    heading: {
       en: "If you hold rights to something shown here",
       fr: "Si vous détenez des droits sur un élément affiché ici",
       ar: "إذا كنت تملك حقوقًا على عنصر معروض هنا",

@@ -72,7 +72,8 @@ export function ExhibitEyebrow({
       className={`inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-[0.2em] ${
         className ?? ""
       }`}
-      style={{ color: "color-mix(in oklab, var(--brand-gold-deep) 40%, var(--foreground))" }}
+      style={{ color: "color-mix(in oklab, var(--brand-gold-deep) 26%, var(--foreground))" }}
+
     >
       {icon ? (
         <span aria-hidden className="text-sm leading-none">
