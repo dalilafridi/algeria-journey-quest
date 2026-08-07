@@ -175,11 +175,11 @@ const VITRINE_CAPTION: VitrineCaption = {
 
 const VITRINE_ALT: LocalizedString = {
   en: "Historic photograph of the FLN football team",
-  fr: "Historic photograph of the FLN football team",
-  ar: "Historic photograph of the FLN football team",
+  fr: "Photographie historique de l'équipe de football du FLN",
+  ar: "صورة تاريخية لفريق جبهة التحرير الوطني لكرة القدم",
 };
 
-const VITRINE_CREDIT = "Photo: Fédération Algérienne de Football (FAF)";
+const VITRINE_CREDIT = "Source: Algerian Football Federation (FAF)";
 
 /**
  * MuseumVitrine - the historic FLN team photograph shown in a restrained
