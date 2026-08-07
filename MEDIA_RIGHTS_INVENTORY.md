@@ -28,9 +28,10 @@
 | Public domain | 0 | No asset carries public-domain evidence |
 | Licensed | 0 | No licence document is held for any asset |
 | Used with permission | 0 | No permission record is held for any asset |
-| **Published with supplied attribution, no permission on file** | **2** | The two football photographs, credited on page to the Fédération Algérienne de Football (FAF). See section 2. |
+| **Published with supplied attribution, no permission on file** | **4** | The two football photographs, credited on page to the Fédération Algérienne de Football (FAF), and the two Kabyle jewelry photographs, credited on page to El Moudjahid, Fête du Bijou d'Ath Yenni. See sections 2 and 10. |
 
-No asset in the museum currently has a written licence, permission, or public-domain determination on file. The two photographic assets are the football photographs in section 2. Their source and required attribution is Fédération Algérienne de Football (FAF), supplied by the project owner and displayed beneath each photograph; no written permission is on file.
+No asset in the museum currently has a written licence, permission, or public-domain determination on file. Four photographic assets are published with a supplied source credit: the two football photographs (source and required attribution: Fédération Algérienne de Football (FAF)) and the two Kabyle jewelry photographs (source: El Moudjahid; context: Fête du Bijou d'Ath Yenni). In every case the credit is displayed beneath the image, and permission is recorded separately as not documented.
+
 
 ---
 
@@ -245,11 +246,30 @@ JS Kabylie.
 
 ## Kabylie jewelry exhibit
 
-| Asset | Classification | Rights basis |
+Updated 2026-08-07. Source documentation has been supplied by the project owner:
+both photographs come from El Moudjahid coverage of the Fête du Bijou d'Ath Yenni.
+Neither photograph was taken or owned by Dalila Fridi, and neither is classified as
+project-owned.
+
+| Field | `src/assets/bijou-artisanale.jpg` | `src/assets/bijoux.jpg` |
 | --- | --- | --- |
-| `src/assets/bijou-artisanale.jpg` (original filename `bijou-artisanale.jpg`) | `photograph`, `public`, **Unknown, requires review before publication** | Main exhibit photograph on the Kabylie region page, Kabyle Jewelry exhibit. Public caption: "Kabyle silverwork brings together intricate metalwork, vivid enamel, and coral-red ornament." Source or person who supplied it: uploaded to the project by the project owner; upload alone does not establish ownership. Photographer: unknown. Rights holder: unknown. License or permission: not documented. Rights status: **Unknown, requires review before publication.** |
-| `src/assets/bijoux.jpg` (original filename `bijoux.jpg`) | `photograph`, `public`, **Unknown, requires review before publication** | Supporting detail photograph in "The Colors of Kabylie", Kabylie region page, Kabyle Jewelry exhibit. Public caption: "Blue, green, and yellow enamel creates a vivid contrast against the silver." Source or person who supplied it: uploaded to the project by the project owner; upload alone does not establish ownership. Photographer: unknown. Rights holder: unknown. License or permission: not documented. Rights status: **Unknown, requires review before publication.** |
+| Placement | Kabylie region page, Kabyle Jewelry exhibit, main plate | Kabylie region page, "The Colors of Kabylie" detail plate |
+| Source | El Moudjahid | El Moudjahid |
+| Context | Fête du Bijou d'Ath Yenni | Fête du Bijou d'Ath Yenni |
+| Photographer | Not identified in the available source | Not identified in the available source |
+| Rights holder | Not confirmed | Not confirmed |
+| Required attribution | Source: El Moudjahid, Fête du Bijou d'Ath Yenni | Source: El Moudjahid, Fête du Bijou d'Ath Yenni |
+| Public credit shown on page | Yes, beneath the photograph, in EN, FR and AR | Yes, beneath the photograph, in EN, FR and AR |
+| Licence or permission | Not documented | Not documented |
+| Current rights status | Attribution provided; reuse permission not documented | Attribution provided; reuse permission not documented |
+
+Neither photograph is classified as project-owned, public domain, licensed, or used
+with permission. Attribution identifies the source; it does not establish permission
+to republish. No publication date, photographer, depicted artisan, jewelry owner or
+additional rights holder is claimed. The museum makes no claim of partnership,
+sponsorship, endorsement or affiliation with El Moudjahid.
 
 The previous generated interpretive illustration was removed from this exhibit
 and deleted from the project. Text is an original museum adaptation based on the French
 Wikipedia overview and the scholarly references it lists.
+

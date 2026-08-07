@@ -100,14 +100,15 @@ export const MEDIA_REGISTRY: MediaRecord[] = [
     path: "src/assets/bijou-artisanale.jpg.asset.json",
     mediaType: "documentary-media",
     use: "public",
-    note: "Kabyle jewelry photograph shown on /region/kabylie. Supplied by the project owner. Photographer, rights holder and reuse permission are not documented. Rights status: unknown, requires review. Upload alone does not establish ownership.",
+    note: "Kabyle jewelry photograph shown on /region/kabylie. Source: El Moudjahid. Context: Fête du Bijou d'Ath Yenni. Photographer: not identified in the available source. Rights holder: not confirmed. Required attribution: 'Source: El Moudjahid, Fête du Bijou d'Ath Yenni', displayed beneath the photograph. Rights status: attribution provided; reuse permission not documented. Not project-owned, not public domain, not licensed, not used with permission.",
   },
   {
     path: "src/assets/bijoux.jpg.asset.json",
     mediaType: "documentary-media",
     use: "public",
-    note: "Supporting Kabyle jewelry detail photograph shown on /region/kabylie. Supplied by the project owner. Photographer, rights holder and reuse permission are not documented. Rights status: unknown, requires review.",
+    note: "Supporting Kabyle jewelry detail photograph shown on /region/kabylie. Source: El Moudjahid. Context: Fête du Bijou d'Ath Yenni. Photographer: not identified in the available source. Rights holder: not confirmed. Required attribution: 'Source: El Moudjahid, Fête du Bijou d'Ath Yenni', displayed beneath the photograph. Rights status: attribution provided; reuse permission not documented. Not project-owned, not public domain, not licensed, not used with permission.",
   },
+
   {
     path: "src/assets/fln-team-1958.jpg.asset.json",
     mediaType: "documentary-media",

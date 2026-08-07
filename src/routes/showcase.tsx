@@ -432,7 +432,7 @@ function ProgressDots({
     goto: { en: "Go to stop", fr: "Aller à l'étape", ar: "اذهب إلى المحطة" }[lang],
   };
   return (
-    <div role="tablist" aria-label="Showcase stops" className="flex items-center justify-center gap-1.5">
+    <div role="tablist" aria-label="Showcase stops" className="flex items-center justify-center gap-0.5">
       {Array.from({ length: total }, (_, i) => {
         const active = i === index;
         return (
@@ -442,15 +442,19 @@ function ProgressDots({
             aria-selected={active}
             aria-label={`${labels.goto} ${i + 1}`}
             onClick={() => onJump(i)}
-            className={
-              "h-1.5 rounded-full transition-all " +
-              (active
-                ? "w-8 bg-primary"
-                : "w-2 bg-foreground/20 hover:bg-foreground/35")
-            }
-          />
+            className={"flex h-6 items-center justify-center " + (active ? "w-10" : "w-6")}
+          >
+            <span
+              aria-hidden
+              className={
+                "h-1.5 rounded-full transition-all " +
+                (active ? "w-8 bg-primary" : "w-2 bg-foreground/20 hover:bg-foreground/35")
+              }
+            />
+          </button>
         );
       })}
+
     </div>
   );
 }

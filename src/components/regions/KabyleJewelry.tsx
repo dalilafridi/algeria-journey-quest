@@ -139,6 +139,12 @@ const COPY = {
     "Les émaux bleus, verts et jaunes créent un contraste éclatant avec l'argent.",
     "تخلق المينا الزرقاء والخضراء والصفراء تبايناً حيّاً مع الفضة.",
   ),
+  photoCredit: L(
+    "Source: El Moudjahid, Fête du Bijou d'Ath Yenni",
+    "Source : El Moudjahid, Fête du Bijou d'Ath Yenni",
+    "المصدر: El Moudjahid، Fête du Bijou d'Ath Yenni",
+  ),
+
 
   sourcesTitle: L(
     "Sources and further reading",
@@ -281,8 +287,10 @@ export function KabyleJewelry() {
         </div>
         <figcaption className="text-xs sm:text-[13px] text-muted-foreground">
           {tr(COPY.mainCaption)}
+          <span className="mt-1 block text-[11px] sm:text-xs">{tr(COPY.photoCredit)}</span>
         </figcaption>
       </figure>
+
 
 
       {/* Section 1 */}
@@ -307,7 +315,11 @@ export function KabyleJewelry() {
               className="w-full h-auto object-contain"
             />
           </div>
-          <figcaption className="text-xs text-muted-foreground">{tr(COPY.detailCaption)}</figcaption>
+          <figcaption className="text-xs text-muted-foreground">
+            {tr(COPY.detailCaption)}
+            <span className="mt-1 block text-[11px]">{tr(COPY.photoCredit)}</span>
+          </figcaption>
+
         </figure>
       </div>
 
