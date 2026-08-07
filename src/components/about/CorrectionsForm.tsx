@@ -41,6 +41,11 @@ const T = {
     "Je comprends que mon message peut être examiné et utilisé pour améliorer DZ Odyssey.",
     "أفهم أنّ رسالتي قد تُراجَع وتُستخدم لتحسين دي زد أوديسي.",
   ),
+  privacyNote: L(
+    "Your name and email are used only to review this correction or suggestion and to reply to you. They are not used for marketing, newsletters or tracking, and they are never published.",
+    "Votre nom et votre adresse e-mail servent uniquement à examiner cette correction ou suggestion et à vous répondre. Ils ne servent ni au marketing, ni à une lettre d'information, ni au suivi, et ne sont jamais publiés.",
+    "يُستخدم اسمك وبريدك الإلكتروني فقط لمراجعة هذا التصحيح أو الاقتراح وللردّ عليك. ولا يُستخدمان في التسويق أو النشرات البريدية أو التتبّع، ولا يُنشران أبداً.",
+  ),
   required: L("Required", "Obligatoire", "مطلوب"),
   optional: L("Optional", "Facultatif", "اختياري"),
   submit: L("Send Message", "Envoyer le message", "إرسال الرسالة"),
@@ -404,6 +409,10 @@ export function CorrectionsForm({ lang }: { lang: Lang }) {
           </label>
         </div>
         {errors.consent && <p className="text-xs text-destructive">{errors.consent}</p>}
+
+        <p className="text-xs leading-relaxed text-muted-foreground border-t border-border/60 pt-3">
+          {T.privacyNote[lang]}
+        </p>
 
         {formError && (
           <p role="alert" className="rounded-md border border-destructive/40 bg-destructive/10 px-3 py-2 text-sm text-destructive">
