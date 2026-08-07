@@ -48,7 +48,7 @@ are recorded as separate fields: a visible credit is not a licence.
 | Public route | `/football` |
 | Placement | Hall of Algerian Football hero, FLN Team museum frame |
 | Supplied source and attribution | Fédération Algérienne de Football (FAF) |
-| Public credit shown on page | Photo: Fédération Algérienne de Football (FAF) |
+| Public credit shown on page | Source: Algerian Football Federation (FAF) |
 | Photographer | Unknown. Not separately documented. |
 | Date, location, event | Not documented. Only the exhibit's existing "1958–1962" team date range is displayed; no photograph date is claimed. |
 | Licence or permission | None on file. No written licence, permission, or public-domain determination has been supplied. |
@@ -64,7 +64,7 @@ are recorded as separate fields: a visible credit is not a licence.
 | Public route | `/football/lesvertes` |
 | Placement | Les Vertes hero |
 | Supplied source and attribution | Fédération Algérienne de Football (FAF) |
-| Public credit shown on page | Photo: Fédération Algérienne de Football (FAF) |
+| Public credit shown on page | Source: Algerian Football Federation (FAF) |
 | Photographer | Unknown. Not separately documented. |
 | Date, location, event, competition | Not documented and not claimed on the page. |
 | Licence or permission | None on file. No written licence, permission, or public-domain determination has been supplied. |
@@ -219,8 +219,7 @@ display cue.
 ### Public-route rights status
 
 The two football photographs are published from bundled local assets, not from a
-remote CDN, and each displays the credit "Photo: Fédération Algérienne de Football
-(FAF)" directly beneath the image. Their source is recorded; their permission
+remote CDN, and each displays the credit "Source: Algerian Football Federation (FAF)" directly beneath the image. Their source is recorded; their permission
 status is recorded separately as not documented (see section 2).
 
 ## Flags (added for the About popup)

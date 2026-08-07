@@ -101,8 +101,8 @@ function Hero({ lang }: { lang: Lang }) {
               src={lesVertesHero}
               alt={{
                 en: "Algeria women's national football team",
-                fr: "Algeria women's national football team",
-                ar: "Algeria women's national football team",
+                fr: "Sélection féminine algérienne de football",
+                ar: "المنتخب الجزائري النسوي لكرة القدم",
               }[lang]}
               width={900}
               height={675}
@@ -118,7 +118,7 @@ function Hero({ lang }: { lang: Lang }) {
               ar: "الخضراوات · تحية متحفية للمنتخب النسوي الجزائري.",
             }[lang]}
             <span className="block mt-1 not-italic text-muted-foreground/80">
-              Photo: Fédération Algérienne de Football (FAF)
+              Source: Algerian Football Federation (FAF)
             </span>
           </figcaption>
         </figure>

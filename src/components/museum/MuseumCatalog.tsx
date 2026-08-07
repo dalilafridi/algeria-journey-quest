@@ -110,7 +110,7 @@ export function MuseumBack({
       to={to}
       params={params}
       hash={hash}
-      className="inline-flex items-center gap-1.5 text-xs uppercase tracking-[0.16em] font-semibold text-muted-foreground hover:text-foreground transition-colors py-1"
+      className="inline-flex items-center gap-1.5 text-xs uppercase tracking-[0.16em] font-semibold text-foreground/80 hover:text-foreground transition-colors py-1"
     >
       <span aria-hidden className="rtl:rotate-180">
         ←

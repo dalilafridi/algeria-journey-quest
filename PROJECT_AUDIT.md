@@ -6,7 +6,7 @@
 
 ## Executive Summary
 
-**DZ Odyssey** (deployed as `algeria-journey-quest.lovable.app` / `dzodyssey.numeradataworks.com`, internal package name `tanstack_start_ts`) is a fully client-side, richly content-driven **interactive museum of Algerian history and culture**. It is not a CMS-backed app: all content is authored as typed TypeScript data files, and all user state is kept in `localStorage`. The single server-side surface is an AI "Ask the Curator" streaming endpoint that grounds a chat model in the site's own corpus.
+**DZ Odyssey** (deployed as `algeria-journey-quest.lovable.app` / `dzodyssey.numerasense.com`, internal package name `tanstack_start_ts`) is a fully client-side, richly content-driven **interactive museum of Algerian history and culture**. It is not a CMS-backed app: all content is authored as typed TypeScript data files, and all user state is kept in `localStorage`. The single server-side surface is an AI "Ask the Curator" streaming endpoint that grounds a chat model in the site's own corpus.
 
 The product is positioned as a "walk through the museum" rather than an encyclopedia. Every major surface — eras, figures, regions, culture, cuisine, football wing, match theater, club museums — is styled as a **parchment-and-bronze museum room**, with cinematic transitions, an audio-guide, a passport with stamps, a gamified XP/level system, and full **trilingual support (English / French / Arabic with RTL)**.
 
@@ -543,6 +543,6 @@ Known bugs: none currently reproducing in the console-log/network snapshots avai
 
 - **Preview:** `id-preview--4ec5c163-c082-44f1-a21c-176429962830.lovable.app`
 - **Published:** `algeria-journey-quest.lovable.app`
-- **Custom domain:** `dzodyssey.numeradataworks.com`
+- **Custom domain:** `dzodyssey.numerasense.com`
 - **Runtime:** Cloudflare Workers with `nodejs_compat`.
 - **AI endpoint:** `https://ai.gateway.lovable.dev/v1` (Lovable AI Gateway, Google Gemini 2.5 Flash + OpenAI TTS).

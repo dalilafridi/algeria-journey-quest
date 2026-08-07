@@ -114,7 +114,7 @@ export function JourneyHud() {
                     key={s.id}
                     type="button"
                     onClick={() => navigate({ to: s.to })}
-                    className="group pointer-events-auto inline-flex items-center gap-1.5 shrink min-w-0"
+                    className="group pointer-events-auto inline-flex items-center justify-center gap-1.5 shrink min-w-0 min-h-6 sm:justify-start px-1.5"
                     aria-label={s.label[lang]}
                   >
                     <span
