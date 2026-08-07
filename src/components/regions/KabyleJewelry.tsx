@@ -13,6 +13,9 @@ import detailPhoto from "@/assets/bijoux.jpg.asset.json";
 
 const SERIF = "Georgia, 'Times New Roman', serif";
 
+const PHOTO_CREDIT_URL =
+  "https://www.lejourdalgerie.com/ath-yenni-une-forte-affluence-du-public-a-la-fete-du-bijou/";
+
 const L = (en: string, fr: string, ar: string): LocalizedString => ({ en, fr, ar });
 
 const COPY = {
