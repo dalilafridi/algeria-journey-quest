@@ -328,7 +328,7 @@ function OriginsExhibit({ lang }: { lang: Lang }) {
               </span>
               <div>
                 <div className="font-semibold text-foreground">{c.club}</div>
-                <div className="text-xs uppercase tracking-widest text-muted-foreground">{c.city}</div>
+                <div className="text-xs uppercase tracking-widest text-muted-foreground break-words">{c.city}</div>
                 <div className="mt-1 text-sm text-foreground/80">{c.note}</div>
               </div>
             </li>
@@ -816,7 +816,7 @@ function LegendsExhibit({ lang }: { lang: Lang }) {
       {LEGENDS.map((l) => (
         <article
           key={l.id}
-          className="group rounded-2xl border border-border bg-card p-5 transition hover:-translate-y-0.5"
+          className="group min-w-0 rounded-2xl border border-border bg-card p-5 transition hover:-translate-y-0.5"
           style={{ boxShadow: "var(--shadow-soft)" }}
         >
           <div className="flex items-start gap-4">
@@ -1008,7 +1008,7 @@ function TrophyRoom({ lang }: { lang: Lang }) {
             type="button"
             onClick={() => setOpen(isOpen ? null : t.id)}
             aria-expanded={isOpen}
-            className="group text-left rounded-2xl border border-border bg-card p-5 transition hover:-translate-y-0.5"
+            className="group min-w-0 text-left rounded-2xl border border-border bg-card p-5 transition hover:-translate-y-0.5"
             style={{ boxShadow: "var(--shadow-soft)" }}
           >
             <div className="flex items-center gap-4">
