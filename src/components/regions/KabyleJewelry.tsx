@@ -140,9 +140,9 @@ const COPY = {
     "تخلق المينا الزرقاء والخضراء والصفراء تبايناً حيّاً مع الفضة.",
   ),
   photoCredit: L(
-    "Source: El Moudjahid, Fête du Bijou d'Ath Yenni",
-    "Source : El Moudjahid, Fête du Bijou d'Ath Yenni",
-    "المصدر: El Moudjahid، Fête du Bijou d'Ath Yenni",
+    "Source: Le Jour d'Algérie, Fête du Bijou d'Ath Yenni",
+    "Source : Le Jour d'Algérie, Fête du Bijou d'Ath Yenni",
+    "المصدر: Le Jour d'Algérie، Fête du Bijou d'Ath Yenni",
   ),
 
 
