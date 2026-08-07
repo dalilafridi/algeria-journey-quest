@@ -290,7 +290,14 @@ export function KabyleJewelry() {
         </div>
         <figcaption className="text-xs sm:text-[13px] text-muted-foreground">
           {tr(COPY.mainCaption)}
-          <span className="mt-1 block text-[11px] sm:text-xs">{tr(COPY.photoCredit)}</span>
+          <a
+            href={PHOTO_CREDIT_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-1 block text-[11px] sm:text-xs underline underline-offset-2"
+          >
+            {tr(COPY.photoCredit)}
+          </a>
         </figcaption>
       </figure>
 
@@ -320,7 +327,14 @@ export function KabyleJewelry() {
           </div>
           <figcaption className="text-xs text-muted-foreground">
             {tr(COPY.detailCaption)}
-            <span className="mt-1 block text-[11px]">{tr(COPY.photoCredit)}</span>
+            <a
+              href={PHOTO_CREDIT_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-1 block text-[11px] underline underline-offset-2"
+            >
+              {tr(COPY.photoCredit)}
+            </a>
           </figcaption>
 
         </figure>
