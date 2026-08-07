@@ -45,16 +45,27 @@ const ROOT_DESCRIPTION = {
 import { resolveInitialLang } from "@/lib/lang-server";
 import type { Lang } from "@/lib/i18n";
 
+/** True until the first client-side beforeLoad has run (i.e. during hydration). */
+let hydratingLang = true;
+
 export const Route = createRootRoute({
   // Publishes the active language on the router context so every route's
   // head() can emit localized title / description / og tags. Server side it
-  // resolves from the dzo_lang cookie, client side from the saved choice.
+  // resolves from the dzo_lang cookie. On the client the very first pass must
+  // reuse the server-rendered language, otherwise React reports a hydration
+  // mismatch; afterwards the stored choice is authoritative.
   beforeLoad: async (): Promise<{ lang: Lang }> => {
     if (typeof window === "undefined") {
       return { lang: await resolveInitialLang() };
     }
+    if (hydratingLang) {
+      hydratingLang = false;
+      const ssr = (window as unknown as { __DZO_SSR_LANG?: string }).__DZO_SSR_LANG;
+      if (ssr === "en" || ssr === "fr" || ssr === "ar") return { lang: ssr };
+    }
     return { lang: getLang() };
   },
+
   loader: ({ context }): { lang: Lang } => ({ lang: context.lang }),
   head: ({ match }) => ({
     meta: [
