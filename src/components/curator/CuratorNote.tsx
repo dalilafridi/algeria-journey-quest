@@ -40,7 +40,10 @@ export function CuratorNote({
         <span aria-hidden style={{ color: "var(--brand-gold-deep)" }}>
           ❝
         </span>
-        <span className="text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.2em] text-muted-foreground">
+        <span
+          className="text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.2em]"
+          style={{ color: "color-mix(in oklab, var(--brand-gold-deep) 35%, var(--foreground))" }}
+        >
           {t(LABEL, lang)}
         </span>
       </div>

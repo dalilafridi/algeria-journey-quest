@@ -72,7 +72,7 @@ export function ExhibitEyebrow({
       className={`inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-[0.2em] ${
         className ?? ""
       }`}
-      style={{ color: "color-mix(in oklab, var(--brand-gold-deep) 80%, var(--foreground))" }}
+      style={{ color: "color-mix(in oklab, var(--brand-gold-deep) 40%, var(--foreground))" }}
     >
       {icon ? (
         <span aria-hidden className="text-sm leading-none">
@@ -528,7 +528,7 @@ export function ContextRibbon({
                 key={i}
                 to={it.to}
                 className="group inline-flex shrink-0 items-center gap-2 rounded-full border border-transparent px-3 py-1.5 text-sm font-semibold transition-colors hover:border-primary/30 hover:bg-card"
-                style={{ color: "color-mix(in oklab, var(--brand-gold-deep) 80%, var(--foreground))" }}
+                style={{ color: "color-mix(in oklab, var(--brand-gold-deep) 40%, var(--foreground))" }}
               >
                 <span aria-hidden className="text-base leading-none">
                   {it.emoji}

@@ -128,7 +128,7 @@ export function MuseumChip({ children }: { children: ReactNode }) {
       style={{
         borderColor: "color-mix(in oklab, var(--brand-gold) 40%, var(--border))",
         background: "color-mix(in oklab, var(--brand-gold) 12%, var(--card))",
-        color: "color-mix(in oklab, var(--brand-gold-deep) 88%, var(--foreground))",
+        color: "color-mix(in oklab, var(--brand-gold-deep) 42%, var(--foreground))",
       }}
     >
       {children}
@@ -629,7 +629,7 @@ export function MuseumCuratorNote({
           {attribution ? (
             <div
               className="mt-3 text-xs font-semibold uppercase tracking-[0.14em]"
-              style={{ color: "color-mix(in oklab, var(--brand-gold-deep) 80%, var(--foreground))" }}
+              style={{ color: "color-mix(in oklab, var(--brand-gold-deep) 40%, var(--foreground))" }}
             >
              , {attribution}
             </div>
@@ -779,7 +779,7 @@ export function MuseumContextRibbon({
                 key={i}
                 to={it.to}
                 className="group inline-flex shrink-0 items-center gap-2 rounded-full border border-transparent px-3 py-1.5 text-sm font-semibold transition-colors hover:border-primary/30 hover:bg-card"
-                style={{ color: "color-mix(in oklab, var(--brand-gold-deep) 80%, var(--foreground))" }}
+                style={{ color: "color-mix(in oklab, var(--brand-gold-deep) 40%, var(--foreground))" }}
               >
                 <span
                   aria-hidden

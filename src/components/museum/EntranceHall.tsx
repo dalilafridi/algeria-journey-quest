@@ -112,7 +112,10 @@ function SectionHeader({
 }) {
   return (
     <div className={align === "center" ? "text-center max-w-2xl mx-auto" : "max-w-2xl"}>
-      <div className="text-[11px] font-bold uppercase tracking-[0.2em] text-primary">
+      <div
+        className="text-[11px] font-bold uppercase tracking-[0.2em]"
+        style={{ color: "color-mix(in oklab, var(--primary) 72%, var(--foreground))" }}
+      >
         {eyebrow}
       </div>
       <h2
