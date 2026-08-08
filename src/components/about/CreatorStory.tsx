@@ -75,32 +75,23 @@ const CLOSING: T[] = [
   },
 ];
 
-const NOTES: { emoji: string; text: T }[] = [
-  {
-    emoji: "💻",
-    text: {
-      en: "Retired from IT, but never from curiosity",
-      fr: "Retraitée de l'informatique, mais jamais de la curiosité",
-      ar: "متقاعدة من تكنولوجيا المعلومات، لكن ليس من الفضول",
-    },
-  },
-  {
-    emoji: "🎛️",
-    text: {
-      en: "Still exploring, building, and creating",
-      fr: "Toujours en train d'explorer, de construire et de créer",
-      ar: "ما زلت أستكشف وأبني وأبدع",
-    },
-  },
-  {
-    emoji: "📚",
-    text: {
-      en: "Always learning and looking toward what comes next",
-      fr: "Toujours en train d'apprendre et de regarder vers la suite",
-      ar: "دائمًا أتعلّم وأنظر إلى ما يأتي",
-    },
-  },
-];
+const CODA_HEADING: T = {
+  en: "From systems to stories",
+  fr: "Des systèmes aux histoires",
+  ar: "من الأنظمة إلى الحكايات",
+};
+
+const CODA_BODY: T = {
+  en: "Retirement gave me time, but curiosity gave me direction. After a career in information technology, I found myself building again, this time with history as the architecture. I brought together the tools I knew, the new ones I wanted to understand, and months of research to create a museum that can continue growing. I am still learning, still building, and still discovering what comes next.",
+  fr: "La retraite m'a donné du temps, mais c'est la curiosité qui m'a donné une direction. Après une carrière dans les technologies de l'information, je me suis remise à construire, cette fois avec l'histoire pour architecture. J'ai réuni les outils que je connaissais, ceux que je souhaitais découvrir et des mois de recherche pour créer un musée appelé à continuer de grandir. Je continue d'apprendre, de construire et de découvrir ce qui vient ensuite.",
+  ar: "منحني التقاعد الوقت، لكن الفضول هو الذي منحني الاتجاه. بعد مسيرة مهنية في تكنولوجيا المعلومات، وجدت نفسي أبني من جديد، وهذه المرة كان التاريخ هو البنية التي استندت إليها. جمعت بين الأدوات التي أعرفها، والأدوات الجديدة التي أردت فهمها، وأشهر من البحث، لإنشاء متحف يمكنه أن يواصل النمو. وما زلت أتعلم، وأبني، وأكتشف ما سيأتي بعد ذلك.",
+};
+
+const CODA_TECH: T = {
+  en: "Built with React, Vite and Supabase, with AI-assisted audio and translation APIs.",
+  fr: "Créé avec React, Vite et Supabase, avec l'aide de l'IA pour l'audio et d'API pour les traductions.",
+  ar: "بُني باستخدام React وVite وSupabase، مع الاستعانة بالذكاء الاصطناعي في الصوت وواجهات برمجة التطبيقات في الترجمة.",
+};
 
 const SIGNATURE: T = {
   en: "Every story matters, especially ours.",
@@ -165,21 +156,23 @@ export function CreatorStory({ lang }: { lang: Lang }) {
         <GeometryRule />
       </div>
 
-      <div className="mx-auto mt-10 max-w-[62ch] space-y-7">
-        <p className="font-serif text-lg leading-8 text-foreground/90 sm:text-xl sm:leading-9">
+      <div className="mx-auto mt-10 max-w-[62ch] space-y-6">
+        <p className="font-serif text-[1.2rem] leading-[1.55] text-foreground sm:text-[1.35rem]">
           {OPENING[0][lang]}
         </p>
         {OPENING.slice(1).map((p) => (
-          <p key={p.en} className="text-[0.975rem] leading-8 text-foreground/85 sm:text-base">
+          <p key={p.en} className="text-base leading-[1.72] text-foreground/90 sm:text-[1.0625rem]">
             {p[lang]}
           </p>
         ))}
 
-        <p className="text-sm leading-7 text-muted-foreground">{LEAD_IN[lang]}</p>
+        <p className="text-base leading-[1.72] text-muted-foreground sm:text-[1.0625rem]">
+          {LEAD_IN[lang]}
+        </p>
       </div>
 
       <figure className="mx-auto my-10 max-w-[46ch] text-center sm:my-12">
-        <blockquote className="font-serif text-2xl italic leading-relaxed text-[color-mix(in_oklab,var(--primary)_78%,var(--foreground))] sm:text-3xl">
+        <blockquote className="font-serif text-[1.35rem] italic leading-[1.4] text-[color-mix(in_oklab,var(--primary)_78%,var(--foreground))] sm:text-[1.6rem]">
           {PULL_QUOTE[lang]}
         </blockquote>
         <div className="mt-6 flex justify-center">
@@ -190,31 +183,40 @@ export function CreatorStory({ lang }: { lang: Lang }) {
         </div>
       </figure>
 
-      <div className="mx-auto max-w-[62ch] space-y-7">
+      <div className="mx-auto max-w-[62ch] space-y-6">
         {CLOSING.map((p) => (
-          <p key={p.en} className="text-[0.975rem] leading-8 text-foreground/85 sm:text-base">
+          <p key={p.en} className="text-base leading-[1.72] text-foreground/90 sm:text-[1.0625rem]">
             {p[lang]}
           </p>
         ))}
       </div>
 
-      <ul className="mx-auto mt-11 grid max-w-[62ch] list-none gap-3 sm:grid-cols-3 sm:gap-4">
-        {NOTES.map((n) => (
-          <li
-            key={n.text.en}
-            className="flex items-start gap-2.5 rounded-lg border border-[color-mix(in_oklab,var(--primary)_12%,var(--border))] bg-background/50 px-3.5 py-3 text-sm leading-6 text-foreground/85"
+      <section
+        aria-labelledby="creator-coda-heading"
+        className="mx-auto mt-12 max-w-[62ch] border-t border-[color-mix(in_oklab,var(--primary)_20%,var(--border))] pt-9"
+      >
+        <div className="grid gap-4 sm:grid-cols-[minmax(0,11rem)_minmax(0,1fr)] sm:gap-8">
+          <h3
+            id="creator-coda-heading"
+            className="font-serif text-[1.375rem] leading-[1.3] text-foreground sm:text-[1.55rem]"
           >
-            <span aria-hidden="true" className="text-sm leading-6 opacity-80">
-              {n.emoji}
-            </span>
-            <span>{n.text[lang]}</span>
-          </li>
-        ))}
-      </ul>
+            {CODA_HEADING[lang]}
+          </h3>
+          <div className="min-w-0 space-y-4">
+            <p className="text-base leading-[1.72] text-foreground/90 sm:text-[1.0625rem]">
+              {CODA_BODY[lang]}
+            </p>
+            <p className="text-[0.9375rem] leading-[1.65] text-muted-foreground">
+              {CODA_TECH[lang]}
+            </p>
+          </div>
+        </div>
+      </section>
 
-      <p className="mx-auto mt-10 max-w-[46ch] text-center font-serif text-lg italic leading-relaxed text-[color-mix(in_oklab,var(--primary)_72%,var(--foreground))] sm:text-xl">
+      <p className="mx-auto mt-14 max-w-[46ch] text-center font-serif text-[1.35rem] italic leading-[1.45] text-[color-mix(in_oklab,var(--primary)_72%,var(--foreground))] sm:text-[1.55rem]">
         {SIGNATURE[lang]}
       </p>
+
 
       <div className="mt-10 flex justify-center" aria-hidden="true">
         <GeometryRule />
