@@ -6,8 +6,6 @@ import { useLang, type Lang, type LocalizedString } from "@/lib/i18n";
 import lesVertesHeroAsset from "@/assets/lesvertes-faf-2026.jpg.asset.json";
 
 
-const FAF_SOURCE_URL =
-  "https://www.faf.dz/can-feminine-2026-kenya-0-algerie-2-les-vertes-en-quart-de-finale/";
 import { pageMeta, headLang } from "@/lib/seo";
 import { PAGE_META } from "@/lib/pageMetaCopy";
 import { ExhibitProvenance } from "@/components/provenance/ExhibitProvenance";
@@ -122,7 +120,7 @@ function Hero({ lang }: { lang: Lang }) {
               ar: "الخضراوات · تحية متحفية للمنتخب النسوي الجزائري.",
             }[lang]}
             <a
-              href={FAF_SOURCE_URL}
+              href="https://www.faf.dz/can-feminine-2026-kenya-0-algerie-2-les-vertes-en-quart-de-finale/"
               target="_blank"
               rel="noopener noreferrer"
               className="block mt-1 not-italic text-muted-foreground/80 underline underline-offset-2"
