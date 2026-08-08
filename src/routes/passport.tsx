@@ -109,6 +109,20 @@ const TXT: Record<string, Tri> = {
 
 const CURATOR_NAME = "Dalila Fridi";
 
+// Localized explorer rank titles, indexed by level (1..10).
+const RANK_TITLES: Tri[] = [
+  { en: "Curious Wanderer", fr: "Promeneur curieux", ar: "متجوّل فضولي" },
+  { en: "Story Seeker", fr: "Chercheur d'histoires", ar: "باحث عن الحكايات" },
+  { en: "History Apprentice", fr: "Apprenti historien", ar: "متدرّب في التاريخ" },
+  { en: "Chronicle Keeper", fr: "Gardien des chroniques", ar: "حافظ السجلات" },
+  { en: "Era Explorer", fr: "Explorateur des ères", ar: "مستكشف الحقب" },
+  { en: "Sage of the Sands", fr: "Sage des sables", ar: "حكيم الرمال" },
+  { en: "Master Storyteller", fr: "Maître conteur", ar: "راوٍ بارع" },
+  { en: "Living Archive", fr: "Archive vivante", ar: "أرشيف حيّ" },
+  { en: "Grand Historian", fr: "Grand historien", ar: "مؤرّخ كبير" },
+  { en: "Legend of Algeria", fr: "Légende de l'Algérie", ar: "أسطورة الجزائر" },
+];
+
 const localeOf = (lang: Lang) => (lang === "fr" ? "fr-FR" : lang === "ar" ? "ar-DZ" : "en-GB");
 
 function PassportPage() {
@@ -246,7 +260,7 @@ function PassportPage() {
         {/* Booklet */}
         <article
           id="passport-print"
-          className="relative overflow-hidden rounded-lg border border-border bg-card shadow-[0_18px_40px_-32px_rgba(60,40,20,0.55)]"
+          className="relative isolate z-10 overflow-hidden rounded-lg border border-border bg-card shadow-[0_18px_40px_-32px_rgba(60,40,20,0.55)]"
         >
           <GeometricBand />
           <div className="grid grid-cols-1 md:grid-cols-2">
@@ -309,7 +323,7 @@ function PassportPage() {
                 <div className="grid grid-cols-2 gap-4">
                   <Field label={tri(lang, TXT.rank)}>
                     <span className="text-base text-foreground" style={{ fontFamily: SERIF }}>
-                      {level.title}
+                      {tri(lang, RANK_TITLES[Math.min(RANK_TITLES.length, Math.max(1, level.level)) - 1])}
                     </span>
                   </Field>
                   <Field label={tri(lang, TXT.xp)}>
@@ -681,7 +695,11 @@ function ProgressRow({ label, value, total }: { label: string; value: number; to
     <div>
       <div className="flex items-baseline justify-between gap-3">
         <span className="text-sm text-foreground">{label}</span>
-        <span className="text-sm font-semibold text-foreground" style={{ fontFamily: SERIF }}>
+        <span
+          className="text-sm font-semibold text-foreground"
+          style={{ fontFamily: SERIF, unicodeBidi: "isolate" }}
+          dir="ltr"
+        >
           {total ? `${value} / ${total}` : value}
         </span>
       </div>
