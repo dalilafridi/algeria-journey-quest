@@ -5,7 +5,7 @@ import { MedallionFrame } from "@/components/brand/MedallionFrame";
 import { useLang, type Lang, type LocalizedString } from "@/lib/i18n";
 import lesVertesHeroAsset from "@/assets/lesvertes-faf-2026.jpg.asset.json";
 
-const lesVertesHero = lesVertesHeroAsset.url;
+
 const FAF_SOURCE_URL =
   "https://www.faf.dz/can-feminine-2026-kenya-0-algerie-2-les-vertes-en-quart-de-finale/";
 import { pageMeta, headLang } from "@/lib/seo";
@@ -33,7 +33,7 @@ export const Route = createFileRoute("/football/lesvertes")({
       lang: headLang(match),
       path: "/football/lesvertes",
       ...PAGE_META["/football/lesvertes"],
-      image: lesVertesHero
+      image: lesVertesHeroAsset.url
     }),
   component: LesVertesExhibit,
 });
@@ -102,7 +102,7 @@ function Hero({ lang }: { lang: Lang }) {
             }}
           >
             <img
-              src={lesVertesHero}
+              src={lesVertesHeroAsset.url}
               alt={{
                 en: "The Algeria women's national football team lined up on the pitch in white kits before a Women's Africa Cup of Nations match",
                 fr: "La sélection féminine algérienne de football alignée sur la pelouse en maillots blancs avant un match de la CAN féminine",
