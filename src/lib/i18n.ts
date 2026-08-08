@@ -75,9 +75,18 @@ export const LangContext = createContext<Lang | null>(null);
 /** React hook returning the current language and reacting to changes. */
 export function useLang(): Lang {
   const ssrLang = useContext(LangContext);
-  const [lang, setLangState] = useState<Lang>(() =>
-    typeof window === "undefined" ? (ssrLang ?? "en") : getLang(),
-  );
+  // The first client render MUST reproduce the server-rendered language,
+  // otherwise React reports a hydration mismatch (e.g. a French browser with
+  // no dzo_lang cookie hydrating an English SSR shell). Any divergence is
+  // reconciled in the effect below, after hydration.
+  const [lang, setLangState] = useState<Lang>(() => {
+    if (ssrLang) return ssrLang;
+    if (typeof window === "undefined") return "en";
+    const ssr = (window as unknown as { __DZO_SSR_LANG?: string }).__DZO_SSR_LANG;
+    if (ssr === "en" || ssr === "fr" || ssr === "ar") return ssr;
+    return getLang();
+  });
+
   useEffect(() => {
     const update = () => setLangState(getLang());
     update();
