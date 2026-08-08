@@ -165,7 +165,7 @@ function PassportPage() {
         month: "long",
         year: "numeric",
       })
-    : "—";
+    : "\u2013";
 
   const visitedEras = state.visits.era
     .map((id) => eras.find((e) => e.id === id))
