@@ -223,6 +223,13 @@ function PassportPage() {
             clone.style.animation = "none";
             clone.style.opacity = "1";
             clone.style.transform = "none";
+            clone.style.overflow = "visible";
+            clone.style.height = `${Math.ceil(rect.height)}px`;
+            const cdoc = clone.ownerDocument;
+            if (cdoc?.documentElement) {
+              cdoc.documentElement.style.height = `${Math.ceil(rect.height) + 400}px`;
+              if (cdoc.body) cdoc.body.style.height = `${Math.ceil(rect.height) + 400}px`;
+            }
           }
         },
       });
