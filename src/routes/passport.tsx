@@ -261,8 +261,8 @@ function PassportPage() {
                     {tri(lang, TXT.brand)}
                   </p>
                   <h1
-                    className="mt-2 text-xl sm:text-2xl font-semibold leading-tight text-foreground"
-                    style={{ fontFamily: SERIF }}
+                    className="mt-2 font-semibold leading-tight text-foreground"
+                    style={{ fontFamily: SERIF, fontSize: "clamp(1.3rem, 1.05rem + 0.7vw, 1.7rem)" }}
                   >
                     {tri(lang, TXT.title)}
                   </h1>
@@ -345,8 +345,8 @@ function PassportPage() {
             {/* RIGHT PAGE: journey */}
             <section className="relative p-6 sm:p-8">
               <h2
-                className="text-[11px] font-semibold uppercase tracking-[0.3em] text-primary"
-                style={{ fontFamily: SERIF }}
+                className="font-semibold uppercase tracking-[0.3em] text-primary"
+                style={{ fontFamily: SERIF, fontSize: "11px" }}
               >
                 {tri(lang, TXT.journey)}
               </h2>
@@ -388,51 +388,55 @@ function PassportPage() {
                 </div>
               </div>
 
-              {/* Stamps */}
-              <div className="mt-8 border-t border-border pt-5">
-                <div className="flex items-baseline justify-between gap-3">
-                  <h3
-                    className="text-[11px] font-semibold uppercase tracking-[0.28em] text-primary"
-                    style={{ fontFamily: SERIF }}
-                  >
-                    {tri(lang, TXT.stamps)}
-                  </h3>
-                  <span className="text-xs text-muted-foreground">
-                    {earnedStamps.length} {tri(lang, TXT.earnedOf)} {stamps.length}
-                  </span>
-                </div>
-
-                {earnedStamps.length === 0 && (
-                  <div className="mt-4 rounded-md border border-border bg-muted/50 p-4 text-center">
-                    <p className="text-sm text-foreground" style={{ fontFamily: SERIF }}>
-                      {tri(lang, TXT.welcome)}
-                    </p>
-                    <Link
-                      to="/timeline"
-                      className="no-print mt-3 inline-flex min-h-11 items-center rounded-full bg-primary px-5 text-sm font-semibold text-primary-foreground transition hover:brightness-110 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
-                    >
-                      {tri(lang, TXT.beginExploring)}
-                    </Link>
-                  </div>
-                )}
-
-                <ul className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-3">
-                  {stamps.map((s) => (
-                    <StampCard key={s.id} stamp={s} lang={lang} />
-                  ))}
-                </ul>
-                <p className="mt-4 text-center text-[11px] italic text-muted-foreground">
-                  {tri(lang, TXT.legend)}
-                </p>
-              </div>
             </section>
           </div>
+
+          {/* Stamp collection, full-width booklet page */}
+          <section className="border-t border-border p-6 sm:p-8">
+            <div className="flex items-baseline justify-between gap-3">
+              <h2
+                className="font-semibold uppercase tracking-[0.28em] text-primary"
+                style={{ fontFamily: SERIF, fontSize: "11px" }}
+              >
+                {tri(lang, TXT.stamps)}
+              </h2>
+              <span className="text-xs text-muted-foreground">
+                {earnedStamps.length} {tri(lang, TXT.earnedOf)} {stamps.length}
+              </span>
+            </div>
+
+            {earnedStamps.length === 0 && (
+              <div className="mt-4 flex flex-col items-center gap-3 rounded-md border border-border bg-muted/50 p-4 text-center">
+                <p className="text-sm text-foreground" style={{ fontFamily: SERIF }}>
+                  {tri(lang, TXT.welcome)}
+                </p>
+                <Link
+                  to="/timeline"
+                  className="no-print inline-flex min-h-11 items-center rounded-full bg-primary px-5 text-sm font-semibold text-primary-foreground transition hover:brightness-110 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+                >
+                  {tri(lang, TXT.beginExploring)}
+                </Link>
+              </div>
+            )}
+
+            <ul className="mt-5 grid grid-cols-2 gap-3 sm:grid-cols-4 lg:grid-cols-6">
+              {stamps.map((s) => (
+                <StampCard key={s.id} stamp={s} lang={lang} />
+              ))}
+            </ul>
+            <p className="mt-5 text-center text-[11px] italic text-muted-foreground">
+              {tri(lang, TXT.legend)}
+            </p>
+          </section>
           <GeometricBand />
         </article>
 
         {/* Your Journey */}
         <section className="mt-10">
-          <h2 className="text-lg font-semibold text-foreground" style={{ fontFamily: SERIF }}>
+          <h2
+            className="font-semibold text-foreground"
+            style={{ fontFamily: SERIF, fontSize: "1.15rem" }}
+          >
             {tri(lang, TXT.yourJourney)}
           </h2>
           <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
@@ -859,8 +863,8 @@ function JourneyCategory({
     <div className="rounded-lg border border-border bg-card p-4">
       <div className="mb-3 flex items-baseline justify-between">
         <h3
-          className="text-[11px] font-semibold uppercase tracking-[0.26em] text-primary"
-          style={{ fontFamily: SERIF }}
+          className="font-semibold uppercase tracking-[0.26em] text-primary"
+          style={{ fontFamily: SERIF, fontSize: "11px" }}
         >
           {title}
         </h3>
