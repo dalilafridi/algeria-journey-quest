@@ -199,8 +199,31 @@ function PassportPage() {
         import("html2canvas-pro"),
         import("jspdf"),
       ]);
-      const canvas = await html2canvas(node, { scale: 2, backgroundColor: "#fbf5e9" });
+      // Freeze animations and mirror live opacity so the capture matches the screen.
+      const sourceEls = [node, ...Array.from(node.querySelectorAll<HTMLElement>("*"))];
+      const canvas = await html2canvas(node, {
+        scale: 2,
+        backgroundColor: "#fbf5e9",
+        width: node.scrollWidth,
+        height: node.scrollHeight,
+        windowWidth: document.documentElement.offsetWidth,
+        windowHeight: Math.max(document.documentElement.offsetHeight, node.scrollHeight + 200),
+        scrollX: 0,
+        scrollY: -window.scrollY,
+        onclone: (doc) => {
+          const clone = doc.getElementById("passport-print");
+          if (!clone) return;
+          const cloneEls = [clone, ...Array.from(clone.querySelectorAll<HTMLElement>("*"))];
+          cloneEls.forEach((el, i) => {
+            const src = sourceEls[i];
+            el.style.animation = "none";
+            el.style.transition = "none";
+            if (src) el.style.opacity = window.getComputedStyle(src).opacity;
+          });
+        },
+      });
       const img = canvas.toDataURL("image/jpeg", 0.94);
+
       const pdf = new jsPDF({ orientation: "landscape", unit: "mm", format: "a4" });
       const pw = pdf.internal.pageSize.getWidth();
       const ph = pdf.internal.pageSize.getHeight();
