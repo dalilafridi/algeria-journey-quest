@@ -41,7 +41,9 @@ export function InfoPage({
           {kicker[lang]}
         </p>
         <h1 className="mt-3 text-3xl font-semibold leading-tight sm:text-4xl">{title[lang]}</h1>
-        <p className="mt-4 text-base leading-relaxed text-muted-foreground">{intro[lang]}</p>
+        <p className="mt-4 max-w-[62ch] text-base leading-[1.72] text-foreground/90 sm:text-[1.0625rem]">
+          {intro[lang]}
+        </p>
 
         {beforeSections ? <div className="mt-10">{beforeSections}</div> : null}
 
@@ -49,26 +51,37 @@ export function InfoPage({
 
           {sections.map((s) => (
             <section key={s.heading.en} className="space-y-3">
-              <h2 className="text-lg font-semibold text-foreground sm:text-xl">{s.heading[lang]}</h2>
+              <h2 className="font-serif text-xl leading-[1.3] text-foreground sm:text-2xl">
+                {s.heading[lang]}
+              </h2>
               {s.paras?.map((p) => (
-                <p key={p.en} className="text-sm leading-7 text-foreground/85 sm:text-base">
+                <p
+                  key={p.en}
+                  className="max-w-[62ch] text-base leading-[1.72] text-foreground/90 sm:text-[1.0625rem]"
+                >
                   {p[lang]}
                 </p>
               ))}
               {s.bullets && s.bullets.length > 0 && (
-                <ul className="list-disc space-y-2 ps-5 text-sm leading-7 text-foreground/85 sm:text-base">
+                <ul className="list-disc space-y-2 ps-5 text-base leading-[1.72] text-foreground/90 sm:text-[1.0625rem]">
                   {s.bullets.map((b) => (
-                    <li key={b.en}>{b[lang]}</li>
+                    <li key={b.en} className="max-w-[62ch]">
+                      {b[lang]}
+                    </li>
                   ))}
                 </ul>
               )}
               {s.postBullets?.map((p) => (
-                <p key={p.en} className="text-sm leading-7 text-foreground/85 sm:text-base">
+                <p
+                  key={p.en}
+                  className="max-w-[62ch] text-base leading-[1.72] text-foreground/90 sm:text-[1.0625rem]"
+                >
                   {p[lang]}
                 </p>
               ))}
             </section>
           ))}
+
         </div>
 
         {children}
