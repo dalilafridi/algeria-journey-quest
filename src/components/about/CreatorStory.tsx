@@ -75,32 +75,23 @@ const CLOSING: T[] = [
   },
 ];
 
-const NOTES: { emoji: string; text: T }[] = [
-  {
-    emoji: "💻",
-    text: {
-      en: "Retired from IT, but never from curiosity",
-      fr: "Retraitée de l'informatique, mais jamais de la curiosité",
-      ar: "متقاعدة من تكنولوجيا المعلومات، لكن ليس من الفضول",
-    },
-  },
-  {
-    emoji: "🎛️",
-    text: {
-      en: "Still exploring, building, and creating",
-      fr: "Toujours en train d'explorer, de construire et de créer",
-      ar: "ما زلت أستكشف وأبني وأبدع",
-    },
-  },
-  {
-    emoji: "📚",
-    text: {
-      en: "Always learning and looking toward what comes next",
-      fr: "Toujours en train d'apprendre et de regarder vers la suite",
-      ar: "دائمًا أتعلّم وأنظر إلى ما يأتي",
-    },
-  },
-];
+const CODA_HEADING: T = {
+  en: "From systems to stories",
+  fr: "Des systèmes aux histoires",
+  ar: "من الأنظمة إلى الحكايات",
+};
+
+const CODA_BODY: T = {
+  en: "Retirement gave me time, but curiosity gave me direction. After a career in information technology, I found myself building again, this time with history as the architecture. I brought together the tools I knew, the new ones I wanted to understand, and months of research to create a museum that can continue growing. I am still learning, still building, and still discovering what comes next.",
+  fr: "La retraite m'a donné du temps, mais c'est la curiosité qui m'a donné une direction. Après une carrière dans les technologies de l'information, je me suis remise à construire, cette fois avec l'histoire pour architecture. J'ai réuni les outils que je connaissais, ceux que je souhaitais découvrir et des mois de recherche pour créer un musée appelé à continuer de grandir. Je continue d'apprendre, de construire et de découvrir ce qui vient ensuite.",
+  ar: "منحني التقاعد الوقت، لكن الفضول هو الذي منحني الاتجاه. بعد مسيرة مهنية في تكنولوجيا المعلومات، وجدت نفسي أبني من جديد، وهذه المرة كان التاريخ هو البنية التي استندت إليها. جمعت بين الأدوات التي أعرفها، والأدوات الجديدة التي أردت فهمها، وأشهر من البحث، لإنشاء متحف يمكنه أن يواصل النمو. وما زلت أتعلم، وأبني، وأكتشف ما سيأتي بعد ذلك.",
+};
+
+const CODA_TECH: T = {
+  en: "Built with React, Vite and Supabase, with AI-assisted audio and translation APIs.",
+  fr: "Créé avec React, Vite et Supabase, avec l'aide de l'IA pour l'audio et d'API pour les traductions.",
+  ar: "بُني باستخدام React وVite وSupabase، مع الاستعانة بالذكاء الاصطناعي في الصوت وواجهات برمجة التطبيقات في الترجمة.",
+};
 
 const SIGNATURE: T = {
   en: "Every story matters, especially ours.",
