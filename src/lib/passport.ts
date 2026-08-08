@@ -15,6 +15,7 @@ export type PassportState = {
   issuedAt: string; // ISO date of first visit
   visitorId: string; // short random code
   visitorName?: string;
+  stampDates?: Record<string, string>; // stamp id -> ISO date earned
 };
 
 const empty = (): PassportState => ({
@@ -22,6 +23,7 @@ const empty = (): PassportState => ({
   stamps: [],
   issuedAt: new Date().toISOString(),
   visitorId: genId(),
+  stampDates: {},
 });
 
 function genId() {
@@ -41,6 +43,7 @@ export function getPassport(): PassportState {
       ...p,
       visits: { ...base.visits, ...(p.visits ?? {}) },
       stamps: p.stamps ?? [],
+      stampDates: p.stampDates ?? {},
     };
   } catch {
     return empty();
@@ -68,11 +71,39 @@ export function recordVisit(kind: VisitKind, id: string) {
   if (p.visits[kind].includes(id)) return;
   p.visits[kind] = [...p.visits[kind], id];
   // recompute stamps
-  const newStamps = computeStamps(p).map((s) => s.id);
+  const newStamps = computeStamps(p).filter((s) => s.earned).map((s) => s.id);
+  const now = new Date().toISOString();
+  p.stampDates = p.stampDates ?? {};
   for (const s of newStamps) {
     if (!p.stamps.includes(s)) p.stamps.push(s);
+    if (!p.stampDates[s]) p.stampDates[s] = now;
   }
   savePassport(p);
+}
+
+/**
+ * Persist any stamps that became earned through other systems (quiz XP, etc.)
+ * so that earned dates are recorded. Returns true when something changed.
+ */
+export function syncStamps(): boolean {
+  if (typeof window === "undefined") return false;
+  const p = getPassport();
+  const earned = computeStamps(p).filter((s) => s.earned).map((s) => s.id);
+  const now = new Date().toISOString();
+  p.stampDates = p.stampDates ?? {};
+  let changed = false;
+  for (const id of earned) {
+    if (!p.stamps.includes(id)) {
+      p.stamps.push(id);
+      changed = true;
+    }
+    if (!p.stampDates[id]) {
+      p.stampDates[id] = now;
+      changed = true;
+    }
+  }
+  if (changed) savePassport(p);
+  return changed;
 }
 
 export function useVisit(kind: VisitKind, id: string | undefined) {
@@ -90,6 +121,7 @@ export type Stamp = {
   hint: LocalizedString;
   earned: boolean;
   progress: number; // 0..1
+  earnedAt?: string; // ISO date, when known
 };
 
 const CATEGORY_STAMPS: { catId: string; catLabel: LocalizedString }[] = [
@@ -269,7 +301,10 @@ export function computeStamps(state?: PassportState): Stamp[] {
   // Voidremove unused reference
   void CATEGORY_STAMPS;
 
-  return stamps;
+  const dates = p.stampDates ?? {};
+  return stamps.map((s) =>
+    s.earned && dates[s.id] ? { ...s, earnedAt: dates[s.id] } : s
+  );
 }
 
 export function getPassportSummary() {
