@@ -1,11 +1,12 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { Header } from "@/components/Header";
 import { t, useLang, type Lang } from "@/lib/i18n";
 import {
   computeStamps,
   getPassport,
   setVisitorName,
+  syncStamps,
   type PassportState,
   type Stamp,
 } from "@/lib/passport";
@@ -15,6 +16,7 @@ import { mapRegions } from "@/data/mapRegions";
 import { figures } from "@/data/figures";
 import { pageMeta, headLang } from "@/lib/seo";
 import { PAGE_META } from "@/lib/pageMetaCopy";
+import { Download, Printer, UserPen } from "lucide-react";
 
 export const Route = createFileRoute("/passport")({
   head: ({ match }) =>
@@ -22,24 +24,33 @@ export const Route = createFileRoute("/passport")({
       lang: headLang(match),
       path: "/passport",
       ...PAGE_META["/passport"],
-      noindex: true
+      noindex: true,
     }),
   component: PassportPage,
 });
 
 const SERIF = "Georgia, 'Times New Roman', serif";
 
-const TXT = {
-  title: { en: "Visitor Passport", fr: "Passeport du visiteur", ar: "جواز الزائر" },
-  subtitle: {
-    en: "Algeria Through Time, Museum of Memory",
-    fr: "L'Algérie à travers le temps, Musée de la mémoire",
-    ar: "الجزائر عبر الزمن، متحف الذاكرة",
+type Tri = { en: string; fr: string; ar: string };
+const tri = (lang: Lang, s: Tri) => (lang === "fr" ? s.fr : lang === "ar" ? s.ar : s.en);
+
+const TXT: Record<string, Tri> = {
+  brand: { en: "DZ Odyssey", fr: "DZ Odyssey", ar: "DZ Odyssey" },
+  title: {
+    en: "Museum Visitor Passport",
+    fr: "Passeport du visiteur du musée",
+    ar: "جواز زائر المتحف",
   },
-  issued: { en: "Issued", fr: "Émis le", ar: "تاريخ الإصدار" },
-  passportNo: { en: "Passport N°", fr: "N° de passeport", ar: "رقم الجواز" },
+  tagline: { en: "Algeria Through Time", fr: "L'Algérie à travers le temps", ar: "الجزائر عبر الزمن" },
+  museumMark: {
+    en: "Museum of Algerian Memory",
+    fr: "Musée de la mémoire algérienne",
+    ar: "متحف الذاكرة الجزائرية",
+  },
   visitor: { en: "Visitor", fr: "Visiteur", ar: "الزائر" },
+  noName: { en: "Museum Visitor", fr: "Visiteur du musée", ar: "زائر المتحف" },
   editName: { en: "Set your name", fr: "Définir votre nom", ar: "أدخل اسمك" },
+  setVisitorName: { en: "Set visitor name", fr: "Définir le nom du visiteur", ar: "تعيين اسم الزائر" },
   namePlaceholder: {
     en: "Your name on the passport",
     fr: "Votre nom sur le passeport",
@@ -47,30 +58,48 @@ const TXT = {
   },
   save: { en: "Save", fr: "Enregistrer", ar: "حفظ" },
   cancel: { en: "Cancel", fr: "Annuler", ar: "إلغاء" },
-  print: { en: "Print", fr: "Imprimer", ar: "طباعة" },
-  export: { en: "Export as PDF", fr: "Exporter en PDF", ar: "تصدير PDF" },
+  passportNo: { en: "Passport N°", fr: "N° de passeport", ar: "رقم الجواز" },
+  issued: { en: "Issue date", fr: "Date d'émission", ar: "تاريخ الإصدار" },
+  rank: { en: "Explorer rank", fr: "Rang d'explorateur", ar: "رتبة المستكشف" },
+  xp: { en: "Experience", fr: "Expérience", ar: "نقاط الخبرة" },
+  xpUnit: { en: "XP", fr: "XP", ar: "نقطة" },
+  journey: { en: "Museum journey", fr: "Parcours au musée", ar: "رحلة المتحف" },
   eras: { en: "Eras visited", fr: "Ères visitées", ar: "الحقب المزارة" },
   regions: { en: "Regions explored", fr: "Régions explorées", ar: "المناطق المستكشفة" },
   figuresLbl: { en: "Figures viewed", fr: "Figures vues", ar: "الشخصيات المطلع عليها" },
   cultureLbl: { en: "Culture exhibits", fr: "Expositions culturelles", ar: "المعارض الثقافية" },
-  quizzes: { en: "Quizzes taken", fr: "Quiz effectués", ar: "الاختبارات المنجزة" },
-  stamps: { en: "Museum Stamps", fr: "Tampons du musée", ar: "أختام المتحف" },
+  quizzes: { en: "Quizzes completed", fr: "Quiz terminés", ar: "الاختبارات المنجزة" },
+  overall: { en: "Overall progress", fr: "Progression globale", ar: "التقدّم الإجمالي" },
+  stamps: { en: "Museum stamp collection", fr: "Collection de tampons", ar: "مجموعة أختام المتحف" },
   earnedOf: { en: "earned of", fr: "obtenus sur", ar: "من أصل" },
-  yourJourney: { en: "Your Journey", fr: "Votre parcours", ar: "رحلتك" },
-  visitedEras: { en: "Eras", fr: "Ères", ar: "الحقب" },
-  visitedRegions: { en: "Regions", fr: "Régions", ar: "المناطق" },
-  visitedFigures: { en: "Figures", fr: "Figures", ar: "الشخصيات" },
+  earned: { en: "Earned", fr: "Obtenu", ar: "محصَّل" },
   locked: { en: "Locked", fr: "Verrouillé", ar: "مقفل" },
-  empty: {
-    en: "No visits yet, start exploring the museum to fill your passport.",
-    fr: "Aucune visite pour l'instant, explorez le musée pour remplir votre passeport.",
-    ar: "لم تتم أي زيارة بعد، استكشف المتحف لملء جوازك.",
+  welcome: {
+    en: "Your museum journey has just begun. Visit exhibits to collect your first stamp.",
+    fr: "Votre parcours au musée ne fait que commencer. Visitez les expositions pour obtenir votre premier tampon.",
+    ar: "رحلتك في المتحف بدأت للتو. زر المعارض لتجمع ختمك الأول.",
   },
-  startExploring: { en: "Start exploring", fr: "Commencer à explorer", ar: "ابدأ الاستكشاف" },
-  level: { en: "Rank", fr: "Rang", ar: "الرتبة" },
-  xp: { en: "XP", fr: "XP", ar: "نقاط الخبرة" },
-  officialSeal: { en: "Official Seal", fr: "Sceau officiel", ar: "الختم الرسمي" },
-  curator: { en: "Chief Curator", fr: "Conservateur en chef", ar: "أمين المتحف" },
+  beginExploring: { en: "Begin exploring", fr: "Commencer l'exploration", ar: "ابدأ الاستكشاف" },
+  yourJourney: { en: "Your Journey", fr: "Votre parcours", ar: "رحلتك" },
+  catEras: { en: "Eras", fr: "Ères", ar: "الحقب" },
+  catRegions: { en: "Regions", fr: "Régions", ar: "المناطق" },
+  catFigures: { en: "Figures", fr: "Figures", ar: "الشخصيات" },
+  catCulture: { en: "Culture", fr: "Culture", ar: "الثقافة" },
+  catQuizzes: { en: "Quizzes", fr: "Quiz", ar: "الاختبارات" },
+  emptyEras: { en: "No eras visited yet", fr: "Aucune ère visitée", ar: "لم تزر أي حقبة بعد" },
+  emptyRegions: { en: "No regions explored yet", fr: "Aucune région explorée", ar: "لم تستكشف أي منطقة بعد" },
+  emptyFigures: { en: "No figures viewed yet", fr: "Aucune figure consultée", ar: "لم تطّلع على أي شخصية بعد" },
+  emptyCulture: { en: "No culture exhibits yet", fr: "Aucune exposition culturelle", ar: "لا معارض ثقافية بعد" },
+  emptyQuizzes: { en: "No quizzes completed yet", fr: "Aucun quiz terminé", ar: "لم تنجز أي اختبار بعد" },
+  curatedBy: { en: "Curated by", fr: "Sous la direction de", ar: "بإشراف" },
+  curatorRole: {
+    en: "Creator of DZ Odyssey",
+    fr: "Créatrice de DZ Odyssey",
+    ar: "منشئة DZ Odyssey",
+  },
+  print: { en: "Print", fr: "Imprimer", ar: "طباعة" },
+  download: { en: "Download PDF", fr: "Télécharger le PDF", ar: "تنزيل PDF" },
+  preparing: { en: "Preparing…", fr: "Préparation…", ar: "جارٍ التحضير…" },
   legend: {
     en: "Every stamp is a memory of an exhibit you have walked through.",
     fr: "Chaque tampon est le souvenir d'une exposition que vous avez traversée.",
@@ -78,26 +107,29 @@ const TXT = {
   },
 };
 
-const tri = (lang: Lang, s: { en: string; fr: string; ar: string }) =>
-  lang === "fr" ? s.fr : lang === "ar" ? s.ar : s.en;
+const CURATOR_NAME = "Dalila Fridi";
+
+const localeOf = (lang: Lang) => (lang === "fr" ? "fr-FR" : lang === "ar" ? "ar-DZ" : "en-GB");
 
 function PassportPage() {
   const lang = useLang();
-  // Use a stable placeholder for SSR / first client render — genId() is random
-  // and would otherwise hydration-mismatch the visitorId. Real passport is
-  // loaded from localStorage inside useEffect after hydration.
   const [state, setState] = useState<PassportState>(() => ({
     visits: { era: [], figure: [], region: [], culture: [] },
     stamps: [],
     issuedAt: "",
-    visitorId: "DZ-, ",
+    visitorId: "DZ-000000",
   }));
   const [editing, setEditing] = useState(false);
   const [nameInput, setNameInput] = useState("");
+  const [downloading, setDownloading] = useState(false);
 
   useEffect(() => {
+    syncStamps();
     setState(getPassport());
-    const onUpdate = () => setState(getPassport());
+    const onUpdate = () => {
+      syncStamps();
+      setState(getPassport());
+    };
     window.addEventListener("passport-updated", onUpdate);
     window.addEventListener("progress-updated", onUpdate);
     return () => {
@@ -106,19 +138,20 @@ function PassportPage() {
     };
   }, []);
 
-
   const stamps = useMemo(() => computeStamps(state), [state]);
   const progress = useMemo(() => getProgress(), [state]);
   const level = getLevelInfo(progress.xp);
-  const quizzes = Object.values(progress.completed).length;
+  const quizEntries = Object.entries(progress.completed ?? {});
+  const quizzes = quizEntries.length;
   const earnedStamps = stamps.filter((s) => s.earned);
 
-  const issued = new Date(state.issuedAt);
-  const issuedStr = issued.toLocaleDateString(lang === "fr" ? "fr-FR" : lang === "ar" ? "ar-DZ" : "en-GB", {
-    day: "2-digit",
-    month: "long",
-    year: "numeric",
-  });
+  const issuedStr = state.issuedAt
+    ? new Date(state.issuedAt).toLocaleDateString(localeOf(lang), {
+        day: "2-digit",
+        month: "long",
+        year: "numeric",
+      })
+    : "—";
 
   const visitedEras = state.visits.era
     .map((id) => eras.find((e) => e.id === id))
@@ -130,15 +163,47 @@ function PassportPage() {
     .map((id) => figures.find((f) => f.id === id))
     .filter(Boolean) as typeof figures;
 
-  const totalVisits =
-    state.visits.era.length +
-    state.visits.region.length +
-    state.visits.figure.length +
-    state.visits.culture.length;
+  const overall = Math.round(
+    (Math.min(1, visitedEras.length / Math.max(1, eras.length)) +
+      Math.min(1, visitedRegions.length / Math.max(1, mapRegions.length)) +
+      Math.min(1, stamps.length ? earnedStamps.length / stamps.length : 0) +
+      Math.min(1, quizzes / Math.max(1, eras.length))) *
+      25,
+  );
 
-  const handlePrint = () => {
+  const handlePrint = useCallback(() => {
     if (typeof window !== "undefined") window.print();
-  };
+  }, []);
+
+  const handleDownload = useCallback(async () => {
+    if (typeof document === "undefined") return;
+    const node = document.getElementById("passport-print");
+    if (!node) return;
+    setDownloading(true);
+    try {
+      const [{ default: html2canvas }, { jsPDF }] = await Promise.all([
+        import("html2canvas-pro"),
+        import("jspdf"),
+      ]);
+      const canvas = await html2canvas(node, { scale: 2, backgroundColor: "#fbf5e9" });
+      const img = canvas.toDataURL("image/jpeg", 0.94);
+      const pdf = new jsPDF({ orientation: "landscape", unit: "mm", format: "a4" });
+      const pw = pdf.internal.pageSize.getWidth();
+      const ph = pdf.internal.pageSize.getHeight();
+      const margin = 10;
+      const maxW = pw - margin * 2;
+      const maxH = ph - margin * 2;
+      const ratio = Math.min(maxW / canvas.width, maxH / canvas.height);
+      const w = canvas.width * ratio;
+      const h = canvas.height * ratio;
+      pdf.addImage(img, "JPEG", (pw - w) / 2, (ph - h) / 2, w, h);
+      pdf.save(`dz-odyssey-passport-${state.visitorId}.pdf`);
+    } catch {
+      handlePrint();
+    } finally {
+      setDownloading(false);
+    }
+  }, [handlePrint, state.visitorId]);
 
   const startEdit = () => {
     setNameInput(state.visitorName ?? "");
@@ -150,290 +215,372 @@ function PassportPage() {
     setEditing(false);
   };
 
+  const displayName = state.visitorName?.trim() || tri(lang, TXT.noName);
+  const firstEra = eras[0];
+
   return (
     <div className="min-h-dvh bg-background">
       <div className="no-print">
         <Header />
       </div>
 
-      <main id="main" tabIndex={-1} className="max-w-5xl mx-auto px-3 sm:px-6 py-6 sm:py-10">
+      <main id="main" tabIndex={-1} className="mx-auto w-full max-w-4xl px-4 sm:px-6 py-6 sm:py-10">
         {/* Toolbar */}
-        <div className="no-print mb-5 flex flex-wrap items-center justify-between gap-3">
-          <div>
-            <p className="text-[11px] uppercase tracking-[0.28em] text-muted-foreground" style={{ fontFamily: SERIF }}>
-              DZ Odyssey · Museum of Memory
-            </p>
-            <h1 className="text-2xl sm:text-3xl font-semibold text-foreground" style={{ fontFamily: SERIF }}>
-              {tri(lang, TXT.title)}
-            </h1>
-          </div>
-          <div className="flex items-center gap-2">
-            <button
-              onClick={startEdit}
-              className="rounded-full border border-border bg-card px-4 py-2 text-sm font-medium text-foreground hover:bg-muted transition"
-            >
-              {tri(lang, TXT.editName)}
-            </button>
-            <button
-              onClick={handlePrint}
-              className="rounded-full bg-gradient-to-b from-amber-300 to-amber-500 px-4 py-2 text-sm font-semibold text-[#1a1206] shadow-[0_6px_18px_-6px_rgba(251,191,36,0.55)] hover:brightness-105 transition"
-            >
-              {tri(lang, TXT.export)}
-            </button>
-          </div>
+        <div className="no-print mb-6 flex flex-wrap items-center justify-center gap-2 sm:justify-end">
+          <ToolbarButton onClick={startEdit} icon={<UserPen className="h-4 w-4" aria-hidden />}>
+            {tri(lang, TXT.setVisitorName)}
+          </ToolbarButton>
+          <ToolbarButton
+            onClick={handleDownload}
+            primary
+            disabled={downloading}
+            icon={<Download className="h-4 w-4" aria-hidden />}
+          >
+            {downloading ? tri(lang, TXT.preparing) : tri(lang, TXT.download)}
+          </ToolbarButton>
+          <ToolbarButton onClick={handlePrint} icon={<Printer className="h-4 w-4" aria-hidden />}>
+            {tri(lang, TXT.print)}
+          </ToolbarButton>
         </div>
 
-        {/* Passport booklet */}
+        {/* Booklet */}
         <article
           id="passport-print"
-          className="relative rounded-3xl overflow-hidden shadow-[0_30px_80px_-40px_rgba(0,0,0,0.7)]"
-          style={{
-            background:
-              "radial-gradient(120% 80% at 50% 0%, #1c140a 0%, #0e0906 60%, #070503 100%)",
-          }}
+          className="relative overflow-hidden rounded-lg border border-border bg-card shadow-[0_18px_40px_-32px_rgba(60,40,20,0.55)]"
         >
-          {/* Gold foil border */}
-          <div
-            aria-hidden
-            className="pointer-events-none absolute inset-0 rounded-3xl"
-            style={{
-              padding: 2,
-              background:
-                "linear-gradient(135deg, #b8862a 0%, #f7e18a 30%, #eecb63 50%, #b8862a 70%, #f6df85 100%)",
-              WebkitMask:
-                "linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0)",
-              WebkitMaskComposite: "xor",
-              maskComposite: "exclude",
-            }}
-          />
-          <div
-            aria-hidden
-            className="pointer-events-none absolute inset-3 rounded-2xl border border-amber-300/25"
-          />
-
-          {/* Header face */}
-          <div className="relative px-6 sm:px-10 pt-10 pb-8">
-            <div
-              aria-hidden
-              className="absolute -top-24 -right-24 h-64 w-64 rounded-full opacity-30 blur-3xl"
-              style={{ background: "radial-gradient(circle, #f6df85 0%, transparent 60%)" }}
-            />
-            <div className="flex items-start justify-between gap-6">
-              <div className="min-w-0">
-                <p
-                  className="text-[10px] uppercase tracking-[0.4em] text-amber-200/70"
-                  style={{ fontFamily: SERIF }}
-                >
-                  République · الجمهورية · Republic
-                </p>
-                <h2
-                  className="mt-2 text-3xl sm:text-4xl font-semibold text-amber-100 leading-tight"
-                  style={{ fontFamily: SERIF, letterSpacing: "0.02em" }}
-                >
-                  {tri(lang, TXT.title)}
-                </h2>
-                <p
-                  className="mt-1 text-sm text-amber-200/70"
-                  style={{ fontFamily: SERIF, fontStyle: "italic" }}
-                >
-                  {tri(lang, TXT.subtitle)}
-                </p>
+          <GeometricBand />
+          <div className="grid grid-cols-1 md:grid-cols-2">
+            {/* LEFT PAGE: identity */}
+            <section className="relative p-6 sm:p-8 border-b border-border md:border-b-0 md:border-e md:border-e-border">
+              <div className="flex items-start justify-between gap-4">
+                <div className="min-w-0">
+                  <p
+                    className="text-[10px] font-semibold uppercase tracking-[0.34em] text-primary"
+                    style={{ fontFamily: SERIF }}
+                  >
+                    {tri(lang, TXT.brand)}
+                  </p>
+                  <h1
+                    className="mt-2 text-xl sm:text-2xl font-semibold leading-tight text-foreground"
+                    style={{ fontFamily: SERIF }}
+                  >
+                    {tri(lang, TXT.title)}
+                  </h1>
+                  <p className="mt-1 text-sm italic text-muted-foreground" style={{ fontFamily: SERIF }}>
+                    {tri(lang, TXT.tagline)}
+                  </p>
+                </div>
+                <BrandMark />
               </div>
-              <div className="shrink-0">
-                <GoldMedallion />
+
+              <dl className="mt-7 space-y-4">
+                <Field label={tri(lang, TXT.visitor)}>
+                  <span className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+                    <span
+                      className={
+                        "text-lg font-semibold " +
+                        (state.visitorName?.trim() ? "text-foreground" : "text-muted-foreground italic")
+                      }
+                      style={{ fontFamily: SERIF }}
+                    >
+                      {displayName}
+                    </span>
+                    <button
+                      type="button"
+                      onClick={startEdit}
+                      className="no-print rounded-sm text-xs font-medium text-primary underline underline-offset-4 hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+                    >
+                      {tri(lang, TXT.editName)}
+                    </button>
+                  </span>
+                </Field>
+                <div className="grid grid-cols-2 gap-4">
+                  <Field label={tri(lang, TXT.passportNo)}>
+                    <span className="text-base tracking-[0.18em] text-foreground" style={{ fontFamily: SERIF }}>
+                      {state.visitorId}
+                    </span>
+                  </Field>
+                  <Field label={tri(lang, TXT.issued)}>
+                    <span className="text-base text-foreground" style={{ fontFamily: SERIF }}>
+                      {issuedStr}
+                    </span>
+                  </Field>
+                </div>
+                <div className="grid grid-cols-2 gap-4">
+                  <Field label={tri(lang, TXT.rank)}>
+                    <span className="text-base text-foreground" style={{ fontFamily: SERIF }}>
+                      {level.title}
+                    </span>
+                  </Field>
+                  <Field label={tri(lang, TXT.xp)}>
+                    <span className="text-base text-foreground" style={{ fontFamily: SERIF }}>
+                      {progress.xp}{" "}
+                      <span className="text-xs text-muted-foreground">{tri(lang, TXT.xpUnit)}</span>
+                    </span>
+                  </Field>
+                </div>
+              </dl>
+
+              {/* Curator attribution + seal */}
+              <div className="mt-8 flex items-end justify-between gap-4 border-t border-border pt-5">
+                <div>
+                  <p
+                    className="text-[10px] font-semibold uppercase tracking-[0.3em] text-muted-foreground"
+                    style={{ fontFamily: SERIF }}
+                  >
+                    {tri(lang, TXT.curatedBy)}
+                  </p>
+                  <p
+                    className="mt-1.5 text-lg tracking-[0.06em] text-foreground"
+                    style={{ fontFamily: SERIF }}
+                  >
+                    {CURATOR_NAME}
+                  </p>
+                  <p className="mt-0.5 text-xs text-muted-foreground">{tri(lang, TXT.curatorRole)}</p>
+                </div>
+                <MuseumSeal label={tri(lang, TXT.museumMark)} />
               </div>
-            </div>
+            </section>
 
-            {/* Identity strip */}
-            <div className="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-4">
-              <IdField label={tri(lang, TXT.visitor)}>
-                <span className="text-amber-100" style={{ fontFamily: SERIF }}>
-                  {state.visitorName || ", "}
-                </span>
-              </IdField>
-              <IdField label={tri(lang, TXT.passportNo)}>
-                <span className="tracking-widest text-amber-100" style={{ fontFamily: SERIF }}>
-                  {state.visitorId}
-                </span>
-              </IdField>
-              <IdField label={tri(lang, TXT.issued)}>
-                <span className="text-amber-100" style={{ fontFamily: SERIF }}>
-                  {issuedStr}
-                </span>
-              </IdField>
-            </div>
+            {/* RIGHT PAGE: journey */}
+            <section className="relative p-6 sm:p-8">
+              <h2
+                className="text-[11px] font-semibold uppercase tracking-[0.3em] text-primary"
+                style={{ fontFamily: SERIF }}
+              >
+                {tri(lang, TXT.journey)}
+              </h2>
 
-            {/* Rank + XP */}
-            <div className="mt-6 grid grid-cols-2 sm:grid-cols-5 gap-3">
-              <StatTile label={tri(lang, TXT.level)} value={String(level.level)} sub={level.title} />
-              <StatTile label={tri(lang, TXT.xp)} value={String(progress.xp)} />
-              <StatTile label={tri(lang, TXT.eras)} value={String(state.visits.era.length)} sub={`/ ${eras.length}`} />
-              <StatTile label={tri(lang, TXT.regions)} value={String(state.visits.region.length)} sub={`/ ${mapRegions.length}`} />
-              <StatTile label={tri(lang, TXT.figuresLbl)} value={String(state.visits.figure.length)} />
-            </div>
-          </div>
-
-          <Divider />
-
-          {/* Stamps grid */}
-          <section className="relative px-6 sm:px-10 py-8">
-            <SectionTitle
-              en={TXT.stamps.en}
-              fr={TXT.stamps.fr}
-              ar={TXT.stamps.ar}
-              lang={lang}
-              suffix={`${earnedStamps.length} ${tri(lang, TXT.earnedOf)} ${stamps.length}`}
-            />
-            {totalVisits === 0 && earnedStamps.length === 0 ? (
-              <div className="mt-6 rounded-2xl border border-amber-300/20 bg-amber-100/5 p-6 text-center">
-                <p className="text-amber-100/80" style={{ fontFamily: SERIF }}>
-                  {tri(lang, TXT.empty)}
-                </p>
-                <Link
-                  to="/timeline"
-                  className="no-print mt-4 inline-flex rounded-full bg-gradient-to-b from-amber-300 to-amber-500 px-5 py-2 text-sm font-semibold text-[#1a1206] hover:brightness-105 transition"
-                >
-                  {tri(lang, TXT.startExploring)}
-                </Link>
-              </div>
-            ) : (
-              <div className="mt-5 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
-                {stamps.map((s) => (
-                  <StampChip key={s.id} stamp={s} lang={lang} />
-                ))}
-              </div>
-            )}
-            <p
-              className="mt-6 text-center text-[11px] uppercase tracking-[0.28em] text-amber-200/50"
-              style={{ fontFamily: SERIF }}
-            >
-              {tri(lang, TXT.legend)}
-            </p>
-          </section>
-
-          <Divider />
-
-          {/* Journey pages */}
-          <section className="relative px-6 sm:px-10 py-8">
-            <SectionTitle en={TXT.yourJourney.en} fr={TXT.yourJourney.fr} ar={TXT.yourJourney.ar} lang={lang} />
-
-            <div className="mt-5 grid grid-cols-1 md:grid-cols-3 gap-5">
-              <JourneyColumn title={tri(lang, TXT.visitedEras)} count={visitedEras.length}>
-                {visitedEras.length === 0 ? (
-                  <EmptyLine lang={lang} />
-                ) : (
-                  visitedEras.map((e) => (
-                    <JourneyLine
-                      key={e.id}
-                      to={`/era/${e.id}`}
-                      title={t(e.title, lang)}
-                      sub={e.dateRange}
-                      emoji={e.emoji}
-                    />
-                  ))
-                )}
-              </JourneyColumn>
-              <JourneyColumn title={tri(lang, TXT.visitedRegions)} count={visitedRegions.length}>
-                {visitedRegions.length === 0 ? (
-                  <EmptyLine lang={lang} />
-                ) : (
-                  visitedRegions.map((r) => (
-                    <JourneyLine
-                      key={r.id}
-                      to={`/region/${r.id}`}
-                      title={t(r.name, lang)}
-                      sub={t(r.focus, lang)}
-                      emoji={r.emoji}
-                    />
-                  ))
-                )}
-              </JourneyColumn>
-              <JourneyColumn title={tri(lang, TXT.visitedFigures)} count={visitedFigures.length}>
-                {visitedFigures.length === 0 ? (
-                  <EmptyLine lang={lang} />
-                ) : (
-                  visitedFigures.slice(0, 24).map((f) => (
-                    <JourneyLine
-                      key={f.id}
-                      to={`/figures/${f.id}`}
-                      title={t(f.displayName, lang)}
-                      sub={t(f.era, lang)}
-                      emoji={f.emoji}
-                    />
-                  ))
-                )}
-              </JourneyColumn>
-            </div>
-
-            <div className="mt-4 grid grid-cols-2 gap-3 text-center">
-              <MiniStat label={tri(lang, TXT.cultureLbl)} value={state.visits.culture.length} />
-              <MiniStat label={tri(lang, TXT.quizzes)} value={quizzes} />
-            </div>
-          </section>
-
-          {/* Signature footer */}
-          <div className="relative px-6 sm:px-10 pb-10 pt-2">
-            <div className="flex items-end justify-between gap-6">
-              <div>
-                <p className="text-[10px] uppercase tracking-[0.32em] text-amber-200/60" style={{ fontFamily: SERIF }}>
-                  {tri(lang, TXT.curator)}
-                </p>
-                <p
-                  className="mt-1 text-xl text-amber-100"
-                  style={{ fontFamily: "Snell Roundhand, 'Brush Script MT', cursive" }}
-                >
-                  El-Karim al-Djazairi
-                </p>
-                <div className="mt-1 h-px w-40 bg-gradient-to-r from-amber-300/60 to-transparent" />
-              </div>
-              <div className="text-right">
-                <p className="text-[10px] uppercase tracking-[0.32em] text-amber-200/60" style={{ fontFamily: SERIF }}>
-                  {tri(lang, TXT.officialSeal)}
-                </p>
-                <div className="mt-2 flex justify-end">
-                  <OfficialSeal date={issuedStr} />
+              <div className="mt-5 space-y-3">
+                <ProgressRow
+                  label={tri(lang, TXT.eras)}
+                  value={visitedEras.length}
+                  total={eras.length}
+                />
+                <ProgressRow
+                  label={tri(lang, TXT.regions)}
+                  value={visitedRegions.length}
+                  total={mapRegions.length}
+                />
+                <ProgressRow label={tri(lang, TXT.figuresLbl)} value={state.visits.figure.length} />
+                <ProgressRow label={tri(lang, TXT.cultureLbl)} value={state.visits.culture.length} />
+                <ProgressRow label={tri(lang, TXT.quizzes)} value={quizzes} total={eras.length} />
+                <div className="pt-2">
+                  <div className="flex items-baseline justify-between gap-3">
+                    <span
+                      className="text-xs font-semibold uppercase tracking-[0.18em] text-foreground"
+                      style={{ fontFamily: SERIF }}
+                    >
+                      {tri(lang, TXT.overall)}
+                    </span>
+                    <span className="text-sm font-semibold text-foreground">{overall}%</span>
+                  </div>
+                  <div
+                    className="mt-2 h-2 w-full overflow-hidden rounded-full bg-muted"
+                    role="progressbar"
+                    aria-valuenow={overall}
+                    aria-valuemin={0}
+                    aria-valuemax={100}
+                    aria-label={tri(lang, TXT.overall)}
+                  >
+                    <div className="h-full rounded-full bg-primary" style={{ width: `${overall}%` }} />
+                  </div>
                 </div>
               </div>
-            </div>
+
+              {/* Stamps */}
+              <div className="mt-8 border-t border-border pt-5">
+                <div className="flex items-baseline justify-between gap-3">
+                  <h3
+                    className="text-[11px] font-semibold uppercase tracking-[0.28em] text-primary"
+                    style={{ fontFamily: SERIF }}
+                  >
+                    {tri(lang, TXT.stamps)}
+                  </h3>
+                  <span className="text-xs text-muted-foreground">
+                    {earnedStamps.length} {tri(lang, TXT.earnedOf)} {stamps.length}
+                  </span>
+                </div>
+
+                {earnedStamps.length === 0 && (
+                  <div className="mt-4 rounded-md border border-border bg-muted/50 p-4 text-center">
+                    <p className="text-sm text-foreground" style={{ fontFamily: SERIF }}>
+                      {tri(lang, TXT.welcome)}
+                    </p>
+                    <Link
+                      to="/timeline"
+                      className="no-print mt-3 inline-flex min-h-11 items-center rounded-full bg-primary px-5 text-sm font-semibold text-primary-foreground transition hover:brightness-110 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+                    >
+                      {tri(lang, TXT.beginExploring)}
+                    </Link>
+                  </div>
+                )}
+
+                <ul className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-3">
+                  {stamps.map((s) => (
+                    <StampCard key={s.id} stamp={s} lang={lang} />
+                  ))}
+                </ul>
+                <p className="mt-4 text-center text-[11px] italic text-muted-foreground">
+                  {tri(lang, TXT.legend)}
+                </p>
+              </div>
+            </section>
           </div>
+          <GeometricBand />
         </article>
 
-        <div className="no-print mt-4 flex justify-center">
-          <button
-            onClick={handlePrint}
-            className="rounded-full border border-amber-300/40 px-5 py-2 text-sm text-amber-100 hover:bg-amber-300/10 transition"
-          >
-            {tri(lang, TXT.print)}
-          </button>
-        </div>
+        {/* Your Journey */}
+        <section className="mt-10">
+          <h2 className="text-lg font-semibold text-foreground" style={{ fontFamily: SERIF }}>
+            {tri(lang, TXT.yourJourney)}
+          </h2>
+          <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            <JourneyCategory
+              title={tri(lang, TXT.catEras)}
+              count={visitedEras.length}
+              emptyText={tri(lang, TXT.emptyEras)}
+              emptyLink={{
+                to: "/timeline",
+                label:
+                  lang === "fr"
+                    ? `Commencer par ${t(firstEra.title, "fr")}`
+                    : lang === "ar"
+                      ? `ابدأ بـ ${t(firstEra.title, "ar")}`
+                      : `Begin with ${t(firstEra.title, "en")}`,
+              }}
+              items={visitedEras.map((e) => ({
+                key: e.id,
+                to: `/era/${e.id}`,
+                title: t(e.title, lang),
+                sub: e.dateRange,
+              }))}
+            />
+            <JourneyCategory
+              title={tri(lang, TXT.catRegions)}
+              count={visitedRegions.length}
+              emptyText={tri(lang, TXT.emptyRegions)}
+              emptyLink={{
+                to: "/atlas",
+                label:
+                  lang === "fr"
+                    ? "Ouvrir l'atlas historique"
+                    : lang === "ar"
+                      ? "افتح الأطلس التاريخي"
+                      : "Open the historical atlas",
+              }}
+              items={visitedRegions.map((r) => ({
+                key: r.id,
+                to: `/region/${r.id}`,
+                title: t(r.name, lang),
+                sub: t(r.focus, lang),
+              }))}
+            />
+            <JourneyCategory
+              title={tri(lang, TXT.catFigures)}
+              count={visitedFigures.length}
+              emptyText={tri(lang, TXT.emptyFigures)}
+              emptyLink={{
+                to: "/figures",
+                label:
+                  lang === "fr"
+                    ? "Entrer dans le panthéon"
+                    : lang === "ar"
+                      ? "ادخل قاعة الشخصيات"
+                      : "Enter the hall of figures",
+              }}
+              items={visitedFigures.slice(0, 24).map((f) => ({
+                key: f.id,
+                to: `/figures/${f.id}`,
+                title: t(f.displayName, lang),
+                sub: t(f.era, lang),
+              }))}
+            />
+            <JourneyCategory
+              title={tri(lang, TXT.catCulture)}
+              count={state.visits.culture.length}
+              emptyText={tri(lang, TXT.emptyCulture)}
+              emptyLink={{
+                to: "/culture",
+                label:
+                  lang === "fr"
+                    ? "Découvrir les expositions culturelles"
+                    : lang === "ar"
+                      ? "اكتشف المعارض الثقافية"
+                      : "Discover the culture exhibits",
+              }}
+              items={state.visits.culture.slice(0, 24).map((id) => ({
+                key: id,
+                to: "/culture",
+                title: prettyCulture(id),
+              }))}
+            />
+            <JourneyCategory
+              title={tri(lang, TXT.catQuizzes)}
+              count={quizzes}
+              emptyText={tri(lang, TXT.emptyQuizzes)}
+              emptyLink={{
+                to: `/quiz/${firstEra.id}`,
+                label:
+                  lang === "fr"
+                    ? `Passer le quiz : ${t(firstEra.title, "fr")}`
+                    : lang === "ar"
+                      ? `اجتز اختبار: ${t(firstEra.title, "ar")}`
+                      : `Take the quiz: ${t(firstEra.title, "en")}`,
+              }}
+              items={quizEntries.slice(0, 24).map(([id, c]) => {
+                const era = eras.find((e) => e.id === id);
+                return {
+                  key: id,
+                  to: `/quiz/${id}`,
+                  title: era ? t(era.title, lang) : id,
+                  sub: c && c.total ? `${c.bestScore} / ${c.total}` : undefined,
+                };
+              })}
+            />
+          </div>
+        </section>
       </main>
 
       {/* Edit name dialog */}
       {editing && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 px-4 no-print">
-          <div className="w-full max-w-sm rounded-2xl border border-amber-300/30 bg-[#12100c] p-5 shadow-2xl">
-            <p className="text-sm uppercase tracking-[0.24em] text-amber-200/70" style={{ fontFamily: SERIF }}>
-              {tri(lang, TXT.editName)}
+        <div
+          className="no-print fixed inset-0 z-50 flex items-center justify-center bg-foreground/50 px-4"
+          role="dialog"
+          aria-modal="true"
+          aria-label={tri(lang, TXT.setVisitorName)}
+        >
+          <div className="w-full max-w-sm rounded-lg border border-border bg-card p-5 shadow-xl">
+            <p
+              className="text-xs font-semibold uppercase tracking-[0.22em] text-muted-foreground"
+              style={{ fontFamily: SERIF }}
+            >
+              {tri(lang, TXT.setVisitorName)}
             </p>
             <input
               autoFocus
               value={nameInput}
               onChange={(e) => setNameInput(e.target.value)}
+              onKeyDown={(e) => {
+                if (e.key === "Enter") saveName();
+                if (e.key === "Escape") setEditing(false);
+              }}
               placeholder={tri(lang, TXT.namePlaceholder)}
-              className="mt-3 w-full rounded-lg border border-amber-300/25 bg-black/40 px-3 py-2 text-amber-100 outline-none focus:border-amber-300/70"
+              aria-label={tri(lang, TXT.namePlaceholder)}
+              className="mt-3 w-full rounded-md border border-border bg-background px-3 py-2 text-foreground outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
               style={{ fontFamily: SERIF }}
               maxLength={40}
             />
             <div className="mt-4 flex justify-end gap-2">
               <button
                 onClick={() => setEditing(false)}
-                className="rounded-full border border-amber-300/30 px-4 py-1.5 text-sm text-amber-100 hover:bg-amber-300/10"
+                className="min-h-11 rounded-full border border-border px-4 text-sm text-foreground hover:bg-muted"
               >
                 {tri(lang, TXT.cancel)}
               </button>
               <button
                 onClick={saveName}
-                className="rounded-full bg-gradient-to-b from-amber-300 to-amber-500 px-4 py-1.5 text-sm font-semibold text-[#1a1206] hover:brightness-105"
+                className="min-h-11 rounded-full bg-primary px-5 text-sm font-semibold text-primary-foreground hover:brightness-110"
               >
                 {tri(lang, TXT.save)}
               </button>
@@ -442,15 +589,23 @@ function PassportPage() {
         </div>
       )}
 
-      {/* Print styling */}
+      {/* Print styling: only the booklet is printed */}
       <style>{`
         @media print {
-          @page { size: A4; margin: 12mm; }
+          @page { size: A4 landscape; margin: 10mm; }
           html, body { background: #ffffff !important; }
-          .no-print { display: none !important; }
+          body * { visibility: hidden !important; }
+          #passport-print, #passport-print * { visibility: visible !important; }
+          .no-print, .no-print * { display: none !important; }
           #passport-print {
+            position: absolute !important;
+            inset-inline-start: 0;
+            top: 0;
+            width: 100%;
             box-shadow: none !important;
+            border-color: #b9a887 !important;
             break-inside: avoid;
+            page-break-inside: avoid;
           }
         }
       `}</style>
@@ -458,159 +613,156 @@ function PassportPage() {
   );
 }
 
-// ---------- Sub-components ----------
+// ---------- helpers ----------
 
-function IdField({ label, children }: { label: string; children: React.ReactNode }) {
-  return (
-    <div className="rounded-xl border border-amber-300/20 bg-black/30 px-4 py-3">
-      <p className="text-[10px] uppercase tracking-[0.32em] text-amber-200/60" style={{ fontFamily: SERIF }}>
-        {label}
-      </p>
-      <div className="mt-1 text-base">{children}</div>
-    </div>
-  );
+function prettyCulture(id: string) {
+  const raw = id.includes(":") ? id.split(":").slice(1).join(":") : id;
+  return raw
+    .split(/[-_]/)
+    .filter(Boolean)
+    .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
+    .join(" ");
 }
 
-function StatTile({ label, value, sub }: { label: string; value: string; sub?: string }) {
-  return (
-    <div className="rounded-xl border border-amber-300/15 bg-gradient-to-b from-amber-100/[0.04] to-transparent px-3 py-3 text-center">
-      <p className="text-[10px] uppercase tracking-[0.28em] text-amber-200/60" style={{ fontFamily: SERIF }}>
-        {label}
-      </p>
-      <p className="mt-1 text-xl font-semibold text-amber-100" style={{ fontFamily: SERIF }}>
-        {value}
-        {sub ? <span className="text-xs font-normal text-amber-200/60"> {sub}</span> : null}
-      </p>
-    </div>
-  );
-}
+// ---------- sub-components ----------
 
-function MiniStat({ label, value }: { label: string; value: number }) {
-  return (
-    <div className="rounded-xl border border-amber-300/15 bg-black/20 px-3 py-2">
-      <p className="text-[10px] uppercase tracking-[0.28em] text-amber-200/60" style={{ fontFamily: SERIF }}>
-        {label}
-      </p>
-      <p className="text-lg text-amber-100" style={{ fontFamily: SERIF }}>{value}</p>
-    </div>
-  );
-}
-
-function Divider() {
-  return (
-    <div
-      aria-hidden
-      className="relative mx-6 sm:mx-10 h-px"
-      style={{
-        background:
-          "linear-gradient(90deg, transparent 0%, rgba(246,223,133,0.5) 20%, rgba(246,223,133,0.8) 50%, rgba(246,223,133,0.5) 80%, transparent 100%)",
-      }}
-    />
-  );
-}
-
-function SectionTitle({
-  en,
-  fr,
-  ar,
-  lang,
-  suffix,
+function ToolbarButton({
+  onClick,
+  children,
+  icon,
+  primary,
+  disabled,
 }: {
-  en: string;
-  fr: string;
-  ar: string;
-  lang: Lang;
-  suffix?: string;
+  onClick: () => void;
+  children: React.ReactNode;
+  icon: React.ReactNode;
+  primary?: boolean;
+  disabled?: boolean;
 }) {
   return (
-    <div className="flex items-baseline justify-between gap-3">
-      <h3 className="text-lg sm:text-xl font-semibold text-amber-100" style={{ fontFamily: SERIF }}>
-        {lang === "fr" ? fr : lang === "ar" ? ar : en}
-      </h3>
-      {suffix ? (
-        <span className="text-xs text-amber-200/60" style={{ fontFamily: SERIF }}>
-          {suffix}
-        </span>
-      ) : null}
+    <button
+      type="button"
+      onClick={onClick}
+      disabled={disabled}
+      className={
+        "inline-flex min-h-11 items-center gap-2 rounded-full px-4 text-sm font-medium transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring disabled:opacity-60 " +
+        (primary
+          ? "bg-primary text-primary-foreground hover:brightness-110"
+          : "border border-border bg-card text-foreground hover:bg-muted")
+      }
+    >
+      {icon}
+      <span>{children}</span>
+    </button>
+  );
+}
+
+function Field({ label, children }: { label: string; children: React.ReactNode }) {
+  return (
+    <div>
+      <dt
+        className="text-[10px] font-semibold uppercase tracking-[0.28em] text-muted-foreground"
+        style={{ fontFamily: SERIF }}
+      >
+        {label}
+      </dt>
+      <dd className="mt-1">{children}</dd>
     </div>
   );
 }
 
-function StampChip({ stamp, lang }: { stamp: Stamp; lang: Lang }) {
-  const earned = stamp.earned;
+function ProgressRow({ label, value, total }: { label: string; value: number; total?: number }) {
+  const pct = total ? Math.min(100, Math.round((value / total) * 100)) : value > 0 ? 100 : 0;
   return (
-    <div
+    <div>
+      <div className="flex items-baseline justify-between gap-3">
+        <span className="text-sm text-foreground">{label}</span>
+        <span className="text-sm font-semibold text-foreground" style={{ fontFamily: SERIF }}>
+          {total ? `${value} / ${total}` : value}
+        </span>
+      </div>
+      <div className="mt-1.5 h-1.5 w-full overflow-hidden rounded-full bg-muted">
+        <div className="h-full rounded-full bg-secondary" style={{ width: `${pct}%` }} />
+      </div>
+    </div>
+  );
+}
+
+function StampCard({ stamp, lang }: { stamp: Stamp; lang: Lang }) {
+  const earned = stamp.earned;
+  const title = t(stamp.title, lang);
+  const dateStr = stamp.earnedAt
+    ? new Date(stamp.earnedAt).toLocaleDateString(localeOf(lang), {
+        day: "2-digit",
+        month: "short",
+        year: "numeric",
+      })
+    : null;
+  const stateLabel = earned ? tri(lang, TXT.earned) : tri(lang, TXT.locked);
+  return (
+    <li
       className={
-        "relative rounded-2xl border p-4 text-center transition " +
-        (earned
-          ? "border-amber-300/60 bg-gradient-to-b from-amber-100/10 to-amber-500/5 shadow-[0_10px_30px_-16px_rgba(246,223,133,0.6)]"
-          : "border-amber-300/10 bg-black/20 opacity-70")
+        "flex flex-col items-center rounded-md border p-3 text-center " +
+        (earned ? "border-accent bg-accent/10" : "border-dashed border-border bg-muted/40")
       }
     >
-      <div className="mx-auto flex h-16 w-16 items-center justify-center">
-        <StampSeal earned={earned} />
-      </div>
+      <StampSeal earned={earned} label={`${title}, ${stateLabel}`} />
       <p
         className={
-          "mt-2 text-xs font-semibold leading-snug " +
-          (earned ? "text-amber-100" : "text-amber-200/50")
+          "mt-2 text-[11px] font-semibold leading-snug " +
+          (earned ? "text-foreground" : "text-muted-foreground")
         }
         style={{ fontFamily: SERIF }}
       >
-        {t(stamp.title, lang)}
+        {title}
       </p>
-      {!earned && (
-        <p className="mt-1 text-[10px] uppercase tracking-widest text-amber-200/40" style={{ fontFamily: SERIF }}>
-          {t(stamp.hint, lang)}
-        </p>
-      )}
+      <p className="mt-1 text-[10px] uppercase tracking-[0.16em] text-muted-foreground">
+        {earned ? (dateStr ? `${stateLabel} · ${dateStr}` : stateLabel) : stateLabel}
+      </p>
       {!earned && stamp.progress > 0 && stamp.progress < 1 && (
-        <div className="mt-2 h-1 w-full overflow-hidden rounded-full bg-amber-200/10">
+        <div className="mt-2 h-1 w-full overflow-hidden rounded-full bg-muted">
           <div
-            className="h-full bg-gradient-to-r from-amber-300 to-amber-500"
+            className="h-full rounded-full bg-secondary"
             style={{ width: `${Math.round(stamp.progress * 100)}%` }}
           />
         </div>
       )}
-    </div>
+    </li>
   );
 }
 
-function StampSeal({ earned }: { earned: boolean }) {
+function StampSeal({ earned, label }: { earned: boolean; label: string }) {
   return (
-    <svg viewBox="0 0 64 64" className="h-full w-full">
-      <defs>
-        <radialGradient id="stampGold" cx="50%" cy="35%" r="65%">
-          <stop offset="0%" stopColor="#fff2b8" />
-          <stop offset="55%" stopColor="#f0c14b" />
-          <stop offset="100%" stopColor="#8a5a12" />
-        </radialGradient>
-      </defs>
+    <svg viewBox="0 0 64 64" className="h-12 w-12" role="img" aria-label={label}>
       <circle
         cx="32"
         cy="32"
         r="28"
-        fill={earned ? "url(#stampGold)" : "transparent"}
-        stroke={earned ? "#f6df85" : "rgba(246,223,133,0.35)"}
-        strokeWidth="1.4"
-        strokeDasharray={earned ? undefined : "3 3"}
+        fill={earned ? "currentColor" : "none"}
+        className={earned ? "text-accent/35" : ""}
+        stroke="currentColor"
+        strokeWidth="1.6"
+        strokeDasharray={earned ? undefined : "4 4"}
+        style={{ color: "var(--color-foreground)", opacity: earned ? 1 : 0.45 }}
       />
       <circle
         cx="32"
         cy="32"
         r="22"
         fill="none"
-        stroke={earned ? "rgba(60,30,5,0.55)" : "rgba(246,223,133,0.35)"}
+        stroke="currentColor"
         strokeWidth="0.8"
+        style={{ color: "var(--color-foreground)", opacity: earned ? 0.65 : 0.3 }}
       />
       <text
         x="32"
-        y="37"
+        y="39"
         textAnchor="middle"
         fontFamily="Georgia, serif"
         fontSize="20"
-        fill={earned ? "#3a2405" : "rgba(246,223,133,0.5)"}
         fontWeight="700"
+        fill="currentColor"
+        style={{ color: "var(--color-foreground)", opacity: earned ? 1 : 0.45 }}
       >
         ⵣ
       </text>
@@ -618,113 +770,131 @@ function StampSeal({ earned }: { earned: boolean }) {
   );
 }
 
-function GoldMedallion() {
+function BrandMark() {
   return (
-    <svg viewBox="0 0 96 96" className="h-20 w-20">
-      <defs>
-        <radialGradient id="medal" cx="50%" cy="35%" r="65%">
-          <stop offset="0%" stopColor="#fff2b8" />
-          <stop offset="60%" stopColor="#e9c15a" />
-          <stop offset="100%" stopColor="#7a4d0c" />
-        </radialGradient>
-      </defs>
-      <circle cx="48" cy="48" r="44" fill="url(#medal)" stroke="#f6df85" strokeWidth="1.5" />
-      <circle cx="48" cy="48" r="36" fill="none" stroke="rgba(58,36,5,0.55)" strokeWidth="0.8" />
-      <text x="48" y="55" textAnchor="middle" fontFamily="Georgia, serif" fontSize="26" fill="#3a2405" fontWeight="700">
-        ⵣ
-      </text>
+    <svg viewBox="0 0 72 72" className="h-14 w-14 shrink-0" aria-hidden focusable="false">
+      <circle
+        cx="36"
+        cy="36"
+        r="33"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.4"
+        style={{ color: "var(--color-primary)" }}
+      />
+      <circle
+        cx="36"
+        cy="36"
+        r="27"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="0.7"
+        style={{ color: "var(--color-primary)", opacity: 0.6 }}
+      />
       <text
-        x="48"
-        y="18"
+        x="36"
+        y="45"
         textAnchor="middle"
         fontFamily="Georgia, serif"
-        fontSize="7"
-        letterSpacing="2"
-        fill="#3a2405"
+        fontSize="26"
+        fontWeight="700"
+        fill="currentColor"
+        style={{ color: "var(--color-primary)" }}
       >
-        DZ · ODYSSEY
-      </text>
-    </svg>
-  );
-}
-
-function OfficialSeal({ date }: { date: string }) {
-  return (
-    <svg viewBox="0 0 100 100" className="h-24 w-24">
-      <defs>
-        <radialGradient id="sealGold" cx="50%" cy="35%" r="70%">
-          <stop offset="0%" stopColor="#fff2b8" />
-          <stop offset="60%" stopColor="#e9c15a" />
-          <stop offset="100%" stopColor="#7a4d0c" />
-        </radialGradient>
-      </defs>
-      <circle cx="50" cy="50" r="46" fill="url(#sealGold)" opacity="0.9" />
-      <circle cx="50" cy="50" r="46" fill="none" stroke="#f6df85" strokeWidth="1.2" />
-      <circle cx="50" cy="50" r="36" fill="none" stroke="rgba(58,36,5,0.6)" strokeWidth="0.6" />
-      <text x="50" y="45" textAnchor="middle" fontFamily="Georgia, serif" fontSize="9" letterSpacing="2" fill="#3a2405">
-        MUSEUM OF MEMORY
-      </text>
-      <text x="50" y="58" textAnchor="middle" fontFamily="Georgia, serif" fontSize="18" fontWeight="700" fill="#3a2405">
         ⵣ
       </text>
-      <text x="50" y="72" textAnchor="middle" fontFamily="Georgia, serif" fontSize="6" letterSpacing="1" fill="#3a2405">
-        {date}
-      </text>
     </svg>
   );
 }
 
-function JourneyColumn({
-  title,
-  count,
-  children,
-}: {
-  title: string;
-  count: number;
-  children: React.ReactNode;
-}) {
+function MuseumSeal({ label }: { label: string }) {
   return (
-    <div className="rounded-2xl border border-amber-300/15 bg-black/25 p-4">
-      <div className="mb-3 flex items-baseline justify-between">
-        <p className="text-[11px] uppercase tracking-[0.28em] text-amber-200/70" style={{ fontFamily: SERIF }}>
-          {title}
-        </p>
-        <span className="text-xs text-amber-200/60" style={{ fontFamily: SERIF }}>{count}</span>
-      </div>
-      <div className="space-y-1.5">{children}</div>
+    <div
+      className="flex h-20 w-20 shrink-0 flex-col items-center justify-center rounded-full border border-accent/70 bg-accent/10 text-center"
+      role="img"
+      aria-label={`DZ Odyssey, ${label}`}
+    >
+      <span className="text-lg leading-none text-foreground" style={{ fontFamily: SERIF }} aria-hidden>
+        ⵣ
+      </span>
+      <span
+        className="mt-1 text-[8px] font-semibold uppercase tracking-[0.14em] text-foreground"
+        style={{ fontFamily: SERIF }}
+        aria-hidden
+      >
+        DZ Odyssey
+      </span>
     </div>
   );
 }
 
-function JourneyLine({
-  to,
-  title,
-  sub,
-  emoji,
-}: {
-  to: string;
-  title: string;
-  sub?: string;
-  emoji?: string;
-}) {
+function GeometricBand() {
   return (
-    <Link
-      to={to}
-      className="flex items-center gap-2 rounded-lg px-2 py-1.5 text-amber-100/90 hover:bg-amber-300/10 transition"
-    >
-      <span aria-hidden className="text-sm">{emoji ?? "✦"}</span>
-      <span className="flex-1 truncate text-sm" style={{ fontFamily: SERIF }}>{title}</span>
-      {sub ? <span className="hidden sm:inline text-[10px] text-amber-200/50">{sub}</span> : null}
-    </Link>
+    <div
+      aria-hidden
+      className="h-2 w-full opacity-70"
+      style={{
+        backgroundImage:
+          "repeating-linear-gradient(135deg, var(--color-accent) 0 6px, transparent 6px 12px), repeating-linear-gradient(45deg, var(--color-primary) 0 6px, transparent 6px 12px)",
+        backgroundSize: "12px 8px",
+      }}
+    />
   );
 }
 
-function EmptyLine({ lang }: { lang: Lang }) {
-  const msg =
-    lang === "fr" ? "Aucune visite" : lang === "ar" ? "لا زيارة بعد" : "No visits yet";
+function JourneyCategory({
+  title,
+  count,
+  items,
+  emptyText,
+  emptyLink,
+}: {
+  title: string;
+  count: number;
+  items: { key: string; to: string; title: string; sub?: string }[];
+  emptyText: string;
+  emptyLink: { to: string; label: string };
+}) {
   return (
-    <p className="text-xs italic text-amber-200/50" style={{ fontFamily: SERIF }}>
-      {msg}
-    </p>
+    <div className="rounded-lg border border-border bg-card p-4">
+      <div className="mb-3 flex items-baseline justify-between">
+        <h3
+          className="text-[11px] font-semibold uppercase tracking-[0.26em] text-primary"
+          style={{ fontFamily: SERIF }}
+        >
+          {title}
+        </h3>
+        <span className="text-xs text-muted-foreground">{count}</span>
+      </div>
+      {items.length === 0 ? (
+        <div>
+          <p className="text-sm text-muted-foreground">{emptyText}</p>
+          <Link
+            to={emptyLink.to}
+            className="mt-1 inline-block text-sm font-medium text-primary underline underline-offset-4 hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+          >
+            {emptyLink.label}
+          </Link>
+        </div>
+      ) : (
+        <ul className="space-y-1">
+          {items.map((it) => (
+            <li key={it.key}>
+              <Link
+                to={it.to}
+                className="flex items-baseline justify-between gap-2 rounded-sm px-1 py-1 text-sm text-foreground hover:bg-muted focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+              >
+                <span className="truncate" style={{ fontFamily: SERIF }}>
+                  {it.title}
+                </span>
+                {it.sub ? (
+                  <span className="shrink-0 text-[11px] text-muted-foreground">{it.sub}</span>
+                ) : null}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
   );
 }
