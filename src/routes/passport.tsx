@@ -204,7 +204,6 @@ function PassportPage() {
   }, []);
 
 
-  }, [handlePrint, state.visitorId]);
 
   const startEdit = () => {
     setNameInput(state.visitorName ?? "");
