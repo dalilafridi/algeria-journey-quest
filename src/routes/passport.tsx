@@ -194,47 +194,55 @@ function PassportPage() {
     const node = document.getElementById("passport-print");
     if (!node) return;
     setDownloading(true);
+    // Freeze entrance animations so the capture matches what is on screen.
+    const freeze = document.createElement("style");
+    freeze.textContent =
+      "#passport-print, #passport-print * { animation: none !important; transition: none !important; }";
+    document.head.appendChild(freeze);
+    const prevScroll = window.scrollY;
+    window.scrollTo(0, 0);
+    await new Promise((r) => requestAnimationFrame(() => requestAnimationFrame(r)));
     try {
       const [{ default: html2canvas }, { jsPDF }] = await Promise.all([
         import("html2canvas-pro"),
         import("jspdf"),
       ]);
-      // Freeze animations and mirror live opacity so the capture matches the screen.
-      const sourceEls = [node, ...Array.from(node.querySelectorAll<HTMLElement>("*"))];
+      const rect = node.getBoundingClientRect();
       const canvas = await html2canvas(node, {
         scale: 2,
         backgroundColor: "#fbf5e9",
-        width: node.scrollWidth,
-        height: node.scrollHeight,
-        windowWidth: document.documentElement.offsetWidth,
-        windowHeight: Math.max(document.documentElement.offsetHeight, node.scrollHeight + 200),
+        width: Math.ceil(rect.width),
+        height: Math.ceil(rect.height),
+        windowWidth: document.documentElement.clientWidth,
+        windowHeight: Math.ceil(rect.height) + 400,
         scrollX: 0,
-        scrollY: -window.scrollY,
+        scrollY: 0,
         onclone: (doc) => {
           const clone = doc.getElementById("passport-print");
-          if (!clone) return;
-          const cloneEls = [clone, ...Array.from(clone.querySelectorAll<HTMLElement>("*"))];
-          cloneEls.forEach((el, i) => {
-            const src = sourceEls[i];
-            el.style.animation = "none";
-            el.style.transition = "none";
-            if (src) el.style.opacity = window.getComputedStyle(src).opacity;
-          });
+          if (clone) {
+            clone.style.animation = "none";
+            clone.style.opacity = "1";
+            clone.style.transform = "none";
+          }
         },
       });
       const img = canvas.toDataURL("image/jpeg", 0.94);
 
-      const pdf = new jsPDF({ orientation: "landscape", unit: "mm", format: "a4" });
+      const portrait = canvas.height > canvas.width;
+      const pdf = new jsPDF({
+        orientation: portrait ? "portrait" : "landscape",
+        unit: "mm",
+        format: "a4",
+      });
       const pw = pdf.internal.pageSize.getWidth();
       const ph = pdf.internal.pageSize.getHeight();
       const margin = 10;
-      const maxW = pw - margin * 2;
-      const maxH = ph - margin * 2;
-      const ratio = Math.min(maxW / canvas.width, maxH / canvas.height);
+      const ratio = Math.min((pw - margin * 2) / canvas.width, (ph - margin * 2) / canvas.height);
       const w = canvas.width * ratio;
       const h = canvas.height * ratio;
       pdf.addImage(img, "JPEG", (pw - w) / 2, (ph - h) / 2, w, h);
       pdf.save(`dz-odyssey-passport-${state.visitorId}.pdf`);
+
     } catch {
       handlePrint();
     } finally {
