@@ -246,8 +246,11 @@ function PassportPage() {
     } catch {
       handlePrint();
     } finally {
+      freeze.remove();
+      window.scrollTo(0, prevScroll);
       setDownloading(false);
     }
+
   }, [handlePrint, state.visitorId]);
 
   const startEdit = () => {
