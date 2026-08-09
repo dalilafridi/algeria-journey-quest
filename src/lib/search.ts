@@ -41,6 +41,14 @@ import { LES_VERTES_HERO } from "@/data/lesVertes";
 import { CLUB_MUSEUMS } from "@/data/clubs";
 import { listMatchTheaterSummaries } from "@/data/matchTheater";
 import { curatedFacts } from "@/data/didYouKnow";
+import {
+  WOI_IDENTITY,
+  WOI_OPENING,
+  WOI_ROLES,
+  WOI_WOMEN,
+  WOI_BEYOND,
+  WOI_ROUTE,
+} from "@/data/womenOfIndependence";
 
 // ---------------------------------------------------------------- Types
 
@@ -61,7 +69,8 @@ export type SearchKind =
   | "club"
   | "match"
   | "journey"
-  | "fact";
+  | "fact"
+  | "exhibit";
 
 /** Broad filter category chips shown above the results list. */
 export type SearchCategory =
@@ -591,6 +600,36 @@ export function getSearchIndex(): SearchItem[] {
     });
   }
 
+  // Standalone exhibits ---------------------------------------------
+  push(out, {
+    id: "exhibit:women-of-independence",
+    kind: "exhibit",
+    emoji: "✦",
+    title: WOI_IDENTITY.title,
+    snippet: WOI_IDENTITY.teaser,
+    context: { en: "1954 – 1962", fr: "1954 – 1962", ar: "1954 – 1962" },
+    href: WOI_ROUTE,
+    haystack: [
+      WOI_IDENTITY.title,
+      WOI_IDENTITY.subtitle,
+      WOI_IDENTITY.teaser,
+      ...WOI_OPENING,
+      ...WOI_ROLES.map((r) => r.heading),
+      ...WOI_ROLES.flatMap((r) => (r.definition ? [r.definition] : [])),
+      ...WOI_WOMEN.map((w) => w.displayName),
+      ...WOI_WOMEN.map((w) => w.role),
+      WOI_BEYOND.heading,
+    ],
+    aliases: [
+      "moussebilates", "moudjahidate", "maquisardes", "fidayate",
+      "women of the revolution", "femmes de la révolution", "نساء الثورة",
+      "algerian women", "femmes algériennes", "المجاهدات",
+      "hassiba ben bouali", "djamila bouhired", "djamila boupacha",
+      "zohra drif", "baya hocine", "malika gaid", "malika gaïd",
+    ],
+    popularity: 12,
+  });
+
   _index = out;
   _byId = new Map(out.map((i) => [i.id, i]));
   _hayCache = new WeakMap();
@@ -670,11 +709,12 @@ const KIND_BOOST: Record<SearchKind, number> = {
   dish: 5,
   film: 5,
   fact: 3,
+  exhibit: 13,
 };
 
 const CATEGORY_KINDS: Record<SearchCategory, SearchKind[] | null> = {
   all: null,
-  history: ["era", "figure", "collection", "fact"],
+  history: ["era", "figure", "collection", "fact", "exhibit"],
   football: ["football", "club", "match"],
   culture: ["culture", "word", "cinema", "film", "idea"],
   cuisine: ["cuisine", "dish"],
@@ -904,6 +944,7 @@ export const KIND_LABEL: Record<SearchKind, LocalizedString> = {
   match: { en: "Match Theater", fr: "Théâtre du match", ar: "مسرح المباراة" },
   journey: { en: "Journey", fr: "Parcours", ar: "مسار" },
   fact: { en: "Fact", fr: "Fait", ar: "معلومة" },
+  exhibit: { en: "Exhibit", fr: "Exposition", ar: "معرض" },
 };
 
 export function kindLabel(kind: SearchKind, lang: Lang): string {

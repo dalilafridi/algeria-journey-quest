@@ -34,6 +34,22 @@ const T = {
 
 /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
 export const EXHIBIT_PROVENANCE: Record<string, ExhibitProvenanceRecord> = {
+  // ─── Standalone exhibits ────────────────────────────────────────────
+  "women-of-independence": R({
+    sourceIds: ["wikipedia-femmes-guerre-algerie"],
+    confidence: "widely-accepted",
+    intro: T.intro,
+    notes: [
+      {
+        kind: "note",
+        body: {
+          en: "This is a foundation exhibit built on a single general overview source. Statistics are attributed to the research of Djamila Amrane-Minne and should be read as documented estimates. Scholarly, archival and testimony sources will be added as the exhibit grows.",
+          fr: "Il s'agit d'une exposition fondatrice reposant sur une seule source générale. Les statistiques sont attribuées aux recherches de Djamila Amrane-Minne et doivent être lues comme des estimations documentées. Des sources scientifiques, archivistiques et testimoniales seront ajoutées à mesure que l'exposition grandira.",
+          ar: "هذا معرض تأسيسي يقوم على مصدر عام واحد. تُنسب الإحصاءات إلى أبحاث جميلة أمران مين وينبغي قراءتها بوصفها تقديرات موثّقة. وستُضاف مصادر علمية وأرشيفية وشهادات مع نموّ المعرض.",
+        },
+      },
+    ],
+  }),
   // ─── Historical figures ─────────────────────────────────────────────
   "figure:massinissa": R({
     sourceIds: ["britannica-massinissa", "britannica-numidia", "brett-fentress-berbers", "camps-encyclopedie-berbere"],

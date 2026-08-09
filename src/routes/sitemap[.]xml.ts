@@ -58,6 +58,7 @@ function collect(): SitemapEntry[] {
     { path: "/cinema", changefreq: "monthly", priority: "0.7" },
     { path: "/words", changefreq: "monthly", priority: "0.6" },
     { path: "/moments", changefreq: "monthly", priority: "0.6" },
+    { path: "/women-of-independence", changefreq: "monthly", priority: "0.8" },
     { path: "/ideas", changefreq: "monthly", priority: "0.6" },
     { path: "/lessons", changefreq: "monthly", priority: "0.7" },
     { path: "/stargazing", changefreq: "monthly", priority: "0.5" },
