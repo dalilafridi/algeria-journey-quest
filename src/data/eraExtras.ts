@@ -340,6 +340,21 @@ export const eraExtras: Record<string, EraExtras> = {
       ),
       attribution: L("Larbi Ben M'hidi", "Larbi Ben M'hidi", "العربي بن مهيدي"),
     },
+    exhibitLinks: [
+      {
+        to: "/women-of-independence",
+        label: L(
+          "Women of the Algerian Revolution",
+          "Les femmes de la Révolution algérienne",
+          "نساء الثورة الجزائرية",
+        ),
+        body: L(
+          "Moussebilates, maquisardes, fidayate and everyday resistance, 1954 to 1962.",
+          "Moussebilates, maquisardes, fidayate et résistance du quotidien, 1954 à 1962.",
+          "المسبّلات والمجاهدات والفدائيات ومقاومة الحياة اليومية، من 1954 إلى 1962.",
+        ),
+      },
+    ],
   },
 };
 
