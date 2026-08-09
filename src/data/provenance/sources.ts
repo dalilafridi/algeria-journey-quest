@@ -14,6 +14,25 @@ const L = (en: string, fr: string, ar: string): LocalizedString => ({ en, fr, ar
 const S = <T extends ProvenanceSource>(s: T) => s;
 
 export const SOURCES: readonly ProvenanceSource[] = [
+  // ─── Women of the Algerian Revolution ─────────────────────────────────
+  S({
+    id: "wikipedia-femmes-guerre-algerie",
+    kind: "web",
+    category: "further",
+    title: L(
+      "Femmes algériennes pendant la guerre d'Algérie",
+      "Femmes algériennes pendant la guerre d'Algérie",
+      "النساء الجزائريات خلال حرب الجزائر",
+    ),
+    publisher: L("Wikipédia, French edition", "Wikipédia, édition française", "ويكيبيديا، النسخة الفرنسية"),
+    url: "https://fr.wikipedia.org/wiki/Femmes_alg%C3%A9riennes_pendant_la_guerre_d%27Alg%C3%A9rie",
+    language: "fr",
+    note: L(
+      "Used as a starting research overview, including the statistical findings attributed to the historian Djamila Amrane-Minne. Individual claims will be strengthened with scholarly and archival sources as the exhibit develops.",
+      "Utilisé comme aperçu de recherche initial, y compris les données statistiques attribuées à l'historienne Djamila Amrane-Minne. Chaque affirmation sera étayée par des sources scientifiques et archivistiques à mesure que l'exposition se développera.",
+      "استُخدم كإطار بحثي أولي، بما في ذلك المعطيات الإحصائية المنسوبة إلى المؤرخة جميلة أمران مين. وستُدعَّم كل مقولة بمصادر علمية وأرشيفية مع تطوّر المعرض.",
+    ),
+  }),
   // ─── International organizations ──────────────────────────────────────
   S({
     id: "unesco-timgad",
