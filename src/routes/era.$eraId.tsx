@@ -250,6 +250,28 @@ function EraPage() {
         </section>
       )}
 
+      {extras?.exhibitLinks && extras.exhibitLinks.length > 0 && (
+        <section className="space-y-3">
+          <MuseumLabel marker={<span aria-hidden>❖</span>}>
+            {tri(lang, "Exhibits in this era", "Expositions de cette époque", "معارض هذه الحقبة")}
+          </MuseumLabel>
+          <div className="grid sm:grid-cols-2 gap-3">
+            {extras.exhibitLinks.map((x, i) => (
+              <Link
+                key={i}
+                to={x.to as unknown as "/"}
+                className="block rounded-xl border border-border/60 bg-muted/40 px-3.5 py-3 transition-colors hover:bg-muted"
+              >
+                <div className="font-semibold text-sm leading-tight">{t(x.label, lang)}</div>
+                <div className="text-xs text-muted-foreground leading-snug mt-1">{t(x.body, lang)}</div>
+              </Link>
+            ))}
+          </div>
+        </section>
+      )}
+
+
+
       {era.places && era.places.length > 0 && (
         <MuseumCatalogCard eyebrow={keyPlacesLabel} marker={<span aria-hidden>📍</span>}>
           <ul className="grid sm:grid-cols-2 gap-3">
