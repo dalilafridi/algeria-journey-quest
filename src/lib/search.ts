@@ -709,6 +709,7 @@ const KIND_BOOST: Record<SearchKind, number> = {
   dish: 5,
   film: 5,
   fact: 3,
+  exhibit: 13,
 };
 
 const CATEGORY_KINDS: Record<SearchCategory, SearchKind[] | null> = {
