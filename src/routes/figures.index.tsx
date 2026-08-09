@@ -175,6 +175,39 @@ function FiguresIndex() {
 
         <MedallionDivider className="my-12 sm:my-14" />
 
+        {/* ============ LINKED EXHIBIT ============ */}
+        <Link
+          to="/women-of-independence"
+          className="block rounded-2xl border p-5 sm:p-6 transition hover:-translate-y-0.5"
+          style={{
+            borderColor: "color-mix(in oklab, var(--brand-gold) 28%, var(--border))",
+            background: "var(--card)",
+            boxShadow: "var(--shadow-soft)",
+          }}
+        >
+          <p className="text-[11px] uppercase tracking-[0.22em] font-bold text-primary">
+            {lang === "fr" ? "Exposition liée" : lang === "ar" ? "معرض ذو صلة" : "Related exhibit"}
+          </p>
+          <h2
+            className="mt-2 text-xl sm:text-2xl font-bold text-foreground"
+            style={{ fontFamily: "Georgia, 'Times New Roman', serif" }}
+          >
+            {lang === "fr"
+              ? "Les femmes de la Révolution algérienne"
+              : lang === "ar"
+                ? "نساء الثورة الجزائرية"
+                : "Women of the Algerian Revolution"}
+          </h2>
+          <p className="mt-2 text-sm text-foreground/75 leading-relaxed max-w-3xl">
+            {lang === "fr"
+              ? "Moussebilates, maquisardes, fidayate et résistance du quotidien, 1954 à 1962."
+              : lang === "ar"
+                ? "المسبّلات والمجاهدات والفدائيات ومقاومة الحياة اليومية، من 1954 إلى 1962."
+                : "Moussebilates, maquisardes, fidayate and everyday resistance, 1954 to 1962."}
+          </p>
+        </Link>
+
+
         {/* ============ ERA GALLERIES ============ */}
         <div className="mt-2">
           <RowGroupHeader title={erasLabel} intro={erasIntro} />
