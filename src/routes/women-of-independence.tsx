@@ -13,6 +13,7 @@ import { useLang, t as tr, type LocalizedString } from "@/lib/i18n";
 import { pageMeta, headLang } from "@/lib/seo";
 import { PAGE_META } from "@/lib/pageMetaCopy";
 import { ExhibitProvenance } from "@/components/provenance/ExhibitProvenance";
+import { WomenQuiz } from "@/components/exhibit/WomenQuiz";
 import {
   Section,
   EyebrowTitle,
