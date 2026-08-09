@@ -13,6 +13,7 @@ import { useLang, t as tr, type LocalizedString } from "@/lib/i18n";
 import { pageMeta, headLang } from "@/lib/seo";
 import { PAGE_META } from "@/lib/pageMetaCopy";
 import { ExhibitProvenance } from "@/components/provenance/ExhibitProvenance";
+import { WomenQuiz } from "@/components/exhibit/WomenQuiz";
 import {
   Section,
   EyebrowTitle,
@@ -63,7 +64,14 @@ const UI = {
   numbersEyebrow: L("Research", "Recherche", "بحث"),
   afterEyebrow: L("Afterwards", "Ensuite", "بعد ذلك"),
   growingEyebrow: L("Living exhibit", "Exposition vivante", "معرض حيّ"),
+  quizEyebrow: L("Visitor test", "Test du visiteur", "اختبار الزائر"),
+  quizTitle: L(
+    "What did women actually do?",
+    "Qu'ont réellement fait les femmes ?",
+    "ماذا فعلت النساء فعلاً؟",
+  ),
   openingEyebrow: L("Introduction", "Introduction", "مقدمة"),
+
   openingTitle: L(
     "A struggle carried in many places",
     "Une lutte menée en de nombreux lieux",
@@ -215,6 +223,13 @@ function WomenOfIndependenceExhibit() {
             ))}
           </Prose>
         </Section>
+
+        <Section tone="sand">
+          <EyebrowTitle eyebrow={UI.quizEyebrow} title={UI.quizTitle} />
+          <WomenQuiz />
+        </Section>
+
+
 
         <Section tone="ivory">
           <EyebrowTitle eyebrow={UI.growingEyebrow} title={WOI_GROWING.heading} />
