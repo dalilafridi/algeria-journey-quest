@@ -25,6 +25,8 @@ export type EraExtras = {
   };
   /** Next era id for "Continue the journey". */
   nextEraId?: string;
+  /** Dedicated exhibits that belong to this era. */
+  exhibitLinks?: { to: string; label: LocalizedString; body: LocalizedString }[];
 };
 
 export const eraExtras: Record<string, EraExtras> = {
