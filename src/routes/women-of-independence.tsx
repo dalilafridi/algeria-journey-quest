@@ -64,7 +64,14 @@ const UI = {
   numbersEyebrow: L("Research", "Recherche", "بحث"),
   afterEyebrow: L("Afterwards", "Ensuite", "بعد ذلك"),
   growingEyebrow: L("Living exhibit", "Exposition vivante", "معرض حيّ"),
+  quizEyebrow: L("Visitor test", "Test du visiteur", "اختبار الزائر"),
+  quizTitle: L(
+    "What did women actually do?",
+    "Qu'ont réellement fait les femmes ?",
+    "ماذا فعلت النساء فعلاً؟",
+  ),
   openingEyebrow: L("Introduction", "Introduction", "مقدمة"),
+
   openingTitle: L(
     "A struggle carried in many places",
     "Une lutte menée en de nombreux lieux",
