@@ -35,6 +35,7 @@ import { Route as SourcesRouteImport } from './routes/sources'
 import { Route as StargazingRouteImport } from './routes/stargazing'
 import { Route as TermsRouteImport } from './routes/terms'
 import { Route as TimelineRouteImport } from './routes/timeline'
+import { Route as WomenOfIndependenceRouteImport } from './routes/women-of-independence'
 import { Route as WordsRouteImport } from './routes/words'
 import { Route as ApiCuratorRouteImport } from './routes/api/curator'
 import { Route as ClubsIndexRouteImport } from './routes/clubs.index'
@@ -220,6 +221,11 @@ const TermsRoute = TermsRouteImport.update({
 const TimelineRoute = TimelineRouteImport.update({
   id: '/timeline',
   path: '/timeline',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const WomenOfIndependenceRoute = WomenOfIndependenceRouteImport.update({
+  id: '/women-of-independence',
+  path: '/women-of-independence',
   getParentRoute: () => rootRouteImport,
 } as any)
 const WordsRoute = WordsRouteImport.update({
@@ -542,6 +548,7 @@ export interface FileRoutesByFullPath {
   '/stargazing': typeof StargazingRoute
   '/terms': typeof TermsRoute
   '/timeline': typeof TimelineRoute
+  '/women-of-independence': typeof WomenOfIndependenceRoute
   '/words': typeof WordsRoute
   '/api/curator': typeof ApiCuratorRoute
   '/clubs/$clubId': typeof ClubsClubIdRoute
@@ -623,6 +630,7 @@ export interface FileRoutesByTo {
   '/stargazing': typeof StargazingRoute
   '/terms': typeof TermsRoute
   '/timeline': typeof TimelineRoute
+  '/women-of-independence': typeof WomenOfIndependenceRoute
   '/words': typeof WordsRoute
   '/api/curator': typeof ApiCuratorRoute
   '/clubs/$clubId': typeof ClubsClubIdRoute
@@ -705,6 +713,7 @@ export interface FileRoutesById {
   '/stargazing': typeof StargazingRoute
   '/terms': typeof TermsRoute
   '/timeline': typeof TimelineRoute
+  '/women-of-independence': typeof WomenOfIndependenceRoute
   '/words': typeof WordsRoute
   '/curator/_studio': typeof CuratorStudioRouteRouteWithChildren
   '/api/curator': typeof ApiCuratorRoute
@@ -791,6 +800,7 @@ export interface FileRouteTypes {
     | '/stargazing'
     | '/terms'
     | '/timeline'
+    | '/women-of-independence'
     | '/words'
     | '/api/curator'
     | '/clubs/$clubId'
@@ -872,6 +882,7 @@ export interface FileRouteTypes {
     | '/stargazing'
     | '/terms'
     | '/timeline'
+    | '/women-of-independence'
     | '/words'
     | '/api/curator'
     | '/clubs/$clubId'
@@ -953,6 +964,7 @@ export interface FileRouteTypes {
     | '/stargazing'
     | '/terms'
     | '/timeline'
+    | '/women-of-independence'
     | '/words'
     | '/curator/_studio'
     | '/api/curator'
@@ -1038,6 +1050,7 @@ export interface RootRouteChildren {
   StargazingRoute: typeof StargazingRoute
   TermsRoute: typeof TermsRoute
   TimelineRoute: typeof TimelineRoute
+  WomenOfIndependenceRoute: typeof WomenOfIndependenceRoute
   WordsRoute: typeof WordsRoute
   ApiCuratorRoute: typeof ApiCuratorRoute
   CultureTopicIdRoute: typeof CultureTopicIdRoute
@@ -1236,6 +1249,13 @@ declare module '@tanstack/react-router' {
       path: '/timeline'
       fullPath: '/timeline'
       preLoaderRoute: typeof TimelineRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/women-of-independence': {
+      id: '/women-of-independence'
+      path: '/women-of-independence'
+      fullPath: '/women-of-independence'
+      preLoaderRoute: typeof WomenOfIndependenceRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/words': {
@@ -1804,6 +1824,7 @@ const rootRouteChildren: RootRouteChildren = {
   StargazingRoute: StargazingRoute,
   TermsRoute: TermsRoute,
   TimelineRoute: TimelineRoute,
+  WomenOfIndependenceRoute: WomenOfIndependenceRoute,
   WordsRoute: WordsRoute,
   ApiCuratorRoute: ApiCuratorRoute,
   CultureTopicIdRoute: CultureTopicIdRoute,
