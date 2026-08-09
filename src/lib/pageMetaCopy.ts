@@ -174,6 +174,18 @@ export const PAGE_META = {
       ar: "كيف بنت حضارة إباضية خمس مدن مستدامة في واحدة من أقسى البيئات على الأرض. معرض رئيسي في دي زد أوديسي.",
     },
   },
+  "/women-of-independence": {
+    title: {
+      en: "Women of the Algerian Revolution, 1954 to 1962 · DZ Odyssey",
+      fr: "Les femmes de la Révolution algérienne, 1954 à 1962 · DZ Odyssey",
+      ar: "نساء الثورة الجزائرية، 1954 إلى 1962 · دي زد أوديسي",
+    },
+    description: {
+      en: "Moussebilates, maquisardes, fidayate and everyday resistance: the many roles Algerian women held during the War of Independence.",
+      fr: "Moussebilates, maquisardes, fidayate et résistance du quotidien : les multiples rôles des femmes algériennes pendant la guerre d'indépendance.",
+      ar: "المسبّلات والمجاهدات والفدائيات ومقاومة الحياة اليومية: الأدوار المتعددة للجزائريات خلال حرب الاستقلال.",
+    },
+  },
   "/words": {
     title: {
       en: "Words That Shaped History, DZ Odyssey",
