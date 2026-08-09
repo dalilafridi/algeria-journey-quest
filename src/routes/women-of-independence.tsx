@@ -224,6 +224,13 @@ function WomenOfIndependenceExhibit() {
           </Prose>
         </Section>
 
+        <Section tone="sand">
+          <EyebrowTitle eyebrow={UI.quizEyebrow} title={UI.quizTitle} />
+          <WomenQuiz />
+        </Section>
+
+
+
         <Section tone="ivory">
           <EyebrowTitle eyebrow={UI.growingEyebrow} title={WOI_GROWING.heading} />
           <Plaque className="max-w-3xl">
