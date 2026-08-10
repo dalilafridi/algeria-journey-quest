@@ -68,16 +68,17 @@ export const PAGE_META = {
   },
   "/chronicle": {
     title: {
-      en: "The Interactive Chronicle of Algeria, DZ Odyssey",
-      fr: "La chronique interactive de l'Algérie, DZ Odyssey",
-      ar: "السجل التفاعلي للجزائر، دي زد أوديسي",
+      en: "Algeria, Century by Century | DZ Odyssey",
+      fr: "L'Algérie, siècle après siècle | DZ Odyssey",
+      ar: "الجزائر، قرنًا بعد قرن | دي زد أوديسي",
     },
     description: {
-      en: "Drag across three thousand years of Algerian history. Meet the figures, regions and events of every era on one living timeline.",
-      fr: "Parcourez trois mille ans d'histoire algérienne. Rencontrez les figures, les régions et les événements de chaque époque sur une chronologie vivante.",
-      ar: "تنقّل عبر ثلاثة آلاف عام من تاريخ الجزائر. تعرّف على شخصيات كل حقبة ومناطقها وأحداثها على خط زمني حي.",
+      en: "Move through three thousand years of Algerian history, from early North Africa and Numidia to colonial rule, revolution and independence.",
+      fr: "Parcourez trois mille ans d'histoire algérienne, de l'Afrique du Nord ancienne et de la Numidie à la colonisation, la révolution et l'indépendance.",
+      ar: "تنقّل عبر ثلاثة آلاف عام من تاريخ الجزائر، من شمال إفريقيا القديم ونوميديا إلى الاستعمار والثورة والاستقلال.",
     },
   },
+
   "/figures": {
     title: {
       en: "Hall of Legends, Discover the People Who Shaped Algeria | DZ Odyssey",
