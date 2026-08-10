@@ -623,6 +623,9 @@ function ChroniclePage() {
               <p className="mt-5 max-w-[62ch] text-[16.5px] leading-[1.75] text-muted-foreground">
                 {t(CHRONICLE_UI.endBody, lang)}
               </p>
+              <p className="mt-4 max-w-[62ch] text-[15px] leading-[1.72] text-muted-foreground">
+                {t(CHRONICLE_UI.endNote, lang)}
+              </p>
               <div className="mt-8 flex flex-col sm:flex-row gap-3">
                 <Link
                   to="/timeline"
