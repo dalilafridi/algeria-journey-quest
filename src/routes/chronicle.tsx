@@ -358,11 +358,13 @@ function ChroniclePage() {
                           {t(era.title, lang)}
                         </h2>
                         <div
-                          className="mt-1.5 text-[13px] font-semibold tracking-wide"
-                          style={{ color: "var(--brand-gold-deep)" }}
+                          dir="ltr"
+                          className="mt-1.5 text-[13px] font-semibold tracking-wide rtl:text-right"
+                          style={{ color: "var(--brand-gold-deep)", unicodeBidi: "isolate" }}
                         >
                           {era.dateRange}
                         </div>
+
                       </div>
                     </div>
 
