@@ -88,9 +88,9 @@ const CODA_BODY: T = {
 };
 
 const CODA_TECH: T = {
-  en: "Built with React, Vite and Supabase, with AI-assisted audio and translation APIs.",
-  fr: "Créé avec React, Vite et Supabase, avec l'aide de l'IA pour l'audio et d'API pour les traductions.",
-  ar: "بُني باستخدام React وVite وSupabase، مع الاستعانة بالذكاء الاصطناعي في الصوت وواجهات برمجة التطبيقات في الترجمة.",
+  en: "Over the past year, I also learned to use Canva, creating and refining some of the illustrations that helped shape the museum's visual identity. Built with React, Vite and Supabase, with AI-assisted audio and translation APIs.",
+  fr: "Au cours de l'année écoulée, j'ai également appris à utiliser Canva pour créer et affiner certaines illustrations qui ont contribué à façonner l'identité visuelle du musée. Créé avec React, Vite et Supabase, avec l'aide de l'IA pour l'audio et des API de traduction.",
+  ar: "وخلال العام الماضي، تعلمت أيضًا استخدام Canva لإنشاء بعض الرسوم التوضيحية وتطويرها، مما ساهم في تشكيل الهوية البصرية للمتحف. بُني باستخدام React وVite وSupabase، مع الاستعانة بالذكاء الاصطناعي في المحتوى الصوتي وواجهات برمجة التطبيقات للترجمة.",
 };
 
 const SIGNATURE: T = {
