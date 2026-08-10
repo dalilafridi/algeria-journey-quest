@@ -1,5 +1,6 @@
 import { Link, useRouterState } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import { LANGS, getLang, setLang, useLang, type Lang } from "@/lib/i18n";
 import { OPEN_CREATOR_ABOUT_EVENT } from "@/components/WelcomeJourney";
 import { openMuseumSearch } from "@/components/SearchOverlay";
@@ -351,7 +352,9 @@ export function Header() {
       </nav>
 
       {/* ------------------------------------------ mobile directory */}
-      {drawerOpen && (
+      {/* Portalled to <body>: the sticky header uses backdrop-blur, which would
+          otherwise become the containing block for a fixed overlay. */}
+      {drawerOpen && typeof document !== "undefined" && createPortal(
         <div className="fixed inset-0 z-50 lg:hidden">
           <button
             type="button"
@@ -474,7 +477,8 @@ export function Header() {
               </button>
             </nav>
           </div>
-        </div>
+        </div>,
+        document.body
       )}
     </header>
   );
