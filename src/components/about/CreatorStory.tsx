@@ -33,9 +33,9 @@ const OPENING: T[] = [
     ar: "لم يكتفين بحكايات الماضي. كنّ يذكّرننا بمن نحن، ومن أين أتينا، ولماذا يهمّ أن نتذكّر.",
   },
   {
-    en: "I also lived through defining moments in Algeria's modern history, including the Berber Spring of 1980 and the October 1988 uprising. Those experiences taught me that identity is not something we simply inherit. It is something we live, protect, question, and pass on.",
-    fr: "J'ai aussi vécu des moments déterminants de l'histoire moderne de l'Algérie, dont le printemps berbère de 1980 et les émeutes d'octobre 1988. Ces expériences m'ont appris que l'identité ne se reçoit pas simplement. Elle se vit, se protège, se questionne et se transmet.",
-    ar: "عشتُ أيضًا لحظات محورية في التاريخ الجزائري الحديث، منها الربيع الأمازيغي عام 1980 وانتفاضة أكتوبر 1988. علّمتني هذه التجارب أن الهوية ليست شيئًا نرثه ببساطة، بل شيء نعيشه ونحميه ونسائله ونورّثه.",
+    en: "I also lived through defining moments in Algeria's modern history, including the Berber Spring of 1980 and the October 1988 uprising. I left Algeria at the beginning of the Black Decade. Although I was no longer there, distance offered no escape from the fear, grief and helplessness of watching my country suffer. If anything, those years taught me that Algeria remains part of us wherever we live. Identity is not something we simply inherit. It is something we live, protect, question and pass on.",
+    fr: "J'ai également vécu des moments déterminants de l'histoire moderne de l'Algérie, notamment le Printemps berbère de 1980 et le soulèvement d'octobre 1988. J'ai quitté l'Algérie au début de la Décennie noire. Même si je n'étais plus sur place, la distance ne m'a épargnée ni de la peur, ni du chagrin, ni du sentiment d'impuissance face à la souffrance de mon pays. Ces années m'ont appris que l'Algérie reste en nous, où que nous vivions. L'identité n'est pas quelque chose dont nous héritons simplement. C'est quelque chose que nous vivons, protégeons, questionnons et transmettons.",
+    ar: "كما عشتُ لحظات مفصلية في تاريخ الجزائر الحديث، من بينها الربيع الأمازيغي عام 1980 وانتفاضة أكتوبر 1988. غادرتُ الجزائر في بداية العشرية السوداء. ورغم أنني لم أعد موجودة هناك، فإن البعد لم يحمِني من الخوف والحزن والشعور بالعجز وأنا أرى بلدي يعاني. وقد علمتني تلك السنوات أن الجزائر تظل جزءًا منا أينما عشنا. فالهوية ليست مجرد شيء نرثه، بل هي شيء نعيشه ونحميه ونتساءل بشأنه وننقله إلى الأجيال القادمة.",
   },
 ];
 
