@@ -329,7 +329,7 @@ export function Header() {
                           <DropdownMenuItem key={item.to + (item.hash ?? "") + item.label.en} asChild>
                             <Link
                               {...itemProps(item)}
-                              className="block cursor-pointer rounded-none px-2 py-2.5 text-sm text-foreground/85 transition-colors hover:bg-muted hover:text-foreground focus:bg-muted"
+                              className="flex cursor-pointer flex-col items-start gap-0.5 rounded-none px-2 py-2.5 text-sm text-foreground/85 transition-colors hover:bg-muted hover:text-foreground focus:bg-muted"
                             >
                               <span className="block font-medium">{tri(item.label, current)}</span>
                               {item.desc ? (
@@ -366,8 +366,8 @@ export function Header() {
             role="dialog"
             aria-modal="true"
             aria-label={tri(NAV_UI.directory, current)}
-            className="absolute inset-y-0 end-0 flex w-full max-w-[26rem] flex-col border-s bg-background outline-none"
-            style={{ borderColor: GOLD_BORDER, paddingBottom: "env(safe-area-inset-bottom)" }}
+            className="absolute inset-y-0 end-0 flex w-full max-w-[26rem] flex-col border-s outline-none"
+            style={{ borderColor: GOLD_BORDER, background: "var(--background)", paddingBottom: "env(safe-area-inset-bottom)" }}
           >
             <div className="flex items-center justify-between border-b px-4 py-3" style={{ borderColor: GOLD_BORDER }}>
               <span className="text-[0.6875rem] font-semibold uppercase tracking-[0.2em] text-muted-foreground">
