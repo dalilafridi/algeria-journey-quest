@@ -593,6 +593,12 @@ export const CHRONICLE_UI = {
     "L'indépendance n'a pas clos l'histoire de l'Algérie. Elle a ouvert un nouveau chapitre façonné par la reconstruction, la mémoire culturelle, les changements politiques et la question toujours vive de ce que l'Algérie peut devenir.",
     "لم يُغلق الاستقلال قصة الجزائر، بل فتح فصلًا جديدًا صاغته إعادة البناء والذاكرة الثقافية والتحولات السياسية والسؤال الدائم عمّا يمكن أن تصيره الجزائر.",
   ),
+  endNote: L(
+    "The years since have carried their own turning points, from the Berber Spring of 1980 to the October 1988 uprising and the Hirak popular movement of 2019.",
+    "Les années suivantes ont eu leurs propres tournants, du Printemps berbère de 1980 au soulèvement d'octobre 1988 et au mouvement populaire Hirak de 2019.",
+    "حملت السنوات التالية منعطفاتها الخاصة، من الربيع الأمازيغي سنة 1980 إلى انتفاضة أكتوبر 1988 والحراك الشعبي سنة 2019.",
+  ),
+
   exploreTimeline: L("Explore the complete Timeline", "Explorer la chronologie complète", "استكشف الخط الزمني الكامل"),
   beginJourney: L("Begin a Guided Journey", "Commencer un parcours guidé", "ابدأ رحلة مُرشدة"),
   continueReading: L("Continue reading", "Poursuivre la lecture", "تابع القراءة"),
