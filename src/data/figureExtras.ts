@@ -17,7 +17,19 @@ export type FigureExtras = {
     linkLabel: LocalizedString;
     localityLabel?: LocalizedString;
   };
+  /** Optional related historical event panel (figure to event link). */
+  eventPanel?: {
+    heading: LocalizedString;
+    body: LocalizedString;
+    dateLabel?: LocalizedString;
+    /** Route path of the exhibit that tells the event. */
+    to: string;
+    /** Optional in-page anchor on that exhibit. */
+    hash?: string;
+    linkLabel: LocalizedString;
+  };
 };
+
 
 export const figureExtras: Record<string, FigureExtras> = {
   "mohammed-arkoun": {
@@ -476,5 +488,26 @@ export const figureExtras: Record<string, FigureExtras> = {
       ),
       linkLabel: L("Visit the Kabylie region", "D\u00e9couvrir la r\u00e9gion de Kabylie", "\u0632\u0631 \u0645\u0646\u0637\u0642\u0629 \u0627\u0644\u0642\u0628\u0627\u0626\u0644"),
     },
+    eventPanel: {
+      to: "/moments",
+      hash: "tafsut",
+      dateLabel: L("April 1980", "Avril 1980", "أفريل 1980"),
+      heading: L(
+        "Related event: the Berber Spring",
+        "Événement lié : le Printemps berbère",
+        "حدث مرتبط: الربيع الأمازيغي",
+      ),
+      body: L(
+        "The lecture on ancient Kabyle poetry that Mouloud Mammeri was to give at the University of Tizi Ouzou was prohibited in March 1980. The ban set off the student demonstrations known as Tafsut Imazighen, the Berber Spring, a turning point in the recognition of Tamazight.",
+        "La conférence sur la poésie kabyle ancienne que Mouloud Mammeri devait donner à l'université de Tizi Ouzou fut interdite en mars 1980. Cette interdiction déclencha les manifestations étudiantes connues sous le nom de Tafsut Imazighen, le Printemps berbère, un tournant dans la reconnaissance de la langue tamazight.",
+        "مُنعت في مارس 1980 المحاضرة التي كان مولود معمري سيلقيها عن الشعر القبائلي القديم في جامعة تيزي وزو. وأشعل هذا المنع مظاهرات طلابية عُرفت بتافسوت إيمازيغن، الربيع الأمازيغي، وهي منعطف في الاعتراف باللغة الأمازيغية.",
+      ),
+      linkLabel: L(
+        "Open the Berber Spring exhibit",
+        "Ouvrir l'exposition du Printemps berbère",
+        "افتح معرض الربيع الأمازيغي",
+      ),
+    },
   },
+
 };

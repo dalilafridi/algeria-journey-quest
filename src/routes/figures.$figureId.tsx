@@ -463,6 +463,28 @@ function FigureDetail() {
         </MuseumCatalogCard>
       )}
 
+      {extras?.eventPanel && (
+        <MuseumCatalogCard accent="var(--primary)" eyebrow={t(extras.eventPanel.heading, lang)}>
+          {extras.eventPanel.dateLabel && (
+            <div className="mb-2 text-[11px] uppercase tracking-[0.18em] font-bold text-muted-foreground">
+              {t(extras.eventPanel.dateLabel, lang)}
+            </div>
+          )}
+          <p className="leading-[1.72] text-[16px] sm:text-[17px] text-foreground/90 max-w-[62ch]">
+            {t(extras.eventPanel.body, lang)}
+          </p>
+          <Link
+            to={extras.eventPanel.to}
+            hash={extras.eventPanel.hash}
+            className="mt-4 inline-flex min-h-11 items-center rounded-full border border-border bg-card px-4 text-sm font-semibold text-foreground hover:bg-muted focus-visible:outline-2 focus-visible:outline-offset-2"
+          >
+            {t(extras.eventPanel.linkLabel, lang)}
+          </Link>
+        </MuseumCatalogCard>
+      )}
+
+
+
       <MuseumCTASection
         eyebrow={tri(lang, "Test yourself", "Mettez-vous à l'épreuve", "اختبر معلوماتك")}
         title={tu("guessThisFigureCta", lang)}
