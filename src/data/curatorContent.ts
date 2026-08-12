@@ -52,6 +52,13 @@ const museum = (label: LocalizedString, by?: LocalizedString): CuratorSource => 
 // ---------------------------------------------------------------------------
 
 const figures: Record<string, CuratorEntry> = {
+  "mohammed-arkoun": {
+    note: L(
+      "Arkoun is easy to misread. He was neither a cleric nor an opponent of faith. He was a historian of ideas who believed a tradition stays alive only when it can be questioned, and who asked which readings had been forgotten along the way.",
+      "Arkoun est facile \u00e0 mal lire. Il n\u2019\u00e9tait ni un homme de religion ni un adversaire de la foi. C\u2019\u00e9tait un historien des id\u00e9es convaincu qu\u2019une tradition ne reste vivante que si elle peut \u00eatre interrog\u00e9e, et qui demandait quelles lectures avaient \u00e9t\u00e9 oubli\u00e9es en chemin.",
+      "\u0645\u0646 \u0627\u0644\u064a\u0633\u064a\u0631 \u0625\u0633\u0627\u0621\u0629 \u0642\u0631\u0627\u0621\u0629 \u0623\u0631\u0643\u0648\u0646. \u0644\u0645 \u064a\u0643\u0646 \u0631\u062c\u0644 \u062f\u064a\u0646 \u0648\u0644\u0627 \u062e\u0635\u0645\u064b\u0627 \u0644\u0644\u0625\u064a\u0645\u0627\u0646\u060c \u0628\u0644 \u0645\u0624\u0631\u0651\u062e \u0623\u0641\u0643\u0627\u0631 \u0631\u0623\u0649 \u0623\u0646 \u0627\u0644\u062a\u0642\u0644\u064a\u062f \u0644\u0627 \u064a\u0628\u0642\u0649 \u062d\u064a\u064b\u0627 \u0625\u0644\u0627 \u0625\u0630\u0627 \u0623\u0645\u0643\u0646 \u0645\u0633\u0627\u0621\u0644\u062a\u0647\u060c \u0648\u0633\u0623\u0644 \u0623\u064a\u0651\u0629 \u0642\u0631\u0627\u0621\u0627\u062a \u0646\u064f\u0633\u064a\u062a \u0641\u064a \u0627\u0644\u0637\u0631\u064a\u0642.",
+    ),
+  },
   abdelkader: {
     note: L(
       "Emir Abdelkader is often remembered as a resistance leader. Yet his influence extended far beyond the battlefield. His diplomacy, scholarship and humanitarian principles continue to resonate long after the conflict that made him famous.",
