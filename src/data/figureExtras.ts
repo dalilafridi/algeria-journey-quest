@@ -17,7 +17,19 @@ export type FigureExtras = {
     linkLabel: LocalizedString;
     localityLabel?: LocalizedString;
   };
+  /** Optional related historical event panel (figure to event link). */
+  eventPanel?: {
+    heading: LocalizedString;
+    body: LocalizedString;
+    dateLabel?: LocalizedString;
+    /** Route path of the exhibit that tells the event. */
+    to: string;
+    /** Optional in-page anchor on that exhibit. */
+    hash?: string;
+    linkLabel: LocalizedString;
+  };
 };
+
 
 export const figureExtras: Record<string, FigureExtras> = {
   "mohammed-arkoun": {
