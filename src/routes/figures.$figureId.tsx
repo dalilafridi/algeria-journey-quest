@@ -89,11 +89,12 @@ export const Route = createFileRoute("/figures/$figureId")({
         noindex: true,
       });
     }
+    const seo = figureMeta[loaderData.figure.id]?.seo;
     return pageMeta({
       lang,
       path: `/figures/${loaderData.figure.id}`,
-      title: `${t(loaderData.figure.displayName, lang)}, ${hall}`,
-      description: t(loaderData.figure.fact, lang),
+      title: seo ? t(seo.title, lang) : `${t(loaderData.figure.displayName, lang)}, ${hall}`,
+      description: seo ? t(seo.description, lang) : t(loaderData.figure.fact, lang),
       type: "article",
     });
   },
@@ -323,6 +324,18 @@ function FigureDetail() {
         <p className="leading-relaxed text-foreground/90">{t(f.story, lang)}</p>
       </MuseumCatalogCard>
 
+      {extras?.narrativeSections?.map((section, i) => (
+        <MuseumCatalogCard key={i} eyebrow={t(section.heading, lang)}>
+          <div className="space-y-3 max-w-[62ch]">
+            {section.body.map((para, j) => (
+              <p key={j} className="leading-[1.72] text-[16px] sm:text-[17px] text-foreground/90">
+                {t(para, lang)}
+              </p>
+            ))}
+          </div>
+        </MuseumCatalogCard>
+      ))}
+
       {f.extended?.storyMode && f.extended.storyMode.length > 0 && (
         <StoryFlow
           scenes={(f.extended.storyMode as LocalizedString[]).map((p, i): StoryScene => ({
@@ -428,6 +441,26 @@ function FigureDetail() {
           marker={<span aria-hidden>✦</span>}
           items={cultureItems}
         />
+      )}
+
+      {extras?.regionPanel && (
+        <MuseumCatalogCard accent="var(--secondary)" eyebrow={t(extras.regionPanel.heading, lang)}>
+          {extras.regionPanel.localityLabel && (
+            <div className="mb-2 text-[11px] uppercase tracking-[0.18em] font-bold text-muted-foreground">
+              {t(extras.regionPanel.localityLabel, lang)}
+            </div>
+          )}
+          <p className="leading-[1.72] text-[16px] sm:text-[17px] text-foreground/90 max-w-[62ch]">
+            {t(extras.regionPanel.body, lang)}
+          </p>
+          <Link
+            to="/region/$regionId"
+            params={{ regionId: extras.regionPanel.regionId }}
+            className="mt-4 inline-flex min-h-11 items-center rounded-full border border-border bg-card px-4 text-sm font-semibold text-foreground hover:bg-muted focus-visible:outline-2 focus-visible:outline-offset-2"
+          >
+            {t(extras.regionPanel.linkLabel, lang)}
+          </Link>
+        </MuseumCatalogCard>
       )}
 
       <MuseumCTASection

@@ -74,6 +74,8 @@ export const cultureKindEmoji = (k: FigureCultureLinkKind) => KIND_EMOJI[k];
 
 export type FigureMeta = {
   cinematicLine?: LocalizedString;
+  /** Optional per-figure SEO override (title / description already suffixed). */
+  seo?: { title: LocalizedString; description: LocalizedString };
   modernRelevance?: LocalizedString;
   themes?: FigureTheme[];
   relatedFigureIds?: string[];
@@ -293,6 +295,32 @@ export const figureMeta: Record<string, FigureMeta> = {
     ),
     themes: ["philosophy", "education", "faith"],
     relatedFigureIds: ["ben-badis", "ibn-khaldun", "frantz-fanon"],
+  },
+  "mohammed-arkoun": {
+    cinematicLine: L(
+      "A scholar who asked how Islamic thought could confront history, modernity and the boundaries of the unthought.",
+      "Un penseur qui interrogea la mani\u00e8re dont la pens\u00e9e islamique pouvait affronter l\u2019histoire, la modernit\u00e9 et les limites de l\u2019impens\u00e9.",
+      "\u0645\u0641\u0643\u0631 \u062a\u0633\u0627\u0621\u0644 \u0639\u0646 \u0643\u064a\u0641\u064a\u0629 \u0645\u0648\u0627\u062c\u0647\u0629 \u0627\u0644\u0641\u0643\u0631 \u0627\u0644\u0625\u0633\u0644\u0627\u0645\u064a \u0644\u0644\u062a\u0627\u0631\u064a\u062e \u0648\u0627\u0644\u062d\u062f\u0627\u062b\u0629 \u0648\u062d\u062f\u0648\u062f \u0645\u0627 \u0644\u0645 \u064a\u064f\u0641\u0643\u0651\u0631 \u0641\u064a\u0647.",
+    ),
+    modernRelevance: L(
+      "His questions about who defines legitimate knowledge still shape debates on reform, memory and free inquiry in Muslim societies and in Europe.",
+      "Ses questions sur ceux qui d\u00e9finissent le savoir l\u00e9gitime nourrissent encore les d\u00e9bats sur la r\u00e9forme, la m\u00e9moire et la libert\u00e9 d\u2019enqu\u00eate dans les soci\u00e9t\u00e9s musulmanes et en Europe.",
+      "\u0644\u0627 \u062a\u0632\u0627\u0644 \u0623\u0633\u0626\u0644\u062a\u0647 \u0639\u0646 \u0645\u0646 \u064a\u062d\u062f\u0651\u062f \u0627\u0644\u0645\u0639\u0631\u0641\u0629 \u0627\u0644\u0645\u0634\u0631\u0648\u0639\u0629 \u062a\u0624\u0637\u0651\u0631 \u0627\u0644\u0646\u0642\u0627\u0634 \u062d\u0648\u0644 \u0627\u0644\u0625\u0635\u0644\u0627\u062d \u0648\u0627\u0644\u0630\u0627\u0643\u0631\u0629 \u0648\u062d\u0631\u064a\u0629 \u0627\u0644\u0628\u062d\u062b \u0641\u064a \u0627\u0644\u0645\u062c\u062a\u0645\u0639\u0627\u062a \u0627\u0644\u0625\u0633\u0644\u0627\u0645\u064a\u0629 \u0648\u0641\u064a \u0623\u0648\u0631\u0648\u0628\u0627.",
+    ),
+    themes: ["philosophy", "faith", "education", "amazigh", "identity"],
+    relatedFigureIds: ["malek-bennabi", "ben-badis", "mammeri", "ibn-khaldun"],
+    seo: {
+      title: L(
+        "Mohammed Arkoun, Algerian Scholar of Islamic Thought | DZ Odyssey",
+        "Mohammed Arkoun, penseur alg\u00e9rien de l\u2019islam | DZ Odyssey",
+        "\u0645\u062d\u0645\u062f \u0623\u0631\u0643\u0648\u0646\u060c \u0627\u0644\u0645\u0641\u0643\u0631 \u0627\u0644\u062c\u0632\u0627\u0626\u0631\u064a \u0641\u064a \u0627\u0644\u062f\u0631\u0627\u0633\u0627\u062a \u0627\u0644\u0625\u0633\u0644\u0627\u0645\u064a\u0629 | DZ Odyssey",
+      ),
+      description: L(
+        "Explore the life and ideas of Mohammed Arkoun, the Ath Yenni-born Algerian thinker who called for a critical, historical and humanist rethinking of Islamic thought.",
+        "D\u00e9couvrez la vie et la pens\u00e9e de Mohammed Arkoun, penseur alg\u00e9rien n\u00e9 \u00e0 Ath Yenni, qui appela \u00e0 une lecture critique, historique et humaniste de la pens\u00e9e islamique.",
+        "\u0627\u0643\u062a\u0634\u0641 \u062d\u064a\u0627\u0629 \u0648\u0623\u0641\u0643\u0627\u0631 \u0645\u062d\u0645\u062f \u0623\u0631\u0643\u0648\u0646\u060c \u0627\u0644\u0645\u0641\u0643\u0631 \u0627\u0644\u062c\u0632\u0627\u0626\u0631\u064a \u0627\u0644\u0645\u0648\u0644\u0648\u062f \u0641\u064a \u0622\u062b \u064a\u0646\u064a\u060c \u0627\u0644\u0630\u064a \u062f\u0639\u0627 \u0625\u0644\u0649 \u0625\u0639\u0627\u062f\u0629 \u0642\u0631\u0627\u0621\u0629 \u0627\u0644\u0641\u0643\u0631 \u0627\u0644\u0625\u0633\u0644\u0627\u0645\u064a \u0645\u0646 \u0645\u0646\u0638\u0648\u0631 \u0646\u0642\u062f\u064a \u0648\u062a\u0627\u0631\u064a\u062e\u064a \u0648\u0625\u0646\u0633\u0627\u0646\u064a.",
+      ),
+    },
   },
   "frantz-fanon": {
     cinematicLine: L("He diagnosed colonisation as a wound of the mind.", "Il a diagnostiqué la colonisation comme une blessure de l'esprit.", "شخّص الاستعمار جرحاً في العقل."),

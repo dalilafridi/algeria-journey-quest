@@ -195,6 +195,7 @@ export const COLLECTIONS: CollectionDef[] = [
       "ibn-khaldun",
       "amar-imache",
       "malek-bennabi",
+      "mohammed-arkoun",
       "frantz-fanon",
       "tassadit-yacine",
     ],

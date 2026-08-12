@@ -139,6 +139,19 @@ function buildHaystack(item: SearchItem): string {
 // Additive: unrecognised keys are simply ignored.
 const ALIASES: Record<string, string[]> = {
   // Figures
+  "figure:mohammed-arkoun": [
+    "arkoun",
+    "mohamed arkoun",
+    "Mu\u1e25emmed Arkun",
+    "\u0645\u062d\u0645\u062f \u0623\u0631\u0643\u0648\u0646",
+    "ath yenni",
+    "at yanni",
+    "\u0622\u062b \u064a\u0646\u064a",
+    "taourirt mimoun",
+    "islamologie appliquee",
+    "applied islamology",
+    "\u0627\u0644\u0625\u0633\u0644\u0627\u0645\u064a\u0627\u062a \u0627\u0644\u062a\u0637\u0628\u064a\u0642\u064a\u0629",
+  ],
   "figure:massinissa": ["masinissa", "massinisa", "ⵎⴰⵙⵉⵏⵉⵙⵙⴰ", "ماسينيسا"],
   "figure:jugurtha": ["yugurten", "ⵢⵓⴳⵓⵔⵜⴻⵏ", "يوغرطة"],
   "figure:dihya": ["kahina", "al-kahina", "el kahina", "la kahina", "ⴷⵉⵀⵢⴰ", "ديهيا", "الكاهنة"],

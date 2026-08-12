@@ -51,6 +51,16 @@ export const EXHIBIT_PROVENANCE: Record<string, ExhibitProvenanceRecord> = {
     ],
   }),
   // ─── Historical figures ─────────────────────────────────────────────
+  "figure:mohammed-arkoun": R({
+    sourceIds: [
+      "gifford-mohammed-arkoun",
+      "qantara-arkoun-critic",
+      "qantara-arkoun-obituary",
+      "wikipedia-mohammed-arkoun",
+    ],
+    confidence: "widely-accepted",
+    intro: T.intro,
+  }),
   "figure:massinissa": R({
     sourceIds: ["britannica-massinissa", "britannica-numidia", "brett-fentress-berbers", "camps-encyclopedie-berbere"],
     confidence: "widely-accepted",

@@ -14,6 +14,66 @@ const L = (en: string, fr: string, ar: string): LocalizedString => ({ en, fr, ar
 const S = <T extends ProvenanceSource>(s: T) => s;
 
 export const SOURCES: readonly ProvenanceSource[] = [
+  // \u2500\u2500\u2500 Mohammed Arkoun \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
+  S({
+    id: "wikipedia-mohammed-arkoun",
+    kind: "web",
+    category: "further",
+    title: L("Mohammed Arkoun", "Mohammed Arkoun", "\u0645\u062d\u0645\u062f \u0623\u0631\u0643\u0648\u0646"),
+    publisher: L("Wikipedia, English edition", "Wikipedia, \u00e9dition anglaise", "\u0648\u064a\u0643\u064a\u0628\u064a\u062f\u064a\u0627\u060c \u0627\u0644\u0646\u0633\u062e\u0629 \u0627\u0644\u0625\u0646\u062c\u0644\u064a\u0632\u064a\u0629"),
+    url: "https://en.wikipedia.org/wiki/Mohammed_Arkoun",
+    language: "en",
+    note: L(
+      "Used as the initial biographical overview.",
+      "Utilis\u00e9 comme aper\u00e7u biographique initial.",
+      "\u0627\u0633\u062a\u064f\u062e\u062f\u0645 \u0643\u0625\u0637\u0627\u0631 \u0633\u064a\u0631\u064a \u0623\u0648\u0644\u064a.",
+    ),
+  }),
+  S({
+    id: "gifford-mohammed-arkoun",
+    kind: "official",
+    category: "academic",
+    title: L("Mohammed Arkoun", "Mohammed Arkoun", "\u0645\u062d\u0645\u062f \u0623\u0631\u0643\u0648\u0646"),
+    publisher: L("The Gifford Lectures", "The Gifford Lectures", "\u0645\u062d\u0627\u0636\u0631\u0627\u062a \u062c\u064a\u0641\u0648\u0631\u062f"),
+    url: "https://giffordarchives.org/lecturers/mohammed-arkoun",
+    language: "en",
+    note: L(
+      "Academic biography and lecture record.",
+      "Biographie universitaire et relev\u00e9 des conf\u00e9rences.",
+      "\u0633\u064a\u0631\u0629 \u0623\u0643\u0627\u062f\u064a\u0645\u064a\u0629 \u0648\u0633\u062c\u0644 \u0644\u0644\u0645\u062d\u0627\u0636\u0631\u0627\u062a.",
+    ),
+  }),
+  S({
+    id: "qantara-arkoun-critic",
+    kind: "article",
+    category: "media",
+    title: L(
+      "Mohammed Arkoun: A Modern Critic of Islamic Reason",
+      "Mohammed Arkoun : un critique moderne de la raison islamique",
+      "\u0645\u062d\u0645\u062f \u0623\u0631\u0643\u0648\u0646: \u0646\u0627\u0642\u062f \u062d\u062f\u064a\u062b \u0644\u0644\u0639\u0642\u0644 \u0627\u0644\u0625\u0633\u0644\u0627\u0645\u064a",
+    ),
+    author: L("Burhan Schawi", "Burhan Schawi", "\u0628\u0631\u0647\u0627\u0646 \u0634\u0627\u0648\u064a"),
+    publisher: L("Qantara", "Qantara", "\u0642\u0646\u0637\u0631\u0629"),
+    url: "https://qantara.de/en/article/mohammed-arkoun-modern-critic-islamic-reason",
+    publishedAt: "2007-04-13",
+    language: "en",
+  }),
+  S({
+    id: "qantara-arkoun-obituary",
+    kind: "article",
+    category: "media",
+    title: L(
+      "A Pioneer of Modern Critical Islam Studies",
+      "Un pionnier des \u00e9tudes critiques modernes sur l\u2019islam",
+      "\u0631\u0627\u0626\u062f \u0641\u064a \u0627\u0644\u062f\u0631\u0627\u0633\u0627\u062a \u0627\u0644\u0625\u0633\u0644\u0627\u0645\u064a\u0629 \u0627\u0644\u0646\u0642\u062f\u064a\u0629 \u0627\u0644\u062d\u062f\u064a\u062b\u0629",
+    ),
+    author: L("Ursula G\u00fcnther", "Ursula G\u00fcnther", "\u0623\u0648\u0631\u0633\u0648\u0644\u0627 \u063a\u0648\u0646\u062b\u0631"),
+    publisher: L("Qantara", "Qantara", "\u0642\u0646\u0637\u0631\u0629"),
+    url: "https://qantara.de/en/article/obituary-mohammed-arkoun-pioneer-modern-critical-islam-studies",
+    publishedAt: "2010-09-21",
+    language: "en",
+  }),
+
   // ─── Women of the Algerian Revolution ─────────────────────────────────
   S({
     id: "wikipedia-femmes-guerre-algerie",

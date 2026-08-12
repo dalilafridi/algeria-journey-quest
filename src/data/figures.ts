@@ -2212,6 +2212,31 @@ export const figures: Figure[] = [
   },
 
   {
+    id: "mohammed-arkoun",
+    name: "Mohammed Arkoun",
+    displayName: L("Mohammed Arkoun", "Mohammed Arkoun", "محمد أركون"),
+    emoji: "MA",
+    category: "intellectuals-culture",
+    region: "kabylie",
+    era: L("1928\u20132010", "1928\u20132010", "1928\u20132010"),
+    regionLabel: L("Ath Yenni, Kabylie", "Ath Yenni, Kabylie", "\u0622\u062b \u064a\u0646\u064a\u060c \u0645\u0646\u0637\u0642\u0629 \u0627\u0644\u0642\u0628\u0627\u0626\u0644"),
+    story: L(
+      "Mohammed Arkoun was an Algerian scholar and one of the most influential modern critics of Islamic thought. Born in the village of Taourirt Mimoun in Ath Yenni, Kabylie, he built an international academic career devoted to examining how Islamic traditions were formed, interpreted and sometimes restricted by history, institutions and systems of power.",
+      "Mohammed Arkoun fut un penseur alg\u00e9rien et l\u2019un des critiques modernes les plus influents de la pens\u00e9e islamique. N\u00e9 au village de Taourirt Mimoun, \u00e0 Ath Yenni, en Kabylie, il m\u00e8na une carri\u00e8re universitaire internationale consacr\u00e9e \u00e0 l\u2019examen de la mani\u00e8re dont les traditions islamiques ont \u00e9t\u00e9 form\u00e9es, interpr\u00e9t\u00e9es et parfois limit\u00e9es par l\u2019histoire, les institutions et les rapports de pouvoir.",
+      "\u0643\u0627\u0646 \u0645\u062d\u0645\u062f \u0623\u0631\u0643\u0648\u0646 \u0645\u0641\u0643\u0631\u064b\u0627 \u062c\u0632\u0627\u0626\u0631\u064a\u064b\u0627 \u0648\u0645\u0646 \u0623\u0628\u0631\u0632 \u0627\u0644\u0646\u0642\u0627\u062f \u0627\u0644\u0645\u0639\u0627\u0635\u0631\u064a\u0646 \u0644\u0644\u0641\u0643\u0631 \u0627\u0644\u0625\u0633\u0644\u0627\u0645\u064a. \u0648\u064f\u0644\u062f \u0641\u064a \u0642\u0631\u064a\u0629 \u062a\u0627\u0648\u0631\u064a\u0631\u062a \u0645\u064a\u0645\u0648\u0646 \u0628\u0622\u062b \u064a\u0646\u064a \u0641\u064a \u0645\u0646\u0637\u0642\u0629 \u0627\u0644\u0642\u0628\u0627\u0626\u0644\u060c \u0648\u0628\u0646\u0649 \u0645\u0633\u0627\u0631\u064b\u0627 \u0623\u0643\u0627\u062f\u064a\u0645\u064a\u064b\u0627 \u062f\u0648\u0644\u064a\u064b\u0627 \u0643\u0631\u0651\u0633\u0647 \u0644\u062f\u0631\u0627\u0633\u0629 \u0643\u064a\u0641\u064a\u0629 \u062a\u0634\u0643\u0651\u0644 \u0627\u0644\u062a\u0642\u0627\u0644\u064a\u062f \u0627\u0644\u0625\u0633\u0644\u0627\u0645\u064a\u0629 \u0648\u062a\u0623\u0648\u064a\u0644\u0647\u0627\u060c \u0648\u0623\u062d\u064a\u0627\u0646\u064b\u0627 \u062a\u0642\u064a\u064a\u062f\u0647\u0627\u060c \u0628\u0641\u0639\u0644 \u0627\u0644\u062a\u0627\u0631\u064a\u062e \u0648\u0627\u0644\u0645\u0624\u0633\u0633\u0627\u062a \u0648\u0623\u0646\u0638\u0645\u0629 \u0627\u0644\u0633\u0644\u0637\u0629.",
+    ),
+    importance: L(
+      "Arkoun believed that Islamic thought should be studied with the same critical tools applied to other intellectual traditions. He drew on history, philosophy, linguistics, anthropology and the social sciences to reopen questions that dogma, politics or inherited habits had pushed beyond discussion.",
+      "Arkoun estimait que la pens\u00e9e islamique devait \u00eatre \u00e9tudi\u00e9e avec les m\u00eames outils critiques que les autres traditions intellectuelles. Il mobilisa l\u2019histoire, la philosophie, la linguistique, l\u2019anthropologie et les sciences sociales pour rouvrir des questions que le dogme, la politique ou les habitudes h\u00e9rit\u00e9es avaient plac\u00e9es hors du d\u00e9bat.",
+      "\u0631\u0623\u0649 \u0623\u0631\u0643\u0648\u0646 \u0623\u0646 \u0627\u0644\u0641\u0643\u0631 \u0627\u0644\u0625\u0633\u0644\u0627\u0645\u064a \u064a\u0646\u0628\u063a\u064a \u0623\u0646 \u064a\u064f\u062f\u0631\u0633 \u0628\u0627\u0644\u0623\u062f\u0648\u0627\u062a \u0627\u0644\u0646\u0642\u062f\u064a\u0629 \u0630\u0627\u062a\u0647\u0627 \u0627\u0644\u062a\u064a \u062a\u064f\u0637\u0628\u0651\u0642 \u0639\u0644\u0649 \u0627\u0644\u062a\u0642\u0627\u0644\u064a\u062f \u0627\u0644\u0641\u0643\u0631\u064a\u0629 \u0627\u0644\u0623\u062e\u0631\u0649. \u0648\u0642\u062f \u0627\u0633\u062a\u0639\u0627\u0646 \u0628\u0627\u0644\u062a\u0627\u0631\u064a\u062e \u0648\u0627\u0644\u0641\u0644\u0633\u0641\u0629 \u0648\u0627\u0644\u0644\u0633\u0627\u0646\u064a\u0627\u062a \u0648\u0627\u0644\u0623\u0646\u062b\u0631\u0648\u0628\u0648\u0644\u0648\u062c\u064a\u0627 \u0648\u0627\u0644\u0639\u0644\u0648\u0645 \u0627\u0644\u0627\u062c\u062a\u0645\u0627\u0639\u064a\u0629 \u0644\u064a\u0639\u064a\u062f \u0641\u062a\u062d \u0623\u0633\u0626\u0644\u0629 \u0623\u0642\u0635\u0627\u0647\u0627 \u0627\u0644\u062f\u0648\u063a\u0645\u0627 \u0623\u0648 \u0627\u0644\u0633\u064a\u0627\u0633\u0629 \u0623\u0648 \u0627\u0644\u0639\u0627\u062f\u0627\u062a \u0627\u0644\u0645\u0648\u0631\u0648\u062b\u0629 \u0639\u0646 \u062f\u0627\u0626\u0631\u0629 \u0627\u0644\u0646\u0642\u0627\u0634.",
+    ),
+    fact: L(
+      "He earned the agr\u00e9gation in Arabic language and literature in 1956 and completed a doctorate in 1968, with early research on the philosopher and historian Ibn Miskawayh.",
+      "Il obtint l\u2019agr\u00e9gation d\u2019arabe en 1956 et acheva un doctorat en 1968, apr\u00e8s des premiers travaux sur le philosophe et historien Ibn Miskawayh.",
+      "\u0646\u0627\u0644 \u0634\u0647\u0627\u062f\u0629 \u0627\u0644\u062a\u0628\u0631\u064a\u0632 (\u0627\u0644\u0623\u063a\u0631\u064a\u0642\u0627\u0633\u064a\u0648\u0646) \u0641\u064a \u0627\u0644\u0644\u063a\u0629 \u0627\u0644\u0639\u0631\u0628\u064a\u0629 \u0648\u0622\u062f\u0627\u0628\u0647\u0627 \u0633\u0646\u0629 1956\u060c \u0648\u0623\u0646\u062c\u0632 \u0623\u0637\u0631\u0648\u062d\u0629 \u0627\u0644\u062f\u0643\u062a\u0648\u0631\u0627\u0647 \u0633\u0646\u0629 1968\u060c \u0628\u0639\u062f \u0623\u0628\u062d\u0627\u062b \u0623\u0648\u0644\u0649 \u062d\u0648\u0644 \u0627\u0644\u0641\u064a\u0644\u0633\u0648\u0641 \u0648\u0627\u0644\u0645\u0624\u0631\u062e \u0627\u0628\u0646 \u0645\u0633\u0643\u0648\u064a\u0647.",
+    ),
+  },
+  {
     id: "merzak-allouache",
     name: "Merzak Allouache",
     displayName: L("Merzak Allouache", "Merzak Allouache", "مرزاق علواش"),
