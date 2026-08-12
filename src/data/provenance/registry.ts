@@ -51,6 +51,11 @@ export const EXHIBIT_PROVENANCE: Record<string, ExhibitProvenanceRecord> = {
     ],
   }),
   // ─── Historical figures ─────────────────────────────────────────────
+  "figure:mammeri": R({
+    sourceIds: ["wikipedia-mouloud-mammeri"],
+    confidence: "widely-accepted",
+    intro: T.intro,
+  }),
   "figure:mohammed-arkoun": R({
     sourceIds: [
       "gifford-mohammed-arkoun",
