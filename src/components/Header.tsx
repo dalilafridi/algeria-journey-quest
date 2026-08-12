@@ -140,8 +140,11 @@ export function Header() {
     if (hoverTimer.current) clearTimeout(hoverTimer.current);
   };
 
+  // shrink-0 + whitespace-nowrap keep the utility controls (search, language)
+  // from being squeezed by the brand block on narrow screens, which is what
+  // made the "EN" code wrap letter by letter.
   const utilityBtn =
-    "inline-flex items-center gap-2 h-9 px-3 text-[0.8125rem] font-medium tracking-wide text-foreground/80 hover:text-foreground transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--ring)]";
+    "inline-flex shrink-0 items-center justify-center gap-1.5 whitespace-nowrap h-11 min-h-11 min-w-11 px-2 sm:px-3 text-[0.8125rem] font-medium tracking-wide text-foreground/80 hover:text-foreground transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--ring)]";
 
   return (
     <header
