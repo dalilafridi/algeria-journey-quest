@@ -1161,6 +1161,37 @@ function MomentsPage() {
             </div>
           </MuseumReveal>
 
+          <MuseumReveal>
+            <div className="flex flex-col items-center gap-2 text-center">
+              <p className="text-sm text-muted-foreground max-w-[58ch]">
+                {tr(
+                  L(
+                    "Le Printemps berbère commença après l'interdiction d'une conférence de l'écrivain Mouloud Mammeri sur la poésie kabyle ancienne.",
+                    "The Berber Spring began after a lecture on ancient Kabyle poetry by the writer Mouloud Mammeri was prohibited.",
+                    "بدأ الربيع الأمازيغي بعد منع محاضرة للكاتب مولود معمري عن الشعر القبائلي القديم.",
+                  ),
+                  lang,
+                )}
+              </p>
+              <Link
+                to="/figures/$figureId"
+                params={{ figureId: "mammeri" }}
+                className="inline-flex min-h-11 items-center gap-2 px-4 py-2 rounded-full border border-border bg-card/80 text-sm font-semibold text-foreground/85 hover:text-foreground hover:border-primary/40 transition"
+              >
+                <span aria-hidden>👤</span>
+                {tr(
+                  L(
+                    "Découvrir Mouloud Mammeri",
+                    "Discover Mouloud Mammeri",
+                    "اكتشف مولود معمري",
+                  ),
+                  lang,
+                )}
+                <span aria-hidden>{lang === "ar" ? "←" : "→"}</span>
+              </Link>
+            </div>
+          </MuseumReveal>
+
           <GuideBubble
             text={L(
               "Prenons un instant pour comprendre ce qui s'est passé en 1980…",
@@ -1169,6 +1200,7 @@ function MomentsPage() {
             )}
             lang={lang}
           />
+
 
           <MuseumReveal>
             <StoryFlow
