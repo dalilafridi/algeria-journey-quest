@@ -201,9 +201,13 @@ export function Header() {
 
           <DropdownMenu open={langOpen} onOpenChange={setLangOpen}>
             <DropdownMenuTrigger asChild>
-              <button type="button" className={utilityBtn} aria-label={tri(NAV_UI.language, current)}>
-                <span className="font-semibold tracking-[0.12em]">{LANG_SHORT[current]}</span>
-                <IconChevron open={langOpen} className="opacity-60" />
+              <button
+                type="button"
+                className={utilityBtn + " min-w-[3.25rem]"}
+                aria-label={tri(NAV_UI.language, current)}
+              >
+                <span className="whitespace-nowrap font-semibold tracking-[0.12em]">{LANG_SHORT[current]}</span>
+                <IconChevron open={langOpen} className="shrink-0 opacity-60" />
               </button>
             </DropdownMenuTrigger>
             <DropdownMenuContent
