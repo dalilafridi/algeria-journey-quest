@@ -154,7 +154,7 @@ export function Header() {
       {/* ------------------------------------------------ upper level */}
       <div
         className={
-          "mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 sm:px-6 motion-safe:transition-all motion-reduce:transition-none " +
+          "mx-auto flex max-w-6xl items-center justify-between gap-2 sm:gap-4 px-3 sm:px-6 motion-safe:transition-all motion-reduce:transition-none " +
           (scrolled ? "py-2" : "py-3.5 lg:py-5")
         }
       >
