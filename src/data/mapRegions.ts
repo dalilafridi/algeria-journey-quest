@@ -36,7 +36,7 @@ export const mapRegions: MapRegion[] = [
       L("Famous for poetry, song and a strong oral tradition.", "Célèbre pour sa poésie, sa chanson et une forte tradition orale.", "تشتهر بالشعر والأغنية وتقاليد شفهية قوية."),
       L("Lalla Fatma N'Soumer led mountain resistance against French troops in the 1850s.", "Lalla Fatma N'Soumer a mené la résistance des montagnes face aux troupes françaises dans les années 1850.", "قادت لالة فاطمة نسومر مقاومة الجبال ضد القوات الفرنسية في خمسينيات القرن 19."),
     ],
-    figureIds: ["ait-menguellet", "matoub", "idir", "mammeri", "abane-ramdane", "lalla-fatma-nsoumer"],
+    figureIds: ["ait-menguellet", "matoub", "idir", "mammeri", "mohammed-arkoun", "abane-ramdane", "lalla-fatma-nsoumer"],
   },
   {
     id: "aures",
