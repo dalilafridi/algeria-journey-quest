@@ -260,7 +260,7 @@ export function Header() {
             aria-expanded={drawerOpen}
             aria-controls="museum-directory"
             aria-label={tri(NAV_UI.menu, current)}
-            className="inline-flex h-11 w-11 items-center justify-center border text-foreground lg:hidden"
+            className="inline-flex h-11 w-11 shrink-0 items-center justify-center border text-foreground lg:hidden"
             style={{ borderColor: GOLD_BORDER }}
           >
             <IconMenu open={drawerOpen} />
