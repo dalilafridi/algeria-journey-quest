@@ -158,7 +158,7 @@ export function Header() {
           (scrolled ? "py-2" : "py-3.5 lg:py-5")
         }
       >
-        <Link to="/" className="group flex min-w-0 items-center gap-3" aria-label={tri(NAV_UI.brandName, current)}>
+        <Link to="/" className="group flex min-w-0 flex-1 items-center gap-2 sm:gap-3" aria-label={tri(NAV_UI.brandName, current)}>
           <span
             className={
               "relative inline-flex shrink-0 items-center justify-center rounded-full border bg-card shadow-sm motion-safe:transition-all " +
