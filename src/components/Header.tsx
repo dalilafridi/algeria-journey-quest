@@ -162,7 +162,7 @@ export function Header() {
           <span
             className={
               "relative inline-flex shrink-0 items-center justify-center rounded-full border bg-card shadow-sm motion-safe:transition-all " +
-              (scrolled ? "h-9 w-9" : "h-10 w-10 lg:h-12 lg:w-12")
+              (scrolled ? "h-9 w-9" : "h-10 w-10 max-[389px]:h-9 max-[389px]:w-9 lg:h-12 lg:w-12")
             }
             style={{ borderColor: GOLD_BORDER }}
           >
@@ -171,7 +171,7 @@ export function Header() {
           <span className="flex min-w-0 flex-col leading-none">
             <span
               className={
-                "truncate font-semibold uppercase text-foreground motion-safe:transition-all max-[389px]:tracking-[0.12em] max-[389px]:text-[0.8125rem] " +
+                "truncate font-semibold uppercase text-foreground motion-safe:transition-all max-[389px]:tracking-[0.06em] max-[389px]:text-[0.75rem] " +
                 (scrolled ? "text-[0.95rem] tracking-[0.18em]" : "text-base lg:text-xl tracking-[0.22em]")
               }
               style={{ fontFamily: "Georgia, 'Iowan Old Style', 'Times New Roman', serif" }}
