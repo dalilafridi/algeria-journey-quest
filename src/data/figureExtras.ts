@@ -222,4 +222,259 @@ export const figureExtras: Record<string, FigureExtras> = {
       },
     ],
   },
+
+  mammeri: {
+    didYouKnow: L(
+      "The University of Tizi Ouzou carries his name, as does a major cultural centre in the same city.",
+      "L'université de Tizi Ouzou porte son nom, tout comme une importante maison de la culture de la même ville.",
+      "تحمل جامعة تيزي وزو اسمه، وكذلك دار ثقافة كبرى في المدينة نفسها.",
+    ),
+    narrativeSections: [
+      {
+        heading: L(
+          "From Taourirt Mimoun to a life of learning",
+          "De Taourirt Mimoun \u00e0 une vie consacr\u00e9e au savoir",
+          "\u0645\u0646 \u062a\u0627\u0648\u0631\u064a\u0631\u062a \u0645\u064a\u0645\u0648\u0646 \u0625\u0644\u0649 \u062d\u064a\u0627\u0629 \u0643\u0631\u0651\u0633\u0647\u0627 \u0644\u0644\u0645\u0639\u0631\u0641\u0629",
+        ),
+        body: [
+          L(
+            "Mouloud Mammeri was born on 28 December 1917 in Taourirt Mimoun, a village in Ath Yenni, Kabylie. He attended primary school in his home region before continuing part of his education in Rabat, Algiers and Paris.",
+            "Mouloud Mammeri est n\u00e9 le 28 d\u00e9cembre 1917 \u00e0 Taourirt Mimoun, un village d'Ath Yenni, en Kabylie. Il fr\u00e9quenta l'\u00e9cole primaire dans sa r\u00e9gion natale avant de poursuivre une partie de sa formation \u00e0 Rabat, \u00e0 Alger et \u00e0 Paris.",
+            "\u0648\u064f\u0644\u062f \u0645\u0648\u0644\u0648\u062f \u0645\u0639\u0645\u0631\u064a \u0641\u064a 28 \u062f\u064a\u0633\u0645\u0628\u0631 1917 \u0641\u064a \u062a\u0627\u0648\u0631\u064a\u0631\u062a \u0645\u064a\u0645\u0648\u0646\u060c \u0648\u0647\u064a \u0642\u0631\u064a\u0629 \u0641\u064a \u0622\u062b \u064a\u0646\u064a \u0628\u0645\u0646\u0637\u0642\u0629 \u0627\u0644\u0642\u0628\u0627\u0626\u0644. \u062f\u0631\u0633 \u0627\u0644\u0645\u0631\u062d\u0644\u0629 \u0627\u0644\u0627\u0628\u062a\u062f\u0627\u0626\u064a\u0629 \u0641\u064a \u0645\u0646\u0637\u0642\u062a\u0647\u060c \u062b\u0645 \u0648\u0627\u0635\u0644 \u062c\u0632\u0621\u064b\u0627 \u0645\u0646 \u062a\u0639\u0644\u064a\u0645\u0647 \u0641\u064a \u0627\u0644\u0631\u0628\u0627\u0637 \u0648\u0627\u0644\u062c\u0632\u0627\u0626\u0631 \u0627\u0644\u0639\u0627\u0635\u0645\u0629 \u0648\u0628\u0627\u0631\u064a\u0633.",
+          ),
+          L(
+            "His education exposed him to several languages, literary traditions and intellectual environments. During the Second World War, he was conscripted and later participated in Allied campaigns in Europe. After the war, he returned to Algeria and worked as a teacher.",
+            "Sa formation le mit en contact avec plusieurs langues, traditions litt\u00e9raires et milieux intellectuels. Pendant la Seconde Guerre mondiale, il fut mobilis\u00e9 et participa ensuite aux campagnes alli\u00e9es en Europe. Apr\u00e8s la guerre, il revint en Alg\u00e9rie et exer\u00e7a comme enseignant.",
+            "\u0623\u062a\u0627\u062d \u0644\u0647 \u062a\u0639\u0644\u064a\u0645\u0647 \u0627\u0644\u0627\u062d\u062a\u0643\u0627\u0643 \u0628\u0644\u063a\u0627\u062a \u0648\u062a\u0642\u0627\u0644\u064a\u062f \u0623\u062f\u0628\u064a\u0629 \u0648\u0623\u0648\u0633\u0627\u0637 \u0641\u0643\u0631\u064a\u0629 \u0645\u062a\u0639\u062f\u062f\u0629. \u0648\u062e\u0644\u0627\u0644 \u0627\u0644\u062d\u0631\u0628 \u0627\u0644\u0639\u0627\u0644\u0645\u064a\u0629 \u0627\u0644\u062b\u0627\u0646\u064a\u0629 \u062c\u064f\u0646\u0651\u062f\u060c \u062b\u0645 \u0634\u0627\u0631\u0643 \u0641\u064a \u062d\u0645\u0644\u0627\u062a \u0627\u0644\u062d\u0644\u0641\u0627\u0621 \u0641\u064a \u0623\u0648\u0631\u0648\u0628\u0627. \u0648\u0628\u0639\u062f \u0627\u0644\u062d\u0631\u0628 \u0639\u0627\u062f \u0625\u0644\u0649 \u0627\u0644\u062c\u0632\u0627\u0626\u0631 \u0648\u0639\u0645\u0644 \u0645\u062f\u0631\u0651\u0633\u064b\u0627.",
+          ),
+          L(
+            "In 1952, he published his first novel, La Colline oubli\u00e9e. His career would eventually bring together fiction, teaching, linguistics, anthropology and the study of Amazigh oral heritage.",
+            "En 1952, il publia son premier roman, La Colline oubli\u00e9e. Sa carri\u00e8re allait r\u00e9unir la fiction, l'enseignement, la linguistique, l'anthropologie et l'\u00e9tude du patrimoine oral amazigh.",
+            "\u0641\u064a \u0633\u0646\u0629 1952 \u0646\u0634\u0631 \u0631\u0648\u0627\u064a\u062a\u0647 \u0627\u0644\u0623\u0648\u0644\u0649 La Colline oubli\u00e9e. \u0648\u0642\u062f \u062c\u0645\u0639 \u0645\u0633\u0627\u0631\u0647 \u0644\u0627\u062d\u0642\u064b\u0627 \u0628\u064a\u0646 \u0627\u0644\u0631\u0648\u0627\u064a\u0629 \u0648\u0627\u0644\u062a\u062f\u0631\u064a\u0633 \u0648\u0627\u0644\u0644\u0633\u0627\u0646\u064a\u0627\u062a \u0648\u0627\u0644\u0623\u0646\u062b\u0631\u0648\u0628\u0648\u0644\u0648\u062c\u064a\u0627 \u0648\u062f\u0631\u0627\u0633\u0629 \u0627\u0644\u062a\u0631\u0627\u062b \u0627\u0644\u0634\u0641\u0648\u064a \u0627\u0644\u0623\u0645\u0627\u0632\u064a\u063a\u064a.",
+          ),
+        ],
+      },
+      {
+        heading: L("Writing Algeria", "\u00c9crire l'Alg\u00e9rie", "\u0643\u062a\u0627\u0628\u0629 \u0627\u0644\u062c\u0632\u0627\u0626\u0631"),
+        body: [
+          L(
+            "Mammeri's novels explored the pressures experienced by individuals and communities during periods of social and political change. His characters confront questions of belonging, inequality, war, tradition, personal responsibility and the disruption of established ways of life.",
+            "Les romans de Mammeri explorent les pressions v\u00e9cues par les individus et les communaut\u00e9s durant les p\u00e9riodes de changement social et politique. Ses personnages affrontent des questions d'appartenance, d'in\u00e9galit\u00e9, de guerre, de tradition, de responsabilit\u00e9 personnelle et de bouleversement des modes de vie \u00e9tablis.",
+            "\u062a\u0633\u062a\u0643\u0634\u0641 \u0631\u0648\u0627\u064a\u0627\u062a \u0645\u0639\u0645\u0631\u064a \u0627\u0644\u0636\u063a\u0648\u0637 \u0627\u0644\u062a\u064a \u0639\u0627\u0634\u0647\u0627 \u0627\u0644\u0623\u0641\u0631\u0627\u062f \u0648\u0627\u0644\u062c\u0645\u0627\u0639\u0627\u062a \u0641\u064a \u0641\u062a\u0631\u0627\u062a \u0627\u0644\u062a\u062d\u0648\u0644 \u0627\u0644\u0627\u062c\u062a\u0645\u0627\u0639\u064a \u0648\u0627\u0644\u0633\u064a\u0627\u0633\u064a\u060c \u0625\u0630 \u062a\u0648\u0627\u062c\u0647 \u0634\u062e\u0635\u064a\u0627\u062a\u0647 \u0623\u0633\u0626\u0644\u0629 \u0627\u0644\u0627\u0646\u062a\u0645\u0627\u0621 \u0648\u0627\u0644\u0644\u0627\u0645\u0633\u0627\u0648\u0627\u0629 \u0648\u0627\u0644\u062d\u0631\u0628 \u0648\u0627\u0644\u062a\u0642\u0644\u064a\u062f \u0648\u0627\u0644\u0645\u0633\u0624\u0648\u0644\u064a\u0629 \u0627\u0644\u0641\u0631\u062f\u064a\u0629 \u0648\u0627\u0636\u0637\u0631\u0627\u0628 \u0623\u0646\u0645\u0627\u0637 \u0627\u0644\u062d\u064a\u0627\u0629 \u0627\u0644\u0631\u0627\u0633\u062e\u0629.",
+          ),
+          L(
+            "La Colline oubli\u00e9e, published in 1952, portrayed life within a Kabyle community. Le Sommeil du juste examined injustice, disillusionment and the contradictions of the colonial order. L'Opium et le B\u00e2ton placed its story within the Algerian War of Independence, while La Travers\u00e9e reflected on tensions and disappointments following independence.",
+            "La Colline oubli\u00e9e, parue en 1952, d\u00e9peint la vie au sein d'une communaut\u00e9 kabyle. Le Sommeil du juste examine l'injustice, la d\u00e9sillusion et les contradictions de l'ordre colonial. L'Opium et le B\u00e2ton situe son r\u00e9cit dans la guerre d'ind\u00e9pendance alg\u00e9rienne, tandis que La Travers\u00e9e revient sur les tensions et les d\u00e9ceptions de l'apr\u00e8s-ind\u00e9pendance.",
+            "\u0635\u0648\u0631\u062a La Colline oubli\u00e9e \u0627\u0644\u0635\u0627\u062f\u0631\u0629 \u0633\u0646\u0629 1952 \u0627\u0644\u062d\u064a\u0627\u0629 \u062f\u0627\u062e\u0644 \u0645\u062c\u062a\u0645\u0639 \u0642\u0628\u0627\u0626\u0644\u064a\u060c \u0648\u062a\u0646\u0627\u0648\u0644\u062a Le Sommeil du juste \u0627\u0644\u0638\u0644\u0645 \u0648\u062e\u064a\u0628\u0629 \u0627\u0644\u0623\u0645\u0644 \u0648\u062a\u0646\u0627\u0642\u0636\u0627\u062a \u0627\u0644\u0646\u0638\u0627\u0645 \u0627\u0644\u0627\u0633\u062a\u0639\u0645\u0627\u0631\u064a\u060c \u0641\u064a\u0645\u0627 \u062f\u0627\u0631\u062a L'Opium et le B\u00e2ton \u0641\u064a \u0632\u0645\u0646 \u062d\u0631\u0628 \u0627\u0644\u062a\u062d\u0631\u064a\u0631\u060c \u0648\u062a\u0623\u0645\u0644\u062a La Travers\u00e9e \u0641\u064a \u062a\u0648\u062a\u0631\u0627\u062a \u0645\u0627 \u0628\u0639\u062f \u0627\u0644\u0627\u0633\u062a\u0642\u0644\u0627\u0644 \u0648\u062e\u064a\u0628\u0627\u062a\u0647.",
+          ),
+          L(
+            "His fiction should be presented as literature, not as a literal historical record. It offers perspectives shaped by characters, narrative choices and the author's artistic vision.",
+            "Son \u0153uvre romanesque doit \u00eatre pr\u00e9sent\u00e9e comme de la litt\u00e9rature, et non comme un compte rendu historique litt\u00e9ral. Elle propose des perspectives fa\u00e7onn\u00e9es par les personnages, les choix narratifs et la vision artistique de l'auteur.",
+            "\u062a\u064f\u0642\u062f\u0651\u0645 \u0623\u0639\u0645\u0627\u0644\u0647 \u0627\u0644\u0631\u0648\u0627\u0626\u064a\u0629 \u0628\u0648\u0635\u0641\u0647\u0627 \u0623\u062f\u0628\u064b\u0627 \u0644\u0627 \u0633\u062c\u0644\u0627\u064b \u062a\u0627\u0631\u064a\u062e\u064a\u064b\u0627 \u062d\u0631\u0641\u064a\u064b\u0627\u060c \u0625\u0630 \u062a\u0642\u062f\u0651\u0645 \u0631\u0624\u0649 \u062a\u0635\u0648\u063a\u0647\u0627 \u0627\u0644\u0634\u062e\u0635\u064a\u0627\u062a \u0648\u0627\u0644\u062e\u064a\u0627\u0631\u0627\u062a \u0627\u0644\u0633\u0631\u062f\u064a\u0629 \u0648\u0631\u0624\u064a\u0629 \u0627\u0644\u0643\u0627\u062a\u0628 \u0627\u0644\u0641\u0646\u064a\u0629.",
+          ),
+        ],
+      },
+      {
+        heading: L(
+          "Language, memory and oral tradition",
+          "Langue, m\u00e9moire et tradition orale",
+          "\u0627\u0644\u0644\u063a\u0629 \u0648\u0627\u0644\u0630\u0627\u0643\u0631\u0629 \u0648\u0627\u0644\u062a\u0631\u0627\u062b \u0627\u0644\u0634\u0641\u0647\u064a",
+        ),
+        body: [
+          L(
+            "Mammeri devoted a major part of his scholarship to the Tamazight language and Amazigh oral literature. He studied grammar, developed teaching and reference materials, and collected poetry, stories and forms of oral expression.",
+            "Mammeri consacra une grande part de ses recherches \u00e0 la langue tamazight et \u00e0 la litt\u00e9rature orale amazighe. Il \u00e9tudia la grammaire, \u00e9labora des outils d'enseignement et de r\u00e9f\u00e9rence, et recueillit po\u00e8mes, r\u00e9cits et formes d'expression orale.",
+            "\u0643\u0631\u0651\u0633 \u0645\u0639\u0645\u0631\u064a \u062c\u0632\u0621\u064b\u0627 \u0643\u0628\u064a\u0631\u064b\u0627 \u0645\u0646 \u0623\u0628\u062d\u0627\u062b\u0647 \u0644\u0644\u063a\u0629 \u0627\u0644\u0623\u0645\u0627\u0632\u064a\u063a\u064a\u0629 \u0648\u0627\u0644\u0623\u062f\u0628 \u0627\u0644\u0634\u0641\u0648\u064a \u0627\u0644\u0623\u0645\u0627\u0632\u064a\u063a\u064a\u060c \u0641\u062f\u0631\u0633 \u0627\u0644\u0642\u0648\u0627\u0639\u062f\u060c \u0648\u0623\u0639\u062f\u0651 \u0645\u0648\u0627\u062f \u0644\u0644\u062a\u0639\u0644\u064a\u0645 \u0648\u0627\u0644\u0645\u0631\u0627\u062c\u0639\u060c \u0648\u062c\u0645\u0639 \u0627\u0644\u0634\u0639\u0631 \u0648\u0627\u0644\u062d\u0643\u0627\u064a\u0627\u062a \u0648\u0623\u0634\u0643\u0627\u0644 \u0627\u0644\u062a\u0639\u0628\u064a\u0631 \u0627\u0644\u0634\u0641\u0648\u064a.",
+          ),
+          L(
+            "His work on the poetry of Si Mohand ou Mhand helped preserve and introduce an important Kabyle poetic tradition to wider audiences. He also documented ancient Kabyle poetry and the Ahellil of Gourara, a poetic and musical tradition of southwestern Algeria.",
+            "Ses travaux sur la po\u00e9sie de Si Mohand ou Mhand ont contribu\u00e9 \u00e0 pr\u00e9server et \u00e0 faire conna\u00eetre une tradition po\u00e9tique kabyle majeure. Il documenta \u00e9galement la po\u00e9sie kabyle ancienne et l'Ahellil du Gourara, tradition po\u00e9tique et musicale du sud-ouest alg\u00e9rien.",
+            "\u0623\u0633\u0647\u0645 \u0639\u0645\u0644\u0647 \u0639\u0644\u0649 \u0634\u0639\u0631 \u0633\u064a \u0645\u062d\u0646\u062f \u0623\u0648 \u0645\u062d\u0646\u062f \u0641\u064a \u062d\u0641\u0638 \u062a\u0642\u0644\u064a\u062f \u0634\u0639\u0631\u064a \u0642\u0628\u0627\u0626\u0644\u064a \u0645\u0647\u0645 \u0648\u0627\u0644\u062a\u0639\u0631\u064a\u0641 \u0628\u0647 \u0644\u062f\u0649 \u062c\u0645\u0647\u0648\u0631 \u0623\u0648\u0633\u0639\u060c \u0643\u0645\u0627 \u0648\u062b\u0651\u0642 \u0627\u0644\u0634\u0639\u0631 \u0627\u0644\u0642\u0628\u0627\u0626\u0644\u064a \u0627\u0644\u0642\u062f\u064a\u0645 \u0648\u0623\u0647\u0644\u0651\u064a\u0644 \u063a\u0648\u0631\u0627\u0631\u0629\u060c \u0648\u0647\u0648 \u062a\u0642\u0644\u064a\u062f \u0634\u0639\u0631\u064a \u0648\u0645\u0648\u0633\u064a\u0642\u064a \u0641\u064a \u062c\u0646\u0648\u0628 \u063a\u0631\u0628 \u0627\u0644\u062c\u0632\u0627\u0626\u0631.",
+          ),
+          L(
+            "For Mammeri, oral literature was not a lesser form of culture. It was a living archive through which communities carried language, memory, knowledge and historical experience across generations.",
+            "Pour Mammeri, la litt\u00e9rature orale n'\u00e9tait pas une forme mineure de culture. C'\u00e9tait une archive vivante par laquelle les communaut\u00e9s transmettaient la langue, la m\u00e9moire, le savoir et l'exp\u00e9rience historique de g\u00e9n\u00e9ration en g\u00e9n\u00e9ration.",
+            "\u0644\u0645 \u064a\u0643\u0646 \u0627\u0644\u0623\u062f\u0628 \u0627\u0644\u0634\u0641\u0648\u064a \u0641\u064a \u0646\u0638\u0631 \u0645\u0639\u0645\u0631\u064a \u0634\u0643\u0644\u064b\u0627 \u0623\u062f\u0646\u0649 \u0645\u0646 \u0627\u0644\u062b\u0642\u0627\u0641\u0629\u060c \u0628\u0644 \u0623\u0631\u0634\u064a\u0641\u064b\u0627 \u062d\u064a\u064b\u0627 \u062a\u062d\u0645\u0644 \u0628\u0647 \u0627\u0644\u062c\u0645\u0627\u0639\u0627\u062a \u0644\u063a\u062a\u0647\u0627 \u0648\u0630\u0627\u0643\u0631\u062a\u0647\u0627 \u0648\u0645\u0639\u0627\u0631\u0641\u0647\u0627 \u0648\u062a\u062c\u0631\u0628\u062a\u0647\u0627 \u0627\u0644\u062a\u0627\u0631\u064a\u062e\u064a\u0629 \u0639\u0628\u0631 \u0627\u0644\u0623\u062c\u064a\u0627\u0644.",
+          ),
+        ],
+      },
+      {
+        heading: L(
+          "The lecture that was forbidden",
+          "La conf\u00e9rence interdite",
+          "\u0627\u0644\u0645\u062d\u0627\u0636\u0631\u0629 \u0627\u0644\u062a\u064a \u0645\u064f\u0646\u0639\u062a",
+        ),
+        body: [
+          L(
+            "In March 1980, Mouloud Mammeri was scheduled to deliver a lecture at the University of Tizi Ouzou about ancient Kabyle poetry. The authorities prevented the lecture from taking place.",
+            "En mars 1980, Mouloud Mammeri devait donner une conf\u00e9rence \u00e0 l'universit\u00e9 de Tizi Ouzou sur la po\u00e9sie kabyle ancienne. Les autorit\u00e9s emp\u00each\u00e8rent la tenue de cette conf\u00e9rence.",
+            "\u0641\u064a \u0645\u0627\u0631\u0633 1980 \u0643\u0627\u0646 \u0645\u0642\u0631\u0631\u064b\u0627 \u0623\u0646 \u064a\u0644\u0642\u064a \u0645\u0648\u0644\u0648\u062f \u0645\u0639\u0645\u0631\u064a \u0645\u062d\u0627\u0636\u0631\u0629 \u0641\u064a \u062c\u0627\u0645\u0639\u0629 \u062a\u064a\u0632\u064a \u0648\u0632\u0648 \u0639\u0646 \u0627\u0644\u0634\u0639\u0631 \u0627\u0644\u0642\u0628\u0627\u0626\u0644\u064a \u0627\u0644\u0642\u062f\u064a\u0645\u060c \u0644\u0643\u0646 \u0627\u0644\u0633\u0644\u0637\u0627\u062a \u062d\u0627\u0644\u062a \u062f\u0648\u0646 \u0627\u0646\u0639\u0642\u0627\u062f\u0647\u0627.",
+          ),
+          L(
+            "The cancellation was followed by protests involving students, cultural activists and other members of the population. The mobilization expanded into broader demands for recognition of Amazigh language, culture and identity, as well as greater freedom of expression. These events became known as the Berber Spring, or Tafsut Imazighen.",
+            "L'annulation fut suivie de manifestations rassemblant \u00e9tudiants, militants culturels et autres habitants. La mobilisation s'\u00e9largit \u00e0 des revendications plus vastes de reconnaissance de la langue, de la culture et de l'identit\u00e9 amazighes, ainsi que d'une plus grande libert\u00e9 d'expression. Ces \u00e9v\u00e9nements furent connus sous le nom de Printemps berb\u00e8re, ou Tafsut Imazighen.",
+            "\u0623\u0639\u0642\u0628\u062a \u0627\u0644\u0645\u0646\u0639 \u0627\u062d\u062a\u062c\u0627\u062c\u0627\u062a \u0634\u0627\u0631\u0643 \u0641\u064a\u0647\u0627 \u0637\u0644\u0628\u0629 \u0648\u0646\u0627\u0634\u0637\u0648\u0646 \u062b\u0642\u0627\u0641\u064a\u0648\u0646 \u0648\u0641\u0626\u0627\u062a \u0623\u062e\u0631\u0649 \u0645\u0646 \u0627\u0644\u0633\u0643\u0627\u0646\u060c \u0648\u0627\u062a\u0651\u0633\u0639\u062a \u0627\u0644\u062d\u0631\u0643\u0629 \u0644\u062a\u0634\u0645\u0644 \u0645\u0637\u0627\u0644\u0628 \u0623\u0648\u0633\u0639 \u0628\u0627\u0644\u0627\u0639\u062a\u0631\u0627\u0641 \u0628\u0627\u0644\u0644\u063a\u0629 \u0627\u0644\u0623\u0645\u0627\u0632\u064a\u063a\u064a\u0629 \u0648\u0627\u0644\u062b\u0642\u0627\u0641\u0629 \u0627\u0644\u0623\u0645\u0627\u0632\u064a\u063a\u064a\u0629 \u0648\u0627\u0644\u0647\u0648\u064a\u0629\u060c \u0648\u0628\u0645\u0632\u064a\u062f \u0645\u0646 \u062d\u0631\u064a\u0629 \u0627\u0644\u062a\u0639\u0628\u064a\u0631. \u0648\u0639\u064f\u0631\u0641\u062a \u0647\u0630\u0647 \u0627\u0644\u0623\u062d\u062f\u0627\u062b \u0628\u0627\u0644\u0631\u0628\u064a\u0639 \u0627\u0644\u0623\u0645\u0627\u0632\u064a\u063a\u064a\u060c \u0623\u0648 \u062a\u0627\u0641\u0633\u0648\u062a \u0625\u064a\u0645\u0627\u0632\u064a\u063a\u0646.",
+          ),
+          L(
+            "Mammeri did not single-handedly create the Berber Spring. The movement emerged from deeper and longstanding political, cultural and linguistic grievances. The prohibition of his lecture became one of its defining catalysts and symbols.",
+            "Mammeri n'a pas cr\u00e9\u00e9 \u00e0 lui seul le Printemps berb\u00e8re. Le mouvement est n\u00e9 de revendications politiques, culturelles et linguistiques plus profondes et plus anciennes. L'interdiction de sa conf\u00e9rence en devint l'un des catalyseurs et des symboles d\u00e9terminants.",
+            "\u0644\u0645 \u064a\u0635\u0646\u0639 \u0645\u0639\u0645\u0631\u064a \u0648\u062d\u062f\u0647 \u0627\u0644\u0631\u0628\u064a\u0639 \u0627\u0644\u0623\u0645\u0627\u0632\u064a\u063a\u064a\u061b \u0641\u0642\u062f \u0646\u0634\u0623\u062a \u0627\u0644\u062d\u0631\u0643\u0629 \u0645\u0646 \u0645\u0637\u0627\u0644\u0628 \u0633\u064a\u0627\u0633\u064a\u0629 \u0648\u062b\u0642\u0627\u0641\u064a\u0629 \u0648\u0644\u063a\u0648\u064a\u0629 \u0623\u0639\u0645\u0642 \u0648\u0623\u0642\u062f\u0645\u060c \u0648\u0635\u0627\u0631 \u0645\u0646\u0639 \u0645\u062d\u0627\u0636\u0631\u062a\u0647 \u0623\u062d\u062f \u0645\u062d\u0641\u0632\u0627\u062a\u0647\u0627 \u0648\u0631\u0645\u0648\u0632\u0647\u0627 \u0627\u0644\u0641\u0627\u0631\u0642\u0629.",
+          ),
+        ],
+      },
+      {
+        heading: L(
+          "Building a field of study",
+          "Construire un champ de recherche",
+          "\u0628\u0646\u0627\u0621 \u0645\u062c\u0627\u0644 \u0644\u0644\u062f\u0631\u0627\u0633\u0629 \u0648\u0627\u0644\u0628\u062d\u062b",
+        ),
+        body: [
+          L(
+            "From 1969 to 1980, Mammeri directed Algeria's Centre de recherches anthropologiques, pr\u00e9historiques et ethnographiques, commonly known as CRAPE. His research crossed anthropology, linguistics, literature and oral history.",
+            "De 1969 \u00e0 1980, Mammeri dirigea le Centre de recherches anthropologiques, pr\u00e9historiques et ethnographiques d'Alg\u00e9rie, connu sous le nom de CRAPE. Ses recherches croisaient anthropologie, linguistique, litt\u00e9rature et histoire orale.",
+            "\u0645\u0646 1969 \u0625\u0644\u0649 1980 \u0623\u062f\u0627\u0631 \u0645\u0639\u0645\u0631\u064a \u0645\u0631\u0643\u0632 \u0627\u0644\u0628\u062d\u0648\u062b \u0627\u0644\u0623\u0646\u062b\u0631\u0648\u0628\u0648\u0644\u0648\u062c\u064a\u0629 \u0648\u0645\u0627 \u0642\u0628\u0644 \u0627\u0644\u062a\u0627\u0631\u064a\u062e\u064a\u0629 \u0648\u0627\u0644\u0625\u062b\u0646\u0648\u063a\u0631\u0627\u0641\u064a\u0629 \u0641\u064a \u0627\u0644\u062c\u0632\u0627\u0626\u0631\u060c \u0627\u0644\u0645\u0639\u0631\u0648\u0641 \u0628\u0640 CRAPE\u060c \u0648\u062a\u0642\u0627\u0637\u0639\u062a \u0623\u0628\u062d\u0627\u062b\u0647 \u0628\u064a\u0646 \u0627\u0644\u0623\u0646\u062b\u0631\u0648\u0628\u0648\u0644\u0648\u062c\u064a\u0627 \u0648\u0627\u0644\u0644\u0633\u0627\u0646\u064a\u0627\u062a \u0648\u0627\u0644\u0623\u062f\u0628 \u0648\u0627\u0644\u062a\u0627\u0631\u064a\u062e \u0627\u0644\u0634\u0641\u0648\u064a.",
+          ),
+          L(
+            "In Paris, he later helped establish the Centre d'\u00e9tudes et de recherches amazighes and the journal Awal. These initiatives created spaces for research, publication and discussion devoted to Amazigh language, society and culture.",
+            "\u00c0 Paris, il contribua ensuite \u00e0 la cr\u00e9ation du Centre d'\u00e9tudes et de recherches amazighes et de la revue Awal. Ces initiatives ouvrirent des espaces de recherche, de publication et de discussion consacr\u00e9s \u00e0 la langue, \u00e0 la soci\u00e9t\u00e9 et \u00e0 la culture amazighes.",
+            "\u0648\u0641\u064a \u0628\u0627\u0631\u064a\u0633 \u0623\u0633\u0647\u0645 \u0644\u0627\u062d\u0642\u064b\u0627 \u0641\u064a \u062a\u0623\u0633\u064a\u0633 \u0645\u0631\u0643\u0632 \u0627\u0644\u062f\u0631\u0627\u0633\u0627\u062a \u0648\u0627\u0644\u0628\u062d\u0648\u062b \u0627\u0644\u0623\u0645\u0627\u0632\u064a\u063a\u064a\u0629 \u0648\u0645\u062c\u0644\u0629 Awal\u060c \u0648\u0623\u062a\u0627\u062d\u062a \u0647\u0630\u0647 \u0627\u0644\u0645\u0628\u0627\u062f\u0631\u0627\u062a \u0641\u0636\u0627\u0621\u0627\u062a \u0644\u0644\u0628\u062d\u062b \u0648\u0627\u0644\u0646\u0634\u0631 \u0648\u0627\u0644\u0646\u0642\u0627\u0634 \u062d\u0648\u0644 \u0627\u0644\u0644\u063a\u0629 \u0627\u0644\u0623\u0645\u0627\u0632\u064a\u063a\u064a\u0629 \u0648\u0627\u0644\u0645\u062c\u062a\u0645\u0639 \u0648\u0627\u0644\u062b\u0642\u0627\u0641\u0629 \u0627\u0644\u0623\u0645\u0627\u0632\u064a\u063a\u064a\u0629.",
+          ),
+          L(
+            "His scholarship connected local knowledge, oral testimony and academic research. It helped future generations of researchers approach Amazigh cultural traditions as serious fields of intellectual inquiry.",
+            "Ses travaux reliaient savoirs locaux, t\u00e9moignages oraux et recherche universitaire. Ils ont aid\u00e9 les g\u00e9n\u00e9rations suivantes de chercheurs \u00e0 aborder les traditions culturelles amazighes comme de v\u00e9ritables champs d'investigation intellectuelle.",
+            "\u0631\u0628\u0637\u062a \u0623\u0628\u062d\u0627\u062b\u0647 \u0628\u064a\u0646 \u0627\u0644\u0645\u0639\u0631\u0641\u0629 \u0627\u0644\u0645\u062d\u0644\u064a\u0629 \u0648\u0627\u0644\u0634\u0647\u0627\u062f\u0629 \u0627\u0644\u0634\u0641\u0648\u064a\u0629 \u0648\u0627\u0644\u0628\u062d\u062b \u0627\u0644\u0623\u0643\u0627\u062f\u064a\u0645\u064a\u060c \u0648\u0633\u0627\u0639\u062f\u062a \u0623\u062c\u064a\u0627\u0644\u064b\u0627 \u0644\u0627\u062d\u0642\u0629 \u0645\u0646 \u0627\u0644\u0628\u0627\u062d\u062b\u064a\u0646 \u0639\u0644\u0649 \u0645\u0642\u0627\u0631\u0628\u0629 \u0627\u0644\u062a\u0642\u0627\u0644\u064a\u062f \u0627\u0644\u062b\u0642\u0627\u0641\u064a\u0629 \u0627\u0644\u0623\u0645\u0627\u0632\u064a\u063a\u064a\u0629 \u0628\u0648\u0635\u0641\u0647\u0627 \u0645\u062c\u0627\u0644 \u0628\u062d\u062b \u062c\u0627\u062f\u064b\u0627.",
+          ),
+        ],
+      },
+      {
+        heading: L("A final journey", "Un dernier voyage", "\u0627\u0644\u0631\u062d\u0644\u0629 \u0627\u0644\u0623\u062e\u064a\u0631\u0629"),
+        body: [
+          L(
+            "Mouloud Mammeri died on 26 February 1989 in a road accident near A\u00efn Defla while returning to Algeria from a symposium in Oujda, Morocco.",
+            "Mouloud Mammeri mourut le 26 f\u00e9vrier 1989 dans un accident de la route pr\u00e8s d'A\u00efn Defla, alors qu'il rentrait en Alg\u00e9rie apr\u00e8s un colloque \u00e0 Oujda, au Maroc.",
+            "\u062a\u0648\u0641\u064a \u0645\u0648\u0644\u0648\u062f \u0645\u0639\u0645\u0631\u064a \u0641\u064a 26 \u0641\u0628\u0631\u0627\u064a\u0631 1989 \u0641\u064a \u062d\u0627\u062f\u062b \u0637\u0631\u064a\u0642 \u0642\u0631\u0628 \u0639\u064a\u0646 \u0627\u0644\u062f\u0641\u0644\u0649 \u0648\u0647\u0648 \u0639\u0627\u0626\u062f \u0625\u0644\u0649 \u0627\u0644\u062c\u0632\u0627\u0626\u0631 \u0645\u0646 \u0646\u062f\u0648\u0629 \u0641\u064a \u0648\u062c\u062f\u0629 \u0628\u0627\u0644\u0645\u063a\u0631\u0628.",
+          ),
+          L(
+            "His death was followed by a large public funeral. The scale of the gathering reflected the place he had come to occupy in Algerian cultural and intellectual life, particularly among people committed to Amazigh language, literature and identity.",
+            "Ses fun\u00e9railles furent suivies par une foule nombreuse. L'ampleur du rassemblement refl\u00e9tait la place qu'il avait prise dans la vie culturelle et intellectuelle alg\u00e9rienne, en particulier parmi ceux qui \u0153uvraient pour la langue, la litt\u00e9rature et l'identit\u00e9 amazighes.",
+            "\u0623\u0639\u0642\u0628\u062a \u0648\u0641\u0627\u062a\u0647 \u062c\u0646\u0627\u0632\u0629 \u0634\u0639\u0628\u064a\u0629 \u0643\u0628\u064a\u0631\u0629\u060c \u0639\u0643\u0633 \u062d\u062c\u0645\u0647\u0627 \u0627\u0644\u0645\u0643\u0627\u0646\u0629 \u0627\u0644\u062a\u064a \u0628\u0644\u063a\u0647\u0627 \u0641\u064a \u0627\u0644\u062d\u064a\u0627\u0629 \u0627\u0644\u062b\u0642\u0627\u0641\u064a\u0629 \u0648\u0627\u0644\u0641\u0643\u0631\u064a\u0629 \u0627\u0644\u062c\u0632\u0627\u0626\u0631\u064a\u0629\u060c \u0648\u0644\u0627 \u0633\u064a\u0645\u0627 \u0644\u062f\u0649 \u0627\u0644\u0645\u0647\u062a\u0645\u064a\u0646 \u0628\u0627\u0644\u0644\u063a\u0629 \u0648\u0627\u0644\u0623\u062f\u0628 \u0648\u0627\u0644\u0647\u0648\u064a\u0629 \u0627\u0644\u0623\u0645\u0627\u0632\u064a\u063a\u064a\u0629.",
+          ),
+        ],
+      },
+      {
+        heading: L(
+          "A language carried forward",
+          "Une langue transmise",
+          "\u0644\u063a\u0629 \u062a\u062a\u0648\u0627\u0635\u0644 \u0639\u0628\u0631 \u0627\u0644\u0623\u062c\u064a\u0627\u0644",
+        ),
+        body: [
+          L(
+            "Mouloud Mammeri left a legacy extending across literature, anthropology, linguistics and cultural preservation. His novels remain part of Algerian literary history, while his research continues to shape the study and teaching of the Tamazight language and Amazigh oral traditions.",
+            "Mouloud Mammeri a laiss\u00e9 un h\u00e9ritage qui traverse la litt\u00e9rature, l'anthropologie, la linguistique et la pr\u00e9servation culturelle. Ses romans appartiennent \u00e0 l'histoire litt\u00e9raire alg\u00e9rienne, tandis que ses recherches continuent de fa\u00e7onner l'\u00e9tude et l'enseignement de la langue tamazight et des traditions orales amazighes.",
+            "\u062a\u0631\u0643 \u0645\u0648\u0644\u0648\u062f \u0645\u0639\u0645\u0631\u064a \u0625\u0631\u062b\u064b\u0627 \u064a\u0645\u062a\u062f \u0639\u0628\u0631 \u0627\u0644\u0623\u062f\u0628 \u0648\u0627\u0644\u0623\u0646\u062b\u0631\u0648\u0628\u0648\u0644\u0648\u062c\u064a\u0627 \u0648\u0627\u0644\u0644\u0633\u0627\u0646\u064a\u0627\u062a \u0648\u062d\u0641\u0638 \u0627\u0644\u062b\u0642\u0627\u0641\u0629. \u0641\u0631\u0648\u0627\u064a\u0627\u062a\u0647 \u062c\u0632\u0621 \u0645\u0646 \u062a\u0627\u0631\u064a\u062e \u0627\u0644\u0623\u062f\u0628 \u0627\u0644\u062c\u0632\u0627\u0626\u0631\u064a\u060c \u0648\u0623\u0628\u062d\u0627\u062b\u0647 \u0644\u0627 \u062a\u0632\u0627\u0644 \u062a\u0648\u062c\u0651\u0647 \u062f\u0631\u0627\u0633\u0629 \u0627\u0644\u0644\u063a\u0629 \u0627\u0644\u0623\u0645\u0627\u0632\u064a\u063a\u064a\u0629 \u0648\u0627\u0644\u062a\u0642\u0627\u0644\u064a\u062f \u0627\u0644\u0634\u0641\u0648\u064a\u0629 \u0627\u0644\u0623\u0645\u0627\u0632\u064a\u063a\u064a\u0629 \u0648\u062a\u062f\u0631\u064a\u0633\u0647\u0627.",
+          ),
+          L(
+            "The University of Tizi Ouzou bears his name, as does an important cultural center in the city. His memory is also closely connected to the Berber Spring and to the continuing effort to give Amazigh language and culture their full place in Algerian public life.",
+            "L'universit\u00e9 de Tizi Ouzou porte son nom, tout comme un important centre culturel de la ville. Sa m\u00e9moire reste \u00e9troitement li\u00e9e au Printemps berb\u00e8re et \u00e0 l'effort continu pour donner \u00e0 la langue et \u00e0 la culture amazighes toute leur place dans la vie publique alg\u00e9rienne.",
+            "\u062a\u062d\u0645\u0644 \u062c\u0627\u0645\u0639\u0629 \u062a\u064a\u0632\u064a \u0648\u0632\u0648 \u0627\u0633\u0645\u0647\u060c \u0648\u0643\u0630\u0644\u0643 \u0645\u0631\u0643\u0632 \u062b\u0642\u0627\u0641\u064a \u0645\u0647\u0645 \u0641\u064a \u0627\u0644\u0645\u062f\u064a\u0646\u0629\u060c \u0648\u062a\u0631\u062a\u0628\u0637 \u0630\u0643\u0631\u0627\u0647 \u0627\u0631\u062a\u0628\u0627\u0637\u064b\u0627 \u0648\u062b\u064a\u0642\u064b\u0627 \u0628\u0627\u0644\u0631\u0628\u064a\u0639 \u0627\u0644\u0623\u0645\u0627\u0632\u064a\u063a\u064a \u0648\u0628\u0627\u0644\u062c\u0647\u062f \u0627\u0644\u0645\u062a\u0648\u0627\u0635\u0644 \u0644\u0645\u0646\u062d \u0627\u0644\u0644\u063a\u0629 \u0648\u0627\u0644\u062b\u0642\u0627\u0641\u0629 \u0627\u0644\u0623\u0645\u0627\u0632\u064a\u063a\u064a\u062a\u064a\u0646 \u0645\u0643\u0627\u0646\u062a\u0647\u0645\u0627 \u0627\u0644\u0643\u0627\u0645\u0644\u0629 \u0641\u064a \u0627\u0644\u062d\u064a\u0627\u0629 \u0627\u0644\u0639\u0627\u0645\u0629 \u0641\u064a \u0627\u0644\u062c\u0632\u0627\u0626\u0631.",
+          ),
+          L(
+            "His work reminds us that preserving a language involves more than recording words. It also means carrying stories, poetry, knowledge and ways of understanding the world from one generation to the next.",
+            "Son \u0153uvre rappelle que pr\u00e9server une langue ne se limite pas \u00e0 enregistrer des mots. C'est aussi transmettre des r\u00e9cits, de la po\u00e9sie, des savoirs et des mani\u00e8res de comprendre le monde d'une g\u00e9n\u00e9ration \u00e0 l'autre.",
+            "\u064a\u0630\u0643\u0651\u0631\u0646\u0627 \u0639\u0645\u0644\u0647 \u0628\u0623\u0646 \u062d\u0641\u0638 \u0627\u0644\u0644\u063a\u0629 \u0644\u0627 \u064a\u0642\u062a\u0635\u0631 \u0639\u0644\u0649 \u062a\u062f\u0648\u064a\u0646 \u0627\u0644\u0643\u0644\u0645\u0627\u062a\u060c \u0628\u0644 \u064a\u0639\u0646\u064a \u0623\u064a\u0636\u064b\u0627 \u0646\u0642\u0644 \u0627\u0644\u062d\u0643\u0627\u064a\u0627\u062a \u0648\u0627\u0644\u0634\u0639\u0631 \u0648\u0627\u0644\u0645\u0639\u0631\u0641\u0629 \u0648\u0637\u0631\u0627\u0626\u0642 \u0641\u0647\u0645 \u0627\u0644\u0639\u0627\u0644\u0645 \u0645\u0646 \u062c\u064a\u0644 \u0625\u0644\u0649 \u062c\u064a\u0644.",
+          ),
+        ],
+      },
+    ],
+    keyPlacesAndWorks: [
+      {
+        emoji: "\u25c6",
+        label: L("La Colline oubli\u00e9e (1952)", "La Colline oubli\u00e9e (1952)", "La Colline oubli\u00e9e (1952)"),
+        note: L("Novel.", "Roman.", "\u0631\u0648\u0627\u064a\u0629."),
+      },
+      {
+        emoji: "\u25c6",
+        label: L("Le Sommeil du juste (1955)", "Le Sommeil du juste (1955)", "Le Sommeil du juste (1955)"),
+        note: L("Novel.", "Roman.", "\u0631\u0648\u0627\u064a\u0629."),
+      },
+      {
+        emoji: "\u25c6",
+        label: L("L'Opium et le B\u00e2ton (1965)", "L'Opium et le B\u00e2ton (1965)", "L'Opium et le B\u00e2ton (1965)"),
+        note: L("Novel.", "Roman.", "\u0631\u0648\u0627\u064a\u0629."),
+      },
+      {
+        emoji: "\u25c6",
+        label: L("La Travers\u00e9e (1982)", "La Travers\u00e9e (1982)", "La Travers\u00e9e (1982)"),
+        note: L("Novel.", "Roman.", "\u0631\u0648\u0627\u064a\u0629."),
+      },
+      {
+        emoji: "\u2726",
+        label: L("Les Isefra de Si Mohand ou Mhand (1969)", "Les Isefra de Si Mohand ou Mhand (1969)", "Les Isefra de Si Mohand ou Mhand (1969)"),
+        note: L(
+          "Collected Kabyle poetry with French translation.",
+          "Recueil de po\u00e9sie kabyle avec traduction fran\u00e7aise.",
+          "\u062c\u0645\u0639 \u0644\u0644\u0634\u0639\u0631 \u0627\u0644\u0642\u0628\u0627\u0626\u0644\u064a \u0645\u0639 \u062a\u0631\u062c\u0645\u0629 \u0641\u0631\u0646\u0633\u064a\u0629.",
+        ),
+      },
+      {
+        emoji: "\u2726",
+        label: L("Po\u00e8mes kabyles anciens (1980)", "Po\u00e8mes kabyles anciens (1980)", "Po\u00e8mes kabyles anciens (1980)"),
+        note: L("Anthology of ancient Kabyle poetry.", "Anthologie de po\u00e9sie kabyle ancienne.", "\u0645\u062e\u062a\u0627\u0631\u0627\u062a \u0645\u0646 \u0627\u0644\u0634\u0639\u0631 \u0627\u0644\u0642\u0628\u0627\u0626\u0644\u064a \u0627\u0644\u0642\u062f\u064a\u0645."),
+      },
+      {
+        emoji: "\u2726",
+        label: L("Taje\u1e5b\u1e5bumt n Tmazi\u0263t", "Taje\u1e5b\u1e5bumt n Tmazi\u0263t", "Taje\u1e5b\u1e5bumt n Tmazi\u0263t"),
+        note: L("Grammar of the Tamazight language.", "Grammaire de la langue tamazight.", "\u0642\u0648\u0627\u0639\u062f \u0627\u0644\u0644\u063a\u0629 \u0627\u0644\u0623\u0645\u0627\u0632\u064a\u063a\u064a\u0629."),
+      },
+      {
+        emoji: "\u2726",
+        label: L(
+          "Amawal Tamazight-Fran\u00e7ais et Fran\u00e7ais-Tamazight",
+          "Amawal Tamazight-Fran\u00e7ais et Fran\u00e7ais-Tamazight",
+          "Amawal Tamazight-Fran\u00e7ais et Fran\u00e7ais-Tamazight",
+        ),
+        note: L("Lexicon.", "Lexique.", "\u0645\u0639\u062c\u0645."),
+      },
+      {
+        emoji: "\u2726",
+        label: L("Pr\u00e9cis de grammaire berb\u00e8re (kabyle), 1987", "Pr\u00e9cis de grammaire berb\u00e8re (kabyle), 1987", "Pr\u00e9cis de grammaire berb\u00e8re (kabyle), 1987"),
+        note: L("Linguistic reference work.", "Ouvrage de r\u00e9f\u00e9rence linguistique.", "\u0645\u0631\u062c\u0639 \u0644\u063a\u0648\u064a."),
+      },
+      {
+        emoji: "\u2726",
+        label: L("L'Ahellil du Gourara (1984)", "L'Ahellil du Gourara (1984)", "L'Ahellil du Gourara (1984)"),
+        note: L(
+          "Study of a poetic and musical tradition of southwestern Algeria.",
+          "\u00c9tude d'une tradition po\u00e9tique et musicale du sud-ouest alg\u00e9rien.",
+          "\u062f\u0631\u0627\u0633\u0629 \u0644\u062a\u0642\u0644\u064a\u062f \u0634\u0639\u0631\u064a \u0648\u0645\u0648\u0633\u064a\u0642\u064a \u0641\u064a \u062c\u0646\u0648\u0628 \u063a\u0631\u0628 \u0627\u0644\u062c\u0632\u0627\u0626\u0631.",
+        ),
+      },
+      {
+        emoji: "\u25c7",
+        label: L("Le Foehn", "Le Foehn", "Le Foehn"),
+        note: L("Theatre.", "Th\u00e9\u00e2tre.", "\u0645\u0633\u0631\u062d."),
+      },
+      {
+        emoji: "\u25c7",
+        label: L("Le Banquet", "Le Banquet", "Le Banquet"),
+        note: L("Theatre.", "Th\u00e9\u00e2tre.", "\u0645\u0633\u0631\u062d."),
+      },
+      {
+        emoji: "\u25c7",
+        label: L("La Cit\u00e9 du soleil", "La Cit\u00e9 du soleil", "La Cit\u00e9 du soleil"),
+        note: L("Theatre.", "Th\u00e9\u00e2tre.", "\u0645\u0633\u0631\u062d."),
+      },
+    ],
+    regionPanel: {
+      regionId: "kabylie",
+      heading: L("Rooted in Taourirt Mimoun", "Enracin\u00e9 \u00e0 Taourirt Mimoun", "\u062c\u0630\u0648\u0631\u0647 \u0641\u064a \u062a\u0627\u0648\u0631\u064a\u0631\u062a \u0645\u064a\u0645\u0648\u0646"),
+      localityLabel: L("Taourirt Mimoun, Ath Yenni", "Taourirt Mimoun, Ath Yenni", "\u062a\u0627\u0648\u0631\u064a\u0631\u062a \u0645\u064a\u0645\u0648\u0646\u060c \u0622\u062b \u064a\u0646\u064a"),
+      body: L(
+        "Born in Taourirt Mimoun in Ath Yenni, Mouloud Mammeri drew deeply from the language, oral memory and cultural life of Kabylie. From this foundation, he created work that reached readers and researchers across Algeria and beyond.",
+        "N\u00e9 \u00e0 Taourirt Mimoun, \u00e0 Ath Yenni, Mouloud Mammeri a puis\u00e9 profond\u00e9ment dans la langue, la m\u00e9moire orale et la vie culturelle de la Kabylie. \u00c0 partir de cet enracinement, il a cr\u00e9\u00e9 une \u0153uvre qui a touch\u00e9 des lecteurs et des chercheurs en Alg\u00e9rie et au-del\u00e0.",
+        "\u0648\u064f\u0644\u062f \u0645\u0648\u0644\u0648\u062f \u0645\u0639\u0645\u0631\u064a \u0641\u064a \u062a\u0627\u0648\u0631\u064a\u0631\u062a \u0645\u064a\u0645\u0648\u0646 \u0628\u0622\u062b \u064a\u0646\u064a\u060c \u0648\u0627\u0633\u062a\u0645\u062f \u0627\u0644\u0643\u062b\u064a\u0631 \u0645\u0646 \u0623\u0639\u0645\u0627\u0644\u0647 \u0645\u0646 \u0644\u063a\u0629 \u0645\u0646\u0637\u0642\u0629 \u0627\u0644\u0642\u0628\u0627\u0626\u0644 \u0648\u0630\u0627\u0643\u0631\u062a\u0647\u0627 \u0627\u0644\u0634\u0641\u0648\u064a\u0629 \u0648\u062d\u064a\u0627\u062a\u0647\u0627 \u0627\u0644\u062b\u0642\u0627\u0641\u064a\u0629. \u0648\u0645\u0646 \u0647\u0630\u0647 \u0627\u0644\u062c\u0630\u0648\u0631\u060c \u0642\u062f\u0651\u0645 \u0625\u0646\u062a\u0627\u062c\u064b\u0627 \u0648\u0635\u0644 \u0625\u0644\u0649 \u0627\u0644\u0642\u0631\u0627\u0621 \u0648\u0627\u0644\u0628\u0627\u062d\u062b\u064a\u0646 \u0641\u064a \u0627\u0644\u062c\u0632\u0627\u0626\u0631 \u0648\u062e\u0627\u0631\u062c\u0647\u0627.",
+      ),
+      linkLabel: L("Visit the Kabylie region", "D\u00e9couvrir la r\u00e9gion de Kabylie", "\u0632\u0631 \u0645\u0646\u0637\u0642\u0629 \u0627\u0644\u0642\u0628\u0627\u0626\u0644"),
+    },
+  },
 };
