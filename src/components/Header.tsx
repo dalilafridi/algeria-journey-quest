@@ -171,7 +171,7 @@ export function Header() {
           <span className="flex min-w-0 flex-col leading-none">
             <span
               className={
-                "truncate font-semibold uppercase text-foreground motion-safe:transition-all " +
+                "truncate font-semibold uppercase text-foreground motion-safe:transition-all max-[389px]:tracking-[0.12em] max-[389px]:text-[0.8125rem] " +
                 (scrolled ? "text-[0.95rem] tracking-[0.18em]" : "text-base lg:text-xl tracking-[0.22em]")
               }
               style={{ fontFamily: "Georgia, 'Iowan Old Style', 'Times New Roman', serif" }}
@@ -180,7 +180,7 @@ export function Header() {
             </span>
             <span
               className={
-                "mt-1 truncate text-[0.6875rem] uppercase tracking-[0.16em] text-muted-foreground motion-safe:transition-all " +
+                "mt-1 truncate text-[0.6875rem] uppercase tracking-[0.16em] text-muted-foreground motion-safe:transition-all max-[389px]:hidden " +
                 (scrolled ? "hidden sm:block" : "block")
               }
             >
