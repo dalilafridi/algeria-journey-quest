@@ -362,14 +362,30 @@ export const figureMeta: Record<string, FigureMeta> = {
     ],
   },
   mammeri: {
-    cinematicLine: L("He saved a language by writing its grammar in time.", "Il a sauvé une langue en écrivant sa grammaire à temps.", "أنقذ لغةً بأن دوّن قواعدها في الوقت المناسب."),
-    modernRelevance: L(
-      "His Tamazight scholarship paved the way for the language's recognition decades later.",
-      "Ses travaux en tamazight ont préparé la reconnaissance officielle de la langue.",
-      "مهّدت أعماله في الأمازيغية للاعتراف الرسمي بها لاحقاً.",
+    cinematicLine: L(
+      "A writer and scholar who preserved Amazigh language, literature and memory, and whose silenced lecture became inseparable from the story of the Berber Spring.",
+      "Un écrivain et chercheur qui a préservé la langue, la littérature et la mémoire amazighes, et dont la conférence interdite est devenue indissociable de l'histoire du Printemps berbère.",
+      "كاتب وباحث كرّس جهده لحفظ اللغة والأدب والذاكرة الأمازيغية، وأصبحت محاضرته الممنوعة جزءًا لا ينفصل عن تاريخ الربيع الأمازيغي.",
     ),
-    themes: ["amazigh", "language", "literature", "education"],
+    modernRelevance: L(
+      "His research continues to shape the study and teaching of Tamazight and of Amazigh oral traditions, and his memory remains closely tied to the Berber Spring.",
+      "Ses recherches continuent de façonner l'étude et l'enseignement de la langue tamazight et des traditions orales amazighes, et sa mémoire reste étroitement liée au Printemps berbère.",
+      "لا تزال أبحاثه توجّه دراسة اللغة الأمازيغية والتقاليد الشفوية الأمازيغية وتدريسها، وتبقى ذكراه وثيقة الصلة بالربيع الأمازيغي.",
+    ),
+    themes: ["amazigh", "language", "literature", "oral-memory", "education"],
     relatedFigureIds: ["mouloud-feraoun", "kateb-yacine", "tassadit-yacine", "matoub"],
+    seo: {
+      title: L(
+        "Mouloud Mammeri, Algerian Writer and Linguist | DZ Odyssey",
+        "Mouloud Mammeri, écrivain et linguiste algérien | DZ Odyssey",
+        "مولود معمري، الكاتب واللغوي الجزائري | DZ Odyssey",
+      ),
+      description: L(
+        "Explore the life and work of Mouloud Mammeri, the Algerian writer, anthropologist and linguist born in Taourirt Mimoun, Ath Yenni, who helped preserve Amazigh language, literature and oral memory.",
+        "Découvrez la vie et l'œuvre de Mouloud Mammeri, écrivain, anthropologue et linguiste algérien né à Taourirt Mimoun, à Ath Yenni, qui contribua à préserver la langue, la littérature et la mémoire orale amazighes.",
+        "اكتشف حياة وأعمال مولود معمري، الكاتب والأنثروبولوجي واللغوي الجزائري المولود في تاوريرت ميمون بآث يني، والذي ساهم في حفظ اللغة والأدب والذاكرة الشفوية الأمازيغية.",
+      ),
+    },
   },
   dib: {
     cinematicLine: L("He turned a working-class Tlemcen into a trilogy.", "Il a transformé la Tlemcen ouvrière en trilogie.", "حوّل تلمسان العمالية إلى ثلاثية."),
