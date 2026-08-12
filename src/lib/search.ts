@@ -169,7 +169,7 @@ const ALIASES: Record<string, string[]> = {
     "mouloud mammeri",
     "mammeri",
     "dda l mulud",
-    "Mulud At Mɣammer",
+    "Mulud At Mɛammer",
     "مولود معمري",
     "taourirt mimoun",
     "ath yenni",
