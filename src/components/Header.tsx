@@ -140,8 +140,11 @@ export function Header() {
     if (hoverTimer.current) clearTimeout(hoverTimer.current);
   };
 
+  // shrink-0 + whitespace-nowrap keep the utility controls (search, language)
+  // from being squeezed by the brand block on narrow screens, which is what
+  // made the "EN" code wrap letter by letter.
   const utilityBtn =
-    "inline-flex items-center gap-2 h-9 px-3 text-[0.8125rem] font-medium tracking-wide text-foreground/80 hover:text-foreground transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--ring)]";
+    "inline-flex shrink-0 items-center justify-center gap-1.5 whitespace-nowrap h-11 min-h-11 min-w-11 px-2 sm:px-3 text-[0.8125rem] font-medium tracking-wide text-foreground/80 hover:text-foreground transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--ring)]";
 
   return (
     <header
@@ -151,15 +154,15 @@ export function Header() {
       {/* ------------------------------------------------ upper level */}
       <div
         className={
-          "mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 sm:px-6 motion-safe:transition-all motion-reduce:transition-none " +
+          "mx-auto flex max-w-6xl items-center justify-between gap-2 sm:gap-4 px-3 sm:px-6 motion-safe:transition-all motion-reduce:transition-none " +
           (scrolled ? "py-2" : "py-3.5 lg:py-5")
         }
       >
-        <Link to="/" className="group flex min-w-0 items-center gap-3" aria-label={tri(NAV_UI.brandName, current)}>
+        <Link to="/" className="group flex min-w-0 flex-1 items-center gap-2 sm:gap-3" aria-label={tri(NAV_UI.brandName, current)}>
           <span
             className={
               "relative inline-flex shrink-0 items-center justify-center rounded-full border bg-card shadow-sm motion-safe:transition-all " +
-              (scrolled ? "h-9 w-9" : "h-10 w-10 lg:h-12 lg:w-12")
+              (scrolled ? "h-9 w-9" : "h-10 w-10 max-[389px]:h-9 max-[389px]:w-9 lg:h-12 lg:w-12")
             }
             style={{ borderColor: GOLD_BORDER }}
           >
@@ -168,7 +171,7 @@ export function Header() {
           <span className="flex min-w-0 flex-col leading-none">
             <span
               className={
-                "truncate font-semibold uppercase text-foreground motion-safe:transition-all " +
+                "truncate font-semibold uppercase text-foreground motion-safe:transition-all max-[389px]:tracking-[0.06em] max-[389px]:text-[0.75rem] " +
                 (scrolled ? "text-[0.95rem] tracking-[0.18em]" : "text-base lg:text-xl tracking-[0.22em]")
               }
               style={{ fontFamily: "Georgia, 'Iowan Old Style', 'Times New Roman', serif" }}
@@ -177,7 +180,7 @@ export function Header() {
             </span>
             <span
               className={
-                "mt-1 truncate text-[0.6875rem] uppercase tracking-[0.16em] text-muted-foreground motion-safe:transition-all " +
+                "mt-1 truncate text-[0.6875rem] uppercase tracking-[0.16em] text-muted-foreground motion-safe:transition-all max-[389px]:hidden " +
                 (scrolled ? "hidden sm:block" : "block")
               }
             >
@@ -187,7 +190,7 @@ export function Header() {
         </Link>
 
         {/* utilities */}
-        <div className="flex items-center gap-1 sm:gap-2">
+        <div className="flex shrink-0 items-center gap-0.5 sm:gap-2">
           <button type="button" onClick={openMuseumSearch} className={utilityBtn} title={tri(NAV_UI.search, current) + " (⌘K)"}>
             <IconSearch />
             <span className="hidden sm:inline">{tri(NAV_UI.search, current)}</span>
@@ -198,9 +201,13 @@ export function Header() {
 
           <DropdownMenu open={langOpen} onOpenChange={setLangOpen}>
             <DropdownMenuTrigger asChild>
-              <button type="button" className={utilityBtn} aria-label={tri(NAV_UI.language, current)}>
-                <span className="font-semibold tracking-[0.12em]">{LANG_SHORT[current]}</span>
-                <IconChevron open={langOpen} className="opacity-60" />
+              <button
+                type="button"
+                className={utilityBtn + " min-w-[3.25rem]"}
+                aria-label={tri(NAV_UI.language, current)}
+              >
+                <span className="whitespace-nowrap font-semibold tracking-[0.12em]">{LANG_SHORT[current]}</span>
+                <IconChevron open={langOpen} className="shrink-0 opacity-60" />
               </button>
             </DropdownMenuTrigger>
             <DropdownMenuContent
@@ -253,7 +260,7 @@ export function Header() {
             aria-expanded={drawerOpen}
             aria-controls="museum-directory"
             aria-label={tri(NAV_UI.menu, current)}
-            className="inline-flex h-11 w-11 items-center justify-center border text-foreground lg:hidden"
+            className="inline-flex h-11 w-11 shrink-0 items-center justify-center border text-foreground lg:hidden"
             style={{ borderColor: GOLD_BORDER }}
           >
             <IconMenu open={drawerOpen} />
