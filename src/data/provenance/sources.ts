@@ -14,6 +14,21 @@ const L = (en: string, fr: string, ar: string): LocalizedString => ({ en, fr, ar
 const S = <T extends ProvenanceSource>(s: T) => s;
 
 export const SOURCES: readonly ProvenanceSource[] = [
+  // \u2500\u2500\u2500 Mouloud Mammeri \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
+  S({
+    id: "wikipedia-mouloud-mammeri",
+    kind: "web",
+    category: "further",
+    title: L("Mouloud Mammeri", "Mouloud Mammeri", "مولود معمري"),
+    publisher: L("Wikipedia, English edition", "Wikipédia, édition anglaise", "ويكيبيديا، النسخة الإنجليزية"),
+    url: "https://en.wikipedia.org/wiki/Mouloud_Mammeri",
+    language: "en",
+    note: L(
+      "Used as an initial biographical overview and starting bibliography.",
+      "Utilisé comme aperçu biographique initial et point de départ bibliographique.",
+      "استُخدم كنظرة أولية على سيرته ونقطة انطلاق للمراجع.",
+    ),
+  }),
   // \u2500\u2500\u2500 Mohammed Arkoun \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
   S({
     id: "wikipedia-mohammed-arkoun",

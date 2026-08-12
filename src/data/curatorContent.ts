@@ -52,6 +52,13 @@ const museum = (label: LocalizedString, by?: LocalizedString): CuratorSource => 
 // ---------------------------------------------------------------------------
 
 const figures: Record<string, CuratorEntry> = {
+  mammeri: {
+    note: L(
+      "Mammeri is often filed away as a novelist. He was also a linguist and an anthropologist who spent decades listening, transcribing and giving scholarly form to poetry that had lived only in speech. The novels and the fieldwork belong to a single project: to let a culture describe itself in its own words.",
+      "On range souvent Mammeri parmi les romanciers. Il fut aussi un linguiste et un anthropologue qui passa des d\u00e9cennies \u00e0 \u00e9couter, transcrire et donner une forme savante \u00e0 une po\u00e9sie qui n\u2019avait v\u00e9cu que par la parole. Les romans et le travail de terrain rel\u00e8vent d\u2019un m\u00eame projet : permettre \u00e0 une culture de se dire dans ses propres mots.",
+      "\u0643\u062b\u064a\u0631\u064b\u0627 \u0645\u0627 \u064a\u064f\u0635\u0646\u0651\u0641 \u0645\u0639\u0645\u0631\u064a \u0631\u0648\u0627\u0626\u064a\u064b\u0627 \u0641\u062d\u0633\u0628\u060c \u0644\u0643\u0646\u0647 \u0643\u0627\u0646 \u0623\u064a\u0636\u064b\u0627 \u0644\u063a\u0648\u064a\u064b\u0627 \u0648\u0623\u0646\u062b\u0631\u0648\u0628\u0648\u0644\u0648\u062c\u064a\u064b\u0627 \u0623\u0645\u0636\u0649 \u0639\u0642\u0648\u062f\u064b\u0627 \u064a\u0633\u062a\u0645\u0639 \u0648\u064a\u062f\u0648\u0651\u0646 \u0648\u064a\u0645\u0646\u062d \u0635\u064a\u063a\u0629 \u0639\u0644\u0645\u064a\u0629 \u0644\u0634\u0639\u0631 \u0644\u0645 \u064a\u0639\u0634 \u0625\u0644\u0627 \u0645\u0646\u0637\u0648\u0642\u064b\u0627. \u0641\u0627\u0644\u0631\u0648\u0627\u064a\u0627\u062a \u0648\u0627\u0644\u0628\u062d\u062b \u0627\u0644\u0645\u064a\u062f\u0627\u0646\u064a \u0648\u062c\u0647\u0627\u0646 \u0644\u0645\u0634\u0631\u0648\u0639 \u0648\u0627\u062d\u062f: \u0623\u0646 \u062a\u0642\u0648\u0644 \u062b\u0642\u0627\u0641\u0629 \u0646\u0641\u0633\u0647\u0627 \u0628\u0643\u0644\u0645\u0627\u062a\u0647\u0627.",
+    ),
+  },
   "mohammed-arkoun": {
     note: L(
       "Arkoun is easy to misread. He was neither a cleric nor an opponent of faith. He was a historian of ideas who believed a tradition stays alive only when it can be questioned, and who asked which readings had been forgotten along the way.",
