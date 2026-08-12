@@ -190,7 +190,7 @@ export function Header() {
         </Link>
 
         {/* utilities */}
-        <div className="flex items-center gap-1 sm:gap-2">
+        <div className="flex shrink-0 items-center gap-0.5 sm:gap-2">
           <button type="button" onClick={openMuseumSearch} className={utilityBtn} title={tri(NAV_UI.search, current) + " (⌘K)"}>
             <IconSearch />
             <span className="hidden sm:inline">{tri(NAV_UI.search, current)}</span>
