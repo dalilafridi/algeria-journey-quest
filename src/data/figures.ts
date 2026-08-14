@@ -1452,6 +1452,35 @@ export const figures: Figure[] = [
     ),
   },
   {
+    id: "azouaou-mammeri",
+    name: "Azouaou Mammeri",
+    displayName: L("Azouaou Mammeri", "Azouaou Mammeri", "\u0623\u0632\u0648\u0627\u0648 \u0645\u0639\u0645\u0631\u064a"),
+    emoji: "AM",
+    category: "intellectuals-culture",
+    region: "kabylie",
+    era: L("1890 or 1892\u20131954", "1890 ou 1892\u20131954", "1890 \u0623\u0648 1892\u20131954"),
+    regionLabel: L(
+      "Taourirt Mimoun, Ath Yenni",
+      "Taourirt Mimoun, Ath Yenni",
+      "\u062a\u0627\u0648\u0631\u064a\u0631\u062a \u0645\u064a\u0645\u0648\u0646\u060c \u0622\u062b \u064a\u0646\u064a",
+    ),
+    story: L(
+      "Azouaou Mammeri was an Algerian painter and art educator born in Taourirt Mimoun, Ath Yenni, in Kabylie. His career developed across Algeria and Morocco during the first half of the twentieth century, bringing together teaching, painting and the administration of artistic and cultural institutions.",
+      "Azouaou Mammeri fut un peintre et p\u00e9dagogue de l'art alg\u00e9rien, n\u00e9 \u00e0 Taourirt Mimoun, \u00e0 Ath Yenni, en Kabylie. Sa carri\u00e8re s'est d\u00e9ploy\u00e9e entre l'Alg\u00e9rie et le Maroc durant la premi\u00e8re moiti\u00e9 du vingti\u00e8me si\u00e8cle, associant l'enseignement, la peinture et l'administration d'institutions artistiques et culturelles.",
+      "\u0643\u0627\u0646 \u0623\u0632\u0648\u0627\u0648 \u0645\u0639\u0645\u0631\u064a \u0631\u0633\u0627\u0645\u064b\u0627 \u0648\u0645\u0631\u0628\u064a\u064b\u0627 \u0641\u0646\u064a\u064b\u0627 \u062c\u0632\u0627\u0626\u0631\u064a\u064b\u0627 \u0648\u0644\u062f \u0641\u064a \u062a\u0627\u0648\u0631\u064a\u0631\u062a \u0645\u064a\u0645\u0648\u0646 \u0628\u0622\u062b \u064a\u0646\u064a \u0641\u064a \u0645\u0646\u0637\u0642\u0629 \u0627\u0644\u0642\u0628\u0627\u0626\u0644. \u062a\u0637\u0648\u0631\u062a \u0645\u0633\u064a\u0631\u062a\u0647 \u0628\u064a\u0646 \u0627\u0644\u062c\u0632\u0627\u0626\u0631 \u0648\u0627\u0644\u0645\u063a\u0631\u0628 \u062e\u0644\u0627\u0644 \u0627\u0644\u0646\u0635\u0641 \u0627\u0644\u0623\u0648\u0644 \u0645\u0646 \u0627\u0644\u0642\u0631\u0646 \u0627\u0644\u0639\u0634\u0631\u064a\u0646\u060c \u0648\u062c\u0645\u0639\u062a \u0628\u064a\u0646 \u0627\u0644\u062a\u062f\u0631\u064a\u0633 \u0648\u0627\u0644\u0631\u0633\u0645 \u0648\u0625\u062f\u0627\u0631\u0629 \u0627\u0644\u0645\u0624\u0633\u0633\u0627\u062a \u0627\u0644\u0641\u0646\u064a\u0629 \u0648\u0627\u0644\u062b\u0642\u0627\u0641\u064a\u0629.",
+    ),
+    importance: L(
+      "He painted landscapes, architecture and scenes of everyday life. His work circulated through exhibitions in Algiers, Paris, Morocco and other international venues, while several of his paintings entered museum collections. His career also reveals the complicated environment in which Algerian artists worked under French colonial rule.",
+      "Il peignit des paysages, des architectures et des sc\u00e8nes de la vie quotidienne. Son travail circula dans des expositions \u00e0 Alger, \u00e0 Paris, au Maroc et dans d'autres lieux internationaux, tandis que plusieurs de ses tableaux entr\u00e8rent dans des collections de mus\u00e9es. Sa carri\u00e8re r\u00e9v\u00e8le aussi l'environnement complexe dans lequel travaillaient les artistes alg\u00e9riens sous la domination coloniale fran\u00e7aise.",
+      "\u0631\u0633\u0645 \u0627\u0644\u0645\u0646\u0627\u0638\u0631 \u0648\u0627\u0644\u0639\u0645\u0627\u0631\u0629 \u0648\u0645\u0634\u0627\u0647\u062f \u0627\u0644\u062d\u064a\u0627\u0629 \u0627\u0644\u064a\u0648\u0645\u064a\u0629. \u0648\u0642\u062f \u062a\u0646\u0642\u0644\u062a \u0623\u0639\u0645\u0627\u0644\u0647 \u0641\u064a \u0645\u0639\u0627\u0631\u0636 \u0628\u0627\u0644\u062c\u0632\u0627\u0626\u0631 \u0648\u0628\u0627\u0631\u064a\u0633 \u0648\u0627\u0644\u0645\u063a\u0631\u0628 \u0648\u0623\u0645\u0627\u0643\u0646 \u062f\u0648\u0644\u064a\u0629 \u0623\u062e\u0631\u0649\u060c \u0648\u062f\u062e\u0644\u062a \u0644\u0648\u062d\u0627\u062a \u0639\u062f\u0629 \u0645\u0646\u0647\u0627 \u0645\u062c\u0645\u0648\u0639\u0627\u062a \u0627\u0644\u0645\u062a\u0627\u062d\u0641. \u0643\u0645\u0627 \u062a\u0643\u0634\u0641 \u0645\u0633\u064a\u0631\u062a\u0647 \u0627\u0644\u0628\u064a\u0626\u0629 \u0627\u0644\u0645\u0639\u0642\u062f\u0629 \u0627\u0644\u062a\u064a \u0639\u0645\u0644 \u0641\u064a\u0647\u0627 \u0627\u0644\u0641\u0646\u0627\u0646\u0648\u0646 \u0627\u0644\u062c\u0632\u0627\u0626\u0631\u064a\u0648\u0646 \u062a\u062d\u062a \u0627\u0644\u062d\u0643\u0645 \u0627\u0644\u0627\u0633\u062a\u0639\u0645\u0627\u0631\u064a \u0627\u0644\u0641\u0631\u0646\u0633\u064a.",
+    ),
+    fact: L(
+      "Sources disagree about his birth year: one authority gives 1890, while a French archival record gives 1892. He died on 17 September 1954 in Ath Yenni, Kabylie.",
+      "Les sources divergent sur son ann\u00e9e de naissance : une notice d'autorit\u00e9 indique 1890, tandis qu'un dossier d'archives fran\u00e7ais indique 1892. Il est mort le 17 septembre 1954 \u00e0 Ath Yenni, en Kabylie.",
+      "\u062a\u062e\u062a\u0644\u0641 \u0627\u0644\u0645\u0635\u0627\u062f\u0631 \u062d\u0648\u0644 \u0633\u0646\u0629 \u0645\u064a\u0644\u0627\u062f\u0647: \u0641\u0633\u062c\u0644 \u0627\u0633\u062a\u0646\u0627\u062f\u064a \u064a\u0630\u0643\u0631 1890\u060c \u0641\u064a\u0645\u0627 \u064a\u0630\u0643\u0631 \u0645\u0644\u0641 \u0623\u0631\u0634\u064a\u0641\u064a \u0641\u0631\u0646\u0633\u064a 1892. \u062a\u0648\u0641\u064a \u0641\u064a 17 \u0633\u0628\u062a\u0645\u0628\u0631 1954 \u0628\u0622\u062b \u064a\u0646\u064a \u0641\u064a \u0645\u0646\u0637\u0642\u0629 \u0627\u0644\u0642\u0628\u0627\u0626\u0644.",
+    ),
+  },
+  {
     id: "dib",
     name: "Mohammed Dib",
     displayName: L("Mohammed Dib", "Mohammed Dib", "محمد ديب"),

@@ -32,6 +32,281 @@ export type FigureExtras = {
 
 
 export const figureExtras: Record<string, FigureExtras> = {
+  "azouaou-mammeri": {
+    didYouKnow: L(
+      "Sources do not agree on his birth year. An authority record gives 1890, while a French archival file gives 1892, so DZ Odyssey displays both until stronger documentation resolves the conflict.",
+      "Les sources ne s'accordent pas sur son année de naissance. Une notice d'autorité indique 1890, tandis qu'un dossier d'archives français indique 1892 : DZ Odyssey affiche donc les deux tant qu'une documentation plus solide ne tranche pas.",
+      "لا تتفق المصادر على سنة ميلاده. فسجل استنادي يذكر 1890، فيما يذكر ملف أرشيفي فرنسي 1892، لذلك يعرض دي زد أوديسي التاريخين معًا إلى أن تحسم وثائق أقوى الخلاف.",
+    ),
+    narrativeSections: [
+      {
+        heading: L(
+          "From Taourirt Mimoun to the classroom",
+          "De Taourirt Mimoun à l'enseignement",
+          "من تاوريرت ميمون إلى التعليم",
+        ),
+        body: [
+          L(
+            "Azouaou Mammeri was born in Taourirt Mimoun, a village in Ath Yenni, Kabylie. Sources disagree on whether his birth year was 1890 or 1892.",
+            "Azouaou Mammeri est né à Taourirt Mimoun, un village d'Ath Yenni, en Kabylie. Les sources divergent sur son année de naissance, 1890 ou 1892.",
+            "وُلد أزواو معمري في تاوريرت ميمون، وهي قرية في آث يني بمنطقة القبائل. وتختلف المصادر في ما إذا كانت سنة ميلاده 1890 أم 1892.",
+          ),
+          L(
+            "From 1906 to 1909, he studied at the École normale d'Alger in Bouzaréah, which trained teachers during the colonial period. In October 1909, he began teaching in Toudja, near Béjaïa. He was later assigned to Gouraya, between Cherchell and Ténès.",
+            "De 1906 à 1909, il étudia à l'École normale d'Alger, à Bouzaréah, qui formait les enseignants durant la période coloniale. En octobre 1909, il commença à enseigner à Toudja, près de Béjaïa. Il fut ensuite affecté à Gouraya, entre Cherchell et Ténès.",
+            "بين 1906 و1909 درس في المدرسة العليا للأساتذة بالجزائر في بوزريعة، وهي مؤسسة كانت تكوّن المعلمين في الحقبة الاستعمارية. وفي أكتوبر 1909 بدأ التدريس في توجة قرب بجاية، ثم عُيّن لاحقًا في غوراية بين شرشال وتنس.",
+          ),
+          L(
+            "Teaching remained closely connected to his early development as an artist. During these years, he encountered painters who shared technical knowledge and encouraged his work, including Édouard Herzig and Léon Carré.",
+            "L'enseignement resta étroitement lié à ses débuts d'artiste. Durant ces années, il rencontra des peintres qui lui transmirent un savoir technique et encouragèrent son travail, parmi lesquels Édouard Herzig et Léon Carré.",
+            "ظل التدريس وثيق الصلة بتكوّنه الفني الأول. وفي تلك السنوات التقى رسامين نقلوا إليه معارف تقنية وشجعوا عمله، من بينهم إدوار هرتزيغ وليون كاري.",
+          ),
+        ],
+      },
+      {
+        heading: L(
+          "An artist between Algeria and Morocco",
+          "Un artiste entre l'Algérie et le Maroc",
+          "فنان بين الجزائر والمغرب",
+        ),
+        body: [
+          L(
+            "In 1916, Mammeri went to Fez, where he continued working as a teacher and developed his painting. He later worked in Fez, Rabat and Marrakech, building a career that crossed the cultural landscapes of Algeria and Morocco.",
+            "En 1916, Mammeri se rendit à Fès, où il poursuivit son travail d'enseignant et développa sa peinture. Il travailla ensuite à Fès, à Rabat et à Marrakech, construisant une carrière qui traversait les paysages culturels de l'Algérie et du Maroc.",
+            "في 1916 انتقل معمري إلى فاس، حيث واصل عمله معلمًا وطوّر تجربته في الرسم. ثم عمل في فاس والرباط ومراكش، وبنى مسارًا عبر المشاهد الثقافية في الجزائر والمغرب.",
+          ),
+          L(
+            "His subjects included urban views, landscapes, religious schools, architecture and scenes of daily life. His paintings reflected close observation of place, but they were also produced within a colonial art world that often categorized North African artists and cultures through European expectations.",
+            "Ses sujets comprenaient des vues urbaines, des paysages, des écoles religieuses, des architectures et des scènes de la vie quotidienne. Ses tableaux témoignaient d'une observation attentive des lieux, mais ils furent aussi produits dans un monde de l'art colonial qui classait souvent les artistes et les cultures nord-africaines selon des attentes européennes.",
+            "شملت موضوعاته مشاهد المدن والمناظر الطبيعية والمدارس الدينية والعمارة ومظاهر الحياة اليومية. وعكست لوحاته ملاحظة دقيقة للمكان، غير أنها أُنتجت أيضًا داخل عالم فني استعماري كثيرًا ما صنّف فناني شمال إفريقيا وثقافاتهم وفق توقعات أوروبية.",
+          ),
+          L(
+            "Mammeri's position within this environment was complex. He gained access to exhibitions and institutions shaped by colonial systems while producing work rooted in the places and societies he knew.",
+            "La position de Mammeri dans cet environnement était complexe. Il accéda à des expositions et à des institutions façonnées par les systèmes coloniaux tout en produisant une œuvre enracinée dans les lieux et les sociétés qu'il connaissait.",
+            "كان موقع معمري في هذه البيئة معقدًا. فقد وصل إلى معارض ومؤسسات صاغتها الأنظمة الاستعمارية، بينما أنتج عملًا متجذرًا في الأماكن والمجتمعات التي عرفها.",
+          ),
+        ],
+      },
+      {
+        heading: L(
+          "From Fez to international exhibitions",
+          "De Fès aux expositions internationales",
+          "من فاس إلى المعارض الدولية",
+        ),
+        body: [
+          L(
+            "Mammeri began exhibiting works in Paris in 1917. In 1921, paintings associated with Fez were acquired for the Musée du Luxembourg, and his work also appeared in exhibitions in Paris and Algiers.",
+            "Mammeri commença à exposer à Paris en 1917. En 1921, des tableaux liés à Fès furent acquis pour le musée du Luxembourg, et son travail figura également dans des expositions à Paris et à Alger.",
+            "بدأ معمري عرض أعماله في باريس سنة 1917. وفي 1921 اقتُنيت لوحات مرتبطة بفاس لمتحف لوكسمبورغ، كما ظهرت أعماله في معارض بباريس والجزائر.",
+          ),
+          L(
+            "During the following decades, his paintings and prints were shown in Algeria, Morocco, France and other international venues. Three of his woodcuts appeared in a 1923 print exhibition at the Brooklyn Museum.",
+            "Au cours des décennies suivantes, ses peintures et ses estampes furent montrées en Algérie, au Maroc, en France et dans d'autres lieux internationaux. Trois de ses gravures sur bois figurèrent dans une exposition d'estampes au Brooklyn Museum en 1923.",
+            "وفي العقود التالية عُرضت لوحاته ومطبوعاته في الجزائر والمغرب وفرنسا وأماكن دولية أخرى. وظهرت ثلاث من محفوراته الخشبية في معرض للمطبوعات بمتحف بروكلين سنة 1923.",
+          ),
+          L(
+            "His participation in these exhibitions demonstrates the reach of his career, but the labels used by contemporary critics must be treated as products of their time. Terms imposed by colonial institutions should not be repeated as objective descriptions of his identity.",
+            "Sa participation à ces expositions montre l'ampleur de sa carrière, mais les étiquettes employées par les critiques de l'époque doivent être considérées comme des produits de leur temps. Les termes imposés par les institutions coloniales ne doivent pas être repris comme des descriptions objectives de son identité.",
+            "تُظهر مشاركته في هذه المعارض اتساع مسيرته، غير أن النعوت التي استعملها نقاد ذلك العصر ينبغي أن تُقرأ بوصفها نتاج زمنها. ولا يجوز تكرار المصطلحات التي فرضتها المؤسسات الاستعمارية بوصفها وصفًا موضوعيًا لهويته.",
+          ),
+        ],
+      },
+      {
+        heading: L(
+          "Return to Ath Yenni",
+          "Retour à Ath Yenni",
+          "العودة إلى آث يني",
+        ),
+        body: [
+          L(
+            "After returning to Algeria, Mammeri served from 1922 as caïd of the douar of Beni Yenni, an administrative position within the French colonial system. He continued painting during this period and remained connected to the community in which he had grown up.",
+            "Après son retour en Algérie, Mammeri fut, à partir de 1922, caïd du douar de Beni Yenni, une fonction administrative au sein du système colonial français. Il continua de peindre durant cette période et resta lié à la communauté dans laquelle il avait grandi.",
+            "بعد عودته إلى الجزائر، تولى معمري منذ 1922 منصب قائد دوار بني يني، وهو منصب إداري داخل النظام الاستعماري الفرنسي. وقد واصل الرسم في تلك المرحلة وظل مرتبطًا بالمجتمع الذي نشأ فيه.",
+          ),
+          L(
+            "A caïd was a local administrator appointed within the colonial hierarchy, not a traditional tribal chief. The position placed its holder between local society and colonial authority, and this part of his life should be read with that historical context in view rather than praised or condemned without supporting evidence.",
+            "Un caïd était un administrateur local nommé dans la hiérarchie coloniale, et non un chef de tribu traditionnel. La fonction plaçait son titulaire entre la société locale et l'autorité coloniale, et cette partie de sa vie doit être lue dans ce contexte historique plutôt que louée ou condamnée sans preuve.",
+            "كان القائد إداريًا محليًا يُعيَّن ضمن التسلسل الاستعماري، لا شيخ قبيلة تقليديًا. وقد وضع هذا المنصب صاحبه بين المجتمع المحلي والسلطة الاستعمارية، ولذلك ينبغي قراءة هذه المرحلة من حياته في سياقها التاريخي، لا مدحًا ولا إدانةً بغير دليل.",
+          ),
+        ],
+      },
+      {
+        heading: L(
+          "Teaching and cultural work in Morocco",
+          "Enseignement et action culturelle au Maroc",
+          "التعليم والعمل الثقافي في المغرب",
+        ),
+        body: [
+          L(
+            "Mammeri returned to Morocco in 1927 and resumed teaching art in Fez. In 1928, he became a regional inspector of Indigenous arts in Rabat. The following year, he was appointed inspector of Moroccan arts in Marrakech, a position he held until his retirement in 1948.",
+            "Mammeri retourna au Maroc en 1927 et reprit l'enseignement de l'art à Fès. En 1928, il devint inspecteur régional des arts indigènes à Rabat. L'année suivante, il fut nommé inspecteur des arts marocains à Marrakech, fonction qu'il occupa jusqu'à sa retraite en 1948.",
+            "عاد معمري إلى المغرب سنة 1927 واستأنف تدريس الفن في فاس. وفي 1928 صار مفتشًا جهويًا للفنون الأهلية بالرباط، ثم عُيّن في العام التالي مفتشًا للفنون المغربية بمراكش، وهو منصب ظل فيه حتى تقاعده سنة 1948.",
+          ),
+          L(
+            "The title inspector of Indigenous arts belongs to colonial administrative language. It is preserved here because it names an actual post, not because it describes the societies concerned in acceptable terms.",
+            "L'intitulé inspecteur des arts indigènes relève du langage administratif colonial. Il est conservé ici parce qu'il désigne un poste réel, et non parce qu'il décrirait les sociétés concernées en des termes acceptables.",
+            "ينتمي لقب مفتش الفنون الأهلية إلى اللغة الإدارية الاستعمارية. وقد أُبقي عليه هنا لأنه يسمّي منصبًا حقيقيًا، لا لأنه وصف مقبول للمجتمعات المعنية.",
+          ),
+          L(
+            "His work extended beyond painting. After retiring, he participated in cultural initiatives associated with traditional arts, education, museum activity, music and broadcasting. These activities placed him at the intersection of artistic production, education and cultural administration, and they should also be understood within the institutional policies of the colonial period.",
+            "Son action dépassa la peinture. Après sa retraite, il prit part à des initiatives culturelles liées aux arts traditionnels, à l'éducation, à l'activité muséale, à la musique et à la radiodiffusion. Ces activités le placèrent au croisement de la production artistique, de l'enseignement et de l'administration culturelle, et doivent aussi se comprendre dans le cadre des politiques institutionnelles de la période coloniale.",
+            "امتد عمله إلى ما هو أبعد من الرسم. فبعد تقاعده شارك في مبادرات ثقافية تتصل بالفنون التقليدية والتعليم والنشاط المتحفي والموسيقى والإذاعة. وقد وضعته هذه الأنشطة عند تقاطع الإنتاج الفني والتعليم والإدارة الثقافية، وينبغي فهمها كذلك ضمن السياسات المؤسسية للحقبة الاستعمارية.",
+          ),
+        ],
+      },
+      {
+        heading: L(
+          "Painting place and everyday life",
+          "Peindre les lieux et la vie quotidienne",
+          "رسم المكان والحياة اليومية",
+        ),
+        body: [
+          L(
+            "Azouaou Mammeri's known works include landscapes, city views, architectural interiors and scenes of everyday life in Algeria and Morocco. His paintings often emphasize structure, light, color and the atmosphere of a particular place.",
+            "Les œuvres connues d'Azouaou Mammeri comprennent des paysages, des vues de villes, des intérieurs architecturaux et des scènes de la vie quotidienne en Algérie et au Maroc. Ses tableaux mettent souvent l'accent sur la structure, la lumière, la couleur et l'atmosphère d'un lieu précis.",
+            "تشمل أعمال أزواو معمري المعروفة مناظر طبيعية ومشاهد مدن ودواخل معمارية ومشاهد من الحياة اليومية في الجزائر والمغرب. وكثيرًا ما تركز لوحاته على البنية والضوء واللون وأجواء مكان بعينه.",
+          ),
+          L(
+            "Works associated with Kabyle villages, Fez, Marrakech and religious or educational interiors reflect the geographical breadth of his career. They also invite questions about who was looking, how North African life was represented and how an Algerian artist navigated the exhibition systems of his period.",
+            "Les œuvres liées aux villages kabyles, à Fès, à Marrakech et aux intérieurs religieux ou scolaires reflètent l'étendue géographique de sa carrière. Elles invitent aussi à se demander qui regardait, comment la vie nord-africaine était représentée et comment un artiste algérien évoluait dans les systèmes d'exposition de son époque.",
+            "تعكس الأعمال المرتبطة بالقرى القبائلية وفاس ومراكش والدواخل الدينية أو التعليمية اتساع الرقعة الجغرافية لمسيرته. كما تفتح أسئلة عمّن كان ينظر، وكيف مُثّلت حياة شمال إفريقيا، وكيف تحرك فنان جزائري داخل منظومات العرض في زمنه.",
+          ),
+        ],
+      },
+      {
+        heading: L(
+          "An Algerian artist across borders",
+          "Un artiste algérien au-delà des frontières",
+          "فنان جزائري عبر الحدود",
+        ),
+        body: [
+          L(
+            "Azouaou Mammeri's career belongs to the histories of both Algerian art and cultural exchange across the Maghreb. Born in Kabylie, he developed a substantial part of his professional life in Morocco while continuing to be identified with Algerian painting.",
+            "La carrière d'Azouaou Mammeri appartient à l'histoire de l'art algérien comme à celle des échanges culturels au Maghreb. Né en Kabylie, il développa une part importante de sa vie professionnelle au Maroc tout en restant identifié à la peinture algérienne.",
+            "تنتمي مسيرة أزواو معمري إلى تاريخ الفن الجزائري وإلى تاريخ التبادل الثقافي في المغرب الكبير معًا. فقد وُلد في منطقة القبائل، وطوّر جزءًا كبيرًا من حياته المهنية في المغرب، مع بقائه مرتبطًا بالرسم الجزائري.",
+          ),
+          L(
+            "His works entered museum collections and appeared in exhibitions during and after his lifetime. In 1955, he received the Grand Prix artistique de l'Algérie posthumously, and his work was included in later presentations of Algerian art.",
+            "Ses œuvres entrèrent dans des collections de musées et figurèrent dans des expositions de son vivant et après sa mort. En 1955, il reçut à titre posthume le Grand Prix artistique de l'Algérie, et son travail fut intégré à des présentations ultérieures de l'art algérien.",
+            "دخلت أعماله مجموعات المتاحف وعُرضت في معارض في حياته وبعد وفاته. وفي 1955 نال بعد وفاته الجائزة الفنية الكبرى للجزائر، وأُدرجت أعماله في عروض لاحقة للفن الجزائري.",
+          ),
+          L(
+            "He has been described by some historians and critics as an early major figure of modern Algerian painting. That description should be attributed rather than repeated as settled fact. His career reflects artistic achievement, movement across Algeria and Morocco, and the constraints and opportunities created by colonial institutions.",
+            "Certains historiens et critiques le décrivent comme une figure majeure des débuts de la peinture algérienne moderne. Cette description doit être attribuée plutôt que reprise comme un fait acquis. Sa carrière réunit une réussite artistique, une circulation entre l'Algérie et le Maroc, ainsi que les contraintes et les possibilités créées par les institutions coloniales.",
+            "وصفه بعض المؤرخين والنقاد بأنه من الوجوه الكبرى المبكرة للرسم الجزائري الحديث. وينبغي نسب هذا الوصف إلى أصحابه لا تكراره بوصفه حقيقة نهائية. فمسيرته تجمع بين الإنجاز الفني والتنقل بين الجزائر والمغرب، وبين القيود والفرص التي أنتجتها المؤسسات الاستعمارية.",
+          ),
+          L(
+            "Azouaou Mammeri died on 17 September 1954 in Ath Yenni, Kabylie.",
+            "Azouaou Mammeri est mort le 17 septembre 1954 à Ath Yenni, en Kabylie.",
+            "توفي أزواو معمري في 17 سبتمبر 1954 بآث يني في منطقة القبائل.",
+          ),
+        ],
+      },
+    ],
+    keyPlacesAndWorks: [
+      {
+        emoji: "\u25c8",
+        label: L(
+          "Interior of a Koranic School",
+          "Intérieur d'une école coranique",
+          "داخل مدرسة قرآنية",
+        ),
+        note: L(
+          "Cleveland Museum of Art collection record. Image rights not yet verified, no reproduction shown.",
+          "Notice de collection du Cleveland Museum of Art. Droits d'image non vérifiés, aucune reproduction affichée.",
+          "سجل مجموعة متحف كليفلاند للفنون. لم يتم التحقق من حقوق الصورة، ولا تُعرض أي نسخة.",
+        ),
+      },
+      {
+        emoji: "\u25c8",
+        label: L(
+          "Village kabyle",
+          "Village kabyle",
+          "قرية قبائلية",
+        ),
+        note: L(
+          "Attributed in Algerian museum literature. Catalog record to be confirmed.",
+          "Attribué dans la littérature muséale algérienne. Notice de catalogue à confirmer.",
+          "منسوب في أدبيات المتاحف الجزائرية. سجل الفهرسة قيد التأكيد.",
+        ),
+      },
+      {
+        emoji: "\u25c8",
+        label: L(
+          "Vue de Fez",
+          "Vue de Fez",
+          "منظر من فاس",
+        ),
+        note: L(
+          "Fez subjects associated with the 1921 Musée du Luxembourg acquisition. Exact catalog record pending review.",
+          "Sujets de Fès liés à l'acquisition de 1921 par le musée du Luxembourg. Notice exacte en cours de vérification.",
+          "موضوعات فاس المرتبطة باقتناء متحف لوكسمبورغ سنة 1921. السجل الدقيق قيد المراجعة.",
+        ),
+      },
+      {
+        emoji: "\u25c8",
+        label: L(
+          "Intérieur de la mosquée Karaouine",
+          "Intérieur de la mosquée Karaouine",
+          "داخل جامع القرويين",
+        ),
+        note: L(
+          "Title recorded in exhibition literature. Holding institution to be confirmed.",
+          "Titre relevé dans la littérature d'exposition. Institution détentrice à confirmer.",
+          "عنوان مذكور في أدبيات المعارض. المؤسسة الحائزة قيد التأكيد.",
+        ),
+      },
+      {
+        emoji: "\u25c8",
+        label: L(
+          "La porte à Mogador",
+          "La porte à Mogador",
+          "الباب في الصويرة",
+        ),
+        note: L(
+          "Title recorded in exhibition literature. Holding institution to be confirmed.",
+          "Titre relevé dans la littérature d'exposition. Institution détentrice à confirmer.",
+          "عنوان مذكور في أدبيات المعارض. المؤسسة الحائزة قيد التأكيد.",
+        ),
+      },
+      {
+        emoji: "\u25c8",
+        label: L(
+          "Femme dans le patio",
+          "Femme dans le patio",
+          "امرأة في الفناء",
+        ),
+        note: L(
+          "Title recorded in exhibition literature. Holding institution to be confirmed.",
+          "Titre relevé dans la littérature d'exposition. Institution détentrice à confirmer.",
+          "عنوان مذكور في أدبيات المعارض. المؤسسة الحائزة قيد التأكيد.",
+        ),
+      },
+    ],
+    regionPanel: {
+      regionId: "kabylie",
+      heading: L(
+        "Rooted in Taourirt Mimoun",
+        "Enraciné à Taourirt Mimoun",
+        "جذوره في تاوريرت ميمون",
+      ),
+      localityLabel: L(
+        "Taourirt Mimoun, Ath Yenni",
+        "Taourirt Mimoun, Ath Yenni",
+        "تاوريرت ميمون، آث يني",
+      ),
+      body: L(
+        "Born in Taourirt Mimoun in Ath Yenni, Azouaou Mammeri began a journey that connected Kabylie with artistic and cultural institutions across Algeria, Morocco and Europe. His birthplace remained part of his identity, and he returned to Ath Yenni near the end of his life.",
+        "Né à Taourirt Mimoun, à Ath Yenni, Azouaou Mammeri entama un parcours reliant la Kabylie aux institutions artistiques et culturelles d'Algérie, du Maroc et d'Europe. Son lieu de naissance demeura une part de son identité, et il revint à Ath Yenni vers la fin de sa vie.",
+        "وُلد أزواو معمري في تاوريرت ميمون بآث يني، وبدأ مسيرة ربطت منطقة القبائل بالمؤسسات الفنية والثقافية في الجزائر والمغرب وأوروبا. وظل مسقط رأسه جزءًا من هويته، وعاد إلى آث يني في أواخر حياته.",
+      ),
+      linkLabel: L(
+        "Visit the Kabylie region",
+        "Découvrir la région de Kabylie",
+        "زر منطقة القبائل",
+      ),
+    },
+  },
   "mohammed-arkoun": {
     didYouKnow: L(
       "Kabyle was Arkoun's mother tongue, while French and Arabic became the languages of his teaching and scholarship. He often described this passage between languages as part of his method.",
