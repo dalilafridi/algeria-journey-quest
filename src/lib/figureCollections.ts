@@ -223,6 +223,7 @@ export const COLLECTIONS: CollectionDef[] = [
       "kateb-yacine",
       "mouloud-feraoun",
       "mammeri",
+      "azouaou-mammeri",
       "dib",
       "haddad",
       "assia-djebar",
