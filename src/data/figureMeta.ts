@@ -373,7 +373,7 @@ export const figureMeta: Record<string, FigureMeta> = {
       "لا تزال أبحاثه توجّه دراسة اللغة الأمازيغية والتقاليد الشفوية الأمازيغية وتدريسها، وتبقى ذكراه وثيقة الصلة بالربيع الأمازيغي.",
     ),
     themes: ["amazigh", "language", "literature", "oral-memory", "education"],
-    relatedFigureIds: ["mouloud-feraoun", "kateb-yacine", "tassadit-yacine", "matoub"],
+    relatedFigureIds: ["mouloud-feraoun", "kateb-yacine", "tassadit-yacine", "matoub", "azouaou-mammeri"],
     seo: {
       title: L(
         "Mouloud Mammeri, Algerian Writer and Linguist | DZ Odyssey",
@@ -384,6 +384,32 @@ export const figureMeta: Record<string, FigureMeta> = {
         "Explore the life and work of Mouloud Mammeri, the Algerian writer, anthropologist and linguist born in Taourirt Mimoun, Ath Yenni, who helped preserve Amazigh language, literature and oral memory.",
         "Découvrez la vie et l'œuvre de Mouloud Mammeri, écrivain, anthropologue et linguiste algérien né à Taourirt Mimoun, à Ath Yenni, qui contribua à préserver la langue, la littérature et la mémoire orale amazighes.",
         "اكتشف حياة وأعمال مولود معمري، الكاتب والأنثروبولوجي واللغوي الجزائري المولود في تاوريرت ميمون بآث يني، والذي ساهم في حفظ اللغة والأدب والذاكرة الشفوية الأمازيغية.",
+      ),
+    },
+  },
+  "azouaou-mammeri": {
+    cinematicLine: L(
+      "A painter from a Kabyle village whose canvases travelled between Algeria, Morocco and Europe.",
+      "Un peintre d'un village kabyle dont les toiles ont voyagé entre l'Algérie, le Maroc et l'Europe.",
+      "رسام من قرية قبائلية سافرت لوحاته بين الجزائر والمغرب وأوروبا.",
+    ),
+    modernRelevance: L(
+      "His career is a case study in how Algerian artists worked, exhibited and were categorised inside colonial institutions.",
+      "Sa carrière éclaire la manière dont les artistes algériens travaillaient, exposaient et étaient classés au sein des institutions coloniales.",
+      "تقدم مسيرته نموذجًا لفهم كيف عمل الفنانون الجزائريون وعرضوا أعمالهم وصُنّفوا داخل المؤسسات الاستعمارية.",
+    ),
+    themes: ["identity", "education", "amazigh"],
+    relatedFigureIds: ["mammeri", "mohammed-arkoun", "mouloud-feraoun"],
+    seo: {
+      title: L(
+        "Azouaou Mammeri, Algerian Painter | DZ Odyssey",
+        "Azouaou Mammeri, peintre algérien | DZ Odyssey",
+        "أزواو معمري، الرسام الجزائري | DZ Odyssey",
+      ),
+      description: L(
+        "Explore the life and work of Azouaou Mammeri, the Algerian painter from Taourirt Mimoun whose career connected Kabylie, Algeria and Morocco.",
+        "Découvrez la vie et l'œuvre d'Azouaou Mammeri, peintre algérien originaire de Taourirt Mimoun, dont le parcours relia la Kabylie, l'Algérie et le Maroc.",
+        "اكتشف حياة وأعمال أزواو معمري، الرسام الجزائري من تاوريرت ميمون، الذي ربط مساره بين منطقة القبائل والجزائر والمغرب.",
       ),
     },
   },
