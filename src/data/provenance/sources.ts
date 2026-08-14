@@ -14,6 +14,102 @@ const L = (en: string, fr: string, ar: string): LocalizedString => ({ en, fr, ar
 const S = <T extends ProvenanceSource>(s: T) => s;
 
 export const SOURCES: readonly ProvenanceSource[] = [
+  // Azouaou Mammeri
+  S({
+    id: "wikipedia-azouaou-mammeri",
+    kind: "web",
+    category: "further",
+    title: L("Azouaou Mammeri", "Azouaou Mammeri", "أزواو معمري"),
+    publisher: L("Wikipedia, English edition", "Wikipédia, édition anglaise", "ويكيبيديا، النسخة الإنجليزية"),
+    url: "https://en.wikipedia.org/wiki/Azouaou_Mammeri",
+    language: "en",
+    note: L(
+      "Used as the initial biographical overview and starting bibliography.",
+      "Utilisé comme aperçu biographique initial et point de départ bibliographique.",
+      "استُخدم كنظرة أولية على سيرته ونقطة انطلاق للمراجع.",
+    ),
+  }),
+  S({
+    id: "idref-azouaou-mammeri",
+    kind: "official",
+    category: "archive",
+    title: L(
+      "Mammeri, Azouaou (1890-1954)",
+      "Mammeri, Azouaou (1890-1954)",
+      "معمري، أزواو (1890-1954)",
+    ),
+    publisher: L("IdRef, authority records", "IdRef, référentiel d'autorités", "إيدرِف، السجلات الاستنادية"),
+    url: "https://www.idref.fr/",
+    language: "fr",
+    note: L(
+      "Authority record used for identity and date comparison. It gives 1890 as the birth year.",
+      "Notice d'autorité utilisée pour comparer identité et dates. Elle indique 1890 comme année de naissance.",
+      "سجل استنادي استُخدم لمقارنة الهوية والتواريخ، ويذكر 1890 سنةً للميلاد.",
+    ),
+  }),
+  S({
+    id: "leonore-azouaou-mammeri",
+    kind: "official",
+    category: "archive",
+    title: L(
+      "Azouaou Mammeri file, reference 19800035/28/3577",
+      "Dossier Azouaou Mammeri, cote 19800035/28/3577",
+      "ملف أزواو معمري، المرجع 19800035/28/3577",
+    ),
+    publisher: L(
+      "Archives nationales de France, Léonore database",
+      "Archives nationales de France, base Léonore",
+      "الأرشيف الوطني الفرنسي، قاعدة ليونور",
+    ),
+    url: "https://www.leonore.archives-nationales.culture.gouv.fr/",
+    language: "fr",
+    note: L(
+      "Archival Legion of Honour file, cited for the alternative 1892 birth year. Full file content requires manual review.",
+      "Dossier d'archives de la Légion d'honneur, cité pour l'année de naissance alternative 1892. Le contenu complet demande une consultation manuelle.",
+      "ملف أرشيفي لوسام جوقة الشرف، يُستشهد به لسنة الميلاد البديلة 1892. ويحتاج المحتوى الكامل إلى مراجعة يدوية.",
+    ),
+  }),
+  S({
+    id: "cma-azouaou-mammeri-koranic-school",
+    kind: "official",
+    category: "archive",
+    title: L(
+      "Interior of a Koranic School, collection record",
+      "Intérieur d'une école coranique, notice de collection",
+      "داخل مدرسة قرآنية، سجل المجموعة",
+    ),
+    publisher: L("Cleveland Museum of Art", "Cleveland Museum of Art", "متحف كليفلاند للفنون"),
+    url: "https://www.clevelandart.org/art/collection/search?search=Mammeri",
+    language: "en",
+    note: L(
+      "Museum catalog record for a painting by Azouaou Mammeri. Image reuse rights not yet verified, so no reproduction is displayed.",
+      "Notice de catalogue pour un tableau d'Azouaou Mammeri. Les droits de réutilisation de l'image ne sont pas vérifiés, aucune reproduction n'est affichée.",
+      "سجل فهرسة متحفي للوحة لأزواو معمري. لم يتم التحقق من حقوق إعادة استخدام الصورة، لذلك لا تُعرض أي نسخة.",
+    ),
+  }),
+  S({
+    id: "benjamin-mammeri-racim",
+    kind: "book",
+    category: "academic",
+    title: L(
+      "Colonial Tutelage to Nationalist Affirmation: Mammeri and Racim, Painters of the Maghreb",
+      "Colonial Tutelage to Nationalist Affirmation: Mammeri and Racim, Painters of the Maghreb",
+      "من الوصاية الاستعمارية إلى التأكيد الوطني: معمري وراسم، رسامان من المغرب الكبير",
+    ),
+    author: L("Roger Benjamin", "Roger Benjamin", "روجر بنجامين"),
+    publisher: L(
+      "In Orientalism's Interlocutors, Duke University Press, 2002",
+      "Dans Orientalism's Interlocutors, Duke University Press, 2002",
+      "ضمن Orientalism's Interlocutors، منشورات جامعة ديوك، 2002",
+    ),
+    url: "https://doi.org/10.1515/9780822383857-005",
+    language: "en",
+    note: L(
+      "Academic study of colonial art context, training, exhibitions and critical interpretation. Consulted at reference level; full chapter requires manual review.",
+      "Étude universitaire du contexte artistique colonial, de la formation, des expositions et de l'interprétation critique. Consultée au niveau référence ; le chapitre complet demande une lecture manuelle.",
+      "دراسة أكاديمية للسياق الفني الاستعماري والتكوين والمعارض والتأويل النقدي. أُخذت على مستوى المرجع، ويحتاج الفصل كاملًا إلى مراجعة يدوية.",
+    ),
+  }),
   // \u2500\u2500\u2500 Mouloud Mammeri \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
   S({
     id: "wikipedia-mouloud-mammeri",

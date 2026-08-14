@@ -52,6 +52,18 @@ const museum = (label: LocalizedString, by?: LocalizedString): CuratorSource => 
 // ---------------------------------------------------------------------------
 
 const figures: Record<string, CuratorEntry> = {
+  "azouaou-mammeri": {
+    note: L(
+      "Azouaou Mammeri is easy to misfile. He is not Mouloud Mammeri, and he is not the later painter Azwaw Mammeri. He belonged to the same extended family as Mouloud, and the exact degree of kinship is not documented here. What is documented is a painter from Taourirt Mimoun who taught, painted and administered art institutions across Algeria and Morocco, inside a colonial system that shaped what he could exhibit and how he was described.",
+      "Azouaou Mammeri est facile à confondre. Il n'est ni Mouloud Mammeri, ni le peintre plus tardif Azwaw Mammeri. Il appartenait à la même famille élargie que Mouloud, et le degré exact de parenté n'est pas documenté ici. Ce qui est documenté, c'est un peintre de Taourirt Mimoun qui enseigna, peignit et administra des institutions artistiques en Algérie et au Maroc, à l'intérieur d'un système colonial qui déterminait ce qu'il pouvait exposer et la manière dont on le décrivait.",
+      "من السهل الخلط بين أزواو معمري وغيره. فهو ليس مولود معمري، وليس الرسام اللاحق أزواو معمري. كان ينتمي إلى العائلة الممتدة نفسها التي ينتمي إليها مولود، ودرجة القرابة الدقيقة غير موثقة هنا. أما الموثق فهو رسام من تاوريرت ميمون درّس ورسم وأدار مؤسسات فنية في الجزائر والمغرب، داخل نظام استعماري حدّد ما يمكن أن يعرضه وكيف يُوصف.",
+    ),
+    memory: L(
+      "He left a Kabyle village for Fez, Rabat and Marrakech, and came home to Ath Yenni to die.",
+      "Il quitta un village kabyle pour Fès, Rabat et Marrakech, et rentra mourir à Ath Yenni.",
+      "غادر قرية قبائلية إلى فاس والرباط ومراكش، ثم عاد ليموت في آث يني.",
+    ),
+  },
   mammeri: {
     note: L(
       "Mammeri is often filed away as a novelist. He was also a linguist and an anthropologist who spent decades listening, transcribing and giving scholarly form to poetry that had lived only in speech. The novels and the fieldwork belong to a single project: to let a culture describe itself in its own words.",

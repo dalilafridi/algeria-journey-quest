@@ -56,6 +56,27 @@ export const EXHIBIT_PROVENANCE: Record<string, ExhibitProvenanceRecord> = {
     confidence: "widely-accepted",
     intro: T.intro,
   }),
+  "figure:azouaou-mammeri": R({
+    sourceIds: [
+      "idref-azouaou-mammeri",
+      "leonore-azouaou-mammeri",
+      "cma-azouaou-mammeri-koranic-school",
+      "benjamin-mammeri-racim",
+      "wikipedia-azouaou-mammeri",
+    ],
+    confidence: "widely-accepted",
+    intro: T.intro,
+    notes: [
+      {
+        kind: "dates",
+        body: {
+          en: "Birth year is disputed. An authority record gives 1890 while a French archival file gives 1892, so both are shown and neither is presented as settled. Media status: no public portrait or artwork used pending image-rights verification.",
+          fr: "L'année de naissance est disputée. Une notice d'autorité indique 1890 tandis qu'un dossier d'archives français indique 1892 : les deux sont affichées et aucune n'est présentée comme acquise. Statut des images : aucun portrait ni œuvre publiés, en attente de vérification des droits.",
+          ar: "سنة الميلاد محل خلاف. فسجل استنادي يذكر 1890 وملف أرشيفي فرنسي يذكر 1892، ولذلك يُعرض التاريخان معًا دون ترجيح. وضع الصور: لا تُعرض أي صورة شخصية أو عمل فني بانتظار التحقق من الحقوق.",
+        },
+      },
+    ],
+  }),
   "figure:mohammed-arkoun": R({
     sourceIds: [
       "gifford-mohammed-arkoun",
