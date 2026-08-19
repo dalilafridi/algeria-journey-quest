@@ -129,18 +129,25 @@ export const MUSEUM_THEMES: {
  */
 export const FEATURED_EXHIBITS: FeaturedExhibit[] = [
   {
-    id: "mzab",
-    title: { en: "The M'Zab Valley", fr: "La vallée du M'Zab", ar: "وادي مزاب" },
+    id: "casbah",
+    title: { en: "Casbah of Algiers", fr: "Casbah d'Alger", ar: "قصبة الجزائر" },
     teaser: {
-      en: "A thousand-year lesson in living with the desert, five ksour, one hydraulic mind.",
-      fr: "Une leçon millénaire pour habiter le désert, cinq ksour, un même génie hydraulique.",
-      ar: "درسٌ ألفيّ في العيش مع الصحراء، خمسة قصور بعقل هيدروليكي واحد.",
+      en: "White stairs cascading toward the sea, an Ottoman medina that outlived empires.",
+      fr: "Des escaliers blancs qui dévalent vers la mer, une médina ottomane qui a survécu aux empires.",
+      ar: "درجات بيضاء تنحدر نحو البحر، مدينةٌ عثمانية عاشت بعد الإمبراطوريات.",
     },
-    image: mzabHero,
-    publishedAt: "2026-06-18",
-    themes: ["unesco", "architecture", "regions"],
-    target: { kind: "mzab" },
+    image: casbahHero,
+    publishedAt: "2025-07-20",
+    themes: ["unesco", "architecture", "regions", "culture"],
+    target: { kind: "region", regionId: "algiers" },
+    cta: {
+      en: "Visit the Algiers regional gallery",
+      fr: "Visiter la galerie régionale d'Alger",
+      ar: "زُر قاعة منطقة الجزائر العاصمة",
+    },
+    illustrative: true,
   },
+
   {
     id: "kabylie",
     title: { en: "Kabylie", fr: "Kabylie", ar: "بلاد القبائل" },
