@@ -98,20 +98,6 @@ const SECTIONS: InfoSection[] = [
       },
     ],
   },
-  {
-    heading: {
-      en: "Suggesting a correction",
-      fr: "Signaler une correction",
-      ar: "اقتراح تصحيح",
-    },
-    paras: [
-      {
-        en: "Corrections are welcome and treated seriously. The most useful reports name the exhibit, quote the sentence in question, and point to a published source. Reviewed corrections are applied to the exhibit and, when the change is significant, reflected in its sources panel.",
-        fr: "Les corrections sont bienvenues et prises au sérieux. Les signalements les plus utiles nomment l'exposition, citent la phrase concernée et indiquent une source publiée. Après examen, la correction est appliquée à l'exposition et, si le changement est important, reflétée dans son panneau de sources.",
-        ar: "نرحّب بالتصحيحات ونتعامل معها بجدّية. أنفع البلاغات تلك التي تذكر اسم المعروضة، وتقتبس الجملة المعنية، وتشير إلى مصدر منشور. بعد المراجعة يُطبَّق التصحيح على المعروضة، وإذا كان التغيير مهمًّا يُذكر في لوحة مصادرها.",
-      },
-    ],
-  },
 ];
 
 function AboutPage() {
