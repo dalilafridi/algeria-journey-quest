@@ -20,10 +20,11 @@ const T = {
     "دي زد أوديسي متحف رقمي في نموّ مستمر، والمساهمات المدروسة موضع ترحيب. إذا لاحظت خطأ تاريخياً أو مشكلة في الترجمة أو مسألة حقوق أو قصة تستحق أن تُدرج، فأخبرنا من فضلك.",
   ),
   support: L(
-    "For historical corrections, please include the page, passage, and a published source whenever possible.",
-    "Pour les corrections historiques, indiquez si possible la page, le passage et une source publiée.",
-    "بالنسبة للتصحيحات التاريخية، يرجى ذكر الصفحة والمقطع ومصدر منشور كلما أمكن ذلك.",
+    "The most useful reports name the page or exhibit, quote the passage in question and point to a published source. Reviewed corrections are applied to the exhibit and, when the change is significant, reflected in its sources panel.",
+    "Les signalements les plus utiles indiquent la page ou l'exposition, citent le passage concerné et renvoient à une source publiée. Après examen, la correction est appliquée à l'exposition et, si le changement est important, reflétée dans son panneau de sources.",
+    "أنفع البلاغات تلك التي تذكر الصفحة أو المعروضة، وتقتبس المقطع المعني، وتشير إلى مصدر منشور. بعد المراجعة يُطبَّق التصحيح على المعروضة، وإذا كان التغيير مهمًّا يُذكر في لوحة مصادرها.",
   ),
+
   name: L("Name", "Nom", "الاسم"),
   email: L("Email address", "Adresse e-mail", "البريد الإلكتروني"),
   emailHelp: L(
