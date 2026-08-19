@@ -260,7 +260,7 @@ export function CreatorStory({ lang }: { lang: Lang }) {
           <h3 id="creator-tech" className={H}>
             {H_TECH[lang]}
           </h3>
-          <div className="mt-4 grid gap-8 lg:grid-cols-[minmax(0,1fr)_15rem]">
+          <div className="mt-4 grid gap-8 lg:grid-cols-[minmax(0,1fr)_15rem] lg:-me-[17rem]">
             <div className="min-w-0 space-y-4">
               {TECH_STORY.map((p) => (
                 <p key={p.en} className={P}>
