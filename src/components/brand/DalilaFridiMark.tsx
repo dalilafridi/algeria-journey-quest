@@ -34,7 +34,8 @@ export function DalilaFridiMonogram({
       src={monogram.url}
       alt={decorative ? "" : "DF monogram of Dalila Fridi"}
       aria-hidden={decorative || undefined}
-      className={cn("w-auto shrink-0 object-contain", MARK_HEIGHT[size], className)}
+      className={cn("w-auto max-w-full shrink-0 object-contain", className)}
+      style={{ height: MARK_HEIGHT[size], width: "auto" }}
       loading="lazy"
       decoding="async"
     />
