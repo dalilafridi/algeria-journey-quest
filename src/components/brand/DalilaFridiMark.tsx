@@ -10,11 +10,13 @@ const NAME = "Dalila Fridi";
 
 type Size = "inline" | "footer" | "about" | "profile";
 
-const MARK_HEIGHT: Record<Size, string> = {
-  inline: "h-[26px]",
-  footer: "h-[28px]",
-  about: "h-14 sm:h-16",
-  profile: "h-16 sm:h-20",
+// Heights are set inline: a global `img { height: auto }` rule sits outside
+// Tailwind's utilities layer and would otherwise win over height utilities.
+const MARK_HEIGHT: Record<Size, number> = {
+  inline: 26,
+  footer: 28,
+  about: 56,
+  profile: 64,
 };
 
 /** Just the monogram image, no name beside it. */
