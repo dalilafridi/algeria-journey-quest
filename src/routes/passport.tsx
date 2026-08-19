@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { Header } from "@/components/Header";
+import { DalilaFridiMonogram } from "@/components/brand/DalilaFridiMark";
 import { t, useLang, type Lang } from "@/lib/i18n";
 import {
   computeStamps,
@@ -331,10 +332,11 @@ function PassportPage() {
                     {tri(lang, TXT.curatedBy)}
                   </p>
                   <p
-                    className="mt-1.5 text-lg tracking-[0.06em] text-foreground"
+                    className="mt-1.5 flex flex-wrap items-center gap-2 text-lg tracking-[0.06em] text-foreground"
                     style={{ fontFamily: SERIF }}
                   >
-                    {CURATOR_NAME}
+                    <DalilaFridiMonogram size="profile" />
+                    <span>{CURATOR_NAME}</span>
                   </p>
                   <p className="mt-0.5 text-xs text-muted-foreground">{tri(lang, TXT.curatorRole)}</p>
                 </div>

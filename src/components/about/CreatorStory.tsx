@@ -4,6 +4,7 @@
  * pages (privacy, terms, sources, credits) are untouched.
  */
 import type { Lang } from "@/lib/i18n";
+import { DalilaFridiMonogram } from "@/components/brand/DalilaFridiMark";
 
 type T = Record<Lang, string>;
 
@@ -118,22 +119,6 @@ function GeometryRule() {
   );
 }
 
-/** Temporary monogram seal, replaceable by an approved portrait later. */
-function MonogramMedallion() {
-  return (
-    <div
-      aria-hidden="true"
-      className="relative grid h-24 w-24 shrink-0 place-items-center rounded-full border border-[color-mix(in_oklab,var(--primary)_35%,var(--border))] bg-[linear-gradient(150deg,color-mix(in_oklab,var(--accent)_22%,var(--card)),var(--card))] shadow-sm sm:h-28 sm:w-28"
-    >
-      <span className="absolute inset-[6px] rounded-full border border-[color-mix(in_oklab,var(--primary)_22%,transparent)]" />
-      <span className="absolute inset-[11px] rounded-full border border-dotted border-[color-mix(in_oklab,var(--primary)_18%,transparent)]" />
-      <span className="font-serif text-2xl tracking-[0.12em] text-[color-mix(in_oklab,var(--primary)_85%,var(--foreground))] sm:text-3xl">
-        DF
-      </span>
-    </div>
-  );
-}
-
 export function CreatorStory({ lang }: { lang: Lang }) {
   return (
     <section
@@ -144,7 +129,7 @@ export function CreatorStory({ lang }: { lang: Lang }) {
         <p className="text-[0.68rem] font-semibold uppercase tracking-[0.34em] text-muted-foreground">
           {EYEBROW[lang]}
         </p>
-        <MonogramMedallion />
+        <DalilaFridiMonogram size="about" />
         <div className="space-y-1.5">
           <h2 id="creator-heading" className="font-serif text-3xl leading-tight sm:text-4xl">
             {NAME}
