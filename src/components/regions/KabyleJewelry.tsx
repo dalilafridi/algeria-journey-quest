@@ -181,8 +181,12 @@ const OBJECTS: ObjectLabel[] = [
     ),
   },
   {
-    term: "Letrak",
-    body: L("Traditional large earrings", "Grandes boucles d'oreilles traditionnelles", "أقراط تقليدية كبيرة"),
+    term: "Timengucin",
+    body: L(
+      "Kabyle term for earrings; letrak are an older type of large hoop earrings.",
+      "Terme kabyle d\u00e9signant les boucles d'oreilles\u00a0; les letrak sont un ancien type de grandes boucles d'oreilles en anneau.",
+      "\u0645\u0635\u0637\u0644\u062d \u0642\u0628\u0627\u0626\u0644\u064a \u064a\u0639\u0646\u064a \u0627\u0644\u0623\u0642\u0631\u0627\u0637\u061b \u0623\u0645\u0627 \u2066letrak\u2069 \u0641\u0647\u064a \u0646\u0648\u0639 \u0642\u062f\u064a\u0645 \u0645\u0646 \u0627\u0644\u0623\u0642\u0631\u0627\u0637 \u0627\u0644\u0643\u0628\u064a\u0631\u0629 \u0627\u0644\u062d\u0644\u0642\u064a\u0629.",
+    ),
   },
   {
     term: "Azrar",
