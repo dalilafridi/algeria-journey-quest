@@ -281,9 +281,10 @@ export const onThisDay: OnThisDayEntry[] = [
     day: 27,
     year: 1332,
     event: L(
-      "Ibn Khaldun, born on this day, will spend decades in the Maghreb writing the Muqaddimah, the founding text of modern historiography and sociology.",
-      "Ibn Khaldoun, né ce jour, passera des décennies au Maghreb à rédiger la Muqaddima, texte fondateur de l'historiographie et de la sociologie modernes.",
-      "ابن خلدون، المولود في هذا اليوم، سيقضي عقودًا في المغرب يكتب المقدّمة، النصّ المؤسّس للتأريخ وعلم الاجتماع الحديثين.",
+      "Ibn Khaldun is born in Tunis to an Andalusi family; he will spend decades in the Maghreb writing the Muqaddimah, the founding text of modern historiography and sociology.",
+      "Ibn Khaldoun naît à Tunis dans une famille andalouse ; il passera des décennies au Maghreb à rédiger la Muqaddima, texte fondateur de l'historiographie et de la sociologie modernes.",
+      "يولد ابن خلدون في تونس لأسرة أندلسية، وسيقضي عقودًا في المغرب يكتب المقدّمة، النصّ المؤسّس للتأريخ وعلم الاجتماع الحديثين.",
+
     ),
     figureId: "ibn-khaldun",
     figureName: L("Ibn Khaldun", "Ibn Khaldoun", "ابن خلدون"),
@@ -447,17 +448,43 @@ export const onThisDay: OnThisDayEntry[] = [
   },
 ];
 
+export type OnThisDaySelection = {
+  entry: OnThisDayEntry;
+  /** True only when the entry's month and day equal the visitor's calendar date. */
+  exact: boolean;
+};
+
+/** Day of year (1..366) for a numeric year/month/day, timezone free. */
+function dayOfYear(year: number, month: number, day: number): number {
+  const start = Date.UTC(year, 0, 1);
+  const now = Date.UTC(year, month - 1, day);
+  return Math.floor((now - start) / 86_400_000) + 1;
+}
+
+/**
+ * Select the entry for a calendar date given as normalized numbers.
+ *
+ * Exact month + day matches win. When several entries share the same date the
+ * first one in registry order is used, so the choice is stable all day long.
+ * When nothing matches, a deterministic day-of-year rotation supplies an
+ * archive entry, flagged with `exact: false` so the card drops "today" wording.
+ */
+export function selectOnThisDay(
+  year: number,
+  month: number,
+  day: number,
+): OnThisDaySelection {
+  const matches = onThisDay.filter((e) => e.month === month && e.day === day);
+  if (matches.length > 0) return { entry: matches[0], exact: true };
+  const idx = (dayOfYear(year, month, day) - 1) % onThisDay.length;
+  return { entry: onThisDay[idx], exact: false };
+}
+
 /**
  * Pick the entry for a given date. Exact month/day match wins;
  * otherwise a deterministic rotation ensures the card is never empty.
  */
 export function pickOnThisDay(date: Date = new Date()): OnThisDayEntry {
-  const m = date.getMonth() + 1;
-  const d = date.getDate();
-  const exact = onThisDay.find((e) => e.month === m && e.day === d);
-  if (exact) return exact;
-  const dayOfYear = Math.floor(
-    (date.getTime() - new Date(date.getFullYear(), 0, 0).getTime()) / 86_400_000,
-  );
-  return onThisDay[Math.abs(dayOfYear) % onThisDay.length];
+  return selectOnThisDay(date.getFullYear(), date.getMonth() + 1, date.getDate()).entry;
 }
+

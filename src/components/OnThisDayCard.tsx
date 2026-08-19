@@ -1,7 +1,7 @@
 import { Link } from "@tanstack/react-router";
-import { useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import { t, useLang, type Lang } from "@/lib/i18n";
-import { pickOnThisDay, type OnThisDayEntry } from "@/data/onThisDay";
+import { selectOnThisDay, type OnThisDayEntry } from "@/data/onThisDay";
 
 const SERIF = "Georgia, 'Times New Roman', serif";
 
@@ -11,7 +11,14 @@ const TXT = {
     fr: "Ce jour dans l'histoire algérienne",
     ar: "في هذا اليوم من التاريخ الجزائري",
   },
+  eyebrowArchive: {
+    en: "From the Algerian History Archive",
+    fr: "Dans les archives de l'histoire algérienne",
+    ar: "من أرشيف التاريخ الجزائري",
+  },
   figure: { en: "Figure of the day", fr: "Figure du jour", ar: "شخصية اليوم" },
+  figureArchive: { en: "Related figure", fr: "Figure associée", ar: "شخصية مرتبطة" },
+
   exhibit: { en: "Related exhibit", fr: "Vitrine associée", ar: "المعرض المرتبط" },
   open: { en: "Learn more about this →", fr: "En savoir plus →", ar: "اعرف المزيد →" },
   openFigure: { en: "Learn more about this figure →", fr: "En savoir plus sur cette figure →", ar: "اعرف المزيد عن هذه الشخصية →" },
@@ -41,9 +48,22 @@ function useTt() {
 export function OnThisDayCard() {
   const { lang, T } = useTt();
   const [previewOpen, setPreviewOpen] = useState(false);
-  const entry = useMemo(() => pickOnThisDay(new Date()), []);
+  // First render (server and hydration) uses UTC parts, identical on both sides.
+  // After hydration we switch to the visitor's local calendar date so no
+  // timezone conversion can shift the displayed day.
+  const [selection, setSelection] = useState(() => {
+    const now = new Date();
+    return selectOnThisDay(now.getUTCFullYear(), now.getUTCMonth() + 1, now.getUTCDate());
+  });
 
+  useEffect(() => {
+    const now = new Date();
+    setSelection(selectOnThisDay(now.getFullYear(), now.getMonth() + 1, now.getDate()));
+  }, []);
+
+  const { entry, exact } = selection;
   const dateLabel = formatDate(entry, lang);
+
 
   return (
     <section className="mx-auto max-w-5xl px-4 pt-10 sm:pt-12">
@@ -78,7 +98,7 @@ export function OnThisDayCard() {
               className="text-[11px] font-bold uppercase tracking-[0.22em]"
               style={{ color: "color-mix(in oklab, var(--accent-foreground, currentColor) 80%, transparent)" }}
             >
-              {T("eyebrow")}
+              {exact ? T("eyebrow") : T("eyebrowArchive")}
             </div>
             <div
               className="mt-1 text-xs uppercase tracking-[0.3em] text-muted-foreground"
@@ -101,7 +121,7 @@ export function OnThisDayCard() {
                 className="inline-flex items-center gap-1.5 rounded-full border border-border bg-background/70 px-3 py-1 text-xs text-foreground hover:border-amber-500/60 hover:bg-amber-500/5 transition"
                 style={{ fontFamily: SERIF }}
               >
-                <span className="text-muted-foreground">{T("figure")}:</span>
+                <span className="text-muted-foreground">{exact ? T("figure") : T("figureArchive")}:</span>
                 <span className="font-semibold">{t(entry.figureName, lang)}</span>
               </Link>
               <ExhibitLink entry={entry} label={T("exhibit") + ": " + t(entry.exhibitLabel, lang)} />
@@ -137,7 +157,7 @@ export function OnThisDayCard() {
       </div>
 
       {previewOpen && (
-        <PostcardModal entry={entry} onClose={() => setPreviewOpen(false)} />
+        <PostcardModal entry={entry} exact={exact} onClose={() => setPreviewOpen(false)} />
       )}
     </section>
   );
@@ -268,7 +288,7 @@ function Medallion({ emoji, size = 96 }: { emoji: string; size?: number }) {
 /* Postcard modal + canvas rendering                             */
 /* ============================================================ */
 
-function PostcardModal({ entry, onClose }: { entry: OnThisDayEntry; onClose: () => void }) {
+function PostcardModal({ entry, exact, onClose }: { entry: OnThisDayEntry; exact: boolean; onClose: () => void }) {
   const { lang, T } = useTt();
   const [copied, setCopied] = useState(false);
   
@@ -279,7 +299,7 @@ function PostcardModal({ entry, onClose }: { entry: OnThisDayEntry; onClose: () 
     `, ${t(entry.figureName, lang)} · ${t(TXT.from, lang)}`;
 
   const downloadPostcard = async () => {
-    const canvas = renderPostcardCanvas(entry, lang);
+    const canvas = renderPostcardCanvas(entry, exact, lang);
     const url = canvas.toDataURL("image/png");
     const a = document.createElement("a");
     a.href = url;
@@ -349,7 +369,7 @@ function PostcardModal({ entry, onClose }: { entry: OnThisDayEntry; onClose: () 
           </button>
         </div>
 
-        <PostcardPreview entry={entry} lang={lang} />
+        <PostcardPreview entry={entry} exact={exact} lang={lang} />
 
         <div className="mt-4 flex flex-wrap items-center gap-2 justify-end">
           <button
@@ -384,7 +404,7 @@ function PostcardModal({ entry, onClose }: { entry: OnThisDayEntry; onClose: () 
  * The actual downloaded PNG is drawn separately on <canvas> for pixel-perfect
  * sizing (1200×750), but the visual language is identical.
  */
-function PostcardPreview({ entry, lang }: { entry: OnThisDayEntry; lang: Lang }) {
+function PostcardPreview({ entry, exact, lang }: { entry: OnThisDayEntry; exact: boolean; lang: Lang }) {
   const dateLabel = formatDate(entry, lang);
   const { T } = useTt();
   return (
@@ -405,7 +425,7 @@ function PostcardPreview({ entry, lang }: { entry: OnThisDayEntry; lang: Lang })
 
       <div className="absolute inset-0 p-6 sm:p-8 flex flex-col text-[#3b2a10]">
         <div className="flex items-center justify-between text-[10px] sm:text-xs uppercase tracking-[0.28em]" style={{ fontFamily: SERIF }}>
-          <span>{T("eyebrow")}</span>
+          <span>{exact ? T("eyebrow") : T("eyebrowArchive")}</span>
           <span>ⵣ</span>
         </div>
 
@@ -459,7 +479,7 @@ function Flourish({ position }: { position: "tl" | "tr" | "bl" | "br" }) {
 /* Canvas renderer (PNG download)                                */
 /* ============================================================ */
 
-function renderPostcardCanvas(entry: OnThisDayEntry, lang: Lang): HTMLCanvasElement {
+function renderPostcardCanvas(entry: OnThisDayEntry, exact: boolean, lang: Lang): HTMLCanvasElement {
   const W = 1200;
   const H = 750;
   const canvas = document.createElement("canvas");
@@ -527,7 +547,7 @@ function renderPostcardCanvas(entry: OnThisDayEntry, lang: Lang): HTMLCanvasElem
   // Eyebrow
   ctx.fillStyle = "#6b4a0f";
   ctx.font = "600 22px Georgia, 'Times New Roman', serif";
-  ctx.fillText(t(TXT.eyebrow, lang).toUpperCase(), leftX, 80);
+  ctx.fillText(t(exact ? TXT.eyebrow : TXT.eyebrowArchive, lang).toUpperCase(), leftX, 80);
 
   // Right sigil
   ctx.textAlign = isRTL ? "left" : "right";
