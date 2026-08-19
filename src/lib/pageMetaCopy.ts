@@ -285,15 +285,16 @@ export const PAGE_META = {
   },
   "/about": {
     title: {
-      en: "About DZ Odyssey, an independent digital museum of Algeria",
-      fr: "À propos de DZ Odyssey, un musée numérique indépendant de l'Algérie",
-      ar: "عن دي زد أوديسي، متحف رقمي مستقل للجزائر",
+      en: "About DZ Odyssey and Its Founder, Dalila Fridi",
+      fr: "À propos de DZ Odyssey et de sa fondatrice, Dalila Fridi",
+      ar: "عن دي زد أوديسي ومؤسِّسته دليلة فريدي",
     },
     description: {
-      en: "What DZ Odyssey is, who it is for, and how it approaches historical accuracy, cultural respect, visible sourcing and multilingual access.",
-      fr: "Ce qu'est DZ Odyssey, à qui il s'adresse, et comment il aborde l'exactitude historique, le respect culturel, les sources visibles et l'accès multilingue.",
-      ar: "ما هو دي زد أوديسي، ولمن يتوجّه، وكيف يتعامل مع الدقة التاريخية والاحترام الثقافي وإظهار المصادر وتعدد اللغات.",
+      en: "Discover why Dalila Fridi created DZ Odyssey, an independent digital museum connecting visitors with the history, people, regions and cultures of Algeria.",
+      fr: "Découvrez pourquoi Dalila Fridi a créé DZ Odyssey, un musée numérique indépendant qui relie les visiteurs à l'histoire, aux personnes, aux régions et aux cultures de l'Algérie.",
+      ar: "اكتشف لماذا أنشأت دليلة فريدي دي زد أوديسي، متحفًا رقميًا مستقلًا يصل الزوّار بتاريخ الجزائر وناسها ومناطقها وثقافاتها.",
     },
+
   },
   "/sources": {
     title: {
