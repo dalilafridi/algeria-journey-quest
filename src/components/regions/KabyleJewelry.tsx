@@ -161,11 +161,12 @@ const COPY = {
   ),
 };
 
-type ObjectLabel = { term: string; body: LocalizedString };
+type ObjectLabel = { term: string; ar: string; body: LocalizedString };
 
 const OBJECTS: ObjectLabel[] = [
   {
     term: "Ibzimen",
+    ar: "إبزيمن",
     body: L(
       "Silver fibulae traditionally used to fasten garments",
       "Fibules en argent traditionnellement utilisées pour fermer les vêtements",
@@ -174,6 +175,7 @@ const OBJECTS: ObjectLabel[] = [
   },
   {
     term: "Tabzimt",
+    ar: "تابزيمت",
     body: L(
       "A prominent pectoral ornament decorated on both sides",
       "Une importante parure pectorale décorée sur ses deux faces",
@@ -182,6 +184,7 @@ const OBJECTS: ObjectLabel[] = [
   },
   {
     term: "Timengucin",
+    ar: "تيمينغوشين",
     body: L(
       "Kabyle term for earrings; letrak are an older type of large hoop earrings.",
       "Terme kabyle d\u00e9signant les boucles d'oreilles\u00a0; les letrak sont un ancien type de grandes boucles d'oreilles en anneau.",
@@ -190,10 +193,12 @@ const OBJECTS: ObjectLabel[] = [
   },
   {
     term: "Azrar",
+    ar: "أزرار",
     body: L("Necklaces composed of pendants", "Colliers composés de pendentifs", "عقود مؤلّفة من دلايات"),
   },
   {
     term: "Ta'essabt",
+    ar: "تاعصابت",
     body: L(
       "A ceremonial silver diadem associated with marriage",
       "Un diadème d'argent de cérémonie associé au mariage",
@@ -202,6 +207,7 @@ const OBJECTS: ObjectLabel[] = [
   },
   {
     term: "Ikhelkhalen",
+    ar: "إخيلخالين",
     body: L("Large traditional anklets", "Grands bracelets de cheville traditionnels", "خلاخيل تقليدية كبيرة"),
   },
 ];
@@ -415,12 +421,19 @@ export function KabyleJewelry() {
               className="rounded-lg border bg-card/80 px-4 py-3"
               style={{ borderColor: "color-mix(in oklab, var(--brand-gold) 24%, var(--border))" }}
             >
-              <dt
-                className="text-base font-semibold text-foreground"
-                style={{ fontFamily: SERIF }}
-                dir="ltr"
-              >
-                {o.term}
+              <dt className="text-base font-semibold text-foreground" style={{ fontFamily: SERIF }}>
+                {lang === "ar" ? (
+                  <>
+                    <span dir="rtl" className="block">
+                      {o.ar}
+                    </span>
+                    <span dir="ltr" className="block text-[12px] font-normal text-muted-foreground mt-0.5">
+                      {o.term}
+                    </span>
+                  </>
+                ) : (
+                  <span dir="ltr">{o.term}</span>
+                )}
               </dt>
               <dd className="text-[13px] leading-relaxed text-muted-foreground mt-1">{tr(o.body)}</dd>
             </div>
