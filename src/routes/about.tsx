@@ -24,62 +24,37 @@ const TITLE = {
   ar: "حول دي زد أوديسي",
 };
 const INTRO = {
-  en: "DZ Odyssey is an immersive digital museum of Algeria. It gathers eras, regions, historical figures, culture, cuisine and football into one guided passage that can be visited from anywhere, in three languages.",
-  fr: "DZ Odyssey est un musée numérique immersif consacré à l'Algérie. Il réunit époques, régions, figures historiques, culture, cuisine et football en un parcours guidé, accessible partout et en trois langues.",
-  ar: "دي زد أوديسي متحف رقمي غامر مخصّص للجزائر. يجمع الحِقب والمناطق والشخصيات التاريخية والثقافة والمطبخ وكرة القدم في مسار واحد موجَّه، متاح من أي مكان وبثلاث لغات.",
+  en: "DZ Odyssey is an independent digital museum devoted to Algeria. It brings together history, regions, people, culture, cuisine and football in one journey that can be explored from anywhere, in English, French and Arabic.",
+  fr: "DZ Odyssey est un musée numérique indépendant consacré à l'Algérie. Il réunit l'histoire, les régions, les personnes, la culture, la cuisine et le football en un seul parcours, explorable depuis partout, en anglais, en français et en arabe.",
+  ar: "دي زد أوديسي متحف رقمي مستقل مخصّص للجزائر. يجمع التاريخ والمناطق والشخصيات والثقافة والمطبخ وكرة القدم في رحلة واحدة يمكن استكشافها من أي مكان، بالإنجليزية والفرنسية والعربية.",
 };
 
 const SECTIONS: InfoSection[] = [
   {
-    heading: { en: "What this museum is", fr: "Ce qu'est ce musée", ar: "ما هو هذا المتحف" },
+    heading: {
+      en: "The Museum and Its Mission",
+      fr: "Le musée et sa mission",
+      ar: "المتحف ورسالته",
+    },
     paras: [
       {
-        en: "Every screen is designed as a gallery rather than a web page. Exhibits are curated, sequenced and written to be read slowly, with the same care a physical museum gives to a room.",
-        fr: "Chaque écran est conçu comme une salle plutôt que comme une page web. Les expositions sont sélectionnées, ordonnées et écrites pour être lues lentement, avec le soin qu'un musée réel accorde à une salle.",
-        ar: "كل شاشة مصمَّمة كقاعة عرض لا كصفحة ويب. المعروضات منتقاة ومرتّبة ومكتوبة لتُقرأ على مهل، بالعناية نفسها التي يمنحها متحف حقيقي لقاعاته.",
+        en: "DZ Odyssey presents Algeria as a connected journey rather than a collection of isolated facts. Its exhibits move across eras, regions, historical figures, cultural traditions, cuisine and football, helping visitors see the threads that connect one story to another.",
+        fr: "DZ Odyssey présente l'Algérie comme un parcours continu plutôt que comme une somme de faits isolés. Ses expositions traversent les époques, les régions, les figures historiques, les traditions culturelles, la cuisine et le football, afin que les visiteurs perçoivent les fils qui relient une histoire à une autre.",
+        ar: "يقدّم دي زد أوديسي الجزائر كرحلة متصلة لا كمجموعة من الوقائع المتفرّقة. تنتقل معروضاته بين الحِقب والمناطق والشخصيات التاريخية والتقاليد الثقافية والمطبخ وكرة القدم، لتساعد الزائر على رؤية الخيوط التي تربط قصة بأخرى.",
       },
       {
-        en: "The collection grows over time. New exhibits, regions and halls are added as research and writing are completed.",
-        fr: "La collection s'enrichit avec le temps. De nouvelles expositions, régions et salles sont ajoutées à mesure que la recherche et la rédaction avancent.",
-        ar: "تنمو المجموعة مع الوقت. تُضاف معروضات ومناطق وقاعات جديدة كلما اكتمل البحث والتحرير.",
+        en: "The museum is created for visitors in Algeria, families across the diaspora, teachers, students, travellers and anyone who wants to understand Algeria beyond the fragments in which its history is often presented.",
+        fr: "Le musée s'adresse aux visiteurs en Algérie, aux familles de la diaspora, aux enseignants, aux élèves, aux voyageurs et à toute personne souhaitant comprendre l'Algérie au-delà des fragments par lesquels son histoire est souvent présentée.",
+        ar: "أُنشئ المتحف لزوّار الجزائر، ولعائلات المهجر، وللمعلّمين والطلبة والمسافرين، ولكل من يريد فهم الجزائر بما يتجاوز الشذرات التي كثيرًا ما يُقدَّم بها تاريخها.",
+      },
+      {
+        en: "The collection continues to grow as new research, stories and exhibits are completed.",
+        fr: "La collection continue de s'enrichir à mesure que de nouvelles recherches, histoires et expositions sont achevées.",
+        ar: "وتواصل المجموعة نموّها كلما اكتملت أبحاث وقصص ومعروضات جديدة.",
       },
     ],
   },
-  {
-    heading: { en: "Its purpose", fr: "Sa raison d'être", ar: "غايته" },
-    paras: [
-      {
-        en: "The purpose is transmission. Algerian history is often encountered in fragments, so the museum offers a continuous passage from ancient Numidia through independence and into contemporary culture, keeping the thread visible between one era and the next.",
-        fr: "L'objectif est la transmission. L'histoire algérienne se rencontre souvent par fragments : le musée propose donc un parcours continu, de la Numidie antique à l'indépendance puis à la culture contemporaine, en gardant visible le fil qui relie les époques.",
-        ar: "الغاية هي النقل والتوريث. كثيرًا ما يُلتقى التاريخ الجزائري مشتَّتًا، لذا يقدّم المتحف مسارًا متصلًا من نوميديا القديمة إلى الاستقلال ثم الثقافة المعاصرة، مع إبقاء الخيط الرابط بين الحِقب ظاهرًا.",
-      },
-    ],
-  },
-  {
-    heading: { en: "Who it is for", fr: "À qui il s'adresse", ar: "لمن هو موجّه" },
-    bullets: [
-      {
-        en: "Visitors in Algeria who want a coherent view of their own history.",
-        fr: "Les visiteurs en Algérie qui souhaitent une vue cohérente de leur histoire.",
-        ar: "الزوّار في الجزائر الراغبون في رؤية متماسكة لتاريخهم.",
-      },
-      {
-        en: "Families of the diaspora, and especially children who read in French or English before Arabic.",
-        fr: "Les familles de la diaspora, en particulier les enfants qui lisent en français ou en anglais avant l'arabe.",
-        ar: "عائلات المهجر، وخاصة الأطفال الذين يقرأون بالفرنسية أو الإنجليزية قبل العربية.",
-      },
-      {
-        en: "Teachers and students looking for sourced, classroom-friendly material.",
-        fr: "Les enseignants et les élèves en quête de contenus sourcés, utilisables en classe.",
-        ar: "المعلّمون والطلبة الباحثون عن مواد موثّقة صالحة للاستخدام الدراسي.",
-      },
-      {
-        en: "Curious travellers and readers discovering Algeria for the first time.",
-        fr: "Les voyageurs et lecteurs curieux qui découvrent l'Algérie pour la première fois.",
-        ar: "المسافرون والقرّاء الفضوليون الذين يكتشفون الجزائر لأول مرة.",
-      },
-    ],
-  },
+
   {
     heading: {
       en: "Our commitments",
@@ -120,20 +95,6 @@ const SECTIONS: InfoSection[] = [
         en: "DZ Odyssey is an independent digital cultural project. It does not speak for any government, institution, university or association, and nothing on the site should be read as an official position.",
         fr: "DZ Odyssey est un projet culturel numérique indépendant. Il ne parle au nom d'aucun gouvernement, institution, université ou association, et rien sur le site ne doit être lu comme une position officielle.",
         ar: "دي زد أوديسي مشروع ثقافي رقمي مستقل. لا يتحدّث باسم أي حكومة أو مؤسسة أو جامعة أو جمعية، ولا ينبغي قراءة أي محتوى فيه كموقف رسمي.",
-      },
-    ],
-  },
-  {
-    heading: {
-      en: "Suggesting a correction",
-      fr: "Signaler une correction",
-      ar: "اقتراح تصحيح",
-    },
-    paras: [
-      {
-        en: "Corrections are welcome and treated seriously. The most useful reports name the exhibit, quote the sentence in question, and point to a published source. Reviewed corrections are applied to the exhibit and, when the change is significant, reflected in its sources panel.",
-        fr: "Les corrections sont bienvenues et prises au sérieux. Les signalements les plus utiles nomment l'exposition, citent la phrase concernée et indiquent une source publiée. Après examen, la correction est appliquée à l'exposition et, si le changement est important, reflétée dans son panneau de sources.",
-        ar: "نرحّب بالتصحيحات ونتعامل معها بجدّية. أنفع البلاغات تلك التي تذكر اسم المعروضة، وتقتبس الجملة المعنية، وتشير إلى مصدر منشور. بعد المراجعة يُطبَّق التصحيح على المعروضة، وإذا كان التغيير مهمًّا يُذكر في لوحة مصادرها.",
       },
     ],
   },
