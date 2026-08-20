@@ -17,7 +17,7 @@ const COPY = {
   note: {
     en: "DZ Odyssey, an independent digital museum of Algeria.",
     fr: "DZ Odyssey, musée numérique indépendant de l'Algérie.",
-    ar: "دي زد أوديسي، متحف رقمي مستقل عن الجزائر.",
+    ar: "DZ Odyssey، متحف رقمي مستقل مكرّس للجزائر.",
   },
 } as const satisfies Record<string, Record<Lang, string>>;
 
