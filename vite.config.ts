@@ -8,12 +8,20 @@ import { defineConfig } from "@lovable.dev/vite-tanstack-config";
  *
  * CSP notes:
  *  - 'unsafe-inline' is required for scripts because the SSR shell inlines the
- *    language bootstrap and TanStack Start's hydration payload, and for styles
- *    because Tailwind/Radix write inline style attributes.
- *  - frame-ancestors keeps the site un-embeddable except by the Lovable editor
- *    preview, which needs to iframe it.
+ *    language bootstrap and the hydration payload, and for styles because
+ *    Tailwind/Radix write inline style attributes.
+ *  - frame-ancestors is 'self' only in production. The editor preview build
+ *    (`--mode development`) additionally allows the preview host so the
+ *    project can still be reviewed inside an iframe.
  *  - frame-src only allows the YouTube players used by the listening room.
+ *  - The AI gateway is called server side only, so it is not in connect-src.
  */
+const IS_PREVIEW_BUILD = process.argv.join(" ").includes("--mode development");
+
+const FRAME_ANCESTORS = IS_PREVIEW_BUILD
+  ? "frame-ancestors 'self' https://lovable.dev https://*.lovable.dev https://*.lovable.app"
+  : "frame-ancestors 'self'";
+
 const CSP = [
   "default-src 'self'",
   "base-uri 'self'",
@@ -23,9 +31,9 @@ const CSP = [
   "font-src 'self' data: https://fonts.gstatic.com",
   "img-src 'self' data: blob: https:",
   "media-src 'self' data: blob:",
-  "connect-src 'self' https://*.supabase.co wss://*.supabase.co https://ai.gateway.lovable.dev",
+  "connect-src 'self' https://*.supabase.co wss://*.supabase.co",
   "frame-src 'self' https://www.youtube.com https://www.youtube-nocookie.com",
-  "frame-ancestors 'self' https://lovable.dev https://*.lovable.dev https://*.lovable.app",
+  FRAME_ANCESTORS,
   "form-action 'self'",
   "manifest-src 'self'",
   "worker-src 'self' blob:",
