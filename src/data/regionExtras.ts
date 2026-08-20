@@ -94,9 +94,9 @@ export const regionExtras: Record<string, RegionExtras> = {
         emoji: "ⵣ",
         label: L("Language", "Langue", "اللغة"),
         body: L(
-          "Tamazight, written in Tifinagh and Latin script, became an official national language of Algeria in 2016.",
-          "Tamazight, écrit en tifinagh et en alphabet latin, est devenue langue officielle de l'Algérie en 2016.",
-          "تامازيغت تُكتب بالتيفيناغ وبالحرف اللاتيني، وصارت لغةً وطنية رسمية في الجزائر عام 2016.",
+          "Tamazight was recognized as a national language in 2002 and became an official language of Algeria in 2016.",
+          "La langue tamazight a été reconnue comme langue nationale en 2002, puis comme langue officielle de l'Algérie en 2016.",
+          "اعتُمدت اللغة الأمازيغية لغة وطنية سنة 2002، ثم أصبحت لغة رسمية في الجزائر سنة 2016.",
         ),
       },
     ],
@@ -117,7 +117,7 @@ export const regionExtras: Record<string, RegionExtras> = {
         "La montagne se souvient de ce que la ville oublie.",
         "الجبل يتذكّر ما تنساه المدينة.",
       ),
-      attribution: L("Kabyle proverb", "Proverbe kabyle", "مثلٌ قبائليّ"),
+      attribution: L("Curator's reflection", "Réflexion de la commissaire", "تأمل من القيّمة"),
     },
   },
 

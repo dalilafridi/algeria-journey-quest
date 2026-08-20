@@ -294,7 +294,9 @@ function RegionPage() {
           seal={<CollectionEmblem emblem={region.emoji} size={44} />}
         >
           <p className="italic" style={{ fontFamily: SERIF }}>
-            “{t(extras.reflection.quote, lang)}”
+            {lang === "en" ? "\u201C" : "\u00AB\u202F"}
+            {t(extras.reflection.quote, lang)}
+            {lang === "en" ? "\u201D" : "\u202F\u00BB"}
           </p>
         </MuseumCuratorNote>
       )}
