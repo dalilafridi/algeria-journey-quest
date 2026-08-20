@@ -640,6 +640,7 @@ function MzabExhibit() {
         image={mzabHero}
         imageAlt={HERO.imageAlt}
         imageCaption={HERO.caption}
+        imageMediaKind="interpretive-illustration"
         ctaHref="#where"
         ctaLabel={HERO.cta}
         backTo="/"
