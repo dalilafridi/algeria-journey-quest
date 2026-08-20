@@ -59,6 +59,8 @@ export type Era = {
   id: string;
   title: LocalizedString;
   dateRange: string;
+  /** Optional localized override for `dateRange` when the range contains words. */
+  dateRangeI18n?: LocalizedString;
   emoji: string;
   summary: LocalizedString;
   figures: { name: LocalizedString; note: LocalizedString }[];
@@ -1574,6 +1576,11 @@ export const eras: Era[] = [
     id: "islamic",
     title: L("Early Islamic Algeria", "Algérie islamique médiévale", "الجزائر الإسلامية"),
     dateRange: "7th – 16th century",
+    dateRangeI18n: L(
+      "7th – 16th century",
+      "VIIe – XVIe siècle",
+      "من القرن السابع إلى القرن السادس عشر",
+    ),
     emoji: "🕌",
     summary: L(
       "In the 7th century, Arab horsemen crossed the desert carrying a new faith. Islam met Berber spirit, sparked dynasties, and lit up cities like Tlemcen and Béjaïa, where scholars debated, traders bargained, and a young Italian named Fibonacci first met Arabic numerals.",
@@ -3508,6 +3515,16 @@ export const eras: Era[] = [
     ],
   },
 ];
+
+/** Localized date range for an era. Falls back to the plain numeric string. */
+export function eraDateRangeL(era: Era): LocalizedString {
+  return era.dateRangeI18n ?? { en: era.dateRange, fr: era.dateRange, ar: era.dateRange };
+}
+
+/** Date range for an era rendered in the active language. */
+export function eraDateRange(era: Era, lang: import("@/lib/i18n").Lang): string {
+  return era.dateRangeI18n ? era.dateRangeI18n[lang] : era.dateRange;
+}
 
 // Daily facts: curated cultural facts first (with rich metadata), then era-derived facts.
 import { curatedFactTexts } from "@/data/didYouKnow";
