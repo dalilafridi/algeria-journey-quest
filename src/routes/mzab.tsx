@@ -726,7 +726,7 @@ function MzabExhibit() {
           body={WATER.body}
           bullets={WATER.bullets}
           figure={
-            <Figure src={mzabWater} alt={WATER.image.alt} caption={WATER.image.caption} width={1600} height={1008} />
+            <Figure src={mzabWater} alt={WATER.image.alt} caption={WATER.image.caption} mediaKind="interpretive-illustration" width={1600} height={1008} />
           }
         />
       </Section>
