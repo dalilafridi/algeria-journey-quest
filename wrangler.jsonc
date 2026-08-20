@@ -3,5 +3,11 @@
   "name": "tanstack-start-app",
   "compatibility_date": "2025-09-24",
   "compatibility_flags": ["nodejs_compat"],
+  // Build metadata files that land at the deployment root must be answered by
+  // the worker (real 404) instead of being served from the asset layer.
+  "assets": {
+    "run_worker_first": ["/package.json", "/package-lock.json", "/nitro.json"],
+  },
   "main": "@tanstack/react-start/server-entry",
+
 }
