@@ -584,29 +584,33 @@ function renderPostcardCanvas(entry: OnThisDayEntry, exact: boolean, lang: Lang)
   const wrapX = isRTL ? W - 90 : 90;
   wrapText(ctx, eventText, wrapX, 300, maxWidth, lineHeight);
 
-  // Footer caption + source
+  // Footer caption + source (kept inside the safe area, clear of corner flourishes)
+  const footInset = 128;
+  const footLeftX = isRTL ? W - footInset : footInset;
+  const footRightX = isRTL ? footInset : W - footInset;
   ctx.fillStyle = "#6b4a0f";
   ctx.font = "italic 20px Georgia, serif";
   ctx.textAlign = isRTL ? "right" : "left";
-  ctx.fillText(t(entry.imageCaption, lang), leftX, H - 110);
+  ctx.fillText(t(entry.imageCaption, lang), footLeftX, H - 118);
 
   ctx.font = "600 18px Georgia, serif";
   ctx.textAlign = isRTL ? "left" : "right";
-  ctx.fillText(t(TXT.from, lang).toUpperCase(), rightX, H - 110);
+  ctx.fillText(t(TXT.from, lang).toUpperCase(), footRightX, H - 118);
 
   // Bottom rule
   ctx.strokeStyle = "#c9a34a";
   ctx.lineWidth = 1.5;
   ctx.beginPath();
-  ctx.moveTo(90, H - 80);
-  ctx.lineTo(W - 90, H - 80);
+  ctx.moveTo(90, H - 86);
+  ctx.lineTo(W - 90, H - 86);
   ctx.stroke();
 
   // Exhibit line
   ctx.fillStyle = "#8b6914";
   ctx.font = "500 16px Georgia, serif";
   ctx.textAlign = isRTL ? "right" : "left";
-  ctx.fillText(t(entry.exhibitLabel, lang), leftX, H - 65);
+  ctx.fillText(t(entry.exhibitLabel, lang), footLeftX, H - 72);
+
 
   return canvas;
 }
