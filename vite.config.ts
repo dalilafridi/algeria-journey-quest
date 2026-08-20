@@ -43,10 +43,12 @@ const SECURITY_HEADERS = {
   "x-frame-options": "SAMEORIGIN",
 };
 
+// `routeRules` is forwarded to Nitro but is not part of the wrapper's narrow
+// option type, so the object is cast at the boundary.
 export default defineConfig({
   nitro: {
     routeRules: {
       "/**": { headers: SECURITY_HEADERS },
     },
-  },
+  } as never,
 });
