@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 import { t, useLang, type Lang } from "@/lib/i18n";
 import { selectOnThisDay, type OnThisDayEntry } from "@/data/onThisDay";
 
@@ -340,16 +341,19 @@ function PostcardModal({ entry, exact, onClose }: { entry: OnThisDayEntry; exact
     }
   };
 
-  return (
+  // Rendered through a portal: an ancestor with a transform (reveal
+  // animations on the homepage) would otherwise become the containing block
+  // for `position: fixed` and clip the postcard panel.
+  const overlay = (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 p-4 animate-fade-in"
+      className="fixed inset-0 z-50 flex items-start sm:items-center justify-center overflow-y-auto bg-black/70 p-4 animate-fade-in"
       onClick={onClose}
       role="dialog"
       aria-modal="true"
       aria-label={T("preview")}
     >
       <div
-        className="relative w-full max-w-2xl rounded-3xl border border-amber-500/40 bg-background p-4 sm:p-6 shadow-2xl"
+        className="relative my-auto w-full max-w-2xl rounded-3xl border border-amber-500/40 bg-background p-4 sm:p-6 shadow-2xl"
         onClick={(e) => e.stopPropagation()}
       >
         <div className="flex items-center justify-between mb-3">
@@ -392,12 +396,14 @@ function PostcardModal({ entry, exact, onClose }: { entry: OnThisDayEntry; exact
             {T("download")}
           </button>
         </div>
-
-        
       </div>
     </div>
   );
+
+  if (typeof document === "undefined") return null;
+  return createPortal(overlay, document.body);
 }
+
 
 /**
  * DOM preview of the postcard (what the user sees in the modal).
