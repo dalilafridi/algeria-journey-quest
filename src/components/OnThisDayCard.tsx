@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 import { t, useLang, type Lang } from "@/lib/i18n";
 import { selectOnThisDay, type OnThisDayEntry } from "@/data/onThisDay";
 
