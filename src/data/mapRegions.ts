@@ -32,7 +32,7 @@ export const mapRegions: MapRegion[] = [
       L("Home to the Kabyle Amazigh people and the Tamazight language.", "Berceau du peuple kabyle amazigh et de la langue tamazight.", "موطن الشعب القبائلي الأمازيغي ولغة تامازيغت."),
       L("Site of the 1956 Soummam Congress, which organised the independence struggle.", "Lieu du Congrès de la Soummam (1956), qui a structuré la lutte pour l'indépendance.", "شهدت مؤتمر الصومام (1956) الذي نظّم الكفاح من أجل الاستقلال."),
       L("In 1980, Tafsut Imazighen (Berber Spring) defended Amazigh language and identity.", "En 1980, Tafsut Imazighen (Printemps berbère) a défendu la langue et l'identité amazighes.", "في 1980، دافعت تافسوت إيمازيغن (الربيع الأمازيغي) عن اللغة والهوية الأمازيغية."),
-      L("Tamazight became an official national language of Algeria in 2016.", "Tamazight est devenue langue officielle de l'Algérie en 2016.", "أصبحت تامازيغت لغة وطنية رسمية في الجزائر سنة 2016."),
+      L('Tamazight was recognized as a national language in 2002 and became an official language of Algeria in 2016.', "La langue tamazight a été reconnue comme langue nationale en 2002, puis comme langue officielle de l'Algérie en 2016.", 'اعتُمدت اللغة الأمازيغية لغة وطنية سنة 2002، ثم أصبحت لغة رسمية في الجزائر سنة 2016.'),
       L("Famous for poetry, song and a strong oral tradition.", "Célèbre pour sa poésie, sa chanson et une forte tradition orale.", "تشتهر بالشعر والأغنية وتقاليد شفهية قوية."),
       L("Lalla Fatma N'Soumer led mountain resistance against French troops in the 1850s.", "Lalla Fatma N'Soumer a mené la résistance des montagnes face aux troupes françaises dans les années 1850.", "قادت لالة فاطمة نسومر مقاومة الجبال ضد القوات الفرنسية في خمسينيات القرن 19."),
     ],
