@@ -26,6 +26,9 @@ import { Route as LessonsRouteImport } from './routes/lessons'
 import { Route as MapRouteImport } from './routes/map'
 import { Route as MomentsRouteImport } from './routes/moments'
 import { Route as MzabRouteImport } from './routes/mzab'
+import { Route as NitroDotjsonRouteImport } from './routes/nitro[.]json'
+import { Route as PackageLockDotjsonRouteImport } from './routes/package-lock[.]json'
+import { Route as PackageDotjsonRouteImport } from './routes/package[.]json'
 import { Route as PassportRouteImport } from './routes/passport'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as ProfileRouteImport } from './routes/profile'
@@ -176,6 +179,21 @@ const MomentsRoute = MomentsRouteImport.update({
 const MzabRoute = MzabRouteImport.update({
   id: '/mzab',
   path: '/mzab',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NitroDotjsonRoute = NitroDotjsonRouteImport.update({
+  id: '/nitro.json',
+  path: '/nitro.json',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PackageLockDotjsonRoute = PackageLockDotjsonRouteImport.update({
+  id: '/package-lock.json',
+  path: '/package-lock.json',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PackageDotjsonRoute = PackageDotjsonRouteImport.update({
+  id: '/package.json',
+  path: '/package.json',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PassportRoute = PassportRouteImport.update({
@@ -539,6 +557,9 @@ export interface FileRoutesByFullPath {
   '/map': typeof MapRoute
   '/moments': typeof MomentsRoute
   '/mzab': typeof MzabRoute
+  '/nitro.json': typeof NitroDotjsonRoute
+  '/package-lock.json': typeof PackageLockDotjsonRoute
+  '/package.json': typeof PackageDotjsonRoute
   '/passport': typeof PassportRoute
   '/privacy': typeof PrivacyRoute
   '/profile': typeof ProfileRoute
@@ -621,6 +642,9 @@ export interface FileRoutesByTo {
   '/map': typeof MapRoute
   '/moments': typeof MomentsRoute
   '/mzab': typeof MzabRoute
+  '/nitro.json': typeof NitroDotjsonRoute
+  '/package-lock.json': typeof PackageLockDotjsonRoute
+  '/package.json': typeof PackageDotjsonRoute
   '/passport': typeof PassportRoute
   '/privacy': typeof PrivacyRoute
   '/profile': typeof ProfileRoute
@@ -704,6 +728,9 @@ export interface FileRoutesById {
   '/map': typeof MapRoute
   '/moments': typeof MomentsRoute
   '/mzab': typeof MzabRoute
+  '/nitro.json': typeof NitroDotjsonRoute
+  '/package-lock.json': typeof PackageLockDotjsonRoute
+  '/package.json': typeof PackageDotjsonRoute
   '/passport': typeof PassportRoute
   '/privacy': typeof PrivacyRoute
   '/profile': typeof ProfileRoute
@@ -791,6 +818,9 @@ export interface FileRouteTypes {
     | '/map'
     | '/moments'
     | '/mzab'
+    | '/nitro.json'
+    | '/package-lock.json'
+    | '/package.json'
     | '/passport'
     | '/privacy'
     | '/profile'
@@ -873,6 +903,9 @@ export interface FileRouteTypes {
     | '/map'
     | '/moments'
     | '/mzab'
+    | '/nitro.json'
+    | '/package-lock.json'
+    | '/package.json'
     | '/passport'
     | '/privacy'
     | '/profile'
@@ -955,6 +988,9 @@ export interface FileRouteTypes {
     | '/map'
     | '/moments'
     | '/mzab'
+    | '/nitro.json'
+    | '/package-lock.json'
+    | '/package.json'
     | '/passport'
     | '/privacy'
     | '/profile'
@@ -1041,6 +1077,9 @@ export interface RootRouteChildren {
   MapRoute: typeof MapRoute
   MomentsRoute: typeof MomentsRoute
   MzabRoute: typeof MzabRoute
+  NitroDotjsonRoute: typeof NitroDotjsonRoute
+  PackageLockDotjsonRoute: typeof PackageLockDotjsonRoute
+  PackageDotjsonRoute: typeof PackageDotjsonRoute
   PassportRoute: typeof PassportRoute
   PrivacyRoute: typeof PrivacyRoute
   ProfileRoute: typeof ProfileRoute
@@ -1186,6 +1225,27 @@ declare module '@tanstack/react-router' {
       path: '/mzab'
       fullPath: '/mzab'
       preLoaderRoute: typeof MzabRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/nitro.json': {
+      id: '/nitro.json'
+      path: '/nitro.json'
+      fullPath: '/nitro.json'
+      preLoaderRoute: typeof NitroDotjsonRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/package-lock.json': {
+      id: '/package-lock.json'
+      path: '/package-lock.json'
+      fullPath: '/package-lock.json'
+      preLoaderRoute: typeof PackageLockDotjsonRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/package.json': {
+      id: '/package.json'
+      path: '/package.json'
+      fullPath: '/package.json'
+      preLoaderRoute: typeof PackageDotjsonRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/passport': {
@@ -1815,6 +1875,9 @@ const rootRouteChildren: RootRouteChildren = {
   MapRoute: MapRoute,
   MomentsRoute: MomentsRoute,
   MzabRoute: MzabRoute,
+  NitroDotjsonRoute: NitroDotjsonRoute,
+  PackageLockDotjsonRoute: PackageLockDotjsonRoute,
+  PackageDotjsonRoute: PackageDotjsonRoute,
   PassportRoute: PassportRoute,
   PrivacyRoute: PrivacyRoute,
   ProfileRoute: ProfileRoute,
