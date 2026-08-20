@@ -1,3 +1,4 @@
+import { t as tr } from "@/lib/i18n";
 import type { Localized, LocalizedString } from "@/lib/i18n";
 
 // ---------- Types ----------
@@ -3523,7 +3524,7 @@ export function eraDateRangeL(era: Era): LocalizedString {
 
 /** Date range for an era rendered in the active language. */
 export function eraDateRange(era: Era, lang: import("@/lib/i18n").Lang): string {
-  return era.dateRangeI18n ? era.dateRangeI18n[lang] : era.dateRange;
+  return era.dateRangeI18n ? tr(era.dateRangeI18n, lang) : era.dateRange;
 }
 
 // Daily facts: curated cultural facts first (with rich metadata), then era-derived facts.
