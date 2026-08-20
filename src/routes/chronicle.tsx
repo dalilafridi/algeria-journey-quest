@@ -15,7 +15,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { Header } from "@/components/Header";
-import { eras } from "@/data/eras";
+import { eras, eraDateRange } from "@/data/eras";
 import { getEraExtras } from "@/data/eraExtras";
 import { getFigure, FIGURE_CATEGORIES } from "@/data/figures";
 import { mapRegions } from "@/data/mapRegions";
@@ -362,7 +362,7 @@ function ChroniclePage() {
                           className="mt-1.5 text-[13px] font-semibold tracking-wide rtl:text-right"
                           style={{ color: "var(--brand-gold-deep)", unicodeBidi: "isolate" }}
                         >
-                          {era.dateRange}
+                          {eraDateRange(era, lang)}
                         </div>
 
                       </div>

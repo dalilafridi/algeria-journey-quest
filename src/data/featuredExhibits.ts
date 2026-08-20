@@ -118,7 +118,7 @@ export const MUSEUM_THEMES: {
   {
     id: "football",
     title: { en: "Football", fr: "Football", ar: "كرة القدم" },
-    hint: { en: "Les Verts, Les Vertes, the clubs", fr: "Les Verts, Les Vertes, les clubs", ar: "الخضر، الخضراوات، الأندية" },
+    hint: { en: "Les Verts, Les Vertes, the clubs", fr: "Les Verts, Les Vertes, les clubs", ar: "الخضر، المنتخب النسوي، الأندية" },
     to: { pathname: "/football" },
   },
 ];
@@ -225,7 +225,7 @@ export const FEATURED_EXHIBITS: FeaturedExhibit[] = [
     teaser: {
       en: "From the FLN team of 1958 to Les Vertes, a nation, told through ninety minutes.",
       fr: "De l'équipe FLN de 1958 aux Vertes, une nation, racontée en quatre-vingt-dix minutes.",
-      ar: "من فريق جبهة التحرير 1958 إلى الخضراوات، أمّةٌ تُروى في تسعين دقيقة.",
+      ar: "من فريق جبهة التحرير سنة 1958 إلى المنتخب الجزائري النسوي، أمّة تُروى من خلال تسعين دقيقة.",
     },
     image: footballHero,
     publishedAt: "2026-04-10",

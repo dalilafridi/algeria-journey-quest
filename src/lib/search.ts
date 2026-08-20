@@ -25,7 +25,7 @@
 import type { LocalizedString } from "@/lib/i18n";
 import { t, type Lang } from "@/lib/i18n";
 
-import { eras } from "@/data/eras";
+import { eras, eraDateRangeL } from "@/data/eras";
 import { figures } from "@/data/figures";
 import { mapRegions } from "@/data/mapRegions";
 import { words, WORD_CATEGORIES } from "@/data/words";
@@ -243,7 +243,7 @@ const ALIASES: Record<string, string[]> = {
   "football:gijon": ["gijón 1982", "algérie allemagne 1982", "algeria west germany 1982", "غيخون"],
   "football:world-cup": ["coupe du monde", "world cup", "كأس العالم"],
   "football:afcon": ["can", "coupe d'afrique", "africa cup of nations", "كأس أفريقيا"],
-  "football:les-vertes": ["les vertes", "women", "femmes", "women's football", "football féminin", "نساء", "الخضراوات"],
+  "football:les-vertes": ["les vertes", "women", "femmes", "women's football", "football féminin", "نساء", "المنتخب النسوي", "لي فيرت"],
   "club:js-kabylie": [
     "jsk", "js kabylie", "jeunesse sportive de kabylie", "canaris", "canaries",
     "شبيبة القبائل", "الكناري",
@@ -329,7 +329,7 @@ export function getSearchIndex(): SearchItem[] {
       emoji: e.emoji || "📜",
       title: e.title,
       snippet: e.summary,
-      context: { en: e.dateRange, fr: e.dateRange, ar: e.dateRange },
+      context: eraDateRangeL(e),
       href: `/era/${e.id}`,
       haystack: [
         e.title,
@@ -559,7 +559,7 @@ export function getSearchIndex(): SearchItem[] {
     title: LES_VERTES_HERO?.title ?? {
       en: "Les Vertes, Algeria's Women's National Team",
       fr: "Les Vertes, Sélection féminine d'Algérie",
-      ar: "الخضراوات، منتخب الجزائر للسيدات",
+      ar: "المنتخب الجزائري النسوي «لي فيرت»",
     },
     snippet: LES_VERTES_HERO?.subtitle ?? {
       en: "A permanent exhibit for the women who wear the green.",

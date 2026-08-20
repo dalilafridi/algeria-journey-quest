@@ -640,6 +640,7 @@ function MzabExhibit() {
         image={mzabHero}
         imageAlt={HERO.imageAlt}
         imageCaption={HERO.caption}
+        imageMediaKind="interpretive-illustration"
         ctaHref="#where"
         ctaLabel={HERO.cta}
         backTo="/"
@@ -725,7 +726,7 @@ function MzabExhibit() {
           body={WATER.body}
           bullets={WATER.bullets}
           figure={
-            <Figure src={mzabWater} alt={WATER.image.alt} caption={WATER.image.caption} width={1600} height={1008} />
+            <Figure src={mzabWater} alt={WATER.image.alt} caption={WATER.image.caption} mediaKind="interpretive-illustration" width={1600} height={1008} />
           }
         />
       </Section>
@@ -832,6 +833,7 @@ function MzabExhibit() {
               src={mzabMarket}
               alt={DAILY.image.alt}
               caption={DAILY.image.caption}
+              mediaKind="interpretive-illustration"
               width={1600}
               height={1008}
             />

@@ -52,6 +52,8 @@ const COPY = {
   surprise: { fr: "Surprenez-moi", en: "Surprise me", ar: "فاجئني" },
   on: { fr: "ON", en: "ON", ar: "تشغيل" },
   off: { fr: "OFF", en: "OFF", ar: "إيقاف" },
+  more: { fr: "Plus", en: "More", ar: "المزيد" },
+  close: { fr: "Fermer", en: "Close", ar: "إغلاق" },
 };
 
 function pick<T>(arr: T[]): T {
@@ -147,7 +149,7 @@ export function JourneyHud() {
               type="button"
               onClick={() => setOpen((v) => !v)}
               className="ml-1 pointer-events-auto inline-flex items-center justify-center w-8 h-8 rounded-full border border-border bg-card hover:bg-muted transition-colors text-foreground"
-              aria-label="More"
+              aria-label={open ? COPY.close[lang] : COPY.more[lang]}
               aria-expanded={open}
             >
               <span className="text-base leading-none" aria-hidden>

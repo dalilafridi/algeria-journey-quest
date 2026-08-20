@@ -15,7 +15,7 @@ import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { pageMeta, headLang } from "@/lib/seo";
 import { useEffect } from "react";
 import { Header } from "@/components/Header";
-import { eras } from "@/data/eras";
+import { eras, eraDateRange } from "@/data/eras";
 import { getFigure, figures, FIGURE_CATEGORIES } from "@/data/figures";
 import { figureExtras } from "@/data/figureExtras";
 import { figureMeta, FIGURE_THEMES, cultureKindEmoji, type FigureCultureLinkKind } from "@/data/figureMeta";
@@ -173,7 +173,7 @@ function FigureDetail() {
   /* ---- Sidebar: place in time timeline ---- */
   const timeline: TimelineStop[] = eras.map((e) => ({
     title: t(e.title, lang),
-    note: e.dateRange,
+    note: eraDateRange(e, lang),
     tag: e.id === f.relatedEraId ? tri(lang, "Here", "Ici", "هنا") : undefined,
     to: "/era/$eraId",
     params: { eraId: e.id },
@@ -205,7 +205,7 @@ function FigureDetail() {
     ? [
         {
           title: t(era.title, lang),
-          note: era.dateRange,
+          note: eraDateRange(era, lang),
           glyph: era.emoji,
           to: "/era/$eraId",
           params: { eraId: era.id },

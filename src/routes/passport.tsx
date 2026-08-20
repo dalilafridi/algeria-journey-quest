@@ -12,7 +12,7 @@ import {
   type Stamp,
 } from "@/lib/passport";
 import { getProgress, getLevelInfo } from "@/lib/progress";
-import { eras } from "@/data/eras";
+import { eras, eraDateRange } from "@/data/eras";
 import { mapRegions } from "@/data/mapRegions";
 import { figures } from "@/data/figures";
 import { pageMeta, headLang } from "@/lib/seo";
@@ -459,7 +459,7 @@ function PassportPage() {
                 key: e.id,
                 to: `/era/${e.id}`,
                 title: t(e.title, lang),
-                sub: e.dateRange,
+                sub: eraDateRange(e, lang),
               }))}
             />
             <JourneyCategory

@@ -2,7 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useMemo, useState } from "react";
 import { Crown, BookOpen, Moon, Shield, Swords, Flag, Lock, Sparkles, Lightbulb, Sun } from "lucide-react";
 import { Header } from "@/components/Header";
-import { eras } from "@/data/eras";
+import { eras, eraDateRange } from "@/data/eras";
 import { getProgress, hasPassed, isUnlocked, type Progress } from "@/lib/progress";
 import { t, tu, useLang, type Lang } from "@/lib/i18n";
 import earlyImg from "@/assets/era-earlynorthafrica.jpg";
@@ -426,7 +426,7 @@ function ChapterRow({
                 <h2 className="text-lg sm:text-xl font-bold mt-1 leading-tight">
                   {t(era.title, lang)}
                 </h2>
-                <div className="text-xs text-muted-foreground mt-0.5">{era.dateRange}</div>
+                <div className="text-xs text-muted-foreground mt-0.5">{eraDateRange(era, lang)}</div>
               </div>
               {done ? (
                 <span className="shrink-0 text-[11px] font-bold px-2.5 py-1 rounded-full bg-secondary text-secondary-foreground">

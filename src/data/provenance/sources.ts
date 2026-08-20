@@ -14,6 +14,30 @@ const L = (en: string, fr: string, ar: string): LocalizedString => ({ en, fr, ar
 const S = <T extends ProvenanceSource>(s: T) => s;
 
 export const SOURCES: readonly ProvenanceSource[] = [
+  // Constitutional status of Tamazight
+  S({
+    id: "constitution-dz-tamazight",
+    kind: "official",
+    category: "archive",
+    title: L(
+      "Constitution of the People's Democratic Republic of Algeria, articles on national and official languages",
+      "Constitution de la République algérienne démocratique et populaire, articles sur les langues nationale et officielle",
+      "دستور الجمهورية الجزائرية الديمقراطية الشعبية، المواد المتعلقة باللغتين الوطنية والرسمية",
+    ),
+    publisher: L(
+      "Journal officiel de la République algérienne",
+      "Journal officiel de la République algérienne",
+      "الجريدة الرسمية للجمهورية الجزائرية",
+    ),
+    url: "https://www.joradp.dz/HFR/Index.htm",
+    language: "fr",
+    note: L(
+      "Basis for the two milestones cited on this page: Tamazight recognized as a national language by the 2002 constitutional revision, then as an official language by the 2016 revision.",
+      "Base des deux jalons cités sur cette page : le tamazight reconnu langue nationale par la révision constitutionnelle de 2002, puis langue officielle par celle de 2016.",
+      "أساس المعلمين المذكورين في هذه الصفحة: الاعتراف بالأمازيغية لغة وطنية في تعديل 2002، ثم لغة رسمية في تعديل 2016.",
+    ),
+  }),
+
   // Azouaou Mammeri
   S({
     id: "wikipedia-azouaou-mammeri",

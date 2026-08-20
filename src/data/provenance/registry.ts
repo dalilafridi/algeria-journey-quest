@@ -200,7 +200,7 @@ export const EXHIBIT_PROVENANCE: Record<string, ExhibitProvenanceRecord> = {
 
   // ─── Regions ────────────────────────────────────────────────────────
   "region:kabylie": R({
-    sourceIds: ["camps-encyclopedie-berbere", "brett-fentress-berbers", "further-shatzmiller-berbers"],
+    sourceIds: ["camps-encyclopedie-berbere", "brett-fentress-berbers", "constitution-dz-tamazight", "further-shatzmiller-berbers"],
     confidence: "widely-accepted",
   }),
   "region:algiers": R({
@@ -295,7 +295,7 @@ export const EXHIBIT_PROVENANCE: Record<string, ExhibitProvenanceRecord> = {
     confidence: "widely-accepted",
   }),
   "culture:language": R({
-    sourceIds: ["camps-encyclopedie-berbere", "further-shatzmiller-berbers"],
+    sourceIds: ["camps-encyclopedie-berbere", "constitution-dz-tamazight", "further-shatzmiller-berbers"],
     confidence: "widely-accepted",
   }),
   "culture:cuisine": R({

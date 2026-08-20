@@ -19,7 +19,7 @@ import { CollectionEmblem } from "@/components/figures/CollectionEmblem";
 import { mapRegions, type MapRegion } from "@/data/mapRegions";
 import { getRegionExtras } from "@/data/regionExtras";
 import { regionIntros } from "@/data/cinematic";
-import { eras } from "@/data/eras";
+import { eras, eraDateRange } from "@/data/eras";
 import { getFigure } from "@/data/figures";
 import { saveJourneyPlace } from "@/lib/continuity";
 import { t, useLang, type Lang, type LocalizedString } from "@/lib/i18n";
@@ -151,7 +151,7 @@ function RegionPage() {
   /* ---- Sidebar items ---- */
   const eraItems: RelatedItem[] = connectedEras.map((e) => ({
     title: t(e.title, lang),
-    note: e.dateRange,
+    note: eraDateRange(e, lang),
     glyph: e.emoji ?? "♜",
     to: "/era/$eraId",
     params: { eraId: e.id },
@@ -294,7 +294,9 @@ function RegionPage() {
           seal={<CollectionEmblem emblem={region.emoji} size={44} />}
         >
           <p className="italic" style={{ fontFamily: SERIF }}>
-            “{t(extras.reflection.quote, lang)}”
+            {lang === "en" ? "\u201C" : lang === "fr" ? "\u00AB\u202F" : "\u00AB"}
+            {t(extras.reflection.quote, lang)}
+            {lang === "en" ? "\u201D" : lang === "fr" ? "\u202F\u00BB" : "\u00BB"}
           </p>
         </MuseumCuratorNote>
       )}

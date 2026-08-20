@@ -143,7 +143,7 @@ export const PAGE_META = {
     title: {
       en: "Les Vertes, Algeria's Women's National Team · DZ Odyssey",
       fr: "Les Vertes, la sélection féminine d'Algérie · DZ Odyssey",
-      ar: "الخضراوات، المنتخب الوطني الجزائري للسيدات · دي زد أوديسي",
+      ar: "المنتخب الجزائري النسوي «لي فيرت» · دي زد أوديسي",
     },
     description: {
       en: "Football, resilience and a new generation representing Algeria, a permanent exhibit in the Hall of Algerian Football.",

@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { Header } from "@/components/Header";
-import { eras } from "@/data/eras";
+import { eras, eraDateRange } from "@/data/eras";
 import {
   getProgress,
   totalProgressPct,
@@ -110,7 +110,7 @@ function ProfilePage() {
                     <span className="text-2xl">{e.emoji}</span>
                     <div>
                       <div className="font-semibold">{t(e.title, lang)}</div>
-                      <div className="text-xs text-muted-foreground">{e.dateRange}</div>
+                      <div className="text-xs text-muted-foreground">{eraDateRange(e, lang)}</div>
                     </div>
                   </div>
                   <div className="text-sm font-bold">

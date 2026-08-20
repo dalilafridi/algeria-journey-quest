@@ -354,9 +354,9 @@ export const CULTURE_TOPICS: CultureTopic[] = [
       "اللغة هنا خط المواجهة الأول للهوية. اليازْ، ⵣ، على باب، مثل قبائلي، بيت من قسمًا: كل منها دعوى هادئة عن انتماء هذه الأرض.",
     ),
     historicalContext: L(
-      "Tamazight predates every empire. Arabic arrived with Islam and became literature and faith. French was imposed by colonization, then turned into a weapon of anti-colonial writing. In 2016 Tamazight became an official national language.",
-      "Le tamazight précède tout empire. L'arabe est venu avec l'islam et devint littérature et foi. Le français fut imposé par la colonisation, puis retourné en arme d'écriture anticoloniale. En 2016, le tamazight devint langue nationale officielle.",
-      "تسبق الأمازيغية كل إمبراطورية. جاءت العربية مع الإسلام فصارت أدبًا وإيمانًا. فُرضت الفرنسية بالاستعمار ثم قُلبت سلاح كتابة مناهضة له. وفي 2016 صارت الأمازيغية لغة وطنية رسمية.",
+      "Tamazight predates every empire. Arabic arrived with Islam and became literature and faith. French was imposed by colonization, then turned into a weapon of anti-colonial writing. Tamazight was recognized as a national language in 2002 and became an official language in 2016.",
+      "Le tamazight précède tout empire. L'arabe est venu avec l'islam et devint littérature et foi. Le français fut imposé par la colonisation, puis retourné en arme d'écriture anticoloniale. Le tamazight a été reconnu langue nationale en 2002, puis langue officielle en 2016.",
+      "تسبق الأمازيغية كل إمبراطورية. جاءت العربية مع الإسلام فصارت أدبًا وإيمانًا. فُرضت الفرنسية بالاستعمار ثم قُلبت سلاح كتابة مناهضة له. واعتُمدت الأمازيغية لغة وطنية سنة 2002، ثم لغة رسمية سنة 2016.",
     ),
     traditions: [
       {
@@ -419,7 +419,7 @@ export const CULTURE_TOPICS: CultureTopic[] = [
       { emoji: "🏳️", label: L("Language & rights", "Langue & droits", "اللغة والحقوق") },
     ],
     facts: [
-      L("Tamazight became an official national language of Algeria in 2016.", "Le tamazight est devenu langue nationale officielle en 2016.", "صارت الأمازيغية لغة وطنية رسمية في الجزائر عام 2016."),
+      L('Tamazight was recognized as a national language in 2002 and became an official language of Algeria in 2016.', "La langue tamazight a été reconnue comme langue nationale en 2002, puis comme langue officielle de l'Algérie en 2016.", 'اعتُمدت اللغة الأمازيغية لغة وطنية سنة 2002، ثم أصبحت لغة رسمية في الجزائر سنة 2016.'),
       L("Tifinagh, the Amazigh script, has roots over two thousand years old.", "Le tifinagh, écriture amazighe, a des racines de plus de deux mille ans.", "للتيفيناغ، الأبجدية الأمازيغية، جذور تتجاوز ألفي عام."),
       L("Many landmark Algerian novels were written in French to reach the world.", "De nombreux romans algériens majeurs furent écrits en français pour atteindre le monde.", "كُتبت روايات جزائرية كبرى بالفرنسية لتصل إلى العالم."),
     ],
