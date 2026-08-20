@@ -22,6 +22,8 @@
 import type React from "react";
 import { Link } from "@tanstack/react-router";
 import { t, useLang, type Lang, type LocalizedString } from "@/lib/i18n";
+import { MediaNote } from "@/components/museum/MediaNote";
+import type { MediaType } from "@/data/mediaRegistry";
 
 /* -------------------------------------------------------------------------- */
 /*  shared constants                                                          */
@@ -146,6 +148,7 @@ export function Figure({
   src,
   alt,
   caption,
+  mediaKind,
   width,
   height,
   priority = false,
@@ -156,6 +159,8 @@ export function Figure({
   src: string;
   alt: LocalizedString;
   caption?: LocalizedString;
+  /** Renders the shared illustrative-media disclosure beneath the figure. */
+  mediaKind?: MediaType;
   width?: number;
   height?: number;
   priority?: boolean;
@@ -187,9 +192,10 @@ export function Figure({
           />
         )}
       </MuseumFrame>
-      {caption && (
+      {(caption || mediaKind) && (
         <figcaption className="mt-3 text-xs text-muted-foreground text-center italic">
-          {t(caption, lang)}
+          {caption ? t(caption, lang) : null}
+          {mediaKind ? <MediaNote kind={mediaKind} className="text-center not-italic" /> : null}
         </figcaption>
       )}
     </figure>
@@ -213,6 +219,7 @@ export function ExhibitHero({
   image,
   imageAlt,
   imageCaption,
+  imageMediaKind,
   medallion,
   meta,
   ctaHref,
@@ -229,6 +236,7 @@ export function ExhibitHero({
   image?: string;
   imageAlt?: LocalizedString;
   imageCaption?: LocalizedString;
+  imageMediaKind?: MediaType;
   medallion?: React.ReactNode;
   meta?: React.ReactNode;
   ctaHref?: string;
@@ -302,6 +310,7 @@ export function ExhibitHero({
             src={image}
             alt={imageAlt ?? title}
             caption={imageCaption}
+            mediaKind={imageMediaKind}
             width={1920}
             height={1008}
             priority
