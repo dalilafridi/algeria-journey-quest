@@ -1,4 +1,5 @@
 import { useRouterState } from "@tanstack/react-router";
+import { CollectionEmblem } from "@/components/figures/CollectionEmblem";
 import { useEffect, useState } from "react";
 import {
   dismissContinueCard,
