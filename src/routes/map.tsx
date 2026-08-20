@@ -6,7 +6,7 @@ import { mapRegions, type MapRegion } from "@/data/mapRegions";
 import { getFigure } from "@/data/figures";
 import { regionIntros, cinematicCopy } from "@/data/cinematic";
 import { getRegionExtras } from "@/data/regionExtras";
-import { eras } from "@/data/eras";
+import { eras, eraDateRange } from "@/data/eras";
 import { discover } from "@/lib/discoveries";
 import { t, useLang } from "@/lib/i18n";
 import { saveJourneyPlace } from "@/lib/continuity";
@@ -441,7 +441,7 @@ function RegionExplorerPage() {
                     >
                       <span aria-hidden>{e.emoji}</span>
                       <span>{t(e.title, lang)}</span>
-                      <span className="text-[10px] text-muted-foreground">{e.dateRange}</span>
+                      <span className="text-[10px] text-muted-foreground">{eraDateRange(e, lang)}</span>
                       <span className="text-primary text-xs rtl:rotate-180 opacity-0 group-hover:opacity-100 transition-opacity">
                         →
                       </span>

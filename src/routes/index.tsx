@@ -13,7 +13,7 @@ import {
 import { Header } from "@/components/Header";
 import { PillarIcon } from "@/components/brand/PillarIcon";
 import { RegionIcon } from "@/components/RegionIcon";
-import { dailyFacts, eras } from "@/data/eras";
+import { dailyFacts, eras, eraDateRange } from "@/data/eras";
 import { t, tu, useLang } from "@/lib/i18n";
 import heroBg from "@/assets/hero-bg.png";
 import { pageMeta, headLang } from "@/lib/seo";
@@ -233,7 +233,7 @@ function Home() {
                 </p>
                 {matchedEra && (
                   <div className="mt-3 text-xs text-muted-foreground">
-                   , {t(matchedEra.title, lang)} · {matchedEra.dateRange}
+                   , {t(matchedEra.title, lang)} · {eraDateRange(matchedEra, lang)}
                   </div>
                 )}
                 <div className="mt-1 text-[11px] italic text-muted-foreground/80">

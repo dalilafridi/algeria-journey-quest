@@ -1,4 +1,4 @@
-import { eras, type Era } from "@/data/eras";
+import { eras, eraDateRangeL, type Era } from "@/data/eras";
 import { figures, type Figure } from "@/data/figures";
 import { mapRegions, type MapRegion } from "@/data/mapRegions";
 import { CULTURE_TOPICS, type CultureTopic } from "@/data/cultureTopics";
@@ -25,7 +25,7 @@ function eraToRec(e: Era, r: LocalizedString, score: number): Recommendation {
     kind: "era",
     id: e.id,
     title: e.title,
-    subtitle: { en: e.dateRange, fr: e.dateRange, ar: e.dateRange },
+    subtitle: eraDateRangeL(e),
     emoji: e.emoji,
     to: `/era/${e.id}`,
     reason: r,

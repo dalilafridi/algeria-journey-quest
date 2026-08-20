@@ -25,7 +25,7 @@
 import type { LocalizedString } from "@/lib/i18n";
 import { t, type Lang } from "@/lib/i18n";
 
-import { eras } from "@/data/eras";
+import { eras, eraDateRangeL } from "@/data/eras";
 import { figures } from "@/data/figures";
 import { mapRegions } from "@/data/mapRegions";
 import { words, WORD_CATEGORIES } from "@/data/words";
@@ -329,7 +329,7 @@ export function getSearchIndex(): SearchItem[] {
       emoji: e.emoji || "📜",
       title: e.title,
       snippet: e.summary,
-      context: { en: e.dateRange, fr: e.dateRange, ar: e.dateRange },
+      context: eraDateRangeL(e),
       href: `/era/${e.id}`,
       haystack: [
         e.title,

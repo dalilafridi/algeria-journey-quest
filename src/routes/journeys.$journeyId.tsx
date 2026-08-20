@@ -33,7 +33,7 @@ import {
 import { getJourney, type Journey, type JourneyStop } from "@/lib/journeys";
 import { getFigure } from "@/data/figures";
 import { mapRegions } from "@/data/mapRegions";
-import { eras } from "@/data/eras";
+import { eras, eraDateRangeL } from "@/data/eras";
 import { t, useLang, type Lang, type LocalizedString } from "@/lib/i18n";
 
 export const Route = createFileRoute("/journeys/$journeyId")({
@@ -161,7 +161,7 @@ function resolveStop(stop: JourneyStop, lang: Lang): ResolvedStop {
     const e = eras.find((x) => x.id === stop.id);
     return {
       name: e?.title ?? stop.title,
-      tag: e ? { en: e.dateRange, fr: e.dateRange, ar: e.dateRange } : KIND_LABEL.era,
+      tag: e ? eraDateRangeL(e) : KIND_LABEL.era,
       to: "/era/$eraId",
       params: { eraId: stop.id },
     };

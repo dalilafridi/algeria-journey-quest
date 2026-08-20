@@ -13,7 +13,7 @@ import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { pageMeta, headLang, siteSuffix } from "@/lib/seo";
 import { useEffect } from "react";
 import { Header } from "@/components/Header";
-import { eras } from "@/data/eras";
+import { eras, eraDateRange } from "@/data/eras";
 import { getEraExtras } from "@/data/eraExtras";
 import { mapRegions } from "@/data/mapRegions";
 import { getFigure } from "@/data/figures";
@@ -132,7 +132,7 @@ function EraPage() {
   /* ---- Sidebar: place in time timeline ---- */
   const timeline: TimelineStop[] = eras.map((e) => ({
     title: t(e.title, lang),
-    note: e.dateRange,
+    note: eraDateRange(e, lang),
     tag: e.id === era.id ? tri(lang, "Here", "Ici", "هنا") : undefined,
     to: "/era/$eraId",
     params: { eraId: e.id },
@@ -178,7 +178,7 @@ function EraPage() {
       <MuseumBack to="/timeline">{tu("backToTimeline", lang)}</MuseumBack>
 
       <MuseumHero
-        label={<MuseumLabel>{era.dateRange}</MuseumLabel>}
+        label={<MuseumLabel>{eraDateRange(era, lang)}</MuseumLabel>}
         title={t(era.title, lang)}
         subtitle={extras?.cinematicLine ? `“${t(extras.cinematicLine, lang)}”` : undefined}
         intro={t(era.summary, lang)}
@@ -193,7 +193,7 @@ function EraPage() {
 
       {(() => {
         const segs: { id: string; text: string }[] = [
-          { id: "intro", text: `${t(era.title, lang)}. ${era.dateRange}. ${t(era.summary, lang)}` },
+          { id: "intro", text: `${t(era.title, lang)}. ${eraDateRange(era, lang)}. ${t(era.summary, lang)}` },
         ];
         if (curator?.note) segs.push({ id: "curator", text: t(curator.note, lang) });
         if (extras?.whyItMatters) segs.push({ id: "why", text: t(extras.whyItMatters, lang) });
@@ -206,7 +206,7 @@ function EraPage() {
         const guide: AudioGuide = {
           id: `era:${era.id}`,
           title: t(era.title, lang),
-          subtitle: era.dateRange,
+          subtitle: eraDateRange(era, lang),
           href: `/era/${era.id}` as unknown as AudioGuide["href"],
           segments: segs,
         };
@@ -341,7 +341,7 @@ function EraPage() {
           <span style={{ fontFamily: SERIF }}>{t(era.title, lang)}</span>
         </div>
         <dl className="space-y-3 text-sm">
-          <GlanceRow label={dateRangeLabel} value={era.dateRange} />
+          <GlanceRow label={dateRangeLabel} value={eraDateRange(era, lang)} />
           <GlanceRow label={overviewLabel} value={tri(lang, "Exhibition room", "Salle d'exposition", "قاعة عرض")} />
         </dl>
         <div className="mt-4 grid grid-cols-3 gap-2 text-center">
