@@ -833,6 +833,7 @@ function MzabExhibit() {
               src={mzabMarket}
               alt={DAILY.image.alt}
               caption={DAILY.image.caption}
+              mediaKind="interpretive-illustration"
               width={1600}
               height={1008}
             />
