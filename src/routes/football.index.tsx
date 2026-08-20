@@ -136,7 +136,7 @@ function FootballHero({ lang }: { lang: Lang }) {
               to="/football/lesvertes"
               className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-5 py-3 text-sm font-semibold text-foreground hover:bg-muted transition"
             >
-              {{ en: "Les Vertes, Women's Team →", fr: "Les Vertes, sélection féminine →", ar: "الخضراوات، المنتخب النسوي ←" }[lang]}
+              {{ en: "Les Vertes, Women's Team →", fr: "Les Vertes, sélection féminine →", ar: "المنتخب الجزائري النسوي ←" }[lang]}
             </Link>
           </div>
 
@@ -1185,7 +1185,7 @@ function TimelineExhibit({ lang }: { lang: Lang }) {
             {{ en: "A parallel timeline", fr: "Une chronologie parallèle", ar: "خطّ زمنيّ موازٍ" }[lang]}
           </div>
           <div className="mt-1 font-semibold text-foreground" style={SERIF}>
-            {{ en: "Les Vertes, the women's national team", fr: "Les Vertes, la sélection féminine", ar: "الخضراوات، المنتخب النسوي" }[lang]}
+            {{ en: "Les Vertes, the women's national team", fr: "Les Vertes, la sélection féminine", ar: "المنتخب الجزائري النسوي" }[lang]}
           </div>
           <p className="text-sm text-muted-foreground mt-1">
             {{
@@ -1200,7 +1200,7 @@ function TimelineExhibit({ lang }: { lang: Lang }) {
           className="shrink-0 inline-flex items-center gap-2 rounded-full bg-primary text-primary-foreground px-4 py-2 text-sm font-semibold hover:-translate-y-0.5 transition"
           style={{ boxShadow: "var(--shadow-soft)" }}
         >
-          {{ en: "Enter Les Vertes", fr: "Entrer chez Les Vertes", ar: "ادخل قاعة الخضراوات" }[lang]}
+          {{ en: "Enter Les Vertes", fr: "Entrer chez Les Vertes", ar: "ادخل قاعة المنتخب النسوي" }[lang]}
           <span aria-hidden>→</span>
         </Link>
       </div>

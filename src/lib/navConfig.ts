@@ -181,7 +181,7 @@ export const NAV_SECTIONS: NavSection[] = [
       { label: L("Legends", "Légendes", "الأساطير"), to: "/football", hash: "legends" },
       { label: L("Stadiums", "Stades", "الملاعب"), to: "/football", hash: "stadiums" },
       { label: L("Gijón 1982", "Gijón 1982", "خيخون 1982"), to: "/theater/$matchId", params: { matchId: "gijon-1982" } },
-      { label: L("Les Vertes, Women's Team", "Les Vertes, équipe féminine", "الخضراوات، المنتخب النسوي"), to: "/football/lesvertes" },
+      { label: L("Les Vertes, Women's Team", "Les Vertes, équipe féminine", "المنتخب الجزائري النسوي"), to: "/football/lesvertes" },
       { label: L("Club Museums", "Musées des clubs", "متاحف الأندية"), to: "/clubs" },
       { label: L("JS Kabylie", "JS Kabylie", "شبيبة القبائل"), to: "/clubs/$clubId", params: { clubId: "js-kabylie" } },
     ],

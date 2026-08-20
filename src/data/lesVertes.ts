@@ -50,7 +50,7 @@ export const LES_VERTES_HERO = {
   title: {
     en: "Les Vertes",
     fr: "Les Vertes",
-    ar: "الخضراوات",
+    ar: "المنتخب الجزائري النسوي «لي فيرت»",
   } satisfies LocalizedString,
   subtitle: {
     en: "The Rise of Algeria's Women's National Team",
@@ -65,7 +65,7 @@ export const LES_VERTES_HERO = {
   intro: {
     en: "For decades, Algerian women fought for a place on the pitch, for recognition and for the opportunity to represent their country. From the early development of organized women's football to appearances at the Women's Africa Cup of Nations, Les Vertes have built a story of resilience, talent and growing ambition.",
     fr: "Pendant des décennies, les Algériennes ont lutté pour une place sur le terrain, pour la reconnaissance et pour l'opportunité de représenter leur pays. Du développement du football féminin organisé aux participations à la Coupe d'Afrique féminine, Les Vertes ont bâti une histoire de résilience, de talent et d'ambition grandissante.",
-    ar: "على مدى عقود، ناضلت المرأة الجزائرية من أجل مكان في الملعب، ومن أجل الاعتراف وفرصة تمثيل بلادها. من انطلاق كرة القدم النسوية المنظّمة إلى المشاركة في كأس أمم إفريقيا للسيدات، بنَت الخضراوات قصّة من الصمود والموهبة والطموح المتنامي.",
+    ar: "على مدى عقود، ناضلت المرأة الجزائرية من أجل مكان في الملعب، ومن أجل الاعتراف وفرصة تمثيل بلادها. من انطلاق كرة القدم النسوية المنظّمة إلى المشاركة في كأس أمم إفريقيا للسيدات، بنَت لاعبات المنتخب الجزائري النسوي قصّة من الصمود والموهبة والطموح المتنامي.",
   } satisfies LocalizedString,
   ctaLabel: {
     en: "Explore their journey",

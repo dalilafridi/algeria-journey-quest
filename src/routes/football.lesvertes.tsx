@@ -117,7 +117,7 @@ function Hero({ lang }: { lang: Lang }) {
             {{
               en: "Les Vertes · a museum tribute to Algeria's women's national team.",
               fr: "Les Vertes · hommage muséal à la sélection féminine algérienne.",
-              ar: "الخضراوات · تحية متحفية للمنتخب النسوي الجزائري.",
+              ar: "المنتخب الجزائري النسوي «لي فيرت» · تحية متحفية للمنتخب النسوي الجزائري.",
             }[lang]}
             <a
               href="https://www.faf.dz/can-feminine-2026-kenya-0-algerie-2-les-vertes-en-quart-de-finale/"
@@ -279,7 +279,7 @@ function BarriersSection({ lang }: { lang: Lang }) {
         {{
           en: "The story of Les Vertes is inseparable from the obstacles the players faced and the persistence with which they answered.",
           fr: "L'histoire des Vertes est inséparable des obstacles rencontrés et de la persévérance avec laquelle elles y ont répondu.",
-          ar: "لا يمكن فصل قصّة الخضراوات عن العقبات التي واجهتها اللاعبات وعن الصبر الذي قابلن به تلك العقبات.",
+          ar: "لا يمكن فصل قصّة المنتخب الجزائري النسوي عن العقبات التي واجهتها اللاعبات وعن الصبر الذي قابلن به تلك العقبات.",
         }[lang]}
       </p>
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
