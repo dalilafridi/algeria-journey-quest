@@ -341,7 +341,6 @@ function PostcardModal({ entry, exact, onClose }: { entry: OnThisDayEntry; exact
     }
   };
 
-  return (
   // Rendered through a portal: an ancestor with a transform (reveal
   // animations on the homepage) would otherwise become the containing block
   // for `position: fixed` and clip the postcard panel.
