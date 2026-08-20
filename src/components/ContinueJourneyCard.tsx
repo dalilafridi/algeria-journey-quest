@@ -62,8 +62,8 @@ export function ContinueJourneyCard() {
     >
       <div className="mx-auto max-w-3xl rounded-2xl border border-border bg-card/95 p-3 sm:p-4 shadow-sm">
         <div className="flex items-start gap-3">
-          <span className="mt-0.5 text-xl" aria-hidden>
-            ✨
+          <span className="mt-0.5 shrink-0" aria-hidden>
+            <CollectionEmblem emblem="ⵣ" size={34} tone="bronze" />
           </span>
           <a href={place.href} className="min-w-0 flex-1 group text-start">
             <div className="text-xs font-bold uppercase tracking-wider text-primary">
