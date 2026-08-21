@@ -34,9 +34,7 @@ import {
   Section,
   EyebrowTitle,
   Prose,
-  Figure,
   ExhibitHero,
-  SplitFigure,
   NumberedGrid,
   DiscoveryCards,
   DataStatsCard,
@@ -342,34 +340,13 @@ function RegionPage() {
 
         {extras?.culturalImportance && (
           <Section id="culture" tone="parchment">
-            {identity.image ? (
-              <SplitFigure
-                eyebrow={L("Cultural meaning", "Sens culturel", "المعنى الثقافي")}
-                title={L("What this place carries", "Ce que ce lieu porte", "ما يحمله هذا المكان")}
-                body={extras.culturalImportance}
-                mirrored
-                figure={
-                  <Figure
-                    src={identity.image}
-                    alt={identity.imageAlt ?? region.name}
-                    caption={identity.imageCaption}
-                    mediaKind="interpretive-illustration"
-                    width={1600}
-                    height={1008}
-                  />
-                }
-              />
-            ) : (
-              <>
-                <EyebrowTitle
-                  eyebrow={L("Cultural meaning", "Sens culturel", "المعنى الثقافي")}
-                  title={L("What this place carries", "Ce que ce lieu porte", "ما يحمله هذا المكان")}
-                />
-                <Prose>
-                  <p>{tr(extras.culturalImportance, lang)}</p>
-                </Prose>
-              </>
-            )}
+            <EyebrowTitle
+              eyebrow={L("Cultural meaning", "Sens culturel", "المعنى الثقافي")}
+              title={L("What this place carries", "Ce que ce lieu porte", "ما يحمله هذا المكان")}
+            />
+            <Prose>
+              <p>{tr(extras.culturalImportance, lang)}</p>
+            </Prose>
           </Section>
         )}
 
