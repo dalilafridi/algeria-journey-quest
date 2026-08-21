@@ -674,7 +674,65 @@ export function getSearchIndex(): SearchItem[] {
     popularity: 12,
   });
 
+  push(out, {
+    id: "exhibit:mzab",
+    kind: "exhibit",
+    emoji: "❂",
+    title: { en: "The M'Zab Valley", fr: "La vallée du M'Zab", ar: "وادي مزاب" },
+    snippet: {
+      en: "Five ksour built to live with the desert, and the hydraulic mind behind them.",
+      fr: "Cinq ksour bâtis pour vivre avec le désert, et le génie hydraulique qui les porte.",
+      ar: "خمسة قصور بُنيت للعيش مع الصحراء، والعقل الهيدروليكي وراءها.",
+    },
+    context: { en: "Permanent exhibit", fr: "Exposition permanente", ar: "معرض دائم" },
+    href: "/mzab",
+    haystack: [
+      { en: "M'Zab Ghardaia Beni Isguen Ibadi ksar oasis palm grove", fr: "M'Zab Ghardaïa Beni Isguen ibadite ksar oasis palmeraie", ar: "ميزاب غرداية بني يزقن إباضي قصر واحة" },
+    ],
+    aliases: ["mzab", "m'zab", "ghardaia", "ghardaïa", "beni isguen", "ميزاب", "غرداية"],
+    popularity: 14,
+  });
+
+  push(out, {
+    id: "exhibit:timgad",
+    kind: "exhibit",
+    emoji: "❖",
+    title: { en: "Timgad", fr: "Timgad", ar: "تيمقاد" },
+    snippet: {
+      en: "A Roman city drawn as a perfect grid on the northern slope of the Aurès.",
+      fr: "Une cité romaine tracée en damier parfait sur le versant nord de l'Aurès.",
+      ar: "مدينة رومانية رُسمت شبكةً كاملة على السفح الشمالي للأوراس.",
+    },
+    context: { en: "Permanent exhibit", fr: "Exposition permanente", ar: "معرض دائم" },
+    href: "/timgad",
+    haystack: [
+      { en: "Timgad Thamugadi Trajan Roman colony Aurès Batna arch decumanus UNESCO", fr: "Timgad Thamugadi Trajan colonie romaine Aurès Batna arc decumanus UNESCO", ar: "تيمقاد ثاموغادي تراجان مستعمرة رومانية الأوراس باتنة قوس اليونسكو" },
+    ],
+    aliases: ["timgad", "thamugadi", "trajan", "تيمقاد", "ثاموغادي"],
+    popularity: 13,
+  });
+
+  push(out, {
+    id: "exhibit:tassili",
+    kind: "exhibit",
+    emoji: "✦",
+    title: { en: "Tassili n'Ajjer", fr: "Tassili n'Ajjer", ar: "طاسيلي ناجّر" },
+    snippet: {
+      en: "Twelve thousand years of Saharan life painted and carved on a sandstone plateau.",
+      fr: "Douze mille ans de vie saharienne peints et gravés sur un plateau de grès.",
+      ar: "اثنا عشر ألف سنة من حياة الصحراء مرسومة ومنقوشة على هضبة من الحجر الرملي.",
+    },
+    context: { en: "Permanent exhibit", fr: "Exposition permanente", ar: "معرض دائم" },
+    href: "/tassili",
+    haystack: [
+      { en: "Tassili n'Ajjer rock art Sahara Djanet Illizi Tuareg Tifinagh green Sahara UNESCO", fr: "Tassili n'Ajjer art rupestre Sahara Djanet Illizi Touareg tifinagh Sahara vert UNESCO", ar: "طاسيلي ناجر فن صخري الصحراء جانت إليزي الطوارق تيفيناغ اليونسكو" },
+    ],
+    aliases: ["tassili", "tassili n'ajjer", "rock art", "art rupestre", "djanet", "طاسيلي", "جانت"],
+    popularity: 13,
+  });
+
   _index = out;
+
   _byId = new Map(out.map((i) => [i.id, i]));
   _hayCache = new WeakMap();
   return out;
