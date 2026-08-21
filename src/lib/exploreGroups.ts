@@ -75,7 +75,7 @@ function cultureLinkItem(id: string): { id: string; emblem: string; label: Local
 void cultureItem;
 
 /**
- * Standalone permanent exhibits with their own canonical route
+ * Standalone site exhibits with their own canonical route
  * (/mzab, /timgad, /tassili). Mapped from the eras and regions that
  * contextualise them, so no page links to a broader gallery when the
  * dedicated exhibit exists.
@@ -101,16 +101,37 @@ const EXHIBITS: Record<"mzab" | "timgad" | "tassili", ExploreItem> = {
   },
 };
 
+/**
+ * A site exhibit is listed under a broad era only when the site itself belongs
+ * to that era, and it is always presented as one featured site within the
+ * gallery, never as the gallery's equivalent.
+ *
+ *  - roman -> Timgad: the colony was founded by Trajan around 100 CE.
+ *  - numidia -> nothing: Timgad did not exist under the Numidian kingdoms.
+ *    The Numidia gallery keeps its own broader narrative.
+ *  - earlynorthafrica -> Tassili: the rock art belongs to that deep-time span.
+ *  - islamic -> M'Zab: the pentapolis was founded by Ibadi communities from
+ *    the 11th century onward.
+ */
 const EXHIBITS_BY_ERA: Record<string, ("mzab" | "timgad" | "tassili")[]> = {
   roman: ["timgad"],
-  numidia: ["timgad"],
   earlynorthafrica: ["tassili"],
   islamic: ["mzab"],
 };
 
+/** Site exhibits located inside a region. Geographic containment only. */
 const EXHIBITS_BY_REGION: Record<string, ("mzab" | "timgad" | "tassili")[]> = {
   aures: ["timgad"],
   sahara: ["tassili", "mzab"],
+};
+
+/**
+ * Broader galleries a region should always keep one click away, so a visitor
+ * who arrives at a region is never funnelled only into a single narrow site.
+ */
+const BROAD_ERAS_BY_REGION: Record<string, string[]> = {
+  aures: ["numidia", "roman"],
+  sahara: ["earlynorthafrica", "islamic"],
 };
 
 function exhibitItems(ids: ("mzab" | "timgad" | "tassili")[]): ExploreItem[] {
@@ -211,7 +232,7 @@ export function getEraExploreGroups(eraId: string): ExploreGroup[] {
     group(RELATED_LABELS.regions, relatedRegions),
     group(RELATED_LABELS.eras, relatedEras),
     group(RELATED_LABELS.collections, relatedCulture),
-    group(RELATED_LABELS.exhibits, exhibitItems(EXHIBITS_BY_ERA[e.id] ?? [])),
+    group(RELATED_LABELS.featuredSites, exhibitItems(EXHIBITS_BY_ERA[e.id] ?? [])),
   ].filter((g) => g.items.length > 0);
 }
 
@@ -227,6 +248,8 @@ export function getRegionExploreGroups(regionId: string): ExploreGroup[] {
 
   const relatedEras: (ExploreItem | null)[] = [];
   if (r.eraId) relatedEras.push(eraItem(r.eraId));
+  // Broader galleries stay directly reachable alongside any featured site.
+  for (const id of BROAD_ERAS_BY_REGION[r.id] ?? []) relatedEras.push(eraItem(id));
 
   const relatedCulture = CULTURE_TOPICS.filter((c) => c.regionIds.includes(r.id))
     .slice(0, 6)
@@ -245,7 +268,7 @@ export function getRegionExploreGroups(regionId: string): ExploreGroup[] {
       { en: "Nearby Regions", fr: "Régions voisines", ar: "مناطق مجاورة" },
       nearby,
     ),
-    group(RELATED_LABELS.exhibits, exhibitItems(EXHIBITS_BY_REGION[r.id] ?? [])),
+    group(RELATED_LABELS.featuredSites, exhibitItems(EXHIBITS_BY_REGION[r.id] ?? [])),
   ].filter((g) => g.items.length > 0);
 }
 

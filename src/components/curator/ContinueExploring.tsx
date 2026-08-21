@@ -165,7 +165,11 @@ export const RELATED_LABELS = {
   regions: { en: "Related Regions", fr: "Régions liées", ar: "مناطق ذات صلة" } as LocalizedString,
   eras: { en: "Related Eras", fr: "Époques liées", ar: "حقب ذات صلة" } as LocalizedString,
   collections: { en: "Related Collections", fr: "Collections liées", ar: "مجموعات ذات صلة" } as LocalizedString,
-  exhibits: { en: "Permanent Exhibits", fr: "Expositions permanentes", ar: "معارض دائمة" } as LocalizedString,
+  /**
+   * A named site with its own standalone exhibit that sits *inside* a broader
+   * era or region. Never a substitute for the wider gallery.
+   */
+  featuredSites: { en: "Featured Site in this Gallery", fr: "Site phare de cette galerie", ar: "موقع بارز ضمن هذه القاعة" } as LocalizedString,
 };
 
 export default ContinueExploring;
