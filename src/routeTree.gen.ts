@@ -36,6 +36,7 @@ import { Route as ShowcaseRouteImport } from './routes/showcase'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as SourcesRouteImport } from './routes/sources'
 import { Route as StargazingRouteImport } from './routes/stargazing'
+import { Route as TassiliRouteImport } from './routes/tassili'
 import { Route as TermsRouteImport } from './routes/terms'
 import { Route as TimelineRouteImport } from './routes/timeline'
 import { Route as TimgadRouteImport } from './routes/timgad'
@@ -230,6 +231,11 @@ const SourcesRoute = SourcesRouteImport.update({
 const StargazingRoute = StargazingRouteImport.update({
   id: '/stargazing',
   path: '/stargazing',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TassiliRoute = TassiliRouteImport.update({
+  id: '/tassili',
+  path: '/tassili',
   getParentRoute: () => rootRouteImport,
 } as any)
 const TermsRoute = TermsRouteImport.update({
@@ -573,6 +579,7 @@ export interface FileRoutesByFullPath {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/sources': typeof SourcesRoute
   '/stargazing': typeof StargazingRoute
+  '/tassili': typeof TassiliRoute
   '/terms': typeof TermsRoute
   '/timeline': typeof TimelineRoute
   '/timgad': typeof TimgadRoute
@@ -659,6 +666,7 @@ export interface FileRoutesByTo {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/sources': typeof SourcesRoute
   '/stargazing': typeof StargazingRoute
+  '/tassili': typeof TassiliRoute
   '/terms': typeof TermsRoute
   '/timeline': typeof TimelineRoute
   '/timgad': typeof TimgadRoute
@@ -746,6 +754,7 @@ export interface FileRoutesById {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/sources': typeof SourcesRoute
   '/stargazing': typeof StargazingRoute
+  '/tassili': typeof TassiliRoute
   '/terms': typeof TermsRoute
   '/timeline': typeof TimelineRoute
   '/timgad': typeof TimgadRoute
@@ -837,6 +846,7 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/sources'
     | '/stargazing'
+    | '/tassili'
     | '/terms'
     | '/timeline'
     | '/timgad'
@@ -923,6 +933,7 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/sources'
     | '/stargazing'
+    | '/tassili'
     | '/terms'
     | '/timeline'
     | '/timgad'
@@ -1009,6 +1020,7 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/sources'
     | '/stargazing'
+    | '/tassili'
     | '/terms'
     | '/timeline'
     | '/timgad'
@@ -1099,6 +1111,7 @@ export interface RootRouteChildren {
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   SourcesRoute: typeof SourcesRoute
   StargazingRoute: typeof StargazingRoute
+  TassiliRoute: typeof TassiliRoute
   TermsRoute: typeof TermsRoute
   TimelineRoute: typeof TimelineRoute
   TimgadRoute: typeof TimgadRoute
@@ -1308,6 +1321,13 @@ declare module '@tanstack/react-router' {
       path: '/stargazing'
       fullPath: '/stargazing'
       preLoaderRoute: typeof StargazingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tassili': {
+      id: '/tassili'
+      path: '/tassili'
+      fullPath: '/tassili'
+      preLoaderRoute: typeof TassiliRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/terms': {
@@ -1905,6 +1925,7 @@ const rootRouteChildren: RootRouteChildren = {
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   SourcesRoute: SourcesRoute,
   StargazingRoute: StargazingRoute,
+  TassiliRoute: TassiliRoute,
   TermsRoute: TermsRoute,
   TimelineRoute: TimelineRoute,
   TimgadRoute: TimgadRoute,
