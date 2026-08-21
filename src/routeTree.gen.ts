@@ -38,6 +38,7 @@ import { Route as SourcesRouteImport } from './routes/sources'
 import { Route as StargazingRouteImport } from './routes/stargazing'
 import { Route as TermsRouteImport } from './routes/terms'
 import { Route as TimelineRouteImport } from './routes/timeline'
+import { Route as TimgadRouteImport } from './routes/timgad'
 import { Route as WomenOfIndependenceRouteImport } from './routes/women-of-independence'
 import { Route as WordsRouteImport } from './routes/words'
 import { Route as ApiCuratorRouteImport } from './routes/api/curator'
@@ -239,6 +240,11 @@ const TermsRoute = TermsRouteImport.update({
 const TimelineRoute = TimelineRouteImport.update({
   id: '/timeline',
   path: '/timeline',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TimgadRoute = TimgadRouteImport.update({
+  id: '/timgad',
+  path: '/timgad',
   getParentRoute: () => rootRouteImport,
 } as any)
 const WomenOfIndependenceRoute = WomenOfIndependenceRouteImport.update({
@@ -569,6 +575,7 @@ export interface FileRoutesByFullPath {
   '/stargazing': typeof StargazingRoute
   '/terms': typeof TermsRoute
   '/timeline': typeof TimelineRoute
+  '/timgad': typeof TimgadRoute
   '/women-of-independence': typeof WomenOfIndependenceRoute
   '/words': typeof WordsRoute
   '/api/curator': typeof ApiCuratorRoute
@@ -654,6 +661,7 @@ export interface FileRoutesByTo {
   '/stargazing': typeof StargazingRoute
   '/terms': typeof TermsRoute
   '/timeline': typeof TimelineRoute
+  '/timgad': typeof TimgadRoute
   '/women-of-independence': typeof WomenOfIndependenceRoute
   '/words': typeof WordsRoute
   '/api/curator': typeof ApiCuratorRoute
@@ -740,6 +748,7 @@ export interface FileRoutesById {
   '/stargazing': typeof StargazingRoute
   '/terms': typeof TermsRoute
   '/timeline': typeof TimelineRoute
+  '/timgad': typeof TimgadRoute
   '/women-of-independence': typeof WomenOfIndependenceRoute
   '/words': typeof WordsRoute
   '/curator/_studio': typeof CuratorStudioRouteRouteWithChildren
@@ -830,6 +839,7 @@ export interface FileRouteTypes {
     | '/stargazing'
     | '/terms'
     | '/timeline'
+    | '/timgad'
     | '/women-of-independence'
     | '/words'
     | '/api/curator'
@@ -915,6 +925,7 @@ export interface FileRouteTypes {
     | '/stargazing'
     | '/terms'
     | '/timeline'
+    | '/timgad'
     | '/women-of-independence'
     | '/words'
     | '/api/curator'
@@ -1000,6 +1011,7 @@ export interface FileRouteTypes {
     | '/stargazing'
     | '/terms'
     | '/timeline'
+    | '/timgad'
     | '/women-of-independence'
     | '/words'
     | '/curator/_studio'
@@ -1089,6 +1101,7 @@ export interface RootRouteChildren {
   StargazingRoute: typeof StargazingRoute
   TermsRoute: typeof TermsRoute
   TimelineRoute: typeof TimelineRoute
+  TimgadRoute: typeof TimgadRoute
   WomenOfIndependenceRoute: typeof WomenOfIndependenceRoute
   WordsRoute: typeof WordsRoute
   ApiCuratorRoute: typeof ApiCuratorRoute
@@ -1309,6 +1322,13 @@ declare module '@tanstack/react-router' {
       path: '/timeline'
       fullPath: '/timeline'
       preLoaderRoute: typeof TimelineRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/timgad': {
+      id: '/timgad'
+      path: '/timgad'
+      fullPath: '/timgad'
+      preLoaderRoute: typeof TimgadRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/women-of-independence': {
@@ -1887,6 +1907,7 @@ const rootRouteChildren: RootRouteChildren = {
   StargazingRoute: StargazingRoute,
   TermsRoute: TermsRoute,
   TimelineRoute: TimelineRoute,
+  TimgadRoute: TimgadRoute,
   WomenOfIndependenceRoute: WomenOfIndependenceRoute,
   WordsRoute: WordsRoute,
   ApiCuratorRoute: ApiCuratorRoute,
