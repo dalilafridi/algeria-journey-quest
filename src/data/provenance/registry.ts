@@ -313,6 +313,33 @@ export const EXHIBIT_PROVENANCE: Record<string, ExhibitProvenanceRecord> = {
       ar: "يعتمد المعرض على سجل التراث العالمي لليونسكو الخاص بتيمقاد، وعلى الدراسات المنشورة المرجعية حول المستعمرة الرومانية ثاموغادي.",
     },
   }),
+  "jews-of-algeria": R({
+    sourceIds: ["ushmm-algeria", "encyclopedie-berbere-juifs", "archives-nationales-fr-algerie"],
+    confidence: "widely-accepted",
+    intro: {
+      en: "This first version of the exhibit relies on institutional and academic references. Colonial legal measures follow the French national archives and the Holocaust Encyclopedia of the United States Holocaust Memorial Museum. Community history, regional distribution and language follow the Encyclop\u00e9die berb\u00e8re. No population figures are given, because published estimates vary by source and period.",
+      fr: "Cette premi\u00e8re version de l'exposition s'appuie sur des r\u00e9f\u00e9rences institutionnelles et acad\u00e9miques. Les mesures juridiques coloniales suivent les Archives nationales de France et l'Encyclop\u00e9die de l'Holocauste du United States Holocaust Memorial Museum. L'histoire des communaut\u00e9s, leur r\u00e9partition et leurs langues suivent l'Encyclop\u00e9die berb\u00e8re. Aucun chiffre de population n'est donn\u00e9, les estimations publi\u00e9es variant selon les sources et les p\u00e9riodes.",
+      ar: "\u062a\u0639\u062a\u0645\u062f \u0647\u0630\u0647 \u0627\u0644\u0646\u0633\u062e\u0629 \u0627\u0644\u0623\u0648\u0644\u0649 \u0645\u0646 \u0627\u0644\u0645\u0639\u0631\u0636 \u0639\u0644\u0649 \u0645\u0631\u0627\u062c\u0639 \u0645\u0624\u0633\u0651\u0633\u064a\u0629 \u0648\u0623\u0643\u0627\u062f\u064a\u0645\u064a\u0629. \u0641\u0627\u0644\u0625\u062c\u0631\u0627\u0621\u0627\u062a \u0627\u0644\u0642\u0627\u0646\u0648\u0646\u064a\u0629 \u0627\u0644\u0627\u0633\u062a\u0639\u0645\u0627\u0631\u064a\u0629 \u062a\u062a\u0628\u0639 \u0627\u0644\u0623\u0631\u0634\u064a\u0641 \u0627\u0644\u0648\u0637\u0646\u064a \u0627\u0644\u0641\u0631\u0646\u0633\u064a \u0648\u0645\u0648\u0633\u0648\u0639\u0629 \u0627\u0644\u0647\u0648\u0644\u0648\u0643\u0648\u0633\u062a\u060c \u0648\u062a\u0627\u0631\u064a\u062e \u0627\u0644\u062c\u0645\u0627\u0639\u0627\u062a \u0648\u062a\u0648\u0632\u0651\u0639\u0647\u0627 \u0648\u0644\u063a\u0627\u062a\u0647\u0627 \u062a\u062a\u0628\u0639 \u0627\u0644\u0645\u0648\u0633\u0648\u0639\u0629 \u0627\u0644\u0623\u0645\u0627\u0632\u064a\u063a\u064a\u0629. \u0648\u0644\u0627 \u062a\u064f\u0630\u0643\u0631 \u0623\u0631\u0642\u0627\u0645 \u0633\u0643\u0627\u0646\u064a\u0629 \u0644\u0623\u0646\u0651 \u0627\u0644\u062a\u0642\u062f\u064a\u0631\u0627\u062a \u0627\u0644\u0645\u0646\u0634\u0648\u0631\u0629 \u062a\u062e\u062a\u0644\u0641 \u0628\u0627\u062e\u062a\u0644\u0627\u0641 \u0627\u0644\u0645\u0635\u062f\u0631 \u0648\u0627\u0644\u062d\u0642\u0628\u0629.",
+    },
+    notes: [
+      {
+        kind: "debate",
+        body: {
+          en: "Origin dates for individual Algerian Jewish communities are debated. Long-standing local traditions, including in the M'Zab, claim great antiquity, but scholarship does not confirm a fixed early date. The exhibit presents these as tradition, not established fact.",
+          fr: "Les dates d'origine des diff\u00e9rentes communaut\u00e9s juives d'Alg\u00e9rie font d\u00e9bat. Des traditions locales anciennes, y compris au M'Zab, revendiquent une grande antiquit\u00e9, mais la recherche ne confirme aucune date pr\u00e9cise. L'exposition les pr\u00e9sente comme tradition et non comme fait \u00e9tabli.",
+          ar: "\u062a\u0648\u0627\u0631\u064a\u062e \u0646\u0634\u0623\u0629 \u0643\u0644\u0651 \u062c\u0645\u0627\u0639\u0629 \u064a\u0647\u0648\u062f\u064a\u0629 \u062c\u0632\u0627\u0626\u0631\u064a\u0629 \u0645\u062d\u0644\u0651 \u0646\u0642\u0627\u0634. \u0648\u062a\u062f\u0651\u0639\u064a \u062a\u0642\u0627\u0644\u064a\u062f \u0645\u062d\u0644\u0651\u064a\u0629 \u0642\u062f\u064a\u0645\u0629\u060c \u0648\u0645\u0646\u0647\u0627 \u0641\u064a \u0648\u0627\u062f\u064a \u0645\u0632\u0627\u0628\u060c \u0642\u062f\u0645\u0627\u064b \u0633\u062d\u064a\u0642\u0627\u064b\u060c \u0644\u0643\u0646\u0651 \u0627\u0644\u0628\u062d\u062b \u0644\u0627 \u064a\u0624\u0643\u0651\u062f \u062a\u0627\u0631\u064a\u062e\u0627\u064b \u0645\u0628\u0643\u0651\u0631\u0627\u064b \u062b\u0627\u0628\u062a\u0627\u064b.",
+        },
+      },
+      {
+        kind: "note",
+        body: {
+          en: "Relations between Jewish and Muslim Algerians varied by city, period and circumstance. The exhibit avoids a single characterisation in either direction.",
+          fr: "Les relations entre Juifs et Musulmans d'Alg\u00e9rie variaient selon les villes, les p\u00e9riodes et les circonstances. L'exposition \u00e9vite toute caract\u00e9risation unique, dans un sens comme dans l'autre.",
+          ar: "\u062a\u0641\u0627\u0648\u062a\u062a \u0627\u0644\u0639\u0644\u0627\u0642\u0627\u062a \u0628\u064a\u0646 \u0627\u0644\u064a\u0647\u0648\u062f \u0648\u0627\u0644\u0645\u0633\u0644\u0645\u064a\u0646 \u0627\u0644\u062c\u0632\u0627\u0626\u0631\u064a\u064a\u0646 \u0628\u062d\u0633\u0628 \u0627\u0644\u0645\u062f\u064a\u0646\u0629 \u0648\u0627\u0644\u062d\u0642\u0628\u0629 \u0648\u0627\u0644\u0638\u0631\u0641\u060c \u0648\u064a\u062a\u062c\u0646\u0651\u0628 \u0627\u0644\u0645\u0639\u0631\u0636 \u062a\u0648\u0635\u064a\u0641\u0627\u064b \u0648\u0627\u062d\u062f\u0627\u064b \u0641\u064a \u0623\u064a\u0651 \u0627\u062a\u062c\u0627\u0647.",
+        },
+      },
+    ],
+  }),
   tassili: R({
     sourceIds: ["unesco-tassili"],
     confidence: "widely-accepted",
