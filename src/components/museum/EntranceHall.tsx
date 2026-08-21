@@ -29,7 +29,7 @@ import {
 
 const CTA_ENTER = {
   en: "Enter exhibit",
-  fr: "Entrer dans l'exhibition",
+  fr: "Entrer dans l’exposition",
   ar: "ادخل المعرض",
 } as const;
 
@@ -371,7 +371,7 @@ function ThemeChip({
 
 const PICK_COPY = {
   eyebrow: { en: "Curator's pick", fr: "Le choix du conservateur", ar: "اختيار القيّم" },
-  cta: { en: "Enter this exhibit", fr: "Entrer dans cette exhibition", ar: "ادخل هذا المعرض" },
+  cta: { en: "Enter this exhibit", fr: "Entrer dans cette exposition", ar: "ادخل هذا المعرض" },
   rotates: {
     en: "A new pick surfaces each day.",
     fr: "Une nouvelle sélection remonte chaque jour.",
