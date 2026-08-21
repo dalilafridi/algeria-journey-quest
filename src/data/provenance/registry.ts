@@ -304,7 +304,26 @@ export const EXHIBIT_PROVENANCE: Record<string, ExhibitProvenanceRecord> = {
   }),
 
   // ─── M'Zab Valley flagship exhibit ──────────────────────────────────
+  timgad: R({
+    sourceIds: ["unesco-timgad"],
+    confidence: "verified",
+    intro: {
+      en: "The exhibit follows the UNESCO World Heritage record for Timgad, together with standard published accounts of the Roman colony of Thamugadi.",
+      fr: "L'exposition suit la fiche du patrimoine mondial (UNESCO) consacrée à Timgad, ainsi que les études publiées de référence sur la colonie romaine de Thamugadi.",
+      ar: "يعتمد المعرض على سجل التراث العالمي لليونسكو الخاص بتيمقاد، وعلى الدراسات المنشورة المرجعية حول المستعمرة الرومانية ثاموغادي.",
+    },
+  }),
+  tassili: R({
+    sourceIds: ["unesco-tassili"],
+    confidence: "widely-accepted",
+    intro: {
+      en: "The exhibit follows the UNESCO World Heritage record for Tassili n'Ajjer. Dates and image counts are published estimates, and the stylistic phases are relative sequences rather than fixed calendar periods.",
+      fr: "L'exposition suit la fiche du patrimoine mondial (UNESCO) consacrée au Tassili n'Ajjer. Les dates et le nombre d'images sont des estimations publiées, et les phases stylistiques constituent des séquences relatives plutôt que des périodes calendaires fixes.",
+      ar: "يعتمد المعرض على سجل التراث العالمي لليونسكو الخاص بطاسيلي ناجّر. والتواريخ وأعداد الصور تقديرات منشورة، والمراحل الأسلوبية تسلسلات نسبية لا فترات زمنية ثابتة.",
+    },
+  }),
   mzab: R({
+
     sourceIds: [
       "unesco-mzab",
       "ravereau-mzab",
