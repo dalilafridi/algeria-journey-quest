@@ -297,7 +297,7 @@ function PostcardModal({ entry, exact, onClose }: { entry: OnThisDayEntry; exact
   const dateLabel = formatDate(entry, lang);
   const caption =
     `“${t(entry.event, lang)}”, ${dateLabel}\n` +
-    `, ${t(entry.figureName, lang)} · ${t(TXT.from, lang)}`;
+    `${t(entry.figureName, lang)} · ${t(TXT.from, lang)}`;
 
   const downloadPostcard = async () => {
     const canvas = renderPostcardCanvas(entry, exact, lang);
