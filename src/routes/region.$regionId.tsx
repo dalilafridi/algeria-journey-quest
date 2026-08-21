@@ -1,55 +1,53 @@
 /**
- * Region detail page — a museum exhibit about a place.
+ * Region exhibit — rebuilt on the shared museum-exhibit architecture first
+ * used for the M'Zab Valley (`@/components/exhibit`).
  *
- * Rebuilt on the shared MuseumCatalogPage template: a strong left story column
- * (focus label, serif title, cinematic line, region identity overview,
- * geography & cultural meaning, historical significance, connected stories,
- * curator note, reflection, explore-the-atlas CTA) and a right context sidebar
- * (key facts, connected eras, notable figures, cultural themes, related
- * regions, atlas link), closed by a subtle bottom ribbon connecting figures,
- * eras, culture, atlas and signature journeys.
+ * Same canonical routes as before (/region/kabylie, /region/algiers, ...).
+ * All content still comes from the existing typed data
+ * (mapRegions, regionExtras, cinematic intros, figures, eras) so nothing was
+ * rewritten or invented; only the presentation changed. Each region keeps its
+ * own imagery, accent colour and specialised sections (Kabyle jewellery, the
+ * curator's reflection, provenance).
  */
 
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
-import { pageMeta, headLang, siteSuffix } from "@/lib/seo";
 import { useEffect } from "react";
+
 import { Header } from "@/components/Header";
 import { RegionIcon } from "@/components/RegionIcon";
-import { CollectionEmblem } from "@/components/figures/CollectionEmblem";
+import { pageMeta, headLang, siteSuffix } from "@/lib/seo";
 import { mapRegions, type MapRegion } from "@/data/mapRegions";
 import { getRegionExtras } from "@/data/regionExtras";
 import { regionIntros } from "@/data/cinematic";
 import { eras, eraDateRange } from "@/data/eras";
 import { getFigure } from "@/data/figures";
 import { saveJourneyPlace } from "@/lib/continuity";
-import { t, useLang, type Lang, type LocalizedString } from "@/lib/i18n";
+import { t as tr, useLang, type Lang, type LocalizedString } from "@/lib/i18n";
 import { AudioGuideButton } from "@/components/audio/AudioGuide";
 import type { AudioGuide } from "@/lib/audioGuide";
-import {
-  MuseumCatalogPage,
-  MuseumHero,
-  MuseumLabel,
-  MuseumBack,
-  MuseumChip,
-  MuseumPill,
-  MuseumCatalogCard,
-  MuseumOverviewPanel,
-  MuseumFactsList,
-  MuseumCuratorNote,
-  MuseumRelatedContent,
-  MuseumCTASection,
-  MuseumActionButton,
-  MuseumContextRibbon,
-  type RelatedItem,
-} from "@/components/museum/MuseumCatalog";
 import { CuratorRecommendations } from "@/components/CuratorRecommendations";
 import { ContinueExploring } from "@/components/curator/ContinueExploring";
 import { ExhibitProvenance } from "@/components/provenance/ExhibitProvenance";
 import { getRegionExploreGroups } from "@/lib/exploreGroups";
 import { KabyleJewelry } from "@/components/regions/KabyleJewelry";
+import {
+  Section,
+  EyebrowTitle,
+  Prose,
+  Figure,
+  ExhibitHero,
+  SplitFigure,
+  NumberedGrid,
+  DiscoveryCards,
+  DataStatsCard,
+  PullQuote,
+  RelatedExhibits,
+  type NumberedItem,
+  type RelatedExhibit,
+} from "@/components/exhibit";
 
-
-const SERIF = "Georgia, 'Times New Roman', serif";
+import kabylieImg from "@/assets/exhibit-kabylie.jpg";
+import casbahImg from "@/assets/exhibit-casbah.jpg";
 
 export const Route = createFileRoute("/region/$regionId")({
   loader: ({ params }) => {
@@ -63,7 +61,11 @@ export const Route = createFileRoute("/region/$regionId")({
       return pageMeta({
         lang,
         path: `/region/${params.regionId}`,
-        title: { en: "Region not found, DZ Odyssey", fr: "Région introuvable, DZ Odyssey", ar: "المنطقة غير موجودة، دي زد أوديسي" },
+        title: {
+          en: "Region not found, DZ Odyssey",
+          fr: "Région introuvable, DZ Odyssey",
+          ar: "المنطقة غير موجودة، دي زد أوديسي",
+        },
         description: {
           en: "This region exhibit could not be found.",
           fr: "Cette exposition régionale est introuvable.",
@@ -76,8 +78,8 @@ export const Route = createFileRoute("/region/$regionId")({
     return pageMeta({
       lang,
       path: `/region/${loaderData.region.id}`,
-      title: `${t(loaderData.region.name, lang)}, ${kind}${siteSuffix(lang)}`,
-      description: t(loaderData.region.summary, lang),
+      title: `${tr(loaderData.region.name, lang)}, ${kind}${siteSuffix(lang)}`,
+      description: tr(loaderData.region.summary, lang),
       type: "article",
     });
   },
@@ -94,14 +96,72 @@ export const Route = createFileRoute("/region/$regionId")({
   component: RegionPage,
 });
 
+const L = (en: string, fr: string, ar: string): LocalizedString => ({ en, fr, ar });
 const tri = (lang: Lang, en: string, fr: string, ar: string) =>
   lang === "fr" ? fr : lang === "ar" ? ar : en;
+
+/* ------------------------------------------------------------------ */
+/*  per-region visual identity                                        */
+/* ------------------------------------------------------------------ */
+
+type RegionIdentity = {
+  /** Hero photograph or interpretive plate, when the museum holds one. */
+  image?: string;
+  imageAlt?: LocalizedString;
+  imageCaption?: LocalizedString;
+  /** Hero wash, so no two regions read as copies of one another. */
+  wash: string;
+};
+
+const IDENTITY: Record<string, RegionIdentity> = {
+  kabylie: {
+    image: kabylieImg,
+    imageAlt: L(
+      "Kabyle mountain village of stone houses with tiled roofs, terraced slopes of the Djurdjura rising behind.",
+      "Village kabyle de maisons de pierre aux toits de tuiles, versants en terrasses du Djurdjura à l'arrière-plan.",
+      "قرية قبائلية من بيوت الحجر بسقوف القرميد، ومدرّجات جرجرة ترتفع خلفها.",
+    ),
+    imageCaption: L(
+      "A village of the Djurdjura, built facing the mountain",
+      "Un village du Djurdjura, bâti face à la montagne",
+      "قرية من جرجرة، بُنيت في مواجهة الجبل",
+    ),
+    wash: "radial-gradient(ellipse at 50% 20%, oklch(0.9 0.06 150 / 0.30), transparent 65%), var(--gradient-parchment)",
+  },
+  algiers: {
+    image: casbahImg,
+    imageAlt: L(
+      "White terraced houses of the Casbah of Algiers cascading in narrow steps toward the Mediterranean.",
+      "Maisons blanches en terrasses de la Casbah d'Alger descendant par ruelles étroites vers la Méditerranée.",
+      "بيوت قصبة الجزائر البيضاء المتدرّجة تنحدر في أزقة ضيّقة نحو البحر المتوسط.",
+    ),
+    imageCaption: L(
+      "The Casbah of Algiers, stepping down toward the bay",
+      "La Casbah d'Alger, en escalier vers la baie",
+      "قصبة الجزائر، تنحدر درجاً نحو الخليج",
+    ),
+    wash: "radial-gradient(ellipse at 50% 20%, oklch(0.9 0.06 240 / 0.30), transparent 65%), var(--gradient-parchment)",
+  },
+  aures: {
+    wash: "radial-gradient(ellipse at 50% 20%, oklch(0.9 0.07 45 / 0.32), transparent 65%), var(--gradient-parchment)",
+  },
+  constantine: {
+    wash: "radial-gradient(ellipse at 50% 20%, oklch(0.9 0.05 300 / 0.28), transparent 65%), var(--gradient-parchment)",
+  },
+  "oran-west": {
+    wash: "radial-gradient(ellipse at 50% 20%, oklch(0.9 0.06 200 / 0.30), transparent 65%), var(--gradient-parchment)",
+  },
+  sahara: {
+    wash: "radial-gradient(ellipse at 50% 20%, oklch(0.92 0.07 75 / 0.38), transparent 65%), var(--gradient-parchment)",
+  },
+};
 
 function RegionPage() {
   const { region } = Route.useLoaderData() as { region: MapRegion };
   const lang = useLang();
   const extras = getRegionExtras(region.id);
   const intro = regionIntros[region.id];
+  const identity = IDENTITY[region.id] ?? { wash: "" };
 
   const figureCards = region.figureIds
     .map((fid) => getFigure(fid))
@@ -119,9 +179,9 @@ function RegionPage() {
     saveJourneyPlace({
       section: "regions",
       label: {
-        en: `Regions · ${t(region.name, "en")}`,
-        fr: `Régions · ${t(region.name, "fr")}`,
-        ar: `المناطق · ${t(region.name, "ar")}`,
+        en: `Regions · ${tr(region.name, "en")}`,
+        fr: `Régions · ${tr(region.name, "fr")}`,
+        ar: `المناطق · ${tr(region.name, "ar")}`,
       },
       description:
         typeof region.focus === "string"
@@ -131,290 +191,303 @@ function RegionPage() {
     });
   }, [region]);
 
-  /* ---- Labels ---- */
-  const identityLabel = tri(lang, "Region identity", "Identité de la région", "هويّة المنطقة");
-  const geographyLabel = tri(lang, "Geography & meaning", "Géographie et sens", "الجغرافيا والمعنى");
-  const culturalLabel = tri(lang, "Cultural meaning", "Sens culturel", "المعنى الثقافي");
-  const significanceLabel = tri(lang, "Historical significance", "Importance historique", "الأهمية التاريخية");
-  const connectedStoriesLabel = tri(lang, "Connected stories", "Récits liés", "قصص مرتبطة");
-  const keyFactsLabel = tri(lang, "Key facts", "Faits clés", "حقائق أساسية");
-  const connectedErasLabel = tri(lang, "Connected eras", "Époques reliées", "عصور مرتبطة");
-  const notableFiguresLabel = tri(lang, "Notable figures", "Figures notables", "شخصيات بارزة");
-  const culturalThemesLabel = tri(lang, "Cultural themes", "Thèmes culturels", "محاور ثقافية");
-  const relatedRegionsLabel = tri(lang, "Related regions", "Régions liées", "مناطق مرتبطة");
-  const atlasLabel = tri(lang, "On the map", "Sur la carte", "على الخريطة");
-  const focusLabel = tri(lang, "Focus", "Thème", "المحور");
-  const erasStatLabel = tri(lang, "Eras", "Époques", "عصور");
-  const figuresStatLabel = tri(lang, "Figures", "Figures", "شخصيات");
-  const themesStatLabel = tri(lang, "Themes", "Thèmes", "محاور");
+  /* ---------------- audio guide (unchanged content) ---------------- */
+  const guide: AudioGuide = (() => {
+    const segs: { id: string; text: string }[] = [
+      {
+        id: "intro",
+        text: `${tr(region.name, lang)}. ${tr(region.focus, lang)}. ${tr(region.summary, lang)}`,
+      },
+    ];
+    if (extras?.geography) segs.push({ id: "geo", text: tr(extras.geography, lang) });
+    if (extras?.culturalImportance)
+      segs.push({ id: "culture", text: tr(extras.culturalImportance, lang) });
+    if (extras?.historicalSignificance)
+      segs.push({ id: "history", text: tr(extras.historicalSignificance, lang) });
+    (extras?.museumNotes ?? []).forEach((n, i) =>
+      segs.push({ id: `note-${i}`, text: `${tr(n.title, lang)}. ${tr(n.body, lang)}` }),
+    );
+    if (extras?.reflection?.quote)
+      segs.push({ id: "reflection", text: tr(extras.reflection.quote, lang) });
+    return {
+      id: `region:${region.id}`,
+      title: tr(region.name, lang),
+      subtitle: tr(region.focus, lang),
+      segments: segs,
+    };
+  })();
 
-  /* ---- Sidebar items ---- */
-  const eraItems: RelatedItem[] = connectedEras.map((e) => ({
-    title: t(e.title, lang),
-    note: eraDateRange(e, lang),
-    glyph: e.emoji ?? "♜",
-    to: "/era/$eraId",
-    params: { eraId: e.id },
-  }));
-
-  const figureItems: RelatedItem[] = figureCards.slice(0, 6).map((f) => ({
-    title: t(f.displayName, lang),
-    note: t(f.era, lang),
-    glyph: f.emoji,
-    to: "/figures/$figureId",
-    params: { figureId: f.id },
-  }));
-
-  const themeItems: RelatedItem[] = (extras?.culturePillars ?? []).map((p) => ({
-    title: t(p.label, lang),
-    note: t(p.body, lang),
-    glyph: p.emoji,
-  }));
-
-  const regionItems: RelatedItem[] = nearbyRegions.map((r) => ({
-    title: t(r.name, lang),
-    note: t(r.focus, lang),
-    glyph: r.emoji ?? "❖",
-    to: "/region/$regionId",
-    params: { regionId: r.id },
-  }));
-
-  const atlasItems: RelatedItem[] = [
+  /* ---------------- derived exhibit blocks ---------------- */
+  const stats = [
+    { label: L("Focus", "Thème", "المحور"), value: region.focus },
     {
-      title: tri(lang, "Open the Atlas", "Ouvrir l'Atlas", "افتح الأطلس"),
-      note: tri(lang, "See this region on the wall map", "Voir cette région sur la carte murale", "شاهد هذه المنطقة على الخريطة"),
-      glyph: "❂",
-      to: "/atlas",
+      label: L("Connected eras", "Époques reliées", "عصور مرتبطة"),
+      value: L(String(connectedEras.length), String(connectedEras.length), String(connectedEras.length)),
+    },
+    {
+      label: L("Notable figures", "Figures notables", "شخصيات بارزة"),
+      value: L(String(figureCards.length), String(figureCards.length), String(figureCards.length)),
+    },
+    {
+      label: L("Cultural pillars", "Piliers culturels", "ركائز ثقافية"),
+      value: L(
+        String(extras?.culturePillars.length ?? 0),
+        String(extras?.culturePillars.length ?? 0),
+        String(extras?.culturePillars.length ?? 0),
+      ),
     },
   ];
 
-  /* =========================================================== MAIN === */
-  const main = (
-    <>
-      <MuseumBack to="/map">{tri(lang, "Back to Regions", "Retour aux régions", "العودة إلى المناطق")}</MuseumBack>
+  const pillarItems: NumberedItem[] = (extras?.culturePillars ?? []).map((p) => ({
+    title: p.label,
+    body: p.body,
+  }));
 
-      <MuseumHero
-        label={
-          <MuseumChip>
-            {focusLabel} · {t(region.focus, lang)}
-          </MuseumChip>
-        }
-        title={t(region.name, lang)}
-        subtitle={intro ? `“${t(intro, lang)}”` : undefined}
-        intro={t(region.summary, lang)}
-        medallion={
-          <RegionIcon regionId={region.id} className="h-36 w-36 sm:h-40 sm:w-40 icon-glow animate-cinematic-in" />
-        }
-      />
+  const noteItems: NumberedItem[] = (extras?.museumNotes ?? []).map((n) => ({
+    title: n.title,
+    body: n.body,
+  }));
 
-      {(() => {
-        const segs: { id: string; text: string }[] = [
-          {
-            id: "intro",
-            text: `${t(region.name, lang)}. ${t(region.focus, lang)}. ${t(region.summary, lang)}`,
-          },
-        ];
-        if (extras?.geography) segs.push({ id: "geo", text: t(extras.geography, lang) });
-        if (extras?.culturalImportance)
-          segs.push({ id: "culture", text: t(extras.culturalImportance, lang) });
-        if (extras?.historicalSignificance)
-          segs.push({ id: "history", text: t(extras.historicalSignificance, lang) });
-        (extras?.museumNotes ?? []).forEach((n, i) =>
-          segs.push({ id: `note-${i}`, text: `${t(n.title, lang)}. ${t(n.body, lang)}` }),
-        );
-        if (extras?.reflection?.quote)
-          segs.push({ id: "reflection", text: t(extras.reflection.quote, lang) });
-        const guide: AudioGuide = {
-          id: `region:${region.id}`,
-          title: t(region.name, lang),
-          subtitle: t(region.focus, lang),
-          segments: segs,
-        };
-        return (
-          <div className="flex justify-start -mt-2 mb-2">
-            <AudioGuideButton
-              guide={guide}
-              label={
-                lang === "fr"
-                  ? "Écouter cette région"
-                  : lang === "ar"
-                    ? "استمع إلى هذه المنطقة"
-                    : "Listen to this region"
+  const related: RelatedExhibit[] = [
+    ...connectedEras.map((e) => ({
+      to: "/era/$eraId",
+      params: { eraId: e.id },
+      label: e.title,
+      body: L(eraDateRange(e, "en"), eraDateRange(e, "fr"), eraDateRange(e, "ar")),
+    })),
+    ...nearbyRegions.map((r) => ({
+      to: "/region/$regionId",
+      params: { regionId: r.id },
+      label: r.name,
+      body: r.focus,
+    })),
+    {
+      to: "/atlas",
+      label: L("The Historical Atlas", "L'Atlas historique", "الأطلس التاريخي"),
+      body: L(
+        "Place this region on the wall map of Algeria.",
+        "Situez cette région sur la carte murale de l'Algérie.",
+        "ضع هذه المنطقة على خريطة الجزائر.",
+      ),
+    },
+  ];
+
+  const figureRelated: RelatedExhibit[] = figureCards.slice(0, 6).map((f) => ({
+    to: "/figures/$figureId",
+    params: { figureId: f.id },
+    label: f.displayName,
+    body: f.era,
+  }));
+
+  return (
+    <div className="min-h-dvh bg-parchment text-foreground">
+      <Header />
+      <main id="main" tabIndex={-1}>
+        <ExhibitHero
+          eyebrow={L(
+            `Region of Algeria · ${tr(region.focus, "en")}`,
+            `Région d'Algérie · ${tr(region.focus, "fr")}`,
+            `منطقة من الجزائر · ${tr(region.focus, "ar")}`,
+          )}
+          title={region.name}
+          subtitle={intro}
+          lede={region.summary}
+          image={identity.image}
+          imageAlt={identity.imageAlt}
+          imageCaption={identity.imageCaption}
+          imageMediaKind={identity.image ? "interpretive-illustration" : undefined}
+          medallion={
+            identity.image ? undefined : (
+              <RegionIcon regionId={region.id} className="h-40 w-40 sm:h-52 sm:w-52 icon-glow" />
+            )
+          }
+          background={identity.wash || undefined}
+          ctaHref="#land"
+          ctaLabel={L("Enter the exhibit", "Entrer dans l'exposition", "ادخل المعرض")}
+          backTo="/map"
+          backLabel={L("← Back to regions", "← Retour aux régions", "← العودة إلى المناطق")}
+        />
+
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 pt-6">
+          <AudioGuideButton
+            guide={guide}
+            label={tri(lang, "Listen to this region", "Écouter cette région", "استمع إلى هذه المنطقة")}
+          />
+        </div>
+
+        {extras && (
+          <Section id="land" tone="ivory">
+            <div className="grid gap-10 md:grid-cols-[1.15fr_1fr] items-start">
+              <div>
+                <EyebrowTitle
+                  eyebrow={L("The land", "Le territoire", "الأرض")}
+                  title={L("Where this region stands", "Où se tient cette région", "أين تقوم هذه المنطقة")}
+                />
+                <Prose>
+                  <p>{tr(extras.geography, lang)}</p>
+                </Prose>
+              </div>
+              <DataStatsCard
+                label={L(
+                  `Museum data card · ${tr(region.name, "en")}`,
+                  `Fiche muséale · ${tr(region.name, "fr")}`,
+                  `بطاقة متحفية · ${tr(region.name, "ar")}`,
+                )}
+                stats={stats}
+                footer={region.facts[0]}
+              />
+            </div>
+          </Section>
+        )}
+
+        {extras?.culturalImportance && (
+          <Section id="culture" tone="parchment">
+            {identity.image ? (
+              <SplitFigure
+                eyebrow={L("Cultural meaning", "Sens culturel", "المعنى الثقافي")}
+                title={L("What this place carries", "Ce que ce lieu porte", "ما يحمله هذا المكان")}
+                body={extras.culturalImportance}
+                mirrored
+                figure={
+                  <Figure
+                    src={identity.image}
+                    alt={identity.imageAlt ?? region.name}
+                    caption={identity.imageCaption}
+                    mediaKind="interpretive-illustration"
+                    width={1600}
+                    height={1008}
+                  />
+                }
+              />
+            ) : (
+              <>
+                <EyebrowTitle
+                  eyebrow={L("Cultural meaning", "Sens culturel", "المعنى الثقافي")}
+                  title={L("What this place carries", "Ce que ce lieu porte", "ما يحمله هذا المكان")}
+                />
+                <Prose>
+                  <p>{tr(extras.culturalImportance, lang)}</p>
+                </Prose>
+              </>
+            )}
+          </Section>
+        )}
+
+        {extras?.historicalSignificance && (
+          <Section id="history" tone="ivory">
+            <EyebrowTitle
+              eyebrow={L("Historical significance", "Importance historique", "الأهمية التاريخية")}
+              title={L("Why historians return here", "Pourquoi les historiens y reviennent", "لماذا يعود المؤرخون إلى هنا")}
+            />
+            <Prose>
+              <p>{tr(extras.historicalSignificance, lang)}</p>
+            </Prose>
+          </Section>
+        )}
+
+        {region.facts.length > 0 && (
+          <Section id="facts" tone="sand">
+            <EyebrowTitle
+              eyebrow={L("Key facts", "Faits clés", "حقائق أساسية")}
+              title={L("What the record shows", "Ce que dit le dossier", "ما يقوله السجلّ")}
+            />
+            <DiscoveryCards items={region.facts} label={L("Fact", "Fait", "معلومة")} />
+          </Section>
+        )}
+
+        {pillarItems.length > 0 && (
+          <Section id="pillars" tone="parchment">
+            <EyebrowTitle
+              eyebrow={L("Cultural pillars", "Piliers culturels", "ركائز ثقافية")}
+              title={L("How the region expresses itself", "Comment la région s'exprime", "كيف تعبّر المنطقة عن نفسها")}
+            />
+            <NumberedGrid items={pillarItems} columns={2} />
+          </Section>
+        )}
+
+        {noteItems.length > 0 && (
+          <Section id="stories" tone="ivory">
+            <EyebrowTitle
+              eyebrow={L("Connected stories", "Récits liés", "قصص مرتبطة")}
+              title={L("Notes from the curator's desk", "Notes du bureau du conservateur", "ملاحظات من مكتب القيّم")}
+            />
+            <NumberedGrid items={noteItems} columns={2} />
+          </Section>
+        )}
+
+        {region.id === "kabylie" && (
+          <Section id="jewelry" tone="sand">
+            <KabyleJewelry />
+          </Section>
+        )}
+
+        {extras?.reflection && (
+          <Section id="reflection" tone="parchment">
+            <EyebrowTitle
+              eyebrow={L("Curator's reflection", "Réflexion du conservateur", "تأمّل القيّم")}
+              title={L("A closing word", "Un mot pour finir", "كلمة ختام")}
+            />
+            <PullQuote
+              quote={extras.reflection.quote}
+              attribution={
+                extras.reflection.attribution ??
+                L("Museum curator", "Le conservateur", "أمين المتحف")
               }
             />
-          </div>
-        );
-      })()}
-
-
-      {extras && (
-        <div className="grid sm:grid-cols-2 gap-4">
-          <MuseumCatalogCard accent="var(--brand-gold-deep)" eyebrow={geographyLabel} marker={<span aria-hidden>⛰️</span>}>
-            <p className="text-sm text-foreground/80 leading-relaxed">{t(extras.geography, lang)}</p>
-          </MuseumCatalogCard>
-          <MuseumCatalogCard accent="var(--brand-gold-deep)" eyebrow={culturalLabel} marker={<span aria-hidden>🎶</span>}>
-            <p className="text-sm text-foreground/80 leading-relaxed">{t(extras.culturalImportance, lang)}</p>
-          </MuseumCatalogCard>
-        </div>
-      )}
-
-
-
-      {extras?.historicalSignificance && (
-        <MuseumCatalogCard accent="var(--primary)" eyebrow={significanceLabel} marker={<span aria-hidden>🏛️</span>}>
-          <p className="leading-relaxed text-foreground/90">{t(extras.historicalSignificance, lang)}</p>
-        </MuseumCatalogCard>
-      )}
-
-      {extras?.museumNotes && extras.museumNotes.length > 0 && (
-        <section className="space-y-3">
-          <MuseumLabel marker={<span aria-hidden>❦</span>}>{connectedStoriesLabel}</MuseumLabel>
-          <div className="grid sm:grid-cols-2 gap-3">
-            {extras.museumNotes.map((n, i) => (
-              <MuseumCatalogCard key={i} eyebrow={t(n.title, lang)}>
-                <p className="text-sm text-foreground/80 leading-relaxed">{t(n.body, lang)}</p>
-              </MuseumCatalogCard>
-            ))}
-          </div>
-        </section>
-      )}
-
-      {region.id === "kabylie" && <KabyleJewelry />}
-
-
-
-      {extras?.reflection && (
-        <MuseumCuratorNote
-          title={tri(lang, "Curator's note", "Note du conservateur", "ملاحظة القيّم")}
-          attribution={
-            extras.reflection.attribution
-              ? t(extras.reflection.attribution, lang)
-              : tri(lang, "Museum curator", "Le conservateur", "أمين المتحف")
-          }
-          seal={<CollectionEmblem emblem={region.emoji} size={44} />}
-        >
-          <p className="italic" style={{ fontFamily: SERIF }}>
-            {lang === "en" ? "\u201C" : lang === "fr" ? "\u00AB\u202F" : "\u00AB"}
-            {t(extras.reflection.quote, lang)}
-            {lang === "en" ? "\u201D" : lang === "fr" ? "\u202F\u00BB" : "\u00BB"}
-          </p>
-        </MuseumCuratorNote>
-      )}
-
-      <MuseumCTASection
-        eyebrow={tri(lang, "Keep exploring", "Continuez l'exploration", "واصل الاستكشاف")}
-        title={tri(lang, "See this region on the Atlas", "Voir cette région sur l'Atlas", "شاهد هذه المنطقة على الأطلس")}
-        subtitle={tri(
-          lang,
-          "Place this story on the wall map of Algeria.",
-          "Situez cette histoire sur la carte murale de l'Algérie.",
-          "ضع هذه القصة على خريطة الجزائر.",
+          </Section>
         )}
-        seal={<CollectionEmblem emblem="❂" size={56} glow tone="gold" />}
-        action={<MuseumActionButton to="/atlas">{tri(lang, "Open Atlas", "Ouvrir l'Atlas", "افتح الأطلس")}</MuseumActionButton>}
-      />
-    </>
-  );
 
-  /* ======================================================== SIDEBAR === */
-  const sidebar = (
-    <>
-      <MuseumOverviewPanel eyebrow={identityLabel} marker={<span aria-hidden>❖</span>}>
-        <div className="flex items-center gap-2 text-sm font-semibold text-foreground mb-3">
-          <span aria-hidden>{region.emoji}</span>
-          <span style={{ fontFamily: SERIF }}>{t(region.name, lang)}</span>
-        </div>
-        <div className="text-xs text-muted-foreground leading-relaxed mb-4">{t(region.focus, lang)}</div>
-        <div className="grid grid-cols-3 gap-2 text-center">
-          <Stat value={connectedEras.length} label={erasStatLabel} />
-          <Stat value={figureCards.length} label={figuresStatLabel} />
-          <Stat value={extras?.culturePillars.length ?? 0} label={themesStatLabel} />
-        </div>
-      </MuseumOverviewPanel>
+        {figureRelated.length > 0 && (
+          <Section id="figures" tone="ivory">
+            <EyebrowTitle
+              eyebrow={L("Notable figures", "Figures notables", "شخصيات بارزة")}
+              title={L("Lives shaped by this region", "Des vies façonnées par cette région", "حيواتٌ شكّلتها هذه المنطقة")}
+            />
+            <RelatedExhibits
+              items={figureRelated}
+              label={L("Figure", "Figure", "شخصية")}
+              enterLabel={L("Open →", "Ouvrir →", "افتح ←")}
+            />
+          </Section>
+        )}
 
-      <MuseumOverviewPanel eyebrow={keyFactsLabel} marker={<span aria-hidden>✨</span>}>
-        <MuseumFactsList facts={region.facts.map((f) => t(f, lang))} />
-      </MuseumOverviewPanel>
-
-      {eraItems.length > 0 && (
-        <MuseumRelatedContent
-          eyebrow={connectedErasLabel}
-          marker={<span aria-hidden>♜</span>}
-          items={eraItems}
-          columns={1}
-        />
-      )}
-
-      {figureItems.length > 0 && (
-        <MuseumRelatedContent
-          eyebrow={notableFiguresLabel}
-          marker={<span aria-hidden>♟</span>}
-          items={figureItems}
-          columns={1}
-        />
-      )}
-
-      {themeItems.length > 0 && (
-        <MuseumRelatedContent
-          eyebrow={culturalThemesLabel}
-          marker={<span aria-hidden>✦</span>}
-          items={themeItems}
-          columns={1}
-        />
-      )}
-
-      {regionItems.length > 0 && (
-        <MuseumRelatedContent
-          eyebrow={relatedRegionsLabel}
-          marker={<span aria-hidden>❖</span>}
-          items={regionItems}
-          columns={1}
-        />
-      )}
-
-      <MuseumRelatedContent
-        eyebrow={atlasLabel}
-        marker={<span aria-hidden>❂</span>}
-        items={atlasItems}
-        columns={1}
-      />
-    </>
-  );
-
-  return (
-    <>
-      <Header />
-      <MuseumCatalogPage
-        main={main}
-        sidebar={sidebar}
-        ribbon={
-          <MuseumContextRibbon
-            connects={["figures", "eras", "culture", "atlas", "journeys"]}
-            lang={lang}
+        <Section id="related" tone="sand">
+          <EyebrowTitle
+            eyebrow={L("Related exhibits", "Expositions liées", "معارض ذات صلة")}
+            title={L("Where to go next in the museum", "Où poursuivre la visite", "أين تُتابع الزيارة")}
           />
-        }
-      />
-      <CuratorRecommendations kind="region" id={region.id} />
-      <div className="mx-auto max-w-6xl px-4 sm:px-6 mt-4">
-        <ContinueExploring groups={getRegionExploreGroups(region.id)} />
-      </div>
-      <ExhibitProvenance exhibitId={`region:${region.id}`} />
-      <div className="h-16" />
+          <RelatedExhibits
+            items={related}
+            label={L("Related exhibit", "Exposition liée", "معرض ذو صلة")}
+            enterLabel={L("Enter →", "Entrer →", "ادخل ←")}
+          />
+        </Section>
 
-    </>
-  );
-}
+        <CuratorRecommendations kind="region" id={region.id} />
 
-function Stat({ value, label }: { value: number; label: string }) {
-  return (
-    <div
-      className="rounded-xl border bg-card/80 px-2 py-2.5"
-      style={{ borderColor: "color-mix(in oklab, var(--brand-gold) 22%, var(--border))" }}
-    >
-      <div className="text-base font-extrabold leading-none" style={{ fontFamily: SERIF }}>
-        {value}
-      </div>
-      <div className="text-[10px] text-muted-foreground leading-tight mt-1">{label}</div>
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 mt-4">
+          <ContinueExploring groups={getRegionExploreGroups(region.id)} />
+        </div>
+
+        <section className="max-w-6xl mx-auto px-4 sm:px-6 py-12">
+          <ExhibitProvenance exhibitId={`region:${region.id}`} />
+        </section>
+
+        <footer className="border-t border-border/60 bg-card/40">
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 py-8 flex flex-wrap items-center justify-between gap-4">
+            <p className="text-xs text-muted-foreground italic">
+              {tr(region.name, lang)} ·{" "}
+              {tri(lang, "a region exhibit of DZ Odyssey.", "exposition régionale de DZ Odyssey.", "معرض إقليمي في دي زد أوديسي.")}
+            </p>
+            <Link
+              to="/map"
+              className="inline-flex items-center gap-2 text-sm font-semibold text-foreground hover:text-primary transition"
+            >
+              {tri(lang, "← Back to regions", "← Retour aux régions", "← العودة إلى المناطق")}
+            </Link>
+          </div>
+        </footer>
+      </main>
     </div>
   );
 }

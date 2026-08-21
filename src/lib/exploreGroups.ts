@@ -74,6 +74,49 @@ function cultureLinkItem(id: string): { id: string; emblem: string; label: Local
 // Prevent unused warning while keeping the doc.
 void cultureItem;
 
+/**
+ * Standalone permanent exhibits with their own canonical route
+ * (/mzab, /timgad, /tassili). Mapped from the eras and regions that
+ * contextualise them, so no page links to a broader gallery when the
+ * dedicated exhibit exists.
+ */
+const EXHIBITS: Record<"mzab" | "timgad" | "tassili", ExploreItem> = {
+  mzab: {
+    kind: "exhibit",
+    id: "mzab",
+    emoji: "\u2698",
+    label: { en: "The M'Zab Valley", fr: "La vallée du M'Zab", ar: "وادي مزاب" },
+  },
+  timgad: {
+    kind: "exhibit",
+    id: "timgad",
+    emoji: "\u2694",
+    label: { en: "Timgad", fr: "Timgad", ar: "تيمقاد" },
+  },
+  tassili: {
+    kind: "exhibit",
+    id: "tassili",
+    emoji: "\u269C",
+    label: { en: "Tassili n'Ajjer", fr: "Tassili n'Ajjer", ar: "طاسيلي ناجّر" },
+  },
+};
+
+const EXHIBITS_BY_ERA: Record<string, ("mzab" | "timgad" | "tassili")[]> = {
+  roman: ["timgad"],
+  numidia: ["timgad"],
+  earlynorthafrica: ["tassili"],
+  islamic: ["mzab"],
+};
+
+const EXHIBITS_BY_REGION: Record<string, ("mzab" | "timgad" | "tassili")[]> = {
+  aures: ["timgad"],
+  sahara: ["tassili", "mzab"],
+};
+
+function exhibitItems(ids: ("mzab" | "timgad" | "tassili")[]): ExploreItem[] {
+  return ids.map((id) => EXHIBITS[id]);
+}
+
 function uniqBy<T>(arr: T[], keyOf: (v: T) => string): T[] {
   const seen = new Set<string>();
   const out: T[] = [];
@@ -168,6 +211,7 @@ export function getEraExploreGroups(eraId: string): ExploreGroup[] {
     group(RELATED_LABELS.regions, relatedRegions),
     group(RELATED_LABELS.eras, relatedEras),
     group(RELATED_LABELS.collections, relatedCulture),
+    group(RELATED_LABELS.exhibits, exhibitItems(EXHIBITS_BY_ERA[e.id] ?? [])),
   ].filter((g) => g.items.length > 0);
 }
 
@@ -201,6 +245,7 @@ export function getRegionExploreGroups(regionId: string): ExploreGroup[] {
       { en: "Nearby Regions", fr: "Régions voisines", ar: "مناطق مجاورة" },
       nearby,
     ),
+    group(RELATED_LABELS.exhibits, exhibitItems(EXHIBITS_BY_REGION[r.id] ?? [])),
   ].filter((g) => g.items.length > 0);
 }
 

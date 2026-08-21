@@ -18,7 +18,9 @@ export type ExploreItem =
   | { kind: "region"; id: string; emoji: string; label: LocalizedString }
   | { kind: "era"; id: string; emoji: string; label: LocalizedString }
   | { kind: "culture"; id: string; emblem: string; label: LocalizedString }
-  | { kind: "collection"; slug: string; emblem: string; accent?: string; label: LocalizedString };
+  | { kind: "collection"; slug: string; emblem: string; accent?: string; label: LocalizedString }
+  /** Standalone permanent exhibits with their own canonical route. */
+  | { kind: "exhibit"; id: "mzab" | "timgad" | "tassili"; emoji: string; label: LocalizedString };
 
 
 export type ExploreGroup = {
@@ -85,7 +87,15 @@ function ItemCard({ item }: { item: ExploreItem }) {
   }
   if (item.kind === "region") {
     return (
-      <Link to="/map" hash={`region-${item.id}`} className={cls} style={style}>
+      <Link to="/region/$regionId" params={{ regionId: item.id }} className={cls} style={style}>
+        {inner}
+      </Link>
+    );
+  }
+  if (item.kind === "exhibit") {
+    const to = item.id === "mzab" ? "/mzab" : item.id === "timgad" ? "/timgad" : "/tassili";
+    return (
+      <Link to={to} className={cls} style={style}>
         {inner}
       </Link>
     );
@@ -155,6 +165,7 @@ export const RELATED_LABELS = {
   regions: { en: "Related Regions", fr: "Régions liées", ar: "مناطق ذات صلة" } as LocalizedString,
   eras: { en: "Related Eras", fr: "Époques liées", ar: "حقب ذات صلة" } as LocalizedString,
   collections: { en: "Related Collections", fr: "Collections liées", ar: "مجموعات ذات صلة" } as LocalizedString,
+  exhibits: { en: "Permanent Exhibits", fr: "Expositions permanentes", ar: "معارض دائمة" } as LocalizedString,
 };
 
 export default ContinueExploring;
