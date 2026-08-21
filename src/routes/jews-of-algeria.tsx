@@ -141,10 +141,11 @@ const CULTURE = {
   title: L("Languages, work and music", "Langues, travail et musique", "لغات وعمل وموسيقى"),
   body: [
     L(
-      "Most Algerian Jews spoke Arabic, and in many places a Judeo-Arabic usage of it. In some regions there were Berber-language connections, including Judeo-Berber speech. During the colonial period French entered homes and schools and became, for many families in the north, the language of instruction and administration. Hebrew remained the language of prayer and study.",
-      "La plupart des Juifs d'Algérie parlaient l'arabe, et dans bien des lieux un usage judéo-arabe de cette langue. Dans certaines régions existaient des attaches berbérophones, y compris des parlers judéo-berbères. À l'époque coloniale, le français entra dans les foyers et les écoles et devint, pour beaucoup de familles du Nord, la langue de l'instruction et de l'administration. L'hébreu resta la langue de la prière et de l'étude.",
-      "كان معظم يهود الجزائر يتكلّمون العربية، وفي أماكن كثيرة صيغةً يهودية عربية منها. وفي بعض المناطق كانت ثمّة صلات بالأمازيغية، منها كلامٌ يهودي أمازيغي. وفي العهد الاستعماري دخلت الفرنسية البيوت والمدارس وصارت، لدى كثير من عائلات الشمال، لغة التعليم والإدارة. أمّا العبرية فبقيت لغة الصلاة والدرس.",
+      "Arabic and Judeo-Arabic were widely spoken among Algerian Jewish communities, although usage varied by region, generation and social setting. During the colonial period, French became increasingly prominent, especially in northern cities and formal education. In some regions there were Berber-language connections, including Judeo-Berber speech. Hebrew remained the language of prayer and study.",
+      "L'arabe et le judéo-arabe étaient largement parlés dans les communautés juives d'Algérie, même si les usages variaient selon la région, la génération et le contexte social. À l'époque coloniale, le français prit une place croissante, en particulier dans les villes du Nord et dans l'enseignement formel. Dans certaines régions existaient des attaches berbérophones, y compris des parlers judéo-berbères. L'hébreu resta la langue de la prière et de l'étude.",
+      "كانت العربية واليهودية العربية واسعتَي الانتشار في الجماعات اليهودية الجزائرية، وإن تفاوت استعمالهما بحسب المنطقة والجيل والسياق الاجتماعي. وفي العهد الاستعماري تزايد حضور الفرنسية، خاصةً في مدن الشمال وفي التعليم النظامي. وفي بعض المناطق كانت ثمّة صلات بالأمازيغية، منها كلامٌ يهودي أمازيغي. أمّا العبرية فبقيت لغة الصلاة والدرس.",
     ),
+
     L(
       "Daily life turned on religious observance, family ritual and the calendar, and on work: crafts such as metalwork and tailoring, commerce large and small, and the community institutions that ran schools, charity and burial. In cities such as Constantine, Jewish and Muslim musicians took part together in the same Arabic musical traditions, including Arabo-Andalusian repertoire and popular urban song.",
       "La vie quotidienne s'organisait autour de la pratique religieuse, du rituel familial et du calendrier, ainsi que du travail : artisanats comme la métallurgie et la couture, commerce grand et petit, et institutions communautaires gérant écoles, entraide et sépultures. Dans des villes comme Constantine, musiciens juifs et musulmans participaient ensemble aux mêmes traditions musicales arabes, répertoire arabo-andalou et chanson urbaine populaire compris.",
@@ -345,10 +346,11 @@ const RELATED: RelatedExhibit[] = [
     to: "/mzab",
     label: L("The M'Zab Valley", "La vallée du M'Zab", "وادي مزاب"),
     body: L(
-      "The Saharan valley and its five ksour.",
-      "La vallée saharienne et ses cinq ksour.",
-      "الوادي الصحراوي وقصوره الخمسة.",
+      "The historic pentapolis and the wider M'Zab communities.",
+      "La pentapole historique et les communautés du M'Zab élargi.",
+      "المدن الخمس التاريخية ومجتمعات وادي مزاب الأوسع.",
     ),
+
   },
   {
     to: "/era/$eraId",

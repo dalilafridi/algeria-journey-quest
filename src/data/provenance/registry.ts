@@ -314,7 +314,15 @@ export const EXHIBIT_PROVENANCE: Record<string, ExhibitProvenanceRecord> = {
     },
   }),
   "jews-of-algeria": R({
-    sourceIds: ["ushmm-algeria", "encyclopedie-berbere-juifs", "archives-nationales-fr-algerie"],
+    sourceIds: [
+      "mahj-judaisme",
+      "ushmm-prewar-maghreb",
+      "ushmm-algeria",
+      "archives-nationales-fr-algerie",
+      "encyclopedie-berbere-juifs-mzab",
+      "encyclopedie-berbere-juifs",
+      "encyclopedie-berbere-juifs-sahara",
+    ],
     confidence: "widely-accepted",
     intro: {
       en: "This first version of the exhibit relies on institutional and academic references. Colonial legal measures follow the French national archives and the Holocaust Encyclopedia of the United States Holocaust Memorial Museum. Community history, regional distribution and language follow the Encyclop\u00e9die berb\u00e8re. No population figures are given, because published estimates vary by source and period.",

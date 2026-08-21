@@ -130,7 +130,10 @@ export function ExhibitProvenance({
     return () => window.removeEventListener(OPEN_EVENT, onOpen);
   }, [exhibitId]);
 
-  const grouped = useMemo(() => (open && rec ? groupSources(rec, lang) : null), [open, rec, lang]);
+  // Always build the grouped source list so citations stay in the DOM and in
+  // the server-rendered HTML even while the <details> panel is collapsed.
+  const grouped = useMemo(() => (rec ? groupSources(rec, lang) : null), [rec, lang]);
+
 
   const onToggle = useCallback(() => {
     const el = detailsRef.current;
@@ -188,7 +191,7 @@ export function ExhibitProvenance({
           </span>
         </summary>
 
-        {open && grouped && (
+        {grouped && (
           <div className="px-5 sm:px-6 pt-1 pb-6 space-y-6">
             {rec.intro && (
               <p className="text-[13.5px] leading-relaxed text-muted-foreground">

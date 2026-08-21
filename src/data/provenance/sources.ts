@@ -689,16 +689,62 @@ export const SOURCES: readonly ProvenanceSource[] = [
     badge: "Getty",
   }),
   S({
+    id: "mahj-judaisme",
+    kind: "museum",
+    category: "museum",
+    title: L(
+      "Mus\u00e9e d'Art et d'Histoire du Juda\u00efsme",
+      "Mus\u00e9e d'art et d'histoire du Juda\u00efsme",
+      "\u0645\u062a\u062d\u0641 \u0641\u0646 \u0648\u062a\u0627\u0631\u064a\u062e \u0627\u0644\u064a\u0647\u0648\u062f\u064a\u0629",
+    ),
+    publisher: L("mahJ, Paris", "mahJ, Paris", "\u0645\u062a\u062d\u0641 mahJ\u060c \u0628\u0627\u0631\u064a\u0633"),
+    url: "https://www.mahj.org/",
+    language: "fr",
+    badge: "mahJ",
+    note: L(
+      "Museum collections documenting North African Jewish material culture, ritual objects, dress and community life.",
+      "Collections mus\u00e9ales documentant la culture mat\u00e9rielle juive nord-africaine, les objets rituels, le costume et la vie communautaire.",
+      "\u0645\u062c\u0645\u0648\u0639\u0627\u062a \u0645\u062a\u062d\u0641\u064a\u0629 \u062a\u0648\u062b\u0651\u0642 \u0627\u0644\u062b\u0642\u0627\u0641\u0629 \u0627\u0644\u0645\u0627\u062f\u064a\u0629 \u0627\u0644\u064a\u0647\u0648\u062f\u064a\u0629 \u0641\u064a \u0634\u0645\u0627\u0644 \u0623\u0641\u0631\u064a\u0642\u064a\u0627 \u0648\u0623\u062f\u0648\u0627\u062a\u0647\u0627 \u0627\u0644\u0637\u0642\u0633\u064a\u0629 \u0648\u0644\u0628\u0627\u0633\u0647\u0627 \u0648\u062d\u064a\u0627\u062a\u0647\u0627 \u0627\u0644\u062c\u0645\u0627\u0639\u064a\u0629.",
+    ),
+  }),
+  S({
+    id: "ushmm-prewar-maghreb",
+    kind: "museum",
+    category: "museum",
+    title: L(
+      "United States Holocaust Memorial Museum, prewar Maghreb",
+      "United States Holocaust Memorial Museum, Maghreb d'avant-guerre",
+      "\u0645\u062a\u062d\u0641 \u0630\u0643\u0631\u0649 \u0627\u0644\u0647\u0648\u0644\u0648\u0643\u0648\u0633\u062a \u0627\u0644\u0623\u0645\u0631\u064a\u0643\u064a\u060c \u0627\u0644\u0645\u063a\u0631\u0628 \u0642\u0628\u0644 \u0627\u0644\u062d\u0631\u0628",
+    ),
+    publisher: L(
+      "Holocaust Encyclopedia",
+      "Encyclop\u00e9die de l'Holocauste",
+      "\u0645\u0648\u0633\u0648\u0639\u0629 \u0627\u0644\u0647\u0648\u0644\u0648\u0643\u0648\u0633\u062a",
+    ),
+    url: "https://encyclopedia.ushmm.org/content/en/article/jews-of-the-maghreb-on-the-eve-of-world-war-ii",
+    language: "en",
+    badge: "USHMM",
+    note: L(
+      "Overview of Jewish communities across the Maghreb before the Second World War.",
+      "Panorama des communaut\u00e9s juives du Maghreb avant la Seconde Guerre mondiale.",
+      "\u0639\u0631\u0636 \u0639\u0627\u0645 \u0644\u0644\u062c\u0645\u0627\u0639\u0627\u062a \u0627\u0644\u064a\u0647\u0648\u062f\u064a\u0629 \u0641\u064a \u0627\u0644\u0645\u063a\u0631\u0628 \u0627\u0644\u0643\u0628\u064a\u0631 \u0642\u0628\u0644 \u0627\u0644\u062d\u0631\u0628 \u0627\u0644\u0639\u0627\u0644\u0645\u064a\u0629 \u0627\u0644\u062b\u0627\u0646\u064a\u0629.",
+    ),
+  }),
+  S({
     id: "ushmm-algeria",
     kind: "museum",
     category: "museum",
-    title: L("Algeria", "Alg\u00e9rie", "\u0627\u0644\u062c\u0632\u0627\u0626\u0631"),
-    publisher: L(
-      "United States Holocaust Memorial Museum, Holocaust Encyclopedia",
-      "United States Holocaust Memorial Museum, Encyclop\u00e9die de l'Holocauste",
-      "\u0645\u062a\u062d\u0641 \u0630\u0643\u0631\u0649 \u0627\u0644\u0647\u0648\u0644\u0648\u0643\u0648\u0633\u062a \u0627\u0644\u0623\u0645\u0631\u064a\u0643\u064a",
+    title: L(
+      "United States Holocaust Memorial Museum, Vichy legislation",
+      "United States Holocaust Memorial Museum, l\u00e9gislation de Vichy",
+      "\u0645\u062a\u062d\u0641 \u0630\u0643\u0631\u0649 \u0627\u0644\u0647\u0648\u0644\u0648\u0643\u0648\u0633\u062a \u0627\u0644\u0623\u0645\u0631\u064a\u0643\u064a\u060c \u062a\u0634\u0631\u064a\u0639\u0627\u062a \u0641\u064a\u0634\u064a",
     ),
-    url: "https://encyclopedia.ushmm.org/content/en/article/algeria",
+    publisher: L(
+      "Holocaust Encyclopedia",
+      "Encyclop\u00e9die de l'Holocauste",
+      "\u0645\u0648\u0633\u0648\u0639\u0629 \u0627\u0644\u0647\u0648\u0644\u0648\u0643\u0648\u0633\u062a",
+    ),
+    url: "https://encyclopedia.ushmm.org/content/en/article/anti-jewish-legislation-in-north-africa",
     language: "en",
     badge: "USHMM",
     note: L(
@@ -712,18 +758,56 @@ export const SOURCES: readonly ProvenanceSource[] = [
     kind: "journal",
     category: "academic",
     title: L(
-      "Juifs (Jews of North Africa), Encyclop\u00e9die berb\u00e8re",
-      "Juifs, Encyclop\u00e9die berb\u00e8re",
-      "\u064a\u0647\u0648\u062f \u0634\u0645\u0627\u0644 \u0623\u0641\u0631\u064a\u0642\u064a\u0627\u060c \u0627\u0644\u0645\u0648\u0633\u0648\u0639\u0629 \u0627\u0644\u0623\u0645\u0627\u0632\u064a\u063a\u064a\u0629",
+      "Encyclop\u00e9die berb\u00e8re, Jews of the Maghreb",
+      "Encyclop\u00e9die berb\u00e8re, Juifs du Maghreb",
+      "\u0627\u0644\u0645\u0648\u0633\u0648\u0639\u0629 \u0627\u0644\u0623\u0645\u0627\u0632\u064a\u063a\u064a\u0629\u060c \u064a\u0647\u0648\u062f \u0627\u0644\u0645\u063a\u0631\u0628 \u0627\u0644\u0643\u0628\u064a\u0631",
     ),
     publisher: L("Encyclop\u00e9die berb\u00e8re, OpenEdition Journals", "Encyclop\u00e9die berb\u00e8re, OpenEdition Journals", "\u0627\u0644\u0645\u0648\u0633\u0648\u0639\u0629 \u0627\u0644\u0623\u0645\u0627\u0632\u064a\u063a\u064a\u0629"),
-    url: "https://journals.openedition.org/encyclopedieberbere/",
+    url: "https://journals.openedition.org/encyclopedieberbere/?s=Juifs+Maghreb",
     language: "fr",
     badge: "EB",
     note: L(
-      "Scholarly reference on Jewish presence in North Africa, regional distribution, Judeo-Arabic and Judeo-Berber usage, and the limits of the documentary record.",
-      "R\u00e9f\u00e9rence savante sur la pr\u00e9sence juive en Afrique du Nord, la r\u00e9partition r\u00e9gionale, les usages jud\u00e9o-arabes et jud\u00e9o-berb\u00e8res, et les limites de la documentation.",
-      "\u0645\u0631\u062c\u0639 \u0623\u0643\u0627\u062f\u064a\u0645\u064a \u0639\u0646 \u0627\u0644\u062d\u0636\u0648\u0631 \u0627\u0644\u064a\u0647\u0648\u062f\u064a \u0641\u064a \u0634\u0645\u0627\u0644 \u0623\u0641\u0631\u064a\u0642\u064a\u0627 \u0648\u062a\u0648\u0632\u0651\u0639\u0647 \u0648\u0644\u063a\u0627\u062a\u0647 \u0648\u062d\u062f\u0648\u062f \u0627\u0644\u062a\u0648\u062b\u064a\u0642.",
+      "Scholarly reference on Jewish presence in the Maghreb, regional distribution, Judeo-Arabic and Judeo-Berber usage, and the limits of the documentary record.",
+      "R\u00e9f\u00e9rence savante sur la pr\u00e9sence juive au Maghreb, la r\u00e9partition r\u00e9gionale, les usages jud\u00e9o-arabes et jud\u00e9o-berb\u00e8res, et les limites de la documentation.",
+      "\u0645\u0631\u062c\u0639 \u0623\u0643\u0627\u062f\u064a\u0645\u064a \u0639\u0646 \u0627\u0644\u062d\u0636\u0648\u0631 \u0627\u0644\u064a\u0647\u0648\u062f\u064a \u0641\u064a \u0627\u0644\u0645\u063a\u0631\u0628 \u0627\u0644\u0643\u0628\u064a\u0631 \u0648\u062a\u0648\u0632\u0651\u0639\u0647 \u0648\u0644\u063a\u0627\u062a\u0647 \u0648\u062d\u062f\u0648\u062f \u0627\u0644\u062a\u0648\u062b\u064a\u0642.",
+    ),
+  }),
+  S({
+    id: "encyclopedie-berbere-juifs-mzab",
+    kind: "journal",
+    category: "academic",
+    title: L(
+      "Encyclop\u00e9die berb\u00e8re, Jews of the M'Zab",
+      "Encyclop\u00e9die berb\u00e8re, Juifs du M'Zab",
+      "\u0627\u0644\u0645\u0648\u0633\u0648\u0639\u0629 \u0627\u0644\u0623\u0645\u0627\u0632\u064a\u063a\u064a\u0629\u060c \u064a\u0647\u0648\u062f \u0648\u0627\u062f\u064a \u0645\u0632\u0627\u0628",
+    ),
+    publisher: L("Encyclop\u00e9die berb\u00e8re, OpenEdition Journals", "Encyclop\u00e9die berb\u00e8re, OpenEdition Journals", "\u0627\u0644\u0645\u0648\u0633\u0648\u0639\u0629 \u0627\u0644\u0623\u0645\u0627\u0632\u064a\u063a\u064a\u0629"),
+    url: "https://journals.openedition.org/encyclopedieberbere/?s=Juifs+Mzab",
+    language: "fr",
+    badge: "EB",
+    note: L(
+      "Reference for the Jewish community of Gharda\u00efa and the M'Zab, its local traditions of origin and its distinct legal status under military administration.",
+      "R\u00e9f\u00e9rence sur la communaut\u00e9 juive de Gharda\u00efa et du M'Zab, ses traditions d'origine locales et son statut juridique distinct sous administration militaire.",
+      "\u0645\u0631\u062c\u0639 \u0639\u0646 \u0627\u0644\u062c\u0645\u0627\u0639\u0629 \u0627\u0644\u064a\u0647\u0648\u062f\u064a\u0629 \u0641\u064a \u063a\u0631\u062f\u0627\u064a\u0629 \u0648\u0648\u0627\u062f\u064a \u0645\u0632\u0627\u0628 \u0648\u062a\u0642\u0627\u0644\u064a\u062f\u0647\u0627 \u0648\u0648\u0636\u0639\u0647\u0627 \u0627\u0644\u0642\u0627\u0646\u0648\u0646\u064a \u0627\u0644\u0645\u062a\u0645\u064a\u0651\u0632.",
+    ),
+  }),
+  S({
+    id: "encyclopedie-berbere-juifs-sahara",
+    kind: "journal",
+    category: "academic",
+    title: L(
+      "Encyclop\u00e9die berb\u00e8re, Jews of the Sahara",
+      "Encyclop\u00e9die berb\u00e8re, Juifs du Sahara",
+      "\u0627\u0644\u0645\u0648\u0633\u0648\u0639\u0629 \u0627\u0644\u0623\u0645\u0627\u0632\u064a\u063a\u064a\u0629\u060c \u064a\u0647\u0648\u062f \u0627\u0644\u0635\u062d\u0631\u0627\u0621",
+    ),
+    publisher: L("Encyclop\u00e9die berb\u00e8re, OpenEdition Journals", "Encyclop\u00e9die berb\u00e8re, OpenEdition Journals", "\u0627\u0644\u0645\u0648\u0633\u0648\u0639\u0629 \u0627\u0644\u0623\u0645\u0627\u0632\u064a\u063a\u064a\u0629"),
+    url: "https://journals.openedition.org/encyclopedieberbere/?s=Juifs+Sahara",
+    language: "fr",
+    badge: "EB",
+    note: L(
+      "Reference for Saharan oasis communities and their place in caravan commerce across Touat, the M'Zab and the desert routes.",
+      "R\u00e9f\u00e9rence sur les communaut\u00e9s des oasis sahariennes et leur place dans le commerce caravanier du Touat, du M'Zab et des routes du d\u00e9sert.",
+      "\u0645\u0631\u062c\u0639 \u0639\u0646 \u062c\u0645\u0627\u0639\u0627\u062a \u0627\u0644\u0648\u0627\u062d\u0627\u062a \u0627\u0644\u0635\u062d\u0631\u0627\u0648\u064a\u0629 \u0648\u0645\u0648\u0642\u0639\u0647\u0627 \u0641\u064a \u0627\u0644\u062a\u062c\u0627\u0631\u0629 \u0627\u0644\u0642\u0648\u0627\u0641\u0644\u064a\u0629.",
     ),
   }),
   S({
@@ -731,9 +815,9 @@ export const SOURCES: readonly ProvenanceSource[] = [
     kind: "archive",
     category: "archive",
     title: L(
-      "Colonial legislation and decrees concerning Algeria",
-      "L\u00e9gislation et d\u00e9crets coloniaux concernant l'Alg\u00e9rie",
-      "\u0627\u0644\u062a\u0634\u0631\u064a\u0639\u0627\u062a \u0648\u0627\u0644\u0645\u0631\u0627\u0633\u064a\u0645 \u0627\u0644\u0627\u0633\u062a\u0639\u0645\u0627\u0631\u064a\u0629 \u0627\u0644\u0645\u062a\u0639\u0644\u0651\u0642\u0629 \u0628\u0627\u0644\u062c\u0632\u0627\u0626\u0631",
+      "French National Archives, Cr\u00e9mieux Decree",
+      "Archives nationales de France, d\u00e9cret Cr\u00e9mieux",
+      "\u0627\u0644\u0623\u0631\u0634\u064a\u0641 \u0627\u0644\u0648\u0637\u0646\u064a \u0627\u0644\u0641\u0631\u0646\u0633\u064a\u060c \u0645\u0631\u0633\u0648\u0645 \u0643\u0631\u064a\u0645\u064a\u0648",
     ),
     publisher: L("Archives nationales de France", "Archives nationales de France", "\u0627\u0644\u0623\u0631\u0634\u064a\u0641 \u0627\u0644\u0648\u0637\u0646\u064a \u0627\u0644\u0641\u0631\u0646\u0633\u064a"),
     url: "https://www.archives-nationales.culture.gouv.fr/",
@@ -745,6 +829,7 @@ export const SOURCES: readonly ProvenanceSource[] = [
       "\u0627\u0644\u0623\u0633\u0627\u0633 \u0627\u0644\u0648\u062b\u0627\u0626\u0642\u064a \u0627\u0644\u0623\u0648\u0644\u064a \u0644\u0644\u0645\u0631\u0633\u0648\u0645 \u0631\u0642\u0645 136 \u0627\u0644\u0635\u0627\u062f\u0631 \u0641\u064a 24 \u0623\u0643\u062a\u0648\u0628\u0631 1870 \u0648\u0644\u0644\u0641\u0626\u0627\u062a \u0627\u0644\u0642\u0627\u0646\u0648\u0646\u064a\u0629 \u0627\u0644\u0645\u0641\u0631\u0648\u0636\u0629 \u0641\u064a \u0627\u0644\u062c\u0632\u0627\u0626\u0631 \u0627\u0644\u0645\u0633\u062a\u0639\u0645\u064e\u0631\u0629.",
     ),
   }),
+
 ];
 
 const byId = new Map(SOURCES.map((s) => [s.id, s]));
