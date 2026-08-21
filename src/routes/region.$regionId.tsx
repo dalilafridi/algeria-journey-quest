@@ -416,7 +416,7 @@ function RegionPage() {
         )}
 
         {region.id === "kabylie" && (
-          <Section id="jewelry" tone="sand">
+          <Section id="kabyle-jewelry" tone="sand">
             <KabyleJewelry />
           </Section>
         )}
