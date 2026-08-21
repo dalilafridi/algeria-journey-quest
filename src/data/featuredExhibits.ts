@@ -21,10 +21,13 @@ import footballHero from "@/assets/football-hero-vitrine.jpg";
 
 export type ExhibitTarget =
   | { kind: "mzab" }
+  | { kind: "timgad" }
+  | { kind: "tassili" }
   | { kind: "football" }
   | { kind: "region"; regionId: string }
   | { kind: "era"; eraId: string }
   | { kind: "club"; clubId: string };
+
 
 export type FeaturedExhibit = {
   id: string;
