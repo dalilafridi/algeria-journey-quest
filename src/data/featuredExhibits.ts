@@ -210,7 +210,6 @@ export const FEATURED_EXHIBITS: FeaturedExhibit[] = [
   },
   {
     id: "mzab",
-
     title: { en: "The M'Zab Valley", fr: "La vallée du M'Zab", ar: "وادي مزاب" },
     teaser: {
       en: "A thousand-year lesson in living with the desert, five ksour, one hydraulic mind.",
