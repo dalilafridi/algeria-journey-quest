@@ -57,6 +57,19 @@ function ExhibitLink({
           {children}
         </Link>
       );
+    case "timgad":
+      return (
+        <Link to="/timgad" className={className} aria-label={ariaLabel}>
+          {children}
+        </Link>
+      );
+    case "tassili":
+      return (
+        <Link to="/tassili" className={className} aria-label={ariaLabel}>
+          {children}
+        </Link>
+      );
+
     case "football":
       return (
         <Link to="/football" className={className} aria-label={ariaLabel}>
