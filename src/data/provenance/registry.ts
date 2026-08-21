@@ -322,7 +322,14 @@ export const EXHIBIT_PROVENANCE: Record<string, ExhibitProvenanceRecord> = {
       "encyclopedie-berbere-juifs-mzab",
       "encyclopedie-berbere-juifs",
       "encyclopedie-berbere-juifs-sahara",
+      "iemj-chants-juifs-algerie",
+      "iemj-musique-juifs-maghreb",
+      "iemj-cheikh-raymond",
+      "iemj-salim-halali",
+      "iemj-maurice-el-medioni",
+      "jwa-sultana-daoud",
     ],
+
     confidence: "widely-accepted",
     intro: {
       en: "This first version of the exhibit relies on institutional and academic references. Colonial legal measures follow the French national archives and the Holocaust Encyclopedia of the United States Holocaust Memorial Museum. Community history, regional distribution and language follow the Encyclop\u00e9die berb\u00e8re. No population figures are given, because published estimates vary by source and period.",
