@@ -300,6 +300,195 @@ const REMAINS: NumberedItem[] = [
   },
 ];
 
+/* --- musical voices ------------------------------------------------ */
+
+type Musician = {
+  name: Tri;
+  latinName: string;
+  secondary?: string;
+  place: Tri;
+  genres: Tri;
+  body: Tri;
+};
+
+type MusicGroup = { heading: Tri; musicians: Musician[] };
+
+const MUSIC = {
+  eyebrow: L("Shared musical heritage", "Patrimoine musical partagé", "تراث موسيقي مشترك"),
+  title: L("Musical voices across Algeria", "Voix musicales à travers l'Algérie", "أصوات موسيقية عبر الجزائر"),
+  intro: L(
+    "Jewish musicians were important performers, composers and transmitters of Algeria's Arab-Andalusian, malouf, hawzi, chaabi and popular repertoires. Their careers developed through constant exchange with Muslim musicians and audiences. The regional groupings below indicate birthplace or a musician's strongest Algerian association; they are not rigid boundaries.",
+    "Les musiciens juifs ont joué un rôle important comme interprètes, compositeurs et transmetteurs des répertoires arabo-andalous, malouf, hawzi, chaabi et populaires d'Algérie. Leurs parcours se sont construits dans un échange constant avec les musiciens et les publics musulmans. Les regroupements régionaux ci-dessous indiquent le lieu de naissance ou le principal ancrage algérien de chaque artiste ; ils ne constituent pas des frontières rigides.",
+    "أدّى الموسيقيون اليهود دورا مهما في أداء ونقل وتطوير الموسيقى الجزائرية، بما فيها الموسيقى العربية الأندلسية والمالوف والحوزي والشعبي والأغنية الشعبية. وقد تشكلت مساراتهم الفنية من خلال تفاعل مستمر مع الموسيقيين والجمهور المسلمين. وتشير التصنيفات الجغرافية أدناه إلى مكان الميلاد أو إلى أبرز ارتباط جزائري لكل فنان، ولا تمثل حدودا فنية صارمة.",
+  ),
+  noteLabel: L("Curatorial note", "Note curatoriale", "ملاحظة القيّم"),
+  note: L(
+    "These artists belonged to interconnected musical worlds. Regional placement provides geographic context, not a claim of exclusive ownership or a complete account of their careers.",
+    "Ces artistes appartenaient à des univers musicaux interconnectés. Leur classement régional apporte un contexte géographique, sans revendiquer une appartenance exclusive ni résumer l'ensemble de leur parcours.",
+    "انتمى هؤلاء الفنانون إلى عوالم موسيقية مترابطة. ويهدف تصنيفهم الإقليمي إلى تقديم سياق جغرافي، لا إلى ادعاء انتماء حصري أو اختزال مسيرتهم الفنية.",
+  ),
+  placeLabel: L("Region", "Région", "المنطقة"),
+  genreLabel: L("Repertoire", "Répertoire", "المتن الموسيقي"),
+};
+
+const MUSIC_GROUPS: MusicGroup[] = [
+  {
+    heading: L(
+      "Western Algeria: Tiaret and Oran",
+      "Algérie occidentale : Tiaret et Oran",
+      "غرب الجزائر: تيارت ووهران",
+    ),
+    musicians: [
+      {
+        name: L("Reinette l'Oranaise", "Reinette l'Oranaise", "رينات الوهرانية"),
+        latinName: "Reinette l'Oranaise",
+        secondary: "Sultana Daoud",
+        place: L("Tiaret · Oran", "Tiaret · Oran", "تيارت · وهران"),
+        genres: L(
+          "Arab-Andalusian · Hawzi · Judeo-Arabic song",
+          "Arabo-andalou · Hawzi · Chanson judéo-arabe",
+          "أندلسي · حوزي · أغنية يهودية عربية",
+        ),
+        body: L(
+          "Born in Tiaret and closely associated with Oran, Reinette l'Oranaise became a celebrated singer and oud player. Blind from childhood, she learned the Arab-Andalusian repertoire and became one of the best-known voices of Algerian Judeo-Arabic music.",
+          "Née à Tiaret et étroitement associée à Oran, Reinette l'Oranaise devint une chanteuse et joueuse de oud renommée. Aveugle depuis l'enfance, elle apprit le répertoire arabo-andalou et devint l'une des voix les plus connues de la musique judéo-arabe algérienne.",
+          "وُلدت رينات الوهرانية في تيارت وارتبط مسارها الفني ارتباطا وثيقا بوهران. كانت مغنية وعازفة عود بارزة، وفقدت بصرها في طفولتها، ثم تعلمت التراث الموسيقي العربي الأندلسي وأصبحت من أشهر أصوات الموسيقى اليهودية العربية الجزائرية.",
+        ),
+      },
+      {
+        name: L("Maurice El Médioni", "Maurice El Médioni", "موريس المديوني"),
+        latinName: "Maurice El Médioni",
+        place: L("Oran", "Oran", "وهران"),
+        genres: L(
+          "Oranian song · PianOriental · Jazz and Latin influences",
+          "Chanson oranaise · PianOriental · Influences jazz et latines",
+          "الأغنية الوهرانية · بيانو أوريونتال · تأثيرات الجاز واللاتين",
+        ),
+        body: L(
+          "Born in Oran's Jewish quarter, pianist Maurice El Médioni brought Algerian melodies into conversation with boogie-woogie, jazz, rumba and other musical forms he encountered in the port city. His work reflects Oran's multilingual and cosmopolitan musical life.",
+          "Né dans le quartier juif d'Oran, le pianiste Maurice El Médioni fit dialoguer les mélodies algériennes avec le boogie-woogie, le jazz, la rumba et d'autres formes musicales rencontrées dans la ville portuaire. Son œuvre témoigne de la vie musicale plurilingue et cosmopolite d'Oran.",
+          "وُلد عازف البيانو موريس المديوني في الحي اليهودي بوهران. وقد مزج الألحان الجزائرية بالبوغي ووغي والجاز والرومبا وغيرها من الأنماط التي اكتشفها في المدينة الساحلية. ويعكس فنه الحياة الموسيقية المتعددة اللغات والثقافات في وهران.",
+        ),
+      },
+    ],
+  },
+  {
+    heading: L("Algiers", "Alger", "الجزائر العاصمة"),
+    musicians: [
+      {
+        name: L("Lili Boniche", "Lili Boniche", "ليلي بونيش"),
+        latinName: "Lili Boniche",
+        secondary: "Élie Boniche",
+        place: L("Algiers · Casbah", "Alger · Casbah", "الجزائر العاصمة · القصبة"),
+        genres: L(
+          "Chaabi · Arab-Andalusian · Franco-Arab song",
+          "Chaabi · Arabo-andalou · Chanson franco-arabe",
+          "شعبي · أندلسي · أغنية فرنسية عربية",
+        ),
+        body: L(
+          "Born in the Casbah of Algiers, Lili Boniche was a singer and mandole player rooted in the Arab-Andalusian and chaabi traditions. He also blended Algerian Arabic song with tango, paso doble and other popular Mediterranean styles.",
+          "Né dans la Casbah d'Alger, Lili Boniche était un chanteur et joueur de mandole enraciné dans les traditions arabo-andalouse et chaabi. Il associa également la chanson algérienne en arabe au tango, au paso doble et à d'autres styles populaires méditerranéens.",
+          "وُلد ليلي بونيش في قصبة الجزائر، وكان مغنيا وعازف مندول متجذرا في الموسيقى العربية الأندلسية والشعبي. كما مزج الأغنية الجزائرية بالعربية مع التانغو والباسودوبلي وأنماط متوسطية شعبية أخرى.",
+        ),
+      },
+    ],
+  },
+  {
+    heading: L(
+      "Eastern Algeria: Constantine and Annaba",
+      "Algérie orientale : Constantine et Annaba",
+      "شرق الجزائر: قسنطينة وعنابة",
+    ),
+    musicians: [
+      {
+        name: L("Cheikh Raymond", "Cheikh Raymond", "الشيخ ريموند"),
+        latinName: "Cheikh Raymond",
+        secondary: "Raymond Leyris",
+        place: L("Constantine", "Constantine", "قسنطينة"),
+        genres: L(
+          "Malouf · Arab-Andalusian music",
+          "Malouf · Musique arabo-andalouse",
+          "مالوف · موسيقى عربية أندلسية",
+        ),
+        body: L(
+          "A master singer and oud player from Constantine, Cheikh Raymond was one of the leading interpreters of Constantine's malouf tradition. Respected by Jewish and Muslim audiences, his orchestra became an important place of musical transmission.",
+          "Maître chanteur et joueur de oud originaire de Constantine, Cheikh Raymond fut l'un des grands interprètes de la tradition constantinoise du malouf. Respecté par les publics juifs et musulmans, son orchestre devint un important lieu de transmission musicale.",
+          "كان الشيخ ريموند، وهو مغن وعازف عود من قسنطينة، من أبرز أعلام المالوف القسنطيني. حظي باحترام الجمهور اليهودي والمسلم، وأصبحت فرقته فضاء مهما لنقل هذا التراث الموسيقي.",
+        ),
+      },
+      {
+        name: L("Salim Halali", "Salim Halali", "سليم الهلالي"),
+        latinName: "Salim Halali",
+        secondary: "Simon Halali",
+        place: L("Annaba · Eastern Algeria", "Annaba · Est algérien", "عنابة · شرق الجزائر"),
+        genres: L(
+          "Algerian song · Arab-Andalusian · Cabaret repertoire",
+          "Chanson algérienne · Arabo-andalou · Répertoire de cabaret",
+          "الأغنية الجزائرية · أندلسي · متن الملاهي الفنية",
+        ),
+        body: L(
+          "Born in Annaba to a Jewish family with roots in eastern Algeria, Salim Halali became a prominent performer of Algerian and Arab-Andalusian song. His international career connected Algerian music with the cabaret cultures of Paris and Casablanca.",
+          "Né à Annaba dans une famille juive originaire de l'Est algérien, Salim Halali devint un interprète majeur de la chanson algérienne et arabo-andalouse. Sa carrière internationale relia la musique algérienne aux cultures de cabaret de Paris et de Casablanca.",
+          "وُلد سليم الهلالي في عنابة ضمن عائلة يهودية ذات جذور في شرق الجزائر، وأصبح من أبرز مؤدي الأغنية الجزائرية والموسيقى العربية الأندلسية. وربطت مسيرته الدولية الموسيقى الجزائرية بعالم الملاهي الفنية في باريس والدار البيضاء.",
+        ),
+      },
+    ],
+  },
+];
+
+/** Engraved bronze medallion with an abstract stringed-instrument motif. */
+function MusicMedallion() {
+  return (
+    <svg viewBox="0 0 64 64" aria-hidden="true" className="h-11 w-11 shrink-0 text-primary">
+      <circle cx="32" cy="32" r="29" fill="none" stroke="currentColor" strokeWidth="1.2" opacity="0.55" />
+      <circle cx="32" cy="32" r="24" fill="none" stroke="currentColor" strokeWidth="0.6" opacity="0.35" />
+      <ellipse cx="30" cy="40" rx="12" ry="13" fill="none" stroke="currentColor" strokeWidth="1.4" />
+      <circle cx="30" cy="38" r="4" fill="none" stroke="currentColor" strokeWidth="0.9" opacity="0.7" />
+      <path d="M30 27 L40 14" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
+      <path d="M27 28 L37 15 M33 28 L43 15" stroke="currentColor" strokeWidth="0.5" opacity="0.6" />
+      <path d="M39 12 l4 3" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
+    </svg>
+  );
+}
+
+function MusicianCard({ m, lang }: { m: Musician; lang: "en" | "fr" | "ar" }) {
+  const isAr = lang === "ar";
+  return (
+    <article className="h-full rounded-lg border border-border/70 bg-card/60 p-5 sm:p-6 shadow-[0_1px_0_rgba(0,0,0,0.04)] transition hover:border-primary/40">
+      <div className="flex items-start gap-4">
+        <MusicMedallion />
+        <div className="min-w-0">
+          <h4 className="text-lg sm:text-xl font-semibold leading-tight text-foreground break-words">
+            {tr(m.name, lang)}
+          </h4>
+          {isAr && (
+            <div dir="ltr" className="mt-0.5 text-sm text-muted-foreground break-words text-start">
+              {m.latinName}
+            </div>
+          )}
+          {m.secondary && (
+            <div dir="ltr" className="mt-0.5 text-xs italic text-muted-foreground break-words text-start">
+              {m.secondary}
+            </div>
+          )}
+        </div>
+      </div>
+      <p className="mt-4 text-sm sm:text-base leading-[1.75] text-foreground/80">{tr(m.body, lang)}</p>
+      <dl className="mt-5 space-y-2 border-t border-border/60 pt-4">
+        <div className="flex flex-wrap gap-x-2 gap-y-1">
+          <dt className="text-[10px] uppercase tracking-[0.24em] text-primary pt-[3px]">{tr(MUSIC.placeLabel, lang)}</dt>
+          <dd className="text-sm text-foreground/80">{tr(m.place, lang)}</dd>
+        </div>
+        <div className="flex flex-wrap gap-x-2 gap-y-1">
+          <dt className="text-[10px] uppercase tracking-[0.24em] text-primary pt-[3px]">{tr(MUSIC.genreLabel, lang)}</dt>
+          <dd className="text-sm text-foreground/80">{tr(m.genres, lang)}</dd>
+        </div>
+      </dl>
+    </article>
+  );
+}
+
+
 const WHY = {
   eyebrow: L("Why this history belongs here", "Pourquoi cette histoire est ici", "لماذا ينتمي هذا التاريخ إلى هنا"),
   title: L("A curator's statement", "Déclaration du conservateur", "كلمة القيّم"),
@@ -451,6 +640,37 @@ function JewsOfAlgeriaExhibit() {
             ))}
           </Prose>
         </Section>
+
+        <Section id="musicians" tone="sand">
+          <EyebrowTitle eyebrow={MUSIC.eyebrow} title={MUSIC.title} />
+          <p className="max-w-3xl text-foreground/80 text-base sm:text-lg leading-[1.75] mb-10">
+            {tr(MUSIC.intro, lang)}
+          </p>
+          <div className="space-y-10">
+            {MUSIC_GROUPS.map((g, gi) => (
+              <div key={gi}>
+                <h3 className="text-xs uppercase tracking-[0.28em] text-primary mb-4 pb-2 border-b border-border/60">
+                  {tr(g.heading, lang)}
+                </h3>
+                <div className="grid gap-5 sm:gap-6 md:grid-cols-2 items-stretch">
+                  {g.musicians.map((m) => (
+                    <MusicianCard key={m.latinName} m={m} lang={lang} />
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+          <div className="mt-10">
+            <Plaque>
+              <div className="text-[10px] uppercase tracking-[0.28em] text-primary mb-2">
+                {tr(MUSIC.noteLabel, lang)}
+              </div>
+              <p className="text-sm sm:text-base leading-[1.7] text-foreground/80">{tr(MUSIC.note, lang)}</p>
+            </Plaque>
+          </div>
+        </Section>
+
+
 
         <Section id="cremieux" tone="parchment">
           <EyebrowTitle eyebrow={CREMIEUX.eyebrow} title={CREMIEUX.title} />

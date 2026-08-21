@@ -830,7 +830,143 @@ export const SOURCES: readonly ProvenanceSource[] = [
     ),
   }),
 
+  // ─── Jewish music of Algeria ──────────────────────────────────────
+  S({
+    id: "iemj-chants-juifs-algerie",
+    kind: "museum",
+    category: "museum",
+    title: L(
+      "Institut Européen des Musiques Juives, Songs by Jews from Algeria",
+      "Institut Européen des Musiques Juives, Chants des Juifs d'Algérie",
+      "المعهد الأوروبي للموسيقى اليهودية، أغاني يهود الجزائر",
+    ),
+    publisher: L(
+      "Institut Européen des Musiques Juives",
+      "Institut Européen des Musiques Juives",
+      "المعهد الأوروبي للموسيقى اليهودية",
+    ),
+    url: "https://www.iemj.org/en/chants-des-juifs-dalgerie-1/",
+    language: "mixed",
+    badge: "IEMJ",
+    note: L(
+      "Institutional collection documenting the Judeo-Arabic song repertoires of Algeria.",
+      "Collection institutionnelle documentant les répertoires de la chanson judéo-arabe d'Algérie.",
+      "مجموعة مؤسسية توثق متون الأغنية اليهودية العربية في الجزائر.",
+    ),
+  }),
+  S({
+    id: "iemj-musique-juifs-maghreb",
+    kind: "museum",
+    category: "museum",
+    title: L(
+      "Institut Européen des Musiques Juives, The Music of the Jews of the Maghreb",
+      "Institut Européen des Musiques Juives, La musique des Juifs du Maghreb",
+      "المعهد الأوروبي للموسيقى اليهودية، موسيقى يهود المغرب الكبير",
+    ),
+    publisher: L(
+      "Institut Européen des Musiques Juives",
+      "Institut Européen des Musiques Juives",
+      "المعهد الأوروبي للموسيقى اليهودية",
+    ),
+    url: "https://www.iemj.org/en/discover/guided-tours/la-musique-des-juifs-du-maghreb/",
+    language: "mixed",
+    badge: "IEMJ",
+    note: L(
+      "Guided overview of Maghrebi Jewish musical traditions and their shared repertoires.",
+      "Parcours guidé sur les traditions musicales juives du Maghreb et leurs répertoires partagés.",
+      "جولة تعريفية بالتقاليد الموسيقية اليهودية المغاربية ومتونها المشتركة.",
+    ),
+  }),
+  S({
+    id: "iemj-cheikh-raymond",
+    kind: "museum",
+    category: "museum",
+    title: L(
+      "Institut Européen des Musiques Juives, Cheikh Raymond (1912-1961)",
+      "Institut Européen des Musiques Juives, Cheikh Raymond (1912-1961)",
+      "المعهد الأوروبي للموسيقى اليهودية، الشيخ ريموند (1912-1961)",
+    ),
+    publisher: L(
+      "Institut Européen des Musiques Juives",
+      "Institut Européen des Musiques Juives",
+      "المعهد الأوروبي للموسيقى اليهودية",
+    ),
+    url: "https://www.iemj.org/en/cheikh-raymond-1912-1961/",
+    language: "mixed",
+    badge: "IEMJ",
+    note: L(
+      "Biographical record for the Constantine malouf master Raymond Leyris.",
+      "Notice biographique du maître du malouf constantinois Raymond Leyris.",
+      "ترجمة لسيرة معلّم المالوف القسنطيني ريمون لايريس.",
+    ),
+  }),
+  S({
+    id: "iemj-salim-halali",
+    kind: "museum",
+    category: "museum",
+    title: L(
+      "Institut Européen des Musiques Juives, Salim Halali (1920-2005)",
+      "Institut Européen des Musiques Juives, Salim Halali (1920-2005)",
+      "المعهد الأوروبي للموسيقى اليهودية، سليم الهلالي (1920-2005)",
+    ),
+    publisher: L(
+      "Institut Européen des Musiques Juives",
+      "Institut Européen des Musiques Juives",
+      "المعهد الأوروبي للموسيقى اليهودية",
+    ),
+    url: "https://www.iemj.org/en/halali-salim-1920-2005/",
+    language: "mixed",
+    badge: "IEMJ",
+    note: L(
+      "Biographical record for the Annaba-born singer Salim Halali.",
+      "Notice biographique du chanteur né à Annaba Salim Halali.",
+      "ترجمة لسيرة المغني المولود في عنابة سليم الهلالي.",
+    ),
+  }),
+  S({
+    id: "iemj-maurice-el-medioni",
+    kind: "museum",
+    category: "museum",
+    title: L(
+      "Institut Européen des Musiques Juives, Maurice El Médioni (1928-2024)",
+      "Institut Européen des Musiques Juives, Maurice El Médioni (1928-2024)",
+      "المعهد الأوروبي للموسيقى اليهودية، موريس المديوني (1928-2024)",
+    ),
+    publisher: L(
+      "Institut Européen des Musiques Juives",
+      "Institut Européen des Musiques Juives",
+      "المعهد الأوروبي للموسيقى اليهودية",
+    ),
+    url: "https://www.iemj.org/en/el-medioni-maurice-1928-2024/",
+    language: "mixed",
+    badge: "IEMJ",
+    note: L(
+      "Biographical record for the Oran pianist Maurice El Médioni.",
+      "Notice biographique du pianiste oranais Maurice El Médioni.",
+      "ترجمة لسيرة عازف البيانو الوهراني موريس المديوني.",
+    ),
+  }),
+  S({
+    id: "jwa-sultana-daoud",
+    kind: "article",
+    category: "academic",
+    title: L(
+      "Jewish Women's Archive, Birth of Sultana Daoud",
+      "Jewish Women's Archive, Naissance de Sultana Daoud",
+      "أرشيف النساء اليهوديات، ميلاد سلطانة داود",
+    ),
+    publisher: L("Jewish Women's Archive", "Jewish Women's Archive", "أرشيف النساء اليهوديات"),
+    url: "https://jwa.org/thisweek/apr/25/1915/birth-sultana-daoud",
+    language: "en",
+    badge: "JWA",
+    note: L(
+      "Reference note on the birth in Tiaret and career of Sultana Daoud, known as Reinette l'Oranaise.",
+      "Notice de référence sur la naissance à Tiaret et la carrière de Sultana Daoud, dite Reinette l'Oranaise.",
+      "مرجع حول ميلاد سلطانة داود في تيارت ومسيرتها الفنية، المعروفة برينات الوهرانية.",
+    ),
+  }),
 ];
+
 
 const byId = new Map(SOURCES.map((s) => [s.id, s]));
 
