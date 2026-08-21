@@ -72,7 +72,8 @@ export const NAV_SECTIONS: NavSection[] = [
       p.startsWith("/chronicle") ||
       p.startsWith("/lessons") ||
       p.startsWith("/ideas") ||
-      p.startsWith("/compare"),
+      p.startsWith("/compare") ||
+      p.startsWith("/jews-of-algeria"),
     columns: 2,
     items: [
       {
@@ -85,6 +86,11 @@ export const NAV_SECTIONS: NavSection[] = [
       { label: L("Compare Eras", "Comparer les ères", "قارن بين الحقب"), to: "/compare", search: { kind: "eras" } },
       { label: L("Lessons", "Leçons", "دروس"), to: "/lessons" },
       { label: L("Ideas and Debates", "Idées et débats", "أفكار ونقاشات"), to: "/ideas" },
+      {
+        label: L("The Jews of Algeria", "Les Juifs d'Algérie", "يهود الجزائر"),
+        to: "/jews-of-algeria",
+        desc: L("Communities, culture and memory", "Communautés, culture et mémoire", "جماعات وثقافة وذاكرة"),
+      },
     ],
   },
   {

@@ -54,6 +54,7 @@ function collect(): SitemapEntry[] {
     { path: "/mzab", changefreq: "monthly", priority: "0.9" },
     { path: "/timgad", changefreq: "monthly", priority: "0.8" },
     { path: "/tassili", changefreq: "monthly", priority: "0.8" },
+    { path: "/jews-of-algeria", changefreq: "monthly", priority: "0.8" },
     // Halls
 
     { path: "/figures", changefreq: "monthly", priority: "0.9" },

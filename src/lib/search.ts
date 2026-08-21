@@ -675,6 +675,25 @@ export function getSearchIndex(): SearchItem[] {
   });
 
   push(out, {
+    id: "exhibit:jews-of-algeria",
+    kind: "exhibit",
+    emoji: "\u2727",
+    title: { en: "The Jews of Algeria", fr: "Les Juifs d'Alg\u00e9rie", ar: "\u064a\u0647\u0648\u062f \u0627\u0644\u062c\u0632\u0627\u0626\u0631" },
+    snippet: {
+      en: "Communities across Algeria, shared culture, colonial law, and departure around independence.",
+      fr: "Des communaut\u00e9s \u00e0 travers l'Alg\u00e9rie, une culture partag\u00e9e, le droit colonial et le d\u00e9part autour de l'ind\u00e9pendance.",
+      ar: "\u062c\u0645\u0627\u0639\u0627\u062a \u0641\u064a \u0623\u0646\u062d\u0627\u0621 \u0627\u0644\u062c\u0632\u0627\u0626\u0631\u060c \u062b\u0642\u0627\u0641\u0629 \u0645\u0634\u062a\u0631\u0643\u0629\u060c \u0642\u0627\u0646\u0648\u0646 \u0627\u0633\u062a\u0639\u0645\u0627\u0631\u064a\u060c \u0648\u0631\u062d\u064a\u0644 \u0632\u0645\u0646 \u0627\u0644\u0627\u0633\u062a\u0642\u0644\u0627\u0644.",
+    },
+    context: { en: "Permanent exhibit", fr: "Exposition permanente", ar: "\u0645\u0639\u0631\u0636 \u062f\u0627\u0626\u0645" },
+    href: "/jews-of-algeria",
+    haystack: [
+      { en: "Jews of Algeria Jewish community Cremieux Decree 1870 Vichy antisemitism Judeo-Arabic Constantine Oran Tlemcen Algiers M'Zab Touat synagogue", fr: "Juifs d'Alg\u00e9rie communaut\u00e9 juive d\u00e9cret Cr\u00e9mieux 1870 Vichy antis\u00e9mitisme jud\u00e9o-arabe Constantine Oran Tlemcen Alger M'Zab Touat synagogue", ar: "\u064a\u0647\u0648\u062f \u0627\u0644\u062c\u0632\u0627\u0626\u0631 \u0645\u0631\u0633\u0648\u0645 \u0643\u0631\u064a\u0645\u064a\u0648 \u0641\u064a\u0634\u064a \u0645\u0639\u0627\u062f\u0627\u0629 \u0627\u0644\u0633\u0627\u0645\u064a\u0629 \u0642\u0633\u0646\u0637\u064a\u0646\u0629 \u0648\u0647\u0631\u0627\u0646 \u062a\u0644\u0645\u0633\u0627\u0646 \u0645\u0632\u0627\u0628 \u062a\u0648\u0627\u062a \u0643\u0646\u064a\u0633" },
+    ],
+    aliases: ["jews", "jewish", "juifs", "judaisme", "juda\u00efsme", "cremieux", "cr\u00e9mieux", "vichy", "\u064a\u0647\u0648\u062f", "\u0643\u0631\u064a\u0645\u064a\u0648"],
+    popularity: 12,
+  });
+
+  push(out, {
     id: "exhibit:mzab",
     kind: "exhibit",
     emoji: "❂",

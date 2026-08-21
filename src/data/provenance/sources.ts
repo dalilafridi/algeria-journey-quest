@@ -688,6 +688,63 @@ export const SOURCES: readonly ProvenanceSource[] = [
     url: "https://www.getty.edu/conservation/",
     badge: "Getty",
   }),
+  S({
+    id: "ushmm-algeria",
+    kind: "museum",
+    category: "museum",
+    title: L("Algeria", "Alg\u00e9rie", "\u0627\u0644\u062c\u0632\u0627\u0626\u0631"),
+    publisher: L(
+      "United States Holocaust Memorial Museum, Holocaust Encyclopedia",
+      "United States Holocaust Memorial Museum, Encyclop\u00e9die de l'Holocauste",
+      "\u0645\u062a\u062d\u0641 \u0630\u0643\u0631\u0649 \u0627\u0644\u0647\u0648\u0644\u0648\u0643\u0648\u0633\u062a \u0627\u0644\u0623\u0645\u0631\u064a\u0643\u064a",
+    ),
+    url: "https://encyclopedia.ushmm.org/content/en/article/algeria",
+    language: "en",
+    badge: "USHMM",
+    note: L(
+      "Institutional reference for the revocation of the Cr\u00e9mieux Decree and the antisemitic measures applied in Algeria under Vichy rule.",
+      "R\u00e9f\u00e9rence institutionnelle sur l'abrogation du d\u00e9cret Cr\u00e9mieux et les mesures antis\u00e9mites appliqu\u00e9es en Alg\u00e9rie sous Vichy.",
+      "\u0645\u0631\u062c\u0639 \u0645\u0624\u0633\u0651\u0633\u064a \u0644\u0625\u0644\u063a\u0627\u0621 \u0645\u0631\u0633\u0648\u0645 \u0643\u0631\u064a\u0645\u064a\u0648 \u0648\u0644\u0644\u0625\u062c\u0631\u0627\u0621\u0627\u062a \u0627\u0644\u0645\u0639\u0627\u062f\u064a\u0629 \u0644\u0644\u0633\u0627\u0645\u064a\u0629 \u0641\u064a \u0627\u0644\u062c\u0632\u0627\u0626\u0631 \u0632\u0645\u0646 \u0641\u064a\u0634\u064a.",
+    ),
+  }),
+  S({
+    id: "encyclopedie-berbere-juifs",
+    kind: "journal",
+    category: "academic",
+    title: L(
+      "Juifs (Jews of North Africa), Encyclop\u00e9die berb\u00e8re",
+      "Juifs, Encyclop\u00e9die berb\u00e8re",
+      "\u064a\u0647\u0648\u062f \u0634\u0645\u0627\u0644 \u0623\u0641\u0631\u064a\u0642\u064a\u0627\u060c \u0627\u0644\u0645\u0648\u0633\u0648\u0639\u0629 \u0627\u0644\u0623\u0645\u0627\u0632\u064a\u063a\u064a\u0629",
+    ),
+    publisher: L("Encyclop\u00e9die berb\u00e8re, OpenEdition Journals", "Encyclop\u00e9die berb\u00e8re, OpenEdition Journals", "\u0627\u0644\u0645\u0648\u0633\u0648\u0639\u0629 \u0627\u0644\u0623\u0645\u0627\u0632\u064a\u063a\u064a\u0629"),
+    url: "https://journals.openedition.org/encyclopedieberbere/",
+    language: "fr",
+    badge: "EB",
+    note: L(
+      "Scholarly reference on Jewish presence in North Africa, regional distribution, Judeo-Arabic and Judeo-Berber usage, and the limits of the documentary record.",
+      "R\u00e9f\u00e9rence savante sur la pr\u00e9sence juive en Afrique du Nord, la r\u00e9partition r\u00e9gionale, les usages jud\u00e9o-arabes et jud\u00e9o-berb\u00e8res, et les limites de la documentation.",
+      "\u0645\u0631\u062c\u0639 \u0623\u0643\u0627\u062f\u064a\u0645\u064a \u0639\u0646 \u0627\u0644\u062d\u0636\u0648\u0631 \u0627\u0644\u064a\u0647\u0648\u062f\u064a \u0641\u064a \u0634\u0645\u0627\u0644 \u0623\u0641\u0631\u064a\u0642\u064a\u0627 \u0648\u062a\u0648\u0632\u0651\u0639\u0647 \u0648\u0644\u063a\u0627\u062a\u0647 \u0648\u062d\u062f\u0648\u062f \u0627\u0644\u062a\u0648\u062b\u064a\u0642.",
+    ),
+  }),
+  S({
+    id: "archives-nationales-fr-algerie",
+    kind: "archive",
+    category: "archive",
+    title: L(
+      "Colonial legislation and decrees concerning Algeria",
+      "L\u00e9gislation et d\u00e9crets coloniaux concernant l'Alg\u00e9rie",
+      "\u0627\u0644\u062a\u0634\u0631\u064a\u0639\u0627\u062a \u0648\u0627\u0644\u0645\u0631\u0627\u0633\u064a\u0645 \u0627\u0644\u0627\u0633\u062a\u0639\u0645\u0627\u0631\u064a\u0629 \u0627\u0644\u0645\u062a\u0639\u0644\u0651\u0642\u0629 \u0628\u0627\u0644\u062c\u0632\u0627\u0626\u0631",
+    ),
+    publisher: L("Archives nationales de France", "Archives nationales de France", "\u0627\u0644\u0623\u0631\u0634\u064a\u0641 \u0627\u0644\u0648\u0637\u0646\u064a \u0627\u0644\u0641\u0631\u0646\u0633\u064a"),
+    url: "https://www.archives-nationales.culture.gouv.fr/",
+    language: "fr",
+    badge: "AN",
+    note: L(
+      "Primary documentary basis for Decree No. 136 of 24 October 1870 and for the legal categories imposed on the population of colonial Algeria.",
+      "Base documentaire primaire pour le d\u00e9cret n\u00b0 136 du 24 octobre 1870 et pour les cat\u00e9gories juridiques impos\u00e9es \u00e0 la population de l'Alg\u00e9rie coloniale.",
+      "\u0627\u0644\u0623\u0633\u0627\u0633 \u0627\u0644\u0648\u062b\u0627\u0626\u0642\u064a \u0627\u0644\u0623\u0648\u0644\u064a \u0644\u0644\u0645\u0631\u0633\u0648\u0645 \u0631\u0642\u0645 136 \u0627\u0644\u0635\u0627\u062f\u0631 \u0641\u064a 24 \u0623\u0643\u062a\u0648\u0628\u0631 1870 \u0648\u0644\u0644\u0641\u0626\u0627\u062a \u0627\u0644\u0642\u0627\u0646\u0648\u0646\u064a\u0629 \u0627\u0644\u0645\u0641\u0631\u0648\u0636\u0629 \u0641\u064a \u0627\u0644\u062c\u0632\u0627\u0626\u0631 \u0627\u0644\u0645\u0633\u062a\u0639\u0645\u064e\u0631\u0629.",
+    ),
+  }),
 ];
 
 const byId = new Map(SOURCES.map((s) => [s.id, s]));
