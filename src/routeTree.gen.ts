@@ -22,6 +22,7 @@ import { Route as CuisineRouteImport } from './routes/cuisine'
 import { Route as CuratorRouteRouteImport } from './routes/curator/route'
 import { Route as FootballRouteImport } from './routes/football'
 import { Route as IdeasRouteImport } from './routes/ideas'
+import { Route as JewsOfAlgeriaRouteImport } from './routes/jews-of-algeria'
 import { Route as LessonsRouteImport } from './routes/lessons'
 import { Route as MapRouteImport } from './routes/map'
 import { Route as MomentsRouteImport } from './routes/moments'
@@ -161,6 +162,11 @@ const FootballRoute = FootballRouteImport.update({
 const IdeasRoute = IdeasRouteImport.update({
   id: '/ideas',
   path: '/ideas',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const JewsOfAlgeriaRoute = JewsOfAlgeriaRouteImport.update({
+  id: '/jews-of-algeria',
+  path: '/jews-of-algeria',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LessonsRoute = LessonsRouteImport.update({
@@ -565,6 +571,7 @@ export interface FileRoutesByFullPath {
   '/cuisine': typeof CuisineRoute
   '/football': typeof FootballRouteWithChildren
   '/ideas': typeof IdeasRoute
+  '/jews-of-algeria': typeof JewsOfAlgeriaRoute
   '/lessons': typeof LessonsRoute
   '/map': typeof MapRoute
   '/moments': typeof MomentsRoute
@@ -652,6 +659,7 @@ export interface FileRoutesByTo {
   '/credits': typeof CreditsRoute
   '/cuisine': typeof CuisineRoute
   '/ideas': typeof IdeasRoute
+  '/jews-of-algeria': typeof JewsOfAlgeriaRoute
   '/lessons': typeof LessonsRoute
   '/map': typeof MapRoute
   '/moments': typeof MomentsRoute
@@ -740,6 +748,7 @@ export interface FileRoutesById {
   '/cuisine': typeof CuisineRoute
   '/football': typeof FootballRouteWithChildren
   '/ideas': typeof IdeasRoute
+  '/jews-of-algeria': typeof JewsOfAlgeriaRoute
   '/lessons': typeof LessonsRoute
   '/map': typeof MapRoute
   '/moments': typeof MomentsRoute
@@ -832,6 +841,7 @@ export interface FileRouteTypes {
     | '/cuisine'
     | '/football'
     | '/ideas'
+    | '/jews-of-algeria'
     | '/lessons'
     | '/map'
     | '/moments'
@@ -919,6 +929,7 @@ export interface FileRouteTypes {
     | '/credits'
     | '/cuisine'
     | '/ideas'
+    | '/jews-of-algeria'
     | '/lessons'
     | '/map'
     | '/moments'
@@ -1006,6 +1017,7 @@ export interface FileRouteTypes {
     | '/cuisine'
     | '/football'
     | '/ideas'
+    | '/jews-of-algeria'
     | '/lessons'
     | '/map'
     | '/moments'
@@ -1097,6 +1109,7 @@ export interface RootRouteChildren {
   CuisineRoute: typeof CuisineRoute
   FootballRoute: typeof FootballRouteWithChildren
   IdeasRoute: typeof IdeasRoute
+  JewsOfAlgeriaRoute: typeof JewsOfAlgeriaRoute
   LessonsRoute: typeof LessonsRoute
   MapRoute: typeof MapRoute
   MomentsRoute: typeof MomentsRoute
@@ -1223,6 +1236,13 @@ declare module '@tanstack/react-router' {
       path: '/ideas'
       fullPath: '/ideas'
       preLoaderRoute: typeof IdeasRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/jews-of-algeria': {
+      id: '/jews-of-algeria'
+      path: '/jews-of-algeria'
+      fullPath: '/jews-of-algeria'
+      preLoaderRoute: typeof JewsOfAlgeriaRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/lessons': {
@@ -1911,6 +1931,7 @@ const rootRouteChildren: RootRouteChildren = {
   CuisineRoute: CuisineRoute,
   FootballRoute: FootballRouteWithChildren,
   IdeasRoute: IdeasRoute,
+  JewsOfAlgeriaRoute: JewsOfAlgeriaRoute,
   LessonsRoute: LessonsRoute,
   MapRoute: MapRoute,
   MomentsRoute: MomentsRoute,
