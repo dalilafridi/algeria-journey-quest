@@ -163,6 +163,18 @@ export const PAGE_META = {
       ar: "أجنحة متحفية مخصصة لكبار أندية كرة القدم الجزائرية، بدءًا بشبيبة القبائل.",
     },
   },
+  "/jews-of-algeria": {
+    title: {
+      en: "The Jews of Algeria, Communities and Memory \u00b7 DZ Odyssey",
+      fr: "Les Juifs d'Alg\u00e9rie, communaut\u00e9s et m\u00e9moire \u00b7 DZ Odyssey",
+      ar: "\u064a\u0647\u0648\u062f \u0627\u0644\u062c\u0632\u0627\u0626\u0631\u060c \u062c\u0645\u0627\u0639\u0627\u062a \u0648\u0630\u0627\u0643\u0631\u0629 \u00b7 \u062f\u064a \u0632\u062f \u0623\u0648\u062f\u064a\u0633\u064a",
+    },
+    description: {
+      en: "Jewish communities across Algeria, their shared culture, the Cr\u00e9mieux Decree, Vichy antisemitism and the departure around independence.",
+      fr: "Les communaut\u00e9s juives d'Alg\u00e9rie, leur culture partag\u00e9e, le d\u00e9cret Cr\u00e9mieux, l'antis\u00e9mitisme de Vichy et le d\u00e9part autour de l'ind\u00e9pendance.",
+      ar: "\u0627\u0644\u062c\u0645\u0627\u0639\u0627\u062a \u0627\u0644\u064a\u0647\u0648\u062f\u064a\u0629 \u0641\u064a \u0627\u0644\u062c\u0632\u0627\u0626\u0631\u060c \u062b\u0642\u0627\u0641\u062a\u0647\u0627 \u0627\u0644\u0645\u0634\u062a\u0631\u0643\u0629\u060c \u0645\u0631\u0633\u0648\u0645 \u0643\u0631\u064a\u0645\u064a\u0648\u060c \u0645\u0639\u0627\u062f\u0627\u0629 \u0627\u0644\u0633\u0627\u0645\u064a\u0629 \u0641\u064a \u0639\u0647\u062f \u0641\u064a\u0634\u064a\u060c \u0648\u0627\u0644\u0631\u062d\u064a\u0644 \u0632\u0645\u0646 \u0627\u0644\u0627\u0633\u062a\u0642\u0644\u0627\u0644.",
+    },
+  },
   "/mzab": {
     title: {
       en: "The M'Zab Valley, Cities Against the Sun · DZ Odyssey",

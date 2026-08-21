@@ -21,7 +21,6 @@ import {
   Plaque,
   ExhibitHero,
   NumberedGrid,
-  DiscoveryCards,
   PullQuote,
   RelatedExhibits,
   type NumberedItem,
@@ -249,50 +248,50 @@ const DEPARTURE = {
   ],
 };
 
-const REMAINS = [
+const REMAINS: NumberedItem[] = [
   {
-    label: L("Music", "Musique", "الموسيقى"),
-    fact: L(
+    title: L("Music", "Musique", "الموسيقى"),
+    body: L(
       "Arabo-Andalusian and popular urban repertoire carried on by musicians and recordings on both shores.",
       "Le répertoire arabo-andalou et urbain populaire, porté par des musiciens et des enregistrements sur les deux rives.",
       "المتن الأندلسي والأغنية الحضرية الشعبية، يحملهما الموسيقيون والتسجيلات على الضفّتين.",
     ),
   },
   {
-    label: L("Food", "Cuisine", "المطبخ"),
-    fact: L(
+    title: L("Food", "Cuisine", "المطبخ"),
+    body: L(
       "Dishes and holiday cooking that stayed recognisably Algerian in kitchens far from Algeria.",
       "Des plats et une cuisine de fête restés reconnaissablement algériens dans des cuisines éloignées de l'Algérie.",
       "أطباق وطبخ أعياد ظلّت جزائرية الملامح في مطابخ بعيدة عن الجزائر.",
     ),
   },
   {
-    label: L("Family memory", "Mémoire familiale", "ذاكرة العائلة"),
-    fact: L(
+    title: L("Family memory", "Mémoire familiale", "ذاكرة العائلة"),
+    body: L(
       "Names of streets and neighbourhoods, spoken phrases and household habits transmitted at home.",
       "Des noms de rues et de quartiers, des expressions et des habitudes domestiques transmis à la maison.",
       "أسماء شوارع وأحياء وعباراتٌ محكيّة وعاداتٌ بيتية تُنقل في البيت.",
     ),
   },
   {
-    label: L("Synagogues and cemeteries", "Synagogues et cimetières", "المعابد والمقابر"),
-    fact: L(
+    title: L("Synagogues and cemeteries", "Synagogues et cimetières", "المعابد والمقابر"),
+    body: L(
       "Buildings and burial grounds still standing in Algerian cities, in varying states of care.",
       "Des édifices et des lieux de sépulture encore debout dans les villes algériennes, plus ou moins entretenus.",
       "مبانٍ ومدافن ما تزال قائمة في المدن الجزائرية، بدرجات متفاوتة من العناية.",
     ),
   },
   {
-    label: L("Language", "Langue", "اللغة"),
-    fact: L(
+    title: L("Language", "Langue", "اللغة"),
+    body: L(
       "Judeo-Arabic usage, Hebrew liturgy and Algerian Arabic vocabulary preserved within families.",
       "L'usage judéo-arabe, la liturgie hébraïque et le vocabulaire arabe algérien conservés dans les familles.",
       "الاستعمال اليهودي العربي والطقوس العبرية ومفرداتٌ من العربية الجزائرية محفوظة داخل العائلات.",
     ),
   },
   {
-    label: L("Photographs and archives", "Photographies et archives", "الصور والأرشيف"),
-    fact: L(
+    title: L("Photographs and archives", "Photographies et archives", "الصور والأرشيف"),
+    body: L(
       "Community papers, images and records held today in museums and public archives.",
       "Des papiers communautaires, des images et des registres conservés aujourd'hui dans des musées et des archives publiques.",
       "أوراق مجتمعية وصور وسجلات محفوظة اليوم في متاحف وأرشيفات عمومية.",
@@ -502,7 +501,7 @@ function JewsOfAlgeriaExhibit() {
               lang,
             )}
           </p>
-          <DiscoveryCards items={REMAINS} label={L("Trace", "Trace", "أثر")} />
+          <NumberedGrid items={REMAINS} columns={3} />
         </Section>
 
         <Section id="why" tone="ivory">
