@@ -175,6 +175,31 @@ export const PAGE_META = {
       ar: "كيف بنت حضارة إباضية خمس مدن مستدامة في واحدة من أقسى البيئات على الأرض. معرض رئيسي في دي زد أوديسي.",
     },
   },
+  "/timgad": {
+    title: {
+      en: "Timgad, A City Drawn With a Ruler · DZ Odyssey",
+      fr: "Timgad, une cité tracée à la règle · DZ Odyssey",
+      ar: "تيمقاد، مدينة رُسمت بالمسطرة · دي زد أوديسي",
+    },
+    description: {
+      en: "Founded by Trajan in 100 CE for retired legionaries, buried by sand, and recovered as the clearest Roman city plan in the world. A permanent exhibit of DZ Odyssey.",
+      fr: "Fondée par Trajan en l'an 100 pour des légionnaires vétérans, ensevelie par le sable, puis retrouvée comme le plan de cité romaine le plus lisible au monde. Exposition permanente de DZ Odyssey.",
+      ar: "أسّسها تراجان سنة 100 لجنودٍ متقاعدين، غمرها الرمل، ثمّ استُعيدت بوصفها أوضح مخطّط لمدينة رومانية في العالم. معرض دائم في دي زد أوديسي.",
+    },
+  },
+  "/tassili": {
+    title: {
+      en: "Tassili n'Ajjer, The Painted Sahara · DZ Odyssey",
+      fr: "Tassili n'Ajjer, le Sahara peint · DZ Odyssey",
+      ar: "طاسيلي ناجّر، الصحراء المرسومة · دي زد أوديسي",
+    },
+    description: {
+      en: "More than fifteen thousand paintings and engravings across a sandstone plateau, recording twelve thousand years of Saharan life and climate. A permanent exhibit of DZ Odyssey.",
+      fr: "Plus de quinze mille peintures et gravures sur un plateau de grès, mémoire de douze mille ans de vie et de climat sahariens. Exposition permanente de DZ Odyssey.",
+      ar: "أكثر من خمسة عشر ألف رسمٍ ونقش على هضبةٍ من الحجر الرملي، تسجّل اثني عشر ألف سنة من حياة الصحراء ومناخها. معرض دائم في دي زد أوديسي.",
+    },
+  },
+
   "/women-of-independence": {
     title: {
       en: "Women of the Algerian Revolution, 1954 to 1962 · DZ Odyssey",

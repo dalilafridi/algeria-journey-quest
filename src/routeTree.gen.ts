@@ -36,8 +36,10 @@ import { Route as ShowcaseRouteImport } from './routes/showcase'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as SourcesRouteImport } from './routes/sources'
 import { Route as StargazingRouteImport } from './routes/stargazing'
+import { Route as TassiliRouteImport } from './routes/tassili'
 import { Route as TermsRouteImport } from './routes/terms'
 import { Route as TimelineRouteImport } from './routes/timeline'
+import { Route as TimgadRouteImport } from './routes/timgad'
 import { Route as WomenOfIndependenceRouteImport } from './routes/women-of-independence'
 import { Route as WordsRouteImport } from './routes/words'
 import { Route as ApiCuratorRouteImport } from './routes/api/curator'
@@ -231,6 +233,11 @@ const StargazingRoute = StargazingRouteImport.update({
   path: '/stargazing',
   getParentRoute: () => rootRouteImport,
 } as any)
+const TassiliRoute = TassiliRouteImport.update({
+  id: '/tassili',
+  path: '/tassili',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const TermsRoute = TermsRouteImport.update({
   id: '/terms',
   path: '/terms',
@@ -239,6 +246,11 @@ const TermsRoute = TermsRouteImport.update({
 const TimelineRoute = TimelineRouteImport.update({
   id: '/timeline',
   path: '/timeline',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TimgadRoute = TimgadRouteImport.update({
+  id: '/timgad',
+  path: '/timgad',
   getParentRoute: () => rootRouteImport,
 } as any)
 const WomenOfIndependenceRoute = WomenOfIndependenceRouteImport.update({
@@ -567,8 +579,10 @@ export interface FileRoutesByFullPath {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/sources': typeof SourcesRoute
   '/stargazing': typeof StargazingRoute
+  '/tassili': typeof TassiliRoute
   '/terms': typeof TermsRoute
   '/timeline': typeof TimelineRoute
+  '/timgad': typeof TimgadRoute
   '/women-of-independence': typeof WomenOfIndependenceRoute
   '/words': typeof WordsRoute
   '/api/curator': typeof ApiCuratorRoute
@@ -652,8 +666,10 @@ export interface FileRoutesByTo {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/sources': typeof SourcesRoute
   '/stargazing': typeof StargazingRoute
+  '/tassili': typeof TassiliRoute
   '/terms': typeof TermsRoute
   '/timeline': typeof TimelineRoute
+  '/timgad': typeof TimgadRoute
   '/women-of-independence': typeof WomenOfIndependenceRoute
   '/words': typeof WordsRoute
   '/api/curator': typeof ApiCuratorRoute
@@ -738,8 +754,10 @@ export interface FileRoutesById {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/sources': typeof SourcesRoute
   '/stargazing': typeof StargazingRoute
+  '/tassili': typeof TassiliRoute
   '/terms': typeof TermsRoute
   '/timeline': typeof TimelineRoute
+  '/timgad': typeof TimgadRoute
   '/women-of-independence': typeof WomenOfIndependenceRoute
   '/words': typeof WordsRoute
   '/curator/_studio': typeof CuratorStudioRouteRouteWithChildren
@@ -828,8 +846,10 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/sources'
     | '/stargazing'
+    | '/tassili'
     | '/terms'
     | '/timeline'
+    | '/timgad'
     | '/women-of-independence'
     | '/words'
     | '/api/curator'
@@ -913,8 +933,10 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/sources'
     | '/stargazing'
+    | '/tassili'
     | '/terms'
     | '/timeline'
+    | '/timgad'
     | '/women-of-independence'
     | '/words'
     | '/api/curator'
@@ -998,8 +1020,10 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/sources'
     | '/stargazing'
+    | '/tassili'
     | '/terms'
     | '/timeline'
+    | '/timgad'
     | '/women-of-independence'
     | '/words'
     | '/curator/_studio'
@@ -1087,8 +1111,10 @@ export interface RootRouteChildren {
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   SourcesRoute: typeof SourcesRoute
   StargazingRoute: typeof StargazingRoute
+  TassiliRoute: typeof TassiliRoute
   TermsRoute: typeof TermsRoute
   TimelineRoute: typeof TimelineRoute
+  TimgadRoute: typeof TimgadRoute
   WomenOfIndependenceRoute: typeof WomenOfIndependenceRoute
   WordsRoute: typeof WordsRoute
   ApiCuratorRoute: typeof ApiCuratorRoute
@@ -1297,6 +1323,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof StargazingRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/tassili': {
+      id: '/tassili'
+      path: '/tassili'
+      fullPath: '/tassili'
+      preLoaderRoute: typeof TassiliRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/terms': {
       id: '/terms'
       path: '/terms'
@@ -1309,6 +1342,13 @@ declare module '@tanstack/react-router' {
       path: '/timeline'
       fullPath: '/timeline'
       preLoaderRoute: typeof TimelineRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/timgad': {
+      id: '/timgad'
+      path: '/timgad'
+      fullPath: '/timgad'
+      preLoaderRoute: typeof TimgadRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/women-of-independence': {
@@ -1885,8 +1925,10 @@ const rootRouteChildren: RootRouteChildren = {
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   SourcesRoute: SourcesRoute,
   StargazingRoute: StargazingRoute,
+  TassiliRoute: TassiliRoute,
   TermsRoute: TermsRoute,
   TimelineRoute: TimelineRoute,
+  TimgadRoute: TimgadRoute,
   WomenOfIndependenceRoute: WomenOfIndependenceRoute,
   WordsRoute: WordsRoute,
   ApiCuratorRoute: ApiCuratorRoute,

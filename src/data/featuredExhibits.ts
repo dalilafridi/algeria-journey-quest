@@ -21,10 +21,13 @@ import footballHero from "@/assets/football-hero-vitrine.jpg";
 
 export type ExhibitTarget =
   | { kind: "mzab" }
+  | { kind: "timgad" }
+  | { kind: "tassili" }
   | { kind: "football" }
   | { kind: "region"; regionId: string }
   | { kind: "era"; eraId: string }
   | { kind: "club"; clubId: string };
+
 
 export type FeaturedExhibit = {
   id: string;
@@ -178,11 +181,11 @@ export const FEATURED_EXHIBITS: FeaturedExhibit[] = [
     image: timgadHero,
     publishedAt: "2025-09-14",
     themes: ["ancient", "unesco", "architecture"],
-    target: { kind: "era", eraId: "roman" },
+    target: { kind: "timgad" },
     cta: {
-      en: "Explore in the Roman Algeria gallery",
-      fr: "Découvrir dans la galerie Algérie romaine",
-      ar: "استكشف في قاعة الجزائر الرومانية",
+      en: "Enter the Timgad exhibit",
+      fr: "Entrer dans l'exposition Timgad",
+      ar: "ادخل معرض تيمقاد",
     },
     illustrative: true,
   },
@@ -197,11 +200,11 @@ export const FEATURED_EXHIBITS: FeaturedExhibit[] = [
     image: tassiliHero,
     publishedAt: "2025-08-01",
     themes: ["ancient", "unesco", "regions"],
-    target: { kind: "era", eraId: "earlynorthafrica" },
+    target: { kind: "tassili" },
     cta: {
-      en: "Discover Tassili in Early North Africa",
-      fr: "Découvrir le Tassili dans l'Afrique du Nord ancienne",
-      ar: "اكتشف طاسيلي في شمال إفريقيا القديم",
+      en: "Enter the Tassili exhibit",
+      fr: "Entrer dans l'exposition Tassili",
+      ar: "ادخل معرض طاسيلي",
     },
     illustrative: true,
   },
