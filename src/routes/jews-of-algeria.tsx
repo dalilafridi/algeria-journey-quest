@@ -641,6 +641,37 @@ function JewsOfAlgeriaExhibit() {
           </Prose>
         </Section>
 
+        <Section id="musicians" tone="sand">
+          <EyebrowTitle eyebrow={MUSIC.eyebrow} title={MUSIC.title} />
+          <p className="max-w-3xl text-foreground/80 text-base sm:text-lg leading-[1.75] mb-10">
+            {tr(MUSIC.intro, lang)}
+          </p>
+          <div className="space-y-10">
+            {MUSIC_GROUPS.map((g, gi) => (
+              <div key={gi}>
+                <h3 className="text-xs uppercase tracking-[0.28em] text-primary mb-4 pb-2 border-b border-border/60">
+                  {tr(g.heading, lang)}
+                </h3>
+                <div className="grid gap-5 sm:gap-6 md:grid-cols-2 items-stretch">
+                  {g.musicians.map((m) => (
+                    <MusicianCard key={m.latinName} m={m} lang={lang} />
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+          <div className="mt-10">
+            <Plaque>
+              <div className="text-[10px] uppercase tracking-[0.28em] text-primary mb-2">
+                {tr(MUSIC.noteLabel, lang)}
+              </div>
+              <p className="text-sm sm:text-base leading-[1.7] text-foreground/80">{tr(MUSIC.note, lang)}</p>
+            </Plaque>
+          </div>
+        </Section>
+
+
+
         <Section id="cremieux" tone="parchment">
           <EyebrowTitle eyebrow={CREMIEUX.eyebrow} title={CREMIEUX.title} />
           <div className="grid gap-8 md:grid-cols-[1.35fr_1fr] items-start">
