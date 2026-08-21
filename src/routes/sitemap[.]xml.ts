@@ -50,7 +50,12 @@ function collect(): SitemapEntry[] {
     { path: "/privacy", changefreq: "yearly", priority: "0.3" },
     { path: "/terms", changefreq: "yearly", priority: "0.3" },
     { path: "/credits", changefreq: "yearly", priority: "0.3" },
+    // Permanent standalone exhibits
+    { path: "/mzab", changefreq: "monthly", priority: "0.9" },
+    { path: "/timgad", changefreq: "monthly", priority: "0.8" },
+    { path: "/tassili", changefreq: "monthly", priority: "0.8" },
     // Halls
+
     { path: "/figures", changefreq: "monthly", priority: "0.9" },
     { path: "/figures/quiz", changefreq: "monthly", priority: "0.6" },
     { path: "/culture", changefreq: "monthly", priority: "0.8" },
