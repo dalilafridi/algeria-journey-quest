@@ -11,13 +11,17 @@ Default base_url is the local dev server, http://localhost:8080
 """
 
 import asyncio
+import re
 import sys
 
 from playwright.async_api import async_playwright
 
 BASE = (sys.argv[1] if len(sys.argv) > 1 else "http://localhost:8080").rstrip("/")
 VIEWPORTS = [("desktop", 1280, 900), ("mobile", 390, 844)]
-CTA = "Entrer dans l\u2019exposition"
+# The site renders a typographic apostrophe; accept either form so the test
+# fails on wording, not on punctuation normalisation.
+CTA_LABEL = "Entrer dans l\u2019exposition"
+CTA_RE = re.compile(r"Entrer dans (l|cette)[\u2019']?\s?(l\u2019)?exposition")
 TARGETS = [("/mzab", "M\u2019Zab"), ("/football", "Football")]
 
 failures: list[str] = []
@@ -47,9 +51,13 @@ async def run_viewport(browser, name: str, width: int, height: int) -> None:
     html_lang = await page.get_attribute("html", "lang")
     check(f"[{name}] page renders in French", html_lang == "fr", f"lang={html_lang}")
 
-    ctas = page.get_by_role("link", name=CTA)
+    ctas = page.get_by_role("link", name=CTA_RE)
     count = await ctas.count()
-    check(f"[{name}] corrected CTA '{CTA}' present", count >= 2, f"count={count}")
+    check(
+        f"[{name}] corrected CTA '{CTA_LABEL}' present",
+        count >= 2,
+        f"count={count}",
+    )
     if count:
         check(f"[{name}] first corrected CTA is visible", await ctas.first.is_visible())
 
