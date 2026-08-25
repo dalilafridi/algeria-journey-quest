@@ -51,7 +51,7 @@ async def run_viewport(browser, name: str, width: int, height: int) -> None:
     html_lang = await page.get_attribute("html", "lang")
     check(f"[{name}] page renders in French", html_lang == "fr", f"lang={html_lang}")
 
-    ctas = page.get_by_role("link", name=CTA_RE)
+    ctas = page.locator("a", has_text=CTA_RE)
     count = await ctas.count()
     check(
         f"[{name}] corrected CTA '{CTA_LABEL}' present",
