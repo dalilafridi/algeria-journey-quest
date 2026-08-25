@@ -57,7 +57,9 @@ async def run_viewport(browser, name: str, width: int, height: int) -> None:
     check(f"[{name}] no visible French 'exhibition'", "exhibition" not in body)
 
     for path, label in TARGETS:
-        link = page.locator(f'a[href="{path}"]').first
+        # Restrict to the visible exhibit card CTA; nav menus keep hidden
+        # duplicates of the same href in the DOM.
+        link = page.locator(f'a[href="{path}"]:visible').first
         exists = await link.count() > 0
         check(f"[{name}] {label} card links to {path}", exists)
         if not exists:
