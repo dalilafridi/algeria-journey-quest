@@ -750,7 +750,57 @@ export function getSearchIndex(): SearchItem[] {
     popularity: 13,
   });
 
+  push(out, {
+    id: "exhibit:tuareg-life",
+    kind: "exhibit",
+    emoji: "✧",
+    title: {
+      en: "Tuareg peoples of the Algerian Sahara",
+      fr: "Les Touaregs du Sahara algérien",
+      ar: "الطوارق في الصحراء الجزائرية",
+    },
+    snippet: {
+      en: "Language, music, ceremony and daily life across the Ahaggar and the Ajjer country.",
+      fr: "Langue, musique, cérémonies et vie quotidienne dans l'Ahaggar et le pays Ajjer.",
+      ar: "اللغة والموسيقى والطقوس والحياة اليومية في الأهقار وبلاد الآجر.",
+    },
+    context: { en: "Permanent exhibit", fr: "Exposition permanente", ar: "معرض دائم" },
+    href: "/tassili#tuareg-life",
+    haystack: [
+      {
+        en: "Tuareg Touareg Tamahaq Tifinagh Amazigh Ahaggar Hoggar Ajjer Kel Ahaggar Kel Ajjer Djanet Tamanrasset imzad Sebeiba Sahara living heritage UNESCO",
+        fr: "Touareg Touaregs Tamahaq tifinagh amazigh Ahaggar Hoggar Ajjer Kel Ahaggar Kel Ajjer Djanet Tamanrasset imzad Sebeïba Sahara patrimoine vivant UNESCO",
+        ar: "الطوارق التماهاق تيفيناغ الأمازيغية الأهقار الهقار الآجر جانت تمنراست الإمزاد السبيبة الصحراء تراث حي اليونسكو",
+      },
+    ],
+    aliases: [
+      "tuareg",
+      "touareg",
+      "touaregs",
+      "tamahaq",
+      "tifinagh",
+      "ahaggar",
+      "hoggar",
+      "ajjer",
+      "djanet",
+      "tamanrasset",
+      "imzad",
+      "sebeiba",
+      "sebeïba",
+      "الطوارق",
+      "التماهاق",
+      "تيفيناغ",
+      "الأهقار",
+      "جانت",
+      "تمنراست",
+      "الإمزاد",
+      "السبيبة",
+    ],
+    popularity: 12,
+  });
+
   _index = out;
+
 
   _byId = new Map(out.map((i) => [i.id, i]));
   _hayCache = new WeakMap();
