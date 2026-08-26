@@ -685,6 +685,20 @@ function TassiliExhibit() {
           <CollectionGrid plates={COLLECTION} plateLabel={L("Plate", "Planche", "لوحة")} />
         </Section>
 
+        <Section id="tuareg-life" tone="ivory">
+          <EyebrowTitle eyebrow={TUAREG.eyebrow} title={TUAREG.title} />
+          <Prose>
+            <p>{tr(TUAREG.intro, lang)}</p>
+          </Prose>
+          <div className="mt-10">
+            <NumberedGrid items={TUAREG.panels} columns={2} />
+          </div>
+          <div className="mt-8">
+            <CuratorNote note={TUAREG.note} />
+          </div>
+        </Section>
+
+
         <Section id="related" tone="sand">
           <EyebrowTitle
             eyebrow={L("Related exhibits", "Expositions liées", "معارض ذات صلة")}
