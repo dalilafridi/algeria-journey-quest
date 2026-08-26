@@ -15,6 +15,7 @@ import { t as tr } from "@/lib/i18n";
 import { pageMeta, headLang } from "@/lib/seo";
 import { PAGE_META } from "@/lib/pageMetaCopy";
 import { ExhibitProvenance } from "@/components/provenance/ExhibitProvenance";
+import { CuratorNote } from "@/components/curator/CuratorNote";
 import {
   Section,
   EyebrowTitle,
