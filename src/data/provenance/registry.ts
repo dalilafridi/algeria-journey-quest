@@ -356,7 +356,13 @@ export const EXHIBIT_PROVENANCE: Record<string, ExhibitProvenanceRecord> = {
     ],
   }),
   tassili: R({
-    sourceIds: ["unesco-tassili"],
+    sourceIds: [
+      "unesco-tassili",
+      "unesco-mab-tassili",
+      "unesco-ich-imzad",
+      "unesco-ich-sebeiba",
+      "met-sahel-empires",
+    ],
     confidence: "widely-accepted",
     intro: {
       en: "The exhibit follows the UNESCO World Heritage record for Tassili n'Ajjer. Dates and image counts are published estimates, and the stylistic phases are relative sequences rather than fixed calendar periods.",

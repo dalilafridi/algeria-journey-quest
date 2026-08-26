@@ -15,6 +15,7 @@ import { t as tr } from "@/lib/i18n";
 import { pageMeta, headLang } from "@/lib/seo";
 import { PAGE_META } from "@/lib/pageMetaCopy";
 import { ExhibitProvenance } from "@/components/provenance/ExhibitProvenance";
+import { CuratorNote } from "@/components/curator/CuratorNote";
 import {
   Section,
   EyebrowTitle,
@@ -390,6 +391,66 @@ const COLLECTION: CollectionPlate[] = [
   },
 ];
 
+/* ---------------- Living heritage: the Tuareg of the Algerian Sahara ---- */
+
+const TUAREG = {
+  eyebrow: L("A living Saharan heritage", "Un patrimoine saharien vivant", "تراث صحراوي حي"),
+  title: L(
+    "The Tuareg of the Algerian Sahara",
+    "Les Touaregs du Sahara algérien",
+    "الطوارق في الصحراء الجزائرية",
+  ),
+  intro: L(
+    "The Tuareg are Amazigh-speaking peoples whose communities extend across the central Sahara. In Algeria, Tuareg life is especially associated with the Ahaggar around Tamanrasset and the Ajjer country around Djanet and Tassili n'Ajjer. Their history cannot be reduced to a single image of nomadic life. Tuareg communities include mobile pastoralists and settled families, and their cultural knowledge continues through language, music, ceremony, craftsmanship and relationships with the desert landscape.",
+    "Les Touaregs sont des peuples amazighophones dont les communautés s'étendent à travers le Sahara central. En Algérie, la vie touarègue est particulièrement associée à l'Ahaggar autour de Tamanrasset et au pays Ajjer autour de Djanet et du Tassili n'Ajjer. Leur histoire ne peut être réduite à une image unique de la vie nomade. Les communautés touarègues comprennent des pasteurs mobiles et des familles sédentaires, et leurs savoirs culturels se transmettent par la langue, la musique, les cérémonies, l'artisanat et leur relation avec le paysage désertique.",
+    "الطوارق شعوب ناطقة بالأمازيغية تنتشر مجتمعاتها عبر الصحراء الوسطى. وفي الجزائر ترتبط الحياة الطوارقية خصوصا بمنطقة الأهقار حول تمنراست وبلاد الآجر حول جانت وطاسيلي ناجر. ولا يمكن اختزال تاريخهم في صورة واحدة عن حياة الترحال، إذ تضم مجتمعات الطوارق رعاة متنقلين وعائلات مستقرة، وتستمر معارفهم الثقافية من خلال اللغة والموسيقى والطقوس والحرف والعلاقة مع البيئة الصحراوية.",
+  ),
+  panels: [
+    {
+      meta: L("Cultural areas", "Espaces culturels", "مجالات ثقافية"),
+      title: L("Ahaggar and Ajjer", "L'Ahaggar et l'Ajjer", "الأهقار والآجر"),
+      body: L(
+        "In southern Algeria, two major Tuareg cultural areas are associated with the Ahaggar massif and the Tassili n'Ajjer region. The Kel Ahaggar are closely connected with the country around Tamanrasset, while the Kel Ajjer are associated with Djanet, Tassili and neighboring Saharan territories. These names describe historical and cultural affiliations, not fixed modern borders.",
+        "Dans le sud de l'Algérie, deux grands espaces culturels touaregs sont associés au massif de l'Ahaggar et à la région du Tassili n'Ajjer. Les Kel Ahaggar sont étroitement liés au pays autour de Tamanrasset, tandis que les Kel Ajjer sont associés à Djanet, au Tassili et aux territoires sahariens voisins. Ces noms désignent des appartenances historiques et culturelles, et non des frontières modernes fixes.",
+        "ترتبط منطقتان ثقافيتان طوارقيتان بارزتان في جنوب الجزائر بكتلة الأهقار ومنطقة طاسيلي ناجر. ويرتبط \u2066Kel Ahaggar\u2069 بالبلاد المحيطة بتمنراست، بينما يرتبط \u2066Kel Ajjer\u2069 بجانت والطاسيلي والمجالات الصحراوية المجاورة. وتشير هذه التسميات إلى انتماءات تاريخية وثقافية، لا إلى حدود حديثة ثابتة.",
+      ),
+    },
+    {
+      meta: L("Language and script", "Langue et écriture", "اللغة والكتابة"),
+      title: L("Tamahaq and Tifinagh", "Le tamahaq et le tifinagh", "التماهاق وتيفيناغ"),
+      body: L(
+        "Many Tuareg communities in Algeria speak varieties of Tamahaq, part of the Amazigh language family. Tifinagh writing is an important expression of Tuareg and wider Amazigh cultural identity. Language use varies by community, generation and setting, and Arabic and French are also part of contemporary life.",
+        "De nombreuses communautés touarègues d'Algérie parlent des variétés de tamahaq, qui appartient à la famille des langues amazighes. L'écriture tifinagh constitue une expression importante de l'identité culturelle touarègue et amazighe. Les usages linguistiques varient selon les communautés, les générations et les situations, tandis que l'arabe et le français font également partie de la vie contemporaine.",
+        "تتحدث مجتمعات طوارقية عديدة في الجزائر أنواعا من التماهاق (\u2066Tamahaq\u2069)، وهي من عائلة اللغات الأمازيغية. وتمثل كتابة تيفيناغ (\u2066Tifinagh\u2069) تعبيرا مهما عن الهوية الثقافية الطوارقية والأمازيغية. ويختلف استعمال اللغات بحسب المجتمع والجيل والسياق، كما تحضر العربية والفرنسية في الحياة المعاصرة.",
+      ),
+    },
+    {
+      meta: L("Music", "Musique", "موسيقى"),
+      title: L("Imzad", "L'imzad", "الإمزاد"),
+      body: L(
+        "The imzad is a single-stringed bowed instrument traditionally played by Tuareg women. Its music accompanies poetry and gatherings and is transmitted through listening, observation and practice. UNESCO inscribed the practices and knowledge associated with the imzad in 2013.",
+        "L'imzad est un instrument à corde frottée traditionnellement joué par les femmes touarègues. Sa musique accompagne la poésie et les rassemblements, et se transmet par l'écoute, l'observation et la pratique. L'UNESCO a inscrit les pratiques et savoirs liés à l'imzad en 2013.",
+        "الإمزاد آلة وترية مقوسة تعزف عليها نساء الطوارق تقليديا. وترافق موسيقاها الشعر والمجالس، وتنتقل معارفها عن طريق الاستماع والملاحظة والممارسة. وقد أدرجت اليونسكو الممارسات والمعارف المرتبطة بالإمزاد سنة 2013.",
+      ),
+    },
+    {
+      meta: L("Ceremony", "Cérémonie", "احتفال"),
+      title: L("Sebeïba in Djanet", "La Sebeïba à Djanet", "السبيبة في جانت"),
+      body: L(
+        "The Sebeïba ritual and ceremonies take place in the oasis of Djanet. Music, dance, dress and craftsmanship bring participating communities together and reinforce social ties. UNESCO inscribed Sebeïba on the Representative List of the Intangible Cultural Heritage of Humanity in 2014.",
+        "Le rituel et les cérémonies de la Sebeïba se déroulent dans l'oasis de Djanet. La musique, la danse, les vêtements et les savoir-faire artisanaux rassemblent les communautés participantes et renforcent les liens sociaux. L'UNESCO a inscrit la Sebeïba sur la Liste représentative du patrimoine culturel immatériel de l'humanité en 2014.",
+        "تقام طقوس واحتفالات السبيبة في واحة جانت. وتجمع الموسيقى والرقص واللباس والحرف المجتمعات المشاركة وتعزز الروابط الاجتماعية. وقد أدرجت اليونسكو السبيبة على القائمة التمثيلية للتراث الثقافي غير المادي للبشرية سنة 2014.",
+      ),
+    },
+  ] as NumberedItem[],
+  note: L(
+    "The people represented in Tassili's prehistoric rock art should not automatically be identified as Tuareg. The artworks span thousands of years and long predate modern ethnic identities. This section presents the living Tuareg heritage of the region without claiming direct authorship of the prehistoric images.",
+    "Les populations représentées dans l'art rupestre préhistorique du Tassili ne doivent pas être automatiquement identifiées comme touarègues. Ces œuvres couvrent plusieurs millénaires et précèdent de beaucoup les identités ethniques modernes. Cette section présente le patrimoine touareg vivant de la région sans lui attribuer directement la création des images préhistoriques.",
+    "لا ينبغي اعتبار الجماعات المصورة في فنون الطاسيلي الصخرية في عصور ما قبل التاريخ طوارق بصورة تلقائية. فهذه الأعمال تمتد عبر آلاف السنين وتسبق الهويات الإثنية الحديثة بزمن طويل. ويعرض هذا القسم التراث الطوارقي الحي في المنطقة من دون نسب الرسوم القديمة إليه مباشرة.",
+  ),
+};
+
+
 const RELATED: RelatedExhibit[] = [
   {
     to: "/era/$eraId",
@@ -624,6 +685,20 @@ function TassiliExhibit() {
           </p>
           <CollectionGrid plates={COLLECTION} plateLabel={L("Plate", "Planche", "لوحة")} />
         </Section>
+
+        <Section id="tuareg-life" tone="ivory">
+          <EyebrowTitle eyebrow={TUAREG.eyebrow} title={TUAREG.title} />
+          <Prose>
+            <p>{tr(TUAREG.intro, lang)}</p>
+          </Prose>
+          <div className="mt-10">
+            <NumberedGrid items={TUAREG.panels} columns={2} />
+          </div>
+          <div className="mt-8">
+            <CuratorNote note={TUAREG.note} />
+          </div>
+        </Section>
+
 
         <Section id="related" tone="sand">
           <EyebrowTitle
