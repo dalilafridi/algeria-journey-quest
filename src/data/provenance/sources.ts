@@ -282,6 +282,71 @@ export const SOURCES: readonly ProvenanceSource[] = [
     url: "https://whc.unesco.org/en/list/179/",
     badge: "UNESCO",
   }),
+  S({
+    id: "unesco-mab-tassili",
+    kind: "official",
+    category: "international",
+    title: L(
+      "Tassili N'Ajjer, UNESCO Man and the Biosphere Programme",
+      "Tassili N'Ajjer, Programme sur l'homme et la biosphère (UNESCO)",
+      "طاسيلي ناجر، برنامج الإنسان والمحيط الحيوي لليونسكو",
+    ),
+    publisher: L("UNESCO", "UNESCO", "اليونسكو"),
+    url: "https://www.unesco.org/en/mab/tassili-najjer",
+    badge: "UNESCO",
+  }),
+  S({
+    id: "unesco-ich-imzad",
+    kind: "official",
+    category: "international",
+    title: L(
+      "Practices and knowledge linked to the Imzad of the Tuareg communities of Algeria, Mali and Niger",
+      "Pratiques et savoirs liés à l'imzad des communautés touarègues d'Algérie, du Mali et du Niger",
+      "الممارسات والمعارف المرتبطة بالإمزاد لدى مجتمعات الطوارق في الجزائر ومالي والنيجر",
+    ),
+    publisher: L(
+      "UNESCO Intangible Cultural Heritage",
+      "Patrimoine culturel immatériel, UNESCO",
+      "التراث الثقافي غير المادي، اليونسكو",
+    ),
+    url: "https://ich.unesco.org/en/RL/practices-and-knowledge-linked-to-the-imzad-of-the-tuareg-communities-of-algeria-mali-and-niger-00891",
+    badge: "UNESCO",
+  }),
+  S({
+    id: "unesco-ich-sebeiba",
+    kind: "official",
+    category: "international",
+    title: L(
+      "Ritual and ceremonies of Sebeïba in the oasis of Djanet, Algeria",
+      "Rituel et cérémonies de la Sebeïba dans l'oasis de Djanet, Algérie",
+      "طقوس واحتفالات السبيبة في واحة جانت، الجزائر",
+    ),
+    publisher: L(
+      "UNESCO Intangible Cultural Heritage",
+      "Patrimoine culturel immatériel, UNESCO",
+      "التراث الثقافي غير المادي، اليونسكو",
+    ),
+    url: "https://ich.unesco.org/en/RL/ritual-and-ceremonies-of-sebeiba-in-the-oasis-of-djanet-algeria-00665",
+    badge: "UNESCO",
+  }),
+  S({
+    id: "met-sahel-empires",
+    kind: "web",
+    category: "museum",
+    title: L(
+      "Sahel: Art and Empires on the Shores of the Sahara",
+      "Sahel : art et empires aux rives du Sahara",
+      "الساحل: الفن والإمبراطوريات على ضفاف الصحراء",
+    ),
+    publisher: L(
+      "The Metropolitan Museum of Art",
+      "The Metropolitan Museum of Art",
+      "متحف متروبوليتان للفنون",
+    ),
+    url: "https://www.metmuseum.org/exhibitions/sahel-art-empire-sahara/exhibition-objects",
+    badge: "The Met",
+  }),
+
 
   // ─── Academic references ──────────────────────────────────────────────
   S({
