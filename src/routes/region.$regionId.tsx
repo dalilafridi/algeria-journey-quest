@@ -398,6 +398,49 @@ function RegionPage() {
           </Section>
         )}
 
+        {region.id === "sahara" && (
+          <Section id="tuareg" tone="parchment">
+            <EyebrowTitle
+              eyebrow={L("Living heritage", "Patrimoine vivant", "تراث حي")}
+              title={L(
+                "The Tuareg of the Algerian Sahara",
+                "Les Touaregs du Sahara algérien",
+                "الطوارق في الصحراء الجزائرية",
+              )}
+            />
+            <Link
+              to="/tassili"
+              hash="tuareg-life"
+              className="mt-6 block rounded-2xl border border-border bg-card p-6 sm:p-8 transition hover:-translate-y-0.5"
+              style={{ boxShadow: "var(--shadow-soft)" }}
+            >
+              <p className="text-xs uppercase tracking-[0.22em] font-bold text-primary">
+                {tri(lang, "Discovery", "Découverte", "اكتشاف")}
+              </p>
+              <h3 className="mt-2 text-xl font-bold text-foreground">
+                {tri(
+                  lang,
+                  "Ahaggar and Ajjer, Tamahaq and Tifinagh, imzad and Sebeïba",
+                  "L'Ahaggar et l'Ajjer, le tamahaq et le tifinagh, l'imzad et la Sebeïba",
+                  "الأهقار والآجر، التماهاق وتيفيناغ، الإمزاد والسبيبة",
+                )}
+              </h3>
+              <p className="mt-3 text-sm text-foreground/75 leading-[1.7]">
+                {tri(
+                  lang,
+                  "Tuareg communities of the far south carry language, music and ceremony that are still practised today. The full section sits inside the Tassili n'Ajjer exhibit.",
+                  "Les communautés touarègues de l'extrême sud portent une langue, une musique et des cérémonies toujours vivantes. La section complète se trouve dans l'exposition du Tassili n'Ajjer.",
+                  "تحمل مجتمعات الطوارق في أقصى الجنوب لغة وموسيقى وطقوسا ما تزال حية اليوم. ويوجد القسم الكامل داخل معرض طاسيلي ناجر.",
+                )}
+              </p>
+              <p className="mt-4 text-xs text-primary font-semibold">
+                {tri(lang, "Open the section →", "Ouvrir la section →", "افتح القسم ←")}
+              </p>
+            </Link>
+          </Section>
+        )}
+
+
         {extras?.reflection && (
           <Section id="reflection" tone="parchment">
             <EyebrowTitle
