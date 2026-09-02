@@ -2,7 +2,8 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 
 import { ContinueJourneyInline } from "@/components/ContinueJourneyInline";
 import { DidYouKnowCard } from "@/components/DidYouKnowCard";
-import { OnThisDayCard } from "@/components/OnThisDayCard";
+import { OnThisDayCard, formatOnThisDayDate } from "@/components/OnThisDayCard";
+import { useLocalOnThisDay } from "@/lib/useLocalOnThisDay";
 import { SignatureJourneys } from "@/components/journeys/SignatureJourneys";
 import {
   FeaturedExhibits,
@@ -39,6 +40,9 @@ function Home() {
   const seed = Number(todayKey.replace(/-/g, "")) || Date.now();
   const todayFact = dailyFacts[seed % dailyFacts.length];
   const homepageFact = dailyFacts[(seed + 7) % dailyFacts.length];
+  // Visitor-local date awareness. Null during SSR and hydration, so the
+  // archive wording is shown until the local calendar date is known.
+  const { selection: todaySelection, exact: todayExact } = useLocalOnThisDay();
 
   const copy = {
     eyebrow: {
@@ -62,10 +66,20 @@ function Home() {
       ar: "ابدأ بشمال إفريقيا القديم",
     },
     explore: { en: "Explore Freely", fr: "Explorer librement", ar: "استكشف بحرية" },
-    todayLabel: {
-      en: "Today in Algerian memory",
-      fr: "Aujourd’hui dans la mémoire algérienne",
-      ar: "اليوم في الذاكرة الجزائرية",
+    onThisDayLabel: {
+      en: "On this day in Algerian history",
+      fr: "Ce jour-là dans l’histoire algérienne",
+      ar: "في مثل هذا اليوم من تاريخ الجزائر",
+    },
+    archiveLabel: {
+      en: "From Algerian memory",
+      fr: "Dans la mémoire algérienne",
+      ar: "من الذاكرة الجزائرية",
+    },
+    archiveHint: {
+      en: "A different moment from Algeria’s history surfaces each day.",
+      fr: "Un autre moment de l’histoire algérienne apparaît chaque jour.",
+      ar: "تظهر كل يوم محطة مختلفة من تاريخ الجزائر.",
     },
     todayHint: {
       en: "A new moment surfaces each day.",
@@ -210,7 +224,7 @@ function Home() {
         <OnThisDayCard />
 
 
-        {/* ========= TODAY IN ALGERIAN MEMORY (curated quote) ========= */}
+        {/* ========= DATE-AWARE MEMORY PANEL ========= */}
         <section className="mx-auto max-w-5xl px-4 pt-10 sm:pt-12">
           <div
             className="relative overflow-hidden rounded-3xl border border-accent/30 p-6 sm:p-8 bg-parchment-card animate-fade-in"
@@ -219,25 +233,39 @@ function Home() {
             <div className="absolute inset-y-0 start-0 w-1.5 bg-gradient-to-b from-accent via-primary/70 to-accent/40" aria-hidden />
             <div className="flex items-start gap-4">
               <div className="hidden sm:flex items-center justify-center shrink-0 w-12 h-12 rounded-full bg-accent/20 text-2xl" aria-hidden>
-                🕯️
+                {todayExact ? todaySelection!.entry.medallionEmoji : "\u{1F56F}\uFE0F"}
               </div>
               <div className="min-w-0">
                 <div className="text-[11px] font-bold uppercase tracking-[0.18em] text-accent-foreground/80">
-                  {copy.todayLabel[lang]}
+                  {todayExact ? copy.onThisDayLabel[lang] : copy.archiveLabel[lang]}
                 </div>
+                {todayExact && (
+                  <div
+                    className="mt-1 text-xs uppercase tracking-[0.3em] text-muted-foreground"
+                    style={{ fontFamily: "Georgia, 'Times New Roman', serif" }}
+                  >
+                    {formatOnThisDayDate(todaySelection!.entry, lang)}
+                  </div>
+                )}
                 <p
                   className="mt-2 text-lg sm:text-xl leading-relaxed text-foreground/90"
                   style={{ fontFamily: "Georgia, 'Times New Roman', serif" }}
                 >
-                  “{t(todayFact, lang)}”
+                  “{todayExact ? t(todaySelection!.entry.event, lang) : t(todayFact, lang)}”
                 </p>
-                {matchedEra && (
+                {todayExact ? (
                   <div className="mt-3 text-xs text-muted-foreground">
-                   , {t(matchedEra.title, lang)} · {eraDateRange(matchedEra, lang)}
+                    {t(todaySelection!.entry.figureName, lang)} · {t(todaySelection!.entry.exhibitLabel, lang)}
                   </div>
+                ) : (
+                  matchedEra && (
+                    <div className="mt-3 text-xs text-muted-foreground">
+                      {t(matchedEra.title, lang)} · {eraDateRange(matchedEra, lang)}
+                    </div>
+                  )
                 )}
                 <div className="mt-1 text-[11px] italic text-muted-foreground/80">
-                  {copy.todayHint[lang]}
+                  {todayExact ? copy.todayHint[lang] : copy.archiveHint[lang]}
                 </div>
               </div>
             </div>

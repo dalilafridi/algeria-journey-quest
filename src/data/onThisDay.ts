@@ -488,3 +488,14 @@ export function pickOnThisDay(date: Date = new Date()): OnThisDayEntry {
   return selectOnThisDay(date.getFullYear(), date.getMonth() + 1, date.getDate()).entry;
 }
 
+
+/**
+ * Deterministic archive entry used when the visitor's local date is not yet
+ * known (server render and hydration) and as the honest fallback when no
+ * approved entry matches today. Based on the UTC day of year, so the server
+ * and the browser always agree on the very first render.
+ */
+export function archiveEntry(now: Date = new Date()): OnThisDayEntry {
+  const doy = dayOfYear(now.getUTCFullYear(), now.getUTCMonth() + 1, now.getUTCDate());
+  return onThisDay[(doy - 1) % onThisDay.length];
+}
