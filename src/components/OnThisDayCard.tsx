@@ -1,8 +1,9 @@
 import { Link } from "@tanstack/react-router";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { createPortal } from "react-dom";
 import { t, useLang, type Lang } from "@/lib/i18n";
-import { selectOnThisDay, type OnThisDayEntry } from "@/data/onThisDay";
+import { archiveEntry, type OnThisDayEntry } from "@/data/onThisDay";
+import { useLocalOnThisDay } from "@/lib/useLocalOnThisDay";
 
 const SERIF = "Georgia, 'Times New Roman', serif";
 
@@ -49,21 +50,13 @@ function useTt() {
 export function OnThisDayCard() {
   const { lang, T } = useTt();
   const [previewOpen, setPreviewOpen] = useState(false);
-  // First render (server and hydration) uses UTC parts, identical on both sides.
-  // After hydration we switch to the visitor's local calendar date so no
-  // timezone conversion can shift the displayed day.
-  const [selection, setSelection] = useState(() => {
-    const now = new Date();
-    return selectOnThisDay(now.getUTCFullYear(), now.getUTCMonth() + 1, now.getUTCDate());
-  });
-
-  useEffect(() => {
-    const now = new Date();
-    setSelection(selectOnThisDay(now.getFullYear(), now.getMonth() + 1, now.getDate()));
-  }, []);
-
-  const { entry, exact } = selection;
-  const dateLabel = formatDate(entry, lang);
+  // The visitor's local calendar date is only known on the client, so the
+  // server pass and hydration render the neutral archive presentation. This
+  // guarantees an event from another date is never shown under an
+  // "On this day" heading, even for a single frame.
+  const { selection, exact } = useLocalOnThisDay();
+  const entry = selection ? selection.entry : archiveEntry();
+  const dateLabel = formatOnThisDayDate(entry, lang);
 
 
   return (
@@ -294,7 +287,7 @@ function PostcardModal({ entry, exact, onClose }: { entry: OnThisDayEntry; exact
   const [copied, setCopied] = useState(false);
   
 
-  const dateLabel = formatDate(entry, lang);
+  const dateLabel = formatOnThisDayDate(entry, lang);
   const caption =
     `“${t(entry.event, lang)}”, ${dateLabel}\n` +
     `${t(entry.figureName, lang)} · ${t(TXT.from, lang)}`;
@@ -411,7 +404,7 @@ function PostcardModal({ entry, exact, onClose }: { entry: OnThisDayEntry; exact
  * sizing (1200×750), but the visual language is identical.
  */
 function PostcardPreview({ entry, exact, lang }: { entry: OnThisDayEntry; exact: boolean; lang: Lang }) {
-  const dateLabel = formatDate(entry, lang);
+  const dateLabel = formatOnThisDayDate(entry, lang);
   const { T } = useTt();
   return (
     <div
@@ -570,7 +563,7 @@ function renderPostcardCanvas(entry: OnThisDayEntry, exact: boolean, lang: Lang)
   ctx.fillStyle = "#6b4a0f";
   ctx.font = "500 18px Georgia, serif";
   const infoX = isRTL ? W - 230 : 230;
-  ctx.fillText(formatDate(entry, lang).toUpperCase(), infoX, 145);
+  ctx.fillText(formatOnThisDayDate(entry, lang).toUpperCase(), infoX, 145);
   ctx.fillStyle = "#3b2a10";
   ctx.font = "700 34px Georgia, serif";
   ctx.fillText(t(entry.figureName, lang), infoX, 175);
@@ -671,7 +664,7 @@ function wrapText(
 /* Helpers                                                       */
 /* ============================================================ */
 
-function formatDate(entry: OnThisDayEntry, lang: Lang): string {
+export function formatOnThisDayDate(entry: OnThisDayEntry, lang: Lang): string {
   const locale = lang === "fr" ? "fr-FR" : lang === "ar" ? "ar" : "en-US";
   const monthName = new Date(2000, entry.month - 1, entry.day).toLocaleDateString(locale, {
     month: "long",
