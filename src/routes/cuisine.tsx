@@ -370,6 +370,9 @@ function CuisinePage() {
           )}
         </section>
 
+        {/* STREET FOOD */}
+        <StreetFood />
+
         {/* SWEET TRADITIONS */}
         <section>
           <header className="mb-4">
