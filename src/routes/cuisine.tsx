@@ -10,6 +10,7 @@ import { saveJourneyPlace } from "@/lib/continuity";
 import { JourneyNext } from "@/components/JourneyNext";
 import { ContinueExploring } from "@/components/curator/ContinueExploring";
 import { ExhibitProvenance } from "@/components/provenance/ExhibitProvenance";
+import { StreetFood } from "@/components/cuisine/StreetFood";
 import { getCuisineExploreGroups } from "@/lib/exploreGroups";
 import cuisineHero from "@/assets/cuisine-hero.jpg";
 import { pageMeta, headLang } from "@/lib/seo";
