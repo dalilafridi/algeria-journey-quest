@@ -152,25 +152,49 @@ function WrappedBaguette() {
       <rect x="0" y="0" width="320" height="200" fill="url(#sf-paper)" rx="10" />
       <rect x="0" y="0" width="320" height="200" fill="url(#sf-hatch)" opacity="0.18" rx="10" />
 
-      {/* paper wrapper */}
-      <g
-        fill="none"
-        stroke="color-mix(in oklab, var(--foreground) 55%, transparent)"
-        strokeWidth="1.6"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      >
-        <path d="M44 138 L96 74 L228 74 L280 138 Z" fill="color-mix(in oklab, #ffffff 55%, transparent)" />
-        <path d="M96 74 L120 138 M228 74 L204 138" strokeWidth="1" opacity="0.6" />
-        {/* baguette emerging from the wrapper */}
-        <path d="M104 74 C118 40, 210 40, 224 74" fill="color-mix(in oklab, var(--secondary) 22%, #f0e2c6)" />
-        <path d="M126 56 l14 8 M154 50 l14 8 M182 52 l14 8" strokeWidth="1" opacity="0.7" />
-        {/* fries and omelette peeking out */}
-        <path d="M138 62 l6 -22 M150 60 l3 -24 M164 60 l9 -21" strokeWidth="1.4" opacity="0.8" />
-        <path d="M118 70 c12 -10, 26 -6, 32 2" strokeWidth="1.2" opacity="0.75" />
-        {/* counter line */}
-        <path d="M28 146 L292 146" strokeWidth="1.2" opacity="0.5" />
+      <g transform="rotate(-7 160 108)">
+        <g
+          fill="none"
+          stroke="color-mix(in oklab, var(--foreground) 58%, transparent)"
+          strokeWidth="1.6"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          {/* baguette */}
+          <rect
+            x="58"
+            y="88"
+            width="208"
+            height="42"
+            rx="21"
+            fill="color-mix(in oklab, var(--secondary) 24%, #f1e3c7)"
+          />
+          {/* crust scoring on the exposed half */}
+          <path d="M196 96 l12 10 M216 95 l12 10 M236 97 l10 9" strokeWidth="1" opacity="0.65" />
+          {/* the slit, with fries escaping */}
+          <path d="M176 94 C204 88, 236 90, 258 98" strokeWidth="1.1" opacity="0.7" />
+          <path d="M196 92 l4 -26 M212 90 l1 -28 M228 92 l8 -25 M243 95 l10 -21" strokeWidth="1.5" opacity="0.85" />
+          {/* omelette fold */}
+          <path d="M182 96 c14 -9, 30 -7, 40 1" strokeWidth="1.2" opacity="0.7" />
+
+          {/* paper wrapper over the held half */}
+          <path
+            d="M40 76 L150 76 L162 142 L52 142 Z"
+            fill="color-mix(in oklab, #ffffff 62%, transparent)"
+          />
+          <path d="M62 76 L72 142 M112 76 L122 142" strokeWidth="0.9" opacity="0.55" />
+          <path d="M40 76 L58 96 L150 76" strokeWidth="1" opacity="0.6" />
+        </g>
       </g>
+      {/* counter line */}
+      <path
+        d="M30 158 L290 158"
+        stroke="color-mix(in oklab, var(--foreground) 45%, transparent)"
+        strokeWidth="1.2"
+        opacity="0.5"
+        fill="none"
+        strokeLinecap="round"
+      />
     </svg>
   );
 }
