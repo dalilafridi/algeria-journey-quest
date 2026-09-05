@@ -1030,6 +1030,44 @@ export const SOURCES: readonly ProvenanceSource[] = [
       "مرجع حول ميلاد سلطانة داود في تيارت ومسيرتها الفنية، المعروفة برينات الوهرانية.",
     ),
   }),
+
+  // Algerian street food: frites-omelette
+  S({
+    id: "tsa-frites-omelette",
+    kind: "newspaper",
+    category: "media",
+    title: L(
+      "Reporting on frites-omelette consumption and industrial egg production in Algeria",
+      "Reportage sur la consommation du frites-omelette et la production industrielle d'œufs en Algérie",
+      "تقرير حول استهلاك ساندويتش فريت أومليت والإنتاج الصناعي للبيض في الجزائر",
+    ),
+    publisher: L("TSA Algérie", "TSA Algérie", "TSA الجزائر"),
+    url: "https://www.tsa-algerie.dz/preferer-le-houmous-aux-frites-omelettes-par-patriotisme-economique/amp",
+    language: "fr",
+    note: L(
+      "Used only for the modern popularization of the sandwich and its link to industrial egg production. It does not establish an inventor, a first restaurant or an exact creation date.",
+      "Utilisé uniquement pour la popularisation moderne du sandwich et son lien avec la production industrielle d'œufs. Cette source n'établit ni inventeur, ni premier restaurant, ni date de création précise.",
+      "يُستعمل فقط لتوثيق الانتشار الحديث للساندويتش وارتباطه بالإنتاج الصناعي للبيض. ولا يثبت المصدر مخترعا أو مطعما أول أو تاريخ ظهور دقيق.",
+    ),
+  }),
+  S({
+    id: "bondyblog-frite-omelette",
+    kind: "article",
+    category: "media",
+    title: L(
+      "À la recherche de la meilleure frite-omelette de Paname",
+      "À la recherche de la meilleure frite-omelette de Paname",
+      "À la recherche de la meilleure frite-omelette de Paname",
+    ),
+    publisher: L("Bondy Blog", "Bondy Blog", "بوندي بلوغ"),
+    url: "https://www.bondyblog.fr/reportages/a-la-recherche-de-la-meilleure-frite-omelette-de-paname/",
+    language: "fr",
+    note: L(
+      "Reporting on the sandwich's place in Algerian diaspora food culture and nostalgia.",
+      "Reportage sur la place du sandwich dans la culture alimentaire et la nostalgie de la diaspora algérienne.",
+      "تقرير حول مكانة الساندويتش في الثقافة الغذائية والحنين لدى الجالية الجزائرية.",
+    ),
+  }),
 ];
 
 

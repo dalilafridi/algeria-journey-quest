@@ -261,7 +261,13 @@ export const EXHIBIT_PROVENANCE: Record<string, ExhibitProvenanceRecord> = {
 
   // ─── Culture / cuisine / timeline ───────────────────────────────────
   cuisine: R({
-    sourceIds: ["unesco-couscous", "bardo-algiers", "camps-encyclopedie-berbere"],
+    sourceIds: [
+      "unesco-couscous",
+      "bardo-algiers",
+      "camps-encyclopedie-berbere",
+      "tsa-frites-omelette",
+      "bondyblog-frite-omelette",
+    ],
     confidence: "verified",
     intro: {
       en: "Recipes and cultural notes draw on UNESCO's intangible heritage records, the Bardo Museum, and the Encyclopédie berbère.",
