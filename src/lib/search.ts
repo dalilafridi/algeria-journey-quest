@@ -799,6 +799,51 @@ export function getSearchIndex(): SearchItem[] {
     popularity: 12,
   });
 
+  push(out, {
+    id: "exhibit:street-food",
+    kind: "exhibit",
+    emoji: "✧",
+    title: {
+      en: "Algerian street food and the frites-omelette",
+      fr: "La cuisine de rue algérienne et le frites-omelette",
+      ar: "طعام الشارع الجزائري وساندويتش فريت أومليت",
+    },
+    snippet: {
+      en: "Gargotes, students, workers and a baguette filled with fries and eggs.",
+      fr: "Gargotes, étudiants, travailleurs et une baguette garnie de frites et d'œufs.",
+      ar: "المطاعم الشعبية والطلبة والعمال وخبز محشو بالبطاطا المقلية والبيض.",
+    },
+    context: { en: "Permanent exhibit", fr: "Exposition permanente", ar: "معرض دائم" },
+    href: "/cuisine#street-food",
+    haystack: [
+      {
+        en: "frites-omelette frite omelette Algerian sandwich street food gargote karantika garantita doubara mhadjeb gazouz Oran Biskra harissa merguez complet diaspora",
+        fr: "frites-omelette frite omelette sandwich algérien cuisine de rue gargote karantika garantita doubara mhadjeb gazouz Oran Biskra harissa merguez complet diaspora",
+        ar: "طعام الشارع فريت أومليت بطاطا وبيض ساندويتش جزائري الكارانتيكا الدوبارة المحاجب غازوز وهران بسكرة الهريسة",
+      },
+    ],
+    aliases: [
+      "frites-omelette",
+      "frites omelette",
+      "frite omelette",
+      "sandwich algérien",
+      "sandwich algerien",
+      "algerian sandwich",
+      "street food",
+      "cuisine de rue",
+      "طعام الشارع",
+      "فريت أومليت",
+      "بطاطا وبيض",
+      "gargote",
+      "karantika",
+      "garantita",
+      "doubara",
+      "mhadjeb",
+      "gazouz",
+    ],
+    popularity: 11,
+  });
+
   _index = out;
 
 
