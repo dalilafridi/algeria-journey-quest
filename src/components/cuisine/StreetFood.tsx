@@ -173,7 +173,7 @@ function WrappedBaguette() {
           <path d="M196 96 l12 10 M216 95 l12 10 M236 97 l10 9" strokeWidth="1" opacity="0.65" />
           {/* the slit, with fries escaping */}
           <path d="M176 94 C204 88, 236 90, 258 98" strokeWidth="1.1" opacity="0.7" />
-          <path d="M197 92 l3 -22 M212 90 l1 -25 M227 92 l6 -21 M242 95 l9 -18" strokeWidth="4.5" opacity="0.95" stroke="color-mix(in oklab, var(--secondary) 35%, #e0b064)" />
+          <path d="M197 92 l3 -22 M212 90 l1 -25 M227 92 l6 -21 M242 95 l9 -18" strokeWidth="4.5" opacity="0.95" stroke="#cf9b4e" />
           {/* omelette fold */}
           <path d="M182 96 c14 -9, 30 -7, 40 1" strokeWidth="1.2" opacity="0.7" />
 
