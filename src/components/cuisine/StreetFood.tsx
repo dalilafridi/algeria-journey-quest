@@ -130,75 +130,6 @@ const supporting: StreetItem[] = [
   },
 ];
 
-/** Code-native engraved still life: a paper-wrapped baguette. */
-function WrappedBaguette() {
-  return (
-    <svg
-      viewBox="0 0 320 200"
-      role="img"
-      aria-label="Engraved illustration of a paper-wrapped baguette sandwich"
-      className="w-full h-auto"
-    >
-      <defs>
-        <linearGradient id="sf-paper" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0%" stopColor="color-mix(in oklab, var(--secondary) 12%, #f6efe0)" />
-          <stop offset="100%" stopColor="color-mix(in oklab, var(--secondary) 4%, #ece0c9)" />
-        </linearGradient>
-        <pattern id="sf-hatch" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(35)">
-          <line x1="0" y1="0" x2="0" y2="6" stroke="color-mix(in oklab, var(--secondary) 40%, transparent)" strokeWidth="0.6" />
-        </pattern>
-      </defs>
-
-      <rect x="0" y="0" width="320" height="200" fill="url(#sf-paper)" rx="10" />
-      <rect x="0" y="0" width="320" height="200" fill="url(#sf-hatch)" opacity="0.18" rx="10" />
-
-      <g transform="rotate(-7 160 108)">
-        <g
-          fill="none"
-          stroke="color-mix(in oklab, var(--foreground) 58%, transparent)"
-          strokeWidth="1.6"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        >
-          {/* baguette */}
-          <rect
-            x="58"
-            y="88"
-            width="208"
-            height="42"
-            rx="21"
-            fill="color-mix(in oklab, var(--secondary) 24%, #f1e3c7)"
-          />
-          {/* crust scoring on the exposed half */}
-          <path d="M196 96 l12 10 M216 95 l12 10 M236 97 l10 9" strokeWidth="1" opacity="0.65" />
-          {/* the slit, with fries escaping */}
-          <path d="M176 94 C204 88, 236 90, 258 98" strokeWidth="1.1" opacity="0.7" />
-          <path d="M197 92 l3 -22 M212 90 l1 -25 M227 92 l6 -21 M242 95 l9 -18" strokeWidth="4.5" opacity="0.95" stroke="#cf9b4e" />
-          {/* omelette fold */}
-          <path d="M182 96 c14 -9, 30 -7, 40 1" strokeWidth="1.2" opacity="0.7" />
-
-          {/* paper wrapper over the held half */}
-          <path
-            d="M40 76 L150 76 L162 142 L52 142 Z"
-            fill="color-mix(in oklab, #ffffff 62%, transparent)"
-          />
-          <path d="M62 76 L72 142 M112 76 L122 142" strokeWidth="0.9" opacity="0.55" />
-          <path d="M40 76 L58 96 L150 76" strokeWidth="1" opacity="0.6" />
-        </g>
-      </g>
-      {/* counter line */}
-      <path
-        d="M30 158 L290 158"
-        stroke="color-mix(in oklab, var(--foreground) 45%, transparent)"
-        strokeWidth="1.2"
-        opacity="0.5"
-        fill="none"
-        strokeLinecap="round"
-      />
-    </svg>
-  );
-}
-
 export function StreetFood() {
   const lang = useLang();
   const isAr = lang === "ar";
@@ -222,15 +153,6 @@ export function StreetFood() {
           boxShadow: "var(--shadow-soft)",
         }}
       >
-        <figure className="m-0">
-          <div className="px-4 pt-4 sm:px-6 sm:pt-6">
-            <WrappedBaguette />
-          </div>
-          <figcaption className="px-4 sm:px-6 pt-2 text-[11px] text-muted-foreground">
-            {t(copy.illustrationCaption, lang)}
-          </figcaption>
-        </figure>
-
         <div className="p-5 sm:p-7">
           <h3
             className="text-2xl sm:text-3xl font-extrabold tracking-tight leading-tight"
@@ -247,8 +169,38 @@ export function StreetFood() {
             {t(copy.featureSubtitle, lang)}
           </p>
 
-          <p className="mt-4 text-[14.5px] leading-relaxed text-foreground/85">{t(copy.featureBody1, lang)}</p>
-          <p className="mt-3 text-[14.5px] leading-relaxed text-foreground/85">{t(copy.featureBody2, lang)}</p>
+          <div className="mt-5 md:flex md:items-start md:gap-6">
+            <figure className="m-0 md:w-[42%] md:shrink-0">
+              <div
+                className="overflow-hidden rounded-2xl border"
+                style={{ borderColor: "color-mix(in oklab, var(--secondary) 30%, var(--border))" }}
+              >
+                <img
+                  src={fritesOmelette}
+                  alt={
+                    isAr
+                      ? "رسم توضيحي لساندويتش خبز باغيت محشو بالبطاطا المقلية والعجة"
+                      : lang === "fr"
+                        ? "Illustration d'une baguette garnie de frites et d'omelette"
+                        : "Illustration of a baguette filled with fries and folded omelette"
+                  }
+                  loading="lazy"
+                  width={1280}
+                  height={960}
+                  className="w-full h-[220px] sm:h-[260px] md:h-auto object-cover md:object-contain"
+                />
+              </div>
+              <figcaption className="mt-2 text-[10.5px] leading-relaxed text-muted-foreground/90 italic">
+                {t(copy.illustrationCaption, lang)}
+              </figcaption>
+            </figure>
+
+            <div className="mt-5 md:mt-0 md:flex-1">
+              <p className="text-[14.5px] leading-relaxed text-foreground/85">{t(copy.featureBody1, lang)}</p>
+              <p className="mt-3 text-[14.5px] leading-relaxed text-foreground/85">{t(copy.featureBody2, lang)}</p>
+            </div>
+          </div>
+
 
           {/* Anecdote */}
           <div
