@@ -7,7 +7,7 @@
  */
 
 import { t, useLang, type LocalizedString } from "@/lib/i18n";
-import fritesOmelette from "@/assets/frites-omelette.jpg";
+import fritesOmelette from "@/assets/algerian-frites-omelette-sandwich.webp";
 
 const L = (en: string, fr: string, ar: string): LocalizedString => ({ en, fr, ar });
 
@@ -71,9 +71,15 @@ const copy = {
     "لا يوجد مخترع موثق أو مطعم أول أو تاريخ دقيق ثابت لظهور ساندويتش فريت أومليت الجزائري. وتشير المصادر المتاحة إلى انتشار حديث، إذ تربط بعض الروايات اتساع استهلاكه بتطور الإنتاج الصناعي للبيض في بداية سنوات 2000. ويجب تقديم ذلك بوصفه إعادة بناء تاريخية، لا قصة أصل محسومة.",
   ),
   illustrationCaption: L(
-    "Interpretive illustration created for this exhibit.",
-    "Illustration interprétative créée pour cette exposition.",
-    "رسم توضيحي أُنجز لهذا المعرض.",
+    "A contemporary variation of the Algerian frites-omelette sandwich.",
+    "Une variation contemporaine du sandwich frites-omelette algérien.",
+    "نسخة معاصرة من ساندويتش فريت أومليت الجزائري.",
+  ),
+  photoCredit: L("Photo: Dalila Fridi", "Photo : Dalila Fridi", "الصورة: دليلة فريدي"),
+  photoAlt: L(
+    "Algerian baguette sandwich filled with fries, omelette, herbs and additional filling.",
+    "Sandwich algérien en baguette garni de frites, d'omelette, d'herbes et d'une garniture supplémentaire.",
+    "ساندويتش جزائري بخبز الباغيت محشو بالبطاطا المقلية والعجة والأعشاب وحشوة إضافية.",
   ),
   supportingTitle: L(
     "Other counters, other regions",
@@ -171,28 +177,26 @@ export function StreetFood() {
           </p>
 
           <div className="mt-5 md:flex md:items-start md:gap-6">
-            <figure className="m-0 md:w-[42%] md:shrink-0">
+            <figure className="m-0 md:w-[42%] md:shrink-0 md:max-w-[553px]">
               <div
                 className="overflow-hidden rounded-2xl border"
-                style={{ borderColor: "color-mix(in oklab, var(--secondary) 30%, var(--border))" }}
+                style={{
+                  borderColor: "color-mix(in oklab, var(--secondary) 30%, var(--border))",
+                  boxShadow: "var(--shadow-soft)",
+                }}
               >
                 <img
                   src={fritesOmelette}
-                  alt={
-                    isAr
-                      ? "رسم توضيحي لساندويتش خبز باغيت محشو بالبطاطا المقلية والعجة"
-                      : lang === "fr"
-                        ? "Illustration d'une baguette garnie de frites et d'omelette"
-                        : "Illustration of a baguette filled with fries and folded omelette"
-                  }
+                  alt={t(copy.photoAlt, lang)}
                   loading="lazy"
-                  width={1280}
-                  height={960}
-                  className="w-full h-[220px] sm:h-[260px] md:h-auto object-cover md:object-contain"
+                  width={553}
+                  height={414}
+                  className="w-full max-h-[260px] object-contain object-center"
                 />
               </div>
               <figcaption className="mt-2 text-[10.5px] leading-relaxed text-muted-foreground/90 italic">
-                {t(copy.illustrationCaption, lang)}
+                {t(copy.illustrationCaption, lang)}{" "}
+                <span className="not-italic">{t(copy.photoCredit, lang)}</span>
               </figcaption>
             </figure>
 

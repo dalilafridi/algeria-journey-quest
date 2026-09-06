@@ -69,6 +69,18 @@ export const MEDIA_REGISTRY: MediaRecord[] = [
   { path: "src/assets/mzab-hero.jpg", mediaType: "interpretive-illustration", use: "public" },
   { path: "src/assets/football-hero-vitrine.jpg", mediaType: "interpretive-illustration", use: "public" },
   { path: "src/assets/cuisine-hero.jpg", mediaType: "interpretive-illustration", use: "public" },
+  {
+    path: "src/assets/algerian-frites-omelette-sandwich.webp",
+    mediaType: "documentary-media",
+    use: "public",
+    note: "Contemporary photograph of an Algerian frites-omelette sandwich shown on /cuisine#street-food. Supplied by the project owner, Dalila Fridi. Displayed credit: 'Photo: Dalila Fridi'. Rights status: ownership asserted by the project owner but not yet documented in writing; confirm authorship and license before publication. Optimized WebP, 553x414. Full-quality original retained at src/assets/algerian-frites-omelette-sandwich-original.jpg.",
+  },
+  {
+    path: "src/assets/algerian-frites-omelette-sandwich-original.jpg",
+    mediaType: "documentary-media",
+    use: "dormant",
+    note: "Unmodified original of the frites-omelette photograph. Retained for archival quality, referenced by no route.",
+  },
   { path: "src/assets/algeria-map.png", mediaType: "interpretive-illustration", use: "public" },
 
   /* ---------------- Football hall ---------------- */
