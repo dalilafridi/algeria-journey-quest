@@ -7,7 +7,7 @@
  */
 
 import { t, useLang, type LocalizedString } from "@/lib/i18n";
-import fritesOmelette from "@/assets/frites-omelette.jpg";
+import fritesOmelette from "@/assets/algerian-frites-omelette-sandwich.webp";
 
 const L = (en: string, fr: string, ar: string): LocalizedString => ({ en, fr, ar });
 
