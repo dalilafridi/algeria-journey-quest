@@ -11,6 +11,7 @@ import { JourneyNext } from "@/components/JourneyNext";
 import { ContinueExploring } from "@/components/curator/ContinueExploring";
 import { ExhibitProvenance } from "@/components/provenance/ExhibitProvenance";
 import { StreetFood } from "@/components/cuisine/StreetFood";
+import { RegionMotif } from "@/components/cuisine/RegionMotif";
 import { getCuisineExploreGroups } from "@/lib/exploreGroups";
 import cuisineHero from "@/assets/cuisine-hero.jpg";
 import { pageMeta, headLang } from "@/lib/seo";
@@ -211,7 +212,7 @@ function CuisinePage() {
             </p>
           </header>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
             {cuisineRegions.map((r) => {
               const isActive = activeRegion === r.id;
               return (
@@ -229,7 +230,7 @@ function CuisinePage() {
                       });
                     }
                   }}
-                  className="group text-left rounded-2xl border bg-card p-4 transition-all hover:-translate-y-0.5 hover:shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                  className="group h-full text-start rounded-2xl border bg-card p-4 transition-all hover:-translate-y-0.5 hover:shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
                   style={{
                     borderColor: isActive
                       ? "color-mix(in oklab, var(--secondary) 55%, var(--border))"
@@ -240,20 +241,20 @@ function CuisinePage() {
                     boxShadow: isActive ? "var(--shadow-soft)" : undefined,
                   }}
                   aria-pressed={isActive}
+                  aria-label={`${t(r.name, lang)} · ${t(cuisineCopy.regionsHint, lang)}`}
                 >
-                  <div className="text-2xl mb-1.5" aria-hidden>
-                    {r.icon}
-                  </div>
+                  <RegionMotif regionId={r.id} className="w-9 h-9 mb-2" />
                   <div className="font-bold text-sm sm:text-base text-foreground">
                     {t(r.name, lang)}
                   </div>
-                  <div className="text-[12px] sm:text-xs text-muted-foreground leading-snug mt-1 line-clamp-2">
+                  <div className="text-[12px] sm:text-xs text-muted-foreground leading-relaxed mt-1">
                     {t(r.tagline, lang)}
                   </div>
                 </button>
               );
             })}
           </div>
+
         </section>
 
         {/* DISH CARDS */}
@@ -261,8 +262,8 @@ function CuisinePage() {
           {region && (
             <div className="animate-fade-in">
               <header className="mb-4 flex items-baseline justify-between gap-3">
-                <h2 className="text-lg sm:text-xl font-extrabold tracking-tight">
-                  <span className="me-2" aria-hidden>{region.icon}</span>
+                <h2 className="text-lg sm:text-xl font-extrabold tracking-tight flex items-center gap-2">
+                  <RegionMotif regionId={region.id} className="w-7 h-7 shrink-0" />
                   {t(region.name, lang)}
                 </h2>
                 <div className="flex items-center gap-3">
@@ -375,17 +376,18 @@ function CuisinePage() {
         <StreetFood />
 
         {/* SWEET TRADITIONS */}
-        <section>
+        <section id="sweets" className="scroll-mt-24">
           <header className="mb-4">
             <h2 className="text-xl sm:text-2xl font-extrabold tracking-tight">
               {t(cuisineCopy.sweetsTitle, lang)}
             </h2>
-            <p className="text-sm text-muted-foreground mt-1">
+            <p className="text-sm text-muted-foreground mt-1 max-w-[62ch]">
               {t(cuisineCopy.sweetsHint, lang)}
             </p>
           </header>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 items-start">
+
             {cuisineSweets.map((s) => {
               const isOpen = openSweet === s.id;
               return (

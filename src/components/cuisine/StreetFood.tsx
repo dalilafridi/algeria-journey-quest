@@ -77,7 +77,7 @@ const copy = {
   ),
   photoCredit: L("Photo: Dalila Fridi", "Photo : Dalila Fridi", "الصورة: دليلة فريدي"),
   photoAlt: L(
-    "Algerian baguette sandwich filled with fries, omelette, herbs and additional filling.",
+    "Algerian baguette sandwich filled with fries, omelette, herbs and additional garnish.",
     "Sandwich algérien en baguette garni de frites, d'omelette, d'herbes et d'une garniture supplémentaire.",
     "ساندويتش جزائري بخبز الباغيت محشو بالبطاطا المقلية والعجة والأعشاب وحشوة إضافية.",
   ),
@@ -148,7 +148,7 @@ export function StreetFood() {
           {t(copy.eyebrow, lang)}
         </p>
         <h2 className="mt-2 text-xl sm:text-2xl font-extrabold tracking-tight">{t(copy.heading, lang)}</h2>
-        <p className="mt-3 text-[14.5px] leading-relaxed text-muted-foreground">{t(copy.intro, lang)}</p>
+        <p className="mt-3 text-[14.5px] leading-[1.75] text-muted-foreground max-w-[65ch]">{t(copy.intro, lang)}</p>
       </header>
 
       {/* FEATURED: frites-omelette */}
@@ -191,7 +191,7 @@ export function StreetFood() {
                   loading="lazy"
                   width={553}
                   height={414}
-                  className="w-full max-h-[260px] object-contain object-center"
+                  className="w-full h-auto max-h-[240px] md:max-h-[300px] object-contain object-center"
                 />
               </div>
               <figcaption className="mt-2 text-[10.5px] leading-relaxed text-muted-foreground/90 italic">
@@ -201,8 +201,8 @@ export function StreetFood() {
             </figure>
 
             <div className="mt-5 md:mt-0 md:flex-1">
-              <p className="text-[14.5px] leading-relaxed text-foreground/85">{t(copy.featureBody1, lang)}</p>
-              <p className="mt-3 text-[14.5px] leading-relaxed text-foreground/85">{t(copy.featureBody2, lang)}</p>
+              <p className="text-[14.5px] leading-[1.75] text-foreground/85">{t(copy.featureBody1, lang)}</p>
+              <p className="mt-3 text-[14.5px] leading-[1.75] text-foreground/85">{t(copy.featureBody2, lang)}</p>
             </div>
           </div>
 
@@ -237,13 +237,13 @@ export function StreetFood() {
                 t(copy.gargoteTitle, lang)
               )}
             </h4>
-            <p className="mt-2 text-[14.5px] leading-relaxed text-foreground/85">{t(copy.gargote, lang)}</p>
+            <p className="mt-2 text-[14.5px] leading-[1.75] text-foreground/85">{t(copy.gargote, lang)}</p>
           </div>
 
           {/* Memory */}
           <div className="mt-6">
             <h4 className="text-base font-bold tracking-tight">{t(copy.memoryTitle, lang)}</h4>
-            <p className="mt-2 text-[14.5px] leading-relaxed text-foreground/85">{t(copy.memory, lang)}</p>
+            <p className="mt-2 text-[14.5px] leading-[1.75] text-foreground/85">{t(copy.memory, lang)}</p>
           </div>
 
           <blockquote

@@ -432,8 +432,8 @@ export type CuisineSweet = {
 
 export const cuisineSweets: CuisineSweet[] = [
   {
-    id: "makroud",
-    name: L("Makroud", "Makroud", "المقروط"),
+    id: "makrout",
+    name: L("Makrout", "Makrout", "المقروط"),
     description: L(
       "Diamond-shaped semolina cakes filled with date paste, fried gold and dipped in honey.",
       "Losanges de semoule fourrés à la pâte de dattes, frits dorés et trempés au miel.",
