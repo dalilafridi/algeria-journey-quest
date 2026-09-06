@@ -177,28 +177,26 @@ export function StreetFood() {
           </p>
 
           <div className="mt-5 md:flex md:items-start md:gap-6">
-            <figure className="m-0 md:w-[42%] md:shrink-0">
+            <figure className="m-0 md:w-[42%] md:shrink-0 md:max-w-[553px]">
               <div
                 className="overflow-hidden rounded-2xl border"
-                style={{ borderColor: "color-mix(in oklab, var(--secondary) 30%, var(--border))" }}
+                style={{
+                  borderColor: "color-mix(in oklab, var(--secondary) 30%, var(--border))",
+                  boxShadow: "var(--shadow-soft)",
+                }}
               >
                 <img
                   src={fritesOmelette}
-                  alt={
-                    isAr
-                      ? "رسم توضيحي لساندويتش خبز باغيت محشو بالبطاطا المقلية والعجة"
-                      : lang === "fr"
-                        ? "Illustration d'une baguette garnie de frites et d'omelette"
-                        : "Illustration of a baguette filled with fries and folded omelette"
-                  }
+                  alt={t(copy.photoAlt, lang)}
                   loading="lazy"
-                  width={1280}
-                  height={960}
-                  className="w-full h-[220px] sm:h-[260px] md:h-auto object-cover md:object-contain"
+                  width={553}
+                  height={414}
+                  className="w-full max-h-[260px] object-contain object-center"
                 />
               </div>
               <figcaption className="mt-2 text-[10.5px] leading-relaxed text-muted-foreground/90 italic">
-                {t(copy.illustrationCaption, lang)}
+                {t(copy.illustrationCaption, lang)}{" "}
+                <span className="not-italic">{t(copy.photoCredit, lang)}</span>
               </figcaption>
             </figure>
 
