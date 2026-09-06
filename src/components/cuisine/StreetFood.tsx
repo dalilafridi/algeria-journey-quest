@@ -71,9 +71,15 @@ const copy = {
     "لا يوجد مخترع موثق أو مطعم أول أو تاريخ دقيق ثابت لظهور ساندويتش فريت أومليت الجزائري. وتشير المصادر المتاحة إلى انتشار حديث، إذ تربط بعض الروايات اتساع استهلاكه بتطور الإنتاج الصناعي للبيض في بداية سنوات 2000. ويجب تقديم ذلك بوصفه إعادة بناء تاريخية، لا قصة أصل محسومة.",
   ),
   illustrationCaption: L(
-    "Interpretive illustration created for this exhibit.",
-    "Illustration interprétative créée pour cette exposition.",
-    "رسم توضيحي أُنجز لهذا المعرض.",
+    "A contemporary variation of the Algerian frites-omelette sandwich.",
+    "Une variation contemporaine du sandwich frites-omelette algérien.",
+    "نسخة معاصرة من ساندويتش فريت أومليت الجزائري.",
+  ),
+  photoCredit: L("Photo: Dalila Fridi", "Photo : Dalila Fridi", "الصورة: دليلة فريدي"),
+  photoAlt: L(
+    "Algerian baguette sandwich filled with fries, omelette, herbs and additional filling.",
+    "Sandwich algérien en baguette garni de frites, d'omelette, d'herbes et d'une garniture supplémentaire.",
+    "ساندويتش جزائري بخبز الباغيت محشو بالبطاطا المقلية والعجة والأعشاب وحشوة إضافية.",
   ),
   supportingTitle: L(
     "Other counters, other regions",
