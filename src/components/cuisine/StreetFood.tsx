@@ -70,9 +70,9 @@ const copy = {
     "لا يوجد مخترع موثق أو مطعم أول أو تاريخ دقيق ثابت لظهور ساندويتش فريت أومليت الجزائري. وتشير المصادر المتاحة إلى انتشار حديث، إذ تربط بعض الروايات اتساع استهلاكه بتطور الإنتاج الصناعي للبيض في بداية سنوات 2000. ويجب تقديم ذلك بوصفه إعادة بناء تاريخية، لا قصة أصل محسومة.",
   ),
   illustrationCaption: L(
-    "Interpretive illustration: a baguette wrapped in paper, drawn for this exhibit.",
-    "Illustration interprétative : une baguette enveloppée de papier, dessinée pour cette exposition.",
-    "رسم تفسيري: خبز باغيت ملفوف بالورق، أُنجز خصيصا لهذا المعرض.",
+    "Interpretive illustration created for this exhibit.",
+    "Illustration interprétative créée pour cette exposition.",
+    "رسم توضيحي أُنجز لهذا المعرض.",
   ),
   supportingTitle: L(
     "Other counters, other regions",
