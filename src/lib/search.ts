@@ -30,7 +30,7 @@ import { figures } from "@/data/figures";
 import { mapRegions } from "@/data/mapRegions";
 import { words, WORD_CATEGORIES } from "@/data/words";
 import { lessons } from "@/data/lessons";
-import { cuisineRegions } from "@/data/cuisine";
+import { cuisineRegions, cuisineSweets } from "@/data/cuisine";
 import { featuredFilms } from "@/data/cinema";
 import { IDEAS } from "@/data/ideas";
 import { CULTURE_TOPICS } from "@/data/cultureTopics";
@@ -476,6 +476,33 @@ export function getSearchIndex(): SearchItem[] {
         ) as LocalizedString[],
       });
     }
+  }
+  // Sweets. Alternative Latin spellings stay invisible search aliases only.
+  const SWEET_ALIASES: Record<string, string> = {
+    makrout: "makrout maqroud makroud maqroudh makroudh مقروط المقروط",
+    baklawa: "baklawa baklava بقلاوة",
+    "kalb-el-louz": "kalb el louz qalb ellouz قلب اللوز",
+    zlabia: "zlabia zlabya زلابية",
+    ghribia: "ghribia ghribiya غريبة",
+    tcharek: "tcharek tcharak charek تشاراك",
+  };
+  for (const s of cuisineSweets) {
+    const alias = SWEET_ALIASES[s.id] ?? "";
+    push(out, {
+      id: `sweet:${s.id}`,
+      kind: "dish",
+      emoji: s.emoji || "🍯",
+      title: s.name,
+      snippet: s.description,
+      context: { en: "Sweet traditions", fr: "Traditions sucrées", ar: "تقاليد الحلويات" },
+      href: "/cuisine#sweets",
+      haystack: [
+        s.name,
+        s.description,
+        ...(s.whenEaten ? [s.whenEaten] : []),
+        { en: alias, fr: alias, ar: alias },
+      ] as LocalizedString[],
+    });
   }
 
   // Cinema hub + films ------------------------------------------------
