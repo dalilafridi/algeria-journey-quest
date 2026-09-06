@@ -2,11 +2,12 @@
  * Street food section for the Cuisine exhibit.
  *
  * Cultural-memory story built around the frites-omelette sandwich, with three
- * smaller supporting street-food cards. Artwork is a code-native interpretive
- * illustration (no photographs, no cartoons).
+ * smaller supporting street-food cards. Artwork is an original interpretive
+ * illustration created for this exhibit (no photographs, no cartoons).
  */
 
 import { t, useLang, type LocalizedString } from "@/lib/i18n";
+import fritesOmelette from "@/assets/frites-omelette.jpg";
 
 const L = (en: string, fr: string, ar: string): LocalizedString => ({ en, fr, ar });
 
