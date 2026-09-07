@@ -94,9 +94,18 @@ export interface MediaAttribution {
     | "fair-use"
     | "editorial"
     | "unknown";
+  /** Exact licence name as published by the rights holder, e.g. "CC BY-SA 4.0". */
+  licenseLabel?: string;
+  /** Canonical link to the licence deed. */
+  licenseUrl?: string;
+  /** Direct link to the file page in the repository it came from. */
+  fileUrl?: string;
+  /** What was changed: crop, resize, colour correction, or nothing. */
+  modification?: LocalizedString;
   /** Reference to a source id in the registry. */
   sourceId?: string;
 }
+
 
 /** Optional curator note attached to an exhibit's provenance. */
 export interface CuratorNote {

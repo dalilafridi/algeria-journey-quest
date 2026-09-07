@@ -10,12 +10,46 @@ import { saveJourneyPlace } from "@/lib/continuity";
 import { JourneyNext } from "@/components/JourneyNext";
 import { ContinueExploring } from "@/components/curator/ContinueExploring";
 import { ExhibitProvenance } from "@/components/provenance/ExhibitProvenance";
+import { getExhibitProvenance } from "@/data/provenance/registry";
+import type { ExhibitProvenanceRecord } from "@/lib/provenance";
+import { CUISINE_SWEET_PHOTOS, sweetPhoto } from "@/data/cuisineSweetPhotos";
 import { StreetFood } from "@/components/cuisine/StreetFood";
 import { RegionMotif } from "@/components/cuisine/RegionMotif";
 import { getCuisineExploreGroups } from "@/lib/exploreGroups";
 import cuisineHero from "@/assets/cuisine-hero.jpg";
 import { pageMeta, headLang } from "@/lib/seo";
 import { PAGE_META } from "@/lib/pageMetaCopy";
+
+/**
+ * Cuisine provenance, extended with a photograph credit for every dessert card.
+ * The named creator is credited; Wikimedia Commons is named as the repository.
+ */
+const base = getExhibitProvenance("cuisine");
+const cuisineProvenance: ExhibitProvenanceRecord | undefined = base
+  ? {
+      ...base,
+      media: [
+        ...(base.media ?? []),
+        ...CUISINE_SWEET_PHOTOS.map((p) => {
+          const sweet = cuisineSweets.find((s) => s.id === p.id);
+          return {
+            caption: sweet?.name,
+            photographer: { en: p.creator, fr: p.creator, ar: p.creator },
+            collection: {
+              en: "Wikimedia Commons",
+              fr: "Wikimedia Commons",
+              ar: "Wikimedia Commons",
+            },
+            licenseLabel: p.license,
+            licenseUrl: p.licenseUrl,
+            fileUrl: p.filePage,
+            modification: p.modification,
+          };
+        }),
+      ],
+    }
+  : undefined;
+
 
 export const Route = createFileRoute("/cuisine")({
   head: ({ match }) =>
@@ -390,6 +424,7 @@ function CuisinePage() {
 
             {cuisineSweets.map((s) => {
               const isOpen = openSweet === s.id;
+              const photo = sweetPhoto(s.id);
               return (
                 <button
                   key={s.id}
@@ -399,31 +434,47 @@ function CuisinePage() {
                   style={{ boxShadow: "var(--shadow-soft)" }}
                   aria-expanded={isOpen}
                 >
-                  <div
-                    className="relative w-full h-[130px] overflow-hidden rounded-t-2xl"
-                    style={{
-                      background:
-                        "linear-gradient(135deg, color-mix(in oklab, " +
-                        s.hue +
-                        " 26%, #f5ead8) 0%, color-mix(in oklab, " +
-                        s.hue +
-                        " 6%, #ece0c9) 100%)",
-                    }}
-                    aria-hidden
-                  >
+                  {photo ? (
+                    <figure className="m-0 relative w-full aspect-[4/3] overflow-hidden rounded-t-2xl bg-muted">
+                      <img
+                        src={photo.src}
+                        srcSet={`${photo.srcSmall} 600w, ${photo.src} 1200w`}
+                        sizes="(min-width: 1024px) 360px, (min-width: 640px) 45vw, 92vw"
+                        width={photo.width}
+                        height={photo.height}
+                        alt={t(photo.alt, lang)}
+                        loading="lazy"
+                        decoding="async"
+                        className="h-full w-full object-cover"
+                        style={{ objectPosition: photo.objectPosition }}
+                      />
+                    </figure>
+                  ) : (
                     <div
-                      className="absolute inset-0 opacity-[0.18]"
+                      className="relative w-full aspect-[4/3] overflow-hidden rounded-t-2xl"
                       style={{
-                        backgroundImage:
-                          "radial-gradient(circle at 35% 40%, color-mix(in oklab, " +
+                        background:
+                          "linear-gradient(135deg, color-mix(in oklab, " +
                           s.hue +
-                          " 50%, transparent) 0%, transparent 55%), radial-gradient(circle at 75% 70%, color-mix(in oklab, var(--secondary) 40%, transparent) 0%, transparent 50%)",
+                          " 26%, #f5ead8) 0%, color-mix(in oklab, " +
+                          s.hue +
+                          " 6%, #ece0c9) 100%)",
                       }}
+                      aria-hidden
                     />
-                  </div>
+                  )}
                   <div className="p-4">
-                    <div className="font-bold text-sm sm:text-base text-foreground leading-tight">
-                      {t(s.name, lang)}
+                    <div className="flex items-start gap-2">
+                      <div className="font-bold text-sm sm:text-base text-foreground leading-tight flex-1">
+                        {t(s.name, lang)}
+                      </div>
+                      <span
+                        aria-hidden
+                        className="mt-0.5 shrink-0 text-[11px] text-muted-foreground transition-transform duration-300"
+                        style={{ transform: isOpen ? "rotate(180deg)" : undefined }}
+                      >
+                        ▾
+                      </span>
                     </div>
                     <p className="text-[12.5px] sm:text-[13px] text-muted-foreground leading-relaxed mt-1.5">
                       {t(s.description, lang)}
@@ -444,7 +495,8 @@ function CuisinePage() {
         <div className="mt-12">
           <ContinueExploring groups={getCuisineExploreGroups()} />
         </div>
-        <ExhibitProvenance exhibitId="cuisine" />
+        <ExhibitProvenance exhibitId="cuisine" record={cuisineProvenance} />
+
       </main>
     </div>
   );
