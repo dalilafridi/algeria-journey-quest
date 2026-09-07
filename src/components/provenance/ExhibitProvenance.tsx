@@ -257,14 +257,58 @@ export function ExhibitProvenance({
                         <div className="font-semibold text-foreground">{t(m.caption, lang)}</div>
                       )}
                       <div className="text-muted-foreground">
-                        {[
-                          m.photographer && t(m.photographer, lang),
-                          m.collection && t(m.collection, lang),
-                          m.license && t(LICENSE_LABEL[m.license], lang),
-                        ]
-                          .filter(Boolean)
-                          .join(" · ")}
+                        {m.photographer && (
+                          <span dir="ltr" className="inline-block align-middle">
+                            {t(m.photographer, lang)}
+                          </span>
+                        )}
+                        {m.collection && (
+                          <>
+                            <span aria-hidden> · </span>
+                            {m.fileUrl ? (
+                              <a
+                                href={m.fileUrl}
+                                target="_blank"
+                                rel="noreferrer noopener"
+                                dir="ltr"
+                                className="inline-block align-middle hover:underline decoration-dotted underline-offset-2"
+                              >
+                                {t(m.collection, lang)}
+                              </a>
+                            ) : (
+                              <span dir="ltr" className="inline-block align-middle">
+                                {t(m.collection, lang)}
+                              </span>
+                            )}
+                          </>
+                        )}
+                        {(m.licenseLabel || m.license) && (
+                          <>
+                            <span aria-hidden> · </span>
+                            {m.licenseUrl ? (
+                              <a
+                                href={m.licenseUrl}
+                                target="_blank"
+                                rel="noreferrer noopener"
+                                dir="ltr"
+                                className="inline-block align-middle hover:underline decoration-dotted underline-offset-2"
+                              >
+                                {m.licenseLabel ?? (m.license && t(LICENSE_LABEL[m.license], lang))}
+                              </a>
+                            ) : (
+                              <span dir="ltr" className="inline-block align-middle">
+                                {m.licenseLabel ?? (m.license && t(LICENSE_LABEL[m.license], lang))}
+                              </span>
+                            )}
+                          </>
+                        )}
                       </div>
+                      {m.modification && (
+                        <div className="text-[11.5px] text-muted-foreground/90 italic mt-0.5">
+                          {t(m.modification, lang)}
+                        </div>
+                      )}
+
                     </li>
                   ))}
                 </ul>

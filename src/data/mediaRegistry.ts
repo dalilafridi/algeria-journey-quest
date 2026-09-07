@@ -83,6 +83,57 @@ export const MEDIA_REGISTRY: MediaRecord[] = [
   },
   { path: "src/assets/algeria-map.png", mediaType: "interpretive-illustration", use: "public" },
 
+  /* ---------------- Sweet Traditions photographs (Wikimedia Commons) ---------------- */
+  {
+    path: "src/assets/cuisine/makrout-1200.webp",
+    mediaType: "documentary-media",
+    use: "public",
+    note: "Makrout. Creator: Waran18. Repository: Wikimedia Commons, https://commons.wikimedia.org/wiki/File:Makroud_alg%C3%A9rie.jpg. Licence: CC BY-SA 3.0 (https://creativecommons.org/licenses/by-sa/3.0/). Cropped to 4:3 and resized, no colour correction. Source is 640x480, so the local copy is not full 1200px native detail. Also stored at 600px; original retained at makrout-original.jpg.",
+  },
+  {
+    path: "src/assets/cuisine/baklawa-1200.webp",
+    mediaType: "documentary-media",
+    use: "public",
+    note: "Algerian Baklawa. Creator: Wicanto. Repository: Wikimedia Commons, https://commons.wikimedia.org/wiki/File:Baklawa_alg%C3%A9rienne.jpg. Licence: CC BY-SA 4.0. Cropped to 4:3 and resized, no colour correction.",
+  },
+  {
+    path: "src/assets/cuisine/kalb-el-louz-1200.webp",
+    mediaType: "documentary-media",
+    use: "public",
+    note: "Kalb el Louz. Creator: Adonit. Repository: Wikimedia Commons, https://commons.wikimedia.org/wiki/File:Kalb-el-louz.jpg. Licence: Copyrighted free use, confirmed on the current Commons file page. Cropped to 4:3 and resized, no colour correction. Source is 1000x576, so the card copy is mildly upscaled; a user-owned photograph would be preferable long term.",
+  },
+  {
+    path: "src/assets/cuisine/zlabia-1200.webp",
+    mediaType: "documentary-media",
+    use: "public",
+    note: "Zlabia. Creator: فيروز روزي. Repository: Wikimedia Commons, https://commons.wikimedia.org/wiki/File:Zlabia_alg%C3%A9rienne.jpg. Licence: CC BY-SA 4.0. Cropped to 4:3 and resized, no colour correction.",
+  },
+  {
+    path: "src/assets/cuisine/ghribia-1200.webp",
+    mediaType: "documentary-media",
+    use: "public",
+    note: "Ghribia. Creator: وهراني. Repository: Wikimedia Commons, https://commons.wikimedia.org/wiki/File:Ghribia_(algerian_cookie).jpg. Licence: CC BY-SA 4.0. Cropped to 4:3 and resized, no colour correction.",
+  },
+  {
+    path: "src/assets/cuisine/tcharek-1200.webp",
+    mediaType: "documentary-media",
+    use: "public",
+    note: "Tcharek el Ariane. Creator: Terrum3. Repository: Wikimedia Commons, https://commons.wikimedia.org/wiki/File:Tcharek_el_ariane_(algerian_pastry).jpg. Licence: CC BY-SA 4.0. Cropped to 4:3 and resized, no colour correction.",
+  },
+  {
+    path: "src/assets/cuisine/*-600.webp",
+    mediaType: "documentary-media",
+    use: "public",
+    note: "Small responsive variants of the six Sweet Traditions photographs. Same creators, repository and licences as the 1200px copies listed above.",
+  },
+  {
+    path: "src/assets/cuisine/*-original.jpg",
+    mediaType: "documentary-media",
+    use: "dormant",
+    note: "Unmodified Wikimedia Commons originals of the six Sweet Traditions photographs, retained for archival quality and referenced by no route.",
+  },
+
+
   /* ---------------- Football hall ---------------- */
   {
     path: "src/assets/fln-team-illustration.png",
