@@ -33,6 +33,14 @@ export type FigureExtras = {
   portrait?: FigureImage;
   /** Small gallery of rights-cleared works (maximum three). */
   gallery?: { heading: LocalizedString; items: FigureImage[] };
+  /** Identity plaque: one-line description plus birth and work locations. */
+  identity?: {
+    line: LocalizedString;
+    birthplace: LocalizedString;
+    birthplaceLabel: LocalizedString;
+    workLocation: LocalizedString;
+    workLocationLabel: LocalizedString;
+  };
   /** Short "Did you know?" blurb. */
   didYouKnow?: LocalizedString;
   /** Key works, songs, books, monuments, places linked to the figure. */
