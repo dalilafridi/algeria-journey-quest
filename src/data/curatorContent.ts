@@ -52,6 +52,13 @@ const museum = (label: LocalizedString, by?: LocalizedString): CuratorSource => 
 // ---------------------------------------------------------------------------
 
 const figures: Record<string, CuratorEntry> = {
+  "zaida-ben-yusuf": {
+    note: L(
+      "Zaida Ben-Yusuf's Algerian connection came through her father. She was born in Britain and developed her career primarily in the United States. Her inclusion reflects Algerian descent and transnational cultural history, not Algerian nationality or professional activity in Algeria.",
+      "Le lien algérien de Zaida Ben-Yusuf passe par son père. Elle est née en Grande-Bretagne et a mené sa carrière principalement aux États-Unis. Sa présence ici traduit une ascendance algérienne et une histoire culturelle transnationale, et non une nationalité algérienne ou une activité professionnelle en Algérie.",
+      "جاءت صلة زايدة بن يوسف بالجزائر من جهة والدها. وقد وُلدت في بريطانيا وبنت مسيرتها أساسًا في الولايات المتحدة. وإدراجها هنا يعبّر عن أصول جزائرية وعن تاريخ ثقافي عابر للحدود، لا عن جنسية جزائرية أو نشاط مهني في الجزائر.",
+    ),
+  },
   "azouaou-mammeri": {
     note: L(
       "Azouaou Mammeri is easy to misfile. He is not Mouloud Mammeri, and he is not the later painter Azwaw Mammeri. He belonged to the same extended family as Mouloud, and the exact degree of kinship is not documented here. What is documented is a painter from Taourirt Mimoun who taught, painted and administered art institutions across Algeria and Morocco, inside a colonial system that shaped what he could exhibit and how he was described.",

@@ -25,7 +25,13 @@ export type FigureRegion =
   | "mascara-west"
   | "sahara"
   | "national"
-  | "maghreb-intellectual";
+  | "maghreb-intellectual"
+  /**
+   * Not an Algerian region. Reserved for international figures of Algerian
+   * descent whose life and work unfolded outside Algeria, so they are never
+   * assigned to an Algerian region or map exhibit.
+   */
+  | "international-diaspora";
 
 export type FigureExtended = {
   /** Narrative story mode (children-friendly, emotional, educational). */
@@ -1479,6 +1485,55 @@ export const figures: Figure[] = [
       "Les sources divergent sur son ann\u00e9e de naissance : une notice d'autorit\u00e9 indique 1890, tandis qu'un dossier d'archives fran\u00e7ais indique 1892. Il est mort le 17 septembre 1954 \u00e0 Ath Yenni, en Kabylie.",
       "\u062a\u062e\u062a\u0644\u0641 \u0627\u0644\u0645\u0635\u0627\u062f\u0631 \u062d\u0648\u0644 \u0633\u0646\u0629 \u0645\u064a\u0644\u0627\u062f\u0647: \u0641\u0633\u062c\u0644 \u0627\u0633\u062a\u0646\u0627\u062f\u064a \u064a\u0630\u0643\u0631 1890\u060c \u0641\u064a\u0645\u0627 \u064a\u0630\u0643\u0631 \u0645\u0644\u0641 \u0623\u0631\u0634\u064a\u0641\u064a \u0641\u0631\u0646\u0633\u064a 1892. \u062a\u0648\u0641\u064a \u0641\u064a 17 \u0633\u0628\u062a\u0645\u0628\u0631 1954 \u0628\u0622\u062b \u064a\u0646\u064a \u0641\u064a \u0645\u0646\u0637\u0642\u0629 \u0627\u0644\u0642\u0628\u0627\u0626\u0644.",
     ),
+  },
+  {
+    id: "zaida-ben-yusuf",
+    name: "Zaida Ben-Yusuf",
+    displayName: L("Zaida Ben-Yusuf", "Zaida Ben-Yusuf", "زايدة بن يوسف"),
+    emoji: "📷",
+    category: "intellectuals-culture",
+    region: "international-diaspora",
+    era: L("1869-1933", "1869-1933", "1869-1933"),
+    regionLabel: L(
+      "International figure of Algerian descent",
+      "Figure internationale d'ascendance algérienne",
+      "شخصية دولية من أصول جزائرية",
+    ),
+    story: L(
+      "Zaida Ben-Yusuf was born in London in 1869 to an Algerian father, Mustapha Moussa Ben Youseph Nathan, and a German mother, Anna Kind Ben-Yusuf. She later settled in New York, where she became one of the most prominent women working in artistic portrait photography at the turn of the twentieth century.",
+      "Zaida Ben-Yusuf naît à Londres en 1869 d'un père algérien, Mustapha Moussa Ben Youseph Nathan, et d'une mère allemande, Anna Kind Ben-Yusuf. Elle s'installe ensuite à New York, où elle devient l'une des femmes les plus reconnues de la photographie artistique de portrait au tournant du XXe siècle.",
+      "وُلدت زايدة بن يوسف في لندن سنة 1869 لأب جزائري هو مصطفى موسى بن يوسف ناثان، وأم ألمانية هي آنا كيند بن يوسف. انتقلت لاحقًا إلى نيويورك، حيث أصبحت من أبرز النساء العاملات في فن التصوير الفوتوغرافي للبورتريه في مطلع القرن العشرين.",
+    ),
+    importance: L(
+      "Her carefully composed portraits brought together theatrical staging, psychological presence and a distinctly modern sense of personality. She photographed writers, performers, artists and political figures, exhibited internationally and published articles about photography, fashion and travel.",
+      "Ses portraits soigneusement composés associent mise en scène, présence psychologique et approche résolument moderne de la personnalité. Elle photographie des écrivains, des artistes, des interprètes et des personnalités politiques, expose à l'échelle internationale et publie des articles consacrés à la photographie, à la mode et au voyage.",
+      "جمعت صورها المدروسة بعناية بين التكوين المسرحي والحضور النفسي والنظرة الحديثة إلى شخصية من تقف أو يقف أمام عدستها. صورت كتّابًا وفنانين وممثلين وشخصيات سياسية، وشاركت في معارض دولية، كما كتبت عن التصوير والموضة والسفر.",
+    ),
+    fact: L(
+      "In 1901, The Ladies' Home Journal included her among the foremost women photographers in America. More than a century later, the Smithsonian National Portrait Gallery devoted an exhibition to recovering her place in photographic history.",
+      "En 1901, The Ladies' Home Journal la classe parmi les principales femmes photographes des États-Unis. Plus d'un siècle plus tard, la Smithsonian National Portrait Gallery lui consacre une exposition afin de restituer sa place dans l'histoire de la photographie.",
+      "في سنة 1901، صنفتها مجلة The Ladies' Home Journal ضمن أبرز المصورات في الولايات المتحدة. وبعد أكثر من قرن، خصص لها معرض الصور الوطني التابع لمؤسسة سميثسونيان معرضًا أعاد إبراز مكانتها في تاريخ التصوير.",
+    ),
+    extended: {
+      whatHappened: [
+        L("1869: Born in London.", "1869 : naissance à Londres.", "1869: وُلدت في لندن."),
+        L(
+          "1895: Settled in the United States.",
+          "1895 : installation aux États-Unis.",
+          "1895: استقرّت في الولايات المتحدة.",
+        ),
+        L(
+          "1897: Opened a portrait studio on Fifth Avenue in New York.",
+          "1897 : ouverture d'un studio de portrait sur la Cinquième Avenue à New York.",
+          "1897: افتتحت استوديو للبورتريه في الجادة الخامسة بنيويورك.",
+        ),
+        L(
+          "1901: Recognized among America's foremost women photographers.",
+          "1901 : reconnue parmi les principales femmes photographes des États-Unis.",
+          "1901: صُنّفت ضمن أبرز المصورات في الولايات المتحدة.",
+        ),
+      ],
+    },
   },
   {
     id: "dib",

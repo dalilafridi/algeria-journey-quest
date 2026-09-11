@@ -238,6 +238,43 @@ export const MEDIA_REGISTRY: MediaRecord[] = [
   { path: "src/assets/brand-mark.png", mediaType: "brand-mark", use: "dormant" },
   { path: "src/assets/brand-overview.png", mediaType: "brand-mark", use: "dormant" },
   { path: "src/assets/splash.png", mediaType: "decorative-artwork", use: "dormant" },
+  /* ---------------- Zaida Ben-Yusuf (public domain, Library of Congress) ---------------- */
+  {
+    path: "src/assets/figures/zaida-ben-yusuf-selfportrait-1901-900.webp",
+    mediaType: "documentary-media",
+    use: "public",
+    note: "Self-portrait, 1901, by Zaida Ben-Yusuf. Library of Congress, Prints and Photographs Division, no known restrictions on publication. Public domain. File page: https://commons.wikimedia.org/wiki/File:Zaida_Ben-Yusuf_1901_selfportrait.jpg. Resized and converted to WebP, 900x1800, no crop or colour change. A 450px variant is also stored.",
+  },
+  {
+    path: "src/assets/figures/zaida-ben-yusuf-selfportrait-1901-450.webp",
+    mediaType: "documentary-media",
+    use: "public",
+    note: "Small variant of the 1901 self-portrait. Same rights record as the 900px copy.",
+  },
+  {
+    path: "src/assets/figures/zaida-ben-yusuf-odor-of-pomegranates-1899-800.webp",
+    mediaType: "documentary-media",
+    use: "public",
+    note: "The Odor of Pomegranates, 1899, by Zaida Ben-Yusuf. Library of Congress, catalogue number 98501302, copy record dated 1900. Public domain. File page: https://commons.wikimedia.org/wiki/File:The_odor_of_pomegranates_-_Zaida_Ben_Yusuf._LCCN98501302.jpg. Resized and converted to WebP, 800x1141. A 400px variant is also stored.",
+  },
+  {
+    path: "src/assets/figures/zaida-ben-yusuf-odor-of-pomegranates-1899-400.webp",
+    mediaType: "documentary-media",
+    use: "public",
+    note: "Small variant of The Odor of Pomegranates. Same rights record as the 800px copy.",
+  },
+  {
+    path: "src/assets/figures/zaida-ben-yusuf-william-dean-howells-1900-800.webp",
+    mediaType: "documentary-media",
+    use: "public",
+    note: "Mr. W. D. Howells, about 1900, by Zaida Ben-Yusuf. Library of Congress, catalogue number 2004675087. Public domain. File page: https://commons.wikimedia.org/wiki/File:Mr._W.D._Howells_-_Zaida_Ben_Yusuf._LCCN2004675087.jpg. Resized and converted to WebP, 800x911. A 400px variant is also stored.",
+  },
+  {
+    path: "src/assets/figures/zaida-ben-yusuf-william-dean-howells-1900-400.webp",
+    mediaType: "documentary-media",
+    use: "public",
+    note: "Small variant of the W. D. Howells portrait. Same rights record as the 800px copy.",
+  },
 ];
 
 /** Look a media file up by repository path. */

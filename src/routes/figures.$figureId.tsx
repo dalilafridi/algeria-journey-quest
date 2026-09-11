@@ -268,6 +268,42 @@ function FigureDetail() {
         }
       />
 
+      {extras?.portrait && (
+        <figure className="m-0 flex flex-col items-start gap-3 sm:flex-row sm:items-start">
+          <img
+            src={extras.portrait.src}
+            srcSet={`${extras.portrait.srcSmall} ${Math.round(extras.portrait.width / 2)}w, ${extras.portrait.src} ${extras.portrait.width}w`}
+            sizes="(max-width: 640px) 60vw, 260px"
+            width={extras.portrait.width}
+            height={extras.portrait.height}
+            alt={t(extras.portrait.alt, lang)}
+            loading="lazy"
+            decoding="async"
+            className="w-[60%] max-w-[260px] sm:w-[260px] h-auto rounded-xl border bg-muted"
+            style={{
+              borderColor: "color-mix(in oklab, var(--brand-gold) 32%, var(--border))",
+              boxShadow: "var(--shadow-soft)",
+            }}
+          />
+          <figcaption className="text-sm text-muted-foreground leading-relaxed sm:max-w-[34ch]">
+            {extras.identity && (
+              <span className="mb-2 block text-[15px] text-foreground/90" style={{ fontFamily: SERIF }}>
+                {t(extras.identity.line, lang)}
+              </span>
+            )}
+            <span className="block font-semibold text-foreground">{t(extras.portrait.caption, lang)}</span>
+            <span className="mt-1 block text-xs">{t(extras.portrait.credit, lang)}</span>
+            {extras.identity && (
+              <span className="mt-2 block text-xs">
+                {t(extras.identity.birthplaceLabel, lang)}: {t(extras.identity.birthplace, lang)}
+                {" · "}
+                {t(extras.identity.workLocationLabel, lang)}: {t(extras.identity.workLocation, lang)}
+              </span>
+            )}
+          </figcaption>
+        </figure>
+      )}
+
       {(() => {
         const segs: { id: string; text: string }[] = [
           {
@@ -335,6 +371,38 @@ function FigureDetail() {
           </div>
         </MuseumCatalogCard>
       ))}
+
+      {extras?.gallery && extras.gallery.items.length > 0 && (
+        <MuseumCatalogCard eyebrow={t(extras.gallery.heading, lang)} marker={<span aria-hidden>◈</span>}>
+          <ul className="grid gap-5 sm:grid-cols-2">
+            {extras.gallery.items.map((item, i) => (
+              <li key={i}>
+                <figure className="m-0">
+                  <img
+                    src={item.src}
+                    srcSet={`${item.srcSmall} ${Math.round(item.width / 2)}w, ${item.src} ${item.width}w`}
+                    sizes="(max-width: 640px) 88vw, 320px"
+                    width={item.width}
+                    height={item.height}
+                    alt={t(item.alt, lang)}
+                    loading="lazy"
+                    decoding="async"
+                    className="w-full h-auto rounded-xl border bg-muted"
+                    style={{
+                      borderColor: "color-mix(in oklab, var(--brand-gold) 28%, var(--border))",
+                      boxShadow: "var(--shadow-soft)",
+                    }}
+                  />
+                  <figcaption className="mt-2 text-sm text-muted-foreground leading-relaxed">
+                    <span className="block font-semibold text-foreground">{t(item.caption, lang)}</span>
+                    <span className="mt-0.5 block text-xs">{t(item.credit, lang)}</span>
+                  </figcaption>
+                </figure>
+              </li>
+            ))}
+          </ul>
+        </MuseumCatalogCard>
+      )}
 
       {f.extended?.storyMode && f.extended.storyMode.length > 0 && (
         <StoryFlow

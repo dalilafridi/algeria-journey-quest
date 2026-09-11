@@ -56,6 +56,97 @@ export const EXHIBIT_PROVENANCE: Record<string, ExhibitProvenanceRecord> = {
     confidence: "widely-accepted",
     intro: T.intro,
   }),
+  "figure:zaida-ben-yusuf": R({
+    sourceIds: [
+      "npg-zaida-ben-yusuf",
+      "loc-zaida-ben-yusuf",
+      "goodyear-zaida-ben-yusuf-2008",
+      "commons-zaida-selfportrait-1901",
+    ],
+    furtherReadingIds: ["infinite-women-zaida-ben-yusuf"],
+    confidence: "widely-accepted",
+    intro: T.intro,
+    notes: [
+      {
+        kind: "note",
+        body: {
+          en: "Her Algerian connection came through her father. She was born in Britain and worked mainly in the United States, so she is presented as an international figure of Algerian descent and is not assigned to an Algerian region. No claim is made about religious or ethnic belonging, since no archival or scholarly source establishes one.",
+          fr: "Son lien algérien passe par son père. Née en Grande-Bretagne, elle a travaillé principalement aux États-Unis : elle est donc présentée comme une figure internationale d'ascendance algérienne et n'est rattachée à aucune région algérienne. Aucune appartenance religieuse ou ethnique n'est avancée, faute de source archivistique ou scientifique l'établissant.",
+          ar: "جاءت صلتها بالجزائر من جهة والدها. وُلدت في بريطانيا وعملت أساسًا في الولايات المتحدة، ولذلك تُقدَّم بوصفها شخصية دولية من أصول جزائرية دون نسبتها إلى أي منطقة جزائرية. ولا يُقال شيء عن انتماء ديني أو إثني لعدم وجود مصدر أرشيفي أو علمي يثبته.",
+        },
+      },
+    ],
+    media: [
+      {
+        caption: {
+          en: "Self-portrait, 1901.",
+          fr: "Autoportrait, 1901.",
+          ar: "صورة ذاتية، 1901.",
+        },
+        photographer: { en: "Zaida Ben-Yusuf", fr: "Zaida Ben-Yusuf", ar: "زايدة بن يوسف" },
+        collection: {
+          en: "Library of Congress, Prints and Photographs Division",
+          fr: "Bibliothèque du Congrès, Prints and Photographs Division",
+          ar: "مكتبة الكونغرس، قسم المطبوعات والصور",
+        },
+        license: "public-domain",
+        licenseLabel: "Public domain",
+        fileUrl: "https://commons.wikimedia.org/wiki/File:Zaida_Ben-Yusuf_1901_selfportrait.jpg",
+        modification: {
+          en: "Resized and converted to WebP. No cropping, colouring or filtering.",
+          fr: "Redimensionnée et convertie en WebP. Aucun recadrage, colorisation ni filtre.",
+          ar: "أُعيد تحجيمها وتحويلها إلى WebP. دون قصّ أو تلوين أو مرشحات.",
+        },
+        sourceId: "commons-zaida-selfportrait-1901",
+      },
+      {
+        caption: {
+          en: "The Odor of Pomegranates, 1899.",
+          fr: "The Odor of Pomegranates, 1899.",
+          ar: "«رائحة الرمان»، 1899.",
+        },
+        photographer: { en: "Zaida Ben-Yusuf", fr: "Zaida Ben-Yusuf", ar: "زايدة بن يوسف" },
+        collection: {
+          en: "Library of Congress, catalogue number 98501302",
+          fr: "Bibliothèque du Congrès, notice 98501302",
+          ar: "مكتبة الكونغرس، رقم الفهرسة 98501302",
+        },
+        license: "public-domain",
+        licenseLabel: "Public domain",
+        fileUrl:
+          "https://commons.wikimedia.org/wiki/File:The_odor_of_pomegranates_-_Zaida_Ben_Yusuf._LCCN98501302.jpg",
+        modification: {
+          en: "Resized and converted to WebP. The library copy record carries the date 1900 while the work is usually dated 1899.",
+          fr: "Redimensionnée et convertie en WebP. La notice de la bibliothèque porte la date 1900 alors que l'œuvre est habituellement datée de 1899.",
+          ar: "أُعيد تحجيمها وتحويلها إلى WebP. يحمل سجل المكتبة تاريخ 1900 بينما يُؤرَّخ العمل عادةً بسنة 1899.",
+        },
+        sourceId: "loc-zaida-ben-yusuf",
+      },
+      {
+        caption: {
+          en: "Portrait of the writer William Dean Howells, about 1900.",
+          fr: "Portrait de l'écrivain William Dean Howells, vers 1900.",
+          ar: "بورتريه للكاتب ويليام دين هاولز، نحو 1900.",
+        },
+        photographer: { en: "Zaida Ben-Yusuf", fr: "Zaida Ben-Yusuf", ar: "زايدة بن يوسف" },
+        collection: {
+          en: "Library of Congress, catalogue number 2004675087",
+          fr: "Bibliothèque du Congrès, notice 2004675087",
+          ar: "مكتبة الكونغرس، رقم الفهرسة 2004675087",
+        },
+        license: "public-domain",
+        licenseLabel: "Public domain",
+        fileUrl:
+          "https://commons.wikimedia.org/wiki/File:Mr._W.D._Howells_-_Zaida_Ben_Yusuf._LCCN2004675087.jpg",
+        modification: {
+          en: "Resized and converted to WebP. No cropping, colouring or filtering.",
+          fr: "Redimensionnée et convertie en WebP. Aucun recadrage, colorisation ni filtre.",
+          ar: "أُعيد تحجيمها وتحويلها إلى WebP. دون قصّ أو تلوين أو مرشحات.",
+        },
+        sourceId: "loc-zaida-ben-yusuf",
+      },
+    ],
+  }),
   "figure:azouaou-mammeri": R({
     sourceIds: [
       "idref-azouaou-mammeri",

@@ -1068,6 +1068,112 @@ export const SOURCES: readonly ProvenanceSource[] = [
       "تقرير حول مكانة الساندويتش في الثقافة الغذائية والحنين لدى الجالية الجزائرية.",
     ),
   }),
+  // Zaida Ben-Yusuf
+  S({
+    id: "npg-zaida-ben-yusuf",
+    kind: "museum",
+    category: "museum",
+    title: L(
+      "Zaida Ben-Yusuf: New York Portrait Photographer",
+      "Zaida Ben-Yusuf: New York Portrait Photographer",
+      "زايدة بن يوسف: مصوّرة بورتريه في نيويورك",
+    ),
+    publisher: L(
+      "Smithsonian National Portrait Gallery",
+      "Smithsonian National Portrait Gallery",
+      "معرض الصور الوطني، مؤسسة سميثسونيان",
+    ),
+    url: "https://npg.si.edu/exhibition/zaida-ben-yusuf-new-york-portrait-photographer",
+    language: "en",
+    badge: "Smithsonian",
+    note: L(
+      "Principal authority for her biography, parentage and standing in American portrait photography.",
+      "Autorité principale pour sa biographie, sa filiation et sa place dans la photographie de portrait américaine.",
+      "المرجع الأساسي لسيرتها وأصولها ومكانتها في تصوير البورتريه الأمريكي.",
+    ),
+  }),
+  S({
+    id: "loc-zaida-ben-yusuf",
+    kind: "archive",
+    category: "archive",
+    title: L(
+      "Zaida Ben-Yusuf collection and biographical essay, Prints and Photographs Division",
+      "Collection Zaida Ben-Yusuf et notice biographique, Prints and Photographs Division",
+      "مجموعة زايدة بن يوسف والدراسة السيرية، قسم المطبوعات والصور",
+    ),
+    publisher: L("Library of Congress", "Bibliothèque du Congrès", "مكتبة الكونغرس"),
+    url: "https://www.loc.gov/rr/print/coll/benyusuf.html",
+    language: "en",
+    badge: "LOC",
+    note: L(
+      "Source of the photographs shown here, all marked as having no known restrictions on publication.",
+      "Source des photographies présentées ici, toutes signalées comme sans restriction connue de publication.",
+      "مصدر الصور المعروضة هنا، وجميعها مسجّلة دون قيود معروفة على النشر.",
+    ),
+  }),
+  S({
+    id: "goodyear-zaida-ben-yusuf-2008",
+    kind: "book",
+    category: "academic",
+    title: L(
+      "Zaida Ben-Yusuf: New York Portrait Photographer",
+      "Zaida Ben-Yusuf: New York Portrait Photographer",
+      "زايدة بن يوسف: مصوّرة بورتريه في نيويورك",
+    ),
+    author: L(
+      "Frank H. Goodyear III, Elizabeth O. Wiley and Jobyl A. Boone",
+      "Frank H. Goodyear III, Elizabeth O. Wiley et Jobyl A. Boone",
+      "فرانك ﻫ. غوديير الثالث، وإليزابيث و. وايلي، وجوبيل أ. بون",
+    ),
+    publisher: L(
+      "Smithsonian National Portrait Gallery",
+      "Smithsonian National Portrait Gallery",
+      "معرض الصور الوطني، مؤسسة سميثسونيان",
+    ),
+    publishedAt: "2008",
+    language: "en",
+    note: L(
+      "Scholarly catalogue accompanying the exhibition.",
+      "Catalogue scientifique accompagnant l'exposition.",
+      "الكتالوج العلمي المرافق للمعرض.",
+    ),
+  }),
+  S({
+    id: "infinite-women-zaida-ben-yusuf",
+    kind: "web",
+    category: "further",
+    title: L(
+      "Zaida Ben-Yusuf profile",
+      "Profil de Zaida Ben-Yusuf",
+      "تعريف بزايدة بن يوسف",
+    ),
+    publisher: L("Infinite Women", "Infinite Women", "Infinite Women"),
+    url: "https://www.infinite-women.com/women/zaida-ben-yusuf/",
+    language: "en",
+    note: L(
+      "Secondary reading, identified as a republication of Library of Congress material.",
+      "Lecture secondaire, présentée comme une republication de contenus de la Bibliothèque du Congrès.",
+      "قراءة ثانوية، مُعرَّفة بأنها إعادة نشر لمواد مكتبة الكونغرس.",
+    ),
+  }),
+  S({
+    id: "commons-zaida-selfportrait-1901",
+    kind: "image",
+    category: "archive",
+    title: L(
+      "File: Zaida Ben-Yusuf 1901 selfportrait.jpg",
+      "Fichier : Zaida Ben-Yusuf 1901 selfportrait.jpg",
+      "ملف: Zaida Ben-Yusuf 1901 selfportrait.jpg",
+    ),
+    publisher: L("Wikimedia Commons", "Wikimedia Commons", "ويكيميديا كومنز"),
+    url: "https://commons.wikimedia.org/wiki/File:Zaida_Ben-Yusuf_1901_selfportrait.jpg",
+    language: "en",
+    note: L(
+      "File page for the hero portrait, sourced from the Library of Congress and marked public domain.",
+      "Page du fichier du portrait principal, issu de la Bibliothèque du Congrès et marqué domaine public.",
+      "صفحة ملف الصورة الرئيسية، مصدرها مكتبة الكونغرس وهي في الملك العام.",
+    ),
+  }),
 ];
 
 
