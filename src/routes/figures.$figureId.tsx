@@ -285,9 +285,21 @@ function FigureDetail() {
               boxShadow: "var(--shadow-soft)",
             }}
           />
-          <figcaption className="text-sm text-muted-foreground leading-relaxed sm:max-w-[24ch]">
+          <figcaption className="text-sm text-muted-foreground leading-relaxed sm:max-w-[34ch]">
+            {extras.identity && (
+              <span className="mb-2 block text-[15px] text-foreground/90" style={{ fontFamily: SERIF }}>
+                {t(extras.identity.line, lang)}
+              </span>
+            )}
             <span className="block font-semibold text-foreground">{t(extras.portrait.caption, lang)}</span>
             <span className="mt-1 block text-xs">{t(extras.portrait.credit, lang)}</span>
+            {extras.identity && (
+              <span className="mt-2 block text-xs">
+                {t(extras.identity.birthplaceLabel, lang)}: {t(extras.identity.birthplace, lang)}
+                {" · "}
+                {t(extras.identity.workLocationLabel, lang)}: {t(extras.identity.workLocation, lang)}
+              </span>
+            )}
           </figcaption>
         </figure>
       )}

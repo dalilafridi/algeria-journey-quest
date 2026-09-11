@@ -71,6 +71,21 @@ export type FigureExtras = {
 
 export const figureExtras: Record<string, FigureExtras> = {
   "zaida-ben-yusuf": {
+    identity: {
+      line: L(
+        "British-born American photographer of Algerian and German parentage",
+        "Photographe américaine née en Grande-Bretagne, issue d'un père algérien et d'une mère allemande",
+        "مصورة أمريكية مولودة في بريطانيا، من أب جزائري وأم ألمانية",
+      ),
+      birthplaceLabel: L("Birthplace", "Lieu de naissance", "مكان الميلاد"),
+      birthplace: L("London, England", "Londres, Angleterre", "لندن، إنجلترا"),
+      workLocationLabel: L("Primary work location", "Lieu de travail principal", "مكان العمل الرئيسي"),
+      workLocation: L(
+        "New York City, United States",
+        "New York, États-Unis",
+        "مدينة نيويورك، الولايات المتحدة",
+      ),
+    },
     portrait: {
       src: zaidaSelfPortrait900,
       srcSmall: zaidaSelfPortrait450,
