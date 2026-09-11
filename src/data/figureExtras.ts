@@ -1,8 +1,38 @@
 import type { LocalizedString } from "@/lib/i18n";
 
+// Public-domain Library of Congress photographs by Zaida Ben-Yusuf.
+import zaidaSelfPortrait900 from "@/assets/figures/zaida-ben-yusuf-selfportrait-1901-900.webp";
+import zaidaSelfPortrait450 from "@/assets/figures/zaida-ben-yusuf-selfportrait-1901-450.webp";
+import zaidaPomegranates800 from "@/assets/figures/zaida-ben-yusuf-odor-of-pomegranates-1899-800.webp";
+import zaidaPomegranates400 from "@/assets/figures/zaida-ben-yusuf-odor-of-pomegranates-1899-400.webp";
+import zaidaHowells800 from "@/assets/figures/zaida-ben-yusuf-william-dean-howells-1900-800.webp";
+import zaidaHowells400 from "@/assets/figures/zaida-ben-yusuf-william-dean-howells-1900-400.webp";
+
 const L = (en: string, fr: string, ar: string): LocalizedString => ({ en, fr, ar });
 
+/**
+ * A rights-cleared image shown on a figure exhibit. Only used where the
+ * copyright status of the file has been verified individually.
+ */
+export type FigureImage = {
+  /** Larger optimized copy (bundled asset URL). */
+  src: string;
+  /** Half-width copy used for small viewports. */
+  srcSmall: string;
+  /** Intrinsic size of `src`, in pixels, to reserve layout space. */
+  width: number;
+  height: number;
+  alt: LocalizedString;
+  caption: LocalizedString;
+  /** Full credit line: work, date, author, holding institution, rights. */
+  credit: LocalizedString;
+};
+
 export type FigureExtras = {
+  /** Rights-cleared hero portrait shown under the exhibit hero. */
+  portrait?: FigureImage;
+  /** Small gallery of rights-cleared works (maximum three). */
+  gallery?: { heading: LocalizedString; items: FigureImage[] };
   /** Short "Did you know?" blurb. */
   didYouKnow?: LocalizedString;
   /** Key works, songs, books, monuments, places linked to the figure. */
@@ -32,6 +62,107 @@ export type FigureExtras = {
 
 
 export const figureExtras: Record<string, FigureExtras> = {
+  "zaida-ben-yusuf": {
+    portrait: {
+      src: zaidaSelfPortrait900,
+      srcSmall: zaidaSelfPortrait450,
+      width: 900,
+      height: 1800,
+      alt: L(
+        "Vertical monochrome self-portrait of Zaida Ben-Yusuf, standing in profile in a long dark dress, her face turned towards the camera against a plain studio background.",
+        "Autoportrait monochrome vertical de Zaida Ben-Yusuf, debout de profil dans une longue robe sombre, le visage tourné vers l'objectif devant un fond d'atelier uni.",
+        "صورة ذاتية عمودية بالأبيض والأسود لزايدة بن يوسف، واقفة جانبيًا بفستان داكن طويل ووجهها نحو العدسة أمام خلفية استوديو بسيطة.",
+      ),
+      caption: L(
+        "Self-portrait, 1901.",
+        "Autoportrait, 1901.",
+        "صورة ذاتية، 1901.",
+      ),
+      credit: L(
+        "Self-portrait, 1901. Zaida Ben-Yusuf. Library of Congress. Public domain.",
+        "Autoportrait, 1901. Zaida Ben-Yusuf. Bibliothèque du Congrès. Domaine public.",
+        "صورة ذاتية، 1901. زايدة بن يوسف. مكتبة الكونغرس. ملكية عامة.",
+      ),
+    },
+    gallery: {
+      heading: L("Works in the public domain", "Œuvres dans le domaine public", "أعمال في الملك العام"),
+      items: [
+        {
+          src: zaidaPomegranates800,
+          srcSmall: zaidaPomegranates400,
+          width: 800,
+          height: 1141,
+          alt: L(
+            "Monochrome photograph of a young woman in a light robe leaning towards a branch of pomegranates, her eyes lowered.",
+            "Photographie monochrome d'une jeune femme en robe claire penchée vers une branche de grenades, les yeux baissés.",
+            "صورة بالأبيض والأسود لامرأة شابة بثوب فاتح تميل نحو غصن من الرمان وعيناها مغمضتان إلى الأسفل.",
+          ),
+          caption: L(
+            "The Odor of Pomegranates, 1899.",
+            "The Odor of Pomegranates, 1899.",
+            "«رائحة الرمان»، 1899.",
+          ),
+          credit: L(
+            "The Odor of Pomegranates, 1899. Zaida Ben-Yusuf. Library of Congress, catalogue number 98501302, copy date recorded as 1900. Public domain.",
+            "The Odor of Pomegranates, 1899. Zaida Ben-Yusuf. Bibliothèque du Congrès, notice 98501302, date de dépôt enregistrée en 1900. Domaine public.",
+            "«رائحة الرمان»، 1899. زايدة بن يوسف. مكتبة الكونغرس، رقم الفهرسة 98501302، وتاريخ النسخة المسجل 1900. ملكية عامة.",
+          ),
+        },
+        {
+          src: zaidaHowells800,
+          srcSmall: zaidaHowells400,
+          width: 800,
+          height: 911,
+          alt: L(
+            "Monochrome studio portrait of the writer William Dean Howells, seated, in a dark suit, looking slightly away from the camera.",
+            "Portrait d'atelier monochrome de l'écrivain William Dean Howells, assis, en costume sombre, le regard légèrement détourné de l'objectif.",
+            "بورتريه استوديو بالأبيض والأسود للكاتب ويليام دين هاولز، جالسًا ببذلة داكنة وناظرًا بعيدًا قليلًا عن العدسة.",
+          ),
+          caption: L(
+            "Portrait of the writer William Dean Howells, about 1900.",
+            "Portrait de l'écrivain William Dean Howells, vers 1900.",
+            "بورتريه للكاتب ويليام دين هاولز، نحو 1900.",
+          ),
+          credit: L(
+            "Mr. W. D. Howells, about 1900. Zaida Ben-Yusuf. Library of Congress, catalogue number 2004675087. Public domain.",
+            "Mr. W. D. Howells, vers 1900. Zaida Ben-Yusuf. Bibliothèque du Congrès, notice 2004675087. Domaine public.",
+            "«السيد و. د. هاولز»، نحو 1900. زايدة بن يوسف. مكتبة الكونغرس، رقم الفهرسة 2004675087. ملكية عامة.",
+          ),
+        },
+      ],
+    },
+    narrativeSections: [
+      {
+        heading: L(
+          "A pioneering eye across borders",
+          "Un regard pionnier par-delà les frontières",
+          "عدسة رائدة عبر الحدود",
+        ),
+        body: [
+          L(
+            "Zaida Ben-Yusuf was born in London in 1869 to an Algerian father, Mustapha Moussa Ben Youseph Nathan, and a German mother, Anna Kind Ben-Yusuf. She later settled in New York, where she became one of the most prominent women working in artistic portrait photography at the turn of the twentieth century.",
+            "Zaida Ben-Yusuf naît à Londres en 1869 d'un père algérien, Mustapha Moussa Ben Youseph Nathan, et d'une mère allemande, Anna Kind Ben-Yusuf. Elle s'installe ensuite à New York, où elle devient l'une des femmes les plus reconnues de la photographie artistique de portrait au tournant du XXe siècle.",
+            "وُلدت زايدة بن يوسف في لندن سنة 1869 لأب جزائري هو مصطفى موسى بن يوسف ناثان، وأم ألمانية هي آنا كيند بن يوسف. انتقلت لاحقًا إلى نيويورك، حيث أصبحت من أبرز النساء العاملات في فن التصوير الفوتوغرافي للبورتريه في مطلع القرن العشرين.",
+          ),
+          L(
+            "Her carefully composed portraits brought together theatrical staging, psychological presence and a distinctly modern sense of personality. She photographed writers, performers, artists and political figures, exhibited internationally and published articles about photography, fashion and travel.",
+            "Ses portraits soigneusement composés associent mise en scène, présence psychologique et approche résolument moderne de la personnalité. Elle photographie des écrivains, des artistes, des interprètes et des personnalités politiques, expose à l'échelle internationale et publie des articles consacrés à la photographie, à la mode et au voyage.",
+            "جمعت صورها المدروسة بعناية بين التكوين المسرحي والحضور النفسي والنظرة الحديثة إلى شخصية من تقف أو يقف أمام عدستها. صورت كتّابًا وفنانين وممثلين وشخصيات سياسية، وشاركت في معارض دولية، كما كتبت عن التصوير والموضة والسفر.",
+          ),
+          L(
+            "In 1901, The Ladies' Home Journal included her among the foremost women photographers in America. More than a century later, the Smithsonian National Portrait Gallery devoted an exhibition to recovering her place in photographic history.",
+            "En 1901, The Ladies' Home Journal la classe parmi les principales femmes photographes des États-Unis. Plus d'un siècle plus tard, la Smithsonian National Portrait Gallery lui consacre une exposition afin de restituer sa place dans l'histoire de la photographie.",
+            "في سنة 1901، صنفتها مجلة The Ladies' Home Journal ضمن أبرز المصورات في الولايات المتحدة. وبعد أكثر من قرن، خصص لها معرض الصور الوطني التابع لمؤسسة سميثسونيان معرضًا أعاد إبراز مكانتها في تاريخ التصوير.",
+          ),
+          L(
+            "Her career unfolded outside Algeria. DZ Odyssey includes her as an international figure of Algerian descent whose life demonstrates how Algerian connections also formed part of wider histories of migration, art and modernity.",
+            "Sa carrière s'est déroulée hors d'Algérie. DZ Odyssey la présente comme une figure internationale d'ascendance algérienne, dont le parcours relie l'histoire algérienne à celles de la migration, de l'art et de la modernité.",
+            "جرت مسيرتها المهنية خارج الجزائر. يقدمها DZ Odyssey بوصفها شخصية دولية من أصول جزائرية، تعكس سيرتها حضور الروابط الجزائرية في تاريخ الهجرة والفن والحداثة.",
+          ),
+        ],
+      },
+    ],
+  },
   "azouaou-mammeri": {
     didYouKnow: L(
       "Sources do not agree on his birth year. An authority record gives 1890, while a French archival file gives 1892, so DZ Odyssey displays both until stronger documentation resolves the conflict.",

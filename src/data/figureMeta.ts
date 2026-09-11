@@ -89,6 +89,32 @@ export type FigureMeta = {
 // ---------- Curated data ----------
 
 export const figureMeta: Record<string, FigureMeta> = {
+  "zaida-ben-yusuf": {
+    cinematicLine: L(
+      "A Fifth Avenue studio, a London childhood and an Algerian father.",
+      "Un studio de la Cinquième Avenue, une enfance londonienne et un père algérien.",
+      "استوديو في الجادة الخامسة، وطفولة لندنية، وأب جزائري.",
+    ),
+    modernRelevance: L(
+      "Her life shows how Algerian descent travelled through the wider histories of migration, art and modernity, well beyond Algeria's borders.",
+      "Son parcours montre comment l'ascendance algérienne a circulé dans les histoires plus larges de la migration, de l'art et de la modernité, bien au-delà des frontières algériennes.",
+      "تُظهر سيرتها كيف انتقلت الأصول الجزائرية عبر تواريخ أوسع للهجرة والفن والحداثة، بعيدًا عن حدود الجزائر.",
+    ),
+    themes: ["diaspora", "identity", "women-heritage"],
+    relatedFigureIds: ["azouaou-mammeri", "mohammed-arkoun", "assia-djebar"],
+    seo: {
+      title: L(
+        "Zaida Ben-Yusuf, photographer of Algerian descent | DZ Odyssey",
+        "Zaida Ben-Yusuf, photographe d'ascendance algérienne | DZ Odyssey",
+        "زايدة بن يوسف، مصورة من أصول جزائرية | DZ Odyssey",
+      ),
+      description: L(
+        "Zaida Ben-Yusuf, 1869 to 1933, a British-born American portrait photographer of Algerian and German parentage, presented as an international figure of Algerian descent.",
+        "Zaida Ben-Yusuf, 1869-1933, photographe de portrait américaine née en Grande-Bretagne, d'un père algérien et d'une mère allemande, présentée comme figure internationale d'ascendance algérienne.",
+        "زايدة بن يوسف، 1869-1933، مصورة بورتريه أمريكية مولودة في بريطانيا من أب جزائري وأم ألمانية، تُقدَّم بوصفها شخصية دولية من أصول جزائرية.",
+      ),
+    },
+  },
   // ===== Antiquity =====
   massinissa: {
     cinematicLine: L("He stitched a kingdom from rival tribes.", "Il a tissé un royaume à partir de tribus rivales.", "نسج مملكة من قبائل متنافسة."),

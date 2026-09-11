@@ -224,6 +224,7 @@ export const COLLECTIONS: CollectionDef[] = [
       "mouloud-feraoun",
       "mammeri",
       "azouaou-mammeri",
+      "zaida-ben-yusuf",
       "dib",
       "haddad",
       "assia-djebar",
